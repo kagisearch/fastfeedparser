@@ -685,8 +685,13 @@ def parse_date(date_str):
     try:
         time_struct, parse_status = cal.parse(date_str)
         if parse_status:
-            dt = datetime.datetime(*time_struct[:6], tzinfo=datetime.timezone.utc)
-            return dt.isoformat()
+            # Create datetime with local timezone first
+            local_dt = datetime.datetime(*time_struct[:6])
+            local_tz = datetime.datetime.now().astimezone().tzinfo
+            dt = local_dt.replace(tzinfo=local_tz)
+            # Convert to UTC
+            utc_dt = dt.astimezone(datetime.timezone.utc)
+            return utc_dt.isoformat()
     except ValueError:
         pass
 
