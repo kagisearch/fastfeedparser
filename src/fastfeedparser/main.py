@@ -683,15 +683,11 @@ def parse_date(date_str):
 
     # Fall back to parsedatetime
     try:
-        time_struct, parse_status = cal.parse(date_str)
+        # Parse with timezone awareness
+        time_struct, parse_status = cal.parseDT(date_str, tzinfo=datetime.timezone.utc)
         if parse_status:
-            # Create datetime with local timezone first
-            local_dt = datetime.datetime(*time_struct[:6])
-            local_tz = datetime.datetime.now().astimezone().tzinfo
-            dt = local_dt.replace(tzinfo=local_tz)
-            # Convert to UTC
-            utc_dt = dt.astimezone(datetime.timezone.utc)
-            return utc_dt.isoformat()
+            # time_struct is already a datetime with proper timezone
+            return time_struct.astimezone(datetime.timezone.utc).isoformat()
     except ValueError:
         pass
 
