@@ -19,7 +19,7 @@ FastFeedParser is used for high performance processing of thousands of feeds for
 - Fast parsing of RSS 2.0, Atom 1.0, and RDF/RSS 1.0 feeds
 - Robust error handling and encoding detection
 - Support for media content and enclosures
-- Automatic date parsing with timezone handling
+- Automatic date parsing and standardization to UTC ISO 8601 format
 - Clean, Pythonic API similar to feedparser
 - Comprehensive handling of feed metadata
 - Support for various feed extensions (Media RSS, Dublin Core, etc.)
