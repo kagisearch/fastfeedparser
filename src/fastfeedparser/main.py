@@ -659,7 +659,14 @@ cal = parsedatetime.Calendar()
 
 
 def parse_date(date_str):
-    """Parse date string and return as a standard string in UTC."""
+    """Parse date string and return as an ISO 8601 formatted UTC string.
+    
+    Args:
+        date_str: Date string in any common format
+        
+    Returns:
+        ISO 8601 formatted UTC date string or None if parsing fails
+    """
     if not date_str:
         return None
 
@@ -670,7 +677,7 @@ def parse_date(date_str):
             dt = dt.replace(tzinfo=datetime.timezone.utc)
         else:
             dt = dt.astimezone(datetime.timezone.utc)
-        return dt.strftime("%Y-%m-%d %H:%M:%S %Z")
+        return dt.isoformat()
     except (ValueError, OverflowError):
         pass
 
@@ -679,12 +686,12 @@ def parse_date(date_str):
         time_struct, parse_status = cal.parse(date_str)
         if parse_status:
             dt = datetime.datetime(*time_struct[:6], tzinfo=datetime.timezone.utc)
-            return dt.strftime("%Y-%m-%d %H:%M:%S %Z")
+            return dt.isoformat()
     except ValueError:
         pass
 
-    # If all parsing attempts fail, return the original string
-    return date_str
+    # If all parsing attempts fail, return None instead of original string
+    return None
 
 
 
