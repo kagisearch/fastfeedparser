@@ -11,7 +11,7 @@ The main advantage of FastFeedParser over the traditional feedparser library is 
 - Minimal dependencies
 - Streamlined codebase focused on core functionality
 
-FastFeedParser is used to effeciently process thousands of feeds for Kagi's [Small Web](https://github.com/kagisearch/smallweb) initiative.
+FastFeedParser is used for high performance processing of thousands of feeds for [Kagi Small Web](https://github.com/kagisearch/smallweb) initiative.
 
 
 ## Features
