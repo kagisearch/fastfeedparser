@@ -1,17 +1,17 @@
 # FastFeedParser
 
-A high-performance RSS, Atom, and RDF feed parser for Python. FastFeedParser is designed to be fast, memory-efficient, and easy to use while providing comprehensive feed parsing capabilities.
+A high-performance feed parser for Python that handles RSS, Atom, and RDF. Built for speed, efficiency, and ease of use while delivering complete parsing capabilities.
 
 ### Why FastFeedParser?
 
-The main advantage of FastFeedParser over the traditional feedparser library is its lightweight design and exceptional performance - benchmarks show it's 10x-100x faster than feedparser while maintaining a familiar API. This dramatic speed improvement is achieved through:
+It's 10x-100x faster than traditional feedparser while keeping a familiar API. This speed comes from:
 
-- Efficient XML parsing using lxml
-- Optimized memory usage
+- lxml for efficient XML parsing
+- Smart memory management  
 - Minimal dependencies
-- Streamlined codebase focused on core functionality
+- Focused, streamlined code
 
-FastFeedParser is used for high performance processing of thousands of feeds for [Kagi Small Web](https://github.com/kagisearch/smallweb) initiative.
+Powers feed processing for [Kagi Small Web](https://github.com/kagisearch/smallweb), handling processing of thousands of feeds at scale.
 
 
 ## Features
