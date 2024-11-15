@@ -22,9 +22,33 @@ class FastFeedParserDict(dict):
         self[name] = value
 
 
-def parse(xml_content):
-    """Parse the XML content of a feed."""
-    if not xml_content.strip():
+def parse(source):
+    """Parse a feed from a URL or XML content.
+    
+    Args:
+        source: URL string or XML content string/bytes
+        
+    Returns:
+        FastFeedParserDict containing parsed feed data
+        
+    Raises:
+        ValueError: If content is empty or invalid
+        HTTPError: If URL fetch fails
+    """
+    # Handle URL input
+    if isinstance(source, str) and (source.startswith('http://') or source.startswith('https://')):
+        try:
+            with httpx.Client(follow_redirects=True, timeout=30.0) as client:
+                response = client.get(source)
+                response.raise_for_status()
+                xml_content = response.content
+        except httpx.HTTPError as e:
+            raise ValueError(f"Failed to fetch URL {source}: {str(e)}")
+    else:
+        xml_content = source
+
+    # Handle empty content
+    if isinstance(xml_content, str) and not xml_content.strip():
         raise ValueError("Empty content")
 
     # Handle decoding if content is bytes
