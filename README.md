@@ -11,6 +11,9 @@ The main advantage of FastFeedParser over the traditional feedparser library is 
 - Minimal dependencies
 - Streamlined codebase focused on core functionality
 
+FastFeedParser is used to effeciently process thousands of feeds for Kagi's [Small Web](https://github.com/kagisearch/smallweb) initiative.
+
+
 ## Features
 
 - Fast parsing of RSS 2.0, Atom 1.0, and RDF/RSS 1.0 feeds
@@ -20,6 +23,7 @@ The main advantage of FastFeedParser over the traditional feedparser library is 
 - Clean, Pythonic API similar to feedparser
 - Comprehensive handling of feed metadata
 - Support for various feed extensions (Media RSS, Dublin Core, etc.)
+
 
 ## Installation
 
@@ -33,7 +37,7 @@ pip install fastfeedparser
 import fastfeedparser
 
 # Parse from URL
-feed = fastfeedparser.parse_url('https://example.com/feed.xml')
+feed = fastfeedparser.parse('https://example.com/feed.xml')
 
 # Parse from string
 xml_content = '''<?xml version="1.0"?>
@@ -43,14 +47,14 @@ xml_content = '''<?xml version="1.0"?>
         ...
     </channel>
 </rss>'''
-feed = fastfeedparser.parse(xml_content)
+myfeed = fastfeedparser.parse(xml_content)
 
-# Access feed information
-print(feed.feed.title)
-print(feed.feed.link)
+# Access feed global information
+print(myfeed.feed.title)
+print(myfeed.feed.link)
 
-# Access entries
-for entry in feed.entries:
+# Access feed entries
+for entry in myfeed.entries:
     print(entry.title)
     print(entry.link)
     print(entry.published)
@@ -80,9 +84,8 @@ for entry in feed.entries:
 
 ### Main Functions
 
-- `parse(xml_content)`: Parse feed from a string or bytes
-- `parse_url(url)`: Parse feed from a URL
-- `fetch_url(url)`: Fetch content from a URL
+- `parse(source)`: Parse feed from a source that can be URL or a string
+
 
 ### Feed Object Structure
 
