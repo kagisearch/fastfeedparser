@@ -663,14 +663,4 @@ def parse_date(date_str):
     return date_str
 
 
-def parse_url(url):
-    """Parse a URL and return a FastFeedParserDict object."""
-    return parse(url)
 
-
-def fetch_url(url):
-    """Fetch content from a URL."""
-    with httpx.Client() as client:
-        response = client.get(url, follow_redirects=True)
-        response.raise_for_status()
-        return response.text
