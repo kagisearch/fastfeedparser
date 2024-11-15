@@ -37,7 +37,7 @@ pip install fastfeedparser
 import fastfeedparser
 
 # Parse from URL
-feed = fastfeedparser.parse('https://example.com/feed.xml')
+myfeed = fastfeedparser.parse('https://example.com/feed.xml')
 
 # Parse from string
 xml_content = '''<?xml version="1.0"?>
