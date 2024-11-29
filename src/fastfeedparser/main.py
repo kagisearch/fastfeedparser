@@ -1,8 +1,16 @@
 import datetime
-import httpx
-from lxml import etree
+import gzip
+import zlib
+from urllib.request import (
+    HTTPErrorProcessor,
+    HTTPRedirectHandler,
+    Request,
+    build_opener,
+)
+
 import parsedatetime
 from dateutil import parser as dateutil_parser
+from lxml import etree
 
 MEDIA_NS = "http://search.yahoo.com/mrss/"
 
@@ -24,26 +32,37 @@ class FastFeedParserDict(dict):
 
 def parse(source):
     """Parse a feed from a URL or XML content.
-    
+
     Args:
         source: URL string or XML content string/bytes
-        
+
     Returns:
         FastFeedParserDict containing parsed feed data
-        
+
     Raises:
         ValueError: If content is empty or invalid
         HTTPError: If URL fetch fails
     """
     # Handle URL input
-    if isinstance(source, str) and (source.startswith('http://') or source.startswith('https://')):
-        try:
-            with httpx.Client(follow_redirects=True, timeout=30.0) as client:
-                response = client.get(source)
-                response.raise_for_status()
-                xml_content = response.content
-        except httpx.HTTPError as e:
-            raise ValueError(f"Failed to fetch URL {source}: {str(e)}")
+    if isinstance(source, str) and (source.startswith(('http://', 'https://'))):
+        request = Request(
+            source,
+            method='GET',
+            headers={
+                'Accept-Encoding': 'gzip, deflate',
+                'User-Agent': 'fastfeedparser (+https://github.com/kagisearch/fastfeedparser)',
+            }
+        )
+        opener = build_opener(HTTPRedirectHandler(), HTTPErrorProcessor())
+        with opener.open(request, timeout=30) as response:
+            response.begin()
+            content = response.read()
+            content_encoding = response.headers.get('Content-Encoding')
+            if content_encoding == 'gzip':
+                content = gzip.decompress(content)
+            elif content_encoding == 'deflate':
+                content = zlib.decompress(content, -zlib.MAX_WBITS)
+            xml_content = content
     else:
         xml_content = source
 
@@ -660,10 +679,10 @@ cal = parsedatetime.Calendar()
 
 def parse_date(date_str):
     """Parse date string and return as an ISO 8601 formatted UTC string.
-    
+
     Args:
         date_str: Date string in any common format
-        
+
     Returns:
         ISO 8601 formatted UTC date string or None if parsing fails
     """
