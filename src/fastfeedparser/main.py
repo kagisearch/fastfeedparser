@@ -44,7 +44,7 @@ def parse(source):
         HTTPError: If URL fetch fails
     """
     # Handle URL input
-    if isinstance(source, str) and (source.startswith(('http://', 'https://'))):
+    if isinstance(source, str) and source.startswith(('http://', 'https://')):
         request = Request(
             source,
             method='GET',
