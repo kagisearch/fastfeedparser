@@ -107,7 +107,6 @@ Each entry contains:
 ## Requirements
 
 - Python 3.7+
-- httpx
 - lxml
 - parsedatetime
 - python-dateutil
