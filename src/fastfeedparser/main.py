@@ -109,6 +109,8 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         feed_type = "rdf"
         channel = root
         items = channel.findall(".//{http://purl.org/rss/1.0/}item")
+        if not items:
+            items = channel.findall("item")
     else:
         raise ValueError(f"Unknown feed type: {root.tag}")
     if not items:
