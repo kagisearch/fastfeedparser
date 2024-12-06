@@ -10,7 +10,7 @@ _INTEGRATION_DIR = _TESTS_DIR.joinpath("integration")
 
 
 def pytest_generate_tests(metafunc: pytest.Metafunc):
-    metafunc.parametrize("feed_path", list(_INTEGRATION_DIR.glob("*.xml")))
+    metafunc.parametrize("feed_path", sorted(_INTEGRATION_DIR.glob("*.xml")))
 
 
 def test_integration(feed_path: Path):
