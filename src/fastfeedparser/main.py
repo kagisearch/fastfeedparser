@@ -4,7 +4,7 @@ import datetime
 import gzip
 import re
 import zlib
-from typing import TYPE_CHECKING, Literal
+from typing import Literal, TYPE_CHECKING
 from urllib.request import (
     HTTPErrorProcessor,
     HTTPRedirectHandler,
@@ -18,7 +18,6 @@ from lxml import etree
 
 if TYPE_CHECKING:
     from collections.abc import Callable
-
     from lxml.etree import _Element
 
 _FeedType = Literal["rss", "atom", "rdf"]
