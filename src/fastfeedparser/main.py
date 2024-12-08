@@ -4,7 +4,7 @@ import datetime
 import gzip
 import re
 import zlib
-from typing import Literal, TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 from urllib.request import (
     HTTPErrorProcessor,
     HTTPRedirectHandler,
@@ -18,6 +18,7 @@ from lxml import etree
 
 if TYPE_CHECKING:
     from collections.abc import Callable
+
     from lxml.etree import _Element
 
 _FeedType = Literal["rss", "atom", "rdf"]
@@ -359,7 +360,11 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
     elif alternate_link:
         entry["link"] = alternate_link["href"]
         entry_links.insert(0, alternate_link)
-    elif "link" not in entry and guid and guid.get("isPermaLink") == "true":
+    elif (
+        ("link" not in entry)
+        and (guid is not None)
+        and guid.get("isPermaLink") == "true"
+    ):
         entry["link"] = guid_text
 
     content = None
