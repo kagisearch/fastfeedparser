@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>FoolControl: Phear the penguin</title>
+	<atom:link href="https://foolcontrol.org/?feed=rss2" rel="self" type="application/rss+xml" />
+	<link>https://foolcontrol.org</link>
+	<description>Adnan Hodzic on Linux, Open Source, DevOps, Cloud and much more :)</description>
+	<lastBuildDate>Fri, 25 Oct 2024 10:14:37 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+
+<image>
+	<url>https://storage.googleapis.com/foolcontrol-media/2024/09/ee9804c9-cropped-e4e3292a-foolcontrol-favicon-32x32.png</url>
+	<title>FoolControl: Phear the penguin</title>
+	<link>https://foolcontrol.org</link>
+	<width>32</width>
+	<height>32</height>
+</image>
+<site xmlns="com-wordpress:feed-additions:1">131041528</site>	<item>
+		<title>wp-cloud-run: Ultimate WordPress setup on (GCP) Cloud Run</title>
+		<link>https://foolcontrol.org/?p=4802</link>
+					<comments>https://foolcontrol.org/?p=4802#respond</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Sun, 20 Oct 2024 16:07:49 +0000</pubDate>
+				<category><![CDATA[cloud]]></category>
+		<category><![CDATA[DevOps]]></category>
+		<category><![CDATA[Project]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[Tutorial]]></category>
+		<guid isPermaLink="false">https://foolcontrol.org/?p=4802</guid>
+
+					<description><![CDATA[By the end of this blog post (or wp-cloud-run YouTube video playlist), you&#8217;ll have a fully secure (DDoS proof), performant and scalable WordPress instance running...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=4802</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">4802</post-id>	</item>
+		<item>
+		<title>Effortless Linux backups: Power of OpenZFS Snapshots on Ubuntu 24.04</title>
+		<link>https://foolcontrol.org/?p=4781</link>
+					<comments>https://foolcontrol.org/?p=4781#respond</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Sun, 22 Sep 2024 16:00:59 +0000</pubDate>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Software]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[24.04]]></category>
+		<category><![CDATA[backup]]></category>
+		<category><![CDATA[encryption]]></category>
+		<category><![CDATA[ext4]]></category>
+		<category><![CDATA[filesystem]]></category>
+		<category><![CDATA[power]]></category>
+		<category><![CDATA[recovery]]></category>
+		<category><![CDATA[reiserfs]]></category>
+		<category><![CDATA[rollback]]></category>
+		<category><![CDATA[snapshot]]></category>
+		<category><![CDATA[snapshots]]></category>
+		<category><![CDATA[ubuntu]]></category>
+		<category><![CDATA[zfs]]></category>
+		<guid isPermaLink="false">https://foolcontrol.org/?p=4781</guid>
+
+					<description><![CDATA[Linux snapshots? Back in the day (mid 2000&#8217;s) ReiserFS was my go to Linux filesystem, it was fast &#38; reliable. But then after its creator...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=4781</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">4781</post-id>	</item>
+		<item>
+		<title>App architecture with reliability in mind: From Kubernetes to Serverless with GCP Cloud Build &#038; Cloud Run</title>
+		<link>https://foolcontrol.org/?p=4621</link>
+					<comments>https://foolcontrol.org/?p=4621#comments</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Mon, 26 Feb 2024 20:00:23 +0000</pubDate>
+				<category><![CDATA[DevOps]]></category>
+		<category><![CDATA[HowTo]]></category>
+		<category><![CDATA[Project]]></category>
+		<category><![CDATA[Software]]></category>
+		<category><![CDATA[app]]></category>
+		<category><![CDATA[architecture]]></category>
+		<category><![CDATA[build]]></category>
+		<category><![CDATA[cicd]]></category>
+		<category><![CDATA[cloud]]></category>
+		<category><![CDATA[cloudbuild]]></category>
+		<category><![CDATA[cloudrun]]></category>
+		<category><![CDATA[deployment]]></category>
+		<category><![CDATA[docker]]></category>
+		<category><![CDATA[dr]]></category>
+		<category><![CDATA[gcp]]></category>
+		<category><![CDATA[google]]></category>
+		<category><![CDATA[googlecloud]]></category>
+		<category><![CDATA[k8s]]></category>
+		<category><![CDATA[reliability]]></category>
+		<category><![CDATA[run]]></category>
+		<guid isPermaLink="false">https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4621</guid>
+
+					<description><![CDATA[The blog post you&#8217;re reading is hosted on a private Kubernetes cluster that runs inside my home. Another workload that&#8217;s running on same cluster is...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=4621</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">4621</post-id>	</item>
+		<item>
+		<title>auto-cpufreq v2.0</title>
+		<link>https://foolcontrol.org/?p=4603</link>
+					<comments>https://foolcontrol.org/?p=4603#comments</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Sat, 30 Sep 2023 13:45:01 +0000</pubDate>
+				<category><![CDATA[Project]]></category>
+		<category><![CDATA[Software]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[auto-cpufreq]]></category>
+		<category><![CDATA[automatic]]></category>
+		<category><![CDATA[cpu]]></category>
+		<category><![CDATA[github]]></category>
+		<category><![CDATA[gui]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[optimizer]]></category>
+		<category><![CDATA[power]]></category>
+		<category><![CDATA[power optimizer]]></category>
+		<category><![CDATA[release]]></category>
+		<category><![CDATA[speed]]></category>
+		<category><![CDATA[tool]]></category>
+		<category><![CDATA[v2.0]]></category>
+		<category><![CDATA[youtube]]></category>
+		<guid isPermaLink="false">https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4603</guid>
+
+					<description><![CDATA[Almost 4 years after initial auto-cpufreq release, 4200 Github stars, 65 contributors &#38; 42 releases, tool being topic of numerous Linux podcasts and shows, and...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=4603</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">4603</post-id>	</item>
+		<item>
+		<title>rpi-microk8s-bootstrap: Automate RPI device conversion into Kubernetes cluster nodes with Terraform</title>
+		<link>https://foolcontrol.org/?p=4555</link>
+					<comments>https://foolcontrol.org/?p=4555#respond</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Mon, 22 May 2023 10:44:46 +0000</pubDate>
+				<category><![CDATA[DevOps]]></category>
+		<category><![CDATA[Project]]></category>
+		<category><![CDATA[bootstrap]]></category>
+		<category><![CDATA[k8s]]></category>
+		<category><![CDATA[kubernetes]]></category>
+		<category><![CDATA[module]]></category>
+		<category><![CDATA[node]]></category>
+		<category><![CDATA[pi]]></category>
+		<category><![CDATA[project]]></category>
+		<category><![CDATA[rpi]]></category>
+		<category><![CDATA[terraform]]></category>
+		<guid isPermaLink="false">https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4555</guid>
+
+					<description><![CDATA[Considering I&#8217;ve created my own private cloud in my home as part of: wp-k8s: WordPress on privately hosted Kubernetes cluster (Raspberry Pi 4 + Synology)....]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=4555</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">4555</post-id>	</item>
+		<item>
+		<title>&#8220;Kubernetes, Resistance is Futile&#8221; &#8211; KubeCon &#038; KCD 2023 talk</title>
+		<link>https://foolcontrol.org/?p=4508</link>
+					<comments>https://foolcontrol.org/?p=4508#respond</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Mon, 03 Apr 2023 14:16:15 +0000</pubDate>
+				<category><![CDATA[Project]]></category>
+		<category><![CDATA[Software]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[cloudnative]]></category>
+		<category><![CDATA[cloudnativecon]]></category>
+		<category><![CDATA[cncf]]></category>
+		<category><![CDATA[conference]]></category>
+		<category><![CDATA[futile]]></category>
+		<category><![CDATA[k8s]]></category>
+		<category><![CDATA[kcd]]></category>
+		<category><![CDATA[kubecon]]></category>
+		<category><![CDATA[kubernetes]]></category>
+		<category><![CDATA[migration]]></category>
+		<category><![CDATA[resistance]]></category>
+		<category><![CDATA[talk]]></category>
+		<guid isPermaLink="false">https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4508</guid>
+
+					<description><![CDATA[A story to tell As part of my career at ING with my previous team, MLP (Machine Learning Platform). I spent over 2 years leading...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=4508</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">4508</post-id>	</item>
+		<item>
+		<title>atuf.app: Amsterdam Toilet &#038; Urinal Finder</title>
+		<link>https://foolcontrol.org/?p=4393</link>
+					<comments>https://foolcontrol.org/?p=4393#respond</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Mon, 08 Aug 2022 09:48:21 +0000</pubDate>
+				<category><![CDATA[DevOps]]></category>
+		<category><![CDATA[Project]]></category>
+		<category><![CDATA[amsterdam]]></category>
+		<category><![CDATA[app]]></category>
+		<category><![CDATA[atuf]]></category>
+		<category><![CDATA[finder]]></category>
+		<category><![CDATA[folium]]></category>
+		<category><![CDATA[leaflet]]></category>
+		<category><![CDATA[map]]></category>
+		<category><![CDATA[maps]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[toilet]]></category>
+		<category><![CDATA[urinal]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[webapp]]></category>
+		<guid isPermaLink="false">https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4393</guid>
+
+					<description><![CDATA[Amsterdam is a great city to enjoy a beer, or two. However, after you had your beers and you&#8217;re strolling down the streets, you might...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=4393</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">4393</post-id>	</item>
+		<item>
+		<title>wp-k8s: WordPress on privately hosted Kubernetes cluster (Raspberry Pi 4 + Synology)</title>
+		<link>https://foolcontrol.org/?p=4004</link>
+					<comments>https://foolcontrol.org/?p=4004#respond</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Fri, 12 Nov 2021 11:09:31 +0000</pubDate>
+				<category><![CDATA[DevOps]]></category>
+		<category><![CDATA[HowTo]]></category>
+		<category><![CDATA[Project]]></category>
+		<category><![CDATA[4]]></category>
+		<category><![CDATA[cloud]]></category>
+		<category><![CDATA[hpa]]></category>
+		<category><![CDATA[k8s]]></category>
+		<category><![CDATA[kubernetes]]></category>
+		<category><![CDATA[letsencrypt]]></category>
+		<category><![CDATA[mariadb]]></category>
+		<category><![CDATA[mysql]]></category>
+		<category><![CDATA[nas]]></category>
+		<category><![CDATA[nfs]]></category>
+		<category><![CDATA[on-premise]]></category>
+		<category><![CDATA[pi]]></category>
+		<category><![CDATA[private]]></category>
+		<category><![CDATA[Raspberry]]></category>
+		<category><![CDATA[rpi]]></category>
+		<category><![CDATA[synology]]></category>
+		<category><![CDATA[vpa]]></category>
+		<category><![CDATA[w-k8s]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4004</guid>
+
+					<description><![CDATA[Blog post you&#8217;re reading right now is privately hosted on Raspberry PI 4 Kubernetes cluster with its data coming from NFS share and MariaDB on...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=4004</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">4004</post-id>	</item>
+		<item>
+		<title>wp-k8s: WordPress on Kubernetes project (GKE, cloud SQL, NFS, cluster autoscaling, HPA, VPA, Ingress, Let&#8217;s Encrypt)</title>
+		<link>https://foolcontrol.org/?p=3754</link>
+					<comments>https://foolcontrol.org/?p=3754#respond</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Sun, 17 Oct 2021 07:40:54 +0000</pubDate>
+				<category><![CDATA[DevOps]]></category>
+		<category><![CDATA[Project]]></category>
+		<category><![CDATA[Tutorial]]></category>
+		<category><![CDATA[autoscaling]]></category>
+		<category><![CDATA[cert-manager]]></category>
+		<category><![CDATA[cloud]]></category>
+		<category><![CDATA[cluster]]></category>
+		<category><![CDATA[gcp]]></category>
+		<category><![CDATA[gke]]></category>
+		<category><![CDATA[hpa]]></category>
+		<category><![CDATA[ingress]]></category>
+		<category><![CDATA[k8s]]></category>
+		<category><![CDATA[kubernetes]]></category>
+		<category><![CDATA[letsencrypt]]></category>
+		<category><![CDATA[nfs]]></category>
+		<category><![CDATA[sql]]></category>
+		<category><![CDATA[vpa]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp-k8s]]></category>
+		<guid isPermaLink="false">https://k8s.hodzic.org/?p=3754</guid>
+
+					<description><![CDATA[tl;dr? wp-k8s (Github) Title of this blog post isn&#8217;t a collection of every Kubernetes related buzzword I could think of. It&#8217;s a collection of technologies...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=3754</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">3754</post-id>	</item>
+		<item>
+		<title>Degiro trading tracker &#8211; Simplified tracking of your investments</title>
+		<link>https://foolcontrol.org/?p=3614</link>
+					<comments>https://foolcontrol.org/?p=3614#respond</comments>
+
+		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
+		<pubDate>Mon, 16 Nov 2020 07:21:34 +0000</pubDate>
+				<category><![CDATA[Project]]></category>
+		<category><![CDATA[Software]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[analyzer]]></category>
+		<category><![CDATA[cli]]></category>
+		<category><![CDATA[degiro]]></category>
+		<category><![CDATA[investments]]></category>
+		<category><![CDATA[pandas]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[simple]]></category>
+		<category><![CDATA[simplified]]></category>
+		<category><![CDATA[stocks]]></category>
+		<category><![CDATA[tracker]]></category>
+		<category><![CDATA[trading]]></category>
+		<guid isPermaLink="false">https://k8s.hodzic.org/?p=3614</guid>
+
+					<description><![CDATA[TL;DRVisit degiro-trading-tracker on Github I was always interested in stocks and investing. While I wanted to get into trading for long time, I could never...]]></description>
+
+					<wfw:commentRss>https://foolcontrol.org/?feed=rss2&#038;p=3614</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+
+
+		<post-id xmlns="com-wordpress:feed-additions:1">3614</post-id>	</item>
+	</channel>
+</rss>

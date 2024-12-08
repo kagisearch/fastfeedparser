@@ -1,0 +1,1157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:georss="http://www.georss.org/georss">
+  <id>https://www.openstreetmap.org/history/feed?bbox=18.44776153564453%2C53.04090341037645%2C18.717269897460938%2C53.13080905065379</id>
+  <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/history?bbox=18.44776153564453%2C53.04090341037645%2C18.717269897460938%2C53.13080905065379"/>
+  <link rel="self" type="application/atom+xml" href="https://www.openstreetmap.org/history/feed?bbox=18.44776153564453,53.04090341037645,18.717269897460938,53.13080905065379"/>
+  <title>Changesets</title>
+  <updated>2024-11-28T22:55:16Z</updated>
+  <icon>https://www.openstreetmap.org/assets/favicon-042c50e8224a5c999369ec96f5367cb5b14db4671f1485caeec1277481073093.ico</icon>
+  <logo>https://www.openstreetmap.org/assets/mag_map-rss2.0-2973595662b8a92522b315b6c69bf5ee9bec75e07d702c5932f114c44a6251ea.png</logo>
+  <rights type="xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <a href="https://creativecommons.org/licenses/by-sa/2.0/">
+        <img src="https://www.openstreetmap.org/assets/cc_button-41071c6ad58b55b40d5cbbbd58edcab1c1131d3d34b0905dd00ff6791a7074c7.png" alt="CC by-sa 2.0"/>
+      </a>
+    </div>
+  </rights>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159721895</id>
+    <published>2024-11-28T22:55:15Z</published>
+    <updated>2024-11-28T22:55:16Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159721895"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159721895" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159721895/download" type="application/osmChange+xml"/>
+    <title>Changeset 159721895 - rozwiązanie uwag i aktualizacja sieci drogowej w Sęku</title>
+    <author>
+      <name>Barroszt</name>
+      <uri>https://www.openstreetmap.org/user/Barroszt</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Thu, 28 Nov 2024 22:55:15 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Thu, 28 Nov 2024 22:55:16 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Barroszt">Barroszt</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 8080</td>
+                </tr>
+                <tr>
+                  <td>closed:note = 4380118;4430140;4470279;4493718;4493720;4493721;4493767;4493773;4493774;4493776;4496497;4496501;4496509;4496527;4496535;4500632;4500638;4500640;4507878;4507879;4509539;4509541;4509544;4509554;4511752;4532475;4532481;4532482;4532483;4532485;4532487;4532488</td>
+                </tr>
+                <tr>
+                  <td>comment = rozwiązanie uwag i aktualizacja sieci drogowej w Sęku</td>
+                </tr>
+                <tr>
+                  <td>created_by = iD 2.30.4</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://www.openstreetmap.org/edit" rel="nofollow"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS);Geoportal 2: Granice działek;Geoportal 2: Ewidencja budynków WMS</td>
+                </tr>
+                <tr>
+                  <td>locale = pl</td>
+                </tr>
+                <tr>
+                  <td>resolved:crossing_ways:highway-waterway = 1</td>
+                </tr>
+                <tr>
+                  <td>resolved:mismatched_geometry:point_as_vertex = 3</td>
+                </tr>
+                <tr>
+                  <td>resolved:outdated_tags:noncanonical_brand = 3</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>52.931631 18.5117833 53.0703375 18.9012348</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159682247</id>
+    <published>2024-11-28T00:45:26Z</published>
+    <updated>2024-11-28T00:45:26Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159682247"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159682247" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159682247/download" type="application/osmChange+xml"/>
+    <title>Changeset 159682247 - Added new objects, adjusted existing</title>
+    <author>
+      <name>Big &amp; Bad</name>
+      <uri>https://www.openstreetmap.org/user/Big%20&amp;%20Bad</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Thu, 28 Nov 2024 00:45:26 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Thu, 28 Nov 2024 00:45:26 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Big%20&amp;%20Bad">Big &amp; Bad</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 838</td>
+                </tr>
+                <tr>
+                  <td>comment = Added new objects, adjusted existing</td>
+                </tr>
+                <tr>
+                  <td>created_by = iD 2.30.4</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://www.openstreetmap.org/edit" rel="nofollow"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS)</td>
+                </tr>
+                <tr>
+                  <td>locale = nl</td>
+                </tr>
+                <tr>
+                  <td>resolved:crossing_ways:highway-highway = 1</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>53.0503993 18.60053 53.0528323 18.611784</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159682068</id>
+    <published>2024-11-28T00:33:01Z</published>
+    <updated>2024-11-28T00:33:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159682068"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159682068" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159682068/download" type="application/osmChange+xml"/>
+    <title>Changeset 159682068 - Adjusted existing objects</title>
+    <author>
+      <name>Big &amp; Bad</name>
+      <uri>https://www.openstreetmap.org/user/Big%20&amp;%20Bad</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Thu, 28 Nov 2024 00:33:01 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Thu, 28 Nov 2024 00:33:01 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Big%20&amp;%20Bad">Big &amp; Bad</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Adjusted existing objects</td>
+                </tr>
+                <tr>
+                  <td>created_by = JOSM/1.5 (19096 nl)</td>
+                </tr>
+                <tr>
+                  <td>source = survey</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>53.0513101 18.6067303 53.0516203 18.6072372</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159681868</id>
+    <published>2024-11-28T00:19:35Z</published>
+    <updated>2024-11-28T00:19:35Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159681868"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159681868" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159681868/download" type="application/osmChange+xml"/>
+    <title>Changeset 159681868 - Adjusted existing objects</title>
+    <author>
+      <name>Big &amp; Bad</name>
+      <uri>https://www.openstreetmap.org/user/Big%20&amp;%20Bad</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Thu, 28 Nov 2024 00:19:35 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Thu, 28 Nov 2024 00:19:35 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Big%20&amp;%20Bad">Big &amp; Bad</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 836</td>
+                </tr>
+                <tr>
+                  <td>comment = Adjusted existing objects</td>
+                </tr>
+                <tr>
+                  <td>created_by = iD 2.30.4</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://www.openstreetmap.org/edit" rel="nofollow"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS);Geoportal 2: Ewidencja budynków WMS</td>
+                </tr>
+                <tr>
+                  <td>locale = nl</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>53.0511132 18.6073215 53.0517883 18.6077433</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159636514</id>
+    <published>2024-11-26T22:14:21Z</published>
+    <updated>2024-11-26T22:14:21Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159636514"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159636514" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159636514/download" type="application/osmChange+xml"/>
+    <title>Changeset 159636514 - dwór</title>
+    <author>
+      <name>adas</name>
+      <uri>https://www.openstreetmap.org/user/adas</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Tue, 26 Nov 2024 22:14:21 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Tue, 26 Nov 2024 22:14:21 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/adas">adas</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 13360</td>
+                </tr>
+                <tr>
+                  <td>comment = dwór</td>
+                </tr>
+                <tr>
+                  <td>created_by = iD 2.30.4</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://www.openstreetmap.org/edit" rel="nofollow"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS)</td>
+                </tr>
+                <tr>
+                  <td>locale = pl</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>53.1164548 18.5216552 53.1201788 18.5274475</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159635730</id>
+    <published>2024-11-26T21:44:23Z</published>
+    <updated>2024-11-26T21:44:24Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159635730"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159635730" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159635730/download" type="application/osmChange+xml"/>
+    <title>Changeset 159635730 - upiększanie Wrzosów</title>
+    <author>
+      <name>Barroszt</name>
+      <uri>https://www.openstreetmap.org/user/Barroszt</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Tue, 26 Nov 2024 21:44:23 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Tue, 26 Nov 2024 21:44:24 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Barroszt">Barroszt</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 8076</td>
+                </tr>
+                <tr>
+                  <td>comment = upiększanie Wrzosów</td>
+                </tr>
+                <tr>
+                  <td>created_by = iD 2.30.4</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://www.openstreetmap.org/edit" rel="nofollow"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>imagery_used = Geoportal 2: High Resolution Orthophotomap (archival imagery) (WMS);Geoportal 2: Ewidencja budynków WMS;Geoportal 2: Granice działek;Geoportal 2: Punkty adresowe</td>
+                </tr>
+                <tr>
+                  <td>locale = pl</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>53.0343794 18.5615192 53.0441826 18.5851415</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159634146</id>
+    <published>2024-11-26T20:52:26Z</published>
+    <updated>2024-11-26T20:52:27Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159634146"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159634146" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159634146/download" type="application/osmChange+xml"/>
+    <title>Changeset 159634146 - upiększanie Wrzosów</title>
+    <author>
+      <name>Barroszt</name>
+      <uri>https://www.openstreetmap.org/user/Barroszt</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Tue, 26 Nov 2024 20:52:26 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Tue, 26 Nov 2024 20:52:27 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Barroszt">Barroszt</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 8075</td>
+                </tr>
+                <tr>
+                  <td>comment = upiększanie Wrzosów</td>
+                </tr>
+                <tr>
+                  <td>created_by = iD 2.30.4</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://www.openstreetmap.org/edit" rel="nofollow"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>imagery_used = Geoportal 2: High Resolution Orthophotomap (archival imagery) (WMS);Geoportal 2: Granice działek;Geoportal 2 Nazwy ulic;Geoportal 2: Ewidencja budynków WMS;Geoportal 2: Punkty adresowe</td>
+                </tr>
+                <tr>
+                  <td>locale = pl</td>
+                </tr>
+                <tr>
+                  <td>resolved:almost_junction:highway-highway = 1</td>
+                </tr>
+                <tr>
+                  <td>resolved:close_nodes:vertices = 17</td>
+                </tr>
+                <tr>
+                  <td>resolved:crossing_ways:building-building = 7</td>
+                </tr>
+                <tr>
+                  <td>resolved:crossing_ways:highway-highway = 1</td>
+                </tr>
+                <tr>
+                  <td>resolved:outdated_tags:incomplete_tags = 2</td>
+                </tr>
+                <tr>
+                  <td>resolved:outdated_tags:noncanonical_brand = 3</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>53.0384196 18.5643911 53.0510853 18.59641</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159619389</id>
+    <published>2024-11-26T14:30:02Z</published>
+    <updated>2024-11-26T14:30:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159619389"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159619389" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159619389/download" type="application/osmChange+xml"/>
+    <title>Changeset 159619389 - Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM</title>
+    <author>
+      <name>abakus_uploader</name>
+      <uri>https://www.openstreetmap.org/user/abakus_uploader</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Tue, 26 Nov 2024 14:30:02 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Tue, 26 Nov 2024 14:30:03 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/abakus_uploader">abakus_uploader</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM</td>
+                </tr>
+                <tr>
+                  <td>created_by = Abakus StrazakOSM uploader</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>50.9930118 17.7532624 53.200585 22.1699663</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159615516</id>
+    <published>2024-11-26T13:08:24Z</published>
+    <updated>2024-11-26T13:08:25Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159615516"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159615516" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159615516/download" type="application/osmChange+xml"/>
+    <title>Changeset 159615516 - Korekta geometrii</title>
+    <author>
+      <name>Marek-M</name>
+      <uri>https://www.openstreetmap.org/user/Marek-M</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Tue, 26 Nov 2024 13:08:24 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Tue, 26 Nov 2024 13:08:25 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Marek-M">Marek-M</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Korekta geometrii</td>
+                </tr>
+                <tr>
+                  <td>created_by = JOSM/1.5 (19253 pl)</td>
+                </tr>
+                <tr>
+                  <td>source = Geoportal 2: Ortofotomapa (zdjęcia lotnicze) WMTS; Geoportal 2: Budynki i działki</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>52.8006267 18.3460942 54.339798 21.898924</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159611522</id>
+    <published>2024-11-26T11:28:02Z</published>
+    <updated>2024-11-26T11:29:28Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159611522"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159611522" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159611522/download" type="application/osmChange+xml"/>
+    <title>Changeset 159611522 - boundary=police_district &gt; boundary=police (címkék igazítása a globálisan meglévőkhöz)</title>
+    <author>
+      <name>GBAB</name>
+      <uri>https://www.openstreetmap.org/user/GBAB</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Tue, 26 Nov 2024 11:28:02 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Tue, 26 Nov 2024 11:29:28 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/GBAB">GBAB</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = boundary=police_district &amp;gt; boundary=police (címkék igazítása a globálisan meglévőkhöz)</td>
+                </tr>
+                <tr>
+                  <td>created_by = JOSM/1.5 (19017 hu)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>45.737128 -6.3624007 53.3821073 22.8977094</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159586827</id>
+    <published>2024-11-25T19:22:52Z</published>
+    <updated>2024-11-25T19:23:09Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159586827"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159586827" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159586827/download" type="application/osmChange+xml"/>
+    <title>Changeset 159586827 - Wycofanie błędnego revertu</title>
+    <author>
+      <name>Dawid2849</name>
+      <uri>https://www.openstreetmap.org/user/Dawid2849</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Mon, 25 Nov 2024 19:22:52 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Mon, 25 Nov 2024 19:23:09 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Dawid2849">Dawid2849</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 17522</td>
+                </tr>
+                <tr>
+                  <td>comment = Wycofanie błędnego revertu</td>
+                </tr>
+                <tr>
+                  <td>created_by = osm-revert git#f090f4f</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://revert.monicz.dev" rel="nofollow"&gt;https://revert.monicz.dev&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>revert:id = &lt;a href="https://www.openstreetmap.org/changeset/159586710" rel="nofollow"&gt;https://www.openstreetmap.org/changeset/159586710&lt;/a&gt;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>49.4176395 14.27759 54.5828283 23.787797</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159586710</id>
+    <published>2024-11-25T19:17:43Z</published>
+    <updated>2024-11-25T19:18:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159586710"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159586710" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159586710/download" type="application/osmChange+xml"/>
+    <title>Changeset 159586710 - Niepoprawne oznakowanie.</title>
+    <author>
+      <name>domeqasz</name>
+      <uri>https://www.openstreetmap.org/user/domeqasz</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Mon, 25 Nov 2024 19:17:43 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Mon, 25 Nov 2024 19:18:07 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/domeqasz">domeqasz</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 263</td>
+                </tr>
+                <tr>
+                  <td>comment = Niepoprawne oznakowanie.</td>
+                </tr>
+                <tr>
+                  <td>created_by = osm-revert git#f090f4f</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://revert.monicz.dev" rel="nofollow"&gt;https://revert.monicz.dev&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>revert:dmp:way = 1</td>
+                </tr>
+                <tr>
+                  <td>revert:dmp:way:id = 568574421</td>
+                </tr>
+                <tr>
+                  <td>revert:fix:way = 131</td>
+                </tr>
+                <tr>
+                  <td>revert:id = &lt;a href="https://www.openstreetmap.org/changeset/159552572" rel="nofollow"&gt;https://www.openstreetmap.org/changeset/159552572&lt;/a&gt;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>49.4176395 14.27759 54.5828283 23.787797</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159575471</id>
+    <published>2024-11-25T14:12:41Z</published>
+    <updated>2024-11-25T14:12:42Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159575471"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159575471" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159575471/download" type="application/osmChange+xml"/>
+    <title>Changeset 159575471 - Mapillary Missing Crossings + Inne/giveway/stop</title>
+    <author>
+      <name>IreuN</name>
+      <uri>https://www.openstreetmap.org/user/IreuN</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Mon, 25 Nov 2024 14:12:41 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Mon, 25 Nov 2024 14:12:42 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/IreuN">IreuN</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Mapillary Missing Crossings + Inne/giveway/stop</td>
+                </tr>
+                <tr>
+                  <td>created_by = JOSM/1.5 (19253 pl)</td>
+                </tr>
+                <tr>
+                  <td>source = Geoportal 2: High Resolution Orthophotomap (aerial image) WMTS; Geoportal 2: Orthophotomap (aerial image) WMTS; Mapillary; Mapillary Traffic Signs; Geoportal 2: Ewidencja budynków WMS</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>51.5859514 14.4064501 53.4306672 21.385869</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159568063</id>
+    <published>2024-11-25T11:01:01Z</published>
+    <updated>2024-11-25T11:01:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159568063"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159568063" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159568063/download" type="application/osmChange+xml"/>
+    <title>Changeset 159568063 - minor edit</title>
+    <author>
+      <name>DylaniaCat</name>
+      <uri>https://www.openstreetmap.org/user/DylaniaCat</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Mon, 25 Nov 2024 11:01:01 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Mon, 25 Nov 2024 11:01:03 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/DylaniaCat">DylaniaCat</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>changesets_count = 75</td>
+                </tr>
+                <tr>
+                  <td>comment = minor edit</td>
+                </tr>
+                <tr>
+                  <td>created_by = iD 2.30.4</td>
+                </tr>
+                <tr>
+                  <td>host = &lt;a href="https://www.openstreetmap.org/edit" rel="nofollow"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>imagery_used = Esri World Imagery</td>
+                </tr>
+                <tr>
+                  <td>locale = en-AU</td>
+                </tr>
+                <tr>
+                  <td>resolved:crossing_ways:highway-waterway = 1</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>-34.1816667 -1.9283749 54.3169459 151.0511186</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159566803</id>
+    <published>2024-11-25T10:30:04Z</published>
+    <updated>2024-11-25T10:30:09Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159566803"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159566803" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159566803/download" type="application/osmChange+xml"/>
+    <title>Changeset 159566803 - Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM</title>
+    <author>
+      <name>abakus_uploader</name>
+      <uri>https://www.openstreetmap.org/user/abakus_uploader</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Mon, 25 Nov 2024 10:30:04 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Mon, 25 Nov 2024 10:30:09 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/abakus_uploader">abakus_uploader</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM</td>
+                </tr>
+                <tr>
+                  <td>created_by = Abakus StrazakOSM uploader</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>50.037815 16.3757401 53.6241642 22.5612967</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159562487</id>
+    <published>2024-11-25T08:36:22Z</published>
+    <updated>2024-11-25T08:36:40Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159562487"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159562487" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159562487/download" type="application/osmChange+xml"/>
+    <title>Changeset 159562487 - Flixbus daily maintenance routine, relations fix</title>
+    <author>
+      <name>adamos</name>
+      <uri>https://www.openstreetmap.org/user/adamos</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Mon, 25 Nov 2024 08:36:22 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Mon, 25 Nov 2024 08:36:40 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/adamos">adamos</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Flixbus daily maintenance routine, relations fix</td>
+                </tr>
+                <tr>
+                  <td>created_by = JOSM/1.5 (19253 en)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>43.5356915 13.5185596 54.698974 20.5033984</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159559357</id>
+    <published>2024-11-25T06:53:59Z</published>
+    <updated>2024-11-25T08:14:45Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159559357"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159559357" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159559357/download" type="application/osmChange+xml"/>
+    <title>Changeset 159559357 - Defibrillator added via https://openaedmap.org #aed</title>
+    <author>
+      <name>Arkadiusz Oktabiński</name>
+      <uri>https://www.openstreetmap.org/user/Arkadiusz%20Oktabi%C5%84ski</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Mon, 25 Nov 2024 06:53:59 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Mon, 25 Nov 2024 08:14:45 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/Arkadiusz%20Oktabi%C5%84ski">Arkadiusz Oktabiński</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Defibrillator added via &lt;a href="https://openaedmap.org" rel="nofollow"&gt;https://openaedmap.org&lt;/a&gt; #aed</td>
+                </tr>
+                <tr>
+                  <td>created_by = &lt;a href="https://openaedmap.org" rel="nofollow"&gt;https://openaedmap.org&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>git_commit = cd7f612</td>
+                </tr>
+                <tr>
+                  <td>hashtags = #aed</td>
+                </tr>
+                <tr>
+                  <td>locale = pl</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>50.3503452 17.9101736 54.5536063 23.2152639</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159553861</id>
+    <published>2024-11-25T00:40:47Z</published>
+    <updated>2024-11-25T00:40:48Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159553861"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159553861" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159553861/download" type="application/osmChange+xml"/>
+    <title>Changeset 159553861 - Mapillary Missing Crossings + Inne/giveway/stop</title>
+    <author>
+      <name>IreuN</name>
+      <uri>https://www.openstreetmap.org/user/IreuN</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Mon, 25 Nov 2024 00:40:47 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Mon, 25 Nov 2024 00:40:48 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/IreuN">IreuN</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Mapillary Missing Crossings + Inne/giveway/stop</td>
+                </tr>
+                <tr>
+                  <td>created_by = JOSM/1.5 (19253 pl)</td>
+                </tr>
+                <tr>
+                  <td>source = Geoportal 2: Orthophotomap (aerial image) WMTS; Mapillary Traffic Signs; Mapillary</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>50.5696373 14.8899963 53.3498451 21.2347583</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159552580</id>
+    <published>2024-11-24T23:05:37Z</published>
+    <updated>2024-11-24T23:05:43Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159552580"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159552580" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159552580/download" type="application/osmChange+xml"/>
+    <title>Changeset 159552580 - Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników</title>
+    <author>
+      <name>pavvv</name>
+      <uri>https://www.openstreetmap.org/user/pavvv</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Sun, 24 Nov 2024 23:05:37 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Sun, 24 Nov 2024 23:05:43 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/pavvv">pavvv</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników</td>
+                </tr>
+                <tr>
+                  <td>created_by = JOSM/1.5 (19253 pl)</td>
+                </tr>
+                <tr>
+                  <td>discussion = &lt;a href="https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192" rel="nofollow"&gt;https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>proposal = &lt;a href="https://wiki.openstreetmap.org/wiki/Pl:Oznaczanie_dr%c3%b3g_ekspresowych_jako_highway=motorway" rel="nofollow"&gt;https://wiki.openstreetmap.org/wiki/Pl:Oznaczanie_dr%c3%b3g_ekspresowych_jako_highway=motorway&lt;/a&gt;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>49.5082718 14.2823148 54.5832907 23.8000719</georss:box>
+  </entry>
+  <entry>
+    <id>https://www.openstreetmap.org/changeset/159552572</id>
+    <published>2024-11-24T23:05:12Z</published>
+    <updated>2024-11-24T23:05:37Z</updated>
+    <link rel="alternate" type="text/html" href="https://www.openstreetmap.org/changeset/159552572"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159552572" type="application/osm+xml"/>
+    <link rel="alternate" href="https://www.openstreetmap.org/api/0.6/changeset/159552572/download" type="application/osmChange+xml"/>
+    <title>Changeset 159552572 - Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników</title>
+    <author>
+      <name>pavvv</name>
+      <uri>https://www.openstreetmap.org/user/pavvv</uri>
+    </author>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>th { text-align: left } tr { vertical-align: top }</style>
+        <table>
+          <tr>
+            <th>Created</th>
+            <td>Sun, 24 Nov 2024 23:05:12 +0000</td>
+          </tr>
+          <tr>
+            <th>Closed</th>
+            <td>Sun, 24 Nov 2024 23:05:37 +0000</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>
+              <a href="https://www.openstreetmap.org/user/pavvv">pavvv</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Tags</th>
+            <td>
+              <table cellpadding="0">
+                <tr>
+                  <td>comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników</td>
+                </tr>
+                <tr>
+                  <td>created_by = JOSM/1.5 (19253 pl)</td>
+                </tr>
+                <tr>
+                  <td>discussion = &lt;a href="https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192" rel="nofollow"&gt;https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192&lt;/a&gt;</td>
+                </tr>
+                <tr>
+                  <td>proposal = &lt;a href="https://wiki.openstreetmap.org/wiki/Pl:Oznaczanie_dr%c3%b3g_ekspresowych_jako_highway=motorway" rel="nofollow"&gt;https://wiki.openstreetmap.org/wiki/Pl:Oznaczanie_dr%c3%b3g_ekspresowych_jako_highway=motorway&lt;/a&gt;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </content>
+    <georss:box>49.4176395 14.27759 54.5828283 23.787797</georss:box>
+  </entry>
+</feed>

@@ -1,0 +1,619 @@
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PostGIS</title>
+    <link>https://postgis.net/news/</link>
+    <description>Recent content on PostGIS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 26 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://postgis.net/news/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PostGIS 3.5.0</title>
+      <link>https://postgis.net/2024/09/PostGIS-3.5.0/</link>
+      <pubDate>Thu, 26 Sep 2024 00:00:00 +0000</pubDate>
+      <author><name>Regina Obe</name></author>
+      <guid>https://postgis.net/2024/09/PostGIS-3.5.0/</guid>
+      <description>&lt;p&gt;The PostGIS Team is pleased to release PostGIS 3.5.0!
+Best Served with &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://www.postgresql.org/about/news/postgresql-17-rc1-released-2926/&#34;
+&gt;PostgreSQL 17 RC1&lt;/a&gt;
+and &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://github.com/libgeos/geos/releases/tag/3.13.0&#34;
+&gt;GEOS 3.13.0&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This version requires PostgreSQL 12 - 17, GEOS 3.8 or higher, and Proj 6.1+.
+To take advantage of all features, GEOS 3.12+ is needed.
+SFCGAL 1.4+ is needed to enable postgis_sfcgal support.
+To take advantage of all SFCGAL features, SFCGAL 1.5 is needed.&lt;/p&gt;
+&lt;div class=&#34;gdoc-page__anchorwrap&#34;&gt;
+    &lt;h3 id=&#34;350&#34;
+    &gt;
+        3.5.0
+        &lt;a data-clipboard-text=&#34;https://postgis.net/2024/09/PostGIS-3.5.0/#350&#34; class=&#34;gdoc-page__anchor clip flex align-center&#34; title=&#34;Anchor to: 3.5.0&#34; aria-label=&#34;Anchor to: 3.5.0&#34; href=&#34;#350&#34;&gt;
+            &lt;svg class=&#34;gdoc-icon gdoc_link&#34;&gt;&lt;use xlink:href=&#34;#gdoc_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/h3&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/source/postgis-3.5.0.tar.gz&#34;
+&gt;source download&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/stuff/postgis-3.5.0.tar.gz.md5&#34;
+&gt;md5&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.5.0/NEWS&#34;
+&gt;NEWS&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PDF docs: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0-en.pdf&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0-ja.pdf&#34;
+&gt;ja&lt;/a&gt;, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0-fr.pdf&#34;
+&gt;fr&lt;/a&gt;, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0-zh_Hans.pdf&#34;
+&gt;zh_Hans&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HTML Online &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/en/&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/ja/&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/fr/&#34;
+&gt;fr&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/zh_Hans/&#34;
+&gt;zh_Hans&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cheat Sheets:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;postgis: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/postgis_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/postgis_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/postgis_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/postgis_cheatsheet-zh_Hans.html&#34;
+&gt;zh_Hans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;postgis_raster: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/raster_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/raster_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/raster_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/raster_cheatsheet-zh_Hans.html&#34;
+&gt;zh_Hans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;postgis_topology: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/topology_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/topology_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/topology_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/topology_cheatsheet-zh_Hans.html&#34;
+&gt;zh_Hans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;postgis_sfcgal: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/sfcgal_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/sfcgal_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/sfcgal_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/sfcgal_cheatsheet-zh_Hans.html&#34;
+&gt;zh_Hans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;address standardizer, postgis_tiger_geocoder: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/tiger_geocoder_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/tiger_geocoder_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/tiger_geocoder_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.5/tiger_geocoder_cheatsheet-zh_Hans.html&#34;
+&gt;zh_Hans&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This release is a feature release that includes bug fixes since PostGIS 3.4.3, new features, and a few breaking changes.&lt;/p&gt;</description>
+    </item>
+
+    <item>
+      <title>PostGIS 3.5.0beta1</title>
+      <link>https://postgis.net/2024/09/PostGIS-3.5.0beta1/</link>
+      <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
+      <author><name>Regina Obe</name></author>
+      <guid>https://postgis.net/2024/09/PostGIS-3.5.0beta1/</guid>
+      <description>&lt;p&gt;The PostGIS Team is pleased to release PostGIS 3.5.0beta1!
+Best Served with &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://www.postgresql.org/about/news/postgresql-17-rc1-released-2926/&#34;
+&gt;PostgreSQL 17 RC1&lt;/a&gt;
+and &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://github.com/libgeos/geos/releases/tag/3.13.0&#34;
+&gt;GEOS 3.13.0&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This version requires PostgreSQL 12 - 17, GEOS 3.8 or higher, and Proj 6.1+.
+To take advantage of all features, GEOS 3.12+ is needed.
+SFCGAL 1.4+ is needed to enable postgis_sfcgal support.
+To take advantage of all SFCGAL features, SFCGAL 1.5 is needed.&lt;/p&gt;
+&lt;div class=&#34;gdoc-page__anchorwrap&#34;&gt;
+    &lt;h3 id=&#34;350beta1&#34;
+    &gt;
+        3.5.0beta1
+        &lt;a data-clipboard-text=&#34;https://postgis.net/2024/09/PostGIS-3.5.0beta1/#350beta1&#34; class=&#34;gdoc-page__anchor clip flex align-center&#34; title=&#34;Anchor to: 3.5.0beta1&#34; aria-label=&#34;Anchor to: 3.5.0beta1&#34; href=&#34;#350beta1&#34;&gt;
+            &lt;svg class=&#34;gdoc-icon gdoc_link&#34;&gt;&lt;use xlink:href=&#34;#gdoc_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/h3&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/source/postgis-3.5.0beta1.tar.gz&#34;
+&gt;source download&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/stuff/postgis-3.5.0beta1.tar.gz.md5&#34;
+&gt;md5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.5.0beta1/NEWS&#34;
+&gt;NEWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PDF docs: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0beta1-en.pdf&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0beta1-ja.pdf&#34;
+&gt;ja&lt;/a&gt;, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0beta1-zh_Hans.pdf&#34;
+&gt;zh_Hans&lt;/a&gt;,  &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0beta1-fr.pdf&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This release is a beta of a major release, it includes bug fixes since PostGIS 3.4.3 and new features.&lt;/p&gt;</description>
+    </item>
+
+    <item>
+      <title>PostGIS 3.5.0rc1</title>
+      <link>https://postgis.net/2024/09/PostGIS-3.5.0rc1/</link>
+      <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
+      <author><name>Regina Obe</name></author>
+      <guid>https://postgis.net/2024/09/PostGIS-3.5.0rc1/</guid>
+      <description>&lt;p&gt;The PostGIS Team is pleased to release PostGIS 3.5.0rc1!
+Best Served with &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://www.postgresql.org/about/news/postgresql-17-rc1-released-2926/&#34;
+&gt;PostgreSQL 17 RC1&lt;/a&gt;
+and &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://github.com/libgeos/geos/releases/tag/3.13.0&#34;
+&gt;GEOS 3.13.0&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This version requires PostgreSQL 12 - 17, GEOS 3.8 or higher, and Proj 6.1+.
+To take advantage of all features, GEOS 3.12+ is needed.
+SFCGAL 1.4+ is needed to enable postgis_sfcgal support.
+To take advantage of all SFCGAL features, SFCGAL 1.5 is needed.&lt;/p&gt;
+&lt;div class=&#34;gdoc-page__anchorwrap&#34;&gt;
+    &lt;h3 id=&#34;350rc1&#34;
+    &gt;
+        3.5.0rc1
+        &lt;a data-clipboard-text=&#34;https://postgis.net/2024/09/PostGIS-3.5.0rc1/#350rc1&#34; class=&#34;gdoc-page__anchor clip flex align-center&#34; title=&#34;Anchor to: 3.5.0rc1&#34; aria-label=&#34;Anchor to: 3.5.0rc1&#34; href=&#34;#350rc1&#34;&gt;
+            &lt;svg class=&#34;gdoc-icon gdoc_link&#34;&gt;&lt;use xlink:href=&#34;#gdoc_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/h3&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/source/postgis-3.5.0rc1.tar.gz&#34;
+&gt;source download&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/stuff/postgis-3.5.0rc1.tar.gz.md5&#34;
+&gt;md5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.5.0rc1/NEWS&#34;
+&gt;NEWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PDF docs: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0rc1-en.pdf&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0rc1-ja.pdf&#34;
+&gt;ja&lt;/a&gt;, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0rc1-zh_Hans.pdf&#34;
+&gt;zh_Hans&lt;/a&gt;,  &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0rc1-fr.pdf&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This release is a release candidate of a major release, it includes bug fixes since PostGIS 3.4.3 and new features.&lt;/p&gt;
+&lt;p&gt;Changes since 3.5.0beta1 are as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://trac.osgeo.org/postgis/ticket/5779&#34;
+&gt;#5779&lt;/a&gt; Failures building in parallel mode (Sandro Santilli)&lt;/li&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://trac.osgeo.org/postgis/ticket/5778&#34;
+&gt;#5778&lt;/a&gt;, Sections missing in What&amp;rsquo;s new (Regina Obe)&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+
+    <item>
+      <title>PostGIS 3.3.7</title>
+      <link>https://postgis.net/2024/09/PostGIS-3.3.7/</link>
+      <pubDate>Thu, 05 Sep 2024 00:00:00 +0000</pubDate>
+      <author><name>Paul Ramsey</name></author>
+      <guid>https://postgis.net/2024/09/PostGIS-3.3.7/</guid>
+      <description>&lt;p&gt;The PostGIS Team is pleased to release PostGIS 3.4.7! This is a bug fix release.&lt;/p&gt;
+&lt;div class=&#34;gdoc-page__anchorwrap&#34;&gt;
+    &lt;h3 id=&#34;337&#34;
+    &gt;
+        3.3.7
+        &lt;a data-clipboard-text=&#34;https://postgis.net/2024/09/PostGIS-3.3.7/#337&#34; class=&#34;gdoc-page__anchor clip flex align-center&#34; title=&#34;Anchor to: 3.3.7&#34; aria-label=&#34;Anchor to: 3.3.7&#34; href=&#34;#337&#34;&gt;
+            &lt;svg class=&#34;gdoc-icon gdoc_link&#34;&gt;&lt;use xlink:href=&#34;#gdoc_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/h3&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/source/postgis-3.3.7.tar.gz&#34;
+&gt;source download&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/stuff/postgis-3.3.7.tar.gz.md5&#34;
+&gt;md5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.3.7/NEWS&#34;
+&gt;NEWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PDF docs: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.3.7-en.pdf&#34;
+&gt;en&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+
+    <item>
+      <title>PostGIS 3.4.3</title>
+      <link>https://postgis.net/2024/09/PostGIS-3.4.3/</link>
+      <pubDate>Wed, 04 Sep 2024 00:00:00 +0000</pubDate>
+      <author><name>Paul Ramsey</name></author>
+      <guid>https://postgis.net/2024/09/PostGIS-3.4.3/</guid>
+      <description>&lt;p&gt;The PostGIS Team is pleased to release PostGIS 3.4.3!&lt;/p&gt;
+&lt;p&gt;This version requires PostgreSQL 12-17, GEOS 3.8+, and Proj 6.1+.
+To take advantage of all features, GEOS 3.12+ is needed.
+To take advantage of all SFCGAL features, SFCGAL 1.5+ is needed.&lt;/p&gt;
+&lt;div class=&#34;gdoc-page__anchorwrap&#34;&gt;
+    &lt;h3 id=&#34;343&#34;
+    &gt;
+        3.4.3
+        &lt;a data-clipboard-text=&#34;https://postgis.net/2024/09/PostGIS-3.4.3/#343&#34; class=&#34;gdoc-page__anchor clip flex align-center&#34; title=&#34;Anchor to: 3.4.3&#34; aria-label=&#34;Anchor to: 3.4.3&#34; href=&#34;#343&#34;&gt;
+            &lt;svg class=&#34;gdoc-icon gdoc_link&#34;&gt;&lt;use xlink:href=&#34;#gdoc_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/h3&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/source/postgis-3.4.3.tar.gz&#34;
+&gt;source download&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/stuff/postgis-3.4.3.tar.gz.md5&#34;
+&gt;md5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.4.3/NEWS&#34;
+&gt;NEWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PDF docs: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.4.3-en.pdf&#34;
+&gt;en&lt;/a&gt;, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.4.3-ja.pdf&#34;
+&gt;ja&lt;/a&gt;, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.4.3-fr.pdf&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+
+    <item>
+      <title>PostGIS 3.5.0alpha2</title>
+      <link>https://postgis.net/2024/07/PostGIS-3.5.0alpha2/</link>
+      <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+      <author><name>Regina Obe</name></author>
+      <guid>https://postgis.net/2024/07/PostGIS-3.5.0alpha2/</guid>
+      <description>&lt;p&gt;The PostGIS Team is pleased to release PostGIS 3.5.0alpha2!
+Best Served with &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://www.postgresql.org/about/news/postgresql-17-beta-2-released-2885/&#34;
+&gt;PostgreSQL 17 Beta2&lt;/a&gt;
+and &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://github.com/libgeos/geos/releases/tag/3.12.2&#34;
+&gt;GEOS 3.12.2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This version requires PostgreSQL 12 - 17, GEOS 3.8 or higher, and Proj 6.1+.
+To take advantage of all features, GEOS 3.12+ is needed.
+SFCGAL 1.4-1.5 is needed to enable postgis_sfcgal support.
+To take advantage of all SFCGAL features, SFCGAL 1.5 is needed.&lt;/p&gt;
+&lt;div class=&#34;gdoc-page__anchorwrap&#34;&gt;
+    &lt;h3 id=&#34;350alpha2&#34;
+    &gt;
+        3.5.0alpha2
+        &lt;a data-clipboard-text=&#34;https://postgis.net/2024/07/PostGIS-3.5.0alpha2/#350alpha2&#34; class=&#34;gdoc-page__anchor clip flex align-center&#34; title=&#34;Anchor to: 3.5.0alpha2&#34; aria-label=&#34;Anchor to: 3.5.0alpha2&#34; href=&#34;#350alpha2&#34;&gt;
+            &lt;svg class=&#34;gdoc-icon gdoc_link&#34;&gt;&lt;use xlink:href=&#34;#gdoc_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/h3&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/source/postgis-3.5.0alpha2.tar.gz&#34;
+&gt;source download&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/stuff/postgis-3.5.0alpha2.tar.gz.md5&#34;
+&gt;md5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.5.0alpha2/NEWS&#34;
+&gt;NEWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PDF docs: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0alpha2-en.pdf&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0alpha2-ja.pdf&#34;
+&gt;ja&lt;/a&gt;, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0alpha2-zh_Hans.pdf&#34;
+&gt;zh_Hans&lt;/a&gt;,  &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0alpha2-fr.pdf&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This release is an alpha of a major release, it includes bug fixes since PostGIS 3.4.2 and new features.&lt;/p&gt;</description>
+    </item>
+
+    <item>
+      <title>PostGIS 3.5.0alpha1</title>
+      <link>https://postgis.net/2024/07/PostGIS-3.5.0alpha1/</link>
+      <pubDate>Thu, 04 Jul 2024 00:00:00 +0000</pubDate>
+      <author><name>Regina Obe</name></author>
+      <guid>https://postgis.net/2024/07/PostGIS-3.5.0alpha1/</guid>
+      <description>&lt;p&gt;The PostGIS Team is pleased to release PostGIS 3.5.0alpha1!
+Best Served with &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://www.postgresql.org/about/news/postgresql-17-beta-2-released-2885/&#34;
+&gt;PostgreSQL 17 Beta2&lt;/a&gt;
+and &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://github.com/libgeos/geos/releases/tag/3.12.2&#34;
+&gt;GEOS 3.12.2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This version requires PostgreSQL 12 - 17, GEOS 3.8 or higher, and Proj 6.1+.
+To take advantage of all features, GEOS 3.12+ is needed.
+To take advantage of all SFCGAL features, SFCGAL 1.5.0+ is needed.&lt;/p&gt;
+&lt;div class=&#34;gdoc-page__anchorwrap&#34;&gt;
+    &lt;h3 id=&#34;350alpha1&#34;
+    &gt;
+        3.5.0alpha1
+        &lt;a data-clipboard-text=&#34;https://postgis.net/2024/07/PostGIS-3.5.0alpha1/#350alpha1&#34; class=&#34;gdoc-page__anchor clip flex align-center&#34; title=&#34;Anchor to: 3.5.0alpha1&#34; aria-label=&#34;Anchor to: 3.5.0alpha1&#34; href=&#34;#350alpha1&#34;&gt;
+            &lt;svg class=&#34;gdoc-icon gdoc_link&#34;&gt;&lt;use xlink:href=&#34;#gdoc_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/h3&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/source/postgis-3.5.0alpha1.tar.gz&#34;
+&gt;source download&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/stuff/postgis-3.5.0alpha1.tar.gz.md5&#34;
+&gt;md5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.5.0alpha1/NEWS&#34;
+&gt;NEWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PDF docs: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0alpha1-en.pdf&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0alpha1-ja.pdf&#34;
+&gt;ja&lt;/a&gt;, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0alpha1-zh_Hans.pdf&#34;
+&gt;zh_Hans&lt;/a&gt;,  &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.5.0alpha1-fr.pdf&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This release is an alpha of a major release, it includes bug fixes since PostGIS 3.4.2 and new features.&lt;/p&gt;</description>
+    </item>
+
+    <item>
+      <title>PostGIS Patch Releases</title>
+      <link>https://postgis.net/2024/02/PostGIS-Patch-Releases/</link>
+      <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
+      <author><name>Paul Ramsey</name></author>
+      <guid>https://postgis.net/2024/02/PostGIS-Patch-Releases/</guid>
+      <description>The PostGIS development team is pleased to provide bug fix releases for 3.4.2, 3.3.6, 3.2.7, 3.1.11, 3.0.11, and 2.5.11.
+Please refer to the links above for more information about the issues resolved by these releases.</description>
+    </item>
+
+    <item>
+      <title>PostGIS Patch Releases</title>
+      <link>https://postgis.net/2023/11/PostGIS-Patch-Releases/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      <author><name>Regina Obe</name></author>
+      <guid>https://postgis.net/2023/11/PostGIS-Patch-Releases/</guid>
+      <description>&lt;p&gt;The PostGIS development team is pleased to provide
+bug fix and performance enhancements
+3.4.1, 3.3.5, 3.2.6, 3.1.10, 3.0.10  for the 3.4, 3.3, 3.2, 3.1, 3.0 stable branches.&lt;/p&gt;</description>
+    </item>
+
+    <item>
+      <title>PostGIS 3.4.0</title>
+      <link>https://postgis.net/2023/08/PostGIS-3.4.0/</link>
+      <pubDate>Tue, 15 Aug 2023 00:00:00 +0000</pubDate>
+      <author><name>Regina Obe</name></author>
+      <guid>https://postgis.net/2023/08/PostGIS-3.4.0/</guid>
+      <description>&lt;p&gt;The PostGIS Team is pleased to release PostGIS 3.4.0!
+This version works with versions PostgreSQL 12-16, GEOS 3.6 or higher, and Proj 6.1+.
+To take advantage of all features, &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://libgeos.org/posts/2023-06-27-geos-3-12-released/&#34;
+&gt;GEOS 3.12+&lt;/a&gt; is needed.
+To take advantage of all SFCGAL features,
+&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://sfcgal.org&#34;
+&gt;SFCGAL&lt;/a&gt; 1.4.1+ is needed.&lt;/p&gt;
+&lt;div class=&#34;gdoc-page__anchorwrap&#34;&gt;
+    &lt;h3 id=&#34;340&#34;
+    &gt;
+        3.4.0
+        &lt;a data-clipboard-text=&#34;https://postgis.net/2023/08/PostGIS-3.4.0/#340&#34; class=&#34;gdoc-page__anchor clip flex align-center&#34; title=&#34;Anchor to: 3.4.0&#34; aria-label=&#34;Anchor to: 3.4.0&#34; href=&#34;#340&#34;&gt;
+            &lt;svg class=&#34;gdoc-icon gdoc_link&#34;&gt;&lt;use xlink:href=&#34;#gdoc_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/h3&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/source/postgis-3.4.0.tar.gz&#34;
+&gt;source download&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/stuff/postgis-3.4.0.tar.gz.md5&#34;
+&gt;md5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.4.0/NEWS&#34;
+&gt;NEWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PDF docs: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.4.0-en.pdf&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.4.0-ja.pdf&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://download.osgeo.org/postgis/docs/postgis-3.4.0-fr.pdf&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;HTML Online &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/en/&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/ja/&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/fr/&#34;
+&gt;fr&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/de/&#34;
+&gt;de&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/ko_KR/&#34;
+&gt;ko_KR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Cheat Sheets:
+&lt;ul&gt;
+&lt;li&gt;postgis: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/postgis_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/postgis_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/postgis_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;postgis_raster: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/raster_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/raster_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/raster_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;postgis_topology: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/topology_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/topology_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/topology_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;postgis_sfcgal: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/sfcgal_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/sfcgal_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/sfcgal_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;address standardizer, postgis_tiger_geocoder: &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/tiger_geocoder_cheatsheet-en.html&#34;
+&gt;en&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/tiger_geocoder_cheatsheet-ja.html&#34;
+&gt;ja&lt;/a&gt; &lt;a
+  class=&#34;gdoc-markdown__link&#34;
+  href=&#34;https://postgis.net/docs/manual-3.4/tiger_geocoder_cheatsheet-fr.html&#34;
+&gt;fr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This release is a major release, it includes bug fixes since PostGIS 3.3.4 and new features.&lt;/p&gt;</description>
+    </item>
+
+  </channel>
+</rss>

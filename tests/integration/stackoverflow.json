@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "author": "nfarrar",
+      "description": "<p><strong>TL;DR</strong>: Is there a way to hook setuptool's 'develop' to install a set of development requirements when running <code>python setup.py develop</code>? </p>\n\n<p>I'm building my first python package using setuptools. I'm specifying the requirements as:</p>\n\n<pre><code>requirements = [\n    'click',\n    'ansible',\n    'fabric',\n    'gitpython',\n    'pyyaml',\n    'jinja2',\n    'yapsy'\n]\n\ntest_requirements = [\n    'pytest',\n    'pytest-pep8',\n    'pytest-cov',\n]\n\nsetup(\n...\n    install_requires=requirements,\n    tests_require=test_requirements,\n...\n)\n</code></pre>\n\n<p>During development, I've been installing the package (in a virtual environment) with:</p>\n\n<pre><code>python setup.py develop\n</code></pre>\n\n<p>and uninstalling with:</p>\n\n<pre><code>python setup.py develop -u\n</code></pre>\n\n<p>The package uses entry_points to install some command line scripts, so this sets up the commands for me and allows me to edit the package while testing the command at the same time.</p>\n\n<p>I also have some dependencies that I use for development ... sphinx + extensions and a couple other things (things that aren't needed to use the package). I'm just manually installing them in the virtual environment at the moment. I didn't see any documentation (and haven't found any examples on the googles) about how to wire them in with setuptools.</p>\n\n<p>Maybe there's a way to hook 'setup.py develop' to install an additional set of requirements? Another method I haven't read about?</p>",
+      "link": "https://stackoverflow.com/questions/28509965/setuptools-development-requirements",
+      "links": [
+        {
+          "href": "https://stackoverflow.com/questions/28509965/setuptools-development-requirements",
+          "rel": "alternate",
+          "title": null,
+          "type": null
+        }
+      ],
+      "published": "2015-02-13T22:39:34+00:00",
+      "title": "Setuptools \"development\" Requirements",
+      "updated": "2017-02-02T00:36:19+00:00"
+    },
+    {
+      "author": "Sean",
+      "description": "<p>For more info on using <code>setup.py</code> vs <code>requirements.txt</code>, I found <a href=\"https://caremad.io/2013/07/setup-vs-requirement/\" rel=\"noreferrer\">this article</a> helpful.</p>\n\n<h1>Update: September 2016</h1>\n\n<p>I no longer use <code>requirements.txt</code> (see original answer below) for installing development only packages. The prevailing wisdom seems to be that <code>requirements.txt</code> should be used to pin deployments to specific version numbers, typically using <code>pip freeze &gt; requirements.txt</code>. This ensures that the exact same versions of your project's dependencies and also your project's dependencies' dependencies are installed on all of your servers.</p>\n\n<p>I instead use the <code>extras_require</code> option to <code>setup</code>.</p>\n\n<pre><code>requirements = [\n    'click',\n    'ansible',\n    'fabric',\n    'gitpython',\n    'pyyaml',\n    'jinja2',\n    'yapsy'\n]\n\nsetup({\n    install_requires=requirements,\n    extras_require={\n        'dev': [\n            'pytest',\n            'pytest-pep8',\n            'pytest-cov'\n        ]\n    }\n})\n</code></pre>\n\n<p>Now, to install your package for development, you run <code>pip install -e .[dev]</code>. This installs all the regular required packages <strong>and</strong> those listed in the <code>dev</code> section of <code>extras_require</code>.</p>\n\n<p>Production installs can still be done with <code>python setup.py install</code> or <code>pip install .</code> (or with a <code>requirements.txt</code> file).</p>\n\n<h1>Original Answer</h1>\n\n<p>Here is <em>a</em> way to do it that seems to be in keeping with the recommendations I've run into regarding <code>setup.py</code> vs <code>requirements.txt</code>. Specify all your production dependencies in the <code>install_requires</code> parameter of <code>setup.py</code>.</p>\n\n<pre><code>requirements = [\n    'click',\n    'ansible',\n    'fabric',\n    'gitpython',\n    'pyyaml',\n    'jinja2',\n    'yapsy'\n]\n\nsetup({\n    # ...\n    install_requires=requirements\n    # ...\n})\n</code></pre>\n\n<p>Then create a <code>requirements.txt</code> file that instructs pip to install your production dependencies from <code>setup.py</code> as well as your testing dependencies.</p>\n\n<pre><code>-e .\n\npytest\npytest-pep8\npytest-cov\n</code></pre>\n\n<p>Now you can install your package for development with <code>pip install -r requirements.txt</code>. The <code>-e .</code> line will install your package and its dependencies from <code>setup.py</code> in development mode. To install on production, you could use <code>python setup.py install</code> or <code>pip install .</code>. This will only install the dependencies listed in <code>setup.py</code>.</p>",
+      "link": "https://stackoverflow.com/questions/28509965/setuptools-development-requirements/28842733#28842733",
+      "links": [
+        {
+          "href": "https://stackoverflow.com/questions/28509965/setuptools-development-requirements/28842733#28842733",
+          "rel": "alternate",
+          "title": null,
+          "type": null
+        }
+      ],
+      "published": "2015-03-03T21:57:44+00:00",
+      "title": "Answer by Sean for Setuptools \"development\" Requirements",
+      "updated": "2017-02-02T00:36:19+00:00"
+    }
+  ],
+  "feed": {
+    "id": "https://stackoverflow.com/feeds/question/28509965",
+    "language": null,
+    "link": "https://stackoverflow.com/feeds/question/28509965",
+    "links": [
+      {
+        "href": "https://stackoverflow.com/q/28509965",
+        "rel": "alternate",
+        "title": null,
+        "type": "text/html"
+      }
+    ],
+    "subtitle": "most recent 30 from stackoverflow.com",
+    "subtitle_detail": {
+      "base": null,
+      "language": null,
+      "type": "text/plain",
+      "value": "most recent 30 from stackoverflow.com"
+    },
+    "title": "Setuptools \"development\" Requirements - Stack Overflow",
+    "title_detail": {
+      "base": null,
+      "language": null,
+      "type": "text/plain",
+      "value": "Setuptools \"development\" Requirements - Stack Overflow"
+    },
+    "updated": "2024-11-29T16:41:05Z"
+  }
+}

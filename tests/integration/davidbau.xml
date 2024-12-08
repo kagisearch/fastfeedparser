@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+  xmlns:admin="http://webns.net/mvcb/"
+  xmlns:cc="http://web.resource.org/cc/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns="http://purl.org/rss/1.0/">
+
+<channel rdf:about="http://davidbau.com/">
+<title>davidbau.com</title>
+<link>http://davidbau.com/</link>
+<description>A Dabbler&apos;s Weblog</description>
+<dc:language>en-us</dc:language>
+<dc:creator></dc:creator>
+<dc:date>2024-03-28T06:08:34-05:00</dc:date>
+<admin:generatorAgent rdf:resource="http://www.movabletype.org/?v=2.661" />
+
+<items>
+<rdf:Seq><rdf:li rdf:resource="http://davidbau.com/archives/2024/03/28/the_right_kind_of_openness_for_ai.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2024/03/16/reinvented.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2023/10/28/function_vectors_in_large_language_models.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2023/04/02/is_artificial_intelligence_intelligent.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2023/03/28/catching_up.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2021/12/28/running_statistics_for_pytorch.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2021/11/26/reddit_ama.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2021/08/25/assistant_professor_at_neu_khoury.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2021/08/24/phd_defense.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2021/08/06/global_catastrophizing.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2021/03/18/passwords_should_be_illegal.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2020/10/16/deception_is_a_bug.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2020/08/19/rewriting_a_deep_generative_model.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2020/07/05/davids_tips_on_how_to_read_pytorch.html" />
+<rdf:li rdf:resource="http://davidbau.com/archives/2020/04/25/a_covid_battle_map.html" />
+</rdf:Seq>
+</items>
+
+</channel>
+
+<item rdf:about="http://davidbau.com/archives/2024/03/28/the_right_kind_of_openness_for_ai.html">
+<title>The Right Kind of Openness for AI</title>
+<link>http://davidbau.com/archives/2024/03/28/the_right_kind_of_openness_for_ai.html</link>
+<description>There is a false dichotomy between two alternatives facing us in the burgeoning AI industry today: &quot;open&quot; versus &quot;closed.&quot; This dichotomy is being promoted by both sides: Closed-AI advocates (oddly, including the company named &quot;Open AI&quot;) justifiably warn about the...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2024-03-28T06:08:34-05:00</dc:date>
+<content:encoded><![CDATA[<p>There is a false dichotomy between two alternatives facing us in the burgeoning AI industry today: "open" versus "closed."</p>
+
+<p>This dichotomy is being promoted by both sides: Closed-AI advocates (oddly, including the company named "Open AI") justifiably warn about the misuse risks posed by unregulated use of AI and the geopolitical risks posed by exfiltration of weights of large-scale pretrained models, but then they falsely imply that the only solution to these risks is to lock their AI behind an opaque service interface, with no visibility to the internals provided to outsiders. On the other hand, open-AI advocates (including Yann LeCun, one of the giants of our field) correctly point out the huge community benefits that come from transparency and competition, but then they make the mistake of assuming that benefits will be guaranteed if they throw their trained models over the wall to the public, releasing full model weights openly.</p>
+
+<p>Both sides are bankrolled by massive monetary investments and project the polished air of billion-dollar confidence. But the ugly truth is that the AI industry is built around an extraordinary uncertainty: although the industry has become expert in the science of <b>creating</b> AI, we are pitifully unequipped to meet the challenge of <b>understanding</b> AI. This unprecedented state of affairs is a direct outgrowth of the nature of modern machine learning: our clever training processes have created systems that contain orders of magnitude more complexity than has ever been created in software before, but no human has examined it. Beyond a superficial level, we do not currently understand what is good or bad or smart or stupid inside these systems.</p>
+
+<p>The long-term risk for humanity comes from our ignorance about the limitations, capabilities, and societal impacts of AI as we continue to develop it. Neither the open nor closed models on their own offer a credible path to cracking this problem. Thus we ask: <em>what is the right kind of openness</em>? What ecosystem will lead to a healthy AI industry, built on strong science, transparency, accountability, and innovation?</p>
+
+<p>In the series of articles that follow, we will survey the benefits and drawbacks of both the open and closed models. Then we will examine a third, pragmatic path that brings together the benefits of both approaches. Our proposal does not foreclose either open nor closed corporate strategies for any individual company or product, but it provides a framework of standards and services that will create healthy incentives for companies to pursue vigorous innovation, meaningful transparency, and safety in the public interest.<br />
+</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2024/03/16/reinvented.html">
+<title>Reinvented</title>
+<link>http://davidbau.com/archives/2024/03/16/reinvented.html</link>
+<description>Following my 2017 blog entry, Reinvention, where I had looked back to recount my jump from industry back to academia. Here is a video from the CSAIL 60th anniversary celebration where I finish telling my personal academic story about a...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2024-03-16T17:27:29-05:00</dc:date>
+<content:encoded><![CDATA[<p>Following my 2017 blog entry, <a href="http://davidbau.com/archives/2017/05/24/reinvention.html">Reinvention</a>, where I had looked back to recount my jump from industry back to academia. Here is a video from the CSAIL 60th anniversary celebration where I finish telling my personal academic story about a career reinvention.</p>
+
+<p>If you watch it to the end, you can see the three big lessons about how to do research that I learned during my PhD - and how I learned those lessons.</p>
+
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/2L3wRwSseqc?si=sJsyJYkHmhUhnYUk&amp;start=146" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2023/10/28/function_vectors_in_large_language_models.html">
+<title>Function Vectors in Large Language Models</title>
+<link>http://davidbau.com/archives/2023/10/28/function_vectors_in_large_language_models.html</link>
+<description>In 1936, Alonzo Church made an amazing discovery: if a function can treat other functions as data, then it becomes so powerful that it can even express unsolvable problems. We know that deep neural networks learn to represent many concepts...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2023-10-28T11:17:50-05:00</dc:date>
+<content:encoded><![CDATA[<p>In 1936, <a href="http://phil415.pbworks.com/f/Church.pdf">Alonzo Church</a> made an amazing discovery: if a function can treat other functions as data, then it becomes so powerful that it can even express unsolvable problems.</p>
+
+<p>We know that deep neural networks learn to represent many concepts as data. Do they also learn to treat <b>functions</b> as data?</p>
+
+<p>In a <a href="https://arxiv.org/abs/2310.15213">new preprint</a>, my student <a href="https://ericwtodd.github.io/">Eric Todd</a> finds evidence that deep networks do contain function references. Inside large transformer language models (like GPT) trained on ordinary text, he discovers internal vectors that behave like functions. These Function Vectors (FVs) can be created from examples, invoked in different contexts, and even composed using vector algebra. But they are different from regular word-embedding vector arithmetic because they trigger complex calculations, rather than just making linear steps in representation space.<br />
+It is a very cool finding. Help Eric spread the word!</p>
+
+<p><a href="https://x.com/ericwtodd/status/1717277426873766104?s=20">Read and retweet the Twitter thread</a><br />
+<a href="https://www.facebook.com/davidbau/posts/pfbid0PxjZbHM7KpqBNFuJmZcLMfpWR31xDENkyauCMNNKGEcjvLe4zVeuiv78NcVHhybSl">Share the Facebook post</a><br />
+<a href="https://functions.baulab.info/">The project website: functions.baulab.info</a></p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2023/04/02/is_artificial_intelligence_intelligent.html">
+<title>Is Artificial Intelligence Intelligent?</title>
+<link>http://davidbau.com/archives/2023/04/02/is_artificial_intelligence_intelligent.html</link>
+<description>The idea that large language models could be capable of cognition is not obvious. Neural language modeling has been around since Jeff Elman�s 1990 structure-in-time work, but 33 years passed between that initial idea and first contact with ChatGPT. What...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2023-04-02T15:08:00-05:00</dc:date>
+<content:encoded><![CDATA[<p>The idea that large language models could be capable of cognition is not obvious. Neural language modeling has been around since <a href="https://papers.baulab.info/Elman-1990.pdf">Jeff Elman�s 1990 structure-in-time work</a>, but 33 years passed between that initial idea and <a href="https://papers.baulab.info/also/Bubek-2023.pdf">first contact with ChatGPT</a>.</p>
+
+<p>What took so long? In this blog I write about why few saw it coming, why some remain skeptical even in the face of amazing GPT-4 behavior, why machine cognition may be emerging anyway, and what we should study next.</p>
+
+<p>Read more at <a href="https://thevisible.net/posts/002-is-ai-intelligent/">The Visible Net</a>.</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2023/03/28/catching_up.html">
+<title>Catching Up</title>
+<link>http://davidbau.com/archives/2023/03/28/catching_up.html</link>
+<description>Today, I received an email from my good college friend David Maymudes. David got his math degree from Harvard a few years ahead of me, and we have both worked at Microsoft and Google at overlapping times. He is still...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2023-03-28T05:44:36-05:00</dc:date>
+<content:encoded><![CDATA[<p>Today, I received an email from my good college friend David Maymudes. David got his math degree from Harvard a few years ahead of me, and we have both worked at Microsoft and Google at overlapping times. He is still at Google now. We have both witnessed and helped drive major cycles of platform innovation in the industry in the past (David designed the video API for windows and created the AVI format! And we both worked on Internet Explorer), so David is well aware of the important pieces of work that go into building a new technology ecosystem.</p>
+
+<p>From inside Google today, he is a direct witness to the transformation of that company as the profound new approaches to artificial intelligence become a corporate priority. It is obvious that something major is afoot: a new ecosystem is being created. Although David does not directly work on large-scale machine learning, it touches on his work, because it is touching everybody.</p>
+
+<p>Despite being an outsider to our field, David reached out to ask some clarifying questions about some specific technical ideas, including RLHF, AI safety, and the new ChatGPT plug-in model. There is so much to catch up on. In response to David�s questions, I wrote up a crash-course in modern large language modeling, which we will delve into in a new blog I am creating.</p>
+
+<p>Read more at <a href="https://thevisible.net/posts/001-catching-up/">The Visible Net</a>.</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2021/12/28/running_statistics_for_pytorch.html">
+<title>Running Statistics for Pytorch</title>
+<link>http://davidbau.com/archives/2021/12/28/running_statistics_for_pytorch.html</link>
+<description>Here is runningstats.py, a useful little module for computing efficient online GPU statistics in Pytorch. Pytorch is great for working with small batches of data: if you want to do some calculations over 100 small images, all the features fit...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2021-12-28T14:23:45-05:00</dc:date>
+<content:encoded><![CDATA[<p>Here is <a href="https://gist.github.com/davidbau/00a9b6763a260be8274f6ba22df9a145">runningstats.py</a>, a useful little module for computing efficient online GPU statistics in Pytorch.
+
+<p>Pytorch is great for working with small batches of data: if you want to do some calculations over 100 small images, all the features fit into a single GPU and the pytorch functions are perfect.
+
+<p>But what if your data doesn't fit in the GPU all at once?  What if they don't even fit into CPU RAM?  For example, how would you calculate the median values of a set of a few thousand language features over all of Wikipedia tokens?  If the data is small, it's easy: just sort them all and take the middle.  But if they don't fit - what to do?
+
+<pre style="background:lightblue">
+import datasets, runningstats
+ds = datasets.load_dataset('wikipedia', '20200501.en')['train']
+q = runningstats.Quantile()
+for batch in tally(q, ds, batch_size=100, cache='quantile.npz'):
+  feats = compute_features_from_batch(batch)
+  q.add(feats) # dim 0 is batch dim; dim 1 is feature dim.
+print('median for each feature', q.quantile(0.5))
+</pre>
+
+<p>Here, <em>online algorithms</em> come to the rescue.  These are economical algorithms that summarize an endless stream of data using only a small amount of memory.  Online algorithms are particularly handy for digesting big data on a GPU where memory is precious.  <a href="https://gist.github.com/davidbau/00a9b6763a260be8274f6ba22df9a145">runningstats.py</a> includes running Stat objects for Mean, Variance, Covariance, TopK, Quantile, Bincount, IoU, SecondMoment, CrossCovariance, CrossIoU, as well as an object to accumulate CombinedStats....</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2021/11/26/reddit_ama.html">
+<title>Reddit AMA</title>
+<link>http://davidbau.com/archives/2021/11/26/reddit_ama.html</link>
+<description>Join me at this link on Reddit on Tuesday 3pmET/12PT to #AMA about interpreting deep nets, AI research in academia vs industry; life as a PhD student. I am a new CS Prof at Northeastern @KhouryCollege; postdoc at Harvard; recent...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2021-11-26T11:21:47-05:00</dc:date>
+<content:encoded><![CDATA[<p><a href="https://iama.link/YGP5">Join me at this link on Reddit on Tuesday 3pmET/12PT to #AMA</a> about interpreting deep nets, AI research in academia vs industry; life as a PhD student.  I am a new CS Prof at Northeastern @KhouryCollege; postdoc at Harvard; recent MIT Phd; Google, Msft, startups...</p>
+
+<p>It is graduate school application season!  So with prospective PhD students in mind, I am hosting an AMA to talk about life as a PhD student in computer vision and machine learning, and the choice between academia and industry. <a href="http://davidbau.com/research/">My research studies the structure of the computations learned within deep neural networks</a>, so I would especially love to talk about why it is so important to crack open deep networks and understand what they are doing inside.</p>
+
+<p>Before I start as a professor at Northeastern University Khoury College of Computer Sciences next year, I am doing a postdoc at Harvard; and you can see <a href="https://www.youtube.com/watch?v=SPSobhMD7rc&t=280s">my recent PhD defense at MIT here</a>. I have a background in industry (Google, Microsoft, startup) before I did my own "great resignation� to return to school as an academic, so ask me anything about basic versus applied work, or research versus engineering.  Or ask me about �grandmother neurons,� making art with deep networks, ethical conundrums in AI, or what it's like to come back to academia after working.</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2021/08/25/assistant_professor_at_neu_khoury.html">
+<title>Assistant Professor at NEU Khoury</title>
+<link>http://davidbau.com/archives/2021/08/25/assistant_professor_at_neu_khoury.html</link>
+<description>I am thrilled to announce that I will be joining the Northeastern University Khoury College of Computer Science as an Assistant Professor in Fall 2022. For prospective students who are thinking of a PhD, now is a perfect time to...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2021-08-25T18:48:54-05:00</dc:date>
+<content:encoded><![CDATA[<p>I am thrilled to announce that I will be joining the Northeastern University Khoury College of Computer Science as an Assistant Professor in Fall 2022.</p>
+
+<p>For prospective students who are thinking of a PhD, now is a perfect time to be thinking about the application process for 2022. Drop me a note if you have a specific interest in what our lab does.  And if you know somebody who would be a fit, please share this!</p>
+
+<p><a href="http://davidbau.com/research/">http://davidbau.com/research/</a><br />
+<a href="https://www.khoury.northeastern.edu/apply/<br />
+">https://www.khoury.northeastern.edu/apply/<br />
+</a></p>
+
+<p>We think that understanding the rich internal structure of deep networks is a grand and fundamental research question with many practical implications.  (<a href="https://youtu.be/SPSobhMD7rc">For a talk about this, check out my PhD defense</a>).  If this area fascinates you, consider applying! The NEU Khoury school is in downtown Boston, an exciting, international city, and the best place in the world to be a student.</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2021/08/24/phd_defense.html">
+<title>PhD Defense</title>
+<link>http://davidbau.com/archives/2021/08/24/phd_defense.html</link>
+<description>Today I did my PhD defense, and my talk will be posted here on youtube. Here is the talk! Title: Dissection of Deep Networks Do deep networks contain concepts? One of the great challenges of neural networks is to understand...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2021-08-24T15:13:57-05:00</dc:date>
+<content:encoded><![CDATA[<p>Today I did my PhD defense, and my talk will be <a href="https://www.youtube.com/watch?v=SPSobhMD7rc">posted here on youtube</a>.  Here is the talk!</p>
+
+<p>Title: Dissection of Deep Networks</p>
+
+<p>Do deep networks contain concepts?</p>
+
+<p>One of the great challenges of neural networks is to understand how they work.  Because a deep network is trained by an optimizer, we cannot ask a programmer to explain the reasons for the specific computations that it happens to do. So we have traditionally focused on testing a network's external behavior, ignorant of insights or flaws that may hide within the black box.</p>
+
+<p>But what if we could ask the network itself what it is thinking?  Inspired by classical neuroscience research on biological brains, I introduce methods to directly probe the internal structure of a deep convolutional neural network by testing the activity of individual neurons and their interactions.</p>
+
+<p>Beginning with the simple proposal that an individual neuron might represent one internal concept, we investigate the possibility of reading human-understandable concepts within a deep network in a concrete, quantitative way:  Which neurons?  Which concepts?  What role do concept neurons play?  And can we see rules governing relationships between concepts?</p>
+
+<p>Following this inquiry within state-of-the-art models in computer vision leads us to insights about the computational structure of those deep networks that enable several new applications, including "GAN Paint" semantic manipulation of objects in an image; understanding of the sparse logic of a classifier; and quick, selective editing of generalizable rules within a fully trained StyleGAN network.</p>
+
+<p>In the talk, we challenge the notion that the internal calculations of a neural network must be hopelessly opaque. Instead, we strive to tear back the curtain and chart a path through the detailed structure of a deep network by which we can begin to understand its logic.<br />
+</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2021/08/06/global_catastrophizing.html">
+<title>Global Catastrophizing</title>
+<link>http://davidbau.com/archives/2021/08/06/global_catastrophizing.html</link>
+<description>Do you think the world is much darker than it used to be? If so, you are not alone. I have always assumed that a feeling of psychological decline is just a side-effect of getting older. But a paper by...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2021-08-06T08:10:07-05:00</dc:date>
+<content:encoded><![CDATA[<p>Do you think the world is much darker than it used to be?  If so, you are not alone.</p>
+
+<p>I have always assumed that a feeling of psychological decline is just a side-effect of getting older.  But a paper by <a href="https://www.pnas.org/content/pnas/118/30/e2102061118.full.pdf">Bollen, et al., out in PNAS today</a> suggests that a darker outlook in recent years might not be specific to any of us individually. By analyzing trends in published text in the Google ngrams corpus, researchers from Indiana University and Wageningen have discovered that across English, Spanish and German, text published in the world shows sudden changes in language use over time that are indicative of cognitive distortions and depression, coinciding with major wars or times of social upheaval.<br />
+<center><a href="https://www.pnas.org/content/pnas/118/30/e2102061118.full.pdf"><img border=0 style="width:700px;max-width:70vw" src="http://davidbau.com/images/graph/bollenfig2.jpg"></a></center></p>
+
+<p>The chart above is from <a href="https://www.pnas.org/content/pnas/118/30/e2102061118.full.pdf">Bollen's paper</a>, and it counts something very simple.  For every year, it counts how many times a particular set of short phrases appear in the printed books published in that year. The annual counts come from Google's Books ngram corpus - derived from scans of published books - and the 241 phrases counted are word sequences chosen by a panel of cognitive behavioral therapy specialists as markers for cognitive distortion schemata (CDS). That is, they are phrases that would suggest <a href="https://link.springer.com/content/pdf/10.1007/0-306-48581-8_36.pdf">systematic errors in thinking that are correlated with mental health issues</a> that are treated by psychologists.</p>
+
+<p>For example, one of the 241 counted phrases is "you always," because those words often indicate overgeneralization such as in the sentences "You always say no," or "You always win."  The bigram "everyone knows" indicates mind-reading, because it reveals that the speaker has a belief that they know what other people are thinking. The trigram "will never end" indicates catastrophizing, an exaggerated view of negative events. In total the panel of experts cataloged each of the 241 selected phrases, as a marker for a dozen specific cognitive distortions. These cognitive distortions are correlated with depression, so it is interesting to ask whether large-scale trends in the usage of these phrases reveals mass changes in psychology over time.</p>
+
+<p>The chart suggests that it might.  It seems to reveal suffering in Germany coinciding with World Wars I and II, and trauma in the English-speaking world at the Spanish-American War, Vietnam war protests, and 9/11.  Strikingly and worryingly, all the languages show a dramatic increase in cognitively distorted use of language since 2007.  If you believe the linguistic tea leaves, our collective state of mind seems to have taken an extraordinary turn for the worse in the last decade &#8212; globally.</p>
+
+<p>The paper is an example of a use of the <a href="https://books.google.com/ngrams">Google Books ngrams corpus</a>.  This is a pretty great resource that catalogs language use by counting words and ngrams in about 4% of all published text, by year, and it means that you can easily look further into the data yourself.  The authors provide their <a href="https://www.pnas.org/content/pnas/suppl/2021/07/22/2102061118.DCSupplemental/pnas.2102061118.sapp.pdf">list of phrases</a>, so you can examine the trends by individual category and phrase.  Here are the top phrases for catastrophizing in English: </p>
+
+<p><center><br />
+<a href="https://books.google.com/ngrams/graph?content=will+go+wrong%2Cwill+fail%2Cwill+end%2Cwill+be+impossible%2Cwill+not+happen%2Cwill+be+terrible%2Cwill+never+end%2Cwill+not+end&year_start=1800&year_end=2019&corpus=26&smoothing=0&case_insensitive=true"><img border=0 style="width:700px;max-width:70vw" src="http://davidbau.com/images/graph/catastrophizing.jpg"></a><br />
+</center></p>
+
+<p><a href="https://books.google.com/ngrams/graph?content=will+go+wrong%2Cwill+fail%2Cwill+end%2Cwill+be+impossible%2Cwill+not+happen%2Cwill+be+terrible%2Cwill+never+end%2Cwill+not+end&year_start=1800&year_end=2019&corpus=26&smoothing=0&case_insensitive=true&direct_url=t1%3B%2Cwill%20go%20wrong%3B%2Cc0%3B.t1%3B%2Cwill%20fail%3B%2Cc0%3B.t1%3B%2Cwill%20end%3B%2Cc0%3B.t1%3B%2Cwill%20be%20impossible%3B%2Cc0%3B.t1%3B%2Cwill%20not%20happen%3B%2Cc0%3B.t1%3B%2Cwill%20be%20terrible%3B%2Cc0%3B.t1%3B%2Cwill%20never%20end%3B%2Cc0%3B.t1%3B%2Cwill%20not%20end%3B%2Cc0">Explore and modify the query yourself here.</a>  You can see spikes in certain phrases corresponding to WWI and WWII, and the upwelling, in recent decades, of expressions of the idea that a variety of things "will end" and "will not happen".</p>
+
+<p>It is when the 241 phrases are added together, when we see dramatic recent spikes that are reminiscent of the <a href="https://en.wikipedia.org/wiki/Hockey_stick_graph#CITEREFMannBradleyHughes1999">climate change hockey stick</a> plot by <a href="https://www.pnas.org/content/105/36/13252">Mann, Bradley and Hughes</a>.</p>
+
+<p>Do you agree with the authors that these changes in word usage are meaningful?  Have we been experiencing a catastrophic worldwide decline in psychological health since 2007?</p>
+
+<p>Or is this just an example in which the authors themselves are catastrophizing, looking at data in a way that interprets events in the world as much worse than they actually are?</p>
+
+<p>Previous <a href="http://davidbau.com/archives/2017/03/25/does_watching_fox_news_kill_you.html">musings on society-wide catastrophizing here</a>.<br />
+</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2021/03/18/passwords_should_be_illegal.html">
+<title>Passwords should be illegal</title>
+<link>http://davidbau.com/archives/2021/03/18/passwords_should_be_illegal.html</link>
+<description>As part of modernizing U.S. infrastructure, America should eliminate passwords. Our use of passwords�to build security on the internet is akin to using flammable materials to build houses in densely-populated cities.� Every single website that collects, stores and transmits password...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2021-03-18T12:28:08-05:00</dc:date>
+<content:encoded><![CDATA[<p>As part of modernizing U.S. infrastructure, America should eliminate passwords.</p>
+
+<p>Our use of passwords�to build security on the internet is akin to using flammable materials to build houses in densely-populated cities.� Every single website that collects, stores and transmits password invites a new cybersecurity catastrophe.</p>
+
+<p>When half of Chicago burned down in 1871, citizens reflexively blamed the disaster�on evil actors: arsonists, immigrants, communists.� After the fire, the first response of political leaders was to impose martial law on the city to�stop such evil-doers.� From our modern perch, it seems obvious that the blame and the fix was misplaced.� Even if the spark were lit by somebody with bad intentions, the scale of the disaster was caused by outdated infrastructure.� Chicago�had been built out of combustible materials that were not safe in a densely-built�city.</p>
+
+<p>Our continued use of passwords on the internet today poses the same risk.</p>
+
+<p>Just as a small fire in a flammable city can turn into a massive disaster, on the internet, a single compromised password can lead to a chain reaction of compromised secrets that can open vast parts of the internet to hacking.� The�fundamental problem is that we store and transmit many of the secrets that we use to secure the internet, including passwords, on the internet itself.</p>
+
+<p>In the 2020's using, transmitting, and storing passwords on the internet should be as illegal as constructing a Chicago shanty out of incendiary cardboard.</p>
+
+<p>Physical key-based authentication systems are cheap.� They keep secrets secure on computer chips that are not connected to the internet and that never�reveal their secrets on the network.� If physical keys were used everywhere we currently use passwords, all internet hacking would be far harder and slower.</p>
+
+<p>Key-based login systems have been available for decades, but because standards are not mandated, they are adopted almost nowhere.� Physical keys are slightly�more inconvenient�for system-builders,�and consumers do not demand them because the dangers of hacking are invisible.� It is an excellent example of a situation where change is needed, but the marketplace will not create the change on its own.</p>
+
+<p>That is why our country's best response to the increasing�wave of hacking disasters should be led by people like the folks at NIST, rather�than the U.S. Army.��We should standardize, incentivize, mandate, and fund the use of non-password based authentication in all computer systems over the next few years. A common set of standards should be set, so that people can log into all systems using trustworthy physical keys that cannot be hacked remotely.</p>
+
+<p>Eliminating passwords would make more of a difference to cybersecurity than any clever retaliation scheme that the cybersecurity soldiers might cook up.� Although there are certainly evil actors on the internet, we ourselves are the ones who empower hackers by perpetuating our own dangerous practices.</p>
+
+<p>As we modernize U.S. infrastructure, we should prioritize modernizing standards and requirements around safe authentication systems on the internet.</p>
+
+<p><!--<br />
+Original post:</p>
+
+<p>Last week I had two friends tell me that "sudo" has started behaving very strangely for them in our computer network.  Maybe there is some innocent malfunction.  But it seems just as likely that our computers have been hacked.  The privilege-escalating <a href="https://securityaffairs.co/wordpress/113900/hacking/sudo-vulnerability-cve-2021-3156.html">sudo program has long been a major focus</a> of hacks, and vulnerabilities continue to be found even this year.  And replacing sudo with your own program is an excellent way to collect all the most useful passwords.</p>
+
+<p>The issue is very serious now because both the Russian and Chinese governments have launched large-scale hacks on the U.S. during covid.  It has been a uniquely vulnerable year for the world from the point of view of hacking, with almost all activity moving online.  More valuable information can be hacked, and as IT staff scramble to accommodate users, all the systems seem less well-protected than ever.</p>
+
+<p>And we seem so powerless to do anything about it.  There is talk about <a href="https://www.nytimes.com/2021/03/07/us/politics/microsoft-solarwinds-hack-russia-china.html">retaliatory counterattacks</a> - but it is far from clear that hacking into a few new computer systems in Moscow will discourage foreign governments from attacking us. If anything, it will reinforce to foreign policymakers the power and importance of investing even more into state-sponsored hacking programs.</p>
+
+<p>There is a better response.  We need to change the attack surface.  It is criminal that in 2021, the only computer system I use that has strong two-factor authentication is my Gmail.  If you get my passwords, you can get into everything.  Even if I wanted to have better security, in most computer systems, that is not an option.  That is a really serious failure.  Physical key-based authentication systems have been available for decades, but they are adopted almost nowhere.  It is an excellent example of a situation where change is needed, but the marketplace will not create the change on its own.</p>
+
+<p>Passwords should be illegal.</p>
+
+<p>In response to all the hacking, the Biden administration should pass a law standardizing and mandating the use of non-password based authentication in all computer systems over the next few years.  A common set of systems should be put into place, so that you can log into all systems using a physical key that cannot be hacked remotely.</p>
+
+<p>Eliminating passwords would make more of a difference than any crazy retaliation scheme that the cybersecurity soldiers might cook up.<br />
+--><br />
+</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2020/10/16/deception_is_a_bug.html">
+<title>Deception is a Bug</title>
+<link>http://davidbau.com/archives/2020/10/16/deception_is_a_bug.html</link>
+<description>Today Twitter and Facebook decided to manually limit the spread of the NY Post&apos;s unverified story about a hack on the Biden family. Taking responsibility for some of the broad impacts of their systems is an excellent move. But the...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2020-10-16T12:42:47-05:00</dc:date>
+<content:encoded><![CDATA[<p>Today Twitter and Facebook decided to manually limit the spread of the NY Post's unverified story about a hack on the Biden family.  Taking responsibility for some of the broad impacts of their systems is an excellent move.</p>
+
+<p>But the fact that FB+Twitter needed to intervene is a symptom of badly flawed systems. We all know that the systems would have otherwise amplified the misinformation and caused widespread confusion. In other words, we all know our big social networks have a bug. It is a fundamental bug with ethical implications - but in the end, it is a bug, and as engineers we need to learn to fix this kind of issue. As a field, we need to be willing to figure out how to design our systems to be ethical. To be good.</p>
+
+<p>What does it mean for an AI to be good?</p>
+
+<p>The fundamental reason Twitter and Facebook and Google are having such problems is that the objectives used to train these systems are wrong. We can easily count clicks, minutes of engagement, re-shares, transactions. So we maximize those. But we know that these are not actually the right goals.</p>
+
+<p>The right goal?  In the end, a system serves users, and so its purpose is to expand human agency.  A good AI must help human users make better decisions.</p>
+
+<p>Yet improving decisions is quite a bit harder than maximizing page views. It requires getting into subtle issues, developing an understanding of what it means to be helpful, informative, honest. And it means being willing to take on tricky choices that have traditionally been the realm of editors and policymakers.  But it is possible. And, as a field, it is what we should be aiming for.</p>
+
+<p>A few more thoughts in previous posts:<br />
+<a href="http://davidbau.com/archives/2018/01/12/the_purpose_of_ai.html">The Purpose of AI</a><br />
+<a href="http://davidbau.com/archives/2017/06/28/volo_ergo_sum.html">Volo Ergo Sum</a></p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2020/08/19/rewriting_a_deep_generative_model.html">
+<title>Rewriting a Deep Generative Model</title>
+<link>http://davidbau.com/archives/2020/08/19/rewriting_a_deep_generative_model.html</link>
+<description>Can the rules in a deep network be directly rewritten? State-of-the-art deep nets are trained as black boxes, using huge piles of data and millions of rounds of optimization that can take weeks to complete. But what if we want...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2020-08-19T11:11:04-05:00</dc:date>
+<content:encoded><![CDATA[<p>Can the rules in a deep network be directly rewritten?</p>
+
+<p>State-of-the-art deep nets are trained as black boxes, using huge piles of data and millions of rounds of optimization that can take weeks to complete.  But what if we want change a learned program after all that training is done?</p>
+
+<p>Since the start of my PhD I have been searching for a way to reprogram huge deep nets in a different way: I want to reconfigure learned programs by plugging pieces together instead of retraining them on big data sets. In my quest, I have found a lot of cool deep net structure and developed methods to exploit that structure.  Yet most ideas do not work. Generalizable editing is elusive.  Research is hard.</p>
+
+<p>But now, I am delighted to share this finding:</p>
+
+<p>Rewriting a Deep Generative Model (ECCV 2020 oral)<br />
+Website: <a href="https://rewriting.csail.mit.edu">https://rewriting.csail.mit.edu</a><br />
+Code: <a href="https://github.com/davidbau/rewriting">https://github.com/davidbau/rewriting</a><br />
+Preprint: <a href="https://arxiv.org/pdf/2007.15646.pdf">https://arxiv.org/pdf/2007.15646.pdf</a><br />
+2 min video: <a href="https://www.youtube.com/watch?v=i2_-zNqtEPk">https://www.youtube.com/watch?v=i2_-zNqtEPk</a></p>
+
+<p><p style="text-align:center"><a href="https://rewriting.csail.mit.edu/"><img src="/images/art/horsehats.png" width=650 style="max-width:100%"></a><br>Editing a StyleGANv2 model of horses.  After changing a rule, horses wear hats!</p></p>
+
+<p>Unlike my <a href="http://gandissect.csail.mit.edu">GanPaint work</a>, the focus of this paper is not on changing a single image, but on editing the rules of the network itself.  To stretch a programming analogy: in previous work we figured out how to edit fields of a single neural database record. Now we aim to edit the logic of the neural program itself.</p>
+
+<p>Here is how: to locate and change a single rule in a generative model, we treat a layer as an optimal linear associative memory that stores key-value pairs that associate meaningful conditions with visible consequences. We change a rule by rewriting a single entry of this memory. And we enable users to make these changes by providing an interactive tool.</p>
+
+<p>I edit StyleGanV2 and Progressive GAN and show how to do things like redefine horses to let them wear hats, or redefine pointy towers to have buildings that sprout trees.  My favorite effects are redefining kids eyebrows to be very bushy, and redefining the rule that governs reflected light in a scene, to invert the presence of reflections from windows.</p>
+
+<p>Here is a 10 min video:<br />
+<a href="https://rewriting.csail.mit.edu/video/<br />
+">https://rewriting.csail.mit.edu/video/</a></p>
+
+<p>MIT news has a story about it here today:<br />
+<a href="http://news.mit.edu/2020/rewriting-rules-machine-generated-art-0818">http://news.mit.edu/2020/rewriting-rules-machine-generated-art-0818</a></p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2020/07/05/davids_tips_on_how_to_read_pytorch.html">
+<title>David&apos;s Tips on How to Read Pytorch</title>
+<link>http://davidbau.com/archives/2020/07/05/davids_tips_on_how_to_read_pytorch.html</link>
+<description>Pytorch has a great design: easy and powerful. Easy enough that it is definitely possible to use pytorch without understanding what it is doing or why. But it also gets better the more you understand. As part of summer school...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2020-07-05T14:58:54-05:00</dc:date>
+<content:encoded><![CDATA[<p>Pytorch has a great design: easy and powerful.  Easy enough that it is definitely possible to use pytorch without understanding what it is doing or why.  But it also gets better the more you understand.</p>
+
+<p><center><a href="https://colab.research.google.com/github/davidbau/how-to-read-pytorch/blob/master/notebooks/1-Pytorch-Introduction.ipynb"><img src="/images/graph/how-to-read-pytorch.png"  width="500"></a></center></p>
+
+<p>As part of summer school at MIT, next week I'm doing a lecture to introduce students to pytorch.  I have written a few code examples that I hope will give students a head start on understanding the design of pytorch.  Each concept is illustrated visually with a cute minimal hackable example. All the examples are notebooks that are hosted on Google Colab.</p>
+
+<p>It covers tensor indexing conventions, benchmarks gpu versus cpu speeds, explains autograd with simple systems, and plots what optimizers are doing using 2d problems. Then I put the pieces together with a detailed discussion of network modules and data loaders, training toy networks where the whole space can be visualized as well as a simple but realistic five-minute ResNet training example.</p>
+
+<p><a href="https://github.com/davidbau/how-to-read-pytorch">Here are David's Tips on How to Read Pytorch</a>.</p>]]></content:encoded></item>
+<item rdf:about="http://davidbau.com/archives/2020/04/25/a_covid_battle_map.html">
+<title>A COVID Battle Map</title>
+<link>http://davidbau.com/archives/2020/04/25/a_covid_battle_map.html</link>
+<description>Whenever Heidi gets a headache after coming back from the hospital, I worry about losing her to COVID. But I am very aware that, with the virus already so widespread, the decisive battle is no longer being fought by doctors...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2020-04-25T18:45:19-05:00</dc:date>
+<content:encoded><![CDATA[<p>Whenever Heidi gets a headache after coming back from the hospital, I worry about losing her to COVID.</p>
+
+<p>But I am very aware that, with the virus already so widespread, the decisive battle is no longer being fought by doctors in the hospitals. They are just buying time, containing the threat just like you and I do when we social distance.</p>
+
+<p>The outcome will depend on a race between two global teams furiously trying to hack a dozen proteins. The good guys are thousands of biologists, an historic worldwide collaboration. The bad guys are the random forces of natural selection, the mutations that happen inside each carrier. Thanks to the Bedford lab at Fred Hutchinson, <a href="https://nextstrain.org/ncov/global?l=radial">you can see a map of the battlefield here</a>, tracing the random moves made by the bad guys: (data from <a href="https://www.gisaid.org/">GISAID</a>)</p>
+
+<p><center><a href="https://nextstrain.org/ncov/global?l=radial"><img src="/images/graph/covidmap.jpg" width="500"></a></center></p>
+
+<p>What are the bad-guy mutations doing?  A small study came out of Zhejiang university this week (<a href="https://www.medrxiv.org/content/10.1101/2020.04.14.20060160v1.full.pdf">medrxiv, not peer-reviewed</a>) that hints at the risks as we let the virus propagate and evolve.  They did cell-culture studies on 11 samples and found, for example, a 19-fold difference in cell-culture virulence between one version similar to the virus in WA, CA, OR, and VA (not very virulent) compared to one resembling strains in England and France (far more virulent). One of the versions from Wuhan was 249 times worse.  (Strains common in NY or Italy were not included.)</p>
+
+<p>So as we celebrate that WA state seems to be beating the virus, this study highlights that WA has just beaten one strain.  The European strains spreading elsewhere are different and might actually be more deadly. I think is important to contain covid before an even-worse strain spreads, as happened in 1918.</p>
+
+<p>Happily, in 2020, we can map out a set of weak points that the good guys can counterattack.  <a href="https://pubs.acs.org/doi/pdf/10.1021/acscentsci.0c00272">Here is a survey paper</a>. Some notable targets:</p>
+
+<ol>
+<li>Attacks on the ACE2 receptor, the molecular passkey used by the virus to break into human cells.
+<li>Attacks on the viral replication machine, the intricate RNA-dependent-RNA polymerase RdRps/NSP12.
+<li>Attacks on a key link in the viral factory, the protease 3CLpro/NSP5 that cleaves out the viral proteins after they are made in one big chain.
+<li>Old-fashioned attacks on the virus armor. Vaccines target the S protein shell on the outside of the virus.
+<li>New-fangled behind-enemy-lines attacks by CRISPR hotshots who want to directly chop up viral RNA.
+<li>Some scientists are working on defenses that improve the human body's response, steeling our organs to viral attack by trying to calm the inflammation that causes such problems.
+<li>Others are working on defenses that transplant a more robust immune response, via donated plasma.
+</ol>
+
+<p>The <a href="https://www.nytimes.com/interactive/2020/04/03/science/coronavirus-genome-bad-news-wrapped-in-protein.html">New York Times has beautiful renderings</a> of all the molecular attack targets.</p>
+
+<p>Unlike in a shooting war, we do not have news reporters going into the battlefield to report on the days wins and losses. But maybe we should.  None of these is sure thing.  But they all have a chance, and there are real salvos being launched on each of these targets.</p>
+
+<p>On both sides, the battlefield is active.</p>
+
+<p><a href="https://www.facebook.com/davidbau/posts/10159948149152228">on facebook here</a></p>]]></content:encoded></item>
+
+
+</rdf:RDF>

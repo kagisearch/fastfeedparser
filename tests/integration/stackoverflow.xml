@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" xmlns:re="http://purl.org/atompub/rank/1.0">
+    <title type="text">Setuptools &quot;development&quot; Requirements - Stack Overflow</title>
+    <link rel="self" href="https://stackoverflow.com/feeds/question/28509965" type="application/atom+xml" />
+    <link rel="alternate" href="https://stackoverflow.com/q/28509965" type="text/html" />
+    <subtitle>most recent 30 from stackoverflow.com</subtitle>
+    <updated>2024-11-29T16:41:05Z</updated>
+    <id>https://stackoverflow.com/feeds/question/28509965</id>
+    <creativeCommons:license>https://creativecommons.org/licenses/by-sa/4.0/rdf</creativeCommons:license>
+    <entry>
+        <id>https://stackoverflow.com/q/28509965</id>
+        <re:rank scheme="https://stackoverflow.com">93</re:rank>
+        <title type="text">Setuptools &quot;development&quot; Requirements</title>
+            <category scheme="https://stackoverflow.com/tags" term="python" />
+            <category scheme="https://stackoverflow.com/tags" term="setuptools" />
+            <category scheme="https://stackoverflow.com/tags" term="requirements" />
+        <author>
+            <name>nfarrar</name>
+            <uri>https://stackoverflow.com/users/212343</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/28509965/setuptools-development-requirements" />
+        <published>2015-02-13T22:39:34Z</published>
+        <updated>2017-02-02T00:36:19Z</updated>
+        <summary type="html">
+            &lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;: Is there a way to hook setuptool&#x27;s &#x27;develop&#x27; to install a set of development requirements when running &lt;code&gt;python setup.py develop&lt;/code&gt;? &lt;/p&gt;&#xA;&#xA;&lt;p&gt;I&#x27;m building my first python package using setuptools. I&#x27;m specifying the requirements as:&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;requirements = [&#xA;    &#x27;click&#x27;,&#xA;    &#x27;ansible&#x27;,&#xA;    &#x27;fabric&#x27;,&#xA;    &#x27;gitpython&#x27;,&#xA;    &#x27;pyyaml&#x27;,&#xA;    &#x27;jinja2&#x27;,&#xA;    &#x27;yapsy&#x27;&#xA;]&#xA;&#xA;test_requirements = [&#xA;    &#x27;pytest&#x27;,&#xA;    &#x27;pytest-pep8&#x27;,&#xA;    &#x27;pytest-cov&#x27;,&#xA;]&#xA;&#xA;setup(&#xA;...&#xA;    install_requires=requirements,&#xA;    tests_require=test_requirements,&#xA;...&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;During development, I&#x27;ve been installing the package (in a virtual environment) with:&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;python setup.py develop&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;and uninstalling with:&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;python setup.py develop -u&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;The package uses entry_points to install some command line scripts, so this sets up the commands for me and allows me to edit the package while testing the command at the same time.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I also have some dependencies that I use for development ... sphinx &#x2B; extensions and a couple other things (things that aren&#x27;t needed to use the package). I&#x27;m just manually installing them in the virtual environment at the moment. I didn&#x27;t see any documentation (and haven&#x27;t found any examples on the googles) about how to wire them in with setuptools.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Maybe there&#x27;s a way to hook &#x27;setup.py develop&#x27; to install an additional set of requirements? Another method I haven&#x27;t read about?&lt;/p&gt;&#xA;
+        </summary>
+    </entry>
+            <entry>
+        <id>https://stackoverflow.com/questions/28509965/-/28842733#28842733</id>
+        <re:rank scheme="https://stackoverflow.com">158</re:rank>
+        <title type="text">Answer by Sean for Setuptools &quot;development&quot; Requirements</title>
+        <author>
+            <name>Sean</name>
+            <uri>https://stackoverflow.com/users/302898</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/28509965/setuptools-development-requirements/28842733#28842733" />
+        <published>2015-03-03T21:57:44Z</published>
+        <updated>2017-02-02T00:36:19Z</updated>
+        <summary type="html">&lt;p&gt;For more info on using &lt;code&gt;setup.py&lt;/code&gt; vs &lt;code&gt;requirements.txt&lt;/code&gt;, I found &lt;a href=&quot;https://caremad.io/2013/07/setup-vs-requirement/&quot; rel=&quot;noreferrer&quot;&gt;this article&lt;/a&gt; helpful.&lt;/p&gt;&#xA;&#xA;&lt;h1&gt;Update: September 2016&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;I no longer use &lt;code&gt;requirements.txt&lt;/code&gt; (see original answer below) for installing development only packages. The prevailing wisdom seems to be that &lt;code&gt;requirements.txt&lt;/code&gt; should be used to pin deployments to specific version numbers, typically using &lt;code&gt;pip freeze &amp;gt; requirements.txt&lt;/code&gt;. This ensures that the exact same versions of your project&#x27;s dependencies and also your project&#x27;s dependencies&#x27; dependencies are installed on all of your servers.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I instead use the &lt;code&gt;extras_require&lt;/code&gt; option to &lt;code&gt;setup&lt;/code&gt;.&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;requirements = [&#xA;    &#x27;click&#x27;,&#xA;    &#x27;ansible&#x27;,&#xA;    &#x27;fabric&#x27;,&#xA;    &#x27;gitpython&#x27;,&#xA;    &#x27;pyyaml&#x27;,&#xA;    &#x27;jinja2&#x27;,&#xA;    &#x27;yapsy&#x27;&#xA;]&#xA;&#xA;setup({&#xA;    install_requires=requirements,&#xA;    extras_require={&#xA;        &#x27;dev&#x27;: [&#xA;            &#x27;pytest&#x27;,&#xA;            &#x27;pytest-pep8&#x27;,&#xA;            &#x27;pytest-cov&#x27;&#xA;        ]&#xA;    }&#xA;})&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;Now, to install your package for development, you run &lt;code&gt;pip install -e .[dev]&lt;/code&gt;. This installs all the regular required packages &lt;strong&gt;and&lt;/strong&gt; those listed in the &lt;code&gt;dev&lt;/code&gt; section of &lt;code&gt;extras_require&lt;/code&gt;.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Production installs can still be done with &lt;code&gt;python setup.py install&lt;/code&gt; or &lt;code&gt;pip install .&lt;/code&gt; (or with a &lt;code&gt;requirements.txt&lt;/code&gt; file).&lt;/p&gt;&#xA;&#xA;&lt;h1&gt;Original Answer&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Here is &lt;em&gt;a&lt;/em&gt; way to do it that seems to be in keeping with the recommendations I&#x27;ve run into regarding &lt;code&gt;setup.py&lt;/code&gt; vs &lt;code&gt;requirements.txt&lt;/code&gt;. Specify all your production dependencies in the &lt;code&gt;install_requires&lt;/code&gt; parameter of &lt;code&gt;setup.py&lt;/code&gt;.&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;requirements = [&#xA;    &#x27;click&#x27;,&#xA;    &#x27;ansible&#x27;,&#xA;    &#x27;fabric&#x27;,&#xA;    &#x27;gitpython&#x27;,&#xA;    &#x27;pyyaml&#x27;,&#xA;    &#x27;jinja2&#x27;,&#xA;    &#x27;yapsy&#x27;&#xA;]&#xA;&#xA;setup({&#xA;    # ...&#xA;    install_requires=requirements&#xA;    # ...&#xA;})&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;Then create a &lt;code&gt;requirements.txt&lt;/code&gt; file that instructs pip to install your production dependencies from &lt;code&gt;setup.py&lt;/code&gt; as well as your testing dependencies.&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;-e .&#xA;&#xA;pytest&#xA;pytest-pep8&#xA;pytest-cov&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;Now you can install your package for development with &lt;code&gt;pip install -r requirements.txt&lt;/code&gt;. The &lt;code&gt;-e .&lt;/code&gt; line will install your package and its dependencies from &lt;code&gt;setup.py&lt;/code&gt; in development mode. To install on production, you could use &lt;code&gt;python setup.py install&lt;/code&gt; or &lt;code&gt;pip install .&lt;/code&gt;. This will only install the dependencies listed in &lt;code&gt;setup.py&lt;/code&gt;.&lt;/p&gt;&#xA;</summary>
+    </entry>
+</feed>
