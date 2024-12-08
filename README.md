@@ -4,7 +4,7 @@ A high-performance feed parser for Python that handles RSS, Atom, and RDF. Built
 
 ### Why FastFeedParser?
 
-It's 10x-100x faster than traditional feedparser while keeping a familiar API. This speed comes from:
+It's 10x-100x faster (check included `benchmark.py`) than traditional feedparser while keeping a familiar API. This speed comes from:
 
 - lxml for efficient XML parsing
 - Smart memory management  
@@ -59,6 +59,37 @@ for entry in myfeed.entries:
     print(entry.link)
     print(entry.published)
 ```
+
+## Run Benchmark
+
+```bash
+python benchmark.py
+```
+
+This will run benchmark on a number of feeds with output looking like this
+
+```
+Testing https://gessfred.xyz/rss.xml
+FastFeedParser: 17 entries in 0.004s
+Feedparser: 17 entries in 0.098s
+Speedup: 26.3x
+
+Testing https://fanf.dreamwidth.org/data/rss
+FastFeedParser: 25 entries in 0.005s
+Feedparser: 25 entries in 0.087s
+Speedup: 17.9x
+
+Testing https://jacobwsmith.xyz/feed.xml
+FastFeedParser: 121 entries in 0.030s
+Feedparser: 121 entries in 0.166s
+Speedup: 5.5x
+
+Testing https://bernsteinbear.com/feed.xml
+FastFeedParser: 11 entries in 0.007s
+Feedparser: 11 entries in 0.339s
+Speedup: 50.1x
+```
+
 
 ## Key Features
 
@@ -121,4 +152,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-Inspired by the Universal Feed Parser (feedparser) project, FastFeedParser aims to provide a modern, high-performance alternative while maintaining a familiar API.
+Inspired by the [feedparser](https://github.com/kurtmckee/feedparser) project, FastFeedParser aims to provide a modern, high-performance alternative while maintaining a familiar API.
