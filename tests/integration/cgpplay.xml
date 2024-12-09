@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UCzSBv-iml0SCoAE-6v2ReWQ"/>
+ <id>yt:channel:zSBv-iml0SCoAE-6v2ReWQ</id>
+ <yt:channelId>zSBv-iml0SCoAE-6v2ReWQ</yt:channelId>
+ <title>CGP Play</title>
+ <link rel="alternate" href="https://www.youtube.com/channel/UCzSBv-iml0SCoAE-6v2ReWQ"/>
+ <author>
+  <name>CGP Play</name>
+  <uri>https://www.youtube.com/channel/UCzSBv-iml0SCoAE-6v2ReWQ</uri>
+ </author>
+ <published>2015-09-17T13:42:57+00:00</published>
+</feed>
