@@ -118,6 +118,8 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         # Try multiple namespace variations since feeds can be inconsistent
         namespaces = [
             "{http://www.w3.org/2005/Atom}",  # Standard Atom namespace
+            "{http://purl.org/atom/ns#}",     # Old Atom namespace
+            "{http://www.w3.org/2005/Atom1}",  # Common typo
             "",  # No namespace
         ]
         
@@ -307,7 +309,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         (
             "title",
             "title",
-            "{http://www.w3.org/2005/Atom}title",
+            "title",  # Try without namespace first
             "{http://purl.org/rss/1.0/}title",
             False,
         ),
@@ -359,7 +361,8 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
     entry_links: list[dict] = []
     entry["links"] = entry_links
     alternate_link: dict | None = None
-    for link in item.findall("{http://www.w3.org/2005/Atom}link"):
+    # Try both namespaced and non-namespaced link elements
+    for link in item.findall(".//link") + item.findall(".//{http://www.w3.org/2005/Atom}link"):
         rel = link.get("rel")
         href = link.get("href") or link.get("link")
         if not href:
