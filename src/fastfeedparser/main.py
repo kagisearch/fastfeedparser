@@ -113,8 +113,16 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         items = channel.findall("item")
     elif root_tag == "feed":
         # Check if it's an Atom feed by examining namespace
-        nsmap = root.nsmap.get(None, '')  # Get default namespace
-        if 'atom' in nsmap.lower() or 'www.w3.org/2005/atom' in nsmap.lower():
+        nsmap = getattr(root, 'nsmap', {})
+        default_ns = nsmap.get(None, '')
+        
+        # Check xmlns attribute directly as fallback
+        xmlns = root.get('xmlns', '')
+        
+        if ('atom' in default_ns.lower() or 
+            'www.w3.org/2005/atom' in default_ns.lower() or
+            'atom' in xmlns.lower() or 
+            'www.w3.org/2005/atom' in xmlns.lower()):
             feed_type = "atom"
             channel = root
             items = channel.findall(".//{http://www.w3.org/2005/Atom}entry")
@@ -123,7 +131,7 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         else:
             raise ValueError(
                 f"Feed tag 'feed' found but not in Atom namespace. "
-                f"Found namespace: {nsmap}"
+                f"Found namespaces - default: {default_ns}, xmlns: {xmlns}"
             )
     elif root_tag == "rdf":
         feed_type = "rdf"
