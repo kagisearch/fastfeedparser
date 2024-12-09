@@ -6,6 +6,13 @@ import httpx
 
 # Test feeds
 feeds = [
+    "https://rmarcus.info/blog/atom.xml",
+    "https://www.stuckinabook.com/feed/",
+    "https://tychoish.com/post/index.xml",
+    "https://jim-mcbeath.blogspot.com/feeds/posts/default",
+    "https://www.rachelfoy.com/feed/",
+    "http://adam.younglogic.com/feed/",
+    "https://popcultureretrorama.wordpress.com/feed/",
     "https://feedpress.me/FIJ",
     "https://techtinkering.com/feed.xml",
     "https://glineq.blogspot.com/feeds/posts/default",
