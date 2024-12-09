@@ -103,24 +103,39 @@ def parse(source: str | bytes) -> FastFeedParserDict:
 
     # Determine a feed type based on the content structure
     feed_type: _FeedType
-    if root.tag == "rss" or root.tag.endswith("}rss"):
+    root_tag = root.tag.split('}')[-1].lower()  # Get local part of tag name
+    
+    if root_tag == "rss":
         feed_type = "rss"
         channel = root.find("channel")
         if channel is None:
             raise ValueError("Invalid RSS feed: missing channel element")
         items = channel.findall("item")
-    elif root.tag == "{http://www.w3.org/2005/Atom}feed":
-        feed_type = "atom"
-        channel = root
-        items = channel.findall(".//{http://www.w3.org/2005/Atom}entry")
-    elif root.tag == "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF":
+    elif root_tag == "feed":
+        # Check if it's an Atom feed by examining namespace
+        nsmap = root.nsmap.get(None, '')  # Get default namespace
+        if 'atom' in nsmap.lower() or 'www.w3.org/2005/atom' in nsmap.lower():
+            feed_type = "atom"
+            channel = root
+            items = channel.findall(".//{http://www.w3.org/2005/Atom}entry")
+            if not items:  # Try without namespace
+                items = channel.findall(".//entry")
+        else:
+            raise ValueError(
+                f"Feed tag 'feed' found but not in Atom namespace. "
+                f"Found namespace: {nsmap}"
+            )
+    elif root_tag == "rdf":
         feed_type = "rdf"
         channel = root
         items = channel.findall(".//{http://purl.org/rss/1.0/}item")
         if not items:
             items = channel.findall("item")
     else:
-        raise ValueError(f"Unknown feed type: {root.tag}")
+        raise ValueError(
+            f"Unknown feed type: {root.tag}\n"
+            f"Expected one of: RSS (<rss>), Atom (<feed>) or RDF (<rdf:RDF>)"
+        )
 
     feed = _parse_feed_info(channel, feed_type)
 
