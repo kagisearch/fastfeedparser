@@ -112,25 +112,23 @@ def parse(source: str | bytes) -> FastFeedParserDict:
             raise ValueError("Invalid RSS feed: missing channel element")
         items = channel.findall("item")
     elif root_tag == "feed":
-        # Check if it's an Atom feed by examining namespace
-        nsmap = getattr(root, 'nsmap', {})
-        default_ns = nsmap.get(None, '')
+        # First try to find Atom entries with namespace
+        items = root.findall(".//{http://www.w3.org/2005/Atom}entry")
+        if not items:
+            # Try without namespace
+            items = root.findall(".//entry")
         
-        # Check xmlns attribute directly as fallback
-        xmlns = root.get('xmlns', '')
-        
-        if ('atom' in default_ns.lower() or 
-            'www.w3.org/2005/atom' in default_ns.lower() or
-            'atom' in xmlns.lower() or 
-            'www.w3.org/2005/atom' in xmlns.lower()):
+        if items:
             feed_type = "atom"
             channel = root
-            items = channel.findall(".//{http://www.w3.org/2005/Atom}entry")
-            if not items:  # Try without namespace
-                items = channel.findall(".//entry")
         else:
+            # Only raise error if we can't find any entry elements
+            nsmap = getattr(root, 'nsmap', {})
+            default_ns = nsmap.get(None, '')
+            xmlns = root.get('xmlns', '')
+            
             raise ValueError(
-                f"Feed tag 'feed' found but not in Atom namespace. "
+                f"Feed tag 'feed' found but no entries found and not in Atom namespace. "
                 f"Found namespaces - default: {default_ns}, xmlns: {xmlns}"
             )
     elif root_tag == "rdf":
