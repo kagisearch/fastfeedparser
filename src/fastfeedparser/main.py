@@ -134,15 +134,6 @@ def parse(source: str | bytes) -> FastFeedParserDict:
             # Try finding entries without namespace if none found
             items = root.findall(".//entry") 
             
-        if not items:
-            nsmap = getattr(root, 'nsmap', {})
-            default_ns = nsmap.get(None, '')
-            xmlns = root.get('xmlns', '')
-            
-            raise ValueError(
-                f"Feed tag 'feed' found but no entries found. "
-                f"Found namespaces - default: {default_ns}, xmlns: {xmlns}"
-            )
     elif root_tag == "rdf":
         feed_type = "rdf"
         channel = root
