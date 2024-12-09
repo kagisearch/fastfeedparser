@@ -5,7 +5,7 @@
       "description": "There is a false dichotomy between two alternatives facing us in the burgeoning AI industry today: \"open\" versus \"closed.\" This dichotomy is being promoted by both sides: Closed-AI advocates (oddly, including the company named \"Open AI\") justifiably warn about the...",
       "link": "http://davidbau.com/archives/2024/03/28/the_right_kind_of_openness_for_ai.html",
       "links": [],
-      "published": "2024-03-28T11:08:34+00:00",
+      "published": "2024-03-28T13:08:34+00:00",
       "title": "The Right Kind of Openness for AI"
     },
     {
@@ -13,7 +13,7 @@
       "description": "Following my 2017 blog entry, Reinvention, where I had looked back to recount my jump from industry back to academia. Here is a video from the CSAIL 60th anniversary celebration where I finish telling my personal academic story about a...",
       "link": "http://davidbau.com/archives/2024/03/16/reinvented.html",
       "links": [],
-      "published": "2024-03-16T22:27:29+00:00",
+      "published": "2024-03-17T00:27:29+00:00",
       "title": "Reinvented"
     },
     {
@@ -21,7 +21,7 @@
       "description": "In 1936, Alonzo Church made an amazing discovery: if a function can treat other functions as data, then it becomes so powerful that it can even express unsolvable problems. We know that deep neural networks learn to represent many concepts...",
       "link": "http://davidbau.com/archives/2023/10/28/function_vectors_in_large_language_models.html",
       "links": [],
-      "published": "2023-10-28T16:17:50+00:00",
+      "published": "2023-10-28T18:17:50+00:00",
       "title": "Function Vectors in Large Language Models"
     },
     {
@@ -29,7 +29,7 @@
       "description": "The idea that large language models could be capable of cognition is not obvious. Neural language modeling has been around since Jeff Elmanï¿½s 1990 structure-in-time work, but 33 years passed between that initial idea and first contact with ChatGPT. What...",
       "link": "http://davidbau.com/archives/2023/04/02/is_artificial_intelligence_intelligent.html",
       "links": [],
-      "published": "2023-04-02T20:08:00+00:00",
+      "published": "2023-04-02T22:08:00+00:00",
       "title": "Is Artificial Intelligence Intelligent?"
     },
     {
@@ -37,7 +37,7 @@
       "description": "Today, I received an email from my good college friend David Maymudes. David got his math degree from Harvard a few years ahead of me, and we have both worked at Microsoft and Google at overlapping times. He is still...",
       "link": "http://davidbau.com/archives/2023/03/28/catching_up.html",
       "links": [],
-      "published": "2023-03-28T10:44:36+00:00",
+      "published": "2023-03-28T12:44:36+00:00",
       "title": "Catching Up"
     },
     {
@@ -45,7 +45,7 @@
       "description": "Here is runningstats.py, a useful little module for computing efficient online GPU statistics in Pytorch. Pytorch is great for working with small batches of data: if you want to do some calculations over 100 small images, all the features fit...",
       "link": "http://davidbau.com/archives/2021/12/28/running_statistics_for_pytorch.html",
       "links": [],
-      "published": "2021-12-28T19:23:45+00:00",
+      "published": "2021-12-28T22:23:45+00:00",
       "title": "Running Statistics for Pytorch"
     },
     {
@@ -53,7 +53,7 @@
       "description": "Join me at this link on Reddit on Tuesday 3pmET/12PT to #AMA about interpreting deep nets, AI research in academia vs industry; life as a PhD student. I am a new CS Prof at Northeastern @KhouryCollege; postdoc at Harvard; recent...",
       "link": "http://davidbau.com/archives/2021/11/26/reddit_ama.html",
       "links": [],
-      "published": "2021-11-26T16:21:47+00:00",
+      "published": "2021-11-26T19:21:47+00:00",
       "title": "Reddit AMA"
     },
     {
@@ -61,7 +61,7 @@
       "description": "I am thrilled to announce that I will be joining the Northeastern University Khoury College of Computer Science as an Assistant Professor in Fall 2022. For prospective students who are thinking of a PhD, now is a perfect time to...",
       "link": "http://davidbau.com/archives/2021/08/25/assistant_professor_at_neu_khoury.html",
       "links": [],
-      "published": "2021-08-25T23:48:54+00:00",
+      "published": "2021-08-26T01:48:54+00:00",
       "title": "Assistant Professor at NEU Khoury"
     },
     {
@@ -69,7 +69,7 @@
       "description": "Today I did my PhD defense, and my talk will be posted here on youtube. Here is the talk! Title: Dissection of Deep Networks Do deep networks contain concepts? One of the great challenges of neural networks is to understand...",
       "link": "http://davidbau.com/archives/2021/08/24/phd_defense.html",
       "links": [],
-      "published": "2021-08-24T20:13:57+00:00",
+      "published": "2021-08-24T22:13:57+00:00",
       "title": "PhD Defense"
     },
     {
@@ -77,7 +77,7 @@
       "description": "Do you think the world is much darker than it used to be? If so, you are not alone. I have always assumed that a feeling of psychological decline is just a side-effect of getting older. But a paper by...",
       "link": "http://davidbau.com/archives/2021/08/06/global_catastrophizing.html",
       "links": [],
-      "published": "2021-08-06T13:10:07+00:00",
+      "published": "2021-08-06T15:10:07+00:00",
       "title": "Global Catastrophizing"
     },
     {
@@ -85,7 +85,7 @@
       "description": "As part of modernizing U.S. infrastructure, America should eliminate passwords. Our use of passwordsï¿½to build security on the internet is akin to using flammable materials to build houses in densely-populated cities.ï¿½ Every single website that collects, stores and transmits password...",
       "link": "http://davidbau.com/archives/2021/03/18/passwords_should_be_illegal.html",
       "links": [],
-      "published": "2021-03-18T17:28:08+00:00",
+      "published": "2021-03-18T19:28:08+00:00",
       "title": "Passwords should be illegal"
     },
     {
@@ -93,7 +93,7 @@
       "description": "Today Twitter and Facebook decided to manually limit the spread of the NY Post's unverified story about a hack on the Biden family. Taking responsibility for some of the broad impacts of their systems is an excellent move. But the...",
       "link": "http://davidbau.com/archives/2020/10/16/deception_is_a_bug.html",
       "links": [],
-      "published": "2020-10-16T17:42:47+00:00",
+      "published": "2020-10-16T19:42:47+00:00",
       "title": "Deception is a Bug"
     },
     {
@@ -101,7 +101,7 @@
       "description": "Can the rules in a deep network be directly rewritten? State-of-the-art deep nets are trained as black boxes, using huge piles of data and millions of rounds of optimization that can take weeks to complete. But what if we want...",
       "link": "http://davidbau.com/archives/2020/08/19/rewriting_a_deep_generative_model.html",
       "links": [],
-      "published": "2020-08-19T16:11:04+00:00",
+      "published": "2020-08-19T18:11:04+00:00",
       "title": "Rewriting a Deep Generative Model"
     },
     {
@@ -109,7 +109,7 @@
       "description": "Pytorch has a great design: easy and powerful. Easy enough that it is definitely possible to use pytorch without understanding what it is doing or why. But it also gets better the more you understand. As part of summer school...",
       "link": "http://davidbau.com/archives/2020/07/05/davids_tips_on_how_to_read_pytorch.html",
       "links": [],
-      "published": "2020-07-05T19:58:54+00:00",
+      "published": "2020-07-05T21:58:54+00:00",
       "title": "David's Tips on How to Read Pytorch"
     },
     {
@@ -117,7 +117,7 @@
       "description": "Whenever Heidi gets a headache after coming back from the hospital, I worry about losing her to COVID. But I am very aware that, with the virus already so widespread, the decisive battle is no longer being fought by doctors...",
       "link": "http://davidbau.com/archives/2020/04/25/a_covid_battle_map.html",
       "links": [],
-      "published": "2020-04-25T23:45:19+00:00",
+      "published": "2020-04-26T01:45:19+00:00",
       "title": "A COVID Battle Map"
     }
   ],

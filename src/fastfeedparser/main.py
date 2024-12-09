@@ -14,6 +14,7 @@ from urllib.request import (
 
 import parsedatetime
 from dateutil import parser as dateutil_parser
+from dateutil.tz import gettz
 from lxml import etree
 
 if TYPE_CHECKING:
@@ -622,6 +623,31 @@ def _get_element_value(
         return el.get(attribute)
     return el.text
 
+def custom_tzinfos(tzname: Optional[str], tzoffset: Optional[Union[int, float, tzinfo]]) -> Optional[tzinfo]:
+    """Custom timezone info resolver for date parsing.
+    
+    Args:
+        tzname: Timezone name string (e.g. 'EST', 'UTC', 'Europe/London')
+        tzoffset: Timezone offset in hours or tzinfo object
+        
+    Returns:
+        tzinfo: A timezone object if resolution successful
+        None: If timezone cannot be resolved
+        
+    Examples:
+        >>> custom_tzinfos('EST', None)  # Returns EST timezone
+        >>> custom_tzinfos(None, -5)     # Returns UTC-5 offset
+        >>> custom_tzinfos('Invalid', None)  # Returns None
+    """
+    # Attempt to resolve with gettz
+    tz = gettz(tzname)
+    if tz is not None:
+        return tz
+    # Fall back to a fixed offset if provided  
+    if tzoffset is not None:
+        return tzoffset
+    # Otherwise, return None (let parse handle the exception)
+    return None
 
 def _parse_date(date_str: str) -> str | None:
     """Parse date string and return as an ISO 8601 formatted UTC string.
@@ -637,24 +663,22 @@ def _parse_date(date_str: str) -> str | None:
 
     # Try dateutil.parser first
     try:
-        dt = dateutil_parser.parse(date_str)
+        dt = dateutil_parser.parse(date_str, tzinfos=custom_tzinfos, ignoretz=False)
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=_UTC)
-        else:
-            dt = dt.astimezone(_UTC)
-        return dt.isoformat()
+        return dt.astimezone(_UTC).isoformat()
     except (ValueError, OverflowError):
         pass
 
     # Fall back to parsedatetime
     try:
-        # Parse with timezone awareness
         time_struct, parse_status = _CAL.parseDT(date_str, tzinfo=_UTC)
         if parse_status:
-            # time_struct is already a datetime with proper timezone
-            return time_struct.astimezone(_UTC).isoformat()
+            return time_struct.isoformat()  # time_struct already in UTC
     except ValueError:
         pass
 
+    
     # If all parsing attempts fail, return None instead of original string
     return None
+
