@@ -112,23 +112,33 @@ def parse(source: str | bytes) -> FastFeedParserDict:
             raise ValueError("Invalid RSS feed: missing channel element")
         items = channel.findall("item")
     elif root_tag == "feed":
-        # First try to find Atom entries with namespace
-        items = root.findall(".//{http://www.w3.org/2005/Atom}entry")
-        if not items:
-            # Try without namespace
-            items = root.findall(".//entry")
+        feed_type = "atom"
+        channel = root
         
-        if items:
-            feed_type = "atom"
-            channel = root
-        else:
-            # Only raise error if we can't find any entry elements
+        # Try multiple namespace variations since feeds can be inconsistent
+        namespaces = [
+            "{http://www.w3.org/2005/Atom}",  # Standard Atom namespace
+            "",  # No namespace
+        ]
+        
+        # Find entries trying different namespaces
+        items = []
+        for ns in namespaces:
+            items = root.findall(f".//{ns}entry")
+            if items:
+                break
+                
+        if not items:
+            # Try finding entries without namespace if none found
+            items = root.findall(".//entry") 
+            
+        if not items:
             nsmap = getattr(root, 'nsmap', {})
             default_ns = nsmap.get(None, '')
             xmlns = root.get('xmlns', '')
             
             raise ValueError(
-                f"Feed tag 'feed' found but no entries found and not in Atom namespace. "
+                f"Feed tag 'feed' found but no entries found. "
                 f"Found namespaces - default: {default_ns}, xmlns: {xmlns}"
             )
     elif root_tag == "rdf":
@@ -162,8 +172,8 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType) -> FastFeedParserD
     fields: tuple[tuple[str, str, str, str, bool], ...] = (
         (
             "title",
-            "title",
-            "{http://www.w3.org/2005/Atom}title",
+            "title", 
+            "title",  # Try without namespace first
             "{http://purl.org/rss/1.0/}channel/{http://purl.org/rss/1.0/}title",
             False,
         ),
