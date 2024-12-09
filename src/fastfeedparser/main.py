@@ -121,8 +121,6 @@ def parse(source: str | bytes) -> FastFeedParserDict:
             items = channel.findall("item")
     else:
         raise ValueError(f"Unknown feed type: {root.tag}")
-    if not items:
-        raise ValueError("No entries found in the feed")
 
     feed = _parse_feed_info(channel, feed_type)
 
