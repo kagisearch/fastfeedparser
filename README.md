@@ -139,8 +139,8 @@ Each entry contains:
 ## Requirements
 
 - Python 3.7+
+- dateparser
 - lxml
-- parsedatetime
 - python-dateutil
 
 ## Contributing
