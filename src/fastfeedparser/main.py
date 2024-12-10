@@ -12,7 +12,7 @@ from urllib.request import (
     build_opener,
 )
 
-import parsedatetime
+import dateparser
 from dateutil import parser as dateutil_parser
 from dateutil.tz import gettz
 from lxml import etree
@@ -23,7 +23,6 @@ if TYPE_CHECKING:
 
 _FeedType = Literal["rss", "atom", "rdf"]
 
-_CAL = parsedatetime.Calendar()
 _UTC = datetime.timezone.utc
 
 
@@ -623,31 +622,42 @@ def _get_element_value(
         return el.get(attribute)
     return el.text
 
-def custom_tzinfos(tzname: Optional[str], tzoffset: Optional[Union[int, float, tzinfo]]) -> Optional[tzinfo]:
-    """Custom timezone info resolver for date parsing.
-    
-    Args:
-        tzname: Timezone name string (e.g. 'EST', 'UTC', 'Europe/London')
-        tzoffset: Timezone offset in hours or tzinfo object
-        
-    Returns:
-        tzinfo: A timezone object if resolution successful
-        None: If timezone cannot be resolved
-        
-    Examples:
-        >>> custom_tzinfos('EST', None)  # Returns EST timezone
-        >>> custom_tzinfos(None, -5)     # Returns UTC-5 offset
-        >>> custom_tzinfos('Invalid', None)  # Returns None
-    """
-    # Attempt to resolve with gettz
-    tz = gettz(tzname)
-    if tz is not None:
-        return tz
-    # Fall back to a fixed offset if provided  
-    if tzoffset is not None:
-        return tzoffset
-    # Otherwise, return None (let parse handle the exception)
-    return None
+custom_tzinfos = {
+    'EST': -5 * 3600,  # Eastern Standard Time
+    'CST': -6 * 3600,  # Central Standard Time
+    'PST': -8 * 3600,  # Pacific Standard Time
+    'MST': -7 * 3600,  # Mountain Standard Time
+    'EDT': -4 * 3600,  # Eastern Daylight Time
+    'CDT': -5 * 3600,  # Central Daylight Time
+    'PDT': -7 * 3600,  # Pacific Daylight Time
+    'MDT': -6 * 3600,  # Mountain Daylight Time
+    'GMT': 0,          # Greenwich Mean Time
+    'BST': 1 * 3600,   # British Summer Time
+    'CET': 1 * 3600,   # Central European Time
+    'CEST': 2 * 3600,  # Central European Summer Time
+    'EET': 2 * 3600,   # Eastern European Time 
+    'EEST': 3 * 3600,  # Eastern European Summer Time
+    'MSK': 3 * 3600,   # Moscow Time
+    'IST': 5.5 * 3600, # Indian Standard Time
+    'SST': 8 * 3600,   # Singapore Standard Time
+    'CST': 8 * 3600,   # China Standard Time
+    'JST': 9 * 3600,   # Japan Standard Time
+    'KST': 9 * 3600,   # Korea Standard Time
+    'AEST': 10 * 3600, # Australian Eastern Standard Time
+    'AEDT': 11 * 3600, # Australian Eastern Daylight Time
+    'ACST': 9.5 * 3600,# Australian Central Standard Time
+    'ACDT': 10.5 * 3600,# Australian Central Daylight Time
+    'AWST': 8 * 3600,  # Australian Western Standard Time
+    'NZST': 12 * 3600, # New Zealand Standard Time
+    'NZDT': 13 * 3600, # New Zealand Daylight Time
+    'HAST': -10 * 3600,# Hawaii-Aleutian Standard Time
+    'HADT': -9 * 3600, # Hawaii-Aleutian Daylight Time
+    'AKST': -9 * 3600, # Alaska Standard Time
+    'AKDT': -8 * 3600, # Alaska Daylight Time
+    'WET': 0,          # Western European Time
+    'WEST': 1 * 3600,  # Western European Summer Time
+    # Add more timezones as needed
+}
 
 def _parse_date(date_str: str) -> str | None:
     """Parse date string and return as an ISO 8601 formatted UTC string.
@@ -664,17 +674,14 @@ def _parse_date(date_str: str) -> str | None:
     # Try dateutil.parser first
     try:
         dt = dateutil_parser.parse(date_str, tzinfos=custom_tzinfos, ignoretz=False)
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=_UTC)
         return dt.astimezone(_UTC).isoformat()
     except (ValueError, OverflowError):
         pass
 
     # Fall back to parsedatetime
     try:
-        time_struct, parse_status = _CAL.parseDT(date_str, tzinfo=_UTC)
-        if parse_status:
-            return time_struct.isoformat()  # time_struct already in UTC
+        dt = dateparser.parse(date_str)
+        return dt.astimezone(_UTC).isoformat()
     except ValueError:
         pass
 
