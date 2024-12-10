@@ -675,15 +675,33 @@ def _parse_date(date_str: str) -> str | None:
     try:
         dt = dateutil_parser.parse(date_str, tzinfos=custom_tzinfos, ignoretz=False)
         return dt.astimezone(_UTC).isoformat()
-    except (ValueError, OverflowError):
+    except ValueError as e:
+        # Try parsing just the date portion if full datetime parse fails
+        try:
+           # Handle ISO8601 format with explicit offset
+           if 'T' in date_str and ('+' in date_str or '-' in date_str.split('T')[1]):
+               dt = dateutil_parser.parse(date_str)
+           elif '24:00:00' in date_str:
+                   date_str = date_str.replace('24:00:00', '00:00:00')
+                   dt = dateutil_parser.parse(date_str)
+           else:
+                   dt = dateutil_parser.parse(date_str.split()[0], ignoretz=True)
+           # Since no time info, set to start of day UTC
+           return dt.astimezone(_UTC).isoformat()
+        except ValueError as e:
+            print(f"ValueError parsing date portion: {e}")
+            pass
+    except Exception as e:
+        print(f"Unexpected error parsing date: {e}")
         pass
 
-    # Fall back to parsedatetime
-    try:
-        dt = dateparser.parse(date_str)
-        return dt.astimezone(_UTC).isoformat()
-    except ValueError:
-        pass
+    # # Fall back to parsedatetime
+    # try:
+    #     dt = dateparser.parse(date_str)
+    #     if dt:
+    #        return dt.astimezone(_UTC).isoformat()
+    # except ValueError:
+    #     pass
 
     
     # If all parsing attempts fail, return None instead of original string

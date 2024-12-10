@@ -19,13 +19,15 @@ feeds = [
     "https://realphysics.blogspot.com/feeds/posts/default",
     "https://staysaasy.com/feed.xml",
     "https://explog.in/rss.xml",
+    "https://planet.clojure.in/atom.xml",
+    "https://www.youtube.com/feeds/videos.xml?channel_id=UCsE74YJvPJpaquzTPMO8hAA",
     "https://www.petekeen.net/index.xml",
     "https://jelleraaijmakers.nl/feed",
     "https://fale.io/index.xml",
     "https://gessfred.xyz/rss.xml",
     "https://fanf.dreamwidth.org/data/rss",
-    "https://jacobwsmith.xyz/feed.xml",
     "https://bernsteinbear.com/feed.xml",
+    "https://feeds.kottke.org/main",
     "https://alefesouza.com/feed/",
     "https://amitg.blog/feed.atom",
     "https://www.alwaystwisted.com/rss.php",
@@ -56,6 +58,8 @@ feeds = [
     "https://raggywaltz.com/feed/",
     "https://herman.bearblog.dev/feed/",
 ]
+
+
 
 headers = {
     "User-Agent": "Mozilla/5.0 fastfeedparser",
