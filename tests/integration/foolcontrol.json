@@ -46,7 +46,7 @@
         }
       ],
       "description": "The blog post you&#8217;re reading is hosted on a private Kubernetes cluster that runs inside my home. Another workload that&#8217;s running on same cluster is...",
-      "link": "https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4621",
+      "link": "https://foolcontrol.org/?p=4621",
       "links": [],
       "published": "2024-02-26T20:00:23+00:00",
       "title": "App architecture with reliability in mind: From Kubernetes to Serverless with GCP Cloud Build & Cloud Run"
@@ -63,7 +63,7 @@
         }
       ],
       "description": "Almost 4 years after initial auto-cpufreq release, 4200 Github stars, 65 contributors &#38; 42 releases, tool being topic of numerous Linux podcasts and shows, and...",
-      "link": "https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4603",
+      "link": "https://foolcontrol.org/?p=4603",
       "links": [],
       "published": "2023-09-30T13:45:01+00:00",
       "title": "auto-cpufreq v2.0"
@@ -80,7 +80,7 @@
         }
       ],
       "description": "Considering I&#8217;ve created my own private cloud in my home as part of: wp-k8s: WordPress on privately hosted Kubernetes cluster (Raspberry Pi 4 + Synology)....",
-      "link": "https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4555",
+      "link": "https://foolcontrol.org/?p=4555",
       "links": [],
       "published": "2023-05-22T10:44:46+00:00",
       "title": "rpi-microk8s-bootstrap: Automate RPI device conversion into Kubernetes cluster nodes with Terraform"
@@ -97,7 +97,7 @@
         }
       ],
       "description": "A story to tell As part of my career at ING with my previous team, MLP (Machine Learning Platform). I spent over 2 years leading...",
-      "link": "https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4508",
+      "link": "https://foolcontrol.org/?p=4508",
       "links": [],
       "published": "2023-04-03T14:16:15+00:00",
       "title": "“Kubernetes, Resistance is Futile” – KubeCon & KCD 2023 talk"
@@ -114,7 +114,7 @@
         }
       ],
       "description": "Amsterdam is a great city to enjoy a beer, or two. However, after you had your beers and you&#8217;re strolling down the streets, you might...",
-      "link": "https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4393",
+      "link": "https://foolcontrol.org/?p=4393",
       "links": [],
       "published": "2022-08-08T09:48:21+00:00",
       "title": "atuf.app: Amsterdam Toilet & Urinal Finder"
@@ -131,7 +131,7 @@
         }
       ],
       "description": "Blog post you&#8217;re reading right now is privately hosted on Raspberry PI 4 Kubernetes cluster with its data coming from NFS share and MariaDB on...",
-      "link": "https://wp-cloud-run-4xx42k3twa-ez.a.run.app/?p=4004",
+      "link": "https://foolcontrol.org/?p=4004",
       "links": [],
       "published": "2021-11-12T11:09:31+00:00",
       "title": "wp-k8s: WordPress on privately hosted Kubernetes cluster (Raspberry Pi 4 + Synology)"
@@ -148,7 +148,7 @@
         }
       ],
       "description": "tl;dr? wp-k8s (Github) Title of this blog post isn&#8217;t a collection of every Kubernetes related buzzword I could think of. It&#8217;s a collection of technologies...",
-      "link": "https://k8s.hodzic.org/?p=3754",
+      "link": "https://foolcontrol.org/?p=3754",
       "links": [],
       "published": "2021-10-17T07:40:54+00:00",
       "title": "wp-k8s: WordPress on Kubernetes project (GKE, cloud SQL, NFS, cluster autoscaling, HPA, VPA, Ingress, Let’s Encrypt)"
@@ -165,7 +165,7 @@
         }
       ],
       "description": "TL;DRVisit degiro-trading-tracker on Github I was always interested in stocks and investing. While I wanted to get into trading for long time, I could never...",
-      "link": "https://k8s.hodzic.org/?p=3614",
+      "link": "https://foolcontrol.org/?p=3614",
       "links": [],
       "published": "2020-11-16T07:21:34+00:00",
       "title": "Degiro trading tracker – Simplified tracking of your investments"
