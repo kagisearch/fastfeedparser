@@ -355,7 +355,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
     guid_text = guid.text.strip() if guid is not None and guid.text else None
     is_guid_url = guid_text and guid_text.startswith(("http://", "https://"))
 
-    if is_guid_url:
+    if is_guid_url and "link" not in entry:  # Only use guid if link doesn't exist
         # Prefer guid as link when it looks like a URL
         entry["link"] = guid_text
         if alternate_link:
@@ -689,21 +689,19 @@ def _parse_date(date_str: str) -> str | None:
            # Since no time info, set to start of day UTC
            return dt.astimezone(_UTC).isoformat()
         except ValueError as e:
-            print(f"ValueError parsing date portion: {e}")
             pass
     except Exception as e:
-        print(f"Unexpected error parsing date: {e}")
         pass
 
-    # # Fall back to parsedatetime
-    # try:
-    #     dt = dateparser.parse(date_str)
-    #     if dt:
-    #        return dt.astimezone(_UTC).isoformat()
-    # except ValueError:
-    #     pass
+    # Fall back to parsedatetime
+    try:
+         dt = dateparser.parse(date_str)
+         if dt:
+            return dt.astimezone(_UTC).isoformat()
+    except ValueError:
+         pass
 
     
     # If all parsing attempts fail, return None instead of original string
-    return None
+    return date_str
 
