@@ -585,6 +585,7 @@ def _field_value_getter(
                 )
                 if is_attr
                 else _get_element_value(root, atom_css)
+                or _get_element_value(root, rdf_css)
             )
 
     elif feed_type == "atom":
