@@ -573,6 +573,9 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         for category in item.findall("category"):
             if category.text:
                 categories.append({"term": category.text})
+        for category in item.findall("{http://purl.org/dc/elements/1.1/}subject"):
+            if category.text:
+                categories.append({"term": category.text})
     elif feed_type == "atom":
         for category in item.findall("{http://www.w3.org/2005/Atom}category"):
             categories.append(dict(category.items()))
