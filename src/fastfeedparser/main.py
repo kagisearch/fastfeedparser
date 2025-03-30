@@ -567,6 +567,19 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         if comments:
             entry["comments"] = comments
 
+    # Handle categories/tags.
+    categories: list[dict] = []
+    if feed_type == "rss":
+        for category in item.findall("category"):
+            if category.text:
+                categories.append({"term": category.text})
+    elif feed_type == "atom":
+        for category in item.findall("{http://www.w3.org/2005/Atom}category"):
+            categories.append(dict(category.items()))
+
+    if categories:
+        entry["categories"] = categories
+
     return entry
 
 
@@ -596,6 +609,7 @@ def _field_value_getter(
                 (
                     _get_element_value(root, atom_css, attribute="href")
                     or _get_element_value(root, atom_css, attribute="link")
+                    or _get_element_value(root, atom_css, attribute="term")
                 )
                 if is_attr
                 else None
