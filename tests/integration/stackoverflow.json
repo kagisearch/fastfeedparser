@@ -13,6 +13,23 @@
         }
       ],
       "published": "2015-02-13T22:39:34+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": "https://stackoverflow.com/tags",
+          "term": "python"
+        },
+        {
+          "label": null,
+          "scheme": "https://stackoverflow.com/tags",
+          "term": "setuptools"
+        },
+        {
+          "label": null,
+          "scheme": "https://stackoverflow.com/tags",
+          "term": "requirements"
+        }
+      ],
       "title": "Setuptools \"development\" Requirements",
       "updated": "2017-02-02T00:36:19+00:00"
     },

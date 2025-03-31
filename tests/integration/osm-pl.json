@@ -14,6 +14,13 @@
       "link": "https://openstreetmap.org.pl/2024/cyfrowy-kanon-krajoznawczy-polski-bedzie-opracowywany-przez-osmp/",
       "links": [],
       "published": "2024-08-11T09:08:25+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Bez kategorii"
+        }
+      ],
       "title": "Cyfrowy Kanon Krajoznawczy Polski będzie opracowywany przez OSMP!"
     },
     {
@@ -30,6 +37,13 @@
       "link": "https://openstreetmap.org.pl/2024/sotm-eu-2024-community-tickets-70/",
       "links": [],
       "published": "2024-07-05T09:57:07+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Bez kategorii"
+        }
+      ],
       "title": "SotM EU 2024 – Community tickets -70%"
     },
     {
@@ -46,6 +60,13 @@
       "link": "https://openstreetmap.org.pl/2024/introducing-another-sponsor-of-sotm-eu-2024/",
       "links": [],
       "published": "2024-06-25T08:46:02+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Bez kategorii"
+        }
+      ],
       "title": "Introducing another sponsor of SotM Eu 2024"
     },
     {
@@ -62,6 +83,13 @@
       "link": "https://openstreetmap.org.pl/2024/bilety-sotm-eu-2024/",
       "links": [],
       "published": "2024-06-13T21:02:02+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Bez kategorii"
+        }
+      ],
       "title": "Ruszyła sprzedaż biletów na konferencję SotM EU 2024"
     },
     {
@@ -78,6 +106,13 @@
       "link": "https://openstreetmap.org.pl/2024/zapytanie-ofertowe-kanon-krajoznawczy/",
       "links": [],
       "published": "2024-06-09T17:58:08+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Bez kategorii"
+        }
+      ],
       "title": "Zapytanie ofertowe"
     },
     {
@@ -94,6 +129,13 @@
       "link": "https://openstreetmap.org.pl/2024/przedluzony-czas-na-zgloszenia-tematow-sotm-eu/",
       "links": [],
       "published": "2024-05-01T08:57:36+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Bez kategorii"
+        }
+      ],
       "title": "Przedłużony czas na zgłoszenia tematów SotM Eu"
     },
     {
@@ -110,6 +152,18 @@
       "link": "https://openstreetmap.org.pl/2024/tomtom-pierwszym-sponsorem-sotm-eu-2024/",
       "links": [],
       "published": "2024-04-29T18:55:51+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Bez kategorii"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "State of the Map Europe"
+        }
+      ],
       "title": "TomTom pierwszym sponsorem SotM Eu 2024"
     },
     {
@@ -126,6 +180,13 @@
       "link": "https://openstreetmap.org.pl/2024/dane-adresowe-i-budynki-dla-polski-dostepne-w-rapid/",
       "links": [],
       "published": "2024-01-16T22:21:53+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Bez kategorii"
+        }
+      ],
       "title": "Dane adresowe i budynki dla Polski dostępne w Rapid!"
     }
   ],

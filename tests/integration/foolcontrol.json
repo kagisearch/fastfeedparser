@@ -15,6 +15,33 @@
       "link": "https://foolcontrol.org/?p=4802",
       "links": [],
       "published": "2024-10-20T16:07:49+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloud"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "DevOps"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Technology"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Tutorial"
+        }
+      ],
       "title": "wp-cloud-run: Ultimate WordPress setup on (GCP) Cloud Run"
     },
     {
@@ -32,6 +59,88 @@
       "link": "https://foolcontrol.org/?p=4781",
       "links": [],
       "published": "2024-09-22T16:00:59+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Linux"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Software"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Technology"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "24.04"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "backup"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "encryption"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "ext4"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "filesystem"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "power"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "recovery"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "reiserfs"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "rollback"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "snapshot"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "snapshots"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "ubuntu"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "zfs"
+        }
+      ],
       "title": "Effortless Linux backups: Power of OpenZFS Snapshots on Ubuntu 24.04"
     },
     {
@@ -49,6 +158,108 @@
       "link": "https://foolcontrol.org/?p=4621",
       "links": [],
       "published": "2024-02-26T20:00:23+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "DevOps"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "HowTo"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Software"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "app"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "architecture"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "build"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cicd"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloud"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloudbuild"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloudrun"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "deployment"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "docker"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "dr"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "gcp"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "google"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "googlecloud"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "k8s"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "reliability"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "run"
+        }
+      ],
       "title": "App architecture with reliability in mind: From Kubernetes to Serverless with GCP Cloud Build & Cloud Run"
     },
     {
@@ -66,6 +277,93 @@
       "link": "https://foolcontrol.org/?p=4603",
       "links": [],
       "published": "2023-09-30T13:45:01+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Software"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Technology"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "auto-cpufreq"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "automatic"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cpu"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "github"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "gui"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Linux"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "optimizer"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "power"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "power optimizer"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "release"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "speed"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "tool"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "v2.0"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "youtube"
+        }
+      ],
       "title": "auto-cpufreq v2.0"
     },
     {
@@ -83,6 +381,63 @@
       "link": "https://foolcontrol.org/?p=4555",
       "links": [],
       "published": "2023-05-22T10:44:46+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "DevOps"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "bootstrap"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "k8s"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "kubernetes"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "module"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "node"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "pi"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "rpi"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "terraform"
+        }
+      ],
       "title": "rpi-microk8s-bootstrap: Automate RPI device conversion into Kubernetes cluster nodes with Terraform"
     },
     {
@@ -100,6 +455,83 @@
       "link": "https://foolcontrol.org/?p=4508",
       "links": [],
       "published": "2023-04-03T14:16:15+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Software"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Technology"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloudnative"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloudnativecon"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cncf"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "conference"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "futile"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "k8s"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "kcd"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "kubecon"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "kubernetes"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "migration"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "resistance"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "talk"
+        }
+      ],
       "title": "“Kubernetes, Resistance is Futile” – KubeCon & KCD 2023 talk"
     },
     {
@@ -117,6 +549,83 @@
       "link": "https://foolcontrol.org/?p=4393",
       "links": [],
       "published": "2022-08-08T09:48:21+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "DevOps"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "amsterdam"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "app"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "atuf"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "finder"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "folium"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "leaflet"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "map"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "maps"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "python"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "toilet"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "urinal"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "web"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "webapp"
+        }
+      ],
       "title": "atuf.app: Amsterdam Toilet & Urinal Finder"
     },
     {
@@ -134,6 +643,118 @@
       "link": "https://foolcontrol.org/?p=4004",
       "links": [],
       "published": "2021-11-12T11:09:31+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "DevOps"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "HowTo"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "4"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloud"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "hpa"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "k8s"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "kubernetes"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "letsencrypt"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "mariadb"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "mysql"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "nas"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "nfs"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "on-premise"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "pi"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "private"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Raspberry"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "rpi"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "synology"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "vpa"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "w-k8s"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "wordpress"
+        }
+      ],
       "title": "wp-k8s: WordPress on privately hosted Kubernetes cluster (Raspberry Pi 4 + Synology)"
     },
     {
@@ -151,6 +772,103 @@
       "link": "https://foolcontrol.org/?p=3754",
       "links": [],
       "published": "2021-10-17T07:40:54+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "DevOps"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Tutorial"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "autoscaling"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cert-manager"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloud"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cluster"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "gcp"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "gke"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "hpa"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "ingress"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "k8s"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "kubernetes"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "letsencrypt"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "nfs"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "sql"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "vpa"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "wordpress"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "wp-k8s"
+        }
+      ],
       "title": "wp-k8s: WordPress on Kubernetes project (GKE, cloud SQL, NFS, cluster autoscaling, HPA, VPA, Ingress, Let’s Encrypt)"
     },
     {
@@ -168,6 +886,78 @@
       "link": "https://foolcontrol.org/?p=3614",
       "links": [],
       "published": "2020-11-16T07:21:34+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Project"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Software"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "Technology"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "analyzer"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cli"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "degiro"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "investments"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "pandas"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "python"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "simple"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "simplified"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "stocks"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "tracker"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "trading"
+        }
+      ],
       "title": "Degiro trading tracker – Simplified tracking of your investments"
     }
   ],

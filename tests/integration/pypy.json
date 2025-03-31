@@ -14,6 +14,13 @@
       "link": "https://www.pypy.org/posts/2024/11/guest-post-final-encoding-in-rpython.html",
       "links": [],
       "published": "2024-11-14T08:42:36+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "guestpost"
+        }
+      ],
       "title": "Guest Post: Final Encoding in RPython Interpreters"
     },
     {
@@ -30,6 +37,18 @@
       "link": "https://www.pypy.org/posts/2024/10/jit-peephole-dsl.html",
       "links": [],
       "published": "2024-10-23T15:00:00+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "jit"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "z3"
+        }
+      ],
       "title": "A DSL for Peephole Transformation Rules of Integer Operations in the PyPy JIT"
     },
     {
@@ -46,6 +65,18 @@
       "link": "https://www.pypy.org/posts/2024/08/portaone.html",
       "links": [],
       "published": "2024-08-29T09:00:00+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "casestudy"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "guestpost"
+        }
+      ],
       "title": "Guest Post: How PortaOne uses PyPy for high-performance processing, connecting over 1B of phone calls every month"
     },
     {
@@ -62,6 +93,13 @@
       "link": "https://www.pypy.org/posts/2024/08/pypy-v7317-release.html",
       "links": [],
       "published": "2024-08-28T12:22:08+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "release"
+        }
+      ],
       "title": "PyPy v7.3.17 release"
     },
     {
@@ -78,6 +116,13 @@
       "link": "https://www.pypy.org/posts/2024/08/conda-forge-proposes-dropping-support-for-pypy.html",
       "links": [],
       "published": "2024-08-09T06:27:41+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "conda-forge"
+        }
+      ],
       "title": "Conda-forge proposes sunsetting support for PyPy"
     },
     {
@@ -94,6 +139,18 @@
       "link": "https://www.pypy.org/posts/2024/08/toy-knownbits.html",
       "links": [],
       "published": "2024-08-03T14:00:00+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "toy-optimizer"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "z3"
+        }
+      ],
       "title": "A Knownbits Abstract Domain for the Toy Optimizer, Correctly"
     },
     {
@@ -110,6 +167,13 @@
       "link": "https://www.pypy.org/posts/2024/07/toy-abstract-interpretation.html",
       "links": [],
       "published": "2024-07-24T14:48:00+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "toy-optimizer"
+        }
+      ],
       "title": "Abstract interpretation in the Toy Optimizer"
     },
     {
@@ -126,6 +190,18 @@
       "link": "https://www.pypy.org/posts/2024/07/mining-jit-traces-missing-optimizations-z3.html",
       "links": [],
       "published": "2024-07-19T17:01:09+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "jit"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "z3"
+        }
+      ],
       "title": "Mining JIT traces for missing optimizations with Z3"
     },
     {
@@ -142,6 +218,18 @@
       "link": "https://www.pypy.org/posts/2024/07/finding-simple-rewrite-rules-jit-z3.html",
       "links": [],
       "published": "2024-07-12T19:14:09+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "jit"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "z3"
+        }
+      ],
       "title": "Finding Simple Rewrite Rules for the JIT with Z3"
     },
     {
