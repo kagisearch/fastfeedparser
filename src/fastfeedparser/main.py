@@ -268,7 +268,45 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType) -> FastFeedParserD
         if managing_editor:
             feed["author"] = managing_editor
 
+    # Parse feed-level tags/categories
+    tags = _parse_tags(channel, feed_type)
+    if tags:
+        feed["tags"] = tags
+
     return FastFeedParserDict(feed=feed)
+
+
+def _parse_tags(element: _Element, feed_type: _FeedType) -> list[dict[str, str | None]] | None:
+    """Parse tags/categories from an element based on feed type."""
+    tags_list: list[dict[str, str | None]] = []
+    if feed_type == "rss":
+        # RSS uses <category> elements
+        for cat in element.findall("category"):
+            term = cat.text.strip() if cat.text else None
+            if term:
+                tags_list.append({"term": term, "scheme": cat.get("domain"), "label": None})
+    elif feed_type == "atom":
+        # Atom uses <category> elements with attributes
+        for cat in element.findall("{http://www.w3.org/2005/Atom}category"):
+            term = cat.get("term")
+            if term:
+                tags_list.append({"term": term, "scheme": cat.get("scheme"), "label": cat.get("label")})
+    elif feed_type == "rdf":
+        # RDF uses <dc:subject> or <taxo:topic>
+        for subject in element.findall("{http://purl.org/dc/elements/1.1/}subject"):
+            term = subject.text.strip() if subject.text else None
+            if term:
+                tags_list.append({"term": term, "scheme": None, "label": None})
+        # Example for taxo:topic (might need refinement based on actual usage)
+        for topic in element.findall("{http://purl.org/rss/1.0/modules/taxonomy/}topic"):
+             # rdf:resource often contains the tag URL which could be scheme+term
+             resource = topic.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource")
+             term = topic.text.strip() if topic.text else resource # Use text or resource as term
+             if term:
+                 tags_list.append({"term": term, "scheme": resource, "label": None})
+
+
+    return tags_list if tags_list else None
 
 
 def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDict:
@@ -566,6 +604,11 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         comments = _get_element_value(item, "comments")
         if comments:
             entry["comments"] = comments
+
+    # Parse entry-level tags/categories
+    tags = _parse_tags(item, feed_type)
+    if tags:
+        entry["tags"] = tags
 
     return entry
 
