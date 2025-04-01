@@ -285,6 +285,11 @@ def _parse_tags(element: _Element, feed_type: _FeedType) -> list[dict[str, str |
             term = cat.text.strip() if cat.text else None
             if term:
                 tags_list.append({"term": term, "scheme": cat.get("domain"), "label": None})
+        # RSS might uses <dc:subject>
+        for subject in element.findall("{http://purl.org/dc/elements/1.1/}subject"):
+            term = subject.text.strip() if subject.text else None
+            if term:
+                tags_list.append({"term": term, "scheme": None, "label": None})
     elif feed_type == "atom":
         # Atom uses <category> elements with attributes
         for cat in element.findall("{http://www.w3.org/2005/Atom}category"):
