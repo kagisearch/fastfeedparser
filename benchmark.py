@@ -60,7 +60,6 @@ feeds = [
 ]
 
 
-
 headers = {
     "User-Agent": "Mozilla/5.0 fastfeedparser",
     "Accept": "*/*",
@@ -76,6 +75,9 @@ def test_parsers():
 
     total_ffp_time = 0
     total_fp_time = 0
+    total_ffp_entries = 0
+    total_fp_entries = 0
+    
     successful_feeds = 0
 
     for url in feeds:
@@ -89,6 +91,7 @@ def test_parsers():
                 start_time = time.perf_counter()
                 feed = fastfeedparser.parse(content)
                 ffp_time = time.perf_counter() - start_time
+                total_ffp_entries+=len(feed.entries)
                 print(f"FastFeedParser: {len(feed.entries)} entries in {ffp_time:.3f}s")
             except Exception as e:
                 ffp_time = time.perf_counter() - start_time
@@ -99,6 +102,7 @@ def test_parsers():
                 start_time = time.perf_counter()
                 feed = feedparser.parse(content)
                 fp_time = time.perf_counter() - start_time
+                total_fp_entries+=len(feed.entries)
                 print(f"Feedparser: {len(feed.entries)} entries in {fp_time:.3f}s")                
             except Exception as e:
                 fp_time = time.perf_counter() - start_time
@@ -118,6 +122,7 @@ def test_parsers():
     print("-" * 50)
     print(f"Successfully tested {successful_feeds} feeds")
     if successful_feeds > 0:
+        print(f"Entries FFP: {total_ffp_entries} Entries: FP {total_fp_entries}")
         print(f"Average FastFeedParser time: {total_ffp_time/successful_feeds:.3f}s")
         print(f"Average Feedparser time: {total_fp_time/successful_feeds:.3f}s")
         print(f"FastFeedParser is {(total_fp_time/total_ffp_time):.1f}x faster")

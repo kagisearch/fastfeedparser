@@ -19,11 +19,6 @@
         {
           "label": null,
           "scheme": null,
-          "term": "cloud"
-        },
-        {
-          "label": null,
-          "scheme": null,
           "term": "DevOps"
         },
         {
@@ -40,6 +35,11 @@
           "label": null,
           "scheme": null,
           "term": "Tutorial"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "cloud"
         }
       ],
       "title": "wp-cloud-run: Ultimate WordPress setup on (GCP) Cloud Run"

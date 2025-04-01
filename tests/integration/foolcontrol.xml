@@ -37,7 +37,7 @@
 
 		<dc:creator><![CDATA[Adnan Hodzic]]></dc:creator>
 		<pubDate>Sun, 20 Oct 2024 16:07:49 +0000</pubDate>
-				<category><![CDATA[cloud]]></category>
+		<dc:subject><![CDATA[cloud]]></dc:subject>
 		<category><![CDATA[DevOps]]></category>
 		<category><![CDATA[Project]]></category>
 		<category><![CDATA[Technology]]></category>
