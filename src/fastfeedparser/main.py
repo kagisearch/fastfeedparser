@@ -353,6 +353,18 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
     )
 
     entry = FastFeedParserDict()
+    # ------------------------------------------------------------------
+    # 1) Collect a stable identifier for this entry.
+    #    Atom   → <id>
+    #    RSS    → <guid>
+    #    RDF    → rdf:about attribute on the <item>
+    # ------------------------------------------------------------------
+    atom_id = _get_element_value(item, "{http://www.w3.org/2005/Atom}id")
+    rss_guid = _get_element_value(item, "guid")
+    rdf_about = item.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about")
+    entry_id: Optional[str] = (atom_id or rss_guid or rdf_about)
+    if entry_id:
+        entry["id"] = entry_id.strip()
     get_field_value = _field_value_getter(item, feed_type)
     for field in fields:
         value = get_field_value(*field[1:])
@@ -413,6 +425,13 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         and guid.get("isPermaLink") == "true"
     ):
         entry["link"] = guid_text
+
+    # ------------------------------------------------------------------
+    # 2) Guarantee that every entry has an id.  If none of the dedicated
+    #    id sources were present, fall back to the chosen link.
+    # ------------------------------------------------------------------
+    if "id" not in entry and "link" in entry:
+        entry["id"] = entry["link"]
 
     content = None
     if feed_type == "rss":
