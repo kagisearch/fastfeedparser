@@ -714,7 +714,7 @@ def _parse_date(date_str: str) -> Optional[str]:
         date_str: Date string in any common format
 
     Returns:
-        ISO 8601 formatted UTC date string or None if parsing fails
+        ISO‑8601 formatted UTC date string, or None when parsing fails
     """
     if not date_str:
         return None
@@ -750,6 +750,6 @@ def _parse_date(date_str: str) -> Optional[str]:
          pass
 
     
-    # If all parsing attempts fail, return None instead of original string
-    return date_str
+    # If all parsing attempts fail, return None
+    return None
 
