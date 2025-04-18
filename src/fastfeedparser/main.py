@@ -4,7 +4,7 @@ import datetime
 import gzip
 import re
 import zlib
-from typing import Literal, TYPE_CHECKING
+from typing import Any, Callable, Optional, TYPE_CHECKING, Literal
 from urllib.request import (
     HTTPErrorProcessor,
     HTTPRedirectHandler,
@@ -18,7 +18,6 @@ from dateutil.tz import gettz
 from lxml import etree
 
 if TYPE_CHECKING:
-    from collections.abc import Callable
     from lxml.etree import _Element
 
 _FeedType = Literal["rss", "atom", "rdf"]
@@ -29,7 +28,7 @@ _UTC = datetime.timezone.utc
 class FastFeedParserDict(dict):
     """A dictionary that allows access to its keys as attributes."""
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Any:
         try:
             return self[name]
         except KeyError:
@@ -37,7 +36,7 @@ class FastFeedParserDict(dict):
                 f"'FastFeedParserDict' object has no attribute '{name}'"
             )
 
-    def __setattr__(self, name, value):
+    def __setattr__(self, name: str, value: Any) -> None:
         self[name] = value
 
 
@@ -218,9 +217,9 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType) -> FastFeedParserD
         }
 
     # Add links
-    feed_links: list[dict] = []
+    feed_links: list[dict[str, Optional[str]]] = []
     feed["links"] = feed_links
-    feed_link: str | None = None
+    feed_link: Optional[str] = None
     for link in channel.findall("{http://www.w3.org/2005/Atom}link"):
         rel = link.get("rel")
         href = link.get("href") or link.get("link")
@@ -368,9 +367,9 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         entry["published"] = entry["updated"]
 
     # Handle links
-    entry_links: list[dict] = []
+    entry_links: list[dict[str, Optional[str]]] = []
     entry["links"] = entry_links
-    alternate_link: dict | None = None
+    alternate_link: Optional[dict[str, Optional[str]]] = None
     for link in item.findall("{http://www.w3.org/2005/Atom}link"):
         rel = link.get("rel")
         href = link.get("href") or link.get("link")
@@ -467,7 +466,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         entry["description"] = content[:512]
 
     # Handle media content
-    media_contents: list[dict] = []
+    media_contents: list[dict[str, int | str | None]] = []
 
     # Process media:content elements
     for media in item.findall(".//{http://search.yahoo.com/mrss/}content"):
@@ -563,7 +562,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         entry["media_content"] = media_contents
 
     # Handle enclosures
-    enclosures: list[dict] = []
+    enclosures: list[dict[str, int | str | None]] = []
     for enclosure in item.findall("enclosure"):
         enc_item: dict[str, str | int | None] = {
             "url": enclosure.get("url"),
@@ -661,8 +660,8 @@ def _field_value_getter(
 
 
 def _get_element_value(
-    root: _Element, path: str, attribute: str | None = None
-) -> str | None:
+    root: _Element, path: str, attribute: Optional[str] = None
+) -> Optional[str]:
     """Get text content or attribute value of an element."""
     el = root.find(path)
     if el is None:
@@ -671,7 +670,7 @@ def _get_element_value(
         return el.get(attribute)
     return el.text
 
-custom_tzinfos = {
+custom_tzinfos: dict[str, int] = {
     'EST': -5 * 3600,  # Eastern Standard Time
     'CST': -6 * 3600,  # Central Standard Time
     'PST': -8 * 3600,  # Pacific Standard Time
@@ -708,7 +707,7 @@ custom_tzinfos = {
     # Add more timezones as needed
 }
 
-def _parse_date(date_str: str) -> str | None:
+def _parse_date(date_str: str) -> Optional[str]:
     """Parse date string and return as an ISO 8601 formatted UTC string.
 
     Args:
