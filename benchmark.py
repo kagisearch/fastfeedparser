@@ -77,6 +77,7 @@ def test_parsers():
     total_fp_time = 0
     total_ffp_entries = 0
     total_fp_entries = 0
+    fp_time=0
     
     successful_feeds = 0
 

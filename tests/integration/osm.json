@@ -11,6 +11,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 22:55:15 +0000 Closed Thu, 28 Nov 2024 22:55:16 +0000 Author Barroszt Tags changesets_count = 8080 closed:note = 4380118;4430140;4470279;4493718;4493720;4493721;4493767;4493773;4493774;4493776;4496497;4496501;4496509;4496527;4496535;4500632;4500638;4500640;4507878;4507879;4509539;4509541;4509544;4509554;4511752;4532475;4532481;4532482;4532483;4532485;4532487;4532488 comment = rozwiązanie uwag i aktualizacja sieci drogowej w Sęku cr",
+      "id": "https://www.openstreetmap.org/changeset/159721895",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159721895/download",
       "links": [
         {
@@ -35,6 +36,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:45:26 +0000 Closed Thu, 28 Nov 2024 00:45:26 +0000 Author Big & Bad Tags changesets_count = 838 comment = Added new objects, adjusted existing created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS) locale = nl resolved:crossing_ways:highway-highway = 1",
+      "id": "https://www.openstreetmap.org/changeset/159682247",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159682247/download",
       "links": [
         {
@@ -59,6 +61,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:33:01 +0000 Closed Thu, 28 Nov 2024 00:33:01 +0000 Author Big & Bad Tags comment = Adjusted existing objects created_by = JOSM/1.5 (19096 nl) source = survey",
+      "id": "https://www.openstreetmap.org/changeset/159682068",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159682068/download",
       "links": [
         {
@@ -83,6 +86,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:19:35 +0000 Closed Thu, 28 Nov 2024 00:19:35 +0000 Author Big & Bad Tags changesets_count = 836 comment = Adjusted existing objects created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS);Geoportal 2: Ewidencja budynków WMS locale = nl",
+      "id": "https://www.openstreetmap.org/changeset/159681868",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159681868/download",
       "links": [
         {
@@ -107,6 +111,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 22:14:21 +0000 Closed Tue, 26 Nov 2024 22:14:21 +0000 Author adas Tags changesets_count = 13360 comment = dwór created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS) locale = pl",
+      "id": "https://www.openstreetmap.org/changeset/159636514",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159636514/download",
       "links": [
         {
@@ -131,6 +136,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 21:44:23 +0000 Closed Tue, 26 Nov 2024 21:44:24 +0000 Author Barroszt Tags changesets_count = 8076 comment = upiększanie Wrzosów created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: High Resolution Orthophotomap (archival imagery) (WMS);Geoportal 2: Ewidencja budynków WMS;Geoportal 2: Granice działek;Geoportal 2: Punkty adresowe",
+      "id": "https://www.openstreetmap.org/changeset/159635730",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159635730/download",
       "links": [
         {
@@ -155,6 +161,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 20:52:26 +0000 Closed Tue, 26 Nov 2024 20:52:27 +0000 Author Barroszt Tags changesets_count = 8075 comment = upiększanie Wrzosów created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: High Resolution Orthophotomap (archival imagery) (WMS);Geoportal 2: Granice działek;Geoportal 2 Nazwy ulic;Geoportal 2: Ewidencja budynków WMS;Geopor",
+      "id": "https://www.openstreetmap.org/changeset/159634146",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159634146/download",
       "links": [
         {
@@ -179,6 +186,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 14:30:02 +0000 Closed Tue, 26 Nov 2024 14:30:03 +0000 Author abakus_uploader Tags comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM created_by = Abakus StrazakOSM uploader",
+      "id": "https://www.openstreetmap.org/changeset/159619389",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159619389/download",
       "links": [
         {
@@ -203,6 +211,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 13:08:24 +0000 Closed Tue, 26 Nov 2024 13:08:25 +0000 Author Marek-M Tags comment = Korekta geometrii created_by = JOSM/1.5 (19253 pl) source = Geoportal 2: Ortofotomapa (zdjęcia lotnicze) WMTS; Geoportal 2: Budynki i działki",
+      "id": "https://www.openstreetmap.org/changeset/159615516",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159615516/download",
       "links": [
         {
@@ -227,6 +236,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 11:28:02 +0000 Closed Tue, 26 Nov 2024 11:29:28 +0000 Author GBAB Tags comment = boundary=police_district &gt; boundary=police (címkék igazítása a globálisan meglévőkhöz) created_by = JOSM/1.5 (19017 hu)",
+      "id": "https://www.openstreetmap.org/changeset/159611522",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159611522/download",
       "links": [
         {
@@ -251,6 +261,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 19:22:52 +0000 Closed Mon, 25 Nov 2024 19:23:09 +0000 Author Dawid2849 Tags changesets_count = 17522 comment = Wycofanie błędnego revertu created_by = osm-revert git#f090f4f host = <a href=\"https://revert.monicz.dev\" rel=\"nofollow\">https://revert.monicz.dev</a> revert:id = <a href=\"https://www.openstreetmap.org/changeset/159586710\" rel=\"nofollow\">https://www.openstreetmap.org/changeset/159586710</a>",
+      "id": "https://www.openstreetmap.org/changeset/159586827",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159586827/download",
       "links": [
         {
@@ -275,6 +286,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 19:17:43 +0000 Closed Mon, 25 Nov 2024 19:18:07 +0000 Author domeqasz Tags changesets_count = 263 comment = Niepoprawne oznakowanie. created_by = osm-revert git#f090f4f host = <a href=\"https://revert.monicz.dev\" rel=\"nofollow\">https://revert.monicz.dev</a> revert:dmp:way = 1 revert:dmp:way:id = 568574421 revert:fix:way = 131 revert:id = <a href=\"https://www.openstreetmap.org/changeset/159552572\" rel=\"nofollow\">https://www.openstree",
+      "id": "https://www.openstreetmap.org/changeset/159586710",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159586710/download",
       "links": [
         {
@@ -299,6 +311,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 14:12:41 +0000 Closed Mon, 25 Nov 2024 14:12:42 +0000 Author IreuN Tags comment = Mapillary Missing Crossings + Inne/giveway/stop created_by = JOSM/1.5 (19253 pl) source = Geoportal 2: High Resolution Orthophotomap (aerial image) WMTS; Geoportal 2: Orthophotomap (aerial image) WMTS; Mapillary; Mapillary Traffic Signs; Geoportal 2: Ewidencja budynków WMS",
+      "id": "https://www.openstreetmap.org/changeset/159575471",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159575471/download",
       "links": [
         {
@@ -323,6 +336,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 11:01:01 +0000 Closed Mon, 25 Nov 2024 11:01:03 +0000 Author DylaniaCat Tags changesets_count = 75 comment = minor edit created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Esri World Imagery locale = en-AU resolved:crossing_ways:highway-waterway = 1",
+      "id": "https://www.openstreetmap.org/changeset/159568063",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159568063/download",
       "links": [
         {
@@ -347,6 +361,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 10:30:04 +0000 Closed Mon, 25 Nov 2024 10:30:09 +0000 Author abakus_uploader Tags comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM created_by = Abakus StrazakOSM uploader",
+      "id": "https://www.openstreetmap.org/changeset/159566803",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159566803/download",
       "links": [
         {
@@ -371,6 +386,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 08:36:22 +0000 Closed Mon, 25 Nov 2024 08:36:40 +0000 Author adamos Tags comment = Flixbus daily maintenance routine, relations fix created_by = JOSM/1.5 (19253 en)",
+      "id": "https://www.openstreetmap.org/changeset/159562487",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159562487/download",
       "links": [
         {
@@ -395,6 +411,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 06:53:59 +0000 Closed Mon, 25 Nov 2024 08:14:45 +0000 Author Arkadiusz Oktabiński Tags comment = Defibrillator added via <a href=\"https://openaedmap.org\" rel=\"nofollow\">https://openaedmap.org</a> #aed created_by = <a href=\"https://openaedmap.org\" rel=\"nofollow\">https://openaedmap.org</a> git_commit = cd7f612 hashtags = #aed locale = pl",
+      "id": "https://www.openstreetmap.org/changeset/159559357",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159559357/download",
       "links": [
         {
@@ -419,6 +436,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 00:40:47 +0000 Closed Mon, 25 Nov 2024 00:40:48 +0000 Author IreuN Tags comment = Mapillary Missing Crossings + Inne/giveway/stop created_by = JOSM/1.5 (19253 pl) source = Geoportal 2: Orthophotomap (aerial image) WMTS; Mapillary Traffic Signs; Mapillary",
+      "id": "https://www.openstreetmap.org/changeset/159553861",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159553861/download",
       "links": [
         {
@@ -443,6 +461,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Sun, 24 Nov 2024 23:05:37 +0000 Closed Sun, 24 Nov 2024 23:05:43 +0000 Author pavvv Tags comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników created_by = JOSM/1.5 (19253 pl) discussion = <a href=\"https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192\" rel=\"nofollow\">https:/",
+      "id": "https://www.openstreetmap.org/changeset/159552580",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159552580/download",
       "links": [
         {
@@ -467,6 +486,7 @@
         }
       ],
       "description": "th { text-align: left } tr { vertical-align: top } Created Sun, 24 Nov 2024 23:05:12 +0000 Closed Sun, 24 Nov 2024 23:05:37 +0000 Author pavvv Tags comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników created_by = JOSM/1.5 (19253 pl) discussion = <a href=\"https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192\" rel=\"nofollow\">https:/",
+      "id": "https://www.openstreetmap.org/changeset/159552572",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159552572/download",
       "links": [
         {

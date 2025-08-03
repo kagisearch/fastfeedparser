@@ -11,6 +11,7 @@
         }
       ],
       "description": "Image search becomes even better ! We're excited to roll out major upgrades to our image search. This release includes: Our image search became even better with the inclusion of two more sources: Yandex Image Search (widely recognized as one of best image search services) and Openverse (vast collection of openly licensed images). Kagi is doing the hard work so that you don't have to. Enhanced generative AI image detection and flagging (first version of which we launched last month) A revamped preview pane w",
+      "id": "https://kagifeedback.org/d/5340/1",
       "link": "https://kagifeedback.org/d/5340-nov-19th-2024-enhanced-image-search-open-sourcing-fastfeedparser/1",
       "links": [
         {
@@ -47,6 +48,7 @@
         }
       ],
       "description": "Announcing Kagi Translate Never get lost in translation again. Today, we launch Kagi Translate, offering superior translations across 244 languages. Key features: Higher quality translations than Google Translate and DeepL Zero tracking, no apps needed Free for everyone (Kagi members get captcha-free access) Try it now at translate.kagi.com or read the announcement post. Kagi on mobile We've added search buttons to our homepage to make it easier for you to choose your search type on mobile: Install Kagi for",
+      "id": "https://kagifeedback.org/d/5197/1",
       "link": "https://kagifeedback.org/d/5197-nov-7th-2024-announcing-kagi-translate/1",
       "links": [
         {
@@ -83,6 +85,7 @@
         }
       ],
       "description": "Leveling up our infrastructure This Sunday at 6am UTC, we're making a step forward on our production infrastructure. After years of faithful service, our original database server is being replaced with significantly more powerful hardware. Expected downtime: 10 minutes Protecting young minds: Enhanced video safety for families Your children deserve better than clickbait and shock value. We're making it happen with advanced video controls. Family account owners can now shape a safer, cleaner video experience",
+      "id": "https://kagifeedback.org/d/5108/1",
       "link": "https://kagifeedback.org/d/5108-oct-24th-2024-safer-video-search-for-kids-and-custom-assistant-bangs/1",
       "links": [
         {
@@ -119,6 +122,7 @@
         }
       ],
       "description": "Better image search with AI-generated images detection Last week we got quite clear and direct feedback that we need to do something about AI-generated images that started creeping up in the image search. You asked for it and we delivered! We are enhancing our image search with a new ranking algorithm and an AI image filter. These updates prioritise authentic, human-created images and downrank AI-generated content. Users can also opt to exclude AI-generated images entirely. Learn more about Kagi's AI image",
+      "id": "https://kagifeedback.org/d/5047/1",
       "link": "https://kagifeedback.org/d/5047-october-17th-2024-ai-generated-image-filter-in-search-results/1",
       "links": [
         {
@@ -155,6 +159,7 @@
         }
       ],
       "description": "Hello, Kagi Fans! We know it's been a few weeks since our last update, and there's a good reason for that. The entire company took a break from the usual routine to fly to Barcelona, Spain, for our annual retreat - a chance to reenergize and refocus for the exciting journey ahead. But don’t worry, it wasn’t all fun and no work. In fact, we’ve got a pretty exciting update for you today. The retreat gave us fresh inspiration, and we’re ready to bring some of those new ideas to life starting right now. Launchi",
+      "id": "https://kagifeedback.org/d/4813/1",
       "link": "https://kagifeedback.org/d/4813-october-11th-2024-fresh-from-barcelona-android-app-new-snaps-operator-assistant-updates-and-more/1",
       "links": [
         {
@@ -191,6 +196,7 @@
         }
       ],
       "description": "Announcements Kagi Store Kagi Store is live! Grab your first edition Doggo t-shirt while the stock lasts. Getting this out of the door was quite a journey. We wrote a small blog post about it. We moved mountains (of cotton) to deliver on our promise The Assistant video commercial 🎬 Drumroll, please... Our first video commercial celebrating the launch of The Assistant is live, and we couldn’t be more thrilled and proud! Let us know what you think! Check it out on YouTube! Improvements and Bug Fixes (minor up",
+      "id": "https://kagifeedback.org/d/4754/1",
       "link": "https://kagifeedback.org/d/4754-sep-6th-2024-kagi-store-and-video-commercial-launch/1",
       "links": [
         {
@@ -227,6 +233,7 @@
         }
       ],
       "description": "The Assistant is here! Today we’re excited to unveil the Assistant, a new powerful tool for information consumption that complements Kagi Search. Assistant features direct access to world's best LLMs, grounded in Kagi Search, all in one place and for one price. Read all about it in Announcing the Assistant blog post. This update replaces the Beta version introduced nearly a year ago. It includes many new features, and we are working hard to bring back a few missing ones from the Beta, notably file upload, a",
+      "id": "https://kagifeedback.org/d/4716/1",
       "link": "https://kagifeedback.org/d/4716-sept-4th-2024-announcing-the-assistant/1",
       "links": [
         {
@@ -263,6 +270,7 @@
         }
       ],
       "description": "Announcement We’ve spent months thinking about the Google antitrust case and its implications to the search landscape. Read our response in an opinion piece titled Dawn of a new era in Search: Balancing innovation, competition, and public good. Improvements and bug fixes Highlighting countries/cities in Kagi Maps like Google Maps does it #4408 @Grooty Time filter reset with search results #4421 @GravityMan Search result scroll broken Firefox mobile #4588 @mfashby Show assistant search #4645 @cardinal086 Uni",
+      "id": "https://kagifeedback.org/d/4665/1",
       "link": "https://kagifeedback.org/d/4665-aug-29-2024-dawn-of-new-era-in-search-opinion-piece/1",
       "links": [
         {
@@ -299,6 +307,7 @@
         }
       ],
       "description": "Announcement We're happy to release a preview version of the new Kagi Assistant to all Ultimate subscribers today! (if you want to get a taste before official launch, you can temporarily upgrade to Ultimate plan and go back if you want - we pro-rate all payments so not a cent is lost). This update introduces a completely revamped experience along with several eagerly awaited features, including: Access the best LLM models using Kagi Search to solve your tasks The ability to save Assistant threads More power",
+      "id": "https://kagifeedback.org/d/4529/1",
       "link": "https://kagifeedback.org/d/4529-august-22-2024-preview-release-of-the-new-kagi-assistant-for-ultimate-subscribers/1",
       "links": [
         {
@@ -335,6 +344,7 @@
         }
       ],
       "description": "Kagi LLM Benchmarking Project Introducing the Kagi LLM Benchmarking Project, which evaluates major large language models (LLMs) on their reasoning, coding, and instruction following capabilities on an unpolluted benchmark relevant to using LLMs in the context of search. Improvements and bug fixes Fixes to session synchronization between devices Fixed a performance regression on initial search page load Adjust the redirect for \"no results found\" when searching with Lenses #4471 @snuser Comboboxes' search bar",
+      "id": "https://kagifeedback.org/d/4498/1",
       "link": "https://kagifeedback.org/d/4498-july-30th-2024/1",
       "links": [
         {
@@ -371,6 +381,7 @@
         }
       ],
       "description": "Announcements In preparation for the next steps for Kagi, we're launching a new Discord server where we will consolidate both of our communities for Search, Browser, and all future Kagi products. Join here: https://kagi.com/discord We welcome everyone, whether you are a long standing supporter or just learning about Kagi, to come hang out with us and get excited about what's coming next. The existing servers will be sunset over the course of the following week. See you there! Improvements and bug fixes We'v",
+      "id": "https://kagifeedback.org/d/4445/1",
       "link": "https://kagifeedback.org/d/4445-july-19th-2024-launch-of-the-new-kagi-community-server-and-search-builder/1",
       "links": [
         {
@@ -407,6 +418,7 @@
         }
       ],
       "description": "Improvements and bug fixes We have simplified the process for creating new search Lenses. These help you narrow your search to specific topics or domains. Visit our help page to learn more about how to use them! When you provide a GitHub Issue link to the Universal Summarizer, it will now summarize the content in a structured format. #4219 @w3irdrobot Password required to see Kagi plans available #4226 @stom Custom CSS toggle disappears on reload #4363 @swap Map search one specific place instead of category",
+      "id": "https://kagifeedback.org/d/4377/1",
       "link": "https://kagifeedback.org/d/4377-july-9th-2024/1",
       "links": [
         {
@@ -443,6 +455,7 @@
         }
       ],
       "description": "Improvements and bug fixes We've launched an updated version of our Kagi for Safari app (v 2.2.6) that makes your search experience faster and smoother. Please note, unfortunately you will need to follow the setup steps again. For guidance, refer to the instructions within the app. If you encounter any issues don't hesitate to contact us through support@kagi.com or our feedback forum. We've also updated our Control Centre to provide easier access to our tools, Claude 3.5 Sonnet is now available in Assistant",
+      "id": "https://kagifeedback.org/d/4314/1",
       "link": "https://kagifeedback.org/d/4314-june-25th-2024/1",
       "links": [
         {
@@ -479,6 +492,7 @@
         }
       ],
       "description": "Features Introducing the Kagi and OpenStreetMap Basemaps We have updated our maps page to include two new basemap options: the Kagi Basemap and the OpenStreetMap (OSM) Basemap. You can switch between these options via the top left corner of the maps search bar. The search results remain consistent across both basemaps; however, we are planning to introduce additional features and customisation options soon! The Kagi basemap focus on greater detail, readability, and map-comprehension, using 3d landmarks, tre",
+      "id": "https://kagifeedback.org/d/4264/1",
       "link": "https://kagifeedback.org/d/4264-june-12th-2024-introducing-new-basemap-options-and-enhanced-filtering/1",
       "links": [
         {
@@ -515,6 +529,7 @@
         }
       ],
       "description": "Today we celebrate the two-year anniversary of Kagi launching as a paid service. 🎉 We have a comprehensive blog post detailing everything we have achieved and our plans for the future. https://blog.kagi.com/what-is-next-for-kagi We extend our gratitude to our user community, without whom this would not be possible. 🙏",
+      "id": "https://kagifeedback.org/d/4166/1",
       "link": "https://kagifeedback.org/d/4166-may-29th-2024-what-is-next-for-kagi/1",
       "links": [
         {
@@ -551,6 +566,7 @@
         }
       ],
       "description": "Improvements and bug fixes Kagi Search for Safari extension updated #4041 @Database \"Renew Now\" button when you're out of searches #4009 @FalconFour Academic Lens add website - ScienceDirect #4160 @Arlo Toggle click to open/close shield icon #3997 @sw Excessive amount subpage results #4093 @zut Improve hover popup user experience #4153 @azdanov Universal Summarizer can't summarize TCGplayer Infinite articles #3933 @yokoffing Search option bar can be scrolled by selecting and dragging the text #4159 @sefidel",
+      "id": "https://kagifeedback.org/d/4152/1",
       "link": "https://kagifeedback.org/d/4152-june-4th-2024/1",
       "links": [
         {
@@ -587,6 +603,7 @@
         }
       ],
       "description": "Improvements Search latency & typo correction This release successfully reduces search latency for approximately 20% of queries, while also enhancing our search suggestions and typo correction capabilities. Enjoy the improved performance and happy searching! Kagi Search for Safari update If you are using Safari with iOS developer beta (17.5), Kagi Search for Safari extension may have stopped working due to a bug introduced in this iOS release last week. We have released a TestFlight version of the new versi",
+      "id": "https://kagifeedback.org/d/4085/1",
       "link": "https://kagifeedback.org/d/4085-may-21st-2024-improved-search-latency-robustness/1",
       "links": [
         {
@@ -623,6 +640,7 @@
         }
       ],
       "description": "Features GPT-4o integrated in Kagi Assistant We've benchmarked OpenAI's new flagship model GPT-4o, released yesterday, and its performance on our internal independent tests (PyLLMs and reasoning on Chess puzzles) as well as external is impressive. As a result, GPT-4o has now been used across various features in Assistant: Default model for Research Expert mode and Code assistant Used for interpreting and working with uploaded files, including images Available through Chat Assistant Note: Kagi Assistant is a",
+      "id": "https://kagifeedback.org/d/4027/1",
       "link": "https://kagifeedback.org/d/4027-may-14th-2024/1",
       "links": [
         {
@@ -659,6 +677,7 @@
         }
       ],
       "description": "Updates An update on our T-shirts for the first 20,000 subscribers: they will be ready for delivery in August. Improvements and bug fixes Accessibility: Unable to activate buttons in Control Center with Space or Enter/Return keys #3944 @Warner Bangs broken if used after the query #3419 @strogonoff Wolfram Alpha answer box doesn't have enough contrast on Dark theme #3967 @sefidel Show remaining time on title when using timer widget #3445 @sefidel Time widget gives an old time result if you search for the exa",
+      "id": "https://kagifeedback.org/d/3982/1",
       "link": "https://kagifeedback.org/d/3982-may-8th-2024/1",
       "links": [
         {
@@ -695,6 +714,7 @@
         }
       ],
       "description": "Announcements We are hiring! As we continue our journey, we're hiring across various teams. Visit our jobs page for more details and reach out via email if you're interested in joining! Advanced Account Security On select pages, Kagi will now ask you to confirm with your password or 2FA code (if configured) where sensitive actions or information may be present. This primarily applies to billing-related areas, such as accessing your invoices or switching plans. This concludes a small arc of changes, with 2FA",
+      "id": "https://kagifeedback.org/d/3940/1",
       "link": "https://kagifeedback.org/d/3940-april-30th-2024/1",
       "links": [
         {
@@ -731,6 +751,7 @@
         }
       ],
       "description": "Features and announcements QR code sign-in Now you can simply scan a QR code on Kagi's login page with an authenticated device to log into a new device. For more details, visit our help page. #2417 @FrederickZh Sales tax rollout Starting this Sunday, April 21st, sales taxes will apply to all subscriptions. We have notified subscribers of this change via email. This marks the completion of the sales tax rollout. For further details, please visit our FAQ page. Improvements and bug fixes Add keyboard shortcuts",
+      "id": "https://kagifeedback.org/d/3841/1",
       "link": "https://kagifeedback.org/d/3841-april-20th-2024-introducing-qr-code-sign-in-and-final-sales-taxes-update/1",
       "links": [
         {
@@ -767,6 +788,7 @@
         }
       ],
       "description": "New Features and Updates Refreshed UI design We're delighted to unveil our updated design of key search pages and a completely revamped settings experience, now featuring a fresh, new look! Here's a sneak peek: Homepage Settings Onboarding Assistant highlights New model available: added Google's latest LLM, Gemini 1.5 Pro Privacy scores: we introduced an LLM privacy score (details on how it's calculated) Enhanced citations: they now reference the segment of text used to generate the cited content Sales tax",
+      "id": "https://kagifeedback.org/d/3750/1",
       "link": "https://kagifeedback.org/d/3750-april-10th-2024-introducing-kagis-new-design/1",
       "links": [
         {
@@ -803,6 +825,7 @@
         }
       ],
       "description": "Improvements and bug fixes Allow previous 2FA code to work along with current 30sec one #3540 @frin Custom bangs accessible from Search Settings tab #3616 @mhitza Asking !chat to modify a <script>...</script> tag causes the script tag in the response to be not escaped/not visible #3694 @heavyg We've resolved capacity issues with our recent models upgrade Bottom of image search results is cluttered with low quality Second Life screenshots #3632 @yellow Show summary of question in fastgpt in tab title #3203 @",
+      "id": "https://kagifeedback.org/d/3696/1",
       "link": "https://kagifeedback.org/d/3696-april-2nd-2024/1",
       "links": [
         {
@@ -839,6 +862,7 @@
         }
       ],
       "description": "Features We continue enhancing our search experience with bangs. Check the shield menu to see if a website has a corresponding bang. #3410 @frereit We've upgraded the FastGPT, and Research Assistant (Fast+Expert) with the latest models to enhance performance: FastGPT -> Claude 3 Haiku Research Assistant, Fast -> Claude 3 Haiku Research Assistant, Expert -> Claude 3 Sonnet These are also available in Chat mode which allows full access to a range of models like Claude 3 Opus, GPT-4 and Mistral Large [Please n",
+      "id": "https://kagifeedback.org/d/3654/1",
       "link": "https://kagifeedback.org/d/3654-march-26th-2024-widget-triggers-open-to-community-translations-and-model-upgrades-for-fastgpt-and-research-assistant/1",
       "links": [
         {
@@ -875,6 +899,7 @@
         }
       ],
       "description": "Announcements Starting from March 26th, we will begin including localized sales tax for all new customers who subscribe on or after this date. ﻿ Starting from April 9th, all existing customers who qualify for sales tax/VAT will see localized sales tax/VAT added to their monthly invoice in USD, on top of their current subscription fee. This adjustment will appear on your next invoice on or after April 9th, with no immediate extra charge. If you are paying with an alternative method via Paypal, OpenNode, or a",
+      "id": "https://kagifeedback.org/d/3592/1",
       "link": "https://kagifeedback.org/d/3592-march-19th-2024-introducing-sales-taxes/1",
       "links": [
         {
@@ -911,6 +936,7 @@
         }
       ],
       "description": "Features We've upgraded the Quick Answer keyboard shortcut. Pressing q triggers Quick Answer after search results are shown, but also allows you to control the level of detail displayed, letting you expand or condense the information to suit your needs #3493 @yellow Orion browser lifetime purchase w/ credits on balance is now possible Added Thai language option #3439 @bocchi We currently have almost 20 languages localized. Our translation effort is crowd-sourced, and If you would like to contribute translat",
+      "id": "https://kagifeedback.org/d/3530/1",
       "link": "https://kagifeedback.org/d/3530-march-12th-2024-enhanced-quick-answer-new-language-and-maps-improvements/1",
       "links": [
         {
@@ -947,6 +973,7 @@
         }
       ],
       "description": "Announcements We are launching instant Summary Boxes, together with announcing partnership with Wolfram|Alpha and welcoming Stephen Wolfram to Kagi's board of advisors. Read everything in our blog post. Features \"Small YouTube\" (part of Kagi Small Web) feed has been enhanced with more content, check it out (+ RSS feed is available) We've added Orion+ member count to our stats page. You can now summarise videos directly from the results page via three dots menu. You can even ask questions about it (as with a",
+      "id": "https://kagifeedback.org/d/3425/1",
       "link": "https://kagifeedback.org/d/3425-march-5th-2024-wolframalpha-partnership-claude-3-opus-and-mistral-large-in-assistant/1",
       "links": [
         {
@@ -983,6 +1010,7 @@
         }
       ],
       "description": "Features We've made further progress in enhancing Bangs in the UI. And following the release of our open-source bags repository, the community has contributed by adding and fixing dozens of bangs already! Additionally, we upgraded all bangs to use HTTPS where possible. To further enhance user control, we now indicate when there are blocked results for your search queries #2698 @Fernandez) We've introduced a new colour code search widget. It displays the selected colour, allows to pick an alternative, and to",
+      "id": "https://kagifeedback.org/d/3290/1",
       "link": "https://kagifeedback.org/d/3290-feb-27-2024-bangs-upgrades-user-control-enhancements-and-colour-code-widget/1",
       "links": [
         {
@@ -1019,6 +1047,7 @@
         }
       ],
       "description": "Announcements Kagi Bangs repository is now open source (thanks @Browsing6853 for suggesting this in #481). You can now refine the accuracy of existing bangs or introduce new ones for everyone to enjoy on Kagi Search. Your contributions will enhance the search experience for users worldwide. Fresh from Kagi Labs: We're shipping an alpha version of Kagi Sidekick, a search and \"chat with content\" solution for websites. Kagi Sidekick will offer instant site search results, and on-demand AI generated summaries,",
+      "id": "https://kagifeedback.org/d/3272/1",
       "link": "https://kagifeedback.org/d/3272-feb-20-2024-kagi-bangs-go-open-source-kagi-sidekick-concept-plus-numerous-improvements-and-bug-fixes/1",
       "links": [
         {
@@ -1055,6 +1084,7 @@
         }
       ],
       "description": "Features We added Wolfram|Alpha to enhance our capabilities in calculations, unit conversions, and time queries for better results. This solves a huge number of issues reported for these kind of queries as the results now come from a computational knowledge authorithy. (Wolfram Alpha integration for fact based queries #1271 @Recast) In the same spirit of getting answers faster, now simply starting your query with an interrogative word (what, where, who, which, when, how) or just ending it with a question ma",
+      "id": "https://kagifeedback.org/d/3179/1",
       "link": "https://kagifeedback.org/d/3179-feb-13-2024-faster-and-more-accurate-instant-answers-and-we-got-a-wikipedia-page/1",
       "links": [
         {
@@ -1091,6 +1121,7 @@
         }
       ],
       "description": "Features We're happy to announce that Family and Duo plan members can now upgrade to Ultimate plan features for just $15 per month. per family member upgraded. The Ultimate plan includes access to the latest AI models, such as GPT-4/GPT-4-Turbo, Claude 2.1 (100k) and soon Gemini Ultra. To upgrade your account or that of another member, simply visit the \"Members\" section under Family Settings. #2024 @nucleardog Kagi for Safari 2.2.0 is released, fixing many previous issues reported by the users. We've improv",
+      "id": "https://kagifeedback.org/d/3122/1",
       "link": "https://kagifeedback.org/d/3122-feb-8-2024-ultimate-features-available-for-family-duo-plans/1",
       "links": [
         {
@@ -1127,6 +1158,7 @@
         }
       ],
       "description": "Features Two-factor authentication (2FA) is now possible to further secure your Kagi account . This was the most upvoted feature on kagifeedback.org and we are glad to (finally) deliver it. You can set it up on your Settings page under the \"Account\" section. @Kai in #14 We added indication of results coming from Kagi's own index. Look for doggo graphics in results information popup. We've introduced the possibility to customise how hours are displayed in your account—choose between the 12 and 24-hour format",
+      "id": "https://kagifeedback.org/d/3106/1",
       "link": "https://kagifeedback.org/d/3106-feb-6-2024-two-factor-authentication/1",
       "links": [
         {
@@ -1163,6 +1195,7 @@
         }
       ],
       "description": "Improvements & Bug fixes The weather widget now features a location button for users to set their precise location Region search doesn't work when a lens is active #2933 @Vapid Inconsistent enrichment API results #2888 @Value7609 !m Maps Bang doesn't search #2945 @andyrew1 Search param dropdowns stay open #2902 @jrileyh Blank page after signup #2939 @petiole Time Ascending/Descending should contextually change to facilitate understanding #1387 @kf Search input field initially scrolled out of view on mobile",
+      "id": "https://kagifeedback.org/d/3051/1",
       "link": "https://kagifeedback.org/d/3051-jan-30-2024-misc-improvements-and-bug-fixes/1",
       "links": [
         {
@@ -1199,6 +1232,7 @@
         }
       ],
       "description": "Announcements Today, we’re happy and proud to have reached 20,000 members. We have a special surprise for our community. Read everything about it in our blog post. Features Kagi search extension for Chrome and Firefox 0.5.0 released Added support for FastGPT Fix: Kagi Extension API Key Not Persistent in Firefox ESR on Kali Linux #2234 @Maxpl01Z Fix: Kagi keeps saying invalid session token in firefox on linux after setting up successfully and working fine for a while. #2090 @bkw777a Fix: Firefox default sear",
+      "id": "https://kagifeedback.org/d/3005/1",
       "link": "https://kagifeedback.org/d/3005-jan-24-2024-celebrating-20k-members/1",
       "links": [
         {
@@ -1235,6 +1269,7 @@
         }
       ],
       "description": "Announcements We added \"Quick Peek\" widget to our results. With this addition you will find additional relevant results about the query you are searching. This feature can be easily enabled / disabled in the Search Settings. We added additional sources for local businesses to our inline maps search results. Inline maps should be more responsive now when searching for specific local businesses. More improvements to come. Related issue: Local business / open hours #2477 @partlycloudy Find hidden treasures fro",
+      "id": "https://kagifeedback.org/d/2931/1",
       "link": "https://kagifeedback.org/d/2931-jan-16-2024-quick-peek-enhanced-local-business-search-usenet-lens-gpt4-vision-in-assistant-and-outage-post-mortem/1",
       "links": [
         {

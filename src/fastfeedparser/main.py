@@ -40,6 +40,41 @@ class FastFeedParserDict(dict):
         self[name] = value
 
 
+def _clean_feed_content(content: str | bytes) -> str:
+    """Clean feed content by finding and extracting the actual XML.
+    
+    Handles cases where PHP warnings, HTML, or other content appears before the XML.
+    """
+    if isinstance(content, bytes):
+        content = content.decode('utf-8', errors='replace')
+    
+    # Look for XML declaration or root elements
+    xml_start_patterns = [
+        '<?xml',  # XML declaration
+        '<rss',   # RSS feed
+        '<feed',  # Atom feed  
+        '<rdf:RDF',  # RDF feed
+        '<?xml-stylesheet'  # Sometimes comes before <?xml
+    ]
+    
+    content_lines = content.splitlines()
+    xml_start_line = -1
+    
+    # Find the first line that looks like XML
+    for i, line in enumerate(content_lines):
+        line_stripped = line.strip()
+        if any(line_stripped.startswith(pattern) for pattern in xml_start_patterns):
+            xml_start_line = i
+            break
+    
+    if xml_start_line >= 0:
+        # Return content starting from the XML line
+        return '\n'.join(content_lines[xml_start_line:])
+    
+    # If no XML patterns found, return original content (let XML parser handle the error)
+    return content
+
+
 def parse(source: str | bytes) -> FastFeedParserDict:
     """Parse a feed from a URL or XML content.
 
@@ -79,6 +114,9 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     else:
         xml_content = source
 
+    # Clean content to handle PHP warnings/HTML before XML
+    xml_content = _clean_feed_content(xml_content)
+    
     # Ensure we have bytes for lxml
     if isinstance(xml_content, str):
         xml_content = xml_content.encode("utf-8", errors="replace")
@@ -102,16 +140,46 @@ def parse(source: str | bytes) -> FastFeedParserDict:
 
     # Determine a feed type based on the content structure
     feed_type: _FeedType
+    atom_namespace: Optional[str] = None
+    
     if root.tag == "rss" or root.tag.endswith("}rss"):
         feed_type = "rss"
+        # Handle both namespaced and non-namespaced RSS
         channel = root.find("channel")
         if channel is None:
+            # Try to find channel with any namespace
+            for child in root:
+                if child.tag.endswith("}channel") or child.tag == "channel":
+                    channel = child
+                    break
+        if channel is None:
             raise ValueError("Invalid RSS feed: missing channel element")
+        # Find items with or without namespace
         items = channel.findall("item")
-    elif root.tag == "{http://www.w3.org/2005/Atom}feed":
+        if not items:
+            # Try to find items with any namespace
+            for child in channel:
+                if child.tag.endswith("}item") or child.tag == "item":
+                    if not items:
+                        items = []
+                    items.append(child)
+            # If still no items found using findall with any namespace
+            if not items:
+                items = [child for child in channel if child.tag.endswith("}item") or child.tag == "item"]
+    elif root.tag.endswith("}feed"):
+        # Detect Atom namespace dynamically
+        if "{http://www.w3.org/2005/Atom}" in root.tag:
+            atom_namespace = "http://www.w3.org/2005/Atom"
+        elif "{https://www.w3.org/2005/Atom}" in root.tag:
+            atom_namespace = "https://www.w3.org/2005/Atom"
+        elif "{http://purl.org/atom/ns#}" in root.tag:
+            atom_namespace = "http://purl.org/atom/ns#"
+        else:
+            raise ValueError(f"Unknown Atom namespace in feed type: {root.tag}")
+        
         feed_type = "atom"
         channel = root
-        items = channel.findall(".//{http://www.w3.org/2005/Atom}entry")
+        items = channel.findall(f".//{{{atom_namespace}}}entry")
     elif root.tag == "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF":
         feed_type = "rdf"
         channel = root
@@ -121,13 +189,13 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     else:
         raise ValueError(f"Unknown feed type: {root.tag}")
 
-    feed = _parse_feed_info(channel, feed_type)
+    feed = _parse_feed_info(channel, feed_type, atom_namespace)
 
     # Parse entries
     entries: list[FastFeedParserDict] = []
     feed["entries"] = entries
     for item in items:
-        entry = _parse_feed_entry(item, feed_type)
+        entry = _parse_feed_entry(item, feed_type, atom_namespace)
         # Ensure that titles and descriptions are always present
         entry["title"] = entry.get("title", "").strip()
         entry["description"] = entry.get("description", "").strip()
@@ -136,54 +204,63 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     return feed
 
 
-def _parse_feed_info(channel: _Element, feed_type: _FeedType) -> FastFeedParserDict:
+def _parse_feed_info(channel: _Element, feed_type: _FeedType, atom_namespace: Optional[str] = None) -> FastFeedParserDict:
+    # Use dynamic atom namespace or fallback to default
+    atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
+    
+    # Check if this is Atom 0.3 to use different date field names
+    is_atom_03 = atom_ns == "http://purl.org/atom/ns#"
+    
+    # Atom 0.3 uses 'modified', Atom 1.0 uses 'updated'
+    updated_field = f"{{{atom_ns}}}modified" if is_atom_03 else f"{{{atom_ns}}}updated"
+    
     fields: tuple[tuple[str, str, str, str, bool], ...] = (
         (
             "title",
             "title",
-            "{http://www.w3.org/2005/Atom}title",
+            f"{{{atom_ns}}}title",
             "{http://purl.org/rss/1.0/}channel/{http://purl.org/rss/1.0/}title",
             False,
         ),
         (
             "link",
             "link",
-            "{http://www.w3.org/2005/Atom}link",
+            f"{{{atom_ns}}}link",
             "{http://purl.org/rss/1.0/}channel/{http://purl.org/rss/1.0/}link",
             True,
         ),
         (
             "subtitle",
             "description",
-            "{http://www.w3.org/2005/Atom}subtitle",
+            f"{{{atom_ns}}}subtitle",
             "{http://purl.org/rss/1.0/}channel/{http://purl.org/rss/1.0/}description",
             False,
         ),
         (
             "generator",
             "generator",
-            "{http://www.w3.org/2005/Atom}generator",
+            f"{{{atom_ns}}}generator",
             "{http://purl.org/rss/1.0/}channel/{http://webns.net/mvcb/}generatorAgent",
             False,
         ),
         (
             "publisher",
             "publisher",
-            "{http://www.w3.org/2005/Atom}publisher",
+            f"{{{atom_ns}}}publisher",
             "{http://purl.org/rss/1.0/}channel/{http://purl.org/dc/elements/1.1/}publisher",
             False,
         ),
         (
             "author",
             "author",
-            "{http://www.w3.org/2005/Atom}author/{http://www.w3.org/2005/Atom}name",
+            f"{{{atom_ns}}}author/{{{atom_ns}}}name",
             "{http://purl.org/rss/1.0/}channel/{http://purl.org/dc/elements/1.1/}creator",
             False,
         ),
         (
             "updated",
             "lastBuildDate",
-            "{http://www.w3.org/2005/Atom}updated",
+            updated_field,
             "{http://purl.org/rss/1.0/}channel/{http://purl.org/dc/elements/1.1/}date",
             False,
         ),
@@ -220,7 +297,7 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType) -> FastFeedParserD
     feed_links: list[dict[str, Optional[str]]] = []
     feed["links"] = feed_links
     feed_link: Optional[str] = None
-    for link in channel.findall("{http://www.w3.org/2005/Atom}link"):
+    for link in channel.findall(f"{{{atom_ns}}}link"):
         rel = link.get("rel")
         href = link.get("href") or link.get("link")
         if rel is None and href:
@@ -241,10 +318,10 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType) -> FastFeedParserD
         )
 
     # Add id
-    feed["id"] = _get_element_value(channel, "{http://www.w3.org/2005/Atom}id")
+    feed["id"] = _get_element_value(channel, f"{{{atom_ns}}}id")
 
     # Add generator_detail
-    generator = channel.find("{http://www.w3.org/2005/Atom}generator")
+    generator = channel.find(f"{{{atom_ns}}}generator")
     if generator is not None:
         feed["generator_detail"] = {
             "name": generator.text,
@@ -268,14 +345,14 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType) -> FastFeedParserD
             feed["author"] = managing_editor
 
     # Parse feed-level tags/categories
-    tags = _parse_tags(channel, feed_type)
+    tags = _parse_tags(channel, feed_type, atom_ns)
     if tags:
         feed["tags"] = tags
 
     return FastFeedParserDict(feed=feed)
 
 
-def _parse_tags(element: _Element, feed_type: _FeedType) -> list[dict[str, str | None]] | None:
+def _parse_tags(element: _Element, feed_type: _FeedType, atom_namespace: Optional[str] = None) -> list[dict[str, str | None]] | None:
     """Parse tags/categories from an element based on feed type."""
     tags_list: list[dict[str, str | None]] = []
     if feed_type == "rss":
@@ -291,7 +368,8 @@ def _parse_tags(element: _Element, feed_type: _FeedType) -> list[dict[str, str |
                 tags_list.append({"term": term, "scheme": None, "label": None})
     elif feed_type == "atom":
         # Atom uses <category> elements with attributes
-        for cat in element.findall("{http://www.w3.org/2005/Atom}category"):
+        atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
+        for cat in element.findall(f"{{{atom_ns}}}category"):
             term = cat.get("term")
             if term:
                 tags_list.append({"term": term, "scheme": cat.get("scheme"), "label": cat.get("label")})
@@ -313,40 +391,50 @@ def _parse_tags(element: _Element, feed_type: _FeedType) -> list[dict[str, str |
     return tags_list if tags_list else None
 
 
-def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDict:
+def _parse_feed_entry(item: _Element, feed_type: _FeedType, atom_namespace: Optional[str] = None) -> FastFeedParserDict:
+    # Use dynamic atom namespace or fallback to default
+    atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
+    
+    # Check if this is Atom 0.3 to use different date field names
+    is_atom_03 = atom_ns == "http://purl.org/atom/ns#"
+    
+    # Atom 0.3 uses 'issued' and 'modified', Atom 1.0 uses 'published' and 'updated'
+    published_field = f"{{{atom_ns}}}issued" if is_atom_03 else f"{{{atom_ns}}}published"
+    updated_field = f"{{{atom_ns}}}modified" if is_atom_03 else f"{{{atom_ns}}}updated"
+    
     fields: tuple[tuple[str, str, str, str, bool], ...] = (
         (
             "title",
             "title",
-            "{http://www.w3.org/2005/Atom}title",
+            f"{{{atom_ns}}}title",
             "{http://purl.org/rss/1.0/}title",
             False,
         ),
         (
             "link",
             "link",
-            "{http://www.w3.org/2005/Atom}link",
+            f"{{{atom_ns}}}link",
             "{http://purl.org/rss/1.0/}link",
             True,
         ),
         (
             "description",
             "description",
-            "{http://www.w3.org/2005/Atom}summary",
+            f"{{{atom_ns}}}summary",
             "{http://purl.org/rss/1.0/}description",
             False,
         ),
         (
             "published",
             "pubDate",
-            "{http://www.w3.org/2005/Atom}published",
+            published_field,
             "{http://purl.org/dc/elements/1.1/}date",
             False,
         ),
         (
             "updated",
             "lastBuildDate",
-            "{http://www.w3.org/2005/Atom}updated",
+            updated_field,
             "{http://purl.org/dc/terms/}modified",
             False,
         ),
@@ -359,7 +447,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
     #    RSS    → <guid>
     #    RDF    → rdf:about attribute on the <item>
     # ------------------------------------------------------------------
-    atom_id = _get_element_value(item, "{http://www.w3.org/2005/Atom}id")
+    atom_id = _get_element_value(item, f"{{{atom_ns}}}id")
     rss_guid = _get_element_value(item, "guid")
     rdf_about = item.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about")
     entry_id: Optional[str] = (atom_id or rss_guid or rdf_about)
@@ -382,7 +470,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
     entry_links: list[dict[str, Optional[str]]] = []
     entry["links"] = entry_links
     alternate_link: Optional[dict[str, Optional[str]]] = None
-    for link in item.findall("{http://www.w3.org/2005/Atom}link"):
+    for link in item.findall(f"{{{atom_ns}}}link"):
         rel = link.get("rel")
         href = link.get("href") or link.get("link")
         if not href:
@@ -439,7 +527,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
         if content is None:
             content = item.find("content")
     elif feed_type == "atom":
-        content = item.find("{http://www.w3.org/2005/Atom}content")
+        content = item.find(f"{{{atom_ns}}}content")
 
     if content is not None:
         content_type = content.get("type", "text/html")  # Default to text/html
@@ -607,7 +695,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
     author = (
         get_field_value(
             "author",
-            "{http://www.w3.org/2005/Atom}author/{http://www.w3.org/2005/Atom}name",
+            f"{{{atom_ns}}}author/{{{atom_ns}}}name",
             "{http://purl.org/dc/elements/1.1/}creator",
             False,
         )
@@ -629,7 +717,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType) -> FastFeedParserDic
             entry["comments"] = comments
 
     # Parse entry-level tags/categories
-    tags = _parse_tags(item, feed_type)
+    tags = _parse_tags(item, feed_type, atom_ns)
     if tags:
         entry["tags"] = tags
 
