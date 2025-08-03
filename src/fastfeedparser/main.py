@@ -198,7 +198,17 @@ def parse(source: str | bytes) -> FastFeedParserDict:
                     channel = child
                     break
         if channel is None:
-            raise ValueError("Invalid RSS feed: missing channel element")
+            # Fallback: Check if this is a malformed RSS with Atom-style elements
+            # This handles feeds like seancdavis.com that declare RSS but use Atom structure
+            has_atom_elements = any(
+                child.tag in ['entry', 'title', 'subtitle', 'updated', 'id', 'author', 'link']
+                for child in root
+            )
+            if has_atom_elements:
+                # Treat the RSS root as the channel for malformed feeds
+                channel = root
+            else:
+                raise ValueError("Invalid RSS feed: missing channel element")
         # Find items with or without namespace
         items = channel.findall("item")
         if not items:
@@ -214,6 +224,20 @@ def parse(source: str | bytes) -> FastFeedParserDict:
             # Try recursive search for deeply nested items (minified feeds)
             if not items:
                 items = channel.xpath(".//item") or channel.xpath(".//*[local-name()='item']")
+            
+            # Fallback for malformed RSS: look for Atom-style <entry> elements
+            if not items:
+                items = channel.findall("entry")
+                if not items:
+                    # Try to find entries with any namespace
+                    for child in channel:
+                        if child.tag.endswith("}entry") or child.tag == "entry":
+                            if not items:
+                                items = []
+                            items.append(child)
+                    # If still no entries found using findall with any namespace
+                    if not items:
+                        items = [child for child in channel if child.tag.endswith("}entry") or child.tag == "entry"]
     elif root.tag.endswith("}feed"):
         # Detect Atom namespace dynamically
         if "{http://www.w3.org/2005/Atom}" in root.tag:
@@ -834,7 +858,18 @@ def _field_value_getter(
             else:
                 result = _get_element_value(root, atom_css) or _get_element_value(root, rdf_css)
             
-            return result
+            if result:
+                return result
+            
+            # Try unnamespaced Atom fields for malformed RSS feeds like seancdavis.com
+            # Extract the local name from the namespaced atom_css
+            if atom_css.startswith("{") and "}" in atom_css:
+                unnamespaced_atom = atom_css.split("}", 1)[1]
+                result = _get_element_value(root, unnamespaced_atom)
+                if result:
+                    return result
+            
+            return None
 
     elif feed_type == "atom":
 
@@ -920,6 +955,17 @@ def _parse_date(date_str: str) -> Optional[str]:
     if not date_str:
         return None
 
+    # Fix invalid leap year dates (Feb 29 in non-leap years)
+    # This handles feeds with incorrect dates like "2023-02-29"
+    import re
+    if re.match(r'(\d{4})-02-29', date_str):
+        year_match = re.match(r'(\d{4})-02-29', date_str)
+        if year_match:
+            year = int(year_match.group(1))
+            if not ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)):
+                # Not a leap year, change Feb 29 to Feb 28
+                date_str = date_str.replace(f'{year}-02-29', f'{year}-02-28')
+    
     # Try dateutil.parser first
     try:
         dt = dateutil_parser.parse(date_str, tzinfos=custom_tzinfos, ignoretz=False)
