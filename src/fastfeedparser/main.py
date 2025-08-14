@@ -209,6 +209,10 @@ def parse(source: str | bytes) -> FastFeedParserDict:
                 channel = root
             else:
                 raise ValueError("Invalid RSS feed: missing channel element")
+        elif len(list(channel)) == 0 and len([child for child in root if child.tag == "item"]) > 0:
+            # Handle malformed RSS where channel is empty but items are at root level
+            # This handles feeds like canolcer.eu that have <channel></channel> but items outside
+            channel = root
         # Find items with or without namespace
         items = channel.findall("item")
         if not items:
@@ -903,8 +907,10 @@ def _get_element_value(
     if el is None:
         return None
     if attribute is not None:
-        return el.get(attribute)
-    return el.text
+        attr_value = el.get(attribute)
+        return attr_value.strip() if attr_value else None
+    text_value = el.text
+    return text_value.strip() if text_value else None
 
 custom_tzinfos: dict[str, int] = {
     'EST': -5 * 3600,  # Eastern Standard Time
