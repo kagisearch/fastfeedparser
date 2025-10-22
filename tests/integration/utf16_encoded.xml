@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UTF-16 Encoded Feed</title>
+    <link>https://example.com/</link>
+    <description>A feed encoded in UTF-16</description>
+    <item>
+      <title>UTF-16 Entry 1</title>
+      <link>https://example.com/entry1</link>
+      <description>First entry in UTF-16</description>
+      <pubDate>Wed, 03 Jan 2024 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

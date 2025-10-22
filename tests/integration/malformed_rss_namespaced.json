@@ -1,0 +1,40 @@
+{
+  "entries": [
+    {
+      "description": "First test entry",
+      "id": "https://example.com/entry1",
+      "link": "https://example.com/entry1",
+      "links": [],
+      "published": "2024-01-01T12:00:00+00:00",
+      "title": "Test Entry 1"
+    },
+    {
+      "description": "Second test entry",
+      "id": "https://example.com/entry2",
+      "link": "https://example.com/entry2",
+      "links": [],
+      "published": "2024-01-02T12:00:00+00:00",
+      "title": "Test Entry 2"
+    }
+  ],
+  "feed": {
+    "id": null,
+    "language": null,
+    "link": "https://example.com/",
+    "links": [],
+    "subtitle": "A malformed RSS feed with namespace prefixes",
+    "subtitle_detail": {
+      "base": null,
+      "language": null,
+      "type": "text/plain",
+      "value": "A malformed RSS feed with namespace prefixes"
+    },
+    "title": "Test Feed with Namespaced RSS",
+    "title_detail": {
+      "base": null,
+      "language": null,
+      "type": "text/plain",
+      "value": "Test Feed with Namespaced RSS"
+    }
+  }
+}

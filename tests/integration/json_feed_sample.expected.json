@@ -1,0 +1,92 @@
+{
+  "entries": [
+    {
+      "author": "Jane Smith",
+      "content": [
+        {
+          "type": "text/html",
+          "value": "<p>This is the first item in our JSON feed.</p>"
+        }
+      ],
+      "description": "First item summary",
+      "id": "https://example.org/item1",
+      "image": "https://example.org/item1.jpg",
+      "link": "https://example.org/item1",
+      "links": [
+        {
+          "href": "https://example.org/item1",
+          "rel": "alternate",
+          "type": "text/html"
+        }
+      ],
+      "published": "2024-01-15T12:00:00+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "test"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "json"
+        },
+        {
+          "label": null,
+          "scheme": null,
+          "term": "feed"
+        }
+      ],
+      "title": "First JSON Feed Item",
+      "updated": "2024-01-15T13:00:00+00:00"
+    },
+    {
+      "content": [
+        {
+          "type": "text/plain",
+          "value": "This is plain text content for the second item."
+        }
+      ],
+      "description": "This is plain text content for the second item.",
+      "id": "https://example.org/item2",
+      "link": "https://example.org/item2",
+      "links": [
+        {
+          "href": "https://example.org/item2",
+          "rel": "alternate",
+          "type": "text/html"
+        }
+      ],
+      "published": "2024-01-14T10:30:00+00:00",
+      "tags": [
+        {
+          "label": null,
+          "scheme": null,
+          "term": "example"
+        }
+      ],
+      "title": "Second JSON Feed Item"
+    }
+  ],
+  "feed": {
+    "author": "John Doe",
+    "icon": "https://example.org/icon.png",
+    "id": "https://example.org/feed.json",
+    "language": "en-US",
+    "link": "https://example.org/",
+    "links": [
+      {
+        "href": "https://example.org/",
+        "rel": "alternate",
+        "type": "text/html"
+      },
+      {
+        "href": "https://example.org/feed.json",
+        "rel": "self",
+        "type": "application/json"
+      }
+    ],
+    "subtitle": "An example JSON Feed for testing",
+    "title": "Example JSON Feed"
+  }
+}

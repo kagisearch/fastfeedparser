@@ -1,0 +1,41 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Example JSON Feed",
+  "home_page_url": "https://example.org/",
+  "feed_url": "https://example.org/feed.json",
+  "description": "An example JSON Feed for testing",
+  "icon": "https://example.org/icon.png",
+  "authors": [
+    {
+      "name": "John Doe",
+      "url": "https://example.org/john"
+    }
+  ],
+  "language": "en-US",
+  "items": [
+    {
+      "id": "https://example.org/item1",
+      "url": "https://example.org/item1",
+      "title": "First JSON Feed Item",
+      "content_html": "<p>This is the first item in our JSON feed.</p>",
+      "summary": "First item summary",
+      "date_published": "2024-01-15T12:00:00Z",
+      "date_modified": "2024-01-15T13:00:00Z",
+      "image": "https://example.org/item1.jpg",
+      "authors": [
+        {
+          "name": "Jane Smith"
+        }
+      ],
+      "tags": ["test", "json", "feed"]
+    },
+    {
+      "id": "https://example.org/item2",
+      "url": "https://example.org/item2",
+      "title": "Second JSON Feed Item",
+      "content_text": "This is plain text content for the second item.",
+      "date_published": "2024-01-14T10:30:00Z",
+      "tags": ["example"]
+    }
+  ]
+}

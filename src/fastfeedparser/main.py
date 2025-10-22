@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import datetime
 import gzip
+import json
 import re
 import zlib
 try:
@@ -45,65 +46,153 @@ class FastFeedParserDict(dict):
         self[name] = value
 
 
-def _clean_feed_content(content: str | bytes) -> str:
-    """Clean feed content by finding and extracting the actual XML.
-    
-    Handles cases where PHP warnings, HTML, or other content appears before the XML.
+def _detect_xml_encoding(content: bytes) -> str:
+    """Detect encoding from XML declaration or BOM.
+
+    Returns the detected encoding or 'utf-8' as default.
     """
+    # Check for BOM (Byte Order Mark)
+    if content.startswith(b'\xff\xfe'):
+        return 'utf-16-le'
+    elif content.startswith(b'\xfe\xff'):
+        return 'utf-16-be'
+    elif content.startswith(b'\xef\xbb\xbf'):
+        return 'utf-8'
+
+    # Try to read the first 1000 bytes to find XML declaration
+    # Try UTF-8 first
+    try:
+        preview = content[:1000].decode('utf-8', errors='strict')
+    except UnicodeDecodeError:
+        # If UTF-8 fails, try UTF-16
+        try:
+            preview = content[:1000].decode('utf-16', errors='strict')
+        except UnicodeDecodeError:
+            # Fall back to latin-1 which never fails
+            preview = content[:1000].decode('latin-1', errors='replace')
+
+    # Look for encoding in XML declaration
+    encoding_match = re.search(r'<\?xml[^>]*encoding=["\']([^"\']+)["\']', preview)
+    if encoding_match:
+        return encoding_match.group(1).lower()
+
+    return 'utf-8'
+
+
+def _clean_feed_content(content: str | bytes) -> tuple[str, str]:
+    """Clean feed content by finding and extracting the actual XML.
+
+    Handles cases where PHP warnings, HTML, or other content appears before the XML.
+
+    Returns:
+        Tuple of (cleaned_content, encoding_used)
+    """
+    encoding_used = 'utf-8'
     if isinstance(content, bytes):
-        content = content.decode('utf-8', errors='replace')
-    
+        # Detect encoding from XML declaration
+        declared_encoding = _detect_xml_encoding(content)
+
+        # Try to decode with the declared encoding
+        try:
+            content = content.decode(declared_encoding, errors='strict')
+            encoding_used = declared_encoding
+        except (UnicodeDecodeError, LookupError):
+            # If declared encoding fails, try UTF-8
+            try:
+                content = content.decode('utf-8', errors='strict')
+                encoding_used = 'utf-8'
+            except UnicodeDecodeError:
+                # Last resort: use declared encoding with error replacement
+                content = content.decode(declared_encoding, errors='replace')
+                encoding_used = declared_encoding
+
     # Look for XML declaration or root elements
     xml_start_patterns = [
         '<?xml',  # XML declaration
         '<rss',   # RSS feed
-        '<feed',  # Atom feed  
+        '<feed',  # Atom feed
         '<rdf:RDF',  # RDF feed
         '<?xml-stylesheet'  # Sometimes comes before <?xml
     ]
-    
+
     content_lines = content.splitlines()
     xml_start_line = -1
-    
+
     # Find the first line that looks like XML
     for i, line in enumerate(content_lines):
         line_stripped = line.strip()
         if any(line_stripped.startswith(pattern) for pattern in xml_start_patterns):
             xml_start_line = i
             break
-    
+
     if xml_start_line >= 0:
         # Return content starting from the XML line
-        return '\n'.join(content_lines[xml_start_line:])
-    
+        return '\n'.join(content_lines[xml_start_line:]), encoding_used
+
     # Check if content looks like HTML
     content_lower = content.lower()
-    if (content_lower.strip().startswith('<!doctype html') or 
+    if (content_lower.strip().startswith('<!doctype html') or
         content_lower.strip().startswith('<html') or
         '<script>' in content_lower or
         '<body>' in content_lower):
         raise ValueError("Content appears to be HTML, not a valid RSS/Atom feed")
-    
+
     # If no XML patterns found, return original content (let XML parser handle the error)
-    return content
+    return content, encoding_used
 
 
-def _fix_malformed_xml(content: str) -> str:
+def _fix_malformed_xml(content: str, actual_encoding: str = 'utf-8') -> str:
     """Fix common malformed XML issues in feeds.
-    
+
     Some feeds have malformed XML like unclosed link tags or other issues
     that can be automatically corrected.
+
+    Args:
+        content: The XML content as a string
+        actual_encoding: The actual encoding used (default: utf-8)
     """
     if isinstance(content, bytes):
         content = content.decode('utf-8', errors='replace')
-    
+
+    # Fix double XML declarations like "<?xml?xml version="1.0"?>"
+    # This is found in dylanharris.org feed
+    content = re.sub(
+        r'<\?xml\?xml\s+',
+        r'<?xml ',
+        content,
+        flags=re.IGNORECASE
+    )
+
+    # Fix double closing ?> in XML declaration like "??>>"
+    content = re.sub(
+        r'\?\?>\s*',
+        r'?>',
+        content
+    )
+
+    # Fix malformed attribute syntax like rss:version=2.0 (missing quotes)
+    # This is found in dylanharris.org feed
+    content = re.sub(
+        r'(\s+[\w:]+)=([^\s>"\']+)',
+        r'\1="\2"',
+        content
+    )
+
+    # Update encoding in XML declaration to match actual encoding
+    # This handles cases where content was transcoded from UTF-16 to UTF-8
+    if actual_encoding.lower() != 'utf-16':
+        content = re.sub(
+            r'(<\?xml[^>]*encoding=["\'])utf-16(-le|-be)?(["\'][^>]*\?>)',
+            rf'\1{actual_encoding}\3',
+            content,
+            flags=re.IGNORECASE
+        )
+
     # Fix unclosed link tags - common in Atom feeds
     # Pattern: <link ...> followed by whitespace and another tag (not </link>)
-    # should be <link .../> 
-    import re
-    
+    # should be <link .../>
     # Only fix link tags that are clearly malformed:
-    # - End with > instead of />  
+    # - End with > instead of />
     # - Are followed by whitespace and another tag (not a closing </link>)
     content = re.sub(
         r'<link([^>]*[^/])>\s*(?=\n\s*<(?!/link\s*>))',
@@ -111,8 +200,138 @@ def _fix_malformed_xml(content: str) -> str:
         content,
         flags=re.MULTILINE
     )
-    
+
     return content
+
+
+def _parse_json_feed(json_data: dict) -> FastFeedParserDict:
+    """Parse a JSON Feed and convert to FastFeedParserDict format.
+
+    JSON Feed spec: https://jsonfeed.org/
+    """
+    feed = FastFeedParserDict()
+
+    # Parse feed-level metadata
+    feed_info = FastFeedParserDict()
+    feed_info['title'] = json_data.get('title', '')
+    feed_info['link'] = json_data.get('home_page_url', '')
+    feed_info['subtitle'] = json_data.get('description', '')
+    feed_info['id'] = json_data.get('feed_url', '')
+    feed_info['language'] = json_data.get('language')
+
+    # Add feed icon
+    if json_data.get('icon'):
+        feed_info['icon'] = json_data['icon']
+    if json_data.get('favicon'):
+        feed_info['favicon'] = json_data['favicon']
+
+    # Add feed authors
+    if json_data.get('authors'):
+        authors = json_data['authors']
+        if authors and len(authors) > 0:
+            feed_info['author'] = authors[0].get('name', '')
+
+    # Add links
+    feed_info['links'] = []
+    if json_data.get('home_page_url'):
+        feed_info['links'].append({
+            'rel': 'alternate',
+            'type': 'text/html',
+            'href': json_data['home_page_url']
+        })
+    if json_data.get('feed_url'):
+        feed_info['links'].append({
+            'rel': 'self',
+            'type': 'application/json',
+            'href': json_data['feed_url']
+        })
+
+    feed['feed'] = feed_info
+
+    # Parse items
+    entries = []
+    for item in json_data.get('items', []):
+        entry = FastFeedParserDict()
+
+        entry['id'] = item.get('id', item.get('url', ''))
+        entry['title'] = item.get('title', '')
+        entry['link'] = item.get('url', '')
+
+        # Handle content - prefer content_html, fall back to content_text
+        if item.get('content_html'):
+            entry['content'] = [{
+                'type': 'text/html',
+                'value': item['content_html']
+            }]
+            entry['description'] = item.get('summary', '')
+        elif item.get('content_text'):
+            entry['content'] = [{
+                'type': 'text/plain',
+                'value': item['content_text']
+            }]
+            entry['description'] = item.get('summary', item['content_text'][:512])
+        else:
+            entry['description'] = item.get('summary', '')
+
+        # Parse dates
+        if item.get('date_published'):
+            entry['published'] = _parse_date(item['date_published'])
+        if item.get('date_modified'):
+            entry['updated'] = _parse_date(item['date_modified'])
+
+        # Add image
+        if item.get('image'):
+            entry['image'] = item['image']
+        if item.get('banner_image'):
+            entry['banner_image'] = item['banner_image']
+
+        # Add author
+        if item.get('authors'):
+            authors = item['authors']
+            if authors and len(authors) > 0:
+                entry['author'] = authors[0].get('name', '')
+        elif item.get('author'):
+            # JSON Feed 1.0 uses singular 'author'
+            entry['author'] = item['author'].get('name', '')
+
+        # Add tags
+        if item.get('tags'):
+            entry['tags'] = [{'term': tag, 'scheme': None, 'label': None} for tag in item['tags']]
+
+        # Add attachments as enclosures
+        if item.get('attachments'):
+            enclosures = []
+            for attachment in item['attachments']:
+                enc = {
+                    'url': attachment.get('url', ''),
+                    'type': attachment.get('mime_type', ''),
+                }
+                if attachment.get('size_in_bytes'):
+                    enc['length'] = attachment['size_in_bytes']
+                if enc.get('url'):
+                    enclosures.append(enc)
+            if enclosures:
+                entry['enclosures'] = enclosures
+
+        # Add links
+        entry['links'] = []
+        if item.get('url'):
+            entry['links'].append({
+                'rel': 'alternate',
+                'type': 'text/html',
+                'href': item['url']
+            })
+        if item.get('external_url'):
+            entry['links'].append({
+                'rel': 'related',
+                'type': 'text/html',
+                'href': item['external_url']
+            })
+
+        entries.append(entry)
+
+    feed['entries'] = entries
+    return feed
 
 
 def parse(source: str | bytes) -> FastFeedParserDict:
@@ -156,12 +375,41 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     else:
         xml_content = source
 
+    # Try to detect and parse JSON Feed first
+    # JSON Feeds are identified by their content structure
+    try:
+        if isinstance(xml_content, bytes):
+            json_str = xml_content.decode('utf-8', errors='replace')
+        else:
+            json_str = xml_content
+
+        # Quick check if it looks like JSON
+        json_str_stripped = json_str.strip()
+        if json_str_stripped.startswith('{'):
+            try:
+                json_data = json.loads(json_str_stripped)
+                # Check if it's a JSON Feed (has version field pointing to jsonfeed.org)
+                if isinstance(json_data, dict) and 'version' in json_data:
+                    version = json_data['version']
+                    if isinstance(version, str) and 'jsonfeed.org' in version:
+                        return _parse_json_feed(json_data)
+                    # Also check for 'items' which is required in JSON Feed
+                    elif 'items' in json_data and isinstance(json_data['items'], list):
+                        # Might be a JSON Feed without explicit version
+                        return _parse_json_feed(json_data)
+            except (json.JSONDecodeError, ValueError):
+                # Not JSON or invalid JSON, continue to XML parsing
+                pass
+    except Exception:
+        # If JSON detection fails, continue to XML parsing
+        pass
+
     # Clean content to handle PHP warnings/HTML before XML
-    xml_content = _clean_feed_content(xml_content)
-    
+    xml_content, detected_encoding = _clean_feed_content(xml_content)
+
     # Fix common malformed XML issues
-    xml_content = _fix_malformed_xml(xml_content)
-    
+    xml_content = _fix_malformed_xml(xml_content, actual_encoding=detected_encoding)
+
     # Ensure we have bytes for lxml
     if isinstance(xml_content, str):
         xml_content = xml_content.encode("utf-8", errors="replace")
@@ -181,7 +429,76 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     except etree.XMLSyntaxError as e:
         raise ValueError(f"Failed to parse XML content: {str(e)}")
     if root is None:
-        raise ValueError("Failed to parse XML content: root element is None")
+        # Try to provide helpful context about what we received
+        try:
+            preview = xml_content[:500].decode('utf-8', errors='replace') if isinstance(xml_content, bytes) else str(xml_content)[:500]
+            preview = preview.strip()
+            if preview:
+                raise ValueError(f"Failed to parse XML: received content that couldn't be parsed as XML (first 200 chars: {preview[:200]})")
+            else:
+                raise ValueError("Failed to parse XML: received empty content")
+        except:
+            raise ValueError("Failed to parse XML: root element is None (invalid or empty content)")
+
+    # Check if this is an error/status XML document, not a feed
+    root_tag_local = root.tag.split('}')[-1].lower() if '}' in root.tag else root.tag.lower()
+    non_feed_tags = {'status', 'error', 'html', 'opml', 'br', 'div', 'body'}
+    if root_tag_local in non_feed_tags:
+        # Try to extract error message from various sources
+        error_msg = root.text or ''
+
+        # Try common error message paths
+        if not error_msg:
+            # Try <message>, <title>, <h1>, etc. - use XPath to handle namespaces
+            for tag in ['message', 'title', 'h1', 'h2', 'p', 'code']:
+                try:
+                    # Try with and without namespace
+                    elem = root.find(f".//{tag}") or root.find(tag)
+                    if elem is not None and elem.text:
+                        error_msg = elem.text
+                        break
+                    # Try XPath for case-insensitive
+                    elems = root.xpath(f".//*[local-name()='{tag}']")
+                    if elems and elems[0].text:
+                        error_msg = elems[0].text
+                        break
+                except:
+                    pass
+
+        # Get all text content as fallback
+        if not error_msg or len(error_msg.strip()) < 5:
+            try:
+                all_text = ' '.join(text.strip() for text in root.itertext() if text and text.strip())
+                # Clean up whitespace
+                all_text = ' '.join(all_text.split())
+                error_msg = all_text[:300] if all_text else 'No error message'
+            except:
+                error_msg = 'No error message'
+
+        error_msg = error_msg.strip()[:300] if error_msg else 'No error message'
+
+        # Provide helpful error messages
+        if root_tag_local == 'html':
+            if error_msg and error_msg != 'No error message' and len(error_msg) > 10:
+                raise ValueError(f"Received HTML page instead of feed: {error_msg[:150]}")
+            else:
+                raise ValueError(f"Received HTML page instead of feed (possible redirect, 404, or server error)")
+        elif root_tag_local in ['div', 'body']:
+            if error_msg and error_msg != 'No error message' and len(error_msg) > 10:
+                raise ValueError(f"Received HTML fragment instead of feed: {error_msg[:150]}")
+            else:
+                raise ValueError(f"Received HTML fragment instead of feed")
+        elif root_tag_local == 'status':
+            raise ValueError(f"Feed server returned status message: {error_msg}")
+        elif root_tag_local == 'error':
+            if error_msg and error_msg != 'No error message':
+                raise ValueError(f"Feed server returned error: {error_msg}")
+            else:
+                raise ValueError(f"Feed server returned error (no details provided)")
+        elif root_tag_local == 'opml':
+            raise ValueError(f"Received OPML document instead of feed (OPML is an outline format, not a feed)")
+        else:
+            raise ValueError(f"Not a valid feed: {root_tag_local} element found - {error_msg[:100]}")
 
     # Determine a feed type based on the content structure
     feed_type: _FeedType
@@ -192,9 +509,13 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         # Handle both namespaced and non-namespaced RSS
         channel = root.find("channel")
         if channel is None:
-            # Try to find channel with any namespace
+            # Try to find channel with any namespace or prefix
             for child in root:
-                if child.tag.endswith("}channel") or child.tag == "channel":
+                tag_lower = child.tag.lower()
+                if (child.tag.endswith("}channel") or
+                    child.tag == "channel" or
+                    tag_lower == "rss:channel" or
+                    tag_lower.endswith(":channel")):
                     channel = child
                     break
         if channel is None:
@@ -216,15 +537,23 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         # Find items with or without namespace
         items = channel.findall("item")
         if not items:
-            # Try to find items with any namespace
+            # Try to find items with any namespace or prefix
             for child in channel:
-                if child.tag.endswith("}item") or child.tag == "item":
+                tag_lower = child.tag.lower()
+                if (child.tag.endswith("}item") or
+                    child.tag == "item" or
+                    tag_lower == "rss:item" or
+                    tag_lower.endswith(":item")):
                     if not items:
                         items = []
                     items.append(child)
             # If still no items found using findall with any namespace
             if not items:
-                items = [child for child in channel if child.tag.endswith("}item") or child.tag == "item"]
+                items = [child for child in channel
+                        if (child.tag.endswith("}item") or
+                            child.tag == "item" or
+                            child.tag.lower() == "rss:item" or
+                            child.tag.lower().endswith(":item"))]
             # Try recursive search for deeply nested items (minified feeds)
             if not items:
                 items = channel.xpath(".//item") or channel.xpath(".//*[local-name()='item']")
@@ -902,10 +1231,27 @@ def _field_value_getter(
 def _get_element_value(
     root: _Element, path: str, attribute: Optional[str] = None
 ) -> Optional[str]:
-    """Get text content or attribute value of an element."""
+    """Get text content or attribute value of an element.
+
+    Also tries common namespace prefixes (rss:, atom:) for malformed feeds.
+    """
     el = root.find(path)
+
+    # If not found and path is a simple element name, try with common prefixes
+    # We iterate manually because lxml doesn't support prefixes without a namespace map
+    if el is None and '/' not in path and '{' not in path:
+        for prefix in ['rss:', 'atom:', 'dc:']:
+            # Manually search for prefixed elements
+            for child in root:
+                if child.tag.lower() == f"{prefix}{path}".lower():
+                    el = child
+                    break
+            if el is not None:
+                break
+
     if el is None:
         return None
+
     if attribute is not None:
         attr_value = el.get(attribute)
         return attr_value.strip() if attr_value else None

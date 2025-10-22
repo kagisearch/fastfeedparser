@@ -1,0 +1,40 @@
+{
+  "entries": [
+    {
+      "content": [
+        {
+          "base": null,
+          "language": null,
+          "type": "text/html",
+          "value": "First entry in UTF-16"
+        }
+      ],
+      "description": "First entry in UTF-16",
+      "id": "https://example.com/entry1",
+      "link": "https://example.com/entry1",
+      "links": [],
+      "published": "2024-01-03T12:00:00+00:00",
+      "title": "UTF-16 Entry 1"
+    }
+  ],
+  "feed": {
+    "id": null,
+    "language": null,
+    "link": "https://example.com/",
+    "links": [],
+    "subtitle": "A feed encoded in UTF-16",
+    "subtitle_detail": {
+      "base": null,
+      "language": null,
+      "type": "text/plain",
+      "value": "A feed encoded in UTF-16"
+    },
+    "title": "UTF-16 Encoded Feed",
+    "title_detail": {
+      "base": null,
+      "language": null,
+      "type": "text/plain",
+      "value": "UTF-16 Encoded Feed"
+    }
+  }
+}

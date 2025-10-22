@@ -1,0 +1,23 @@
+<!-- Malformed RSS with namespace prefixes like dylanharris.org -->
+<!-- This feed has: 1) double <?xml declaration, 2) namespaced RSS elements -->
+<?xml?xml version="1.0" encoding="UTF-8" ??>
+<rss rss:version=2.0>
+<rss:channel>
+ <rss:copyright>copyright 1979-2025 dylan harris</rss:copyright>
+ <rss:title>Test Feed with Namespaced RSS</rss:title>
+ <rss:link>https://example.com/</rss:link>
+ <rss:description>A malformed RSS feed with namespace prefixes</rss:description>
+ <rss:item>
+  <rss:title>Test Entry 1</rss:title>
+  <rss:link>https://example.com/entry1</rss:link>
+  <rss:description>First test entry</rss:description>
+  <rss:pubDate>Mon, 01 Jan 2024 12:00:00 GMT</rss:pubDate>
+ </rss:item>
+ <rss:item>
+  <rss:title>Test Entry 2</rss:title>
+  <rss:link>https://example.com/entry2</rss:link>
+  <rss:description>Second test entry</rss:description>
+  <rss:pubDate>Tue, 02 Jan 2024 12:00:00 GMT</rss:pubDate>
+ </rss:item>
+</rss:channel>
+</rss>
