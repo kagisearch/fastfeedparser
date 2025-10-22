@@ -21,7 +21,7 @@ def pytest_generate_tests(metafunc: pytest.Metafunc):
         if f.name.endswith(".expected.json"):
             continue
         # Skip .json files that have a corresponding .xml file (these are expected outputs)
-        xml_equivalent = f.with_suffix('.xml')
+        xml_equivalent = f.with_suffix(".xml")
         if xml_equivalent.exists():
             continue
         # This is an actual JSON feed file
@@ -37,8 +37,8 @@ def test_integration(feed_path: Path):
 
     # For JSON feeds, use .expected.json extension for expected output
     # For XML feeds, use .json extension for expected output
-    if feed_path.suffix == '.json':
-        expected_path = feed_path.with_suffix('.expected.json')
+    if feed_path.suffix == ".json":
+        expected_path = feed_path.with_suffix(".expected.json")
     else:
         expected_path = feed_path.with_suffix(".json")
 

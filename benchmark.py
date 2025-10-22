@@ -11,7 +11,7 @@ feeds = [
     "https://glineq.blogspot.com/feeds/posts/default",
     "https://stml.tumblr.com/rss",
     "http://feeds.feedburner.com/mishadoff",
-    "https://lisacharlottemuth.com/atom.xml", 
+    "https://lisacharlottemuth.com/atom.xml",
     "https://emacsninja.com/feed.atom",
     "http://causality.cs.ucla.edu/blog/index.php/feed/",
     "https://blog.railsapps.org/rss",
@@ -77,7 +77,7 @@ feeds = [
     "https://anteru.net/rss.xml",
     "https://blog.drewolson.org/index.xml",
     "https://blog.noredink.com/rss",
-    "https://glasspetalsmoke.blogspot.com/feeds/posts/default"
+    "https://glasspetalsmoke.blogspot.com/feeds/posts/default",
 ]
 
 
@@ -98,8 +98,8 @@ def test_parsers():
     total_fp_time = 0
     total_ffp_entries = 0
     total_fp_entries = 0
-    fp_time=0
-    
+    fp_time = 0
+
     successful_feeds = 0
 
     for url in feeds:
@@ -113,7 +113,7 @@ def test_parsers():
                 start_time = time.perf_counter()
                 feed = fastfeedparser.parse(content)
                 ffp_time = time.perf_counter() - start_time
-                total_ffp_entries+=len(feed.entries)
+                total_ffp_entries += len(feed.entries)
                 print(f"FastFeedParser: {len(feed.entries)} entries in {ffp_time:.3f}s")
             except Exception as e:
                 ffp_time = time.perf_counter() - start_time
@@ -124,14 +124,14 @@ def test_parsers():
                 start_time = time.perf_counter()
                 feed = feedparser.parse(content)
                 fp_time = time.perf_counter() - start_time
-                total_fp_entries+=len(feed.entries)
-                print(f"Feedparser: {len(feed.entries)} entries in {fp_time:.3f}s")                
+                total_fp_entries += len(feed.entries)
+                print(f"Feedparser: {len(feed.entries)} entries in {fp_time:.3f}s")
             except Exception as e:
                 fp_time = time.perf_counter() - start_time
                 print(f"Feedparser failed: {e}")
 
             total_ffp_time += ffp_time
-            total_fp_time += fp_time    
+            total_fp_time += fp_time
 
             print(f"Speedup: {fp_time/ffp_time:.1f}x")
             if ffp_time > 0 and fp_time > 0:
