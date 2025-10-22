@@ -571,6 +571,25 @@ def parse(source: str | bytes) -> FastFeedParserDict:
                     # If still no entries found using findall with any namespace
                     if not items:
                         items = [child for child in channel if child.tag.endswith("}entry") or child.tag == "entry"]
+
+        # Last resort fallback: If we found very few items, try HTMLParser
+        # This handles feeds with malformed CDATA or other XML errors that XMLParser can't recover from
+        if len(items) < 5:  # Arbitrary threshold - most feeds have more than 5 items
+            try:
+                # Try HTMLParser which is more forgiving with malformed content
+                html_parser = etree.HTMLParser(recover=True, collect_ids=False)
+                html_root = etree.fromstring(xml_content, parser=html_parser)
+                html_channel = html_root.find('.//channel')
+                if html_channel is not None:
+                    html_items = html_channel.findall('.//item')
+                    # Only use HTMLParser results if we get significantly more items
+                    if len(html_items) > len(items) * 2:  # At least 2x more items
+                        root = html_root
+                        channel = html_channel
+                        items = html_items
+            except:
+                # If HTMLParser fails, continue with XMLParser results
+                pass
     elif root.tag.endswith("}feed"):
         # Detect Atom namespace dynamically
         if "{http://www.w3.org/2005/Atom}" in root.tag:
@@ -1340,9 +1359,9 @@ def _parse_date(date_str: str) -> Optional[str]:
     except Exception as e:
         pass
 
-    # Fall back to parsedatetime
+    # Fall back to dateparser (limit to English locale for performance)
     try:
-         dt = dateparser.parse(date_str)
+         dt = dateparser.parse(date_str, languages=['en'])
          if dt:
             return dt.astimezone(_UTC).isoformat()
     except ValueError:
