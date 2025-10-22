@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import datetime
+from email.utils import parsedate_to_datetime
 import gzip
 import json
 import re
 import zlib
+from functools import lru_cache
 try:
     import brotli
     HAS_BROTLI = True
@@ -39,6 +41,11 @@ _RE_UTF16_ENCODING = re.compile(r'(<\?xml[^>]*encoding=["\'])utf-16(-le|-be)?(["
 _RE_UNCLOSED_LINK = re.compile(r'<link([^>]*[^/])>\s*(?=\n\s*<(?!/link\s*>))', re.MULTILINE)
 _RE_FEB29 = re.compile(r'(\d{4})-02-29')
 _RE_WHITESPACE = re.compile(r'\s+')
+_RE_ISO_LIKE = re.compile(r'^\d{4}-\d{2}-\d{2}')
+_RE_ISO_TZ_NO_COLON = re.compile(r'([+-]\d{2})(\d{2})$')
+_RE_ISO_TZ_HOUR_ONLY = re.compile(r'([+-]\d{2})$')
+_RE_ISO_FRACTION = re.compile(r'\.(\d{7,})(?=(?:[+-]\d{2}:?\d{2}|Z|$))', re.IGNORECASE)
+_RE_COMMA_WEEKDAY = re.compile(r'^[A-Za-z]{3}, ')
 
 
 class FastFeedParserDict(dict):
@@ -126,6 +133,14 @@ def _clean_feed_content(content: str | bytes) -> tuple[str, str]:
         '<rdf:RDF',  # RDF feed
         '<?xml-stylesheet'  # Sometimes comes before <?xml
     ]
+
+    stripped_content = content.lstrip()
+    stripped_lower = stripped_content[:2000].lower()
+    if stripped_lower.startswith(("<?xml", "<rss", "<feed", "<rdf")):
+        return stripped_content, encoding_used
+
+    if stripped_lower.startswith('<!doctype html') or stripped_lower.startswith('<html'):
+        raise ValueError("Content appears to be HTML, not a valid RSS/Atom feed")
 
     content_lines = content.splitlines()
     xml_start_line = -1
@@ -442,16 +457,25 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     if not xml_content.strip():
         raise ValueError("Empty content")
 
-    parser = etree.XMLParser(
-        ns_clean=True,
-        recover=True,
-        collect_ids=False,
-        resolve_entities=False,
-    )
     try:
-        root = etree.fromstring(xml_content, parser=parser)
-    except etree.XMLSyntaxError as e:
-        raise ValueError(f"Failed to parse XML content: {str(e)}")
+        strict_parser = etree.XMLParser(
+            ns_clean=True,
+            recover=False,
+            collect_ids=False,
+            resolve_entities=False,
+        )
+        root = etree.fromstring(xml_content, parser=strict_parser)
+    except etree.XMLSyntaxError:
+        recover_parser = etree.XMLParser(
+            ns_clean=True,
+            recover=True,
+            collect_ids=False,
+            resolve_entities=False,
+        )
+        try:
+            root = etree.fromstring(xml_content, parser=recover_parser)
+        except etree.XMLSyntaxError as e:
+            raise ValueError(f"Failed to parse XML content: {str(e)}")
     if root is None:
         # Try to provide helpful context about what we received
         try:
@@ -672,7 +696,7 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType, atom_namespace: Op
     
     # Atom 0.3 uses 'modified', Atom 1.0 uses 'updated'
     updated_field = f"{{{atom_ns}}}modified" if is_atom_03 else f"{{{atom_ns}}}updated"
-    
+
     fields: tuple[tuple[str, str, str, str, bool], ...] = (
         (
             "title",
@@ -726,7 +750,8 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType, atom_namespace: Op
     )
 
     feed = FastFeedParserDict()
-    get_field_value = _field_value_getter(channel, feed_type)
+    element_get = _cached_element_value_factory(channel)
+    get_field_value = _field_value_getter(channel, feed_type, cached_get=element_get)
     for field in fields:
         value = get_field_value(*field[1:])
         if value:
@@ -777,7 +802,7 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType, atom_namespace: Op
         )
 
     # Add id
-    feed["id"] = _get_element_value(channel, f"{{{atom_ns}}}id")
+    feed["id"] = element_get(f"{{{atom_ns}}}id")
 
     # Add generator_detail
     generator = channel.find(f"{{{atom_ns}}}generator")
@@ -789,17 +814,17 @@ def _parse_feed_info(channel: _Element, feed_type: _FeedType, atom_namespace: Op
         }
 
     if feed_type == "rss":
-        comments = _get_element_value(channel, "comments")
+        comments = element_get("comments")
         if comments:
             feed["comments"] = comments
 
     # Additional checks for publisher and author
     if "publisher" not in feed:
-        webmaster = _get_element_value(channel, "webMaster")
+        webmaster = element_get("webMaster")
         if webmaster:
             feed["publisher"] = webmaster
     if "author" not in feed:
-        managing_editor = _get_element_value(channel, "managingEditor")
+        managing_editor = element_get("managingEditor")
         if managing_editor:
             feed["author"] = managing_editor
 
@@ -904,6 +929,7 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType, atom_namespace: Opti
         ),
     )
 
+    element_get = _cached_element_value_factory(item)
     entry = FastFeedParserDict()
     # ------------------------------------------------------------------
     # 1) Collect a stable identifier for this entry.
@@ -911,13 +937,13 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType, atom_namespace: Opti
     #    RSS    → <guid>
     #    RDF    → rdf:about attribute on the <item>
     # ------------------------------------------------------------------
-    atom_id = _get_element_value(item, f"{{{atom_ns}}}id")
-    rss_guid = _get_element_value(item, "guid")
+    atom_id = element_get(f"{{{atom_ns}}}id")
+    rss_guid = element_get("guid")
     rdf_about = item.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about")
     entry_id: Optional[str] = (atom_id or rss_guid or rdf_about)
     if entry_id:
         entry["id"] = entry_id.strip()
-    get_field_value = _field_value_getter(item, feed_type)
+    get_field_value = _field_value_getter(item, feed_type, cached_get=element_get)
     for field in fields:
         value = get_field_value(*field[1:])
         if value:
@@ -928,12 +954,12 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType, atom_namespace: Opti
 
     # Check for fallback date fields if primary fields are missing
     if "published" not in entry:
-        fallback_published = _get_element_value(item, published_fallback)
+        fallback_published = element_get(published_fallback)
         if fallback_published:
             entry["published"] = _parse_date(fallback_published)
     
     if "updated" not in entry:
-        fallback_updated = _get_element_value(item, updated_fallback)
+        fallback_updated = element_get(updated_fallback)
         if fallback_updated:
             entry["updated"] = _parse_date(fallback_updated)
     
@@ -1187,14 +1213,14 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType, atom_namespace: Opti
             "{http://purl.org/dc/elements/1.1/}creator",
             False,
         )
-        or _get_element_value(item, "{http://purl.org/dc/elements/1.1/}creator")
-        or _get_element_value(item, "author")
+        or element_get("{http://purl.org/dc/elements/1.1/}creator")
+        or element_get("author")
     )
     if author:
         entry["author"] = author
 
     if feed_type == "rss":
-        comments = _get_element_value(item, "comments")
+        comments = element_get("comments")
         if comments:
             entry["comments"] = comments
 
@@ -1207,39 +1233,43 @@ def _parse_feed_entry(item: _Element, feed_type: _FeedType, atom_namespace: Opti
 
 
 def _field_value_getter(
-    root: _Element, feed_type: _FeedType
+    root: _Element,
+    feed_type: _FeedType,
+    cached_get: Optional[Callable[[str, Optional[str]], Optional[str]]] = None,
 ) -> Callable[[str, str, str, bool], str | None]:
+    get_value = cached_get or _cached_element_value_factory(root)
+
     if feed_type == "rss":
 
         def wrapper(
             rss_css: str, atom_css: str, rdf_css: str, is_attr: bool
         ) -> str | None:
             # First try standard RSS field (most common case)
-            result = _get_element_value(root, rss_css)
+            result = get_value(rss_css)
             if result:
                 return result
 
             # Try case-insensitive for mixed-case fields (pubdate vs pubDate)
             # Only try if field has uppercase letters
             if rss_css != rss_css.lower():
-                result = _get_element_value(root, rss_css.lower())
+                result = get_value(rss_css.lower())
                 if result:
                     return result
 
             # For attributes, try with href/link attributes
             if is_attr:
-                result = _get_element_value(root, atom_css, attribute="href")
+                result = get_value(atom_css, attribute="href")
                 if result:
                     return result
-                result = _get_element_value(root, atom_css, attribute="link")
+                result = get_value(atom_css, attribute="link")
                 if result:
                     return result
             else:
                 # Try Atom and RDF fields for non-attribute lookups
-                result = _get_element_value(root, atom_css)
+                result = get_value(atom_css)
                 if result:
                     return result
-                result = _get_element_value(root, rdf_css)
+                result = get_value(rdf_css)
                 if result:
                     return result
 
@@ -1247,7 +1277,7 @@ def _field_value_getter(
             # Only if atom_css has namespace
             if "{" in atom_css:
                 unnamespaced_atom = atom_css.split("}", 1)[1]
-                result = _get_element_value(root, unnamespaced_atom)
+                result = get_value(unnamespaced_atom)
                 if result:
                     return result
 
@@ -1258,21 +1288,18 @@ def _field_value_getter(
         def wrapper(
             rss_css: str, atom_css: str, rdf_css: str, is_attr: bool
         ) -> str | None:
-            return _get_element_value(root, atom_css) or (
-                (
-                    _get_element_value(root, atom_css, attribute="href")
-                    or _get_element_value(root, atom_css, attribute="link")
+            if is_attr:
+                return get_value(atom_css, attribute="href") or get_value(
+                    atom_css, attribute="link"
                 )
-                if is_attr
-                else None
-            )
+            return get_value(atom_css)
 
     elif feed_type == "rdf":
 
         def wrapper(
             rss_css: str, atom_css: str, rdf_css: str, is_attr: bool
         ) -> str | None:
-            return _get_element_value(root, rdf_css)
+            return get_value(rdf_css)
 
     return wrapper
 
@@ -1312,42 +1339,136 @@ def _get_element_value(
     text_value = el.text
     return text_value.strip() if text_value else None
 
+
+def _cached_element_value_factory(
+    root: _Element,
+) -> Callable[[str, Optional[str]], Optional[str]]:
+    """Create a closure that memoises element lookups for a given root node."""
+    cache: dict[tuple[str, Optional[str]], Optional[str]] = {}
+
+    def getter(path: str, attribute: Optional[str] = None) -> Optional[str]:
+        key = (path, attribute)
+        if key in cache:
+            return cache[key]
+        value = _get_element_value(root, path, attribute=attribute)
+        cache[key] = value
+        return value
+
+    return getter
+
+def _normalize_iso_datetime_string(value: str) -> str:
+    """Coerce flexible ISO-8601 inputs into a form datetime.fromisoformat can parse."""
+    cleaned = value.strip()
+    if not cleaned:
+        return cleaned
+
+    cleaned = _RE_WHITESPACE.sub(" ", cleaned)
+    upper_cleaned = cleaned.upper()
+    for suffix in (" UTC", " GMT", " Z"):
+        if upper_cleaned.endswith(suffix):
+            cleaned = cleaned[: -len(suffix)].rstrip() + "+00:00"
+            upper_cleaned = cleaned.upper()
+            break
+
+    if cleaned.endswith(("Z", "z")):
+        cleaned = cleaned[:-1] + "+00:00"
+
+    if " " in cleaned and "T" not in cleaned[:11] and _RE_ISO_LIKE.match(cleaned):
+        date_part, rest = cleaned.split(" ", 1)
+        if rest and rest[0].isdigit():
+            cleaned = f"{date_part}T{rest}"
+
+    match = _RE_ISO_TZ_NO_COLON.search(cleaned)
+    if match:
+        cleaned = cleaned[:-5] + f"{match.group(1)}:{match.group(2)}"
+    else:
+        match = _RE_ISO_TZ_HOUR_ONLY.search(cleaned)
+        if match:
+            cleaned = cleaned[:-3] + f"{match.group(1)}:00"
+
+    cleaned = _RE_ISO_FRACTION.sub(lambda m: "." + m.group(1)[:6], cleaned, count=1)
+    return cleaned
+
+
+def _ensure_utc(dt: datetime.datetime) -> datetime.datetime:
+    """Return a timezone-aware datetime normalized to UTC."""
+    return dt.replace(tzinfo=_UTC) if dt.tzinfo is None else dt.astimezone(_UTC)
+
+
+def _parsedate_to_utc(value: str) -> Optional[datetime.datetime]:
+    """Fast RFC-822 / RFC-2822 parsing via email.utils."""
+    try:
+        parsed = parsedate_to_datetime(value)
+    except (TypeError, ValueError, IndexError):
+        return None
+    if parsed is None:
+        return None
+    return _ensure_utc(parsed)
+
+
 custom_tzinfos: dict[str, int] = {
-    'EST': -5 * 3600,  # Eastern Standard Time
-    'CST': -6 * 3600,  # Central Standard Time
-    'PST': -8 * 3600,  # Pacific Standard Time
-    'MST': -7 * 3600,  # Mountain Standard Time
-    'EDT': -4 * 3600,  # Eastern Daylight Time
-    'CDT': -5 * 3600,  # Central Daylight Time
-    'PDT': -7 * 3600,  # Pacific Daylight Time
-    'MDT': -6 * 3600,  # Mountain Daylight Time
-    'GMT': 0,          # Greenwich Mean Time
-    'BST': 1 * 3600,   # British Summer Time
-    'CET': 1 * 3600,   # Central European Time
-    'CEST': 2 * 3600,  # Central European Summer Time
-    'EET': 2 * 3600,   # Eastern European Time 
-    'EEST': 3 * 3600,  # Eastern European Summer Time
-    'MSK': 3 * 3600,   # Moscow Time
-    'IST': 5.5 * 3600, # Indian Standard Time
-    'SST': 8 * 3600,   # Singapore Standard Time
-    'CST': 8 * 3600,   # China Standard Time
-    'JST': 9 * 3600,   # Japan Standard Time
-    'KST': 9 * 3600,   # Korea Standard Time
-    'AEST': 10 * 3600, # Australian Eastern Standard Time
-    'AEDT': 11 * 3600, # Australian Eastern Daylight Time
-    'ACST': 9.5 * 3600,# Australian Central Standard Time
-    'ACDT': 10.5 * 3600,# Australian Central Daylight Time
-    'AWST': 8 * 3600,  # Australian Western Standard Time
-    'NZST': 12 * 3600, # New Zealand Standard Time
-    'NZDT': 13 * 3600, # New Zealand Daylight Time
-    'HAST': -10 * 3600,# Hawaii-Aleutian Standard Time
-    'HADT': -9 * 3600, # Hawaii-Aleutian Daylight Time
-    'AKST': -9 * 3600, # Alaska Standard Time
-    'AKDT': -8 * 3600, # Alaska Daylight Time
-    'WET': 0,          # Western European Time
-    'WEST': 1 * 3600,  # Western European Summer Time
-    # Add more timezones as needed
+    "UTC": 0,
+    "UT": 0,
+    "GMT": 0,
+    "WET": 0,
+    "WEST": 3600,
+    "BST": 3600,
+    "CET": 3600,
+    "CEST": 7200,
+    "EET": 7200,
+    "EEST": 10800,
+    "MSK": 10800,
+    "IST": 19800,
+    "PST": -28800,
+    "PDT": -25200,
+    "MST": -25200,
+    "MDT": -21600,
+    "CST": -21600,
+    "CDT": -18000,
+    "EST": -18000,
+    "EDT": -14400,
+    "AKST": -32400,
+    "AKDT": -28800,
+    "HST": -36000,
+    "HAST": -36000,
+    "HADT": -32400,
+    "AEST": 36000,
+    "AEDT": 39600,
+    "ACST": 34200,
+    "ACDT": 37800,
+    "AWST": 28800,
+    "NZST": 43200,
+    "NZDT": 46800,
+    "JST": 32400,
+    "KST": 32400,
+    "SGT": 28800,
+    "SST": 28800,  # Legacy alias for Singapore Standard Time
+    "China Standard Time": 28800,
+    "Australian Eastern Standard Time": 36000,
+    "Australian Eastern Daylight Time": 39600,
 }
+
+_DATEPARSER_SETTINGS = {
+    "TIMEZONE": "UTC",
+    "RETURN_AS_TIMEZONE_AWARE": True,
+}
+
+
+@lru_cache(maxsize=512)
+def _slow_dateutil_parse(value: str) -> Optional[datetime.datetime]:
+    try:
+        return dateutil_parser.parse(value, tzinfos=custom_tzinfos, ignoretz=False)
+    except (ValueError, TypeError, OverflowError):
+        return None
+
+
+@lru_cache(maxsize=256)
+def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
+    try:
+        return dateparser.parse(value, languages=["en"], settings=_DATEPARSER_SETTINGS)
+    except (ValueError, TypeError):
+        return None
+
 
 def _parse_date(date_str: str) -> Optional[str]:
     """Parse date string and return as an ISO 8601 formatted UTC string.
@@ -1361,46 +1482,52 @@ def _parse_date(date_str: str) -> Optional[str]:
     if not date_str:
         return None
 
+    candidate = _RE_WHITESPACE.sub(" ", date_str.strip())
+    if not candidate:
+        return None
+
     # Fix invalid leap year dates (Feb 29 in non-leap years)
     # This handles feeds with incorrect dates like "2023-02-29"
-    year_match = _RE_FEB29.match(date_str)
+    year_match = _RE_FEB29.match(candidate)
     if year_match:
         year = int(year_match.group(1))
         if not ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)):
             # Not a leap year, change Feb 29 to Feb 28
-            date_str = date_str.replace(f'{year}-02-29', f'{year}-02-28')
-    
-    # Try dateutil.parser first
-    try:
-        dt = dateutil_parser.parse(date_str, tzinfos=custom_tzinfos, ignoretz=False)
-        return dt.astimezone(_UTC).isoformat()
-    except ValueError as e:
-        # Try parsing just the date portion if full datetime parse fails
+            candidate = candidate.replace(f"{year}-02-29", f"{year}-02-28")
+
+    if "24:00" in candidate:
+        candidate = candidate.replace("24:00:00", "00:00:00").replace(" 24:00", " 00:00")
+
+    dt: Optional[datetime.datetime] = None
+
+    if _RE_ISO_LIKE.match(candidate):
+        iso_candidate = _normalize_iso_datetime_string(candidate)
         try:
-           # Handle ISO8601 format with explicit offset
-           if 'T' in date_str and ('+' in date_str or '-' in date_str.split('T')[1]):
-               dt = dateutil_parser.parse(date_str)
-           elif '24:00:00' in date_str:
-                   date_str = date_str.replace('24:00:00', '00:00:00')
-                   dt = dateutil_parser.parse(date_str)
-           else:
-                   dt = dateutil_parser.parse(date_str.split()[0], ignoretz=True)
-           # Since no time info, set to start of day UTC
-           return dt.astimezone(_UTC).isoformat()
-        except ValueError as e:
-            pass
-    except Exception as e:
-        pass
+            dt = datetime.datetime.fromisoformat(iso_candidate)
+        except ValueError:
+            # Retry after trimming overly precise fractional seconds
+            trimmed = _RE_ISO_FRACTION.sub(
+                lambda m: "." + m.group(1)[:6], iso_candidate, count=1
+            )
+            if trimmed != iso_candidate:
+                try:
+                    dt = datetime.datetime.fromisoformat(trimmed)
+                except ValueError:
+                    dt = None
+        if dt is not None:
+            return _ensure_utc(dt).isoformat()
 
-    # Fall back to dateparser (limit to English locale for performance)
-    try:
-         dt = dateparser.parse(date_str, languages=['en'])
-         if dt:
-            return dt.astimezone(_UTC).isoformat()
-    except ValueError:
-         pass
+    dt = _parsedate_to_utc(candidate)
+    if dt is not None:
+        return dt.isoformat()
 
-    
+    slow_dt = _slow_dateutil_parse(candidate)
+    if slow_dt is not None:
+        return _ensure_utc(slow_dt).isoformat()
+
+    parsed = _slow_dateparser(candidate)
+    if parsed is not None:
+        return _ensure_utc(parsed).isoformat()
+
     # If all parsing attempts fail, return None
     return None
-
