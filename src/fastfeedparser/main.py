@@ -514,7 +514,9 @@ def parse(source: str | bytes) -> FastFeedParserDict:
             for tag in ["message", "title", "h1", "h2", "p", "code"]:
                 try:
                     # Try with and without namespace
-                    elem = root.find(f".//{tag}") or root.find(tag)
+                    elem = root.find(f".//{tag}")
+                    if elem is None:
+                        elem = root.find(tag)
                     if elem is not None and elem.text:
                         error_msg = elem.text
                         break
