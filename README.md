@@ -139,9 +139,14 @@ Each entry contains:
 ## Requirements
 
 - Python 3.7+
-- dateparser
 - lxml
 - python-dateutil
+
+Optional extras:
+
+- `brotli` (`pip install fastfeedparser[brotli]`) for `Content-Encoding: br`
+- `dateparser` (`pip install fastfeedparser[dateparser]`) for the slowest date parsing fallback
+- `pip install fastfeedparser[full]` for both
 
 ## Contributing
 
