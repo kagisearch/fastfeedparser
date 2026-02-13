@@ -15,6 +15,7 @@ try:
 except ImportError:
     HAS_BROTLI = False
 from typing import Any, Callable, Optional, TYPE_CHECKING, Literal
+from urllib.parse import urljoin
 from urllib.request import (
     HTTPErrorProcessor,
     HTTPRedirectHandler,
@@ -597,6 +598,31 @@ def _raise_for_non_feed_root(
     raise ValueError(f"Not a valid feed: {root_tag_local} element found - {error_msg[:100]}")
 
 
+_RE_META_REFRESH_URL = re.compile(
+    r'url\s*=\s*["\']?\s*([^"\'>\s]+)', re.IGNORECASE
+)
+
+
+def _extract_meta_refresh_url(content: str | bytes, base_url: str) -> str | None:
+    """Extract redirect URL from an HTML meta-refresh tag."""
+    html_bytes = content.encode("utf-8") if isinstance(content, str) else content
+    try:
+        doc = etree.fromstring(html_bytes, parser=etree.HTMLParser())
+    except Exception:
+        return None
+    if doc is None:
+        return None
+
+    for meta in doc.iter("meta"):
+        if (meta.get("http-equiv") or "").lower() == "refresh":
+            match = _RE_META_REFRESH_URL.search(meta.get("content", ""))
+            if match:
+                url = urljoin(base_url, match.group(1))
+                if url != base_url:
+                    return url
+    return None
+
+
 def _detect_feed_structure(
     root: _Element, xml_content: bytes, root_tag_local: str
 ) -> tuple[_FeedType, _Element, list[_Element], Optional[str]]:
@@ -704,24 +730,8 @@ def _detect_feed_structure(
     raise ValueError(f"Unknown feed type: {root.tag}")
 
 
-def parse(source: str | bytes) -> FastFeedParserDict:
-    """Parse a feed from a URL or XML content.
-
-    Args:
-        source: URL string or XML content string/bytes
-
-    Returns:
-        FastFeedParserDict containing parsed feed data
-
-    Raises:
-        ValueError: If content is empty or invalid
-        HTTPError: If URL fetch fails
-    """
-    if isinstance(source, str) and source.startswith(("http://", "https://")):
-        xml_content = _fetch_url_content(source)
-    else:
-        xml_content = source
-
+def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
+    """Parse feed content (XML or JSON) that has already been fetched."""
     json_feed = _maybe_parse_json_feed(xml_content)
     if json_feed is not None:
         return json_feed
@@ -748,6 +758,39 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         entries.append(entry)
 
     return feed
+
+
+def parse(source: str | bytes) -> FastFeedParserDict:
+    """Parse a feed from a URL or XML content.
+
+    Args:
+        source: URL string or XML content string/bytes
+
+    Returns:
+        FastFeedParserDict containing parsed feed data
+
+    Raises:
+        ValueError: If content is empty or invalid
+        HTTPError: If URL fetch fails
+    """
+    is_url = isinstance(source, str) and source.startswith(("http://", "https://"))
+    if is_url:
+        content = _fetch_url_content(source)
+    else:
+        content = source
+
+    try:
+        return _parse_content(content)
+    except ValueError as e:
+        if not is_url:
+            raise
+        err_msg = str(e)
+        if "HTML" not in err_msg and "not a valid RSS/Atom feed" not in err_msg:
+            raise
+        redirect_url = _extract_meta_refresh_url(content, source)
+        if redirect_url is None:
+            raise
+        return parse(redirect_url)
 
 
 def _parse_feed_info(
