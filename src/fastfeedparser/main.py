@@ -426,7 +426,6 @@ def _fetch_url_content(url: str) -> str | bytes:
     )
     opener = build_opener(HTTPRedirectHandler(), HTTPErrorProcessor())
     with opener.open(request, timeout=30) as response:
-        response.begin()
         content: bytes = response.read()
         content_encoding = response.headers.get("Content-Encoding")
         if content_encoding == "gzip":
@@ -452,10 +451,6 @@ def _maybe_parse_json_feed(content: str | bytes) -> FastFeedParserDict | None:
         if not content.lstrip().startswith("{"):
             return None
         json_str = content
-
-    json_str = json_str.strip()
-    if not json_str.startswith("{"):
-        return None
 
     try:
         json_data = json.loads(json_str)
@@ -512,11 +507,11 @@ def _root_tag_local(root: _Element) -> str:
     return root.tag.split("}")[-1].lower() if "}" in root.tag else root.tag.lower()
 
 
-def _extract_error_message(root: _Element) -> str:
+def _extract_error_message(root: _Element, raw_bytes: Optional[bytes] = None) -> str:
     error_msg = root.text or ""
 
     if not error_msg:
-        for tag in ["message", "title", "h1", "h2", "p", "code"]:
+        for tag in ["message", "title", "h1", "h2", "h3", "h4", "p", "code"]:
             try:
                 elem = root.find(f".//{tag}")
                 if elem is None:
@@ -535,19 +530,41 @@ def _extract_error_message(root: _Element) -> str:
                 text.strip() for text in root.itertext() if text and text.strip()
             )
             all_text = " ".join(all_text.split())
-            return all_text[:300] if all_text else "No error message"
+            if all_text:
+                return all_text[:300]
         except Exception:
-            return "No error message"
+            pass
+
+        # XML parser may strip children from malformed HTML (e.g. unquoted
+        # attributes); re-parse with the lenient HTML parser as a fallback.
+        if raw_bytes:
+            try:
+                html_root = etree.fromstring(raw_bytes, parser=etree.HTMLParser())
+                all_text = " ".join(
+                    t.strip() for t in html_root.itertext() if t and t.strip()
+                )
+                all_text = " ".join(all_text.split())
+                if all_text:
+                    return all_text[:300]
+            except Exception:
+                pass
+
+        return "No error message"
 
     return error_msg
 
 
-def _raise_for_non_feed_root(root: _Element, root_tag_local: str) -> None:
-    non_feed_tags = {"status", "error", "html", "opml", "br", "div", "body"}
+def _raise_for_non_feed_root(
+    root: _Element, root_tag_local: str, raw_bytes: Optional[bytes] = None
+) -> None:
+    non_feed_tags = {
+        "status", "error", "html", "opml", "br", "div", "body",
+        "urlset", "sitemapindex",
+    }
     if root_tag_local not in non_feed_tags:
         return
 
-    error_msg = _extract_error_message(root).strip()[:300] or "No error message"
+    error_msg = _extract_error_message(root, raw_bytes).strip()[:300] or "No error message"
 
     if root_tag_local == "html":
         if error_msg != "No error message" and len(error_msg) > 10:
@@ -559,6 +576,10 @@ def _raise_for_non_feed_root(root: _Element, root_tag_local: str) -> None:
         if error_msg != "No error message" and len(error_msg) > 10:
             raise ValueError(f"Received HTML fragment instead of feed: {error_msg[:150]}")
         raise ValueError("Received HTML fragment instead of feed")
+    if root_tag_local == "br":
+        if error_msg != "No error message" and len(error_msg) > 10:
+            raise ValueError(f"Received HTML error instead of feed: {error_msg[:150]}")
+        raise ValueError("Received HTML fragment instead of feed")
     if root_tag_local == "status":
         raise ValueError(f"Feed server returned status message: {error_msg}")
     if root_tag_local == "error":
@@ -568,6 +589,10 @@ def _raise_for_non_feed_root(root: _Element, root_tag_local: str) -> None:
     if root_tag_local == "opml":
         raise ValueError(
             "Received OPML document instead of feed (OPML is an outline format, not a feed)"
+        )
+    if root_tag_local in {"urlset", "sitemapindex"}:
+        raise ValueError(
+            "Received XML sitemap instead of feed (sitemap is for search engines, not a feed)"
         )
     raise ValueError(f"Not a valid feed: {root_tag_local} element found - {error_msg[:100]}")
 
@@ -704,7 +729,7 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     xml_content = _prepare_xml_bytes(xml_content)
     root = _parse_xml_root(xml_content)
     root_tag_local = _root_tag_local(root)
-    _raise_for_non_feed_root(root, root_tag_local)
+    _raise_for_non_feed_root(root, root_tag_local, xml_content)
 
     feed_type, channel, items, atom_namespace = _detect_feed_structure(
         root, xml_content, root_tag_local
@@ -1028,14 +1053,17 @@ def _populate_entry_content(
     if "description" not in entry and "content" in entry:
         content_value = entry["content"][0]["value"]
         if content_value:
-            try:
-                html_content = etree.HTML(content_value)
-                if html_content is not None:
-                    content_text = html_content.xpath("string()")
-                    if isinstance(content_text, str):
-                        content_value = _RE_WHITESPACE.sub(" ", content_text)
-            except etree.ParserError:
-                pass
+            if "<" in content_value:
+                try:
+                    html_content = etree.HTML(content_value)
+                    if html_content is not None:
+                        content_text = html_content.xpath("string()")
+                        if isinstance(content_text, str):
+                            content_value = _RE_WHITESPACE.sub(" ", content_text)
+                except etree.ParserError:
+                    pass
+            else:
+                content_value = _RE_WHITESPACE.sub(" ", content_value)
         entry["description"] = content_value[:512]
 
 
@@ -1357,7 +1385,10 @@ def _field_value_getter(
 
 
 def _get_element_value(
-    root: _Element, path: str, attribute: Optional[str] = None
+    root: _Element,
+    path: str,
+    attribute: Optional[str] = None,
+    child_index: Optional[dict[str, _Element]] = None,
 ) -> Optional[str]:
     """Get text content or attribute value of an element.
 
@@ -1366,21 +1397,22 @@ def _get_element_value(
     el = root.find(path)
 
     # If not found and path is a simple element name, try with common prefixes
-    # We iterate manually because lxml doesn't support prefixes without a namespace map
     if el is None and "/" not in path and "{" not in path:
-        # Pre-build the prefixed paths to avoid repeated string concatenation
         path_lower = path.lower()
-        prefixed_paths = [f"rss:{path_lower}", f"atom:{path_lower}", f"dc:{path_lower}"]
-
-        # Single pass through children, checking all prefixes
-        for child in root:
-            # Skip non-Element children (comments, processing instructions)
-            if not isinstance(child.tag, str):
-                continue
-            child_tag_lower = child.tag.lower()
-            if child_tag_lower in prefixed_paths:
-                el = child
-                break
+        if child_index is not None:
+            for prefix in ("rss:", "atom:", "dc:"):
+                found = child_index.get(f"{prefix}{path_lower}")
+                if found is not None:
+                    el = found
+                    break
+        else:
+            prefixed_paths = [f"rss:{path_lower}", f"atom:{path_lower}", f"dc:{path_lower}"]
+            for child in root:
+                if not isinstance(child.tag, str):
+                    continue
+                if child.tag.lower() in prefixed_paths:
+                    el = child
+                    break
 
     if el is None:
         return None
@@ -1395,16 +1427,15 @@ def _get_element_value(
 def _cached_element_value_factory(
     root: _Element,
 ) -> Callable[[str, Optional[str]], Optional[str]]:
-    """Create a closure that memoises element lookups for a given root node."""
-    cache: dict[tuple[str, Optional[str]], Optional[str]] = {}
+    """Create a closure with a child tag index for fast namespace-prefix lookups."""
+    # Build child tag index once: O(children) instead of O(children × misses)
+    child_index: dict[str, _Element] = {}
+    for child in root:
+        if isinstance(child.tag, str):
+            child_index[child.tag.lower()] = child
 
     def getter(path: str, attribute: Optional[str] = None) -> Optional[str]:
-        key = (path, attribute)
-        if key in cache:
-            return cache[key]
-        value = _get_element_value(root, path, attribute=attribute)
-        cache[key] = value
-        return value
+        return _get_element_value(root, path, attribute=attribute, child_index=child_index)
 
     return getter
 
@@ -1415,7 +1446,6 @@ def _normalize_iso_datetime_string(value: str) -> str:
     if not cleaned:
         return cleaned
 
-    cleaned = _RE_WHITESPACE.sub(" ", cleaned)
     upper_cleaned = cleaned.upper()
     for suffix in (" UTC", " GMT", " Z"):
         if upper_cleaned.endswith(suffix):
@@ -1443,9 +1473,12 @@ def _normalize_iso_datetime_string(value: str) -> str:
     return cleaned
 
 
-def _ensure_utc(dt: datetime.datetime) -> datetime.datetime:
+def _ensure_utc(dt: datetime.datetime) -> Optional[datetime.datetime]:
     """Return a timezone-aware datetime normalized to UTC."""
-    return dt.replace(tzinfo=_UTC) if dt.tzinfo is None else dt.astimezone(_UTC)
+    try:
+        return dt.replace(tzinfo=_UTC) if dt.tzinfo is None else dt.astimezone(_UTC)
+    except (ValueError, OverflowError):
+        return None
 
 
 def _parsedate_to_utc(value: str) -> Optional[datetime.datetime]:
@@ -1566,7 +1599,9 @@ def _parse_date(date_str: str) -> Optional[str]:
         except ValueError:
             dt = None
         if dt is not None:
-            return _ensure_utc(dt).isoformat()
+            utc_dt = _ensure_utc(dt)
+            if utc_dt is not None:
+                return utc_dt.isoformat()
 
     dt = _parsedate_to_utc(candidate)
     if dt is not None:
@@ -1574,11 +1609,15 @@ def _parse_date(date_str: str) -> Optional[str]:
 
     slow_dt = _slow_dateutil_parse(candidate)
     if slow_dt is not None:
-        return _ensure_utc(slow_dt).isoformat()
+        utc_dt = _ensure_utc(slow_dt)
+        if utc_dt is not None:
+            return utc_dt.isoformat()
 
     parsed = _slow_dateparser(candidate)
     if parsed is not None:
-        return _ensure_utc(parsed).isoformat()
+        utc_dt = _ensure_utc(parsed)
+        if utc_dt is not None:
+            return utc_dt.isoformat()
 
     # If all parsing attempts fail, return None
     return None
