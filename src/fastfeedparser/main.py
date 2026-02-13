@@ -730,6 +730,24 @@ def _detect_feed_structure(
     raise ValueError(f"Unknown feed type: {root.tag}")
 
 
+def _should_parse_media_content(root: _Element, xml_content: bytes) -> bool:
+    """Check if feed likely contains Media RSS fields."""
+    ns_values = root.nsmap.values() if root.nsmap else ()
+    for ns_value in ns_values:
+        if not ns_value:
+            continue
+        if "search.yahoo.com/mrss" in ns_value:
+            return True
+
+    # Fallback for feeds with undeclared/late namespace usage.
+    return b"search.yahoo.com/mrss" in xml_content or b"<media:" in xml_content
+
+
+def _should_parse_enclosures(feed_type: _FeedType, xml_content: bytes) -> bool:
+    """Check if feed likely contains RSS enclosure elements."""
+    return feed_type == "rss" and b"<enclosure" in xml_content
+
+
 def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
     """Parse feed content (XML or JSON) that has already been fetched."""
     json_feed = _maybe_parse_json_feed(xml_content)
@@ -744,6 +762,8 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
     feed_type, channel, items, atom_namespace = _detect_feed_structure(
         root, xml_content, root_tag_local
     )
+    parse_media_content = _should_parse_media_content(root, xml_content)
+    parse_enclosures = _should_parse_enclosures(feed_type, xml_content)
 
     feed = _parse_feed_info(channel, feed_type, atom_namespace)
 
@@ -751,7 +771,13 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
     entries: list[FastFeedParserDict] = []
     feed["entries"] = entries
     for item in items:
-        entry = _parse_feed_entry(item, feed_type, atom_namespace)
+        entry = _parse_feed_entry(
+            item,
+            feed_type,
+            atom_namespace,
+            parse_media_content=parse_media_content,
+            parse_enclosures=parse_enclosures,
+        )
         # Ensure that titles and descriptions are always present
         entry["title"] = entry.get("title", "").strip()
         entry["description"] = entry.get("description", "").strip()
@@ -1197,11 +1223,137 @@ def _parse_enclosures(item: _Element) -> list[dict[str, Any]] | None:
     return enclosures or None
 
 
+def _normalize_local_tag_name(tag: str) -> str:
+    local = tag.rsplit("}", 1)[-1].lower()
+    if ":" in local:
+        local = local.split(":", 1)[1]
+    return local
+
+
+def _build_rss_item_text_maps(item: _Element) -> tuple[dict[str, Optional[str]], dict[str, Optional[str]]]:
+    by_local: dict[str, Optional[str]] = {}
+    by_full: dict[str, Optional[str]] = {}
+    for child in item:
+        tag = child.tag
+        if not isinstance(tag, str):
+            continue
+        text_value = child.text.strip() if child.text else None
+        if tag not in by_full:
+            by_full[tag] = text_value
+        local = _normalize_local_tag_name(tag)
+        if local not in by_local:
+            by_local[local] = text_value
+    return by_local, by_full
+
+
+def _first_non_empty(mapping: dict[str, Optional[str]], keys: tuple[str, ...]) -> Optional[str]:
+    for key in keys:
+        value = mapping.get(key)
+        if value:
+            return value
+    return None
+
+
+def _parse_rss_feed_entry_fast(
+    item: _Element,
+    atom_ns: str,
+    parse_media_content: bool = True,
+    parse_enclosures: bool = True,
+) -> FastFeedParserDict:
+    text_by_local, text_by_full = _build_rss_item_text_maps(item)
+
+    entry = FastFeedParserDict()
+    atom_id = text_by_full.get(f"{{{atom_ns}}}id")
+    rss_guid = text_by_local.get("guid")
+    rdf_about = item.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about")
+    entry_id: Optional[str] = atom_id or rss_guid or rdf_about
+    if entry_id:
+        entry["id"] = entry_id.strip()
+
+    title = text_by_local.get("title")
+    if title:
+        entry["title"] = title
+
+    description = _first_non_empty(text_by_local, ("description", "summary"))
+    if description:
+        entry["description"] = description
+
+    link = text_by_local.get("link")
+    if link:
+        entry["link"] = link
+
+    published_source = _first_non_empty(text_by_local, ("pubdate", "published", "issued", "date"))
+    if published_source:
+        published = _parse_date(published_source)
+        if published:
+            entry["published"] = published
+
+    updated_source = _first_non_empty(text_by_local, ("lastbuilddate", "updated", "modified"))
+    if updated_source:
+        updated = _parse_date(updated_source)
+        if updated:
+            entry["updated"] = updated
+
+    if "published" not in entry and rss_guid:
+        guid_date = _parse_date(rss_guid)
+        if guid_date:
+            entry["published"] = guid_date
+
+    if "updated" in entry and "published" not in entry:
+        entry["published"] = entry["updated"]
+
+    _populate_entry_links(entry, item, atom_ns)
+    if "id" not in entry and "link" in entry:
+        entry["id"] = entry["link"]
+
+    _populate_entry_content(entry, item, "rss", atom_ns)
+
+    if parse_media_content:
+        media_contents = _parse_media_content(item)
+        if media_contents:
+            entry["media_content"] = media_contents
+
+    if parse_enclosures:
+        enclosures = _parse_enclosures(item)
+        if enclosures:
+            entry["enclosures"] = enclosures
+
+    author = _first_non_empty(text_by_local, ("author", "creator"))
+    if not author:
+        atom_author = item.find(f"{{{atom_ns}}}author/{{{atom_ns}}}name")
+        author = atom_author.text.strip() if atom_author is not None and atom_author.text else None
+    if author:
+        entry["author"] = author
+
+    comments = text_by_local.get("comments")
+    if comments:
+        entry["comments"] = comments
+
+    tags = _parse_tags(item, "rss", atom_ns)
+    if tags:
+        entry["tags"] = tags
+
+    return entry
+
+
 def _parse_feed_entry(
-    item: _Element, feed_type: _FeedType, atom_namespace: Optional[str] = None
+    item: _Element,
+    feed_type: _FeedType,
+    atom_namespace: Optional[str] = None,
+    *,
+    parse_media_content: bool = True,
+    parse_enclosures: bool = True,
 ) -> FastFeedParserDict:
     # Use dynamic atom namespace or fallback to default
     atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
+
+    if feed_type == "rss":
+        return _parse_rss_feed_entry_fast(
+            item,
+            atom_ns,
+            parse_media_content=parse_media_content,
+            parse_enclosures=parse_enclosures,
+        )
 
     # Check if this is Atom 0.3 to use different date field names
     is_atom_03 = atom_ns == "http://purl.org/atom/ns#"
@@ -1315,13 +1467,15 @@ def _parse_feed_entry(
 
     _populate_entry_content(entry, item, feed_type, atom_ns)
 
-    media_contents = _parse_media_content(item)
-    if media_contents:
-        entry["media_content"] = media_contents
+    if parse_media_content:
+        media_contents = _parse_media_content(item)
+        if media_contents:
+            entry["media_content"] = media_contents
 
-    enclosures = _parse_enclosures(item)
-    if enclosures:
-        entry["enclosures"] = enclosures
+    if parse_enclosures:
+        enclosures = _parse_enclosures(item)
+        if enclosures:
+            entry["enclosures"] = enclosures
 
     author = (
         get_field_value(
@@ -1341,11 +1495,6 @@ def _parse_feed_entry(
     )
     if author:
         entry["author"] = author
-
-    if feed_type == "rss":
-        comments = element_get("comments")
-        if comments:
-            entry["comments"] = comments
 
     # Parse entry-level tags/categories
     tags = _parse_tags(item, feed_type, atom_ns)
@@ -1615,9 +1764,11 @@ def _parse_date(date_str: str) -> Optional[str]:
     if not date_str:
         return None
 
-    candidate = _RE_WHITESPACE.sub(" ", date_str.strip())
+    candidate = date_str.strip()
     if not candidate:
         return None
+    if "\n" in candidate or "\r" in candidate or "\t" in candidate or "  " in candidate:
+        candidate = _RE_WHITESPACE.sub(" ", candidate)
 
     # Fix invalid leap year dates (Feb 29 in non-leap years)
     # This handles feeds with incorrect dates like "2023-02-29"
@@ -1635,7 +1786,8 @@ def _parse_date(date_str: str) -> Optional[str]:
 
     dt: Optional[datetime.datetime] = None
 
-    if _RE_ISO_LIKE.match(candidate):
+    is_iso_like = _RE_ISO_LIKE.match(candidate) is not None
+    if is_iso_like:
         iso_candidate = _normalize_iso_datetime_string(candidate)
         try:
             dt = datetime.datetime.fromisoformat(iso_candidate)

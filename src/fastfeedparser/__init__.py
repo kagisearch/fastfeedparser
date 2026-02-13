@@ -1,4 +1,4 @@
 from .main import parse, FastFeedParserDict
 
-__version__ = "0.4.4"
+__version__ = "0.4.9"
 __all__ = ["parse", "FastFeedParserDict"]
