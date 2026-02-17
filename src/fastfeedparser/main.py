@@ -3,6 +3,7 @@ from __future__ import annotations
 import datetime
 from email.utils import parsedate_to_datetime
 import gzip
+import html as _html_mod
 import json
 import re
 import zlib
@@ -59,8 +60,8 @@ _RE_UNCLOSED_LINK_BYTES = re.compile(
     br"<link([^>]*[^/])>\s*(?=\n\s*<(?!/link\s*>))", re.MULTILINE
 )
 _RE_FEB29 = re.compile(r"(\d{4})-02-29")
+_RE_HTML_TAGS = re.compile(r"<[^>]+>")
 _RE_WHITESPACE = re.compile(r"\s+")
-_RE_ISO_LIKE = re.compile(r"^\d{4}-\d{2}-\d{2}")
 _RE_ISO_TZ_NO_COLON = re.compile(r"([+-]\d{2})(\d{2})$")
 _RE_ISO_TZ_HOUR_ONLY = re.compile(r"([+-]\d{2})$")
 _RE_ISO_FRACTION = re.compile(r"\.(\d{7,})(?=(?:[+-]\d{2}:?\d{2}|Z|$))", re.IGNORECASE)
@@ -595,7 +596,6 @@ def _raise_for_non_feed_root(
         raise ValueError(
             "Received XML sitemap instead of feed (sitemap is for search engines, not a feed)"
         )
-    raise ValueError(f"Not a valid feed: {root_tag_local} element found - {error_msg[:100]}")
 
 
 _RE_META_REFRESH_URL = re.compile(
@@ -1123,16 +1123,9 @@ def _populate_entry_content(
         content_value = entry["content"][0]["value"]
         if content_value:
             if "<" in content_value:
-                try:
-                    html_content = etree.HTML(content_value)
-                    if html_content is not None:
-                        content_text = html_content.xpath("string()")
-                        if isinstance(content_text, str):
-                            content_value = _RE_WHITESPACE.sub(" ", content_text)
-                except etree.ParserError:
-                    pass
-            else:
-                content_value = _RE_WHITESPACE.sub(" ", content_value)
+                content_value = _RE_HTML_TAGS.sub(" ", content_value[:2048])
+                content_value = _html_mod.unescape(content_value)
+            content_value = _RE_WHITESPACE.sub(" ", content_value).strip()
         entry["description"] = content_value[:512]
 
 
@@ -1223,13 +1216,6 @@ def _parse_enclosures(item: _Element) -> list[dict[str, Any]] | None:
     return enclosures or None
 
 
-def _normalize_local_tag_name(tag: str) -> str:
-    local = tag.rsplit("}", 1)[-1].lower()
-    if ":" in local:
-        local = local.split(":", 1)[1]
-    return local
-
-
 def _build_rss_item_text_maps(item: _Element) -> tuple[dict[str, Optional[str]], dict[str, Optional[str]]]:
     by_local: dict[str, Optional[str]] = {}
     by_full: dict[str, Optional[str]] = {}
@@ -1240,7 +1226,9 @@ def _build_rss_item_text_maps(item: _Element) -> tuple[dict[str, Optional[str]],
         text_value = child.text.strip() if child.text else None
         if tag not in by_full:
             by_full[tag] = text_value
-        local = _normalize_local_tag_name(tag)
+        local = tag.rsplit("}", 1)[-1].lower()
+        if ":" in local:
+            local = local.split(":", 1)[1]
         if local not in by_local:
             by_local[local] = text_value
     return by_local, by_full
@@ -1477,22 +1465,14 @@ def _parse_feed_entry(
         if enclosures:
             entry["enclosures"] = enclosures
 
-    author = (
-        get_field_value(
-            "author",
-            f"{{{atom_ns}}}author/{{{atom_ns}}}name",
-            "{http://purl.org/dc/elements/1.1/}creator",
-            False,
-        )
-        or get_field_value(
-            "{http://purl.org/dc/elements/1.1/}creator",
-            "{http://purl.org/dc/elements/1.1/}creator",
-            "{http://purl.org/dc/elements/1.1/}creator",
-            False,
-        )
-        or element_get("{http://purl.org/dc/elements/1.1/}creator")
-        or element_get("author")
+    author = get_field_value(
+        "author",
+        f"{{{atom_ns}}}author/{{{atom_ns}}}name",
+        "{http://purl.org/dc/elements/1.1/}creator",
+        False,
     )
+    if not author:
+        author = element_get("{http://purl.org/dc/elements/1.1/}creator") or element_get("author")
     if author:
         entry["author"] = author
 
@@ -1648,7 +1628,7 @@ def _normalize_iso_datetime_string(value: str) -> str:
     if cleaned.endswith(("Z", "z")):
         cleaned = cleaned[:-1] + "+00:00"
 
-    if " " in cleaned and "T" not in cleaned[:11] and _RE_ISO_LIKE.match(cleaned):
+    if " " in cleaned and "T" not in cleaned[:11] and len(cleaned) >= 10 and cleaned[4] == "-" and cleaned[0:4].isdigit():
         date_part, rest = cleaned.split(" ", 1)
         if rest and rest[0].isdigit():
             cleaned = f"{date_part}T{rest}"
@@ -1772,12 +1752,12 @@ def _parse_date(date_str: str) -> Optional[str]:
 
     # Fix invalid leap year dates (Feb 29 in non-leap years)
     # This handles feeds with incorrect dates like "2023-02-29"
-    year_match = _RE_FEB29.match(candidate)
-    if year_match:
-        year = int(year_match.group(1))
-        if not ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)):
-            # Not a leap year, change Feb 29 to Feb 28
-            candidate = candidate.replace(f"{year}-02-29", f"{year}-02-28")
+    if "-02-29" in candidate:
+        year_match = _RE_FEB29.match(candidate)
+        if year_match:
+            year = int(year_match.group(1))
+            if not ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)):
+                candidate = candidate.replace(f"{year}-02-29", f"{year}-02-28")
 
     if "24:00" in candidate:
         candidate = candidate.replace("24:00:00", "00:00:00").replace(
@@ -1786,7 +1766,7 @@ def _parse_date(date_str: str) -> Optional[str]:
 
     dt: Optional[datetime.datetime] = None
 
-    is_iso_like = _RE_ISO_LIKE.match(candidate) is not None
+    is_iso_like = len(candidate) >= 10 and candidate[4] == "-" and candidate[0:4].isdigit()
     if is_iso_like:
         iso_candidate = _normalize_iso_datetime_string(candidate)
         try:
