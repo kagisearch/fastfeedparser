@@ -41,20 +41,11 @@ _RE_XML_DECL_ENCODING = re.compile(
 _RE_XML_DECL_ENCODING_BYTES = re.compile(
     br'(<\?xml[^>]*encoding=["\'])([^"\']+)(["\'][^>]*\?>)', re.IGNORECASE
 )
-_RE_DOUBLE_XML_DECL = re.compile(r"<\?xml\?xml\s+", re.IGNORECASE)
 _RE_DOUBLE_XML_DECL_BYTES = re.compile(br"<\?xml\?xml\s+", re.IGNORECASE)
-_RE_DOUBLE_CLOSE = re.compile(r"\?\?>\s*")
 _RE_DOUBLE_CLOSE_BYTES = re.compile(br"\?\?>\s*")
-_RE_UNQUOTED_ATTR = re.compile(r'(\s+[\w:]+)=([^\s>"\']+)')
 _RE_UNQUOTED_ATTR_BYTES = re.compile(br'(\s+[\w:]+)=([^\s>"\']+)')
-_RE_UTF16_ENCODING = re.compile(
-    r'(<\?xml[^>]*encoding=["\'])utf-16(-le|-be)?(["\'][^>]*\?>)', re.IGNORECASE
-)
 _RE_UTF16_ENCODING_BYTES = re.compile(
     br'(<\?xml[^>]*encoding=["\'])utf-16(-le|-be)?(["\'][^>]*\?>)', re.IGNORECASE
-)
-_RE_UNCLOSED_LINK = re.compile(
-    r"<link([^>]*[^/])>\s*(?=\n\s*<(?!/link\s*>))", re.MULTILINE
 )
 _RE_UNCLOSED_LINK_BYTES = re.compile(
     br"<link([^>]*[^/])>\s*(?=\n\s*<(?!/link\s*>))", re.MULTILINE
@@ -110,36 +101,6 @@ def _ensure_utf8_xml_declaration(content: str) -> str:
     if not content.lstrip().startswith("<?xml"):
         return content
     return _RE_XML_DECL_ENCODING.sub(r"\1utf-8\3", content, count=1)
-
-
-def _clean_feed_text(content: str) -> str:
-    """Clean feed text by extracting the XML document (if it's embedded in junk)."""
-    stripped_content = content.lstrip()
-    stripped_lower = stripped_content[:2000].lower()
-    if stripped_lower.startswith(("<?xml", "<rss", "<feed", "<rdf")):
-        return stripped_content
-
-    if stripped_lower.startswith("<!doctype html") or stripped_lower.startswith("<html"):
-        raise ValueError("Content appears to be HTML, not a valid RSS/Atom feed")
-
-    xml_start_patterns = (
-        "<?xml",
-        "<rss",
-        "<feed",
-        "<rdf:rdf",
-        "<?xml-stylesheet",
-    )
-
-    content_lines = content.splitlines()
-    for i, line in enumerate(content_lines):
-        line_stripped = line.strip().lower()
-        if any(line_stripped.startswith(pattern) for pattern in xml_start_patterns):
-            return "\n".join(content_lines[i:])
-
-    if "<script>" in stripped_lower or "<body>" in stripped_lower:
-        raise ValueError("Content appears to be HTML, not a valid RSS/Atom feed")
-
-    return content
 
 
 def _clean_feed_bytes(content: bytes) -> bytes:
@@ -224,60 +185,9 @@ def _prepare_xml_bytes(xml_content: str | bytes) -> bytes:
             cleaned = _fix_malformed_xml_bytes(cleaned, actual_encoding=actual_encoding)
         return cleaned
 
-    cleaned_text = _clean_feed_text(xml_content)
-    if not cleaned_text.strip():
-        raise ValueError("Empty content")
-
-    needs_fixing = (
-        "?xml?xml" in cleaned_text[:200]
-        or "??>" in cleaned_text[:200]
-        or (
-            "rss:" in cleaned_text[:500] and "xmlns:rss" not in cleaned_text[:1000]
-        )
-        or ("utf-16" in cleaned_text[:200].lower())
-    )
-    if needs_fixing:
-        cleaned_text = _fix_malformed_xml(cleaned_text, actual_encoding="utf-8")
-
-    cleaned_text = _ensure_utf8_xml_declaration(cleaned_text)
-    return cleaned_text.encode("utf-8", errors="replace")
-
-
-def _fix_malformed_xml(content: str, actual_encoding: str = "utf-8") -> str:
-    """Fix common malformed XML issues in feeds.
-
-    Some feeds have malformed XML like unclosed link tags or other issues
-    that can be automatically corrected.
-
-    Args:
-        content: The XML content as a string
-        actual_encoding: The actual encoding used (default: utf-8)
-    """
-    # Fix double XML declarations like "<?xml?xml version="1.0"?>"
-    # This is found in dylanharris.org feed
-    content = _RE_DOUBLE_XML_DECL.sub(r"<?xml ", content)
-
-    # Fix double closing ?> in XML declaration like "??>>"
-    content = _RE_DOUBLE_CLOSE.sub(r"?>", content)
-
-    # Fix malformed attribute syntax like rss:version=2.0 (missing quotes)
-    # This is found in dylanharris.org feed
-    content = _RE_UNQUOTED_ATTR.sub(r'\1="\2"', content)
-
-    # Update encoding in XML declaration to match actual encoding
-    # This handles cases where content was transcoded from UTF-16 to UTF-8
-    if actual_encoding.lower() != "utf-16":
-        content = _RE_UTF16_ENCODING.sub(rf"\1{actual_encoding}\3", content)
-
-    # Fix unclosed link tags - common in Atom feeds
-    # Pattern: <link ...> followed by whitespace and another tag (not </link>)
-    # should be <link .../>
-    # Only fix link tags that are clearly malformed:
-    # - End with > instead of />
-    # - Are followed by whitespace and another tag (not a closing </link>)
-    content = _RE_UNCLOSED_LINK.sub(r"<link\1/>", content)
-
-    return content
+    # Str input: fix encoding declaration, encode to bytes, then use bytes path.
+    xml_content = _ensure_utf8_xml_declaration(xml_content)
+    return _prepare_xml_bytes(xml_content.encode("utf-8", errors="replace"))
 
 
 def _parse_json_feed(json_data: dict) -> FastFeedParserDict:
@@ -556,46 +466,31 @@ def _extract_error_message(root: _Element, raw_bytes: Optional[bytes] = None) ->
     return error_msg
 
 
+_NON_FEED_MESSAGES: dict[str, str] = {
+    "html": "Received HTML page instead of feed",
+    "div": "Received HTML fragment instead of feed",
+    "body": "Received HTML fragment instead of feed",
+    "br": "Received HTML fragment instead of feed",
+    "status": "Feed server returned status message",
+    "error": "Feed server returned error",
+    "opml": "Received OPML document instead of feed (OPML is an outline format, not a feed)",
+    "urlset": "Received XML sitemap instead of feed (sitemap is for search engines, not a feed)",
+    "sitemapindex": "Received XML sitemap instead of feed (sitemap is for search engines, not a feed)",
+}
+
+
 def _raise_for_non_feed_root(
     root: _Element, root_tag_local: str, raw_bytes: Optional[bytes] = None
 ) -> None:
-    non_feed_tags = {
-        "status", "error", "html", "opml", "br", "div", "body",
-        "urlset", "sitemapindex",
-    }
-    if root_tag_local not in non_feed_tags:
+    base_msg = _NON_FEED_MESSAGES.get(root_tag_local)
+    if base_msg is None:
         return
 
     error_msg = _extract_error_message(root, raw_bytes).strip()[:300] or "No error message"
 
-    if root_tag_local == "html":
-        if error_msg != "No error message" and len(error_msg) > 10:
-            raise ValueError(f"Received HTML page instead of feed: {error_msg[:150]}")
-        raise ValueError(
-            "Received HTML page instead of feed (possible redirect, 404, or server error)"
-        )
-    if root_tag_local in {"div", "body"}:
-        if error_msg != "No error message" and len(error_msg) > 10:
-            raise ValueError(f"Received HTML fragment instead of feed: {error_msg[:150]}")
-        raise ValueError("Received HTML fragment instead of feed")
-    if root_tag_local == "br":
-        if error_msg != "No error message" and len(error_msg) > 10:
-            raise ValueError(f"Received HTML error instead of feed: {error_msg[:150]}")
-        raise ValueError("Received HTML fragment instead of feed")
-    if root_tag_local == "status":
-        raise ValueError(f"Feed server returned status message: {error_msg}")
-    if root_tag_local == "error":
-        if error_msg != "No error message":
-            raise ValueError(f"Feed server returned error: {error_msg}")
-        raise ValueError("Feed server returned error (no details provided)")
-    if root_tag_local == "opml":
-        raise ValueError(
-            "Received OPML document instead of feed (OPML is an outline format, not a feed)"
-        )
-    if root_tag_local in {"urlset", "sitemapindex"}:
-        raise ValueError(
-            "Received XML sitemap instead of feed (sitemap is for search engines, not a feed)"
-        )
+    if error_msg != "No error message" and len(error_msg) > 10:
+        raise ValueError(f"{base_msg}: {error_msg[:150]}")
+    raise ValueError(base_msg)
 
 
 _RE_META_REFRESH_URL = re.compile(
@@ -730,24 +625,6 @@ def _detect_feed_structure(
     raise ValueError(f"Unknown feed type: {root.tag}")
 
 
-def _should_parse_media_content(root: _Element, xml_content: bytes) -> bool:
-    """Check if feed likely contains Media RSS fields."""
-    ns_values = root.nsmap.values() if root.nsmap else ()
-    for ns_value in ns_values:
-        if not ns_value:
-            continue
-        if "search.yahoo.com/mrss" in ns_value:
-            return True
-
-    # Fallback for feeds with undeclared/late namespace usage.
-    return b"search.yahoo.com/mrss" in xml_content or b"<media:" in xml_content
-
-
-def _should_parse_enclosures(feed_type: _FeedType, xml_content: bytes) -> bool:
-    """Check if feed likely contains RSS enclosure elements."""
-    return feed_type == "rss" and b"<enclosure" in xml_content
-
-
 def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
     """Parse feed content (XML or JSON) that has already been fetched."""
     json_feed = _maybe_parse_json_feed(xml_content)
@@ -762,8 +639,6 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
     feed_type, channel, items, atom_namespace = _detect_feed_structure(
         root, xml_content, root_tag_local
     )
-    parse_media_content = _should_parse_media_content(root, xml_content)
-    parse_enclosures = _should_parse_enclosures(feed_type, xml_content)
 
     feed = _parse_feed_info(channel, feed_type, atom_namespace)
 
@@ -775,8 +650,6 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
             item,
             feed_type,
             atom_namespace,
-            parse_media_content=parse_media_content,
-            parse_enclosures=parse_enclosures,
         )
         # Ensure that titles and descriptions are always present
         entry["title"] = entry.get("title", "").strip()
@@ -1245,8 +1118,6 @@ def _first_non_empty(mapping: dict[str, Optional[str]], keys: tuple[str, ...]) -
 def _parse_rss_feed_entry_fast(
     item: _Element,
     atom_ns: str,
-    parse_media_content: bool = True,
-    parse_enclosures: bool = True,
 ) -> FastFeedParserDict:
     text_by_local, text_by_full = _build_rss_item_text_maps(item)
 
@@ -1282,7 +1153,7 @@ def _parse_rss_feed_entry_fast(
         if updated:
             entry["updated"] = updated
 
-    if "published" not in entry and rss_guid:
+    if "published" not in entry and rss_guid and not rss_guid.startswith(("http://", "https://")):
         guid_date = _parse_date(rss_guid)
         if guid_date:
             entry["published"] = guid_date
@@ -1296,15 +1167,13 @@ def _parse_rss_feed_entry_fast(
 
     _populate_entry_content(entry, item, "rss", atom_ns)
 
-    if parse_media_content:
-        media_contents = _parse_media_content(item)
-        if media_contents:
-            entry["media_content"] = media_contents
+    media_contents = _parse_media_content(item)
+    if media_contents:
+        entry["media_content"] = media_contents
 
-    if parse_enclosures:
-        enclosures = _parse_enclosures(item)
-        if enclosures:
-            entry["enclosures"] = enclosures
+    enclosures = _parse_enclosures(item)
+    if enclosures:
+        entry["enclosures"] = enclosures
 
     author = _first_non_empty(text_by_local, ("author", "creator"))
     if not author:
@@ -1328,20 +1197,12 @@ def _parse_feed_entry(
     item: _Element,
     feed_type: _FeedType,
     atom_namespace: Optional[str] = None,
-    *,
-    parse_media_content: bool = True,
-    parse_enclosures: bool = True,
 ) -> FastFeedParserDict:
     # Use dynamic atom namespace or fallback to default
     atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
 
     if feed_type == "rss":
-        return _parse_rss_feed_entry_fast(
-            item,
-            atom_ns,
-            parse_media_content=parse_media_content,
-            parse_enclosures=parse_enclosures,
-        )
+        return _parse_rss_feed_entry_fast(item, atom_ns)
 
     # Check if this is Atom 0.3 to use different date field names
     is_atom_03 = atom_ns == "http://purl.org/atom/ns#"
@@ -1434,8 +1295,7 @@ def _parse_feed_entry(
             entry["updated"] = _parse_date(fallback_updated)
 
     # Try to extract date from GUID as final fallback
-    if "published" not in entry and rss_guid:
-        # Check if GUID contains date information
+    if "published" not in entry and rss_guid and not rss_guid.startswith(("http://", "https://")):
         guid_date = _parse_date(rss_guid)
         if guid_date:
             entry["published"] = guid_date
@@ -1455,15 +1315,13 @@ def _parse_feed_entry(
 
     _populate_entry_content(entry, item, feed_type, atom_ns)
 
-    if parse_media_content:
-        media_contents = _parse_media_content(item)
-        if media_contents:
-            entry["media_content"] = media_contents
+    media_contents = _parse_media_content(item)
+    if media_contents:
+        entry["media_content"] = media_contents
 
-    if parse_enclosures:
-        enclosures = _parse_enclosures(item)
-        if enclosures:
-            entry["enclosures"] = enclosures
+    enclosures = _parse_enclosures(item)
+    if enclosures:
+        entry["enclosures"] = enclosures
 
     author = get_field_value(
         "author",
@@ -1664,7 +1522,7 @@ def _parsedate_to_utc(value: str) -> Optional[datetime.datetime]:
     return _ensure_utc(parsed)
 
 
-custom_tzinfos: dict[str, int] = {
+_custom_tzinfos: dict[str, int] = {
     "UTC": 0,
     "UT": 0,
     "GMT": 0,
@@ -1715,7 +1573,7 @@ _DATEPARSER_SETTINGS = {
 @lru_cache(maxsize=512)
 def _slow_dateutil_parse(value: str) -> Optional[datetime.datetime]:
     try:
-        return dateutil_parser.parse(value, tzinfos=custom_tzinfos, ignoretz=False)
+        return dateutil_parser.parse(value, tzinfos=_custom_tzinfos, ignoretz=False)
     except (ValueError, TypeError, OverflowError):
         return None
 
