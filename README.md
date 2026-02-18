@@ -4,7 +4,7 @@ A high-performance feed parser for Python that handles RSS, Atom, and RDF. Built
 
 ### Why FastFeedParser?
 
-It's about 10x faster (check included `benchmark.py`) than popular feedparser
+It's about 25x faster (check included `benchmark.py`) than popular feedparser
 library while keeping a familiar API. This speed comes from:
 
 - lxml for efficient XML parsing
