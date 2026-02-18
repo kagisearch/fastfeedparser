@@ -1,0 +1,2025 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://remimercier.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://remimercier.com/" rel="alternate" type="text/html" /><updated>2026-02-02T15:53:14+00:00</updated><id>https://remimercier.com/feed.xml</id><title type="html">Rémi Mercier</title><subtitle>The blog of Rémi Mercier, Ruby on Rails Developer.</subtitle><author><name>Rémi Mercier</name></author><entry><title type="html">Reflecting on 2025</title><link href="https://remimercier.com/reflecting-on-2025/" rel="alternate" type="text/html" title="Reflecting on 2025" /><published>2026-01-30T00:00:00+00:00</published><updated>2026-01-30T00:00:00+00:00</updated><id>https://remimercier.com/reflecting-on-2025</id><content type="html" xml:base="https://remimercier.com/reflecting-on-2025/"><![CDATA[<p>2025 was the year I started something I’ve been wanting to do for a <strong>very long time</strong>: freelancing.</p>
+
+<p>I had already been a freelancer twelve years ago, and it did not go well. I was working too much, for too little, and some clients never paid me for my work. I was young(er) but I learned my lesson: freelancing is a whole extra job, on top of your core offering.</p>
+
+<p>So when the opportunity arose last year, I knew I needed to get better at being a “company”.</p>
+
+<h2 id="a-year-of-freelancing">A year of freelancing</h2>
+
+<p>I started freelancing at the very end of 2024. After a taxing four-month job search – that only emphasized how broken some tech companies are – I decided to switch my approach.</p>
+
+<p>I reached out to Sunny – an internet pal I’ve known for years – and asked him if he needed an extra pair of hands to ship more features for his company <a href="https://cults3d.com/?utm_source=hello_from_remimercier.com" target="_blank">Cults</a>. And he said “yes”.</p>
+
+<p>A week later, Yves – a Le Wagon alumnus – asked me if I was available to help his team tackle their more complex tasks and get some of their velocity back. And I said “yes”.</p>
+
+<p>Both clients needed half of my time. So I was able to fill my week almost instantly.</p>
+
+<p>Working with both Sunny and Yves has been an absolute joy. Some cool projects I built for them even inspired some <a href="/aggregate-rspec-expectations/">recent</a> <a href="/minimal-decorator-ruby/">posts</a> <a href="/minitest-spec/">on</a> <a href="/introduction-to-minitest/">this</a> <a href="/more-minitest-spec/">blog</a>.</p>
+
+<h2 id="professional-wins">Professional wins</h2>
+
+<p>My professional goal for 2025 was <strong>to survive the year</strong>. Between layoffs, AI coming for our jobs, and the overall LinkedIn-ish narrative, it felt as if I was doomed to switch careers (again).</p>
+
+<p>And yet, in case you didn’t notice already, 2025 was a good year for me work-wise:</p>
+<ul>
+  <li>Two happy clients with whom I built (and keep building) a relationship based on trust, values and value. You can’t get better than that.</li>
+  <li>A lot of projects shipped and billed which leaves me with a full year of runway.</li>
+  <li>A solid progression both technically and product-wise:
+    <ul>
+      <li>I’ve kept digging into Ruby and Rails internals.</li>
+      <li>I discovered new patterns and products.</li>
+      <li>I worked hard to make sense of Typesense (pun intended).</li>
+      <li>I’ve started building some foundational knowledge back on the front-end side of things (HTML, CSS, JS and the whole Hotwire).</li>
+      <li>And of course, Minitest. <a href="/introduction-to-minitest/">A <em>lot</em> of Minitest</a>.</li>
+    </ul>
+  </li>
+  <li>A lot of impactful features were shipped with little to no disruption for users. Some were critical and done on a tight schedule.</li>
+  <li>Working with two teams allowed me to create bridges, and to apply what I had learned within one codebase to the other.</li>
+  <li>I worked on my tooling and processes, which allowed me to deliver faster and better.</li>
+  <li>In early 2025, I joined a local cooperative to which I delegate most of my admin. It’s a great way to reclaim ownership of my work environment, and the people there are both great and super helpful. This has proven to be a true multiplier for me.</li>
+  <li>From the get-go, I knew I needed to work on how to run my business. I built simple processes for time tracking, invoicing, note-taking, etc. This has allowed me to spend less time on boring tasks and more time on being a true partner for both teams.</li>
+</ul>
+
+<h2 id="an-aparte-on-the-job-market">An <em>aparte</em> on the job market</h2>
+
+<p>Whether you’re looking for a job or a freelance gig, the market has been rough for a few years now. Let’s not even talk about the rest. *gestures wildly at everything that has happened in the world*</p>
+
+<p>But here’s my main takeaway: a lot of the “hot” companies from a few years ago now have ridiculous expectations for candidates, while offering very little in return. This has created an interesting shift: companies that weren’t sexy now attract great people. And great people get to work with smaller teams, cooler products, and often healthier finances.</p>
+
+<h2 id="personal-wins">Personal wins</h2>
+
+<p>I don’t like to share personal stuff on the blog. There, I said it! What can I say, I’m a <em>very</em> private person. But I’ll make an exception today.</p>
+
+<p>The five coolest things I did this year:</p>
+<ul>
+  <li><strong>Making time for my family</strong>: Wednesday afternoons with the kids, lots of time off during school holidays, and a real effort to make the little ones active participants in our family life.</li>
+  <li><strong>Keep working on my relationship</strong> with my partner of 16 years 🫶.</li>
+  <li><strong>Getting my health in a better place</strong>: resumed boxing after a 10-year hiatus, finally got treatment for my allergies.</li>
+  <li><strong>Working on my friendships</strong>: It won’t come as a surprise if I say men usually suck at understanding what makes a friendship and how to nurture one? Well, I worked on that. And I’m happy about it.</li>
+  <li><strong>Realized I’m likely ADHD and/or on the spectrum</strong>: Not through a formal diagnosis, but by ticking boxes as others got theirs. I also stopped masking, and started learning what actually works for me.</li>
+</ul>
+
+<h2 id="manifesting-for-2026">Manifesting for 2026</h2>
+
+<p>As I said earlier, my professional goal for 2025 was to survive the year. And I think I’ll keep this as one of my goals for 2026.</p>
+
+<figure>
+  <img class="regular box-shadowed" src="/media/2026/01/joel-gascogne.png" alt="a screenshot of a tweet by joel gascogne" />
+  <figcaption>Surviving as a competitive advantage.</figcaption>
+</figure>
+
+<p>But I also want to leverage this good first year to plant some seeds.</p>
+
+<p>Here’s what I’m planning:</p>
+<ul>
+  <li><strong>Make my clients happy</strong>: This one goes without saying. I’ll keep delivering great features, good communication, and value to the people trusting me with their business.</li>
+  <li><strong>Learn HTML and CSS from the ground up</strong>: I want to develop a deeper appreciation for these languages (and build more stuff with ‘em)!</li>
+  <li><strong>Invest in my freelancing practice</strong>: Time, money, work on website, nail my main value proposition, write more, etc.</li>
+  <li><strong>Get help</strong>: I can’t do everything alone. This year, I’ll invest in getting help. Most notably, I need help building stronger foundations for my business and shaping a new offer.</li>
+  <li><strong>Meet people as people</strong>: In the age of LLMs and the content rat race, I believe genuine connections will matter more than ever. I plan on going to more Ruby meetups, joining some of the folks at Cults at <a href="https://rubycon.it/" target="_blank">Rubicon in Rimini</a> in May, and simply getting a lot more genuine human interaction.</li>
+</ul>
+
+<p>If you’ve made it all the way to the end, thank you for reading words written by a human. You rock! (And do you know I have a <a href="/feed.xml">RSS feed</a>? Just saying.)</p>
+
+<p>Cheers,</p>
+
+<p>Rémi - <a href="https://ruby.social/@remi">@remi@ruby.social</a></p>
+
+<!--<p>PS: I'm not currently <a href="/work/">available for hire</a>, but always happy to chat.</p>-->]]></content><author><name>Rémi Mercier</name></author><category term="other" /><summary type="html"><![CDATA[Time to recap a good year.]]></summary></entry><entry><title type="html">More Minitest::Spec shenanigans</title><link href="https://remimercier.com/more-minitest-spec/" rel="alternate" type="text/html" title="More Minitest::Spec shenanigans" /><published>2025-10-19T00:00:00+00:00</published><updated>2025-10-19T00:00:00+00:00</updated><id>https://remimercier.com/more-minitest-spec-shenanigans</id><content type="html" xml:base="https://remimercier.com/more-minitest-spec/"><![CDATA[<p>While I already covered <a href="/minitest-spec">the basics of <code class="language-plaintext highlighter-rouge">Minitest::Spec</code></a>, I forgot to discuss a few aspects of the spec flavor. This post serves as a complement to the previous one and digs a bit deeper into some extra <code class="language-plaintext highlighter-rouge">Minitest::Spec</code> shenanigans.</p>
+
+<h2 id="let-over-ivar"><code class="language-plaintext highlighter-rouge">let</code> over <code class="language-plaintext highlighter-rouge">@ivar</code></h2>
+
+<p>So far, in my setup, I only used ivars to store a <code class="language-plaintext highlighter-rouge">User</code> accessible in my test examples:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="n">before</span> <span class="k">do</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">it</span> <span class="s2">"returns the capitalized full name"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span><span class="p">).</span><span class="nf">must_equal</span> <span class="s2">"Buffy Summers"</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>However, <code class="language-plaintext highlighter-rouge">Minitest::Spec</code> allows me to use the <code class="language-plaintext highlighter-rouge">let(:user)</code> method instead of <code class="language-plaintext highlighter-rouge">@user</code>.</p>
+
+<p>If you use RSpec, this will look <em>very familiar</em>. If you don’t, <code class="language-plaintext highlighter-rouge">let</code> is a method exposed by the DSL, that allows you to define <a href="https://github.com/minitest/minitest/blob/master/lib/minitest/spec.rb#L261" target="_blank">memoized instance variables</a> accessible in your test examples through accessors.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">it</span> <span class="s2">"returns the capitalized full name"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">full_name</span><span class="p">).</span><span class="nf">must_equal</span> <span class="s2">"Buffy Summers"</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>No more <code class="language-plaintext highlighter-rouge">@user</code>, just a plain <code class="language-plaintext highlighter-rouge">user</code>, as <code class="language-plaintext highlighter-rouge">Minitest::Spec</code> <code class="language-plaintext highlighter-rouge">let</code> adds an accessor to my instance variable.</p>
+
+<p>Also, I no longer need the <code class="language-plaintext highlighter-rouge">before do ... end</code> block to define variables. I’ll only use <code class="language-plaintext highlighter-rouge">before do ... end</code> if I need a more complex setup:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">before</span> <span class="k">do</span>
+      <span class="no">Account</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">user</span><span class="p">:,</span> <span class="ss">tokens: </span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">it</span> <span class="s2">"returns the capitalized full name"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">full_name</span><span class="p">).</span><span class="nf">must_equal</span> <span class="s2">"Buffy Summers"</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">before do ... end</code> remains the standard way to create objects not directly used in test examples or to mock objects.</p>
+
+<h2 id="let-lazy-evaluation"><code class="language-plaintext highlighter-rouge">let</code> lazy evaluation</h2>
+
+<p><code class="language-plaintext highlighter-rouge">let</code> allows Minitest to lazily evaluate the variable when it’s called in a test example. Repeated references of <code class="language-plaintext highlighter-rouge">let</code> within the same test example won’t trigger a re-evaluation. It means Minitest won’t run <code class="language-plaintext highlighter-rouge">User.new</code> multiple times within a test example, but beware of mutations.</p>
+
+<p>If I share a <code class="language-plaintext highlighter-rouge">let</code> across test examples, the <code class="language-plaintext highlighter-rouge">let</code> will be re-evaluated, so I don’t need to worry about mutability. States won’t leak from one <code class="language-plaintext highlighter-rouge">it</code> case to the next.</p>
+
+<p>Minitest does not have a <code class="language-plaintext highlighter-rouge">let!</code> method (like RSpec does). If you need to create objects required for your tests but not explicitly referenced, use the <code class="language-plaintext highlighter-rouge">before do ... end</code> method.</p>
+
+<h2 id="use-subject-over-explicit-calls-to-the-tested-method">Use <code class="language-plaintext highlighter-rouge">subject</code> over explicit calls to the tested method</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Minitest::Spec</code> also adds the <code class="language-plaintext highlighter-rouge">subject</code> method:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="n">subject</span> <span class="p">{</span> <span class="n">user</span><span class="p">.</span><span class="nf">full_name</span> <span class="p">}</span>
+
+    <span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">it</span> <span class="s2">"returns the capitalized full name"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">).</span><span class="nf">must_equal</span> <span class="s2">"Buffy Summers"</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">subject</code> replaces explicit calls to the method I test. It’s a syntactic convenience that lets me define the <em>subject</em> of the current scope. I find it easy to read and handy when dealing with nested contexts:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="n">describe</span> <span class="s2">"#full_name"</span> <span class="k">do</span>
+      <span class="n">subject</span> <span class="p">{</span> <span class="n">user</span><span class="p">.</span><span class="nf">full_name</span> <span class="p">}</span>
+
+      <span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="n">last_name</span><span class="p">:)</span> <span class="p">}</span>
+
+      <span class="n">describe</span> <span class="s2">"when the user has a one-word last name"</span> <span class="k">do</span>
+        <span class="n">let</span><span class="p">(</span><span class="ss">:last_name</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"summers"</span> <span class="p">}</span>
+
+        <span class="n">it</span> <span class="s2">"returns the capitalized full name"</span> <span class="k">do</span>
+          <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">).</span><span class="nf">must_equal</span> <span class="s2">"Buffy Summers"</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+
+      <span class="n">describe</span> <span class="s2">"when the user has a two-word last name"</span> <span class="k">do</span>
+        <span class="n">let</span><span class="p">(</span><span class="ss">:last_name</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"anne summers"</span> <span class="p">}</span>
+
+        <span class="n">it</span> <span class="s2">"does not return the capitalized full name"</span> <span class="k">do</span>
+          <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">).</span><span class="nf">wont_equal</span> <span class="s2">"Buffy Anne Summers"</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>The output for these tests is:</p>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">  lab/minitest-post → ruby user_test.rb <span class="nt">--verbose</span>
+  Run options: <span class="nt">--verbose</span> <span class="nt">--seed</span> 4199
+
+  <span class="c"># Running:</span>
+
+  UserTest2::#full_name::when the user has a one-word last name#test_0001_returns the capitalized full name <span class="o">=</span> 0.00 s <span class="o">=</span> <span class="nb">.</span>
+  UserTest2::#full_name::when the user has a two-word last name#test_0001_does not <span class="k">return </span>the capitalized full name <span class="o">=</span> 0.00 s <span class="o">=</span> <span class="nb">.</span>
+
+  Finished <span class="k">in </span>0.001340s, 1492.5373 runs/s, 1492.5373 assertions/s.
+  2 runs, 2 assertions, 0 failures, 0 errors, 0 skips</code></pre></figure>
+
+<p>I like how combining <code class="language-plaintext highlighter-rouge">let</code> and <code class="language-plaintext highlighter-rouge">subject</code> lets me run multiple contexts while only adjusting the relevant variable. Since <code class="language-plaintext highlighter-rouge">let</code>s are lazily evaluated, the initial <code class="language-plaintext highlighter-rouge">let(:user)</code> can leverage contextual <code class="language-plaintext highlighter-rouge">let</code>s to instantiate a new <code class="language-plaintext highlighter-rouge">User</code> with the <em>ad hoc</em> local variables.</p>
+
+<p>In plain Minitest, it’d look like this:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+    <span class="k">def</span> <span class="nf">setup</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">""</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">test_full_name_with_one_word_last_name</span>
+      <span class="n">user</span><span class="p">.</span><span class="nf">last_name</span> <span class="o">=</span> <span class="s2">"summers"</span>
+      <span class="n">full_name</span> <span class="o">=</span> <span class="n">user</span><span class="p">.</span><span class="nf">full_name</span>
+
+      <span class="n">assert_equal</span> <span class="s2">"Buffy Summers"</span><span class="p">,</span> <span class="n">full_name</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">test_full_name_with_two_word_last_name</span>
+      <span class="n">user</span><span class="p">.</span><span class="nf">last_name</span> <span class="o">=</span> <span class="s2">"anne summers"</span>
+      <span class="n">full_name</span> <span class="o">=</span> <span class="n">user</span><span class="p">.</span><span class="nf">full_name</span>
+
+      <span class="n">refute_equal</span> <span class="s2">"Buffy Anne Summers"</span><span class="p">,</span> <span class="n">full_name</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Since <code class="language-plaintext highlighter-rouge">@user = User.new</code> is evaluated immediately during setup, it can’t take advantage from local variables to create different variations of a <code class="language-plaintext highlighter-rouge">User</code> on the fly.</p>
+
+<p>Note that there is no named <code class="language-plaintext highlighter-rouge">subject</code> (aka <code class="language-plaintext highlighter-rouge">subject(:name)</code>) in Minitest.</p>
+
+<p>An aside: I guess this is one of the reasons Minitest maintainers aren’t fond of porting assertions to expectations, because on top of the work, they constantly have to deal with comparison. Which, let’s be honest, is a pain in the back.</p>
+
+<h2 id="nested-describe-blocks">Nested <code class="language-plaintext highlighter-rouge">describe</code> blocks</h2>
+
+<p>My last example shows that we can nest <code class="language-plaintext highlighter-rouge">describe</code> blocks!</p>
+
+<p>There are no <code class="language-plaintext highlighter-rouge">context</code> in Minitest, but <code class="language-plaintext highlighter-rouge">describe</code> blocks are still a nicer way to show context granularity compared to plain Minitest nested classes.</p>
+
+<p>Be careful not to nest <code class="language-plaintext highlighter-rouge">describe</code> block too deeply:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="n">describe</span> <span class="s2">"#full_name"</span> <span class="k">do</span>
+      <span class="n">subject</span> <span class="p">{</span> <span class="n">user</span><span class="p">.</span><span class="nf">full_name</span> <span class="p">}</span>
+
+      <span class="n">describe</span> <span class="s2">"when the user has a two-word last name"</span> <span class="k">do</span>
+        <span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="n">last_name</span><span class="p">:)</span> <span class="p">}</span>
+        <span class="n">let</span><span class="p">(</span><span class="ss">:last_name</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"anne summers"</span> <span class="p">}</span>
+
+        <span class="n">it</span> <span class="s2">"does not return the capitalized full name"</span> <span class="k">do</span>
+          <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">).</span><span class="nf">wont_equal</span> <span class="s2">"Buffy Anne Summers"</span>
+        <span class="k">end</span>
+
+        <span class="n">describe</span> <span class="s2">"when the two-word last name is hyphenated"</span> <span class="k">do</span>
+          <span class="n">let</span><span class="p">(</span><span class="ss">:last_name</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"anne-summers"</span> <span class="p">}</span>
+
+          <span class="n">it</span> <span class="s2">"does not return the capitalized full name"</span> <span class="k">do</span>
+            <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">).</span><span class="nf">wont_equal</span> <span class="s2">"Buffy Anne Summers"</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>The output for these tests becomes messy:</p>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">  lab/minitest-post → ruby user_test.rb <span class="nt">--verbose</span>
+  Run options: <span class="nt">--verbose</span> <span class="nt">--seed</span> 50406
+
+  <span class="c"># Running:</span>
+
+  UserTest2::#full_name::when the user has a two-word last name#test_0001_does not <span class="k">return </span>the capitalized full name <span class="o">=</span> 0.00 s <span class="o">=</span> <span class="nb">.</span>
+  UserTest2::#full_name::when the user has a two-word last name::when the two-word last name is hyphanated#test_0001_does not <span class="k">return </span>the capitalized full name <span class="o">=</span> 0.00 s <span class="o">=</span> <span class="nb">.</span>
+
+  Finished <span class="k">in </span>0.001022s, 1956.9472 runs/s, 1956.9472 assertions/s.
+  2 runs, 2 assertions, 0 failures, 0 errors, 0 skips</code></pre></figure>
+
+<p>Output legibility is a common critique I hear about Minitest. At the same time, deep nesting makes reading both the files and the output difficult, no matter the framework.</p>
+
+<h2 id="solving-the-tricky-inheritance-in-rails-apps">Solving the tricky inheritance in Rails apps</h2>
+
+<p>Eric, from the Ruby on Rails Links Slack, pointed out the <a href="https://github.com/minitest/minitest-rails" target="_blank"><code class="language-plaintext highlighter-rouge">rails-minitest</code> gem</a>.</p>
+
+<p>Maintained by the same people behind Minitest, <code class="language-plaintext highlighter-rouge">rails-minitest</code> provides a Minitest integration for Rails applications.</p>
+
+<p>Its benefits include:</p>
+<ul>
+  <li>It allows you to explicitly declare the type of class you’re testing.</li>
+  <li>It resolves <a href="/minitest-spec/#:~:text=On%20the%20other%20hand,ApplicationSystemTestCase">the inheritance shenanigans</a> through that typing.</li>
+  <li>It exposes extra spec-flavored expectations for Rails mailers, jobs, routing, and more.</li>
+</ul>
+
+<h3 id="how-to-install-minitest-rails">How to install <code class="language-plaintext highlighter-rouge">minitest-rails</code></h3>
+
+<p>The gem follows the versioning of Rails, so I added <code class="language-plaintext highlighter-rouge">gem "minitest-rails", "~&gt; 8.0.0"</code> to my Gemfile.</p>
+
+<p><code class="language-plaintext highlighter-rouge">minitest-rails</code> comes with a handy installation generator - <code class="language-plaintext highlighter-rouge">rails generate minitest:install</code>- which adds all the necessary files to the application.</p>
+
+<p>Be careful, though, the generator will overwrite your existing setup (<a href="/upgrading-ruby-on-rails/">much like the <code class="language-plaintext highlighter-rouge">rails app:update</code> command</a>).</p>
+
+<p>To prevent this, I dry-ran the generator with the <code class="language-plaintext highlighter-rouge">--pretend</code> flag, which shows all the changes the gem would make: <code class="language-plaintext highlighter-rouge">rails generate minitest:install &lt;APP_PATH&gt; -p</code>.</p>
+
+<p>The changes in my <code class="language-plaintext highlighter-rouge">application_system_test_case.rb</code> were minimal:</p>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">class ApplicationSystemTestCase &lt; ActionDispatch::SystemTestCase
+  some existing stuff
+
++  register_spec_type<span class="o">(</span>self<span class="o">)</span> <span class="k">do</span> |desc, <span class="k">*</span>addl|
++    addl.include? :system
++  end
+
+  more existing stuff
+end</code></pre></figure>
+
+<p>The generator only added <code class="language-plaintext highlighter-rouge">require "minitest/rails"</code> and some parallelization configuration to my <code class="language-plaintext highlighter-rouge">test_helper.rb</code>.</p>
+
+<h3 id="implicit-and-explicit-test-class-typing">Implicit and explicit test class typing</h3>
+
+<p>One of the benefits of the Minitest integration is that it lets me declare which class I’m testing with a <code class="language-plaintext highlighter-rouge">describe</code> block:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+    <span class="o">...</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Instead of:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="o">...</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>I don’t need to suffix my test class with <code class="language-plaintext highlighter-rouge">Test</code> (<em>ie</em> <code class="language-plaintext highlighter-rouge">UserTest</code>) and <code class="language-plaintext highlighter-rouge">minitest-rails</code> is able to infer the inheritance from the declared class.</p>
+
+<p>I also can cast the type explicitly to help Minitest figure out which kind of test I want to run.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">describe</span> <span class="no">User</span><span class="p">,</span> <span class="ss">:model</span> <span class="k">do</span>
+    <span class="o">...</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">minitest-rails</code> even lets me declare custom types and custom inheritance, but I haven’t (yet) figured out how this works (and where I could use it).</p>
+
+<h3 id="more-spec-flavored-expectations">More spec-flavored expectations</h3>
+
+<p><code class="language-plaintext highlighter-rouge">minitest-rails</code> also exposes extra expectations, specifically for mailers, jobs or routing. We don’t need to choose between expectations for testing models, and assertions for testing jobs. Expectations everywhere!</p>
+
+<p>For instance, Rails’ default Minitest syntax would look like this:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">assert_enqueued_jobs</span> <span class="mi">1</span> <span class="k">do</span>
+    <span class="no">NotifyUser</span><span class="p">.</span><span class="nf">perform_later</span><span class="p">(</span><span class="ss">user_id: </span><span class="n">user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>And <code class="language-plaintext highlighter-rouge">minitest-rails</code> will look like this:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">must_enqueue_jobs</span> <span class="mi">1</span> <span class="k">do</span>
+    <span class="no">NotifyUser</span><span class="p">.</span><span class="nf">perform_later</span><span class="p">(</span><span class="ss">user_id: </span><span class="n">user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>The assertion becomes an expectation, harmonizing the syntax of my tests.</p>
+
+<h3 id="yes-but">Yes, but…</h3>
+
+<p>While I managed to install the gem and update the declaration of my tests, one thing refused to work out of the box: mailers expectations.</p>
+
+<p>Consider this test:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">describe</span> <span class="no">NotifyUserJob</span><span class="p">,</span> <span class="ss">:job</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">it</span> <span class="s2">"sends a notification email to the user"</span> <span class="k">do</span>
+      <span class="n">must_enqueue_email_with</span> <span class="no">UserMailer</span><span class="p">,</span> <span class="ss">:notify</span><span class="p">,</span> <span class="ss">args: </span><span class="p">[</span><span class="n">user</span><span class="p">]</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>I used the new <code class="language-plaintext highlighter-rouge">describe</code> declaration for my test case, explicitly cast the <code class="language-plaintext highlighter-rouge">:job</code> type, and used the newly available <code class="language-plaintext highlighter-rouge">must_enqueue_email_with</code> expectation.</p>
+
+<p>Easy, right? Well, no matter how I declared my test case, whether with implicit or explicit typing, <code class="language-plaintext highlighter-rouge">must_enqueue_email_with</code> raised a <code class="language-plaintext highlighter-rouge">NoMethodError</code>.</p>
+
+<p>It means the <a href="https://github.com/minitest/minitest-rails/blob/master/lib/minitest/rails/expectations/active_mailer.rb" target="_blank"><code class="language-plaintext highlighter-rouge">Minitest::Rails::Expectations::ActiveMailer</code></a> module isn’t mixed-in automatically.</p>
+
+<p>I had to include <code class="language-plaintext highlighter-rouge">Minitest::Rails::Expectations::ActionMailer</code> within my test case to make this expectation work:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">describe</span> <span class="no">CalendlyEventsManagerJob</span><span class="p">,</span> <span class="ss">:integration</span> <span class="k">do</span>
+  <span class="kp">include</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Rails</span><span class="o">::</span><span class="no">Expectations</span><span class="o">::</span><span class="no">ActionMailer</span>
+
+  <span class="o">...</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>There’s no mention of this in the documentation, but I’ve found this comment in the <code class="language-plaintext highlighter-rouge">ActiveJob</code> expectations module:</p>
+
+<blockquote>
+  <p>This exists as a module to allow easy mixing into classes
+other than ActiveJob::TestCase where you might want to do
+job testing e.g. in an Active Record model which triggers
+jobs in a callback.</p>
+</blockquote>
+
+<p>So it seems there is still some manual mixin to do, despite most of the inheritance being automatically handled.</p>
+
+<p>Is it normal? Did I do something wrong? I don’t know (yet)!</p>
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>Well, this was a fun chase!</p>
+
+<p>Let’s recap:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Minitest::Spec</code> also exposes <code class="language-plaintext highlighter-rouge">let</code> and <code class="language-plaintext highlighter-rouge">subject</code>.</li>
+  <li>Both are lazily evaluated instance variables.</li>
+  <li>With <code class="language-plaintext highlighter-rouge">Minitest::Spec</code>, you can nest <code class="language-plaintext highlighter-rouge">describe</code> blocks for better contextualisation.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">minitest-rails</code> gem provides a seamless integration of Minitest into Rails.</li>
+  <li>The gem provides extra methods for an overall spec-flavored test suite.</li>
+  <li>In my experience, it comes with some challenges around these extra expectations, which I solved by manually including the modules. But YMMV.</li>
+</ul>
+
+<p>Big thank-yous to Cecile for pointing out the topic of <code class="language-plaintext highlighter-rouge">let</code> and <code class="language-plaintext highlighter-rouge">subject</code>, and to Eric for helping me out with setting-up the <code class="language-plaintext highlighter-rouge">minitest-rails</code> gem.</p>]]></content><author><name>Rémi Mercier</name></author><category term="other" /><summary type="html"><![CDATA[While I already covered the basics of `Minitest::Spec`, I forgot to discuss a few aspects of the spec flavor. This post serves as a complement to the previous one and digs a bit deeper into some extra `Minitest::Spec` shenanigans.]]></summary></entry><entry><title type="html">What is Minitest::Spec?</title><link href="https://remimercier.com/minitest-spec/" rel="alternate" type="text/html" title="What is Minitest::Spec?" /><published>2025-10-13T00:00:00+00:00</published><updated>2025-10-13T00:00:00+00:00</updated><id>https://remimercier.com/minitest-syntax-flavor-spec</id><content type="html" xml:base="https://remimercier.com/minitest-spec/"><![CDATA[<p>In my previous post, I talked a lot about how Minitest comes in various syntax flavors. One flavor I did not cover much is Minitest’s spec extension.</p>
+
+<p>Before I dive in with a dedicated post about assertions, I want to cover this RSpec-style way of writing tests.</p>
+
+<h2 id="minitest-syntax-flavors-a-recap">Minitest syntax flavors: a recap</h2>
+
+<p>As I wrote in <a href="/introduction-to-minitest/">my previous post</a>, Minitest comes in multiple flavors:</p>
+<ul>
+  <li>plain Minitest: <code class="language-plaintext highlighter-rouge">def test_this_method</code></li>
+  <li>Rails’ style: <code class="language-plaintext highlighter-rouge">test "this method"</code></li>
+  <li>and a spec system called <code class="language-plaintext highlighter-rouge">Minitest::Spec</code>: <code class="language-plaintext highlighter-rouge">it "tests this method"</code></li>
+</ul>
+
+<p>Each flavor changes the syntax we use to define our test files and our test examples. The changes in the DSL are minimal, in the sense that they all look familiar to Ruby developers.</p>
+
+<p>Assertions are another matter.</p>
+
+<p>While Rails adds a <a href="https://api.rubyonrails.org/classes/ActiveSupport/Testing/Assertions.html" target="_blank">handful of assertions</a> (mostly around database changes), both Minitest and Rails rely on the following paradigm:</p>
+
+<blockquote>
+  <p>Check that the expected assertion holds true against the actual result.</p>
+</blockquote>
+
+<p>On the contrary, <code class="language-plaintext highlighter-rouge">Minitest::Spec</code> relies on the (RSpec-like) opposite paradigm:</p>
+
+<blockquote>
+  <p>Check that the actual behavior matches the expected result.</p>
+</blockquote>
+
+<p>I know this sounds “po-tay-to, po-tah-to”, but bear with me for one sec.</p>
+
+<h3 id="plain-minitest-flavor">Plain Minitest flavor:</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+    <span class="k">def</span> <span class="nf">setup</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">test_returns_the_full_name</span>
+      <span class="n">assert_equal</span> <span class="s2">"buffy summers"</span><span class="p">,</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<h3 id="minitestspec-flavor"><code class="language-plaintext highlighter-rouge">Minitest::Spec</code> flavor:</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="n">before</span> <span class="k">do</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">it</span> <span class="s2">"returns the capitalized full name"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span><span class="p">).</span><span class="nf">must_equal</span> <span class="s2">"Buffy Summers"</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>For someone who comes from RSpec, this looks <em>very</em> familiar:</p>
+<ul>
+  <li>Building a setup with <code class="language-plaintext highlighter-rouge">before do ... end</code> instead of <code class="language-plaintext highlighter-rouge">setup do ... end</code>.</li>
+  <li>Defining test examples with <code class="language-plaintext highlighter-rouge">it</code> instead of <code class="language-plaintext highlighter-rouge">test</code> or <code class="language-plaintext highlighter-rouge">def test_*</code>.</li>
+  <li>Expectations instead of assertions: <code class="language-plaintext highlighter-rouge">expect(actual behavior).must_equal expected_result</code>.</li>
+</ul>
+
+<p>Using <code class="language-plaintext highlighter-rouge">Minitest::Spec</code> also allows me to organize my tests into describe blocks for different contexts.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="n">before</span> <span class="k">do</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">it</span> <span class="s2">"returns the capitalized full name"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span><span class="p">).</span><span class="nf">must_equal</span> <span class="s2">"Buffy Summers"</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"when the user has a two-word last name"</span> <span class="k">do</span>
+      <span class="n">before</span> <span class="k">do</span>
+        <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"jane summers"</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="n">it</span> <span class="s2">"does not return the capitalized full name"</span> <span class="k">do</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span><span class="p">).</span><span class="nf">wont_equal</span> <span class="s2">"Buffy Jane Summers"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Expectations can also be slightly abstracted away with the following syntax:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">it</span> <span class="s2">"returns the capitalized full name"</span> <span class="k">do</span>
+    <span class="n">_</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span><span class="p">).</span><span class="nf">must_equal</span> <span class="s2">"Buffy Summers"</span>
+  <span class="k">end</span></code></pre></figure>
+
+<h2 id="how-to-enable-minitestspec">How to enable <code class="language-plaintext highlighter-rouge">Minitest::Spec</code>?</h2>
+
+<h3 id="in-ruby-applications">In Ruby applications</h3>
+
+<p>In plain Ruby files, there’s no need to configure anything at the application level. Minitest comes with both flavors, plain and spec, by default.</p>
+
+<p>The only gotcha is that test classes need to inherit from <code class="language-plaintext highlighter-rouge">Minitest::Spec</code> instead of <code class="language-plaintext highlighter-rouge">Minitest::Test</code>. If you didn’t find this documented in the official repository, you’re not alone. It’s not documented at all. I found it <a href="https://github.com/minitest/minitest/blob/master/lib/minitest/spec.rb#L58C24-L58C38" target="_blank">in the source code</a> while investigating why my spec-style tests weren’t working.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span>
+    <span class="o">...</span>
+  <span class="k">end</span></code></pre></figure>
+
+<h3 id="in-rails-applications">In Rails applications</h3>
+
+<p>In Rails, I’ve found that you need to require <code class="language-plaintext highlighter-rouge">"minitest/spec"</code> and extend <code class="language-plaintext highlighter-rouge">Minitest::Spec::DSL</code> to the <code class="language-plaintext highlighter-rouge">ActiveSupport::TestCase</code> class.</p>
+
+<p>Here’s an extract from my <code class="language-plaintext highlighter-rouge">test_helper.rb</code> file:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="c1"># frozen_string_literal: true</span>
+
+  <span class="nb">require</span> <span class="s2">"rails/test_help"</span>
+  <span class="nb">require</span> <span class="s2">"minitest/spec"</span>
+
+  <span class="k">module</span> <span class="nn">ActiveSupport</span>
+    <span class="k">class</span> <span class="nc">TestCase</span>
+      <span class="kp">extend</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Spec</span><span class="o">::</span><span class="no">DSL</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>On the other hand, there’s no need to change the inheritance of your test classes to <code class="language-plaintext highlighter-rouge">Minitest::Spec</code>. The inheritance in Rails is already <em>quite</em> complicated on its own, though:</p>
+<ul>
+  <li>Unit tests inherit from <code class="language-plaintext highlighter-rouge">ActiveSupport::TestCase</code></li>
+  <li>Integration tests inherit from <code class="language-plaintext highlighter-rouge">ActionDispatch::IntegrationTest</code></li>
+  <li>Unit tests for views (think helpers) inherit from <code class="language-plaintext highlighter-rouge">ActionView::TestCase</code></li>
+  <li>System tests inherit from <code class="language-plaintext highlighter-rouge">ApplicationSystemTestCase</code></li>
+</ul>
+
+<h2 id="sharp-knives-and-gotchas">Sharp knives and gotchas</h2>
+
+<p>Ruby and Rails allow you to do some weird things at your own risk. Mixing <code class="language-plaintext highlighter-rouge">setup do</code> and <code class="language-plaintext highlighter-rouge">before do</code> in the same file is one of them.</p>
+
+<p><em>Don’t do this. This is for educational purpose only.</em></p>
+
+<p>In plain Ruby, <code class="language-plaintext highlighter-rouge">setup</code> and <code class="language-plaintext highlighter-rouge">before</code> will work alongside one another without a hurdle.</p>
+
+<p>In Rails, both will work if used exclusively in one file. If you mix them in one file, you have two possible outcomes:</p>
+
+<ul>
+  <li>If you use <code class="language-plaintext highlighter-rouge">setup</code> before <code class="language-plaintext highlighter-rouge">before</code>, your tests will run normally.</li>
+  <li>If you use <code class="language-plaintext highlighter-rouge">before</code> before <code class="language-plaintext highlighter-rouge">setup</code>, your test will potentially fail because <code class="language-plaintext highlighter-rouge">setup</code> was not executed.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="nb">require</span> <span class="s2">"test_helper"</span>
+
+  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
+    <span class="n">before</span> <span class="k">do</span>
+      <span class="c1"># will get executed</span>
+    <span class="k">end</span>
+
+    <span class="nb">test</span> <span class="s2">"some method"</span> <span class="k">do</span>
+      <span class="c1"># will pass</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"a nested context"</span> <span class="k">do</span>
+      <span class="n">setup</span> <span class="k">do</span>
+        <span class="c1"># will not be executed</span>
+      <span class="k">end</span>
+
+      <span class="n">it</span> <span class="s2">"returns some result"</span> <span class="k">do</span>
+        <span class="c1"># will potentially fail</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Now that we’re more familiar with <code class="language-plaintext highlighter-rouge">Minitest::Spec</code>, we have access to a new way of writing assertions, such as <code class="language-plaintext highlighter-rouge">must_equal</code>, <code class="language-plaintext highlighter-rouge">must_match</code>, and others. I’ll cover those in a future post.</p>
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>I hope this post helped clarify the basics of the <code class="language-plaintext highlighter-rouge">Minitest::Spec</code> syntax.</p>
+
+<p>The TL;DR is:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Minitest::Spec</code> is an extension of <code class="language-plaintext highlighter-rouge">Minitest::Test</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Minitest::Spec</code> is the third main flavor of Minitest.</li>
+  <li><code class="language-plaintext highlighter-rouge">Minitest::Spec</code> provides a bridge between assertions and spec-style expectations.</li>
+  <li>Adding <code class="language-plaintext highlighter-rouge">Minitest::Spec</code> to Ruby or Rails comes with some gotchas.</li>
+</ul>
+
+<p>The third post of this series – <a href="/more-minitest-spec/">More Minitest::Spec shenanigans</a> – is live.</p>]]></content><author><name>Rémi Mercier</name></author><category term="other" /><summary type="html"><![CDATA[In my previous post, I talked a lot about how Minitest comes in various syntax flavors. One flavor I did not cover much is Minitest's spec extension.]]></summary></entry><entry><title type="html">Marketing Haikus</title><link href="https://remimercier.com/marketing-haikus/" rel="alternate" type="text/html" title="Marketing Haikus" /><published>2025-10-09T00:00:00+00:00</published><updated>2025-10-09T00:00:00+00:00</updated><id>https://remimercier.com/haikus</id><content type="html" xml:base="https://remimercier.com/marketing-haikus/"><![CDATA[<p>Just a list of haikus, mostly written when I was <del>working</del> dying of boredom in marketing. Making fun as a tool to push through.</p>
+
+<div>
+  
+    <h2>2016</h2>
+
+    
+
+    
+      <p>PH sends crazy traffic <br />
+A scream splits the office <br />
+Forgot the sign-up form on my website
+</p>
+      <p>---</p>
+    
+      <p>Outbound marketing is dead <br />
+They love data now <br />
+Who wants my huge billboard
+</p>
+      <p>---</p>
+    
+      <p>Growth hacker they say <br />
+Hottest job right now <br />
+Crunch data in excel
+</p>
+      <p>---</p>
+    
+      <p>PR agency nowadays <br />
+Is 2.0 <br />
+Starts its tweets with a handle
+</p>
+      <p>---</p>
+    
+      <p>Beta launch due <br />
+Bug riddled <br />
+Push to prod anyway
+</p>
+      <p>---</p>
+    
+      <p>SEO course today <br />
+Teacher says <br />
+Meta keywords rock
+</p>
+      <p>---</p>
+    
+      <p>Tweet about growth hacking <br />
+So many retweets <br />
+IFTT bots only
+</p>
+      <p>---</p>
+    
+  
+</div>]]></content><author><name>Rémi Mercier</name></author><category term="other" /><summary type="html"><![CDATA[Just a list of haikus, mostly written when I was working (and being bored out of my wits) in marketing. Making fun as a tool to push through.]]></summary></entry><entry><title type="html">Lost in Minitest? Start here!</title><link href="https://remimercier.com/introduction-to-minitest/" rel="alternate" type="text/html" title="Lost in Minitest? Start here!" /><published>2025-10-07T00:00:00+00:00</published><updated>2025-10-07T00:00:00+00:00</updated><id>https://remimercier.com/test-your-rails-app-with-minitest-a-much-needed-tutorial</id><content type="html" xml:base="https://remimercier.com/introduction-to-minitest/"><![CDATA[<p>I have a confession to make: I have never used Minitest in the seven years I’ve been a professional programmer.</p>
+
+<p>I’ve always used <a href="/series/rspec/">the <em>other framework</em></a>.</p>
+
+<p>But earlier this year, I started working with a client whose application relied solely on QA instead of automated tests. In an effort to bring the team peace of mind during releases, I started adding tests to the most critical parts of the application.</p>
+
+<p>Lured by the promise of speed and wide adoption, I suggested we try Minitest.</p>
+
+<p>As I started working on writing my first tests, I hit an unexpected roadblock.</p>
+
+<h2 id="minitest-lack-of-onboarding">Minitest (lack of) onboarding</h2>
+
+<p>After writing several hundred tests, I can confidently say that <strong>Minitest’s biggest weakness is its onboarding</strong>. The information is so awfully scattered, so sparse and so obscure that it makes navigating your tax returns friendlier in comparison.</p>
+
+<p>As a newcomer, I would have loved (let’s forget about love, <strong>I would have needed!</strong>) to get the main information right off the bat:</p>
+<ul>
+  <li>What does Minitest do?</li>
+  <li>Why does Minitest do what it does?</li>
+  <li>How do you make Minitest do what it does?</li>
+</ul>
+
+<p>Instead, Minitest’s <a href="https://github.com/minitest/minitest" target="_blank">official repository</a> is a piece of writing more akin to Joyce’s Ulysses than to a technical documentation.</p>
+
+<p>Programmers get welcomed with a list of footer-worthy links, some congratulatory quotes, and hints that you should get a mental health check for having ever used RSpec.</p>
+
+<p>You have to scroll past this cruft to get the first useful nugget of information: a breakdown of Minitest main components.</p>
+
+<h2 id="minitest-101">Minitest 101</h2>
+
+<p>Minitest is a prominent testing framework for Ruby code. It’s the default testing framework embedded by default in <a href="https://ruby-doc.org/stdlib-2.7.4/libdoc/minitest/rdoc/Minitest.html" target="_blank">Ruby</a> and <a href="https://github.com/rails/rails/blob/main/activesupport/lib/active_support/test_case.rb" target="_blank">Ruby on Rails</a>.</p>
+
+<p>If you generate a new Rails app today, or if you have an existing app with no other test framework configured, you can run <code class="language-plaintext highlighter-rouge">rails test</code>, and Rails will find the <code class="language-plaintext highlighter-rouge">test</code> folder and check for test files.</p>
+
+<p>Otherwise, it’s just a matter of adding <code class="language-plaintext highlighter-rouge">gem 'minitest'</code> to your Gemfile, and off you go.
+Minitest provides several components, each addressing a specific need. Here are a few:</p>
+<ul>
+  <li><a href="https://docs.seattlerb.org/minitest/Minitest/Test.html" target="_blank">minitest/test</a> provides a set of assertions to test your code.</li>
+  <li><a href="https://docs.seattlerb.org/minitest/Minitest/Expectations.html" target="_blank">minitest/spec</a> enables the use of RSpec-like matchers.</li>
+  <li><a href="https://docs.seattlerb.org/minitest/Minitest/Mock.html">minitest/mock</a> is a lightweight mocking (and stubbing) library.</li>
+</ul>
+
+<p>Minitest uses the concept of <strong>assertions</strong> which lets you verify that the expected result matches the actual result:</p>
+
+<blockquote>
+  <p>Check that this condition holds true.</p>
+</blockquote>
+
+<p>Coming from RSpec, I’m used to the concept of <strong>expectations</strong> which take the opposite perspective of Minitest’s assertions:</p>
+
+<blockquote>
+  <p>This object should behave this way.</p>
+</blockquote>
+
+<h2 id="minitest-syntax-flavors--everything-everywhere-all-at-once">Minitest syntax flavors : everything, everywhere, all at once</h2>
+
+<p>One thing that slowed down my adoption is that Minitest offers <strong>multiple styles of syntaxes</strong>. You can write the same test in several ways, sometimes even mixing styles together. Each style lives in its own module or extension.</p>
+
+<p>RSpec is either loved or hated for its DSL, but it gives me one major advantage: I don’t have to decide for every test which style to use. <a href="/pick-a-standard/">I use the standard and I move on</a>.</p>
+
+<p>With Minitest, though, I can choose from:</p>
+<ul>
+  <li>the default syntax</li>
+  <li>Rails’ custom syntax</li>
+  <li>or Minitest’s spec syntax (which mimic RSpec’s style)</li>
+</ul>
+
+<p>Let’s write some tests so you get my point.</p>
+
+<h2 id="writing-my-first-tests-with-minitest">Writing my first tests with Minitest</h2>
+
+<p>Let’s say I have this plain Ruby <code class="language-plaintext highlighter-rouge">User</code> class:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">User</span>
+    <span class="nb">attr_accessor</span> <span class="ss">:first_name</span><span class="p">,</span> <span class="ss">:last_name</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">first_name</span><span class="p">:,</span> <span class="n">last_name</span><span class="p">:)</span>
+      <span class="vi">@first_name</span> <span class="o">=</span> <span class="n">first_name</span>
+      <span class="vi">@last_name</span> <span class="o">=</span> <span class="n">last_name</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">full_name</span>
+      <span class="s2">"</span><span class="si">#{</span><span class="n">first_name</span><span class="p">.</span><span class="nf">capitalize</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">last_name</span><span class="p">.</span><span class="nf">capitalize</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>And I want to write a simple test for it:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="nb">require</span> <span class="s2">"minitest/autorun"</span>
+  <span class="nb">require_relative</span> <span class="s2">"user"</span>
+
+  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">Minitest</span><span class="o">::</span><span class="no">Test</span>
+    <span class="k">def</span> <span class="nf">setup</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">test_returns_the_full_name</span>
+      <span class="n">assert_equal</span> <span class="s2">"buffy summers"</span><span class="p">,</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>In this case, I’m using plain Minitest. It’s the default syntax, with the simplest setup.</p>
+
+<p>Several remarks:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">require "minitest/autorun"</code> instructs Ruby to load Minitest and run the tests once the file is loaded.</li>
+  <li><code class="language-plaintext highlighter-rouge">UserTest</code> inherits from <code class="language-plaintext highlighter-rouge">Minitest::Test</code>, which allows me to use Minitest’s syntax.</li>
+  <li>My test method <code class="language-plaintext highlighter-rouge">def test_returns_the_full_name</code> is prefixed with <code class="language-plaintext highlighter-rouge">test_</code> which is a <a href="https://github.com/minitest/minitest?tab=readme-ov-file#label-Unit+tests" target="_blank">Minitest convention</a>.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">assert_equal</code> method takes the expected result first, the actual result second.</li>
+  <li><code class="language-plaintext highlighter-rouge">def setup; end</code> lets me create my test setup before my code run, similar to RSpec’s <code class="language-plaintext highlighter-rouge">before do ... end</code>).</li>
+  <li>I use ivars to access the objects I set up for my test examples.</li>
+</ul>
+
+<p>Here’s the output for this first test:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">  lab/minitest-post → ruby user_test.rb
+  Run options: <span class="nt">--seed</span> 64661
+
+  <span class="c"># Running:</span>
+
+  <span class="nb">.</span>
+
+  Finished <span class="k">in </span>0.001239s, 807.1025 runs/s, 807.1025 assertions/s.
+  1 runs, 1 assertions, 0 failures, 0 errors, 0 skips</code></pre></figure>
+
+<p>If my test were to failed:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">  lab/minitest-post → ruby user_test.rb
+  Run options: <span class="nt">--seed</span> 22116
+
+  <span class="c"># Running:</span>
+
+  F
+
+  Failure:
+  UserTest#test_returns_the_full_name <span class="o">[</span>user_test.rb:10]:
+  Expected: <span class="s2">"buffy summers"</span>
+    Actual: <span class="s2">"Buffy Summers"</span>
+
+  bin/rails <span class="nb">test </span>user_test.rb:9
+
+  Finished <span class="k">in </span>0.001472s, 679.3478 runs/s, 679.3478 assertions/s.
+  1 runs, 1 assertions, 1 failures, 0 errors, 0 skips</code></pre></figure>
+
+<h3 id="the-same-test-but-in-rails">The same test, but in Rails</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+    <span class="k">def</span> <span class="nf">full_name</span>
+      <span class="s2">"</span><span class="si">#{</span><span class="n">first_name</span><span class="p">.</span><span class="nf">capitalize</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">last_name</span><span class="p">.</span><span class="nf">capitalize</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="nb">require</span> <span class="s2">"test_helper"</span>
+
+  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
+    <span class="k">def</span> <span class="nf">setup</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="nb">test</span> <span class="s2">"returns the full name"</span> <span class="k">do</span>
+      <span class="n">assert_equal</span> <span class="s2">"Buffy Summers"</span><span class="p">,</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>What’s changed:</p>
+<ul>
+  <li>My <code class="language-plaintext highlighter-rouge">User</code> now inherits from <code class="language-plaintext highlighter-rouge">ApplicationRecord</code> (because Rails).</li>
+  <li>My test file starts with <code class="language-plaintext highlighter-rouge">require "test_helper"</code>, which loads the Rails testing environment (database, fixtures, helpers, etc.)</li>
+  <li><code class="language-plaintext highlighter-rouge">UserTest</code> now inherits from <code class="language-plaintext highlighter-rouge">ActiveSupport::TestCase</code>, which inherits from <code class="language-plaintext highlighter-rouge">Minitest::Test</code>. This allows Rails to define additional assertions.</li>
+  <li>Minitest’s test method definition (<code class="language-plaintext highlighter-rouge">def test_returns_the_full_name</code>) is now abstracted into the Rails DSL (<code class="language-plaintext highlighter-rouge">test "returns the full name"</code>). This syntax is just a method, <code class="language-plaintext highlighter-rouge">test</code>, that takes a description and a block as arguments (<a href="https://github.com/rails/rails/blob/main/activesupport/lib/active_support/testing/declarative.rb" target="_blank">see the code source</a>).</li>
+</ul>
+
+<p>Since <code class="language-plaintext highlighter-rouge">ActiveSupport::TestCase</code> inherits from <code class="language-plaintext highlighter-rouge">Minitest::Test</code>, I can also mix and match syntaxes if I ever feel so inclined:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="nb">require</span> <span class="s2">"test_helper"</span>
+
+  <span class="k">class</span> <span class="nc">UserTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
+    <span class="n">setup</span> <span class="k">do</span>
+      <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">first_name: </span><span class="s2">"buffy"</span><span class="p">,</span> <span class="ss">last_name: </span><span class="s2">"summers"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">test_returns_the_full_name</span>
+      <span class="n">assert_equal</span> <span class="s2">"buffy summers"</span><span class="p">,</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">full_name</span>
+    <span class="k">end</span>
+
+    <span class="nb">test</span> <span class="s2">"returns the user slug"</span> <span class="k">do</span>
+      <span class="n">assert_equal</span> <span class="s2">"buffy_summers"</span><span class="p">,</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">slug</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Here, I use both Minitest syntax and the Rails DSL to define test examples in the same file. Does it work? Yep! Should I do it? I’d rather not!</p>
+
+<p>But I wanted to show you that you can, even if you shouldn’t.</p>
+
+<p>I did not even toggle <code class="language-plaintext highlighter-rouge">minitest/spec</code> which opens up a third syntax to set up and define your test examples. I’ll cover this in another post.</p>
+
+<p>One thing I’m not showing here that you should know. In Rails, based on your type of test, you’ll want your test file to inherit from a different class:</p>
+<ul>
+  <li>Unit tests, inherit from <code class="language-plaintext highlighter-rouge">ActiveSupport::TestCase</code></li>
+  <li>Integration tests, inherit from <code class="language-plaintext highlighter-rouge">ActionDispatch::IntegrationTest</code></li>
+  <li>Unit tests for views (think helpers), inherit from <code class="language-plaintext highlighter-rouge">ActionView::TestCase</code></li>
+  <li>System tests, inherit from <code class="language-plaintext highlighter-rouge">ApplicationSystemTestCase</code></li>
+</ul>
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>As always, I intended this post to be short, and failed.</p>
+
+<p>If you’re starting out with Minitest and feeling a bit lost, I hope this post helped you understand the basics.</p>
+
+<p>The TL;DR is:</p>
+<ul>
+  <li>Minitest is part of Ruby standard library.</li>
+  <li>Minitest is part of Rails <code class="language-plaintext highlighter-rouge">ActiveSupport</code>.</li>
+  <li>Minitest has several possible syntaxes to define your test examples.</li>
+  <li>Minitest has a multitude of assertions (we’ll cover those in the next post).</li>
+  <li>Minitest is obscure at first, but once you get the hang of it, it’s quite neat.</li>
+</ul>
+
+<p>The second part of this series – <a href="/minitest-spec/">What is Minitest::Spec</a> – is now live!</p>
+
+<p>Thank you to <a href="https://www.cecilitse.org/" target="_blank">Cecile</a> for her suggestions.</p>]]></content><author><name>Rémi Mercier</name></author><category term="other" /><summary type="html"><![CDATA[I have a confession to make: I have never used Minitest in the seven years I've been a professional programmer. Lured by the promise of speed and wide adoption, I decided to try Minitest. Then I hit an unexpected roadblock.]]></summary></entry><entry><title type="html">Finally learning a new language</title><link href="https://remimercier.com/learning-logo" rel="alternate" type="text/html" title="Finally learning a new language" /><published>2025-09-12T00:00:00+00:00</published><updated>2025-09-12T00:00:00+00:00</updated><id>https://remimercier.com/learning-a-new-language</id><content type="html" xml:base="https://remimercier.com/learning-logo"><![CDATA[<p>For years, people around me have been telling me to learn new programming languages—that I shouldn’t corner myself with Ruby (and Rails). And for years, I couldn’t muster the mental energy to do it.</p>
+
+<p>But lo and behold, the breakthrough happened!</p>
+
+<p>Will it be Rust? Will it be JavaScript?</p>
+
+<p>None of the above, my good sir! It’ll be <a href="https://en.wikipedia.org/wiki/Logo_(programming_language)" target="_blank">Logo</a>, a procedural language designed to teach children the basics of programming.</p>
+
+<p>Why, though? Well, last week, my child’s new teacher told us he intended to introduce programming to the class. And I thought: “Ooooh, I might finally be able to explain to my children what I do for a living.”</p>
+
+<p>So, I got <em>very</em> excited about it and <a href="https://www.youtube.com/watch?v=cwnMhI9XjO8" target="_blank">down the rabbit hole I fell</a>.</p>
+
+<p>To make it extra fun, I designed a first 30-minute workshop with plenty of games.</p>
+
+<p>Here’s my pitch to present the basic concepts to the kids:</p>
+
+<blockquote>
+  <p>Today, we’re going to control a computer. And to make a computer do cool things, we have to give it orders.</p>
+
+  <p> </p>
+
+  <p>Orders are also called <strong>instructions</strong>.</p>
+
+  <p> </p>
+
+  <p>An instruction can be short: <em>“Take one step forward.”</em></p>
+
+  <p> </p>
+
+  <p>Or it can be long: <em>“Take one step forward, turn around, walk three steps hopping on your left foot while putting your right pinky in your nostril, fart loudly, laugh even louder, and do a cartwheel.”</em></p>
+
+  <p> </p>
+
+  <p>When we put instructions together to make a computer do something, we build what’s called a <strong>program</strong>.</p>
+
+  <p> </p>
+
+  <p>And a program is written in a language that the computer can understand: a <strong>programming language</strong>.</p>
+
+  <p> </p>
+
+  <p>You, for example, speak French and a little bit of English. Well, the computer speaks C, Lisp, or Logo.</p>
+
+  <p> </p>
+
+  <p>And that works out nicely, because today we’re going to talk to our computer in Logo.</p>
+</blockquote>
+
+<p>I plan to have them team up to draw the initial of their first name using Logo instructions. I will get inspiration from Seymour Papert — one of the inventors of Logo — and have the kids use physical space to walk through and talk about the problem.</p>
+
+<p>My current plan:</p>
+<ul>
+  <li>Draw the two letters on the floor with masking tape.</li>
+  <li>Build a set of cardboard jigsaw puzzle pieces that represent the instructions (in French).</li>
+  <li>Have the kids pick the jigsaw pieces and assemble them on the tape to find the correct instructions and the correct order of operations.</li>
+  <li>Have them type the instructions into the terminal and see if the output matches our expected result.</li>
+  <li>Take a few pictures and do a quick write-up with them so they can present it in their classes.</li>
+</ul>
+
+<p>Some ideas for my jigsaw puzzle pieces:</p>
+
+<figure class="highlight"><pre><code class="language-txt" data-lang="txt">                        | \
++-----------------------+   \
+|       avance 50            &gt;
++-----------------------+   /
+                        | /
+
+
+       *******
+     * tourne  *
+    *  droite   *
+    *    90    *
+     *   |_   *
+      *******</code></pre></figure>
+
+<p>It’s been a long time since I got that excited about a side project! Let’s hope I won’t bore the kids to death!</p>]]></content><author><name>Rémi Mercier</name></author><category term="other" /><summary type="html"><![CDATA[For years, people around me have been telling me to learn new programming languages—that I shouldn’t corner myself with Ruby (and Rails). And for years, I couldn’t muster the mental energy to do it.]]></summary></entry><entry><title type="html">Build a minimal decorator with Ruby in 30 minutes</title><link href="https://remimercier.com/minimal-decorator-ruby/" rel="alternate" type="text/html" title="Build a minimal decorator with Ruby in 30 minutes" /><published>2025-06-12T00:00:00+00:00</published><updated>2025-06-12T00:00:00+00:00</updated><id>https://remimercier.com/how-to-build-a-minimal-decorator-with-ruby</id><content type="html" xml:base="https://remimercier.com/minimal-decorator-ruby/"><![CDATA[<p>A few weeks ago, I needed to add some view-related methods to an object. Decorators are my go-to pattern to handle this kind of logic.</p>
+
+<p>Normally, I’d use the <a href="https://github.com/drapergem/draper" target="_blank">draper</a> gem to build decorators. But the app I’m working on used an older and incompatible version of Rails.</p>
+
+<p>So I built a minimal decorator from scratch, added a bunch of extra behaviors, only to end up abstracting all of these away. Follow along!</p>
+
+<h2 id="what-im-working-with">What I’m working with</h2>
+
+<p>My <code class="language-plaintext highlighter-rouge">Teacher</code> class has a handful of methods:</p>
+<ul>
+  <li>A one-to-many relationship with the <code class="language-plaintext highlighter-rouge">Student</code> class.</li>
+  <li>Two public methods: one that exposes the maximum number of students a teacher can teach to, and one exposing the available teaching places.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">Teacher</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+    <span class="n">has_many</span> <span class="ss">:students</span>
+
+    <span class="k">def</span> <span class="nf">maximum_number_of_students</span> <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="k">def</span> <span class="nf">available_places</span>
+      <span class="p">(</span><span class="n">maximum_number_of_students</span> <span class="o">&lt;=&gt;</span> <span class="n">students</span><span class="p">.</span><span class="nf">size</span><span class="p">).</span><span class="nf">clamp</span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>In my views, I want to display a table of teachers where the number of available places for each teacher is backed by a background colour.</p>
+
+<p><img class="large" src="/media/2025/06/minimal-decorator-table-example-remi-mercier.png" alt="a screenshot of a table with teachers names and available spaces for each" /></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># teachers/index.html.erb</span>
+
+<span class="o">&lt;</span><span class="n">table</span> <span class="k">class</span><span class="o">=</span><span class="s2">"table table-striped"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">thead</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="no">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">teacher</span><span class="o">&lt;</span><span class="sr">/th&gt;
+      &lt;th&gt;Available places&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/tr&gt;
+  &lt;/</span><span class="n">thead</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">tbody</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="sx">% teachers.each </span><span class="k">do</span> <span class="o">|</span><span class="n">teacher</span><span class="o">|</span> <span class="sx">%&gt;
+      &lt;tr&gt;</span>
+        <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="sx">%= teacher.full_name %&gt;&lt;/td&gt;
+        &lt;td class=</span><span class="s2">"&lt;%= teacher.colour_coded_availability %&gt;"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="sx">%= teacher.available_places %&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;% end %&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</span></code></pre></figure>
+
+<p>I could write the <code class="language-plaintext highlighter-rouge">Teacher#colour_coded_availability</code> method in my model like so:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">class</span> <span class="nc">Teacher</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+    <span class="n">has_many</span> <span class="ss">:students</span>
+
+    <span class="k">def</span> <span class="nf">maximum_number_of_students</span> <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="k">def</span> <span class="nf">available_places</span>
+      <span class="p">(</span><span class="n">maximum_number_of_students</span> <span class="o">&lt;=&gt;</span> <span class="n">students</span><span class="p">.</span><span class="nf">size</span><span class="p">).</span><span class="nf">clamp</span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">colour_coded_availability</span>
+      <span class="k">case</span> <span class="n">available_places</span>
+      <span class="k">when</span> <span class="mi">0</span> <span class="k">then</span> <span class="s2">"bg-colour-red"</span>
+      <span class="k">else</span> <span class="s2">"bg-colour-green"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>However, models are not the place for methods generating CSS classes. Decorators are!</p>
+
+<h2 id="drafting-a-decorator">Drafting a decorator</h2>
+
+<p>My decorator should accept an instance of <code class="language-plaintext highlighter-rouge">Teacher</code> and expose the <code class="language-plaintext highlighter-rouge">colour_coded_availability</code> public method.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># app/decorators/teacher_decorator.rb</span>
+
+  <span class="k">class</span> <span class="nc">TeacherDecorator</span>
+    <span class="nb">attr_reader</span> <span class="ss">:teacher</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">teacher</span><span class="p">:)</span>
+      <span class="vi">@teacher</span> <span class="o">=</span> <span class="n">teacher</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">colour_coded_availability</span>
+      <span class="k">case</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">available_places</span>
+      <span class="k">when</span> <span class="mi">0</span> <span class="k">then</span> <span class="s2">"bg-colour-red"</span>
+      <span class="k">else</span> <span class="s2">"bg-colour-green"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Now, I can instantiate my decorator and use it in my views:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># app/controllers/teachers_controller.rb</span>
+  <span class="k">class</span> <span class="nc">TeachersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+    <span class="k">def</span> <span class="nf">index</span>
+      <span class="vi">@teachers</span> <span class="o">=</span> <span class="no">Teacher</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="no">TeacherDecorator</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">teacher: </span><span class="n">_1</span><span class="p">)</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="c1"># teachers/index.html.erb</span>
+  <span class="o">&lt;</span><span class="n">table</span> <span class="k">class</span><span class="o">=</span><span class="s2">"table table-striped"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">thead</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="no">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">teacher</span><span class="o">&lt;</span><span class="sr">/th&gt;
+        &lt;th&gt;Available places&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/tr&gt;
+    &lt;/</span><span class="n">thead</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">tbody</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="sx">% @teachers.each </span><span class="k">do</span> <span class="o">|</span><span class="n">teacher</span><span class="o">|</span> <span class="sx">%&gt;
+        &lt;tr&gt;</span>
+          <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="sx">%= teacher.full_name %&gt;&lt;/td&gt;
+          &lt;td class=</span><span class="s2">"&lt;%= teacher.colour_coded_availability %&gt;"</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="sx">%= teacher.available_places %&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;% end %&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;</span></code></pre></figure>
+
+<p>When I can call <code class="language-plaintext highlighter-rouge">teacher.colour_coded_availability</code> in my views, the method retrieves a CSS class and adds it to the HTML <code class="language-plaintext highlighter-rouge">&lt;td&gt;</code> tag.</p>
+
+<p>But if I were to run this code as is, I’d get a beautiful <code class="language-plaintext highlighter-rouge">NoMethodError</code>. Why?</p>
+
+<p>My views do not handle instances of <code class="language-plaintext highlighter-rouge">Teacher</code> anymore. They handle instances of <code class="language-plaintext highlighter-rouge">TeacherDecorator</code>. So, when I’m calling the public methods defined on <code class="language-plaintext highlighter-rouge">Teacher</code>, the decorator doesn’t know what to do with them.</p>
+
+<p>My decorator needs to be able to handle both its own public methods and the public methods defined on the underlying record (<code class="language-plaintext highlighter-rouge">Teacher</code>, in this case).</p>
+
+<p>And we do that by using Ruby’s <code class="language-plaintext highlighter-rouge">method_missing</code>.</p>
+
+<h2 id="rubys-method_missing-to-the-rescue">Ruby’s <code class="language-plaintext highlighter-rouge">method_missing</code> to the rescue</h2>
+
+<p><code class="language-plaintext highlighter-rouge">method_missing</code> is how Ruby handles method calls made on objects where said methods are not defined. Ruby passes the method call along <a href="/beginners-introduction-to-ruby-classes-objects/">the ancestry chain</a> until it can either resolves it or raises a <code class="language-plaintext highlighter-rouge">NoMethodError</code>.</p>
+
+<p>When I call <code class="language-plaintext highlighter-rouge">@teacher.full_name</code>, I want my decorator to rescue the <code class="language-plaintext highlighter-rouge">NoMethodError</code>, and forward <code class="language-plaintext highlighter-rouge">#full_name</code> to the underlying instance of <code class="language-plaintext highlighter-rouge">Teacher</code>.</p>
+
+<p>To do that, I need to re-open Ruby’s <code class="language-plaintext highlighter-rouge">method_missing</code>, add a custom behavior, then allow <code class="language-plaintext highlighter-rouge">method_missing</code> to run its normal course.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TeacherDecorator</span>
+  <span class="nb">attr_reader</span> <span class="ss">:teacher</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">teacher</span><span class="p">)</span>
+    <span class="vi">@teacher</span> <span class="o">=</span> <span class="n">teacher</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">availability_as_background</span>
+    <span class="k">case</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">max_number_of_students</span> <span class="o">&lt;=&gt;</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">available_places</span>
+    <span class="k">when</span> <span class="o">-</span><span class="mi">1</span> <span class="k">then</span> <span class="s2">"background-danger"</span>
+    <span class="k">when</span> <span class="mi">0</span> <span class="k">then</span> <span class="s2">"background-warning"</span>
+    <span class="k">when</span> <span class="mi">1</span> <span class="k">then</span> <span class="s2">"background-success"</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">public_send</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="k">if</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="nb">method</span><span class="p">)</span>
+
+    <span class="k">super</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">respond_to_missing?</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">include_private</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+    <span class="n">teacher</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="o">||</span> <span class="k">super</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>In this example, I keep the original signature of Ruby’s <code class="language-plaintext highlighter-rouge">method_missing</code>.</p>
+
+<p>The only thing I tweak is forwarding the method call to the underlying <code class="language-plaintext highlighter-rouge">teacher</code>. I only forward it if the <code class="language-plaintext highlighter-rouge">teacher</code> responds to the method. Then, I let Ruby resume its original behavior <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<p>Now, <code class="language-plaintext highlighter-rouge">@teacher.full_name</code> is properly forwarded to the underlying instance of <code class="language-plaintext highlighter-rouge">Teacher</code>.</p>
+
+<p>What would be cool now, is to allow other decorators to share this behavior.</p>
+
+<h2 id="normalizing-the-behavior-to-create-other-decorators">Normalizing the behavior to create other decorators</h2>
+
+<p>One way to gather default behavior shared across various decorators is to rely on inheritance. I can create an <code class="language-plaintext highlighter-rouge">ApplicationDecorator</code> whose job is to handle instantiation, and forwarding method calls to the underlying record.</p>
+
+<p>Then, I can have my <code class="language-plaintext highlighter-rouge">TeacherDecorator</code> inherit from the <code class="language-plaintext highlighter-rouge">ApplicationDecorator</code>.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ApplicationDecorator</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+    <span class="vi">@record</span> <span class="o">=</span> <span class="n">record</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="nb">attr_reader</span> <span class="ss">:record</span>
+
+  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">record</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="nb">method</span><span class="p">)</span>
+      <span class="n">record</span><span class="p">.</span><span class="nf">public_send</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="k">else</span>
+      <span class="k">super</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">respond_to_missing?</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">include_private</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+    <span class="n">record</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="o">||</span> <span class="k">super</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">TeacherDecorator</span> <span class="o">&lt;</span> <span class="no">ApplicationDecorator</span>
+  <span class="nb">attr_reader</span> <span class="ss">:teacher</span>
+
+  <span class="k">def</span> <span class="nf">availability_as_background</span>
+    <span class="k">case</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">max_number_of_students</span> <span class="o">&lt;=&gt;</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">available_places</span>
+    <span class="k">when</span> <span class="o">-</span><span class="mi">1</span> <span class="k">then</span> <span class="s2">"background-danger"</span>
+    <span class="k">when</span> <span class="mi">0</span> <span class="k">then</span> <span class="s2">"background-warning"</span>
+    <span class="k">when</span> <span class="mi">1</span> <span class="k">then</span> <span class="s2">"background-success"</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="kp">alias_method</span> <span class="ss">:teacher</span><span class="p">,</span> <span class="ss">:record</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>My <code class="language-plaintext highlighter-rouge">TeacherDecorator</code> doesn’t need to bother about its initialization since it’s handled by the parent <code class="language-plaintext highlighter-rouge">ApplicationDecorator</code>. The only thing I added, is the ability to reference the <code class="language-plaintext highlighter-rouge">record</code> as <code class="language-plaintext highlighter-rouge">teacher</code> so it’s clearer what kind of record we’re working with.</p>
+
+<h2 id="ensure-rails-default-behavior-works-well">Ensure Rails default behavior works well</h2>
+
+<p>Some Rails native helpers will have a hard time handling my decorator.</p>
+
+<p>Consider this code:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="sb">`edit_teacher_path(@teacher)`</span> <span class="c1"># =&gt; Should generate teachers/1/edit</span></code></pre></figure>
+
+<p>But if <code class="language-plaintext highlighter-rouge">@teacher</code> references an instance of my <code class="language-plaintext highlighter-rouge">TeacherDecorator</code>, the generated path is <code class="language-plaintext highlighter-rouge">teachers/#TeacherDecorator/edit</code>.</p>
+
+<p>How do I make my decorator integrate with Rails default behavior?</p>
+
+<p>I can re-open the <code class="language-plaintext highlighter-rouge">to_param</code> method which is responsible for turning (among other things) a record into its <code class="language-plaintext highlighter-rouge">id</code>, and delegating its behavior to the record.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ApplicationDecorator</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+    <span class="vi">@record</span> <span class="o">=</span> <span class="n">record</span>
+  <span class="k">end</span>
+
+  <span class="n">delegate</span> <span class="ss">:to_param</span><span class="p">,</span> <span class="ss">to: :record</span>
+
+  <span class="kp">private</span>
+
+  <span class="nb">attr_reader</span> <span class="ss">:record</span>
+
+  <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">record</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="nb">method</span><span class="p">)</span>
+      <span class="n">record</span><span class="p">.</span><span class="nf">public_send</span><span class="p">(</span><span class="nb">method</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="k">else</span>
+      <span class="k">super</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">respond_to_missing?</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">include_private</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+    <span class="n">record</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="o">||</span> <span class="k">super</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Of course, forwarding every Rails default behaviors to the underlying record is not a great strategy (too much complexity). So, how should I do it?</p>
+
+<h2 id="use-ruby-standard-simpledelegator">Use Ruby standard SimpleDelegator</h2>
+
+<blockquote>
+  <p><a href="https://ruby-doc.org/3.4.1/stdlibs/delegate/SimpleDelegator.html" target="_blank">SimpleDelegator</a> provides the means to delegate all supported method calls to the object passed into the constructor.</p>
+</blockquote>
+
+<p>This means that by using SimpleDelegator, I can remove the initialization and the delegation logics from my <code class="language-plaintext highlighter-rouge">ApplicationDelegator</code>.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"delegate"</span>
+
+<span class="k">class</span> <span class="nc">ApplicationDecorator</span> <span class="o">&lt;</span> <span class="no">SimpleDelegator</span> <span class="p">;</span> <span class="k">end</span></code></pre></figure>
+
+<p>Everything is abstracted away. And it just works™. <code class="language-plaintext highlighter-rouge">@record</code> is not available anymore for my <code class="language-plaintext highlighter-rouge">TeacherDecorator</code> to reference, but SimpleDelegator exposes a <code class="language-plaintext highlighter-rouge">__getobj__</code> that works exactly as my previous <code class="language-plaintext highlighter-rouge">@record</code> ivar.</p>
+
+<h2 id="final-implementation">Final implementation</h2>
+
+<p>Here’s what I ended up with:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"delegate"</span>
+
+<span class="k">class</span> <span class="nc">ApplicationDecorator</span> <span class="o">&lt;</span> <span class="no">SimpleDelegator</span> <span class="p">;</span> <span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">TeacherDecorator</span> <span class="o">&lt;</span> <span class="no">ApplicationDecorator</span>
+  <span class="k">def</span> <span class="nf">availability_as_background</span>
+    <span class="k">case</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">max_number_of_students</span> <span class="o">&lt;=&gt;</span> <span class="n">teacher</span><span class="p">.</span><span class="nf">available_places</span>
+    <span class="k">when</span> <span class="o">-</span><span class="mi">1</span> <span class="k">then</span> <span class="s2">"background-danger"</span>
+    <span class="k">when</span> <span class="mi">0</span> <span class="k">then</span> <span class="s2">"background-warning"</span>
+    <span class="k">when</span> <span class="mi">1</span> <span class="k">then</span> <span class="s2">"background-success"</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="kp">alias_method</span> <span class="ss">:teacher</span><span class="p">,</span> <span class="ss">:__getobj__</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>That’s it! A 30-minute minimal decorator in <a href="/series/ruby">plain Ruby</a>.</p>
+
+<p>Cheers,</p>
+
+<p>Rémi - <a href="https://ruby.social/@remi">@remi@ruby.social</a></p>
+
+<!--<p>PS: I'm not currently <a href="/work/">available for hire</a>, but always happy to chat.</p>-->
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p><code class="language-plaintext highlighter-rouge">respond_to_missing?</code> only ensures that the <code class="language-plaintext highlighter-rouge">responds_to?</code> does not return false positives by allowing the decorator to respond to methods even if they are not statically defined on it. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Rémi Mercier</name></author><category term="ruby" /><summary type="html"><![CDATA[A while ago, I needed to add some view-related instance methods to a model. Decorators are my go-to pattern to handle this kind of logic. So, I built a minimal decorator from scratch, added a bunch of extra behaviors, only to end up abstracting all of that away. Follow along!]]></summary></entry><entry><title type="html">Speed up RSpec tests: understand lifecycle and execution</title><link href="https://remimercier.com/aggregate-rspec-expectations/" rel="alternate" type="text/html" title="Speed up RSpec tests: understand lifecycle and execution" /><published>2025-03-10T00:00:00+00:00</published><updated>2025-03-10T00:00:00+00:00</updated><id>https://remimercier.com/speed-up-rspec-suite-by-understanding-lifecycles</id><content type="html" xml:base="https://remimercier.com/aggregate-rspec-expectations/"><![CDATA[<p>One of RSpec’s strengths is the legibility of its behavior-based DSL. The other side of this coin is that the proliferation of small example blocks introduces a performance overhead. Why? Because of RSpec test files’ lifecycle! I’ll describe broadly how RSpec handles a test file, and the performance implications. Then, we’ll see how we can make your RSpec tests run faster!</p>
+
+<p>This is an intermediate-level post. If you’re unfamiliar with RSpec, <a href="/series/rspec/">start at the beginning of the series</a>.</p>
+
+<h2 id="a-typical-test-file">A typical test file</h2>
+
+<p>Let’s draw a quick <code class="language-plaintext highlighter-rouge">books_controller_spec.rb</code> that checks the behavior of a <code class="language-plaintext highlighter-rouge">PATCH</code> action.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="no">RSpec</span><span class="p">.</span><span class="nf">describe</span> <span class="no">BooksController</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:book</span><span class="p">)</span> <span class="k">do</span>
+      <span class="no">Book</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">title: </span><span class="s2">"The Long Way to a Small, Angry Planet"</span><span class="p">,</span> <span class="ss">blurb: </span><span class="kp">nil</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"PATCH /books/:id"</span> <span class="k">do</span>
+      <span class="n">let</span><span class="p">(</span><span class="ss">:action</span><span class="p">)</span> <span class="p">{</span> <span class="n">patch</span> <span class="ss">:update</span><span class="p">,</span> <span class="ss">params: </span><span class="p">}</span>
+      <span class="n">let</span><span class="p">(</span><span class="ss">:params</span><span class="p">)</span> <span class="p">{</span> <span class="p">{</span> <span class="ss">id: </span><span class="n">book</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="ss">book: </span><span class="p">{</span> <span class="ss">blurb: </span><span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+      <span class="n">let</span><span class="p">(</span><span class="ss">:blurb</span><span class="p">)</span> <span class="k">do</span>
+        <span class="s2">"Fleeing her old life, Rosemary Harper joins the multi-species crew of the Wayfarer as a file clerk, and follows them on their various missions throughout the galaxy."</span>
+      <span class="k">end</span>
+
+      <span class="n">it</span> <span class="s2">"returns an :ok response"</span> <span class="k">do</span>
+        <span class="n">action</span>
+
+        <span class="n">expect</span><span class="p">(</span><span class="n">response</span><span class="p">).</span><span class="nf">to</span> <span class="n">have_http_status</span><span class="p">(</span><span class="ss">:ok</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="n">it</span> <span class="s2">"changes the blurb of the book"</span> <span class="k">do</span>
+        <span class="n">action</span>
+
+        <span class="n">expect</span><span class="p">(</span><span class="n">book</span><span class="p">.</span><span class="nf">reload</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="n">blurb</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="n">it</span> <span class="s2">"redirects the user to the /show page"</span> <span class="k">do</span>
+        <span class="n">action</span>
+
+        <span class="n">expect</span><span class="p">(</span><span class="n">response</span><span class="p">).</span><span class="nf">to</span> <span class="n">redirect_to</span><span class="p">(</span><span class="s2">"/books/</span><span class="si">#{</span><span class="n">book</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>This test file is pretty straightforward:</p>
+<ul>
+  <li>The setup creates a book with a title and no blurb.</li>
+  <li>The tests verify that the <code class="language-plaintext highlighter-rouge">BooksController#update</code> method works as intended: update the attributes, return the correct response, and check for final redirection.</li>
+</ul>
+
+<p>One question, though. Can you tell how RSpec <strong>actually</strong> runs this test?</p>
+
+<h2 id="the-lifecycle-of-a-test-file">The lifecycle of a test file</h2>
+
+<p>Test files are separated into two concepts: <strong>example groups</strong> and <strong>examples</strong>.</p>
+
+<p><strong>Example groups</strong> are a recursive entity in RSpec. They represent:</p>
+<ul>
+  <li>the logic within <code class="language-plaintext highlighter-rouge">RSpec.describe BooksController do</code>,</li>
+  <li>the logic within <code class="language-plaintext highlighter-rouge">describe "PATCH /books/:id" do</code> or <code class="language-plaintext highlighter-rouge">context "when something is different" do</code>.</li>
+</ul>
+
+<p><strong>Examples</strong> represent the logic within <code class="language-plaintext highlighter-rouge">it</code> blocks. And <code class="language-plaintext highlighter-rouge">it</code> blocks encapsulate <strong>expectations</strong>.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">RSpec</span><span class="p">.</span><span class="nf">describe</span> <span class="no">BooksController</span> <span class="k">do</span>                 <span class="c1"># &lt;-- top-level example group</span>
+    <span class="n">describe</span> <span class="s2">"PATCH /books/:id"</span> <span class="k">do</span>                <span class="c1"># &lt;-- nested example group</span>
+      <span class="n">it</span> <span class="s2">"returns an :ok response"</span> <span class="k">do</span>             <span class="c1"># &lt;-- example</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">response</span><span class="p">).</span><span class="nf">to</span> <span class="n">have_http_status</span><span class="p">(</span><span class="ss">:ok</span><span class="p">)</span> <span class="c1"># &lt;-- expectation</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>When running a test file, RSpec will:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">run</code> the top-level example group,</li>
+  <li>within <code class="language-plaintext highlighter-rouge">run</code>, <code class="language-plaintext highlighter-rouge">run_examples</code>,</li>
+  <li>if the examples are nested example groups, it will <code class="language-plaintext highlighter-rouge">run</code> recursively,</li>
+  <li>until RSpec can run an actual example, i.e. an <code class="language-plaintext highlighter-rouge">it</code> block.</li>
+</ul>
+
+<p>Next, for each example (<code class="language-plaintext highlighter-rouge">it</code> blocks), RSpec does a handful of things <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">run_before_context_hooks</code>: creates the instance variables (your <code class="language-plaintext highlighter-rouge">let</code>)  and executes <code class="language-plaintext highlighter-rouge">before</code> blocks,</li>
+  <li>runs the expectations,</li>
+  <li>generates the report,</li>
+  <li><code class="language-plaintext highlighter-rouge">run_after_context_hooks</code>: rollbacks the database and resets the ivars.</li>
+</ul>
+
+<p>In layman’s terms, it means that for each <code class="language-plaintext highlighter-rouge">it</code>, RSpec runs anew all your <code class="language-plaintext highlighter-rouge">let</code> and <code class="language-plaintext highlighter-rouge">before</code> blocks, only to discard them all at the end of the process.</p>
+
+<p>Let’s check our <code class="language-plaintext highlighter-rouge">book</code> instance in different <code class="language-plaintext highlighter-rouge">it</code> groups.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">it</span> <span class="s2">"returns an :ok response"</span> <span class="k">do</span>
+    <span class="nb">p</span> <span class="n">book</span><span class="p">.</span><span class="nf">id</span> <span class="c1"># =&gt; 1</span>
+  <span class="k">end</span>
+
+  <span class="n">it</span> <span class="s2">"changes the blurb of the book"</span> <span class="k">do</span>
+    <span class="nb">p</span> <span class="n">book</span><span class="p">.</span><span class="nf">id</span> <span class="c1"># =&gt; 1</span>
+  <span class="k">end</span>
+
+  <span class="n">it</span> <span class="s2">"redirects the user to the /show page"</span> <span class="k">do</span>
+    <span class="nb">p</span> <span class="n">book</span><span class="p">.</span><span class="nf">id</span> <span class="c1"># =&gt; 1</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>At first, I would assume that my <code class="language-plaintext highlighter-rouge">book</code> is always the same book. And yet.</p>
+
+<p>Let’s check the memory pointer associated with my <code class="language-plaintext highlighter-rouge">book</code>.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">it</span> <span class="s2">"returns an :ok response"</span> <span class="k">do</span>
+    <span class="nb">p</span> <span class="n">book</span><span class="p">.</span><span class="nf">object_id</span> <span class="c1"># =&gt; 56100</span>
+  <span class="k">end</span>
+
+  <span class="n">it</span> <span class="s2">"changes the blurb of the book"</span> <span class="k">do</span>
+    <span class="nb">p</span> <span class="n">book</span><span class="p">.</span><span class="nf">object_id</span> <span class="c1"># =&gt; 56220</span>
+  <span class="k">end</span>
+
+  <span class="n">it</span> <span class="s2">"redirects the user to the /show page"</span> <span class="k">do</span>
+    <span class="nb">p</span> <span class="n">book</span><span class="p">.</span><span class="nf">object_id</span> <span class="c1"># =&gt; 56350</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Uh, what?</p>
+
+<p>What it tells us is that while each <code class="language-plaintext highlighter-rouge">book</code> <em>looks</em> identical at the database level (same <code class="language-plaintext highlighter-rouge">id</code>), each Ruby object we’re looking at is different (different memory pointer <code class="language-plaintext highlighter-rouge">object_id</code>).</p>
+
+<p>So, RSpec recreates new Ruby objects for every <code class="language-plaintext highlighter-rouge">it</code> block.</p>
+
+<p>But what about <code class="language-plaintext highlighter-rouge">book</code> always having the same <code class="language-plaintext highlighter-rouge">id</code>?</p>
+
+<p>Most Rails integration of RSpec offers the ability to wrap examples in a database transaction <sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>, meaning that once your example has run, the database rolls back to its original state. Hence why you always have <code class="language-plaintext highlighter-rouge">book</code> with the same <code class="language-plaintext highlighter-rouge">id</code>.</p>
+
+<p>The TL;DR is that the more <code class="language-plaintext highlighter-rouge">it</code> blocks you have, the more RSpec has to evaluate your setup, fill your test database with new records, instantiate new Ruby objects, and discard all of it.</p>
+
+<p>While this decouples testing data from the order of test execution, for a lot of everyday tests, this is a tad overkill and slows your test suite down.</p>
+
+<p>Ok, Rémi? So, how do we fix it?</p>
+
+<h2 id="aggregate-examples-and-cut-setup-time">Aggregate examples and cut setup time</h2>
+
+<p>There’s a very simple thing you can do, to cut setup time <strong>big time</strong>: aggregate your expectations in fewer examples.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="no">RSpec</span><span class="p">.</span><span class="nf">describe</span> <span class="no">BooksController</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:book</span><span class="p">)</span> <span class="k">do</span>
+      <span class="no">Book</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">title: </span><span class="s2">"The Long Way to a Small, Angry Planet"</span><span class="p">,</span> <span class="ss">blurb: </span><span class="kp">nil</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"PATCH /books/:id"</span> <span class="k">do</span>
+      <span class="n">let</span><span class="p">(</span><span class="ss">:action</span><span class="p">)</span> <span class="p">{</span> <span class="n">patch</span> <span class="ss">:update</span><span class="p">,</span> <span class="ss">params: </span><span class="p">}</span>
+      <span class="n">let</span><span class="p">(</span><span class="ss">:params</span><span class="p">)</span> <span class="p">{</span> <span class="p">{</span> <span class="ss">id: </span><span class="n">book</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span> <span class="ss">book: </span><span class="p">{</span> <span class="ss">blurb: </span><span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+      <span class="n">let</span><span class="p">(</span><span class="ss">:blurb</span><span class="p">)</span> <span class="k">do</span>
+        <span class="s2">"Fleeing her old life, Rosemary Harper joins the multi-species crew of the Wayfarer as a file clerk, and follows them on their various missions throughout the galaxy."</span>
+      <span class="k">end</span>
+
+      <span class="n">it</span> <span class="s2">"successfully updates the book"</span><span class="p">,</span> <span class="ss">:aggregate_failures</span> <span class="k">do</span>
+        <span class="n">action</span>
+
+        <span class="n">expect</span><span class="p">(</span><span class="n">response</span><span class="p">).</span><span class="nf">to</span> <span class="n">have_http_status</span><span class="p">(</span><span class="ss">:ok</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">book</span><span class="p">.</span><span class="nf">reload</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="n">blurb</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">response</span><span class="p">).</span><span class="nf">to</span> <span class="n">redirect_to</span><span class="p">(</span><span class="s2">"/books/</span><span class="si">#{</span><span class="n">book</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Sure, you lose <em>some</em> legibility, but instead of having RSpec build your test setup three times, you only do it once. I’ll try and post an update with some benchmarks later on, but this seems quite a big gain especially when used across a whole test suite.</p>
+
+<p>Note that I added the <code class="language-plaintext highlighter-rouge">:aggregate_failures</code> flag to my <code class="language-plaintext highlighter-rouge">it</code> block. This tells RSpec to not fail fast, to run all my expectations in the block, and to bundle all my failures together.</p>
+
+<p>That’s it! Hope you liked this lengthy yack shaving, as much as I liked writing it!</p>
+
+<p>Cheers,</p>
+
+<p>Rémi - <a href="https://ruby.social/@remi">@remi@ruby.social</a></p>
+
+<!--<p>PS: I'm not currently <a href="/work/">available for hire</a>, but always happy to chat.</p>-->
+
+<p>PSS: Many thanks to <a href="https://boitam.eu/@sunny" target="_blank">Sunny</a> for sending me down this rabbit hole!</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>You can check the code about <code class="language-plaintext highlighter-rouge">run</code> <a href="https://github.com/rspec/rspec/blob/main/rspec-core/lib/rspec/core/example_group.rb#L599" target="_blank">here</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>The code about database migration is <a href="https://github.com/rspec/rspec-rails/blob/main/lib/rspec/rails/fixture_support.rb" target="_blank">here</a>. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Rémi Mercier</name></author><category term="rspec" /><summary type="html"><![CDATA[One of RSpec's strengths is the legibility of its behavior-based DSL. The other side of this coin is that the proliferation of small example blocks introduces a performance overhead.]]></summary></entry><entry><title type="html">How I use git add –patch for reviewing my work</title><link href="https://remimercier.com/git-add-patch/" rel="alternate" type="text/html" title="How I use git add –patch for reviewing my work" /><published>2025-02-10T00:00:00+00:00</published><updated>2025-02-10T00:00:00+00:00</updated><id>https://remimercier.com/git-add-patch</id><content type="html" xml:base="https://remimercier.com/git-add-patch/"><![CDATA[<p>When working on features, I strive to preserve my flow, which means, that after a few hours, I’ll have a bunch of untracked files waiting for me in git. Since I like to make atomic changes, I need to remember which files go hand-in-hand to bundle them up in meaningful separate commits.</p>
+
+<h2 id="git-add---patch-to-the-rescue"><code class="language-plaintext highlighter-rouge">git add --patch</code> to the rescue</h2>
+
+<p>You probably already use <code class="language-plaintext highlighter-rouge">git add</code> to add files to your staging area. Well, <code class="language-plaintext highlighter-rouge">git add --patch</code> adds a few fancies to this process:</p>
+<ul>
+  <li>Interactively review your additions.</li>
+  <li>Select those you want to add to your staging area.</li>
+  <li>Control the granularity with which you can do the above.</li>
+</ul>
+
+<p>Let’s take this website repository as an example (#meta)!</p>
+
+<p>First, let’s run <code class="language-plaintext highlighter-rouge">git status</code>.</p>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">  merciremi/remicodes gh-pages → git status
+  On branch gh-pages
+  Your branch is up to <span class="nb">date </span>with <span class="s1">'origin/gh-pages'</span><span class="nb">.</span>
+
+  Untracked files:
+    <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to include <span class="k">in </span>what will be committed<span class="o">)</span>
+  	_drafts/add-postgres-full-text-search-to-rails-app.md
+  	_drafts/git-patch-draft.md
+  	_drafts/speed-up-rspec-suite-by-understanding-lifecycles.md
+  	_notes/
+
+  nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">"git add"</span> to track<span class="o">)</span></code></pre></figure>
+
+<p>Here’s a breakdown of the main git-related information:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">On branch gh-pages</code> is pretty self-explanatory.</li>
+  <li><code class="language-plaintext highlighter-rouge">Your branch is up to date with 'origin/gh-pages'.</code> means that my local branch is up to date with my remote branch.</li>
+  <li><code class="language-plaintext highlighter-rouge">Untracked files</code> represents the working directory (i.e. my local changes).</li>
+</ul>
+
+<p>I’ve just created <code class="language-plaintext highlighter-rouge">_drafts/git-patch-draft.md</code> and I want git to start tracking it. What happens if I run <code class="language-plaintext highlighter-rouge">git add --patch</code> on it?</p>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">  merciremi/remicodes gh-pages → git add <span class="nt">--patch</span> _drafts/git-patch-draft.md
+  No changes.</code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">git add --patch</code> needs a tracked file to work as intended. Trying to patch a file not tracked yet will result in a <code class="language-plaintext highlighter-rouge">No changes</code> message. It’s pretty logical when you think about the <em>semantic</em> used by git. If you do a bit of REST, you know you can only patch an existing resource<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<p>So, I’ll add my draft to my staging area.</p>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">  merciremi/remicodes gh-pages → git add _drafts/git-patch-draft.md
+  merciremi/remicodes gh-pages → git status
+  On branch gh-pages
+  Your branch is up to <span class="nb">date </span>with <span class="s1">'origin/gh-pages'</span><span class="nb">.</span>
+
+  Changes to be committed:
+    <span class="o">(</span>use <span class="s2">"git restore --staged &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+  	new file:   _drafts/git-patch-draft.md
+
+  Untracked files:
+    <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to include <span class="k">in </span>what will be committed<span class="o">)</span>
+  	_drafts/add-postgres-full-text-search-to-rails-app.md
+  	_drafts/speed-up-rspec-suite-by-understanding-lifecycles.md
+  	_notes/</code></pre></figure>
+
+<p>On top of the previous information, I now have:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Changes to be committed</code> which represents the <a href="https://git-scm.com/about/staging-area" target="_blank">staging area</a> (a.k.a the place where we bundle our changes before committing them).</li>
+</ul>
+
+<p>Now that git tracks my draft, I’ll be able to patch every changes I make. There is a lot of stuff to parse, though:</p>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">  merciremi/remicodes gh-pages → git add <span class="nt">--patch</span> _drafts/git-patch-draft.md
+
+  diff <span class="nt">--git</span> a/_drafts/git-patch-draft.md b/_drafts/git-patch-draft.md
+  index 0e1f8c8..389d061 100644
+  <span class="nt">---</span> a/_drafts/git-patch-draft.md
+  +++ b/_drafts/git-patch-draft.md
+  @@ <span class="nt">-7</span>,3 +7,83 @@ permalink: git-add-patch
+
+  category: git
+  cover_image:
+  <span class="nt">---</span>
+  +
+  +   When working on features, I strive to preserve my flow. Which means, that after a few hours, I<span class="s1">'ll have a bunch of untracked files waiting for me in git. Since I'</span>d rather make atomic changes, I now need to remember which files go hand-in-hand <span class="k">in </span>order to bundle them up <span class="k">in </span>meaningful separate commits.
+  +
+  +   <span class="c">## `git add --patch` to the rescue</span>
+  +
+  +   May be you already use <span class="sb">`</span>git add<span class="sb">`</span> to add files to your staging area. Well <span class="sb">`</span>git add <span class="nt">--patch</span><span class="sb">`</span> adds a few fancies to the process:
+  +   - Interactively review your additions.
+  +   - Select those you want to add to your staging area.
+  +   - Control the granularity with which you can <span class="k">do </span>the aboves.
+  +
+  +   Let<span class="s1">'s take this website repository as an example (#meta)!
+  +
+  +   First, let'</span>s run <span class="sb">`</span>git status<span class="sb">`</span> to where we at.
+
+  <span class="o">(</span>1/2<span class="o">)</span> Stage this hunk <span class="o">[</span>y,n,q,a,d,e,p,?]?</code></pre></figure>
+
+<p>Let’s explain default git metadata first:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">diff --git a/_drafts/git-patch-draft.md b/_drafts/git-patch-draft.md</code> represents which file the current diff is for. <code class="language-plaintext highlighter-rouge">a/</code> is the file before changes, <code class="language-plaintext highlighter-rouge">b/</code> is the file after changes. Why? I could rename a file, and git knows how to track this type of change.</li>
+  <li><code class="language-plaintext highlighter-rouge">index 0e1f8c8..389d061</code> are the SHA-1 hashes of the file <sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>.</li>
+  <li><code class="language-plaintext highlighter-rouge">100644</code> is the file mode. Here, it’s a standard, non-executable file.</li>
+  <li><code class="language-plaintext highlighter-rouge">@@ -7,3 +7,83 @@</code> is the hunk header: it represents the line where the changes occur for each version of the file and how many lines are affected.</li>
+  <li>Lines starting with <code class="language-plaintext highlighter-rouge">-</code> are the lines removed from your file.</li>
+  <li>Lines starting with <code class="language-plaintext highlighter-rouge">+</code> are the lines added from your file.</li>
+  <li><code class="language-plaintext highlighter-rouge">(1/2) Stage this hunk [y,n,q,a,d,e,p,?]?</code> gives you options on how to handle the current hunk.</li>
+</ul>
+
+<p>Before we move on to the various staging strategies, let’s finish our yak-shaving with one question:</p>
+
+<blockquote>
+  <p>What is a hunk?</p>
+</blockquote>
+
+<p>A hunk is simply a slice of the changes you’re reviewing. Hunks are scoped logically. In a Ruby file, git will split the changes so you can review them method by method, for instance. In my example here, git treats markdown as a monolithic chunk and sends me the whole file to review (not the most useful use of the feature, I agree.)</p>
+
+<h2 id="staging-strategies">Staging strategies</h2>
+
+<p>Git gives you a handful of options when adding hunks to the staging area:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">y</code>: stage this hunk</li>
+  <li><code class="language-plaintext highlighter-rouge">n</code>: do not stage this hunk</li>
+  <li><code class="language-plaintext highlighter-rouge">q/quit</code>: do not stage this hunk and leave the patching process</li>
+  <li><code class="language-plaintext highlighter-rouge">a</code>: stage this hunk and all later hunks in the file</li>
+  <li><code class="language-plaintext highlighter-rouge">d</code>: do not stage this hunk or any of the later hunks in the file</li>
+  <li><code class="language-plaintext highlighter-rouge">e</code>: open the default editor and manually edit the current hunk</li>
+  <li><code class="language-plaintext highlighter-rouge">p</code>: print the current hunk</li>
+  <li><code class="language-plaintext highlighter-rouge">?</code>: display help</li>
+</ul>
+
+<p>Git adds a couple of extra options for specific types of hunks:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">s</code>: split this hunk into smaller hunks</li>
+  <li><code class="language-plaintext highlighter-rouge">/</code>: takes a regex as an argument and will search through the whole file for a match</li>
+</ul>
+
+<h3 id="my-personal-favourites">My personal favourites</h3>
+
+<p>When adding brand new files, I know I don’t need to split changes into hunks, so I’ll just do a quick <code class="language-plaintext highlighter-rouge">git add file_path</code>.</p>
+
+<p>For existing files, git is pretty darn smart when splitting files into hunks. Most of the time, each hunk will be scoped to a method change, and I just accept them with <code class="language-plaintext highlighter-rouge">y</code> or reject them with <code class="language-plaintext highlighter-rouge">n</code>.</p>
+
+<p>Currently, I work on a product whose translations live on a 3-rd party service. When I add translation keys, I add them to that service and pull the translations into my branch through a rake task. Most of these locales-as-a-service applications do not allow you to pull a subset of keys. So you end up fetching every translation added since your last pull.</p>
+
+<p>For this scenario, I use the regex option with my key as a literal pattern: <code class="language-plaintext highlighter-rouge">/my_locale_key:</code>. Git finds a match and asks me what I want to do with it. I add it with <code class="language-plaintext highlighter-rouge">y</code>, then git keeps going through the file for the remaining hunks. Oftentimes, I’ll add a hunk with <code class="language-plaintext highlighter-rouge">/</code> and then opt out of the file with <code class="language-plaintext highlighter-rouge">d</code>.</p>
+
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh">  merciremi/some_app main → git add <span class="nt">--patch</span> config/locales.en.yml
+
+  diff <span class="nt">--git</span> a/config/locales.en.yml b/config/locales.en.yml
+  index 0e1f8c8..389d061 100644
+  <span class="nt">---</span> a/config/locales.en.yml
+  +++ b/config/locales.en.yml
+  @@ <span class="nt">-3</span>,3 +3,26 @@
+
+  en:
+  exceptions:
+    book_errors:
+      already_purchased: You already purchased this book.
+      not_purchasable: This book cannot be purchased.
++     country_availability: This book is not available <span class="k">in </span>your country.
++     empty_epub_slicing_metadata: Empty book slicing metadata
+      epub_level_not_supported: The request book is not compatible with your device.
+      audio_level_not_supported: The request book is not compatible with your device.
+      geo_restrictions: Your geographic location does not allow you to access this book.
++     invalid_epub_slicing_status: The book slicing failed
++     no_editor: You cannot create a book without specifying its editor.
+
+  <span class="o">(</span>1/5<span class="o">)</span> Stage this hunk <span class="o">[</span>y,n,q,a,d,e,p,?]? /unknown_language:
+  @@ <span class="nt">-13</span>,7 +14,6 @@ en:
+
+    level_not_supported: The request book is not compatible with your device.
++   unknown_language: <span class="s2">"Book language is unknown: %{language}"</span>
+    user_not_premium: The book is only available <span class="k">for </span>premium user.
+    visibility: <span class="s2">"This book is not visible (current state: %{state})."</span>
+  <span class="o">(</span>1/5<span class="o">)</span> Stage this hunk <span class="o">[</span>y,n,q,a,d,e,p,?]? y
+    category_not_supported: Category does not contain any book readable on your device.
++   category_geo_restrictions: Category does not contain any books available <span class="k">in </span>your geographic location.
+    category_not_in_catalog: Category does not contain any book from your catalog.
+
+  <span class="o">(</span>2/5<span class="o">)</span> Stage this hunk <span class="o">[</span>y,n,q,a,d,e,p,?]? d</code></pre></figure>
+
+<p>Some hunks you can split into smaller hunks with <code class="language-plaintext highlighter-rouge">s</code>. But this option depends on the hunk. A markdown file seems to be an indiscriminate blob for git, so there is no split option. A Ruby file with extensive changes can often be split.</p>
+
+<p>One last option I only use - when changes are too cumbersome to parse and validate/invalidate in my terminal - is the edit option (<code class="language-plaintext highlighter-rouge">e</code>). <code class="language-plaintext highlighter-rouge">e</code> opens your default terminal (defined in your <code class="language-plaintext highlighter-rouge">~/.gitconfig</code> file) and allows you to manipulate which line you want to add, keep, or remove.</p>
+
+<p>All in all, <code class="language-plaintext highlighter-rouge">git add --patch</code> is a great tool for reviewing your work, quickly bundling your changes into atomic commits, and safeguarding your adding changes blindly.</p>
+
+<p>Cheers,</p>
+
+<p>Rémi - <a href="https://ruby.social/@remi">@remi@ruby.social</a></p>
+
+<!--<p>PS: I'm not currently <a href="/work/">available for hire</a>, but always happy to chat.</p>-->
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>When you <code class="language-plaintext highlighter-rouge">git add</code>, git adds the file to the <code class="language-plaintext highlighter-rouge">objects</code> folder (<a href="https://medium.com/@gurayy/how-git-really-works-part-1-how-git-add-works-under-the-hood-2c6221c48b91" target="_blank">read more about how git works under the hood</a>) <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>A SHA-1 hash (Secure Hash Algorithm 1) is a cryptographic hash function that takes an input (like a file or text) and produces a 40-character hexadecimal string (a unique fingerprint of the input). <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Rémi Mercier</name></author><category term="other" /><summary type="html"><![CDATA[When working on features, I strive to preserve my flow, which means, that after a few hours, I'll have a bunch of untracked files waiting for me in git. I use `git add --patch` to effectively bundling my work into separate commits.]]></summary></entry><entry><title type="html">Poking around PostgreSQL full-text search: a beginners primer</title><link href="https://remimercier.com/postgresql-full-text-search-for-beginners/" rel="alternate" type="text/html" title="Poking around PostgreSQL full-text search: a beginners primer" /><published>2024-11-05T00:00:00+00:00</published><updated>2024-11-05T00:00:00+00:00</updated><id>https://remimercier.com/poking-around-postgresql-full-text-search</id><content type="html" xml:base="https://remimercier.com/postgresql-full-text-search-for-beginners/"><![CDATA[<p>Today, I want to share a different type of post. Nothing polished. Just me goofing around with PostgreSQL’s full-text search capabilities. And yes, if you’re wondering how someone can have fun while using full-text search, well, I’m wondering about that myself.</p>
+
+<p>A note: this post is beginners friendly. Even though it is long, I’ll only scratch the topic’s surface.</p>
+
+<p>Let’s start with the basics!</p>
+
+<h2 id="what-is-full-text-search">What is full-text search?</h2>
+
+<p>The PostgreSQL documentation says it best:</p>
+
+<blockquote>
+  <p>Full-Text Searching (or just text search) provides the capability to identify natural-language documents that satisfy a query, and optionally to sort them by relevance to the query.</p>
+
+  <p><cite><a href="https://www.postgresql.org/docs/current/textsearch-intro.html" target="\_blank">PostgreSQL documentation</a></cite></p>
+</blockquote>
+
+<p>In layman’s terms, full-text search allows matches between a query and documents outside of exact matches. When querying with <code class="language-plaintext highlighter-rouge">=</code>, <code class="language-plaintext highlighter-rouge">LIKE</code>, or <code class="language-plaintext highlighter-rouge">ILIKE</code> is not enough, you reach for full-text search.</p>
+
+<p>For instance, you have a database full of books, and you’re searching for stories about <code class="language-plaintext highlighter-rouge">sorceresses</code><sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. But rows in your <code class="language-plaintext highlighter-rouge">books.title</code> column only have a few exact matches for this query. On the other hand, <code class="language-plaintext highlighter-rouge">books.blurb</code> contains a mixed bag of words like <code class="language-plaintext highlighter-rouge">sorceresses</code>, <code class="language-plaintext highlighter-rouge">sorceress</code> or <code class="language-plaintext highlighter-rouge">sorcerers</code>.</p>
+
+<p>Some of these books might be of interest to you and you’d like them to match your query. Well, full-text search does just that. It takes your query <code class="language-plaintext highlighter-rouge">sorceresses</code>, normalizes it, matches it with normalized variations of your documents, and returns the results.</p>
+
+<p>But I’m getting ahead of myself.</p>
+
+<h2 id="what-problems-does-full-text-search-solves">What problems does full-text search solves?</h2>
+
+<p>Let’s draw on the above example and look for a book filled with sorceresses!</p>
+
+<p>My database currently stores a handful of books:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">books</span> <span class="p">(</span>
+    <span class="n">title</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+    <span class="n">blurb</span> <span class="nb">TEXT</span>
+  <span class="p">);</span>
+
+  <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">books</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">blurb</span><span class="p">)</span> <span class="k">VALUES</span>
+  <span class="p">(</span><span class="s1">'The Fair Sorceress'</span><span class="p">,</span> <span class="s1">'A thrilling tale of magic and mystery where a witch meets elves.'</span><span class="p">),</span>
+  <span class="p">(</span><span class="s1">'The Silent Grove'</span><span class="p">,</span> <span class="s1">'A journey through an ancient, forgotten forest, with sorcerers and dwarves.'</span><span class="p">),</span>
+  <span class="p">(</span><span class="s1">'The Last Kingdom'</span><span class="p">,</span> <span class="s1">'A historical novel set in medieval times where sorceresses save the day.'</span><span class="p">),</span>
+  <span class="p">(</span><span class="s1">'Deep Depth'</span><span class="p">,</span> <span class="s1">'A suspenseful story of adventure of sailors at sea.'</span><span class="p">),</span>
+  <span class="p">(</span><span class="s1">'Sorcery School'</span><span class="p">,</span> <span class="s1">'A young-adult thriller where a sorceress and a sorcerer fight to keep the school from being eat up by zombies.'</span><span class="p">);</span>
+
+  <span class="k">INSERT</span> <span class="mi">0</span> <span class="mi">5</span></code></pre></figure>
+
+<p>Let’s try to select some books.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">books</span>
+  <span class="k">WHERE</span> <span class="n">title</span> <span class="k">LIKE</span> <span class="s1">'%sorceresses%'</span><span class="p">;</span>
+
+   <span class="n">Title</span> <span class="o">|</span> <span class="n">Blurb</span>
+  <span class="c1">-------+-------</span>
+
+  <span class="p">(</span><span class="mi">0</span> <span class="k">rows</span><span class="p">)</span></code></pre></figure>
+
+<p>Ugh, that’s disappointing. What about querying on the blurb instead?</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">books</span>
+  <span class="k">WHERE</span> <span class="n">blurb</span> <span class="k">LIKE</span> <span class="s1">'%sorceresses%'</span><span class="p">;</span>
+
+          <span class="n">Title</span>     <span class="o">|</span>    <span class="n">Blurb</span>
+  <span class="c1">------------------+---------------------------------------------------------------------------------------------------------------------------------------</span>
+   <span class="n">The</span> <span class="k">Last</span> <span class="n">Kingdom</span> <span class="o">|</span> <span class="n">A</span> <span class="n">historical</span> <span class="n">novel</span> <span class="k">set</span> <span class="k">in</span> <span class="n">medieval</span> <span class="n">times</span> <span class="k">where</span> <span class="n">sorceresses</span> <span class="n">save</span> <span class="n">the</span> <span class="k">day</span><span class="p">.</span>
+
+  <span class="p">(</span><span class="mi">1</span> <span class="k">rows</span><span class="p">)</span></code></pre></figure>
+
+<p>Better!</p>
+
+<p>But I know I have more relevant books. Let’s add an OR operator so I can search for variation of <code class="language-plaintext highlighter-rouge">sorceresses</code>.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">books</span>
+  <span class="k">WHERE</span> <span class="n">blurb</span> <span class="k">LIKE</span> <span class="s1">'%sorceress%'</span> <span class="k">OR</span> <span class="n">blurb</span> <span class="k">LIKE</span> <span class="s1">'%sorceresses%'</span><span class="p">;</span>
+
+        <span class="n">Title</span>           <span class="o">|</span>    <span class="n">Blurb</span>
+  <span class="c1">----------------------+---------------------------------------------------------------------------------------------------------------------------------------</span>
+   <span class="n">The</span> <span class="k">Last</span> <span class="n">Kingdom</span>     <span class="o">|</span> <span class="n">A</span> <span class="n">historical</span> <span class="n">novel</span> <span class="k">set</span> <span class="k">in</span> <span class="n">medieval</span> <span class="n">times</span> <span class="k">where</span> <span class="n">sorceresses</span> <span class="n">save</span> <span class="n">the</span> <span class="k">day</span><span class="p">.</span>
+   <span class="n">Sorcery</span> <span class="n">School</span>       <span class="o">|</span> <span class="n">A</span> <span class="n">young</span><span class="o">-</span><span class="n">adult</span> <span class="n">thriller</span> <span class="k">where</span> <span class="n">a</span> <span class="n">sorceress</span> <span class="k">and</span> <span class="n">a</span> <span class="n">sorcerer</span> <span class="n">fight</span> <span class="k">to</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">school</span> <span class="k">from</span> <span class="n">being</span> <span class="n">eat</span> <span class="n">up</span> <span class="k">by</span> <span class="n">zombies</span><span class="p">.</span>
+
+  <span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span></code></pre></figure>
+
+<p>We’re getting there, but what about <code class="language-plaintext highlighter-rouge">The Silent Grove</code> or <code class="language-plaintext highlighter-rouge">The Fair Sorceress</code>? They’d be a good match.</p>
+
+<p>I could add new conditions to my <code class="language-plaintext highlighter-rouge">WHERE</code> clause. But in real-life applications, word variations and searchable columns could add up quite a bit.</p>
+
+<p>This long-winded (yet contrived) example shows you, reader, that when you hit the limitations of basic search operators, it’s time to reach for PostgreSQL’s full-text search.</p>
+
+<h2 id="how-does-full-text-search-works">How does full-text search works?</h2>
+
+<h3 id="from-documents-to-tokens">From documents to tokens</h3>
+
+<p>Full-text search turns <strong>documents</strong> (for instance, the rows of your database) <strong>into tokens</strong>. Tokens are <mark>the smallest semantic units extracted from your documents</mark>. They can be strings, numbers, email addresses, etc. PostgreSQL uses a built-in parser, but you can provide your own parser if you wish.</p>
+
+<p>Let’s take the following string stored in a row of <code class="language-plaintext highlighter-rouge">books.blurb</code>:</p>
+
+<figure class="highlight"><pre><code class="language-txt" data-lang="txt">  A young-adult thriller where a sorceress and a sorcerer fight to keep the school from being eat up by zombies.</code></pre></figure>
+
+<p>PostgreSQL will first turn this string into tokens.</p>
+
+<p>PostgreSQL does not expose (to my knowledge) the intermediate tokenization step, but here’s a workaround I’ve found that’ll help you make sense of this process.</p>
+
+<p>Let’s start by splitting the string into an array of words, unpacking the array, adding a <code class="language-plaintext highlighter-rouge">position</code> column indicating the index of each word, and ordering the words alphabetically.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">token</span><span class="p">,</span> <span class="k">position</span>
+  <span class="k">FROM</span> <span class="k">unnest</span><span class="p">(</span><span class="n">string_to_array</span><span class="p">(</span><span class="s1">'A young-adult thriller where a sorceress and a sorcerer fight to keep the school from being eat up by zombies.'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">))</span>
+  <span class="k">WITH</span> <span class="k">ORDINALITY</span> <span class="k">AS</span> <span class="n">t</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="k">position</span><span class="p">)</span>
+  <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">token</span><span class="p">;</span>
+
+      <span class="n">token</span>    <span class="o">|</span> <span class="k">position</span>
+  <span class="c1">-------------+----------</span>
+   <span class="n">A</span>           <span class="o">|</span>        <span class="mi">1</span>
+   <span class="n">a</span>           <span class="o">|</span>        <span class="mi">5</span>
+   <span class="n">a</span>           <span class="o">|</span>        <span class="mi">8</span>
+   <span class="k">and</span>         <span class="o">|</span>        <span class="mi">7</span>
+   <span class="n">being</span>       <span class="o">|</span>       <span class="mi">16</span>
+   <span class="k">by</span>          <span class="o">|</span>       <span class="mi">19</span>
+   <span class="n">eat</span>         <span class="o">|</span>       <span class="mi">17</span>
+   <span class="n">fight</span>       <span class="o">|</span>       <span class="mi">10</span>
+   <span class="k">from</span>        <span class="o">|</span>       <span class="mi">15</span>
+   <span class="n">keep</span>        <span class="o">|</span>       <span class="mi">12</span>
+   <span class="n">school</span>      <span class="o">|</span>       <span class="mi">14</span>
+   <span class="n">sorcerer</span>    <span class="o">|</span>        <span class="mi">9</span>
+   <span class="n">sorceress</span>   <span class="o">|</span>        <span class="mi">6</span>
+   <span class="n">the</span>         <span class="o">|</span>       <span class="mi">13</span>
+   <span class="n">thriller</span>    <span class="o">|</span>        <span class="mi">3</span>
+   <span class="k">to</span>          <span class="o">|</span>       <span class="mi">11</span>
+   <span class="n">up</span>          <span class="o">|</span>       <span class="mi">18</span>
+   <span class="k">where</span>       <span class="o">|</span>        <span class="mi">4</span>
+   <span class="n">young</span><span class="o">-</span><span class="n">adult</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="n">zombies</span><span class="p">.</span>    <span class="o">|</span>       <span class="mi">20</span>
+  <span class="p">(</span><span class="mi">20</span> <span class="k">rows</span><span class="p">)</span></code></pre></figure>
+
+<p>Let’s note a few things:</p>
+<ul>
+  <li>Stop words are still present.</li>
+  <li>Punctuation is still present.</li>
+  <li>Words have not been converted to normalized representations yet (<code class="language-plaintext highlighter-rouge">zombies</code> is still <code class="language-plaintext highlighter-rouge">zombies</code>: plural, the <code class="language-plaintext highlighter-rouge">e</code> suffix representing the meaning as a word).</li>
+</ul>
+
+<p>PostgreSQL strips stop words and suffixes during the next step when it converts tokens into lexemes.</p>
+
+<h3 id="from-tokens-to-lexemes">From tokens to lexemes</h3>
+
+<p>Once PostgreSQL has converted your documents to tokens, it <strong>converts tokens into lexemes</strong>.</p>
+
+<p>Lexemes are <strong>normalized representations of your tokens</strong>: different forms of the same word made alike.</p>
+
+<blockquote>
+  <p>In short, then, tokens are raw fragments of the document text, while lexemes are words that are believed useful for indexing and searching.</p>
+
+  <p><cite><a href="https://www.postgresql.org/docs/current/textsearch-intro.html#TEXTSEARCH-DOCUMENT" target="\_blank">PostgreSQL documentation</a></cite></p>
+</blockquote>
+
+<p>For instance:</p>
+
+<figure class="highlight"><pre><code class="language-txt" data-lang="txt">      tokens   |  lexemes
+  -------------+-------------
+   magic       | magic
+   MAGICS      | magic
+   magical     | magic
+   magically   | magic</code></pre></figure>
+
+<p>Wanna try it? Fire up a PostgreSQL console and type the following:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">'magic MAGICS magical magically'</span><span class="p">);</span>
+     <span class="n">to_tsvector</span>
+  <span class="c1">-----------------</span>
+   <span class="s1">'magic'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">magic</code>, <code class="language-plaintext highlighter-rouge">magics</code>, <code class="language-plaintext highlighter-rouge">magical</code>, and <code class="language-plaintext highlighter-rouge">magically</code> are all variations of the stem <code class="language-plaintext highlighter-rouge">magic</code>, which PostgreSQL identifies as the relevant representation of the previous variations.</p>
+
+<p>You can see how PostgreSQL distributes the lexemes when transforming several words:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">'magical MAGIC magician'</span><span class="p">);</span>
+
+    <span class="n">to_tsvector</span>
+  <span class="c1">--------------------------</span>
+    <span class="s1">'magic'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="s1">'magician'</span><span class="p">:</span><span class="mi">3</span>
+
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p>The transformation of tokens into lexemes follows several steps:</p>
+<ul>
+  <li>Folding upper-case letters to lower-case.</li>
+  <li>Removing suffixes.</li>
+  <li>Removing stop words.</li>
+  <li>Adding the positional information of each token matched with its lexeme.</li>
+</ul>
+
+<p>This is where full-text search shines: you get a natural language input from your users (i.e. <code class="language-plaintext highlighter-rouge">magical elves and fun sorceresses</code>) and you compare it against your data.</p>
+
+<p>Chances are, you won’t get an exact match. So, one way to up your chances of a match while keeping the results relevant is to split the input into manageable semantic chunks.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">'magical elves and fun sorceresses'</span><span class="p">);</span>
+
+    <span class="n">to_tsvector</span>
+  <span class="c1">-----------------------------------------</span>
+    <span class="s1">'elv'</span><span class="p">:</span><span class="mi">2</span> <span class="s1">'fun'</span><span class="p">:</span><span class="mi">4</span> <span class="s1">'magic'</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'sorceress'</span><span class="p">:</span><span class="mi">5</span>
+
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p>How does PostgreSQL turn tokens into lexemes? With <strong>dictionaries</strong>!</p>
+
+<p>PostgreSQL uses default dictionaries, but you can pass or create custom ones based on your needs. Want to work with French documents? Pass <code class="language-plaintext highlighter-rouge">french</code> as first argument to your <code class="language-plaintext highlighter-rouge">to_tsvector()</code> method. Want to add a bit of fuzzy matching? Add an Ispell dictionary that’ll map synonyms to a single word. Neat!</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">'french'</span><span class="p">,</span> <span class="s1">'les bonnes baguettes et les croissants'</span><span class="p">);</span>
+                <span class="n">to_tsvector</span>
+  <span class="c1">----------------------------------------</span>
+   <span class="s1">'baguet'</span><span class="p">:</span><span class="mi">3</span> <span class="s1">'bon'</span><span class="p">:</span><span class="mi">2</span> <span class="s1">'croiss'</span><span class="p">:</span><span class="mi">6</span> <span class="s1">'le'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p>I won’t dig much into dictionaries at this point, but feel free to read the <a href="https://www.postgresql.org/docs/current/textsearch-dictionaries.html" target="\_blank">documentation</a>. You can do a <em>lot</em> of configuration around dictionaries with PostgreSQL.</p>
+
+<p>Finally, normalized lexemes are stored in a specific datatype called <code class="language-plaintext highlighter-rouge">tsvector</code>.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">pg_typeof</span><span class="p">(</span><span class="n">to_tsvector</span><span class="p">(</span><span class="s1">'sorcerers'</span><span class="p">));</span>
+
+    <span class="n">pg_typeof</span>
+  <span class="c1">-----------</span>
+    <span class="n">tsvector</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<h2 id="processing-queries">Processing queries</h2>
+
+<p>So far, we’ve seen how PostgreSQL processes your data.</p>
+
+<p>User queries follow the same basic steps as documents:</p>
+<ul>
+  <li>Convert input into tokens.</li>
+  <li>Convert tokens into lexemes.</li>
+  <li>Return combined lexemes stored in a <code class="language-plaintext highlighter-rouge">ts_query</code>.</li>
+</ul>
+
+<p>However, PostgreSQL adds several strategies when processing user queries.</p>
+
+<h3 id="boolean-and-phrase-search-operators">Boolean and phrase search operators</h3>
+
+<p>After converting user input into lexemes, PostgreSQL returns a <code class="language-plaintext highlighter-rouge">ts_query</code> where lexemes are combined using either:</p>
+<ul>
+  <li><strong>boolean operators</strong>: <code class="language-plaintext highlighter-rouge">&amp;</code> (AND), <code class="language-plaintext highlighter-rouge">|</code> (OR), <code class="language-plaintext highlighter-rouge">!</code> (NOT)</li>
+  <li><strong>phrase search operators</strong>: <code class="language-plaintext highlighter-rouge">&lt;-&gt;</code> (FOLLOWED BY), <code class="language-plaintext highlighter-rouge">&lt;N&gt;</code> (FOLLOWED BY where <code class="language-plaintext highlighter-rouge">N</code> is an integer specifying the distance between the two lexemes being searched for)</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="c1">-- Select both 'fun' and 'elves'</span>
+  <span class="k">SELECT</span> <span class="s1">'fun &amp; elves'</span><span class="p">::</span><span class="n">tsquery</span><span class="p">;</span>
+       <span class="n">tsquery</span>
+  <span class="c1">-----------------</span>
+   <span class="s1">'fun'</span> <span class="o">&amp;</span> <span class="s1">'elves'</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+  <span class="c1">-- Select either 'fun' or 'elves'</span>
+  <span class="k">SELECT</span> <span class="s1">'fun | elves'</span><span class="p">::</span><span class="n">tsquery</span><span class="p">;</span>
+       <span class="n">tsquery</span>
+  <span class="c1">-----------------</span>
+   <span class="s1">'fun'</span> <span class="o">|</span> <span class="s1">'elves'</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+  <span class="c1">-- Select 'elves' but not 'fun'</span>
+  <span class="k">SELECT</span> <span class="s1">'! fun &amp; elves'</span><span class="p">::</span><span class="n">tsquery</span><span class="p">;</span>
+       <span class="n">tsquery</span>
+  <span class="c1">------------------</span>
+   <span class="o">!</span><span class="s1">'fun'</span> <span class="o">&amp;</span> <span class="s1">'elves'</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p>Of course, PostgreSQL provides a bunch of methods to parse a query and turn it into a <code class="language-plaintext highlighter-rouge">ts_query</code>.</p>
+
+<h3 id="parsing-queries-to_tsquery-plainto_tsquery-phraseto_tsquery-websearch_to_tsquery">Parsing queries: <code class="language-plaintext highlighter-rouge">to_tsquery</code>, <code class="language-plaintext highlighter-rouge">plainto_tsquery</code>, <code class="language-plaintext highlighter-rouge">phraseto_tsquery</code>, <code class="language-plaintext highlighter-rouge">websearch_to_tsquery</code></h3>
+
+<p>PostgreSQL offers different methods to parse a query, each with its own features.</p>
+
+<h4 id="to_tsquery"><code class="language-plaintext highlighter-rouge">to_tsquery</code></h4>
+
+<p><code class="language-plaintext highlighter-rouge">to_tsquery</code> takes a query that must be a list of tokens already separated by operators. Tokens can be grouped using parenthesis to control the binding between operators (i.e. which couple of operators takes precedence over another couple).</p>
+
+<p>For instance, I can’t pass a plain sentence to <code class="language-plaintext highlighter-rouge">to_tsquery</code> because it expects tokens separated by operators such as <code class="language-plaintext highlighter-rouge">&amp;</code>, <code class="language-plaintext highlighter-rouge">|</code>, etc.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">to_tsquery</span><span class="p">(</span><span class="s1">'The fun elves and the magical sorceresses'</span><span class="p">);</span>
+  <span class="n">ERROR</span><span class="p">:</span>  <span class="n">syntax</span> <span class="n">error</span> <span class="k">in</span> <span class="n">tsquery</span><span class="p">:</span> <span class="nv">"The fun elves and the magical sorceresses"</span></code></pre></figure>
+
+<p>Once I provide a formatted list, PostgreSQL turns my tokens into lexemes, and the fun can begin.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">to_tsquery</span><span class="p">(</span><span class="s1">'The &amp; fun &amp; elves &amp; and &amp; the &amp; magical &amp; sorceresses'</span><span class="p">);</span>
+                <span class="n">to_tsquery</span>
+  <span class="c1">---------------------------------------</span>
+   <span class="s1">'fun'</span> <span class="o">&amp;</span> <span class="s1">'elv'</span> <span class="o">&amp;</span> <span class="s1">'magic'</span> <span class="o">&amp;</span> <span class="s1">'sorceress'</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">t_tsquery</code> needs a premilinary normalization on my part, which can be annoying, but it also gives me a lot of control over the query. <code class="language-plaintext highlighter-rouge">to_tsquery</code> allows me to specify my operators. Let’s say I want books with <code class="language-plaintext highlighter-rouge">fun elves</code> but no <code class="language-plaintext highlighter-rouge">magical sorceresses</code>, I can group my tokens like so:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">to_tsquery</span><span class="p">(</span><span class="s1">'The &amp; fun &amp; elves &amp; and &amp; the &amp; !magical &amp; !sorceresses'</span><span class="p">);</span>
+                 <span class="n">to_tsquery</span>
+  <span class="c1">-----------------------------------------</span>
+   <span class="s1">'fun'</span> <span class="o">&amp;</span> <span class="s1">'elv'</span> <span class="o">&amp;</span> <span class="o">!</span><span class="s1">'magic'</span> <span class="o">&amp;</span> <span class="o">!</span><span class="s1">'sorceress'</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="plainto_tsquery"><code class="language-plaintext highlighter-rouge">plainto_tsquery</code></h4>
+
+<p>If I don’t want to normalize my input beforehand, I can delegate the work to PostgreSQL with <code class="language-plaintext highlighter-rouge">plainto_tsquery</code>. It’ll normalize my text, remove stop words, and add the <code class="language-plaintext highlighter-rouge">&amp;</code> operator inbetween surviving words.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">plainto_tsquery</span><span class="p">(</span><span class="s1">'The fun elves and the magical sorceresses'</span><span class="p">);</span>
+              <span class="n">plainto_tsquery</span>
+  <span class="c1">---------------------------------------</span>
+   <span class="s1">'fun'</span> <span class="o">&amp;</span> <span class="s1">'elv'</span> <span class="o">&amp;</span> <span class="s1">'magic'</span> <span class="o">&amp;</span> <span class="s1">'sorceress'</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">plainto_tsquery</code> offers convenience over control. For instance, you can’t use logical operators anymore. For example, you can’t specify you don’t want <code class="language-plaintext highlighter-rouge">magical sorceresses</code> anymore.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">plainto_tsquery</span><span class="p">(</span><span class="s1">'The fun elves and the !magical !sorceresses'</span><span class="p">);</span>
+              <span class="n">plainto_tsquery</span>
+  <span class="c1">---------------------------------------</span>
+   <span class="s1">'fun'</span> <span class="o">&amp;</span> <span class="s1">'elv'</span> <span class="o">&amp;</span> <span class="s1">'magic'</span> <span class="o">&amp;</span> <span class="s1">'sorceress'</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="phraseto_tsquery"><code class="language-plaintext highlighter-rouge">phraseto_tsquery</code></h4>
+
+<p><code class="language-plaintext highlighter-rouge">phraseto_tsquery</code> is similar to <code class="language-plaintext highlighter-rouge">plainto_tsquery</code> except the <code class="language-plaintext highlighter-rouge">&amp;</code> (AND) operator is replace by the <code class="language-plaintext highlighter-rouge">&lt;-&gt;</code> (FOLLOWED BY) operator. Also, the stop words are not discarded but are used to compute the number of semantically less important words between lexemes (using the <code class="language-plaintext highlighter-rouge">&lt;N&gt;</code> operator).</p>
+
+<p>This is useful when you need to fetch results from a group of words that are semantically more relevant together than separated. Think <code class="language-plaintext highlighter-rouge">Lord of the Ring</code> or <code class="language-plaintext highlighter-rouge">The Wheel of Time</code>, or any such sentences.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">phraseto_tsquery</span><span class="p">(</span><span class="s1">'the wheel of time'</span><span class="p">);</span>
+    <span class="n">phraseto_tsquery</span>
+  <span class="c1">--------------------</span>
+   <span class="s1">'wheel'</span> <span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span> <span class="s1">'time'</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p>You’d rather get books from the Wheel of Time series than any random books with the words <code class="language-plaintext highlighter-rouge">wheels</code> and <code class="language-plaintext highlighter-rouge">time</code> in their blurb. <code class="language-plaintext highlighter-rouge">phraseto_tsquery</code> also does not recognize operators.</p>
+
+<h4 id="websearch_to_tsquery"><code class="language-plaintext highlighter-rouge">websearch_to_tsquery</code></h4>
+
+<p>Finally, <code class="language-plaintext highlighter-rouge">websearch_to_tsquery</code> offers a similar approach to <em>natural language</em> inputs, but handles some operators too.</p>
+
+<p>The PostgreSQL documentation explains its syntax:</p>
+
+<blockquote>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">unquoted text</code>: text not inside quote marks will be converted to terms separated by &amp; operators, as if processed by plainto_tsquery.</li>
+    <li><code class="language-plaintext highlighter-rouge">"quoted text"</code>: text inside quote marks will be converted to terms separated by &lt;-&gt; operators, as if processed by phraseto_tsquery.</li>
+    <li>
+      <table>
+        <tbody>
+          <tr>
+            <td><code class="language-plaintext highlighter-rouge">OR</code>: the word “or” will be converted to the</td>
+            <td>operator.</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <li><code class="language-plaintext highlighter-rouge">-</code>: a dash will be converted to the ! operator.</li>
+  </ul>
+
+  <p><cite><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES" target="\_blank">PostgreSQL documentation</a></cite></p>
+</blockquote>
+
+<p>Let’s search for books about <code class="language-plaintext highlighter-rouge">fun</code>, <code class="language-plaintext highlighter-rouge">elves</code>, but no <code class="language-plaintext highlighter-rouge">magical sorceresses</code>.</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">websearch_to_tsquery</span><span class="p">(</span><span class="s1">'The fun elves and -"the magical sorceresses"'</span><span class="p">);</span>
+             <span class="n">websearch_to_tsquery</span>
+<span class="c1">----------------------------------------------</span>
+ <span class="s1">'fun'</span> <span class="o">&amp;</span> <span class="s1">'elv'</span> <span class="o">&amp;</span> <span class="o">!</span><span class="p">(</span> <span class="s1">'magic'</span> <span class="o">&lt;-&gt;</span> <span class="s1">'sorceress'</span> <span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span></code></pre></figure>
+
+<p>Books about <code class="language-plaintext highlighter-rouge">sorceresses</code> might pop up, as long as the <code class="language-plaintext highlighter-rouge">sorceress</code> is not preceded by <code class="language-plaintext highlighter-rouge">magical</code>.</p>
+
+<p>The possibilities are endless.</p>
+
+<h2 id="ranking-results">Ranking results</h2>
+
+<p>This post is getting very long, so I’ll try to be brief.</p>
+
+<p>PostgreSQL allows you to rank results based on:</p>
+<ul>
+  <li>the frequency of lexemes in documents with <code class="language-plaintext highlighter-rouge">ts_rank</code>.</li>
+  <li>the density of lexemes in documents (<code class="language-plaintext highlighter-rouge">frequency x proximity</code>) with <code class="language-plaintext highlighter-rouge">ts_rank_cd</code>.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">SELECT</span> <span class="n">title</span><span class="p">,</span>
+         <span class="n">ts_rank</span><span class="p">(</span>
+             <span class="n">to_tsvector</span><span class="p">(</span><span class="n">blurb</span><span class="p">),</span>
+             <span class="n">websearch_to_tsquery</span><span class="p">(</span><span class="s1">'fun elves and magical sorceresses'</span><span class="p">)</span>
+         <span class="p">)</span> <span class="k">AS</span> <span class="n">rank</span>
+  <span class="k">FROM</span> <span class="n">recipes</span>
+  <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">rank</span> <span class="k">DESC</span>
+  <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+
+                     <span class="n">title</span>                     <span class="o">|</span>   <span class="n">rank</span>
+<span class="c1">-----------------------------------------------+----------</span>
+ <span class="n">The</span> <span class="n">Fair</span> <span class="n">Sorceress</span>                            <span class="o">|</span>      <span class="mi">3</span><span class="p">.</span><span class="mi">1</span>
+ <span class="n">The</span> <span class="k">Last</span> <span class="n">Kingdom</span>                              <span class="o">|</span>      <span class="mi">2</span><span class="p">.</span><span class="mi">4</span>
+ <span class="n">Sorcery</span> <span class="n">School</span>                                <span class="o">|</span>  <span class="mi">2</span><span class="p">.</span><span class="mi">01317</span>
+ <span class="p">(</span><span class="mi">3</span> <span class="k">rows</span><span class="p">)</span></code></pre></figure>
+
+<p>You can add weights arguments to give an extra boost to specific columns for instance.</p>
+
+<p>I’ll let you read the ad hoc <a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-RANKING" target="\_blank">documentation</a></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Well, this post got quite long. If you made it to here, well done! But remember, we only just scratched the surface of full-text search. PostgreSQL provides much much more functionnalities, and search is a field on its own.</p>
+
+<p>Cheers,</p>
+
+<p>Rémi - <a href="https://ruby.social/@remi">@remi@ruby.social</a></p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>I probably should read something other than the Wheel of Time. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Rémi Mercier</name></author><category term="other" /><summary type="html"><![CDATA[Today, I want to share a different type of post. Nothing polished. Just me goofing around with PostgreSQL's full-text search capabilities.]]></summary></entry></feed>

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://evanfields.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://evanfields.net/" rel="alternate" type="text/html" /><updated>2025-05-24T01:41:03+00:00</updated><id>https://evanfields.net/feed.xml</id><title type="html">Evan Fields</title><subtitle>Personal website</subtitle><entry><title type="html">Claude 4 Sonnet feels off</title><link href="https://evanfields.net/Claude-4/" rel="alternate" type="text/html" title="Claude 4 Sonnet feels off" /><published>2025-05-23T00:00:00+00:00</published><updated>2025-05-23T00:00:00+00:00</updated><id>https://evanfields.net/Claude-4</id><content type="html" xml:base="https://evanfields.net/Claude-4/"><![CDATA[<p>Anthropic recently <a href="https://www.anthropic.com/news/claude-4">released</a> Claude 4 Sonnet and Claude 4 Opus, and I’ve been using them at work for the last two days. 4 Opus seems okay, but 4 Sonnet feels “off” – less sharp than 3.7 Sonnet. My assessment is <em>almost</em> entirely vibes-based, just from chatting with the models and using Claude Code a bit.</p>
+
+<p>But this evening I was surprised to see Claude 4 struggling to correctly read a <a href="https://www.chefsteps.com/activities/kouign-amann--2">recipe</a>, which I thought would be well within its capabilities, so I did a <em>tiny</em> manual experiment. I fed different Claude models the recipe PDF with the prompt “What is the dough hydration in the attached recipe?” The trick is that the yeast is bloomed in some water, and then bloomed yeast + flour + more water make a dough. Also, there’s flour elsewhere in the recipe not in the dough. When computing dough hydration, does the model correctly count both sources of water in the dough but not incorrectly include the extra flour outside the dough? Here are my 12 data points:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Regular</th>
+      <th>Extended Thinking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Claude 3.7 Sonnet</td>
+      <td>2/2</td>
+      <td>2/2</td>
+    </tr>
+    <tr>
+      <td>Claude 4 Sonnet</td>
+      <td>0/2</td>
+      <td>1/2</td>
+    </tr>
+    <tr>
+      <td>Claude 4 Opus</td>
+      <td>1/2</td>
+      <td>2/2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Tiny sample size, one test, discount liberally, yet this aligns with my initial vibes-based impressions: Claude 3.7 feels more solid than Claude 4.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Anthropic recently released Claude 4 Sonnet and Claude 4 Opus, and I’ve been using them at work for the last two days. 4 Opus seems okay, but 4 Sonnet feels “off” – less sharp than 3.7 Sonnet. My assessment is almost entirely vibes-based, just from chatting with the models and using Claude Code a bit.]]></summary></entry><entry><title type="html">Weighty phrases</title><link href="https://evanfields.net/Weighty-Phrases/" rel="alternate" type="text/html" title="Weighty phrases" /><published>2024-12-15T00:00:00+00:00</published><updated>2024-12-15T00:00:00+00:00</updated><id>https://evanfields.net/Weighty-Phrases</id><content type="html" xml:base="https://evanfields.net/Weighty-Phrases/"><![CDATA[<p>I’m deeply fond of weighty phrases – little snippets with cultural gravitas and mystical overtones. Most of my favorites have biblical origin or are fragments of culturally foundational art, remixed memetically over the centuries until they become units of their own. A few of my favorites:</p>
+<ul>
+  <li>Not by bread alone</li>
+  <li>A thousand and one nights</li>
+  <li>All men are created equal</li>
+  <li>That the strong might not injure the weak</li>
+  <li>Look upon my works, ye mighty, and despair</li>
+  <li>One small step for man, one giant leap for mankind</li>
+  <li>My brother’s keeper</li>
+  <li>The truth will set you free</li>
+  <li>A plague on both your houses</li>
+  <li>Justice, justice you shall pursue</li>
+</ul>
+
+<p>This quality of mystical weight is of course both culturally bound and listener dependent. “All men are created equal” works particularly well for me as an American; “justice, justice” as a Jew. But I think for best results, weighty phrases should be broadly understood: the magic happens in the shared context between listener and speaker. There are other phrases which feel hefty and almost-mystical to me because of the idiosyncratic things I like, but I don’t think they have enough broad cultural context and centuries of reuse to really become synecdoches. Consider:</p>
+<ul>
+  <li>The crownless again shall be king (last line of Tolkien’s “not all who wander are lost” poem)</li>
+  <li>I am a Jedi, like my father before me (from Return of the Jedi, and the best moment in Star Wars)</li>
+  <li>Do or do not – there is on try (also from Star Wars, but perhaps borderline its own cultural element now?)</li>
+  <li>We hold these truths to be self-evident (from the Declaration of Independence)</li>
+</ul>
+
+<p>Non-phrases can also have a similar quality. For example, the time interval “a year and a day” recurs in <a href="https://en.wikipedia.org/wiki/Year_and_a_day">various</a> fictional and legal contexts. I first encountered a year in a day in the fantasy series Wheel of Time, which intentionally remixes real world legends; in one Wheel of Time’s cultures, prisoners of war are honor-bound to serve their captors for a year and a day before being released. Just super cool how this idea stitches together fiction, current legal practice, and centuries old common law to mean “the shortest long time.”</p>]]></content><author><name></name></author><summary type="html"><![CDATA[I’m deeply fond of weighty phrases – little snippets with cultural gravitas and mystical overtones. Most of my favorites have biblical origin or are fragments of culturally foundational art, remixed memetically over the centuries until they become units of their own. A few of my favorites: Not by bread alone A thousand and one nights All men are created equal That the strong might not injure the weak Look upon my works, ye mighty, and despair One small step for man, one giant leap for mankind My brother’s keeper The truth will set you free A plague on both your houses Justice, justice you shall pursue]]></summary></entry><entry><title type="html">Reflections on the 2024 US Presidential Election</title><link href="https://evanfields.net/2024-Election-Thoughts/" rel="alternate" type="text/html" title="Reflections on the 2024 US Presidential Election" /><published>2024-11-10T00:00:00+00:00</published><updated>2024-11-10T00:00:00+00:00</updated><id>https://evanfields.net/2024-Election-Thoughts</id><content type="html" xml:base="https://evanfields.net/2024-Election-Thoughts/"><![CDATA[<p><em>Warning: fully political post, which is not the typical genre here and not the vibe I’m mostly trying to cultivate. I pretty much stand by this, though my emotions have cooled in the weeks since the election.</em></p>
+
+<p>Aaron Copland’s “Lincoln Portrait” is one of my favorite pieces of American propaganda. The orchestration starts quietly, tentatively, and gradually grows to a triumphant finale. A narrator accompanies the orchestra with descriptions of Abraham Lincoln and quotes from some of his famous speeches. The piece ends with the famous conclusion to the Gettysburg Address: “government of the people, by the people, and for the people shall not perish from the earth,” but to my ear the weightiest line is from a note Lincoln wrote to himself: “As I would not be a slave, so I would not be a master.” Such a clear and beautiful line; a succinct statement that Lincoln’s moral circle extends beyond himself, and he does not annoint himself with a privileged position at the center of the moral universe.</p>
+
+<p>The 2024 US Presidential election<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> has come and gone, and soon we return to that most un-Lincoln-like of Presidents. I predict and fear the consequences will be with us for years. Leyla and I are highly likely to be fine; we’re blessed with approximately every tool modern society can provide for weathering uncertain times. Instead, this is a tragedy we collectively inflict especially on those far away from us in space and time: Ukranians no longer supported as they fight to defend their homes; future generations living in a hotter and more violent world where international borders are mere inconveniences to autocrats with guns; even the comparatively moderate stakes of neighbors denied healthcare and our own children coming of age in a United States with dirtier air and hollowed state capacity.</p>
+
+<p>While the consequences of this election are unlikely to include the return of widespread literal slavery in the United States, Lincoln’s words echo in my mind alongside a 19th century abolitionist poem I first encountered via the novel <a href="https://unsongbook.com/">Unsong</a> – “The Present Crisis” by James Russell Lowell:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>We see dimly in the Present what is small and what is great,
+Slow of faith how weak an arm may turn the iron helm of fate,
+But the soul is still oracular; amid the market's din,
+List the ominous stern whisper from the Delphic cave within,—
+"They enslave their children's children who make compromise with sin."
+</code></pre></div></div>
+<p>We have made our collective compromise for the feeble hope of short term gain and vengeance upon perceived enemies, children’s children be damned. That compromise is a vicious, ugly thing, and here a quote from – of all things – a beloved fantasy <a href="https://en.wikipedia.org/wiki/The_Wheel_of_Time">series</a> has lodged itself in my mind: “But men often mistake killing and revenge for justice. They seldom have the stomach for justice.”<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></p>
+
+<p>My Judaism is thoroughly cultural and my Jewish knowledge shallow enough that I mostly just know the hits. But the hits are hits for a reason! At this uncertain moment I’m inspired by an absolute classic: “tzedek, tzedek tirdof” – “justice, justice you shall pursue.”<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup> I hope in time the better angels of our nature will again prevail, and in the words of Lincoln via Copland, we will “disenthrall ourselves, and then we shall save our country.”</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>This isn’t a politics blog, and I have little to say about the structural breakdown of election results, except this: I’m frustrated by post-hoc recriminations that if only Kamala Harris had championed this or that policy or communicated better with some specific interest group, the result would have been totally different. It’s fine to learn from past tactical choices, and no campaign is without its missteps. But in a year where <a href="https://x.com/jburnmurdoch/status/1854485866548195735">every election</a> in a major democracy has seen the incumbent party get pummeled, we should be asking why the Democrats did atypically <em>well</em>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>In context in the novel, the quote isn’t so lofty and has explicit men-are-bad gender dynamics. I like the line as a pithy distillation rather than a callback to that part of the novel. Though given the gender gap in voting patterns, the gender dynamics are not entirely irrelevant to current circumstances… <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>The verbal repetition is unusual and prompts plenty of interpretation. I like the <a href="https://www.sefaria.org/sheets/76024.14?lang=bi&amp;with=all&amp;lang2=en">reading</a> that the repetition suggests justice must be pursued with just means. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[Warning: fully political post, which is not the typical genre here and not the vibe I’m mostly trying to cultivate. I pretty much stand by this, though my emotions have cooled in the weeks since the election.]]></summary></entry><entry><title type="html">Update to my philosophy: less resolutely materialist and utilitarian</title><link href="https://evanfields.net/Philosophically-Weaker/" rel="alternate" type="text/html" title="Update to my philosophy: less resolutely materialist and utilitarian" /><published>2024-10-19T00:00:00+00:00</published><updated>2024-10-19T00:00:00+00:00</updated><id>https://evanfields.net/Philosophically-Weaker</id><content type="html" xml:base="https://evanfields.net/Philosophically-Weaker/"><![CDATA[<p>Like many people with my demographics, I’ve long had strongly materialist and utilitarian philosophical intuitions. I think empirical science is a good way to learn about the world; material explanations suffice for most phenomena we encounter in everyday life; more people having more well-being is better than fewer people have less well-being. But over the last two-ish years, these intuitions have unmistakably softened. I attribute this change to several causes, roughly ordered:</p>
+<ul>
+  <li>My friend Doug Kremm, a wise and patient philosopher;</li>
+  <li>Philosophy and philosophers I’ve encountered through Effective Altruist-adjacent media, especially Eric Schwitzgebel;</li>
+  <li>General contemplation and mellowing with age.</li>
+</ul>
+
+<p>To be clear, I’m still a fan of materialism and tentatively a fan of utilitarian logic! I’ve not adopted faithful belief in any religion, new moral systems, etc. But more and more these empirical strains of thought seem like good tools for understanding the world <em>locally</em>, but perhaps not reflective of the ultimate nature of morality. For example,</p>
+<ul>
+  <li>I drop a bowling ball on a teacup, which shatters. Why does this happen? Explanations involving gravity and structural forces in pottery seem most relevant.</li>
+  <li>Is it better to make one child laugh or two? Is it worse to kick one puppy or two? Utilitarian logic seems pretty helpful here.</li>
+</ul>
+
+<p>On the other hand, I’m increasingly sympathetic to the notion that such tools are just…orthogonal to the ultimate nature of reality, metaphysics, consciousness. Are there moral truths separate from us? No idea. I’ve not become a fan of any competing explanation, just less confident that the philosophical tools of daily life are relevant out on the frontier.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Like many people with my demographics, I’ve long had strongly materialist and utilitarian philosophical intuitions. I think empirical science is a good way to learn about the world; material explanations suffice for most phenomena we encounter in everyday life; more people having more well-being is better than fewer people have less well-being. But over the last two-ish years, these intuitions have unmistakably softened. I attribute this change to several causes, roughly ordered: My friend Doug Kremm, a wise and patient philosopher; Philosophy and philosophers I’ve encountered through Effective Altruist-adjacent media, especially Eric Schwitzgebel; General contemplation and mellowing with age.]]></summary></entry><entry><title type="html">Dynamic pricing, not discriminatory pricing</title><link href="https://evanfields.net/Dynamic-Pricing/" rel="alternate" type="text/html" title="Dynamic pricing, not discriminatory pricing" /><published>2024-08-29T00:00:00+00:00</published><updated>2024-08-29T00:00:00+00:00</updated><id>https://evanfields.net/Dynamic-Pricing</id><content type="html" xml:base="https://evanfields.net/Dynamic-Pricing/"><![CDATA[<p>There’s a great <a href="http://www.bagelsaurus.com/">bagel shop</a> near my house that has consistently long lines on weekend mornings. This is a market failure: if the line is predictably and consistently long, then the price in dollars is not high enough. The bagel shop could charge more on weekend mornings, which makes them better off; the average customer would then pay more in dollars but less in time.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></p>
+
+<p>Higher weekend prices are an example of dynamic pricing: adjusting prices in response to spatio-temporal variation in the supply/demand balance.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> Lots of things are already dynamically priced: the commuter rail is cheaper on weekends; french fries are cheaper outside Fenway Park than inside. But I’d like to see way more things be dynamically priced. When dollar prices are too low, [potential] buyers end up paying other costs instead: shortages, waits, congestion, etc. When prices are too high, potentially mutually beneficial exchanges don’t occur.</p>
+
+<p>A highly non-exhaustive list of places where dynamic pricing seems promising:</p>
+<ul>
+  <li>Restaurant reservations</li>
+  <li>Cafe / restaurant / etc. menu prices</li>
+  <li>Roads, i.e. we should have congestion pricing</li>
+  <li>Some kinds of appointments, especially low stakes appointments like haircuts. I’m uncertain about dynamic pricing for healthcare or public services.</li>
+  <li>Access to fragile natural ecosystems</li>
+</ul>
+
+<p>Dynamic pricing is contrasted with discriminatory pricing, i.e. setting prices based on attributes of the potential buyer: I will sell Alice this cookie for a dollar, but for you, two dollars. Discriminatory pricing shifts transaction surplus to the seller. Say I have a cookie I want to sell. I’ll accept any price above \$3; below that price I’d rather eat it myself. You’d like to buy my cookie for any price up to \$5; above that price you could have ice cream instead. Any price between \$3 and \$5 creates surplus for both of us. But if I can perfectly price discriminate, I can set the price arbitrarily close to your reservation price of \$5 and grab all the surplus for myself (assuming you still buy).</p>
+
+<p>It’s probably not that big of a deal if a single seller subject to robust competition tries to price discriminate; buyers can go elsewhere.<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup> Indeed, this probably means a seller in a crowded market<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">4</a></sup> rationally should not try to price discriminate. Even so, I’m tentatively opposed to price discrimination:</p>
+<ul>
+  <li>It gives me the moral icks, mostly because it’s a form of discrimination. The icks, moral or otherwise, are not a uniformly reliable way to classify the world into good and bad: see vaccines, GMOs, global supply chains, etc. Yet a heuristic of “treat people the same; don’t discriminate” looks pretty good for predicting some of the moral progress of the last centuries: women should have the right to vote, racism is bad, don’t hate foreigners. So I guess I’m inclined towards discrimination=bad as a sane default heuristic until convinced otherwise.</li>
+  <li>There are individual instances where particular sellers don’t face competitive forces. Should the only hospital in a hundred mile radius be allowed to price discriminate when someone shows up needing emergency care?</li>
+  <li>A world with widespread effective price discrimination is a spooky world. Buying things is barely worth it because sellers charge personalized high prices and capture almost all surplus. Earning money isn’t obviously that helpful if it increases your willingness to pay and thus prices you experience. To be clear, this caricatured world is unlikely to materialize. Even so, instances of price discrimination seem to tear ever so slightly at the social fabric and move us towards a worse world.</li>
+</ul>
+
+<p>I don’t have high confidence that all discriminatory pricing is high. Maybe more seller surplus has good second order effects, like making more sellers. Maybe the rural hospital should be allowed to price discriminate so that we have more rural hospitals. Maybe there are obvious effects I’m missing since I am, in fact, not an economist!</p>
+
+<p>For years, I’ve toyed with the idea of doing a midlife career switch and running a tiny one-man sourdough pizza shop (working name: Workshop Pizza). The actual likelihood of this is…maybe 25%?…but it’s fun to imagine the details. And for sure, my imaginary Workshop Pizza charges more for pizzas on Friday night than Tuesday afternoon.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The mixture of customers might change. In a higher price regime, people who were previously excluded by the high time cost of the line (busy parents?) might opt in, while people who can’t afford the new higher price opt out. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>I don’t have great nomenclature to distinguish between predictable pricing changes (the bagels are more expensive on weekends) and live dynamic pricing changes (the bagels are more expensive whenever the line in the shop is long). <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>And buyers’ ability to go elsewhere means that single seller probably shouldn’t try to discriminate. Suppose bakeries A and B are across the street from each other, both selling comparably delicious muffins for \$4. One day the owner of bakery A realizes I personally value muffins at \$5 each and accordingly sets that as my personal price. Now if I am fully rational I get my muffin from bakery B and the owner of A has lost out on a potential sale. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4" role="doc-endnote">
+      <p>Including markets which are crowded not because of lots of sellers but because buyers have acces to substitutes. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[There’s a great bagel shop near my house that has consistently long lines on weekend mornings. This is a market failure: if the line is predictably and consistently long, then the price in dollars is not high enough. The bagel shop could charge more on weekend mornings, which makes them better off; the average customer would then pay more in dollars but less in time.1 The mixture of customers might change. In a higher price regime, people who were previously excluded by the high time cost of the line (busy parents?) might opt in, while people who can’t afford the new higher price opt out. &#8617;]]></summary></entry><entry><title type="html">Blog inspiration: Jeff Kaufman</title><link href="https://evanfields.net/Blog-Inspiration-Jeff/" rel="alternate" type="text/html" title="Blog inspiration: Jeff Kaufman" /><published>2024-08-04T00:00:00+00:00</published><updated>2024-08-04T00:00:00+00:00</updated><id>https://evanfields.net/Blog-Inspiration-Jeff</id><content type="html" xml:base="https://evanfields.net/Blog-Inspiration-Jeff/"><![CDATA[<p>I’ve been reading <a href="https://www.jefftk.com/about">Jeff Kaufman</a>’s blog for years because he’s well known in the effective altruist<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> space and local to the Boston area. We’re also now <a href="https://naobservatory.org/">coworkers</a>, which is pretty cool. One of many things I like about Jeff’s blog: he interleaves many different kinds of posts. Some are deeply technical or philosophical, but others are quick notes about what’s going on in his life. This variety imbues the blog with a pleasant texture.</p>
+
+<p>I’m not really sure why I write this blog. It’s certainly not for the readership, which appears to be mostly my brother and my wife. Maybe it’s helpful to have an online presence, especially in professional-adjacent settings? Mostly, I think I write because the writing itself can be satisfying, because writing helps clarify thoughts, and to provide a time capsule for my future self. None of these goals imply that I should only write long posts about technical work. Following Jeff’s example, recently I’ve been trying to jot more small thoughts down, especially with photos as appropriate. Here’s a recent <a href="https://evanfields.net/Shake-Tempering/">example</a> on tempering chocolate.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>I’m peripheral and sympathetic, or sorta an EA, or an EA who doesn’t want to extrapolate logic to its extreme, or something like that. I keep meaning to write about this, but the words don’t come naturally…which is presumably a reason to write about it. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[I’ve been reading Jeff Kaufman’s blog for years because he’s well known in the effective altruist1 space and local to the Boston area. We’re also now coworkers, which is pretty cool. One of many things I like about Jeff’s blog: he interleaves many different kinds of posts. Some are deeply technical or philosophical, but others are quick notes about what’s going on in his life. This variety imbues the blog with a pleasant texture. I’m peripheral and sympathetic, or sorta an EA, or an EA who doesn’t want to extrapolate logic to its extreme, or something like that. I keep meaning to write about this, but the words don’t come naturally…which is presumably a reason to write about it. &#8617;]]></summary></entry><entry><title type="html">Status update on eating animals</title><link href="https://evanfields.net/Eating-Animals-Status-Update/" rel="alternate" type="text/html" title="Status update on eating animals" /><published>2024-06-26T00:00:00+00:00</published><updated>2024-06-26T00:00:00+00:00</updated><id>https://evanfields.net/Eating-Animals-Status-Update</id><content type="html" xml:base="https://evanfields.net/Eating-Animals-Status-Update/"><![CDATA[<p>Since roughly 2009, I’ve wrestled daily with how to be a moral eater. My thoughts and uncertainties have evolved over time, so as both a time capsule for myself and an exercise in writing-clarifies-thinking, I thought I’d jot down my current status.</p>
+
+<h2 id="where-im-at">Where I’m at</h2>
+<h3 id="eating">Eating</h3>
+<ul>
+  <li>I don’t eat any land animals.</li>
+  <li>I don’t eat sea animals that seem especially smart (e.g. octopuses, dolphins).</li>
+  <li>I do eat other sea creatures sporadically, perhaps once a week, and increasingly with unease about the ethics involved.
+    <ul>
+      <li>Exception: I’m medium confident oysters don’t get moral consideration and would eat them with abandon if that were logistically and financially easy. Clams, mussels, etc. might fall in the same category; not sure.</li>
+    </ul>
+  </li>
+  <li>I eat lots of dairy and eggs, though when purchasing myself I’ll pay approximately any price premium for a product that seems likely to come from an animal treated better than factory farm default. In practice this means certified humane eggs and organic dairy, but I think I would pay double that price level for a certified super-extra-humane version.</li>
+  <li>I’m excited by plant based replacements for animal based products but haven’t found many worth eating. I think my whole list of recommendations is:
+    <ul>
+      <li>Beyond and Impossible breakfast sausage patties (not links, which are strangely dramatically worse);</li>
+      <li>Impossible burgers are tolerable but not obviously better than black bean burgers or falafel;</li>
+      <li>Oat milk replaces dairy milk well most of the time; Leyla and I like Minor Figures;</li>
+      <li><a href="https://myforestfoods.com/mybacon">MyBacon</a> is super good mycellium based bacon.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="uncertainties">Uncertainties</h3>
+<p>Topics about which I have only loose opinions and low confidence, in no particular order:</p>
+<ol>
+  <li>What is the nature of consciousness? Which animals are conscious, and to what extent?</li>
+  <li>What is the relationship between consciousness, sentience (if that’s even something else), intelligence, and moral status? What does this imply about various animals’ moral status?</li>
+  <li>What is the effect of various diet choices on animal well-being?
+    <ul>
+      <li>This gets especially tricky if you start thinking about wild animal welfare. Which you should. It’s just guaranteed to get you to some wild places.</li>
+      <li>Factory farming seems to be outrageously dismally terrible. I’m not 100% confident in this; I have slivers of credence in worlds where animals lack moral status or for opaque utilitarian reasons factory farming is actually good. But if I had a magic “end factory farming immediately and permanently, no take-backs” button, I think I would press it in good faith.</li>
+    </ul>
+  </li>
+  <li>What obligations do humans have to maximize / increase / not drastically harm animal well-being via our dietary choices?</li>
+  <li>To what extent are individuals morally responsible for the direct and indirect results of their actions?</li>
+  <li>Is moral responsibility even a coherent concept, or relevant to how we should act?</li>
+  <li>Even absent obligations and responsibilities, do we have opportunities to reduce suffering / increase justice / etc. via our choices?</li>
+</ol>
+
+<p>Put all this together, and my uncertainty set is roughly the triangle with vertices at</p>
+<ul>
+  <li>meat eating a la the typical American diet is morally comparable to a lifetime of being a sadist serial killer and anything shy of full veganism is unacceptable;</li>
+  <li>meat eating is morally good;</li>
+  <li>dietary choices are unrelated to morality and ethics.</li>
+</ul>
+
+<p>My beliefs are <em>not</em> uniform over that triangle. It seems likely to me that many animals have some consciousness, ability to suffer, and moral standing, and that it is morally good to live in such a way as to reduce the suffering of other conscious creatures. Given that, limiting meat consumption seems like a reasonable precautionary principle. Being fully vegan would probably be maximally precautionary, but I find the lifestyle sacrifices very difficult. I weakly think my current diet avoids the great majority of suffering in a typical American diet, and I seem to have converged here because marginal ethical worries and lifestyle sacrifices balance. But on the scale of decades that equilibrium point has moved, and I wouldn’t be surprised to find myself fully vegetarian in five years or vegan in ten.</p>
+
+<p>I also hope that meat and dairy alternatives (including animal-free production of animal products) become so good that there’s no longer a lifestyle cost to avoiding animal-derived foods. I look forward to being the early adopter who pays 10x market rate for lab grown meat and precision fermented dairy.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Since roughly 2009, I’ve wrestled daily with how to be a moral eater. My thoughts and uncertainties have evolved over time, so as both a time capsule for myself and an exercise in writing-clarifies-thinking, I thought I’d jot down my current status.]]></summary></entry><entry><title type="html">Shake-tempering chocolate</title><link href="https://evanfields.net/Shake-Tempering/" rel="alternate" type="text/html" title="Shake-tempering chocolate" /><published>2024-03-20T00:00:00+00:00</published><updated>2024-03-20T00:00:00+00:00</updated><id>https://evanfields.net/Shake-Tempering</id><content type="html" xml:base="https://evanfields.net/Shake-Tempering/"><![CDATA[<p><img src="/images/chocolate/bonbons.JPG" alt="bonbons" title="Three flavors of bonbons" class="img-80" />
+tldr: microplane 2% seed chocolate into fully melted chocolate at 94F and shake the heck out of it.</p>
+
+<p>I enjoy working with chocolate at home; the bonbons above, from a holiday party last December, were some of my prettier work. Bonbons and many other chocolate applications require <em>tempering</em> the chocolate: finely dispersing tiny cocoa butter crystal seeds throughout otherwise melted chocolate.</p>
+
+<p>There are many tempering methods. You can find lots of guides (most of which will work fine) and science explainers (some of which are true). But I’ve found that for tempering small amounts of chocolate at home, maybe 300g or less, the common methods suffer from at least one of these three problems:</p>
+<ol>
+  <li>Low yield – lots of chocolate lost to tools and general mess;</li>
+  <li>Labor intensive or time consuming;</li>
+  <li>Environmental heat transfer makes the process unreliable.</li>
+</ol>
+
+<p>The third problem arises because small amounts of chocolate have a high surface area to volume ratio, so they quickly gain and lose heat to their environment. For example, a recipe might tell you to melt some chocolate in the microwave to 95F. But if you try this with just 100g of chocolate in a glass bowl, you’ll find that by the time your chocolate is at 95F the bowl is burning hot, and carryover heat from the bowl to the chocolate will take it well beyond 95F.</p>
+
+<p>My preferred method for small quantities is a variant of the standard seeding method, but with shaking to agitate. It goes like so:</p>
+<ol>
+  <li>Fully melt your chocolate<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> using the method of your choice. We don’t have a specific temperature target here, so no real subtlety other than not scorching your chocolate. I use a microwave.</li>
+  <li>Transfer the chocolate to a container that has a lid and is only a bit larger than the chocolate volume. Leave the lid off for now. If you already microwaved in this container, congrats: this step is a no-op. I typically use the same mason jar I microwaved in.</li>
+  <li>Prepare 2% of your chocolate’s weight in finely grated dark chocolate. I use a microplane grater.</li>
+  <li>Wait for your chocolate to cool to 94-95F. This can take a few minutes, but it’s hands-off and you don’t need to stir continuously. Tip: an infrared thermometer works well for telling you when you should pay attention, but you really want a thermometer tip in the chocolate for a precise reading to know when it’s go time.</li>
+  <li>Add the grated chocolate (or just grate direclty in at this point), close the lid, and shake hard for about 30 seconds. Think of crushing ice in a cocktail shaker.</li>
+  <li>Your chocolate is now tempered and should be around 90F! A quick stir can confirm no solid chunks remain.</li>
+</ol>
+
+<h3 id="why-this-works">Why this works</h3>
+<ul>
+  <li>Tempering requires thorough agitation to distribute fine seed crystals uniformly throughout the melted chocolate. Shaking works super well for this and is in general surprisingly powerful, e.g. I can’t crush solid ice in my bare hands, but I can easily crush ice in a cocktail shaker.
+    <ul>
+      <li>Stirring by hand isn’t vigorous enough, so it takes a long time and with small quantities you’ll often fall out of the correct temperature ranges before you’ve stirred enough.</li>
+      <li>An immersion blender is vigorous but generates enough heat to be troublesome with small volumes. Over-aeration is also a risk. Plus, every immersion blender I’ve found is way too big for a little jar with 100g of chocolate in it.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></li>
+    </ul>
+  </li>
+  <li>Letting the chocolate cool from fully melted in the container you shake in means that by shake time the chocolate isn’t rapidly exchanging heat with its container.</li>
+  <li>Finely grating the seed chocolate means it can disperse easily and the heat of the melted chocolate can quickly penetrate each bit of solid seed.</li>
+  <li>Empirically, at 94-95F the melted chocolate is warm enough to raise the temperature of the room-temp seed to working temp and easily incorporate the seed, resulting in a final mix at a good working temp of 90-91F. Too much warmer and the seed is fully melted, and too much cooler and you end up with thick chocolate and perhaps still-solid flecks of seed.</li>
+</ul>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Temperatures given here are for dark chocolate. I can’t think of why this wouldn’t work with other kinds as well, maybe modulating temperatures a degree or two, but can’t say I’ve tried. The chocolate must be actual cocoa butter based chocolate, not a chocolate-flavored product based on other fats. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Product I’d love to buy but can’t find: mini immersion blender with a head about half the diameter of a standard immersion blender, but powerful enough to blend chocolate. Milk frothers have good sized heads but are underpowered for chocolate, which is much more viscous than milk. I know this because I’ve been disappointed by multiple apparently powerful frothers :) <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[tldr: microplane 2% seed chocolate into fully melted chocolate at 94F and shake the heck out of it.]]></summary></entry><entry><title type="html">Cambridge has (at least) two parking spaces per household</title><link href="https://evanfields.net/Lots-Of-Parking/" rel="alternate" type="text/html" title="Cambridge has (at least) two parking spaces per household" /><published>2023-12-08T00:00:00+00:00</published><updated>2023-12-08T00:00:00+00:00</updated><id>https://evanfields.net/Lots-Of-Parking</id><content type="html" xml:base="https://evanfields.net/Lots-Of-Parking/"><![CDATA[<p>A <a href="https://evanfields.net/Cambridge-Street-Parking/">previous post</a> estimated Cambridge’s non-metered street parking at 31,474 spaces, approximately one per car-owning household. But these spaces constitute a minority of Cambridge’s total parking supply. Here I estimate two other big chunks of our total supply:</p>
+
+<ul>
+  <li>
+    <p><strong>Parking lots: 43,797 spaces</strong>. The City publishes a nice <a href="https://github.com/cambridgegis/cambridgegis_data/blob/main/Basemap/Parking_Lots/BASEMAP_ParkingLots.geojson">geojson</a> of parking lots, covering 14.4 million square feet. (14 Harvard Yards!) At 330 square feet per space<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, that’s roughly 44 thousand spots.</p>
+  </li>
+  <li>
+    <p><strong>Residential driveways and garages: 27,368 spaces</strong>. Using a similar methodology<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> to the previous street parking post, I estimate 27,368 parking spaces in residential driveways and garages. These don’t include commercial garages.</p>
+  </li>
+</ul>
+
+<p>Adding these to the on street spaces brings my estimated lower bound of Cambridge parking supply to 107,419:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flavor</th>
+      <th style="text-align: right">Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>On Street</td>
+      <td style="text-align: right">31,474</td>
+    </tr>
+    <tr>
+      <td>Parking Lot</td>
+      <td style="text-align: right">43,797</td>
+    </tr>
+    <tr>
+      <td>Driveways</td>
+      <td style="text-align: right">27,368</td>
+    </tr>
+    <tr>
+      <td>Meters</td>
+      <td style="text-align: right">3,400</td>
+    </tr>
+    <tr>
+      <td>City Garages</td>
+      <td style="text-align: right">1,380</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td style="text-align: right"><strong>107,419</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>There are about <a href="https://www.census.gov/quickfacts/fact/table/cambridgecitymassachusetts/PST045222">50,000</a> households in Cambridge, so this works out to at least two spots per household.</p>
+
+<p>This estimated lower bound doesn’t include privately run garages, and perhaps other flavors of parking I’m not thinking of. A quick glance at Parkopedia suggests there are ~20k private garage spaces – and probably more, because Parkopedia probably isn’t exhaustive. Since the population of Cambridge is roughly 118,000, this means it’s nearly certain that there are more parking spots than people in Cambridge. You hate to see it.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Counting the spot itself and aisles / ingress / etc. See <a href="https://www.goodreads.com/en/book/show/63329951">Paved Paradise</a> chapter 5. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>As before, I sampled random points from the street centerline data and hand-label the <a href="https://docs.google.com/spreadsheets/d/1RfaNiy9ffQXxVF3iaUqUZ_rKnj8DcR9nGHgFtD1n24c/edit#gid=1999403840">first 100</a> of these points with how many driveways or residential garages face the street at each sampled point. I tried to be as precise as possible; if a sampled point was near a driveway/garage but didn’t seem to be directly perpendicular, I didn’t count it. I get an average of 0.2 driveways per road point, meaning 164k linear feet of driveway/garage. Assuming an average driveway width of 9 feet gives us 18k driveways, and 1.5 parking spaces per driveway gets us to 27k spots. 1.5 spots per driveway is a guess, but probably…close to right? Some driveways are small and fit a single vehicle, some fit multiple vehicles end-to-end, and some lead to multi car garages. There’s also some philosophical ambiguity; is a 12 foot driveway in front of a garage one spot or two? <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[A previous post estimated Cambridge’s non-metered street parking at 31,474 spaces, approximately one per car-owning household. But these spaces constitute a minority of Cambridge’s total parking supply. Here I estimate two other big chunks of our total supply:]]></summary></entry><entry><title type="html">High utility product recommendations</title><link href="https://evanfields.net/High-Utility-Products/" rel="alternate" type="text/html" title="High utility product recommendations" /><published>2023-12-05T00:00:00+00:00</published><updated>2023-12-06T00:00:00+00:00</updated><id>https://evanfields.net/High-Utility-Products</id><content type="html" xml:base="https://evanfields.net/High-Utility-Products/"><![CDATA[<p>Inspired by <a href="https://www.sambowman.co/p/things-i-recommend-you-buy-and-use?r=75h33&amp;utm_campaign=post&amp;utm_medium=web">Sam Bowman</a>, a list of consumer products I derive a ton of benefit from. I recommend them if your preferences are at least vaguely similar to mine.</p>
+
+<h1 id="kitchen">Kitchen</h1>
+<h2 id="breville-control-freak--1500-curently-1200">Breville Control Freak – $1500 (curently <a href="https://www.breville.com/us/en/products/specialty-appliances/cmc850.html?utm_campaign=ChefSteps">$1200</a>)</h2>
+<p><img src="/images/high_utility_products/control_freak.avif" alt="control freak" title="Breville Control Freak" class="img-80" />
+The best stove burner, induction or otherwise. Bad news first: it’s really expensive! Good news: it’s so good you’ll be ruined for other burners and stoves. This product is the reason I wanted to make this list. At its heart, the Control Freak is “just” a normal plug-in induction burner with one key difference: there’s a pan temperature sensor built in, and you control the burner by directly setting the pan’s target temperature.</p>
+
+<p>In most (all?) other stoves/burners, your control adjusts the power output of the burner: flame size / amount of gas / power to an electric coil or electromagnet. This in turn determines the pan temperature based on some complicated interaction between stove power output, pan materials, ambient conditions, pan contents, etc. But it’s the pan’s <em>temperature</em> that determines how your food cooks! With the Control Freak, rather than trying to intuit the causal chain <code class="language-plaintext highlighter-rouge">power knob =&gt; power output =&gt; pan temp = cooking behavior</code>, you just directly set <code class="language-plaintext highlighter-rouge">pan temp = cooking behavior</code>.</p>
+
+<p>An example of how this matters: let’s say you want to caramelize onions. First you need to drive off water (boils at 212F) from the raw onions, which are quite watery. Then you need a moderate temperature which allows the onions to develop color and flavor without scorching. On a traditional stove, you have three options: (1) babysit the onions by starting at a high power to drive off water and then constantly adjusting temperature; (2) use high power throughout and burn your onions; (3) use low power throughout and have the process take hours. With the Control Freak, just set your target temp to 270F or so and walk away. The Control Freak will start by running at full blast to get your pan from room temp to 212F, then the boiling onion water will cool the pan as the burner continues at full blast, and once the water is driven off and the temperature starts rising past boiling, the Control Freak will gradually taper power until the pan temp arrives at 270F. Stir once in a while if you feel like it.</p>
+
+<p>A few other use cases where I personally find the Control Freak very helpful:</p>
+<ul>
+  <li>Making pancakes. I like the cast iron at 260F for pancakes (it’s an unusual recipe, a story for another post). On my regular stove I start at high power, check the pan temp manually with an infrared thermometer, and tweak the power downwards as the temp rises. Hopefully I don’t overheat the pan while making the batter. With the Control Freak, I just set the temp to 260F.</li>
+  <li>Browning butter. This is just like the caramelized onions: 250F to drive off all the water without scorching the milk proteins.</li>
+  <li>Making custards, curds, ice cream bases, etc. Set the pan temp just a few degrees higher than your target temp, and your eggs won’t scramble.</li>
+  <li>Simmering sauces. Just set the pan temp to 185F or so and get a nice simmer. In contrast I’ve found that other burners with discrete power levels might not have a power level that corresponds to a perfect simmer with my exact pot and contents, and other burners with continuous dials (ie gas stoves) require super finicky minute adjustments to get the level dialed in—and that level changes as the sauce reduces anyway.</li>
+  <li>Deep frying. Adding food to hot oil rapidly drops the temperature, so for the best frying result you should way increase power when food is added and taper down as boiling decreases. This requires a bunch of manual adjustment, which the Control Freak does automatically.</li>
+  <li>Searing. For best results, you want a quite hot pan but not “everything becomes instantly charred oh wow my smoke alarm is so loud how do I turn that off yikes better open a window” hot. You can fiddle with power levels and infrared thermometers, or you can set your Control Freak to just below the smoke point of your fat of choice.</li>
+  <li>Brewing tea. I like a lowish-temperature brew on most teas, which seems to bring out more delicate floral notes. Control Freak at 170F for 6 minutes or so is solid.</li>
+</ul>
+
+<p>The Control Freak also has solid quality of life features. Its electromagnet is large, so it heats pans evenly; it has a pan sensor and turns the magnet off when you lift the pan; its controls are intuitive and tactile and satisfying; it’s easy to clean (see below on this being induction in general’s killer feature). Slight downsides, price aside, are that it’s large and the fan runs for a while after you’re done cooking.</p>
+
+<h2 id="mini-offset-spatula--6">Mini offset spatula – <a href="https://www.amazon.com/Ateco-1385-Spatula-4-5-Inch-Stainless/dp/B000WG14FC/ref=sr_1_2">$6</a></h2>
+<p><img src="/images/high_utility_products/offset.jpg" alt="offset" title="Offset spatula" class="img-60" /></p>
+
+<p>Super cheap, many uses in the kitchen. Good for releasing baked goods from pans, flipping small things, peaking under cooking foods of all sizes, scraping jars, stirring, spreading.</p>
+
+<h2 id="bulk-chocolate--variable-heres-a-nice-70-dark-chocolate-for-29kg">Bulk chocolate – variable, here’s a <a href="https://www.chocosphere.com/default/category/chef/bits-callets-wafers-feves-minigrammes/cbry-fleur-de-cao-1kg.html">nice 70% dark chocolate for $29/kg</a></h2>
+<p>Chocolate is, by a wide margin, the food I am snobbiest about. If you also like nice chocolate, consider buying in bulk online. Reliable mid-high brands like Valrhona and Callebaut can be had much cheaper online than in grocery stores or local specialty shops. The above link goes to Chocosphere, which has the delightful combination of low prices, wide selection, fast service, and knowledgeable staff (call and ask for recommendations). Shipping is also cheap if you use their “if it fits, it ships” option, available on small and medium orders. Compared to other luxuries, fancy chocolate is surprisingly affordable.</p>
+
+<h2 id="ghirardelli-60-chips--around-045oz-depending-where-you-buy">Ghirardelli 60% chips – <a href="https://www.target.com/p/ghirardelli-60-cacao-bittersweet-chocolate-premium-baking-chips-10oz/-/A-13349385">around $0.45/oz, depending where you buy</a></h2>
+<p><img src="/images/high_utility_products/ghirardelli.jpg" alt="ghirardelli" title="Ghirardelli" class="img-80" /></p>
+
+<p>Not as good as Valrhona and similar from Chocosphere, but widely available and absolutely on the price-quality Pareto frontier.</p>
+
+<h2 id="good-kitchen-scale--around-55">Good kitchen scale – <a href="https://www.amazon.com/OXO-Grips-Stainless-Pull-Out-Display/dp/B079D9B82W">around $55</a></h2>
+<p><img src="/images/high_utility_products/oxo.jpg" alt="oxo" title="OXO scale" class="img-50" /></p>
+
+<p>Measuring by weight in the kitchen is faster, cleaner, more precise, and more replicable than doing so by volume. You want a solid scale with a wide platform, a decent weight limit, an easy to read display not obscured by a large bowl/pot, and single gram resolution. There are plenty options like this, the linked OXO is a common choice that checks the boxes.</p>
+
+<h2 id="induction-stove-or-range--varies-mine-was-4000">Induction stove or range – varies, mine was <a href="https://www.yaleappliance.com/product/beko-30-stainless-steel-pro-style-induction-range-prir34452ss-1152629">$4000</a></h2>
+<p><img src="/images/high_utility_products/beko.webp" alt="beko range" title="Beko induction range" class="img-50" /></p>
+
+<p>Induction vs. gas stoves has become a culture war topic in the US, which is unfortunate. The health risks of gas stoves are probably <a href="https://dynomight.net/stoves/">modest but not zero</a>, and climate impacts are probably from mostly second order effects like methane leaks. But the climate-and-health culture war has missed the key point about induction stoves, which is that they are the best kind of stove to live with because they are <em>the easiest to clean</em>.</p>
+<ul>
+  <li>Gas stoves are a pain to clean because spills and splatters get under the metal grates, so you’re constantly cleaning under and around the grates and burners, both of which have lots of corners and edges.</li>
+  <li>Glass top resistive electric stoves get really hot (a coil under the glass heats the glass which touches your pan, so the glass is hotter than the pan), so spilled foods and liquids quickly scorch onto the stove surface and they’re not always safe to wipe down.</li>
+  <li>Electric coil stoves combine the worst of both of these.</li>
+</ul>
+
+<p>In contrast, induction stoves generate heat <em>inside</em> your pans, so the smooth glass top gets only modestly warm from contact with the hot pans. You can easily wipe down the smooth glass surface without burning yourself, food and grease don’t scorch onto the glass because it’s not that hot, and there are no grates to fiddle with.</p>
+
+<p>Induction stovetops also become usable space in a kitchen when not acting as a stove. I put cookbooks on top of my induction range (when off) all the time – I know that the glass won’t be too hot even if I just used the stove, and accidentally turning on the stove will not ignite the book (compare to putting a flamable book on a gas stove…).</p>
+
+<p>All that said, get a Control Freak and your cooktop hardly matters – you’ll rarely use it.</p>
+
+<p>The easy-to-use benefits of induction should apply to any range. My wife and I went with the Beko induction range linked above; we chose it because of its physical controls and lack of smart features. It’s been good, though when picking a range n.b. that not all induction ranges will work with ground fault protected circuits and electrical code may require outlets near water sources to be on ground fault protected circuits.</p>
+
+<h1 id="home">Home</h1>
+<h2 id="nice-laundry-basket--around-30">Nice laundry basket – <a href="https://www.etsy.com/listing/828880089/extra-large-blanket-basket-for-nursery">around $30</a></h2>
+<p><img src="/images/high_utility_products/basket.avif" alt="basket" title="Basket" class="img-50" /></p>
+
+<p>For years I used the super cheap mesh-and-wire laundry hamper from my grad school days. Then it broke and my wife upgraded me to this style, and wow, so much better: sturdier, nicer to touch, nicer to look at.</p>
+
+<h1 id="lifestyle">Lifestyle</h1>
+<h2 id="a-bike-you-enjoy-riding">A bike you enjoy riding</h2>
+<p><img src="/images/high_utility_products/bike.png" alt="Cool bike" title="Zippy bike" class="img-60" /></p>
+
+<p>I’m super anti-car – a diatribe for another day – and think bikes are excellent urban transportation. A bike you actually enjoy riding will get you outside more, breathing fresh air, exercising the legs, living the sustainable dream. For me, that’s lately been the pictured endurance road bike from Trek, but go forth and follow your heart, whether it yearns for electric quasi-motorcycles or vintage steel cruisers or anything between.</p>
+
+<h1 id="personal-care">Personal care</h1>
+<h2 id="foot-roller--35">Foot roller – <a href="https://rollrecovery.com/products/r3">$35</a></h2>
+<p><img src="/images/high_utility_products/roller.png" alt="roller" title="Foot roller" class="img-50" /></p>
+
+<p>One of my feet has been stiff for years and, post knee surgery, perpetually achey. This roller is better than a lacross ball at digging into the right parts of the foot without slipping around.</p>
+
+<h1 id="tech">Tech</h1>
+<h2 id="trackball-mouse--50">Trackball mouse – <a href="https://www.logitech.com/en-us/products/mice/m575-ergo-wireless-trackball.910-005867.html">$50</a></h2>
+<p><img src="/images/high_utility_products/mouse.webp" alt="Logitech trackball" title="Trackball mouse" class="img-60" /></p>
+
+<p>Thumb trackball mice seem underdiscussed. They’re comfortable, fairly cheap, portable, don’t need a lot of space, and you can use them on your lap (particularly good for planes and travel). I’ve been using something like this Logitech model for years, and it seems to get the job done, though the recommendation here is more for the category than the product. The prior model (M570) was a little smaller and more comfortable for me, but the main switch wears out after a few years of heavy use.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Inspired by Sam Bowman, a list of consumer products I derive a ton of benefit from. I recommend them if your preferences are at least vaguely similar to mine.]]></summary></entry></feed>

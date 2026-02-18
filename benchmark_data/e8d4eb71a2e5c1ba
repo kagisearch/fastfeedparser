@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
+	>
+
+<channel>
+	<title>C++ on a Friday</title>
+	<atom:link href="https://blog.knatten.org/feed/" rel="self" type="application/rss+xml" />
+	<link>https://blog.knatten.org</link>
+	<description></description>
+	<lastBuildDate>Thu, 30 Oct 2025 13:13:55 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>http://wordpress.com/</generator>
+
+<image>
+	<url>https://blog.knatten.org/wp-content/uploads/2023/01/cropped-2019bw-transparent.png?w=32</url>
+	<title>C++ on a Friday</title>
+	<link>https://blog.knatten.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">12689027</site><cloud domain='blog.knatten.org' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
+<atom:link rel="search" type="application/opensearchdescription+xml" href="https://blog.knatten.org/osd.xml" title="C++ on a Friday" />
+	<atom:link rel='hub' href='https://blog.knatten.org/?pushpress=hub'/>
+	<item>
+		<title>A prvalue is not a temporary</title>
+		<link>https://blog.knatten.org/2025/10/31/a-prvalue-is-not-a-temporary/</link>
+					<comments>https://blog.knatten.org/2025/10/31/a-prvalue-is-not-a-temporary/#comments</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Fri, 31 Oct 2025 08:00:00 +0000</pubDate>
+				<category><![CDATA[C++]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1957</guid>
+
+					<description><![CDATA[This is part one of a series of blog posts on temporaries, copies, return value optimization, and passing by value vs. reference. A good place to start, and the point of this first article, is how a prvalue isn&#8217;t necessarily a temporary. If you&#8217;re entirely new to value categories (lvalues, rvalues etc.), you might want &#8230; <a href="https://blog.knatten.org/2025/10/31/a-prvalue-is-not-a-temporary/" class="more-link">Continue reading <span class="screen-reader-text">A prvalue is not a&#160;temporary</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>This is part one of a series of blog posts on temporaries, copies, return value optimization, and passing by value vs. reference.</p>
+
+
+
+<p>A good place to start, and the point of this first article, is how a prvalue isn&#8217;t necessarily a temporary.</p>
+
+
+
+<p>If you&#8217;re entirely new to value categories (lvalues, rvalues etc.), you might want to read <a href="https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/">lvalues, rvalues, glvalues, prvalues, xvalues, help!</a> first.</p>
+
+
+
+<h2 class="wp-block-heading">lvalues vs rvalues</h2>
+
+
+
+<p>An lvalue is an expression that <em>can not</em> be moved from. An rvalue is an expression that <em>can</em> be moved from.</p>
+
+
+
+<p>Let&#8217;s first have a look at lvalues. Given this variable <code>v</code>:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+std::vector&lt;int&gt; v{1,2,3};
+</pre></div>
+
+
+<p>If I now write the expression <code>v</code> somewhere, <code>v</code> is referring to an actual variable. I can&#8217;t just move from it, as it would mess up an existing object that someone else could still be using. We call an expression like this an <em>lvalue</em>.</p>
+
+
+
+<p>For instance, if I pass my existing vector to a function <code>useVector</code>:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+useVector(v);
+</pre></div>
+
+
+<p>Here, the expression <code>v</code> is an lvalue, and <code>useVector</code> can&#8217;t move from it. After all, someone might want to keep using <code>v</code> on a following line.</p>
+
+
+
+<p>But if I know I won&#8217;t be needing <code>v</code> anymore, I can turn it into an rvalue, by wrapping it in <code>std::move</code>:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+useVector(std::move(v));
+</pre></div>
+
+
+<p>Here, the expression <code>std::move(v)</code> is an rvalue. <code>useVector</code> would now be allowed to move from <code>v</code>. (And I must take care to not use <code>v</code> again, since it might have been moved into <code>useVector</code>.)</p>
+
+
+
+<h2 class="wp-block-heading">rvalues: xvalues vs prvalues</h2>
+
+
+
+<p>Here&#8217;s another way to get an rvalue:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+useVector(std::vector{1,2,3});
+</pre></div>
+
+
+<p>Here, the expression <code>std::vector{1,2,3}</code> is also an rvalue, and again <code>useVector</code> would be allowed to move from it.</p>
+
+
+
+<p>Notice, however, that these are <em>two different types</em> of rvalues. <code>std::move(v)</code> takes an existing object and casts it to an rvalue. That type of rvalue is called an <em>xvalue</em>, or &#8220;eXpiring lvalue&#8221;.</p>
+
+
+
+<p>On the other hand, <code>std::vector{1,2,3}</code> is a <em>prvalue</em>, or &#8220;pure rvalue&#8221;. Unlike an xvalue, this expression never referred to an existing object in the first place. People sometimes call this &#8220;a temporary&#8221;, but, as is the main point of this article, that&#8217;s not necessarily true.</p>
+
+
+
+<p>A prvalue in itself is not a temporary. A prvalue is not an object. A prvalue just represents &#8220;the idea of the object&#8221;, and only turns into a temporary when it absolutely needs to. For instance:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+std::vector v = std::vector{1,2,3};
+</pre></div>
+
+
+<p>Here, the prvalue <code>std::vector{1,2,3}</code> does not turn into a temporary that is then used to initialize <code>v</code>. Rather, the prvalue is used to initialize <code>v</code> directly, just as if you&#8217;d written <code>std::vector v{1,2,3};</code>. No extra temporary is created, and no copies or moves are performed.</p>
+
+
+
+<p>Similarly:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+void useVector(std::vector&lt;int&gt; v);
+
+useVector(std::vector{1,2,3});
+</pre></div>
+
+
+<p>Here, <code>useVector</code> takes its parameter by value. <code>std::vector{1,2,3}</code> never turns into a temporary, the prvalue expression is instead used to initialize the parameter <code>v</code> directly, just like in the previous example. No extra temporary is created, and no copies of moves are performed.</p>
+
+
+
+<h2 class="wp-block-heading">Temporary materialization</h2>
+
+
+
+<p>However, if <code>useVector</code> takes its parameter by reference:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+void useVector(const std::vector&lt;int&gt;&amp; v);
+
+useVector(std::vector{1,2,3});
+</pre></div>
+
+
+<p>Now, the reference parameter <code>v</code> needs some object to bind to, and <code>std::vector{1,2,3}</code> actually turns into a temporary object that <code>v</code> can bind to. This is called &#8220;temporary materialization&#8221;.</p>
+
+
+
+<h2 class="wp-block-heading">Return values</h2>
+
+
+
+<p>A function call that returns by value is also a prvalue <sup data-fn="fa04de79-6e29-4d05-9bdc-e6334b34ee61" class="fn"><a href="#fa04de79-6e29-4d05-9bdc-e6334b34ee61" id="fa04de79-6e29-4d05-9bdc-e6334b34ee61-link">1</a></sup>. So, given this definition of <code>getVector()</code> and a call to it:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+std::vector&lt;int&gt; getVector();
+
+std::vector&lt;int&gt; v = getVector();
+</pre></div>
+
+
+<p>Here, the call <code>getVector()</code> is a prvalue which initializes <code>v</code> directly. There is no temporary that is then copied/moved into <code>v</code>. (There might be a copy involved in the <code>return</code> statement <em>inside</em> <code>getVector()</code>, but that&#8217;s a story for the next article.)</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The point is that a prvalue only materializes into a temporary as a very last resort, avoiding unnecessary copies or moves. Until it needs to materialize, it only represents &#8220;the idea of the object&#8221;, i.e. what the object <em>would be</em> when it materializes into a temporary or is used to initialize something.</p>
+
+
+
+<p>It is important to note that this has nothing to do with optimization. There is no temporary <code>std::vector</code> to optimize away in the first place, there&#8217;s just the prvalue, just the &#8220;idea of the object&#8221;. And then that idea of an object can materialize into an actual object if needed.</p>
+
+
+
+<h2 class="wp-block-heading">Footnotes</h2>
+
+
+<ol class="wp-block-footnotes"><li id="fa04de79-6e29-4d05-9bdc-e6334b34ee61"><a href="https://timsong-cpp.github.io/cppwp/std23/expr.call#13">§expr.call¶13</a>: &#8220;A function call is an lvalue if the result type is an lvalue reference type or an rvalue reference to function type, an xvalue if the result type is an rvalue reference to object type, and a prvalue otherwise.&#8221; <a href="#fa04de79-6e29-4d05-9bdc-e6334b34ee61-link"><img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/21a9.png" alt="↩" class="wp-smiley" style="height: 1em; max-height: 1em;" />︎</a></li></ol>]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2025/10/31/a-prvalue-is-not-a-temporary/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1957</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>A taxonomy of C++ types</title>
+		<link>https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/</link>
+					<comments>https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/#comments</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Fri, 25 Apr 2025 07:55:00 +0000</pubDate>
+				<category><![CDATA[C++]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[types]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1857</guid>
+
+					<description><![CDATA[You may have heard of things like fundamental types, built-in types, basic types, integral types, arithmetic types, and so on. But what do they all mean, if anything? In this post I&#8217;ll gradually build up the hierarchy of C++ types, eventually arriving at a big tree like in the following figure. But I promise we&#8217;ll &#8230; <a href="https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/" class="more-link">Continue reading <span class="screen-reader-text">A taxonomy of C++&#160;types</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>You may have heard of things like fundamental types, built-in types, basic types, integral types, arithmetic types, and so on. But what do they all mean, if anything? </p>
+
+
+
+<p>In this post I&#8217;ll gradually build up the hierarchy of C++ types, eventually arriving at a big tree like in the following figure. But I promise we&#8217;ll take it easy and gradually, so it all makes sense in the end.</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png"><img width="1024" height="359" data-attachment-id="1907" data-permalink="https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/cpptypes-2/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png" data-orig-size="2357,827" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="CppTypes (2)" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=300" data-large-file="https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=1024" src="https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=1024" alt="" class="wp-image-1907" srcset="https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=1024 1024w, https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=2048 2048w, https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=150 150w, https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=300 300w, https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=768 768w, https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=1440 1440w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption class="wp-element-caption">Intentionally unreadable for now, just to show the structure</figcaption></figure>
+
+
+
+<p>Woha, that&#8217;s a lot! Let&#8217;s start with something seemingly simple, like ints.</p>
+
+
+
+<h2 class="wp-block-heading">Integer types</h2>
+
+
+
+<p>There are five <em>standard signed integer types</em>: &#8220;<code>signed char</code>&#8220;, <code>"short int</code>&#8220;, <code>"int</code>&#8220;, &#8220;<code>long int</code>&#8220;, and &#8220;<code>long long int</code>&#8220;. The implementation is also allowed to define an arbitrary number of implementation-defined <em>extended signed integer types</em> such as GCC&#8217;s <code>__int128</code>.</p>
+
+
+
+<p>Together, the standard and extended signed integer types are called the <em>signed integer types</em>. Let&#8217;s visualise this:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png"><img width="398" height="377" data-attachment-id="1908" data-permalink="https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/signed-integer-types-2/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png" data-orig-size="398,377" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="signed-integer-types" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png?w=300" data-large-file="https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png?w=398" src="https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png?w=398" alt="" class="wp-image-1908" srcset="https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png 398w, https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png?w=150 150w, https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png?w=300 300w" sizes="(max-width: 398px) 100vw, 398px" /></a></figure>
+</div>
+
+
+<p>For each of the standard integer types, there exists a corresponding (but different) <em>standard un-signed integer type</em>. These are &#8220;<code>unsigned char</code>&#8220;, &#8220;<code>unsigned short int</code>&#8220;, &#8220;<code>unsigned int</code>&#8220;, &#8220;<code>unsigned long int</code>&#8220;, and &#8220;<code>unsigned long long int</code>&#8220;. And similarly, for each of the <em>extended signed integer types</em> that the implementation defines, it has to define a corresponding <em>extended unsigned integer type</em>. For example, GCC defines <code>unsigned __int128</code> corresponding to <code>__int128</code>.</p>
+
+
+
+<p>Together, the standard and extended unsigned integer types are called the <em>unsigned integer types</em>. Let&#8217;s visualise these too, and notice the correspondence to the previous figure:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png"><img width="398" height="377" data-attachment-id="1909" data-permalink="https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/unsigned-integer-types-2/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png" data-orig-size="398,377" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="unsigned-integer-types" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png?w=300" data-large-file="https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png?w=398" src="https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png?w=398" alt="" class="wp-image-1909" srcset="https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png 398w, https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png?w=150 150w, https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png?w=300 300w" sizes="(max-width: 398px) 100vw, 398px" /></a></figure>
+</div>
+
+
+<p>If we throw in &#8220;<code>bool</code>&#8221; and the character types &#8220;<code>char</code>&#8220;, &#8220;<code>wchar_t</code>&#8220;, &#8220;<code>char8_t</code>&#8220;, &#8220;<code>char16_t</code>&#8220;, and &#8220;<code>char32_t</code>&#8220;, we have all the <em>integral types</em>, also known as the <em>integer types</em>. (Character types have some further subdivisions that are best postponed to a separate blog post.)</p>
+
+
+
+<p>Note, by the way, that you can click on all figures in this blog post to expand them.</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png"><img loading="lazy" width="1024" height="483" data-attachment-id="1910" data-permalink="https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/integral-types-2/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png" data-orig-size="1052,497" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="integral-types" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png?w=300" data-large-file="https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png?w=1024" src="https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png?w=1024" alt="" class="wp-image-1910" srcset="https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png?w=1024 1024w, https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png?w=150 150w, https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png?w=300 300w, https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png?w=768 768w, https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png 1052w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<h2 class="wp-block-heading">Floating-point Types </h2>
+
+
+
+<p>That&#8217;s it for the integral types, now for the floating point types. Luckily, this is much simpler, since there&#8217;s only &#8220;<code>float</code>&#8220;, &#8220;<code>double</code>&#8220;, and &#8220;<code>long double</code>&#8220;, and they&#8217;re all signed. So there are only three <em>standard floating-point types</em>. Then, just as for the integral types, the implementation is allowed to defined <em>extended floating-point types</em>. So collectively we have these <em>floating-point types</em>:</p>
+
+
+
+<p></p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png"><img loading="lazy" width="392" height="332" data-attachment-id="1912" data-permalink="https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/floating-point-types-2/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png" data-orig-size="392,332" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="floating-point-types" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png?w=300" data-large-file="https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png?w=392" src="https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png?w=392" alt="" class="wp-image-1912" srcset="https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png 392w, https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png?w=150 150w, https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png?w=300 300w" sizes="(max-width: 392px) 100vw, 392px" /></a></figure>
+</div>
+
+
+<h2 class="wp-block-heading">Arithmetic and Fundamental Types</h2>
+
+
+
+<p>Collectively, the integral and floating-point types form the <em>arithmetic types</em>. Throw in <code>void</code> and <code>std::nullptr_t</code>, and we have all the fundamental types (remember that you can click to expand figures):</p>
+
+
+
+<p></p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png"><img loading="lazy" width="1024" height="569" data-attachment-id="1914" data-permalink="https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/fundamental-types-2/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png" data-orig-size="1487,827" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="fundamental-types" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=300" data-large-file="https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=1024" src="https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=1024" alt="" class="wp-image-1914" srcset="https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=1024 1024w, https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=150 150w, https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=300 300w, https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=768 768w, https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=1440 1440w, https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png 1487w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+</div>
+
+
+<p>This is a good time to ask &#8220;But what about<em> <em>built-in</em></em> and <em><em>basic</em></em> <em>types</em>?&#8221;. Those are terms that get thrown around in conversations and articles every now and then, but they don&#8217;t have an official meaning and are best avoided.</p>
+
+
+
+<p>It&#8217;s understandable, however, that people refer to the fundamental types as &#8220;basic&#8221;, since they are indeed very basic compared to other types. They are &#8220;just an int&#8221;, &#8220;just a float&#8221; etc. Basically uncomplicated numbers with no additional semantics.</p>
+
+
+
+<p>(Note that the term &#8220;basic type&#8221; was, in fact, used accidentally in a note (but never defined) in the standard until my <a href="https://github.com/cplusplus/draft/pull/7287">PR #7287</a>, and should be gone in C++26.)</p>
+
+
+
+<h2 class="wp-block-heading">Compound Types</h2>
+
+
+
+<p>So if the fundamental types are the simple, basic ones, what are the rest? The rest of the types are the <em>compound types</em>. The word &#8220;compound&#8221; normally means &#8220;made up of two or more parts&#8221;, so it makes sense that you find classes, unions, and arrays in this category. However, you also find enums, pointers, references, and functions in this category. I&#8217;m not sure why they chose &#8220;compound&#8221; for these, but that&#8217;s the name we have for &#8220;all the other types&#8221;, or the &#8220;non-fundamental types&#8221;:</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://blog.knatten.org/wp-content/uploads/2025/04/final.png"><img loading="lazy" width="1024" height="359" data-attachment-id="1915" data-permalink="https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/final/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2025/04/final.png" data-orig-size="2357,827" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="final" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=300" data-large-file="https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=1024" src="https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=1024" alt="" class="wp-image-1915" srcset="https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=1024 1024w, https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=2048 2048w, https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=150 150w, https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=300 300w, https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=768 768w, https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=1440 1440w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<h2 class="wp-block-heading">Scalar Types</h2>
+
+
+
+<p>Finally, I need to mention <em>scalar types</em>, also shown in the diagram above. Luckily for us, no new types are introduced here, scalar types is just a grouping of types we&#8217;ve already discussed. The scalar types are all the arithmetic types, plus enums, pointers, and <code>std::nullptr_t</code>.</p>
+
+
+
+<p>The reason I bring up scalar types here is that that&#8217;s how a <em>memory location</em> is defined in the standard. A memory location is either a scalar type or some bit-field stuff I want to skip for this article. Memory locations are fundamental to understanding the C++ memory model and multi-threaded programming.</p>
+
+
+
+<h2 class="wp-block-heading">Further reading</h2>
+
+
+
+<p>When writing this post, I considered bringing up integer promotions, conversion and the usual arithmetic conversions, but decided that the post is already long enough. Shafik Yaghmour has a nice post about <a href="https://shafik.github.io/c++/2021/12/30/usual_arithmetic_confusions.html">The Usual Arithmetic Confusions</a> that you might want to check out.</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2025/04/25/a-taxonomy-of-c-types/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1857</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2025/04/cpptypes-2.png?w=1024" medium="image" />
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2025/04/signed-integer-types.png?w=398" medium="image" />
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2025/04/unsigned-integer-types.png?w=398" medium="image" />
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2025/04/integral-types.png?w=1024" medium="image" />
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2025/04/floating-point-types.png?w=392" medium="image" />
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2025/04/fundamental-types-1.png?w=1024" medium="image" />
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2025/04/final.png?w=1024" medium="image" />
+	</item>
+		<item>
+		<title>How to become a conference speaker</title>
+		<link>https://blog.knatten.org/2025/03/28/how-to-become-a-conference-speaker/</link>
+					<comments>https://blog.knatten.org/2025/03/28/how-to-become-a-conference-speaker/#respond</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Fri, 28 Mar 2025 07:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[career]]></category>
+		<category><![CDATA[conferences]]></category>
+		<category><![CDATA[speaking]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1882</guid>
+
+					<description><![CDATA[A reader of my book C++ Brain Teasers recently emailed me and asked: By the way, I’m curious how one gets to a point in their C++ journey / career when they’re able to give talks at these large conventions. Do you have any insights on this?  I figured I&#8217;d reply in blog form, in &#8230; <a href="https://blog.knatten.org/2025/03/28/how-to-become-a-conference-speaker/" class="more-link">Continue reading <span class="screen-reader-text">How to become a conference&#160;speaker</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>A reader of my book <a href="https://pragprog.com/titles/akbrain/c-brain-teasers/">C++ Brain Teasers</a> recently emailed me and asked:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>By the way, I’m curious how one gets to a point in their C++ journey / career when they’re able to give talks at these large conventions. Do you have any insights on this? </p>
+</blockquote>
+
+
+
+<p>I figured I&#8217;d reply in blog form, in case someone else is wondering the same. Note that while I&#8217;ve spoken at conferences like CppCon, Meeting C++, and others, I&#8217;m by no means a big fish speaker. But I at least have the advantage of explaining it while still remembering how it is to be new in the game.</p>
+
+
+
+<p>So, how does one become a speaker at these conventions? Let&#8217;s first clarify a few important points:</p>
+
+
+
+<h3 class="wp-block-heading">1. Speakers are not special</h3>
+
+
+
+<p>Conference speakers might seem like they know more than the rest of us, and one might think only the best programmers become speakers. This is not true. Several of the best programmers I&#8217;ve worked with, who are certainly more knowledgable and smarter than me, have never spoken at a conference. To speak at a conference, you don&#8217;t need to be best, you just need to have something you want to tell, and be decent at presenting it. (See below if you&#8217;re not yet experienced with presenting.)</p>
+
+
+
+<h3 class="wp-block-heading">2. Speakers don&#8217;t know it all</h3>
+
+
+
+<p>When I&#8217;m in room A talking about CPU memory models, someone else is in room B talking about coroutines. It&#8217;s easy to think that all the speakers know all these things. Most of us don&#8217;t. I have no idea how coroutines work. Last week I had to google how to use <code>std::cin</code>.</p>
+
+
+
+<p>What I&#8217;m saying is that you too can become a speaker, you don&#8217;t need to be the smartest or most experienced person in your team / class / group of friends. You just need to love learning, and be motivated to try speaking about what you&#8217;ve learned.</p>
+
+
+
+<h3 class="wp-block-heading">Getting started</h3>
+
+
+
+<p>So how do you get started, then? Speaking is a skill, just like programming. The more you do it, the better you&#8217;ll become at it. Here are some tips to get started:</p>
+
+
+
+<ul class="wp-block-list">
+<li>If there are tech talks at work, volunteer to give one. If there aren&#8217;t, start organizing some. In my experience, management tends to be very happy when someone steps up to improve the skills of the team. Start simple, 10 minute lightning talks before lunch every second week or something. Give the first talk yourself, then ask others to present too. And if your first talk isn&#8217;t great, even better, then the bar is lower for the next person! :) The talks can be on something you feel others need to know, something you want to learn about, some language feature, some cool new thing someone did at work, etc.</li>
+
+
+
+<li>If you&#8217;re still in uni/college, volunteer to help your fellow students. This will give you experience with teaching and explaining things. Try to get a job as a teaching assistant.</li>
+
+
+
+<li>Seek out local user groups. Use a search engine, check meetup.com, etc. In Oslo we have <a href="https://www.meetup.com/ocppug/">Oslo C++ Users Group</a>, there might be something similar near you. See if they have some lightning talk evenings coming up. If not, message the admin and ask. They tend to like it when people take initiative for something to happen.</li>
+
+
+
+<li>Be curious! Read, watch other talks, try things out. If you&#8217;re not somewhat passionate about this, chances are you won&#8217;t enjoy speaking. It&#8217;s quite some work, and typically not paid.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">But what should I speak about?</h2>
+
+
+
+<h3 class="wp-block-heading">Try to focus on something specific for a while</h3>
+
+
+
+<p>My best trick for coming up with a talk is to work on something specific for a good amount of time. For instance, in once company I worked at, I took the main responsibility for linking and physical architecture. Whenever there was an issue related to linking, symbols, etc., I tried to get myself assigned to it. This taught me a lot, and resulted in three conference talks. </p>
+
+
+
+<h3 class="wp-block-heading">Write a talk about something you want to learn</h3>
+
+
+
+<p>To be honest, this approach is <em>a lot</em> of work, but it can be a great way to come up with a talk. For instance, at one point I wanted to better understand the Assembly output on <a href="https://godbolt.org">https://godbolt.org</a>. I had learned a tiny bit of Assembly in college a long time ago, but had forgotten most of it. I wasn&#8217;t able to find a good talk about it, so I figured, hey, let&#8217;s learn this, and give that talk that the world is missing. It took weeks, but resulted in my most successful talk <a href="https://www.youtube.com/watch?v=soeFwz0cOqU">Just Enough Assembly for Compiler Explorer</a>, which I&#8217;ve presented at many conferences. While it&#8217;s a lot more work to write a talk about something you don&#8217;t already know well, you have one big advantage &#8211;  you still know what&#8217;s hard about the topic. It&#8217;s also fun to learn, and in my experience, the best way to learn something is to attempt to explain it to others.</p>
+
+
+
+<h3 class="wp-block-heading">Talk about what you wish more people knew / did / cared about</h3>
+
+
+
+<p>This works especially well for lightning talks. Have you recently discovered a super useful tool that more people should know about? Are you driven nuts by people using technique X wrong? Give a lightning talk about it.</p>
+
+
+
+<h2 class="wp-block-heading">Preparing and giving the presentation</h2>
+
+
+
+<p>There&#8217;s a lot to say about preparing and giving a presentation; too much to cover here, and others have done it better. But make sure to prepare well in advance, use high contrast and a large font, and rehearse a lot. Even the most experienced speakers like Matt Godbolt rehearse their talks <a href="https://bsky.app/profile/matt.godbolt.org/post/3llalzmdks22j">over and over</a>.</p>
+
+
+
+<p>Have fun speaking!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2025/03/28/how-to-become-a-conference-speaker/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1882</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Visiting CppCast</title>
+		<link>https://blog.knatten.org/2024/11/20/visiting-cppcast/</link>
+					<comments>https://blog.knatten.org/2024/11/20/visiting-cppcast/#respond</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Wed, 20 Nov 2024 14:41:36 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1879</guid>
+
+					<description><![CDATA[I recently had the pleasure of being the guest of the week on CppCast! I chatted with Phil and Timur about CppQuiz.org&#8216;s recent move to C++23, my book C++ Brain Teasers, and a bit about safety, the future of C++, and more. You can listen to the episode here: https://cppcast.com/tease_your_cpp_brain/]]></description>
+										<content:encoded><![CDATA[
+<p>I recently had the pleasure of being the guest of the week on CppCast! I chatted with Phil and Timur about <a href="https://ccppquiz.org">CppQuiz.org</a>&#8216;s recent move to C++23, my book C++ Brain Teasers, and a bit about safety, the future of C++, and more. You can listen to the episode here: <a href="https://cppcast.com/tease_your_cpp_brain/">https://cppcast.com/tease_your_cpp_brain/</a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2024/11/20/visiting-cppcast/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1879</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>CppQuiz.org is now on C++23</title>
+		<link>https://blog.knatten.org/2024/09/19/cppquiz-org-is-now-on-c23/</link>
+					<comments>https://blog.knatten.org/2024/09/19/cppquiz-org-is-now-on-c23/#comments</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Thu, 19 Sep 2024 07:12:49 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1850</guid>
+
+					<description><![CDATA[If you&#8217;re not familiar with https://cppquiz.org, it is, as its name suggests, a C++ quiz site. Each quiz is a full C++ program, and your task is to figure out what the output is. But the real value often lies in the explanation, which goes into detail about why the answer is what it is. &#8230; <a href="https://blog.knatten.org/2024/09/19/cppquiz-org-is-now-on-c23/" class="more-link">Continue reading <span class="screen-reader-text">CppQuiz.org is now on&#160;C++23</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>If you&#8217;re not familiar with <a href="https://cppquiz.org">https://cppquiz.org</a>, it is, as its name suggests, a C++ quiz site. Each quiz is a full C++ program, and your task is to figure out what the output is. But the real value often lies in the explanation, which goes into detail about why the answer is what it is. The explanations typically reference the standard quite a lot, so it&#8217;s a lot of work to port all of them whenever a new standard is published.</p>
+
+
+
+<p>Thanks to some great help from the community, especially <a href="https://github.com/tocic">@tocic</a>, we managed to port the whole site over the summer. So now you can enjoy up-to-date questions and explanations using the very latest C++23! </p>
+
+
+
+<p>As promised in <a href="https://blog.knatten.org/2024/06/02/help-get-cppquiz-to-c23-and-win-a-book/">Help Get CppQuiz to C++23 And Win a Book</a>, three contributors were drawn to win a copy of my book <a href="https://blog.knatten.org/2024/06/12/i-wrote-a-c-book/">C++ Brain Teasers</a>. Below is a recording of that:</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="embed-youtube"><iframe title="Cppquiz C++23 Porting Winners" width="1100" height="619" src="https://www.youtube.com/embed/kMbHxHcmlTE?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+</div></figure>
+
+
+
+<p>Again, thanks a lot to everyone who contributed, and congratulations to the three winners! You will be contacted by email to arrange for shipping.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2024/09/19/cppquiz-org-is-now-on-c23/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1850</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>C++ Brain Teasers Book Launch September 10 (live+streaming)</title>
+		<link>https://blog.knatten.org/2024/09/08/c-brain-teasers-book-launch-september-10-livestreaming/</link>
+					<comments>https://blog.knatten.org/2024/09/08/c-brain-teasers-book-launch-september-10-livestreaming/#respond</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Sun, 08 Sep 2024 20:15:10 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1842</guid>
+
+					<description><![CDATA[On September 10 there will be a book launch event for my book C++ Brain Teasers organized by Oslo C++ Users Group at NDC TechTown in Kongsberg. The event starts with food and mingling at 18:00 CEST, and the book launch starts at 18:30. Check out the event at Meetup.com for more details. Update: Here&#8217;s &#8230; <a href="https://blog.knatten.org/2024/09/08/c-brain-teasers-book-launch-september-10-livestreaming/" class="more-link">Continue reading <span class="screen-reader-text">C++ Brain Teasers Book Launch September 10 (live+streaming)</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>On September 10 there will be a book launch event for my book <a href="https://blog.knatten.org/2024/06/12/i-wrote-a-c-book/">C++ Brain Teasers</a> organized by Oslo C++ Users Group at NDC TechTown in Kongsberg. The event starts with food and mingling at 18:00 CEST, and the book launch starts at 18:30. Check out <a href="https://www.meetup.com/ocppug/events/303253509/">the event at Meetup.com</a> for more details. <strong>Update: <a href="https://www.youtube.com/watch?v=CNDWNFbjeTo">Here&#8217;s the recording of the event</a></strong>.</p>
+
+
+
+<p>The event will start with an interview by Olve Maudal, then we&#8217;ll do one chapter as a mini-quiz and I will read that chapter. There will be a few physical copies for sale and a discount on the e-book.</p>
+
+
+
+<p>I will also attempt to stream the event on YouTube, so if you can&#8217;t make it to Kongsberg, head over to my YouTube channel at <a href="https://www.youtube.com/@andersknatten">https://www.youtube.com/@andersknatten</a> and watch it from wherever you are in the world!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2024/09/08/c-brain-teasers-book-launch-september-10-livestreaming/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1842</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>I wrote a C++ book!</title>
+		<link>https://blog.knatten.org/2024/06/12/i-wrote-a-c-book/</link>
+					<comments>https://blog.knatten.org/2024/06/12/i-wrote-a-c-book/#comments</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Wed, 12 Jun 2024 18:30:16 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1827</guid>
+
+					<description><![CDATA[I&#8217;m very proud to announce that my first book just got released on The Pragmatic Programmers! The book is called &#8220;C++ Brain Teasers&#8220;, and is part of their Brain Teasers series. The book consists of 25 short C++ programs, and the point is to guess what the output is, and why the language works like &#8230; <a href="https://blog.knatten.org/2024/06/12/i-wrote-a-c-book/" class="more-link">Continue reading <span class="screen-reader-text">I wrote a C++&#160;book!</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>I&#8217;m very proud to announce that my first book just got released on <a href="https://pragprog.com">The Pragmatic Programmers</a>! The book is called &#8220;<a href="https://pragprog.com/titles/akbrain/c-brain-teasers/">C++ Brain Teasers</a>&#8220;, and is part of their <a href="https://pragprog.com/categories/brain-teasers/">Brain Teasers series</a>.</p>
+
+
+
+<p>The book consists of 25 short C++ programs, and the point is to guess what the output is, and why the language works like that. Much like <a href="https://cppquiz.org">CppQuiz.org</a>, except with more elaborate and well-written explanations explaining the underlying principles of the language. The puzzles were also selected to be more cohesive and relevant to real-world uses, and the explanations include lots of practical tips to write better and safer code in practice. So the book can be read just for fun or as a deeper learning opportunity, and maybe you can keep a few copies for entertainment around the office?</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg"><img loading="lazy" width="853" height="1023" data-attachment-id="1833" data-permalink="https://blog.knatten.org/2024/06/12/i-wrote-a-c-book/cppbrainteasers/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg" data-orig-size="2250,2700" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="cppbrainteasers" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=250" data-large-file="https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=853" src="https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=853" alt="" class="wp-image-1833" srcset="https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=853 853w, https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=1706 1706w, https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=125 125w, https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=250 250w, https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=768 768w, https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=1440 1440w" sizes="(max-width: 853px) 100vw, 853px" /></a></figure>
+
+
+
+<p>From the marketing blurb:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>C++ is famous for getting all the default behaviors wrong and for sometimes making demons fly out of your nose. Through 25 puzzles, from the useful to the outright weird, we explore some of C++ ‘s most interesting quirks. How does initialization actually work? Do temporaries even exist? Why is <code>+!!””</code>  a valid expression in C++ ? As you work through each puzzle, you will peel off some of the layers of complexity of C++ , getting a fundamental understanding of how the language works. This will help you write better code and recognize issues more easily while debugging.</p>
+</blockquote>
+
+
+
+<p>The book is available both in paperback and as an e-book, and can be <a href="https://pragprog.com/titles/akbrain/c-brain-teasers/">purchased from the publisher </a>or wherever you normally buy books. You can even download the preface and three full chapters for free, with no registration needed! I find it especially cool to be published on The Pragmatic Programmers, as &#8220;The Pragmatic Programmer&#8221; was an important and transformative book early on in my career. I even got support from Dave Thomas himself at one point! <img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f929.png" alt="🤩" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+
+
+<p>Finally, a big thank you to Frances Buontempo for introducing me to the publisher, and to my amazing technical reviewers Daniela Engert, Björn Fahller, Olve Maudal, Karthik Nishanth, Tom Schultz, Tina Ulbrich, Sergei Vasilchenko, and Piotr Wierciński!</p>
+
+
+
+<p>Happy reading!</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg"><img loading="lazy" width="768" height="1024" data-attachment-id="1840" data-permalink="https://blog.knatten.org/2024/06/12/i-wrote-a-c-book/20240612_203320/" data-orig-file="https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg" data-orig-size="2544,3392" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.2&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;Galaxy S23&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1718224400&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;3.3&quot;,&quot;iso&quot;:&quot;640&quot;,&quot;shutter_speed&quot;:&quot;0.02&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;,&quot;latitude&quot;:&quot;59.938574&quot;,&quot;longitude&quot;:&quot;10.7532277&quot;}" data-image-title="20240612_203320" data-image-description="" data-image-caption="" data-medium-file="https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=225" data-large-file="https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=768" src="https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=768" alt="" class="wp-image-1840" srcset="https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=768 768w, https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=1536 1536w, https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=112 112w, https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=225 225w, https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=1440 1440w" sizes="(max-width: 768px) 100vw, 768px" /></a></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2024/06/12/i-wrote-a-c-book/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1827</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2024/06/cppbrainteasers.jpeg?w=853" medium="image" />
+
+		<media:content url="https://blog.knatten.org/wp-content/uploads/2024/06/20240612_203320.jpg?w=768" medium="image" />
+	</item>
+		<item>
+		<title>Help get CppQuiz to C++23 and win a book!</title>
+		<link>https://blog.knatten.org/2024/06/02/help-get-cppquiz-to-c23-and-win-a-book/</link>
+					<comments>https://blog.knatten.org/2024/06/02/help-get-cppquiz-to-c23-and-win-a-book/#comments</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Sun, 02 Jun 2024 15:07:48 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1819</guid>
+
+					<description><![CDATA[CppQuiz.org is currently using C++ 17 for explanations and needs porting to C++ 23. I&#8217;d really appreciate your help! As a thank you, three contributors will get a copy of my upcoming book C++ Brain Teasers. How do I help? All the questions from the site have been exported to https://github.com/knatten/cppquiz23. Full instructions are in &#8230; <a href="https://blog.knatten.org/2024/06/02/help-get-cppquiz-to-c23-and-win-a-book/" class="more-link">Continue reading <span class="screen-reader-text">Help get CppQuiz to C++23 and win a&#160;book!</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><a href="http://cppquiz.org/">CppQuiz.org</a> is currently using C++ 17 for explanations and needs porting to C++ 23. I&#8217;d really appreciate your help! As a thank you, three contributors will get a copy of my upcoming book <a href="https://pragprog.com/titles/akbrain/c-brain-teasers/">C++ Brain Teasers</a>.</p>
+
+
+
+<h2 class="wp-block-heading">How do I help?</h2>
+
+
+
+<p>All the questions from the site have been exported to <a href="https://github.com/knatten/cppquiz23">https://github.com/knatten/cppquiz23</a>. Full instructions are in the README, but in summary, you just have to pick a question and update the explanation to refer to the C++ 23 standard instead of the C++ 17 one. Usually, there are just a few references that need updating (for instance, something moved from §[basic.type.qualifier]¶6 to §[basic.type.qualifier]¶3), sometimes a bit of rewriting is needed, and sometimes there are no changes at all.</p>
+
+
+
+<h2 class="wp-block-heading">How do I win a copy of the book?</h2>
+
+
+
+<p>When the porting is done, I randomly pick three of the ported questions that were not ported by me, and the ones who ported those questions get a copy each. If I draw the same person several times, I draw again until I have three separate winners.</p>
+
+
+
+<p>Let&#8217;s <a href="https://github.com/knatten/cppquiz23">get started</a>!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2024/06/02/help-get-cppquiz-to-c23-and-win-a-book/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1819</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>References don&#8217;t have top-level cv-qualifiers</title>
+		<link>https://blog.knatten.org/2023/03/17/references-dont-have-top-level-cv-qualifiers/</link>
+					<comments>https://blog.knatten.org/2023/03/17/references-dont-have-top-level-cv-qualifiers/#comments</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Fri, 17 Mar 2023 07:53:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[const]]></category>
+		<category><![CDATA[references]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1793</guid>
+
+					<description><![CDATA[Sometimes when reading about C++, for instance about template argument deduction, the term &#8220;top-level cv-qualifiers&#8221; comes up. I just spent an unreasonable amount of time being puzzled by something because I didn&#8217;t understand that references don&#8217;t have top-level cv-qualifiers. This post will hopefully help the next person (hi, next-year Anders) not make the same mistake. &#8230; <a href="https://blog.knatten.org/2023/03/17/references-dont-have-top-level-cv-qualifiers/" class="more-link">Continue reading <span class="screen-reader-text">References don&#8217;t have top-level&#160;cv-qualifiers</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>Sometimes when reading about C++, for instance about <a href="https://timsong-cpp.github.io/cppwp/n4861/temp.deduct.call">template argument deduction</a>, the term &#8220;top-level cv-qualifiers&#8221; comes up. I just spent an unreasonable amount of time being puzzled by something because I didn&#8217;t understand that references don&#8217;t <em>have</em> top-level cv-qualifiers. This post will hopefully help the next person (hi, next-year Anders) not make the same mistake.</p>
+
+
+
+<p>Looking at</p>
+
+
+
+<p><code>const int&amp;</code></p>
+
+
+
+<p>, I assumed without even thinking about it that the <code>const</code> here was the top-level one. It is not. </p>
+
+
+
+<p>First, what&#8217;s a cv-qualifier? It&#8217;s <code>const</code>, <code>volatile</code> or both. Let&#8217;s just use <code>const</code> as an example for this article.</p>
+
+
+
+<p>Then, what&#8217;s a <em>top-level </em> <code>cv-qualifier</code>? The best way to explain is with an example, and the best example is a pointer. There are two levels of constness to a pointer, the constness of the pointer itself, and the constness of what it&#8217;s pointing to.</p>
+
+
+
+<p>Given <code>const int *</code>, a non-const pointer to const int, we can visualise it as</p>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-center" data-align="center"><em>pointer</em> (the <code>*</code> part)</td></tr><tr><td class="has-text-align-center" data-align="center"><em>to</em></td></tr><tr><td class="has-text-align-center" data-align="center"><em>const int</em> (the <code>const int</code> part)</td></tr></tbody></table></figure>
+
+
+
+<p>And given <code>const int * const</code>, a const pointer to const int, we can visualise it as</p>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-center" data-align="center"><em>const pointer</em> (the<code> * const</code> part)</td></tr><tr><td class="has-text-align-center" data-align="center"><em>to</em></td></tr><tr><td class="has-text-align-center" data-align="center"><em>const int </em>(the <code>const int</code> part)</td></tr></tbody></table></figure>
+
+
+
+<p>(And so on, you can imagine how it looks for pointers to non-const <code>int</code>.) The <em>top-level</em> cv-qualifier is the one on the top level, the cv-qualifier on the pointer itself.</p>
+
+
+
+<p>Now, how does this look for references?</p>
+
+
+
+<p>Given  <code>const int&amp;</code>, a reference to const int, we can visualise it as</p>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-center" data-align="center"><em>reference</em> (the <code>&amp;</code> part)</td></tr><tr><td class="has-text-align-center" data-align="center"><em>to</em></td></tr><tr><td class="has-text-align-center" data-align="center"><em>const int</em> (the <code>const int</code> part)</td></tr></tbody></table></figure>
+
+
+
+<p>But there&#8217;s no such thing as a const reference! Constness applies to the object itself, and a reference is not an object, just an alternative name for an existing object. So there is no such thing as a <code>const int&amp; const</code>, i.e. there&#8217;s no such thing as</p>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-center" data-align="center"><em>const reference</em> (the <code>&amp; const</code> part)</td></tr><tr><td class="has-text-align-center" data-align="center"><em>to</em></td></tr><tr><td class="has-text-align-center" data-align="center"><em>const int</em> (the <code>const int</code> part)</td></tr></tbody></table></figure>
+
+
+
+<p>Which means, references don&#8217;t have top-level cv-qualifiers. The standard even has an example:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Example: The type corresponding to the type-id <code>const int&amp;</code> has no top-level cv-qualifiers.</p>
+<cite><a href="https://timsong-cpp.github.io/cppwp/n4861/basic.type.qualifier">[basic.type.qualifier]</a></cite></blockquote>
+
+
+
+<p>This is by the way a somewhat recent addition, until <a href="https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4458.html#609">this Core Language Defect Report</a> was resolved in 2014, the term &#8220;top-level cv-qualifier&#8221; was never actually defined in the standard.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2023/03/17/references-dont-have-top-level-cv-qualifiers/feed/</wfw:commentRss>
+			<slash:comments>5</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1793</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Why we probably shouldn&#8217;t have constexpr conditional operator</title>
+		<link>https://blog.knatten.org/2023/01/02/why-we-probably-shouldnt-have-constexpr-conditional-operator/</link>
+					<comments>https://blog.knatten.org/2023/01/02/why-we-probably-shouldnt-have-constexpr-conditional-operator/#comments</comments>
+		
+		<dc:creator><![CDATA[Anders Schau Knatten]]></dc:creator>
+		<pubDate>Mon, 02 Jan 2023 20:10:06 +0000</pubDate>
+				<category><![CDATA[C++]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[constexpr]]></category>
+		<category><![CDATA[proposal]]></category>
+		<guid isPermaLink="false">http://blog.knatten.org/?p=1752</guid>
+
+					<description><![CDATA[The idea I had a great idea. We have constexpr if, but no constexpr conditional operator. Time for a proposal? Since we can do stuff like this: Wouldn&#8217;t it be cool if we could also do My motivation was that I had a std::variant visitor that was identical for all types except one. So instead &#8230; <a href="https://blog.knatten.org/2023/01/02/why-we-probably-shouldnt-have-constexpr-conditional-operator/" class="more-link">Continue reading <span class="screen-reader-text">Why we probably shouldn&#8217;t have constexpr conditional&#160;operator</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<h2 class="wp-block-heading">The idea</h2>
+
+
+
+<p>I had a great idea. We have constexpr if, but no constexpr conditional operator. Time for a proposal?</p>
+
+
+
+<p>Since we can do stuff like this:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate">
+if constexpr(cond) { foo; } else { bar;}
+</pre></div>
+
+
+<p>Wouldn&#8217;t it be cool if we could also do</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+cond ? constexpr foo : bar;
+</pre></div>
+
+
+<p>My motivation was that I had a <code>std::variant</code> visitor that was identical for all types except one. So instead of writing an overload set for <code>std::visit</code>, it was simpler to have one common lambda with a conditional inside. Something like this, which returns &#8220;int&#8221; for <code>int</code> and &#8220;other&#8221; for all other types in the variant:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate">
+std::visit(&#91;]&lt;typename T&gt;(T value) {
+        if constexpr(std::is_same_v&lt;int, T&gt;)
+        {
+            return &quot;int&quot;;
+        }
+        else
+        {
+            return &quot;other&quot;;
+        }
+    },
+    my_variant);
+</pre></div>
+
+
+<p>It would be nicer to write it like this with a conditional operator, but now we can&#8217;t use <code>constexpr</code>.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate">
+std::visit(&#91;]&lt;typename T&gt;(T value) {
+        return std::is_same_v&lt;int, T&gt; ? &quot;int&quot; : &quot;other&quot;;
+    },
+    my_variant);
+</pre></div>
+
+
+<p>So I had the idea of constexpr conditional operator, so I could write my lambda something like this:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate">
+std::visit(&#91;]&lt;typename T&gt;(T value) {
+         return std::is_same_v&lt;int, T&gt; ? constexpr &quot;int&quot; : &quot;other&quot;;
+    },
+    my_variant);
+</pre></div>
+
+
+<p>In this case, <code>constexpr</code> doesn&#8217;t actually make much of a difference. <code>std::is_same_v</code> is a constant expression no matter if you use the <code>constexpr</code> keyword or not, so the compiler optimises it equally well in either case. But at least we verify that the condition is actually a constant expression. If we mess this up, we get a compiler error.</p>
+
+
+
+<p>But the most important advantage of constexpr if is that each branch only need to compile if that branch is taken at compile time. So you can do for instance</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate">
+template&lt;typename T&gt;
+int f(T t) {
+    if constexpr(std::is_same_v&lt;T, std::string&gt;)
+        return t.size();
+    else
+        return t;
+}
+</pre></div>
+
+
+<p>and this will work both for <code>int</code> and <code>std::string</code>, even if the first branch wouldn&#8217;t compile for an <code>int</code> and the second wouldn&#8217;t compile for <code>std::string</code>. Remove <code>constexpr</code> above, and you&#8217;re in trouble.</p>
+
+
+
+<p>As it turns out, this is exactly why constexpr conditional operator might <em>not</em> be such a good idea! Thanks to <a href="https://twitter.com/DanielaKEngert">Daniela Engert</a> who <a href="https://twitter.com/DanielaKEngert/status/1604073473063718913">pointed this problem out to me</a>. </p>
+
+
+
+<h2 class="wp-block-heading">The problem</h2>
+
+
+
+<p><strong><code>if</code> is a statement, it doesn&#8217;t have a type. The conditional operator however is an expression, and has a type</strong>!</p>
+
+
+
+<p>You can&#8217;t assign the result of an if statement to something, it doesn&#8217;t have a type or result in a value. The conditional operator does however. And the type of the conditional operator is determined by a set of rules which find a common type for the two branches. For instance:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate">
+auto result = false ? std::optional&lt;int&gt;{2} : 0;
+</pre></div>
+
+
+<p>The two branches have the types <code>std::optional&lt;int&gt;</code> and <code>int</code>, respectively. The compiler now has to figure out what the type of the expression should be, by trying to form implicit conversion sequences from the first to the other, and vice versa. See<a href="https://timsong-cpp.github.io/cppwp/n4659/expr.cond#4"> [expr.cond]</a> for details. Since one can implicitly convert an <code>int</code> to a <code>std::optional&lt;int&gt;</code>, but not vice versa, the type of the full conditional expression (and thus the type of <code>result</code>) is <code>std::optional&lt;int&gt;</code>.</p>
+
+
+
+<p>If we introduced something like <code>? constexpr</code> here, with the same semantics as <code>if constexpr</code>, suddenly one of the branches would be discarded. And we&#8217;d <em>have</em> to do that, since the whole point is that the branch not taken usually doesn&#8217;t even compile. So in the case above, the first branch would be discarded, and we&#8217;d only be left with the literal <code>0</code> which has type <code>int</code>. Left with only the <code>int</code> to deduce a type from, the type of the full conditional expression would now be <code>int</code> instead of <code>std::optional&lt;int&gt;</code>. And Daniela&#8217;s argument, which I agree with, is that it could be surprising if the type of an expression changed just by introducing or removing <code>constexpr</code>.</p>
+
+
+
+<p>In comparison, remember that an if statement doesn&#8217;t result in a value, and doesn&#8217;t even have a type. If you want to do the same with an if, you first have to define the result variable, and there&#8217;s no way to do that upfront without explicitly deciding on its type:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate">
+std::optional&lt;int&gt; result;
+if constexpr (false)
+    result = std::optional&lt;int&gt;{2};
+else
+    result = 0;
+</pre></div>
+
+
+<p>Notice here that the type of the value we <em>assign</em> to <code>result</code> is still different based on the <code>constexpr</code> condition, but now there&#8217;s no surprise, the resulting type is always the same. Both branches have to result in a type implicitly convertible to <code>std::optional&lt;int&gt;</code>, if they&#8217;re ever instantiated.</p>
+
+
+
+<h2 class="wp-block-heading">A counter argument?</h2>
+
+
+
+<p>There is one final point that needs to be mentioned, where the types of two if constexpr branches actually do influence type deduction. This can happen when you have a function with an <code>auto</code> return type, and you return from inside the if constexpr. Here&#8217;s a demonstration with a function template, but it can also happen for regular functions:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate">
+template&lt;bool b&gt;
+auto f()
+{
+    if constexpr (b)
+        return std::optional&lt;int&gt;{2};
+    else
+        return 0;
+}
+</pre></div>
+
+
+<p>The return type of <code>f&lt;true&gt;</code> is <code>std::optional&lt;int&gt;</code>, and the return type of  <code>f&lt;false&gt;</code> is <code>int</code>. Isn&#8217;t this the same problem we just used to argue against constexpr conditional operator? It&#8217;s similar, but not the same. The big difference is that removing <code>constexpr</code> in this example doesn&#8217;t change the deduced type, it rather causes a compilation error. This is due to <a href="https://timsong-cpp.github.io/cppwp/n4659/dcl.spec.auto#8">dcl.spec.auto#8</a>, which is very strict about all non-discarded return statements having <em>the same</em> type, not just types that can be implicitly converted to a common type:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>If a function with a declared return type that contains a placeholder type has multiple non-discarded&nbsp;return&nbsp;statements, the return type is deduced for each such&nbsp;return&nbsp;statement. If the type deduced is not the same in each deduction, the program is ill-formed.</p>
+<cite><a href="https://timsong-cpp.github.io/cppwp/n4659/dcl.spec.auto#8">dcl.spec.auto#8</a></cite></blockquote>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>For constexpr conditional operator, adding/removing <code>constexpr</code> could change a deduced type, which could be surprising. For constexpr if, this doesn&#8217;t happen.</p>
+
+
+
+<p>What do you think? Should we have constexpr conditional operator or not?</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.knatten.org/2023/01/02/why-we-probably-shouldnt-have-constexpr-conditional-operator/feed/</wfw:commentRss>
+			<slash:comments>8</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1752</post-id>
+		<media:content url="https://0.gravatar.com/avatar/61f181cc55d99e60e245e7cd9bcc91b2959436117a2699d0fa4d14d482b28dac?s=96&#38;d=identicon&#38;r=X" medium="image">
+			<media:title type="html">aknatten</media:title>
+		</media:content>
+	</item>
+	</channel>
+</rss>

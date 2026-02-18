@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://quartzlibrary.com</id>
+  <title>QuartzLibrary</title>
+  <updated>2026-02-17T15:04:35.185609+00:00</updated>
+  <author>
+    <name>quartzlibrary</name>
+    <email>hidden</email>
+  </author>
+  <link href="https://quartzlibrary.com/" rel="alternate"/>
+  <link href="https://quartzlibrary.com/feed/" rel="self"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+  <subtitle>Reach out: hi@quartzlibrary.com&#13;
+&#13;
+{{ posts }}&#13;
+\- Code...</subtitle>
+  <entry>
+    <id>https://quartzlibrary.com/edit/</id>
+    <title>Effects of [n] edits on GWAS scores</title>
+    <updated>2025-07-26T14:39:00.547187+00:00</updated>
+    <author>
+      <name>quartzlibrary</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;A while ago I wondered something along the lines of:&lt;/p&gt;
+&lt;p&gt;If you were to pick the highest impact edits from a &lt;a href='https://en.wikipedia.org/wiki/Genome-wide_association_study'&gt;GWAS&lt;/a&gt;, what would they look like?&lt;/p&gt;
+&lt;p&gt;Specifically, the following seemed interesting:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Would the top edits be shared by most people (potentially affecting the ease of a widespread multiplexed therapy)?&lt;/li&gt;
+&lt;li&gt;How much can we expect to affect a score with 1, 10, or 100 edits (potentially giving an idea of how many edits would be required to significantly shift a trait)?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The most straightforward way to do this is to score a bunch of genomes, and keep track of the mutations with the largest effects, so I did just that.&lt;/p&gt;
+&lt;p&gt;You can find the results &lt;a href='https://edit.quartzlibrary.com'&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+    <link href="https://quartzlibrary.com/edit/" rel="alternate"/>
+    <published>2025-05-25T18:54:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://quartzlibrary.com/copy/</id>
+    <title>Splitting the Rust Copy Trait</title>
+    <updated>2025-05-03T11:40:35.501202+00:00</updated>
+    <author>
+      <name>quartzlibrary</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;TL;DR:&lt;/p&gt;
+&lt;p&gt;&lt;a href='https://www.rust-lang.org/'&gt;Rust&lt;/a&gt; has the opportunity to significantly improve its ergonomics by targeting one of its core usability issues: passing values across boundaries.&lt;/p&gt;
+&lt;p&gt;Specifically, the ability to opt into 'copy semantics' for non-&lt;code&gt;Copy&lt;/code&gt; user types would solve a host of issues without interfering with lower-level code and letting users opt into ergonomics ~on par with garbage collected languages.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3 id=copy-move-semantics&gt;Copy &amp; Move semantics&lt;/h3&gt;&lt;p&gt;As a reminder, in Rust when a value is assigned, moved into a closure &lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt; , or passed to a function:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If it has 'copy semantics': the value is copied, and the copy is used.
+No user code is run, the value being &lt;code&gt;Copy&lt;/code&gt; means that the compiler can literally copy and paste (&lt;code&gt;memcopy&lt;/code&gt;) the raw value without side effects (like, say, an allocation). The type is 'plain old data'.&lt;/li&gt;
+&lt;li&gt;If it has 'move semantics': the value is &lt;em&gt;not&lt;/em&gt; copied and is 'used up' instead.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This post will not try to establish more context than this, but if you have used Rust for a while this will all sound familiar. See &lt;a href='https://doc.rust-lang.org/std/marker/trait.Copy.html'&gt;&lt;code&gt;Copy&lt;/code&gt;&lt;/a&gt; and &lt;a href='https://doc.rust-lang.org/std/clone/trait.Clone.html'&gt;&lt;code&gt;Clone&lt;/code&gt;&lt;/a&gt; for more info.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=a-collection-of-related-problems&gt;A collection of related problems&lt;/h3&gt;&lt;p&gt;As a full time Rust developer writing code across the stack&lt;sup class="footnote-ref" id="fnref-2"&gt;&lt;a href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;, I enjoy the control and guarantees the language offers.
+But. There's set of related issues that wears down on Rust's utility in a lot of code:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Moving things into closures.&lt;/li&gt;
+&lt;li&gt;Passing values to functions.&lt;/li&gt;
+&lt;li&gt;Accessing fields.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;details&gt;
+&lt;summary&gt;Example&lt;/summary&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Post&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;fn&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Post&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;todo&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;lookup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;//     ^ Compile error.&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// This often gets in the way!&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;fn&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;lookup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kp"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nc"&gt;Username&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;User&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/details&gt;
+&lt;p&gt;The above are small, but frequent, pain-points for code that simply does not need to care about, say, an &lt;code&gt;Rc::clone&lt;/code&gt;. This is a genuine productivity sink. I have forgotten a meaningless &lt;code&gt;.clone()&lt;/code&gt; many times, leading to slow downs in my iteration speed as the compiler churns. Even when iteration speed is not the bottleneck, extra annotations can often go from useful guardrails to obscuring fog over the logic they are sprinkled on.&lt;/p&gt;
+&lt;p&gt;Countless times, small paper-cuts shave off slivers of productivity even for experienced Rust devs when the language should just get out of the way.&lt;/p&gt;
+&lt;p&gt;Yet, those clones do count in other contexts. We also have mental models of them—for example, they help maintain useful scoping invariants&lt;sup class="footnote-ref" id="fnref-3"&gt;&lt;a href="#fn-3"&gt;3&lt;/a&gt;&lt;/sup&gt;—on top of the usual performance considerations. Rust can't just turn all of that onto its head, it's part of what makes it great!&lt;/p&gt;
+&lt;h3 id=a-solution-of-hopefully-small-compromises&gt;A solution of hopefully small compromises&lt;/h3&gt;&lt;p&gt;Desired properties:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rust keeps working basically as is for everyone who doesn't want this new feature.&lt;/li&gt;
+&lt;li&gt;Rust doesn't significantly increase in complexity overall.&lt;sup class="footnote-ref" id="fnref-4"&gt;&lt;a href="#fn-4"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Rust becomes more friendly to higher-level code, particularly to contexts where values are promiscuously shared.&lt;/li&gt;
+&lt;li&gt;Rust doesn't split into 'dialects'. By default, any code you copy-paste should work.&lt;sup class="footnote-ref" id="fnref-5"&gt;&lt;a href="#fn-5"&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Proposed solution:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Introduce a new trait which opts a type into 'copy semantics', deferring to a clone implementation which is understood to be cheap.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Copy&lt;/code&gt; remains as the marker trait for &lt;code&gt;memcopy&lt;/code&gt;-able 'plain old data'.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;DO NOT&lt;/em&gt;&lt;/strong&gt; implement this new trait for standard library types like &lt;code&gt;Rc&lt;/code&gt;.
+This is an important point! This is not about making all of Rust more 'ergonomic' for a high-level definition of ergonomic.&lt;/li&gt;
+&lt;li&gt;Optionally, blanket-implement the new trait for &lt;code&gt;Copy&lt;/code&gt; types to maintain current semantics (&lt;code&gt;Copy&lt;/code&gt; implies 'copy semantics').&lt;/li&gt;
+&lt;li&gt;(Separately, introduce lightweight cloning syntax like the &lt;code&gt;move(rc.clone()) || drop(rc)&lt;/code&gt; proposal if desired.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The trait would look something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;/// Invariants:&lt;/span&gt;
+&lt;span class="sd"&gt;/// - The clone has ~no side effects, like for an Rc.&lt;/span&gt;
+&lt;span class="sd"&gt;/// - The clone may be skipped.&lt;/span&gt;
+&lt;span class="sd"&gt;/// NOTE: unsafe code should not rely on a clone (not) happening.&lt;/span&gt;
+&lt;span class="k"&gt;trait&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;CopySemantics&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{}&lt;/span&gt;
+
+&lt;span class="c1"&gt;// A blanket impl is the simplest option, but we could also&lt;/span&gt;
+&lt;span class="c1"&gt;// use editions to improve the semantics of the trait by&lt;/span&gt;
+&lt;span class="c1"&gt;// disentangling it from `Copy` types.&lt;/span&gt;
+&lt;span class="k"&gt;impl&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Copy&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;CopySemantics&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The pros of this solution:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Code dealing with standard types and existing low-level code is not opted into something undesirable or gains 'new degrees of freedom'.&lt;ul&gt;
+&lt;li&gt;Low level Rustacean don't even need to know this is a thing.&lt;/li&gt;
+&lt;li&gt;By default, code remains explicit.&lt;/li&gt;
+&lt;li&gt;No new syntax or overloading of a keyword.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;By and large, the places that really need promiscuous cloning can use their own types, this allows them to opt into much more ergonomic syntax.&lt;/li&gt;
+&lt;li&gt;The cloning issue is resolved separately, by a more targeted and generalizable solution.&lt;ul&gt;
+&lt;li&gt;The extension of &lt;code&gt;move&lt;/code&gt; has a lot going for it, as it can make the moved values explicit and help describe new scoping invariants.&lt;sup class="footnote-ref" id="fnref-6"&gt;&lt;a href="#fn-6"&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;We can distinguish between, say: 'this is a ref-counted value that is promiscuously shared' and 'this is a cyclic data-structure where we carefully manage clones to avoid leaks'.&lt;/li&gt;
+&lt;li&gt;If we find that all this implicit cloning is fine, we can later enable it for &lt;code&gt;std&lt;/code&gt; library types.&lt;/li&gt;
+&lt;li&gt;If we do &lt;em&gt;not&lt;/em&gt; blanket implement the new trait for &lt;code&gt;Copy&lt;/code&gt; types, we get additional benefits:&lt;ul&gt;
+&lt;li&gt;More types can be &lt;code&gt;Copy&lt;/code&gt; (currently they are 'plain old data', but invisibly copying them would be a cause of logic foot-guns).&lt;/li&gt;
+&lt;li&gt;Very large &lt;code&gt;Copy&lt;/code&gt; types need not implement the new trait, in line with the fact that they are expensive.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Copy&lt;/code&gt; can be essentially forgotten be almost all Rust devs that wouldn't normally need to think of whether something is 'plain old data'.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The cons of this solution:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This takes a well known Rust concept (the &lt;code&gt;Copy&lt;/code&gt; trait), and essentially splits it in two.&lt;/li&gt;
+&lt;li&gt;Relies on the community not misusing the new trait to maintain code-quality.&lt;/li&gt;
+&lt;li&gt;Arbitrary code can run on things like fields access.&lt;br/&gt;
+This is a big one and the main reason &lt;em&gt;not&lt;/em&gt; to do it. If this were to proliferate widely then it could increase the cognitive overhead of thinking about Rust code.&lt;br/&gt;
+I would go as far as saying that expecting the community to not grossly misuse this is essential to moving forward with the proposal.&lt;/li&gt;
+&lt;li&gt;If we do &lt;em&gt;not&lt;/em&gt; blanket implement the new trait for &lt;code&gt;Copy&lt;/code&gt; types, we get additional disadvantages:&lt;ul&gt;
+&lt;li&gt;A decade of documentation and learning materials becomes obsolete, as they'll be talking about &lt;code&gt;Copy&lt;/code&gt; implying 'copy semantics'.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Alternatives:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We could make which types use 'copy semantics' a property of the &lt;em&gt;code&lt;/em&gt;, rather than the &lt;em&gt;type&lt;/em&gt;.
+What this would look like is something like an &lt;code&gt;#[autoclone]&lt;/code&gt; attribute that tells the compiler 'in this code, just implicitly clone these types' (where 'these types' is either enumerated in the attribute or from a marker trait).
+&lt;br/&gt;
+This has the big issue of causing Rust to potentially diverge into dialects, where in some codebases the same types behave differently. It would also require a magic incantation for high level users of Rust to start working. Still, 'autoclone is a property of the code' does seem in principle 'correct'. [&lt;a href='https://github.com/rust-lang/rfcs/pull/3680#issuecomment-2308983091'&gt;source&lt;/a&gt;]&lt;/li&gt;
+&lt;li&gt;Niko Matsakis has a couple of &lt;a href='https://smallcultfollowing.com/babysteps/blog/2024/06/21/claim-auto-and-otherwise/'&gt;blog&lt;/a&gt; &lt;a href='https://smallcultfollowing.com/babysteps/blog/2024/06/26/claim-followup-1/'&gt;posts&lt;/a&gt; on a proposal very similar to the one in this post. The main differences are:&lt;ul&gt;
+&lt;li&gt;He recommends disentangling &lt;code&gt;Copy&lt;/code&gt; and 'copy semantics'. I am still a bit wary of making the accumulated resources on Rust subtly wrong, but it might not matter in practice since almost all &lt;code&gt;Copy&lt;/code&gt; types would still follow 'copy semantics'.&lt;/li&gt;
+&lt;li&gt;He recommends implementing the new trait on &lt;code&gt;Rc&lt;/code&gt;s and similar. This is something that can be done late backward-compatibly, so I think we should hold off on it (and probably never do it). It is also useful to have a type to use for potentially recursive types to avoid accidental leaks from promiscuous cloning.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=assorted-closing-notes&gt;Assorted closing notes&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;This or similar proposals might be sufficient for ergonomic garbage collection in Rust. A large point of garbage collection is not thinking about it, so you want to avoid &lt;code&gt;.clone()&lt;/code&gt;s everywhere.&lt;/li&gt;
+&lt;li&gt;There are similar precedents for silently-run user code in Rust: &lt;code&gt;Deref&lt;/code&gt; and &lt;code&gt;Drop&lt;/code&gt;. In practice the Rust community has been very good at not abusing these.&lt;/li&gt;
+&lt;li&gt;New syntax like &lt;a href='https://github.com/rust-lang/rfcs/pull/3680'&gt;&lt;code&gt;.use&lt;/code&gt;&lt;/a&gt; &lt;em&gt;will not be enough&lt;/em&gt; for high level programming like frontend UI work. The cost of needing to remember it and associated recompilation time  when you don't is just too high and isn't addressed. Frameworks will keep investing in ad-hoc solutions to make their values &lt;code&gt;Copy&lt;/code&gt;, and places where the issue is not existential will just deal.
+It would also interfere with the current scoping mental model, so it should not be enabled for &lt;code&gt;Rc&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=conclusions&gt;Conclusions&lt;/h3&gt;&lt;p&gt;Rust could become significantly more ergonomic in high-level code by allowing users to opt into 'copy semantics' for their types, which would then behave like current &lt;code&gt;Copy&lt;/code&gt; types.
+By allowing this, but not using it in the standard library and core crates, we avoid permeating the ecosystem with the pattern, while letting higher level crates reap the benefits where they are most plentiful.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;and async blocks, but those are similar, so I'll just talk about closures.&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-2"&gt;&lt;p&gt;Including in what might be one of the most complex Rust browser frontends in the world, though mostly by virtue of not there being many of them. :D&lt;a href="#fnref-2" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-3"&gt;&lt;p&gt;For example 'I have this &lt;code&gt;Rc&lt;/code&gt; here, but I haven't cloned it before passing it into the closure, and I am using it below, and it compiles, so it is not used in the closure'. Lots of small invariants like this add up to code that is simpler to grok.&lt;a href="#fnref-3" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-4"&gt;&lt;p&gt;As in: a beginner would not have an extra thing to learn, which I think is true for the proposed solution. A beginner would still have to learn about 'copy' and 'move' semantics, but wouldn't need to care about the, now deprecated, connection to the Copy trait. They can separately learn about the &lt;code&gt;Copy&lt;/code&gt; trait if they need or want to.&lt;a href="#fnref-4" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-5"&gt;&lt;p&gt;Unless the &lt;em&gt;destination&lt;/em&gt; has opted into more restrictive checks.&lt;a href="#fnref-5" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-6"&gt;&lt;p&gt;&lt;code&gt;move()&lt;/code&gt; can mean 'no captures'.&lt;br/&gt;&lt;code&gt;move(..)&lt;/code&gt; could mean &lt;code&gt;move&lt;/code&gt; (move everything).&lt;br/&gt;&lt;code&gt;move(a)&lt;/code&gt; could mean 'capture by move exactly a'&lt;br/&gt;&lt;code&gt;move(ref a)&lt;/code&gt; could mean 'capture by reference a'&lt;br/&gt;&lt;code&gt;move(a, ..)&lt;/code&gt; could mean 'capture by move at least a'&lt;br/&gt;&lt;code&gt;move(a, ref ..)&lt;/code&gt; could mean 'capture a by move, capture by reference everything else'.&lt;br/&gt;Though not all of these need be implemented.&lt;a href="#fnref-6" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://quartzlibrary.com/copy/" rel="alternate"/>
+    <published>2025-03-26T00:00:00+00:00</published>
+  </entry>
+</feed>

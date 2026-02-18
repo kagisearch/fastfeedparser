@@ -1,0 +1,2133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Servers for Hackers</title>
+    <link>https://serversforhackers.com</link>
+    <description>Server Admin for Programmers</description>
+    <item>
+      <title>Kubernetes in Digital Ocean</title>
+      <link>https://serversforhackers.com/c/kubernetes-in-digitalocean</link>
+      <description>Running through Kubernetes in Digital Ocean to run a simple web application.</description>
+      <content:encoded><![CDATA[<p>Kubernetes! It's got <em>a lot</em> going on, but nothing you can't handle.</p>
+<p>I was playing with a <a href="https://www.digitalocean.com/products/kubernetes?refcode=0bcfdc2f70eb&amp;utm_campaign=Referral_Invite&amp;utm_medium=Referral_Program&amp;utm_source=CopyPaste">Digital Ocean Kubernetes cluster</a> (the default 3 Nodes is ~$72/mo, which will run a decent number of your typical Laravel apps).</p>
+<p>Like other clouds, DO's flavor of K8s is...just K8s (that's a good thing!) and integrates with their other services, such as a managed load balancer. This means we can get traffic into our K8s cluster pretty easily.</p>
+<p>So, based on <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes">this DO article</a>, here's how I did stuff on K8s on Digital Ocean.</p>
+<p>Everything here is updated to the most modern version (as of this writing), and shorted to make a bit more sense (to me), and do less work (skip generating SSL certs).</p>
+<h2>The Goal</h2>
+<p>The goal here is to run an application, and get public traffic routed to it.</p>
+<p>We need a few things:</p>
+<ol>
+<li>A K8s cluster</li>
+<li>A way to ingress (get incoming traffic to) to the cluster</li>
+<li>A way to run web app containers</li>
+</ol>
+<p>You'll need <a href="https://kubernetes.io/docs/tasks/tools/"><code>kubectl</code></a> to do anything useful here. It's likely already present if you're using Docker on Mac.</p>
+<p>Let's start!</p>
+<h2>The Cluster</h2>
+<p>We first create a K8s cluster. This is just clicking around the DO UI. Don't get hung up on the number of Nodes, etc - to play with this, just create the basic 3-node &quot;regular CPU/disk drive&quot; option. </p>
+<p>Once you've watched the create progress bar for a few minutes, refresh to find that maybe the progress bar was lying, and then find yet even more buttons that appear to download the configuration (Kubeconf) file.</p>
+<p>Then we can confirm that everything is running:</p>
+<pre><code class="language-bash"># Normally this is at ~/.kube/config, but
+# I'm just using the downloaded file here
+export KUBECONFIG=/Users/fideloper/Downloads/fidelopers-cluster-luck-kubeconfig.yaml
+
+# Confirm it works, find all
+# Pods running in all namespaces
+kubectl get pods -A
+
+# Get all resources in this
+# cluster across all namespaces
+kubectl get all -A</code></pre>
+<p>You'll see a big list of Pods running in your K8s cluster. It's all normal - things that provide networking (Cilium, coredns, kube-proxy), a CSI (container storage interface) to help with attaching storage, things monitoring your cluster, and more things specific to how DO manages your cluster.</p>
+<h2>Ingress</h2>
+<p>The term &quot;ingress&quot; refers to incoming network traffic. We're going to get public web requests into stuff running in our K8s cluster.</p>
+<p>To do that, we'll install <a href="https://github.com/kubernetes/ingress-nginx">Ingress Nginx</a>, which will do 2 things:</p>
+<ol>
+<li>Create a DO managed load balancer</li>
+<li>Run Nginx within the K8s cluster</li>
+</ol>
+<p>These two things work together - the load balancer gets Nginx registered as an endpoint to proxy traffic to, and then Nginx (running within the cluster) can accept web requests and route them to the correct Service (and therefore the correct Pods running your apps).</p>
+<p>The Ingress Nginx has configuration for the <a href="https://github.com/kubernetes/ingress-nginx/tree/main/deploy/static/provider">popular flavors of managed (and unmanaged) K8s</a>.</p>
+<p>We're using the <code>do</code> flavor here.</p>
+<pre><code class="language-bash"># Find the latest release of the controller (not of the Helm chart!) here:
+# https://github.com/kubernetes/ingress-nginx/releases
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/do/deploy.yaml</code></pre>
+<p>It will take a few moments for the Load Balancer to be created (find it in the Networking tab of your DO console).</p>
+<p>We have the cluster and a way to ingress into the cluster. Let's now create the other stuff we need to route traffic to the correct place.</p>
+<p>This requires the following:</p>
+<ol>
+<li>A Service</li>
+<li>A Deployment</li>
+<li>An Ingress</li>
+</ol>
+<p>A Service exposes a Deployment as something reachable by the network, basically saying (for example) &quot;all requests to this service at this port go to this target&quot;.</p>
+<p>A Deployment gets some Pods running, with the containers of your choice. This also sets sets the port the containers are running on (the aforementioned &quot;target&quot;).</p>
+<p>An Ingress defines how ingress traffic (external traffic headed into the cluster) is routed to the Service and thus can reach the Pods within that Service.</p>
+<h2>The Service + Deployment</h2>
+<p>We're going to define 2 K8s objects at once here:</p>
+<ol>
+<li>a Service</li>
+<li>a Deployment</li>
+</ol>
+<p>The Service points traffic to the Pods created in the Deployment.</p>
+<p>The Deployment creates a ReplicaSet and Pods. A ReplicaSet is a thing that says &quot;keep this many of this Pod running&quot;.</p>
+<p>The Deployment also helps deploy the Pods (creating and later updating them), using a &quot;rolling&quot; deployment strategy by default.</p>
+<p>Here's what it looks like to define them - create file <code>echo.yaml</code>:</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: echo1
+spec:
+  ports:
+  - port: 80
+    targetPort: 5678
+  selector:
+    app: echo1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo1
+spec:
+  selector:
+    matchLabels:
+      app: echo1
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: echo1
+    spec:
+      containers:
+      - name: echo1
+        image: hashicorp/http-echo
+        args:
+        - "-text=echo1"
+        ports:
+        - containerPort: 5678</code></pre>
+<p>And then apply it:</p>
+<pre><code class="language-bash">k apply -f echo.yaml</code></pre>
+<p>I've named everything &quot;echo1&quot; (you can duplicate all of this and adjust it to be <code>echo2</code> to create a second Service, etc).</p>
+<p>There's a bunch going on, but the Service name being <code>echo1</code> is the most important in terms of getting external traffic routed to this.</p>
+<p>One thing we did is give the Pods a the key=value label of <code>app: echo1</code>. That's done with the <code>template</code>, which is a tempmlate for the <code>Pod</code> spec. </p>
+<p>You can create a Pod directly too, but using a Deployment is generally what you want to do, since it provides the ReplicaSet and a deployment strategy. See how we have a <code>replica</code> of 2? There will be 2 pods of this container running.</p>
+<p>(The &quot;selector&quot; stuff is applying the Service and Deployment to those Pods of label <code>app: echo1</code>).</p>
+<p>Got it? Me either. This took me a while. The K8s yaml provides for a lot of use cases, and so its abstractions are a bit odd at first.</p>
+<h3>We can't route traffic yet</h3>
+<p>So we can't yet route traffic to this service from the outside world. However we can test this out via K8s internal DNS:</p>
+<pre><code class="language-bash"># Run a Pod of Ubuntu 24.04 and make some 
+# curl requests to the service we just created
+# This is just like running a Docker container, e.g.
+#   "docker run --rm -it ubuntu:24.04 bash"
+kubectl run --rm -it --image=ubuntu:24.04 -- bash
+
+&gt; apt-get update &amp;&amp; apt-get install -y curl
+&gt; curl echo1.default.svc.cluster.local
+&gt;# echo1</code></pre>
+<p>The hostname <code>echo1.default.svc.cluster.local</code> is in format <code>&lt;service-name&gt;.&lt;namespace&gt;.svc.cluster.local</code>. The HTTP response is just &quot;echo1&quot;.</p>
+<h2>Ingress</h2>
+<p>We created a service, and we can use internal DNS to send requests to it from within the cluster. However, we want external traffic to reach it through the load balancer!</p>
+<p>The flow of traffic will be <code>my laptop -&gt; DO load balancer -&gt; Ingress Nginx -&gt; one of the 2 Pods</code>.</p>
+<p>To accomplish that, we need to define an Ingress. The Ingress will tell K8s to use Ingress Nginx to route requests to the correct Service based on hostname (we'll configure it to map hostnames to Services, but you can do other stuff).</p>
+<p>Create a new file <code>ingress.yaml</code>:</p>
+<pre><code class="language-bash">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: echo1.example.com
+    http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: echo1
+              port:
+                number: 80</code></pre>
+<p>And then apply it:</p>
+<pre><code class="language-bash">k apply -f ingress.yaml</code></pre>
+<p>Since we set the annotation <code>kubernetes.io/ingress.class: "nginx"</code>, this will read a thing called an IngressClass that exists.It's named <code>nginx</code>  and was created by Ingress Nginx when we installed it. It's job is to tells Ingress Nginx to reconfigure itself to route requests to hostname <code>echo1.example.com</code> to the service named <code>echo1</code>.</p>
+<p>My Load Balancer IP address is <code>143.244.220.120</code>, and at this point I can send requests to it successfully:</p>
+<pre><code class="language-bash">curl -H "Host: echo1.example.com" 143.244.220.120
+# echo1
+
+# BTW, this won't work since it didn't pass a Host header:
+curl 143.244.220.120
+# 404</code></pre>
+<p>So, that's cool! We can route web traffic to this!</p>
+<p>At this point I stopped, because the addition of adding SSL certificates is a bit boring (which isn't to say easy or non-trivial). It requires a real domain tho, and I didn't feel like doing DNS things to make it work. However the <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes">article on using CertManager to manage SSL via LetsEncrypt</a> are good!</p>]]></content:encoded>
+      <pubDate>Sun, 02 Jun 2024 19:32:49 +0000</pubDate>
+    </item>
+    <item>
+      <title>Testing in Containers</title>
+      <link>https://serversforhackers.com/c/testing-in-containers</link>
+      <description>See how to run PHP unit tests against different versions of PHP with Docker.</description>
+      <content:encoded><![CDATA[<p>Let's see how to run tests in a Laravel project automatically!</p>
+<blockquote>
+<p>This isn't about how to do <a href="https://chipperci.com/news/test-and-deploy-laravel-with-chipper-ci">Continuous Integration with Laravel</a>, but instead it's best for local development.</p>
+</blockquote>
+<h2>Our Goals:</h2>
+<ul>
+<li>Unit test to version of PHP you want</li>
+<li>Watch for file changes</li>
+</ul>
+<h2>Without Docker:</h2>
+<p>We can use a utility called <code>pywatch</code> to run a command when files are changed. Here's how we create a new Laravel project and run unit tests automatically when they're updated:</p>
+<pre><code class="language-bash">cd ~/Sites
+composer create project laravel/laravel docker-testing
+
+cd docker-testing
+
+virtualenv .venv
+source .venv/bin/activate
+pip install pywatch
+
+pywatch ./vendor/bin/phpunit ./tests/*.php</code></pre>
+<p>This works pretty great, but what if we want to test a specific version of PHP when we run our unit tests? Docker can help us there.</p>
+<h2>With Docker</h2>
+<pre><code class="language-bash">docker pull php:7.0-cli
+# See the new docker images we pulled down
+docker images
+
+# Run PHP in a container to run our local phpunit
+docker run --rm -v ~/Sites/homestead/docker-testing:/opt php:7.0-cli php /opt/vendor/bin/phpunit /opt/tests</code></pre>
+<p>That's good, but let's use <code>pywatch</code> in a container to run unit tests automatically. We'll make our own Docker image. Create a new file named <code>Dockerfile</code>.</p>
+<pre><code>FROM php:7.0-cli
+
+MAINTAINER Chris Fidao
+
+RUN apt-get update
+RUN apt-get install -y python-pip
+RUN pip install -U pip
+RUN pip install pywatch
+
+WORKDIR /opt
+
+ENTRYPOINT ["pywatch"]</code></pre>
+<p>Then we can build our Docker image and try it out:</p>
+<pre><code class="language-bash">mkdir docker
+cd docker
+
+# create Dockerfile here
+
+# Create a new Docker image named "phptest" and tag it as PHP 7.0
+docker build . -t phptest:7.0
+
+# Try running the new image
+docker run --rm -it -v ~/Sites/homestead/docker-testing:/opt phptest "php ./vendor/bin/phpunit" ./tests/*.php</code></pre>
+<p>This uses the <code>pywatch</code> command set as the <code>ENTRYPOINT</code> and appends the other commands we added. The full command run in the container becomes <code>pywatch "php ./vendor/bin/phpunit" ./tests/*.php</code>, which watches the files in the <code>tests</code> directory ending in <code>.php</code>.</p>]]></content:encoded>
+      <pubDate>Tue, 09 Aug 2022 01:55:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Secure Firewall Setup</title>
+      <link>https://serversforhackers.com/c/secure-firewall-setup</link>
+      <description>We setup firewalls with iptables in Ubuntu 20.04 Focal.</description>
+      <content:encoded><![CDATA[<p>You can view current firewall rules via <code>sudo iptables -L -v</code>.</p>
+<p>In this video, we'll add to the input chain, which controls incoming (ingress) traffic:</p>
+<pre><code class="language-bash">sudo iptables -A INPUT -i lo -j ACCEPT
+sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -j DROP</code></pre>
+<p>We appended rules so far, but you can also insert rules to a specific location:</p>
+<pre><code class="language-bash">sudo iptables -I INPUT 5 -p tcp --dport 443 -j ACCEPT</code></pre>
+<p>Finally, we need to persist these rules through reboots:</p>
+<pre><code class="language-bash"># Install it (this should save your current rules)
+sudo apt-get install -y netfilters-persistent
+
+# Persist for next reboot (may be unnecessary)
+sudo iptables-save &gt; /etc/iptables/rules.v4</code></pre>
+<h2>Resources</h2>
+<ul>
+<li>Consider using <code>iptables-nft</code> instead of the &quot;legacy&quot; <code>iptables</code> command</li>
+<li>See how to convert rules to <code>nft</code> format <a href="https://docs.oracle.com/en/operating-systems/oracle-linux/8/firewall/ol-nftables.html">here</a>.</li>
+</ul>]]></content:encoded>
+      <pubDate>Mon, 18 May 2020 02:29:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>Secure SSH Setup</title>
+      <link>https://serversforhackers.com/c/secure-ssh-setup</link>
+      <description>Configure SSH security on Ubuntu 20.04 Focal.</description>
+      <content:encoded><![CDATA[<p>We configure SSH to be a bit more secure. We enforce the use of SSH-key based access and ensure that the root user cannot log in over SSH directly.</p>
+<p>Edit <code>/etc/ssh/sshd_config</code>:</p>
+<pre><code># Important
+PermitRootLogin no
+PasswordAuthentication no
+
+# Double check these
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+
+# Optional
+AllowUsers fideloper
+AllowGroups sudo ssh</code></pre>
+<p>Then restart ssh:</p>
+<pre><code class="language-bash">sudo service ssh restart</code></pre>
+<p>We'll also install <code>fail2ban</code>, which will check our <code>/var/log/auth.log</code> file for repeated SSH login failures and ban further logins from the source (IP) of those logins, giving us extra protections against brute-force based SSH access attempts.</p>
+<pre><code class="language-bash">sudo apt-get install -y fail2ban</code></pre>
+<p>Check to make a file exists within <code>/etc/fail2ban/jail.d</code> exists with the <code>sshd</code> config similar this:</p>
+<pre><code class="language-ini">[sshd]
+enabled = true</code></pre>]]></content:encoded>
+      <pubDate>Mon, 18 May 2020 02:29:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>Secure User Setup</title>
+      <link>https://serversforhackers.com/c/secure-user-setup</link>
+      <description>Create a new user and setup SSH access on Ubuntu 20.04 Focal.</description>
+      <content:encoded><![CDATA[<p>We start by creating a new user and authorizing SSH-based access for an SSH key pair.</p>
+<pre><code class="language-bash">sudo adduser fideloper
+
+# Locally:
+# cd ~/.ssh
+# ssh-keygen -o -a 100 -t ed25519 -f id_ed
+# cat id_ed.pub | pbcopy
+
+# Back on server when logged in as user "fideloper":
+echo "your-public-key" &gt;&gt; ~/.ssh/authorized_keys</code></pre>
+<h3>Resources</h3>
+<ul>
+<li><a href="https://blog.g3rt.nl/upgrade-your-ssh-keys.html">Upgrade your SSH Keys</a></li>
+</ul>]]></content:encoded>
+      <pubDate>Mon, 18 May 2020 02:29:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>5 reasons why we chose serverless for Fathom Analytics</title>
+      <link>https://serversforhackers.com/c/fathom-analytics-serverless</link>
+      <description>Here's how we left server management behind and now never have to think about servers!</description>
+      <content:encoded><![CDATA[<style>
+    .something-to-target-css-with {display:none !important;}
+</style>
+<blockquote>
+<p>This is a guest post from <a href="https://twitter.com/JackEllis">Jack Ellis</a>, who has a lot of experience in AWS and, specifically, working with serverless. Here's how he used serverless technologies to stop having to worry about servers.</p>
+</blockquote>
+<p>Back in mid 2018, <a href="https://usefathom.com">Fathom Analytics</a> was deployed across a series of dedicated / virtual servers. The team paid a good amount of cash for these servers, and they thought it would lead to good uptime, great redundancy and a life of very little server maintenance. Unfortunately, that wasn't the case. The servers would go offline, run into various issues, and require attention from a member of the team regularly. They were on the verge of hiring a freelance DevOps chap ($1k / month) to be available in case of an emergency. At that time, they couldn't really afford that, so it meant they had to take responsibility and handle the issues themselves.</p>
+<p>Fast forward to late 2018, the main developer (Danny) left the Fathom team to become a teacher, and Paul Jarvis was left with a hard decision. Should he attempt to keep Fathom going or should he shut it down? I remember the phone call. Myself and Paul were working on Pico (acquired by <a href="https://ghost.org/">Ghost</a>), and Paul asked if I wanted to join the Fathom team. And I immediately said yes, because I saw the potential it had if a skilled developer was to be brought in.</p>
+<p>We rebuilt the system in Laravel. It took us a few months, working part time on it, and we deployed it to Heroku in no time. Fast forward a few more months, as we were pricing out Heroku and considering how we would grow with their rigid tier jumps, Taylor Otwell announced <a href="https://vapor.laravel.com/">Laravel Vapor</a>, a serverless deployment platform for Laravel. We immediately jumped onto the waiting list and, when it launched, we were one of the first companies to deploy our entire application on it. Since then, we've grown to handle millions upon millions of requests each month.</p>
+<p>What is this, a history lesson? I came here to read about why you choose serverless. Okay, calm down Jonathan. Here's why we choose to use serverless infrastructure:</p>
+<h2>We don't want to manage servers</h2>
+<p>I'm sure you've all experienced this. It's 2AM in the morning, and you're disoriented as your phone rings. Who could be calling at this time? Oh, <a href="https://pingping.io/">PingPing</a> has pinged our web hook and we're now getting a phone call. Great.</p>
+<p>“Are you ok?” the wife asks.
+“I hate servers” you reply.
+“Why don't you just go serverless?” your German shepherd inquires.</p>
+<p>You fix the issue and try to get back to sleep. But the adrenaline prevents that. 4 hours sleep will have to do, time to start your day.</p>
+<h2>We don't know when we'll land that whale</h2>
+<p>Most of our customers are in the &lt; 1 million page views range. But what happens when someone emails us asking for 500M page views per month? We can't say “Sure, just let us know when you're going to add the javascript code to your website because our infrastructure won't be able to handle it”. Imagine how that would make them feel. Nobody wants to be your biggest customer.</p>
+<p>Comparatively, we fear nothing these days. 500M page views? Bring it on, Lambda auto scales and SQS has a <em>practically</em> infinite capacity for queued jobs. When someone asks me if we can quote them for 500M page views, I say “Is that all you're going to need. Let me know if you need more, we can provide quotes for up to 5 billion” page views.  I'm only joking, but that's how I feel.</p>
+<h2>Our service needs to be highly-available</h2>
+<p>People don't want their analytics to go offline.  We've always taken uptime incredibly seriously. Paul once told me that before I joined, he would get regular “website down” emails. We haven't received a &quot;website down&quot; email in a very long time, and we wouldn't have it any other way. With Laravel Vapor, it provisions lambda functions, which means we have incredible redundancy and availability. If a lambda functions “breaks”, it's just replaced with another one.</p>
+<h2>Deployment is unbelievably simple</h2>
+<p>We use Laravel Vapor, so everything is managed from a simple YAML file (I have a lesson on this in <a href="https://gumroad.com/a/841905267">my course</a>). We can provision environments in less than 2 minutes. We can also tweak memory, worker memory, concurrency, attach databases, caches and more, all from a single YAML file. It's a truly wonderful way to manage deployments. I thought Heroku was great with their dyno slider, but Vapor takes it to a whole new level. I remember how much I laughed when I spun up a staging environment in under 60 seconds. Doing that in DigitalOcean would take so much longer. Even tweaking memory settings is a joke on DigitalOcean compared to Vapor</p>
+<h2>Varying server load</h2>
+<p>I mentioned the whale problem above (which we no longer have) but we also don't have to worry about spikes &amp; drops. Imagine that during the day we're hitting 100M requests p/h, and then it drops to 1M requests p/h at night, we need to set-up some auto scaling. We really don't want to be spending time setting the scaling up, and we don't want to pay to be over-provisioned &quot;just in case&quot;.</p>
+<p>And I could keep writing reasons for why we use serverless until the cows come home.</p>
+<p>We've been using Vapor since it launched in 2019 and we sleep incredibly well knowing that we don't have to spend time thinking about servers. Everything is managed. RDS, Elasticache, DynamoDB etc. are wonderful. We provision these services with Vapor, and then we let the AWS team do their thing. And yes, these add-on services do need to be scaled, but there are ways to control things like database load, and set-up modest thresholds for notifications when it's time to scale. Oh, and scaling is handled with zero to minimal downtime with high-availability set-ups, which is huge to us.</p>
+<p>I've said enough. If you want to become an expert at using Laravel Vapor, I can help you with that. I've spent hundreds of hours in the field and have used it at high scale since it launched. My course (<a href="https://gumroad.com/a/841905267">Serverless Laravel</a>) is currently only $149 ($100 discount during launch). If you're reading this article after the launch is over, drop me an email and we'll see what we can do. Anyway, this course will save you from running into common gotchas, and is an express route to Vapor mastery. Do you have any questions? Are you mad that I contradict myself because we do need to scale our cache / database etc. at some point? Are you angry at me and you want me to know that you're angry? I'm <a href="https://twitter.com/JackEllis">@jackellis</a> on Twitter</p>]]></content:encoded>
+      <pubDate>Thu, 05 Mar 2020 13:37:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>Servers for WordPress: Special Considerations</title>
+      <link>https://serversforhackers.com/c/servers-for-wordpress-considerations</link>
+      <description>While a traditional LEMP stack will work for hosting WordPress, it won't perform optimally, and it certainly won't be able to handle any significant amount of traffic. However, with a few special considerations, WordPress can be both snappy and scalable.</description>
+      <content:encoded><![CDATA[<p>Hosting a WordPress site is no different from hosting any other PHP and MySQL based application. A traditional <a href="https://serversforhackers.com/s/lemp-stack-php-71">LEMP stack</a> will get you most of the way, which is why services like <a href="https://forge.laravel.com">Forge</a> can host multiple applications from Laravel to WordPress on a single server.</p>
+<p>While a traditional LEMP stack will work for hosting WordPress, it won't perform optimally, and it certainly won't be able to handle any significant amount of traffic. However, with a few special considerations, WordPress can be both snappy and scalable. I’ve spent the last year building our new app, <a href="https://spinupwp.com/">SpinupWP</a>, that spins up optimal servers for WordPress, incorporating a lot of these considerations. However, in this article, I'm going to discuss two simple caching mechanisms that you can implement to ensure WordPress is performant on a LEMP stack no matter where you’re setting your servers up. Let's start with object caching.</p>
+<p><a name="object-caching" id="object-caching"></a></p>
+<h2>Object Caching</h2>
+<p>As with most database-driven content management systems, WordPress relies heavily on the database. A clean install of WordPress 5.0 with the Twenty Nineteen theme activated will execute a total of 19 SQL queries on the homepage alone. That's before you throw third-party plugins into the mix. It's not uncommon for over 100 SQL queries to be executed on every page load, which can be a huge strain on the server.</p>
+<p>To combat this, WordPress introduced an internal object cache that stores data in PHP memory (including the results of database queries). However, the object cache is non-persistent by default - meaning that the cache is regenerated on every single page load, which is extremely inefficient. Luckily, it's possible for WordPress to utilize an external in-memory datastore such as Redis. This can dramatically reduce the number of database queries on each page load.</p>
+<p><img src="https://user-images.githubusercontent.com/467411/60098498-45a71600-971b-11e9-9747-5cd7efc609b8.png" alt="object caching" /></p>
+<p>On Ubuntu, Redis can be installed like so:</p>
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install -y redis-server</code></pre>
+<p>Once Redis has been installed you'll need to install the <a href="https://wordpress.org/plugins/redis-cache/">Redis Object Cache</a> WordPress plugin. This will instruct WordPress to store it's object cache data in Redis and persist the data across requests.</p>
+<p><img src="https://user-images.githubusercontent.com/467411/60098465-3922bd80-971b-11e9-8bc2-6b24a56b8b11.png" alt="object caching" /></p>
+<p>While this is a huge improvement (down from 19 queries to 3 queries), it doesn't completely remove the reliance on the database, which is often the biggest bottleneck in WordPress. This is because the SQL queries to build the post index will always be executed as the results are not cached. This leads us on to full page caching...</p>
+<p><a name="page-caching" id="page-caching"></a></p>
+<h2>Page Caching</h2>
+<p>A full page cache is hands down the most important thing you can implement to ensure WordPress doesn't fall over under load. It'll also improve response time for individual page requests. While there are a number of <a href="https://wordpress.org/plugins/search/cache/">WordPress cache plugins</a> available, most won't perform as well as a server-side solution (<a href="https://spinupwp.com/wordpress-page-cache-plugins-nginx/">because the request is still being handled by PHP</a>. As we're already using LEMP we can utilize <a href="https://serversforhackers.com/c/nginx-caching">Nginx FastCGI caching</a>, which will cache a static HTML version of each page. Subsequent visits will serve the static HTML version without ever hitting PHP or MySQL.</p>
+<p>To enable Nginx FastCGI caching you'll need to adjust a few directives to your existing configs. The following  should be added to the top of each virtual host file before the <code>server</code> block:</p>
+<p>fastcgi_cache_path /path/to/cache/directory levels=1:2 keys_zone=acmepublishing.com:100m inactive=60m;</p>
+<p>This creates the cache zone and indicates the directory where the cache should be stored (see <a href="http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_cache_path">this doc</a> for more info on what the other arguments mean). Next, when proxying requests to PHP you can inform Nginx to first check that a cache key exists for the current request, before sending it off to PHP:</p>
+<pre><code class="language-nginx">location ~ \.php$ {
+    try_files $uri =404;
+    include fastcgi.conf;
+
+    fastcgi_pass  unix:/var/run/php/php7.3-fpm.sock;
+    fastcgi_cache_bypass $skip_cache;
+    fastcgi_no_cache $skip_cache;
+    fastcgi_cache acmepublishing.com;
+    fastcgi_cache_valid 60m;
+}</code></pre>
+<p>The <code>$skip_cache</code> variable allows you to bypass the cache. A typical strategy is to only cache GET requests for non-logged in users. It's also common to skip requests which contain a query string:</p>
+<pre><code class="language-nginx"># Don't skip cache by default
+set $skip_cache 0;
+
+# POST requests should always go to PHP
+if ($request_method = POST) {
+    set $skip_cache 1;
+}
+
+# URLs containing query strings should always go to PHP
+if ($query_string != "") {
+    set $skip_cache 1;
+
+}
+
+# Don't cache uris containing the following segments
+if ($request_uri ~* "/wp-admin/|/wp-json/|/xmlrpc.php|wp-.*.php|/feed/|index.php|sitemap(_index)?.xml") {
+    set $skip_cache 1;
+}
+
+# Don't use the cache for logged in users or recent commenters
+if ($http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_no_cache|wordpress_logged_in|edd_items_in_cart|woocommerce_items_in_cart") {
+    set $skip_cache 1;
+}</code></pre>
+<p>The final piece of the caching puzzle is to ensure Nginx can cache requests which have Cache-Control and Set-Cookie headers. If WordPress uses one of these headers then Nginx might not be able to cache the request so we can tell Nginx to ignore them. We also need to set the cache key and tell Nginx how to handle cached entries which have expired:</p>
+<pre><code class="language-nginx">fastcgi_cache_key "$scheme$request_method$host$request_uri";
+fastcgi_cache_use_stale error timeout updating invalid_header http_500;
+fastcgi_ignore_headers Cache-Control Expires Set-Cookie;</code></pre>
+<p>A basic Nginx config might look something like this:</p>
+<pre><code class="language-nginx">fastcgi_cache_path /sites/example.com/cache levels=1:2 keys_zone=example.com:100m inactive=60m;
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    server_name example.com;
+
+    root /sites/example.com/public;
+
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+    index index.php;
+
+    fastcgi_cache_key "$scheme$request_method$host$request_uri";
+    fastcgi_cache_use_stale error timeout updating invalid_header http_500;
+    fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
+    add_header Fastcgi-Cache $upstream_cache_status;
+
+    # Don't skip cache by default
+    set $skip_cache 0;
+
+    # POST requests should always go to PHP
+    if ($request_method = POST) {
+        set $skip_cache 1;
+
+    # URLs containing query strings should always go to PHP
+    if ($query_string != "") {
+        set $skip_cache 1;
+
+    # Don't cache uris containing the following segments
+    if ($request_uri ~* "/wp-admin/|/wp-json/|/xmlrpc.php|wp-.*.php|/feed/|index.php|sitemap(_index)?.xml") {
+        set $skip_cache 1;
+
+    # Don't use the cache for logged in users or recent commenters
+    if ($http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_no_cache|wordpress_logged_in|edd_items_in_cart|woocommerce_items_in_cart") {
+        set $skip_cache 1;
+
+    include fastcgi-cache.conf;
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        include global/fastcgi-params.conf;
+
+        fastcgi_pass   $upstream;
+        fastcgi_cache_bypass $skip_cache;
+        fastcgi_no_cache $skip_cache;
+        fastcgi_cache example.com;
+        fastcgi_cache_valid 60m;
+    }
+}</code></pre>
+<p><a name="benchmarks" id="benchmarks"></a></p>
+<h2>Benchmarks</h2>
+<p>Let's compare a few common caching solutions to see how they measure up. First I'll test WordPress without any caching, then a WordPress cache plugin (Simple Cache), followed by Nginx. I'll also include Varnish to demonstrate that you don't need additional server software to perform simple caching.</p>
+<p>Let's use <a href="https://httpd.apache.org/docs/2.4/programs/ab.html">ApacheBench</a> to simulate 10,000 requests, with a concurrency of 100 requests. Meaning, ApacheBench will send a total of 10,000 requests in batches of 100 at a time. </p>
+<pre><code class="language-bash">ab -n 10000 -c 100 https://siteunderload.com/</code></pre>
+<p>For the non-cached version, I will use a concurrency of 20 requests because WordPress will never be able to handle that amount of concurrency without caching.</p>
+<pre><code class="language-bash">ab -n 10000 -c 20 https://siteunderload.com/</code></pre>
+<p><a name="requests-per-second" id="requests-per-second"></a></p>
+<h3>Requests Per Second</h3>
+<p><img src="https://cdn.deliciousbrains.com/content/uploads/2018/04/01065400/requests-per-second-2-1540x1142.png" alt="requests per second" /></p>
+<p><em>Source: <a href="https://spinupwp.com/page-caching-varnish-vs-nginx-fastcgi-cache-2018/#requests-per-second">SpinupWP</a></em></p>
+<p>As expected, WordPress doesn’t perform well because both PHP and MySQL are involved with handling the request. Simply taking the database server out of the equation by enabling a page cache plugin gives a 10x increase in requests. This is taken even further by using a server-side caching solution so that PHP is also bypassed.</p>
+<p><a name="average-response-time" id="average-response-time"></a></p>
+<h3>Average Response Time (ms)</h3>
+<p><img src="https://cdn.deliciousbrains.com/content/uploads/2018/04/01065358/average-response-time-2-1540x1121.png" alt="average response time" /></p>
+<p><em>Source: <a href="https://spinupwp.com/page-caching-varnish-vs-nginx-fastcgi-cache-2018/#requests-per-second">SpinupWP</a></em></p>
+<p>WordPress once again doesn't perform well because of the number of moving parts required in handling the request (Nginx, PHP and MySQL). Generally, the fewer moving parts you have in a request lifecycle, the lower the average response time will be. That’s why Nginx FastCGI caching performs so well because it only has to serve a static file from disk (which will likely be cached in memory due to the <a href="https://www.thomas-krenn.com/en/wiki/Linux_Page_Cache_Basics">Linux Page Cache</a>).</p>
+<p><a name="conclusion" id="conclusion"></a></p>
+<h2>Conclusion</h2>
+<p>As you can see from the benchmarks, WordPress doesn't perform well under load. However, with a few simple modifications to your LEMP stack, you can improve the performance dramatically. Looking to take things further? Check out <a href="https://spinupwp.com/cdn-isnt-silver-bullet-performance/">A CDN Isn’t a Silver Bullet for Performance</a> or save yourself the hassle and spin up a server with <a href="https://spinupwp.com/">SpinupWP.</a></p>
+<h2>About the Author</h2>
+<p>Ashley is a former SAC Technician who built servers for the Royal Air Force &amp; a PHP developer with a fondness for hosting, server performance and security. He’s the author behind our popular <a href="https://spinupwp.com/hosting-wordpress-setup-secure-virtual-server/">Host WordPress Yourself article series</a> as well as one of the developers behind <a href="https://spinupwp.com/">SpinupWP</a>, the new modern server control panel for WordPress.</p>]]></content:encoded>
+      <pubDate>Tue, 25 Jun 2019 12:33:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mysqldump with Modern MySQL</title>
+      <link>https://serversforhackers.com/c/mysqldump-with-modern-mysql</link>
+      <description>Learn how to best use mysqldump in a modern version of MySQL.</description>
+      <content:encoded><![CDATA[<p>Mysqldump has <em>many</em> options (<a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#idm140518991203200">I count 111 options</a> ?).</p>
+<p>Most of us are likely keeping it simple. Here's how I've typically exported a single database:</p>
+<pre><code class="language-bash">mysqldump some_database &gt; some_database.sql
+
+# Or with user auth
+mysqldump -u some_user -p some_database &gt; some_database.sql
+
+# Or with gzip compression
+mysqldump some_database | gzip &gt; some_database.sql.gz
+
+# Or with the "pv" tool, which let's us know how much data is
+# flowing between our pipes - useful for knowing if the msyqldump
+# has stalled
+mysqldump some_database | pv | gzip &gt; some_database.sql.gz
+# 102kB 0:01:23 [1.38MB/s] [  &lt;=&gt;</code></pre>
+<p>However, it's worth digging into this command a bit to learn what's going on. If you're using mysqldump against a production database, it's usage can cause real issues for your users while it's running.</p>
+<h2>Defaults</h2>
+<p>First, let's cover mysqldump's defaults. Unless we explicitly tell it not to, mysqldump is using the <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_opt"><code>--opt</code></a> flag. The <code>opt</code> option is an alias for the following flags:</p>
+<ul>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_add-drop-table">--add-drop-table</a> - Write a DROP TABLE statement before each CREATE TABLE statement, letting you re-use the resulting .sql file over and over with idempotence.</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_add-locks">--add-locks</a> - This applies when you're importing your dump file (not when running mysqldump). Surrounds each table dump with LOCK TABLES and UNLOCK TABLES statements. This results in faster inserts when the dump file is reloaded. This means that while you're importing data, each table will be locked from reads and writes while it's (re-)creating a table.</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_create-options">--create-options</a> - Include all MySQL-specific table options in the CREATE TABLE statements. In testing this (turn it off using <code>-create-options=false</code>), I found that the main/most obvious difference was the absense of <code>AUTO_INCREMENT</code> on primary keys when setting this option to false.</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_disable-keys">--disable-keys</a> - <em>This option is effective only for nonunique indexes of <strong>MyISAM</strong> tables.</em> This makes loading the dump file faster <em>(for MyISAM tables)</em> because the indexes are created after all rows are inserted.</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_extended-insert">--extended-insert</a> - Write INSERT statements using multiple-row syntax that includes several VALUES lists. Not using this option may be required for tables with large columns (usually blobs) that cause queries to go higher than client/server &quot;max_allowed_packet&quot; configuration, but generally always use this option. Using a single-query per insert slows down imports considerably.</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_lock-tables">--lock-tables</a> - Unlike <code>add-locks</code>, this applies to when you're running mysqldump. This locks all tables for the duration of the mysqldump, making it a bad option to use on a live environment. Primarily it's used for protection of data integrity when dumping MyISAM tables. Since InnoDB is rightly the default table storage engine now-a-days, this option usually should be over-ridden by using <code>--skip-lock-tables</code> to stop the behavior and <code>--single-transaction</code> to run mysqldump within a transaction, which I'll cover in a bit.</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_quick">--quick</a> - Reads out large tables in a way that doesn't require having enough RAM to fit the full table in memory.</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_set-charset">--set-charset</a> - Write SET NAMES default_character_set to the output. This DOES NOT perform any character set conversion (mysqldump won't do with that <em>any</em> flag). Instead, it's just saying that you want the character set info added in so it's set when re-importing the dump file.</li>
+</ul>
+<p>So the default are pretty good, with the exception of <strong>--lock-tables</strong>. This causes the database to become unusable while mysqldump is running, but it doesn't need to be this way!</p>
+<p>We can use mysqldump more intelligently.</p>
+<h2>Mysqldump and Table Locks</h2>
+<p>When using mysqldump, there's a trade off to be made between halting/affecting database performance and ensuring data integrity. Your strategy will largely  be determined by what storage engine(s) your using in your database tables.</p>
+<blockquote>
+<p>Since each table can have a separate storage engine, this can get interesting :D</p>
+</blockquote>
+<p>By default, mysqldump locks all the tables it's about to dump. This ensure the data is in a <strong>consistent state</strong> during the dump. </p>
+<h3>Data Consistency</h3>
+<p>A &quot;consistent state&quot; means that the data is in an expected state. More specifically, all relationships should match up. Imagine if mysqldump exports the first 5 tables out of 20. If table 1 and table 20 got new rows related to eachother by primary/foreign keys after mysqldump dumped table 1 but before it dumped table 20, then we're in an inconsistent state. Table 20 has data relating to a row in table 1 that did not make it into the dump file.</p>
+<p>MyISAM tables require this locking because they don't support transactions. However, InnoDB (the default storage engine as of MySQL 5.5.5) supports transactions. Mysqldump defaults to a conservative setting of locking everything, but we don't need to use that default - we an avoid locking tables completely.</p>
+<h3>Mysqldump with Transactions</h3>
+<p>As a rule of thumb, <strong>unless you are using MyISAM for a specific reason, you should be using the InnoDB storage engine</strong> on all tables. If you've been porting around a database to various MySQL servers for years (back when MyISAM used to be the default storage engine), check to make sure your tables are using InnoDB.</p>
+<p>This is the important one:</p>
+<p><strong>Assuming you are using InnoDB tables, your mysqldump should look something like this:</strong></p>
+<pre><code class="language-bash">mysqldump --single-transaction --skip-lock-tables some_database &gt; some_database.sql</code></pre>
+<p>The <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_single-transaction"><code>--single-transaction</code></a> flag  will start a transaction before running. Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.</p>
+<blockquote>
+<p>The <code>single-transaction</code> options uses the default transaction isolation mode: <a href="https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html#isolevel_repeatable-read">REPEATABLE READ</a>.</p>
+</blockquote>
+<p>Note that if you have a mix of MyISAM and InnoDB tables, using the above options can leave your MyISAM (or Memory tables, for that matter) in an inconsistent state, since it does not lock reads/writes to MyISAM tables.</p>
+<p>In that case, I suggest dumping your MyISAM tables separately from InnoDB tables. </p>
+<p>However, if that still results in inconsistent state (if the MyISAM table has PK/FK relationships to InnoDB tables), then using the <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_lock-tables"><code>--lock-tables</code></a> option becomes the only way to guarantee the database is in a consistent state when using mysqldump. </p>
+<p>This means that in that situation, you'll have to be careful about when you run mysqldump on a live database. Perhaps run it on a replica database instead of a master one, or investigate options such as Xtrabackup, which copies the mysql data directory and does not cause down time.</p>
+<h2>Replication</h2>
+<p>If you're using replication, you already have a backup on your replica servers. That's awesome! However, off-site backups are still a good thing to have. In such a setup, I try to run mysqldump on the replica server instead of a master server.</p>
+<p>In terms of mysqldump, this has as few implications:</p>
+<ol>
+<li>Running mysqldump on a replica server means the data it receives might be slightly behind the master server. 
+<ul>
+<li>For regular backups, this is likely fine. If you need the data to be at a certain point, then you need to wait until that data has reached the replica server.</li>
+</ul></li>
+<li>Running mysqldump on a replica is prefered (IMO) since in theory, there is already a built-in assumption that the replica servers will be behind anyway - adding a bit of &quot;strain&quot; of a mysqldump shouldn't be a big deal.</li>
+</ol>
+<p>In any case, there are some useful flags to use when replication is in place (or when binlogs are enabled in general).</p>
+<h3>Master Data</h3>
+<p>The <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_master-data"><code>--master-data</code></a> flag adds output to a dump file which allows it to be used to set up another server as a replica of the master. The replica needs the master data to know where to start replication.</p>
+<p>The <code>--master-data</code> option automatically turns off <code>--lock-tables</code>, since the included binlog position will say where to start replication off, letting you not lose queries if the dump ends up in an inconsistent state. (Again, that's only a consideration if you have MyISAM tables). </p>
+<p>If <code>--single-transaction</code> is also used, a global read lock is acquired only for a short time at the beginning of the dump.</p>
+<p>Use this when dumping from a master server.</p>
+<h3>Dump Replica</h3>
+<p>The <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_dump-slave"><code>--dump-slave</code></a> option is very similar to the <code>--master-data</code> except it's use case is:</p>
+<ol>
+<li>Instead of being a dump from the master server, it's meant to be a dump of a replica server</li>
+<li>It will contain the same master information as the replica server being dumped, where as <code>--master-data</code> set itself as the master</li>
+</ol>
+<p>Use this when dumping from a replica server.</p>
+<blockquote>
+<p>From the docs: &quot;This option should not be used if the server where the dump is going to be applied uses gtid_mode=ON and MASTER_AUTOPOSITION=1.&quot;</p>
+<p>GTID is a newer way to do MySQL replication as of MySQL 5.6. It's a nicer method, so --dump-slave in theory can be one to ignore.</p>
+</blockquote>
+<!--
+In theory, replica servers are always up to speed with the master server. However, lag is a **real** reality of database replication ([with exceptions](http://stackoverflow.com/questions/29381442/eventual-consistency-vs-strong-eventual-consistency-vs-strong-consistency)). Write-heavy database loads, slow networks and large geographic distances between database servers are all contributors to replication lag.
+In terms of mysqldump, this has as few implications:
+1. Running mysqldump on a replica server means the data it receives might be slightly behind the master server. 
+    - For regular backups, this is likely fine. If you need the data to be at a certain point, then you need to wait until that data has reached the replica server.
+2. Running mysqldump on a replica is prefered (IMO) since in theory, there is already a built-in assumption that the replica servers will be behind anyway - adding a bit of "strain" of a mysqldump shouldn't be a big deal.
+> A bit of a sidenote: A replica server being behind the master database only matters if your application uses the replicas to spread read queries (a common use case). That's not always the case - sometimes replicas are only used for backend/reporting systems, or just as "hot backups".
+> 
+> Using MySQL replication may have implications on your applications - they may need to handle situations where an update (write query) isn't immediately reflected in the UI.
+-->
+<h2>Dump more than one (all) database</h2>
+<p>I generally dump specific databases, which lets me more easily recover a specific database if I need to.</p>
+<p>However you can dump multiple databases:</p>
+<pre><code class="language-bash">mysqldump --single-transaction --skip-lock-tables --databases db1 db2 db3 \
+    &gt; db1_db2_and_db3.sql</code></pre>
+<p>You can also dump specific tables from a single database:</p>
+<pre><code class="language-bash">mysqldump --single-transaction --skip-lock-tables some_database table_one table_two table_three \
+    &gt; some_database_only_three_tables.sql</code></pre>
+<p>You can also dump the entire database. Note that this likely includes the internal <code>mysql</code> database as well:</p>
+<pre><code class="language-bash">mysqldump --single-transaction --skip-lock-tables --flush-privileges --all-databases &gt; entire_database_server.sql</code></pre>
+<p>The above command used the <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_all-databases"><code>--all-databases</code></a> option along with the <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_flush-privileges"><code>--flush-privileges</code></a> option.</p>
+<p>Since we'll get the internal <code>mysql</code> database, which includes mysql users and privileges, the <code>--flush-privileges</code> option adds a <code>FLUSH PRIVILEGES</code> query at the end of the dump, needed since the dump may change users and privileges when being imported.</p>
+<h2>That's it!</h2>
+<p>There are many, many options you can use with mysqldump. However, we covered what I think are the most important for using mysqldump in a modern implementation of MySQL.</p>
+<blockquote style="padding: 30px; background: #eeeeee;"><p>Side note, If you're interested in a service to help you manage <strong>MySQL-optimized, backup and (eventually) replication-enabled</strong> database servers, <a href="http://sqlops.launchrock.com/" title="mysql replication">sign up here to let me know</a>! The idea is to allow you to better manage your MySQL servers, taking advantage of many of MySQL's more advanced options, especially around backup and recovery.</p></blockquote>]]></content:encoded>
+      <pubDate>Fri, 12 Apr 2019 19:24:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mapping Headers in Nginx</title>
+      <link>https://serversforhackers.com/c/nginx-mapping-headers</link>
+      <description>We see how to map Cloudfront's `Cloudfront-Forwarded-Proto` header to `X-Forwarded-Proto`.</description>
+      <content:encoded><![CDATA[<blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">? Nginx &quot;map&quot; is super useful!<br><br>? Nginx sets incoming headers to variables ($http_foo)<br><br>So, here we set X-Forwarded-Proto to the value of $cloudfront_proto that &quot;map&quot; creates by testing for two possible &quot;proto&quot; headers!<a href="https://t.co/VkNRMpDDqr">https://t.co/VkNRMpDDqr</a> <a href="https://t.co/6CAXEhiA29">pic.twitter.com/6CAXEhiA29</a></p>&mdash; Chris Fidao (@fideloper) <a href="https://twitter.com/fideloper/status/999269783471362053?ref_src=twsrc%5Etfw">May 23, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote>
+<p>Tiny note here: This video's audio quality isn't as good as usual (and I apologize for my clicky keyboard! That won't be the usual :D</p>
+</blockquote>
+<p>When we use our applications behind some sort of proxy, we usually need to make the application aware it's behind a proxy.</p>
+<p>This lets the application know to use the <code>Forwarded</code> or the <code>X-Forwarded-*</code> headers to know the protocol/schema (http vs https), port, and real client IP address.</p>
+<p>For Laravel, the TrustedProxy package does this. It uses the underlying Symfony HTTP Request class and sets a proxy as &quot;trusted&quot;. If the proxy is trusted, and has either <code>Forwarded</code> or <code>X-Forwarded-*</code> headers set, then the application uses those headers.</p>
+<h2>The Problem</h2>
+<p>The problem is that Symfony (as of Symfony 4) currently only allows those two header sets to be used. </p>
+<ul>
+<li>The <code>Forwarded</code> header, which contains all the client information in the header value (client ip, protocol, port, host)</li>
+<li>The <code>X-Forwarded-*</code> headers (<code>-Port</code>, <code>-Proto</code>, <code>-For</code>, <code>-Host</code>)</li>
+</ul>
+<p>However, we aren't always lucky enough to have these two headers be available to use. Notably, AWS Cloudfront only provides the <code>Cloudfront-Forwarded-Proto</code> header for passing along the schema (http vs https).</p>
+<blockquote>
+<p>Cloudfront will, however, add the <code>X-Forwarded-For</code> header. I'm not sure why they strip out the other <code>X-Forwarded-*</code> headers. You can <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html">see Cloudfront's header behavior here</a>.</p>
+</blockquote>
+<h2>The Solution</h2>
+<p>So, in our case, our application won't correctly read the <code>Cloudfront-Forwarded-Proto</code> header that our web server receives.</p>
+<p>Luckily, we can use Nginx to remap the Cloudfront header to a header of our choosing!</p>
+<blockquote>
+<p>We'll do this while still <a href="https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/">avoiding &quot;if&quot; statements inside of Nginx configuration</a>.</p>
+</blockquote>
+<p>Our tool of choice here will be Nginx's <a href="http://nginx.org/en/docs/http/ngx_http_map_module.html#map"><code>map</code></a> feature.</p>
+<p>The first thing to note is that <code>map</code> is in the <code>http</code> context, not within the <code>server</code> context, so we need to configure it outside of any particular <code>server {...}</code> block. This may mean that it could affect other or all <code>server</code>'s configured within Nginx.</p>
+<h3>Map</h3>
+<p>Here's what it looks like!</p>
+<pre><code>upstream app {
+    server 127.0.0.1:8080;
+}
+
+map $http_cloudfront_forwarded_proto $cloudfront_proto {
+    default "http";
+    https "https";
+}
+
+server {
+    listen 80 default_server;
+
+    root /var/www/html;
+
+    index index.html index.htm;
+
+    server_name front.example.org;
+
+    charset utf-8;
+
+    location / {
+        include proxy_params;
+        proxy_set_header X-Forwarded-Proto $cloudfront_proto;
+        proxy_pass http://app;
+        proxy_redirect off;
+
+        # Handle Web Socket connections
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}</code></pre>
+<p>Here Nginx is proxying to an application listening on http port 8080.</p>
+<p>Outside of the <code>server {...}</code> block (which is inside of Nginx's <code>http {...}</code> block, altho that's not necessariy obvious) we set a map:</p>
+<pre><code>map $http_cloudfront_forwarded_proto $cloudfront_proto {
+    default "http";
+    https "https";
+}</code></pre>
+<p>The variable <code>$http_cloudfront_forwarded_proto</code> is provided for us. Nginx takes any HTTP headers, lower-cases them, and converts dashes to underscores. They become accessible as variables starting with <code>$http_</code>.</p>
+<p>So, our <code>map</code> function here is reading values for HTTP header <code>Cloudfront-Forwarded-Proto</code> via <code>$http_cloudfront_forwarded_proto</code>. We're telling Nginx to map another value onto a new variable that we created named <code>$cloudfront_proto</code>.</p>
+<p>Inside of the map, everything on the left are possible values for the <code>$http_cloudfront_forwarded_proto</code> variable. If one matches, then the value on the right is given to variable <code>$cloudfront_proto</code>. </p>
+<p>Using <code>map</code> lets us:</p>
+<ol>
+<li>Set a default</li>
+<li>Arbitrarily set the value of our mapped variable</li>
+</ol>
+<p>In this case, we're defaulting to <code>http</code> when <code>Cloudfront-Forwarded-Proto</code> is either missing or has a value other than <code>https</code>.</p>
+<h3>Passing the Header</h3>
+<p>In our <code>server</code> configuration, we pass that header off to our application via <code>proxy_set_header</code>:</p>
+<pre><code>location / {
+    include proxy_params;
+    proxy_set_header X-Forwarded-Proto $cloudfront_proto;
+    proxy_pass http://app;
+    proxy_redirect off;
+}</code></pre>
+<p>We create header <code>X-Forwarded-Proto</code> (which our application will use!) and give it the value of our mapped/created variable <code>$cloudfront_proto</code>.</p>
+<h2>Edge Cases</h2>
+<p>One issue with our configuration above is that it would ignore any value of <code>X-Forwaded-Proto</code> if it was present!</p>
+<p>To take advantage of the case where <code>X-Forwarded-Proto</code> was included (and so we don't ignore it), I use this more complex mapping:</p>
+<pre><code>map "$http_cloudfront_forwarded_proto:$http_x_forwarded_proto" $cloudfront_proto {
+    default "http";
+    ":http" "http";
+    ":https" "https";
+    "http:" "http";
+    "https:" "https";
+    "https:http" "https";
+    "http:https" "https";
+    "https:https" "https";
+}</code></pre>
+<p>Some things to note:</p>
+<ol>
+<li>We can create a string from multiple variables to map from. In this case, I combine <code>X-Forwaded-Proto</code> and <code>Cloudfront-Forwarded-Proto</code>, concatenating them together with a <code>:</code> in betwen.</li>
+<li>I then test possible combinations of the resulting string, with a preference to use <code>https</code> in the cases where both headers are set but conflict with eachother.</li>
+</ol>
+<p>Since our default is <code>http</code>, we can actually get rid of any of the combinations that result in the value <code>http</code> being used:</p>
+<pre><code>map "$http_cloudfront_forwarded_proto:$http_x_forwarded_proto" $cloudfront_proto {
+    default "http";
+    ":https" "https";
+    "https:" "https";
+    "https:http" "https";
+    "http:https" "https";
+    "https:https" "https";
+}</code></pre>
+<p>It's still a bit ugly, but it works!</p>
+<p>This can be be simplified greatly with the use of a regular expression:</p>
+<pre><code>map "$http_cloudfront_forwarded_proto:$http_x_forwarded_proto" $cloudfront_proto {
+    default "http";
+    "~https" "https";
+}</code></pre>
+<p>That's much cleaner and provides the same functionality. Any instance of &quot;https&quot; in the header value will set the <code>X-Forwarded-Proto</code> header value to <code>https</code>.</p>
+<h2>FastCGI &amp; PHP</h2>
+<p>In my example above, we had Nginx proxying over HTTP to our application code. What if we're using FastCGI instead (for example, to proxy to a PHP application using PHP-FPM)?</p>
+<p>FastCGI in Nginx has no equivalent of <code>proxy_set_header</code>, since it doesn't actually send an HTTP request to PHP. Instead, Nginx (following FastCGI spec and PHP convention) converts headers to <code>proxy_params</code>, which get sent to PHP-FPM.</p>
+<p>For PHP, we can set a new proxy param that would get read as an HTTP header by PHP. These all start with <code>HTTP_</code> within PHP's global <code>$_SERVER</code> variable.</p>
+<pre><code>location ~ \.php$ {
+    include fastcgi_params;
+    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+    fastcgi_param HTTP_X_FORWARDED_PROTO $cloudfront_proto;
+}</code></pre>
+<p>Here we used <a href="http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param">fastcgi_param</a> to include what PHP will read as the HTTP header <code>X-Forwarded-Proto</code>!</p>
+<p>We set <code>X-Forwarded-Proto</code> to the value of our mapped variable <code>$cloudfront_proto</code> via this line in our configuration:</p>
+<pre><code>fastcgi_param HTTP_X_FORWARDED_PROTO $cloudfront_proto;</code></pre>
+<h2>Result</h2>
+<p>Now our application can read the <code>X-Forwared-Proto</code> header that it expects to find! We can use this technique to map any custom/unexpected headers to ones that are more commonly used/expected in our applications this way.</p>]]></content:encoded>
+      <pubDate>Sat, 26 Jan 2019 19:07:02 +0000</pubDate>
+    </item>
+    <item>
+      <title>LetsEncrypt with HAProxy</title>
+      <link>https://serversforhackers.com/c/letsencrypt-with-haproxy</link>
+      <description>We cover using LetsEncrypt to create SSL certificates with a HAProxy load balancer.</description>
+      <content:encoded><![CDATA[<h1>LetsEncrypt with HAProxy</h1>
+<p>This is a video from the <a href="https://serversforhackers.com/scaling-laravel">Scaling Laravel</a> course's Load Balancing module.</p>
+<p>Part of what I wanted to cover was how to use SSL certificates with a HAProxy load balancer. LetsEncrypt (certbot) is great for this, since we can get a free and trusted SSL certificate. Since we're using LetsEncrypt on a load balancer (HAProxy) which cannot serve the authorization HTTP requests that LetsEncrypt makes, we have some unique issues to get around. Let's see how!</p>
+<h2>Install LetsEncrypt</h2>
+<p>Let's get some boilerplate out of the way. Here's how I install LetsEncrypt (Certbot) on Ubuntu 16.04:</p>
+<pre><code class="language-bash">sudo add-apt-repository -y ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install -y certbot</code></pre>
+<p>As the video shows, this installer creates a CRON task (<code>/etc/cron.d/certbot</code>) to request a renewal twice a day. The certificate only gets renewed if it's under 30 days from expiration. Checking twice a day is a relatively safe way to check and get around potential timing bugs. This default is very handy for a typical installation.</p>
+<p>However, since we have some unique needs with HAProxy, we'll use a slightly different CRON task for this use case.</p>
+<h2>The Problems</h2>
+<p>The first hurdle to get around arises because LetsEncrypt authorizes a certificate for a server by requesting a file via an HTTP(S) request. However, HAProxy is <em>not</em> a web server. It won't serve files by itself - it will only redirect a request to another location. Our application servers won't be able to handle this authorization request.</p>
+<p>Since we want our SSL certificate on the load balancer (SSL Termination), our goal is to find a way to have HAProxy recognize a request from LetsEncrypt and route it to a web service that will respond with the response LetsEncrypt needs to authorize the certificate.</p>
+<p>LetsEncrypt comes with it's own built-in web server listener for just such a use case, so we can accomplish this!</p>
+<p>The second hurdle is that HAProxy expects an SSL certificate to all be in one file which includes the certificate chain, the root certificate, and the private key. HAProxy has the private key in a separate file, so our last step is to combine the files into something HAProxy can read.</p>
+<p>Finally we'll also solve the issue of automating renewals given the above constraints.</p>
+<h2>The Workflow</h2>
+<p>There are two actions we ask of LetsEncrypt:</p>
+<ol>
+<li>Request a new certificate</li>
+<li>Renew an existing certificate</li>
+</ol>
+<p>After each step above, we also need to combine the resulting certificate files into the format HAProxy wants.</p>
+<p>Let's see those two scenarios, and then see how to combine the certificate into one file.</p>
+<h3>HAProxy Setup</h3>
+<p>When we request a new certificate, LetsEncrypt will request the authorization file (a URI like <code>/.well-known/acme-challenge/random-hash-here</code>). This request will happen over port 80, since there's presumably no certificate setup yet.</p>
+<p>Interestingly, if HAProxy is listening on port 443, LetsEncrypt may attempt to authorize over it. So, when we create a new certificate, <strong>we need HAProxy to only be listening on port 80</strong>.</p>
+<p>Another issue: HAProxy is listening on port 80. However, we need LetsEncrypt to setup it's stand-alone server to listen for authorization requests. It will default to port 80 as well, causing a conflict as only one process can listen on a port at a time. So we need to tell LetsEncrypt to listen on another port!</p>
+<p>Within HAProxy, we can ask if the incoming HTTP request contains the string <code>/.well-known/acme-challenge</code>. In the coniguration below, if HAProxy sees that the request does include that URI, it will route the request to LetsEncrypt. Otherwise, it will route the request to any servers in the load balancer rotation as normal.</p>
+<pre><code class="language-conf"># The frontend only listens on port 80
+# If it detects a LetsEncrypt request, is uses the LE backend
+# Else it goes to the default backend for the web servers
+frontend fe-scalinglaravel
+    bind *:80
+
+    # Test URI to see if its a letsencrypt request
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if letsencrypt-acl
+
+    default_backend be-scalinglaravel
+
+# LE Backend
+backend letsencrypt-backend
+    server letsencrypt 127.0.0.1:8888
+
+# Normal (default) Backend
+# for web app servers
+backend be-scalinglaravel
+    # Config omitted here</code></pre>
+<p>Once that's setup within HAProxy, we can reload it (<code>sudo service haproxy reload</code>) and then move on to running LetsEncrypt.</p>
+<h3>New Certificates</h3>
+<p>The command to get a new certificate from LetsEncrypt that we will use is this:</p>
+<pre><code class="language-bash">sudo certbot certonly --standalone -d demo.scalinglaravel.com \
+    --non-interactive --agree-tos --email admin@example.com \
+    --http-01-port=8888</code></pre>
+<p>Lets roll through what this does:</p>
+<ol>
+<li><code>--standalone</code> - Create a stand-alone web server to listen for the cert authorization HTTP request</li>
+<li><code>-d demo.scalinglaravel.com</code> - The domain we're creating a cert for. You can use multiple <code>-d</code> flags for multiple domains for a single certificate. The domain(s) must route to the server we're creating a cert for (DNS must be setup for the domain).</li>
+<li><code>--non-interactive --agree-tos --email admin@example.com</code> - Make this non-interactive by saying as much, agreeing to the TOS, and informing LetsEncrypt of the email to use to send &quot;YOUR CERT IS EXPIRING&quot; notifications.</li>
+<li><code>--http-01-port=8888</code> - The Magic™. This tells the stand-alone server to listen on port 8888. Note that LetsEncrypt will <em>still</em> send the authorization HTTP request over port 80. However the listener is expecting a proxy (such as our HAProxy server) to route the request to it over port 8888. The flag is <code>http-01</code> because it expects an <code>HTTP</code> request, NOT an <code>HTTPS</code> request.</li>
+</ol>
+<h3>Renewing Certificates</h3>
+<p>If we are renewing a certificate, that likely means that there's a valid HTTPS certificate in use. We just need LetsEncrypt to do the same process as above to renew it. However, there's a few key differences:</p>
+<ol>
+<li>HAProxy is presumably listening on port 443 for SSL connections, and LetsEncrypt is going to send an authorization request over HTTPS instead of HTTP.</li>
+<li>The stand-alone server will expect an HTTPS (TLS, technically) request into it instead of a plain HTTP request.</li>
+</ol>
+<p>So, the HAProxy setup will be almost the same, except this time it will be listening on port 443.</p>
+<blockquote>
+<p>We'll cover setting up the HAProxy configuration for SSL in a bit.</p>
+</blockquote>
+<pre><code class="language-conf">frontend fe-scalinglaravel
+    bind *:80
+
+    # This is our new config that listens on port 443 for SSL connections
+    bind *:443 ssl crt /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem
+
+    # New line to test URI to see if its a letsencrypt request
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if letsencrypt-acl
+
+    default_backend be-scalinglaravel
+
+# LE Backend
+backend letsencrypt-backend
+    server letsencrypt 127.0.0.1:8888
+
+# Normal (default) Backend
+# for web app servers
+backend be-scalinglaravel
+    # Config omitted here</code></pre>
+<p>Note that LetsEncrypt's stand-alone server is <em>still</em> listening on port 8888, even though it's expecting a TLS connection. That's fine, the port number doesn't actually matter. The only change here is that HAProxy is listening for SSL connections as well.</p>
+<p>Here's how to renew a certificate with LetsEncrypt:</p>
+<pre><code class="language-bash">sudo certbot renew --tls-sni-01-port=8888</code></pre>
+<p>That's it! We use <code>renew</code>, but this time we tell it to expect a <code>tls</code> connection and to contune listening for in on port 8888 (again).</p>
+<h3>SSL Certificates and HAProxy</h3>
+<p>HAProxy needs an ssl-certificate to be one file, in a certain format. To do that, we create a new directory where the SSL certificate that HAProxy reads will live. Then we output the &quot;live&quot; (latest) certificates from LetsEncrypt and dump that output into the certificate file for HAProxy to use:</p>
+<pre><code class="language-bash">sudo mkdir -p /etc/ssl/demo.scalinglaravel.com
+
+sudo cat /etc/letsencrypt/live/demo.scalinglaravel.com/fullchain.pem \
+    /etc/letsencrypt/live/demo.scalinglaravel.com/privkey.pem \
+    | sudo tee /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem</code></pre>
+<p>The <code>/etc/letsencrypt/live/your-domain-here.tld</code> directory will contain symlinks to your current, most up-to-date certificate.</p>
+<p>So, we make sure a directory exists for our certificate, and then we concatenate the contents of the <code>fullchain.pem</code> file (certificate and certificate chain) and the private key <code>privkey.pem</code> file. We put the outputs into the file <code>demo.scalinglaravel.com.pem</code>. The order we concatenate the files matter (fullchain followed by private key).</p>
+<p>The HAProxy configuration, as we saw, uses that new file:</p>
+<pre><code class="language-conf">frontend fe-scalinglaravel
+    bind *:80
+
+    # This is our new config that listens on port 443 for SSL connections
+    bind *:443 ssl crt /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem
+
+    # omitting the rest of the config...</code></pre>
+<h2>Automating Renewal</h2>
+<p>To automate renewal of our certificate, we need to repeat the above steps:</p>
+<ol>
+<li>Get a new certificate</li>
+<li>Create the new certificate file for HAProxy to use</li>
+</ol>
+<p>By default, LetsEncrypt creates a CRON entry at <code>/etc/cron.d/certbot</code>. The entry runs twice a day (by default, LetsEncrypt will only renew the certificate if its expiring within 30 days). </p>
+<p>What I like to do is to run a bash script that's run monthly, and to force a renewal of the certificate every time.</p>
+<p>We can start by editing the CRON file to run a script monthly:</p>
+<pre><code>0 0 1 * * root bash /opt/update-certs.sh</code></pre>
+<p>That runs on the zeroth minute of the zeroth hour (midnight on whatever timezone your server is set to, likely UTC) on the first day of every month.</p>
+<p>The bash file referenced in the CRON task (<code>/opt/update-certs.sh</code>) looks like this:</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+# Renew the certificate
+certbot renew --force-renewal --tls-sni-01-port=8888
+
+# Concatenate new cert files, with less output (avoiding the use tee and its output to stdout)
+bash -c "cat /etc/letsencrypt/live/demo.scalinglaravel.com/fullchain.pem /etc/letsencrypt/live/demo.scalinglaravel.com/privkey.pem &gt; /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem"
+
+# Reload  HAProxy
+service haproxy reload</code></pre>
+<p>This does all the steps we ran before. The only difference is that I use <code>--force-renewal</code> to have LetsEncrypt renew the certificate monthly. This way is a bit simpler to reason about and won't fall victim to potential timing bugs that running twice per day attempted to get around.</p>
+<h2>Enforcing HTTPS</h2>
+<p>This is not related to LetsEncrypt, but rather to your SSL implementation.</p>
+<p>If you want to enforce SSL usage in HAProxy, you can also do that without affecing LetsEncrypt's ability to renew certificate:</p>
+<pre><code class="language-conf">frontend fe-scalinglaravel
+    bind *:80
+    bind *:443 ssl crt /etc/ssl/demo.scalinglaravel.com/demo.scalinglaravel.com.pem
+
+    # Redirect if HTTPS is *not* used
+    redirect scheme https code 301 if !{ ssl_fc }
+
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if letsencrypt-acl
+
+    default_backend be-scalinglaravel</code></pre>
+<p>This states that if the frontend connection was not using SSL, then return a 301 redirect to the same URI, but with &quot;https&quot;.</p>]]></content:encoded>
+      <pubDate>Sat, 26 Jan 2019 19:06:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Connecting Containers</title>
+      <link>https://serversforhackers.com/c/div-connecting-containers</link>
+      <description>We get a Laravel application running!</description>
+      <content:encoded><![CDATA[<p>We run a Laravel application!</p>
+<pre><code class="language-bash">docker run --it --rm -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    shippingdocker/app:latest \
+    composer create-project laravel/laravel application</code></pre>
+<p>This shares our current directory into the <code>/var/www/html</code> directory in the container, and then runs <code>composer create project...</code> to get Composer to add a Laravel project into a new directory named <code>application</code>.</p>
+<p>We then update the application <code>.env</code> file to point MySQL to hostname <code>mysql</code> and run some migrations. It works!</p>
+<blockquote>
+<p>The containers are both running within the same Docker network as described in the last video, and as described further in this video.</p>
+</blockquote>]]></content:encoded>
+      <pubDate>Sun, 04 Nov 2018 15:15:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP, FPM, and Nginx</title>
+      <link>https://serversforhackers.com/c/php-fpm-and-nginx</link>
+      <description>We'll install PHP and configure Nginx to send requests to PHP files off to PHP-FPM</description>
+      <content:encoded><![CDATA[<h2>PHP</h2>
+<p>We can see we have php 7.0 available out of the box:</p>
+<pre><code class="language-bash">sudo apt-cache show php-cli</code></pre>
+<p>Instead of using that, we'll start by installing the latest PHP 7.1, via the populate PHP repository.</p>
+<pre><code class="language-bash"># Add repository and update local cache of available packages
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt-get update
+
+# Search for packages starting with PHP, 
+# we'll see php7.1-* packages available
+sudo apt-cache search -n php*
+
+# Install PHP-FPM, PHP-CLI and modules
+sudo apt-get install -y php7.1-fpm php7.1-cli php7.1-curl php7.1-mysql php7.1-sqlite3 \
+    php7.1-gd php7.1-xml php7.1-mcrypt php7.1-mbstring php7.1-iconv</code></pre>
+<p>Once that's installed, we can see some similar conventions from Nginx (and other software in Debian/Ubuntu).</p>
+<h3>SAPI</h3>
+<p>PHP on Debian/Ubuntu is divided by version and Server Application Programming Interface. A SAPI is the context in which PHP is run. The most common are:</p>
+<ul>
+<li>cli - when running on the command line</li>
+<li>fpm - when fulfilling a web request via fastcgi</li>
+<li>apache2 - when run in Apache's mod-php</li>
+</ul>
+<h3>Configuration</h3>
+<p>We can see the configuration split between version and SAPI by checking the file paths within <code>/etc</code>:</p>
+<pre><code class="language-bash">cd /etc/php
+ls -lah
+
+&gt; ... 5.6/
+&gt; ... 7.0/
+&gt; ... 7.1/
+
+cd 7.1
+ls -lah
+
+&gt; ... cli/
+&gt; ... fpm/</code></pre>
+<p>Within each SAPI directory (e.g. cli or fpm), there is a <code>php.ini</code> file and a <code>conf.d</code> directory. We can edit <code>php.ini</code> per SAPI and use symlinks within the <code>conf.d</code> directory to enable or disable modules per SAPI.</p>
+<h3>Modules</h3>
+<p>PHP on Debian/Ubuntu use Symlinks to decide which ones are loaded per SAPI. All module configuration files are located in <code>/etc/php/&lt;version&gt;/mods-available</code>, and then loaded in via symlinks at <code>/etc/php/&lt;version&gt;/&lt;sapi&gt;/conf.d</code>.</p>
+<h2>Nginx</h2>
+<p>Once PHP is installed, we can configure Nginx to send PHP requests off to PHP-FPM:</p>
+<pre><code>server {
+    listen 80;
+
+    root /var/www/html;
+
+    server_name _;
+
+    index index.html index.htm index.debian-default.html index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        incude snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.1-fpm.sock;
+    }
+}</code></pre>
+<p>Once edits are complete we can test Nginx and reload:</p>
+<pre><code class="language-bash">sudo nginx -t
+sudo service nginx reload</code></pre>
+<p>In the video, I show you some behavior around the above configuration. Most notably, the <code>try_files</code> configuration allows for &quot;pretty URLs&quot;, meaning we don't need to add <code>index.php</code> into the URL within our browser for Nginx to use the <code>index.php</code> file.</p>
+<p>The above configuration file will search for php files within the <code>/var/www/html</code> directory and send requests to PHP-FPM if a file is requested that ends in the <code>.php</code> extension.</p>]]></content:encoded>
+      <pubDate>Sun, 21 Oct 2018 20:00:57 +0000</pubDate>
+    </item>
+    <item>
+      <title>Nginx</title>
+      <link>https://serversforhackers.com/c/start-nginx</link>
+      <description>We'll see how to install Nginx from the official Nginx repository for Ubuntu servers.</description>
+      <pubDate>Sun, 21 Oct 2018 19:58:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>PHP App Setup &amp; Permissions</title>
+      <link>https://serversforhackers.com/c/php-app-setup-permissions</link>
+      <description>We cover cloning a Laravel application from Github (onto the server), and setting up the server to run Laravel. This includes a tweak to Nginx, using composer, and digging into proper permissions.</description>
+      <content:encoded><![CDATA[<h2>Composer</h2>
+<p>First we installed Composer so we can get PHP dependencies:</p>
+<pre><code class="language-bash"># Become user root
+sudo su
+
+# Pipe the composer installer to php, and pass the installer some flags
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer</code></pre>
+<h2>GitHub</h2>
+<p>Next, we want to get a Laravel project from Github.</p>
+<p>We'll need access to Github. I chose to create a Deploy Key within Github, so the server has read-only access to a specific repository.</p>
+<pre><code class="language-bash"># Create an ssh key in /home/fideloper/.ssh
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -C "sfh-start-here"
+cat ~/.ssh/id_rsa.pub
+# Copy the output into a new Deploy key within Github, under the repository settings
+
+# Test our connection to github
+ssh -T git@github.com</code></pre>
+<p>We copy the contents of the public at<code>/home/fideloper/.ssh/id_rsa.pub</code> to Github while creating the Deploy key.</p>
+<p>Then we can clone the repository. We clone it into user fideloper's home directory since we have permission to write new files there since we are logged in as user fideloper.</p>
+<pre><code class="language-bash"># Delete old webroot, which only had an index.php file in it
+# We'll put our laravel application in this location
+sudo rm -rf /var/www/html
+
+# Ensure we have git
+which git
+git --version
+# sudo apt-get install -y git
+
+# Go to our home directory and clone the repository into a new directory named "html"
+cd ~
+git clone https://github.com/Servers-for-Hackers/server-start-here html</code></pre>
+<h2>Nginx</h2>
+<p>Within the <code>/etc/nginx/sites-available/default</code> file, we update the <code>root</code> to point to the Laravel web root, which is the <code>public</code> directory.</p>
+<p>Edit the file <code>/etc/nginx/sites-available/default</code> to update the <code>root</code> directive:</p>
+<pre><code># Change:
+root /var/www/html;
+
+# To:
+root /var/www/html/public;</code></pre>
+<p>Then test the change and reload Nginx:</p>
+<pre><code class="language-bash">sudo nginx -t
+sudo service nginx reload</code></pre>
+<h2>Application</h2>
+<p>We're ready to setup the application. First, we'll move it from user fideloper's home directory, to the <code>/var/www/html</code> location that Nginx expects web files to live in.</p>
+<p>Since the Laravel application contains a <code>public</code> directory meant to be the web root, our change to the Nginx configuration will be correct when it points to <code>/var/www/html/public</code>.</p>
+<pre><code class="language-bash"># Put the application in the /var/www directory
+sudo mv ~/html /var/www/
+
+# Create  a new .env file
+cd /var/www/html
+cp .env.example .env
+
+# Install zip/unzip so composer can get Git-based dependencies
+# from "dist" instead of having to clone each repository (slow!)
+sudo apt-get install -y zip unzip
+
+# Install composer dependencies
+composer install
+
+# Generate a new application key in the .env file
+php artisan key:generate
+
+# Ensure files are writable (particularly `storage` and `bootstrap` need to be writable by Laravel!)
+# Otherwise we'll get the blank white screen of death
+
+# We can see that PHP is running as user/group "www-data"
+ps aux | grep php
+
+# So we change our web files to that user/group, thus letting PHP write to those locations
+sudo chown -R www-data: /var/www/html</code></pre>]]></content:encoded>
+      <pubDate>Sun, 21 Oct 2018 19:53:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>SSL Termination</title>
+      <link>https://serversforhackers.com/c/nginx-lb-ssl-termination</link>
+      <description>We setup SSL-Termination on the load balancer, and let the load balancer send requests over port 80 to the application servers.</description>
+      <content:encoded><![CDATA[<p>We'll set up SSL-termination on the load balancer. In this setup, the load balancer decrypts the SSL connection and sends an http request on port 80 over the local private network to the application servers.</p>
+<blockquote>
+<p>SSL Termination is a common setup, however there are setups that keep the connection encrypted all the way to the application servers.</p>
+</blockquote>
+<p>We'll get an SLL certificate for free using Lets Encrypt.</p>
+<p>So, first, we'll install Lets Encrypt!</p>
+<blockquote>
+<p>Creating a certificiate here will work because we don't disallow access to directories that start with a period, but if you do like on many standard setups, see the <a href="https://serversforhackers.com/c/letsencrypt-for-free-easy-ssl-certificates">video on using Lets Encrypt</a> for more details.</p>
+</blockquote>
+<pre><code class="language-bash">cd /opt
+sudo git clone https://github.com/certbot/certbot
+cd certbot
+./certbot-auto -h</code></pre>
+<p>OK, so, certbot is installed but if we have it attempt to connect to our server, Nginx will attempt to proxy the authentication request to our application servers, but we don't want that!</p>
+<p>So, let's setup Nginx to work with Lets Encrypt requests:</p>
+<pre><code>upstream app {
+    server 172.31.9.200:80;
+    server 172.31.0.30:80;
+}
+
+server {
+    listen 80 default_server;
+
+    server_name lb.serversforhackers.com;    
+
+    charset utf-8;
+
+    # Requests to /.well-known should look for local files
+    location /.well-known {
+        root /var/www/html;
+        try_files $uri $uri/ =404;
+    }
+
+    # All other requests get load-balanced
+    location / {
+        include proxy_params;
+        proxy_pass http://app;
+        proxy_redirect off;
+
+        # Handle Web Socket connections
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}</code></pre>
+<p>The details of what's going on here is explained more in <a href="https://serversforhackers.com/c/letsencrypt-for-free-easy-ssl-certificates">the Let's Encrypt video</a>! This includes how to have the certificate automatically update.</p>
+<p>We need to test this config and have Nginx suck it in:</p>
+<pre><code class="language-bash">sudo nginx -t
+sudo service nginx reload</code></pre>
+<p>Now we're ready to install our certificate!</p>
+<pre><code class="language-bash">cd /opt/certbot
+
+# Let's create the cert
+sudo ./certbot-auto certonly --webroot -w /var/www/html \
+    -d lb.serversforhackers.com \
+    --non-interactive --agree-tos --email admin@example.com</code></pre>
+<p>Finally, we can update our Nginx configuration to use the SSL (this is a bit different than the video, which doesn't cover ensuring Let's Encrypt continues to work after the SSL is installed):</p>
+<pre><code>upstream app {
+    server IPHERE:80;
+    server IPHERE:80;
+}
+
+server {
+    listen 80 default_server;
+    server_name lb.serversforhackers.com;
+
+    # Requests to /.well-known should look for local files
+    location /.well-known {
+        root /var/www/html;
+        try_files $uri $uri/ =404;
+    }
+
+    # All other requests get load-balanced
+    location / {
+        return 301 https://$server_name$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl default_server;
+
+    server_name lb.serversforhackers.com;
+
+    ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers                ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS;
+    ssl_prefer_server_ciphers  on;
+    ssl_session_cache          shared:SSL:10m;
+    ssl_session_timeout        24h;
+    keepalive_timeout          300s;
+
+    ssl_certificate      /etc/letsencrypt/live/lb.serversforhackers.com/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/lb.serversforhackers.com/privkey.pem;
+
+    charset utf-8;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://app;
+        proxy_redirect off;
+
+        # Handle Web Socket connections
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}</code></pre>
+<p>In this setup, all requests to port 80 are redirected to port 443 to use the SSL certificate. If a request on port 80 is sent to <code>/.well-known</code>, it should function.</p>
+<p>Finally we can test that out and reload Nginx:</p>
+<pre><code class="language-bash">sudo nginx -t
+sudo service nginx reload</code></pre>
+<p>We should then be able to access our server over SSL using <a href="https://lb.serversforhackers.com">https://lb.serversforhackers.com</a>.</p>]]></content:encoded>
+      <pubDate>Tue, 31 Jul 2018 19:04:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Letsencrypt for Free &amp; Easy SSL Certificates</title>
+      <link>https://serversforhackers.com/c/letsencrypt-for-free-easy-ssl-certificates</link>
+      <description>See how to easy it is to use letsencrypt to create and automatically renew FREE SSL certificates!</description>
+      <content:encoded><![CDATA[<p>See how to easy it is to use letsencrypt to create and automatically renew FREE SSL certificates!</p>
+<h2>The environment:</h2>
+<p>Here's what we're using in the video</p>
+<ul>
+<li>Ubuntu 16.04 on AWS.</li>
+<li>Ubuntu 16.04 <a href="https://cloud-images.ubuntu.com/locator/ec2/">AMI's found here</a>, if you're curious.</li>
+<li>Nginx</li>
+<li><a href="https://github.com/certbot/certbot">Certbot</a> (e.g. Letsencrypt)</li>
+</ul>
+<p>I had a real domain pointing to this server: <code>tutorial.serverops.io</code>.</p>
+<h2>Initial Setup:</h2>
+<p>I ran the following just to get the server updated and nginx installed:</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt upgrade -y
+sudo apt install -y nginx</code></pre>
+<p>When I went  to <code>http://tutorial.serverops.io</code> in the browser, I could then see the default nginx site. Yay!</p>
+<h3>Nginx Security</h3>
+<p>Many people protect dot-files in your Nginx server configuration. This means access to any file or folder proceeded with a dot returns an access denied response. This rule in Nginx often looks like this:</p>
+<pre><code>location ~* (?:^|/)\. {
+    deny all;
+}</code></pre>
+<p>This protects url's such as: <code>http://example.com/.git/...</code> - which is good - that's likely not something you want exposed to the public internet!</p>
+<p>LetsEncrypt, however, uses a folder named <code>.well-known</code> to validate that you have access to the domain you're attempting to create a certificate for. To allow the use of this directory while still protecting system directories, use the following two Nginx rules:</p>
+<pre><code>location ~* (?:^|/)\.well-known {
+    allow all;
+}
+
+location ~* (?:^|/)\. {
+    deny all;
+}</code></pre>
+<p><strong>Update:</strong> April 6, 2017 - Using Nginx 1.10.3 I had to use the following configuration to accomplish the above (<a href="https://github.com/letsencrypt/acme-spec/issues/221">Github issue reference</a>):</p>
+<pre><code>location ^~ /.well-known/acme-challenge/ {
+    allow all;
+}
+
+location ~* (?:^|/)\. {
+    allow all;
+}</code></pre>
+<h2>Install Letsencrypt</h2>
+<p>Letsencrypt used to have you install a command line tool called, appropriately, &quot;letsencrypt&quot;. It's since changed to the simpler &quot;certbot&quot;.</p>
+<p>Ubuntu 16.04 has a package for &quot;letsencrypt&quot; (currently for version 0.4.1-1):</p>
+<pre><code class="language-bash">$ apt show certbot # No results
+$ apt show letsencrypt
+Package: letsencrypt
+Version: 0.4.1-1
+Priority: optional
+Section: universe/web
+Source: python-letsencrypt
+Origin: Ubuntu
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Debian Lets Encrypt &lt;letsencrypt-devel@lists.alioth.debian.org&gt;
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Installed-Size: 24.6 kB
+Depends: dialog, python-letsencrypt (= 0.4.1-1), python:any (&gt;= 2.7~)
+Suggests: python-letsencrypt-apache, python-letsencrypt-doc
+Homepage: https://letsencrypt.org/
+Download-Size: 10.9 kB
+APT-Sources: http://us-east-1.ec2.archive.ubuntu.com/ubuntu xenial/universe amd64 Packages
+Description: Lets Encrypt main client...</code></pre>
+<p>The latest <a href="https://github.com/certbot/certbot/releases">certbot release</a> as of this writing if 0.7.0. Let's not settle for an old version!</p>
+<blockquote>
+<p>This was actually 0.8.0 the next day - development moves fast on it!</p>
+</blockquote>
+<p>To install a newer version:</p>
+<pre><code class="language-bash">sudo apt install -y git
+cd /opt
+sudo git clone https://github.com/certbot/certbot
+cd certbot
+./certbot-auto -h</code></pre>
+<p>We'll use the <code>certbot-auto</code> command.</p>
+<h2>Install a Certificate</h2>
+<p>Letsencrypt has a few &quot;modules&quot; which basically boils down to &quot;how do I setup an SSL certificate for you&quot;.</p>
+<p>In all cases, letsencrypt needs to be able to ping your server over HTTP to confirm that your domain points to the server you're installing the certificate on.</p>
+<h3>Standalone</h3>
+<p>One way letsencrypt does this is with the <strong>&quot;standalone&quot;</strong> module, which spins up a web server listening on port 80. The issue there may or may not be obvious to you - We already have a web server bound to port 80. <a href="https://www.youtube.com/watch?v=sqcLjcSloXs">There can be only one</a>.</p>
+<p>This means turning off the web server, running lets encrypt, and then turning it back on. It's a viable option (and is the way I've done it in the passed), but let's do better.</p>
+<h3>Webroot</h3>
+<p>I'm going to go with the <strong>&quot;webroot&quot;</strong> module, which is similar to how Google webmaster tools proves ownership. It creates a file in your web root that letsencrypt can check for, which then proves that you are actually installing an SSL on the server it can reach from your domain.</p>
+<blockquote>
+<p>Note that this gets the certificate but does not install it. There are apache and nginx modules that can do this. The Apache module seems stable, but they plaster a scary &quot;experimental&quot; warning on the Nginx module, so I haven't used it.</p>
+</blockquote>
+<p>Following the <a href="https://certbot.eff.org/docs/using.html">docs on the webroot option</a>, I use the following command:</p>
+<pre><code class="language-bash"># Don't forget we're in /opt
+# and all files are owned by root currently
+cd /opt/certbot
+
+# Run as root, which avoids python dependencies
+# from trying to install in /home/ubuntu as user root
+sudo su
+
+# Note that I know and am using Nginx's default webroot location
+# which I grabbed from /etc/nginx/sites-available/default
+# Also note that --non-interactive --agree-tos --email &lt;email&gt; is required
+# to avoid prompts (great for automating this!)
+# Also remember we're running as root
+./certbot-auto certonly --webroot -w /var/www/html \
+    -d tutorial.serverops.io \
+    --non-interactive --agree-tos --email admin@example.com</code></pre>
+<p>I used tmux to split my terminal and ran <code>sudo tail -f /var/log/nginx/access.log</code> to see the access log as I ran the above command. I saw this:</p>
+<pre><code>66.133.109.36 - - [01/Jun/2016:15:30:25 +0000] "GET /.well-known/acme-challenge/-IeTRWj2zRKRxim2ngMPUP3_Nvt6DN_TR-fLXUQMfHk HTTP/1.1" 200 87 "-" "Mozilla/5.0 (compatible; Let's Encrypt validation server; +https://www.letsencrypt.org)"</code></pre>
+<p>And the command itself outputs this:</p>
+<pre><code>IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at
+   /etc/letsencrypt/live/tutorial.serverops.io/fullchain.pem. Your
+   cert will expire on 2016-08-30. To obtain a new or tweaked version
+   of this certificate in the future, simply run certbot-auto again.
+   To non-interactively renew *all* of your ceriticates, run
+   "certbot-auto renew"
+ - If you lose your account credentials, you can recover through
+   e-mails sent to admin@example.com.
+ - Your account credentials have been saved in your Certbot
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Certbot so
+   making regular backups of this folder is ideal.
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le</code></pre>
+<p>We can check out that directory it mentions as well:</p>
+<pre><code class="language-bash"># Still running as user root
+$ ls -lah /etc/letsencrypt/live/tutorial.serverops.io
+total 8
+drwxr-xr-x 2 root root 4096 Jun  1 15:30 ./
+drwx------ 3 root root 4096 Jun  1 15:30 ../
+lrwxrwxrwx 1 root root   45 Jun  1 15:30 cert.pem -&gt; ../../archive/tutorial.serverops.io/cert1.pem
+lrwxrwxrwx 1 root root   46 Jun  1 15:30 chain.pem -&gt; ../../archive/tutorial.serverops.io/chain1.pem
+lrwxrwxrwx 1 root root   50 Jun  1 15:30 fullchain.pem -&gt; ../../archive/tutorial.serverops.io/fullchain1.pem
+lrwxrwxrwx 1 root root   48 Jun  1 15:30 privkey.pem -&gt; ../../archive/tutorial.serverops.io/privkey1.pem</code></pre>
+<p>Great, we can see those are symlinked to some other files. These get updated when we renew our certificates, but it's the symlink we use in our Nginx configuration, so we don't need to update web server configuration when we renew!</p>
+<h2>Nginx Configuration</h2>
+<p>Let's setup our Nginx configuration to use our new SSL certificate.</p>
+<p>We'll edit <code>/etc/nginx/sites-available/default</code> and uncomment the SSL configuration portion.</p>
+<pre><code class="language-nginx">server {
+    listen 80 default_server;
+    listen 443 ssl default_server;
+
+    ssl_certificate      /etc/letsencrypt/live/tutorial.serverops.io/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/tutorial.serverops.io/privkey.pem;
+
+    # Remaining removed for brevity</code></pre>
+<p>We use the <code>fullchain.pem</code> so we have the root certificate and the intermediary authorities. And of course we use the private key used to generate the certificate.</p>
+<p>Once the changes are added, we can test Nginx and reload the configuration, assuming it doesn't find any issues.</p>
+<pre><code class="language-bash">sudo service nginx configtest
+sudo service nginx reload</code></pre>
+<p>Now head to our domain with &quot;https://&quot; (<code>https://tutorial.serverops.io</code>) and we'll see the green lock of bliss!</p>
+<h2>Renewal</h2>
+<p>Letsencrypt certificates are good for only 90 days, so you need to renew periodically. This is hella easy.</p>
+<pre><code class="language-bash"># again, as user root
+cd /opt/certbot
+./certbot-auto renew --webroot -w /var/www/html</code></pre>
+<p>This will renew any certificates expiring within 30 days. You can set this as a cron task and run it as much as you'd like (altho I'd run it on the first of each month personally).</p>
+<p>Here's an example <code>/etc/cron.monthly/letsencrypt</code> bash file (make sure it's executable - <code>sudo chmod u=rwx,go=rx /etc/cron.monthly/letsencrypt</code>):</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+cd /opt/certbot
+./certbot-auto renew --webroot \
+    --noninteractive \
+    -w /var/www/html \
+    --post-hook "service nginx reload"</code></pre>
+<p><strong>Update:</strong> I've found that in some cases, the certificate does not renew (due to how and when Certbot decides a certificate is not yet ready for renewal). To counter-act this, I just add the <code>--force-renewal</code> flag:</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+cd /opt/certbot
+./certbot-auto renew --webroot \
+    --force-renewal \
+    --noninteractive \
+    -w /var/www/html \
+    --post-hook "service nginx reload"</code></pre>
+<p>Then (noted above, but repeated here as well) we need to make sure the script is executable:</p>
+<pre><code class="language-bash">sudo chmod +x /etc/cron.monthly/letsencrypt</code></pre>
+<p>We use the <code>webroot</code> module again and let is know the webroot path. Then we also set a <code>post-hook</code> to reload Nginx, to ensure it sucks in the new certificate.</p>
+<blockquote>
+<p>If you want to test the renewal immediately, add the <code>--force-renewal</code> flag!</p>
+</blockquote>
+<p>That's it! Your certificates will get renewed.</p>]]></content:encoded>
+      <pubDate>Tue, 31 Jul 2018 19:03:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Workflow</title>
+      <link>https://serversforhackers.com/c/div-the-workflow</link>
+      <description>We finish building our helper script to finalize our development workflow.</description>
+      <content:encoded><![CDATA[<p>Here we build up our helper script to accomplish the following:</p>
+<ol>
+<li>Pass-thru any undefined commands to <code>docker-compose</code></li>
+<li>Run <code>docker-compose ps</code> if we don't pass any arguments to the <code>develop</code> script</li>
+<li>Create a series of commands such as <code>artisan</code>, <code>composer</code>, <code>yarn</code>, and so on, setting the script up to allow us to pass in any arguments to those commands.</li>
+</ol>
+<p>The commands we create all allow us to run the corresponding commands within our running containers!</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+if [ $# -gt 0 ]; then
+
+    if [ "$1" == "start" ]; then
+        docker-compose up -d
+
+    elif [ "$1" == "stop" ]; then
+        docker-compose down
+
+    elif [ "$1" == "artisan" ] || [ "$1" == "art" ]; then
+        shift 1
+        docker-compose exec \
+            app \
+            php artisan "$@"
+
+    elif [ "$1" == "composer" ] || [ "$1" == "comp" ]; then
+        shift 1
+        docker-compose exec \
+            app \
+            composer "$@"
+
+    elif [ "$1" == "test" ]; then
+        shift 1
+        docker-compose exec \
+            app \
+            ./vendor/bin/phpunit "$@"
+
+    elif [ "$1" == "npm" ]; then
+        shift 1
+        docker-compose run --rm \
+            node \
+            npm "$@"
+
+    elif [ "$1" == "yarn" ]; then
+        shift 1
+        docker-compose run --rm \
+            node \
+            yarn "$@"
+
+    elif [ "$1" == "gulp" ]; then
+        shift 1
+        docker-compose run --rm \
+            node \
+            ./node_modules/.bin/gulp "$@"
+    else
+        docker-compose "$@"
+    fi
+
+else
+    docker-compose ps
+fi</code></pre>
+<p>We can use this helper script like so:</p>
+<pre><code class="language-bash"># Run docker-compose ps
+./develop ps
+
+# Run docker-compose exec app bash
+./develop exec app bash
+
+# Run docker-compose exec app php artisan make:controller SomeController
+./develop art make:controller SomeController
+
+# Run docker-compose exec app composer require predis/predis
+./develop composer require predis/predis
+
+# Run docker-compose exec app ./vendor/bin/phpunit
+./develop test
+
+# Run commands against the node container:
+./develop yarn ...
+./develop npm ...
+./develop gulp ...</code></pre>
+<p>And of course you can make your own commands, or make it more complex. For example, <a href="https://vessel.shippingdocker.com/">Laravel Vessel</a> runs <code>exec</code> if the containers are running and <code>run</code> if the containers are not running, among other more complex use cases.</p>]]></content:encoded>
+      <pubDate>Fri, 15 Jun 2018 13:35:44 +0000</pubDate>
+    </item>
+    <item>
+      <title>Dev Workflow Intro</title>
+      <link>https://serversforhackers.com/c/div-dev-workflow-intro</link>
+      <description>We see how to begin creating a development workflow around what we have built so far.</description>
+      <content:encoded><![CDATA[<p>We can build up a nice development workflow using a helper bash script.</p>
+<p>This makes running command witin our Docker container super easy. Running all of those <code>docker-compose</code> commands are a real pain!</p>
+<p>We also move our <code>application</code> files up a level so the Docker files are all within the same directory.</p>
+<blockquote>
+<p>I don't show this in the repository for this video series, as I don't want to pin a specific Laravel version to it, but it's easy to change as I show in the video!</p>
+</blockquote>
+<h2><code>develop</code> Script</h2>
+<p>We can make a bash helper, which I name <code>develop</code>:</p>
+<pre><code class="language-bash">touch develop
+chmod +x develop</code></pre>
+<p>And we can start our <code>develop</code> helper with simply this:</p>
+<pre><code class="language-bash">#!/usr/bin/env bash</code></pre>
+<p>We'll add useful items to it in the next video.</p>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Adding a NodeJS Service</title>
+      <link>https://serversforhackers.com/c/div-adding-a-build-service</link>
+      <description>We add a Node container to run build tasks.</description>
+      <content:encoded><![CDATA[<p>We add a <code>node</code> service that we can use to build our static assets:</p>
+<pre><code>version: '3'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    image: shippingdocker/app:latest
+    networks:
+     - appnet
+    volumes:
+     - .:/var/www/html
+    ports:
+     - ${APP_PORT}:80
+    working_dir: /var/www/html
+  cache:
+    image: redis:alpine
+    networks:
+     - appnet
+    volumes:
+     - cachedata:/data
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    ports:
+     - ${DB_PORT}:3306
+    networks:
+     - appnet
+    volumes:
+     - dbdata:/var/lib/mysql
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    image: shippingdocker/node:latest
+    networks:
+     - appnet
+    volumes:
+     - .:/opt
+    working_dir: /opt
+    command: echo hi
+networks:
+  appnet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  cachedata:
+    driver: local</code></pre>
+<p>We build this image also, so we can add things like <code>git</code> and <code>yarn</code> to it. This uses the official <code>node</code> base image. Here's the Dockerfile:</p>
+<pre><code>FROM node:latest
+
+LABEL maintainer="Chris Fidao"
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    &amp;&amp; echo "deb http://dl.yarnpkg.com/debian/ stable main" &gt; /etc/apt/sources.list.d/yarn.list \
+    &amp;&amp; apt-get update \
+    &amp;&amp; apt-get install -y git yarn \
+    &amp;&amp; apt-get -y autoremove \
+    &amp;&amp; apt-get clean \
+    &amp;&amp; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*</code></pre>
+<p>Docker Compose takes care of building this image for us when we first spin up the environment.</p>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Variables in Docker Compose</title>
+      <link>https://serversforhackers.com/c/div-variables-in-docker-compose</link>
+      <description>We see how to use variable within a `docker-compose.yml` file.</description>
+      <content:encoded><![CDATA[<p>We can use variables in our <code>docker-compose.yml</code> files!</p>
+<p>The syntax is: <code>${SOME_VAR_NAME}</code>.</p>
+<p>These specifically are environment variables.</p>
+<p>First, let's set our <code>docker-compose.yml</code> file to read two variables:</p>
+<pre><code>version: '3'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    image: shippingdocker/app:latest
+    networks:
+     - appnet
+    volumes:
+     - .:/var/www/html
+    ports:
+     - ${APP_PORT}:80
+    working_dir: /var/www/html
+  cache:
+    image: redis:alpine
+    networks:
+     - appnet
+    volumes:
+     - cachedata:/data
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    ports:
+     - ${DB_PORT}:3306
+    networks:
+     - appnet
+    volumes:
+     - dbdata:/var/lib/mysql
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    image: shippingdocker/node:latest
+    networks:
+     - appnet
+    volumes:
+     - .:/opt
+    working_dir: /opt
+    command: echo hi
+networks:
+  appnet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  cachedata:
+    driver: local</code></pre>
+<p>We have <code>APP_PORT</code> and <code>DB_PORT</code>.</p>
+<p>We can set those in two ways:</p>
+<p>First: We can export the variables so they're available to sub-processes:</p>
+<pre><code class="language-bash">export APP_PORT=8080
+export DB_PORT=33060
+
+# Our `docker-compose.yml` file will use the above variables
+docker-compose up -d</code></pre>
+<p>Second: We can set them inline as we run the <code>docker-compose</code> command.</p>
+<pre><code class="language-bash">APP_PORT=8080 DB_PORT=33060 docker-compose up -d</code></pre>
+<h2>.env File</h2>
+<p>We have another option too! Docker Compose will read a <code>.env</code> file and import variables from it!</p>
+<p>Here's an example <code>.env</code> file:</p>
+<pre><code>APP_PORT=8080
+DB_PORT=33060</code></pre>
+<p>If that's in the same directory as the <code>docker-compose.yml</code> file, then we can just run <code>docker-compose</code> commands, knowing it will pick up those variables:</p>
+<pre><code class="language-bash">docker-compose up -d</code></pre>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Working Directory</title>
+      <link>https://serversforhackers.com/c/div-working-directory</link>
+      <description>We cover some more about using the `working_dir` option.</description>
+      <content:encoded><![CDATA[<p>We cover some more about working directories, the <code>exec</code> vs <code>run</code> command, and update our <code>docker-compose.yml</code> file.</p>
+<p>If our <code>exec</code> command doesn't work with a working directory setting, we can run a command that <code>cd's</code> into a directory and runs the command we want all in one shot:</p>
+<pre><code>docker exec -it app bash -c "cd /var/www/html &amp;&amp; php artisan list"</code></pre>
+<p>We can update our <code>docker-compose.yml</code> file to add a <code>working_dir</code>. This should let us avoid doing the above &quot;hack&quot;!</p>
+<pre><code>version: '3'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    image: shippingdocker/app:latest
+    networks:
+     - appnet
+    volumes:
+     - ./application:/var/www/html
+    working_dir: /var/www/html
+  cache:
+    image: redis:alpine
+    networks:
+     - appnet
+    volumes:
+     - cachedata:/data
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    networks:
+     - appnet
+    volumes:
+     - dbdata:/var/lib/mysql
+networks:
+  appnet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  cachedata:
+    driver: local</code></pre>
+<p>Then commands like:</p>
+<pre><code class="language-bash">docker-compose exec app php artisan list</code></pre>
+<p>...should just work!</p>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Our App Service</title>
+      <link>https://serversforhackers.com/c/div-our-app-service</link>
+      <description>We fill out the `app` service within our Docker Compose configuration file.</description>
+      <content:encoded><![CDATA[<p>We define and flesh out our <code>app</code> service, which includes instructions on how to build our <code>app</code> service image using our local <code>Dockerfile</code> and supporting configuration files.</p>
+<pre><code>version: '3'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    image: shippingdocker/app:latest
+    networks:
+     - appnet
+    volumes:
+     - ./application:/var/www/html
+  cache:
+    image: redis:alpine
+    networks:
+     - appnet
+    volumes:
+     - cachedata:/data
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    networks:
+     - appnet
+    volumes:
+     - dbdata:/var/lib/mysql
+networks:
+  appnet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  cachedata:
+    driver: local</code></pre>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Compose and Volumes</title>
+      <link>https://serversforhackers.com/c/div-compose-and-volumes</link>
+      <description>We go over a mistake I made when using Docker volumes!</description>
+      <content:encoded><![CDATA[<p>We go over a mistake I made when using Docker volumes! I didn't assign a <code>volume</code> to the two services (mysql database, redis cache) that need to use the volumes we tell Docker Compose to create!</p>
+<pre><code>version: '3'
+services:
+  cache:
+    image: redis:alpine
+    networks:
+     - appnet
+    volumes:
+     - cachedata:/data
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    networks:
+     - appnet
+    volumes:
+     - dbdata:/var/lib/mysql
+networks:
+  appnet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  cachedata:
+    driver: local</code></pre>
+<p>Here we added the <code>volumes:</code> section to the <code>cache</code> and <code>db</code> services.</p>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Docker Compose Services</title>
+      <link>https://serversforhackers.com/c/div-docker-compose-services</link>
+      <description>We fill out a few services into our `docker-compose.yml` file.</description>
+      <content:encoded><![CDATA[<p>We fill out a few services into our <code>docker-compose.yml</code> file:</p>
+<pre><code>version: '3'
+services:
+  cache:
+    image: redis:alpine
+    networks:
+     - appnet
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    networks:
+     - appnet
+networks:
+  appnet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  cachedata:
+    driver: local</code></pre>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Docker Compose Intro</title>
+      <link>https://serversforhackers.com/c/div-docker-compose-intro</link>
+      <description>We see how we can start to use Docker Compose to more easily control our Docker environment.</description>
+      <content:encoded><![CDATA[<p>Let's start building a <code>docker-compose.yml</code> file so we can manage our Docker environment more easily.</p>
+<p>Docker Compose lets us manage the life cycle of our Docker environment, including Volumes, Networks, and of course helping us manage multiple containers that can work together.</p>
+<p>We'll start defining some simple thing in our <code>docker-compose.yml</code> file:</p>
+<pre><code>version: '3'
+services:
+networks:
+  appnet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  cachedata:
+    driver: local</code></pre>
+<p>In the next video we'll begin to fill out the <code>services</code> section, where we define our containers.</p>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Docker Volumes</title>
+      <link>https://serversforhackers.com/c/div-docker-volumes</link>
+      <description>We cover Docker volumes and make sure we have set our `docker-compose.yml` file correctly to use our created volumes.</description>
+      <content:encoded><![CDATA[<p>We cover Docker volumes and make sure we have set our <code>docker-compose.yml</code> file correctly to use our created volumes.</p>
+<p>List volumes:</p>
+<pre><code class="language-bash">docker volume ls</code></pre>
+<p>Create a volume named <code>dbdata</code>:</p>
+<pre><code class="language-bash">docker volume create dbdata</code></pre>
+<p>Then we can use this volume when we spin up a container, such as MySQL:</p>
+<pre><code class="language-bash">docker run --rm -d \
+    --name=mysql \
+    --network=appnet \
+    -v dbdata:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=root \
+    -e MYSQL_DATABASE=homestead \
+    -e MYSQL_USER=homestead \
+    -e MYSQL_USER_PASSWORD=secret \
+    mysql:5.7</code></pre>
+<p>Here we used the <code>-v</code> flag and shared our named volume <code>dbdata</code> and bound it to <code>/var/lib/mysql</code> within the container.</p>
+<p>We can create and destroy MySQL containers as much as we want. As long as we share the <code>dbdata</code> volume, that database data will persist (assuming, of course, we don't delete the volume via <code>docker volume rm dbdata</code>)!</p>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Docker Networks Intro</title>
+      <link>https://serversforhackers.com/c/div-docker-networks-intro</link>
+      <description>We see how we can get containers to talk to each other over a Docker network.</description>
+      <content:encoded><![CDATA[<p>Let's see how we can get containers to talk to each other over a Docker network.</p>
+<h2>Create a Network</h2>
+<p>We can create a network for containers to be added to:</p>
+<pre><code class="language-bash"># List networks
+docker network ls
+
+# Create a network
+docker network create appnet</code></pre>
+<p>Then we can add containers to that network as we run them:</p>
+<pre><code class="language-bash">docker run --rm -d \
+    --name=app \
+    --network=appnet\
+     shippingdocker/app:latest
+
+docker run --rm -d \
+    --name=mysql \
+    --network=appnet \
+    -e MYSQL_ROOT_PASSWORD=root \
+    -e MYSQL_DATABASE=homestead \
+    -e MYSQL_USER=homestead \
+    -e MYSQL_USER_PASSWORD=secret \
+    mysql:5.7</code></pre>
+<p>This creates two containers (see the videos for details on the MySQL container), and adds them into the new network <code>appnet</code>.</p>
+<p>The containers then can reference eachother - the hostname for each container is taken from the <code>--name</code> given to the container. This lets the <code>app</code> container talk to mysql over hostname <code>mysql</code>.</p>
+<p>Within a container, you can run <code>getent hosts mysql</code> to see the hostname resolution of hostname <code>mysql</code>.</p>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Entrypoint vs Cmd</title>
+      <link>https://serversforhackers.com/c/div-entrypoint-vs-cmd</link>
+      <description>We see how to use an ENTRYPOINT instead of CMD within a Dockerfile.</description>
+      <content:encoded><![CDATA[<p>We can use <code>ENTRYPOINT</code> instead of <code>CMD</code> within our Dockerfile's in order to setup a script that is always run (no matter what!) when a container is spun up from the image we make.</p>
+<h2>Entrypoint Script</h2>
+<p>First, we make a script to act as our <code>ENTRYPOINT</code>:</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+##
+# Ensure /.composer exists and is writable
+#
+if [ ! -d /.composer ]; then
+    mkdir /.composer
+fi
+
+chmod -R ugo+rw /.composer
+
+##
+# Run a command or start supervisord
+#
+if [ $# -gt 0 ];then
+    # If we passed a command, run it
+    exec "$@"
+else
+    # Otherwise start supervisord
+    /usr/bin/supervisord
+fi</code></pre>
+<p>This script allows us to do some pre-processing whenever a container is spun up. It defaults to running <code>supervisord</code> for us, but we also allow ourselves to run <em>any</em> command, just like we could before, by using the <code>exec "$@"</code> line if we pass any commands/arguments to the container.</p>
+<h2>Dockerfile</h2>
+<p>Then we use that in the Dockerfile by adding it to the image and setting it as our <code>ENTRYPOINT</code> script:</p>
+<pre><code>FROM ubuntu:18.04
+
+LABEL maintainer="Chris Fidao"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+    &amp;&amp; apt-get install -y gnupg tzdata \
+    &amp;&amp; echo "UTC" &gt; /etc/timezone \
+    &amp;&amp; dpkg-reconfigure -f noninteractive tzdata
+
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl zip unzip git supervisor sqlite3 \
+       nginx php7.2-fpm php7.2-cli \
+       php7.2-pgsql php7.2-sqlite3 php7.2-gd \
+       php7.2-curl php7.2-memcached \
+       php7.2-imap php7.2-mysql php7.2-mbstring \
+       php7.2-xml php7.2-zip php7.2-bcmath php7.2-soap \
+       php7.2-intl php7.2-readline php7.2-xdebug \
+       php-msgpack php-igbinary \
+    &amp;&amp; php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
+    &amp;&amp; mkdir /run/php \
+    &amp;&amp; apt-get -y autoremove \
+    &amp;&amp; apt-get clean \
+    &amp;&amp; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    &amp;&amp; echo "daemon off;" &gt;&gt; /etc/nginx/nginx.conf
+
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    &amp;&amp; ln -sf /dev/stderr /var/log/nginx/error.log
+
+ADD default /etc/nginx/sites-available/default
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
+ADD start-container.sh /usr/bin/start-container
+RUN chmod +x /usr/bin/start-container
+
+ENTRYPOINT ["start-container"]</code></pre>
+<p>And of course, we need to rebuild the image:</p>
+<pre><code class="language-bash">docker build -t shippingdocker/app:latest \
+    -f docker/app/Dockerfile \
+    docker/app</code></pre>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Docker Logs</title>
+      <link>https://serversforhackers.com/c/div-docker-logs</link>
+      <description>We cover the docker `logs` command.</description>
+      <content:encoded><![CDATA[<p>We cover the docker <code>logs</code> command. We need to make a tweak so everything outputs to stdout or stderr. If we do that successfully, we can use Docker's logging mechanism to see output from Nginx, PHP, and Supervisord.</p>
+<p>The only change we need to make:</p>
+<h2>PHP-FPM</h2>
+<p>In our <code>php-fpm.conf</code> file, adjust the <code>error_log</code> to <code>error_log = /proc/self/fd/2</code>.</p>
+<h2>Nginx</h2>
+<p>Nginx is easier - we can just adjust the Dockerfile by symlinking the nginx error and access logs to stdout and stderr:</p>
+<pre><code>FROM ubuntu:18.04
+
+LABEL maintainer="Chris Fidao"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+    &amp;&amp; apt-get install -y gnupg tzdata \
+    &amp;&amp; echo "UTC" &gt; /etc/timezone \
+    &amp;&amp; dpkg-reconfigure -f noninteractive tzdata
+
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl zip unzip git supervisor sqlite3 \
+       nginx php7.2-fpm php7.2-cli \
+       php7.2-pgsql php7.2-sqlite3 php7.2-gd \
+       php7.2-curl php7.2-memcached \
+       php7.2-imap php7.2-mysql php7.2-mbstring \
+       php7.2-xml php7.2-zip php7.2-bcmath php7.2-soap \
+       php7.2-intl php7.2-readline php7.2-xdebug \
+       php-msgpack php-igbinary \
+    &amp;&amp; php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
+    &amp;&amp; mkdir /run/php \
+    &amp;&amp; apt-get -y autoremove \
+    &amp;&amp; apt-get clean \
+    &amp;&amp; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    &amp;&amp; echo "daemon off;" &gt;&gt; /etc/nginx/nginx.conf
+
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    &amp;&amp; ln -sf /dev/stderr /var/log/nginx/error.log
+
+ADD default /etc/nginx/sites-available/default
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
+
+CMD ["nginx"]
+</code></pre>
+<p>And of course, we need to rebuild the image:</p>
+<pre><code class="language-bash">docker build -t shippingdocker/app:latest \
+    -f docker/app/Dockerfile \
+    docker/app</code></pre>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Configuring PHP-FPM</title>
+      <link>https://serversforhackers.com/c/div-configuring-php-fpm</link>
+      <description>We need to add some custom PHP configuration, especially so it does not run as a daemon.</description>
+      <content:encoded><![CDATA[<p>Here we need to add some custom PHP configuration, especially so it does not run as a daemon.</p>
+<p>We grabbed a PHP-FPM file to put into Docker, and changed <code>daemon</code> to none. Here is file <code>php-fpm.conf</code>:</p>
+<pre><code>;;;;;;;;;;;;;;;;;;;;;
+; FPM Configuration ;
+;;;;;;;;;;;;;;;;;;;;;
+
+; All relative paths in this configuration file are relative to PHP's install
+; prefix (/usr). This prefix can be dynamically changed by using the
+; '-p' argument from the command line.
+
+;;;;;;;;;;;;;;;;;;
+; Global Options ;
+;;;;;;;;;;;;;;;;;;
+
+[global]
+; Pid file
+; Note: the default prefix is /var
+; Default Value: none
+pid = /run/php/php7.2-fpm.pid
+
+; Error log file
+; If it's set to "syslog", log is sent to syslogd instead of being written
+; into a local file.
+; Note: the default prefix is /var
+; Default Value: log/php-fpm.log
+error_log = /proc/self/fd/2
+
+; syslog_facility is used to specify what type of program is logging the
+; message. This lets syslogd specify that messages from different facilities
+; will be handled differently.
+; See syslog(3) for possible values (ex daemon equiv LOG_DAEMON)
+; Default Value: daemon
+;syslog.facility = daemon
+
+; syslog_ident is prepended to every message. If you have multiple FPM
+; instances running on the same server, you can change the default value
+; which must suit common needs.
+; Default Value: php-fpm
+;syslog.ident = php-fpm
+
+; Log level
+; Possible Values: alert, error, warning, notice, debug
+; Default Value: notice
+;log_level = notice
+
+; If this number of child processes exit with SIGSEGV or SIGBUS within the time
+; interval set by emergency_restart_interval then FPM will restart. A value
+; of '0' means 'Off'.
+; Default Value: 0
+;emergency_restart_threshold = 0
+
+; Interval of time used by emergency_restart_interval to determine when
+; a graceful restart will be initiated.  This can be useful to work around
+; accidental corruptions in an accelerator's shared memory.
+; Available Units: s(econds), m(inutes), h(ours), or d(ays)
+; Default Unit: seconds
+; Default Value: 0
+;emergency_restart_interval = 0
+
+; Time limit for child processes to wait for a reaction on signals from master.
+; Available units: s(econds), m(inutes), h(ours), or d(ays)
+; Default Unit: seconds
+; Default Value: 0
+;process_control_timeout = 0
+
+; The maximum number of processes FPM will fork. This has been designed to control
+; the global number of processes when using dynamic PM within a lot of pools.
+; Use it with caution.
+; Note: A value of 0 indicates no limit
+; Default Value: 0
+; process.max = 128
+
+; Specify the nice(2) priority to apply to the master process (only if set)
+; The value can vary from -19 (highest priority) to 20 (lowest priority)
+; Note: - It will only work if the FPM master process is launched as root
+;       - The pool process will inherit the master process priority
+;         unless specified otherwise
+; Default Value: no set
+; process.priority = -19
+
+; Send FPM to background. Set to 'no' to keep FPM in foreground for debugging.
+; Default Value: yes
+daemonize = no
+
+; Set open file descriptor rlimit for the master process.
+; Default Value: system defined value
+;rlimit_files = 1024
+
+; Set max core size rlimit for the master process.
+; Possible Values: 'unlimited' or an integer greater or equal to 0
+; Default Value: system defined value
+;rlimit_core = 0
+
+; Specify the event mechanism FPM will use. The following is available:
+; - select     (any POSIX os)
+; - poll       (any POSIX os)
+; - epoll      (linux &gt;= 2.5.44)
+; - kqueue     (FreeBSD &gt;= 4.1, OpenBSD &gt;= 2.9, NetBSD &gt;= 2.0)
+; - /dev/poll  (Solaris &gt;= 7)
+; - port       (Solaris &gt;= 10)
+; Default Value: not set (auto detection)
+;events.mechanism = epoll
+
+; When FPM is built with systemd integration, specify the interval,
+; in seconds, between health report notification to systemd.
+; Set to 0 to disable.
+; Available Units: s(econds), m(inutes), h(ours)
+; Default Unit: seconds
+; Default value: 10
+;systemd_interval = 10
+
+;;;;;;;;;;;;;;;;;;;;
+; Pool Definitions ;
+;;;;;;;;;;;;;;;;;;;;
+
+; Multiple pools of child processes may be started with different listening
+; ports and different management options.  The name of the pool will be
+; used in logs and stats. There is no limitation on the number of pools which
+; FPM can handle. Your system will tell you anyway :)
+
+; Include one or more files. If glob(3) exists, it is used to include a bunch of
+; files from a glob(3) pattern. This directive can be used everywhere in the
+; file.
+; Relative path can also be used. They will be prefixed by:
+;  - the global prefix if it's been set (-p argument)
+;  - /usr otherwise
+include=/etc/php/7.2/fpm/pool.d/*.conf
+</code></pre>
+<p>The important part is <code>daemonize = no</code>.</p>
+<p>Then we can update the Dockerfile once again:</p>
+<pre><code>FROM ubuntu:18.04
+
+LABEL maintainer="Chris Fidao"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+    &amp;&amp; apt-get install -y gnupg tzdata \
+    &amp;&amp; echo "UTC" &gt; /etc/timezone \
+    &amp;&amp; dpkg-reconfigure -f noninteractive tzdata
+
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl zip unzip git supervisor sqlite3 \
+       nginx php7.2-fpm php7.2-cli \
+       php7.2-pgsql php7.2-sqlite3 php7.2-gd \
+       php7.2-curl php7.2-memcached \
+       php7.2-imap php7.2-mysql php7.2-mbstring \
+       php7.2-xml php7.2-zip php7.2-bcmath php7.2-soap \
+       php7.2-intl php7.2-readline php7.2-xdebug \
+       php-msgpack php-igbinary \
+    &amp;&amp; php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
+    &amp;&amp; mkdir /run/php \
+    &amp;&amp; apt-get -y autoremove \
+    &amp;&amp; apt-get clean \
+    &amp;&amp; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    &amp;&amp; echo "daemon off;" &gt;&gt; /etc/nginx/nginx.conf
+
+ADD default /etc/nginx/sites-available/default
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
+
+CMD ['supervisord']
+</code></pre>
+<p>Then we can rebuild the image again!</p>
+<pre><code class="language-bash">docker build -t shippingdocker/app:latest \
+    -f docker/app/Dockerfile \
+    docker/app</code></pre>]]></content:encoded>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

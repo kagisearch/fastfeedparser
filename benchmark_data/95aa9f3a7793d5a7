@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?><feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:thr="http://purl.org/syndication/thread/1.0"
+	xml:lang="en-US"
+	>
+	<title type="text">workout911.com</title>
+	<subtitle type="text">The trusted source for anything and everything about fitness</subtitle>
+
+	<updated>2024-03-15T12:28:09Z</updated>
+
+	<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog" />
+	<id>https://www.lookgreatnaked.com/blog/feed/atom/</id>
+	<link rel="self" type="application/atom+xml" href="https://www.lookgreatnaked.com/feed/atom/" />
+
+	<generator uri="https://wordpress.org/" version="6.9.1">WordPress</generator>
+	<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Is cold water immersion killing your gainz?]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/is-cold-water-immersion-killing-your-gainz/" />
+
+		<id>https://www.lookgreatnaked.com/blog/?p=6916</id>
+		<updated>2024-03-15T12:28:09Z</updated>
+		<published>2024-03-15T12:28:09Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[Cold water immersion (a.k.a., “ice baths”) has become a popular method amongst exercise enthusiasts and athletes to enhance recovery after an intense training bout. The strategy involves exposing either the trained limb or the whole body to very cold liquid temperatures. According to proponents, this helps reduce inflammation and muscle soreness, hence improving the ability [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/is-cold-water-immersion-killing-your-gainz/"><![CDATA[<p>Cold water immersion (a.k.a., “ice baths”) has become a popular method amongst exercise enthusiasts and athletes to enhance recovery after an intense training bout. The strategy involves exposing either the trained limb or the whole body to very cold liquid temperatures. According to proponents, this helps reduce inflammation and muscle soreness, hence improving the ability to recuperate for subsequent training. It should be noted that evidence is conflicting on this matter, with some studies refuting the claim that CWI attenuates post-exercise <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5285720/">inflammatory markers</a> and <a href="http://Topical cooling (icing) delays recovery from eccentric exercise-induced muscle damage">muscle damage</a>; this raises the possibility that any observed recovery benefits may actually be attributed to a placebo effect.</p>
+<p>Perhaps more concerning, some studies actually show that consistent use of CWI after resistance training may impair muscular adaptations. Indeed, a <a href="https://pubmed.ncbi.nlm.nih.gov/35068365/">recent meta-analysis</a> found that CWI blunts strength gains when the intervention is applied to the trained limbs after training.</p>
+<p>But what about muscle hypertrophy? While some research does indicate that it <a href="https://physoc.onlinelibrary.wiley.com/doi/10.1113/JP278996">attenuates anabolic processes,</a> acute findings do not necessarily translate into long-term gainz. No study had attempted to meta-analytically quantify how the repeated use of CWI in a resistance training program may influence muscle development.</p>
+<p>Until now…</p>
+<p>Our <a href="https://onlinelibrary.wiley.com/doi/10.1002/ejsc.12074">recently published meta analysis</a>, led by Lehman College master’s degree student Alec Pinero, provides novel insights into the effects of post-exercise CWI on hypertrophy. Here’s the scoop…</p>
+<p><strong>What We Did</strong></p>
+<p>We searched the current literature to locate all randomized controlled trials that directly compared changes in measures of muscle growth between resistance training + CWI vs resistance training with either a sham or active/passive recovery in healthy adults. Studies had to last a minimum of 4 weeks and include at least 2 training sessions per week. We then statistically pooled data of all included studies to quantify the effects CWI on muscular adaptations.</p>
+<p><strong>What We Found</strong></p>
+<p>A total of 8 studies met inclusion criteria. The overall Bayesian meta-analysis indicated a strong likelihood that consistent use of CWI after a resistance training bout diminishes hypertrophic adaptations. The magnitude of difference between conditions was relatively small, but a detrimental effect of CWI was observed across all included studies.</p>
+<p>We then performed a series of meta-regressions to determine whether the length of the studies, training status of participants, or the number of training sessions per week may have affected results; however, none of these variables appeared to influence findings.</p>
+<p><strong>What are the Practical Implications of Findings</strong></p>
+<p>Overall, our results indicate that CWI negatively impacts hypertrophy when consistently employed over time in close proximity to the end of a resistance training session. While the magnitude of the effect appears to be relatively small, it certainly could be considered practically meaningful for those attempting to optimize muscular gainz.</p>
+<p>Although the mechanisms by which CWI attenuates hypertrophy remain somewhat unclear, we speculate that vasoconstriction may play a role in the process. <a href="https://journals.sagepub.com/doi/full/10.1177/0363546510395497">Evidence indicates</a> that cold exposure distributes blood to the skin while correspondingly reducing its flow to the musculature. Given that post-exercise nutrient delivery to the muscles is dependent on blood flow, this may blunt muscle protein synthesis—a primary factor in resistance training-induced hypertrophy.</p>
+<p>It has been hypothesized that the detrimental effects of CWI on anabolism may be due to its anti-inflammatory effects. This theory is <a href="https://link.springer.com/article/10.1007/s00421-020-04337-1">based on evidence</a> that the acute post-exercise inflammatory response plays a role in muscle development; interfering with the process would thus impede hypertrophy. However, a recent meta-analysis found that inflammatory markers linked to hypertrophy were similar between CWI + resistance training vs resistance training alone, thereby calling into question the veracity of this theory.</p>
+<p>Ultimately, more research is needed to better understand the mechanisms underlying CWI-induced impairments in muscular adaptations.</p>
+<p><strong>Limitations</strong></p>
+<p>As with every study, our analysis had several limitations that must be taken into account when attempting to draw practical conclusions.</p>
+<p>First and foremost, all included studies administered CWI within 20 minutes after the training bout. It’s therefore uncertain whether waiting several hours or more after exercise to apply CWI may offset some, or perhaps all, of the observed detrimental effects. Although this possibility cannot be ruled out, it should be noted that <a href="https://www.sciencedirect.com/science/article/pii/S0022316622025561">muscle tissue is sensitized to anabolism for more than 24 hours after intense resistance training</a>. Thus, decreasing circulation to the musculature at any point within this timeframe conceivably could impair the growth process.</p>
+<p>Second, the included studies used divergent methods to assess changes in muscle mass. Of note, several studies employed indirect assessments of lean mass (i.e., DXA) or gross measures of limb size (circumferences) as proxies for hypertrophy. These methods are less sensitive in their ability to detect actual changes in muscle size compared to direct measures such as MRI and ultrasound. We thus need more research using direct methods to derive greater confidence in results.</p>
+<p>Finally, the vast majority of studies on the topic included young male participants; only 1 of the 8 studies included females none involved adolescents or older adults. We therefore cannot necessarily generalize conclusions to these populations, although I’m hard-pressed to think of a logical rationale why sex or age would influence results on the topic?</p>
+<p><strong>Take-Home Conclusions</strong></p>
+<p>Our results indicate that you should avoid regular CWI use if your goal is to optimize hypertrophy. Although it’s possible that waiting several hours post-exercise to apply CWI may reduce its negative effects on anabolism, this remains highly speculative. It would seem prudent to avoid cold exposure altogether when training for maximal muscular development.</p>
+<p>Alternatively, if optimizing muscular adaptations is not a high priority and you enjoy ice baths, feel free to take the plunge. Our results show that while CWI does blunt hypertrophy, you still can make some gains when employing the strategy. Ultimately, adherence to exercise is paramount and anything that keeps you in the gym is a plus as there are a plethora of health-related benefits to resistance training.</p>
+<p>Lastly, the occasional use of CWI should not be an issue regardless of your goals. If you’re really sore after a training session and think that cold exposure may help with recovery then go for it. There is no evidence that its isolated use is detrimental to long-term gainz. Now whether CWI does in fact enhance recovery remains an open question, but even if the placebo effects get you back in the gym refreshed then this could be considered a positive.</p>
+<p>If you’d like to delve into the specifics of our paper, I encourage you to peruse the full text. It is open-access and thus free for all to read.</p>
+<p>Train hard, train smart.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content>
+		
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Are Deloads Useless?]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/are-deloads-useless/" />
+
+		<id>https://www.lookgreatnaked.com/blog/?p=6901</id>
+		<updated>2024-01-23T12:27:47Z</updated>
+		<published>2024-01-23T12:04:37Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[Deloads, defined as a “period of reduced training stress,” are a popular strategy designed to attenuate accumulated fatigue and diminish the potential for nonfunctional overreaching after a period of intense training. Although deloads are often implemented by reducing training volume and/or intensity, by definition they can be employed as a relatively brief period of complete [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/are-deloads-useless/"><![CDATA[<p>Deloads, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10511399/">defined as a “period of reduced training stress,”</a> are a popular strategy designed to attenuate accumulated fatigue and diminish the potential for nonfunctional overreaching after a period of intense training. Although deloads are often implemented by reducing training volume and/or intensity, by definition they can be employed as a relatively brief period of complete training cessation (i.e., detraining periods) to facilitate recovery.</p>
+<p>Intriguingly, some evidence suggests that short-term detraining can potentially “resensitize” muscle tissue to potentiate anabolism. For example, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9141560/">a recent study</a> showed that anabolic intracellular signaling was blunted after a 4-week resistance training program; however, signaling was restored to baseline levels after a 10-day cessation from training. Other research indicates that brief detraining periods can <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5789890/">upregulate genes associated with muscle hypertrophy</a> and <a href="https://journals.lww.com/acsm-msse/abstract/1993/08000/the_effects_of_detraining_on_power_athletes.8.aspx">increase testosterone levels</a>, which conceivably could enhance muscle development.</p>
+<p>However, acute findings do not necessarily translate into long-term gainz. No previous study had endeavored to investigate whether deloads actually enhance muscular adaptations, making any conclusions on the topic speculative…</p>
+<p>Until now…</p>
+<p>Our lab set out to assess the effect of deloads, when implemented as a brief period of detraining, on measures of muscular strength, hypertrophy, power and endurance. The study was led by our grad student, Max Coleman, who carried out the investigation in completion of his master’s thesis.</p>
+<p>If you want to delve into the fine points of the methods and findings, <a href="https://peerj.com/articles/16777/">you can read the study here</a>. Alternatively, if you prefer a consumer-friendly synopsis, here’s the scoop…</p>
+<p><strong>What We Did</strong><br />
+We recruited 50 resistance-trained men and women to perform a 9-week training program; participants were randomized to either perform the entire training program consecutively over the 9-week period (TRAD group) or to train for 4 weeks, take a 1-week layoff, and then train for another 4 weeks (DELOAD group).</p>
+<p>The training program was the same for both groups, comprising 4 weekly sessions structured as an upper-lower body split. Our research staff directly supervised the lower body portion of the program, which included 5 sets of the squat, leg extension, straight-leg calf raise and bent-leg calf raise per session. We provided participants with an upper body program to perform on their own, which included 5 sets of shoulder press, lat pulldown, chest press, biceps curl and triceps pushdown per session; participants provided written logs of their sessions to the research staff on a weekly basis. Participants carried out all sets to failure in the supervised sessions and were instructed to do the same for their unsupervised sessions.</p>
+<p>We assessed the following measures before and after the training program: (1) body composition via bioelectrical impedance analysis; (2) muscle thickness of the mid- and lateral quadriceps (upper, mid and lower sites) and the calves (medial and lateral gastrocnemius and soleus) via ultrasound; (3) lower body maximal strength in the squat via 1 repetition maximum testing and isometric knee extension via dynamometry; (4) lower body muscular power via the countermovement jump test; (5) lower body muscular endurance (AMRAP) via the leg extension using 60% of the participant’s initial weight. We also employed a readiness to train questionnaire that subjectively assessed participants’ feelings about the training program across the study period.</p>
+<p><strong>What We Found</strong><br />
+Although both groups increased their strength from pre-study testing, gains were modestly greater in the TRAD group. Specifically, 1RM squat and isometric knee extension favored TRAD by 4.5 kgs and 11.5 newton-meters, respectfully. Notably, all other measures of body composition, hypertrophy, power and muscular endurance were relatively similar between groups.</p>
+<p><strong>What Do the Results Mean?</strong></p>
+<p>Contrary to what some may have expected (including me), the deload did not have a appreciable beneficial effect on muscular adaptations. In fact, there was a modest negative effect on maximal strength gains. Even though we pushed the participants really hard, verbally encouraging them to reach muscular failure on each set in a routine that could be considered of moderately high volume (90 total sets per week), the deload period did not seem to facilitate rejuvenation, nor was there evidence of a “resensitization” of muscle for anabolism. On the surface, some may interpret this to mean that deloads are useless.</p>
+<p>But hold on…</p>
+<p>The results of a study can only be extrapolated to the specifics of the methodological design. To this end, there are a number of factors that must be considered when attempting to draw practical conclusions:</p>
+<p>1. The deload employed a complete cessation of training for one week. As mentioned, we used this approach based on evidence that there can be a “resensitization” of muscle after a short period of detraining, thereby enhancing anabolism. However, a popular alternative strategy is to deload with a reduced volume/intensity/frequency of training. There are numerous ways in which such a strategy can be implemented. We thus cannot necessarily extrapolate the findings to other deload approaches.</p>
+<p>2. The study employed a deload after four weeks of intense training, regardless of whether participants felt they needed one. Although the findings indicate that deloads may not be beneficial after this relatively short period of time, it does not necessarily mean that continued intense training may not benefit from deloads over longer time frames.</p>
+<p>3. To provoke overreaching and thus create a potential need for deloading, we employed what many would consider a relatively high-volume training program (90 sets per week) with all sets performed to volitional muscle failure. However, we only supervised the lower body portion of the training program. Although we received weekly training logs from each subject to verify their upper body progress, we do not know how intensely they trained. Based on my experience, I’d say it is highly likely that the majority of participants did not train as hard during their unsupervised training sessions as in their supervised sessions, conceivably reducing the need for a deload. Moreover, many bodybuilders perform substantially higher total training volumes, which may necessitate more frequent deloads. These factors warrant further study.</p>
+<p>4. The participants were all young adults (average age ~22 years). It is well-established that recovery needs increase as we age. Thus, we cannot necessarily generalize the results to those 40+ years of age, who conceivably may benefit from periods of reduced training.</p>
+<p>5. Although the participants all had at least a year of resistance training experience (average of ~3 years), they would not be considered elite lifters or bodybuilders. It’s conceivable that very advanced lifters may require more recovery due to the use of very high absolute training loads. This would particularly be the case for powerlifters and other strength-oriented athletes, who grind out reps with heavy compound lifts (our study employed a moderate rep range typical of bodybuilding programs) and thus may experience joint-related issues as well as central nervous system fatigue if recovery is not well-managed.</p>
+<p><strong>Take-Home Conclusions</strong><br />
+The findings of our study can be looked at from a couple of different perspectives. On one hand, the deload had no detrimental effects on muscle development. In this context, you can take a week off every month or so and have peace of mind that you’ll maintain your muscle mass. Essentially, you can do less work over time without suffering negative consequences from a physique standpoint. Alternatively, if your goal is to maximize strength, this may somewhat hinder results.</p>
+<p>On the other hand, there is seemingly no benefit to take regimented deloads every four weeks. Based on our research, it appears that most would not need a deload for at least 8 weeks if not longer, although this would ultimately vary from person to person.</p>
+<p>I’d note the study has caused me to question my previous opinion on the implementation of deloads. I was of the belief that lifters generally do not have a good grasp of their recovery requirements, and thus they would only realize the need for a deload after they were nonfunctionally overreached. I thus advocated for deloads every month or so after a period of intense training to ensure recovery and rejuvenation.</p>
+<p>Our study indicates this belief was unfounded.</p>
+<p>Virtually every lifter stated they did not feel the need for a recovery week at the end of the 9-week study period, including those in the group that didn’t deload, and this seemed to play out in the results. So contrary to my thought process, it would seem that experienced lifters can in fact sufficiently gauge their need for recovery. Thus, my opinion has now shifted to recommend autoregulated deloads, where lifters implement a deload when they feel they need one. This hypothesis remains to be studied.</p>
+<p>Stay tuned…</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content>
+		
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Does supervision during resistance training enhance increases in muscle strength and size]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/does-supervision-during-resistance-training-enhance-increases-in-muscle-strength-and-size/" />
+
+		<id>https://www.lookgreatnaked.com/blog/?p=6886</id>
+		<updated>2023-10-14T11:44:20Z</updated>
+		<published>2023-10-09T18:27:32Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[Does supervision during resistance training enhance increases in muscle strength and size in trained lifters compared to unsupervised training? That’s the question our lab recently set out to answer. The study, led by my master&#8217;s student Max Coleman, has now been published in the Journal of Sports Sciences and the results have wide-ranging practical implications. [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/does-supervision-during-resistance-training-enhance-increases-in-muscle-strength-and-size/"><![CDATA[<p>Does supervision during resistance training enhance increases in muscle strength and size in trained lifters compared to unsupervised training?</p>
+<p>That’s the question our lab recently set out to answer. The study, led by my master&#8217;s student Max Coleman, <a href="https://www.tandfonline.com/doi/abs/10.1080/02640414.2023.2261090">has now been published in the Journal of Sports Sciences</a> and the results have wide-ranging practical implications.</p>
+<p>If you want to delve into the fine points of the methods and findings, give the paper a read. For those who’d prefer a consumer-friendly synopsis, here’s the scoop…</p>
+<p><strong>What We Did</strong><br />
+We randomized 45 young, resistance-trained men and women to perform a total-body resistance training program either in a supervised (SUP) or unsupervised (UNSUP) manner across an 8-week study period. Both groups performed the exact same exercises (front lat pulldown, machine shoulder press, machine chest press, cable triceps pushdown, dumbbell biceps curl, plate-loaded leg press, machine leg extension and machine leg curl) and program variables (3 sets of 8-12 RM for each exercise with 2 minutes rest between sets).</p>
+<p>Participants in SUP were directly supervised throughout each rep of every session, with researchers verbally encouraging them to carry out all sets to volitional failure (i.e., the point where an individual felt that he/she could no longer complete an additional repetition) and adjusting exercise technique when appropriate. Alternatively, those in UNSUP were taken through an acclimation session to demonstrate proper technique on the given exercises and instructed to carry out all sets to volitional failure throughout the training program; they charted their workouts and emailed the corresponding logs to the research staff on a weekly basis.</p>
+<p>We assessed the following measures before and after the training program: (1) body composition via bioelectrical impedance analysis; (2) muscle thickness of the biceps, triceps, and quads via ultrasound; and, (3) maximal strength in the bench press and squat via 1 repetition maximum testing. </p>
+<p><strong>What We Found</strong><br />
+In regard to hypertrophy, the SUP group showed greater increases in muscle thickness for the triceps brachii, the upper portion of the lateral thigh and all regions of the mid-quadriceps. Alternatively, the biceps brachii and mid- and lower aspects of the lateral thigh showed relatively similar hypertrophy between groups.</p>
+<p>From a strength standpoint, the SUP group showed greater increases in the 1RM squat; increases in the 1RM bench were relatively similar between groups.</p>
+<p>Of note, there were a considerably greater number of dropouts in UNSUP (n=7) compared to SUP (n=2) across the study period.</p>
+<p><strong>What Do the Results Mean?</strong></p>
+<p>Overall, the findings indicate that direct supervision has a beneficial effect on strength and hypertrophy in recreationally trained young men and women. The magnitude of the effects ranged from relatively small to quite large, suggesting that adaptations could be practically meaningful.</p>
+<p>Although we did not attempt to explore the underlying mechanisms for results, it can be hypothesized that intensity of effort was a contributing factor. There is compelling evidence that <a href="https://www.researchgate.net/publication/331718773_Does_Training_to_Failure_Maximize_Muscle_Hypertrophy">training with a high level of effort is necessary to optimize muscular gains</a>. Not only did our research team verbally coach participants to go to failure on each set, but findings also may have been influenced by the fact that people try to do their best when being observed (the so-called <a href="https://en.wikipedia.org/wiki/Hawthorne_effect">“Hawthorne Effect”</a>). Notably, when asked about their perceived effort at the end of the study, almost all participants said they trained harder than they ever had before. This would suggest that those in the UNSUP group were generally training with less effort, perhaps below the threshold required for max gainz.</p>
+<p>Results also may have been partially attributed to improved training technique. Although the participants all had been training consistently for at least one year, some did not perform exercises in a biomechanically efficient manner and/or did not properly control the weights throughout each repetition (especially on the eccentric action). For those in the SUP group, our research team corrected technique during a set when appropriate, helping to ensure that muscles were optimally stimulated. We can only speculate on the matter, but it’s reasonable to assume that a number of participants in the UNSUP group likely trained with substandard technique, potentially diminishing results.</p>
+<p>Another important finding was that the UNSUP group had far more dropouts than the SUP group. At the end of the study, several participants in SUP stated that the supervision made them feel “accountable” to show up for the training sessions. Considering that exercise adherence is paramount to achieving results, supervision would thus be beneficial to a substantial portion of the general population who are not sufficiently motivated to train consistently.</p>
+<p><strong>Take-Home Conclusions</strong><br />
+So what are the practical implications of these findings?</p>
+<p>On a general level, direct supervision during resistance training appears to enhance muscular adaptations for a majority of the recreationally trained lifting public. The supervision could be in the form of a qualified personal trainer or attentive workout partner; essentially, someone who monitors exercise technique and suggests corrections where appropriate and motivates the lifter to push sufficiently hard during each set. Given that individuals who are relatively new to resistance training generally have spotty technique and perhaps a poor understanding/motivation to progressively challenge their muscles, they may benefit to an even greater extent from a supervised program. Alternatively, some advanced lifters (i.e., bodybuilders, etc) may be internally motivated to consistently train with high intensities of effort and hence may not meaningfully benefit from supervision.</p>
+<p>The results also suggest that research studies intending to investigate the efficacy of resistance training-induced strength/hypertrophy outcomes should carry out data collection in a supervised environment; it’s the only way to ensure that participants train in a manner consistent with optimizing results. However, while this approach may enhance research efficacy, there may be a disconnect when generalizing the findings from resistance training research carried out under supervision to the recreational lifting public. Namely, if most lifters train suboptimally on their own, they cannot necessarily expect to achieve results similar to those found under supervised conditions. The tradeoff needs be considered by researchers when designing resistance training interventions as well by practitioners when interpreting study findings for program prescription.</p>
+]]></content>
+		
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Creatine and muscle-building: Help or hype?]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/6867-2/" />
+
+		<id>https://www.lookgreatnaked.com/blog/?p=6867</id>
+		<updated>2023-06-11T23:13:34Z</updated>
+		<published>2023-06-11T23:09:52Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[Creatine is widely considered the most efficacious supplement for building muscle. Previous meta-analysis such as Delpino et al., Chilibeck et al, and Devries et al, have reported that creatine supplementation, when combined with resistance training (RT), substantially increases muscle mass compared to RT + placebo . The magnitude of these gains averaged ~1.1 to 1.4 [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/6867-2/"><![CDATA[<p>Creatine is widely considered the most efficacious supplement for building muscle. Previous meta-analysis such as <a href="https://pubmed.ncbi.nlm.nih.gov/35986981/">Delpino et al.</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/29138605/">Chilibeck et al</a>, and <a href="https://pubmed.ncbi.nlm.nih.gov/24576864/">Devries et al</a>, have reported that creatine supplementation, when combined with resistance training (RT), substantially increases muscle mass compared to RT + placebo . The magnitude of these gains averaged ~1.1 to 1.4 kg (~2 to 3 pounds) across meta-analyses with most studies lasting 8 to 12 weeks. </p>
+<p>On the surface, this outcome seems pretty impressive; several additional pounds of muscle gain over a few months of training is nothing to sneeze at. However, there’s a caveat to the findings: they are based on measures of fat-free mass derived from methods such as DXA, BodPod, BIA and underwater weighing. </p>
+<p>Here’s the problem: fat-free mass comprises all non-fat tissue in the body, not just muscle. Measures of muscle mass are best obtained by direct, site-specific imaging methods such as MRI, CT and ultrasound. In support of this point, DXA (which is considered the gold-standard measure for assessing fat-free mass), does not correlate very well with direct imaging methods when assessing RT-induced changes in muscle mass (see: <a href="https://pubmed.ncbi.nlm.nih.gov/31296891/">Tavoian et al</a> and <a href="https://pubmed.ncbi.nlm.nih.gov/17684523/">Delmonico et al.</a>). The thing is, no meta-analysis had previously endeavored to determine the effects of creatine + RT on hypertrophy as assessed by direct imaging methods. </p>
+<p>Until now…</p>
+<p><strong>What We Did</strong><br />
+We searched the literature for studies that compared creatine vs placebo consumed in combination with RT on muscle hypertrophy. To be included in the analysis, studies had to involve healthy adults without musculoskeletal conditions that would impede RT performance and assess hypertrophic changes by direct imaging methods (MRI, CT, and ultrasound). We then carried out a Bayesian meta-analysis of the pooled results and subanalyzed the data based on body region (i.e., upper vs lower), age, and study duration. The study, titled <a href="https://www.mdpi.com/2072-6643/15/9/2116">The Effects of Creatine Supplementation Combined with Resistance Training on Regional Measures of Muscle Hypertrophy: A Systematic Review with Meta-Analysis</a>, is open-access and thus free for all to read.</p>
+<p><strong>What We Found</strong><br />
+When pooling the results of all studies, creatine supplementation showed a beneficial effect for hypertrophy compared to placebo. However, the magnitude of the benefit was relatively small, corresponding to an effect size of 0.11. The results showed similar improvements for the upper body and lower body musculature. Intriguingly, we found creatine elicited greater gains in younger compared to older (>55 yrs) adults.</p>
+<p><strong>What Do the Results Mean?</strong><br />
+Our findings confirm that creatine is a viable muscle-building supplement when combined with RT. However, its anabolic effects were more modest than previous meta-analyses that analyzed fat-free mass as a proxy for hypertrophy. </p>
+<p>It’s not clear why the results diverged between indirect methods of analysis (i.e. DXA, BIA, BodPod, etc) and direct imaging (i.e. MRI, CT and ultrasound), but it could be due the fact that creatine increases total body water. Conceivably, the greater FFM observed in the studies may reflect increased extracellular water accumulation (probably not a desirable outcome for most people), as intracellular fluid would be included as a component of muscle size measurements when assessed by direct imaging methods. This hypothesis warrants further investigation.</p>
+<p>Our finding of a greater hypertrophic benefit for creatine supplementation in younger adults was unexpected and somewhat difficult to reconcile. Subanalysis by age indicated that, on average, creatine really didn’t enhance the effect of RT in older adults. It’s conceivable that older adults aren’t as willing/able to push as hard compared to their younger counterparts during training. This may diminish the effectiveness of creatine given that one of its theorized benefits is to rapidly regenerate energy stores during intense exercise, allowing you to train with higher intensity. </p>
+<p>Note that the meta-analysis had several limitations. For one, there are a paucity of studies investigating the hypertrophic effects of creatine on women as well as resistance-trained individuals. There are some rationales lending to speculation that these populations may respond differently to creatine supplementation, but we need objective evidence on the topic. In addition, the results of our meta report average responses across groups. It is well-documented that there are responders and nonresponders to creatine supplementation. A person’s customary diet appears to be a factor in the response, with vegans showing better responses compared to meat eaters. Although our group-level data provides a good basis for predicting general responses, the only way to determine whether creatine works for you on an individual level is by experimentation.</p>
+<p><strong>Take-Home Conclusions</strong><br />
+So what does this all mean from an applied standpoint? </p>
+<p>For younger lifters seeking to maximize muscular gains, creatine seemingly is worth trying since even modest increases in muscle development would be considered practically meaningful. On the other hand, the benefits for young recreational lifters are questionable and may not be worth the monetary cost and hassle of daily consumption. Finally, older adults do not appear to achieve much of a muscle-building benefit from supplementation. </p>
+<p>I’d note that creatine may have other beneficial effects other than muscle-building, including benefits on strength and power as well as a variety of health-related outcomes. Thus, its use should be considered based on individual goals and needs. </p>
+]]></content>
+		
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Do You Have to Add Load to the Bar to Build Muscle?]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/do-you-have-to-add-load-to-the-bar-to-build-muscle/" />
+
+		<id>http://www.lookgreatnaked.com/blog/?p=6815</id>
+		<updated>2022-10-01T12:57:41Z</updated>
+		<published>2022-10-01T12:57:41Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Bodybuilding" /><category scheme="https://www.lookgreatnaked.com/blog" term="Strength Training" />
+		<summary type="html"><![CDATA[Progressive overload is a well-established principle for achieving continued progress in resistance training programs. In general terms, progressive overload can be defined as consistently challenging the neuromuscular system beyond its present capacity. It’s commonly accepted that this requires an increase the amount of weight on the bar as one gets stronger to maintain the intensity [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/do-you-have-to-add-load-to-the-bar-to-build-muscle/"><![CDATA[
+<p>Progressive overload is a well-established principle for achieving continued progress in resistance training programs. In general terms, progressive overload can be defined as consistently challenging the neuromuscular system beyond its present capacity. It’s commonly accepted that this requires an increase the amount of weight on the bar as one gets stronger to maintain the intensity of effort in a targeted loading zone (i.e., repetition range). However, little attention has been given to other methods of progressive overload, such as increasing the number of repetitions over time. Surprisingly, no study to date had endeavored to investigate the topic in a controlled fashion.</p>
+
+
+
+<p>Until now…</p>
+
+
+
+<p>We sought to fill this gap in the literature with our just-published study, <a href="https://peerj.com/articles/14142/" data-type="URL" data-id="https://peerj.com/articles/14142/">Progressive overload without progressing load? The effects of load or repetition progression on muscular adaptations</a><strong>. </strong>Before getting into the the specifics, first a little background info…</p>
+
+
+
+<p>This study actually was the brainchild of my colleague, Jared Feather. Jared was planning to carry out this study as part of his doctoral work several years ago. He contacted me in 2019 about the possibility of conducting the study under my supervision at Lehman (he had intended to pursue his doctorate at AUT in New Zealand but collect data in the USA). Ultimately, Jared decided to forego his doctorate for the time being to work for Renaissance Periodization. That said, we discussed the importance of filling a gaping gap in the literature and concluded that the topic needed to be investigated regardless. Thus, I agreed to take on the project and carry out data collection in my lab.</p>
+
+
+
+<p>In Spring 2020, we set out to conduct the study. We were about halfway finished with data collection when Covid-19 hit; by mid-March, we had to cease all research-related activities. Our research team had devoted over 500 hours of time to the study, but sadly it was all for naught; none of the data could be used. </p>
+
+
+
+<p>Despite this setback, we were determined to complete the study.</p>
+
+
+
+<p>Fast forward to Fall, 2021. My master’s degree student, Daniel Plotkin, expressed his interest in taking on the study for his thesis,  with support from our terrific team of research assistants at Lehman. (Side note: Daniel has since graduated our program and is now pursuing his PhD under the mentorship of Dr. Mike Roberts at the University of Auburn). Fortunately, there were no issues with Covid this time around, We finalized data collection and statistical analysis in Spring 2022, and received official word of acceptance of our manuscript from PeerJ in September 2022. </p>
+
+
+
+<p>If you want to delve into the technical aspects of the methods and findings, give the paper a read; it&#8217;s open access. For those who&#8217;d prefer a consumer-friendly synopsis, here’s the scoop…</p>
+
+
+
+<p><strong>What We Did</strong></p>
+
+
+
+<p>We randomized a cohort of young men and women with at least 1 year of consistent resistance training experience to perform a lower body training program where they either aimed to increase load while keeping repetitions constant or to increase repetitions while keeping load constant. The training protocol itself was otherwise identical between groups, consisting of 4 sets of the back squat, leg extension, straight-leg calf raise and seated calf raise performed twice per week. Training lasted 8 weeks, with testing performed pre- and post-study. To evaluate muscular adaptations, we carried out a battery of assessments including changes in muscle thickness of the quads and calves via B-mode ultrasound, total and regional body composition via multi-frequency bioelectrical impedance analysis, and 1RM in the Smith machine squat.</p>
+
+
+
+<p><strong>What We Found</strong></p>
+
+
+
+<p>Overall, results for most measures were quite similar between groups. Rectus femoris growth modestly favored the group that progressed by adding reps; hypertrophy of the other muscles did not show appreciable differences between conditions (see image below). Although strength increases slightly favored the group that progressed by increasing load, the range of effects spanned from relatively modest negative effects to appreciable positive effects and thus are of questionable practical meaningfulness. Other tests of local muscular endurance and power showed no benefit to one progression model compared to the other. </p>
+
+
+
+<figure class="wp-block-image size-medium"><a href="http://www.lookgreatnaked.com/blog/wp-content/uploads/2022/09/Capture.png"><img fetchpriority="high" decoding="async" width="300" height="235" src="http://www.lookgreatnaked.com/blog/wp-content/uploads/2022/09/Capture-300x235.png" alt="" class="wp-image-6833" srcset="https://www.lookgreatnaked.com/blog/wp-content/uploads/2022/09/Capture-300x235.png 300w, https://www.lookgreatnaked.com/blog/wp-content/uploads/2022/09/Capture-768x601.png 768w, https://www.lookgreatnaked.com/blog/wp-content/uploads/2022/09/Capture.png 804w" sizes="(max-width: 300px) 100vw, 300px" /></a></figure>
+
+
+
+<p><strong>What are the Practical Implications of Findings</strong></p>
+
+
+
+<p>The results of our study challenge the generally accepted theory that progression must be carried out through increases in load. In fact, increasing repetitions at the same load showed similar gains in hypertrophy in most of the muscles we assessed, and there was even a modest benefit for hypertrophy of the rectus femoris. While strength increases slightly favored the group that increased load, the results showed a wide spread of variance that calls into question their practical significance. When considering the findings as a whole, both progression models were effective in enhancing muscular adaptations in a cohort of trained lifters and can be considered viable programming options.</p>
+
+
+
+<p>Now before jumping to absolute conclusions, it’s important to note that the study only lasted 8 weeks. Although this is typical of training mesocycles, particularly for those of more advanced lifters, we cannot necessarily extrapolate results over longer time periods. Thus, our findings do not necessarily mean that a lifter can continue to simply increase reps forever without adding load to the bar at some point. <a href="https://pubmed.ncbi.nlm.nih.gov/29564973/">Evidence suggests</a> that training with very high rep ranges (&gt;40 or so per set) tends to impair increases in hypertrophy. This would seem to be most relevant to those with less resistance training experience, as the ability to increase reps to such an extent is diminished in well-trained lifters. Hence, it’s conceivable that more advanced lifters can continue progress by adding repetitions for longer periods of time; this hypothesis warrants further study.</p>
+
+
+
+<p>I’d also note that our protocol targeted a moderate repetition range for the initial training loads (10RM). It is well-documented that maximal strength gains are achieved with the use of heavy loads (at or near 1RM). Thus, these results are not necessarily applicable to strength athletes (e.g., powerlifters) or those who are most concerned about optimizing dynamic strength. In these cases, some type of load progression seemingly would be necessary to maintain training close to maximal loads.</p>
+
+
+
+<p><strong>Take-Home Conclusions</strong></p>
+
+
+
+<p>Overall, our study suggests that, from a hypertrophy standpoint, progressive overload can be made by altering load, repetitions, or conceivably a combination of the two, at least over the course of typical mesocycles (i.e., 8-week training block). Given that rectus femoris growth favored the repetitions groups, it is conceivable that progressing reps may be favorable in some contexts over others.</p>
+
+
+
+<p>On a more general level, the mode of progression does not have to be an either/or choice. It may be best to employ a variety of progression strategies over time to ultimately elicit optimal improvements in muscular adaptations. In this regard, variety may be the spice of gainz. &nbsp;</p>
+]]></content>
+		
+					<link rel="replies" type="text/html" href="https://www.lookgreatnaked.com/blog/do-you-have-to-add-load-to-the-bar-to-build-muscle/#comments" thr:count="1" />
+			<link rel="replies" type="application/atom+xml" href="https://www.lookgreatnaked.com/blog/do-you-have-to-add-load-to-the-bar-to-build-muscle/feed/atom/" thr:count="1" />
+			<thr:total>1</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Should You Reduce Volume During a Cut? Results from Our Original Research]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/should-you-reduce-volume-during-a-cut-results-from-our-original-research/" />
+
+		<id>http://www.lookgreatnaked.com/blog/?p=6819</id>
+		<updated>2022-09-25T15:20:35Z</updated>
+		<published>2022-09-25T14:49:53Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[Evidence indicates a dose-response relationship between resistance training volume and muscle hypertrophy, with higher volumes (up to a certain point) leading to greater growth responses. However, this evidence is specific to a program intended for optimal muscle-building; when cutting, it is often advised to reduce training volume to facilitate recovery and thus sustain performance over [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/should-you-reduce-volume-during-a-cut-results-from-our-original-research/"><![CDATA[
+<p><a href="https://www.tandfonline.com/doi/abs/10.1080/02640414.2016.1210197" data-type="URL" data-id="https://www.tandfonline.com/doi/abs/10.1080/02640414.2016.1210197">Evidence indicates </a>a dose-response relationship between resistance training volume and muscle hypertrophy, with higher volumes (up to a certain point) leading to greater growth responses. However, this evidence is specific to a program intended for optimal muscle-building; when cutting, it is often advised to reduce training volume to facilitate recovery and thus sustain performance over time (and perhaps avoid overtraining).</p>
+
+
+
+<p>While dogma on the topic has been generally accepted in bodybuilding circles, the theory is based primarily on logical reasoning (and in some cases, overextrapolation of research that did not involve an energy deficit). Accordingly, our group previously decided to delve into the literature and carry out a systematic review to draw more objective conclusions. Contrary to popular claims, our extensive review of literature found no compelling evidence of a benefit to decreasing resistance training volume during a cut phase, and some evidence even seemed to suggest a potential detriment to volume reduction for sparing lean mass (<a href="http://www.lookgreatnaked.com/blog/should-you-cut-volume-during-dieting/" data-type="URL" data-id="http://www.lookgreatnaked.com/blog/should-you-cut-volume-during-dieting/">see my write up on the paper here</a>). While this raises cause for skepticism, the findings were based solely on correlational evidence, which limited the ability to draw causal inferences; no study had directly compared the effects of higher versus lower volumes during a controlled energy deficit.</p>
+
+
+
+<p>Until now…</p>
+
+
+
+<p>We followed up the review by conducting an original study that endeavored to directly examine how resistance training volume affects body composition during a cutting phase. The study, titled “<a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/sms.14237" data-type="URL" data-id="https://onlinelibrary.wiley.com/doi/abs/10.1111/sms.14237">Resistance Training Volume Does Not Influence Lean Mass Preservation during Energy Restriction in Trained Males</a>”, was recently published in the Scandinavian Journal of Medicine and Science in Sports.</p>
+
+
+
+<p>For those who want the consumer-friendly version, here’s the scoop…</p>
+
+
+
+<p><strong>What We Did</strong><br>We assigned 38 young, resistance-trained men to initially perform a one-week moderate volume deload phase arranged in an upper-lower body split routine format. Training consisted of 3 sets per exercise for large muscle groups and 1 set per exercise for the arms and calves; each body region was trained twice per week with a target loading zone of 10 reps per set.</p>
+
+
+
+<p>We then randomized the participants to either continue training with the deload routine or to perform a higher volume protocol (5 sets per exercise with 3 sets per exercise for arms) over a 6-week mesocycle. For the quadriceps, volume amounted to 20 sets per week for the higher volume group and 12 sets per week for the moderate volume group.</p>
+
+
+
+<p>During the deload phase, we instructed participants to consume a weight maintenance diet (45 kcal/kg/day). For the intervention period, we prescribed a hypocaloric diet (30 kcal/kg/day) so that participants would achieve an energy deficit for the purposes of weight loss. Protein intake was set at 2.8 g/kg/day fat-free mass with consumption of the remaining calories from carbohydrate and fat left to individual preference. Participants provided daily self-reported nutritional info via an online app, allowing us to track dietary compliance.</p>
+
+
+
+<p>We assessed muscle thickness of the rectus femoris at two sites (50% and 75% of femur length) via B-mode ultrasound and body composition via multi-frequency bioelectrical impedance analysis. In addition, we assessed subjective measures of sleep duration, sleep quality, and state of mood using questionnaires.</p>
+
+
+
+<p><strong>What We Found</strong></p>
+
+
+
+<p>Both groups lost an average of 1.7 kg (~4 pounds) during the 6-week hypocaloric diet, with lean mass accounting for ~30% of these losses in the higher volume group and ~52% in the moderate volume group. Muscle thickness measures of the rectus femoris essentially did not change across the study period for either the higher or moderate volume condition. Subjective measures of participants’ sleep duration and quality did not change throughout the study period, nor did their state of mood.</p>
+
+
+
+<p><strong>What are the Practical Implications of Findings</strong></p>
+
+
+
+<p>The results of our study indicate that resistance training volume has neither a beneficial nor detrimental effect on muscle development during a cutting phase. The body composition data showed a slight loss of lean mass for both groups despite a relatively high protein intake (~2.8 g/kg/day of fat-free mass). However, the amount of these losses were within the margin of error of the measurement, and thus likely of little practical meaningfulness. Indeed, direct site-specific measures of muscle growth did not show appreciable changes for either condition. On the surface, the results seem to suggest that you need to be at least at caloric maintenance (or perhaps in a surplus) to take advantage of higher training volumes from a muscle-building standpoint.</p>
+
+
+
+<p>Intriguingly, subjective measures of sleep and mood were unaltered by training volume. Participants in both groups rated their sleep quality as “moderate” and neither group reported issues with sleep disturbance. Similarly, indices of mood were generally unchanged over the course of the intervention, irrespective of group allocation. When taken as a whole, these results indicate that relatively high training volumes are well-tolerated during periods of energy restriction and do not negatively affect performance, at least over a relatively short mesocycle. This seemingly refutes the claim that volume needs to be reduced while cutting.</p>
+
+
+
+<p>While our study provides preliminary evidence as to the effects of training volume during a cut phase, there are still many questions left to be answered. These include:</p>
+
+
+
+<p>***We only measured hypertrophy at two sites on the rectus femoris. What about other muscles? Perhaps the upper body may respond differently than the lower body? Or perhaps the other quad muscles may respond differently than the rectus femoris?</p>
+
+
+
+<p>***Our sample was comprised exclusively of young men. What about other populations? <a href="http://www.lookgreatnaked.com/blog/should-you-cut-volume-during-dieting/" data-type="URL" data-id="http://www.lookgreatnaked.com/blog/should-you-cut-volume-during-dieting/">Our previous review on the topic</a> suggested that women seem to retain more lean mass with higher volumes compared to males. Perhaps aging may have a modifying effect as well. Evidence indicates that older individuals require more recovery, which in turn may warrant alterations in training volume.</p>
+
+
+
+<p>***Our protocol involved a relatively high vs relatively moderate volume program. What about programs with higher or lower volume protocols? Would more extreme volume variations perhaps produce different results?</p>
+
+
+
+<p>***We employed a relatively modest caloric deficit, with subjects losing ~3/4 pound of weight per week. What about a larger deficit? It is not uncommon for people to target 1 to 2 pounds of weight loss per week during a cut phase, but it’s unclear if/how volume may affect such practices.</p>
+
+
+
+<p>***Participants in our study were relatively lean (baseline body fat percentage in the high teens). What about lower body fat levels? <a href="https://pubmed.ncbi.nlm.nih.gov/33105363/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/33105363/">Previous research from our lab</a> (https://pubmed.ncbi.nlm.nih.gov/33105363/) indicates that losses in lean mass rise exponentially when body fat dips below ~10%. Could volume have an impact on these losses, either positive or negative?</p>
+
+
+
+<p>All of these limitations cloud our ability to draw strong inferences on the topic and thus warrant further investigation.</p>
+
+
+
+<p><strong>Take-Home Conclusions:</strong></p>
+
+
+
+<p>Our findings provide preliminary evidence that resistance training volume does not influence body composition changes during a relatively brief (6 week) cut phase. The results suggest that volume can be reduced during such a phase without having a detrimental effect on lean mass. Alternatively, there are no benefits to decreasing volume (other than better time-efficiency), as the lower volume protocol did not improve results or enhance subjective measures of sleep and mood. Importantly, we need to be cautious in drawing strong conclusions on the topic. Given the limitations of the study, this should be considered an initial piece in the puzzle that requires follow-up studies to fill in the gaps in our knowledge. Stay tuned…</p>
+]]></content>
+		
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Does Intense Stretching Between Sets Increase Muscle Growth?]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/does-intense-stretching-between-sets-increase-muscle-growth/" />
+
+		<id>http://www.lookgreatnaked.com/blog/?p=6805</id>
+		<updated>2022-09-12T10:29:50Z</updated>
+		<published>2022-09-11T13:15:24Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[The bodybuilding community is forever seeking to develop advanced training methods that enhance muscle growth. Loaded stretch has long-been proposed as a potential strategy to increase gains. My close friend and colleague, the late, great John Meadows, was a huge proponent of including loaded stretch as a component in bodybuilding program design. Commonly, but not [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/does-intense-stretching-between-sets-increase-muscle-growth/"><![CDATA[
+<p>The bodybuilding community is forever seeking to develop advanced training methods that enhance muscle growth. Loaded stretch has long-been proposed as a potential strategy to increase gains. My close friend and colleague, the late, great John Meadows, was a huge proponent of including loaded stretch as a component in bodybuilding program design. Commonly, but not always, this practice is incorporated into the inter-set rest period between sets of an exercise.</p>
+
+
+
+<p>Research in animals has consistently shown a benefit to loaded stretch protocols. However, there have only been a few human studies to date that attempted to investigate the topic in a controlled fashion. Thus, our lab decided to conduct a study to determine if loaded stretch performed between sets in a resistance training routine influences muscular adaptations in the calf muscles. The study, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0273451" data-type="URL" data-id="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0273451">Loaded inter-set stretch may selectively enhance muscular adaptations of the plantar flexors</a>, was recently published in PLoS One (and is open-access so that all are able to read for free).</p>
+
+
+
+<p>For those who want the consumer-friendly version, here’s the scoop….</p>
+
+
+
+<p><strong>What We Did</strong></p>
+
+
+
+<p>The study was led by my master’s degree student, Derrick Van Every, with support from our terrific team of research assistants. To reduce potential confounding from genetic and lifestyle factors, we employed a within-subject design where all participants performed both conditions during the same session in counterbalanced fashion. As such, we randomized the legs of young, untrained men to perform 4 sets of straight- and bent-knee calf raises with 2 minutes rest between sets. One of the participants’ legs rested passively during the rest period (consistent with traditional training protocols) while the other leg descended into a loaded stretch (i.e., dorsiflexion) immediately after the end of the set. The stretch condition was held for 20 seconds and then participants rested passively for the remaining duration of the rest interval. Each set targeted 8-12 sets carried out to volitional failure. The training component of the study lasted 8 weeks.</p>
+
+
+
+<p>To determine if the strategy influenced hypertrophy, we assessed pre- to post-study changes in muscle thickness of the calf muscles (lateral and medial gastrocnemius, as well as the soleus). We also measured changes in isometric strength with the knees straight and bent.</p>
+
+
+
+<p><strong>What We Found</strong></p>
+
+
+
+<p>Soleus hypertrophy was modestly greater for the loaded stretch condition. The magnitude of effects ranged from negligible to relatively substantial compared to passive rest (~9% greater). The lateral gastroc showed a slightly advantageous effect for loaded stretch, but the range of values were of questionable practical meaningfulness. The medial gastroc showed neither a benefit nor detriment to loaded stretch.</p>
+
+
+
+<p>Somewhat surprisingly (at least to me), strength was modestly enhanced by loaded stretch. The effects ranged from negligible to potentially meaningful (?10% of the baseline strength).</p>
+
+
+
+<p><strong>What are the Practical Implications of Findings</strong></p>
+
+
+
+<p>Our study suggests that adding brief (20 seconds) loaded inter-set stretch bouts to a resistance training program may in fact promote modest improvements in muscle growth, perhaps specific to certain muscles more than others. In addition, there may be modest improvements in muscle strength as well. Interestingly, the beneficial effects occurred despite a decrease in volume load (sets x reps x load) of ~5 to 12%.</p>
+
+
+
+<p>Previous research shows conflicting results on the value of intense inter-set stretch, with some studies indicating a hypertrophic benefit and others not. Although it’s difficult to speculate on the reason(s) for these discrepancies, it’s interesting to note that our study found that beneficial effects were greatest in the soleus muscle. The soleus is a slow-twitch dominant muscle, comprised of ~80% type I fibers. It’s possible that type I fibers may be more anabolically responsive to the higher time-under-tension compared to type II fibers. It also is possible that these fibers may have additional inherent properties predisposed to loaded stretch following performance of eccentric actions (e.g., differences in muscle architecture). Of note, research in animal models also tends to show greater gains in slow-twitch dominant muscles. Alternatively, the results may simply be a chance finding that occurred irrespective of fiber type composition. Replication is needed to provide more insight on the topic.</p>
+
+
+
+<p>A limitation of the study is that participants were untrained men. This population was chosen so that we could isolate training only the calves without confounding from other multi-joint leg training (e.g., compound lower body exercises involve plantarflexion); it would have been near impossible to recruit trained subjects willing to give up training their thighs for a couple of months. Thus, it remains to be determined if similar results are achieved in trained individuals as well as in women. In addition, the findings are specific to the calf muscles; we cannot necessarily extrapolate similar results in other muscles of the body. Each study is but a piece in the puzzle of theory development, so further research is needed to better understand the nuances of the topic. </p>
+
+
+
+<p><strong>Take-Home Conclusions</strong></p>
+
+
+
+<p>From a practical standpoint, loaded stretch performed between sets may be a viable strategy to increase muscular development. Based on our findings, the improvements are relatively modest and their practical meaningfulness would depend on your ultimate goals (e.g., more relevant to those interested in bodybuilding vs general fitness). Although speculative, benefits may be best achieved when the stretch is performed immediately after the final eccentric action to take advantage of the <a href="https://journals.physiology.org/doi/full/10.1152/physiol.00049.2014" data-type="URL" data-id="https://journals.physiology.org/doi/full/10.1152/physiol.00049.2014">associated passive force enhancement effects</a> on the muscle .</p>
+
+
+
+<p>I&#8217;d note that the strategy employed in our study did not increase the duration of the workout, making it a time efficient option. Given that there does not seem to be a downside to inclusion of loaded inter-set stretch, it’s a strategy worth experimenting with if your goal is to maximize gains.</p>
+]]></content>
+		
+					<link rel="replies" type="text/html" href="https://www.lookgreatnaked.com/blog/does-intense-stretching-between-sets-increase-muscle-growth/#comments" thr:count="1" />
+			<link rel="replies" type="application/atom+xml" href="https://www.lookgreatnaked.com/blog/does-intense-stretching-between-sets-increase-muscle-growth/feed/atom/" thr:count="1" />
+			<thr:total>1</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Do You Need to Perform Single-Joint Exercises for Optimal Muscle-Building?]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/do-you-need-to-perform-single-joint-exercises-for-optimal-muscle-building/" />
+
+		<id>http://www.lookgreatnaked.com/blog/?p=6799</id>
+		<updated>2022-05-06T13:02:39Z</updated>
+		<published>2022-05-06T13:02:37Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[Multi-joint (a.k.a., compound) movements such as squats, presses and rows are widely considered staple bodybuilding exercises. Some people in the field claim that multi-joint exercises are all you need to optimize muscle growth and that performing single-joint (e.g., biceps curls, leg extensions, etc.) exercises are thus superfluous. Alternatively, others champion the importance of performing single-movements [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/do-you-need-to-perform-single-joint-exercises-for-optimal-muscle-building/"><![CDATA[
+<p>Multi-joint (a.k.a., compound) movements such as squats, presses and rows are widely considered staple bodybuilding exercises. <a href="https://pubmed.ncbi.nlm.nih.gov/27677913/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/27677913/">Some people in the field claim that multi-joint exercises are all you need to optimize muscle growth and that performing single-joint (e.g., biceps curls, leg extensions, etc.) exercises are thus superfluous</a>. Alternatively, others champion the importance of performing single-movements  in a hypertrophy-oriented routine, citing the ability to better target a given muscle for development.</p>
+
+
+
+<p>Who’s right?</p>
+
+
+
+<p><a href="https://www.researchgate.net/publication/359785878_Hypertrophic_Effects_of_Single-_Versus_Multi-Joint_Exercise_of_the_Limb_Muscles_A_Systematic_Review_and_Meta-analysis" data-type="URL" data-id="https://www.researchgate.net/publication/359785878_Hypertrophic_Effects_of_Single-_Versus_Multi-Joint_Exercise_of_the_Limb_Muscles_A_Systematic_Review_and_Meta-analysis">Our recent meta-analysis </a>helps to lend perspective on the topic, providing some practical insights as well as highlighting gaps in the literature that preclude our ability to draw strong conclusions. In this post I’ll delve into our meta-analytic findings and offer some key takeaways for program design.</p>
+
+
+
+<p><strong>What We Did</strong><br>We searched the current literature to locate all randomized control studies that directly compared single- vs multi-joint training on site-specific measures of muscle hypertrophy (DXA, MRI, CT scan, ultrasound, or limb circumference measurement) in healthy adults. <a href="https://osf.io/preprints/sportrxiv/sg3wm/" data-type="URL" data-id="https://osf.io/preprints/sportrxiv/sg3wm/">There were several studies conducted by Barbalho et al that we excluded from analysis due to evidence of research improprieties.</a></p>
+
+
+
+<p>We then carried out a robust variance meta-analysis model to determine potential hypertrophic differences between single- and multi-joint exercises. We also subanalyzed studies based on whether they equated the number of sets per exercise per muscle group to assess if training volume had confounding effects on muscle growth.</p>
+
+
+
+<p><strong>What We Found</strong><br>We identified 7 studies that met inclusion criteria. Our basic meta-analysis found similar gains in hypertrophy for both single- and multi-joint exercises. The relatively trivial confidence intervals of the effect size (-0.07 to 0.25) indicate that any differences would be of little practical relevance. Subanalysis failed to reveal that training volume had any effects on outcomes.</p>
+
+
+
+<p><strong>What are the Practical Implications of Findings</strong><br>Looking purely at the meta-analytic findings, it would seem there’s no difference between performing single- vs. multi-joint exercises from a hypertrophy standpoint. If true, this would mean that you could simply rely on compound movements to get huge and hence save a good amount of time in the gym since multi-joint exercises are more time-efficient choices.</p>
+
+
+
+<p>But hold on…</p>
+
+
+
+<p>As often is the case in research, there are important gaps in the literature that must be taken into account from a practical standpoint. First and foremost, 6 of the 7 studies looked at biceps or triceps hypertrophy; the other study looked at the quads. Thus, no research has been done into the effects of multi-joint exercise on muscles such as the delts, glutes, hamstrings, and calves, among others. </p>
+
+
+
+<p>Why is this an issue? </p>
+
+
+
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/31336594/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/31336594/">Well, evidence indicates preferential hypertrophy of the rectus femoris in the leg extension (a single-joint exercise) compared to the squat</a>. This suggests that combining single- and multi-joint lower body exercises may have a synergistic effect on quad development. <a href="https://pubmed.ncbi.nlm.nih.gov/31336594/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/31336594/">Moreover, research shows negligible growth of the hamstrings during the squat</a>, suggesting that direct hamstrings exercises (e.g., leg curls, stiff-leg deadlifts, etc) are necessary for complete development of this muscle; logic would dictate this would also be the case for the calf muscles, which receive relatively little stimulation during compound lower body movements. Although studies on deltoid hypertrophy are lacking, both applied anatomy and EMG research indicate that shoulder presses focus primarily on the anterior head of the muscle; to work the middle and posterior delts would thus require targeted single-joint work (i.e., lateral raises and rear delt flys).</p>
+
+
+
+<p>In addition, rarely do studies investigate the different heads of the upper arm muscles. <a href="https://pubmed.ncbi.nlm.nih.gov/32149887/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/32149887/">One study</a> did in fact show that the bench press (a multi-joint exercise) promoted greater hypertrophy in the lateral triceps head than the overhead triceps extension (a single joint exercise) whereas the overhead extension elicited greater hypertrophy in the long head of the tri’s compared to the bench press. It’s not clear whether  the short and long heads of the biceps brachii would see similarly differential responses with the performance of single- versus multi-joint exercise (i.e., curls vs rows), but the possibility can’t be ruled out.  </p>
+
+
+
+<p>Finally and importantly, no research on the topic to date has assessed growth at multiple sites across a given muscle. Numerous studies have shown that muscles can hypertrophy in a non-uniform fashion, with varying degrees of proximal, mid, and distal growth observed depending on a given training protocol. Although speculative, this raises the possibility that variations in length-tension changes between single- and multi-joint could promote hypertrophy at different aspects along the length of a muscle; we simply don’t know at this point because the topic has yet to be objectively studied.</p>
+
+
+
+<p><strong>Take-Home Conclusions:</strong></p>
+
+
+
+<p>From a practical standpoint, it’s relatively clear that multi-joint movements promote substantial hypertrophic benefits even in muscles that many people customarily believe require “direct” training (e.g., biceps and triceps). Accordingly, for those who are time-pressed and do not aspire to bodybuilding-type goals, this implies you can construct a routine based solely on multi-joint exercises and derive substantial benefits from a hypertrophy standpoint.</p>
+
+
+
+<p>On the other hand, if the goal is to optimize your muscular potential, it appears necessary to include single-joint exercises as part of a comprehensive training program. This will help to ensure that all the body’s major muscles, as well specific subdivisions of a given muscle, are maximally stimulated for development. Program design should focus on integrating applied anatomical theory that takes into account each muscle’s unique composition and function.    </p>
+]]></content>
+		
+					<link rel="replies" type="text/html" href="https://www.lookgreatnaked.com/blog/do-you-need-to-perform-single-joint-exercises-for-optimal-muscle-building/#comments" thr:count="2" />
+			<link rel="replies" type="application/atom+xml" href="https://www.lookgreatnaked.com/blog/do-you-need-to-perform-single-joint-exercises-for-optimal-muscle-building/feed/atom/" thr:count="2" />
+			<thr:total>2</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Should You Cut Volume During Dieting?]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/should-you-cut-volume-during-dieting/" />
+
+		<id>http://www.lookgreatnaked.com/blog/?p=6784</id>
+		<updated>2022-02-21T19:00:27Z</updated>
+		<published>2022-02-21T17:06:42Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[It’s common practice for gym-goers to reduce training volume when dieting. I’ve subscribed to this belief for years. After all, the concept seems to have a logical basis: Given that nutrients are involved in both energy production and recovery, a reduction in calories would seemingly make it difficult to adequately perform and recuperate from higher [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/should-you-cut-volume-during-dieting/"><![CDATA[
+<p>It’s common practice for gym-goers to reduce training volume when dieting. I’ve subscribed to this belief for years. After all, the concept seems to have a logical basis: Given that nutrients are involved in both energy production and recovery, a reduction in calories would seemingly make it difficult to adequately perform and recuperate from higher volume programs. Sounds on-point, right?</p>
+
+
+
+<p>It did to me. Based on this rationale, I’ve always recommended cutting back on the number of sets performed during periods of a caloric deficit.</p>
+
+
+
+<p>But scientific theories continually evolve and our <a href="https://pubmed.ncbi.nlm.nih.gov/35146569" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/35146569">new systematic review</a> of literature has now caused me to reconsider my opinion on the topic. Here’s the scoop…</p>
+
+
+
+<p><strong>What We Did</strong>:</p>
+
+
+
+<p>We systematically searched the literature for studies that investigated lean, healthy, drug-free resistance-trained individuals under conditions of a caloric deficit. Studies had to last at least 4&nbsp;weeks with subjects consuming a relatively high-protein diet (at least 2.0&nbsp;g/kg/day). The information from these studies was extracted and coded in a spreadsheet for analysis.</p>
+
+
+
+<p><strong>What We Found</strong></p>
+
+
+
+<p>A total of 15 studies met our inclusion criteria. When analyzing the data as a whole, there did not seem to be a benefit to reducing the volume of resistance exercise during periods of a caloric deficit. To some extent, the evidence indicated that reductions in volume while dieting may actually have a negative impact on maintaining lean mass, particularly in women. </p>
+
+
+
+<p><strong>My Thoughts</strong></p>
+
+
+
+<p>Based on the available objective research, our review found no compelling evidence of a benefit to decreasing resistance training volume when dieting. In fact, evidence actually seemed to show a potential detriment to the commonly-held practice for sparing lean mass, although the research in this regard remains rather equivocal. Moreover, the evidence suggests that women seem to retain more lean mass with higher volumes compared to males; possible reasons for this are unclear, although it&#8217;s conceivable that discrepancies between the sexes may be related to lighter overall loads used by women or perhaps sex-specific hormonal influences.</p>
+
+
+
+<p>Some fitness pros have mistakenly used a study by <a href="https://pubmed.ncbi.nlm.nih.gov/21131862/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/21131862/">Bickel et al.</a> as evidence in support of cutting volume during periods of energy restriction. The study essentially showed that young, intermediate-experienced individuals were able to maintain muscle on approximately 1/9 of their previous training volume. An important caveat: The subjects weren’t dieting. Thus, we can’t necessarily extrapolate this data to those in a caloric deficit; in fact, our review suggests these results do not apply during periods of dieting.</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><a href="http://www.lookgreatnaked.com/blog/wp-content/uploads/2022/02/Capture.png"><img decoding="async" src="http://www.lookgreatnaked.com/blog/wp-content/uploads/2022/02/Capture.png" alt="" class="wp-image-6791" width="426" height="295" srcset="https://www.lookgreatnaked.com/blog/wp-content/uploads/2022/02/Capture.png 871w, https://www.lookgreatnaked.com/blog/wp-content/uploads/2022/02/Capture-300x208.png 300w, https://www.lookgreatnaked.com/blog/wp-content/uploads/2022/02/Capture-768x532.png 768w" sizes="(max-width: 426px) 100vw, 426px" /></a></figure>
+
+
+
+<p><br>With that said, by no means should this paper be taken as nail-in-coffin evidence for employing higher volumes during a caloric deficit. For one, research to date on this topic is limited to correlational evidence. Hence, the inferences are made from independent studies that do not directly compare higher versus lower volumes, which limits the ability to draw strong inferences. Moreover, the reporting of volume was inconsistent in some of the papers, and assessment techniques (e.g., DXA, BIA, ADP, skinfold, etc.) varied between studies. Thus, the conclusions should be considered somewhat preliminary. However, given that there is little evidence of a benefit to cutting volume and a potential benefit to at least maintaining volume for lean mass maintenance, at this point the strategy seems to present a good cost/benefit.<br><br>Importantly, the application of research is always specific to the individual. Hence, there are a number of potential modifying factors that need to be taken into account when making practical decisions on the topic for a given lifter. Variables such as training experience, pre-diet RT volume, magnitude of the energy deficit, level of body fat, and concurrent aerobic training all may influence results. And I&#8217;d note that when body fat levels get very low (mid-single digits), there tends to be a substantial loss of lean mass regardless of volume. Hence, many things to consider from an evidence-based standpoint on an individual level.<br><br>In summary, the available evidence challenges the commonly held opinion that lifting volume should be reduced during a caloric deficit, with some evidence favoring higher volumes in the preservation of lean mass. As mentioned, the research to date is correlational and thus should be considered somewhat preliminary. We have completed data collection on a study that directly investigates the topic in resistance-trained individuals that will further help to fill gaps in the literature; stay tuned&#8230;.</p>
+]]></content>
+		
+					<link rel="replies" type="text/html" href="https://www.lookgreatnaked.com/blog/should-you-cut-volume-during-dieting/#comments" thr:count="1" />
+			<link rel="replies" type="application/atom+xml" href="https://www.lookgreatnaked.com/blog/should-you-cut-volume-during-dieting/feed/atom/" thr:count="1" />
+			<thr:total>1</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Brad</name>
+							<uri>http://www.workout911.com</uri>
+						</author>
+
+		<title type="html"><![CDATA[Understanding Mechanical Tension, Part II: The Light Load Paradox?]]></title>
+		<link rel="alternate" type="text/html" href="https://www.lookgreatnaked.com/blog/understanding-mechanical-tension-part-ii-the-light-load-paradox/" />
+
+		<id>http://www.lookgreatnaked.com/blog/?p=6757</id>
+		<updated>2021-12-08T02:41:32Z</updated>
+		<published>2021-12-06T14:17:10Z</published>
+		<category scheme="https://www.lookgreatnaked.com/blog" term="Uncategorized" />
+		<summary type="html"><![CDATA[In Part 1 of this series, I operationally defined mechanical tension and discussed how sensors in the working muscles detect the magnitude of tension from a given resistance to carry out the muscle-building process. However, as mentioned in that post, this doesn’t necessarily mean that heavier is better for gaining muscle. In fact, a compelling [&#8230;]]]></summary>
+
+					<content type="html" xml:base="https://www.lookgreatnaked.com/blog/understanding-mechanical-tension-part-ii-the-light-load-paradox/"><![CDATA[
+<p></p>
+
+
+
+<p>In <a rel="noreferrer noopener" href="http://www.lookgreatnaked.com/blog/understanding-mechanical-tension-part-i-what-is-mechanical-tension/" data-type="URL" data-id="http://www.lookgreatnaked.com/blog/understanding-mechanical-tension-part-i-what-is-mechanical-tension/" target="_blank">Part 1 of this series</a>, I operationally defined mechanical tension and discussed how sensors in the working muscles detect the magnitude of tension from a given resistance to carry out the muscle-building process. However, as mentioned in that post, this doesn’t necessarily mean that heavier is better for gaining muscle. In fact, <a rel="noreferrer noopener" href="https://pubmed.ncbi.nlm.nih.gov/28834797/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/28834797/" target="_blank">a compelling body of research indicates</a> that within wide limits, you build as much muscle from training with relatively light weights as you do from heavier loads. While this may seem counterintuitive, there are several possible explanations for the apparent paradox.</p>
+
+
+
+<p>First and foremost, mechanical tension inevitably increases as you approach muscle failure in a set. For example, say you are curling a weight that you can lift 20 times (i.e., your 20RM). The first few reps of the lift will be very easy to perform, and thus the tension imposed on the working muscles necessarily will be low. However, as you continue to curl the load, muscle fibers begin to fatigue causing increasingly greater tension on the remaining pool of available fibers. By the last few reps, the working muscle fibers are under a great deal of stress in their effort to complete the movement. In support of this theory, <a rel="noreferrer noopener" href="https://pubmed.ncbi.nlm.nih.gov/31294822/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/31294822/" target="_blank">research indicates </a>that fast-twitch fibers are progressively activated as a light-load set nears muscle failure, thus indicating that tension is specific to the level of exerted effort.</p>
+
+
+
+<p>So does that mean that only the last few reps of a set matter when training with higher rep schemes?</p>
+
+
+
+<p>Not necessarily.</p>
+
+
+
+<p>Mechanical tension is present throughout a lighter-load set, even during the initial repetitions, and it is conceivable that other factors may play a synergistic role in the hypertrophic process under conditions of lower tension. For example, metabolites are produced during high rep training that may contribute to hypertrophic gains. Moreover, blood vessels are compressed during repeated contractions, and the corresponding ischemia/hypoxia may be involved in anabolic signaling. We are just beginning to scratch the surface in our understanding of the mechanisms of muscle hypertrophy, with much still to be determined. If you’re interested in learning more on the topic, <a rel="noreferrer noopener" href="https://pubmed.ncbi.nlm.nih.gov/30335577/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/30335577/" target="_blank">check out our review paper</a> that discusses what we currently know about potential sensors and stimuli.</p>
+
+
+
+<p>Another possibility is that there may be a fiber-type specific response to loading. <a rel="noreferrer noopener" href="https://pubmed.ncbi.nlm.nih.gov/29720946/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/29720946/" target="_blank">Some evidence suggests </a> a preferential growth of type I fibers when training with lower loads and a preferential growth of type II fibers from heavier loads. If true, this would potentially “even out” the magnitude of growth when comparing training with higher versus lower loads. It also would suggest the possibility that combining heavier and lighter loads may optimize hypertrophy by promoting maximal growth of both fiber types. I’d note that <a rel="noreferrer noopener" href="https://pubmed.ncbi.nlm.nih.gov/32342648/" data-type="URL" data-id="https://pubmed.ncbi.nlm.nih.gov/32342648/" target="_blank">our recent study</a> did not indicate a fiber type-specific response between moderate- (~6 to 10 reps) and lighter- (~20 to 30 reps) load training of the calf muscles, but certainly more research is warranted to draw stronger conclusions on the topic.</p>
+
+
+
+<p>Based on what we&#8217;ve discussed, the question then arises: Is there an ideal time under tension in a set to promote gains? Perhaps such a scheme would provide a means to harness the benefits of sufficient mechanical tension while achieving higher volume loads, stimulating the spectrum of muscle fibers, and perhaps taking advantage of other mechanistic anabolic factors? Stay tuned for Part 3 of the series where I delve into the evidence on this topic.</p>
+]]></content>
+		
+					<link rel="replies" type="text/html" href="https://www.lookgreatnaked.com/blog/understanding-mechanical-tension-part-ii-the-light-load-paradox/#comments" thr:count="1" />
+			<link rel="replies" type="application/atom+xml" href="https://www.lookgreatnaked.com/blog/understanding-mechanical-tension-part-ii-the-light-load-paradox/feed/atom/" thr:count="1" />
+			<thr:total>1</thr:total>
+			</entry>
+	</feed>

@@ -1,0 +1,2342 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Stratechery by Ben Thompson</title>
+	<atom:link href="https://stratechery.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://stratechery.com</link>
+	<description>On the business, strategy, and impact of technology.</description>
+	<lastBuildDate>Tue, 17 Feb 2026 10:38:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://i0.wp.com/stratechery.com/wp-content/uploads/2018/03/cropped-android-chrome-512x512-1.png?fit=32%2C32&#038;ssl=1</url>
+	<title>Stratechery by Ben Thompson</title>
+	<link>https://stratechery.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">188043415</site>	<item>
+		<title>Thin Is In</title>
+		<link>https://stratechery.com/2026/thin-is-in/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Tue, 17 Feb 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18323</guid>
+
+					<description><![CDATA[Thick clients were the dominant form of device throughout the PC and mobile era; in an AI world, however, thin clients make much more sense.]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-passport-restricted-content">
+
+
+<div class="wp-block-passport-logged-out-view">
+<div class="wp-block-group wp-block-passport-podcast-player-logged-out-view has-border-color has-global-padding is-layout-constrained wp-container-core-group-is-layout-594587f7 wp-block-group-is-layout-constrained" style="border-color:#DDDDDD;border-width:1px;border-radius:5px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-group passport-podcast-player-logged-out-view-underlay has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-cd9ab148 wp-block-group-is-layout-flex">
+<div class="wp-block-group wp-container-content-9cfa9a5a has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="has-small-font-size"><strong>Listen to this <strong>post</strong>:</strong></p>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:0.5rem">
+<audio controls disabled style="width:100%;margin-top:0.15rem"></audio>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="wp-block-group is-style-default passport-podcast-player-logged-out-view-overlay is-vertical is-content-justification-center is-nowrap is-layout-flex wp-container-core-group-is-layout-0f259b6c wp-block-group-is-layout-flex" style="margin-top:0">
+<div class="wp-block-group wp-block-buttons has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--20)"><div style="text-decoration:none;" class="passport-logged-out align wp-block-passport-login-link">
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button"><a href="https://stratechery.com/wp-json/passport/v1/oauth/authlogin?signup_redirect_uri=https%3A%2F%2Fstratechery.com%2Fverify-your-email%2F" class="wp-block-button__link wp-element-button">Log in to listen</a></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+
+<p>There was, in the early days of computing, no debate about thick clients versus thin:</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" fetchpriority="high" decoding="async" width="1330" height="1062" src="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-1.jpg?resize=1330%2C1062&#038;ssl=1" alt="A 1960s mainframe computer" class="wp-image-18324" srcset="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-1.jpg?w=1330&amp;ssl=1 1330w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-1.jpg?resize=300%2C240&amp;ssl=1 300w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-1.jpg?resize=768%2C613&amp;ssl=1 768w" sizes="(max-width: 1000px) 100vw, 1000px" /></figure>
+
+
+
+<p>When a computer was the size of a room, there were no clients: you scheduled time or submitted jobs, and got back the results when it was your turn. A few years later, however, thin clients in the form of a monitor and keyboard arrived:</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" decoding="async" width="1330" height="1064" src="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-3.png?resize=1330%2C1064&#038;ssl=1" alt="A 1970s terminal for accessing a mainframe" class="wp-image-18325" srcset="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-3.png?w=1330&amp;ssl=1 1330w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-3.png?resize=300%2C240&amp;ssl=1 300w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-3.png?resize=768%2C614&amp;ssl=1 768w" sizes="(max-width: 1000px) 100vw, 1000px" /></figure>
+
+
+
+<p>There is no computer in this image; rather, this is a terminal connected to a mainframe. That&#8217;s why it&#8217;s called a &#8220;thin&#8221; client: it&#8217;s just an interface, with all of the computing happening elsewhere (i.e. in another room). By the 1980s, however, &#8220;thick&#8221; clients were the dominant form of computing, in the form of the PC. All of your I/O and compute were packaged together: you typed on a keyboard connected to a PC, which output to the monitor in front of you.</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" decoding="async" width="1330" height="966" src="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-2.png?resize=1330%2C966&#038;ssl=1" alt="A 1980s IBM PC" class="wp-image-18326" srcset="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-2.png?w=1330&amp;ssl=1 1330w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-2.png?resize=300%2C218&amp;ssl=1 300w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-2.png?resize=768%2C558&amp;ssl=1 768w" sizes="(max-width: 1000px) 100vw, 1000px" /></figure>
+
+
+
+<p>A decade later, and Sun Microsystems in particular tried to push the idea of a &#8220;network computer&#8221;:</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1330" height="998" src="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-4.png?resize=1330%2C998&#038;ssl=1" alt="A Sun Javastation" class="wp-image-18327" srcset="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-4.png?w=1330&amp;ssl=1 1330w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-4.png?resize=300%2C225&amp;ssl=1 300w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/thin-ai-4.png?resize=768%2C576&amp;ssl=1 768w" sizes="auto, (max-width: 1000px) 100vw, 1000px" /><figcaption class="wp-element-caption">Adrian Cockcroft, CC-SA 4.0</figcaption></figure>
+
+
+
+<p>This was a device that didn&#8217;t really have a local operating system; you ran Java applications and Java applets from a browser that were downloaded as they were used from a central server. Sun&#8217;s pitch was that network computers would be much cheaper and easier to administer, but PCs were dropping in price so quickly that the value proposition rapidly disappeared, and Windows so dominant that it was already the only platform that network administrators wanted to deal with. Thick clients won, and won decisively.</p>
+
+
+
+<p>If you wanted to make a case for thin clients, you could argue that mobile devices are a hybrid; after all, the rise of mobile benefited from and drove the rise of the cloud: nearly every app on a phone connects to a server somewhere. Ultimately, however, mobile devices are themselves thick clients: they are very capable computers in their own right, that certainly benefit from being connected to a server, but are useful without it. Critically, the server component is just data: the actual interface is entirely local.</p>
+
+
+
+<p>You can make the same argument about SaaS apps: on one hand, yes, they operate in the cloud and are usually accessed via a browser; on the other hand, the modern browser is basically an operating system in its own right, and the innovations that made SaaS apps possible were the fact that interactive web apps could be downloaded and run locally. Granted, this isn&#8217;t far off from Sun&#8217;s vision (although the language ended up being JavaScript, not Java), but you still need a lot of local compute to make these apps work.</p>
+
+
+
+<h3 class="wp-block-heading">AI vs. UI</h3>
+
+
+
+<p>The thick-versus-thin debate felt, for many years, like a relic; that&#8217;s how decisive was the thick client victory. One of the things that is fascinating about AI, however, is that the thin client concept is not just back, it&#8217;s dominant.</p>
+
+
+
+<p>The clearest example of this is the interface that most people use to interact with AI: chat. There is no UI that matters other than a text field and a submit button; when you click that button the text is sent to a data center, where all of the computation happens, and an answer is sent back to you. The quality of the answer or of the experience as a whole is largely independent of the device you are using: it could be a browser on a PC, an app on a high-end smartphone, or the cheapest Android device you can find. The device could be a car, or glasses, or just an earpiece. The local compute that matters is not processing power, but rather connectivity.</p>
+
+
+
+<p>This interaction paradigm actually looks a lot like the interaction paradigm for mainframe computers: type text into a terminal, send it to the computer, and get a response back. Unlike mainframe terminals, however, the user doesn&#8217;t need to know a deterministic set of commands; you just say what you want in plain language and the computer understands. There is no pressure for local compute capability to drive a user interface that makes the computer easier to use, because a more complex user interface would artificially constrain the AI&#8217;s capabilities.</p>
+
+
+
+<p>Nicolas Bustamante, in <a href="https://x.com/nicbstme/status/2023501562480644501?s=48">an X Article about the prospects for vertical software in an AI world</a>, explained why this is threatening:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>When the interface is a natural language conversation, years of muscle memory become worthless. The switching cost that justified $25K per seat per year dissolves. For many vertical software companies, the interface was most of the value. The underlying data was licensed, public, or semi-commoditized. What justified premium pricing was the workflow built on top of that data. That&#8217;s over.</p>
+</blockquote>
+
+
+
+<p>Bustamante&#8217;s post is about much more than chat interfaces, but I think the user interface point is profound: it&#8217;s less that AI user interfaces are different, and more that, for many use cases, they basically don&#8217;t exist.</p>
+
+
+
+<p>This is even clearer when you consider the next big wave of AI: agents. The point of an agent is not to use the computer for you; it&#8217;s to accomplish a specific task. Everything between the request and the result, at least in theory, should be invisible to the user. This is the concept of a thin client taken to the absolute extreme: it&#8217;s not just that you don&#8217;t need any local compute to get an answer from a chatbot; you don&#8217;t need any local compute to accomplish real work. The AI on the server does it all.</p>
+
+
+
+<p>Of course most agentic workflows that work tread a golden path, but stumble with more complex situations or edge cases. That, though, is changing rapidly, as models become better and the capabilities of the chips running them increase, particularly in terms of memory. When it comes to inference, memory isn&#8217;t just important for holding the model weights, but also retaining context about the task at hand.</p>
+
+
+
+<p>To date most of the memory that matters has been high-bandwidth memory attached to the GPUs, but <a href="https://stratechery.com/2026/nvidia-at-ces-vera-rubin-and-ai-native-storage-infrastructure-alpamayo/">future architectures will offload context to flash storage</a>. At the same time, managing agents is <a href="https://stratechery.com/2026/intel-earnings-the-agentic-opportunity-intels-mistaken-pessimism/">best suited to CPUs</a>, which themselves need large amounts of DRAM. In short, both the amount of compute we have, and the capability of that compute, still isn&#8217;t good enough; once it crosses that threshold, though, demand will only get that much stronger.</p>
+
+
+
+<p>This combination of factors will only accentuate the dominance of the thin client paradigm:</p>
+
+
+
+<ul class="wp-block-list">
+<li>First, if compute isn&#8217;t yet good enough, then workloads will flow to wherever compute is the best, which is going to be in large data centers.</li>
+
+
+
+<li>Second, if larger models and more context makes for better results, then workloads will flow to wherever there is the most memory available.</li>
+
+
+
+<li>Third, the expense of furnishing this level of compute means that it will be far more economical to share the cost of that compute amongst millions of users; guaranteeing high utilization and maximizing leverage on your up-front costs.</li>
+</ul>
+
+
+
+<p>Yes, you can run large language models locally, but you are limited in the size of the model, the size of the context window, and speed. Meanwhile, the superior models with superior context windows and faster speeds don&#8217;t require a trip to the computer lab; just connect to the Internet from anywhere. Note that this reality applies even to incredible new local tools like OpenClaw: OpenClaw is an orchestration layer that runs locally, but the actual AI inference is, by default and in practice for most users, done by models in the cloud.</p>
+
+
+
+<p>To put it another way, to be competitive, local inference would need some combination of smaller-yet-sufficiently-capable models, a breakthrough in context management, and critically, lots and lots of memory. It&#8217;s that last one that might be the biggest problem of all.</p>
+
+
+
+<h3 class="wp-block-heading">The Memory Crowd-Out</h3>
+
+
+
+<p>From <a href="https://www.bloomberg.com/news/articles/2026-02-15/rampant-ai-demand-for-memory-is-fueling-a-growing-chip-crisis">Bloomberg</a>:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>A growing procession of tech industry leaders including Elon Musk and Tim Cook are warning about a global crisis in the making: A shortage of memory chips is beginning to hammer profits, derail corporate plans and inflate price tags on everything from laptops and smartphones to automobiles and data centers — and the crunch is only going to get worse…</p>
+
+
+
+<p>Sony Group Corp. is now considering pushing back the debut of its next PlayStation console to 2028 or even 2029, according to people familiar with the company’s thinking. That would be a major upset to a carefully orchestrated strategy to sustain user engagement between hardware generations. Close rival Nintendo Co., which contributed to the surplus demand in 2025 after its new Switch 2 console drove storage card purchases, is also contemplating raising the price of that device in 2026, people familiar with its plans said. Sony and Nintendo representatives didn’t respond to requests for comment.</p>
+
+
+
+<p>A manager at a laptop maker said Samsung Electronics has recently begun reviewing its memory supply contracts every quarter or so, versus generally on an annual basis. Chinese smartphone makers including Xiaomi Corp., Oppo and Shenzhen Transsion Holdings Co. are trimming shipment targets for 2026, with Oppo cutting its forecast by as much as 20%, Chinese media outlet Jiemian reported. The companies did not respond to requests for comment.</p>
+</blockquote>
+
+
+
+<p>The memory shortage has been looming for a while, and is arguably the place where consumers will truly feel the impact of AI; <a href="https://stratechery.com/2026/nvidia-at-ces-vera-rubin-and-ai-native-storage-infrastructure-alpamayo/">I wrote in January</a> in the context of Nvidia&#8217;s keynote at CES:</p>
+
+
+
+<blockquote class="wp-block-quote is-style-stratechery is-layout-flow wp-block-quote-is-layout-flow">
+<p>CES stands for “Consumer Electronics Show”, and while Nvidia’s gaming GPUs received some updates, they weren’t a part of [Nvidia CEO Jensen] Huang’s keynote, which was focused on that Vera Rubin AI system and self-driving cars. In other words, there wasn’t really anything for the consumer, despite the location, because AI took center stage. This is fine as far as Nvidia goes: both the Vera Rubin announcement and its new Alpamayo self-driving system are big deals. It is, however, symbolic of the impact AI is having on technology broadly, and that impact is set to impact consumer electronics in a major way. Specifically, not only is all of the energy and investment in the tech sector going towards AI, but so is the supply chain.</p>
+
+
+
+<p>A big story over the last few months has been the dramatically escalating cost of memory as the major memory manufacturers shift their focus to high-bandwidth memory for AI chips in particular. What that means is that everything else is going to get a lot more expensive: memory is one of the most expensive components in nearly everything tech-related, and given the competitive and commoditized nature of the industry those costs will almost certainly be passed on to the end users.</p>
+
+
+
+<p>This AI crowd-out dynamic arguably started with the hyperscalers, who diverted ever increasing parts of their budget to GPUs in place of CPU purchases, but now it’s coming for everything from grid power to turbines and now to components, and it’s only going to increase and become more impactful to end users. In other words, Nvidia may not have talked about consumer electronics at the Consumer Electronics Show, but they are having the biggest impact on the industry by far.</p>
+</blockquote>
+
+
+
+<p>The downsides of this crowd-out effect are obvious; I pity anyone trying to build their own PC, for example, but soon their pain will be everyone&#8217;s pain as prices inevitably rise on everything that needs RAM.</p>
+
+
+
+<p>At the same time, I think the reported PlayStation delay is telling: apparently the PS5 is &#8220;good enough&#8221; for Sony to wait for more memory capacity to come online, and they&#8217;re probably right! Thick clients — of which consoles like the PS5 are the ultimate example — have long since reached the point of diminishing returns when it comes to hardware improvements. I think you could make the same case for PCs and phones as well: what we already have is already more than sufficient for almost any task we want to do.</p>
+
+
+
+<p>Moreover, the plateau in thick client capability is happening at the same time that the need for any capability at all is disappearing, thanks to these entirely new AI workflows that happen in the cloud. Yes, it sucks that AI is making memory scarce and personal computers of all kinds — from PCs to phones to consoles — more expensive; it&#8217;s also making them less important than ever.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p>Of course thick clients could make a comeback, particularly since local inference is &#8220;free&#8221; (i.e. the user pays for their own electricity). As I noted above, however, I&#8217;m skeptical about local inference in the near term for performance reasons, and the memory crunch is going to make it uneconomical for the foreseeable future. And, by the time local inference is a viable alternative, path dependency downstream of these few years may have already led to many workflows moving to this new paradigm.</p>
+
+
+
+<p>It will, to be clear, be a transition: UI isn&#8217;t just about how to use a computer, it also, as <a href="https://stratechery.com/2026/an-interview-with-benedict-evans-about-ai-and-software/" data-type="post" data-id="18238">Benedict Evans noted on a recent Interview</a>, embeds critical aspects of how a business works. Open-ended text prompts in particular are a terrible replacement for a well-considered UI button that both prompts the right action and ensures the right thing happens. That&#8217;s why it&#8217;s the agent space that will be the one to watch: what workflows will transition from UI to AI, and thus from a thick client architecture to a thin one? Current workflows are TBD; future workflows seem inevitable.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18323</post-id>	</item>
+		<item>
+		<title>2026.07: Aggregators and AI</title>
+		<link>https://stratechery.com/2026/aggregators-and-ai/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Fri, 13 Feb 2026 18:00:00 +0000</pubDate>
+				<category><![CDATA[This Week in Stratechery]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18304</guid>
+
+					<description><![CDATA[The best Stratechery content from the week of February 9, 2026, including individualization at scale, CapEx explosions and distinctions, and the interviewer becoming the interviewee.]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-embed alignfull is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="Ben Thompson from Stratechery on AI ads, the end of SaaS, and the future of media" width="500" height="281" src="https://www.youtube.com/embed/oUSWtLu2RCE?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>Welcome back to This Week in Stratechery!</p>
+
+
+
+<p>As a reminder, each week, every Friday, we&#8217;re sending out this overview of content in the Stratechery bundle; <span class="passport-tokenized-link">highlighted links are free for everyone</span>. Additionally, you have complete control over what we send to you. If you don&#8217;t want to receive This Week in Stratechery emails (there is no podcast), please uncheck the box in <a href="https://stratechery.passport.online/member/account/delivery">your delivery settings</a>.</p>
+
+
+
+<p>On that note, here were a few of our favorites this week.</p>
+
+
+
+<ol class="wp-block-list is-style-default">
+<li><strong>Individualization at Scale. </strong>Spotify had a fantastic result in its quarterly earnings, but I thought the earnings call commentary — it was former CEO and founder Daniel Ek&#8217;s last — was worth <a href="https://stratechery.com/2026/spotify-earnings-individualized-networks-ai-and-aggregation/" data-type="post" data-id="18288">a deeper examination into the reality of modern network companies</a>. Spotify is a music streaming service that everyone is familiar with, but the actual experience of every Spotify user is unique. That&#8217;s a feature of every monolithic network-effects company, and explains why such companies are poised to be big winners from AI. — <em>Ben Thompson</em><br></li>
+</ol>
+
+
+
+<span id="more-18304"></span>
+
+
+
+<ol start="2" class="wp-block-list is-style-default">
+<li><strong>CapEx Explosions and Distinctions.&nbsp;</strong>The most amazing thing I read this week was a note from a Sharp Tech emailer who observed that the combined project capital expenditures of Amazon, Google and Meta in 2026 <em>—</em> more than $700 billion <em>—</em> net out to nearly two-thirds of the annual budget for the U.S. Department of Defense. Where is that money going, and how scared should investors be? The answer there varies. On Monday, <a href="https://stratechery.com/2026/google-earnings-google-cloud-crushes-search-advertising-and-llms/" target="_blank" rel="noreferrer noopener">Ben explained why Google&#8217;s plans make perfect sense</a>&nbsp;given the nature of the business and their results over the past few years. <a href="https://stratechery.com/2026/amazon-earnings-capex-concerns-commodity-ai/" target="_blank" rel="noreferrer noopener">Tuesday&#8217;s Update told a different story about Amazon</a>: their spending is defensible, but shareholders who are anxious have a few good reasons to be.&nbsp;<em>—</em> <em>Andrew Sharp</em><br><br></li>
+
+
+
+<li><strong>The Interviewer Becomes the Interviewee.&nbsp;</strong>As Ben&#8217;s friend and colleague, I loved <a href="https://stratechery.com/2026/an-interview-with-ben-thompson-by-john-collison-on-the-cheeky-pint-podcast/" target="_blank" rel="noreferrer noopener"><span class="passport-tokenized-link">the inversion we got from this week&#8217;s Stratechery Interview</span></a>, cross-published from Stripe Preisdent John Collison&#8217;s <a href="https://open.spotify.com/show/2IHbGJJMpiFoz5YrvRfTFw">Cheeky Pint podcast</a>. This was Collison interviewing Ben, talking from everything from the difference between pre- and post-smartphone Japan, Meta&#8217;s allergy to advertising evangelism, why Ben doesn&#8217;t cover TikTok as much, and Stratechery&#8217;s business model (which was in part enabled by Stripe). The 90-minute conversation was a delight and is also <a href="https://www.youtube.com/watch?v=oUSWtLu2RCE" target="_blank" rel="noreferrer noopener">available to watch on YouTube</a>, if you&#8217;d like to see what Stripe&#8217;s on-premise pub looks like and get pretty jealous.&nbsp;&nbsp;<em>—</em> <em>AS</em></li>
+</ol>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<h3 class="wp-block-heading">Stratechery Articles and Updates</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://stratechery.com/2026/google-earnings-google-cloud-crushes-search-advertising-and-llms/">Google Earnings, Google Cloud Crushes, Search Advertising and LLMs</a> <em>— Google announced a massive increase in CapEx that blew away expectations; the companies earnings results explain why the increase is justified.</em></li>
+
+
+
+<li><a href="https://stratechery.com/2026/amazon-earnings-capex-concerns-commodity-ai/">Amazon Earnings, CapEx Concerns, Commodity AI</a> <em>— Amazon’s massive CapEx increase makes me much more nervous than Google’s, but it is understandable.</em></li>
+
+
+
+<li><a href="https://stratechery.com/2026/spotify-earnings-individualized-networks-ai-and-aggregation/">Spotify Earnings, Individualized Networks, AI and Aggregation</a> <em>— Spotify’s nature as a content network means that AI is a sustaining technology, particularly because they have the right business model in place.</em></li>
+
+
+
+<li><a href="https://stratechery.com/2026/an-interview-with-ben-thompson-by-john-collison-on-the-cheeky-pint-podcast/" data-type="link" data-id="https://stratechery.com/2026/an-interview-with-ben-thompson-by-john-collison-on-the-cheeky-pint-podcast/"><span class="passport-tokenized-link">An Interview with Ben Thompson by John Collison on the Cheeky Pint Podcast</span></a> <em>— An interview with me by John Collison on the Cheeky Pint podcast about AI, ads, and the history of Stratechery.</em></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Sharp Text by Andrew Sharp</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://sharptext.net/2026/takaichi-tanking-and-legalization-lessons/" data-type="link" data-id="https://sharptext.net/2026/takaichi-tanking-and-legalization-lessons/"><span class="passport-tokenized-link">Takaichi, Tanking and Legalization Lessons</span></a> —<em> On landslide elections in Japan, fixing a mess in the NBA, and a defining political challenge for the next generation in the United States.&nbsp;</em></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Dithering with Ben Thompson and Daring Fireball&#8217;s John Gruber</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://dithering.passport.online/member/episode/ferrari-luce">Ferrari Luce</a></li>
+
+
+
+<li><a href="https://dithering.passport.online/member/episode/apple-losing-control" data-type="link" data-id="https://dithering.passport.online/member/episode/apple-losing-control">Apple Losing Control</a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Asianometry with Jon Yu</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://asianometry.passport.online/member/episode/the-great-golden-age-of-antibiotics">The Great Golden Age of Antibiotics</a></li>
+
+
+
+<li><a href="https://asianometry.passport.online/member/episode/the-epochal-ultra-supercritical-steam-turbine">The Epochal Ultra-Supercritical Steam Turbine</a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Sharp China with Andrew Sharp and Sinocism&#8217;s Bill Bishop</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://sharpchina.fm/member/episode/pending-taiwan-arms-sales-jimmy-lai-sentenced-takaichi-secures-a-supermajority-ai-models-as-propaganda-vectors">Pending Taiwan Arms Sales; Jimmy Lai Sentenced; Takaichi Secures a Supermajority; AI Models as Propaganda Vectors</a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Greatest of All Talk with Andrew Sharp and WaPo&#8217;s Ben Golliver</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://goat.passport.online/member/episode/radical-transparency-roundup-the-tanking-race-gets-disgusting-giannis-takes-a-share-in-kalshi">Radical Transparency Roundup, The Tanking Race Gets Disgusting, Giannis Takes a Share in Kalshi</a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Sharp Tech with Andrew Sharp and Ben Thompson</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://sharptech.fm/member/episode/spotify-spreads-its-wings-cap-ex-explosions-and-distinctions-q-a-on-viral-ai-tweets-anthropic-giannis" data-type="link" data-id="https://sharptech.fm/member/episode/spotify-spreads-its-wings-cap-ex-explosions-and-distinctions-q-a-on-viral-ai-tweets-anthropic-giannis">Spotify Spreads Its Wings, CapEx Explosions and Distinctions, Q&amp;A on Viral AI Tweets, Anthropic, Giannis</a></li>
+</ul>
+
+
+
+<p>This week&#8217;s Stratechery video is on <a href="https://stratechery.com/2026/microsoft-and-software-survival/"><span class="passport-tokenized-link">Microsoft and Software Survival</span></a>.</p>
+
+
+
+<figure class="wp-block-embed alignfull is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="Microsoft and Software Survival | Stratechery by Ben Thompson" width="500" height="281" src="https://www.youtube.com/embed/iPN9Dz3XQxk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18304</post-id>	</item>
+		<item>
+		<title>An Interview with Ben Thompson by John Collison on the Cheeky Pint Podcast</title>
+		<link>https://stratechery.com/2026/an-interview-with-ben-thompson-by-john-collison-on-the-cheeky-pint-podcast/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Thu, 12 Feb 2026 13:00:00 +0000</pubDate>
+				<category><![CDATA[Daily Update]]></category>
+		<category><![CDATA[Interviews]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18296</guid>
+
+					<description><![CDATA[An interview with me by John Collison on the Cheeky Pint podcast about AI, ads, and the history of Stratechery.]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-group has-border-color is-nowrap is-layout-flex wp-container-core-group-is-layout-77c2d4bd wp-block-group-is-layout-flex" style="border-color:#DDDDDD;border-width:1px;border-radius:5px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-group wp-container-content-9cfa9a5a has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="has-small-font-size"><strong>Listen to this post:</strong></p>
+
+
+
+<div class="wp-block-passport-podcast-player">
+
+
+<div class="wp-block-passport-podcast-player-logged-out-view"></div>
+</div>
+</div>
+</div>
+
+
+
+<p>Good morning,</p>
+
+
+
+<p>Today&#8217;s Stratechery Interview is with me! On January 27 I sat down with <a href="https://x.com/collision">Stripe President John Collison</a> in the Cheeky Pint pub in Stripe&#8217;s offices for an episode of the Cheeky Pint podcast. There is a YouTube video of the interview that you can watch <a href="https://www.youtube.com/watch?v=oUSWtLu2RCE">here</a>, or, you can read the transcript below.</p>
+
+
+
+<p>In this interview we discuss life in Taiwan, ads in AI, and how Mark Zuckerberg&#8217;s obsession with being a platform has harmed Meta. Then we talk about the TikTok deal, the impact of AI agents on ads and e-commerce, and, a week before Wall Street&#8217;s meltdown, discuss whether or not software is dead. We also discuss the history of Stratechery, and why I&#8217;m skeptical about bundles in the future, as well as my concern about TSMC&#8217;s conservative approach to CapEx.</p>
+
+
+
+<p>As a reminder, all Stratechery content, including interviews, is available as a podcast; click the link at the top of this email to add Stratechery to your podcast player.</p>
+
+
+
+<p>On to the Interview:</p>
+
+
+
+<h3 class="wp-block-heading">An Interview with Ben Thompson by John Collison on the Cheeky Pint Podcast</h3>
+
+
+
+<p><em>This interview is lightly edited for clarity.</em></p>
+
+
+
+<div style="text-align:center"><p><strong>Topics:</strong></p>
+<a href="#taiwan">Life in Taiwan</a> | <a href="#ads-ai">Ads and AI</a> | <a href="#meta">Meta&#8217;s Platform Dreams</a> | <a href="#tiktok">The TikTok Deal</a> | <a href="#agents-ads">Agents and Ads</a> | <a href="#software">Is Software Dead?</a> | <a href="#stratechery">Stratechery History and Bundles</a> | <a href="#tsmc">The TSMC Brake</a> | <a href="#rapid-fire">Rapid Fire</a> | <a href="#big-five">The Big Five</a></div><a name="taiwan"></a>
+
+
+
+<h4 class="wp-block-heading">Life in Taiwan</h4>
+
+
+
+<p><strong>John Collison: Ben Thompson is the founder and author of Stratechery, the newsletter that everyone in tech reads to make sense of what&#8217;s happening. He&#8217;s also early to the premium newsletter model that&#8217;s become very popular in media nowadays. For many years, he ran Stratechery as a solo founder in Taiwan. Cheers.</strong></p>
+
+
+
+<p>Good to see you. Cheers.</p>
+
+
+
+<p><strong>JC: It feels like people in San Francisco have not properly discovered Taiwan as a tourist destination. Do you agree with that characterization? And what&#8217;s your recommendation?</strong></p>
+
+
+
+<p>People always ask me about Asia, and the way I always characterize Taiwan is, there&#8217;s lots of great places to visit in Asia, and I would put Japan top of the list. But I like to think I went to Japan before it was cool.</p>
+
+
+
+<p><strong>JC: Yeah. Nothing against Japan.</strong></p>
+
+
+
+<p>Well, the whole thing with Japan is going to Japan pre-smartphone was a completely different experience than going there post-smartphone. Like you think, “Oh, the subway system&#8217;s amazing, the trains…&#8221; — try navigating that with no smartphone and nothing&#8217;s in English. Japan used to be very low on English, it&#8217;s still lower than places like Taiwan.</p>
+
+
+
+<p><strong>JC: It&#8217;s surprisingly low.</strong></p>
+
+
+
+<p>Yeah. And the way to visit Japan is you just walk, don&#8217;t go to set destinations. Whereas the way I would talk about this is places to visit, but the best place to live is undoubtedly Taiwan. The one word everyone says for Taiwan sounds not that impressive, but the word is &#8220;convenient&#8221;, it is the most convenient place to live.</p>
+
+
+
+<p><strong>JC: 7-Eleven has really good food.</strong></p>
+
+
+
+<p>It&#8217;s actually downstream from the Japanese because Taiwan was a Japanese colony for the first 50 years of the 20th century, and it&#8217;s laid out a lot like — why is it great to walk around in Tokyo? Because Tokyo is all mixed use, that&#8217;s how Taipei is as well. You have these big blocks where the exterior will be commercial and the interior of these big blocks is all residential and the first floor is all like small shops or restaurants, things like that. So wherever you live, you basically have access to everything all around you.</p>
+
+
+
+<p>But I think the downside as a tourist is it&#8217;s kind of an ugly city. Taiwan&#8217;s kind of notorious for just these dumpy, dilapidated buildings, then you go inside and they&#8217;re palatial on the inside. Taipei is very, very rich. It&#8217;s in the top 10, I think, as the number of billionaires in the world or something like that, all downstream from building out China. It&#8217;s a very beautiful country. From Taipei, 30 minutes to the ocean, 30 minutes to the mountains, East Coast is amazing.</p>
+
+
+
+<p><strong>JC: But if people listening to this are visiting, I feel like one thing they should do is — it&#8217;s a mistake to try and use Yelp or anything like that too much because you should maybe just try and go to a night market and follow your belly and see what looks good, there&#8217;s a lot of excellent street food, and so that&#8217;d be one thing is don&#8217;t try to over-plan.</strong></p>
+
+
+
+<p>Well, here&#8217;s the problem though, where tech has made it worse, I would argue. When you&#8217;re living there, Taiwan is arguably the greatest Uber Eats market ever because there&#8217;s just amazing options. It&#8217;s all delivered by scooter, so it&#8217;s always like 10 minutes to get dinner. I think you were going to ask me about difficulties moving to the States, not having access to that is definitely one of them. But the problem is that it&#8217;s such a huge market now that I think there are fewer and fewer restaurants, in that a lot of these places actually just straight up close their storefronts are just ghost kitchens basically and all they do is just make Uber Eats orders all day.</p>
+
+
+
+<p><strong>JC: I see. Famously, the restaurant economy and places like Taipei would have been really good, but it&#8217;s gotten worse because people are eating in more with Uber Eats and stuff like that.</strong></p>
+
+
+
+<p>I think so. As far as walking around and just like stuff on — there&#8217;s still plenty of places, it&#8217;s still great. But there&#8217;s a number of restaurants that I used to always take people to, like holes in the wall that I knew were super good beef noodles or something, and I remember a couple times like, “Oh, you can&#8217;t actually go eat there anymore, but they&#8217;re still an Uber Eats”.</p>
+
+
+
+<p><strong>JC: That&#8217;s a bummer, it&#8217;s like a separate problem. The San Francisco problem at restaurants is that nobody drinks anymore and so the restaurants lost a major revenue source.</strong></p>
+
+
+
+<p>It&#8217;s so bad you had to get a pub in your own office!</p>
+
+
+
+<p><strong>JC: Exactly, we&#8217;re trying just firsthand to fix it.</strong></p>
+
+
+
+<p>Be the change you want to see in the world.</p>
+
+
+
+<p><strong>JC: Should people visit places beyond Taipei?</strong></p>
+
+
+
+<p>Oh, for sure. Yeah, Taipei is great, it&#8217;s great to walk around. Taipei 101, which is obviously very much in the news these days <a href="https://www.netflix.com/tudum/articles/how-to-watch-alex-honnold-skyscraper-climb-live-netflix">with the scaling</a>.</p>
+
+
+
+<p><strong>JC: But you can go up the elevator on the inside.</strong></p>
+
+
+
+<p>You go up there because there&#8217;s a massive ball at the top.</p>
+
+
+
+<p><strong>JC: The mass damper, yeah.</strong></p>
+
+
+
+<p>Yes, which is amazing. If you&#8217;re into engineering, that&#8217;s actually a very underrated thing. <a href="https://en.wikipedia.org/wiki/National_Palace_Museum">National Palace Museum</a> is amazing, but the East Coast in particular is incredible. There is a train, but driving, you&#8217;re driving on the coast.</p>
+
+
+
+<p><strong>JC: It&#8217;s like a lost coast of Hawaii, kind of.</strong></p>
+
+
+
+<p>Exactly. There&#8217;s an incredible gorge called <a href="https://en.wikipedia.org/wiki/Taroko_National_Park">Taroko Gorge</a> that was really messed up by an earthquake a couple years ago, so I don&#8217;t know if it&#8217;s even reopened yet, but I used to take people to that all the time because it&#8217;s world class.</p>
+
+
+
+<p><strong>JC: Yeah. It is impressive that they said, “We&#8217;re going to build the tallest skyscraper in the world in a very frequent earthquake region”.</strong></p>
+
+
+
+<p>Yeah, it’s a beautiful skyscraper. It worked out well for Netflix.<a id="ads-ai"></a></p>
+
+
+
+<h4 class="wp-block-heading">Ads and AI</h4>
+
+
+
+<p><strong>JC: So you&#8217;ve talked a lot over the years about <a href="https://stratechery.com/2015/aggregation-theory/">Aggregation Theory</a> and really popularized this idea where pre-Internet, often power would live with the supply, whereas on the Internet, because of the different marginal cost dynamics and things like that, power will rest with the demand aggregators. And so Booking.com is a much bigger company than any hotel chain, something like that.</strong></p>
+
+
+
+<p>And Booking.com is <a href="https://stratechery.com/2025/an-interview-with-booking-ceo-glenn-fogel-about-travel-and-aggregation/">a particularly interesting one</a> because they aggregate all the hotels, but they are also aggregated by Google so they&#8217;re like Google&#8217;s biggest customer.</p>
+
+
+
+<p><strong>JC: Yes.</strong></p>
+
+
+
+<p>Even as they&#8217;re also on the other side.</p>
+
+
+
+<p><strong>JC: I feel like Booking.com is a very underappreciated success story in tech. They&#8217;re a European company, kind of much quieter in a lot of ways. But if you invested a dollar in Booking.com and a dollar in Google 20 years ago, you made much more money as a Booking.com shareholder and I think people don&#8217;t appreciate that fact, it&#8217;s a very well run business. But where I was going with this is, how does Aggregation Theory apply to AI? How does one need to update the framework?</strong></p>
+
+
+
+<p>TBD, to a certain extent. This is part of the huge, probably one of the most angsty debates that I have internally generally, which is OpenAI&#8217;s welfare going forward. <a href="https://stratechery.com/2023/the-openai-keynote/">I put forward a few years ago</a> that actually OpenAI could stop making models and be one of the most valuable companies in the world just because of ChatGPT, that&#8217;s their most valuable asset and part of the problem that they have is that was definitely the case in 2023 and 2024, but you have to actually build the business model around that.</p>
+
+
+
+<p>And I&#8217;ve, <a href="https://stratechery.com/2025/google-nvidia-and-openai/">I think fairly famously</a>, at least based on all the tweets that I got when they announced that they were going to launch ads, I&#8217;ve been losing my mind about this fact for a long time. And I think this is interesting, I&#8217;d actually be curious to hear your view of this, which is, there&#8217;s this mindset in the Valley of this skepticism of advertising and people have sort of internalized that it&#8217;s bad and evil. Do you sense that? Do you feel that?</p>
+
+
+
+<p><strong>JC: I agree there’s kind of a knee-jerk skepticism of ads. Look, I&#8217;m a YouTube Premium subscriber. When I see someone watch a video without Premium—</strong></p>
+
+
+
+<p>It’s horrifying.</p>
+
+
+
+<p><strong>JC: I gasp, it&#8217;s like, “What are you doing with your life?”, and so I get the knee-jerk reaction and that Stripe at some level is kind of the anti-advertising company and we&#8217;re the opposite form of monetization. But I don&#8217;t know, I have no particular issue, I think it&#8217;s a very efficient form of monetization. It makes a lot of sense for certain products, and so I think it&#8217;s just different strokes.</strong></p>
+
+
+
+<p>I think you&#8217;re with Stripe, you&#8217;re on the skepticism side. I think ads are amazing, and I&#8217;m talking about my book a little bit. Stratechery has gotten tremendous traction just by not hating ads, even though I&#8217;m not an ad model myself.</p>
+
+
+
+<p><strong>JC: Exactly, but you&#8217;re a paid model.</strong></p>
+
+
+
+<p>Well, it&#8217;s funny. I actually think I got a lot of traction over the years by talking about ads when no one else was, despite the fact it&#8217;s the most important business model in tech. And I look back and all my early writing about ads was terrible, I had no idea what I — but just by virtue of talking about it, it was helpful.</p>
+
+
+
+<p>The reality of advertising is, number one, people, if you are making a product in the world, like Stratechery is very fortunate — it is definitely a new model or a new Internet-native model in that I have subscribers in like 200 countries. Literally, the whole world is my market and Stripe obviously helps make that possible.</p>
+
+
+
+<p><strong>JC: A few in the Vatican, they&#8217;re following along with that.</strong></p>
+
+
+
+<p>I could go check. I mean, I would bet the odds very high that I do, at least one subscriber in the Vatican. But where I benefited from is I was a massive beneficiary of social media, particularly Twitter and that back in their early days, good days of Twitter, if you want to say whatever it was, there was currency in sharing smart links. And so if I was a regular provider of links that people felt made them smart, so they would share them and talk about them and be sort of back-and-forth, so that solved my customer acquisition issue.</p>
+
+
+
+<p>The reality though is most, because the other thing about content — actually this is the point I&#8217;m interested to come back to, is it&#8217;s something to talk about — it&#8217;s a commonality between us that we can both read the same thing, we can both have opinions on it, react to it, the sort of product that I buy on Instagram is not what I&#8217;m not going to post about it or talk about it, but it can be tremendously beneficial. They in theory have these small businesses or whatever they might be, or Chinese suppliers or whatever, they have the same opportunity, which is to sell to everyone in the world, they just need a way to tell people about it. And as someone who buys way too many products off of Instagram — and by the way, one of the great things about moving back to the US is that the Instagram ads are unbelievable, I thought we were pretty good in Taiwan, they&#8217;re so much better in the US. They&#8217;re like, &#8220;Oh, this is the best part of living in the richest country in the world&#8221;, it&#8217;s amazing — I&#8217;m like, &#8220;What&#8217;s this native content? Give me more ads!&#8221; Which by the way, <a href="https://stratechery.com/2026/meta-earnings-turning-dials-zuckerbergs-motivation/">Facebook is very happy to do over the last six months</a>, lots of ads these days, but I get stuff that I never would have thought of, I didn&#8217;t even know about, and it&#8217;s great, it&#8217;s amazing.</p>
+
+
+
+<p>And it&#8217;s a real benefit to me as a consumer who for sure subscribes to YouTube Premium and looks down on people who don&#8217;t, but finding things that I didn&#8217;t know about that make my life better. So as a user, I&#8217;m benefiting. As a rich user, I&#8217;m benefiting. As the world is nine billion people, most of whom do not have the disposable income that I have, much less you have, much less anyone else in San Francisco has, they get the same experience I do. And something for AI, when you think about it, particularly when it&#8217;s so costly to provide, and the free product is so much worse than the paid product, of course it&#8217;s a win for them to be able to get access. So how do you have a mission, a belief that AI makes the world better and to not embrace ads?</p>
+
+
+
+<p><strong>JC: I agree with ads being an efficient form of monetization. What do you think is the right way for consumer AI apps to do ads? Like ChatGPT <a href="https://openai.com/index/testing-ads-in-chatgpt/">just announced that they&#8217;re doing ads</a>.</strong></p>
+
+
+
+<p>They&#8217;re terrible.</p>
+
+
+
+<p><strong>JC: Well, no, they&#8217;re doing them as a very separate experience to the answer.</strong></p>
+
+
+
+<p>No, this is why it&#8217;s so bad. <a href="https://stratechery.com/2026/ads-in-chatgpt-why-openai-needs-ads-the-long-road-to-instagram/">This is why I&#8217;m so frustrated with them</a>. So what they&#8217;re doing is the bare minimum easiest solution.</p>
+
+
+
+<p><strong>JC: It&#8217;s like banner ads basically.</strong></p>
+
+
+
+<p>It&#8217;s banner ads, but it&#8217;s based on the context of the conversation. And the problem is that <a href="https://openai.com/index/our-approach-to-advertising-and-expanding-access/">they released their ad principles</a>, right? Which is, our ads do not influence your answer. If you&#8217;re using the easiest possible way to target ads, which is based on the context of the conversation, we&#8217;re going to show you a roughly relevant ad.</p>
+
+
+
+<p>Number one, your market&#8217;s way smaller because you have to hope someone starts a conversation that matches the inventory you have. Number two, you&#8217;re getting into a, &#8220;My T-shirt answers questions that my T-shirt is raising&#8221;, sort of situation where if the ad is clearly connected to the answer, you&#8217;re going to raise suspicion in the user&#8217;s minds about what the connection is, so I would prefer if the ads had nothing to do with the answer.</p>
+
+
+
+<p>The way you get there is you build a Meta style understanding of the user and show them stuff that&#8217;s relevant to them, like in Instagram. The best Instagram ads don&#8217;t have anything to do with the stuff I&#8217;m surfing. It&#8217;s from Meta&#8217;s understanding of me broadly.</p>
+
+
+
+<p><strong>JC: So are you saying that AI ads should be more like Facebook ads than Google ads? And right now the focus is on doing targeted ads that are related to the prompt, whereas instead it should all be profiling the user and who this person is and what their interests are?</strong></p>
+
+
+
+<p>Yes, I think that would be better. It would present less conflict of interest, less uncertainty amongst the user and it&#8217;s a model that I think — I&#8217;m not the world&#8217;s biggest fan of search ads precisely for the reason why they work so well.</p>
+
+
+
+<p><strong>JC: Because of the confusion between organic and—</strong></p>
+
+
+
+<p>Because they’re cannibalization. Why is it that I have to buy my own name in search ads? Because someone else will go in there and you&#8217;re harvesting a click on the ad that would have been there sort of organically, which is fine, it works. The search is providing a lot of value, but the challenge obviously is they only have one space for inventory, which is in ChatGPT.</p>
+
+
+
+<p><strong>JC: Well, sorry, isn&#8217;t the defense of Google ads that everyone complains about the branded search and yeah, you&#8217;re paying for cannibalization, but Google pays so much attention to search quality that the sponsored listings themselves have a ranking of them, like a relevance ranking of them and so it&#8217;s really just like the Yellow Pages where you need to pay to be listed in the Yellow Pages.</strong></p>
+
+
+
+<p>Oh, it&#8217;s fine. Again, I&#8217;m the ad lover here, I just think that Meta ads are more broadly valuable because they&#8217;re showing me stuff I didn&#8217;t know that I wanted.</p>
+
+
+
+<p><strong>JC: But if the AI apps are to generate a profile of you, does that profile include the content of all your conversations?</strong></p>
+
+
+
+<p>Well, so this is the thing. So [DeepMind CEO] Demis [Hassabis] <a href="https://www.youtube.com/watch?v=tDSDR7QILLg">is out there saying</a>, &#8220;Wow, I can&#8217;t believe they&#8217;re adding ads, we&#8217;re not going to do that&#8221;. Which is hilarious because the entire Gemini DeepMind apparatus, what is it funded by?</p>
+
+
+
+<p><strong>JC: Sure, yeah. It&#8217;s a Google ad machine.</strong></p>
+
+
+
+<p>It&#8217;s funded by ads and that actually is probably the ideal model.</p>
+
+
+
+<p>So it&#8217;s actually very funny, I was in New York City last year, I was meeting with someone in a shared office or across the hallway was a hedge fund or someone and they came over and he&#8217;s like, &#8220;Oh, longtime reader, you&#8217;re responsible for our worst decision ever&#8221;, and I&#8217;m like, &#8220;What?&#8221;, he&#8217;s like, &#8220;Putting money in Twitter&#8221;, I&#8217;m like, &#8220;I&#8217;ve never said to put money in Twitter!&#8221;. That&#8217;s always been a terrible company, I&#8217;ve stopped covering them because <a href="https://stratechery.com/2022/back-to-the-future-of-twitter/">it was such a bad business</a>.</p>
+
+
+
+<p>And I&#8217;m like, &#8220;Oh no, I remember what it was,&#8221; it was <a href="https://stratechery.com/2013/twitter-acquires-mopub/">when they bought MoPub</a>, and my theory, my problem with Twitter advertising has always been that, especially it was very textual, I think text doesn&#8217;t work, all this applies to the Chat clients. <a href="https://stratechery.com/2021/twitter-has-a-new-ceo-what-about-a-new-business-model/">Text isn&#8217;t the best interface for ads</a>, obviously visuals are generally better and there&#8217;s also a posture. If I&#8217;m on Twitter, I&#8217;m like, &#8220;I&#8217;m ready to do battle, I&#8217;m locked in, or I&#8217;m searching for information&#8221;, if I&#8217;m on Instagram, the whole point of seeing an ad is I don&#8217;t really care what I&#8217;m seeing right now, I&#8217;m wasting time. You&#8217;re actually in a much better posture, I think, to absorb, just like TV, you&#8217;re sort of absorbing, can absorb the ad, and Twitter is bad for that.</p>
+
+
+
+<p>But Twitter, because it&#8217;s an interest-based network, at least in theory, it should be able to understand a lot about you above and beyond theoretically having pixels and SDK sort of all over the web and so my theory with the MoPub acquisition, I thought was a great acquisition because, &#8220;Oh, they can harness signal from Twitter and manifest it in other apps through this sort of MoPub network&#8221;.</p>
+
+
+
+<p>Now, Twitter was incompetent, so they did nothing with MoPub, gave it to AppLovin who&#8217;s now ridden MoPub to the top of the world, but that was my thesis and I think that could apply to AI as well. I think the ideal outcome for Google is they never put ads in Gemini, but they understand so much about you because of what you do in Gemini that they can then manifest that through ads on YouTube, through ads on Google, through ads on their other properties, and the challenge for OpenAI is they only have one place to put inventory, which is in ChatGPT.</p>
+
+
+
+<p><strong>JC: So you&#8217;re saying that Google could use Gemini to just improve the targeting of the ads across the Google properties, and then maybe if you want to have ads in Gemini—</strong></p>
+
+
+
+<p>I don&#8217;t think you need to ever put ads in Gemini.</p>
+
+
+
+<p><strong>JC: But just if you did, you would also have the profile that Google has of you from across the web and you can choose faster.</strong></p>
+
+
+
+<p>Yeah, and you don&#8217;t need to have ads that are making the user feel weird because, &#8220;Why are you showing me ads about what I&#8217;m asking about?&#8221;.</p>
+
+
+
+<p><strong>JC: Okay. But in the scenario you&#8217;re just describing for Google, wouldn&#8217;t that have the same, just like the Meta&#8217;s <a href="https://mobiledevmemo.com/your-phone-isnt-secretly-listening-to-you-for-ad-targeting/">listen to your microphone conspiracy theories</a> where the targeting is too good, people get concerned. Wouldn&#8217;t you get similar issues?</strong></p>
+
+
+
+<p>I think that&#8217;s a made-up concern.</p>
+
+
+
+<p><strong>JC: No, it is, but sure, but people have it. And wouldn&#8217;t you have a similar issue where if you&#8217;re using the Gemini data to make better ads, wouldn&#8217;t ultimately the targeting be too good and people find it weird?</strong></p>
+
+
+
+<p>I think that that&#8217;s a bridge that every tech company would be happy to cross if they came to it.</p>
+
+
+
+<p><strong>JC: I see, it&#8217;s a thing that people say when you have very good targeting.</strong></p>
+
+
+
+<p>I think there&#8217;s a real stated versus revealed preference about a lot of this stuff. The reality is, you could pay for Facebook or you could show ads — people would rather see the ads, I think most people don&#8217;t care. A lot of tech, and this sort of ties into the skepticism of ads, it&#8217;s sort of an elite town, there&#8217;s elite regulators, everyone&#8217;s thinking about these very theoretical things.</p>
+
+
+
+<p><strong>JC: Isn&#8217;t that bit of the challenge of banner blindness where Instagram advertising works so well because it&#8217;s a picture feed and it&#8217;s showing you pictures and then some of the pictures are like commercials. Whereas with an AI app, you&#8217;re looking for an answer and you don&#8217;t want to look at the banner.</strong></p>
+
+
+
+<p>It&#8217;s a huge concern, and this is one of the great ironies of Meta/Facebook is the extent to which, of course, Mark and everyone hates Apple for lots of, I think, very justifiable reasons, but <a href="https://stratechery.com/2013/mobile-makes-facebook-just-an-app-thats-great-news/">Apple saved Facebook from itself</a>.</p>
+
+
+
+<p>Back in the day, remember Facebook Platform and there&#8217;s like Facebook Payments and all this sort of thing and Mark has always wanted to build a platform, and if you&#8217;re just an app on a phone, you can&#8217;t build a platform. The problem is that I think being an advertising-based model is generally incompatible with being a platform, the whole point of a platform is you&#8217;re letting something else shine, something else to bring to the surface, the support structure for something to take over. So an operating system is not about the — ideally, it&#8217;s the application on top of it that you&#8217;re using.</p>
+
+
+
+<p>When Facebook was forced to not be a platform, but just be an app, suddenly they could be fully leaning into being an advertising thing. Think about a Facebook ad, even back in the day when it was a feed ad or a story ad, literally your entire device is all an ad, and somehow it&#8217;s not a banner, that&#8217;s a little thing on the edge. They literally have achieved permission from users to take over your entire device to show you a full screen ad every five seconds, it&#8217;s amazing, and they were forced into it by Apple.<a id="meta"></a></p>
+
+
+
+<h4 class="wp-block-heading">Meta&#8217;s Platform Dreams</h4>
+
+
+
+<p><strong>JC: Okay, this reminds me of, and I want to come back to the AI dynamics, but this reminds me of a view I&#8217;ve had that I&#8217;m curious for your thoughts on, which is often when tech companies become really big, they become really big just because the core idea works better than even the founders could have realized. And so Meta&#8217;s a really big company because they have a feed and the feed got really big and they were very smart along the way where they bought Instagram and they&#8217;re like incredibly targeted.</strong></p>
+
+
+
+<p>It&#8217;s the feed.</p>
+
+
+
+<p><strong>JC: But it turns out people spent a lot of time and many people, the P x Q of that with the feed and they monetized it very well, and that&#8217;s what got really big. And same with Nvidia, it just turns out that the GPU market got really big and they sell a lot of GPUs and so maybe founders, because they&#8217;re often like high powered individuals who want to have lots of new ideas, they&#8217;re often thinking about the next thing or like what the second act or the third act is and everyone wants to invent an AWS. But I&#8217;m curious what you would say to the idea that just generally it&#8217;s making the core thing really big and there&#8217;s more orders of magnitude at the top than you thought.</strong></p>
+
+
+
+<p>Yes. I think that&#8217;s always the case and I think that sometimes people end up making something that they didn&#8217;t want to make and they continually push back. I think Meta is the perfect example. <a href="https://stratechery.com/2025/an-interview-with-eric-seufert-about-advertising-and-ai/">My impression is</a> Mark&#8217;s not very interested in ads, he&#8217;s had very good people along the way that have helped him build these ad products. I think Meta has suffered from that because he has not been front and center fighting for, &#8220;Actually ads are good, they are societal good, they are the driver of all the consumer surplus that tech throws off&#8221;. The President uses the same search engine as the guy on the street or the same AI or sort of whatever it might be, that&#8217;s because of ads.</p>
+
+
+
+<p><strong>JC: Probably not. The President probably uses a Palantir search engine or something.</strong></p>
+
+
+
+<p>Yeah, it&#8217;s probably worse. Google has slipped a lot to be fair, there&#8217;s so much junk online. Has Donald Trump ever searched? I don&#8217;t know, that&#8217;s a good question. But he&#8217;s not made that case and I think Meta has suffered because of the failure to make that case.</p>
+
+
+
+<p>Then you get things like, &#8220;We&#8217;re going to do the Metaverse, we&#8217;re going to do X, Y, Z&#8221;, it&#8217;s always coming back to be a platform, be a platform, and Meta is an entertainment company. I wrote this years ago about the — it was simultaneously a good call and a bad call, do you remember that Paul Krugman quote, &#8220;The Internet&#8217;s not going to be very big, or have more impact than the fax machine because people don&#8217;t have anything interesting to say&#8221;, <a href="https://stratechery.com/2015/facebook-and-the-feed/">I actually defend that quote</a> because it&#8217;s actually true, most people don&#8217;t have that much interesting things to say, and I brought up that quote around 2015 by saying, &#8220;This is a fundamental limiter on Meta&#8217;s long-term potential&#8221;, as long as they think of themselves as a social media company, they&#8217;re going to run into a problem with their feeds becoming insufficiently interesting over time.</p>
+
+
+
+<p><strong>JC: The move from kind of peer content to—</strong></p>
+
+
+
+<p>Well, so that was, if I might say so myself, a very brilliant insight. The bad insight was my prescription, which was they needed to do more with professional content makers, like more funding of the BuzzFeeds of the world and share revenue, all that.</p>
+
+
+
+<p><strong>JC: It was actually user-generated content.</strong></p>
+
+
+
+<p><a href="https://stratechery.com/2020/xi-jinping-thought-facebooks-blindspot-the-moat-map-revisited/">The actual answer is what TikTok did</a>, which is that TikTok&#8217;s not a social network at all. It is a harvesting and YouTube, the same sort of idea, it&#8217;s like personalized TV.</p>
+
+
+
+<p>What actually matters, and this is a key thing, people get hung up on relative numbers, what matters is absolute numbers. So it is better to have 0.1% of your content is good if your content is in the billions or trillions, as opposed to, “Oh, 10% of our content is good”, but you only have a hundred pieces of content, that&#8217;s actually worse, even if you have a better hit rate. And so spurring lots of creation, writing the algorithms to capture the good stuff, put it up there, that actually solves the Paul Krugman fax machine problem and Facebook was blindsided by that. They were so stuck on their identity of being a social network that they let TikTok take this huge chunk and it was their blind spot.<a id="tiktok"></a></p>
+
+
+
+<h4 class="wp-block-heading">The TikTok Deal</h4>
+
+
+
+<p><strong>JC: Speaking of TikTok, I feel like you don&#8217;t write about ByteDance that much. And I&#8217;m curious just what your thoughts are on ByteDance from here and the TikTok sale and everything.</strong></p>
+
+
+
+<p>I mean, what a mess. I had to make a decision a long time ago, I wrote about Chinese companies more previously and I think there&#8217;s — number one, I have to decide what I&#8217;m going to be able to cover and what I&#8217;m not. I&#8217;m not in China, I was in Taiwan, it is a different Internet, and there was too much uncertainty and unknowns just in general about a lot of Chinese companies. I would write about them occasionally in the context of US tech companies.</p>
+
+
+
+<p>So I think I wrote about <a href="https://stratechery.com/2017/apples-china-problem/">WeChat and what it meant for the iPhone&#8217;s relative competitive position in China</a>, how it&#8217;s different from other countries, <a href="https://stratechery.com/2026/apple-earnings-supply-chain-speculation-china-and-industrial-design/">I think that sort of held up pretty well</a>. I <a href="https://stratechery.com/2022/instagram-tiktok-and-the-three-trends/">wrote about TikTok in the context</a>, I mean, more about TikTok, I think in the context, particularly this context of Meta, TikTok came up around the same time as the, Quibi, <a href="https://stratechery.com/2020/tiktok-and-quibi-tiktok-and-shopify-tiktok-complications/">which Quibi was the example of that</a>. Quibi was actually right that there was room for a mobile entertainment product, it was totally wrong about the content acquisition strategy. So even if the hit rate was higher, their total volume was way too small. I follow them, but not super closely. It&#8217;s just a hard market to understand.</p>
+
+
+
+<p><strong>JC: But like TikTok&#8217;s very relevant to the US market.</strong></p>
+
+
+
+<p>So I wrote <a href="https://stratechery.com/2020/the-tiktok-war/">The TikTok War</a>, basically making the case that the problem with TikTok, and back then everyone was talking about user data — who cares? The whole user data thing, <a href="https://stratechery.com/2019/privacy-fundamentalism/">people have this view</a> of like the East German Stasi and like folders going through people&#8217;s data, these are like vector databases with numbers that no human can parse, it&#8217;s really quite anodyne, it&#8217;s just really the target ads, and I was very skeptical about that being a forcing function in terms of forcing divesture or whatever it might be — the issue I had was the algorithm. <a href="https://stratechery.com/2019/the-china-cultural-clash/">And I noticed</a>, I think it was when the Hong Kong protest happened and Daryl Morey, the then-GM of the Houston Rockets tweeted, “Free Hong Kong”, or something like that, and there&#8217;s a huge meltdown of the NBA games being canceled. And I noticed that on TikTok, and this was from, I tested it from Taiwan and via VPN from the US, if you search for every single NBA team, you got NBA clips, except for the Rockets, you got nothing.</p>
+
+
+
+<p><strong>JC: Oh, that&#8217;s funny, it got demonetized, the Houston Rockets.</strong></p>
+
+
+
+<p>There was a thumb on the scale here. And I started talking about it then, and I did support the ban of TikTok or the forced sort of divesture from China because it seems fairly insane to have a primary information source controlled by your chief geopolitical adversary.</p>
+
+
+
+<p><strong>JC: Yeah. Same like there&#8217;s rules over TV station ownership and it&#8217;s not wildly different.</strong></p>
+
+
+
+<p>And so everything&#8217;s a trade off. Of course, I&#8217;m pretty well known for being a pretty stark defender of free speech and against censorship and my issue wasn&#8217;t TikTok per se. The reality of China is the founder of ByteDance is long gone because he got called to the carpet for ByteDance showing a little too much of what people liked, which is mostly like hot girls dancing and insufficiently showing the right things that the party wanted. The reality is China has the price of doing business is they&#8217;re somewhere on the control structure, they could tell you what to do and this just seemed like a very foolish thing to tolerate.</p>
+
+
+
+<p>Unfortunately, the US political process, or fortunately, maybe the reality is the US process and system is such a mess, can anyone really, truly impact it over time? The way that it shows up messily is we somehow do pass the law banning TikTok and it didn&#8217;t get banned and now it is sold, but China still controls the algorithm. So I think it&#8217;s a big disaster, it&#8217;s also like, what can I say about it? I said my piece. We ended up in the worst possible case, which is we violated property rights and we did all this stuff that&#8217;s ridiculous and we probably bartered X, Y, Z for ABC and we didn&#8217;t get the most important thing, which was control of the algorithm.</p>
+
+
+
+<p><strong>JC: Has that not happened as part of the sale?</strong></p>
+
+
+
+<p>No. <a href="https://www.politico.com/news/2026/01/22/5-things-to-know-about-the-tiktok-deal-00743316">ByteDance still controls the algorithm</a>.</p>
+
+
+
+<p><strong>JC: I didn&#8217;t know that.</strong></p>
+
+
+
+<p>Yeah. Good job by us.</p>
+
+
+
+<p><strong>JC: That does seem like it was the point of the spin out.</strong></p>
+
+
+
+<p>Well, the data was always the most salient political point. So when I wrote about it, that was my point. It was like, “I don&#8217;t care about the data, the issue is the algorithm”. And unfortunately they did not care. Maybe I should have written about it more, but anything like all the politics stuff, there was a period — I mean, thank God for AI.</p>
+
+
+
+<p>When I wrote Aggregation Theory in 2015, a couple of weeks later, <a href="https://stratechery.com/2015/aggregation-and-regulation/">I wrote something about regulation</a>, I&#8217;m like, &#8220;This is going to drive a bunch of regulatory issues and antitrust things and all these bits and pieces&#8221;, when that actually happened at the late end of the last decade, of course I was writing about it, I was watching congressional hearings, all this sort of thing, and that is the closest I came to quitting and burning out.</p>
+
+
+
+<p>I think burnout&#8217;s not a function of how much work you&#8217;re doing, it&#8217;s doing work you don&#8217;t enjoy. And at one point I&#8217;m like, “Either I quit or I stopped covering congressional hearings”, so I decided to stop covering congressional hearings. I only wrote about antitrust stuff that was super prominent and I&#8217;ve been much happier ever since. And maybe that&#8217;s part of the price of just not writing about that is maybe I should have pushed on the TikTok thing more.</p>
+
+
+
+<p><strong>JC: That&#8217;s interesting.</strong></p>
+
+
+
+<p>I said my piece.</p>
+
+
+
+<p><strong>JC: Is Stratechery very widely read in DC?</strong></p>
+
+
+
+<p>It is. Sometimes it&#8217;s gratifying. It&#8217;s great when you get called and asked for your opinion or you get certain responses or you see impact. It&#8217;s less gratifying when you get yelled at and people are mad at you. But fortunately the key thing to succeeding on the Internet is something I have in spades, which is a very high level of disagreeableness. So you can yell at me all you want, I&#8217;m not going to change my mind.<a id="agents-ads"></a></p>
+
+
+
+<h4 class="wp-block-heading">Agents and Ads</h4>
+
+
+
+<p><strong>JC: Okay. But getting back to Aggregation Theory as it pertains to AI. A simplistic view you could have is that the AI apps are the new aggregators and so a huge amount of economic value will accrue to them and that&#8217;s it. You could also say that that&#8217;s too simplistic in a bunch of ways because like we were saying Booking.com, you expect it to return new hotels that you should book, but you expect a little less of a commercial incentive from the AI apps and this is like a little more of an abstract technology where it&#8217;s actually not trivial to insert all of the commercial incentives in the right way. Anyway, you come up with various objections and so do you think—</strong></p>
+
+
+
+<p>Well, I think that the ad model is probably the way to start, which is what I just talked about before, sort of the lean-in versus lean-back. Ads are very tied into human psychology and like what you&#8217;re sort of tapping into and people&#8217;s response to that and how do you make something creative? And in the short term, technology often makes old business models even more powerful before it kills them. So you have something like a newspaper, I used to be limited to my geographic area, now I can reach the whole world.</p>
+
+
+
+<p><strong>JC: Yes.</strong></p>
+
+
+
+<p>And a few years later, <a href="https://stratechery.com/2014/economic-power-age-abundance/">everyone can reach the whole world, I mean pure competition, I&#8217;m screwed</a>. That is certainly a concern about this model. If you get to a world of say agentic commerce and the agents are just buying the right thing and I think this is also something that has driven a lot of tech skepticism of ads. People in tech tend to be fairly nerdy, fairly obsessed, they&#8217;re doing a ton of research to find sort of the exact right thing.</p>
+
+
+
+<p><strong>JC: Yes. Why didn&#8217;t you tell me what to buy when I&#8217;ve researched it for two hours?</strong></p>
+
+
+
+<p>That&#8217;s right, and so ads have no effect on me. Well, what if that sort of obsessive deep dive approach is now trivially available to everyone because AI is the one actually doing it? Now where do ads function?</p>
+
+
+
+<p>I think this is definitely a bit of a “be careful what you wish for” scenario because what this entails is of course more transparency, more details, more understanding sounds good, what it actually entails is sort of perfect competition, which is a very brutal game that can just wipe out entire categories. That&#8217;s basically what happened in newspapers in many respects, so that&#8217;s number one.</p>
+
+
+
+<p>Number two, in this sort of world, you&#8217;re sort of by definition anchoring on whatever specifications or whatever can be measured, can be put down and you had the old Steve Jobs adage about feeds and speeds versus like the feel of something where the intersection of liberal arts and tech, what the fuck does that mean? And it&#8217;s just like, well, what it actually means is there&#8217;s things that can&#8217;t be measured and that don&#8217;t go on an Excel spreadsheet and everyone you talk to acknowledges this. They say yes, there&#8217;s things that can&#8217;t be measured and the way it actually plays out in practice is only the things that are measured — I think a huge problem with sports analytics is a great example of this where basketball is my favorite sport, there&#8217;s a lot that goes into basketball and winning that is somewhat hard to wrap your hands on.</p>
+
+
+
+<p><strong>JC: It&#8217;s not like baseball which is very measurable.</strong></p>
+
+
+
+<p>Baseball&#8217;s very measurable. I do think there&#8217;s aspects about clutchness and stuff that I don&#8217;t know that are properly measured, but around basketball for sure, there&#8217;s the interaction and the way teams play together and how your effort on, or your involvement on offense can affect defense or sort of back and forth and you see it again and again. I like Daryl Morey, I think there&#8217;s a reason his teams haven&#8217;t won, they&#8217;ve over-optimized at the expense of some of these other issues. And if you can&#8217;t measure them, they tend to get devalued.</p>
+
+
+
+<p>In a world of AI-mediated everything, how many things that can&#8217;t get measured fall by the wayside because we end up with very utilitarian goods that have no soul to them. Sort of a silly sort of thing to worry about in some respects, or it sounds silly, but I&#8217;m a human and I anticipate liking and <a href="https://stratechery.com/2026/ai-and-the-human-condition/">preferring the humanity</a> of things of all sorts in the long run.</p>
+
+
+
+<p><strong>JC: But you could say that e-commerce aggregators like Amazon and lots of others have led to fairly anonymous manufacturers of lots of everyday goods, the kind of Amazon Basics type stuff, at a much lower price point than they were previously at still perfectly good quality. Isn’t that fine?</strong></p>
+
+
+
+<p>So this is where you throw my ad argument in my face. Which is like, actually it brings up the base level for everyone, like your basic consumer, the access of items they have.</p>
+
+
+
+<p><strong>JC: There&#8217;s no soul in an Amazon Basics power adapter. And that&#8217;s fine.</strong></p>
+
+
+
+<p>Everyone thinks back to like, &#8220;Oh, my washing machine was so much better in the 1960s&#8221;, and it&#8217;s like, yes, that&#8217;s true and also far fewer people had washing machines. So I&#8217;m now making the opposite argument, sort of arguing with myself.</p>
+
+
+
+<p><strong>JC: I will leave and you can have a one person play.</strong></p>
+
+
+
+<p>I&#8217;ll just switch back and forth.</p>
+
+
+
+<p><strong>JC: You can change sides of the booth. You mentioned agentic commerce, we obviously are big into that and had <a href="https://openai.com/index/buy-it-in-chatgpt/">our announcement with OpenAI back in October</a>. Where do you think that goes? How do you see agentic commerce playing out?</strong></p>
+
+
+
+<p><a href="https://stratechery.com/2026/apple-and-gemini-foundation-vs-aggregation-universal-commerce-protocol/">The contrast between your own OpenAI announcement and Google&#8217;s announcement</a> I think is pretty interesting and speaks to what the companies are driving for.</p>
+
+
+
+<p>OpenAI wants to be the place where you do everything, they want to be like the aggregator. I think a critic would say people compare them to Netscape, I think the better analogy if you&#8217;re an OpenAI skeptic would be AOL, where they want to be sort of like the interface for everything that you might do and it goes through their channels. And Google, just as they were relative to AOL is like, “Actually we want to equip everyone knowing that if everyone is capable, we are the greatest beneficiaries because we still marshal the sort of front end demand in that regard”.</p>
+
+
+
+<p>Now, how does that actually manifest in terms of commerce? The funny thing about tech is I don&#8217;t think it will manifest in terms of airplane tickets, which is everyone&#8217;s example. Everyone can never think of a better example than that, but what is the AI going to buy? What is it going to get? I don&#8217;t know. I think I would like to think people will want to have agency in their buying decisions, but then again, we have assistants, whether it be like for work or whatever it might be, and they make buying decisions that we&#8217;re necessarily not involved in and that I think is a good predictor precursor of what people will ideally — do I really need to know, actually, I have very strong paper towel ideas. But once that&#8217;s set, can that be sort of monitored and done?</p>
+
+
+
+<p>So I don&#8217;t know. I think this is a very unsatisfying answer, other than to say it has big implications on things like advertising and on things like is that going to be a viable business model going forward? What margins are going to be available? Is there going to be perfect competition? Things along those lines.</p>
+
+
+
+<p><strong>JC: Okay. Let me try this on you for agentic commerce and I&#8217;m curious to have you critique it, which is sort of how I see things playing out. I think some skepticism is triggered by people pitching a very far end state with a lot of agentic autonomy. And so it&#8217;s like, &#8220;Please book me a honeymoon in Japan and all the activities&#8221;, it&#8217;s like no one actually does things that way.</strong></p>
+
+
+
+<p><strong>Whereas actually you should go from the bottom up in some very basic building blocks where step one is just replacing filling out web forms, that&#8217;s an activity that sucks, no one likes it. And so imagine you find the winter jacket you like and you copy the URL into ChatGPT and just say, &#8220;Please buy this for me&#8221;, and that&#8217;s a much better experience than going and clicking around a site you&#8217;ve never been to before. So there&#8217;s just the agents doing the kind of tool you saw on your behalf and everyone can create that. Maybe it clarifies there&#8217;s multiple colors, &#8220;Which one do you like?&#8221;, but it&#8217;s just replacing filling out form fields.</strong></p>
+
+
+
+<p>This is, by the way, one thing that I am very — a lot of people are skeptical of this, but I am very optimistic about — which is, I call it <a href="https://stratechery.com/2024/the-gen-ai-bridge-to-the-future/">just in time UI</a>.</p>
+
+
+
+<p><strong>JC: Exactly, it’s a better UI. So that&#8217;s like level one is a better UI for kind of doing it in action you want to know, then level two is better discovery and search. It is crazy that we&#8217;ve gotten this far in e-commerce with keyword-based search. Keyword-based search works really well when you&#8217;re buying a book that you know the name of. It&#8217;s like, &#8220;I want to go buy this particular title&#8221;, and for a winter jacket, it&#8217;s like, “I don&#8217;t know, I want, it&#8217;s like a puffer, like what&#8217;s it called?”, and so instead you want to be able to say, “I&#8217;m looking for a jacket, I&#8217;m going to this place, it&#8217;s going to be this cold, I like these kinds of things”, whatever. And so step two is just better search and the ability to search with parameters that like no existing search UI lets you specify the temperature of the place you&#8217;re going to actually get a jacket of appropriate warmth, but that&#8217;s obviously with a jacket one of the core things. And so better search UI is kind of level two from our point of view.</strong></p>
+
+
+
+<p>Right, which I think is already sort of manifesting. Exactly.</p>
+
+
+
+<p><strong>JC: We&#8217;re already seeing it and like in the early usage of the ChatGPT buying experience, I think that&#8217;s one of those super cool features. And then level three, which we haven&#8217;t really seen play out yet, is this idea again of a persistent profile of the user—</strong></p>
+
+
+
+<p>That anticipates their needs.</p>
+
+
+
+<p><strong>JC: Exactly. It&#8217;s like, I want to be able to just pin things I like as I go along. Or maybe if I can share my browser history or maybe if I can just share a Pinterest board of just like, “These are some styles I like, give me a good winter jacket for the cold based on that, here are some photos of me based on this”.</strong></p>
+
+
+
+<p>Oh, I have an even better idea. Imagine if you were using ChatGPT and it&#8217;s circa October 1st and there&#8217;s an ad for a great winter jacket that is perfectly suited to me because they&#8217;ve been understanding my interests, they understand the context of where I am, I&#8217;m not searching for winter jackets because I don&#8217;t plan well, it&#8217;s going to get cold and then I&#8217;m searching winter jackets, but what if it could anticipate that and show me an ad at the right time when I need to see it?</p>
+
+
+
+<p><strong>JC: Okay. Maybe that&#8217;s level four.</strong></p>
+
+
+
+<p>That’s what I&#8217;ve been wanting them to build! This is my whole bit before, this is why they&#8217;re so late, they should be shipping that this year. You&#8217;re only shipping that this year if you started your ad product two or three years ago. This is doable today, this is what Meta ads are. You need to watch more Reels, I&#8217;ve bought more ski equipment this year that I don&#8217;t need, just because it just shows up, I&#8217;m like, &#8220;I&#8217;m moving back to Wisconsin, so I&#8217;m buying stuff for the house and I get all those ski hangers and think those would be great, that sounds very useful&#8221; — they&#8217;re still in a box, I haven’t actually put them up.</p>
+
+
+
+<p><strong>JC: Yeah, so there&#8217;s a limit to what kind of banner ad type experiences you can do whereas I think the search thing is very powerful. But yeah, I&#8217;m curious what you think of step one, just the very act of checking out and then—or level one—the very act of checking out, level two better search, and then level three, defining your own embedding space of preferences.</strong></p>
+
+
+
+<p>I completely agree with that approach, I just think you underrate the extent to which level three has already been built. Actually, one thing that Mark Zuckerberg said on a couple earnings calls ago that I thought was very astute, is we get hung up on technological definitions like, &#8220;What is an agent?&#8221;, and he&#8217;s like, &#8220;Actually the largest and most successful agent in the world today is Facebook advertising&#8221;, which is exactly right. Facebook advertising, people have it in their head that you go and you put in like demographics and you&#8217;re targeting and stuff.</p>
+
+
+
+<p><strong>JC: It&#8217;s very autopilot.</strong></p>
+
+
+
+<p>Yeah. What you do is you go in and you say, &#8220;Acquiring a customer for this is worth $10 to me, I&#8217;ll spend up to $10 and they will deliver you a customer for $10&#8221;, their margin will actually increase because they&#8217;ll make sure they deliver it at exactly $10 and they can do it for more and they actually make more money, you get exactly what you asked for. And I think the extent to how powerful this already works, they&#8217;re just stuck on “50% of my ads work, I don&#8217;t know which ones” — no, on Facebook, they all work.</p>
+
+
+
+<p><strong>JC: I feel like a bunch of new, very big successful companies will be created in AI-powered e-commerce. It just feels like a different enough product space.</strong></p>
+
+
+
+<p>You&#8217;re talking about retailers, merchants or agents?</p>
+
+
+
+<p><strong>JC: I was just talking about discovery and kind of the demand side. Though also probably retailers.</strong></p>
+
+
+
+<p>Yeah. Well, I certainly think, I think the part that would be new, which you were maybe talking about, is this real anticipatory aspect. To go back to Meta ads, is it helps merchants who have a very specialized product find customers that they never would&#8217;ve found otherwise. But there&#8217;s the inverse of, “I need a very specialized product, how do I find what it is?,” which I think you were referring to before, but to what extent can that not just be an in the moment I need this specific — I remember I needed a server, a piece for a rack to mount this router because I didn&#8217;t want to buy a whole new thing or whatever, I had this extra router. And of course there&#8217;s some guy in Australia that does 3D prints that perfectly matches this on Etsy or something and it was great. I found this random guy, I&#8217;m sure he made a bunch of money selling me a $40 piece that cost him $2 to make, good for him. But what if an AI should be capable of anticipating that need? So it&#8217;s not, &#8220;Oh, I have a need, let me go find it&#8221;, it&#8217;s like, &#8220;I know you&#8217;re going to need this and let me acquire it&#8221;, and that would be very powerful.<a id="software"></a></p>
+
+
+
+<h4 class="wp-block-heading">Is Software Dead?</h4>
+
+
+
+<p><strong>JC: The public markets indicate as of January 2026 that SaaS is canceled. Are they right?</strong></p>
+
+
+
+<p><a href="https://stratechery.com/2026/microsoft-and-software-survival/">I think it&#8217;s probably a mix</a>. I think one of the brilliance of American business is — actually, this is one of my theories about why the Europeans are so gung-ho about data privacy and regulation is because they so often interact with European companies. So I was in Paris a couple years ago, and of course going on a tourist trip, going to the Louvre, going to Musée d&#8217;Orsay, just seeing a bunch of museums, they all have their own homegrown registration systems <a href="https://stratechery.com/2024/the-e-u-goes-too-far/">and they&#8217;re collecting so much data</a>.</p>
+
+
+
+<p><strong>JC: And they&#8217;re widely insecure.</strong></p>
+
+
+
+<p>It&#8217;s like, yeah, what&#8217;s your age? What&#8217;s your pet? What color is — why do you need to know all this information? They&#8217;re all non-standard forms, this is where you need AI to fill all this sort of thing in. And there&#8217;s this theoretical idea in their head, “If we capture this data, it could be useful”, so they built these homegrown things in the 2000s that are horribly insecure and I use them. I&#8217;m like, &#8220;Where&#8217;s the regulator? This is ridiculous&#8221;, so I get the mindset.</p>
+
+
+
+<p>US companies don&#8217;t do that, US companies are so good, I think one of the big strengths of US business culture is understanding, and I think about this personally, this is when I give life advice. What&#8217;s the number one mistake people make when they&#8217;re young in particular? They focus on their weaknesses. They&#8217;re like, &#8220;I have to ameliorate my weakness&#8221;, I&#8217;m like, no, what you do is you double down on your strength, you get richly rewarded for that, and then you hire someone to take care of your weaknesses.</p>
+
+
+
+<p>I&#8217;m a big believer in the <a href="https://gettingthingsdone.com/">Getting Things Done</a> system. Great book, Getting Things Done. Even if you don&#8217;t use the system, the book is really good, lots of great insights and there&#8217;s this whole thing like tickler files and all these sorts of things, it&#8217;s an amazing system. I&#8217;m completely incapable of managing the system on my own, so there&#8217;s a Mac app called OmniFocus that is completely built around this system that I don&#8217;t have a license for, my assistant has a license for and I text him stuff and his job is to maintain my Getting Things Done file because I can&#8217;t do it.</p>
+
+
+
+<p>What do I do? Actually, my life is very, very optimized around, I write three pieces a week, I do an interview and I do three podcasts and all my focus and energy needs to be on that, and if I do that, that will make a lot of money and I could pay to fix all my problems elsewhere. And I think American business does this very well, they don&#8217;t waste time and energy on stuff they&#8217;re not good at, they double down on what they&#8217;re good at and they&#8217;re focused on the upside, not on their cost centers.</p>
+
+
+
+<p><strong>JC: Probably a result of the very large market in the US.</strong></p>
+
+
+
+<p>I think so, and just the competition, it would be in a very large common market.</p>
+
+
+
+<p>You go back to newspapers, they have lots of homegrown stuff. If you&#8217;re a publication online, if you&#8217;re like me on the Internet, I get paid to comment on the big tech companies. It&#8217;s probably the most competitive market on earth, right? Lots of people have takes on the big tech companies. And so you have to be super focused. Given that, that speaks to the enduring value of just paying someone to manage these business functions from a software perspective.</p>
+
+
+
+<p>Now, there&#8217;s a lot of SaaS applications, not sure they&#8217;re all strictly necessary and worth the price. I like to think people talk about tech having a Big Five, obviously there&#8217;s a Big Six. The sixth was Silicon Valley Inc, which is basically this cookie cutter VC goes to this founder addressing this specific business case with the SaaS business model. Everyone likes to, they get to talk about changing the world and it&#8217;s actually the most predictable thing yet, that&#8217;s why VC returns compressed, but because they&#8217;re also very predictable in terms of like this sort of engine going. A big problem there is they&#8217;re all seat-based, anyone&#8217;s seat-based that is somewhat vestigial that there&#8217;s going to be probably fewer seats.</p>
+
+
+
+<p>And then if the replacement is more small scale, ideally there&#8217;s lots of — the internet in general has writing or content is a good example. There used to be you wanted to be in the big pond and everyone in the big pond ate. If you had a job at Condé Nast at one of their magazines, like you lived life well if you wrote for magazines — today if you want to be a writer, I give advice to people that want to be content producers all the time. And I&#8217;m like, look, you don&#8217;t want to be in a pond with me. <a href="https://x.com/billsimmons">Bill Simmons</a> is like the first Internet sports writer and you don&#8217;t want to be doing a Bill Simmons impression on the Internet because he got there first. What you want to do is you want to make your own pond, the Internet enables the creation of a million different ponds. So you get to define your own pond, be the only biggest fish in that pond, that&#8217;s how you succeed.</p>
+
+
+
+<p>To the extent AI makes that, I think this is the upside case, is AI makes that possible for more than just content, for all sorts of businesses to be lots of smaller scale individual entrepreneurs or small teams, all of whom don&#8217;t really fit in the Salesforce driven, seat-based model for a lot of these companies. So there might be a big return to self-serve, or maybe they&#8217;ll just roll their own because their needs aren&#8217;t that large, so that&#8217;s more a larger structural change. But the problem is it&#8217;s fine to say businesses will be okay as they are, if you&#8217;re eliminating the growth, that&#8217;s the big problem, I think that&#8217;s the biggest issue for all the compression.</p>
+
+
+
+<p><strong>JC: Via headcount growth?</strong></p>
+
+
+
+<p>Just growth in general. If these are just stable businesses with astronomical stock-based compensation that is predicated on we&#8217;re going to be very large.</p>
+
+
+
+<p><strong>JC: Yes. I can see two critiques you might have of the software space and why everything&#8217;s traded down. One is everyone&#8217;s just going to use Claude Code to rebuild their own version in house and so the software moat is less. And the second is actually just that many of these products price on a per-seat basis. And so if you&#8217;re growing headcount less, on the first—</strong></p>
+
+
+
+<p>Or shrinking.</p>
+
+
+
+<p><strong>JC: Exactly, yeah. On the first, like Anthropic just installed Workday. So I don&#8217;t think we&#8217;re Claude coding—</strong></p>
+
+
+
+<p>Systems of record, that&#8217;s the category that is definitely safer.</p>
+
+
+
+<p><strong>JC: We see this with Stripe Billing as well. I don&#8217;t think anyone&#8217;s Claude Code-ing one of those systems of records anytime soon.</strong></p>
+
+
+
+<p>Do you use Workday?</p>
+
+
+
+<p><strong>JC: Yeah we use Workday. I don&#8217;t know what to make of the second criticism, but again, it just feels like for a very broad and deep system of record, it&#8217;s kind of hard to make the argument that the business is somehow impaired versus a year or two ago.</strong></p>
+
+
+
+<p>Right. But I think that&#8217;s my point though, is people saying they&#8217;re going to zero are wrong, but if the assumption is you&#8217;re fine, but you&#8217;re not going to be growing indefinitely, like that shift from thought of as being a growth company to being a stable — that&#8217;s a haircut, and again, it&#8217;s combined with these whole compensation structures.</p>
+
+
+
+<p><strong>JC: Yeah, you&#8217;re now valued on EPS rather than revenue or something. So yeah.</strong><a id="stratechery"></a></p>
+
+
+
+<h4 class="wp-block-heading">Stratechery History and Bundles</h4>
+
+
+
+<p><strong>Can we talk about your business and Stratechery?</strong></p>
+
+
+
+<p>Sure.</p>
+
+
+
+<p><strong>JC: You were very early to the, I mean the sovereign writer concept, I think you were one of the first premium newsletters?</strong></p>
+
+
+
+<p>I think so. Well, so there&#8217;s two predecessors to talk about. One is just on Wall Street in general, there&#8217;s a long history of faxed out newsletters and things like grants—</p>
+
+
+
+<p><strong>JC: All this research and all that stuff. Yeah.</strong></p>
+
+
+
+<p>The difference there was that those were very expensive and a very small addressable market. So the difference for Stratechery is it&#8217;s much cheaper and the market&#8217;s much larger.</p>
+
+
+
+<p>The other person that deserves a call out, which I think was the first person to do it before me, otherwise I think I was the first, was <a href="https://andrewsullivan.substack.com/">Andrew Sullivan</a>.</p>
+
+
+
+<p><strong>JC: I hadn&#8217;t realized he had a paid newsletter.</strong></p>
+
+
+
+<p>He had a paywall for like a year.</p>
+
+
+
+<p><strong>JC: Oh.</strong></p>
+
+
+
+<p>The problem is <a href="https://stratechery.com/2015/bloggings-bright-future/">he did it all wrong</a>. “You&#8217;re doing it wrong”, he would churn out like 50 posts a day, just about a gazillion different things, he totally burned out and all that sort of stuff. But that happened to be a great fit for the advertising model back in the day, because you would always go back there and there’d always be new stuff. And I&#8217;m sure he drove a gazillion impressions for The Atlantic, especially when he was with them.</p>
+
+
+
+<p>He went independent, he was pretty successful, I think he did around a million dollars or something like that, but it was this very leaky paywall. It was like after like 35 posts, then you&#8217;ll hit like a paywall and there&#8217;s a bit where you&#8217;re like, it&#8217;s very easy to get around. But he was actually very inspirational in how I thought about the model, in that he was hailed as a failure because he burnt out and then quit. But I&#8217;m like, &#8220;He made a million dollars, this is pretty good&#8221;.</p>
+
+
+
+<p>I wanted, from the beginning, just thinking about the psychology of this, when I started Stratechery, I had a gazillion ideas of things to write about, and I limited myself to writing a max of two times a week, and the reason is I had the subscription model in mind and when I added the model, I didn&#8217;t want it to be, &#8220;I&#8217;m taking stuff away and now you have to pay&#8221;, I&#8217;m like, &#8220;You like this so much, if you pay, you can get more&#8221;. And so I always wanted to be, you&#8217;re paying to get more sort of aspect and I think that probably mattered more at the beginning, especially because the model was new.</p>
+
+
+
+<p>My metric I looked at was people who visited Stratechery on days I didn&#8217;t post, because they were people that were going there hoping I had posted that day and they were leaving disappointed, and so in this case, usually previously a paywall would disappoint people that they hit it. In this case, the paywall would alleviate their disappointment because they could now get what they wanted.</p>
+
+
+
+<p>And so I&#8217;m like, &#8220;If I can capture X percentage of these visitors, it&#8217;ll be very good&#8221;. One day goal, one week goal, one month goal, failed to reach all of them. What happened was, I actually thought it was not going to work, I was going to have to go back to teaching English or something like that, but it sort of grew and grew and grew. And at six months, I hit my one year goal, which was a thousand subscribers, thousand true fans. It was a $100,000 run rate.</p>
+
+
+
+<p><strong>JC: Took you how long to get to a thousand subscribers?</strong></p>
+
+
+
+<p>Six months. And <a href="https://stratechery.com/2014/daily-update-bandcamp-tencents-earnings-twitters-analyst-day-plus-stratechery-announcement/">I posted a little note</a> saying, &#8220;Hey, model works, my goal is a thousand for a year, I&#8217;ve already reached it&#8221;. And this is the only step change in subscribers I&#8217;ve ever had. In the next 24 hours, I got 250 new subscribers, a 25% increase, what they were was I had identified those people who wanted to be subscribers, they just didn&#8217;t trust that I was going to work and I was going to go out of business and take their money, and so once they realized I wasn&#8217;t going anywhere, then they all signed up. So I actually had my, my metrics were right, but I didn&#8217;t properly calculate the uncertainty, people&#8217;s fear of losing their money.</p>
+
+
+
+<p>So I&#8217;m very grateful that now people just sign up for stuff all the time. Of course, I&#8217;ll probably go to my grave being most well known for Stratechery, but I am equally proud of the model and that lots of people make a living doing this.</p>
+
+
+
+<p><strong>JC: How far do you think this model can go? Again, the defining characteristic to me seems like the unbundling, like maybe 30 years ago you&#8217;d have been writing for a publication, whereas now it&#8217;s unbundling, it&#8217;s the direct relationship with your subscribers, it&#8217;s direct monetization and generally paid. There might be some ad supporting components as well as paid. Obviously, Substack has proven that this is very broad applicability, but how far do you think this goes versus traditional media bundling?</strong></p>
+
+
+
+<p>I think there&#8217;s a couple interesting angles to this. Number one, I think people, including people in tech, seriously underrate how large the Internet is. And like some of the biggest pushback I got when I announced the Stratechery paid product was from VCs, I won&#8217;t say who, it&#8217;s like, “Love you Ben, just not going to work on the Internet”. Actually, my bit about ponds before, I don&#8217;t know that we&#8217;ve scratched the limit of how many ponds can be built in the world and you can sort of occupy it.</p>
+
+
+
+<p>And the other part of this, the critical piece of this, and AI is actually an important factor here, is the key to the model is your costs. So just as technology enables you to reach everyone, you need to leverage technology to keep your costs very, very low. And so for the first several years, for Stratechery, it was just me. So as long as I could feed my family, I was fine. And this is the problem for the traditional media companies, their cost structures were not Internet cost structures, they were predicated on much higher revenue.</p>
+
+
+
+<p>It&#8217;s interesting to think about and talk about this because a lot of this is like not really applicable. It&#8217;s like before, I write about ads a lot and I&#8217;m not an ad business, in this case, I write about VC, high scalable companies, but my actual business is very sort of boutique and small and artisan in that, that&#8217;s right in that regard and this is a super important point is managing your costs. If you manage your costs appropriately, then the possibilities, but that also means there&#8217;s some things that don&#8217;t work with this model. Like your traditional classic investigative journalism, six month sort of piece, it&#8217;s not well supported by this. What did support that was the bundle, having lots of different writers in one publication altogether.</p>
+
+
+
+<p>The thing I worry about, I wonder about, is bundles are good for everyone involved and no one wants to be a part of it. So TV is the classic example. Why did we have a TV bundle? <a href="https://stratechery.com/2022/cables-last-laugh/">I think it started in Pennsylvania</a>, so you have a television station in Philadelphia and you have the Allegheny Mountains and you have a bunch of towns there that want to get the signal from Philadelphia, but they can&#8217;t get a good signal. So they band together, they put up a big tower to get the signal, they run actual cable from that tower to all their houses, and all of cable television started in small town rural America to get TV from the big cities. And Ted Turner comes along and is like, &#8220;I could just broadcast directly to these towers, this would be amazing&#8221;, and you get the model and suddenly, but you had a geographic forcing function and you ended up with all these companies with the best business model in the world. Everyone paid them whether they watched you or not, and they made a ton of money.</p>
+
+
+
+<p>And what happened the moment they could do something different? I could also go directly, I could stream directly, and there&#8217;s just something about business because it&#8217;s almost like you have to be forced into the game, the optimal game from a game theory perspective. And the moment you can desert, everyone always deserts, even if it&#8217;s the best thing.</p>
+
+
+
+<p><strong>JC: How does this apply to your world?</strong></p>
+
+
+
+<p>Because in theory, there should be bundles. Substack should be a bundle, you should be able to have one fee and get everything, but they started — I think a mistake Substack made, and I&#8217;m a huge Substack fan, just to be clear, I&#8217;ve made this disagreement before and they get mad about it, but they characterize themselves as being totally writer-friendly. And I think that was a mistake because it&#8217;s impossible for them to be ultimately writer-friendly because the most writer-friendly setup is running an open source software on your own server, then no one can do anything to you.</p>
+
+
+
+<p><strong>JC: I thought you were going to say the most writer friendly thing is to have a humming consumer business.</strong></p>
+
+
+
+<p>It would be. The problem is all their initial terms made the bundles impossible and all the individual publishers owning their own subscribers, having their own Stripe account and all these sorts of bits and pieces.</p>
+
+
+
+<p><strong>JC: But hang on. I feel like there&#8217;s a well trodden path in tech here where OpenTable started as entirely, it started as on-prem, purely software for restaurants, and then they added the customer discovery layer on top of it. Shopify started as a solution just for merchants and then they added the Shop Pay kind of network file layer for consumers on top.</strong></p>
+
+
+
+<p>Even with those businesses though, the Shop Pay bit is nice, it&#8217;s not the driver of the business.</p>
+
+
+
+<p><strong>JC: It&#8217;s a pretty cool part of the business.</strong></p>
+
+
+
+<p>It’s cool. I like it, but at the end of the day, the vast majority of shop interactions are I see an ad on Instagram and I go there and I get the Shop button, which is incredible, one of the greatest things.</p>
+
+
+
+<p><strong>JC: No, but yeah, but then it makes the Shopify offering to merchants so much more compelling because you get the Shop Pay network. And it&#8217;s where I&#8217;m going with this—</strong></p>
+
+
+
+<p>I&#8217;m skeptical that&#8217;s the driver of the business. I think it&#8217;s a nice to have.</p>
+
+
+
+<p><strong>JC: But can Substack just add a Substack Prime bundle on top of it and merchants can—</strong></p>
+
+
+
+<p>The problem is the merchants who will make that bundle valuable have no incentive to join the bundle because they could make more just monetizing users directly. So imagine I&#8217;m on Substack, how much more revenue does Substack have to give me for me to trade $15 a month from my subscribers for a smaller amount from whoever&#8217;s part of this? And so the problem is they have to really pay me off to be a part of it. Meanwhile, everyone who doesn&#8217;t have any subscribers, of course they love to be in the bundle.</p>
+
+
+
+<p><strong>JC: This feels solvable to me.</strong></p>
+
+
+
+<p>I think it&#8217;s solvable at the beginning.</p>
+
+
+
+<p><strong>JC: No, sorry. It feels solvable now.</strong></p>
+
+
+
+<p>I think a counter example is something like Spotify. Spotify is arguably the best bundle on the Internet. But the reason why they were able to assemble the bundle is because they only need to negotiate with four entities and so it&#8217;s interesting because on one hand that limits Spotify&#8217;s upside because those entities are able to negotiate such a large share of Spotify&#8217;s revenue. On the other hand, that&#8217;s also why Spotify was possible because they only need to negotiate with four. If you&#8217;re trying to get every artist on earth, well, of course I got to get Taylor Swift. Okay, good luck with that. All the small fry will sign up, but the music&#8217;s unique in particular because music, the moment a song comes out, it&#8217;s now part of the back catalog. And actually people only ever listen to back catalogs so it&#8217;s a particularly unique industry in that regard. But that is a bundle that formed, but I think it&#8217;s because there&#8217;s only four players.</p>
+
+
+
+<p><strong>JC: Okay. And how do you use AI in writing Stratechery these days?</strong></p>
+
+
+
+<p>I think it probably replaces what I used to do a lot of on — it&#8217;s much more efficient Googling. The most gratifying articles I write are when I write about a topic that I usually don&#8217;t, and then someone from that industry is like, “Wow, that was good”, because you&#8217;re always worried about—</p>
+
+
+
+<p><strong>JC: You have this imposter syndrome.</strong></p>
+
+
+
+<p>No. I mean, fortunately I don&#8217;t really have imposter syndrome.</p>
+
+
+
+<p><strong>JC: That’s why it all works.</strong></p>
+
+
+
+<p>What&#8217;s the mechanism where you&#8217;re reading something about your area of expertise?</p>
+
+
+
+<p><strong>JC: Gell-Mann Amnesia.</strong></p>
+
+
+
+<p>Yeah, that&#8217;s right. It&#8217;s like, “This is totally wrong&#8221;, and then you trust everything else. I don&#8217;t want to trigger Gell-Mann Amnesia amongst anyone. So if people ask me, I hate the book question, like what books do you read? I read a lot of books, but they&#8217;re very targeted. I&#8217;m a very, very fast reader. So sometimes I&#8217;ll write an Article and I know there&#8217;s a pertinent book and I will just read the whole book in the morning.</p>
+
+
+
+<p>But in general, I really want to make sure I fully understand a space, particularly if it&#8217;s new that I&#8217;m writing about. This is partly why I have a big competitive advantage, I&#8217;ve been thinking about tech since I was in junior high school and I&#8217;ve been writing about tech for 13 years, so I&#8217;ve already done so much preparatory work that anyone, starting from scratch, it&#8217;s hard. But something I want to dive into, I&#8217;m one of the world&#8217;s greatest Googlers, I&#8217;d like to think, I know every sort of parameter and how to find — so I think I can say it pretty authoritatively, Google has gotten worse. And I don’t think it&#8217;s Google&#8217;s fault, I just think that it&#8217;s harder. One of Google&#8217;s faults is they got so biased towards recency and so you have to be super diligent, but AI is so incredible for this. Just sort of getting background, making sure you understand an issue, the ins and outs of it, how things work. You can query stuff, dive deeper. So that is by far my number one use case.</p>
+
+
+
+<p>I do, not always, but I will sometimes ask it to — this is where I like ChatGPT. I type in BBEdit as an integration, this is also why I&#8217;m very annoyed by and am very sensitive to the cloying nature. “Oh, this is really great, but no, that&#8217;s not what I&#8217;m asking for, I want you to actually go in and find stuff”, so I do not use it to actually generate any exact content.</p>
+
+
+
+<p><strong>JC: Okay. So targeted research and then critique.</strong></p>
+
+
+
+<p>Yes, those would be the two biggest use cases.<a id="tsmc"></a></p>
+
+
+
+<h4 class="wp-block-heading">The TSMC Brake</h4>
+
+
+
+<p><strong>JC: You&#8217;ve written a lot about the <a href="https://stratechery.com/2026/tsmc-risk/">TSMC Brake</a>, this idea that the limiting factor on all AI expansion is basically the rate of TSMC capacity expansion because all AI chips are fabbed at TSMC. It seems like as you look at the AI space and everything interesting going on, so for mostly chip constrained right now, which would not have to be the case, you could be power constrained and stuff. But if you&#8217;re chip constrained, there&#8217;s a population of people who want to expand very quickly, the AI labs, NVIDIA, people like that. And then yeah, famously, which TSMC, which is more conservative in how it expands, why is that? Why does the market signal not cause them to build out fab capacity faster?</strong></p>
+
+
+
+<p>Because the risks for fabs are basically larger than for anyone else. You&#8217;re spending billions and billions of dollars on a fab that if it&#8217;s not fully utilized, if you end up with too much capacity, number one, all your costs are locked in. Like basically 99.9% of the cost for a fab is depreciation, which you&#8217;re paying the depreciation, you already showed you paid in cash flow obviously, but it&#8217;s on your accounting statement no matter what.</p>
+
+
+
+<p>So the fabs can be extremely profitable, TSMC&#8217;s margins are higher than ever, but they can very quickly tip over into having a huge problem. And then once it&#8217;s already built, these fabs can run for a long time. So that excess capacity depresses prices for years to — I mean, we see this in memory all the time, memory famously goes through these cycles. Like what&#8217;s going to happen, believe it or not, we are going to have too much memory capacity in a few years because we have such a shortage right now. Micron just announced they&#8217;re a huge new fab in Singapore and everyone&#8217;s going to do that, but why does it happen to memory? There&#8217;s three competitors in memory. If Micron doesn&#8217;t do it, SK Hynix will. If SK Hynix doesn’t do it, Samsung will, and so you have a dynamic where — a healthy dynamic — which is the fabs know better, but they can&#8217;t help themselves. And so they take on the risk and they build these fabs.</p>
+
+
+
+<p>The problem we have with logic is that TSMC doesn&#8217;t have that pressure and so they&#8217;re actually behaving rationally. TSMC is giving up potential long-term revenue, but the downside for fab in particular is so large that they don&#8217;t want to realize that downside.</p>
+
+
+
+<p><strong>JC: Can they not pass the risk onto the customer where it&#8217;s like, “You are going to pay for the entire fab”?</strong></p>
+
+
+
+<p>That&#8217;s probably what they need to get to. Apple famously did a lot of this sort of prepaid and particularly when TSMC was sort of expanding hugely in the 2010s and they maybe need to get even more explicit about that. But I think the better solution and the cheaper solution for the hyperscalers in the long run would be to do what is necessary for TSMC to have competitors, then you get it for free, you don&#8217;t need to prepay it.</p>
+
+
+
+<p>So there&#8217;s this risk that&#8217;s out there, this risk of overbuilding. Right now, TSMC is shifting all that risk to the hyperscalers, to Nvidia, to Apple. And the way it manifests, and the reason why they get away with it is because the risk is foregone revenue, it&#8217;s money you don&#8217;t make and worse than that, it&#8217;s money you don&#8217;t make four or five years down the road. And everyone, like what does every company say on their earnings call right now? &#8220;We could have made more, but we don&#8217;t have enough supply&#8221;, and if you think it&#8217;s bad, why is it bad right now? ChatGPT comes out, every hyperscaler starts investing like crazy. What does TSMC do? They actually decreased their CapEx year over year, two years in a row. There was no market response from TSMC to the ChatGPT moment, now they increased to 41 [$ billion] last year, they&#8217;re going up to like 60 this year, but even that increase to 60 is a less percentage increase than last year.</p>
+
+
+
+<p>I think we&#8217;re looking at a massive shortness in chips in 2029 or so. Particularly as the other thing, the compute density of AI is so much larger, right? If you have an agent out doing stuff, it&#8217;s doing so many more computations in a limited amount of time than me and my Googling is even humanly possible to do and all these lookups, and so we have a CPU shortage too. And Intel, <a href="https://stratechery.com/2026/intel-earnings-the-agentic-opportunity-intels-mistaken-pessimism/">Intel shut down some of their CPU lines</a>, right?</p>
+
+
+
+<p><strong>JC: Yes.</strong></p>
+
+
+
+<p>So the whole semiconductor, I just think it&#8217;s a big problem and we&#8217;re shifting to, for a long time it&#8217;s like, how can we get an alternative to TSMC <a href="https://stratechery.com/2020/chips-and-geopolitics/">for geopolitical reasons</a>? And the truth is this is kind of like the bundling thing. It&#8217;s really hard to get companies to buy insurance, particularly when the insurance is — number one, you have everyone else wants someone else to do it, right? Who&#8217;s going to be the one to go and make the sacrifice? But also it might not happen, China might not attack Taiwan. And also, as long as it doesn&#8217;t happen, it&#8217;s super suboptimal to go somewhere else because TSMC is better. And their customers, it&#8217;s not just their fabs are better, their customer service is better and they have all the IP blocks you need and they&#8217;ve done this before and you have an existing relationship and they&#8217;ll punish you because they have limited — they have control because they&#8217;re not going to fulfill all their orders right now because there&#8217;s so much demand. So they can pick and choose sort of who — and so people are scared, they don&#8217;t want to go anywhere else.</p>
+
+
+
+<p>So how are we going to solve this problem? And I think I actually wrote on the front page of Stratechery this this week, which is basically the same thing I wrote in an Update, but this was a — the hyperscalers in particular need to appreciate, I think a massive crunch is coming and it&#8217;s now on them to get Intel up to speed, to get Samsung up to speed, to get a credible alternative. Yes, in theory, you could pay the—</p>
+
+
+
+<p><strong>JC: For geopolitical reasons? Or for shortage reasons?</strong></p>
+
+
+
+<p>No, we&#8217;ll get the geopolitical reasons for free.</p>
+
+
+
+<p><strong>JC: Okay.</strong></p>
+
+
+
+<p>I think there&#8217;s massive economic reasons to do so, which is all the revenue you&#8217;re going to be foregoing in 2029 if you don&#8217;t do it now, and then we&#8217;ll happily get geopolitical insurance for free.</p>
+
+
+
+<p><strong>JC: But if TSMC are the best, rather than stand up Intel, which seems hard, isn&#8217;t the answer to just again, prepay for an extra fab build out?</strong></p>
+
+
+
+<p>But this is like, how do we feel in tech about ongoing operational costs as opposed to putting in some money up front and fixing the problem permanently? The market structure is a problem. You&#8217;re dealing with a monopolist and not like a mean monopolist.</p>
+
+
+
+<p><strong>JC: Yeah, exactly.</strong></p>
+
+
+
+<p>They&#8217;re very nice, right? And they actually have not arguably not raised prices nearly as much as they should have, but the reality is there&#8217;s this market structure problem that is going to impact the hyperscalers and it behooves them, I think, to fix the structure. Otherwise, the costs of ensuring that or overcoming that are just going to be larger and larger.</p>
+
+
+
+<p><strong>JC: This seems like the topic you have felt strongest about in the past year or two.</strong></p>
+
+
+
+<p>I felt pretty strong about the <a href="https://stratechery.com/2026/apple-you-still-dont-understand-the-vision-pro/">Apple Vision Pro</a>!</p>
+
+
+
+<p><strong>JC: Okay, fair. What was your take with Apple Vision Pro?</strong></p>
+
+
+
+<p>They finally showed an NBA game and they kept changing cameras. They&#8217;re applying 2D television production techniques to an immersive technology, just let me stay courtside!</p>
+
+
+
+<p><strong>JC: The TSMC Brake seems like a bigger deal.</strong></p>
+
+
+
+<p>Oh, probably.<a id="rapid-fire"></a></p>
+
+
+
+<h4 class="wp-block-heading">Rapid Fire</h4>
+
+
+
+<p><strong>JC: I have some rapid fire questions, or I&#8217;m not going to say rapid fire necessarily, but more a collection of disconnected questions for you.</strong></p>
+
+
+
+<p>I&#8217;ll connect them. That&#8217;s what I do.</p>
+
+
+
+<p><strong>JC: Great. How should schools do homework now that AI exists?</strong></p>
+
+
+
+<p>I think they should incorporate it and they should probably do in-person exams. I mean it&#8217;s silly to try to crush it out, I&#8217;m very opposed to these AI detectors because they don&#8217;t work. Probably I&#8217;m particularly sensitive to it because obviously a lot of my prose is in these models. My thing was I wasn&#8217;t an em-dash user, but I&#8217;m the world&#8217;s biggest semicolon user.</p>
+
+
+
+<p><strong>JC: I was a big em dash user all along.</strong></p>
+
+
+
+<p>Fortunately the models don&#8217;t seem to have really incorporated the semicolon. I haven&#8217;t been that influential, but yeah, no, you want kids to use it because whoever can use AI most effectively in their jobs going forward is going to have a big advantage. So there&#8217;s probably some return to more in-class being more important, I think this is my view on content generally.</p>
+
+
+
+<p>I think there&#8217;s a world in which not all content, but some content is more valuable than ever because AI is a perfectly individualized experience. What you read is not necessarily what I read so stuff that we both read is actually compelling and I&#8217;m very interested in figuring out how to leverage that to be beneficial to people in the long run and what can you get from school that you can&#8217;t get elsewhere, right? I can read the notes, I can read X, Y, Z, but there&#8217;s being in class, having a discussion about it, like actually interacting, being pushed on these sorts of things.</p>
+
+
+
+<p>All this is a a beautiful theoretical depiction of what school might be that is probably very far removed from the reality, but identifying things that are common experiences are going to be more and more valuable, common content, common classroom time, live events, like shared experiences, because anything that&#8217;s individualized is just going to be completely swallowed.</p>
+
+
+
+<p><strong>JC: Yes. Do sports teams become more valuable in an AI abundance future?</strong></p>
+
+
+
+<p>Of course. Everything live becomes more valuable. <a href="https://stratechery.com/2025/content-and-community/">That’s something I&#8217;m thinking a lot about</a> as far as my business. There&#8217;s some aspects of tens of thousands of people reading the same thing every day that is actually really powerful. There&#8217;s something interesting there, the possibility of doing live events where people can come together. I think a lot about community, I think no one&#8217;s going to really solve community around content, like a message board or comments or not, you actually get very bad dynamics, there&#8217;s a few people that dominate it.</p>
+
+
+
+<p><strong>JC: Totally. Yeah.</strong></p>
+
+
+
+<p>But what is great is if we&#8217;re in a group chat and you share an interesting article and you have a discussion about that. So there&#8217;s a lot of stuff around that that I think is really interesting and that I&#8217;m thinking a lot about.</p>
+
+
+
+<p><strong>JC: How do you think of what&#8217;s going on in crypto these days?</strong></p>
+
+
+
+<p>What&#8217;s crypto? (laughing) No, I&#8217;ve always been a crypto defender, just because digital scarcity is fundamentally interesting. It&#8217;s probably even more interesting to this point in a world of infinite content, which you thought we had infinite content before, now we have infinite content on steroids. Not just a six billion humans typing away, but agents generating stuff sort of constantly. And in that world, I think crypto as an identifier of authenticity is going to be more and more important. At the end of the day, I want the original, I don&#8217;t want a reproduction and I&#8217;m optimistic about humans&#8217; ability to create value where it seemed impossible to ever exist. I&#8217;m literally a professional podcaster and content creator and get paid a lot of money to do it, imagine explaining that to someone on the farm worried about automation.</p>
+
+
+
+<p><strong>JC: Speaking of that, you mentioned that a majority of Stratechery consumption is now in the audio form rather than the written form.</strong></p>
+
+
+
+<p>As far as I can tell. I don&#8217;t do, but well more than half my subscribers are subscribed to—</p>
+
+
+
+<p><strong>JC: I consume it in the audio form.</strong></p>
+
+
+
+<p>Yeah, it&#8217;s quite interesting. This is actually where I started building my own software, I was begging everyone to support paid podcasts, there was dedicated paid podcasts and there was like writing ones and no one would do it. So of course I had to just hire engineers and build it myself, at which point it obviously was the right thing to do. Now everyone does it, whatever, that&#8217;s my fate in life, I guess. Yeah, people love it. The interesting thing is, I&#8217;m not sure it&#8217;s been good for my business.</p>
+
+
+
+<p><strong>JC: Why? Oh, because people don&#8217;t share.</strong></p>
+
+
+
+<p>The good news is, I think it drives retention because people would build up emails because it feels like a lot of work and they say, “Oh, I haven&#8217;t read this in ages, I can unsubscribe”, whereas they just consume seven minutes or eight minutes. The problem is they don&#8217;t share, audio content is not shared.</p>
+
+
+
+<p><strong>JC: Totally. I listen to it in the car on the way home from work and that&#8217;s great. And then I—</strong></p>
+
+
+
+<p>Never think about it ever again. But it&#8217;s great for me because I can say the same thing the next day and you&#8217;re like, &#8220;Oh, that was a very insightful comment&#8221;, you didn&#8217;t even know I said it yesterday.</p>
+
+
+
+<p><strong>JC: Yeah. If we reason about what sectors are going to be important down the road, for the AI build out, energy is going to be a big deal and the ability to actually power the data centers that are coming online, that may be a bigger constraint going forward than even chips. Robotics are clearly going to be a big thing. It seems like China is doing better on energy and better on robotics and is catching up on chips, doing okay on the AI models, but does that mean China&#8217;s potentially very well positioned for the coming wave of tech trends?</strong></p>
+
+
+
+<p>I think any country that is capable of actually building things is well positioned. But then again, the counter argument, if I could sort of put a silver lining on it, is the challenge, the trick going forward and to sort of defy the doomers as it were, is actually creating new sorts of value, new sources of value in a way that humans are uniquely capable of and that is by definition an innovation story. It&#8217;s a freeing up resources from things that can be done by machines to more productive — it&#8217;s having a consumer market that pulls out that sort of innovation, that makes it possible to write a newsletter or a podcast and actually pay for it.</p>
+
+
+
+<p>And so there&#8217;s a scenario where China is well positioned to win the total commodification of everything, which doesn&#8217;t have much margin and the actual value creation and what makes humans humans and generates the value that I think people in AI are skeptical can be created, despite the fact 90% of us used to work in agriculture and like 1% do. For some reason, that&#8217;s not going to repeat. If you want to be optimistic, that&#8217;s the sort of thing that America has always done well.</p>
+
+
+
+<p><strong>JC: What&#8217;s your Stripe feedback for us?</strong></p>
+
+
+
+<p>Oh, where to start? I mean, I&#8217;m obviously, it&#8217;s hard for me to write about Stripe because I&#8217;m biased because I was very early. I think you introduced the billing API in 2011, which is a direct spur for wanting to do Stratechery and thinking this was a business model that was possible. So very, very big thumbs up on that. Oh, you didn&#8217;t warn me about this, I should have thought about this. Actually, you have one huge issue that I was just dealing with. Oh yeah, ACH. Your ACH implementation is — someone can go in and if I try to add on to an ACH plan, so say I have a team, because that&#8217;s where you use ACH, like large companies, and they want to add someone on. If that add-on fails, the entire plan gets canceled, so we have to build a bunch of logic to handle that independently.</p>
+
+
+
+<p><strong>JC: Okay.</strong></p>
+
+
+
+<p>That&#8217;s a very detailed specific problem that we&#8217;re facing.</p>
+
+
+
+<p><strong>JC: Buggy ACH subscription directions. Okay, that&#8217;s a good one.</strong></p>
+
+
+
+<p>There&#8217;s definitely more, I&#8217;d have to go back and think about it.</p>
+
+
+
+<p>But I mean, I do think the — we didn&#8217;t talk about stablecoins in this sort of area of, I&#8217;ve always been a big skeptic of micro transactions because the problem is, it goes to the investigative reporting thing. You can&#8217;t build something sustainable if you&#8217;re only monetizing on the back end and the only way to do that is to have a very large market, which is what YouTube is. YouTube is a bunch of speculative video makers hoping that they&#8217;ll get enough views that the ads will pay for it and there&#8217;s such a large scale and they monetize their ads so effectively that it works.</p>
+
+
+
+<p>There&#8217;s no market like this for written content or like podcast content. People are like, &#8220;Oh, let me pay for one article&#8221;, I&#8217;m like, no, what you&#8217;re paying for when you pay for me is you&#8217;re paying for my ongoing production. I&#8217;m making a promise to you I&#8217;m going to write something every day and <a href="https://stratechery.com/2017/the-local-news-business-model/">you&#8217;re paying for that promise</a>, you&#8217;re not paying for the actual content, the content is a byproduct of that.</p>
+
+
+
+<p>The question for AI and microtransaction is you have all these labs paying people all over the world to generate data and if you&#8217;re like a radiologist, you get paid $350 an hour, I saw some article about it and all these sliding scales and they&#8217;re all duplicating work because everyone feels the sense that I can get differentiation. What we clearly need is some sort of market mechanism for data generation that in the long run will replace what we&#8217;re getting from journalistic enterprises, which are even more doomed than ever before.</p>
+
+
+
+<p>So how do you generate? We&#8217;re paying directly for content and then AIs can get it and can you can build a large market like YouTube that people will speculatively do it, trusting that they&#8217;ll get paid because the market is large enough. That&#8217;s what needs to happen. Like a lot of things, there&#8217;s this massive value of how do we get from here to there, but we&#8217;ll see. I know Cloudflare is trying to push on that, so we&#8217;ll see what happens.<a id="big-five"></a></p>
+
+
+
+<h4 class="wp-block-heading">The Big Five</h4>
+
+
+
+<p><strong>JC: Last question. How would you rate the execution of the major tech companies?</strong></p>
+
+
+
+<p>Like the Big Five?</p>
+
+
+
+<p><strong>JC: Yeah, sure.</strong></p>
+
+
+
+<p>Apple, traditionally very strong. Their manufacturing obviously remains amazing. Like the iPhone Air that just the alarm went off and made sure I turned the snooze off, the greatest smartphone ever made.</p>
+
+
+
+<p><strong>JC: Really? Oh yeah. I never even seen one.</strong></p>
+
+
+
+<p>Oh, it&#8217;s awesome.</p>
+
+
+
+<p><strong>JC: Is the battery life good?</strong></p>
+
+
+
+<p>Good enough.</p>
+
+
+
+<p><strong>JC: It&#8217;s bad.</strong></p>
+
+
+
+<p>What&#8217;s that?</p>
+
+
+
+<p><strong>JC: It sounds like it&#8217;s bad then.</strong></p>
+
+
+
+<p>No, it&#8217;s fine. I mean, I actually forgot my external battery and it&#8217;s doing okay now. And now that I’m back in Wisconsin I have to wear jeans because it&#8217;s cold and it slides right in. Actually, I love it.</p>
+
+
+
+<p><strong>JC: Okay.</strong></p>
+
+
+
+<p>I&#8217;m very devastated to hear they might not make it regularly. Obviously Apple&#8217;s software has gotten pretty rough. Their relationship with the — I mean, Apple is so interesting because the reality is when it comes to platforms, you have to build, <a href="https://stratechery.com/2015/from-products-to-platforms/">the price of becoming a platform is making a great product</a>. So Apple gets platforms because they make great products and they&#8217;re terrible stewards of the platforms. Microsoft is a great platform steward, but they can&#8217;t make good products so they never get the permission to sort of have big platforms, which is sort of a tragedy there</p>
+
+
+
+<p>But Apple, it&#8217;s an old company driven by managers, not founders, and maybe they — the AI Siri got as bad as it was, is obviously really bad, but at the end of the day, we still need devices. They&#8217;re still better than anybody else, so they&#8217;ll probably be okay.</p>
+
+
+
+<p>Google, I&#8217;ve had the hardest time understanding Google, in part because I think Google does a lot of stuff suboptimally. Almost everything I feel like they do suboptimally, but I think that lack of — Apple can be super-optimized, but I think it&#8217;s Google&#8217;s lack of optimization that actually makes them maybe the most resilient of all the tech companies because they never get so exactly doing what they should do and they have all this extra fluff and doing things and gazillion science projects, but because their core business model is so good and throws off so much cash, they can just sort of like be sort of very flexible and I&#8217;ve come to appreciate that about them. Everything that frustrates me in analyzing them actually has this hidden benefit of resiliency and strength and adaptability. And they&#8217;re like the slime, and if they&#8217;re coming in your direction, like you&#8217;re actually in big — it might take them a really long time to get there, but when they get there, you&#8217;re doomed.</p>
+
+
+
+<p>So Microsoft, I&#8217;ve gotten a lot of mileage writing about Microsoft. Everyone, especially in the SaaS era, all these companies are like, &#8220;Oh, Microsoft sucks, we&#8217;re going to make the best of breed product&#8221;, and guess what? Startups in Silicon Valley, they want to buy all the best of breed products and they have the abilities to come together. Joe managing the tire shop doesn&#8217;t care about that, he just wants this crap to work and to work together and if it&#8217;s all mediocre, but it kind of works together, that&#8217;s better than best of breed. Microsoft is just squashing these companies that grow and boom, just hit that Microsoft wall again and again. Is that going to persist in an AI world? It&#8217;s probably tied to the SaaS question sort of before in some respects. Their distribution and power there remains sort of substantial.</p>
+
+
+
+<p>Meta&#8217;s probably, in my experience, been the best execution. I mean, you just see stuff like interacting with PR or executives, they just run such a tight show.</p>
+
+
+
+<p><strong>JC: They&#8217;re really honest.</strong></p>
+
+
+
+<p>Yeah. That&#8217;s always been very impressive to me. I think their ad model is underrated. The trick with them is keeping engagement, that&#8217;s what makes the whole thing go, they&#8217;ve done a decent job of that. Hours spent in ChatGPT are hours not spent on Instagram or not spent and I think that that&#8217;s an underrated area. And I think they&#8217;re kind of betting that, look, that&#8217;s all fine and well today, but in the long run, this is an infrastructure game. We have cashflow to fund it and OpenAI doesn’t. I think OpenAI might be a bigger threat to Facebook than Google, something worth considering, but Facebook is obviously clearly spending to meet it.</p>
+
+
+
+<p>So Amazon. Amazon, there&#8217;s a lot of fab capacity and power being spent on Trainium that one wonders could be better spent on other chips, but we&#8217;ll see what happens.</p>
+
+
+
+<p><strong>JC: Aren&#8217;t people happy with the Trainium chips?</strong></p>
+
+
+
+<p>The degree to which Amazon optimized cloud computing, I think is underappreciated. When you&#8217;re operating in a commodity market there&#8217;s two ways to succeed, right? You could have a differentiated product where you can charge a high margin, or you can have a lower cost structure in a commodity market where the price floor is the market price, but your cost structure is lower than your competitors, so that&#8217;s where you make your margin. That was how Amazon dominated the cloud, their cloud was way more optimized than anyone else&#8217;s. The whole Nitro architecture, just the way they architect everything, doing a lot of their own chips, shifting to Graviton, I think the thing with Graviton, their Arm CPU is they could — who&#8217;s the number one customer for Graviton? Amazon itself, and so they can move all their loads to that, optimize it, build all the software libraries, and then start offering it on a cost-plus basis to others.</p>
+
+
+
+<p>That&#8217;s the playbook that they&#8217;re trying to run with Trainium, where the number one customer of Trainium in the long run is Amazon, but then they develop all the capabilities around it for other people for it to be attracted to other people at lower prices, and they have that structurally smaller cost structure. The problem is that works when you’ve sort of leveled off in performance. Amazon executed this model between 2005 and 2025. Of course, processors got faster in that time, but it wasn&#8217;t like the &#8217;80s or &#8217;90s when every leap was massive. Does that work in a relatively new market when there&#8217;s massive leaps being made generation on generation? And they have Nvidia servers, do they have as many as they could because they&#8217;re on this strategy? Probably not.</p>
+
+
+
+<p><strong>JC: Ben, thank you.</strong></p>
+
+
+
+<p>Thank you.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p>This Daily Update Interview is also available as a podcast. To receive it in your podcast player, <a href="https://stratechery.passport.online/member">visit Stratechery</a>.</p>
+
+
+
+<p>The Daily Update is intended for a single recipient, but occasional forwarding is totally fine! If you would like to order multiple subscriptions for your team with a group discount (minimum 5), please contact me directly.</p>
+
+
+
+<p>Thanks for being a supporter, and have a great day!</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18296</post-id>	</item>
+		<item>
+		<title>Spotify Earnings, Individualized Networks, AI and Aggregation</title>
+		<link>https://stratechery.com/2026/spotify-earnings-individualized-networks-ai-and-aggregation/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Wed, 11 Feb 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[Daily Update]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18288</guid>
+
+					<description><![CDATA[Spotify's nature as a content network means that AI is a sustaining technology, particularly because they have the right business model in place.]]></description>
+										<content:encoded><![CDATA[<p>Spotify's nature as a content network means that AI is a sustaining technology, particularly because they have the right business model in place.</p>]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18288</post-id>	</item>
+		<item>
+		<title>Amazon Earnings, CapEx Concerns, Commodity AI</title>
+		<link>https://stratechery.com/2026/amazon-earnings-capex-concerns-commodity-ai/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Tue, 10 Feb 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[Daily Update]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18276</guid>
+
+					<description><![CDATA[Amazon's massive CapEx increase makes me much more nervous than Google's, but it is understandable.]]></description>
+										<content:encoded><![CDATA[<p>Amazon's massive CapEx increase makes me much more nervous than Google's, but it is understandable.</p>]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18276</post-id>	</item>
+		<item>
+		<title>Google Earnings, Google Cloud Crushes, Search Advertising and LLMs</title>
+		<link>https://stratechery.com/2026/google-earnings-google-cloud-crushes-search-advertising-and-llms/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Mon, 09 Feb 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[Daily Update]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18268</guid>
+
+					<description><![CDATA[Google announced a massive increase in CapEx that blew away expectations; the companies earnings results explain why the increase is justified.]]></description>
+										<content:encoded><![CDATA[<p>Google announced a massive increase in CapEx that blew away expectations; the companies earnings results explain why the increase is justified.</p>]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18268</post-id>	</item>
+		<item>
+		<title>2026.06: SaaSmageddon and the Super Bowl</title>
+		<link>https://stratechery.com/2026/saasmageddon-and-the-super-bowl/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Fri, 06 Feb 2026 18:00:00 +0000</pubDate>
+				<category><![CDATA[This Week in Stratechery]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18246</guid>
+
+					<description><![CDATA[The best Stratechery content from the week of February 2, 2025, including the future of software, SaaSmageddon and Super Bowl ads, and madness in basketball and football.]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-image alignfull size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1330" height="886" src="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/twis-260205-1.png?resize=1330%2C886&#038;ssl=1" alt="" class="wp-image-18254" srcset="https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/twis-260205-1.png?w=1330&amp;ssl=1 1330w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/twis-260205-1.png?resize=300%2C200&amp;ssl=1 300w, https://i0.wp.com/stratechery.com/wp-content/uploads/2026/02/twis-260205-1.png?resize=768%2C512&amp;ssl=1 768w" sizes="auto, (max-width: 1000px) 100vw, 1000px" /></figure>
+
+
+
+<p>Welcome back to This Week in Stratechery!</p>
+
+
+
+<p>As a reminder, each week, every Friday, we&#8217;re sending out this overview of content in the Stratechery bundle; <span class="passport-tokenized-link">highlighted links are free for everyone</span>. Additionally, you have complete control over what we send to you. If you don&#8217;t want to receive This Week in Stratechery emails (there is no podcast), please uncheck the box in <a href="https://stratechery.passport.online/member/account/delivery">your delivery settings</a>.</p>
+
+
+
+<p>On that note, here were a few of our favorites this week.</p>
+
+
+
+<ol class="wp-block-list is-style-default">
+<li><strong>Is Software Dead?</strong> Software stocks have been in a free-fall all week, up-t0-and-including the biggest software company of them all: Microsoft. It&#8217;s tempting to say that everyone is over-reacting to the threat of AI — and they are, in the short run — but history shows that fundamentally changing in industry&#8217;s inputs transforms that industry in the long run, to the detriment of incumbents: just look at what the Internet did to content. Given that, Microsoft&#8217;s urgency in building out its own AI products, even if that meant missing on Azure numbers, <a href="https://stratechery.com/2026/microsoft-and-software-survival/"><span class="passport-tokenized-link">is the right choice</span></a>. Oh, and did I mention that <a href="https://stratechery.com/2026/tsmc-risk/" data-type="post" data-id="18153"><span class="passport-tokenized-link">tech is facing a massive compute supply crisis</span></a>? <em>—</em> <em>Ben Thompson </em><br></li>
+</ol>
+
+
+
+<span id="more-18246"></span>
+
+
+
+<ol start="2" class="wp-block-list is-style-default">
+<li><strong>SaaSmageddon and Super Bowl Ads.</strong> Building on that Microsoft article, <a href="https://sharptech.fm/member/episode/saa-smageddon-and-the-future-microsoft-after-a-market-correction-anthropics-super-bowl-lies" data-type="link" data-id="https://sharptech.fm/member/episode/saa-smageddon-and-the-future-microsoft-after-a-market-correction-anthropics-super-bowl-lies">Ben and I discussed the future of Saas companies on this week&#8217;s Sharp Tech</a>, including a more than half-trillion dollar collapse of the Nasdaq 100 this week. Is the market&#8217;s skepticism fair? We dive into why software companies have more moats than their skeptics acknowledge, but nevertheless face a variety of headwinds that are likely to spur painful corrections to the valuation of these companies, consolidation, and substantial layoffs. Additionally, we had a great time talking through deceptive Anthropic Super Bowl ads <em>—</em><a href="https://x.com/jmsltnv/status/2019082631250330027?s=20">a series of broadsides</a> at OpenAI&#8217;s nascent advertising play <em>—</em> that Ben hated, why Sam Altman&#8217;s <a href="https://x.com/sama/status/2019139174339928189">response</a> was spot on, and who their real audience is.&nbsp;<em>—</em> <em><em>Andrew Sharp</em></em><br><br></li>
+
+
+
+<li><strong>Madness in Basketball&nbsp;and Football. </strong>Speaking of Sunday&#8230; I don&#8217;t have a Seahawks-Patriots preview for you, on Sharp Text, but I did celebrated the occasion with a tribute to <a href="https://sharptext.net/2026/what-any-given-sunday-gets-right/"><span class="passport-tokenized-link">the madness and sneaky depth of <em>Any Given Sunday</em></span></a>. Elsewhere in the Stratechery sports universe, the NBA Trade Deadline came and went on Thursday this week, and Greatest of All Talk <a href="https://goat.passport.online/member/episode/trade-deadline-2026-ad-to-dc-a-topsy-turvy-week-pacers-bet-big-on-big-zu-jazz-and-jjj-evil-celtics-and-lots-more" data-type="link" data-id="https://goat.passport.online/member/episode/trade-deadline-2026-ad-to-dc-a-topsy-turvy-week-pacers-bet-big-on-big-zu-jazz-and-jjj-evil-celtics-and-lots-more">covered a&nbsp;very busy&nbsp;week of transactions across the association</a>. Come to hear my anxious&nbsp;and unconvincing endorsement of my Wizards&#8217; move to add Anthony Davis, and stay for thoughts on&nbsp;a topsy turvy deadline where the worst teams were buyers, the Celtics look like evil geniuses, and Giannis Antetokounmpo is staying in Milwaukee for at least few more months.&nbsp;— <em>AS</em><br></li>
+</ol>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<h3 class="wp-block-heading">Stratechery Articles and Updates</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://stratechery.com/2026/microsoft-and-software-survival/"><span class="passport-tokenized-link">Microsoft and Software Survival</span></a> <em>— Microsoft got hammered on Wall Street for capacity allocation decisions that were the right ones: the software that wins will use AI to usurp other software.</em></li>
+
+
+
+<li><a href="https://stratechery.com/2026/apple-earnings-supply-chain-speculation-china-and-industrial-design/">Apple Earnings, Supply Chain Speculation, China and Industrial Design</a> <em>— Apple’s earnings could have been higher but the company couldn’t get enough chips; then, once again a new design meant higher sales in China.</em></li>
+
+
+
+<li><a href="https://stratechery.com/2026/an-interview-with-benedict-evans-about-ai-and-software/" data-type="link" data-id="https://stratechery.com/2026/an-interview-with-benedict-evans-about-ai-and-software/">An Interview with Benedict Evans About AI and Software</a> <em>— An interview with Benedict Evans about the crisis facing software, the future of the corporation, OpenAI, and the struggle to define the LLM paradigm.</em></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Sharp Text by Andrew Sharp</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://sharptext.net/2026/what-any-given-sunday-gets-right/" data-type="link" data-id="https://sharptext.net/2026/what-any-given-sunday-gets-right/"><span class="passport-tokenized-link">What &#8216;Any Given Sunday&#8217; Gets Right</span></a> — &#8216;<em>Any Given Sunday&#8217; is a product of its time, and its treatment of modern pro football is both more alive and more poignant than just about any sports movie to emerge since.</em></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Dithering with Ben Thompson and Daring Fireball&#8217;s John Gruber</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://dithering.passport.online/member/episode/apple-earnings-and-open-claw">Apple Earnings and OpenClaw</a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Asianometry with Jon Yu</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://asianometry.passport.online/member/episode/silicon-valley-thinks-tsmc-is-braking-the-ai-boom">Silicon Valley Thinks TSMC is Braking the AI Boom</a></li>
+
+
+
+<li><a href="https://asianometry.passport.online/member/episode/invasion-of-the-microplastics">Invasion of the Microplastics</a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Sharp China with Andrew Sharp and Sinocism&#8217;s Bill Bishop</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://sharpchina.fm/member/episode/the-pla-purges-one-week-later-world-leaders-flock-to-beijing-a-trump-xi-phone-call-panama-canal-resolution"><span class="passport-tokenized-link">The PLA Purges One Week Later; World Leaders Flock to Beijing; A Trump-Xi Phone Call; Panama Canal Resolution?</span></a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Greatest of All Talk with Andrew Sharp and WaPo&#8217;s Ben Golliver</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://goat.passport.online/member/episode/deadline-notes-and-all-star-announcements-the-scintillating-charlotte-hornets-flagg-dybantsa-and-darryn-peterson">Deadline Notes and All-Star Announcements, The Scintillating Charlotte Hornets, Flagg, Dybantsa and Darryn Peterson</a></li>
+
+
+
+<li><a href="https://goat.passport.online/member/episode/trade-deadline-2026-ad-to-dc-a-topsy-turvy-week-pacers-bet-big-on-big-zu-jazz-and-jjj-evil-celtics-and-lots-more">Trade Deadline 2026: AD to DC?, A Topsy Turvy Week, Pacers Bet Big on Big Zu, Jazz and JJJ, Evil Celtics, and Lots More</a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Sharp Tech with Andrew Sharp and Ben Thompson</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://sharptech.fm/member/episode/saa-smageddon-and-the-future-microsoft-after-a-market-correction-anthropics-super-bowl-lies">SaaSmageddon and the Future, Microsoft After a Market Correction, Anthropic’s Super Bowl Lies</a></li>
+</ul>
+
+
+
+<p>This week&#8217;s Stratechery video is on <a href="https://stratechery.com/2026/tsmc-risk/"><span class="passport-tokenized-link">TSMC Risk</span></a>.</p>
+
+
+
+<figure class="wp-block-embed alignfull is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="TSMC Risk | Stratechery by Ben Thompson" width="500" height="281" src="https://www.youtube.com/embed/h2PlwEaKUuY?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18246</post-id>	</item>
+		<item>
+		<title>An Interview with Benedict Evans About AI and Software</title>
+		<link>https://stratechery.com/2026/an-interview-with-benedict-evans-about-ai-and-software/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Thu, 05 Feb 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[Daily Update]]></category>
+		<category><![CDATA[Interviews]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18238</guid>
+
+					<description><![CDATA[An interview with Benedict Evans about the crisis facing software, the future of the corporation, OpenAI, and the struggle to define the LLM paradigm.]]></description>
+										<content:encoded><![CDATA[<p>An interview with Benedict Evans about the crisis facing software, the future of the corporation, OpenAI, and the struggle to define the LLM paradigm.</p>]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18238</post-id>	</item>
+		<item>
+		<title>Apple Earnings, Supply Chain Speculation, China and Industrial Design</title>
+		<link>https://stratechery.com/2026/apple-earnings-supply-chain-speculation-china-and-industrial-design/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Wed, 04 Feb 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[Daily Update]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18229</guid>
+
+					<description><![CDATA[Apple's earnings could have been higher but the company couldn't get enough chips; then, once again a new design meant higher sales in China.]]></description>
+										<content:encoded><![CDATA[<p>Apple's earnings could have been higher but the company couldn't get enough chips; then, once again a new design meant higher sales in China.</p>]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18229</post-id>	</item>
+		<item>
+		<title>Microsoft and Software Survival</title>
+		<link>https://stratechery.com/2026/microsoft-and-software-survival/</link>
+		
+		<dc:creator><![CDATA[Ben Thompson]]></dc:creator>
+		<pubDate>Tue, 03 Feb 2026 11:00:00 +0000</pubDate>
+				<category><![CDATA[Articles]]></category>
+		<guid isPermaLink="false">https://stratechery.com/?p=18218</guid>
+
+					<description><![CDATA[Microsoft got hammered on Wall Street for capacity allocation decisions that were the right ones: the software that wins will use AI to usurp other software.]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-passport-restricted-content">
+
+
+<div class="wp-block-passport-logged-out-view">
+<div class="wp-block-group wp-block-passport-podcast-player-logged-out-view has-border-color has-global-padding is-layout-constrained wp-container-core-group-is-layout-594587f7 wp-block-group-is-layout-constrained" style="border-color:#DDDDDD;border-width:1px;border-radius:5px;padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-group passport-podcast-player-logged-out-view-underlay has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-cd9ab148 wp-block-group-is-layout-flex">
+<div class="wp-block-group wp-container-content-9cfa9a5a has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="has-small-font-size"><strong>Listen to this <strong>post</strong>:</strong></p>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:0.5rem">
+<audio controls disabled style="width:100%;margin-top:0.15rem"></audio>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="wp-block-group is-style-default passport-podcast-player-logged-out-view-overlay is-vertical is-content-justification-center is-nowrap is-layout-flex wp-container-core-group-is-layout-0f259b6c wp-block-group-is-layout-flex" style="margin-top:0">
+<div class="wp-block-group wp-block-buttons has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--20)"><div style="text-decoration:none;" class="passport-logged-out align wp-block-passport-login-link">
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button"><a href="https://stratechery.com/wp-json/passport/v1/oauth/authlogin?signup_redirect_uri=https%3A%2F%2Fstratechery.com%2Fverify-your-email%2F" class="wp-block-button__link wp-element-button">Log in to listen</a></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+
+<p>One way to track the AI era, starting with the November 2022 launch of ChatGPT, is by which Big Tech company was, at a particular point in time, thought to be most threatened. At the beginning everyone — <a href="https://stratechery.com/2023/ai-and-the-big-five/">including yours truly</a> —&nbsp;was concerned about Google and the potential disruption of Search. Then, <a href="https://stratechery.com/2025/apple-ais-platform-pivot-potential/">early last year</a>, it was <a href="https://stratechery.com/2025/apple-and-the-ghosts-of-companies-past/">Apple&#8217;s turn</a>, as its more intelligent Siri stumbled so badly it didn&#8217;t even launch. By the fall it was <a href="https://stratechery.com/2025/sora-ai-bicycles-and-meta-disruption/">Meta&#8217;s in the crosshairs</a>, as the company completely relaunched its AI efforts as Llama hit a wall.</p>
+
+
+
+<p>Now it&#8217;s Microsoft&#8217;s turn, which is a bit of a full circle moment, given that the company was thought to be the biggest winner from ChatGPT in particular, thanks to its partnership with OpenAI. I wrote in early 2023 in <a href="https://stratechery.com/2023/ai-and-the-big-five/">AI and the Big Five</a>:</p>
+
+
+
+<blockquote class="wp-block-quote is-style-stratechery is-layout-flow wp-block-quote-is-layout-flow">
+<p>Microsoft, meanwhile, seems the best placed of all. Like AWS it has a cloud service that sells GPUs; it is also the exclusive cloud provider for OpenAI. Yes, that is incredibly expensive, but given that OpenAI appears to have the inside track to being the AI epoch’s addition to this list of top tech companies, that means that Microsoft is investing in the infrastructure of that epoch.</p>
+
+
+
+<p>Bing, meanwhile, is like the Mac on the eve of the iPhone: yes it contributes a fair bit of revenue, but a fraction of the dominant player, and a relatively immaterial amount in the context of Microsoft as a whole. If <a href="https://www.theinformation.com/articles/microsoft-and-openai-working-on-chatgpt-powered-bing-in-challenge-to-google">incorporating ChatGPT-like results</a> into Bing risks the business model for the opportunity to gain massive market share, that is a bet well worth making.</p>
+
+
+
+<p>The <a href="https://www.theinformation.com/articles/ghost-writer-microsoft-looks-to-add-openais-chatbot-technology-to-word-email">latest report from The Information</a>, meanwhile, is that GPT is eventually coming to Microsoft’s productivity apps. The trick will be to imitate the success of AI-coding tool GitHub Copilot (which is built on GPT), which figured out how to be a help instead of a nuisance (i.e. don’t be Clippy!).</p>
+
+
+
+<p>What is important is that adding on new functionality — perhaps for a fee — fits perfectly with Microsoft’s subscription business model. It is notable that the company once thought of as a poster child for victims of disruption will, in the full recounting, not just be born of disruption, but be well-placed to reach greater heights because of it.</p>
+</blockquote>
+
+
+
+<p>I do, I must admit, post that excerpt somewhat sheepishly, as much of it seems woefully shortsighted:</p>
+
+
+
+<ul class="wp-block-list">
+<li>OpenAI is still Azure&#8217;s biggest customer, but the fact that the maker of ChatGPT represents 45% of Azure&#8217;s Remaining Performance Obligations (RPO) is now seen as a detriment by the market.</li>
+
+
+
+<li>Bing was briefly interesting <a href="https://stratechery.com/2023/from-bing-to-sydney-search-as-distraction-sentient-ai/">when it contained Sydney</a>; Microsoft quickly squashed what remains the single most compelling AI experience I&#8217;ve had and, one could make the case, Bing&#8217;s growth prospects.</li>
+
+
+
+<li>All of Microsoft&#8217;s products have a CoPilot of some sort; it&#8217;s not clear how well any of them work, and both Claude and OpenAI are attacking the professional productivity space.</li>
+
+
+
+<li>Microsoft 365 CoPilot has 15 million paying customers, but (1) that&#8217;s a tiny fraction of Microsoft 365&#8217;s overall customer base and (2) the rise of agents raises serious questions about the long-term viability of the per-seat licensing model on which Microsoft&#8217;s productivity business is built.</li>
+</ul>
+
+
+
+<p>All of these factors — plus the fact that Azure growth came in a percentage point lower than expected —&nbsp;contributed to one of the worst days in stock market history. From <a href="https://www.bloomberg.com/news/articles/2026-01-29/microsoft-heads-for-worst-market-loss-since-deepseek-hit-nvidia">Bloomberg</a> last week:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Microsoft Corp. shares got caught up in a selloff Thursday that wiped out $357 billion in value, second-largest for a single session in stock market history. The software giant’s stock closed down 10%, its biggest plunge since March 2020, following Microsoft’s earnings after the bell Wednesday, which showed record spending on artificial intelligence as growth at its key cloud unit slowed. The only bigger one-day valuation destruction was Nvidia Corp.’s $593 billion rout last year after the launch of DeepSeek’s low-cost AI model. Microsoft’s move is larger than the market capitalizations of more than 90% of S&amp;P 500 Index members, according to data compiled by Bloomberg…</p>
+
+
+
+<p>The selloff comes amid heightened skepticism from investors that the hundreds of billions of dollars Big Tech is spending on AI will eventually pay off. Microsoft’s results showed a 66% rise in capital expenditures in its most recent quarter to a record $37.5 billion, while growth at its closely tracked Azure cloud-computing unit slowed from the prior quarter.</p>
+</blockquote>
+
+
+
+<p>I laid out my base case for Big Tech back in 2020 in <a href="https://stratechery.com/2020/the-end-of-the-beginning/">The End of the Beginning</a>, arguing that the big tech companies would be the foundation on which future paradigms would be built; is Microsoft the one that might crack?</p>
+
+
+
+<h3 class="wp-block-heading">The Beneficiaries of AI-Written Code</h3>
+
+
+
+<p>It can, when it comes to vibe coding, be difficult to parse the hype on X from the reality on the ground; what is clear is the trajectory. I have talked to experienced software engineers who will spend 10 minutes complaining about the hype and all of the shortcomings of Claude Code or OpenAI Codex, only to conclude by admitting that AI just helped them write a new feature or app that they never would have otherwise, or would have taken far longer to do than it actually did.</p>
+
+
+
+<p>The beauty of AI writing code is that it is a nearly perfect match of probabilistic inputs and deterministic outputs: the code needs to actually run, and that running code can be tested and debugged. Given this match I do think it is only a matter of time before the vast majority of software is written by AI, even if the role of the software architect remains important for a bit longer.</p>
+
+
+
+<p>That, then, raises the most obvious bear case for any software company: why pay for software when you can just ask AI to write your own application, perfectly suited to your needs? Is software going to be a total commodity and a non-viable business model in the future?</p>
+
+
+
+<p>I&#8217;m skeptical, for a number of reasons. First, companies — <a href="https://stratechery.com/2024/the-e-u-goes-too-far/" data-type="post" data-id="13192">particularly American ones</a> — are very good at focusing on their core competency, and for most companies in the world, that isn&#8217;t software. There is a reason most companies pay other companies for software, and the most fundamental reason to do so won&#8217;t change with AI.</p>
+
+
+
+<p>Second, writing the original app is just the beginning: there is maintenance, there are security patches, there are new features, there are changing standards — writing an app is a commitment to a never-ending journey — a journey, to return to point one, that has nothing to do with the company&#8217;s core competency.</p>
+
+
+
+<p>Third, selling software isn&#8217;t just about selling code. There is support, there is compliance, there are integrations with other software, the list of what is actually valuable goes far beyond code. This is why companies don&#8217;t run purely open source software: they don&#8217;t want code, they want a product, with everything that entails.</p>
+
+
+
+<p>Still, that doesn&#8217;t mean the code isn&#8217;t being written by AI: it&#8217;s the software companies themselves that will be the biggest beneficiaries of and users of AI for writing code. In other words, on this narrow question of AI-written code, I would contend that software companies are not losers, but rather winners: they will be able to write more code more efficiently and quickly.</p>
+
+
+
+<h3 class="wp-block-heading">AI Competition</h3>
+
+
+
+<p>When the Internet first came along it seemed, at first glance, a tremendous opportunity for publishers: suddenly their addressable market wasn&#8217;t just the geographic area they could deliver newspapers to, but rather the entire world! In fact, the nature of the opportunity was the exact opposite; from 2014&#8217;s <a href="https://stratechery.com/2014/economic-power-age-abundance/">Economic Power in the Age of Abundance</a>:</p>
+
+
+
+<blockquote class="wp-block-quote is-style-stratechery is-layout-flow wp-block-quote-is-layout-flow">
+<p>One of the great paradoxes for newspapers today is that their financial prospects are inversely correlated to their addressable market. Even as advertising revenues have fallen off a cliff — adjusted for inflation, ad revenues are at the same level as the 1950s — newspapers are able to reach audiences not just in their hometowns but literally all over the world.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" loading="lazy" decoding="async" width="1024" height="478" src="https://i0.wp.com/stratechery.com/wp-content/uploads/2014/06/abundance.png?resize=1024%2C478&#038;ssl=1" alt="A drawing of The Internet has Created Unlimited Reach" class="wp-image-992" srcset="https://i0.wp.com/stratechery.com/wp-content/uploads/2014/06/abundance.png?resize=1024%2C478&amp;ssl=1 1024w, https://i0.wp.com/stratechery.com/wp-content/uploads/2014/06/abundance.png?resize=300%2C140&amp;ssl=1 300w, https://i0.wp.com/stratechery.com/wp-content/uploads/2014/06/abundance.png?resize=768%2C358&amp;ssl=1 768w, https://i0.wp.com/stratechery.com/wp-content/uploads/2014/06/abundance.png?resize=1200%2C560&amp;ssl=1 1200w, https://i0.wp.com/stratechery.com/wp-content/uploads/2014/06/abundance.png?w=1618&amp;ssl=1 1618w" sizes="auto, (max-width: 1000px) 100vw, 1000px" /></figure>
+
+
+
+<p>The problem for publishers, though, is that the free distribution provided by the Internet is not an exclusive. It’s available to every other newspaper as well. Moreover, it’s also available to publishers of any type, even bloggers like myself.</p>
+
+
+
+<p>To be clear, this is absolutely a boon, particularly for readers, but also for any writer looking to have a broad impact. For your typical newspaper, though, the competitive environment is diametrically opposed to what they are used to: instead of there being a scarce amount of published material, there is an overwhelming abundance. More importantly, this shift in the competitive environment has fundamentally changed just who has economic power.</p>
+</blockquote>
+
+
+
+<p>The power I was referring to was Google; this Article was an articulation of <a href="https://stratechery.com/2015/aggregation-theory/">Aggregation Theory</a> a year before I coined the term.</p>
+
+
+
+<p>The relevance to AI-written code, however, is not necessarily about Aggregators, but rather about inputs. Specifically, what changed for publishers is that the cost of distribution went to zero: of course that was beneficial for any one publisher, but it was disastrous for publishers as a collective. In the case of software companies, the input that is changing is the cost of code: it&#8217;s not going completely to zero, at least not yet — you still need a managing engineer, for one, and tokens, particularly for leading edge models actually capable of writing usable code, have significant marginal costs — but the relative cost is much lower, and the trend is indeed towards zero.</p>
+
+
+
+<p>If you want to carry this comparison forward, this is an argument against there even being a market for software in the long run. After all, the most consumed form of content on the Internet today, three decades on, is in fact user-generated content, which you could analogize to companies having AI write their own software. That seems a reasonable bet for 2056 — if we even have companies then (<a href="https://stratechery.com/2026/ai-and-the-human-condition/">I think we will</a>).</p>
+
+
+
+<p>In the shorter-term, however, the real risk I see for software companies is the fact that while they can write infinite software thanks to AI, so can every other software company. I suspect this will completely upend the relatively neat and infinitely siloed SaaS ecosystem that has been Silicon Valley&#8217;s bread-and-butter for the last decade: identify a business function, leverage open source to write a SaaS app that addresses that function, hire a sales team, do some cohort analysis, IPO, and tell yourself that you were changing the world.</p>
+
+
+
+<p>The problem now, however, is that while businesses may not give up on software, they don&#8217;t necessarily want to buy more — if anything, they need to cut their spending so they have more money for their own tokens. That means the growth story for all of these companies is in serious question — the industry-wide re-rating seems completely justified to me — which means the most optimal application of that new AI coding capability will be to start attacking adjacencies, justifying both your existence and also presenting the opportunity to raise prices. In other words, for the last decade the SaaS story has been about growing the pie: the next decade is going to be about fighting for it, and the model makers will be the arms dealers.</p>
+
+
+
+<h3 class="wp-block-heading">Agents and Work IQ</h3>
+
+
+
+<p>While this battle is happening, there will be another fundamental shift taking place: yes, humans will be using software, at least for a while, but increasingly so will agents. What isn&#8217;t clear is who will be creating the agents: I expect every SaaS app to have their own agent, but that agent will definitionally be bound by the borders of the application (which will be another reason to expand the app into adjacent areas). Different horizontal players, meanwhile, will be making a play to cover broader expanses of the business, with the promise of working across multiple apps.</p>
+
+
+
+<p>Microsoft is one of those horizontal layers, and the company&#8217;s starting point for agents is what it is calling Work IQ; here is how CEO Satya Nadella explained Work IQ on <a href="https://seekingalpha.com/article/4863620-microsoft-corporation-msft-q2-2026-earnings-call-transcript">the company&#8217;s earnings call</a>:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Work IQ takes the data underneath Microsoft 365 and creates the most valuable stateful agent for every organization. It delivers powerful reasoning capabilities over people, their roles, their artifacts, their communications and their history and memory all within an organization security boundary. Microsoft 365 Copilot&#8217;s accuracy and latency powered by Work IQ is unmatched, delivering faster and more accurate work grounded results than competition, and we have seen our biggest quarter-over-quarter improvement in response quality to date. This has driven record usage intensity with average number of conversations per user doubling year-over-year.</p>
+</blockquote>
+
+
+
+<p>This feels like the right layer for Microsoft, given the company&#8217;s ownership of identity. Active Directory is one of the most valuable free products of all time: it was the linchpin via which Microsoft tied together all of its enterprise products and services, first driving upgrades up and down the stack, and later underpinning its per-seat licensing business model. That the company sees its understanding of the individual worker and all of his or her artifacts, permissions, etc. as the obvious place to build agents makes sense.</p>
+
+
+
+<p>There&#8217;s one big problem with this starting point, however: it&#8217;s shrinking. Owning and organizing a company by identity is progressively less valuable if the number of human identities starts to dwindle — and, with a per-seat licensing model, you make less money. That, by extension, means that Microsoft should feel a significant amount of urgency when it comes to fighting the adjacency battles I predicted above. First, directly incorporating more business functions into Microsoft&#8217;s own software suite will make Microsoft&#8217;s agents more capable. Secondly, absorbing more business functions into Microsoft&#8217;s software offering will let the company charge more. Third, the larger Microsoft&#8217;s surface area, the more power it will have to compel other software makers to interface with its agents, increasing their capability.</p>
+
+
+
+<h3 class="wp-block-heading">Microsoft&#8217;s Miss</h3>
+
+
+
+<p>This pressure explains the choices Microsoft made that led to its Azure miss in particular. Microsoft was clear that, once again, demand exceeded supply. CFO Amy Hood said in her prepared remarks:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Our customer demand continues to exceed our supply. Therefore, we must balance the need to have our incoming supply better meet growing Azure demand with expanding first-party AI usage across services like M365 Copilot and GitHub Copilot, increasing allocations to R&amp;D teams to accelerate product innovation and continued replacement of end-of-life server and networking equipment.</p>
+</blockquote>
+
+
+
+<p>She further explained in the Q&amp;A section that Azure revenue was directly downstream from Microsoft&#8217;s own capacity allocation:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>I think it&#8217;s probably better to think about the Azure guidance that we give as an allocated capacity guide about what we can deliver in Azure revenue. Because as we spend the capital and put GPUs specifically, it applies to CPUs, the GPUs more specifically, we&#8217;re really making long-term decisions. And the first thing we&#8217;re doing is solving for the increased usage in sales and the accelerating pace of M365 Copilot as well as GitHub Copilot, our first-party apps. Then we make sure we&#8217;re investing in the long-term nature of R&amp;D and product innovation. And much of the acceleration that I think you&#8217;ve seen from us and products over the past a bit is coming because we are allocating GPUs and capacity to many of the talented AI people we&#8217;ve been hiring over the past years.</p>
+
+
+
+<p>Then, when you end up, is that, you end up with the remainder going towards serving the Azure capacity that continues to grow in terms of demand. And a way to think about it, because I think, I get asked this question sometimes, is if I had taken the GPUs that just came online in Q1 and Q2 in terms of GPUs and allocated them all to Azure, the KPI would have been over 40. And I think the most important thing to realize is that this is about investing in all the layers of the stack that benefit customers. And I think that&#8217;s hopefully helpful in terms of thinking about capital growth, it shows in every piece, it shows in revenue growth across the business and shows as OpEx growth as we invest in our people.</p>
+</blockquote>
+
+
+
+<p>Nadella called this a portfolio approach:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Basically, as an investor, I think when you think about our capital and you think about the gross margin profile of our portfolio, you should obviously think about Azure. But you should think about M365 Copilot and you should think about GitHub pilot, you should think about Dragon Copilot, Security Copilot. All of those have a gross margin profile and lifetime value. I mean if you think about it, acquiring an Azure customer is super important to us, but so is acquiring an M365 or a GitHub or a Dragon Copilot, which are all by the way incremental businesses and TAMs for us. And so we don&#8217;t want to maximize just 1 business of ours, we want to be able to allocate capacity, while we&#8217;re sort of supply constrained in a way that allow us to essentially build the best LTV portfolio.</p>
+
+
+
+<p>That&#8217;s on one side. And the other one that Amy mentioned is also R&amp;D. I mean you got to think about compute is also R&amp;D, and that&#8217;s sort of the second element of it. And so we are using all of that, obviously, to optimize for the long term.</p>
+</blockquote>
+
+
+
+<p>The first part of Nadella&#8217;s answer is straightforward: Microsoft makes better margins and has more lifetime value from its productivity applications than it does from renting out Azure capacity, so investors should be happy that it is allocating scarce resources to that side of the business. And, per the competition point above, this is defensive as well: if Microsoft doesn&#8217;t get AI right for its own software then competitors will soon be moving in.</p>
+
+
+
+<p>The R&amp;D point, however, is also critical: Microsoft also needs to be working to expand its offering, and increasingly the way to do that is going to be by using AI to write that new software. That takes a lot of GPUs — so many that Microsoft simply didn&#8217;t have enough to meet the 40% Azure growth rate that Wall Street expected. I think it was the right decision.</p>
+
+
+
+<h3 class="wp-block-heading">Token Foundries</h3>
+
+
+
+<p>There are some broader issues raised by Microsoft&#8217;s capacity allocation. First, we have the most powerful example yet of the downside of having insufficient chips. Hood was explicit that Microsoft could have beat Wall Street&#8217;s number if they had enough GPUs; the fact they didn&#8217;t was a precipitating factor in losing $357 billion in value. How much greater will the misses be a few years down the road when AI demand expands even further, particularly if <a href="https://stratechery.com/2026/tsmc-risk/">TSMC both remains the only option and continues to be conservative in its CapEx</a>?</p>
+
+
+
+<p>Secondly, however, it&#8217;s fair for Azure customers to feel a bit put out by Microsoft&#8217;s decision to favor itself. It reminds me of the pre-TSMC world, when fabs were a part of Integrated Device Manufacturers like Intel or Texas Instruments. If you wanted to manufacture a chip you could contract for space on their lines, but you were liable to lose that capacity if the fab needed it for their own products; TSMC was unique in that they were a pure play foundry: their capacity was solely for their customers, who they weren&#8217;t going to compete with.</p>
+
+
+
+<p>This isn&#8217;t the case with Azure: Microsoft has first dibs, and then OpenAI, and then everyone else, and that priority order was made clear this quarter. Moreover, it&#8217;s fair to assume that Amazon and Google will make similar prioritization decisions. I didn&#8217;t, before writing this article, fully grok the potential for neoclouds, or Oracle for that matter, but the value proposition of offering a pure play token foundry might be larger than I appreciated.</p>
+
+
+
+<p>All that noted, the safest assumption is that Microsoft, like the rest of Big Tech, will figure this out. Some software may be dead, but not all of it, at least not yet, and the biggest software maker of them all is — thanks in part to that size — positioned to be one of the survivors. It&#8217;s just going to need a lot of compute, not only for its customers, but especially for itself.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<figure class="wp-block-embed alignfull is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="Microsoft and Software Survival | Stratechery by Ben Thompson" width="500" height="281" src="https://www.youtube.com/embed/iPN9Dz3XQxk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">18218</post-id>	</item>
+	</channel>
+</rss>

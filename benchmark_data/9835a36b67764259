@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
+	>
+
+<channel>
+	<title>Mark Greville</title>
+	<atom:link href="https://markgreville.ie/feed/" rel="self" type="application/rss+xml" />
+	<link>https://markgreville.ie</link>
+	<description>An Irish musician’s journey to becoming a better technologist</description>
+	<lastBuildDate>Fri, 10 Oct 2025 12:09:52 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>http://wordpress.com/</generator>
+
+<image>
+	<url>https://markgreville.ie/wp-content/uploads/2020/03/cropped-9d0c5427-a32e-48e3-81af-228983255c70.jpeg?w=32</url>
+	<title>Mark Greville</title>
+	<link>https://markgreville.ie</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<cloud domain='markgreville.ie' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
+<atom:link rel="search" type="application/opensearchdescription+xml" href="https://markgreville.ie/osd.xml" title="Mark Greville" />
+	<atom:link rel='hub' href='https://markgreville.ie/?pushpress=hub'/>
+	<item>
+		<title>Why I built my AI Twin.</title>
+		<link>https://markgreville.ie/2025/10/06/obriens-policeman-why-i-built-my-ai-twin/</link>
+					<comments>https://markgreville.ie/2025/10/06/obriens-policeman-why-i-built-my-ai-twin/#comments</comments>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Mon, 06 Oct 2025 15:52:20 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[Creativity]]></category>
+		<category><![CDATA[genai]]></category>
+		<category><![CDATA[Generative AI]]></category>
+		<category><![CDATA[Workhuman]]></category>
+		<guid isPermaLink="false">http://markgrevilleie.wordpress.com/?p=3215</guid>
+
+					<description><![CDATA[A strange, discomfiting feeling sometimes crawls over my skin. My bones whisper at me — I’m in the wrong town, the wrong room, the wrong body. From the very first time I discovered the joys of singing, I knew who I was. A musician, a creative soul. But when I look in the mirror today, [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://markgreville.ie/2025/10/06/obriens-policeman-why-i-built-my-ai-twin/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		
+		<media:thumbnail url="https://markgreville.ie/wp-content/uploads/2025/10/2011d275-004d-408a-9f59-bb9983d65687.jpeg" />
+		<media:content url="https://markgreville.ie/wp-content/uploads/2025/10/2011d275-004d-408a-9f59-bb9983d65687.jpeg" medium="image" />
+
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>How to make your AI twin.</title>
+		<link>https://markgreville.ie/2025/10/06/how-to-make-your-ai-twin/</link>
+					<comments>https://markgreville.ie/2025/10/06/how-to-make-your-ai-twin/#comments</comments>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Mon, 06 Oct 2025 15:23:44 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[artificial-intelligence]]></category>
+		<category><![CDATA[Creativity]]></category>
+		<category><![CDATA[Workhuman]]></category>
+		<guid isPermaLink="false">http://markgrevilleie.wordpress.com/?p=3207</guid>
+
+					<description><![CDATA[One of my favourite technology books is The Practice of Enterprise Architecture by Svyatoslav Kotusev. In the introduction, he says: &#8220;This book offers a source of knowledge, not inspiration. It is not amusing and does not contain any jokes, anecdotes or entertaining prose.&#8221; I will say the same about this article. More interesting than how [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://markgreville.ie/2025/10/06/how-to-make-your-ai-twin/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		
+		<media:thumbnail url="https://markgreville.ie/wp-content/uploads/2025/10/image-3.jpg" />
+		<media:content url="https://markgreville.ie/wp-content/uploads/2025/10/image-3.jpg" medium="image">
+			<media:title type="html">image-3</media:title>
+		</media:content>
+
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Designing for humans: Why most enterprise adoptions of AI fail</title>
+		<link>https://markgreville.ie/2025/08/11/designing-for-humans-why-most-enterprise-adoptions-of-ai-fail/</link>
+					<comments>https://markgreville.ie/2025/08/11/designing-for-humans-why-most-enterprise-adoptions-of-ai-fail/#comments</comments>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Mon, 11 Aug 2025 13:13:11 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[Architecture]]></category>
+		<category><![CDATA[Decision Making]]></category>
+		<guid isPermaLink="false">http://markgreville.ie/?p=3161</guid>
+
+					<description><![CDATA[Originally published at https://www.cio.com/article/4028051/designing-for-humans-why-most-enterprise-adoptions-of-ai-fail.html Building technology has always been a messy business. We are constantly regaled with stories of project failures, wasted money and even the disappearance of whole industries. It’s safe to say that we have some work to do as an industry. Adding AI to this mix is like pouring petrol on a [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://markgreville.ie/2025/08/11/designing-for-humans-why-most-enterprise-adoptions-of-ai-fail/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>How to become a VP at a billion-dollar company (Guaranteed success in 24 simple steps)</title>
+		<link>https://markgreville.ie/2025/04/13/how-to-become-a-vp-at-a-billion-dollar-company-guaranteed-success-in-24-simple-steps/</link>
+					<comments>https://markgreville.ie/2025/04/13/how-to-become-a-vp-at-a-billion-dollar-company-guaranteed-success-in-24-simple-steps/#comments</comments>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Sun, 13 Apr 2025 10:32:24 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[Career]]></category>
+		<category><![CDATA[Career Development]]></category>
+		<category><![CDATA[Interview]]></category>
+		<category><![CDATA[job-search]]></category>
+		<category><![CDATA[jobs]]></category>
+		<category><![CDATA[personal-development]]></category>
+		<category><![CDATA[Workhuman]]></category>
+		<guid isPermaLink="false">http://markgrevilleie.wordpress.com/?p=2897</guid>
+
+					<description><![CDATA[There we go. Just follow these simple 24 steps, and it&#8217;s guaranteed to work. How do I know? Well, these are the exact steps I took, and every step worked out perfectly. Best of luck!]]></description>
+		
+					<wfw:commentRss>https://markgreville.ie/2025/04/13/how-to-become-a-vp-at-a-billion-dollar-company-guaranteed-success-in-24-simple-steps/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+		
+		<media:thumbnail url="https://markgreville.ie/wp-content/uploads/2025/04/generate-a-highly-detailed-and-captivating-image-that-represents-the-1.png" />
+		<media:content url="https://markgreville.ie/wp-content/uploads/2025/04/generate-a-highly-detailed-and-captivating-image-that-represents-the-1.png" medium="image">
+			<media:title type="html">generate-a-highly-detailed-and-captivating-image-that-represents-the</media:title>
+		</media:content>
+
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Book Summary &#8211; Leprechauns of Software Engineering by Laurent Bossavit</title>
+		<link>https://markgreville.ie/2025/03/17/book-review-leprechauns-of-software-engineering/</link>
+					<comments>https://markgreville.ie/2025/03/17/book-review-leprechauns-of-software-engineering/#comments</comments>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Mon, 17 Mar 2025 09:33:39 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[BookReview]]></category>
+		<category><![CDATA[Book Review]]></category>
+		<category><![CDATA[Critical Thinking]]></category>
+		<category><![CDATA[Research]]></category>
+		<category><![CDATA[Satisfice]]></category>
+		<category><![CDATA[Science]]></category>
+		<category><![CDATA[Software]]></category>
+		<category><![CDATA[Software Design]]></category>
+		<category><![CDATA[Software Development]]></category>
+		<guid isPermaLink="false">http://markgrevilleie.wordpress.com/?p=2808</guid>
+
+					<description><![CDATA[&#8220;Everything everyone knows about anything indicates that this is untrue,” &#8211; Laurent Bossavit The words science and engineering are often used when discussing computers and software. These terms are not well-earned. The terms accidental technology, computer alchemy, or software by listening to unqualified influencers are just as useful. Don&#8217;t believe me? Read Laurent Bossavit, and [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://markgreville.ie/2025/03/17/book-review-leprechauns-of-software-engineering/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		
+		<media:thumbnail url="https://markgreville.ie/wp-content/uploads/2025/03/img_0073-1.jpg" />
+		<media:content url="https://markgreville.ie/wp-content/uploads/2025/03/img_0073-1.jpg" medium="image">
+			<media:title type="html">img_0073-1</media:title>
+		</media:content>
+
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Generative AI is digital homeopathy — how I train my own model</title>
+		<link>https://markgreville.ie/2024/12/10/generative-ai-is-digital-homeopathy-how-i-train-my-own-model/</link>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Tue, 10 Dec 2024 16:49:02 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[artificial-intelligence]]></category>
+		<category><![CDATA[Bounded Rationality]]></category>
+		<category><![CDATA[genai]]></category>
+		<category><![CDATA[Generative AI]]></category>
+		<category><![CDATA[Herbert Simon]]></category>
+		<category><![CDATA[Technology]]></category>
+		<guid isPermaLink="false">http://markgrevilleie.wordpress.com/?p=2667</guid>
+
+					<description><![CDATA[If it&#8217;s your first time here, you may be surprised at how few pieces I have written. (After reading for a while, you may even be glad of this fact). When friends bring up what they assume is a painful subject, they get a faraway look in their eyes. They place a gentle hand on [&#8230;]]]></description>
+		
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>AGI may never align with human needs — so says science.</title>
+		<link>https://markgreville.ie/2024/03/05/agi-can-never-align-with-human-needs-so-says-science/</link>
+					<comments>https://markgreville.ie/2024/03/05/agi-can-never-align-with-human-needs-so-says-science/#comments</comments>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Tue, 05 Mar 2024 09:52:19 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[Data]]></category>
+		<category><![CDATA[history-of-science]]></category>
+		<category><![CDATA[Philosophy]]></category>
+		<category><![CDATA[Philosophy of Science]]></category>
+		<category><![CDATA[religion]]></category>
+		<category><![CDATA[Science]]></category>
+		<guid isPermaLink="false">http://markgrevilleie.wordpress.com/?p=2394</guid>
+
+					<description><![CDATA[Thought experiment — imagine an alien race came to earth. They were smarter than us in every way. Having absorbed all written word, they could communicate perfectly in every human language. They were intimately familiar with our private lives, through access to our phone and online data. These aliens had lots of amazing new ideas about the world, but we couldn’t grasp their implications. Each alien made of silicon, not of flesh and blood. Each was different, but individually as intelligent as all humanity put together. We had no idea what they would do with us. They could solve all of our human problems, enslave us, or eliminate us forever. 
+
+
+
+They had only one weakness: they needed to be connected to a power source, and humans had control over this connection. Would we plug them in?]]></description>
+		
+					<wfw:commentRss>https://markgreville.ie/2024/03/05/agi-can-never-align-with-human-needs-so-says-science/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+		
+		<media:thumbnail url="https://markgreville.ie/wp-content/uploads/2024/03/steve-johnson-_0iv9lmpdn0-unsplash.jpg" />
+		<media:content url="https://markgreville.ie/wp-content/uploads/2024/03/steve-johnson-_0iv9lmpdn0-unsplash.jpg" medium="image" />
+
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Gladiator style interviewing</title>
+		<link>https://markgreville.ie/2024/01/29/gladiator-style-interviewing/</link>
+					<comments>https://markgreville.ie/2024/01/29/gladiator-style-interviewing/#comments</comments>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Mon, 29 Jan 2024 13:00:43 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[Building Teams]]></category>
+		<category><![CDATA[culture]]></category>
+		<category><![CDATA[Interview]]></category>
+		<category><![CDATA[Interviewing]]></category>
+		<category><![CDATA[interviews]]></category>
+		<category><![CDATA[Technology]]></category>
+		<guid isPermaLink="false">http://markgrevilleie.wordpress.com/?p=2300</guid>
+
+					<description><![CDATA[I fixed a broken interview setup.
+
+
+
+With a thumb.]]></description>
+		
+					<wfw:commentRss>https://markgreville.ie/2024/01/29/gladiator-style-interviewing/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		
+		<media:thumbnail url="https://markgreville.ie/wp-content/uploads/2024/01/jan-antonin-kolar-uymf6ncegly-unsplash.jpg" />
+		<media:content url="https://markgreville.ie/wp-content/uploads/2024/01/jan-antonin-kolar-uymf6ncegly-unsplash.jpg" medium="image" />
+
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>The political left and right is a figment of your imagination.</title>
+		<link>https://markgreville.ie/2024/01/02/the-political-left-and-right-is-a-figment-of-your-imagination/</link>
+					<comments>https://markgreville.ie/2024/01/02/the-political-left-and-right-is-a-figment-of-your-imagination/#comments</comments>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Tue, 02 Jan 2024 15:34:18 +0000</pubDate>
+				<category><![CDATA[Article]]></category>
+		<category><![CDATA[culture]]></category>
+		<category><![CDATA[Philosophy]]></category>
+		<category><![CDATA[Politics]]></category>
+		<category><![CDATA[SocialConstruction]]></category>
+		<guid isPermaLink="false">http://markgrevilleie.wordpress.com/?p=2239</guid>
+
+					<description><![CDATA[Is a political principle more important than the side they support? Maybe a more useful question is — what political shifts would it take for you to switch sides? If you can’t ever imagine switching sides no matter the change, you have fallen into the sports fan trap.
+
+If the thought of having to change political sides fills you with anxiety, don’t worry. There is no such thing as the left or the right. It is a figment of your imagination.]]></description>
+		
+					<wfw:commentRss>https://markgreville.ie/2024/01/02/the-political-left-and-right-is-a-figment-of-your-imagination/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		
+		<media:thumbnail url="https://markgreville.ie/wp-content/uploads/2024/01/pexels-rakicevic-nenad-1262302.jpg" />
+		<media:content url="https://markgreville.ie/wp-content/uploads/2024/01/pexels-rakicevic-nenad-1262302.jpg" medium="image">
+			<media:title type="html">pexels-rakicevic-nenad-1262302</media:title>
+		</media:content>
+
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Speaking at the AWS Summit in London on the 7th of June</title>
+		<link>https://markgreville.ie/2023/06/01/speaking-at-the-aws-summit-in-london-on-the-7th-of-june/</link>
+		
+		<dc:creator><![CDATA[Mark]]></dc:creator>
+		<pubDate>Thu, 01 Jun 2023 17:14:06 +0000</pubDate>
+				<category><![CDATA[Speaking]]></category>
+		<category><![CDATA[Data]]></category>
+		<category><![CDATA[Workhuman]]></category>
+		<guid isPermaLink="false">http://markgreville.ie/?p=2030</guid>
+
+					<description><![CDATA[I’m delighted to say Amazon has invited to speak at the upcoming AWS summit in London on the 7th of June.]]></description>
+		
+		
+		
+		
+		<media:thumbnail url="https://markgreville.ie/wp-content/uploads/2023/06/mg-awssummit.jpg" />
+		<media:content url="https://markgreville.ie/wp-content/uploads/2023/06/mg-awssummit.jpg" medium="image">
+			<media:title type="html">MG-AWSSummit</media:title>
+		</media:content>
+
+		<media:content url="https://1.gravatar.com/avatar/76e73c020b2f0dc15e7910275c85e91f9bc1d7a3c0470d2ef3fab0aee96c104d?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">grevillemark</media:title>
+		</media:content>
+	</item>
+	</channel>
+</rss>

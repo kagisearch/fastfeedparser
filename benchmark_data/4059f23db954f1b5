@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Canadian entrepreneur and software developer on Alex Blackie</title><link>/</link><description>Recent content in Canadian entrepreneur and software developer on Alex Blackie</description><generator>Hugo</generator><language>en-CA</language><managingEditor>alex@blackie.ca (Alex Blackie)</managingEditor><webMaster>alex@blackie.ca (Alex Blackie)</webMaster><lastBuildDate>Tue, 06 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Farewell, Dynamic Drive</title><link>/articles/farewell-dynamic-drive/</link><pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/farewell-dynamic-drive/</guid><description>&lt;p&gt;
+ &lt;big&gt;
+ Every year, for over half my life, I have received an automated email
+ wishing me a happy birthday from the Dynamic Drive Forums. Every year,
+ it's been a constant little reminder of where I came from and where
+ my whole career kicked off.
+ &lt;/big&gt;
+&lt;/p&gt;
+&lt;p&gt;The earliest email in my archives mentioning Dynamic Drive is dated July 2008
+(which would make me 12 years old at the time), and the last forum thread reply
+was in late-2010. Three years seems like a short period of my life, but it&amp;rsquo;s
+hard to convey just how foundational this time was for me.&lt;/p&gt;</description></item><item><title>I can only do one thing at a time.</title><link>/articles/one-thing-at-a-time/</link><pubDate>Mon, 28 Oct 2024 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/one-thing-at-a-time/</guid><description>&lt;p&gt;When I was younger, I was obsessed with building out the best &amp;ldquo;battlestation&amp;rdquo; I could. At one point, my home office desk had five monitors and three computers on it. I even bought software (&lt;a href="https://symless.com/synergy"&gt;Synergy&lt;/a&gt;!) so I could use one keyboard and mouse between all of them seamlessly.&lt;/p&gt;
+&lt;p&gt;That must&amp;rsquo;ve been my best setup then, right? The one I lust over, think about, try and recreate all these years later?&lt;/p&gt;</description></item><item><title>Do you know where your domains are?</title><link>/articles/where-your-domains-live/</link><pubDate>Fri, 03 May 2024 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/where-your-domains-live/</guid><description>&lt;p&gt;For the past several years I have used &lt;code&gt;blackie.me&lt;/code&gt; as an email domain for myself and my family, and it&amp;rsquo;s been a great, short, memorable domain for personal email. But there&amp;rsquo;s one caveat that sticks in the back of my mind&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Despite the English interpretation of &lt;code&gt;.me&lt;/code&gt;, the top-level domain (TLD) is actually the country code for Montenegro, a Balkan state born out of the breakup of Yugoslavia. It has had a remarkable modernization since its declaration of independence in 2006, and is currently in the late stages of ascension to the EU.&lt;/p&gt;</description></item><item><title>The Importance of Structure</title><link>/articles/the-importance-of-structure/</link><pubDate>Wed, 21 Feb 2024 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/the-importance-of-structure/</guid><description>&lt;p&gt;I’ve been self-employed for just over a year, and in the beginning I really
+struggled to stay productive. But I found the secret: “be your own boss” should
+be taken literally; set expectations for yourself that a boss would expect.&lt;/p&gt;
+&lt;p&gt;This is what worked for me:&lt;/p&gt;
+&lt;p&gt;My days start at 8am. I block out time for walks, lunch, deep focus tasks,
+journalling… I’m not micro-managing my day or going into 5-minute increments,
+I’m just giving myself a light framework around my average workday.&lt;/p&gt;</description></item><item><title>Drummers Still Exist</title><link>/articles/drummers-still-exist/</link><pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/drummers-still-exist/</guid><description>&lt;p&gt;&lt;big&gt;
+	Ten years before humans landed on the moon, the Wurlitzer company released a machine capable of producing automated
+	drum-like noises called the &amp;#8220;&lt;a href="https://120years.net/the-side-manwurlitzerusa1959/"&gt;Side Man&lt;/a&gt;.&amp;#8221;
+	This device was the first &amp;#8220;drum machine,&amp;#8221; and &lt;a href="https://en.wikipedia.org/wiki/Roland_TR-808"&gt;its
+		spiritual successors&lt;/a&gt;
+	would define entire new genres of music.
+&lt;/big&gt;&lt;/p&gt;
+
+&lt;p&gt;In the decades since the Side Man, humanity finally solved the rhythm section. These advancements in technology
+	ushered in a new era where the role of &amp;#8220;drummer&amp;#8221; was put to rest as its duties were relegated to the
+	machines. After all, these days, what band would pay a salary to a human to do what a cheap box has been able to do
+	for years?&lt;/p&gt;</description></item><item><title>Email Authenticity 101: DKIM, DMARC, and SPF</title><link>/articles/email-authenticity-dkim-spf-dmarc/</link><pubDate>Sun, 15 Aug 2021 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/email-authenticity-dkim-spf-dmarc/</guid><description>&lt;p&gt;
+	&lt;em&gt;
+ &lt;strong&gt;Prefer to listen?&lt;/strong&gt; I was a guest on &lt;a href="https://packetpushers.net/podcast/heavy-networking-602-all-about-spf-dkim-dmarc-email-security/"&gt;Heavy Networking Episode 602&lt;/a&gt; and covered all the details in this post!
+	&lt;/em&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+ &lt;big&gt;
+ Password resets, two factor codes, business secrets, private
+ conversations&amp;hellip; Email is at the centre of most of life and
+ business, and so we must ensure it is trustworthy and authentic.
+ &lt;/big&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+ If you use email with your own domain, a lot of the burden of authenticity
+ has suddenly shifted from your service provider to you. This guide will
+ hopefully give you the information and practices you need to keep your
+ domain's email authentic and less vulnerable to spoofing.
+&lt;/p&gt;</description></item><item><title>Resiliency in SaaS codebases through productisation</title><link>/articles/better-saas-through-productisation/</link><pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/better-saas-through-productisation/</guid><description>&lt;section id="intro"&gt;
+ &lt;p&gt;&lt;big&gt;
+ In the world of private codebases, and especially SaaS, you can easily
+ fall into the trap of thinking, "well, it's OK because no one is going
+ to see this." A mindset like that can wreck a codebase, and can fuel
+ micro-decisions that lead to painful long-term mistakes.
+ &lt;/big&gt;&lt;/p&gt;
+
+ &lt;p&gt;
+ First, regarding "productisation," &lt;a href="https://en.wiktionary.org/w/index.php?title=productization&amp;oldid=51827427"&gt;Wiktionary&lt;/a&gt; defines it as
+ &lt;/p&gt;
+
+ &lt;blockquote&gt;
+		&lt;em&gt;The act of modifying something, such as a concept or a tool internal to
+			an organization, to make it suitable as a commercial product.&lt;/em&gt;
+ &lt;/blockquote&gt;
+
+ &lt;p&gt;
+ To put it another way, I find it very helpful to frame things from the
+ perspective of "what if someone else had to run this software?" This is
+ obviously something that open source projects have to think about quite
+ a bit, so you could also frame it as "what if this was open source?"
+ &lt;/p&gt;</description></item><item><title>Build Worse Software</title><link>/articles/trying-to-be-worse/</link><pubDate>Fri, 10 Jul 2020 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/trying-to-be-worse/</guid><description>&lt;p&gt;One of my first software projects &amp;ndash; probably the first project I did that
+wasn&amp;rsquo;t just building a website theme &amp;ndash; was building my own CMS. The year was
+2010, I was a middle school student doing web design on the side, and I was
+tired of WordPress.&lt;/p&gt;
+&lt;p&gt;I am reminded of this project from time to time; usually I remember how much I
+enjoyed building it. I used this custom CMS for some local business websites
+during my consulting days. The project was just a pile of procedural PHP
+scripts, with HTML and PHP just smashed together. MySQL was the database of
+choice, with unprepared SQL strings littered everywhere.&lt;/p&gt;</description></item><item><title>Generating Static Sites with Make and Bash</title><link>/articles/static-site-bash/</link><pubDate>Sun, 16 Jun 2019 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/static-site-bash/</guid><description>&lt;p&gt;When you think of &lt;code&gt;bash&lt;/code&gt;, you may not consider it suitable for
+building websites. For the most part, you are probably correct. But I
+wanted to try anyway. I don&amp;rsquo;t buy into most trends in the frontend web
+development community, so literally none of the &amp;ldquo;modern&amp;rdquo; static site
+generators appeal to me. All of them feel overcomplicated, too niche, or
+too javascript-y for my needs, which involve &lt;em&gt;just rendering a
+website&lt;/em&gt;.&lt;/p&gt;</description></item><item><title>A Review of the Dell Latitude 7214</title><link>/articles/dell-7214/</link><pubDate>Sun, 06 May 2018 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/dell-7214/</guid><description>&lt;p&gt;
+	For many years now, Lenovo Thinkpads have been a mainstay in my life; their
+	no-nonsense, practical offering greatly appealed to what I wanted in a
+	machine. Its shortcomings in weight, thickness, and aesthetic were all areas
+	I was more than happy to trade for superb battery life, port abundance, and
+	"in the field" features like Power Bridge Batteries.
+&lt;/p&gt;
+
+&lt;p&gt;
+	However, Lenovo has been slowly turning Thinkpads into mainstream consumer
+	trash. I found myself in want of a new laptop recently and found the
+	entirety of the modern Thinkpad lineup revolting. The X280 is a disgrace to
+	its namesake, the X1 Carbon makes way too many vain compromises for its thin
+	profile, and everything else was either too big or too absurd for my needs
+	(eg., the P71 fits both of those descriptors). I found myself at a loss,
+	unsure of where to turn now that my beloved Thinkpads were spoiled by
+	marketing and consumer trends.
+&lt;/p&gt;</description></item><item><title>Hostile Private Networks in the Cloud</title><link>/articles/cloud-private-networks/</link><pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/cloud-private-networks/</guid><description>&lt;p&gt;
+	&lt;strong&gt;Update 2018-07&lt;/strong&gt;: As of July 2018 DigitalOcean &lt;a href="https://www.digitalocean.com/docs/release-notes/2018/private-networking/"&gt;has begun rolling out&lt;/a&gt; true private networking that is isolated per-account. This is a great step forward, and I sincerely hope other VPS providers follow suit. Until then, this post is still relevant for basically every other provider.
+&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;
+ A while ago I deployed a blog using DigitalOcean's infrastructure. I used
+ separate droplets for the database and web tier, and used the "private IP"
+ feature to only allow MySQL traffic over that interface. I noticed the
+ private network seemed larger than necessary for just hosting my own stuff,
+ so I did a little digging.
+&lt;/p&gt;</description></item><item><title>Taking Control of Bell Fibe</title><link>/articles/fibe/</link><pubDate>Sat, 23 Dec 2017 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/fibe/</guid><description>&lt;p&gt;
+	Consumer ISPs are some of my least favourite companies to deal with. Their
+	arrogance and lack of competent support makes for an infinitely-frustrating
+	experience for someone like me who has managed a network or two. The pain of
+	contacting support with very specific, technical explanations of the exact
+	problem you're experiencing only to be told to "restart your PC" makes one's
+	hair begin to fade.
+&lt;/p&gt;
+
+&lt;p&gt;
+	I recently moved from the west coast of Canada to the east, and one of the
+	benefits gained there was fibre-to-the-apartment availability (something the
+	west is just &lt;em&gt;barely&lt;/em&gt; beginning to know). Coming from a history of
+	cable modems, I was excited to see what was different. I had always dreamed
+	of replacing the cable modem with some sort of PCI card in my 1U rack server
+	I use for a router, but the complexities involved were always not worth it.
+	Fibre, however, is a common standard in datacenter-grade equipment, so I was
+	looking forward to maybe finally being able to bypass the horrid consumer
+	trashbox Bell was likely to give me.
+&lt;/p&gt;</description></item><item><title>Quick and Dirty Containers with systemd</title><link>/articles/nspawn/</link><pubDate>Wed, 22 Jul 2015 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/nspawn/</guid><description>&lt;p&gt;
+	Docker and other containerization technologies are making the rounds in the
+	Linux community, but a lowly hero lurks beneath now every major Linux
+	distro; enter &lt;code&gt;systemd-nspawn&lt;/code&gt; containers.
+&lt;/p&gt;
+
+&lt;p&gt;
+	systemd has arrived with mixed reviews -- you either love it or you hate it
+	-- but one thing stands for certain: it gets the job done. Regardless of
+	your emotions projected towards it, systemd is likely here to stay for a
+	while, so you might as well exploit as many features as you can out of it.
+&lt;/p&gt;</description></item><item><title>Facebook's Compromising My Privacy</title><link>/articles/facebook-privacy/</link><pubDate>Mon, 14 Mar 2011 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/articles/facebook-privacy/</guid><description>&lt;p&gt;I checked my Facebook today, and noticed in the sidebar where it usually bullies me to enter my email login to find more people, it said &amp;#8220;Windows Live&amp;#8221; and had pre-filled my hotmail address that I don&amp;#8217;t use for anything. This scared me.&lt;/p&gt;
+
+&lt;p&gt;My first question was: &amp;#8220;&lt;em&gt;How did Facebook know I have a hotmail address?&lt;/em&gt;&amp;#8220;. I only use the hotmail address for SkyDrive and Office Online, and nothing else. I had never had it as my Facebook email, and have never told anyone about it.&lt;/p&gt;</description></item><item><title>All Stars</title><link>/all-stars/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/all-stars/</guid><description>&lt;div class="prose"&gt;
+	&lt;h1&gt;All Stars&lt;/h1&gt;
+	&lt;p&gt;
+		The best of the best, sorted by year. No Bad Songs, Guaranteed&amp;trade;.
+	&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="albums"&gt;
+	&lt;!-- 1503-08 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/bt.webp" alt="Album cover for the eponymous release from Billy Talent" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4Z4FErymthnN4ctJdKRgko"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 1505-03 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/lullabies.webp" alt="Album cover for Lullabies to Paralyze by Queens of the Stone Age" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/2OMdsA2I4RxrHCyogwKGvF"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 1505-07 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/miasma.webp" alt="Album cover for Miasma by The Black Dahlia Murder" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://theblackdahliamurder.bandcamp.com/album/miasma"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/0yvkEhvulQu12aR16YuOg1"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 1505-04 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/nightmare.webp" alt="Album cover for Favourite Worst Nightmare by Arctic Monkeys" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/6rsQnwaoJHxXJRCDBPkBRw"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 1508-01 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/hail-destroyer.webp" alt="Album cover for Hail Destroyer by Cancer Bats" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4zR3343ue909iFnr6odhK3"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 1509-03 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/fantasies.webp" alt="Album cover for Fantasies by Metric" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1N2HeWMUjuAxYL7UnA63JH"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 1509-07 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/triangle.webp" alt="Album cover for Triangle by Perfume" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/79CDvmQOwJBEpd6gL6zgN9"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 1509-10 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/misdirect.webp" alt="Album cover for The Great Misdirect by Between the Buried and Me" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4dOrzGgWeJvb6e5Dtw7S8d"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2010-01 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/warp.webp" alt="Album cover of Warp Riders by The Sword" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/0PN6KGJnEzkpTpmM1PP5z7"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2010-04 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/phantom.webp" alt="Album cover for Death Came Through a Phantom Ship by Carach Angren" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://carachangren.bandcamp.com/album/death-came-through-a-phantom-ship"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1xLQYMtp9ZFt7n4B4Owob4"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2012-05 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/inhumanity.webp" alt="Album cover for Monolith of Inhumanity by Cattle Decapitation" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://cattledecapitation.bandcamp.com/album/monolith-of-inhumanity"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4aQI0KeN26jZ5bPQXKtfAa"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2012-05 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/corpses.webp" alt="Album cover for Where the Corpses Sink Forever by Carach Angren" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://carachangren.bandcamp.com/album/where-the-corpses-sink-forever"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1FrsZ1zyAmuEPyhNvuURbO"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2012-05 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/sequence.webp" alt="Album cover of Parallax II: The Future Sequence by Between the Buried and Me" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://btbam.bandcamp.com/album/the-parallax-ii-future-sequence"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1SIWICMyd07WaAwrOWKchn"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2012-07 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/shrines.webp" alt="Album cover of Shrines by Purity Ring" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/20mXbCXndSKFkikGoojprO"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2012-11 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/koi.webp" alt="Album cover of Koi No Yokan by Deftones" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4PIVdqvL1Rc7T7Vfsr8n8Q"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2013-10 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/the.webp" alt="Album cover of THE by Tricot" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/7zNn3gNnkOp2XywYEbQBQN"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2014-01 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/bbng-iii.webp" alt="Album cover of III by BADBADNOTGOOD" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://badbadnotgoodofficial.bandcamp.com/album/iii"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4E8q20fmm8onDCc7NK217d"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2014-09 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/little-machines.webp" alt="Album cover of Little Machines by LIGHTS" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/2UTk9Z3PhM8Qbzbcn0ktx7"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2015-02 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/eternity.webp" alt="Album cover of Another Eternity by Purity Ring" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/28dGCkeoBowoDG6ePFSuYd"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2015-08 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/monarchy.webp" alt="Album cover of Monarchy by Rivers of Nihil" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://riversofnihil.bandcamp.com/album/monarchy"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/artist/3UJmyt9ApeZTmOlMvBNGLN"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2017-04 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/tphb-mercury-fountain.webp" alt="Album cover for Mercury Fountain by The Physics House Band" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://tphb.bandcamp.com/album/mercury-fountain"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/3HYb9C7ZODFw74BSsMhNCy"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2017-06 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/apex.webp" alt="Album cover for Apex by Unleash the Archers" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://unleashthearchers.bandcamp.com/album/apex"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/505PSAdJ9BVuKUZLuhXVFc"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2019-11 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/death-atlas.webp" alt="Album cover for Death Atlas by Cattle Decapitation" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://cattledecapitation.bandcamp.com/album/death-atlas"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/7pp0eBrLEcmprISZOmY4ve"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2020-03 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/folkesange.webp" alt="Album cover for Folkesange by Myrkur" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://myrkur.bandcamp.com/album/folkesange"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1aRhu0xtlPbAb1X8us0uOD"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2020-04 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/womb.webp" alt="Album cover for Womb by Purity Ring" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1qUKQoS2lPswBUS5BRUpOq"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2020-08 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/abyss.webp" alt="Album cover for Abyss by Unleash the Archers" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://unleashthearchers.bandcamp.com/album/abyss"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/35Tw2Ofk21iMTXTSW3i8sD"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2021-10 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/bleed.webp" alt="Album cover for Bleed the Future by Archspire" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/5lWIRgkSy5WWOMrZ7xxygH"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2022-10 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/copingmechanism.webp" alt="Album cover for COPINGMECHANISM by Willow" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/0oMXn0MNLNyvB4iJPZXOuV"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2023-04 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/over-tage.webp" alt="Album cover for Over Tage by Svaneborg Kardyb" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Bandcamp" class="album--links--bc" href="https://svaneborgkardyb.bandcamp.com/album/over-tage"&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 275" xml:space="preserve"&gt;&lt;path style="fill:currentColor" d="M551.223 103.183c-35.066 0-52.983 27.6-52.983 69.176 0 39.302 19.375 68.802 52.983 68.802 38.006 0 52.257-34.78 52.257-68.802-.027-35.523-17.935-69.176-52.268-69.176M458.049-.003h41.652V99.78h.738c11.328-18.895 35.074-30.616 56.27-30.616 59.552 0 88.427 46.885 88.427 103.967 0 52.523-25.573 102.042-81.49 102.042-25.575 0-52.98-6.413-65.411-32.124h-.722v26.85h-39.468V.004l.004-.006M798.759 139.861c-3.292-23.814-20.096-36.674-43.118-36.674-21.568 0-51.89 11.724-51.89 71.07 0 32.511 13.88 66.916 50.062 66.916 24.112 0 40.914-16.653 44.946-44.626h41.65c-7.677 50.652-37.997 78.626-86.596 78.626-59.198 0-91.716-43.461-91.716-100.916 0-58.964 31.06-105.081 93.178-105.081 43.845 0 81.126 22.677 85.134 70.685h-41.65"/&gt;&lt;path style="fill:currentColor" d="M312.421 269.31H0L145.895-.002H458.32L312.421 269.311"/&gt;&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/44pjaIp79cn38UjiGts0Cb"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+
+	&lt;!-- 2024-11 --&gt;
+	&lt;article class="album"&gt;
+		&lt;img class="album--cover" src="/images/all-stars/covers/negative-spaces.webp" alt="Album cover for Negative Spaces by Poppy" width="150" height="150"&gt;
+
+		&lt;div class="album--links"&gt;
+			&lt;a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/0YIOpXQvcbiDNPusSqi5Ew"&gt;
+				&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+				&lt;svg xmlns="http://www.w3.org/2000/svg" height="168px" width="168px" version="1.1" viewBox="0 0 168 168"&gt;
+				 &lt;path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/&gt;
+				&lt;/svg&gt;
+				
+
+			&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.albums {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 1rem;
+}
+
+.album {
+	position: relative;
+}
+
+.album--links {
+	position: absolute;
+	top: 50%;
+	right: -1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	gap: .25rem;
+	transform: translateY(-50%);
+	background-color: white;
+	border-radius: 1rem 0 0 1rem;
+	padding: .25rem;
+}
+
+.album--links a {
+	display: flex;
+	padding: .15rem;
+	border-radius: 100%;
+	transition: box-shadow 0.2s ease;
+}
+.album--links svg { width: 1.5rem; height: 1.5rem; }
+
+.album--links--spotify { background-color: #252525; color: white; }
+.album--links--spotify:hover { box-shadow: 1px 1px 10px rgba(0, 255, 0, 0.5); }
+
+.album--links--bc { background-color: rgb(27, 160, 194); color: white; }
+.album--links--bc:hover { box-shadow: 1px 1px 10px rgba(27, 160, 194, 0.5); }
+&lt;/style&gt;</description></item><item><title>My Setup</title><link>/setup/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>alex@blackie.ca (Alex Blackie)</author><guid>/setup/</guid><description>&lt;section id="edc"&gt;
+	&lt;figure&gt;
+		&lt;img src="/images/edc-2023-12.webp"
+			alt="Wooden table with a backpack and its contents placed in front of it."
+			width="400"&gt;
+	&lt;/figure&gt;
+	&lt;div class="prose"&gt;
+		&lt;h2&gt;Everyday Carry&lt;/h2&gt;
+
+		&lt;p&gt;
+			For the significant items, I have:
+		&lt;/p&gt;
+
+		&lt;ul&gt;
+			&lt;li&gt;&lt;strong&gt;14" Macbook Pro&lt;/strong&gt; (2021, M1 Max, 64GB RAM, 1TB SSD)&lt;/li&gt;
+			&lt;li&gt;&lt;strong&gt;Bose QuietComfort QC45&lt;/strong&gt; wireless headphones&lt;/li&gt;
+			&lt;li&gt;&lt;strong&gt;Apple AirPods Pro&lt;/strong&gt; (3rd Generation)&lt;/li&gt;
+			&lt;li&gt;&lt;strong&gt;Apple iPhone 16 Pro&lt;/strong&gt; in Natural Titanium, caseless&lt;/li&gt;
+		&lt;/ul&gt;
+
+		&lt;p&gt;
+			For accessories, I carry:
+		&lt;/p&gt;
+
+		&lt;ul&gt;
+			&lt;li&gt;&lt;strong&gt;Anker 747&lt;/strong&gt; GaN multiport charger&lt;/li&gt;
+			&lt;li&gt;&lt;strong&gt;Apple Wired EarPods&lt;/strong&gt;, for video calls or emergencies&lt;/li&gt;
+			&lt;li&gt;&lt;strong&gt;Startech USB-C hub&lt;/strong&gt;, for port expansion&lt;/li&gt;
+			&lt;li&gt;&lt;strong&gt;ADATA 64GB USB drive&lt;/strong&gt;, for Linux or whatever else&lt;/li&gt;
+			&lt;li&gt;&lt;strong&gt;Logitech MX Master&lt;/strong&gt; for games or precision.&lt;/li&gt;
+		&lt;/ul&gt;
+
+		&lt;p&gt;
+			And to keep everything connected together:
+		&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Stan Carney</title>
+	<atom:link href="https://stancarney.co/feed/" rel="self" type="application/rss+xml" />
+	<link>https://stancarney.co/</link>
+	<description>Interesting Tech</description>
+	<lastBuildDate>Thu, 22 Mar 2018 18:18:37 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<item>
+		<title>Bitcoin, Litecoin, Dogecoin, and CoinIn</title>
+		<link>https://stancarney.co/2014/06/bitcoin-litecoin-dogecoin-coinin/</link>
+					<comments>https://stancarney.co/2014/06/bitcoin-litecoin-dogecoin-coinin/#respond</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Fri, 06 Jun 2014 04:44:51 +0000</pubDate>
+				<category><![CDATA[Bitcoin]]></category>
+		<category><![CDATA[Dogecoin]]></category>
+		<category><![CDATA[Litecoin]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Startup]]></category>
+		<category><![CDATA[Virtual Currency]]></category>
+		<category><![CDATA[startup]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=388</guid>
+
+					<description><![CDATA[<p>I’ve been following Bitcoin since mid 2010. It was particularly interesting to me at the time as my company was processing high-risk payments; high-risk payments which Bitcoin seemed to be ideally suited for. Since then I’ve mined and experimented with Bitcoin and a bunch of other cryptocurrencies like Litecoin and Dogecoin. A few weeks ago [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2014/06/bitcoin-litecoin-dogecoin-coinin/">Bitcoin, Litecoin, Dogecoin, and CoinIn</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>I’ve been following Bitcoin since mid 2010. It was particularly interesting to me at the time as my company was processing high-risk payments; high-risk payments which Bitcoin seemed to be ideally suited for. Since then I’ve mined and experimented with Bitcoin and a bunch of other cryptocurrencies like Litecoin and Dogecoin. A few weeks ago I published a document on <a href="http://stancarney.github.io/virtualcurrencyapplicationsecurity/">securing virtual currency applications</a> based on my experience in traditional payments and building applications. Late 2013 and early 2014 had been frustrating times to watch scammers and incompetence dominate the cryptocurrency landscape only to, predictably, fail a short time later. If cryptocurrencies are ever going to succeed they will have to do better, much better.</p>
+<p><span id="more-388"></span></p>
+<p>Enter <a href="http://coinin.co/">CoinIn</a>. <a href="http://coinin.co/">CoinIn</a> allowed Canadian customers to purchase small amounts of Bitcoin, Litecoin and Dogecoin online using familiar payment options.</p>
+<p><iframe title="Why Virtual Currencies?" width="500" height="281" src="https://www.youtube.com/embed/qtXKOGLRsfw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+<p>Subsequent iterations of CoinIn would have added merchant services and API’s to effectively ‘end-to-end’ transactions. At launch it would have been purely a wallet offering Bitcoin, Litecoin and Dogecoin for sale. It was to close the gap on quality by applying proper application security and compliance practices, as well as enabling regular consumers to bypass much of the complexity in dealing with cryptocurrencies on their own. It had payment options sorted and integrated, was on the road to being a registered money service business in Canada and had banking, at least for awhile. It also had $500,000 of seed funding available but it only pulled a small portion before I came to the decision it wasn’t the correct approach. The project has since been sidelined. Not killed, just sidelined.</p>
+<p>The issue is, at least right now, there is no compelling reason for a mainstream consumer to exchange fiat currency (dollar, euro, peso) for virtual currency. Note that I said mainstream consumer, not speculator, libertarian or anarchist. I do agree that cryptocurrencies offer benefits not available with traditional payment methods, but most mainstream consumers don’t care. Top that with huge volatility, low (but increasing) merchant adoption, very little to no consumer protection and difficulty of use, and there is now a huge barrier to mainstream acceptance (at least for individuals in countries with reasonably stable economies). If you aren’t in a country with a reasonably stable economy, or are in the market for items that can’t be acquired with traditional payment mechanisms like credit cards due to legality or ‘moral blockades’ (read: pornography), virtual currencies are showing their value, which is nothing to scoff at; <a href="http://www.businessinsider.com/the-producer-of-middle-men-talks-to-us-about-how-pornographers-invented-e-commerce-2010-8">pornography gave us E-commerce</a>. Years ago I used to joke with friends and co-workers saying gaming and pornography drove technology.</p>
+<p>These issues will be solved over time as proper regulation, consumer protection and volatility all fall into line. What most people don’t seem to understand is that the current incumbents in the space aren’t just going to roll over and die. If cryptocurrencies break into the mainstream you will find traditional banking and payment processors will just enable them as payment options. Why wouldn’t they? They added credit cards, debit cards, Swift and even explored some of their own payment technologies like Interac here in Canada. At some point, assuming cryptocurrencies survive, your bank will offer a Bitcoin, Litecoin, Dogecoin or similar account, just like they offer you a CAD, USD or EUR account. IMHO this is what will define mainstream adoption. All the current virtual currency players at the time will either be acquired (Coinbase, BitPay, CoinKite) by large traditional institutions looking to move into the space or go out of business. This is what the VC firms are betting on. Either a large IPO or a large acquisition; one that gets them 10x return or greater. Unfortunately in this scenario, and at this time, there is very little room for a $500,000 wallet from Canada. There was room back in 2010, just not now.</p>
+<p>I’m not disappointed though, and in fact I think I dodged a bullet. When you break it down to its fundamentals paying with Bitcoin is the same as paying with dollars or trading bartered goods (like a chicken). What most people overlooked initially, but are now coming around to, is the core piece of technology that enables cryptocurrencies, the blockchain.</p>
+<p>The second half of 2014 will be interesting to see what materializes with the various technologies using cryptocurrency blockchains for other things.</p>
+<p><strong>Update: </strong><a href="http://www.coindesk.com/visa-exec-network-support-bitcoin-payments/">Visa Exec: Our Network Could Support Bitcoin Payments</a></p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2014/06/bitcoin-litecoin-dogecoin-coinin/">Bitcoin, Litecoin, Dogecoin, and CoinIn</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2014/06/bitcoin-litecoin-dogecoin-coinin/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Google I/O Registration 2014</title>
+		<link>https://stancarney.co/2014/04/google-io-registration-2014/</link>
+					<comments>https://stancarney.co/2014/04/google-io-registration-2014/#comments</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Mon, 21 Apr 2014 21:13:29 +0000</pubDate>
+				<category><![CDATA[World Wide Web]]></category>
+		<category><![CDATA[Google]]></category>
+		<category><![CDATA[Google I/O]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=337</guid>
+
+					<description><![CDATA[<p>This year marks a significant change (improvement) on how Google I/O registration took place. Google originally announced a registration window in early April but was later clarified to be from April 15th to the 18th. Individuals wanting to register would enter into a lottery, which is scheduled to take place sometime today. The old system [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2014/04/google-io-registration-2014/">Google I/O Registration 2014</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>This year marks a significant change (improvement) on how Google I/O registration took place. Google originally announced a registration window in early April but was later clarified to be from April 15th to the 18th. Individuals wanting to register would enter into a lottery, which is scheduled to take place sometime today. The old system of ctrl + r or waiting for a spinner to &#8216;select an available ticket&#8217; for you has been plagued with issues because of the large number of people wanting to register. In 2012 the registration process was completed within minutes.</p>
+<p><span id="more-337"></span></p>
+<p>In 2013 I managed to get a ticket three times but Google Wallet was having issues.</p>
+<div id="attachment_377" style="width: 263px" class="wp-caption alignright"><a href="https://stancarney.co/wp-content/uploads/2014/04/qjhdwv5.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-377" class="size-medium wp-image-377" src="https://stancarney.co/wp-content/uploads/2014/04/qjhdwv5-253x300.jpg" alt="Google I/O 2013 wasn't a good year for me. This happened 3 times." width="253" height="300" /></a><p id="caption-attachment-377" class="wp-caption-text">Google I/O 2013 wasn&#8217;t a good year for me. This happened 3 times.</p></div>
+<p>The first day of this years registration (Tuesday) I was away from my computer most of the day but I did manage to find time to register. After seeing the registration process, which was straight forward, I had wondered why Google had delayed the registration process for so long. In previous years the registration took place earlier in the year. If that is all they had planned it seemed odd that they would need to take the extra time that they did.</p>
+<p>I didn&#8217;t get back in front of my computer until about 11PM that evening; and sure enough, there were some <a href="http://goo.gl/">Google URL shortened</a> links scattered around on <a href="https://developers.google.com/">Google Developers</a>&#8216; website. Following the URL took you to an in-browser text-based game in which you appear to be piloting a space ship known as the Icarus Odessa.</p>
+<p>If you followed an <em>already claimed</em> URL you would get a message stating your credentials were invalid but you were still allowed to continue with the game if you wanted to. A few steps into the game it mentions a code that gives you access to <a title="Moscone Center" href="https://www.google.com/maps/place/37°46'58.4&quot;N+122°24'11.9&quot;W/@37.7828889,-122.4033056,15z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0">37.7829° N, 122.4033° W, Earth</a>, which happens to be the Moscone Center. Interesting&#8230; but it was late and I was tired.</p>
+<div id="attachment_343" style="width: 251px" class="wp-caption alignright"><a href="https://stancarney.co/wp-content/uploads/2014/04/Icarus-Odessa-Aw-Snap.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-343" class="size-medium wp-image-343 " src="https://stancarney.co/wp-content/uploads/2014/04/Icarus-Odessa-Aw-Snap-241x300.png" alt="Aw, snap! I'm sorry but I can't successfully guide you through this space adventure. Looks like your credentials are not valid for the specific lead your found. All is not lost! There are more leads out there you might have valid credentials for. Come back if you find any..." width="241" height="300" /></a><p id="caption-attachment-343" class="wp-caption-text">Already used message</p></div>
+<p>Wednesday was also a very busy day for me but I had time in the morning to do some more digging. By this time all the <span style="line-height: 1.5em;">initial plain text URL&#8217;s sprinkled throughout the Google Developers site, which were mostly contained to the Google Analytic&#8217;s pages, were returning the &#8216;Aw, snap!&#8217; message, indicating somebody had already been there. The Google URL shortner provides basic </span>statistics<span style="line-height: 1.5em;"> if you append <strong>.info</strong> to the end of the URL, allowing you to see when it was first accessed etc&#8230; I started plugging away to see if I could see a pattern of when the plain text URL&#8217;s were made available; I also started to think of where they might place the next batch of URL&#8217;s.</span></p>
+<p><span style="line-height: 1.5em;">It didn&#8217;t take long before people started to post on Google+ about writing/using crawlers to search pages looking for goo.gl URLs. Around the same time a collection of new videos appeared on the Google Developers Youtube Channel. I watched the first video on design but had exhausted my available time to explore and had to move onto other things. 30 or so minutes later I had a small </span>opportunity<span style="line-height: 1.5em;"> to dig around on my phone and sure enough there was mention in another Google+ post that the third video in the newly posted series contained an annotation with a now coveted goo.gl link to the Icarus Odesa! Crap&#8230;</span></p>
+<div id="attachment_339" style="width: 310px" class="wp-caption aligncenter"><a href="https://stancarney.co/wp-content/uploads/2014/04/Youtube-Annotations.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-339" class="size-medium wp-image-339" src="https://stancarney.co/wp-content/uploads/2014/04/Youtube-Annotations-300x290.png" alt="Google Developers video embedded with Google I/O registration URL." width="300" height="290" srcset="https://stancarney.co/wp-content/uploads/2014/04/Youtube-Annotations-300x290.png 300w, https://stancarney.co/wp-content/uploads/2014/04/Youtube-Annotations-768x743.png 768w, https://stancarney.co/wp-content/uploads/2014/04/Youtube-Annotations.png 1011w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-339" class="wp-caption-text">Google Developers Youtube video with an embedded Google I/O registration URL</p></div>
+<p>My phone wouldn&#8217;t display the annotations on the video (starting at 0:46), like the screen capture shown above, but I was able to fumble around on my phone and  pull out the annotations by manipulating the URL for this video:</p>
+<p><iframe loading="lazy" title="Google Design Minutes — Glass: Make it simple" width="500" height="281" src="https://www.youtube.com/embed/L-lMnhiAzEw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+<p>into: <a href="https://www.youtube.com/annotations_invideo?video_id=L-lMnhiAzEw">https://www.youtube.com/annotations_invideo?video_id=L-lMnhiAzEw</a> which displays all the relevant annotations. Note the &lt;TEXT&gt;http://goo.gl/HACUad&lt;/TEXT&gt; in the XML.</p>
+<p>Unfortunately, I was still a few hours away from being able to dedicate any block of time or effort to finding an unused link and things appeared to be escalating quickly. In a few hours, the links went from plain text present on a web page to embedded annotations in videos. Sure enough by the time I was able to check again (Wednesday evening) the bulk of new codes were showing up as &#8216;CAPTCHA&#8217; styled text present in existing images on the Google Developer site.</p>
+<div id="attachment_347" style="width: 310px" class="wp-caption alignright"><a href="https://stancarney.co/wp-content/uploads/2014/04/games-matcher.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-347" class="size-medium wp-image-347" src="https://stancarney.co/wp-content/uploads/2014/04/games-matcher-300x168.png" alt="games-matcher" width="300" height="168" /></a><p id="caption-attachment-347" class="wp-caption-text">Note the vertically flipped goo.gl/GmfUD1 hidden in the image.</p></div>
+<p>By this time several HTTP crawlers had been created by individuals looking to secure a ticket to Google I/O ahead of today&#8217;s lottery. The crawlers used various tools and libraries to download images, web pages, and Youtube video annotations looking for more codes. My initial reaction was to stay away from automated crawlers; they require configuration, as well as some level of human intervention to inspect the images (where most of the codes seemed to be).</p>
+<p>Instead, I resorted to several hours of pulling sitemaps and coming up with a proprietary system of scanning through images, which was 90% luck and 10% burning my eyes out of my head well into the evening. I was able to find two unused codes, I used one and sat back and watched how long it took for the other code to be used. My code was accessed 11 minutes after I used it, the other code took several hours before it was discovered.</p>
+<p>Having already discovered a code, I didn&#8217;t pay much attention to any of the noise on Thursday; mostly people searching, asking for help, and begging for codes. I kept an eye on it throughout the day, but it wasn&#8217;t until somebody posted on the Google I/O community, about a <a href="https://plus.google.com/u/0/+MikeJarvisW/posts/Txizoa5uECd">string of text</a> now appearing on the menu bar of the Google Developers Site, that I started to pay attention.</p>
+<div id="attachment_341" style="width: 308px" class="wp-caption aligncenter"><a href="https://stancarney.co/wp-content/uploads/2014/04/Base64-Encoded-SHA1-hash.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-341" class="size-medium wp-image-341 " src="https://stancarney.co/wp-content/uploads/2014/04/Base64-Encoded-SHA1-hash-298x300.png" alt="Base64 encoded SHA1 hash of a Google I/O registration URL" width="298" height="300" /></a><p id="caption-attachment-341" class="wp-caption-text">Base64 encoded SHA1 hash of a Google I/O registration URL. iEJ/aFz+jaDOaJon72bu4eL9FUc= rtxZRawESMtN4eLIyCnwg+bjaqE= EswtC4h5UKXQVcClfN/r3QfzS4A=</p></div>
+<p>Reloading the page several times reveals there are actually three different values which happen to look like base64 encoded strings. Viewing the page source you see:</p>
+<script src="https://gist.github.com/11150361.js"></script><noscript><pre><code class="language-text text">&lt;!&ndash; It&rsquo;s a secret to everybody. &ndash;&gt;
+&lt;li style=&rdquo;color: #898989&Prime; class=&rdquo;s&rdquo;&gt;&lt;!&ndash; ha! begin digest &ndash;&gt;EswtC4h5UKXQVcClfN/r3QfzS4A=&lt;/li&gt;</code></pre></noscript>
+<p>The thing to note is the CSS class <strong>s</strong> and the comment of <strong>ha!</strong> looks a lot like sha1. Maybe it was a Base64 encoded SHA1 hash?</p>
+<p>I&#8217;ve been involved with Bitcoin for years and as a result I was in possession of several old GPU mining rigs that have since been re-purposed to mine Litecoin, Dogecoin and others. Unfortunately I didn&#8217;t have <a href="http://hashcat.net/">oclHashcat</a> installed on either machine in order to attempt to crack the above Base64 encoded SHA1 hashes. This cost me somewhere between 30 minutes and 1 hour fighting with AMD Catalyst driver issues before I was able to successfully crack the three codes.</p>
+<script src="https://gist.github.com/11153181.js?file=9KK0k0"></script><noscript><pre><code class="language- ">{SHA}rtxZRawESMtN4eLIyCnwg+bjaqE=:goo.gl/9KK0k0
+                                             
+Session.Name...: oclHashcat
+Status.........: Cracked
+Input.Mode.....: Mask (goo.gl/?1?1?1?1?1?1) [13]
+Hash.Target....: {SHA}rtxZRawESMtN4eLIyCnwg+bjaqE=
+Hash.Type......: SHA-1(Base64), nsldap, Netscape LDAP SHA
+Time.Started...: Mon Apr 21 13:02:36 2014 (1 min, 52 secs)
+Speed.GPU.#1...: 57295.8 kH/s
+Speed.GPU.#2...: 56429.1 kH/s
+Speed.GPU.#3...: 56816.0 kH/s
+Speed.GPU.#4...: 57565.8 kH/s
+Speed.GPU.#*...:   228.1 MH/s
+Recovered......: 1/1 (100.00%) Digests, 1/1 (100.00%) Salts
+Progress.......: 22388416512/56800235584 (39.42%)
+Rejected.......: 0/22388416512 (0.00%)
+HWMon.GPU.#1...: 49% Util, 67c Temp, 47% Fan
+HWMon.GPU.#2...: 49% Util, 67c Temp, 45% Fan
+HWMon.GPU.#3...: 49% Util, 75c Temp, 34% Fan
+HWMon.GPU.#4...: 50% Util, 72c Temp, 46% Fan</code></pre></noscript>
+<script src="https://gist.github.com/11153181.js?file=Oof8mG"></script><noscript><pre><code class="language- ">{SHA}EswtC4h5UKXQVcClfN/r3QfzS4A=:goo.gl/Oof8mG
+                                             
+Session.Name...: oclHashcat
+Status.........: Cracked
+Input.Mode.....: Mask (goo.gl/?1?1?1?1?1?1) [13]
+Hash.Target....: {SHA}EswtC4h5UKXQVcClfN/r3QfzS4A=
+Hash.Type......: SHA-1(Base64), nsldap, Netscape LDAP SHA
+Time.Started...: Mon Apr 21 13:07:11 2014 (4 mins, 13 secs)
+Speed.GPU.#1...: 55495.2 kH/s
+Speed.GPU.#2...: 57714.4 kH/s
+Speed.GPU.#3...: 55172.4 kH/s
+Speed.GPU.#4...: 53764.1 kH/s
+Speed.GPU.#*...:   222.1 MH/s
+Recovered......: 1/1 (100.00%) Digests, 1/1 (100.00%) Salts
+Progress.......: 50703319040/56800235584 (89.27%)
+Rejected.......: 0/50703319040 (0.00%)
+HWMon.GPU.#1...: 46% Util, 67c Temp, 47% Fan
+HWMon.GPU.#2...: 46% Util, 67c Temp, 49% Fan
+HWMon.GPU.#3...: 46% Util, 77c Temp, 35% Fan
+HWMon.GPU.#4...: 47% Util, 73c Temp, 49% Fan
+</code></pre></noscript>
+<script src="https://gist.github.com/11153181.js?file=pikTTi"></script><noscript><pre><code class="language- ">{SHA}iEJ/aFz+jaDOaJon72bu4eL9FUc=:goo.gl/pikTTi
+                                             
+Session.Name...: oclHashcat
+Status.........: Cracked
+Input.Mode.....: Mask (goo.gl/?1?1?1?1?1?1) [13]
+Hash.Target....: {SHA}iEJ/aFz+jaDOaJon72bu4eL9FUc=
+Hash.Type......: SHA-1(Base64), nsldap, Netscape LDAP SHA
+Time.Started...: Mon Apr 21 12:58:18 2014 (2 mins, 18 secs)
+Speed.GPU.#1...: 43512.7 kH/s
+Speed.GPU.#2...: 55248.5 kH/s
+Speed.GPU.#3...: 55055.4 kH/s
+Speed.GPU.#4...: 54993.5 kH/s
+Speed.GPU.#*...:   208.8 MH/s
+Recovered......: 1/1 (100.00%) Digests, 1/1 (100.00%) Salts
+Progress.......: 27599413248/56800235584 (48.59%)
+Rejected.......: 0/27599413248 (0.00%)
+HWMon.GPU.#1...: 46% Util, 67c Temp, 49% Fan
+HWMon.GPU.#2...: 46% Util, 69c Temp, 47% Fan
+HWMon.GPU.#3...: 46% Util, 77c Temp, 35% Fan
+HWMon.GPU.#4...: 47% Util, 73c Temp, 48% Fan</code></pre></noscript>
+<p>Initially I thought the driver issue was related to using the Netscape LDAP SHA hash type so when I originally tried to crack them I converted the decoded Base64 strings to hexidecimal first.</p>
+<p>Appending <strong>.info</strong> to the three cracked goo.gl URL&#8217;s it turns out all three codes were already discovered and used by the time I noticed the Google+ post. Considering I already had a code, it was purely for fun anyway. I really do enjoy this type of thing.</p>
+<p>Overall I think it was a definite improvement on the registration process and I&#8217;m looking forward to attending the conference! For those who did not find an unused code, good luck in today&#8217;s lottery!</p>
+<p><strong>Update:</strong> Even though the lottery for Google I/O tickets happened on Monday (April 21, 2014) Google was still planting new Icarus Odessa links as of Tuesday. See <a title="Blake Caldwell's Blog" href="http://blakecaldwell.net/blog/2014/4/23/solving-a-2014-google-io-secret-invite-puzzle.html">Blake Caldwell&#8217;s blog</a> for more details.</p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2014/04/google-io-registration-2014/">Google I/O Registration 2014</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2014/04/google-io-registration-2014/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Virtual Currency Application Security</title>
+		<link>https://stancarney.co/2014/04/virtual-currency-application-security/</link>
+					<comments>https://stancarney.co/2014/04/virtual-currency-application-security/#comments</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Fri, 11 Apr 2014 18:43:19 +0000</pubDate>
+				<category><![CDATA[Bitcoin]]></category>
+		<category><![CDATA[Dogecoin]]></category>
+		<category><![CDATA[Litecoin]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Security]]></category>
+		<category><![CDATA[Virtual Currency]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<category><![CDATA[Advise]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=330</guid>
+
+					<description><![CDATA[<p>In the last few months I&#8217;ve been approached by several different groups in the virtual currency space asking for my input on various things; mostly because of my involvement in payment systems over the last 15 years, but also because I&#8217;ve been involved with Bitcoin almost from its beginning. My advice has spanned technical, business, [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2014/04/virtual-currency-application-security/">Virtual Currency Application Security</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>In the last few months I&#8217;ve been approached by several different groups in the virtual currency space asking for my input on various things; mostly because of my involvement in payment systems over the last 15 years, but also because I&#8217;ve been involved with Bitcoin almost from its beginning. My advice has spanned technical, business, and even legal issues pertaining to virtual currencies; unfortunately, security hasn&#8217;t really been given the attention it needs.</p>
+<p><span id="more-330"></span></p>
+<p>The start of 2014, and much of Bitcoin&#8217;s existence, has been plagued by security breeches with several Bitcoin related sites falling victim to thefts. As a result I&#8217;ve decided to put together a reasonably short document on securing virtual currency applications. It is based on my experience from working at banks and payment processors since the late 90&#8217;s and is centred around existing standards and policies such as <a href="https://www.pcisecuritystandards.org/">PCI</a>, <a href="https://www.owasp.org/">OWASP</a>, <a href="http://csrc.nist.gov/">NIST</a>, etc&#8230;. The information has always been out there but application developers (sadly) aren&#8217;t normally thinking about security. &#8216;Throwing a firewall&#8217; in front of it just won&#8217;t cut it; especially when it means a compromise could cost you the contents of your hot wallet and your dignity, if you are lucky.</p>
+<p>It is titled <a title="Virtual Currency Application Security" href="http://stancarney.github.io/virtualcurrencyapplicationsecurity/">Virtual Currency Application Security</a> and it is available on <a href="https://github.com/stancarney/virtualcurrencyapplicationsecurity">Github</a>. It is a work in progress and will evolve, please feel free to provide feedback.</p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2014/04/virtual-currency-application-security/">Virtual Currency Application Security</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2014/04/virtual-currency-application-security/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>function([&#8216;redfall&#8217;, &#8216;vogogo&#8217;], next) { //&#8230; };</title>
+		<link>https://stancarney.co/2014/01/functionredfall_technologies-vogogo-next/</link>
+					<comments>https://stancarney.co/2014/01/functionredfall_technologies-vogogo-next/#respond</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Fri, 17 Jan 2014 18:03:06 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Redfall]]></category>
+		<category><![CDATA[startup]]></category>
+		<category><![CDATA[vogogo]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=323</guid>
+
+					<description><![CDATA[<p>December 21st, 2006 is when I turned in my key card at Neteller, stepping down as lead architect, to begin working with a group that would eventually form the majority of what Redfall Technologies Inc is today. Over the last 7 years I&#8217;ve had the opportunity to work with tremendous people doing what I enjoy. [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2014/01/functionredfall_technologies-vogogo-next/">function([&#8216;redfall&#8217;, &#8216;vogogo&#8217;], next) { //&#8230; };</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>December 21st, 2006 is when I turned in my key card at Neteller, stepping down as lead architect, to begin working with a group that would eventually form the majority of what Redfall Technologies Inc is today. Over the last 7 years I&#8217;ve had the opportunity to work with tremendous people doing what I enjoy.</p>
+<p>As of January 10th, 2014 I&#8217;ve finalized my departure as a director and the CTO of Redfall Technologies to focus on other things. I&#8217;ve been working with Redfall over the last while to ensure a seamless transition. I still believe in Vogogo and will continue on as a Redfall shareholder and provide support whenever needed.</p>
+<p>I wish Redfall all the best in the future.</p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2014/01/functionredfall_technologies-vogogo-next/">function([&#8216;redfall&#8217;, &#8216;vogogo&#8217;], next) { //&#8230; };</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2014/01/functionredfall_technologies-vogogo-next/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Redfall Technologies Inc.</title>
+		<link>https://stancarney.co/2013/11/redfall-technologies-inc/</link>
+					<comments>https://stancarney.co/2013/11/redfall-technologies-inc/#respond</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Wed, 13 Nov 2013 23:57:31 +0000</pubDate>
+				<category><![CDATA[Startup]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<category><![CDATA[Redfall]]></category>
+		<category><![CDATA[startup]]></category>
+		<category><![CDATA[vogogo]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=286</guid>
+
+					<description><![CDATA[<p>It has almost been a year since I&#8217;ve done a blog post and months since I&#8217;ve posted on Vogogo&#8217;s blog. Why? In July of this year Redfall Technologies received a $1,000,000 commitment from AVAC to continue to execute it&#8217;s business strategy. Then in September Redfall announced it was going public on the Toronto Venture Exchange through a Capital Pool [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2013/11/redfall-technologies-inc/">Redfall Technologies Inc.</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>It has almost been a year since I&#8217;ve done a blog post and months since I&#8217;ve posted on <a title="Vogogo's Blog" href="https://www.vogogo.com/blog/">Vogogo&#8217;s blog</a>. Why? In July of this year Redfall Technologies received a <a title="Redfall Technologies" href="http://www.avacltd.com/about/news/311335">$1,000,000 commitment</a> from <a href="http://www.avacltd.com/">AVAC</a> to continue to execute it&#8217;s business strategy. Then in September Redfall <a href="http://www.stockwatch.com/News/Item.aspx?bid=Z-C:VCC-2104649&amp;symbol=VCC&amp;region=C">announced</a> it was going public on the Toronto Venture Exchange through a Capital Pool Corporation (CPC) merger. Since the beginning of this year there has been significant work done by a lot of people to make this happen, all while keeping <a title="Vogogo" href="https://www.vogogo.com">Vogogo</a> running smoothly and continuing to grow.</p>
+<p><span id="more-286"></span></p>
+<p>With all of this I&#8217;ve made the decision not continue on as a director of the new public company once the merger is complete. Something <a href="http://www.stockwatch.com/News/Item.aspx?bid=Z-C:*MKTSHEL-2105009&amp;symbol=*MKTSHEL&amp;region=C">Stock Watch</a> pointed out:</p>
+<blockquote><p>The company&#8217;s three largest shareholders, each with 27.2 per cent of Redfall&#8217;s outstanding shares, are Geoff Gordon, Stan Carney and a privately held company called Say Marketing and Consulting Ltd. [&#8230;] Mr. Carney, currently chief technology officer of Redfall, will have a smaller role, without a directorship. According to his blog, he is an &#8220;idea developer&#8221; who once specialized in online payment systems, but, &#8220;Now I pretty much do anything I want.&#8221;</p></blockquote>
+<p>It is awesome they read my blog but the &#8220;Now I pretty much do anything I want&#8221; didn&#8217;t really come across quite how I intended (who knew). Hopefully once the merger is complete I can get back into the swing of things with regular posts again.</p>
+<p>I also need to clarify the &#8220;About Me&#8221; section :).</p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2013/11/redfall-technologies-inc/">Redfall Technologies Inc.</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2013/11/redfall-technologies-inc/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Inexpensive Explainer Videos</title>
+		<link>https://stancarney.co/2013/01/inexpensive-explainer-videos/</link>
+					<comments>https://stancarney.co/2013/01/inexpensive-explainer-videos/#comments</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Wed, 23 Jan 2013 05:06:54 +0000</pubDate>
+				<category><![CDATA[Marketing]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<category><![CDATA[A/B testing]]></category>
+		<category><![CDATA[explainer video]]></category>
+		<category><![CDATA[seo]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=237</guid>
+
+					<description><![CDATA[<p>I wanted to A/B test a new home page on Vogogo featuring an explainer video. Having been involved only loosely in the process before, it didn&#8217;t seem like there were many options outside of using companies that specialized in the creation of explainer videos. Unfortunately, they all seem to fancy themselves as modern day Donald [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2013/01/inexpensive-explainer-videos/">Inexpensive Explainer Videos</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>I wanted to A/B test a new home page on Vogogo featuring an explainer video. Having been involved only loosely in the process before, it didn&#8217;t seem like there were many options outside of using companies that specialized in the creation of explainer videos. Unfortunately, they all seem to fancy themselves as modern day <a href="http://www.amctv.com/shows/mad-men/cast/don-draper">Donald Draper&#8217;s</a> who want thousands of dollars, and months of design and review, to create just one video. A video that you have no idea how it will impact conversions until you release it into the wild, making the whole process seem rather dated compared to the rest of the web.</p>
+<p><span id="more-237"></span></p>
+<p>As a result I started to look at freelance options and decided to see &#8220;where the bottom&#8221; was on getting an inexpensive explainer video created in a few weeks. I decided to post a job on <a href="https://www.elance.com/">Elance</a> with a budget of $500-$1000.</p>
+<blockquote><p>Looking for the design and creation of an online explainer video for an invoicing and payment website that enables small businesses and professionals to easily collect payment online. The video will explain the value of the website to potential new customers prior to them signing up.</p>
+<p>&#8211; Animation preferred<br />
+&#8211; Approximately 1 minute in duration<br />
+&#8211; We will assist with the production of the script<br />
+&#8211; Candidate responsible for concept, storyboard, animations and voice over (native English speaker)</p>
+<p>Please provide examples of prior work.</p></blockquote>
+<p>I intentionally kept it short and to the point. I ended up with 23 proposals from individuals and companies of various quality and experience over a few days. I picked a candiate who had what I thought was a pretty good portfolio and an animation style I liked. I say &#8216;thought&#8217; as I&#8217;m no expert. He wanted $650.00. Unfortunately, neither him nor I were script writers and, &#8220;We will assist with the production of the script&#8221;, wasn&#8217;t particularly clear so I ended up having to pay an additional $100 for a script writer, which he arranged, and sent him the following points:</p>
+<ul>
+<li>Target: Small business owners, recreational sports teams, daycares, partnerships or other types of organizations who want to collect payments online.</li>
+<li>Easy to use: Provide your corporate bank account (the numbers provided at the bottom of a cheque) and verify a small electronic deposit we make into your account a few days later.</li>
+<li>Simple to sign up: signup and explore without having recurring fees. Fees apply to transactions only.</li>
+<li>Available payment options: credit card and electronic fund transfer</li>
+<li>API to integrate Vogogo into websites and other software</li>
+<li>Accept Credit Cards without difficult compliance issues.</li>
+<li>Ability to create recurring invoices ideally suite for rental payments.</li>
+<li>Maybe the video can end with a call to action. i.e. &#8220;Sign up is quick and simple, what are you waiting for, try it now for free.&#8221;</li>
+</ul>
+<p>A few days later I had a script waiting for me. It had some technical errors, but overall I thought it was pretty good. The script was finalized in a day, and a few days later I picked a voice actor from a list of potential candidates provided. I never asked where the voice actors were from but I got the feeling they were just sub-contracted off of Elance, along with the script writer.</p>
+<p>A few revisions were requested and a post animation script change, with a subsequent re-recording of the voice over was required due to a mistake in the original script on my part. Even with all of that the process took only 4 weeks, from selecting the proposal until I had the finished video. The total price tag was $766.28 after Elance&#8217;s fees. I don&#8217;t think it is going to win any awards but it is having a positive increase on signups right now. I can&#8217;t call the experiment yet as we had to restart it once after discovering some issues with Flowplayer affecting our IE traffic. After moving the video to Youtube, the experiment is still on going.</p>
+<p>Here is the final video, let me know what you think.</p>
+<p>http://www.youtube.com/watch?v=nso4fyNIYoc</p>
+<p>It wasn&#8217;t until a few weeks after that I found this <a href="http://www.quicksprout.com/2012/08/13/how-to-create-an-explainer-video-that-converts/">explainer video article</a> by Neil Patel on his blog <a href="http://www.quicksprout.com">Quick Sprout</a> that gives a break down on creating a good explainer video. I like to think I was pretty close but I might have got lucky on the script writing. Either way the plan is to A/B test it against another inexpensive video, with more attention paid towards the script.</p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2013/01/inexpensive-explainer-videos/">Inexpensive Explainer Videos</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2013/01/inexpensive-explainer-videos/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Simple Django Asynchronous Processing</title>
+		<link>https://stancarney.co/2013/01/simple-django-asynchronous-processing/</link>
+					<comments>https://stancarney.co/2013/01/simple-django-asynchronous-processing/#respond</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Thu, 17 Jan 2013 04:52:05 +0000</pubDate>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[asynchronous]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=181</guid>
+
+					<description><![CDATA[<p>Django has several asynchronous processing options available like Celery, Chronograph and Django Tasks. They all offer lots of features but if you want something simpler, maybe just the ability to send a webhook on the submission of a form without having the user wait around for the webhook to complete (or the remote site timeout), it seems [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2013/01/simple-django-asynchronous-processing/">Simple Django Asynchronous Processing</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>Django has several asynchronous processing options available like <a title="Celery" href="http://celeryproject.org/">Celery</a>, <a title="Chronograph" href="https://bitbucket.org/wnielson/django-chronograph/">Chronograph</a> and <a title="Django Tasks" href="http://code.google.com/p/django-tasks/">Django Tasks</a>. They all offer lots of features but if you want something simpler, maybe just the ability to send a webhook on the submission of a form without having the user wait around for the webhook to complete (or the remote site timeout), it seems like overkill.</p>
+<p>As a result I came up with the following simple Django asynchronous processing application. It was written to work with Django 1.3 but works with Django 1.4&#8217;s, sans the new <a title="Django select for update" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#django.db.models.query.QuerySet.select_for_update">select_for_update</a> functionality.</p>
+<p><span id="more-181"></span></p>
+<p>There is just one file called async_runner.py. It&#8217;s a Django command that queries the database frequently (every 1/2 a second + execution time) looking for new unexecuted Tasks, it locks the row at the database level, executes the embedded Python script via exec(task.script) and marks the row as executed before continuing. If the Task crashes it attempts to mark it as executed so it won&#8217;t crash again. If 3 consecutive tasks crash, the time in which the loop sleeps increases.</p>
+<p>One or many async_runners can be started via ./manage.py async_runner start via the console or init scripts.</p>
+<script src="https://gist.github.com/4544983.js?file=async_runner.py"></script><noscript><pre><code class="language-python python">import logging
+from time import sleep
+
+from django.core.management.base import BaseCommand
+from django.db import transaction
+from apps.async.models import Task
+
+
+log = logging.getLogger(&quot;jobs&quot;)
+
+class Command(BaseCommand):
+    help = &quot;&quot;&quot;
+    Use with the following options:
+        - start
+        - stop
+    &quot;&quot;&quot;
+
+    EXCEPTION_THRESHOLD = 3
+
+    def handle(self, *args, **options):
+        if args:
+            try:
+                getattr(self, args[0])(list(args[1:]))
+            except AttributeError:
+                print &quot;\nInvalid option supplied.&quot;
+                print self.use
+        else:
+            print self.help
+
+    def start(self, args):
+        exception_count = 0
+        stop = False
+        current_task_id = None
+        while not stop:
+            try:
+                with transaction.commit_on_success():
+                    tasks = Task.objects.raw(&#039;SELECT * FROM async_task at WHERE at.executed = false ORDER BY at.id FOR UPDATE LIMIT 1&#039;)
+                    if len(list(tasks)):
+                        task = tasks[0]
+                        log.info(&quot;Running %s&quot; % task.script)
+                        current_task_id = task.id
+                        if task.script == &#039;ASYNC_STOP&#039;:
+                            stop = True
+                        else:
+                            exec(task.script)
+                            exception_count = 0
+                        task.executed = True
+                        task.save()
+                    else:
+                        current_task_id = None
+            except:
+                log.exception(&#039;Async Crashed&#039;)
+                exception_count += 1
+
+                # we need to mark the failed task as executed in another DB transaction.
+                if current_task_id:
+                    with transaction.commit_on_success():
+                        tasks = Task.objects.raw(&#039;SELECT * FROM async_task at WHERE at.id = %s and at.executed = false ORDER BY at.id FOR UPDATE&#039;, [current_task_id])
+                        if len(list(tasks)):
+                            task = tasks[0]
+                            task.executed = True
+                            task.save()
+
+            if exception_count &gt;= self.EXCEPTION_THRESHOLD:
+                sleep(10)
+            else:
+                sleep(0.5)
+
+    def stop(self, args):
+        Task.objects.create(script=&#039;ASYNC_STOP&#039;)
+        </code></pre></noscript>
+<script src="https://gist.github.com/4544983.js?file=models.py"></script><noscript><pre><code class="language-python python">from django.db import models
+from apps.fields import BigAutoField, BigForeignKey
+
+class Task(models.Model):
+    id = BigAutoField(primary_key=True)
+    script = models.TextField()
+    executed = models.BooleanField(default=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+
+</code></pre></noscript>
+<p>Code wishing to execute things asynchronously would create a new Task object and save it:</p>
+<p><em>Task.objects.create(script=&#8221;from myapp import api; api.send_webhook_notifications([%s])&#8221; % user.id)</em></p>
+<p>It isn&#8217;t really suited for the heavy lifting or complicated processing that something like Celery is capable of but for simple things, like sending a webhook in which the initiating code just calls and forgets, it works quite well.</p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2013/01/simple-django-asynchronous-processing/">Simple Django Asynchronous Processing</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2013/01/simple-django-asynchronous-processing/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Posterous to WordPress</title>
+		<link>https://stancarney.co/2012/12/posterous-to-wordpress/</link>
+					<comments>https://stancarney.co/2012/12/posterous-to-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Sat, 08 Dec 2012 22:23:32 +0000</pubDate>
+				<category><![CDATA[Marketing]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=183</guid>
+
+					<description><![CDATA[<p>I finally got around to moving from Posterous to a self hosted WordPress instance. The future of Posterous is unclear, since they were aquried by Twitter, but that really didn&#8217;t influence my decision to move. My main reason for moving are the limitations of Posterous such as the disallowing of embedded Javascript and not having [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2012/12/posterous-to-wordpress/">Posterous to WordPress</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>I finally got around to moving from Posterous to a self hosted WordPress instance. The future of Posterous is unclear, since they were aquried by Twitter, but that really didn&#8217;t influence my decision to move. My main reason for moving are the limitations of Posterous such as the disallowing of embedded Javascript and not having the ability to do sitemaps. Initially this wasn&#8217;t a big deal, I just wanted something quick to set up. At the time I looked at Tumblr, Blogger and WordPress.com and landed on Posterous. <a title="Matt Warren" href="http://mattwarren.co/">Matt Warren</a> had set up the WordPress instance we use at <a title="Vogogo" href="https://www.vogogo.com">Vogogo</a> and, after playing with it for a while, I was sold. The community support and the amount of plugins available set it ahead of pretty much everything else, assuming you want to host it yourself.</p>
+<p><span id="more-183"></span></p>
+<p>This left me wondering how to move a year+ worth of blog posts from Posterous to WordPress. A quick search found a WordPress plugin called <a title="Posterous Importer" href="http://wordpress.org/extend/plugins/posterous-importer/">Posterous Importer</a>. It worked reasonably well but it did leave some content behind, almost arbitrarily, on Posterous&#8217; S3 instance. I should probably download and re-upload that content at some point before shutting down my old Posterous site. I&#8217;m sure I will get to it at some point :).</p>
+<p>&nbsp;</p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2012/12/posterous-to-wordpress/">Posterous to WordPress</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2012/12/posterous-to-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Node.js Application Dashboard</title>
+		<link>https://stancarney.co/2012/10/nodejs-application-dashboard/</link>
+					<comments>https://stancarney.co/2012/10/nodejs-application-dashboard/#respond</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Wed, 03 Oct 2012 06:33:00 +0000</pubDate>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[socketio]]></category>
+		<category><![CDATA[webaudio]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=4</guid>
+
+					<description><![CDATA[<p>We had a few extra monitors kicking around the office and, rather than just letting them sit there, I decided it would be good to use them as dashboards to communicate important information to the rest of the company. I figured that if live production stats were broadcast throughout the office it would help focus [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2012/10/nodejs-application-dashboard/">Node.js Application Dashboard</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>We had a few extra monitors kicking around the office and, rather than just letting them sit there, I decided it would be good to use them as dashboards to communicate important information to the rest of the company. I figured that if live production stats were broadcast throughout the office it would help focus people&#8217;s efforts while at the same time building a sense of unity.</p>
+<p><span id="more-4"></span></p>
+<p>Four low profile VESA monitor mounts ordered off of Amazon, some <a href="http://www.monoprice.com/products/product.asp?c_id=102&amp;cp_id=10231&amp;cs_id=1023102&amp;p_id=2121&amp;seq=1&amp;format=2">HDMI to DVI cables</a> and <a href="http://www.monoprice.com/products/product.asp?c_id=104&amp;cp_id=10428&amp;cs_id=1042802&amp;p_id=5311&amp;seq=1&amp;format=2">mini display port to HDMI adapters</a> off Monoprice, and a pair of Radeon 6950&#8217;s I had from Bitcoin mining last year and I was all set. Setting up Google Analtyics Real Time stats on the first screen was pretty easy, unfortunately I couldn&#8217;t automate everything easily, like navigating to the correct tab. Starting x11vnc on each display solved the problem as it allowed me to connect to the UI and change what I needed to after boot. The <a href="https://wiki.jenkins-ci.org/display/JENKINS/Wall+Display+Plugin">Display Wall plug-in</a> for Jenkins provides a simple build status metric.</p>
+<blockquote class="posterous_short_quote">
+<div class="p_embed p_image_embed"><a href="http://getfile7.posterous.com/getfile/files.posterous.com/temp-2012-10-02/HdHCwqbzgfrBIDgouirsuumhEarFkzDmHBrxkeeviuprzIIDuIrrusjoaByA/IMG_20120929_154850.jpg.scaled1000.jpg"><img loading="lazy" decoding="async" src="https://stancarney.co/wp-content/uploads/2012/10/IMG_20120929_154850.jpg.scaled500-300x225.jpg" alt="Img_20120929_154850" width="500" height="375" /></a></div>
+<p><strong>Testing with fake data</strong></p>
+<div class="p_embed p_image_embed"><a href="https://stancarney.co/wp-content/uploads/2012/10/IMG_20120929_155227.jpg.scaled1000.jpg"><img loading="lazy" decoding="async" src="https://stancarney.co/wp-content/uploads/2012/10/IMG_20120929_155227.jpg.scaled1000-300x225.jpg" alt="Img_20120929_155227" width="500" height="375" /></a></div>
+<p><strong>View from office</strong></p></blockquote>
+<p>After getting the displays plugged in the correct order, always harder than it seems, I sorted out a few scripts that execute when the dashboard user logs in on boot.</p>
+<script src="https://gist.github.com/3824697.js"></script><noscript><pre><code class="language-shell shell">#!/bin/sh
+
+x11vnc -forever -display :0.0 -bg -q -rfbport 5900 -xwarppointer
+x11vnc -forever -display :0.1 -bg -q -rfbport 5901 -xwarppointer
+x11vnc -forever -display :0.2 -bg -q -rfbport 5902 -xwarppointer
+x11vnc -forever -display :0.3 -bg -q -rfbport 5903 -xwarppointer
+
+DISPLAY=:0.0 chrome --kiosk https://www.google.com/analytics/web/?hl=en#realtime/rt-overview/5345wrasf34q34534wfwer234we/ &amp;
+DISPLAY=:0.1 chrome --kiosk http://192.168.6.185:8080/ &amp;
+DISPLAY=:0.2 chrome --kiosk http://redmine:8080/jenkins//plugin/jenkinswalldisplay/walldisplay.html?viewName=All\&amp;jenkinsUrl=http%3A%2F%2Fredmine%3A8080%2Fjenkins%2F &amp;</code></pre></noscript>
+<script src="https://gist.github.com/3824771.js"></script><noscript><pre><code class="language-shell shell">#!/bin/sh
+
+exec /opt/google/chrome/google-chrome --enable-greasemonkey --enable-user-scripts --enable-extensions --user-data-dir=/home/dashboard/.config/google-chrome/$DISPLAY &quot;$@&quot;</code></pre></noscript>
+<p>At first I thought about adding an RSS feed to fetch stats from production but that would require clients to poll for new information. Using something closer to realtime would allow the playing of audible alerts. Some people in the office don&#8217;t have a direct view to the monitors and in reality people will only glance at them once and awhile anyway. I thought playing a subtle sound, like a heartbeat, when an activity such as a signup occured would be a good way to give people a feel of how the running system is performing without having to stare at the screen. A quick Node.js app using <a href="http://jeromeetienne.github.com/webaudio.js/">Webaudio.js</a> and <a href="http://socket.io/">Socket.io</a> and I was done.</p>
+<script src="https://gist.github.com/3825016.js"></script><noscript><pre><code class="language-html html">&lt;html&gt;
+&lt;head&gt;
+	&lt;title&gt;Vogogo Stats&lt;/title&gt;
+	&lt;script src=&quot;//code.jquery.com/jquery-latest.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;/socket.io/socket.io.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;https://raw.github.com/jeromeetienne/webaudio.js/master/build/webaudio.js&quot;&gt;&lt;/script&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css&quot;/&gt;
+
+	&lt;style type=&quot;text/css&quot;&gt;
+		.label {
+			font-size:300%;
+			padding:10px;
+			line-height:100%;
+			text-align:center;
+		}
+		.value {
+			font-size:1500%;
+			padding:10px;
+			line-height:100%;
+			text-align:center;
+		}
+	&lt;/style&gt;
+	
+	&lt;script&gt;
+		document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+			var webaudio = new WebAudio();
+			var signup_sound = webaudio.createSound();
+			signup_sound.load(&#039;/sounds/heartbeat.mp3&#039;, function(){
+				signup_sound.loaded = true;
+			});
+			
+			var bank_added_sound = webaudio.createSound();
+			bank_added_sound.load(&#039;/sounds/car_start.mp3&#039;, function(){
+				bank_added_sound.loaded = true;
+			});
+			
+			var bank_verified_sound = webaudio.createSound();
+			bank_verified_sound.load(&#039;/sounds/car_accelerate.mp3&#039;, function(){
+				bank_verified_sound.loaded = true;
+			});
+			
+			var socket = io.connect(&#039;/&#039;);
+			
+			socket.on(&#039;total_account_holders&#039;, function (data) { update(&#039;total_account_holders&#039;, data); });
+			socket.on(&#039;signups_today&#039;, function (data) { update(&#039;signups_today&#039;, data, signup_sound); });
+			socket.on(&#039;banks_added_today&#039;, function (data) { update(&#039;banks_added_today&#039;, data, bank_added_sound); });
+			socket.on(&#039;banks_verified_today&#039;, function (data) { update(&#039;banks_verified_today&#039;, data, bank_verified_sound); });
+			socket.on(&#039;transactions_today&#039;, function (data) { update(&#039;transactions_today&#039;, data); });
+			socket.on(&#039;cad_today&#039;, function (data) { update(&#039;cad_today&#039;, data); });
+			
+			function update(id, value, sound){ 
+				var element = document.getElementById(id);
+				if(element.innerHTML != &#039;&#039; &amp;&amp; sound &amp;&amp; sound.loaded) sound.play();
+				element.innerHTML = value;
+				disconnected = false;
+			}
+			
+			function getById(id){ return document.getElementById(id);}
+			
+		});
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div class=&quot;row-fluid&quot;&gt;
+		&lt;div class=&quot;span8&quot;&gt;
+			&lt;div id=&quot;total_account_holders&quot; class=&quot;value&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;well label&quot;&gt; Account Holders &lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;span4&quot;&gt;
+			&lt;div id=&quot;signups_today&quot; class=&quot;value&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;well label&quot;&gt; Sign Ups &lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row-fluid&quot;&gt;
+		&lt;div class=&quot;span4&quot;&gt;
+			&lt;div id=&quot;transactions_today&quot; class=&quot;value&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;well label&quot;&gt; Transactions &lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;span4&quot;&gt;
+			&lt;div id=&quot;banks_added_today&quot; class=&quot;value&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;well label&quot;&gt; Banks Added &lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;span4&quot;&gt;
+			&lt;div id=&quot;banks_verified_today&quot; class=&quot;value&quot;&gt;&lt;/div&gt;
+			&lt;div class=&quot;well label&quot;&gt; Banks Verified &lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row-fluid&quot;&gt;
+		&lt;div class=&quot;span12&quot;&gt;
+			&lt;div class=&quot;value&quot;&gt;$&lt;span id=&quot;cad_today&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+			&lt;div class=&quot;well label&quot;&gt; CAD &lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><pre><code class="language-javascript javascript">var nconf = require(&#039;nconf&#039;);
+nconf.argv()
+       .env()
+       .file({ file: &quot;config.json&quot; });
+
+var app = require(&#039;http&#039;).createServer(main)
+	, static = require(&#039;node-static&#039;)
+	, io = require(&#039;socket.io&#039;).listen(app)
+	, pg = require(&#039;pg&#039;)
+	, fs = require(&#039;fs&#039;)
+	, moment = require(&#039;moment&#039;);
+
+app.listen(8000);
+
+var total_account_holders = 0;
+var signups_today = 0;
+var banks_added_today = 0;
+var banks_verified_today = 0;
+var transactions_today = 0;
+var cad_today = 0;
+
+var fileServer = new static.Server(&#039;./public&#039;);
+
+pg.connect(nconf.get(&#039;db_connection&#039;), function(err, client) {
+	client.pauseDrain();
+	setInterval(function() {
+
+		var today = moment().startOf(&#039;day&#039;).format(&#039;YYYY-MM-DD&#039;);
+
+		client.query(&quot;select count(id) as c from accountholder ah where ah.date_deleted is null;&quot;, function(err, result) {
+			if(result &amp;&amp; total_account_holders != result.rows[0].c) {
+				total_account_holders = result.rows[0].c;
+				io.sockets.emit(&#039;total_account_holders&#039;, total_account_holders);
+			}
+		});
+
+		client.query(&quot;select count(id) as c from signups e where e.event_type = &#039;SIGNUP&#039; and e.date &gt;= $1;&quot;, [today], function(err, result) {
+			if (result &amp;&amp; signups_today != result.rows[0].c) {
+				signups_today = result.rows[0].c;
+				io.sockets.emit(&#039;signups_today&#039;, signups_today);
+			}
+		});
+
+		client.query(&quot;select count(id) as c from account a where a.account_type = &#039;BANK&#039; and a.date_created &gt;= $1;&quot;, [today], function(err, result) {
+			if (result &amp;&amp; banks_added_today != result.rows[0].c) {
+				banks_added_today = result.rows[0].c;
+				io.sockets.emit(&#039;banks_added_today&#039;, banks_added_today);
+			}
+		});
+
+		client.query(&quot;select count(id) as c from account a where a.account_type = &#039;BANK&#039; and verified_date &gt;= $1;&quot;, [today], function(err, result) {
+			if (result &amp;&amp; banks_verified_today != result.rows[0].c) {
+				banks_verified_today = result.rows[0].c;
+				io.sockets.emit(&#039;banks_verified_today&#039;, banks_verified_today);
+			}
+		});
+
+		client.query(&quot;select count(id) as c from payment p where p.posting_date &gt;= $1;&quot;, [today], function(err, result) {
+			if (result &amp;&amp; transactions_today != result.rows[0].c) {
+				transactions_today = result.rows[0].c;
+				io.sockets.emit(&#039;transactions_today&#039;, transactions_today);
+			}
+		});
+
+		client.query(&quot;select sum(p.amount) as c from payment p where p.currency = &#039;CAD&#039; and p.posting_date &gt;= $1;&quot;, [today], function(err, result) {
+			if (result &amp;&amp; cad_today != result.rows[0].c) {
+				cad_today = result.rows[0].c;
+				io.sockets.emit(&#039;cad_today&#039;, cad_today);
+			}
+		});
+	}, 100);
+});
+
+io.sockets.on(&#039;connection&#039;, function (socket) {
+	update(socket);
+});
+
+function update(socket) {
+	socket.emit(&#039;total_account_holders&#039;, total_account_holders);
+	socket.emit(&#039;signups_today&#039;, signups_today);
+	socket.emit(&#039;banks_added_today&#039;, banks_added_today);
+	socket.emit(&#039;banks_verified_today&#039;, banks_verified_today);
+	socket.emit(&#039;transactions_today&#039;, transactions_today);
+	socket.emit(&#039;cad_today&#039;, cad_today);
+}
+
+function main(req, res) {
+	req.addListener(&#039;end&#039;, function () {
+        fileServer.serve(req, res);
+    });
+}</code></pre></noscript>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2012/10/nodejs-application-dashboard/">Node.js Application Dashboard</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2012/10/nodejs-application-dashboard/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Google I/O 2012</title>
+		<link>https://stancarney.co/2012/07/google-io-2012/</link>
+					<comments>https://stancarney.co/2012/07/google-io-2012/#respond</comments>
+		
+		<dc:creator><![CDATA[Stan Carney]]></dc:creator>
+		<pubDate>Fri, 06 Jul 2012 05:42:33 +0000</pubDate>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<category><![CDATA[Google]]></category>
+		<category><![CDATA[SFO]]></category>
+		<guid isPermaLink="false">https://stancarney.co/?p=5</guid>
+
+					<description><![CDATA[<p>Last week I attended my first Google I/O conference in San Francisco. I meant to post last week but I have been trying to get caught up on things on the Vogogo front, as well as getting over a cold I came down with right before leaving. I wasn&#8217;t sure what to expect from the [&#8230;]</p>
+<p>The post <a href="https://stancarney.co/2012/07/google-io-2012/">Google I/O 2012</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>Last week I attended my first Google I/O conference in San Francisco. I meant to post last week but I have been trying to get caught up on things on the Vogogo front, as well as getting over a cold I came down with right before leaving. I wasn&#8217;t sure what to expect from the conference so I registered the day before, which was a good thing as when I returned the following morning to have breakfast I was presented with a massive line of people zigzagging throughout the main level of the Moscone Center waiting to go up to the 3rd floor for the keynote. I made the decision to skip breakfast and hop in line in order to get a better seat.</p>
+<p><span id="more-5"></span></p>
+<blockquote class="posterous_short_quote">
+<div class="p_embed p_image_embed"><a href="https://stancarney.co/wp-content/uploads/2012/07/IMG_20120627_090852.jpg.scaled1000.jpg"><img loading="lazy" decoding="async" src="https://stancarney.co/wp-content/uploads/2012/07/IMG_20120627_090852.jpg.scaled1000-300x225.jpg" alt="Img_20120627_090852" width="500" height="375" /></a></div>
+<p><strong>Keynote line day 1</strong></p></blockquote>
+<p>The speakers, content, and production quality of watching the <a title="Google I/O Day 1 Keynote" href="http://www.youtube.com/watch?v=VuC0i4xTyrI">keynote</a> in person, even if you ignore the wing suits and Google Glass, was good although sometimes corny. Unfortunately skipping breakfast to get a better seat wasn&#8217;t the best decision as I was now hungry and was unable to attend the first session, <a title="What's New In Android" href="http://www.youtube.com/watch?v=Yc8YrVc47TI">What&#8217;s New in Android</a>, because of crowding. This was a common theme I found, if you waited to the end of a session, the respectful thing to do, you were screwed for seating on the next. I ended up adjusting my schedule so I either didn&#8217;t attend or stood/sat by the door of the previous session so I could get into the ones I wanted to. Unfortunately others weren&#8217;t as curious. Luckily most (all?) of the sessions are available on the <a title="Google Developers Youtube Channel" href="http://www.youtube.com/user/GoogleDevelopers">Google Developers Youtube channel</a>.</p>
+<p>Between sessions I chatted with whoever I could, it was really refreshing to be able to walk up to someone who had &#8216;Compiled Python to run on a GPU&#8217; on his name tag and being able to chat about things without having to engage in boring small talk first, you could just dive into tech and everybody seemed to like it better. The exhibition area was populated with various products and demonstrations, some interesting, some not so much. In addition to the Google product booths, there were third parties showing off their goods. <a title="Cubify" href="http://cubify.com/">Cubify</a>, <a title="Recon" href="http://reconinstruments.com/">Recon</a> and <a title="Sphero" href="http://www.gosphero.com/">Sphero</a> were interesting.</p>
+<blockquote class="posterous_short_quote">
+<div class="p_embed p_image_embed"><a href="http://getfile8.posterous.com/getfile/files.posterous.com/temp-2012-07-05/acuiupdDnFjHCgibJdgrrwqwkodzFJAoJAlyHiubciqnJewAkqsuFlBljcog/IMG_20120627_121447.jpg.scaled1000.jpg"><img loading="lazy" decoding="async" src="https://stancarney.co/wp-content/uploads/2012/07/IMG_20120627_121447.jpg.scaled500-300x225.jpg" alt="Img_20120627_121447" width="500" height="375" /></a><br />
+<a href="https://stancarney.co/wp-content/uploads/2012/07/IMG_20120627_093320.jpg.scaled1000.jpg"><img loading="lazy" decoding="async" src="https://stancarney.co/wp-content/uploads/2012/07/IMG_20120627_093320.jpg.scaled1000-300x225.jpg" alt="Img_20120627_093320" width="500" height="375" /></a></div>
+<div class="p_see_full_gallery"><a href="https://stancarney.co/google-io-2012">See the full gallery on Posterous</a></div>
+<p><strong>Moscone Center while most people are in sessions.</strong></p></blockquote>
+<p>The social event they had the evening of the first day was ok but completely unnecessary in my opinion; loud music, lots of people etc… I could have just hung out and watched the <a title="Google I/O 2012 Quadcopter Demo" href="https://plus.google.com/photos/110306167502390053404/albums/5761927913908353073/5761927914293313218">quadcopter demo</a> with John Carpenter from <a title="Mob4hire" href="http://www.mob4hire.com/">Mob4hire</a> all night. Unfortunately the loud noise, in addition to my cold, made me loose my voice for the remainder of the conference. Sadly this greatly reduced the value I received as it made it difficult talking to others.</p>
+<p>Most of the sessions were really good with the exception of sessions that included third party vendors. Rather than learning about Google or open standards it became a sales opportunity for them. I can&#8217;t really blame them I guess, but once I observed it a few times I avoided sessions with non-Google speakers just in case.</p>
+<p>The WiFi was terrible. I bought a 500MB US data plan from Rogers for $100 and had to refrain from using my phone on the last day fearing I would run out before my flight home. The biggest disappointment was the announcement of the Google Glass developer kit and me not being eligible as I am not a US resident. Maybe they will open it up next year&#8230;</p>
+<blockquote class="posterous_short_quote">
+<div class="p_embed p_image_embed"><a href="http://getfile2.posterous.com/getfile/files.posterous.com/temp-2012-07-05/pokuwxfnkCbGhGiFtcznDmFvApqosygqazaiDjAtDBDBxFqqjygoIgruEmhJ/IMG_20120627_121422.jpg.scaled1000.jpg"><img loading="lazy" decoding="async" src="https://stancarney.co/wp-content/uploads/2012/07/IMG_20120627_121422.jpg.scaled500-224x300.jpg" alt="Img_20120627_121422" width="500" height="667" /></a></div>
+<p><strong>Google Glass</strong></p></blockquote>
+<p>More <a title="Google I/O 2012 pics" href="https://plus.google.com/u/0/photos/110306167502390053404/albums/5758866405621135905">Google I/O 2012 pics</a></p>
+<a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_blank" rel="nofollow" title="Follow me on Twitter" href="https://twitter.com/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px"><img loading="lazy" decoding="async" alt="twitter" title="Follow me on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-follow synved-social-size-16 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_blank" rel="nofollow" title="Find me on Linkedin" href="https://www.linkedin.com/in/stancarney" style="font-size: 0px;width:16px;height:16px;margin:0;margin-bottom:5px"><img loading="lazy" decoding="async" alt="linkedin" title="Find me on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" width="16" height="16" style="display: inline;width:16px;height:16px;margin: 0;padding: 0;border: none;box-shadow: none" src="https://stancarney.co/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><p>The post <a href="https://stancarney.co/2012/07/google-io-2012/">Google I/O 2012</a> appeared first on <a href="https://stancarney.co">Stan Carney</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://stancarney.co/2012/07/google-io-2012/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:discourse="http://www.discourse.org/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Blog - Ardour</title>
+    <link>https://discourse.ardour.org/c/blog/15</link>
+    <description>Topics in the &#39;Blog&#39; category Articles from the blog</description>
+    
+      <lastBuildDate>Thu, 05 Feb 2026 17:10:20 +0000</lastBuildDate>
+      <atom:link href="https://discourse.ardour.org/c/blog/15.rss" rel="self" type="application/rss+xml" />
+        <item>
+          <title>Ardour 9.0 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 9.0 is now available for Linux, macOS and Window systems. This is a major release for us, seeing several substantive new features that users have asked for over a long period of time. Region FX, clip recording, a touch-sensitive GUI, pianoroll windows, clip editing and more, not to mention dozens of bug fixes, new MIDI binding maps, improved GUI performance on macOS (for most) …</p>
+<p><a href="https://ardour.org/download">Download</a> from the usual place, and read the full (rather long) <a href="https://ardour.org/whatsnew.html">release notes</a> …</p>
+            <p><small>74 posts - 43 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-9-0-released/112897">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-9-0-released/112897</link>
+          <pubDate>Thu, 05 Feb 2026 17:10:20 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-112897</guid>
+          <source url="https://discourse.ardour.org/t/ardour-9-0-released/112897.rss">Ardour 9.0 released</source>
+        </item>
+        <item>
+          <title>Development update: 9.0-rc2 tagged (+ string freeze)</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>We’ve just tagged the current code as 9.0-rc2- this is the second release candidate for 9.0.</p>
+<p>Notably, we are also announcing a <strong>string freeze</strong>, which means no text that appears in the program’s interface will be changed between now and the release of 9.0. This means that <em>translators</em> can get to work finalizing translations for 9.0 without worrying that there will be more changes to come.</p>
+<p>We continue to be in a feature freeze until 9.0 is released - all development work will be on bug fixes and improvements to features already present. We anticipate at least one more -rcN tag before release.</p>
+<p>Users interested in testing 9.0 and ensuring the best possible release are invited to test it out from the builds available on <a href="http://nightly.ardour.org">nightly.ardour.org </a> (or self-build if you prefer). We would <strong>strongly</strong> request that no Linux distributions package this or any other release candidate - please wait for us to release 9.0. Please report issues on the <a href="https://tracker.ardour.org">bug tracker </a> though design discussion on the forum are now acceptable (if not always ideal).</p>
+<p>We are not yet finished with the release notes for 9.0, but to get an overview of what is in this release, you can take a look at the <a href="https://ardour.org/whatsnew-9.html">in-progress document </a>. It will be revised and updated as we move through the release process.</p>
+<p>Please note that there is still no release date scheduled for 9.0. We anticipate that a wider group of beta-testers will uncover new issues (both bugs and workflow/design issues) that merit fixing before the release.</p>
+<p>Notable changes since 9.0-rc1 include:</p>
+<ul>
+<li>plugin selector: if neither name nor tag buttons are enabled, include creator in search fields</li>
+<li>in pianorolls, allow note-clicks to select in draw mode, just like the editor</li>
+<li>SMF import: better handling of insane files</li>
+<li>make it possible to do certain basic MIDI editing from a context menu in a pianoroll</li>
+<li>fix display of MIDI regions in cue editors even when they do not start at the source start</li>
+<li>Fix MIDI audition</li>
+<li>various fixes for some VST3 plugins</li>
+<li>Fix crash when selecting multiple regions</li>
+<li>several fixes for various track/bus group errors</li>
+</ul>
+            <p><small>45 posts - 14 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/development-update-9-0-rc2-tagged-string-freeze/112696">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/development-update-9-0-rc2-tagged-string-freeze/112696</link>
+          <pubDate>Fri, 19 Dec 2025 23:38:16 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-112696</guid>
+          <source url="https://discourse.ardour.org/t/development-update-9-0-rc2-tagged-string-freeze/112696.rss">Development update: 9.0-rc2 tagged (+ string freeze)</source>
+        </item>
+        <item>
+          <title>Development update: 9.0-rc1 tagged</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>We’ve just tagged the current code as 9.0-rc1 - this is the first release candidate for 9.0.</p>
+<p>We are now in a feature freeze until 9.0 is released - all development work will be on bug fixes and improvements to features already present. We anticipate at least one more -rcN tag before release (possibly several), and at some point will announce a string freeze to allow translators to finalize their work for 9.0.</p>
+<p>Users interested in testing 9.0 and ensuring the best possible release are invited to test it out from the builds available on <a href="http://nightly.ardour.org">nightly.ardour.org</a> (or self-build if you prefer). We would <strong>strongly</strong> request that no Linux distributions package this or any other release candidate - please wait for us to release 9.0. Please report issues on the <a href="https://tracker.ardour.org">bug tracker</a> though design discussion on the forum are now acceptable (if not always ideal).</p>
+<p>We are not yet finished with the release notes for 9.0, but to get an overview of what is in this release, you can take a look at the <a href="https://ardour.org/whatsnew-9.html">in-progress document</a>. It will be revised and updated as we move through the release process.</p>
+<p>Please note that there is still no release date scheduled for 9.0. We anticipate that a wider group of beta-testers will uncover new issues (both bugs and workflow/design issues) that merit fixing before the release.</p>
+            <p><small>88 posts - 31 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/development-update-9-0-rc1-tagged/112635">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/development-update-9-0-rc1-tagged/112635</link>
+          <pubDate>Tue, 02 Dec 2025 15:53:23 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-112635</guid>
+          <source url="https://discourse.ardour.org/t/development-update-9-0-rc1-tagged/112635.rss">Development update: 9.0-rc1 tagged</source>
+        </item>
+        <item>
+          <title>What&#39;s coming in Ardour 9.0</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Although we did a couple of hot-fix releases, it’s been quite a long time since the last planned release of Ardour. We’ve also not been responding particularly effectively to bug reports and user suggestions. This has all been because of a mountain of work going on to get 9.0 ready for release, and I wanted to just outline what we think will be in that version so that people can understand the relative “silence” from the project.</p>
+<p>There’s still a lot of work to do before we release 9.0, but the following is a list of things we think will likely be there Some of them may not quite make it, and its possible there might be other things added.</p>
+<p><strong>GUI Rearrangement</strong></p>
+<p>We can’t say much about this yet, because the work here is not really finished. The main elements of this are that every page (editor/mixer/cue/record) in the GUI now has 5 areas: the transport bar (now always visible), the “main area” (e.g. the editor), 2 sidebars (left and right) and a lower pane that can show a variety of things. You’ll see more about this as we get closer to a 9.0 pre-release.</p>
+<p><strong>Multi-touch GUI</strong></p>
+<p>On Linux and Windows, Ardour now supports multi-touch interaction as provided by the operating system. This may come for macOS eventually, but the way multi-touch works there is significantly different and will need more work.</p>
+<p><strong>Pianoroll window(s)</strong></p>
+<p>Double click on a MIDI region to edit it in its own dedicated window, or in a pane at the bottom of the main window. Editing in that window will work almost identically to the way it does in the main timeline, but without the distractions of the timeline. You can also see MIDI automation (velocity, CC parameters etc.) overlaid (or not).</p>
+<p><strong>MIDI Cue Editing</strong></p>
+<p>The Cue page now allows direct editing of the contents of MIDI cues (“clips” for Live &amp; Bitwig users).</p>
+<p><strong>Audio Cue Editing</strong></p>
+<p>This may or may not make it in time for 9.0. If it does, you’ll be able to edit audio cues directly on the cue page, setting loop points and more.</p>
+<p><strong>Cue Recording</strong></p>
+<p>You can now record directly into cue slots, making Ardour a “looper” in the same sense that Live, Bitwig and several other contemporary DAWs are. You can pre-specificy the recording duration (e.g. “Record 4 bars”) or you can record until you think you’re done. Whatever you recorded will start playing at the next quantization point (e.g. bar/beat).</p>
+<p><strong>Region FX</strong></p>
+<p>Is the answer to the question “how do I add some delay to <em>just this part</em> of my vocal?” Similar to region gain it allows to apply any plugin a given audio region only.  The effect and its automation remains with the region, even when it is moved around on the timeline. While the same result can be achieved with channels-strip plugins in the mixer (using bypass automation) applying effects directly to regions on the timeline is convenient for many workflows. The given effect is applied offline, when reading the region from disk and does not add any additional DSP load.</p>
+<p><strong>Real Time Analyzer</strong></p>
+<p>A dedicated perceptual analyzer window is the works which allows one to visualize the live spectrum of multiple signals. A key feature is that one can overlay individual sources (tracks and busses) on top of each other. This allows one to see which track contributes a given of frequency range to the overall mix, find conflicting ranges or holes in the spectrum.</p>
+<p><strong>Faster GUI drawing on macOS</strong></p>
+<p>Without telling anyone, Apple have subtly changed the way their drawing APIs work for graphical applications over the last 5-10 years. The result has been that a naive graphical app would end up redrawing its entire window even if only a few pixels needed updating. We’re far from the only application to be affected by this. In Ardour 9.0 the GUI drawing speed will be significantly faster, at least on very dense pages like the mixer.</p>
+<p><strong>Bug Fixes</strong></p>
+<p>We’ve accumulated a long list of bug fixes during the significant reorganization that has taken place for 9.0. We’ll document them once we get to the release.</p>
+            <p><small>185 posts - 56 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/whats-coming-in-ardour-9-0/111645">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/whats-coming-in-ardour-9-0/111645</link>
+          <pubDate>Sun, 06 Apr 2025 17:50:29 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-111645</guid>
+          <source url="https://discourse.ardour.org/t/whats-coming-in-ardour-9-0/111645.rss">What&#39;s coming in Ardour 9.0</source>
+        </item>
+        <item>
+          <title>Ardour 8.12 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.12 is now available.</p>
+<p>This is a hot-fix release, intended to fix two issues.</p>
+<ol>
+<li>
+<p>the bug fix introduced in 8.11 turned out to be incorrect, and broke several other things in subtle ways. 8.12 is a completely new approach to fixing the problem with region lengths after certain operations could cause sessions to be unloadable.</p>
+</li>
+<li>
+<p>for several previous versions, the packaging of translation files on macOS was broken. This has been corrected, and translations should work again on that platform.</p>
+</li>
+</ol>
+<p>Note that 8.12 will also correctly load sessions suffering from the problem referred to in <span class="hashtag">#1</span> above.</p>
+<p>All users of earlier 8.x versions should plan to upgrade as soon as possible. Apologies for the problems the bug in <span class="hashtag">#1</span> has caused people - we hope this is a permanent, correct fix this time.</p>
+<p>
+	<a href="https://community.ardour.org/download">Download&nbsp;&nbsp;<i></i></a>
+      </p>
+            <p><small>6 posts - 6 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-12-released/111500">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-12-released/111500</link>
+          <pubDate>Tue, 11 Mar 2025 23:06:44 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-111500</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-12-released/111500.rss">Ardour 8.12 released</source>
+        </item>
+        <item>
+          <title>Abstraction Leakage</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p><em>(This post is geekery of, if not the highest order, then fairly high order. It doesn’t contain any useful information about Ardour itself, but might be interesting for … people interested in such arcana)</em></p>
+<p>The packaging issue that broke translations in our initial release of 8.11 for Linux and macOS was almost a cool bug. I thought I’d quickly describe it here for the geeks among us.</p>
+<p>The problem came from a combination of two things: an actual error in our packaging scripts, and the subtle and generally not-considered behavior of the Unix <code>find</code> command.</p>
+<p>Our wonderful translators work on files that end in “.po” and connect the original english strings in the source code with their translated versions. During the build process, tools from the GNU translation system are used to convert the .po files into .mo files (aka “message catalogs”), which contain the same information but in a binary format that can be more efficiently used by the program when it is running.</p>
+<p>During packaging Ardour for distributions, we copy all the .mo files into a new location in preparation for “bundling” (e.g. as a DMG file for macOS or a .run file for Linux). The copy also requires a renaming, because the organization of the message catalogs for use by the program needs to be fairly different than the way they are organized in our source code.</p>
+<p>So the first bug was that we used <code>find(1)</code> to locate all the .mo files and copy/rename them. We start in several locations within the source code, including the directory that holds the GUI source code (<code>gtk2_ardour</code>). The files we’re looking for are in the <code>po</code> folder, and we use <code>find</code> because we don’t want to hard-code the languages that have translations. However, it turns out that there are another set of message catalogs associated with the RedHat/Fedora “appdata” system, and these files not only also are somewhere under <code>gtk2_ardour</code> but also, because of the way the translation software works, they have the same name.</p>
+<p>So, if <code>find</code> finds the “real” message catalogs first and copies/renames them during packaging, and then later finds the “appdata” message catalogs, the latter will overwrite the former in the package being built. This is a bug - the appdata message catalogs are placed in the packaging at a separate step of the process, and we should not have been using a command that was so generic. This was easy to fix (and has been).</p>
+<p>But wait a minute … didn’t this work just fine for Ardour 8.10 and other releases? It did. How could that be? Well, recall that at the beginning of the previous paragraph I wrote “<strong>if</strong> <code>find</code> …”. It turns out that that the order in which <code>find</code> will find files, unless told otherwise, depends on the filesystem the files are located on. Consequently, if you use two different types of filesystem (e.g. on Linux the ext4 or xfs filesystems), <code>find</code> may very well return files in a different order on each.</p>
+<p>However, it does deeper than this. Certain directory operations can also cause the filesystem to change its state in a way that will change the order in which <code>find</code> finds files. It turns out that this had happened within the build systems we use for macOS and Linux. At the time we released 8.10, <code>find</code> would locate the (unintended) appdata message catalogs first, copy/rename them into the package and then later repeat this for the real message catalaogs. Result? The package has the correct translation files and everything works. When we released 8.11, the ordering had changed, and the real message catalogs were found first, and then overwritten by the “appdata” ones. Result – translations do not work.</p>
+<p>I thought this was an example of a fairly cool and unusual category of bug. There was an error in our packaging scripts - we used an unnecessarily generic command to find message catalogs that needed installing, which found files it should not have. But this mistake by itself did not matter on systems where the unintended files were found first. It only caused problems when the unintended files were found second.</p>
+<p>This is not a perfect example of what programmers called “Abstraction Leakage”, but it’s not a bad one. We generally like to think of filesystems as things where the details of their internal organization do not really matter, and for the most part that is possible. But combine the fact that their internal organization does affect the order that a program like <code>find</code> will list files in, and the bug in our packaging script, and all of a sudden the internal details of how filesystems work becomes a thing we have to think about.</p>
+            <p><small>3 posts - 3 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/abstraction-leakage/111341">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/abstraction-leakage/111341</link>
+          <pubDate>Thu, 06 Feb 2025 16:13:51 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-111341</guid>
+          <source url="https://discourse.ardour.org/t/abstraction-leakage/111341.rss">Abstraction Leakage</source>
+        </item>
+        <item>
+          <title>Ardour 8.11 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.11 is a hotfix release that contains a fix for a critical workflow-blocking bug. <em>All users of 8.10 and all Linux distributions should upgrade to 8.11 as soon as possible.</em></p>
+<p>The bug occurs whenever the user is working on a session using musical time as the default time domain (<code>Session &gt; 	Properties &gt; Misc</code>). If they carry out any operation that causes Ardour to write a modified copy of existing audio data to a new file (such as timestretching, pitch-shifting or reversing), there is a very high probability that they will be unable to reopen to the session in the future. Such sessions <em>can</em> be recovered manually with a text editor, but this is not an acceptable pattern for our users.</p>
+<p>8.11 includes a fix for one other crashing bug. This bug only affected people using meters not denominated in quarter notes (crotchets) (e.g. 6/8 or 5/8). Adding BBT markers in such sessions would cause a crash soon after.</p>
+<p><a href="https://community.ardour.org/download">Download </a></p>
+            <p><small>28 posts - 11 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-11-released/111325">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-11-released/111325</link>
+          <pubDate>Mon, 03 Feb 2025 16:41:32 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-111325</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-11-released/111325.rss">Ardour 8.11 released</source>
+        </item>
+        <item>
+          <title>General MIDI Synth Update</title>
+          <dc:creator><![CDATA[Robin Gareus]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Earlier today I have updated the soundfont that is used by Ardour’s General MIDI Synth.</p>
+<p>The upside is that some voices now <em>sound better</em>, the downside is that it existing sessions may <em>sound different</em>. If you have an ear to lend please test (it will be shipped with Ardour 9, once that’s ready):</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://x42-plugins.com/x42/x42-gmsynth">
+  <header class="source">
+      <img src="https://x42-plugins.com/x42/static/favicon.ico" class="site-icon" width="16" height="16">
+
+      <a href="https://x42-plugins.com/x42/x42-gmsynth" target="_blank" rel="noopener">x42 Plugins</a>
+  </header>
+
+  <article class="onebox-body">
+    <img src="https://x42-plugins.com/x42/static/img/x42-gmsynth.png" class="thumbnail onebox-avatar" width="256" height="256">
+
+<h3><a href="https://x42-plugins.com/x42/x42-gmsynth" target="_blank" rel="noopener">x42 General MIDI Synth</a></h3>
+
+  <p>GM/GS</p>
+
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>–</p>
+<p>Kudos to <a href="https://www.schristiancollins.com/generaluser.php">Chris Collins</a> for creating and maintaining the soundfont that we use. He also published a video showcasing some highlights of the long <a href="https://github.com/x42/gmsynth.lv2/blob/master/sf2/CHANGELOG.md">list of changes</a> (previously gmsynth.lv2 used v1.52):</p>
+<p><a href="https://www.youtube.com/embed/AtXvMz22y-M?autoplay=1&amp;feature=oembed&amp;wmode=opaque">https://www.youtube.com/embed/AtXvMz22y-M</a></p>
+
+            <p><small>3 posts - 3 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/general-midi-synth-update/111245">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/general-midi-synth-update/111245</link>
+          <pubDate>Sun, 19 Jan 2025 01:56:09 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-111245</guid>
+          <source url="https://discourse.ardour.org/t/general-midi-synth-update/111245.rss">General MIDI Synth Update</source>
+        </item>
+        <item>
+          <title>Source builders: git/master is now an unstable pre-release branch</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p><strong>For those who build ardour from source, please read:</strong></p>
+<p><code>git/master</code> is now considered an unstable pre-release branch. The “pianorule” branch has been merged, and will cause significant breakage for a while yet.</p>
+<p><code>master</code> has been tagged 9.0-pre0 which will (a) cause a major version switch (b) will generally display the pre-release warning dialog every time unless you grep the source code to find the name of the file to create to disable it.</p>
+<p>If you need to build an earlier version of Ardour from a git repository, please use <code>git checkout VERSION</code> first to avoid building this unstable master branch.</p>
+<p>We will be working over the next few months to get this into shape for a 9.0 release with several notable new features (region FX, clip recording and clip editing among them).</p>
+            <p><small>23 posts - 10 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/source-builders-git-master-is-now-an-unstable-pre-release-branch/110857">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/source-builders-git-master-is-now-an-unstable-pre-release-branch/110857</link>
+          <pubDate>Thu, 17 Oct 2024 16:15:56 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-110857</guid>
+          <source url="https://discourse.ardour.org/t/source-builders-git-master-is-now-an-unstable-pre-release-branch/110857.rss">Source builders: git/master is now an unstable pre-release branch</source>
+        </item>
+        <item>
+          <title>Ardour 8.10 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.10 is now available for Linux, Windows and macOS. As with the last several releases, 8.9 turned out to have at least a couple of new major issues that required a hot-fix. We believe that we have corrected issues with performance caused by scheduling of disk input/output threads (these problems tended to be system dependent, but were very real on systems where they occured). Importing SMF (MIDI) via drag-n-drop now uses the file name once again. Content-slipping a region correctly causes an update of the playback buffers so you can hear the result as expected.</p>
+<p>In addition to those hot-fixes, 8.10 sees small updates to all our non-default color themes, a new MIDI binding map for the M-Audio Axiom 49 MkII and a new Lua script to duplicate regions on the grid.</p>
+<p>This is intended to be the last release of the 8.x series. <em>Our git repository is now at 9.0-pre0, and should no longer be considered stable or usable for production work now that it contains what was the “pianorule” branch.</em> Over the next few months, we will be working hard to get this into shape for a 9.0 release with several notable new features.</p>
+<p><a href="https://ardour.org/download">Download as usual </a> with the full release notes (for 8.7 - 8.10) at <a href="https://ardour.org/whatsnew.html">the normal place.</a></p>
+            <p><small>27 posts - 12 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-10-released/110856">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-10-released/110856</link>
+          <pubDate>Thu, 17 Oct 2024 16:08:29 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-110856</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-10-released/110856.rss">Ardour 8.10 released</source>
+        </item>
+        <item>
+          <title>Ardour 8.9 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.8 turned out to have a couple of major issues. Many users experienced crashes at random times that were caused by a subtle change in how waveforms were drawn, introduced in 8.8. It also turned out that MIDI notes immediately at the start of playback were ignored.</p>
+<p>Both of these have been fixed (and also the nightly website has been restored to proper functioning), and so 8.9 is now released and available. You can <a href="https://ardour.org/download">download it</a> as usual.</p>
+<p>We apologize for the lapse in quality control that led to these mistakes in the 8.8 release.</p>
+            <p><small>16 posts - 10 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-9-released/110830">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-9-released/110830</link>
+          <pubDate>Wed, 09 Oct 2024 15:48:03 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-110830</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-9-released/110830.rss">Ardour 8.9 released</source>
+        </item>
+        <item>
+          <title>Development update - what&#39;s going on with Ardour</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Hey, Paul here. I’ve become a little concerned that the public impression of Ardour recently has been dominated by cases of entirely valid bug reports that go unnoticed and unresolved. Someone who is not quite connected to our development process might understandably get the sense that we’ve stopped working on the software.</p>
+<p>This is absolutely not the case. Instead, what has been going on is that for the last several months, both myself and <a class="mention" href="https://discourse.ardour.org/u/x42">@x42</a> have been involved in work that has no immediate payoff for Ardour but we believe has long term significance. This has been going on in several development “branches”, and below I’ll go over these branches and what we’re up to:</p>
+<ol>
+<li>
+<p>“Pianorule” : this branch contains a massive refactoring and rearrangement of code so that we can implement MIDI editing anywhere we feel like it, without duplicating code. This is primarily focused on providing a MIDI editor for the cue (“clip”) page, but may later make it feasible to add a standalone “piano roll editor”. This branch is currently stuck because the changes have exposed that the (hidden) assumption that the left edge of the editor track canvas is zero on the timeline has turned into a much more pervasive part of our code than was ever intended.</p>
+</li>
+<li>
+<p>“cliprec” : this branch is rather young but is a test bed for ideas about how to do clip recording in Ardour. This is surprisingly hard to do correctly, mostly because of assumptions and decisions that go back to the early 2000s. We have some good ideas though, and I’m optimistic that the experiments going on will land successfully.</p>
+</li>
+<li>
+<p>a “new” DAW focused on front-of-house operations : this is where <a class="mention" href="https://discourse.ardour.org/u/paul">@paul</a> has been focused for much of the last month, and is a resuscitation of the ideas behind <a href="https://www.waves.com/mixers-racks/tracks-live">Waves Tracks Live</a>, a commercial GPL’ed product from about 2015 that was based on Ardour. There is a vague idea that this will become an additional DAW available from both <a href="http://ardour.org">ardour.org</a> and also from other commercial partners.  The main idea for WTL is that is a “front-of-house” recording tool for live sound engineers. It has no plugin support, no MIDI support, and is massively simpler to use than Ardour. It also has a clever trick to help with so-called virtual soundchecks, where you use a recording of a previous live gig to do most of the work for a soundcheck at the current one.</p>
+</li>
+<li>
+<p>“mode-clamping” : this is where experiments with adding ideas orbiting the concept of “this thing has a scale” are happening. This is much more complex than most people imagine when they voice their desire to “tell Ardour what scale I’m using”. Lots and lots of music from all over the world doesn’t work with scales in a simplistic way (even a lot of western pop). Currently the most promising idea is a heirarchy of objects that can each have their own scale, starting at the session level and going all the way down to individual regions. If a scale is not assigned, an object inherits one from its parent (ultimately the session).</p>
+</li>
+<li>
+<p>“region-fx” : <a class="mention" href="https://discourse.ardour.org/u/x42">@x42</a> has been busy with adding per-region plugins in this branch, and it is currently being tested/evaluated by some of our early beta-testers.</p>
+</li>
+</ol>
+<p>On top of all this, both myself and <a class="mention" href="https://discourse.ardour.org/u/x42">@x42</a> were quite involved in the work done on Ardour to provide support for Dolby Atmos now present in Harrison Mixbus 10. Sadly because Atmos is proprietary technology, Ardour itself cannot use this work at present. Nevertheless, we designed things so that should somebody create something broadly equivalent that is GPL compatible, it would be relatively easy to make it work with Ardour.</p>
+<p>So, that’s what’s going on in the background. All this stuff does tend to mean that most new bug reports are not being attended to, and many already-known bugs too. Obviously if we had a larger development group, we could be doing both types of things, but we don’t, and so we aren’t. I’m not offering to change what we do, but let us know what you think of this prioritization/allocation of resources.</p>
+            <p><small>30 posts - 19 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/development-update-whats-going-on-with-ardour/110168">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/development-update-whats-going-on-with-ardour/110168</link>
+          <pubDate>Sat, 20 Apr 2024 17:58:35 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-110168</guid>
+          <source url="https://discourse.ardour.org/t/development-update-whats-going-on-with-ardour/110168.rss">Development update - what&#39;s going on with Ardour</source>
+        </item>
+        <item>
+          <title>Ardour 8.6 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.6 has been released. This is a hotfix release for 8.5, primarily to fix a drawing bug that was not noticed/fixed before 8.5 was released. It also comes with a fix for a crashing bug that can occur when JACK2 is being used.</p>
+<p>In all other ways, 8.6 is equivalent to 8.5, but 8.5 should be considered “blacklisted” - we don’t want anyone to have to deal with the drawing issue.</p>
+<p>Full release notes (for 8.5 and 8.6) over <a href="https://ardour.org/whatsnew.html">here </a> as usual.</p>
+<p><em><strong>ADDENDUM</strong></em>: turns out we introduced a bug that <em><strong>ONLY</strong></em> affects macOS Catalina on Intel hardware. The downloads for macOS intel have been updated to include the fix for Catalina. No other changes were made.</p>
+            <p><small>32 posts - 14 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-6-released/110148">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-6-released/110148</link>
+          <pubDate>Sat, 13 Apr 2024 15:40:46 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-110148</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-6-released/110148.rss">Ardour 8.6 released</source>
+        </item>
+        <item>
+          <title>Ardour 8.5 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.5 is available now for Linux, Windows, and macOS. This is another “small” release without major new features, largely because our two lead developers continue to be busy with things linked to future releases.</p>
+<p>However, 8.5 does see a fix for a problem in 8.4 that affected many Linux users (a crash whenever a file selection dialog was opened, triggered by the presence of certain icon files on their version of Linux).</p>
+<p>Full release notes over <a href="https://ardour.org/whatsnew.html">here </a> as usual.</p>
+            <p><small>10 posts - 6 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-5-released/110136">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-5-released/110136</link>
+          <pubDate>Thu, 11 Apr 2024 17:23:35 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>Yes</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-110136</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-5-released/110136.rss">Ardour 8.5 released</source>
+        </item>
+        <item>
+          <title>Ardour 8.4 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.4 is available now for Linux, Windows, and macOS. Nothing particularly significant in this release, because our two lead developers have been busy with things linked to future releases. <em>(note: there was no 8.3 release due to a critical bug discovered after tagging 8.3)</em>.</p>
+<p>From a project-level perspective, perhaps the most important change is that we have moved the source code of our GUI toolkit (GTK v2) into the Ardour source tree. This has no impact whatsoever on people using the builds provided at <a href="http://ardour.org">ardour.org</a>.</p>
+<p>However, this version of GTK is about to be deprecated by a number of Linux distributions, and without this change it will become more difficult for both individual users and Linux package maintainers to continue building Ardour. This also leaves us free to (slowly) strip down aspects of the toolkit that we do not use, and potentially modify it as needed in the future. It also means that even the distribution builds of Ardour for Linux will contain our patches to GTK, which has historically not been the case.</p>
+<p>Meanwhile, we now have beta-level AAF import, some new MIDI device maps, a new color theme, a stack of UX/UI tweaks and several fixes for crashing and workflow bugs.</p>
+<p>Full release notes over <a href="https://ardour.org/whatsnew.html">here</a> as usual.</p>
+            <p><small>27 posts - 14 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-4-released/109913">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-4-released/109913</link>
+          <pubDate>Wed, 21 Feb 2024 16:53:52 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-109913</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-4-released/109913.rss">Ardour 8.4 released</source>
+        </item>
+        <item>
+          <title>Ardour 8.2 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.2 is now available. Nothing incredibly dramatic for this release, but it completes our support for all current Novation LaunchPad devices (as well as the new SSL UF8 surface) and includes the usual collection of bug fixes, small new features and quality of life improvements.</p>
+<p>Full release notes and download <a href="https://ardour.org/whatsnew.html">as usual</a>.</p>
+            <p><small>16 posts - 10 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-2-released/109615">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-2-released/109615</link>
+          <pubDate>Wed, 13 Dec 2023 17:15:53 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-109615</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-2-released/109615.rss">Ardour 8.2 released</source>
+        </item>
+        <item>
+          <title>50 Things you did not know you could do with Ardour</title>
+          <dc:creator><![CDATA[Robin Gareus]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Recently at the Ubuntu Summit. 50 mins 50 features. Enjoy!</p>
+<p><a href="https://www.youtube.com/embed/PT8TkvwsgUE?autoplay=1&amp;feature=oembed&amp;wmode=opaque">https://www.youtube.com/embed/PT8TkvwsgUE</a></p>
+
+<p>PS. I should have taken a leaf out of Paul Simon’s book and ran with only 5 <img src="https://discourse.ardour.org/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>Slides are available from <a href="https://events.canonical.com/event/31/contributions/216/" class="inline-onebox">Ubuntu Summit 2023 (3-5 November 2023): 50 things you did not know you could do with Ardour · Canonical / Ubuntu Events (Indico)</a></p>
+            <p><small>40 posts - 23 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/50-things-you-did-not-know-you-could-do-with-ardour/109555">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/50-things-you-did-not-know-you-could-do-with-ardour/109555</link>
+          <pubDate>Thu, 30 Nov 2023 18:49:49 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-109555</guid>
+          <source url="https://discourse.ardour.org/t/50-things-you-did-not-know-you-could-do-with-ardour/109555.rss">50 Things you did not know you could do with Ardour</source>
+        </item>
+        <item>
+          <title>Ardour 8.1 is released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Hot on the heels of 8.0, we are happy to bring you a mostly-hotfixes 8.1 release. There’s a couple of tasty new features also. The full notes for 8.0 and 8.1 are in the <a href="https://ardour.org/whatsnew.html">usual place</a>, with the new stuff &amp; fixes for 8.1 also listed below.</p>
+<p>Download <a href="https://ardour.org/download">as usual.</a></p>
+  <ul>
+      <li>MIDI port names for the Novation Launchpad Pro fixed, and believed
+	to work on all platforms, and with all versions of ALSA on
+	Linux. Earlier versions would fail to connect to the device
+	in most cases.</li>
+      <li>Varispeed dialog now allows control in percentage units in addition to
+	semitones &amp; cents. The shuttle control also now remains in
+	sync with the actual transport speed.</li>
+      <li>Fix an issue where multichannel tracks would play in mono (#9483).</li>
+      <li>Prevent time domain (music/audio) confusion when trimming
+	audio &amp; MIDI regions.</li>
+      <li>When drawing freehand velocity curves, if any MIDI notes are
+      selected, only those notes will be modified. This is extremely
+	useful for editing drum tracks.
+<video autoplay="" muted="" loop="" width="100%">
+        <source src="https://ardour.org/images/selvelocity.webm" type="video/webm">
+        <source src="https://ardour.org/images/selvelocity.mp4" type="video/mp4">
+</video>
+</li>
+   <li>Fix selection logic when middle-clicking on notes in a MIDI
+      track header keyboard. Middle click selects just that
+      note-number. Ctrl/Cmd-middle-click now toggles the selection
+      status of that note number.  Shift-middle-click extends the
+	selected note numbers. </li>
+  <li>Fix duplicate close-session dialog on macOS.</li>
+ <li>Fix a missing label in the insert time dialog.</li>
+ <li>Fix a deadlock ("program freeze") when adjusting a region
+	fade.</li>
+ <li>Allow for bounces with specific source (file) and region
+	names.</li>
+ <li>Include track name when consolidating ranges.</li>
+ <li>Fix potential for duplicated MIDI events with certain signal
+	routing.</li>
+  <li>Prevent crash with certain oddly-behaved VST3 plugins'
+	response to being asked "do you have an editor?"</li>
+ <li>Add MIDNAM file for Moog Subsequent 37.</li>
+ <li>Remove some cruft from build system scripts.</li>
+ <li>Build system tweak to accomodate newer versions of
+	kissfft.</li>
+ </ul>
+            <p><small>38 posts - 12 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-1-is-released/109359">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-1-is-released/109359</link>
+          <pubDate>Thu, 19 Oct 2023 15:32:20 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-109359</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-1-is-released/109359.rss">Ardour 8.1 is released</source>
+        </item>
+        <item>
+          <title>A &quot;roadmap&quot; for Ardour</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>We’ve finished an initial draft of a “roadmap” for future Ardour development. You can read it <a href="https://ardour.org/future.html">here</a> and comment on it below, if you feel like it. Please read the introduction to understand what the document <strong>is</strong> and <em>isn’t</em>.</p>
+            <p><small>33 posts - 21 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/a-roadmap-for-ardour/109339">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/a-roadmap-for-ardour/109339</link>
+          <pubDate>Tue, 17 Oct 2023 04:16:17 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-109339</guid>
+          <source url="https://discourse.ardour.org/t/a-roadmap-for-ardour/109339.rss">A &quot;roadmap&quot; for Ardour</source>
+        </item>
+        <item>
+          <title>Ardour 8.0 is released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 8.0 is available now for Linux, Windows, and macOS, including the latest release of macOS, Sonoma. Along with the usual set of important and not-so-important bug fixes, Ardour 8.0 brings users substantial quality of life benefits:</p>
+<ul>
+<li>“Quick groups” - most mix-related controls now operate on all the selected tracks &amp; busses</li>
+<li>Manage sections of a song with arrangement markers. Define your verses, chorus, and bridge. Then rearrange or copy them as you wish.</li>
+<li>Create persistent region groups in the editor window, to make multi-region editing easier.</li>
+<li>Edit velocity easily on a dedicated automation lane whether it’s a single note or a chord.</li>
+<li>Draw automation freely for any controller or press Control (Command) key to enable line-drawing mode. You can also combine free and line segments as you draw just by pressing and releasing the Ctrl/Cmd key.</li>
+<li>Fit the tempo map to a human performance, with a new dedicated tool.</li>
+<li>If (e.g. drum) note names are available for a plugin instrument or external device (via a MIDNAM file), see those names in the all-new MIDI track header.</li>
+<li>Use Novation Launchpad Pro in DAW/Session mode (along with the standalone Sequencer, Note and Chord modes).</li>
+<li>Create new interesting progressions with arpeggiator plugins.</li>
+</ul>
+<p>Some people will no doubt laugh at a few these “new features”, given that they’ve been in some other DAWs for 20 years or more. That’s OK — we laugh too when we see other DAWs finally adding things that Ardour could do in 2005. <img src="https://discourse.ardour.org/images/emoji/twitter/grinning.png?v=12" title=":grinning:" class="emoji" alt=":grinning:" loading="lazy" width="20" height="20"></p>
+<p>As usual, full release notes are over <a href="https://ardour.org/whatsnew.html">here</a> and you can <a href="https://ardour.org/download">download from here</a>.</p>
+            <p><small>50 posts - 32 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-8-0-is-released/109299">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-8-0-is-released/109299</link>
+          <pubDate>Sun, 08 Oct 2023 21:17:44 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-109299</guid>
+          <source url="https://discourse.ardour.org/t/ardour-8-0-is-released/109299.rss">Ardour 8.0 is released</source>
+        </item>
+        <item>
+          <title>Translation time for upcoming Ardour 8.0 release</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>We’re now about a week away from the release of Ardour 8.0. We are in a total string freeze (where we guarantee not to change any translatable text at all before release). It’s probably a good time for the translation team(s) to start working on the update for 8.0.</p>
+<p>Currently Ardour translations for Czech, German, Greek, Spanish, UK English, French, Italian, Japanese, Korean, Norwegian, Polish, Portugese (Brazilian and Portugese versions), Russian, Swedish and Chinese. If you’d like to add another language, you can find the instructions for creating (and maintaining) translations here:</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/Ardour/ardour/blob/master/TRANSLATORS">
+  <header class="source">
+
+      <a href="https://github.com/Ardour/ardour/blob/master/TRANSLATORS" target="_blank" rel="noopener">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/Ardour/ardour/blob/master/TRANSLATORS" target="_blank" rel="noopener">Ardour/ardour/blob/master/TRANSLATORS</a></h4>
+
+
+      <pre><code class="lang-">Ardour User Interface Translation How-To
+
+Ardour's user interface can be translated into many languages. For this the
+application uses gettext engine. It works like this: there is a plain text
+editable PO file for every language that contains a number of sequences like: a
+line in English, a line in target language and a reference to a line in source
+code where original text in English comes from. The build system then creates a
+binary version of each PO file with MO file extension and places it in a system
+directory where running instance of Ardour will pick and use it.
+
+Ardour has two main PO files to translate: for user interface and for Ardour's
+library. Some messages from the library are actually passed to user interface
+(various warnings, for example), so ideally you have to translate both. For
+example, Russian translations are located here:
+
+gtk2_ardour/po/ru.po
+libs/ardour/po/ru.po
+
+There are few supplementation translations that can be found here (again,
+showing the case for Russian):
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/Ardour/ardour/blob/master/TRANSLATORS" target="_blank" rel="noopener">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>If you’re an existing translator for one of the above languages, please try to find the time to go through the update process as soon as possible. Your work is much appreciated, and we’d like to have as many languages updated as possible <em>before</em> the 8.0 release.</p>
+            <p><small>10 posts - 7 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/translation-time-for-upcoming-ardour-8-0-release/109185">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/translation-time-for-upcoming-ardour-8-0-release/109185</link>
+          <pubDate>Sat, 16 Sep 2023 15:37:26 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-109185</guid>
+          <source url="https://discourse.ardour.org/t/translation-time-for-upcoming-ardour-8-0-release/109185.rss">Translation time for upcoming Ardour 8.0 release</source>
+        </item>
+        <item>
+          <title>Ardour 7.5 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 7.5 has been released. This is primarily a bug-fix release, but there several new features, include session I/O connection management, tempo mapping and the beginnings of section-based editing. As usual, there are also and many more notable improvements and fixes</p>
+<p>Please read <a href="https://ardour.org/whatsnew.html">the full release notes </a> for more details and/or download as usual at <a href="https://ardour.org/download">https://ardour.org/download </a>.</p>
+            <p><small>13 posts - 10 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-7-5-released/108875">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-7-5-released/108875</link>
+          <pubDate>Fri, 23 Jun 2023 21:02:53 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-108875</guid>
+          <source url="https://discourse.ardour.org/t/ardour-7-5-released/108875.rss">Ardour 7.5 released</source>
+        </item>
+        <item>
+          <title>Ardour 7.4 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>Ardour 7.4 is now available. This is mostly a bugfix release — several important ones have accumulated since 7.3 — but there is also a sprinkling of new features, notably MIDI subgroup busses.</p>
+<p>There has also been a lot of work on features that we had hoped to have ready for 7.4, but will now be officially released in 7.5. The curious may find some of them already, but we’re not ready to announce or document them yet.</p>
+<p>One other small change for this release: people interested in just trying Ardour out via our free/demo build will no longer have to wait to get an email containing the link. We’ve decided that after 10 years of asking people for their email address and doing nothing with them, we’ll just stop asking and provide the download link directly.</p>
+<p>Please read <a href="https://ardour.org/whatsnew.html">the full release notes</a> for more details and/or download as usual at <a href="https://ardour.org/download">https://ardour.org/download</a>.</p>
+            <p><small>19 posts - 12 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-7-4-released/108637">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-7-4-released/108637</link>
+          <pubDate>Wed, 26 Apr 2023 19:19:21 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-108637</guid>
+          <source url="https://discourse.ardour.org/t/ardour-7-4-released/108637.rss">Ardour 7.4 released</source>
+        </item>
+        <item>
+          <title>Audio Developer Chats: Tero Parviainen</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>I just put up my latest (3rd!) audio developer chat, this time with web audio developer Tero Parviainen. We talk about web audio, AI in music, the experience of listening to music, the past, present and future of generative music, and much more.  You can find it over here (along with the first two, featuring Justin Frankel (Reaper) and Ryan Challinor (Bespoke):</p>
+<p><a href="http://adc.equalarea.com/2023/02/26/adc3-paul-davis-tero-parviainen/" class="onebox" target="_blank" rel="noopener">http://adc.equalarea.com/2023/02/26/adc3-paul-davis-tero-parviainen/</a></p>
+            <p><small>3 posts - 2 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/audio-developer-chats-tero-parviainen/108393">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/audio-developer-chats-tero-parviainen/108393</link>
+          <pubDate>Sun, 26 Feb 2023 03:01:06 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-108393</guid>
+          <source url="https://discourse.ardour.org/t/audio-developer-chats-tero-parviainen/108393.rss">Audio Developer Chats: Tero Parviainen</source>
+        </item>
+        <item>
+          <title>Ardour 7.3 released</title>
+          <dc:creator><![CDATA[Paul Davis]]></dc:creator>
+          <category>Blog</category>
+          <description><![CDATA[
+            <p>We’re happy to be back on our planned bi-monthly release schedule, this time with 7.3 which brings VST3 multi-bus support, searchable preferences and sample rate independence as notable new features plus dozens of important crash and workflow fixes.</p>
+<p>See the full <a href="https://ardour.org/whatsnew.html">release notes </a> for more information, and download as usual from <a href="https://ardour.org/download" class="inline-onebox">Download Ardour | Ardour Community</a></p>
+            <p><small>30 posts - 16 participants</small></p>
+            <p><a href="https://discourse.ardour.org/t/ardour-7-3-released/108322">Read full topic</a></p>
+          ]]></description>
+          <link>https://discourse.ardour.org/t/ardour-7-3-released/108322</link>
+          <pubDate>Thu, 16 Feb 2023 00:41:50 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discourse.ardour.org-topic-108322</guid>
+          <source url="https://discourse.ardour.org/t/ardour-7-3-released/108322.rss">Ardour 7.3 released</source>
+        </item>
+  </channel>
+</rss>

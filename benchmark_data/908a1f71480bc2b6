@@ -1,0 +1,1156 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Causal Analysis in Theory and Practice</title>
+	<atom:link href="https://causality.cs.ucla.edu/blog/index.php/feed/" rel="self" type="application/rss+xml" />
+	<link>https://causality.cs.ucla.edu/blog</link>
+	<description>UCLA Causality Blog</description>
+	<lastBuildDate>Fri, 31 Mar 2023 07:54:39 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.9</generator>
+	<item>
+		<title>Personalized Decision Making under Concurrent-Controlled RCT Data</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2023/03/17/personalized-decision-making-under-concurrent-controlled-rct-data/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2023/03/17/personalized-decision-making-under-concurrent-controlled-rct-data/#respond</comments>
+		
+		<dc:creator><![CDATA[Scott Mueller]]></dc:creator>
+		<pubDate>Fri, 17 Mar 2023 02:31:21 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2463</guid>
+
+					<description><![CDATA[Scott Mueller and Judea Pearl Introduction This note supplements the analysis of [Mueller and Pearl 2023] by introducing an important restriction on the data obtained from Randomized Control Trials (RCT). In Mueller and Pearl, it is assumed that RCTs provide estimates of two probabilities, \(P(y_t)\) and \(P(y_c)\), standing for the probability of the outcome \(Y\) [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<style>
+    p.authors {
+        text-align: right;
+    }
+    a.footnote {
+        text-decoration-line: none;
+    }
+    dl.footnote {
+        font-size: small;
+    }
+    dl.footnote dt {
+        display: inline;
+        vertical-align: super;
+        font-size: smaller;
+    }
+    dl.footnote dd {
+        display: inline;
+        margin-inline-start: 5px;
+    }
+</style>
+<p class="authors"><em><strong>Scott Mueller and Judea Pearl</strong></em></p>
+<h2>Introduction</h2>
+<p>This note supplements the analysis of [<a href="#mueller2023personal">Mueller and Pearl 2023</a>] by introducing an important restriction on the data obtained from Randomized Control Trials (RCT). In Mueller and Pearl, it is assumed that RCTs provide estimates of two probabilities, \(P(y_t)\) and \(P(y_c)\), standing for the probability of the outcome \(Y\) under treatment and control, respectively. In medical practices, however, these two quantities are rarely reported separately; only their difference \(\text{ATE} = P(y_t)-P(y_c)\) is measured, estimated, and reported. The reason is that the individual effects, \(P(y_t)\) and \(P(y_c)\), are suspect of contamination by selection bias and placebo effects. These two imperfections are presumed to cancel out by a method called &#8220;Concurrent Control&#8221; [<a href="#senn_control_2010">Senn 2010</a>] in which subjects in both treatment and control arms are measured simultaneously and only the average difference, ATE, is counted<sup><a class="footnote" href="#footnote-1">1</a></sup>.</p>
+
+<p>This note establishes bounds on \(P(\text{benefit})\) and \(P(\text{harm})\) under the restriction that RCTs provide only an assessment of ATE, not of the individual causal effects \(P(y_t)\) and \(P(y_c)\). We will show that the new restriction, though leading to wider bounds, still permits the extraction of meaningful information on individual harm and benefit and, when combined with observational data, can be extremely valuable in personalized decision making.</p>
+
+<p>Our results can be summarized in the following two inequalities. The first inequality bounds PNS (same as \(P(\text{benefit})\)) without observational data, and the second bounds PNS using both ATE and observational data in the form of \(P(X, Y)\).</p>
+
+<p>With just the ATE, PNS is bounded as:</p>
+$$\begin{equation}
+    \max\{0, \text{ATE}\} \leqslant \text{PNS} \leqslant \min\{1, \text{ATE} + 1\}.
+\end{equation}$$
+<p>The lower bound is above zero when ATE is positive, and the upper bound is lower than 1 when ATE is negative.</p>
+
+<p>When we combine ATE with observational data, the lower bound remains the same, but the upper bound changes to yield:</p>
+$$\begin{equation}
+    \max\{0, \text{ATE}\} \leqslant \text{PNS} \leqslant \min\left\{\begin{array}{r}
+        P(x,y) + P(x&#8217;,y&#8217;),\\
+        \text{ATE} + P(x, y&#8217;) + P(x&#8217;, y)
+    \end{array}\right\}.
+\end{equation}$$
+
+<p>The upper bound in (2), is always lower than (or equal to) the one in (1), because both \(P(x,y) + P(x&#8217;,y&#8217;) \leqslant 1\) and \(P(x, y&#8217;) + P(x&#8217;, y) \leqslant 1\).</p>
+
+<p>In Appendix we will present the derivations of Eqs. (1) and (2), whereas in the following section, we discuss some of their ramifications.</p>
+<h5>Footnote</h5>
+<dl class="footnote">
+    <dt id="footnote-1">1</dt><dd>See footnote 11 in [<a href="#mueller2023personal">Mueller and Pearl 2023</a>] and [<a href="#pearl_linear_2013">Pearl 2013</a>] for ways in which selection bias can be eliminated when linearity is assumed (after scaling).</dd>
+</dl>
+
+<h2>How observational data inform PNS (or P(benefit))</h2>
+<p>The bounds on PNS produced by Eqs. (1) and (2) can be visualized interactively<sup><a class="footnote" href="#footnote-2">2</a></sup>. To show the contrast between Eq. (1) and Eq. (2), Fig. 1 displays the allowable values of PNS for various levels of ATE, assuming no observational information is available (i.e., Eq. (1)). We see, for example, that for \(\text{ATE} = 0\) (left vertical dashed line), the bound is vacuous (\(0 \leqslant \text{PNS} \leqslant 1\)), while for \(\text{ATE}=0.5\) (right vertical dashed line), we have \(\frac12 \leqslant \text{PNS} \leqslant 1\) &#8212; a somewhat more informative bound, but still rather trivial.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_no_obs_dashed_lines.png"><img fetchpriority="high" decoding="async" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_no_obs_dashed_lines-1024x820.png" alt="" class="wp-image-2468" width="512" height="410" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_no_obs_dashed_lines-1024x820.png 1024w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_no_obs_dashed_lines-300x240.png 300w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_no_obs_dashed_lines-768x615.png 768w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_no_obs_dashed_lines.png 1134w" sizes="(max-width: 512px) 100vw, 512px" /></a><figcaption class="wp-element-caption">Figure 1: The green area represents possible PNS values for the given ATE, while the white areas represent values not achievable by PNS.</figcaption></figure>
+</div>
+
+
+<p>Figure 2 displays the allowable values of PNS when observational data are available. We see that for \(\text{ATE} = 0\) (left vertical dashed line), we now have \(0 \leqslant \text{PNS} \leqslant \frac12\), whereas for \(\text{ATE} = 0.5\) (right vertical dashed line), we now have a point estimate \(\text{PNS} = \frac12\), assuring us that exactly 50\% of all subjects will benefit from the treatment (and none will be harmed by it).</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_dashed_lines.png"><img decoding="async" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_dashed_lines-1024x820.png" alt="" class="wp-image-2472" width="512" height="410" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_dashed_lines-1024x820.png 1024w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_dashed_lines-300x240.png 300w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_dashed_lines-768x615.png 768w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_dashed_lines.png 1134w" sizes="(max-width: 512px) 100vw, 512px" /></a><figcaption class="wp-element-caption">Figure 2: The green area represents possible PNS values for the given ATE, while the gray areas represent values of ATE that are incompatible with the assumed observational information: P(y|x) = P(y|x&#8217;) = P(x) = 0.5.</figcaption></figure>
+</div>
+
+
+<p>When observational data become less symmetric, say \(P(x)=0.5\), \(P(y|x)=0.9\), and \(P(y|x&#8217;)=0.1\), the regions of possible and impossible PNS values shift significantly. Moving the sliders for \(P(x)\), \(P(y|x)\), and \(P(y|x&#8217;)\) to the above values produces the graph shown in Figure 3. This time, when \(\text{ATE} = 0\) (left vertical dashed line), the bounds on PNS narrow down to \(0 \leqslant \text{PNS} \leqslant 0.1\), telling us that subjects have a maximum 10\% chance of benefiting from the treatment. When \(\text{ATE}=0.5\) (right vertical dashed line), we have \(\frac12 \leqslant \text{PNS} \leqslant 0.6\), still a narrow width of \(0.1\), with an assurance of at least 50\% chance of benefiting from the treatment.</p>
+
+<p>It should be clear now that consequential information on individual benefit can be obtained even when separate causal effects, \(P(y_x)\) and \(P(y_{x&#8217;})\), are unavailable. The same situation holds for \(P(\text{harm})\) as well.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_2.png"><img decoding="async" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_2-1024x820.png" alt="" class="wp-image-2473" width="512" height="410" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_2-1024x820.png 1024w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_2-300x240.png 300w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_2-768x615.png 768w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_2.png 1134w" sizes="(max-width: 512px) 100vw, 512px" /></a><figcaption class="wp-element-caption">Figure 3: The green area represents possible PNS values for the given ATE and observational probabilities: P(x) = 0.5, P(y|x) = 0.9, P(y|x&#8217;) = 0.1.</figcaption></figure>
+</div>
+
+
+<h5>Footnote</h5>
+<dl class="footnote">
+    <dt id="footnote-2">2</dt><dd>Visualization is at <a href="https://ate-bounds.streamlit.app">https://ate-bounds.streamlit.app</a>.</dd>
+</dl>
+
+<h2>How Observational Data inform the Probability of Harm P(harm)</h2>
+<p>The probability of harm is the converse of PNS. We can bound this probability with ATE and with observational data similar to Eqs. (1) and (2). With just the ATE, \(P(\text{harm})\) is bounded as:</p>
+$$\begin{equation}
+    \max\{0, -\text{ATE}\} \leqslant \text{PNS} \leqslant \min\{1, 1 &#8211; \text{ATE}\}.
+\end{equation}$$
+<p>The lower bound is positive when ATE is positive, and the upper bound is less than \(1\) when ATE is negative. When we combine observational data, a smaller upper bound is possible:</p>
+$$\begin{equation}
+    \max\{0, \text{ATE}\} \leqslant \text{PNS} \leqslant \min\left\{\begin{array}{r}
+        P(x,y&#8217;) + P(x&#8217;,y),\\
+        P(x, y) + P(x&#8217;, y&#8217;) &#8211; \text{ATE}
+    \end{array}\right\}.
+\end{equation}$$
+
+<p>Again, the upper bound in (4), is always lower than (or equal to) the one in (3), since \(P(x,y) + P(x&#8217;,y&#8217;) \leqslant 1\) and \(P(x, y&#8217;) + P(x&#8217;, y) \leqslant 1\). See Appendix for the derivations of Eqs. (3) and (4).</p>
+
+<p>Figures 4a and 4b depict these bounds under the same conditions as Figures 1 and 2, respectively.</p>
+
+
+
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex">
+<figure class="wp-block-image size-large"><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_harm_dashed_lines-1.png"><img loading="lazy" decoding="async" width="1024" height="820" data-id="2478" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_harm_dashed_lines-1-1024x820.png" alt="" class="wp-image-2478" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_harm_dashed_lines-1-1024x820.png 1024w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_harm_dashed_lines-1-300x240.png 300w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_harm_dashed_lines-1-768x615.png 768w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_harm_dashed_lines-1.png 1134w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<figure class="wp-block-image size-large"><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-50-50_dashed_lines-1.png"><img loading="lazy" decoding="async" width="1024" height="820" data-id="2477" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-50-50_dashed_lines-1-1024x820.png" alt="" class="wp-image-2477" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-50-50_dashed_lines-1-1024x820.png 1024w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-50-50_dashed_lines-1-300x240.png 300w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-50-50_dashed_lines-1-768x615.png 768w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-50-50_dashed_lines-1.png 1134w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></a></figure>
+<figcaption class="blocks-gallery-caption wp-element-caption">Figure 4: P(harm) graphs corresponding to Figures 1 and 2 for PNS.</figcaption></figure>
+
+
+
+<p>Figure 5, on the other hand, shows very different sets of bounds for the asymmetric case: \(P(x) = 0.5\), \(P(y|x) = 0.9\), and \(P(y|x&#8217;) = 0.1\), used in Figure 3. This time, \(0 \leqslant P(\text{harm}) \leqslant 0.1\) when \(\text{ATE}=0\) or \(\text{ATE}=0.5\). This has the same width of \(0.1\) as in the case of PNS, but with a substantially different shape.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-90-10_dashed_lines.png"><img loading="lazy" decoding="async" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-90-10_dashed_lines-1024x820.png" alt="" class="wp-image-2480" width="512" height="410" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-90-10_dashed_lines-1024x820.png 1024w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-90-10_dashed_lines-300x240.png 300w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-90-10_dashed_lines-768x615.png 768w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2023/03/ate-bounds_obs_harm_50-90-10_dashed_lines.png 1134w" sizes="auto, (max-width: 512px) 100vw, 512px" /></a><figcaption class="wp-element-caption">Figure 5: The green area represents possible P(harm) values for the given ATE and observational probabilities: P(x)= 0.5, P(y|x) = 0.9, P(y|x&#8217;) = 0.1.</figcaption></figure>
+</div>
+
+
+<h2>Intuition</h2>
+<p>The intuition behind the PNS lower bound is that the probability of benefiting cannot be less than the positive part of the difference in causal effects. That difference must be explained by benefiting from treatment.</p>
+
+<p>The intuition behind the PNS upper bound is split into two parts. First, the benefiters must be among the individuals who chose treatment and had a successful outcome, \((x, y)\), or those who avoided treatment and had an unsuccessful outcome, \((x&#8217;, y&#8217;)\). Therefore, one potential upper bound is \(P(x,y) + P(x&#8217;,y&#8217;)\). Alternatively, since \(\text{ATE} = \text{PNS} &#8211; P(\text{harm})\), we get an upper bound on PNS by adding at least the proportion of individuals harmed to ATE. This is precisely the upper bound \(\text{ATE} + P(x, y&#8217;) + P(x&#8217;, y)\) because the proportion of individuals choosing treatment and having an unsuccessful outcome, \(P(x, y&#8217;)\), and the proportion of individuals avoiding treatment and having a successful outcome, \(P(x&#8217;, y)\), comprise all individuals harmed by treatment as well as some additional individuals.</p>
+
+<p>Similar reasoning holds for the lower and upper bounds of \(P(\text{harm})\).</p>
+
+<h2>Bounds on ATE</h2>
+<p>In addition to informing PNS and \(P(\text{harm})\), observational data also impose restrictions on ATE, violations of which imply experimental imperfections. We start with Tian and Pearl&#8217;s bounds on causal effects [<a href="#tian2000">Tian and Pearl 2000</a>]:</p>
+$$\begin{align}
+    P(x,y) &#038;\leqslant P(y_x) \leqslant 1 &#8211; P(x, y&#8217;),\\
+    P(x&#8217;,y) &#038;\leqslant P(y_{x&#8217;}) \leqslant 1 &#8211; P(x&#8217;, y&#8217;).
+\end{align}$$
+
+<p>If we multiply Equation (6) by \(-1\) and add it to Equation (5), we get the following bounds on ATE:</p>
+$$\begin{align}
+    P(x,y) + P(x&#8217;,y&#8217;) &#8211; 1 &#038;\leqslant \text{ATE} \leqslant P(x,y) + P(x&#8217;,y&#8217;).
+\end{align}$$
+<p>While the range of ATE values has a width of \(1\), the location of this range can still alert the experimenter to possible incompatibilities between the observational and experimental data.</p>
+
+<h2>Appendix</h2>
+<p>The lower and upper bounds in Equation (2) follow directly from the Tian-Pearl bounds on PNS. There are two additional possible lower bounds on PNS: \(P(y_x) &#8211; P(y)\) and \(P(y) &#8211; P(y_{x&#8217;})\). Since \(P(y_x) &#8211; P(y) = \text{ATE} + P(y_{x&#8217;}) &#8211; P(y)\) and \(P(y_{x&#8217;}) \geqslant 0\), a potential lower bound of \(\text{ATE} &#8211; P(y)\) could be added to the \(\max\) function of the left inequality (2). However, the existing lower bound \(\text{ATE}\) subsumes it because \(P(y) \geqslant 0\). Similarly, since \(P(y) &#8211; P(y_{x&#8217;}) = \text{ATE} &#8211; P(y_x) + P(y)\) and \(P(y_x) \leqslant 1\), a potential lower bound of \(\text{ATE} &#8211; P(y&#8217;)\) could be added to inequalities (2). Again, the existing lower bound \(\text{ATE}\) subsumes it.</p>
+
+<p>There are two additional possible upper bounds on PNS: \(P(y_x)\) and \(P(y&#8217;_{x&#8217;})\). Since \(P(y_x) = \text{ATE} + P(y_{x&#8217;})\) and \(P(y_{x&#8217;}) \leqslant 1\), a potential upper bound of \(\text{ATE} + 1\) could be added to the \(\min\) function of the right inequality (2). However, the existing upper bound \(\text{ATE} + P(x, y&#8217;) + P(x&#8217;, y)\) subsumes it because \(P(x, y&#8217;) + P(x&#8217;, y) \leqslant 1\). Similarly, since \(P(y&#8217;_{x&#8217;}) = \text{ATE} + 1 &#8211; P(y_x) = \text{ATE} + P(y&#8217;_x)\) and \(P(y&#8217;_x) \leqslant 1\), a potential upper bound of \(\text{ATE} + 1\) could be added to inequalities (2). Again, the existing upper bound \(\text{ATE} + P(x, y&#8217;) + P(x&#8217;, y)\) subsumes it.</p>
+
+<p>It may appear that the upper bound might dip below the lower bound, which would be problematic. In particular, either of the following two cases would cause this situation:</p>
+$$\begin{align}
+    P(x,y) + P(x&#8217;,y&#8217;) &#038;< \text{ATE}, \text{or}\\
+    \text{ATE} + P(x,y') + P(x',y) &#038;< 0.
+\end{align}$$
+<p>Neither of these inequalities can occur because of the inequalities in (7). Inequality (8) cannot occur because of the right inequality of (7). Similarly, inequality (9) cannot occur because of the left inequality of (7).</p>
+
+<h2>References</h2>
+<ol>
+    <li id="mueller2023personal">Mueller, Scott and Judea Pearl (2023). “Personalized Decision Making – A Conceptual Introduction”. In: <em>Journal of Causal Inference</em>. url: <a href="http://ftp.cs.ucla.edu/pub/stat_ser/r513.pdf">http://ftp.cs.ucla.edu/pub/stat_ser/r513.pdf</a>.</li>
+    <li id="pearl_linear_2013">Pearl, Judea (May 29, 2013). “Linear Models: A Useful “Microscope” for Causal Analysis”. In: <em>Journal of Causal Inference</em> 1.1, pp. 155–170. issn: 2193-3685, 2193-3677. doi: 10.1515/jci-2013-0003. url: <a href="https://www.degruyter.com/document/doi/10.1515/jci-2013-0003/html">https://www.degruyter.com/document/doi/10.1515/jci-2013-0003/html</a> (visited on 03/16/2023).</li>
+    <li id="senn_control_2010">Senn, Stephen (2010). “Control in Clinical Trials”. In: <em>Proceedings of the Eighth International Conference on Teaching Statistics</em>. url: <a href="https://iase-web.org/documents/papers/icots8/ICOTS8_6D2_SENN.pdf">https://iase-web.org/documents/papers/icots8/ICOTS8_6D2_SENN.pdf</a>.</li>
+    <li id="tian2000">Tian, Jin and Judea Pearl (2000). “Probabilities of causation: Bounds and identification”. In: <em>Annals of Mathematics and Artificial Intelligence</em> 28.1-4, pp. 287–313. url: <a href="http://ftp.cs.ucla.edu/pub/stat_ser/r271-A.pdf">http://ftp.cs.ucla.edu/pub/stat_ser/r271-A.pdf</a>.</li>
+</ol>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2023/03/17/personalized-decision-making-under-concurrent-controlled-rct-data/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Causal Inference (CI) − A year in review</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2023/01/04/causal-inference-ci-a-year-in-review/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2023/01/04/causal-inference-ci-a-year-in-review/#respond</comments>
+		
+		<dc:creator><![CDATA[judea]]></dc:creator>
+		<pubDate>Wed, 04 Jan 2023 10:55:00 +0000</pubDate>
+				<category><![CDATA[Causal models]]></category>
+		<category><![CDATA[Counterfactuals]]></category>
+		<category><![CDATA[Econometrics]]></category>
+		<category><![CDATA[Imbens]]></category>
+		<category><![CDATA[Simpson's Paradox]]></category>
+		<category><![CDATA[structural equations]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2440</guid>
+
+					<description><![CDATA[2022 has witnessed a major upsurge in the status of CI, primarily in its general recognition as an independent and essential component in every aspect of intelligent decision making. Visible evidence of this recognition were several prestigious prizes awarded explicitly to CI-related research accomplishments. These include (1) the Nobel Prize in economics, awarded to David [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<div>2022 has witnessed a major upsurge in the status of CI, primarily in its general recognition as an independent and essential component in every aspect of intelligent decision making. Visible evidence of this recognition were several prestigious prizes awarded explicitly to CI-related research accomplishments. These include (1) the Nobel Prize in economics, awarded to David Card, Joshua Angrist, and Guido Imbens for their works on cause and effect relations in natural experiments <span id="OBJ_PREFIX_DWT19_com_zimbra_url" class="Object" role="link"><a href="https://www.nobelprize.org/prizes/economic-sciences/2021/press-release/" target="_blank" rel="noopener">https://www.nobelprize.org/prizes/economic-sciences/2021/press-release/ </a></span>(2) The BBVA Frontiers of Knowledge Award to Judea Pearl for &#8220;laying the foundations of modern AI&#8221; <span id="OBJ_PREFIX_DWT20_com_zimbra_url" class="Object" role="link"><a href="https://www.eurekalert.org/news-releases/942893" target="_blank" rel="noopener">https://www.eurekalert.org/news-releases/942893</a></span> and (3) The Rousseeuw Prize for Statistics to Jamie Robins, Thomas Richardson, Andrea Rotnitzky, Miguel Hernán, and Eric Tchetchgen Tchetchgen, for their &#8220;pioneering work on Causal Inference with applications in Medicine and Public Health&#8221; <span id="OBJ_PREFIX_DWT21_com_zimbra_url" class="Object" role="link"><a href="https://www.rousseeuwprize.org/news/winners-2022" target="_blank" rel="noopener">https://www.rousseeuwprize.org/news/winners-2022.</a></span></div>
+<div>w</div>
+<div>My acceptance speech at the BBVA award can serve as a gentle summary of the essence of causal inference, its basic challenges and major achievements: <a href="https://www.youtube.com/watch?v=uaq389ckd5o">https://www.youtube.com/watch?v=uaq389ckd5o</a>.</div>
+<div> </div>
+<div>It is not a secret that I have been critical of the approach Angrist and Imbens are taking in econometrics, for reasons elaborated here <a href="https://ucla.in/2FwdsGV">https://ucla.in/2FwdsGV</a>, and mainly here <a href="https://ucla.in/36EoNzO">https://ucla.in/36EoNzO</a>. I nevertheless think that their selection to receive the Nobel Prize in economics is a positive step for CI, in that it calls public attention to the problems that CI is trying to solve and will eventually inspire curious economists to seek a more broad-minded approach to these problems, so as to leverage the full arsenal of tools that CI has developed.</div>
+<div> </div>
+<div>Coupled with these highlights of recognition, 2022 has seen a substantial increase in CI activities on both the academic and commercial fronts. The number of citations to CI related articles has reached a record high of over 10,200 citations in 2022, <span id="OBJ_PREFIX_DWT24_com_zimbra_url" class="Object" role="link"><a class="css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0" href="https://t.co/5mxQvEWiOS" target="_blank" rel="noopener noreferrer nofollow"><span class="css-901oao css-16my406 r-poiln3 r-hiw28u r-qvk6io r-bcqeeo r-qvutc0">https://</span>scholar.google.com/citations?user<span class="css-901oao css-16my406 r-poiln3 r-hiw28u r-qvk6io r-bcqeeo r-qvutc0">=bAipNH8AAAAJ&amp;hl=en</span></a></span><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"> , showing </span><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">positive derivatives in all CI categories. Dozens, if not hundreds of seminars, workshops and symposia have been organized in major conferences to disseminate progress in CI research. New results on individualized decision making were prominently featured in these meetings (e.g., <a href="https://ucla.in/33HSkNI">https://ucla.in/33HSkNI</a>). Several commercial outfits have come up with platforms for CI in </span><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">their areas of specialization, ranging from healthcare to finance and marketing. (Company names such as #causallense, and Vianai Systems come to mind:</span></div>
+<div><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><span id="OBJ_PREFIX_DWT25_com_zimbra_url" class="Object" role="link"><a href="https://www.causalens.com/startup-series-a-funding-round-45-million/" target="_blank" rel="noopener">https://www.causalens.com/startup-series-a-funding-round-45-million/</a></span>, <span id="OBJ_PREFIX_DWT26_com_zimbra_url" class="Object" role="link"><a href="https://arxiv.org/ftp/arxiv/papers/2207/2207.01722.pdf" target="_blank" rel="noopener">https://arxiv.org/ftp/arxiv/papers/2207/2207.01722.pdf</a></span>). Naturally, these activities have led to increasing demands</span><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"> for trained researchers and educators, versed in the tools of </span><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">CI; jobs openings explicitly requiring experience in CI have become commonplace in both industry and academia.</span></div>
+<div><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"> </span></div>
+<div><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">I am also happy to see CI becoming an issue of contention in AI and Machine Learning (ML), increasingly recognized as an essential </span><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">capability for </span>human-level AI and, simultaneously, raising the question of whether the data-fitting methodologies of Big Data and Deep Learning could ever acquire these capabilities.<span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"> In</span> <span id="OBJ_PREFIX_DWT27_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/3d2c2Fi" target="_blank" rel="noopener">https://ucla.in/3d2c2Fi</a></span> I&#8217;ve answered this question in the negative, though various attempts to dismiss CI as a species of &#8220;inductive bias&#8221; (e.g., <span id="OBJ_PREFIX_DWT28_com_zimbra_url" class="Object" role="link"><a href="https://www.youtube.com/watch?v=02ABljCu5Zw" target="_blank" rel="noopener">https://www.youtube.com/watch?v=02ABljCu5Zw</a></span>) or &#8220;missing data problem&#8221; (e.g., <span id="OBJ_PREFIX_DWT29_com_zimbra_url" class="Object" role="link"><a href="https://www.jstor.org/stable/pdf/26770992.pdf" target="_blank" rel="noopener">https://www.jstor.org/stable/pdf/26770992.pdf</a></span>) are occasionally being proposed as conceptualizations that could potentially replace the tools of CI. The Ladder of Causation tells us what extra-data information would be required to operationalize such metaphorical aspirations.</div>
+<div> </div>
+<div>Researchers seeking a gentle introduction to CI are often attracted to multi-disciplinary forums or debates, where basic principles are compiled and where differences and commonalities among various approaches are compared and analyzed by leading researchers. Not many such forums were published in 2022, perhaps because the differences and commonalities are now well understood or, as I tend to believe, CI and its Structural Causal Model (SCM) unifies and embraces all other approaches. I will describe two such forums in which I participated.</div>
+<div> </div>
+<div>(1) In March of 2022, the Association for Computing Machinery (ACM) has published an anthology containing highlights of my works (1980-2020) together with commentaries and critics from two dozens authors, representing several disciplines. The Table of Content can be seen here: <span id="OBJ_PREFIX_DWT30_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/3hLRWkV" target="_blank" rel="noopener">https://ucla.in/3hLRWkV.</a></span> It includes 17 of my most popular papers, annotated for context and scope, followed by 17 contributed articles of colleagues and critics. The ones most relevant to CI in 2022 are in Chapters 21-26.</div>
+<div> </div>
+<div>Among these, I consider the causal resolution of Simpson&#8217;s paradox (Chapter 22, <span id="OBJ_PREFIX_DWT31_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/2Jfl2VS" target="_blank" rel="noopener">https://ucla.in/2Jfl2VS</a></span>) to be one of the crown achievements of CI. The paradox lays bare the core differences between causal and statistical thinking, and its resolution brings an end to a century of debates and controversies by the best philosophers of our time. It is also related to Lord&#8217;s Paradox (see <a href="https://ucla.in/2YZjVFL">https://ucla.in/2YZjVFL</a>) − a qualitative version of Simpson&#8217;s Paradox which became a focus of endless debates with statisticians and trialists throughout 2022 (on Twitter @yudapearl). I often cite Simpson&#8217;s paradox as a proof that our brain is governed by causal, not statistical, calculus.</div>
+<div> </div>
+<div>This question − causal or statistical brain − is not a cocktail party conversation but touches on the practical question of choosing an appropriate language for casting the knowledge necessary for commencing any CI exercise. Philip Dawid − a proponent of counterfactual-free statistical languages − has written a critical essay on the topic (<a href="https://www.degruyter.com/document/doi/10.1515/jci-2020-0008/html?lang=en">https://www.degruyter.com/document/doi/10.1515/jci-2020-0008/html?lang=en</a>) and my counterfactual-based rebuttal, <a href="https://ucla.in/3bXCBy3">https://ucla.in/3bXCBy3</a>, clarifies the issues involved.</div>
+<div> </div>
+<div>(2) The second forum of inter-disciplinary discussions can be found in a special issue of the <em>Journal Observational Studies</em>, <span id="OBJ_PREFIX_DWT33_com_zimbra_url" class="Object" role="link"><a href="https://muse.jhu.edu/pub/56/article/867085/pdf" target="_blank" rel="noopener">https://muse.jhu.edu/pub/56/article/867085/pdf</a></span> (edited by Ian Shrier, Russell Steele, Tibor Schuster and Mireille Schnitzer) in a form of interviews with Don Rubin, Jamie Robins, James Heckman and myself.</div>
+<div>
+<div> </div>
+<div>In my interview, <a href="https://ftp.cs.ucla.edu/pub/stat_ser/r523.pdf">https://ftp.cs.ucla.edu/pub/stat_ser/r523.pdf</a>, I compiled aspects of CI that I normally skip in scholarly articles. These include historical perspectives of the development of CI, its current state of affairs and, most importantly for our purpose, the lingering differences between CI and other frameworks. I believe that this interview provides a fairly concise summary of these differences, which have only intensified in 2022.</div>
+<div> </div>
+<div>Most disappointing to me are the graph-avoiding frameworks of Rubin, Angrist, Imbens and Heckman, which still dominate causal analysis in economics and some circles of statistics and social science. The reasons for my disappointments are summarized in the following paragraph:</div>
+<div>
+<blockquote>Graphs are new mathematical objects, unfamiliar to most researchers in the statistical sciences, and were of course rejected as &#8220;non-scientific ad-hockery&#8221; by top leaders in the field [Rubin, 2009]. My attempts to introduce causal diagrams to statistics [Pearl, 1995; Pearl, 2000] have taught me that inertial forces play at least as strong a role in science as they do in politics. That is the reason that non-causal mediation analysis is still practiced in certain circles of social science [Hayes, 2017], &#8220;ignorability&#8221; assumptions still dominate large islands of research [Imbens and Rubin, 2015], and graphs are still tabooed in the econometric literature [Angrist and Pischke, 2014]. While most researchers <span id="OBJ_PREFIX_DWT35_com_zimbra_date" class="Object" role="link">today</span> acknowledge the merits of graph as a transparent language for articulating scientific information, few appreciate the computational role of graphs as &#8220;reasoning engines,&#8221; namely, bringing to light the logical ramifications of the information used in their construction. Some economists even go to great pains to suppress this computational miracle [Heckman and Pinto, 2015; Pearl, 2013].</blockquote>
+</div>
+</div>
+<div> </div>
+<div>My disagreements with Heckman go back to 2007 when he rejected the <em>do</em>-operator for metaphysical reasons (see <a href="https://ucla.in/2NnfGPQ#page=44">https://ucla.in/2NnfGPQ#page=44</a>) and then to 2013, when he celebrated the <em>do</em>-operator after renaming it &#8220;fixing&#8221; but remained in denial of <em>d</em>-separation (see <a href="https://ucla.in/2L8OCyl">https://ucla.in/2L8OCyl</a>). In this denial he retreated 3 decades in time while castrating graphs from their inferential power. Heckman&#8217;s 2022 interview in <em>Observational Studies</em> continues his on-going crusade to prove that econometrics has nothing to learn from neighboring fields. His fundamental mistake lies in assuming that the rules of <em>do</em>-calculus lie &#8220;outside of formal statistics&#8221;; they are in fact logically derivable from formal statistics, REGARDLESS of our modeling assumptions but (much like theorems in geometry) once established, save us the labor of going back to the basic axioms.</div>
+<div> </div>
+<div>My differences with Angrist, Imbens and Rubin go even deeper (see <span id="OBJ_PREFIX_DWT36_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/36EoNzO" target="_blank" rel="noopener">https://ucla.in/36EoNzO</a></span>), for they involve not merely the avoidance of graphs but also the First Law of Causal Inference (<span id="OBJ_PREFIX_DWT37_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/2QXpkYD" target="_blank" rel="noopener">https://ucla.in/2QXpkYD</a></span>) hence issues of transparency and credibility. These differences are further accentuated in Imbens&#8217;s <span style="font-size: revert;">Nobel lecture <a href="https://onlinelibrary.wiley.com/doi/pdf/10.3982/ECTA21204">https://onlinelibrary.wiley.com/doi/pdf/10.3982/ECTA21204</a> </span><span style="font-size: revert;">which treats CI as a computer science creation, irrelevant to &#8220;credible&#8221; econometric research. In <a href="https://ucla.in/2L8OCyl">https://ucla.in/2L8OCyl</a>, as well as in my book <em>Causality</em>, I present dozens of simple problems that economists need, but are unable to solve, lacking the tools of CI.</span></div>
+<div> </div>
+<div><span style="font-size: revert; color: initial; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;">It is amazing to watch leading researchers, in 2022, still resisting the benefits of CI while committing their respective fields to the tyranny of outdatedness. </span></div>
+<div> </div>
+<div><span style="font-size: revert; color: initial; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;">To summarize, 2022 has seen an unprecedented upsurge in CI popularity, activity and stature. The challenge of harnessing </span><span style="font-size: revert; color: initial; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;">CI tools to solve critical societal problems will continue to inspire creative researchers from all fields, and the aspirations of </span><span style="font-size: revert; color: initial; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;">advancing towards human-level artificial intelligence will be pursued with an accelerated pace in 2023.</span></div>
+<div>
+<p>Wishing you a productive new year,<br />Judea</p>
+</div>
+<p> </p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2023/01/04/causal-inference-ci-a-year-in-review/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>What statisticians mean by &#8216;Causal Inference&#8217;: Is Gelman&#8217;s blog representative?</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2022/05/17/what-statisticians-mean-by-causal-inference-is-gelmans-blog-representative/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2022/05/17/what-statisticians-mean-by-causal-inference-is-gelmans-blog-representative/#respond</comments>
+		
+		<dc:creator><![CDATA[judea]]></dc:creator>
+		<pubDate>Tue, 17 May 2022 17:06:02 +0000</pubDate>
+				<category><![CDATA[Causal models]]></category>
+		<category><![CDATA[Gelman's blog]]></category>
+		<category><![CDATA[Statistical causality]]></category>
+		<category><![CDATA[structural equations]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2428</guid>
+
+					<description><![CDATA[Andrew Gelman posted a new blog on Causal Inference https://statmodeling.stat.columbia.edu/2022/05/14/causal-is-what-we-say-when-we-dont-know-what-were-doing/#comment-2053584 which I have found to be not only strange, but wrong. Among the statements that I find objectionable is the title: &#8220;Causal&#8221; is like &#8220;error term&#8221;: it&#8217;s what we say when we&#8217;re not trying to model the process. I have posted a couple of comments [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Andrew Gelman posted a new blog on Causal Inference <a href="https://statmodeling.stat.columbia.edu/2022/05/14/causal-is-what-we-say-when-we-dont-know-what-were-doing/#comment-2053584">https://statmodeling.stat.columbia.edu/2022/05/14/causal-is-what-we-say-when-we-dont-know-what-were-doing/#comment-2053584 </a>which I have found to be not only strange, but wrong. Among the statements that I find objectionable is the title: &#8220;Causal&#8221; is like &#8220;error term&#8221;: it&#8217;s what we say when we&#8217;re not trying to model the process.</p>
+<p>I have posted a couple of comments there, expressing my bewilderment, and summarized them in the following statement:</p>
+<p>Andrew,<br />Re-reading your post, I pause at every line that mentions &#8220;causal inference&#8221; and I say to myself: This is not my &#8220;causal inference,&#8221; and if Andrew is right that this is what statisticians mean by &#8220;causal inference,&#8221; then there are two non intersecting kinds of &#8220;causal inference&#8221; in the world, one used by statisticians and one by people in my culture whom, for lack of better words, I call &#8220;Causal Inference Folks.&#8221;</p>
+<p>I cannot go over every line, but here is a glaring one: &#8220;causal inference is all about the aggregation of individual effects into average effects, and if you have a direct model for individual effects, then you just fit it directly.&#8221;</p>
+<p>Not in my culture. I actually go from average effects to individual effects. See <a href="https://ucla.in/3aZx2eQ">https://ucla.in/3aZx2eQ</a> and <a href="https://ucla.in/33HSkNI">https://ucla.in/33HSkNI</a>. Moreover, I have never seen &#8220;a direct model for individual effects&#8221; unless it is an SCM. Is that what you had in mind? If so, how does it differ from a &#8220;mechanistic model.&#8221; What would I be missing if I use SCM and never mention &#8220;mechanistic models&#8221;?</p>
+<p>Bottom line, your post reinforces my explicit distinction between &#8220;statisticians&#8221; and &#8220;causal inference folks&#8221; to the point where I can hardly see an overlap. To make it concrete, let me ask a quantitative question: How many &#8220;statisticians&#8221; do you know who subscribe to the First Law of Causal Inference <a href="https://ucla.in/2QXpkYD">https://ucla.in/2QXpkYD</a>, or to the Ladder of Causation <a href="https://ucla.in/2URVLZW">https://ucla.in/2URVLZW</a>, or to the backdoor criterion or etc? These are foundational notions that we &#8220;causal inference folks&#8221; consider to be the DNA of our culture, without which we are back in pre-1990 era.</p>
+<p>For us, &#8220;Causal&#8221; is not like &#8220;error term&#8221;: it&#8217;s what we say when we ARE trying to model the process.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2022/05/17/what-statisticians-mean-by-causal-inference-is-gelmans-blog-representative/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Personalized Decision Making</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2021/04/29/personalized-decision-making/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2021/04/29/personalized-decision-making/#respond</comments>
+		
+		<dc:creator><![CDATA[Scott Mueller]]></dc:creator>
+		<pubDate>Thu, 29 Apr 2021 17:53:44 +0000</pubDate>
+				<category><![CDATA[Counterfactual]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2376</guid>
+
+					<description><![CDATA[Scott Mueller and Judea Pearl Abstract Personalized decision making targets the behavior of a specific individual, while population-based decision making concerns a sub-population resembling that individual. This paper clarifies the distinction between the two and explains why the former leads to more informed decisions. We further show that by combining experimental and observational studies we [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<style>
+    p.authors {
+        text-align: right;
+    }
+    a.footnote {
+        text-decoration-line: none;
+        vertical-align: super;
+        font-size: smaller;
+    }
+    h5 {
+        margin-bottom: 0;
+    }
+    dl.footnote {
+        font-size: small;
+        margin-bottom: 20px;
+    }
+    dl.footnote dt {
+        float: left;
+        vertical-align: super;
+        font-size: smaller;
+    }
+    dl.footnote dd {
+        margin-left: 15px;
+    }
+    table.results {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin: 25px 0;
+    }
+    table.results caption {
+        caption-side: bottom;
+        margin-top: 10px;
+    }
+    table.results th:first-child {
+        text-align: left;
+    }
+    table.results td {
+        text-align: right;
+    }
+    table.results th, table.results td {
+        border-left-width: 0 1px;
+        border-right-width: 0 1px;
+        border-left-style: solid;
+        border-right-style: solid;
+        padding: 3px;
+    }
+    table.results thead th:first-child, table.results tbody th, table.results tfoot th {
+        border-left-width: 0;
+    }
+    table.results thead th:last-child, table.results tbody td:last-child, table.results tfoot td:last-child {
+        border-right-width: 0;
+    }
+    table.results tbody tr:first-child {
+        border-top-width: 1px;
+        border-top-style: solid;
+    }
+    table.results tbody tr:last-child {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+    }
+</style>
+<p class="authors"><em><strong>Scott Mueller and Judea Pearl</strong></em></p>
+<h2>Abstract</h2>
+<p>Personalized decision making targets the behavior of a specific individual, while population-based decision making concerns a sub-population resembling that individual. This paper clarifies the distinction between the two and explains why the former leads to more informed decisions. We further show that by combining experimental and observational studies we can obtain valuable information about individual behavior and, consequently, improve decisions over those obtained from experimental studies alone.</p>
+<h2>Introduction</h2>
+<p>The purpose of this paper is to provide a conceptual understanding of the distinction between personalized and population-based decision making, and to demonstrate both the advantages of the former and how it could be achieved.</p>
+
+<p>Formally, this distinction is captured in the following two causal effects. Personalized decision making optimizes the Individual Causal Effect (ICE):</p>
+$$\begin{equation}
+    \text{ICE}(u) = Y(1,u)-Y(0,u)
+\end{equation}$$
+<p>where \(Y(x,u)\) stands for the outcome that individual \(u\) would attain had decision \(x \in \{1, 0\}\) been taken. In contrast, population-based decision making optimizes the Conditional Average Causal Effect (CACE):</p>
+$$\begin{equation}
+    \text{CACE}(u) = E[Y(1,u&#8217;) &#8211; Y(0,u&#8217;) | C(u&#8217;) = C(u)]
+\end{equation}$$
+<p>where \(C(u)\) stands for a vector of characteristics observed on individual \(u\), and the average is taken over all units \(u&#8217;\) that share these characteristics.</p>
+
+<p>We will show in this paper that the two objective functions lead to different decision strategies and that, although \(\text{ICE}(u)\) is in general not identifiable, informative bounds can nevertheless be obtained by combining experimental and observational studies. We will further demonstrate how these bounds can improve decisions that would otherwise be taken using \(\text{CACE}(u)\) as an objective function.</p>
+
+<p>The paper is organized as follows. Section 2 will demonstrate, using an extreme example, two rather surprising findings. First, that population data are capable of providing decisive information on individual response and, second, that non-experimental data, usually discarded as bias-prone, can add information (regarding individual response) beyond that provided by a Randomized Controlled Trial (RCT) alone. Section 3 will generalize these findings using a more realistic example, and will further demonstrate how critical decisions can be made using the information obtained and their ramifications to both the targeted individual and to a population-minded policy maker. Section 4 casts the findings of Section 3 in a numerical setting, allowing for a quantitative appreciation of the magnitudes involved. This analysis leads to actionable policies that guarantee risk-free benefits in certain populations.</p>
+
+<h2>Preliminary Semi-qualitative Example</h2>
+<p>Our target of analysis is an individual response to a given treatment, namely, how an individual would react if given treatment and if denied treatment. Since no individual can be subjected to both treatment and its denial, its response function must be inferred from population data, originating from one or several studies. We are asking therefore: to what degree can population data inform us about an individual response?</p>
+
+<p>Before tackling this general question, we wish to address two conceptual hurdles. First, why should population data provide <em>any</em> information whatsoever on the individual response and, second, why should non-experimental data add any information (regarding individual response) to what we can learn with an RCT alone. The next simple example will demonstrate both points.</p>
+
+<p>We conduct an RCT and find no difference between treatment (drug) and control (placebo), say \(10\%\) in both treatment and control groups die, while the rest (\(90\%\)) survive. This makes us conclude that the drug is ineffective, but also leaves us uncertain between (at least) two competing models:</p>
+<ul>
+    <li>Model-1 &#8212; The drug has no effect whatsoever on any individual and</li>
+    <li>Model-2 &#8212; The drug saves \(10\%\) of the population and kills another \(10\%\).</li>
+</ul>
+
+<p>From a policy maker viewpoint the two models may be deemed equivalent, the drug has zero average effect on the target population. But from an individual viewpoint the two models differ substantially in the sets of risks and opportunities they offer. According to Model-1, the drug is useless but safe. According to Model-2, however, the drug may be deemed dangerous by some and a life-saver by others.</p>
+
+<p>To see how such attitudes may emerge, assume, for the sake of argument, that the drug also provides temporary pain relief. Model-1 would be deemed desirable and safe by all, whereas Model-2 will scare away those who do not urgently need the pain relief, while offering a glimpse of hope to those whose suffering has become unbearable, and who would be ready to risk death for the chance (\(10\%\)) of recovery. (Hoping, of course, they are among the lucky beneficiaries.)</p>
+
+<p>This simple example will also allow us to illustrate the second theme of our paper &#8211; the crucial role of observational studies. We will now show that supplementing the RCT with an observational study on the same population (conducted, for example, by an independent survey of patients who have the option of taking or avoiding the drug) would allow us to decide between the two models, totally changing our understanding of what risks await an individual taking the drug.</p>
+
+<p>Consider an extreme case where the observational study shows \(100\%\) survival in both drug-choosing and drug-avoiding patients, as if each patient knew in advance where danger lies and managed to avoid it.  Such a finding, though extreme and unlikely, immediately rules out Model-1 which claims no treatment effect on any individual. This is because the mere fact that patients succeed \(100\%\) of the time to avoid harm where harm does exist (revealed through the \(10\%\) death in the randomized trial) means that choice makes a difference, contrary to Model-1&#8217;s claim that choice makes no difference.</p>
+
+<p>The reader will surely see that the same argument applies when the probability of survival among option-having individuals is not precisely \(100\%\) but simply higher (or lower) than the probability of survival in the RCT. Using the RCT study alone, in contrast, we were unable to rule out Model-1, or even to distinguish Model-1 from Model-2.</p>
+
+<p>We now present another edge case where Model-2, rather than Model-1, is ruled out as impossible. Assume the observational study informs us that all those who chose the drug died and all who avoided the drug survived. It seems that drug-choosers were truly dumb while drug-avoiders knew precisely what&#8217;s good for them. This is perfectly feasible, but it also tells us that no one can be <em>cured</em> by the drug, contrary to the assertion made by Model-2, that the drug cures \(10\%\) and kills \(10\%\). To be cured, a person must survive if treated and die if not treated. But none of the drug-choosers were cured, because they all died, and none of the drug avoiders were cured because they all survived.  Thus, Model-2 cannot explain these observational results, and must be ruled out.</p>
+
+<p>Now that we have demonstrated conceptually how certain combinations of observational and experimental data can provide information on individual behavior that each study alone cannot, we are ready to go to a more realistic motivating example which, based on theoretical bounds derived in <a href="#tian2000">Tian and Pearl, 2000</a>, establishes individual behavior for any combination of observational and experimental data<a class="footnote" href="#footnote-1">1</a> and, moreover, demonstrates critical decision making ramifications of the information obtained.</p>
+
+<h5>Footnote</h5><dl class="footnote"><dt id="footnote-1">1</dt><dd>The example we will work out happened to be identifiable due to particular combinations of data, though, in general, the data may not permit point estimates of individual causal effects.</dd></dl>
+
+<h2>Motivating Numerical Example</h2>
+<p>The next example to be considered deals with the effect of a drug on two subpopulations, males and females. Unlike the extreme case considered in Section 2, the drug is found to be somewhat effective for both males and females and, in addition, deaths are found to occur in the observational study as well.</p>
+
+<p>To cast the story in a realistic setting, we imagine the testing of a new drug, aimed to help patients suffering from a deadly disease. An RCT is conducted to evaluate the efficacy of the drug and is found to be \(28\%\) effective in both males and females. In other words \(\text{CACE}(\text{male}) = \text{CACE}(\text{female}) = 0.28\). The drug is approved and, after a year of use, a follow up randomized study is conducted yielding the same results; namely CACE remained 0.28, and men and women remained totally indistinguishable in their responses, as shown in Table 1.</p>
+
+<table class="results">
+<thead>
+  <tr>
+    <th></th>
+    <th colspan=2>Experimental</th>
+  </tr>
+  <tr>
+    <th></th>
+    <th>\(do(\text{drug})\)</th>
+    <th>\(do(\text{no drug})\)</th>
+    <th>\(\text{CACE}\)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th>Female Survivals</th>
+    <td>489/1000 (49%)</td>
+    <td>210/1000 (21%)</td>
+    <td>28%</td>
+  </tr>
+  <tr style="border-bottom-width: 0">
+    <th>Male Survivals</th>
+    <td>490/1000 (49%)</td>
+    <td>210/1000 (21%)</td>
+    <td>28%</td>
+  </tr>
+</tbody>
+<caption>Table 1: Female vs male CACE
+</table>
+<table class="results">
+<thead>
+  <tr>
+    <th></th>
+    <th colspan=4>Female Data</th>
+  </tr>
+  <tr>
+    <th></th>
+    <th colspan=2>Experimental</th>
+    <th colspan=2>Observational</th>
+  </tr>
+  <tr>
+    <th></th>
+    <th>\(do(\text{drug})\)</th>
+    <th>\(do(\text{no drug})\)</th>
+    <th>\(\text{drug}\)</th>
+    <th>\(\text{no drug}\)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th>Survivals</th>
+    <td>489 (49%)</td>
+    <td>210 (21%)</td>
+    <td>378 (27%)</td>
+    <td>420 (70%)</td>
+  </tr>
+  <tr>
+    <th>Deaths</th>
+    <td>511 (51%)</td>
+    <td>790 (79%)</td>
+    <td>1,022 (73%)</td>
+    <td>180 (30%)</td>
+  </tr>
+</tbody>
+<tfoot>
+  <tr>
+    <th>Total</th>
+    <td>1,000 (50%)</td>
+    <td>1,000 (50%)</td>
+    <td>1,400 (70%)</td>
+    <td>600 (30%)</td>
+  </tr>
+</tfoot>
+<caption>Table 2: Female survival and recovery data
+</table>
+<table class="results">
+<thead>
+  <tr>
+    <th></th>
+    <th colspan=4>Male Data</th>
+  </tr>
+  <tr>
+    <th></th>
+    <th colspan=2>Experimental</th>
+    <th colspan=2>Observational</th>
+  </tr>
+  <tr>
+    <th></th>
+    <th>\(do(\text{drug})\)</th>
+    <th>\(do(\text{no drug})\)</th>
+    <th>\(\text{drug}\)</th>
+    <th>\(\text{no drug}\)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th>Survivals</th>
+    <td>490 (49%)</td>
+    <td>210 (21%)</td>
+    <td>980 (70%)</td>
+    <td>420 (70%)</td>
+  </tr>
+  <tr>
+    <th>Deaths</th>
+    <td>510 (51%)</td>
+    <td>790 (79%)</td>
+    <td>420 (30%)</td>
+    <td>180 (30%)</td>
+  </tr>
+</tbody>
+<tfoot>
+  <tr>
+    <th>Total</th>
+    <td>1,000 (50%)</td>
+    <td>1,000 (50%)</td>
+    <td>1,400 (70%)</td>
+    <td>600 (30%)</td>
+  </tr>
+</tfoot>
+<caption>Table 3: Male survival and recovery data
+</table>
+
+<p>Let us focus on the second RCT (Table 1), since the first was used for drug approval only, and its findings are the same as the second. The RCT tells us that there was a \(28\%\) improvement, on average, in taking the drug compared to not taking the drug. This was the case among both females and males: \(\text{CACE}(\text{female}) = \text{CACE}(\text{male}) = 0.28\), where \(do(\text{drug})\) and \(do(\text{no-drug})\) are the treatment and control arms in the RCT. It thus appears reasonable to conclude that the drug has a net remedial effect on some patients and that every patient, be it male or female, should be advised to take the drug and benefit from its promise of increasing one&#8217;s chances of recovery (by \(28\%\)).</p>
+
+<p>At this point, the drug manufacturer ventured to find out to what degree people actually buy the approved drug, following its recommended usage. A market survey was conducted (observational study) and revealed that only \(70\%\) of men and \(70\%\) of women actually chose to take the drug; problems with side effects and rumors of unexpected deaths may have caused the other \(30\%\) to avoid it. A careful examination of the observational study has further revealed substantial differences in survival rates of men and women who chose to use the drug (shown in Tables 2 and 3). The rate of recovery among drug-choosing men was exactly the same as that among the drug-avoiding men (\(70\%\) for each), but the rate of recovery among drug-choosing women was \(43\%\) lower than among drug-avoiding women (\(0.27\) vs \(0.70\), in Table 2). It appears as though many women who chose the drug were already in an advanced stage of the disease, which may account for their low recovery rate of \(27\%\).</p>
+
+<p>At this point, having data from both experimental and observational studies we can estimate the individual treatment effects for both a typical man and a typical woman. Quantitative analysis shows (see Section 4) that, with the data above, the drug affects men markedly differently from the way it affects women. Whereas a woman has a \(28\%\) chance of benefiting from the drug and no danger at all of being harmed by it, a man has a \(49\%\) chance of benefiting from it and as much as a \(21\%\) chance of dying because of it &#8212; a serious cause for concern. Note that based on the experimental data alone (Table 1), no difference at all can be noticed between men and women.</p>
+
+<p>The ramifications of these findings on personal decision making are enormous. First, they tell us that the drug is not as safe as the RCT would have us believe, it may cause death in a sizable fraction of patients. Second, they tell us that a woman is totally clear of such dangers, and should have no hesitation to take the drug, unlike a man, who faces a decision; a \(21\%\) chance of being harmed by the drug is cause for concern. Physicians, likewise, should be aware of the risks involved before recommending the drug to a man. Third, the data tell policy makers what the overall societal benefit would be if the drug is administered to women only; \(28\%\) of the drug-takers would survive who would die otherwise. Finally, knowing the relative sizes of the benefiting vs harmed subpopulations swings open the door for finding the mechanisms responsible for the differences as well as identifying measurable markers that characterize those subpopulations.</p>
+
+<p>For example:</p>
+<ul>
+    <li>In the same way that our analysis has identified &#8220;Sex&#8221; to be an important feature, separating those who are harmed from those saved by the drug, so we can leverage other measured features, say family history, a genetic marker, or a side-effect, and check whether they shrink the sizes of the susceptible subpopulations. The results would be a set of features that approximate responses at the individual level. Note again that absent observational data and a calculus for combining them with the RCT data, we would not be able to identify such informative features. A feature like &#8220;Sex&#8221; would be deemed irrelevant, since men and women were indistinguishable in our RCT studies.</li>
+    <li>Our ability to identify relevant informative features as described above can be leveraged to amplify the potential benefits of the drug. For example, if we identify a marker that characterizes men who would die only if they take the drug and prevent those patients from taking the drug, the drug would cure \(62\%\) of male patients who would be allowed to use it. This is because we don&#8217;t administer the drug to the \(21\%\) who would&#8217;ve been killed by the drug. Those patients will now survive, so a total of \(70\%\) of patients will be cured because of this combination of marker identification and drug administration. This unveils an enormous potential of the drug at hand, which was totally concealed by the \(28\%\) effectiveness estimated in the RCT studies.</li>
+</ul>
+
+<h2>How the Results Were Obtained</h2>
+<p>For the purpose of analysis, let us denote \(y_t\) as recovery among the RCT treatment group and \(y_c\) as recovery among the RCT control group. The causal effects for treatment and control groups, \(P(y_t|\text{Gender})\) and \(P(y_c|\text{Gender})\), were the same<a class="footnote" href="#footnote-2">2</a>, no differences were noted between males and females.</p>
+
+<p>In addition to the above RCT<a class="footnote" href="#footnote-3">3</a>, we posited an observational study (survey) conducted on the same population. Let us denote \(P(y|t, \text{Gender})\) and \(P(y|c, \text{Gender})\) as recovery among the drug-choosers and recovery among the drug-avoiders, respectively.</p>
+
+<p>With this notation at hand, our problem is to compute the probability of benefit</p>
+$$\begin{equation}
+      P(\text{benefit}) = P(y_t, y&#8217;_c)
+\end{equation}$$
+<p>from the following data sources: \(P(y_t)\), \(P(y_c)\), \(P(y|t)\), \(P(y|c)\), and \(P(t)\). The first two denote the data obtained from the RCT and the last three, data obtained from the survey. Eq. (3) should be interpreted as the probability that an individual would both recover if assigned to the RCT treatment arm and die if assigned to control<a class="footnote" href="#footnote-4">4</a>.</p>
+
+<p>Connecting the experimental and observational data is an important assumption known as consistency (<a href="#pearl2009causality">Pearl, 2009</a>, <a href="#pearl2010">2010</a>)<a class="footnote" href="#footnote-5">5</a>. In other words, we assume that the units selected for an observational or experimental study are drawn from the same population and that their response to treatment is purely biological, unaffected by their respective settings.</p>
+
+<p>In other words, the outcome of a person choosing the drug would be the same had this person been assigned to the treatment group in an RCT study. Similarly, if we observe someone avoiding the drug, their outcome is the same as if they were in the control group of our RCT. Deviation from consistency, normally attributed to uncontrolled &#8220;placebo effects&#8221;, should be dealt with by explicitly representing such factors in the model.</p>
+
+<p>In terms of our notation, consistency implies:</p>
+$$\begin{equation}
+    P(y_t|t)= P(y|t), P(y_c|c)= P(y|c).
+\end{equation}$$
+<p>In words, the probability that a drug-chooser would recover in the treatment arm of the RCT, \(P(y_t|t)\), is the same as the probability of recovery in the observational study, \(P(y|t)\).</p>
+
+<p>Based on this assumption, and leveraging both experimental and observational data, Tian and Pearl (<a href="#tian2000">Tian and Pearl, 2000</a>) derived the following tight bounds on the probability of benefit, as defined in (3):</p>
+$$\begin{equation}
+    \max\left\{\begin{array}{c}
+        0,\\
+        P(y_t) &#8211; P(y_c),\\
+        P(y) &#8211; P(y_c),\\
+        P(y_t) &#8211; P(y)\\
+    \end{array}\right\} \leqslant P(\text{benefit}) \leqslant \min\left\{\begin{array}{c}
+        P(y_t),\\
+        P(y&#8217;_c),\\
+        P(t,y) + P(c,y&#8217;),\\
+        P(y_t) &#8211; P(y_c)\ +\\
+        \ P(t, y&#8217;) + P(c, y)
+    \end{array}\right\}.
+\end{equation}$$
+<p>Here \(P(y&#8217;_c)\) stands for \(1-P(y_c)\), namely the probability of death in the control group. The same bounds hold for any subpopulation, say males or females, if every term in (5) is conditioned on the appropriate class.</p>
+
+<p>Applying these expressions to the female data from Table 2 gives the following bounds on \(P(\text{benefit}|\text{female})\):</p>
+$$\begin{align}
+    \max\{0, 0.279, 0.09, 0.189\} &#038;\leqslant P(\text{benefit}|\text{female}) \leqslant \min\{0.489,0.79,0.279,1\},\nonumber\\
+    0.279 &#038;\leqslant P(\text{benefit}|\text{female}) \leqslant 0.279.
+\end{align}$$
+
+<p>Similarly, for men we get:</p>
+$$\begin{align}
+    \max\{0, 0.28, 0.49, -0.21\} &#038;\leqslant P(\text{benefit}|\text{male}) \leqslant \min\{0.49, 0.79, 0.58, 0.7\},\nonumber\\
+    0.49 &#038;\leqslant P(\text{benefit}|\text{male}) \leqslant 0.49.
+\end{align}$$
+
+<p>Thus, the bounds for both females and males, in (6) and (7), collapse to point estimates:</p>
+$$\begin{align*}
+    P(\text{benefit}|\text{female}) &#038;= 0.279,\\
+    P(\text{benefit}|\text{male}) &#038;= 0.49.
+\end{align*}$$
+
+<p>We aren&#8217;t always so fortunate to have a complete set of observational and experimental data at our disposal. When some data is absent, we are allowed to discard arguments to \(\max\) or \(\min\) in (5) that depend on that data. For example, if we lack all experimental data, the only applicable lower bound in (5) is \(0\) and the only applicable upper bound is \(P(t, y) + P(c, y&#8217;)\):</p>
+$$\begin{equation}
+    0 \leqslant P(\text{benefit}) \leqslant P(t, y) + P(c, y&#8217;).
+\end{equation}$$
+<p>Applying these observational data only bounds to males and females yields:</p>
+$$\begin{align*}
+    0 &#038;\leqslant P(\text{benefit}|\text{female}) \leqslant 0.279,\\
+    0 &#038;\leqslant P(\text{benefit}|\text{male}) \leqslant 0.58.
+\end{align*}$$
+<p>Naturally, these are far more loose than the point estimates when combined experimental and observational data is fully available. Let&#8217;s similarly examine what can be computed with purely experimental data. Without observational data, only the first two arguments to \(\max\) of the lower bound and \(\min\) of the upper bound of \(P(\text{benefit})\) in (5) are applicable:</p>
+$$\begin{equation}
+    \max\{0,P(y_t)-P(y_c)\} \leqslant P(\text{benefit}) \leqslant \min\{P(y_t),P(y&#8217;_c)\}.
+\end{equation}$$
+<p>Applying these experimental data only bounds to males and females yields:</p>
+$$\begin{align*}
+    0.279 &#038;\leqslant P(\text{benefit}|\text{female}) \leqslant 0.489,\\
+    0.28 &#038;\leqslant P(\text{benefit}|\text{male}) \leqslant 0.49.
+\end{align*}$$
+<p>Again, these are fairly loose bounds, especially when compared to the point estimates obtained with combined data. Notice that the overlap between the female bounds using observational data, \(0 \leqslant P(\text{benefit}|\text{female}) \leqslant 0.279\), and the female bounds using experimental data, \(0.279 \leqslant P(\text{benefit}|\text{female}) \leqslant 0.489\) is the point estimate \(P(\text{benefit}|\text{female}) = 0.279\). The more comprehensive Tian-Pearl bounds formula (5) wasn&#8217;t necessary. However, the intersection of the male bounds using observational data, \(0 \leqslant P(\text{benefit}|\text{male}) \leqslant 0.58\), and the male bounds using experimental data, \(0.28 \leqslant P(\text{benefit}|\text{male}) \leqslant 0.49\), does not provide us with narrower bounds. For males, the comprehensive Tian-Pearl bounds in (5) was necessary for narrow bounds (in this case, a point estimate).</p>
+
+<p>Having seen this mechanism of combining observational and experimental data in (5) work so well, the reader may ask what&#8217;s behind this? The intuition comes from the fact that observational data incorporates individuals&#8217; whims. Whimsy is a proxy for much deeper behavior. This leads to confounding, which is ordinarily problematic for causal inference and leads to spurious conclusions, sometimes completely reversing a treatment&#8217;s effect (<a href="#pearl2014simpson">Pearl, 2014</a>). Confounding then needs to be adjusted for. However, here confounding helps us, exposing the underlying mechanisms its associated whims and desires are a proxy for.</p>
+
+<p>Finally, as noted in Section 3, knowing the relative sizes of the benefiting vs harmed subpopulations demands investment in finding mechanisms responsible for the differences as well as characterizations of those subpopulations. For example, women above a certain age may be affected differently by the drug, to be detected by how age affects the bounds on the individual response. Such characteristics can potentially be narrowed repeatedly until the drug&#8217;s efficacy can be predicted for an individual with certainty or the underlying mechanisms of the drug can be fully understood.</p>
+
+<p>None of this was possible with only the RCT. Yet, remarkably, an observational study, however sloppy and uncontrolled, provides a deeper perspective on a treatment&#8217;s effectiveness. It incorporates individuals&#8217; whims and desires that govern behavior under free-choice settings. And, since such whims and desires are often proxies for factors that also affect outcomes and treatments (i.e., confounders), we gain additional insight hidden by RCTs.</p>
+
+<h5>Footnote</h5>
+<dl class="footnote">
+    <dt id="footnote-2">2</dt><dd>\(P(y_t|\text{female})\) was rounded up from \(48.9\%\) to \(49\%\). The \(0.001\) difference between \(P(y_t|\text{female}\)) and \(P(y_t|\text{male})\) wasn&#8217;t necessary, but was constructed to allow for clean point estimates.</dd>
+    <dt id="footnote-3">3</dt><dd>To simplify matters, we are treating each experimental study data as an ideal RCT, with \(100\%\) compliance and no selection bias or any other biases that can often plague RCTs.</dd>
+    <dt id="footnote-4">4</dt><dd>Tian and Pearl (<a href="#tian2000">Tian and Pearl, 2000</a>) called \(P(\text{benefit})\) &#8220;Probability of Necessity and Sufficiency&#8221; (PNS). The relationship between PNS and ICE (1) is explicated in Section 5</dd>
+    <dt id="footnote-5">5</dt><dd>Consistency is a property imposed at the individual level, often written as
+        $$\begin{equation*}
+            Y = X \cdot Y(1) + (1-X) \cdot Y(0)
+        \end{equation*}$$
+        for binary X and Y. Rubin (<a href="#rubin1974">Rubin, 1974</a>) considered consistency to be an assumption in SUTVA, which defines the potential outcome (PO) framework. Pearl (<a href="#pearl2010">Pearl, 2010</a>) considered consistency to be a theorem of Structural Equation Models.</dd>
+</dl>
+
+<h2>Annotated Bibliography for Related Works</h2>
+<p>The following is a list of papers that analyze probabilities of causation and lead to the results reported above.</p>
+<ul>
+    <li>Chapter 9 of Causality (<a href="#pearl2009causality">Pearl, 2009</a>) derives bounds on individual-level probabilities of causation and discusses their ramifications in legal settings. It also demonstrates how the bounds collapse to point estimates under certain combinations of observational and experimental data.</li>
+    <li>(<a href="#tian2000">Tian and Pearl, 2000</a>) develops bounds on individual level causation by combining data from experimental and observational studies. This includes Probability of Sufficiency (PS), Probability of Necessity (PN), and Probability of Necessity and Sufficiency (PNS). PNS is equivalent to \(P(\text{benefit})\) above. \(\text{PNS}(u) = P(\text{benefit}|u)\), the probability that individual \(U=u\) survives if treated and does not survive if not treated, is related to \(\text{ICE}(u)\) (1) via the equation:
+$$\begin{equation}
+    \text{PNS}(u) = P(\text{ICE}(u&#8217;) > 0 | C(u&#8217;) = C(u)).
+\end{equation}$$
+
+<p>In words, \(\text{PNS}(u)\) equals the proportion of units \(u&#8217;\) sharing the characteristics of \(u\) that would positively benefit from the treatment. The reason is as follows. Recall that (for binary variables) \(\text{ICE}(u)\) is \(1\) when the individual benefits from the treatment, \(\text{ICE}(u)\) is \(0\) when the individual responds the same to either treatment, and \(\text{ICE}(u)\) is \(-1\) when the individual is harmed by treatment. Thus, for any given population, \(\text{PNS} = P(\text{ICE}(u) > 0)\). Focusing on the sub-population of individuals \(u&#8217;\) that share the characteristics of \(u\), \(C(u&#8217;) = C(u)\), we obtain (10). In words, \(\text{PNS}(u)\) is the fraction of indistinguishable individuals that would benefit from treatment. Note that whereas (2) is can be estimated by controlled experiments over the population \(C(u&#8217;)=C(u)\), (10) is defined counterfactually, hence, it cannot be estimated solely by such experiments; it requires additional ingredients as described in the text below.</p></li>
+    <li>(<a href="#mueller2020">Mueller and Pearl, 2020</a>) provides an interactive visualization of individual level causation, allowing readers to observe the dynamics of the bounds as one changes the available data.</li>
+    <li>(<a href="#li2019">Li and Pearl, 2019</a>) optimizes societal benefit of selecting a unit \(u\), when provided costs associated with the four different types of individuals, benefiting, harmed, always surviving, and doomed.</li>
+    <li>(<a href="#mueller2021">Mueller et al., 2021</a>) takes into account the causal graph to obtain narrower bounds on PNS. The hypothetical study in this article was able to calculate point estimates of PNS, but often the best we can get are bounds.</li>
+    <li>(<a href="#pearl2015">Pearl, 2015</a>) demonstrates how combining observational and experimental data can be informative for determining Causes of Effects, namely, assessing the probability PN that one event was a necessary cause of an observed outcome.</li>
+    <li>(<a href="#dawid2022effects">Dawid and Musio, 2022</a>) analyze Causes of Effects (CoE), defined by PN, the probability that a given intervention is a necessary cause for an observed outcome.  Dawid and Musio further analyze whether bounds on PN can be narrowed with data on mediators.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>One of the least disputed mantra of causal inference is that we cannot access individual causal effects; we can observe an individual response to treatment or to no-treatment but never to both. However, our theoretical results show that we can get bounds on individual causal effects, which sometimes can be quite narrow and allow us to make accurate personalized decisions. We project therefore that these theoretical results are key for next-generation personalized decision making.</p>
+
+<h2>References</h2>
+<ol>
+    <li id="dawid2022effects">Dawid, A. P., &#038; Musio, M. (2022). Effects of causes and causes of effects. Annual Review of Statistics and its Application. <a href="https://arxiv.org/pdf/2104.00119.pdf">https://arxiv.org/pdf/2104.00119.pdf</a></li>
+    <li id="li2019">Li, A., &#038; Pearl, J. (2019). Unit selection based on counterfactual logic. Proceedings of the 28th International Joint Conference on Artificial Intelligence, 1793-1799.</li>
+    <li id="mueller2021">Mueller, S., Li, A., &#038; Pearl, J. (2021). Causes of effects: Learning individual responses from population data. <a href="http://ftp.cs.ucla.edu/pub/statser/r505.pdf">http://ftp.cs.ucla.edu/pub/statser/r505.pdf</a></li>
+    <li id="mueller2020">Mueller, S., &#038; Pearl, J. (2020). Which Patients are in Greater Need: A counterfactual analysis with reflections on COVID-19 [<a href="https://ucla.in/39Ey8sU+">https://ucla.in/39Ey8sU+</a>].</li>
+    <li id="pearl2009causality">Pearl, J. (2009). Causality (Second). Cambridge University Press.</li>
+    <li id="pearl2010">Pearl, J. (2010). On the consistency rule in causal inference: An axiom, definition, assumption, or a theorem? Epidemiology, 21(6), 872-875. <a href="https://ftp.cs.ucla.edu/pub/stat_ser/r358-reprint.pdf">https://ftp.cs.ucla.edu/pub/stat_ser/r358-reprint.pdf</a></li>
+    <li id="pearl2014simpson">Pearl, J. (2014). Understanding simpson’s paradox. The American Statistician, 68(1), 8-13. <a href="http://ftp.cs.ucla.edu/pub/stat_ser/r414-reprint.pdf">http://ftp.cs.ucla.edu/pub/stat_ser/r414-reprint.pdf</a></li>
+    <li id="pearl2015">Pearl, J. (2015). Causes of effects and effects of causes. Journal of Sociological Methods and Research, 44(1), 149-164. <a href="http://ftp.cs.ucla.edu/pub/stat_ser/r431-reprint.pdf">http://ftp.cs.ucla.edu/pub/stat_ser/r431-reprint.pdf</a></li>
+    <li id="rubin1974">Rubin, D. B. (1974). Estimating causal effects of treatments in randomized andnonrandomized studies. Journal of Educational Psychology, 66(5), 688-701. <a href="https://doi.org/10.1037/h0037350">https://doi.org/10.1037/h0037350</a></li>
+    <li id="tian2000">Tian, J., &#038; Pearl, J. (2000). Probabilities of causation: Bounds and identification. Annals of Mathematics and Artificial Intelligence, 28(1-4), 287-313. <a href="http://ftp.cs.ucla.edu/pub/stat_ser/r271-A.pdf">http://ftp.cs.ucla.edu/pub/stat_ser/r271-A.pdf</a></li>
+</ol>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2021/04/29/personalized-decision-making/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>The Domestication of Causal Reasoning</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2020/12/28/edited-script-of-j-pearl-talk-at-montreal-ai-debate-2/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2020/12/28/edited-script-of-j-pearl-talk-at-montreal-ai-debate-2/#comments</comments>
+		
+		<dc:creator><![CDATA[judea]]></dc:creator>
+		<pubDate>Mon, 28 Dec 2020 22:51:00 +0000</pubDate>
+				<category><![CDATA[Causal models]]></category>
+		<category><![CDATA[Deep Learning]]></category>
+		<category><![CDATA[Deep Understanding]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2338</guid>
+
+					<description><![CDATA[1. Introduction On Wednesday December 23 I had the honor of participating in &#8220;AI Debate 2&#8221;, a symposium organized by Montreal AI, which brought together an impressive group of scholars to discuss the future of AI. I spoke on &#8220;The Domestication of Causal Reasoning: Cultural and Methodological Implications,&#8221; and the reading list I proposed as background [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<h1>1. Introduction</h1>
+<p>On <span id="OBJ_PREFIX_DWT19_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT20_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT34_com_zimbra_date" class="Object" role="link">Wednesday December 23</span></span></span> I had the honor of participating in &#8220;AI Debate 2&#8221;, a symposium organized by Montreal AI, which brought together an impressive group of scholars to discuss the future of AI. I spoke on</p>
+<blockquote>
+<p>&#8220;The Domestication of Causal Reasoning: Cultural and Methodological Implications,&#8221;</p>
+</blockquote>
+<p>and the reading list I proposed as background material was: </p>
+<ol>
+<li>&#8220;The Seven Tools of Causal Inference with Reflections on Machine Learning,&#8221; <span id="OBJ_PREFIX_DWT21_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT22_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT35_com_zimbra_date" class="Object" role="link">July 2018 </span></span></span><span id="OBJ_PREFIX_DWT23_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT36_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/2HI2yyx" target="_blank" rel="noopener">https://ucla.in/2HI2yyx</a></span></span></li>
+<li>&#8220;Radical Empiricism and Machine Learning Research,&#8221; <span id="OBJ_PREFIX_DWT24_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT37_com_zimbra_date" class="Object" role="link">July 26</span></span>, 2020 <span id="OBJ_PREFIX_DWT25_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT26_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT38_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/32YKcWy" target="_blank" rel="noopener">https://ucla.in/32YKcWy</a></span></span></span></li>
+<li>&#8220;Data versus Science: Contesting the Soul of Data-Science,&#8221; <span id="OBJ_PREFIX_DWT39_com_zimbra_date" class="Object" role="link">July 7</span><span style="font-size: inherit;">, 2020 </span><span id="OBJ_PREFIX_DWT28_com_zimbra_url" class="Object" style="font-size: inherit;" role="link"><span id="OBJ_PREFIX_DWT29_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT40_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/3iEDRVo" target="_blank" rel="noopener">https://ucla.in/3iEDRVo</a></span></span></span></li>
+</ol>
+<p>The debate was recorded here<span id="OBJ_PREFIX_DWT30_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT41_com_zimbra_url" class="Object" role="link"> <a href="https://montrealartificialintelligence.com/aidebate2/" target="_blank" rel="noopener">https://montrealartificialintelligence.com/aidebate2/</a> </span></span>and my talk can be accessed here: <a href="https://youtu.be/gJW3nOQ4SEA">https://youtu.be/gJW3nOQ4SEA</a><span id="OBJ_PREFIX_DWT31_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT42_com_zimbra_url" class="Object" role="link"></span></span></p>
+<p>Below is an edited script of my talk.</p>
+<h1>2. What I would have said had I been given six (6), instead of three (3) minutes</h1>
+<p>This is the first time I am using the word &#8220;domestication&#8221; to describe what happened in causality-land in the past 3 decades. I&#8217;ve used other terms before: &#8220;democratization,&#8221; &#8220;mathematization,&#8221; or &#8220;algorithmization,&#8221; but Domestication sounds less provocative when I come to talk about the causal revolution.<br /><br />What makes it a &#8220;revolution&#8221; is seeing dozens of practical and conceptional problems that only a few decades ago where thought to be metaphysical or unsolvable give way to simple mathematical solutions.<br /><br />&#8220;DEEP UNDERSTANDING&#8221; is another term used here for the first time. It so happened that, while laboring to squeeze out results from causal inference engines, I came to realize that we are sitting on a gold mine, and what we are dealing with is none other but:</p>
+<blockquote>
+<p>A computational model of a mental state that deserves the title &#8220;Deep Understanding&#8221; </p>
+</blockquote>
+<p>&#8220;Deep Understanding&#8221; is not the nebulous concept that you probably think it is, but something that is defined formally as any system capable of covering all 3 levels of the causal hierarchy: What is &#8211; What if &#8211; Only if. More specifically: What if I see (prediction) &#8211; What if I do (intervention) &#8211; and what if acted differently (retrospection, in light of the outcomes observed).<br /><br />This may sound like cheating &#8211; I take the capabilities of one system (i.e., a causal model) and I posit them as a general criterion for defining a general concept such as: &#8220;Deep Understanding.&#8221;<br /><br />It isn&#8217;t cheating. Given that causal reasoning is so deeply woven into our day to day language, our thinking, our sense of justice, our humor and of course our scientific understanding, I think that it won&#8217;t be too presumptuous of me to propose that we take Causal Modeling as a testing ground of ideas on other modes of reasoning associated with &#8220;understanding.&#8221;<br /><br />Specifically, causal models should provide an arena for various theories explanations, fairness, adaptation, imagination, humor, consciousness, free will, attention, and curiosity.<br /><br />I also dare speculate that learning from the way causal reasoning was domesticated, would benefit researchers in other area of AI, including vision and NLP, and enable them to examine whether similar paths could be pursued to overcome obstacles that data-centric paradigms have imposed.<br /><br />I would like now to say a few words on the Anti-Cultural implications of the Causal revolution. Here I refer you to my blog post, <span id="OBJ_PREFIX_DWT32_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT33_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT43_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/32YKcWy" target="_blank" rel="noopener">https://ucla.in/32YKcWy</a> </span></span></span>where I argue that radical empiricism is a stifling culture. It lures researchers into a data-centric paradigm, according to which Data is the source of all knowledge rather than a window through which we learn about the world around us.<br /><br />What I advocate is a hybrid system that supplements data with domain knowledge, commonsense constraints, culturally transmitted concepts, and most importantly, our innate causal templates that enable toddlers to quickly acquire an understanding of their toy-world environment.<br /><br />It is hard to find a needle in a hay stack, it is much harder if you haven&#8217;t seen a needle before. The module we are using for causal inference gives us a picture of what the needle looks like and what you can do once you find one.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2020/12/28/edited-script-of-j-pearl-talk-at-montreal-ai-debate-2/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Causally Colored Reflections on Leo Breiman&#8217;s &#8220;Statistical Modeling: The Two Cultures&#8221; (2001) https://projecteuclid.org/download/pdf_1/euclid.ss/1009213726</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2020/10/14/causally-colored-reflections-on-leo-breimans-statistical-modeling-the-two-cultures-2001-https-projecteuclid-org-download-pdf_1-euclid-ss-1009213726/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2020/10/14/causally-colored-reflections-on-leo-breimans-statistical-modeling-the-two-cultures-2001-https-projecteuclid-org-download-pdf_1-euclid-ss-1009213726/#respond</comments>
+		
+		<dc:creator><![CDATA[judea]]></dc:creator>
+		<pubDate>Wed, 14 Oct 2020 09:38:23 +0000</pubDate>
+				<category><![CDATA[Causal models]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2303</guid>
+
+					<description><![CDATA[Enticed by a recent seminar on this subject, I have re-read Breiman&#8217;s influential paper and would like to share with readers a re-assessment of its contributions to the art of statistical modeling. When the paper first appeared, in 2001, I had the impression that, although the word &#8220;cause&#8221; did not appear explicitly, Breiman was trying [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Enticed by a recent seminar on this subject, I have re-read Breiman&#8217;s influential paper and would like to share with readers a re-assessment of its contributions to the art of statistical modeling.<br /><br />When the paper first appeared, in 2001, I had the impression that, although the word &#8220;cause&#8221; did not appear explicitly, Breiman was trying to distinguish data-descriptive models from models of the data-generation process, also called &#8220;causal,&#8221; &#8220;substantive,&#8221; &#8220;subject-matter,&#8221; or &#8220;structural&#8221; models. Unhappy with his over-emphasis on prediction, I was glad nevertheless that a statistician of Breiman&#8217;s standing had recognized the on-going confusion in the field, and was calling for making the distinction crisp.<br /><br />Upon re-reading the paper in 2020 I have realized that the two cultures contrasted by Breiman are not descriptive vs. causal but, rather, two styles of descriptive modeling, one interpretable, the other uninterpretable. The former is exemplified by predictive regression models, and the latter by modern big-data algorithms such as deep-learning, BART, trees and forests. The former carries the potential of being interpreted as causal, the latter leaves no room for such interpretation; it describes the prediction process chosen by the analyst, not the data-generation process chosen by nature. Breiman&#8217;s main point is: If you want prediction, do prediction for its own sake and forget about the illusion of representing nature.<br /><br />Breiman&#8217;s paper deserves its reputation as a forerunner of modern machine learning techniques, but falls short of telling us what we should do if we want the model to do more than just prediction, say, to extract some information about how nature works, or to guide policies and interventions. For him, accurate prediction is the ultimate measure of merit for statistical models, an objective shared by present day machine learning enterprise, which accounts for many of its limitations (<span id="OBJ_PREFIX_DWT20_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT21_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT26_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/2HI2yyx" target="_blank" rel="noopener noreferrer">https://ucla.in/2HI2yyx</a></span></span></span>).<br /><br />In their comments on Breiman&#8217;s paper, David Cox and Bradley Efron noticed this deficiency and wrote:</p>
+<blockquote>
+<p>&#8220;&#8230; fit, which is broadly related to predictive success, is not the primary basis for model choice and formal methods of model choice that take no account of the broader objectives are suspect. [The broader objectives are:] to establish data descriptions that are potentially causal.&#8221; (Cox, 2001)</p>
+</blockquote>
+<p>And Efron concurs:</p>
+<blockquote>
+<p>&#8220;Prediction by itself is only occasionally sufficient. &#8230; Most statistical surveys have the identification of causal factors as their ultimate goal.&#8221; (Efron, 2001)</p>
+</blockquote>
+<p>As we read Breiman&#8217;s paper <span id="OBJ_PREFIX_DWT22_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT23_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT27_com_zimbra_date" class="Object" role="link">today</span></span></span>, armed with what we know about the proper symbiosis of machine learning and causal modeling, we may say that his advocacy of algorithmic prediction was justified. Once guided by a causal model for identification and bias reduction, the predictive component of our model can safely be trusted to non-interpretable algorithms. The interpretation can be accomplished separately by the causal component of our model, as demonstrated, for example, in <span id="OBJ_PREFIX_DWT24_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT28_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/2HI2yyx" target="_blank" rel="noopener noreferrer">https://ucla.in/2HI2yyx</a>.</span></span><br /><br />Separating data-fitting from interpretation, an idea that was rather innovative in 2001, has withstood the test of time.<br /><br />Judea</p>
+<hr />
+<p style="font-size: 18px;"><b>ADDENDUM-1</b></p>
+<h2>Andrew Gelman&#8217;s reflections on Breiman&#8217;s paper can be found in this article <span id="OBJ_PREFIX_DWT19_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT20_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT33_com_zimbra_url" class="Object" role="link"><a href="http://www.stat.columbia.edu/~gelman/research/published/gelman_breiman.pdf" target="_blank" rel="noopener noreferrer">http://www.stat.columbia.edu/~gelman/research/published/gelman_breiman.pdf</a></span></span></span>.</h2>
+<hr />
+<p style="font-size: 18px;"><b>ADDENDUM-2</b></p>
+<p>The following is an email exchange between Ying Nian Wu (UCLA, Statistics) and Judea Pearl (UCLA, Computer Science/Statistics).</p>
+<h4>1. Ying Nian Wu to J. Pearl, <span id="OBJ_PREFIX_DWT21_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT22_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT34_com_zimbra_date" class="Object" role="link">October 12</span></span></span>, 2020</h4>
+<p>Dear Judea,<br /><br />I feel all models are about making predictions for future observations. The only difference is that causal model is to predict <em>p</em>(<em>y</em>|<em>do</em>(<em>x</em>)) in your notation, where the testing data (after cutting off the arrows into <em>x</em> by your diagram surgery) come from a different distribution than the training data, i.e., we want to extrapolate from training data to testing data (in fact, extrapolation and interpolation are relative &#8212; a simple model that can interpolate a vast range is quite extrapolative). Ultimately a machine learning model also wants to achieve extrapolative prediction, such as the so-called transfer learning and meta learning, where testing data are different from training data, or the current short-term experience (small new training data) is different from the past long-term experience (big past training data).<br /><br />About learning the model from data, we can learn <em>p</em>(<em>y</em>|<em>x</em>), but we can also learn <em>p</em>(<em>y</em>, <em>x</em>) = <em>p</em>(<em>y</em>) <em>p</em>(<em>x</em>|<em>y</em>). We may call <em>p</em>(<em>y</em>|<em>x</em>) predictive, and <em>p</em>(<em>x</em>|<em>y</em>) (or <em>p</em>(<em>y</em>, <em>x</em>)) generative, and both may involve hidden variables <em>z</em>. The generative model can learn from data where <em>y</em> is often unavailable (the so-called semi-supervised learning). In fact, learning a generative model <em>p</em>(<em>y</em>, <em>z</em>, <em>x</em>) = <em>p</em>(<em>z</em>) <em>p</em>(<em>y</em>, <em>x</em>|<em>z</em>) is necessary for predicting <em>p</em>(<em>y</em>|<em>do</em>(<em>x</em>)). I am not sure if this is also related to the two cultures mentioned by Brieman. I once asked him (at a workshop at Banff, while enjoying some second-hand smoking) about the two models, and he actually preferred generative model, although in his talk, he also emphasized that a non-parametric predictive model such as forest is still interpretable in terms of assessing the influences of variables.<br /><br />To digress a bit further, there is no such a thing called how nature works according to the Copenhagen interpretation of quantum physics: there must be an observer, the observer makes a measurement, and the wave function predicts the probability distribution of the measurement. As to the question of what happens when there is no observer or the observer is not observing, the answer is that such a question is irrelevant.<br /><br />Even back to the classical regime where we can ask such a question, Ptolemy&#8217;s epicycle model on planet motion, Newton&#8217;s model of gravitation, and Einstein&#8217;s model of general relativity are not that different. Ptolemy&#8217;s model is actually more general and flexible (being a Fourier expansion, where the cycle on top of cycles is similar in style to the perceptron on top of perceptrons of neural network). Newton&#8217;s model is simpler, while Einstein&#8217;s model fits the data better (being equally simple but more involved in calculation). They are all illusions about how nature works, learned from the data, and intended to predict future data. Newton&#8217;s illusion is action at a distance (which he himself did not believe), while Einstein&#8217;s illusion is about bending of spacetime, which is more believable, but still an illusion nonetheless (to be superseded by a deeper illusion such as a string).<br /><br />So Box is still right: all models are wrong, but some are useful. Useful in terms of making predictions, especially making extrapolative predictions.<br />Ying Nian</p>
+<h4>2. J. Pearl to Ying Nian Wu, <span id="OBJ_PREFIX_DWT23_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT24_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT35_com_zimbra_date" class="Object" role="link">October 14</span></span></span>, 2020</h4>
+<p>Dear Ying Nian, <br />Thanks for commenting on my &#8220;Causally Colored Reflections.&#8221; <br /><br />I will start from the end of your comment, where you concur with George Box that &#8220;All models are wrong, but some are useful.&#8221; I have always felt that this aphorism is painfully true but hardly useful. As one of the most quoted aphorism in statistics, it ought to have given us some clue as to what makes one model more useful than another &#8211; it doesn&#8217;t.<br /><br />A taxonomy that helps decide model usefulness should tell us (at the very least) whether a given model can answer the research question we have in mind, and where the information encoded in the model comes from. Lumping all models in one category, as in &#8220;all models are about making prediction for future observations&#8221; does not provide this information. It reminds me of Don Rubin&#8217;s statement that causal inference is just a &#8220;missing data problem&#8221; which, naturally, raises the question of what problems are NOT missing data problems, say, mathematics, chess or astrology.<br /><br />In  contrast, the taxonomy defined by the Ladder of Causation (see <span id="OBJ_PREFIX_DWT27_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT28_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT37_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/2HI2yyx" target="_blank" rel="noopener noreferrer">https://ucla.in/2HI2yyx</a></span></span></span>): 1. Association, 2. Intervention, 3. Counterfactuals,  does provide such information. Merely looking  at the syntax of a model one can tell whether it can answer the target research question, and where the information supporting the model should come from, be it observational studies, experimental data, or theoretical assumptions. The main claim of the Ladder (now a theorem) is that one cannot answer questions at level i unless one has information of type i or higher. For example, there is no way to answer policy related questions unless one has experimental data or assumptions about such data. As another example, I look at what you call a generative model <em>p</em>(<em>y</em>,<em>z</em>,<em>x</em>) = <em>p</em>(<em>z</em>)<em>p</em>(<em>y, x</em>|<em>z</em>) and I can tell right away that, no matter how smart we are, it is not sufficient for predicting <em>p</em>(<em>y</em>|<em>do</em>(<em>x</em>)).<br /><br />If you doubt the usefulness of this taxonomy, just examine the amount of efforts spent (and is still being spent) by the machine learning community on the so-called &#8220;transfer learning&#8221; problem. This effort has been futile because elementary inspection of the extrapolation task tells us that it cannot be accomplished using non-experimental data, shifting or not. See <span id="OBJ_PREFIX_DWT29_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT30_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT38_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/2N7S0K9" target="_blank" rel="noopener noreferrer">https://ucla.in/2N7S0K9</a></span></span></span>.</p>
+<p>In summary, unification of research problems is helpful when it facilitates the transfer of tools across problem types. Taxonomy of research problems is helpful too; for it spares us the efforts of trying the impossible, and it tells us where we should seek the information to support our models.<br /><br />Thanks again for engaging in this conversation,<br />Judea</p>
+<h4>3.  Wu to J. Pearl, <span id="OBJ_PREFIX_DWT31_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT32_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT39_com_zimbra_date" class="Object" role="link">October 14</span></span></span>, 2020</h4>
+<p>Dear Judea,<br />Thanks for the inspiring discussion. Please allow me to formulate our consensus, and I will stop at here.<br /><br /><span style="text-decoration: underline;">Unification 1</span>: All models are for prediction.<br /><span style="text-decoration: underline;">Unification 2</span>: All models are for the agent to plan the action. Unification 2 is deeper than Unification 1. But Unification 1 is a good precursor.<br /><br /><span style="text-decoration: underline;">Taxonomy 1</span>: (a) models that predict <em>p</em>(<em>y</em>|<em>x</em>). (b) models that predict <em>p</em>(<em>y</em>|<em>do</em>(<em>x</em>)) or (c) models that can fill in Rubin&#8217;s table.<br /><span style="text-decoration: underline;">Taxonomy 2</span>: (a) models that fit data, not necessarily make sense, only for prediction. (b) models that understand how nature works and are interpretable.<br /><br />Taxonomy 1 is deeper and more precise than Taxonomy 2, thanks to the foundational work of you and Rubin. It is based on precise, well-defined, operational mathematical language and formulation.<br /><br />Taxonomy 2 is useful and is often aligned with Taxonomy 1, but we need to be aware of the limitation of Taxonomy 2, which is all I want to say in my comments. Much ink has been spilled on Taxonomy 2 because of its imprecise and non-operational nature.<br />Ying Nian<br /><br /></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2020/10/14/causally-colored-reflections-on-leo-breimans-statistical-modeling-the-two-cultures-2001-https-projecteuclid-org-download-pdf_1-euclid-ss-1009213726/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Radical Empiricism and Machine Learning Research</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2020/07/26/radical-empiricism-and-machine-learning-research/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2020/07/26/radical-empiricism-and-machine-learning-research/#comments</comments>
+		
+		<dc:creator><![CDATA[judea]]></dc:creator>
+		<pubDate>Sun, 26 Jul 2020 19:02:58 +0000</pubDate>
+				<category><![CDATA[Causal models]]></category>
+		<category><![CDATA[Knowledge representation]]></category>
+		<category><![CDATA[Machine learning]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2266</guid>
+
+					<description><![CDATA[A speaker at a lecture that I have attended recently summarized the philosophy of machine learning this way: &#8220;All knowledge comes from observed data, some from direct sensory experience and some from indirect experience, transmitted to us either culturally or genetically.&#8221; The statement was taken as self-evident by the audience, and set the stage for [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>A speaker at a lecture that I have attended recently summarized the philosophy of machine learning this way: &#8220;All knowledge comes from observed data, some from direct sensory experience and some from indirect experience, transmitted to us either culturally or genetically.&#8221;<br /><br />The statement was taken as self-evident by the audience, and set the stage for a lecture on how the nature of &#8220;knowledge&#8221; can be analyzed by examining patterns of conditional probabilities in the data. Naturally, it invoked no notions such as &#8220;external world,&#8221; &#8220;theory,&#8221; &#8220;data generating process,&#8221; &#8220;cause and effect,&#8221; &#8220;agency,&#8221; or &#8220;mental constructs&#8221; because, ostensibly, these notions, too, should emerge from the data if needed. In other words, whatever concepts humans invoke in interpreting data, be their origin cultural, scientific or genetic, can be traced to, and re-derived from the original sensory experience that has endowed those concepts with survival value.<br /><br />Viewed from artificial intelligence perspective, this data-centric philosophy offers an attractive, if not seductive agenda for machine learning research: In order to develop human level intelligence, we should merely trace the way our ancestors did it, and simulate both genetic and cultural evolutions on a digital machine, taking as input all the data that we can possibly collect. Taken to extremes, such agenda may inspire fairly futuristic and highly ambitious scenarios: start with a simple neural network, resembling a primitive organism (say an Amoeba), let it interact with the environment, mutate and generate offsprings; given enough time, it will eventually emerge with an Einstein&#8217;s level of intellect. Indeed, ruling out sacred scriptures and divine revelation, where else could Einstein acquire his knowledge, talents and intellect if not from the stream of raw data that has impinged upon the human race since antiquities, including of course all the sensory inputs received by more primitive organisms preceding humans.<br /><br />Before asking how realistic this agenda is, let us preempt the discussion with two observations:<br /><br />(1) Simulated evolution, in some form or another, is indeed the leading paradigm inspiring most machine learning researchers <span id="OBJ_PREFIX_DWT21_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT22_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT28_com_zimbra_date" class="Object" role="link">today, </span></span></span>especially those engaged in connectionism, deep learning and neural networks technologies which deploy model-free, statistics-based learning strategies. The impressive success of these strategies in applications such as computer vision, voice recognition and self-driving cars has stirred up hopes in the sufficiency and unlimited potentials of these strategies, eroding, at the same time, interest in model-based approaches.<br /><br />(2) The intellectual roots of the data-centric agenda are deeply grounded in the empiricist branch of Western philosophy, according to which sense-experience is the ultimate source of all our concepts and knowledge, with little or no role given to &#8220;innate ideas&#8221; and &#8220;reason&#8221; as sources of knowledge (Markie, 2017). Empiricist ideas can be traced to the ancient writings of Aristotle, but have been given prominence by the British empiricists Francis Bacon, John Locke, George Berkeley and David Hume and, more recently, by philosophers such as Charles Sanders Pierce, and William James. Modern connectionism has in fact been viewed as a Triumph of Radical Empiricism over its rationalistic rivals (Buckner 2018; Lipton, 2015). It can definitely be viewed as a testing grounds in which philosophical theories about the balance between empiricism and innateness can be submitted to experimental evaluation on digital machines.<br /><br />The merits of testing philosophical theories notwithstanding, I have three major reservations about the wisdom of pursuing a radical empiricist agenda for machine learning research.  I will present three arguments why empiricism should be balanced with the principles of model-based science (Pearl, 2019), in which learning is guided by two sources of information: (a) data and (b) man-made models of how data are generated.  <br /><br />I label the three arguments: (1) Expediency, (2) Transparency and (3) Explainability and will discuss them in turns below:<br /><br /><strong>1. Expediency</strong><br />Evolution is too slow a process (Turing, 1950), since most mutations are useless if not harmful, and waiting for natural selection to distinguish and filter the useful from the useless is often un-affordable. The bulk of machine learning tasks requires speedy interpretation of, and quick reaction to new and sparse data, too sparse to allow filtering by random mutations. The outbreak of the COVID-19 pandemic is a perfect example of a situation where sparse data, arriving from unreliable and heterogeneous sources required quick interpretation and quick action, based primarily on prior models of epidemic transmission and data production (<span id="OBJ_PREFIX_DWT23_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT24_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT29_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/3iEDRVo" target="_blank" rel="noopener noreferrer">https://ucla.in/3iEDRVo</a></span></span></span>). In general, machine learning technology is expected to harness a huge amount of scientific knowledge already available, combine it with whatever data can be gathered, and solve crucial societal problems in areas such as health, education, ecology and economics.<br /><br />Even more importantly, scientific knowledge can speed up evolution by actively guiding the selection or filtering of data and data sources. Choosing what data to consider or what experiments to run requires hypothetical theories of what outcomes are expected from each option, and how likely they are to improve future performance. Such expectations are provided, for example, by causal models that predict both the outcomes of hypothetical manipulations as well the consequences of counterfactual undoing of past events (Pearl, 2019).<br /><br /><strong>2. Transparency</strong><br />World knowledge, even if evolved spontaneously from raw data, must eventually be compiled and represented in some machine form to be of any use. The purpose of compiled knowledge is to amortize the discovery process over many inference tasks without repeating the former. The compiled representation should then facilitate an efficient production of answers to select set of decision problems, including questions on ways of gathering additional data. Some representations allow for such inferences and others do not. For example, knowledge compiled as patterns of conditional probability estimates does not allow for predicting the effect of actions or policies. (Pearl, 2019).<br /><br />Knowledge compilation involves both abstraction and re-formatting. The former allows for information loss (as in the case of probability models) while the latter retains the information content and merely transform some of the information from implicit to explicit representations.<br /><br />These considerations demand that we study the mathematical properties of compiled representations, their inherent limitations, the kind of inferences they support, and how effective they are in producing the answers they are expected to produce. In more concrete terms, machine learning researchers should engage in what is currently called &#8220;causal modelling&#8221; and use the tools and principles of causal science to guide data exploration and data interpretation processes.<br /><br /><strong>3. Explainability</strong><br />Regardless of how causal knowledge is accumulated, discovered or stored, the inferences enabled by that knowledge are destined to be delivered to, and benefit a human user. <span id="OBJ_PREFIX_DWT25_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT30_com_zimbra_date" class="Object" role="link">Today</span></span>, these usages include policy evaluation, personal decisions, generating explanations, assigning credit and blame or making general sense of the world around us. All inferences must therefore be cast in a language that matches the way people organize their world knowledge, namely, the language of cause and effect. It is imperative therefore that machine learning researchers regardless of the methods they deploy for data fitting, be versed in this user-friendly language, its grammar, its universal laws and the way humans interpret or misinterpret the functions that machine learning algorithms discover.<br /><br /><strong>Conclusions</strong><br />It is a mistake to equate the content of human knowledge with its sense-data origin. The format in which knowledge is stored in the mind (or on a computer) and, in particular, the balance between its implicit vs. explicit components are as important for its characterization as its content or origin.  <br /><br />While radical empiricism may be a valid model of the evolutionary process, it is a bad strategy for machine learning research. It gives a license to the data-centric thinking, currently dominating both statistics and machine learning cultures, according to which the  secret to rational decisions lies in the data alone.<br /><br />A hybrid strategy balancing &#8220;data-fitting&#8221; with &#8220;data-interpretation&#8221; better captures the stages of knowledge compilation that the evolutionary processes entails.<br /><br /><strong>References:</strong><br />Buckner, C. (2018) &#8220;Deep learning: A philosophical introduction,&#8221; <em>Philosophy Compass</em>, <span id="OBJ_PREFIX_DWT26_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT31_com_zimbra_url" class="Object" role="link"><a href="https://doi.org/10.1111/phc3.12625">https://doi.org/10.1111/phc3.12625</a>.</span></span></p>
+<p>Lipton, Z. (2015) &#8220;Deep Learning and the Triumph of Empiricism,&#8221; <em>ND Nuggets News</em>, July. Retrieved from: <a href="https://www.kdnuggets.com/2015/07/deep-learning-triumph-empiricism-over-theoretical-mathematical-guarantees.html">https://www.kdnuggets.com/2015/07/deep-learning-triumph-empiricism-over-theoretical-mathematical-guarantees.html</a>.</p>
+<p>Markie, P. (2017) &#8220;Rationalism vs. Empiricism,&#8221; <em>Stanford Encyclopedia of Philosophy</em>, <a href="https://plato.stanford.edu/entries/rationalism-empiricism/">https://plato.stanford.edu/entries/rationalism-empiricism/</a>.</p>
+<p>Pearl, J. (2019) &#8220;The Seven Tools of Causal Inference with Reflections on Machine Learning,&#8221; <em>Communications of ACM</em>, 62(3): 54-60, March, <a href="https://cacm.acm.org/magazines/2019/3/234929-the-seven-tools-of-causal-inference-with-reflections-on-machine-learning/fulltext">https://cacm.acm.org/magazines/2019/3/234929-the-seven-tools-of-causal-inference-with-reflections-on-machine-learning/fulltext</a>.</p>
+<p>Turing, A.M. (1950) I. &#8212; Computing Machinery and Intelligence,&#8221; <em>Mind</em>, LIX (236): 433-460, October,  <a href="https://doi.org/10.1093/mind/LIX.236.433">https://doi.org/10.1093/mind/LIX.236.433</a>.</p>
+<hr />
+<p>The following email exchange with Yoshua Bengio clarifies the claims and aims of the post above.<br /><br /><strong>Yoshua Bengio commented <span id="OBJ_PREFIX_DWT19_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT20_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT25_com_zimbra_date" class="Object" role="link">Aug 3</span></span></span> 2020 2:21 pm</strong><br /><br />Hi Judea,<br /><br />Thanks for your blog post! I have a high-level comment. I will start from your statement that &#8220;learning is guided by two sources of information: (a) data and (b) man-made models of how data are generated. &#8221; This makes sense in the kind of setting you have often discussed in your writings, where a scientist has strong structural knowledge and wants to combine it with data in order to arrive at some structural (e.g. causal) conclusions. But there are other settings where this view leaves me wanting more. For example, think about a baby before about 3 years old, before she can gather much formal knowledge of the world (simply because her linguistic abilities are not yet developed or not enough developed, not to mention her ability to consciously reason). Or think about how a chimp develops an intuitive understanding of his environment which includes cause and effect. Or about an objective to build a robot which could learn about the world without relying on human-specified theories. Or about an AI which would have as a mission to discover new concepts and theories which go well beyond those which humans provide. In all of these cases we want to study how both statistical and causal knowledge can be (jointly) discovered. Presumably this may be from observations which include changes in distribution due to interventions (our learning agent&#8217;s or those of other agents). These observations are still data, just of a richer kind than what current purely statistical models (I mean trying to capture only joint distributions or conditional distribution) are built on. Of course, we *also* need to build learning machines which can interact with humans, understand natural language, explain their decisions (and our decisions), and take advantage of what human culture has to offer. Not taking advantage of knowledge when we have it may seem silly, but (a) our presumed knowledge is sometimes wrong or incomplete, (b) we still want to understand how pre-linguistic intelligence manages to make sense of the world (including of its causal structure), and (c) forcing us into this more difficult setting could also hasten the discovery of the learning principles required to achieve (a) and (b).<br /><br />Cheers and thanks again for your participation in our recent CIFAR workshop on causality!<br /><br />&#8212; Yoshua<br /><br /><strong>Judea Pearl reply, <span id="OBJ_PREFIX_DWT21_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT22_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT26_com_zimbra_date" class="Object" role="link">August 4 5:53 am</span></span></span></strong><br /><br />Hi Yoshua,<br />The situation you are describing: &#8220;where a scientist has strong structural knowledge and wants to combine it with data in order to arrive at some structural (e.g. causal) conclusions&#8221; motivates only the first part of my post (labeled &#8220;expediency&#8221;). But the enterprise of causal modeling brings another resource to the table. In addition to domain specific knowledge, it brings a domain-independent &#8220;template&#8221; that houses that knowledge and which is useful for precisely the &#8220;other settings&#8221; you are aiming to handle:</p>
+<blockquote>
+<p>&#8220;a baby before about 3 years old, before she can gather much formal knowledge of the world &#8230; Or think about how a chimp develops an intuitive understanding of his environment which includes cause and effect. Or about an objective to build a robot which could learn about the world without relying on human-specified theories.&#8221;</p>
+</blockquote>
+<p>A baby and a chimp exposed to the same stimuli will not develop the same understanding of the world, because the former starts with a richer inborn template that permits it to organize, interpret and encode the stimuli into a more effective representation. This is the role of &#8220;compiled representations&#8221; mentioned in the second part of my post. (And by &#8220;stimuli&#8221;, I include &#8220;playful manipulations&#8221;) .</p>
+<p>In other words, the baby&#8217;s template has a richer set of blanks to be filled than the chimp&#8217;s template, which accounts for Alison Gopnik&#8217;s finding of a greater reward-neutral curiosity in the former.<br /><br />The science of Causal Modeling proposes a concrete embodiment of that universal &#8220;template&#8221;. The mathematical properties of the template, its inherent limitations and  inferential and algorithmic capabilities should therefore be studied by every machine learning researcher, regardless of whether she obtains it from domain expert or discovers it on her own from invariant features of the data.<br /><br />Finding a needle in a haystack is difficult, and it&#8217;s close to impossible if you haven&#8217;t seen a needle before. Most ML researchers <span id="OBJ_PREFIX_DWT23_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT24_com_zimbra_date" class="Object" role="link"><span id="OBJ_PREFIX_DWT27_com_zimbra_date" class="Object" role="link">today</span></span></span> have not seen a needle &#8212; an educational gap that needs to be corrected in order to hasten the discovery of those learning principles you aspire to uncover.<br /><br />Cheers and thanks for inviting me to participate in your CIFAR workshop on causality.<br /><br />&#8212; Judea<br /><br /><strong>Yoshua Bengio comment Aug. 4, 7:00 am</strong><br /><br />Agreed. What you call the &#8216;template&#8217; is something I sort in the machine learning category of &#8216;inductive biases&#8217; which can be fairly general and allow us to efficiently learn (and here discover representations which build a causal understanding of the world).<br /><br />&#8212; Yoshua</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2020/07/26/radical-empiricism-and-machine-learning-research/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Data versus Science: Contesting the Soul of Data-Science</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2020/07/07/data-versus-science-contesting-the-soul-of-data-science/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2020/07/07/data-versus-science-contesting-the-soul-of-data-science/#comments</comments>
+		
+		<dc:creator><![CDATA[judea]]></dc:creator>
+		<pubDate>Tue, 07 Jul 2020 13:02:00 +0000</pubDate>
+				<category><![CDATA[Book (J Pearl)]]></category>
+		<category><![CDATA[Counterfactual]]></category>
+		<category><![CDATA[Data Fusion]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2248</guid>
+
+					<description><![CDATA[SummaryThe post below is written for the upcoming Spanish translation of The Book of Why, which was announced today. It expresses my firm belief that the current data-fitting direction taken by &#8220;Data Science&#8221; is temporary (read my lips!), that the future of &#8220;Data Science&#8221; lies in causal data interpretation and that we should prepare ourselves [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Summary</strong><br />The post below is written for the upcoming Spanish translation of <a href="http://bayes.cs.ucla.edu/WHY/">The Book of Why</a><a href="http://bayes.cs.ucla.edu/WHY/">,</a> which was <a href="http://bayes.cs.ucla.edu/WHY/El-libro-del-porque.png">announced today</a>. It expresses my firm belief that the current data-fitting direction taken by &#8220;Data Science&#8221; is temporary (read my lips!), that the future of &#8220;Data Science&#8221; lies in causal data interpretation and that we should prepare ourselves for the backlash swing.<br /><br /><strong>Data versus Science: Contesting the Soul of Data-Science</strong><br />Much has been said about how ill-prepared our health-care system was in coping with catastrophic outbreaks like COVID-19. Yet viewed from the corner of my expertise, the ill-preparedness can also be seen as a failure of information technology to keep track of and interpret the outpour of data that have arrived from multiple and conflicting sources, corrupted by noise and omission, some by sloppy collection and some by deliberate misreporting, AI could and should have equipped society with intelligent data-fusion technology, to interpret such conflicting pieces of information and reason its way out of the confusion.<br /><br />Speaking from the perspective of causal inference research, I have been part of a team that has developed a complete theoretical underpinning for such &#8220;data-fusion&#8221; problems; a development that is briefly described in Chapter 10 of <em>The Book of Why</em>. A system based on data fusion principles should be able to attribute disparities between Italy and China to differences in political leadership, reliability of tests and honesty in reporting, adjust for such differences and automatically infer behavior in countries like Spain or the US. AI is in a position to to add such data-interpreting capabilities on top of the data-fitting technologies currently in use and, recognizing that data are noisy, filter the noise and outsmart the noise makers.<br /><br />&#8220;Data fitting&#8221; is the name I frequently use to characterize the data-centric thinking that dominates both statistics and machine learning cultures, in contrast to the &#8220;data-interpretation&#8221; thinking that guides causal inference. The data-fitting school is driven by the faith that the secret to rational decisions lies in the data itself, if only we are sufficiently clever at data mining. In contrast, the data-interpreting school views data, not as a sole object of inquiry but as an auxiliary means for interpreting reality, and &#8220;reality&#8221; stands for the processes that generate the data.<br /><br />I am not alone in this assessment. Leading researchers in the &#8220;Data Science&#8221; enterprise have come to realize that machine learning as it is currently practiced cannot yield the kind of understanding that intelligent decision making requires. However, what many fail to realize is that the transition from data-fitting to data-understanding involves more than a technology transfer; it entails a profound paradigm shift that is traumatic if not impossible. Researchers whose entire productive career have committed them to the supposition that all knowledge comes from the data cannot easily transfer allegiance to a totally alien paradigm, according to which extra-data information is needed, in the form of man-made, causal models of reality. Current machine learning thinking, which some describe as &#8220;statistics on steroids,&#8221; is deeply entrenched in this self-propelled ideology.<br /><br />Ten years from now, historians will be asking: How could scientific leaders of the time allow society to invest almost all its educational and financial resources in data-fitting technologies and so little on data-interpretation science? <em>The Book of Why</em> attempts to answer this dilemma by drawing parallels to historically similar situations where ideological impediments held back scientific progress. But the true answer, and the magnitude of its ramifications, will only be unravelled by in-depth archival studies of the social, psychological and economical forces that are currently governing our scientific institutions.<br /><br />A related, yet perhaps more critical topic that came up in handling the COVID-19 pandemic, is the issue of personalized care. Much of current health-care methods and procedures are guided by population data, obtained from controlled experiments or observational studies. However, the task of going from these data to the level of individual behavior requires counterfactual logic, which has been formalized and algorithmatized in the past 2 decades (as narrated in Chapter 8 of <em>The Book of Why</em>), and is still a mystery to most machine learning researchers.<br /><br />The immediate area where this development could have assisted the COVID-19 pandemic predicament concerns the question of prioritizing patients who are in &#8220;greatest need&#8221; for treatment, testing, or other scarce resources. &#8220;Need&#8221; is a counterfactual notion (i.e., patients who would have gotten worse had they not been treated) and cannot be captured by statistical methods alone. A recently posted blog page <span id="OBJ_PREFIX_DWT3272_com_zimbra_url" class="Object" role="link"><span id="OBJ_PREFIX_DWT3273_com_zimbra_url" class="Object" role="link"><a href="https://ucla.in/39Ey8sU" target="_blank" rel="noopener noreferrer">https://ucla.in/39Ey8sU</a></span></span> demonstrates in vivid colors how counterfactual analysis handles this prioritization problem.<br /><br />The entire enterprise known as &#8220;personalized medicine&#8221; and, more generally, any enterprise requiring inference from populations to individuals, rests on counterfactual analysis, and AI now holds the key theoretical tools for operationalizing this analysis.<br /><br />People ask me why these capabilities are not part of the standard tool sets available for handling health-care management. The answer lies again in training and education. We have been rushing too eagerly to reap the low-lying fruits of big data and data fitting technologies, at the cost of neglecting data-interpretation technologies. Data-fitting is addictive, and building more &#8220;data-science centers&#8221; only intensifies the addiction. Society is waiting for visionary leadership to balance this over-indulgence by establishing research, educational and training centers dedicated to &#8220;causal science.&#8221;</p>
+<p>I hope it happens soon, for we must be prepared for the next pandemic outbreak and the information confusion that will probably come in its wake.<br /><br /></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2020/07/07/data-versus-science-contesting-the-soul-of-data-science/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Race, COVID Mortality, and Simpson’s Paradox (by Dana Mackenzie)</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2020/07/06/race-covid-mortality-and-simpsons-paradox-by-dana-mackenzie/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2020/07/06/race-covid-mortality-and-simpsons-paradox-by-dana-mackenzie/#comments</comments>
+		
+		<dc:creator><![CDATA[judea]]></dc:creator>
+		<pubDate>Mon, 06 Jul 2020 13:11:00 +0000</pubDate>
+				<category><![CDATA[Simpson's Paradox]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2222</guid>
+
+					<description><![CDATA[Summary This post reports on the presence of Simpson’s paradox in the latest CDC data on coronavirus. At first glance, the data may seem to support the notion that coronavirus is especially dangerous to white, non-Hispanic people. However, when we take into account the causal structure of the data, and most importantly we think about [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Summary</strong><br /><br />This post reports on the presence of Simpson’s paradox in the latest CDC data on coronavirus. At first glance, the data may seem to support the notion that coronavirus is especially dangerous to white, non-Hispanic people. However, when we take into account the causal structure of the data, and most importantly we think about what causal question we want to answer, the conclusion is quite different. This gives us an opportunity to emphasize a point that was perhaps not stressed enough in <a href="http://bayes.cs.ucla.edu/WHY/"><em>The Book of Why</em></a>, namely that formulation of the right query is just as important as constructing the right causal model.</p>
+<p><strong>Race, COVID Mortality, and Simpson&#8217;s Paradox</strong></p>
+<p>Recently I was perusing the latest data on coronavirus on the Centers for Disease Control (CDC) website. When I got to the two graphs shown below, I did a double-take.</p>
+<p><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/2020/07/covid-by-race-1.jpg"><img loading="lazy" decoding="async" class="wp-image-2223 aligncenter" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/2020/07/covid-by-race-1-169x300.jpg" alt="" width="354" height="628" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/2020/07/covid-by-race-1-169x300.jpg 169w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2020/07/covid-by-race-1-578x1024.jpg 578w, https://causality.cs.ucla.edu/blog/wp-content/uploads/2020/07/covid-by-race-1.jpg 723w" sizes="auto, (max-width: 354px) 100vw, 354px" /></a>(click on the graph to enlarge)</p>
+<p>COVID-19 Cases and Deaths by Race and Ethnicity (CDC, 6/30/2020).</p>
+<p>This is a lot to take in, so let me point out what shocked me. The first figure shows that 35.3 percent of diagnosed COVID cases were in “white, non-Hispanic” people. But 49.5 percent of COVID deaths occurred to people in this category. In other words, whites who have been diagnosed as COVID-positive have a 40 percent greater risk of death than non-whites or Hispanics who have been diagnosed as COVID-positive.</p>
+<p>This, of course, is the exact opposite of what we have been hearing in the news media. (For example, Graeme Wood in <em>The Atlantic</em>: “Black people die of COVID-19 at a higher rate than white people do.”) Have we been victimized by a media deception? The answer is NO, but the explanation underscores the importance of understanding the causal structure of data and interrogating that data using properly phrased causal queries.</p>
+<p>Let me explain, first, why the data above cannot be taken at face value. The elephant in the room is age, which is the single biggest risk factor for death due to COVID-19. Let’s look at the CDC mortality data again, but this time stratifying by age group.</p>
+<table style="height: 1056px; width: 100%;" border="1">
+<tbody>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p style="text-align: center;">Race →</p>
+</td>
+<td style="height: 88px; width: 39.138%;" colspan="2" width="255">
+<p style="text-align: center;">White, non-Hispanic</p>
+</td>
+<td style="height: 88px; width: 39.3104%;" colspan="2" width="255">
+<p style="text-align: center;">Others</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>Age ↓</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>Cases</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>Deaths</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>Cases</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>Deaths</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>0-4</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>23.9%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>53.3%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>76.1%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>46.7%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>5-17</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>19%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>9.1%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>81%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>90.9%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>18-29</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>29.8%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>18.9%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>70.2%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>81.1%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>30-39</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>26.5%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>16.4%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>73.5%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>83.6%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>40-49</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>26.5%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>16.4%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>73.5%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>83.6%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>50-64</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>36.4%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>16.4%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>63.6%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>83.6%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>65-74</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>45.9%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>40.8%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>54.1%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>59.2%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>75-84</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>55.4%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>52.1%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>44.6%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>47.9%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>85+</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>69.6%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>67.6%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>30.4%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>32.4%</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="height: 88px; width: 19.1379%;" width="128">
+<p>ALL AGES</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>35.4%</p>
+</td>
+<td style="height: 88px; width: 19.6552%;" width="128">
+<p>49.5%</p>
+</td>
+<td style="height: 88px; width: 19.4828%;" width="128">
+<p>64.6%</p>
+</td>
+<td style="height: 88px; width: 19.8276%;" width="128">
+<p>50.5%</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This table shows us that in every age category (except ages 0-4), whites have a lower case fatality rate than non-whites. That is, whites make up a lower percentage of deaths than cases. But when we aggregate all of the ages, whites have a higher fatality rate. The reason is simple: whites are older.</p>
+<p>According to U.S. census data (not shown here), 9 percent of the white population in the United States is over age 75. By comparison, only 4 percent of Black people and 3 percent of Hispanic people have reached the three-quarter-century mark. People over age 75 are exactly the ones who are at greatest risk of dying from COVID (and by a wide margin). Thus the white population contains more than twice as many high-risk people as the Black population, and three times as many high-risk people as the Hispanic population.</p>
+<p>People who have taken a course in statistics may recognize the phenomenon we have uncovered here as Simpson’s paradox. To put it most succinctly, and most paradoxically, if you tell me that you are white and COVID-positive, but do not tell me your age, I have to assume you have a higher risk of dying than your neighbor who is Black and COVID-positive. But if you do tell me your age, your risk of dying becomes less than your neighbor who is Black and COVID-positive and the same age. How can that be? Surely the act of telling me your age should not make any difference to your medical condition.</p>
+<p>In introductory statistics courses, Simpson’s paradox is usually presented as a curiosity, but the COVID data shows that it raises a fundamental question. Which is a more accurate picture of reality? The one where I look only at the aggregate data and conclude that whites are at greater risk of dying, or the one where I break the data down by age and conclude that non-whites are at greater risk?</p>
+<p>The general answer espoused by introductory statistics textbooks is: control for everything. If you have age data, stratify by age. If you have data on underlying medical conditions, or socioeconomic status, or anything else, stratify by those variables too.</p>
+<p>This “one-size-fits-all” approach is misguided because it ignores the causal story behind the data. In <em>The Book of Why</em>, we look at a fictional example of a drug that is intended to prevent heart attacks by lowering blood pressure. We can summarize the causal story in a diagram:</p>
+<p><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/0001/07/Screen-Shot-2020-07-06-at-12.47.09-PM.png"><img loading="lazy" decoding="async" class="size-medium wp-image-2239 aligncenter" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/0001/07/Screen-Shot-2020-07-06-at-12.47.09-PM-300x132.png" alt="" width="300" height="132" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/0001/07/Screen-Shot-2020-07-06-at-12.47.09-PM-300x132.png 300w, https://causality.cs.ucla.edu/blog/wp-content/uploads/0001/07/Screen-Shot-2020-07-06-at-12.47.09-PM.png 616w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a></p>
+<p>Here blood pressure is what we call a mediator, an intervening variable through which the intervention produces its effect. We also allow for the possibility that the drug may directly influence the chances of a heart attack in other, unknown ways, by drawing an arrow directly from “Drug” to “Heart Attack.”</p>
+<p>The diagram tells us how to interrogate the data. Because we want to know the drug’s <em>total effect</em> on the patient, through the intended route as well as other, unintended routes, we should <em>not</em> stratify the data. That is, we should not separate the experimental data into “high-blood-pressure” and “low-blood-pressure” groups. In our book, we give (fictitious) experimental data in which the drug increases the risk of heart attack among people in the low-blood-pressure group and among people in the high-blood-pressure group (presumably because of side effects). But at the same time, and most importantly, it <em>shifts</em> patients from the high-risk high-blood-pressure group into the low-risk low-blood-pressure group. Thus its <em>total effect</em> is beneficial, even though its effect on each stratum appears to be harmful.</p>
+<p>It’s interesting to compare this fictitious example to the all-too-real COVID example, which I would argue has a very similar causal structure:</p>
+<p><a href="http://causality.cs.ucla.edu/blog/wp-content/uploads/0001/07/Screen-Shot-2020-07-06-at-12.47.00-PM.png"><img loading="lazy" decoding="async" class=" wp-image-2238 aligncenter" src="http://causality.cs.ucla.edu/blog/wp-content/uploads/0001/07/Screen-Shot-2020-07-06-at-12.47.00-PM-300x134.png" alt="" width="316" height="141" srcset="https://causality.cs.ucla.edu/blog/wp-content/uploads/0001/07/Screen-Shot-2020-07-06-at-12.47.00-PM-300x134.png 300w, https://causality.cs.ucla.edu/blog/wp-content/uploads/0001/07/Screen-Shot-2020-07-06-at-12.47.00-PM.png 706w" sizes="auto, (max-width: 316px) 100vw, 316px" /></a></p>
+<p>The causal arrow from “race” to “age” means that your race influences your chances of living to age 75 or older. In this diagram, Age is a mediator between Race and Death from COVID; that is, it is a mechanism through which Race acts. As we saw in the data, it’s quite a potent mechanism; in fact, it accounts for why white people who are COVID-positive die more often.</p>
+<p>Because the two causal diagrams are the same, you might think that in the second case, too, we should not stratify the data; instead we should use the aggregate data and conclude that COVID is a disease that “discriminates” against whites.</p>
+<p>However, this argument ignores the second key ingredient I mentioned earlier: <em>interrogating the data using correctly phrased causal queries</em>.</p>
+<p>What is our query in this case? It’s different from what it was in the drug example. In that case, we were looking at the drug as a preventative for a heart attack. If we were to look at the COVID data in the same way, we would ask, “What is the total lifetime effect of intervening (before birth) to change a person’s race?” And yes: if we could perform that intervention, and if our <em>sole objective</em> was to prevent death from COVID, we would choose to change our race from white to non-white. The “benefit” of that intervention would be that we would <em>never live</em> to an age where we were at high risk of dying from COVID.</p>
+<p>I’m sure you can see, without my even explaining it, that this is not the query any reasonable person would pose. “Saving” lives from COVID by making them end earlier for other reasons is not a justifiable health policy.</p>
+<p>Thus, the query we want to interrogate the data with is not “What is the total effect?” but “What is the direct effect?” As we explain on page 312 of <em>The Book of Why</em>, this is always the query we are interested in when we talk about discrimination. If we want to know whether our health-care system discriminates against a certain ethnic group, then we want to <em>hold all other variables constant</em> that might account for the outcome, and see what is the effect of changing Race alone. In this case, that means stratifying the data by Age, and the result is that we do see evidence of discrimination. Non-whites do worse at (almost) every age. As Wood writes, “The virus knows no race or nationality; it can’t peek at your driver’s license or census form to check whether you are black. <em>Society</em> checks for it, and provides the discrimination on the virus’s behalf.”</p>
+<p>To reiterate: The causal story here is identical to the Drug-Blood Pressure-Heart Attack example. What has changed is our query. Precision is required both in formulating the causal model, and in deciding what is the question we want to ask of it.</p>
+<p>I wanted to place special emphasis on the query because I recently was asked to referee an article about Simpson’s paradox that missed this exact point. Of course I cannot tell you more about the author or the journal. (I don’t even know who the author is.) It was a good article overall, and I hope that it will be published with a suitable revision. </p>
+<p>In the meantime, there is plenty of room for further exploration of the coronavirus epidemic with causal models. Undoubtedly the diagram above is too simple; unfortunately, if we make it more realistic by including more variables, we may not have any data available to interrogate. In fact, even in this case there is a huge amount of missing data: 51 percent of the COVID cases have unknown race/ethnicity, and 19 percent of the deaths. Thus, while we can learn an excellent lesson about Simpson’s paradox and some probable lessons about racial inequities, we have to present the results with some caution. Finally, I would like to draw attention to something curious in the CDC data: The case fatality rate for whites in the youngest age group, ages 0-4, is much higher than for non-whites. I don’t know how to explain this, and I would think that someone with an interest in pediatric COVID cases should investigate.</p>
+<p> </p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2020/07/06/race-covid-mortality-and-simpsons-paradox-by-dana-mackenzie/feed/</wfw:commentRss>
+			<slash:comments>7</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>What Statisticians Want to Know about Causal Inference and The Book of Why</title>
+		<link>https://causality.cs.ucla.edu/blog/index.php/2020/05/31/what-statisticians-want-to-know-about-causal-inference-and-the-book-of-why/</link>
+					<comments>https://causality.cs.ucla.edu/blog/index.php/2020/05/31/what-statisticians-want-to-know-about-causal-inference-and-the-book-of-why/#respond</comments>
+		
+		<dc:creator><![CDATA[Judea Pearl]]></dc:creator>
+		<pubDate>Sun, 31 May 2020 16:09:06 +0000</pubDate>
+				<category><![CDATA[Causal Effect]]></category>
+		<category><![CDATA[DAGs]]></category>
+		<category><![CDATA[Discussion]]></category>
+		<category><![CDATA[Economics]]></category>
+		<category><![CDATA[Epidemiology]]></category>
+		<category><![CDATA[Opinion]]></category>
+		<guid isPermaLink="false">http://causality.cs.ucla.edu/blog/?p=2214</guid>
+
+					<description><![CDATA[I was privileged to be interviewed recently by David Hand, Professor of Statistics at Imperial College, London, and a former President of the Royal Statistical Society. I would like to share this interview with readers of this blog since many of the questions raised by David keep coming up in my conversations with statisticians and [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="p1">I was privileged to be interviewed recently by David Hand, Professor of Statistics at Imperial College, London, and a former President of the Royal Statistical Society. I would like to share this interview with readers of this blog since many of the questions raised by David keep coming up in my conversations with statisticians and machine learning researchers, both privately and on Twitter.</p>
+<p class="p1">For me, David represents mainstream statistics and, the reason I find his perspective so valuable is that he does not have a stake in causality and its various formulations. Like most mainstream statisticians, he is simply curious to understand what the big fuss is all about and how to communicate differences among various approaches without taking sides.</p>
+<p class="p1">So, I&#8217;ll let David start, and I hope you find it useful.</p>
+<p class="p1"><b>Judea Pearl Interview by David Hand</b></p>
+<p class="p1">There are some areas of statistics which seem to attract controversy and disagreement, and causal modelling is certainly one of them. In an attempt to understand what all the fuss is about, I asked Judea Pearl about these differences in perspective. Pearl is a world leader in the scientific understanding of causality. He is a recipient of the AMC Turing Award (computing&#8217;s &#8220;Nobel Prize&#8221;), for &#8220;fundamental contributions to artificial intelligence through the development of a calculus for probabilistic and causal reasoning&#8221;, the David E. Rumelhart Prize for Contributions to the Theoretical Foundations of Human Cognition, and is a Fellow of the American Statistical Association.</p>
+<p class="p1"><b>QUESTION 1:</b></p>
+<p class="p1">I am aware that causal modelling is a hotly contested topic, and that there are alternatives to your perspective &#8211; the work of statisticians Don Rubin and Phil Dawid spring to mind, for example. Words like counterfactual, Popperian falsifiability, potential outcomes, appear. I&#8217;d like to understand the key differences between the various perspectives, so can you tell me what are the main grounds on which they disagree?</p>
+<p class="p1"><b>ANSWER 1:</b></p>
+<p class="p1">You might be surprised to hear that, despite what seems to be hotly contested debates, there are very few philosophical differences among the various &#8220;approaches.&#8221; And I put “approaches&#8221; in quotes because the differences are more among historical traditions, or &#8220;frameworks&#8221; than among scientific principles. If we compare, for example, Rubin&#8217;s potential outcome with my framework, named &#8220;Structural Causal Models&#8221; (SCM), we find that the two are logically equivalent; a theorem in one is a theorem in the other and an assumption in one can be written as an assumption in the other. This means that, starting with the same set of assumptions, every solution obtained in one can also be obtained in the other.</p>
+<p class="p1">But logical equivalence does not means &#8220;modeling equivalence&#8221; when we consider issues such as transparency, credibility or tractability. The equations for straight lines in polar coordinates are equivalent to those in Cartesian coordinates yet are hardly manageable when it comes to calculating areas of squares or triangles.</p>
+<p class="p1">In SCM, assumptions are articulated in the form of equations among measured variables, each asserting how one variable responds to changes in another. Graphical models are simple abstractions of those equations and, remarkably, are sufficient for answering many causal questions when applied to non-experimental data. An arrow X&#8212;&gt;Y in a graphical model represents the capacity to respond to such changes. All causal relationships are derived mechanically from those qualitative primitives, demanding no further judgment of the modeller.</p>
+<p class="p1">In Rubin&#8217;s framework, assumptions are expressed as conditional independencies among counterfactual variables, also known as &#8220;ignorability conditions.&#8221; The mental task of ascertaining the plausibility of such assumptions is beyond anyone&#8217;s capacity, which makes it extremely hard for researchers to articulate or to verify. For example, the task of deciding which measurements to include in the analysis (or in the propensity score) is intractable in the language of conditional ignorability. Judging whether the assumptions are compatible with the available data, is another task that is trivial in graphical models and insurmountable in the potential outcome framework.</p>
+<p class="p1">Conceptually, the differences can be summarized thus: The graphical approach goes where scientific knowledge resides, while Rubin&#8217;s approach goes where statistical routines need to be justified. The difference shines through when simple problems are solved side by side in both approaches, as in my book Causality (2009). <span style="font-size: inherit;">The main reason differences between approaches are still debated in the literature is that most statisticians are watching these debates as outsiders, instead of trying out simple examples from beginning to end. Take for </span><span style="font-size: inherit;">example Simpson&#8217;s paradox, a puzzle that has intrigued a century of statisticians and </span><span style="font-size: inherit;">philosophers. It is still as vexing to most statisticians today as it was to Pearson in 1889, and </span><span style="font-size: inherit;">the task of deciding which data to consult, the aggregated or the disaggregated is still avoided </span><span style="font-size: inherit;">by all statistics textbooks.</span></p>
+<p class="p1">To summarize, causal modeling, a topic that should be of prime interest to all statisticians, is still perceived to be a &#8220;hotly contested topic&#8221;, rather than the main frontier of statistical research. The emphasis on &#8220;differences between the various perspectives&#8221; prevents statisticians from seeing the exciting new capabilities that now avail themselves, and which “enable us to answer questions that we have always wanted but were afraid to ask.&#8221; It is hard to tell whether fears of those &#8220;differences&#8221; prevent statisticians from seeing the excitement, or the other way around, and cultural inhibitions prevent statisticians from appreciating the excitement, and drive them to discuss &#8220;differences&#8221; instead.</p>
+<p class="p1"><b>QUESTION 2:</b></p>
+<p class="p1">There are different schools of statistics, but I think that most modern pragmatic applied statisticians are rather eclectic, and will choose a method which has the best capability to answer their particular questions. Does the same apply to approaches to causal modelling? That is, do the different perspectives have strengths and weaknesses, and should we be flexible in our choice of approach?</p>
+<p class="p1"><b>ANSWER 2:</b></p>
+<p class="p1">These strengths and weaknesses are seen clearly in the SCM framework, which unifies several approaches and provides a flexible way of leveraging the merits of each. In particular, SCM combines graphical models and potential outcome logic. The graphs are used to encode what we know (i.e., the assumptions we are willing to defend) and the logic is used to encode what we wish to know, that is, the research question of interest. Simple mathematical tools can then combine these two with data and produce consistent estimates.</p>
+<p class="p1">The availability of these unifying tools now calls on statisticians to become actively involved in causal analysis, rather than attempting to judge approaches from a distance. The choice of approach will become obvious once research questions are asked and the stage is set to articulate subject matter information that is necessary in answering those questions.</p>
+<p class="p1"><b>QUESTION 3:</b></p>
+<p class="p1">To a very great extent the modern big data revolution has been driven by so-called “databased” models and algorithms, where understanding is not necessarily relevant or even helpful, and where there is often no underlying theory about how the variables are related. Rather, the aim is simply to use data to construct a model or algorithm which will predict an outcome from input variables (deep learning neural networks being an illustration). But this approach is intrinsically fragile, relying on an assumption that the data properly represent the population of interest. Causal modelling seems to me to be at the opposite end of the spectrum: it is intrinsically “theory-based”, because it has to begin with a causal model. In your approach, described in an accessible way in your recent book The Book of Why, such models are nicely summarised by your arrow charts. But don&#8217;t theory-based models have the complementary risk that they rely heavily on the accuracy of the model? As you say on page 160 of The Book of Why, “provided the model is correct”.</p>
+<p class="p1"><b>ANSWER 3:</b></p>
+<p class="p1">When the tasks are purely predictive, model-based methods are indeed not immediately necessary and deep neural networks perform surprisingly well. This is level-1 (associational) in the Ladder of Causation described in The Book of Why. In tasks involving interventions, however (level-2 of the Ladder), model-based methods become a necessity. There is no way to predict the effect of policy interventions (or treatments) unless we are in possession of either causal assumptions or controlled randomized experiments employing identical interventions. In such tasks, and absent controlled experiments, reliance on the accuracy of the model is inevitable, and the best we can do is to make the model transparent, so that its accuracy can be (1) tested for compatibility with data and/or (2) judged by experts as well as policy makers and/or (3) subjected to sensitivity analysis.</p>
+<p class="p1">A major reason why statisticians are reluctant to state and rely on untestable modeling assumptions stems from lack of training in managing such assumptions, however plausible. Even stating such unassailable assumptions as &#8220;symptoms do not cause diseases&#8221; or &#8220;drugs do not change patient&#8217;s sex&#8221; require a vocabulary that is not familiar to the great majority of living statisticians. Things become worse in the potential outcome framework where such assumptions resist intuitive interpretation, let alone judgment of plausibility. It is important at this point to go back and qualify my assertion that causal models are not necessary for purely predictive tasks. Many tasks that, at first glance appear to be predictive, turn out to require causal analysis. A simple example is the problem of external validity or inference across populations. Differences among populations are very similar to differences induced by interventions, hence methods of transporting information from one population to another can leverage all the tools developed for predicting effects of interventions. A similar transfer applies to missing data analysis, traditionally considered a statistical problem. Not so. It is inherently a causal problem since modeling the reason for missingness is crucial for deciding how we can recover from missing data. Indeed modern methods of missing data analysis, employing causal diagrams are able to recover statistical and causal relationships that purely statistical methods have failed to recover.</p>
+<p class="p1"><b>QUESTION 4:</b></p>
+<p class="p1">In a related vein, the “backdoor” and “frontdoor” adjustments and criteria described in the book are very elegant ways of extracting causal information from arrow diagrams. They permit causal information to be obtained from observational data. Provided that is, the arrow diagram accurately represents the relationships between all the relevant variables. So doesn&#8217;t valid application of this elegant calculus depends critically on the accuracy of the base diagram?</p>
+<p class="p1"><b>ANSWER 4:</b></p>
+<p class="p1">Of course. But as we have agreed above, EVERY exercise in causal inference &#8220;depends critically on the accuracy&#8221; of the theoretical assumptions we make. Our choice is whether to make these assumptions transparent, namely, in a form that allows us to scrutinize their veracity, or bury those assumptions in cryptic notation that prevents scrutiny.</p>
+<p class="p1">In a similar vein, I must modify your opening statement, which described the “backdoor” and “frontdoor” criteria as &#8220;elegant ways of extracting causal information from arrow diagrams.&#8221; A more accurate description would be &#8220;&#8230;extracting causal information from rudimentary scientific knowledge.&#8221; The diagrammatic description of these criteria enhances, rather than restricts their range of applicability. What these criteria in fact do is extract quantitative causal information from conceptual understanding of the world; arrow diagrams simply represent the extent to which one has or does not have such understanding. Avoiding graphs conceals what knowledge one has, as well as what doubts one entertains.</p>
+<p class="p1"><b>QUESTION 5:</b></p>
+<p class="p1">You say, in The Book of Why (p5-6) that the development of statistics led it to focus “exclusively on how to summarise data, not on how to interpret it.” It&#8217;s certainly true that when the Royal Statistical Society was established it focused on “procuring, arranging, and publishing ‘Facts calculated to illustrate the Condition and Prospects of Society’,” and said that “the first and most essential rule of its conduct [will be] to exclude carefully all Opinions from its transactions and publications.” But that was in the 1830s, and things have moved on since then. Indeed, to take one example, clinical trials were developed in the first half of the Twentieth Century and have a history stretching back even further. The discipline might have been slow to get off the ground in tackling causal matters, but surely things have changed and a very great deal of modern statistics is directly concerned with causal matters &#8211; think of risk factors in epidemiology or manipulation in experiments, for example. So aren&#8217;t you being a little unfair to the modern discipline?</p>
+<p class="p1"><b>ANSWER 5:</b></p>
+<p class="p1">Ronald Fisher’s manifesto, in which he pronounced that “the object of statistical methods is the reduction of data” was published in 1922, not in the 19th century (Fisher 1922). Data produced in clinical trials have been the only data that statisticians recognize as legitimate carriers of causal information, and our book devotes a whole chapter to this development. With the exception of this singularity, however, the bulk of mainstream statistics has been glaringly disinterested in causal matters. And I base this observation on three faithful indicators: statistics textbooks, curricula at major statistics departments, and published texts of Presidential Addresses in the past two decades. None of these sources can convince us that causality is central to statistics.</p>
+<p class="p1">Take any book on the history of statistics, and check if it considers causal analysis to be of primary concern to the leading players in 20<span class="s1">th </span>century statistics. For example, Stigler&#8217;s The Seven Pillars of Statistical Wisdom (2016) barely makes a passing remark to two (hardly known) publications in causal analysis.</p>
+<p class="p1">I am glad you mentioned epidemiologists’ analysis of risk factors as an example of modern interest in causal questions. Unfortunately, epidemiology is not representative of modern statistics. In fact epidemiology is the one field where causal diagrams have become a second language, contrary to mainstream statistics, where causal diagrams are still a taboo. (e.g., Efron and Hastie 2016; Gelman and Hill, 2007; Imbens and Rubin 2015; Witte and Witte, 2017).</p>
+<p class="p1">When an academic colleague asks me &#8220;Aren&#8217;t you being a little unfair to our discipline, considering the work of so and so?&#8221;, my answer is &#8220;Must we speculate on what &#8216;so and so&#8217; did? Can we discuss the causal question that YOU have addressed in class in the past year?&#8221; The conversation immediately turns realistic.</p>
+<p class="p1"><b>QUESTION 6:</b></p>
+<p class="p1">Isn&#8217;t the notion of intervening through randomisation still the gold standard for establishing causality?</p>
+<p class="p1"><b>ANSWER 6:</b></p>
+<p class="p1">It is. Although in practice, the hegemony of randomized trial is being contested by alternatives. Randomized trials suffer from incurable problems such as selection bias (recruited subject are rarely representative of the target population) and lack of transportability (results are not applicable when populations change). The new calculus of causation helps us overcome these problems, thus achieving greater over all credibility; after all, observational studies are conducted at the natural habitat of the target population.</p>
+<p class="p1"><b>QUESTION 7:</b></p>
+<p class="p1">What would you say are the three most important ideas in your approach? And what, in particular, would you like readers of The Book of Why to take away from the book.</p>
+<p class="p1"><b>ANSWER 7:</b></p>
+<p class="p1">The three most important ideas in the book are: (1) Causal analysis is easy, but requires causal assumptions (or experiments) and those assumptions require a new mathematical notation, and a new calculus. (2) The Ladder of Causation, consisting of (i) association (ii) interventions and (iii) counterfactuals, is the Rosetta Stone of causal analysis. To answer a question at layer (x) we must have assumptions at level (x) or higher. (3) Counterfactuals emerge organically from basic scientific knowledge and, when represented in graphs, yield transparency, testability and a powerful calculus of cause and effect. I must add a fourth take away: (4) To appreciate what modern causal analysis can do for you, solve one toy problem from beginning to end; it would tell you more about statistics and causality than dozens of scholarly articles laboring to overview statistics and causality.</p>
+<p class="p1"><b>REFERENCES</b></p>
+<p class="p1">Efron, B. and Hastie, T., Computer Age Statistical Inference: Algorithms, Evidence, and Data Science, New York, NY: Cambridge University Press, 2016.</p>
+<p class="p1">Fisher, R., “On the mathematical foundations of theoretical statistics,” Philosophical Transactions of the Royal Society of London, Series A 222, 311, 1922.</p>
+<p class="p1">Gelman, A. and Hill, J., Data Analysis Using Regression and Multilevel/Hierarchical Models, New York: Cambridge University Press, 2007.</p>
+<p class="p1">Imbens, G.W. and Rubin, D.B., Causal Inference for Statistics, Social, and Biomedical Sciences: An Introduction, Cambridge, MA: Cambridge University Press, 2015.</p>
+<p class="p1">Witte, R.S. and Witte, J.S., Statistics, 11<span class="s1">th </span>edition, Hoboken, NJ: John Wiley &amp; Sons, Inc. 2017.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://causality.cs.ucla.edu/blog/index.php/2020/05/31/what-statisticians-want-to-know-about-causal-inference-and-the-book-of-why/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://nithinbekal.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://nithinbekal.com/" rel="alternate" type="text/html" /><updated>2026-02-01T17:16:13+00:00</updated><id>https://nithinbekal.com/feed.xml</id><title type="html">Nithin Bekal</title><subtitle>Nithin Bekal&apos;s blog about programming - Ruby, Rails, Vim, Elixir.</subtitle><entry><title type="html">Minimal Sorbet with inline RBS comments</title><link href="https://nithinbekal.com/posts/minimal-sorbet-rbs-setup/" rel="alternate" type="text/html" title="Minimal Sorbet with inline RBS comments" /><published>2026-02-01T00:00:00+00:00</published><updated>2026-02-01T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/minimal-sorbet-rbs-setup</id><content type="html" xml:base="https://nithinbekal.com/posts/minimal-sorbet-rbs-setup/"><![CDATA[<p>I’ve been working through the fantastic <a href="https://craftinginterpreters.com/contents.html">Crafting Interpreters</a> book, and implementing the <a href="https://github.com/nithinbekal/rlox">Lox interpreter in Ruby</a>. I wanted a minimal type checking setup for the code, so I decided to configure sorbet with RBS comment syntax.</p>
+
+<p>First, we add the <code class="language-plaintext highlighter-rouge">sorbet</code> and <code class="language-plaintext highlighter-rouge">tapioca</code> gems to the <code class="language-plaintext highlighter-rouge">Gemfile</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"sorbet"</span>
+<span class="n">gem</span> <span class="s2">"tapioca"</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span>
+</code></pre></div></div>
+
+<p>Next, we add a <code class="language-plaintext highlighter-rouge">sorbet/config</code> file that includes all the arguments that we would pass when running the <code class="language-plaintext highlighter-rouge">srb typecheck</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--dir
+lib
+--enable-experimental-rbs-comments
+</code></pre></div></div>
+
+<p>And that’s basically it! You can now type check your Ruby codebase with <code class="language-plaintext highlighter-rouge">bundle exec srb typecheck</code>.</p>
+
+<p>Based on my experience <a href="https://nithinbekal.com/posts/sorbet-rails/">adding Sorbet to a Rails app</a> in the past, I expected this to be more cumbersome. Having seen how straightforward it is to get started, I think sorbet is going to be part of even my smaller Ruby projects.</p>]]></content><author><name></name></author><category term="ruby" /><category term="sorbet" /><summary type="html"><![CDATA[I’ve been working through the fantastic Crafting Interpreters book, and implementing the Lox interpreter in Ruby. I wanted a minimal type checking setup for the code, so I decided to configure sorbet with RBS comment syntax.]]></summary></entry><entry><title type="html">Google Antigravity: First Impressions</title><link href="https://nithinbekal.com/posts/antigravity-impressions/" rel="alternate" type="text/html" title="Google Antigravity: First Impressions" /><published>2026-01-16T00:00:00+00:00</published><updated>2026-01-16T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/antigravity-impressions</id><content type="html" xml:base="https://nithinbekal.com/posts/antigravity-impressions/"><![CDATA[<p>For the past few weeks, I’ve been playing around with Antigravity, Google’s new AI powered code editor. It has a free tier, so I wanted to see how well it worked for hobby projects. At work, I primarily use Cursor and Claude Code with Opus. I also have a Cursor Pro subscription for personal use, and wanted to see if Antigravity could replace it.</p>
+
+<p>This editor is a VS Code fork like Cursor, which made it easier to get started. It was able to import my Cursor settings as soon as I opened the app, so there wasn’t much to set up.</p>
+
+<h3 id="fixing-some-bugs">Fixing some bugs</h3>
+
+<p>To take it for a spin, I decided to fix some bugs in <a href="https://devlibrary.org/">devlibrary.org</a>’s Elixir codebase. I’ve been putting off fixing some annoying bugs there because my Elixir is a bit rusty, so AI assistance is a great way to build some momentum. I picked a note I made about an annoyance and just pasted it in the chat without any additional context:</p>
+
+<blockquote>
+  <p>When a search has no results, there’s an “add book” button. I don’t want it anymore</p>
+</blockquote>
+
+<p>Gemini 3 Pro was able to figure out the context and make the changes quickly. However, this was a very simple fix, so I decided to pick something a fair bit more complex. Again, my prompt was just the text from my todo list:</p>
+
+<blockquote>
+  <p>Fix bug that prevents saving book with newly created authors or categories</p>
+</blockquote>
+
+<p>This was a bug with a LiveSelect component that I’d unsuccessfully tried to fix with Cursor a few times. However, Antigravity has a browser agent that opens up the local server in the browser and clicks around to reproduce the issue. This is particularly effective when fixing UI bugs. It’s also great when I want to offload some manual testing to the agent.</p>
+
+<h3 id="tab-completion">Tab completion</h3>
+
+<p>Cursor’s strongest feature has always been tab completion. I think Cursor is still far ahead of Antigravity in this regard. When you rename a variable, Cursor lets you hit tab rapidly to jump to the next instance and update it. Antigravity does have a similar tab feature, but it feels slower and less reliable. It has sometimes ended up inserting a tab character rather than jumping to the next position.</p>
+
+<h3 id="available-models">Available models</h3>
+
+<p>Antigravity is the showcase for Gemini 3 Pro, but also provides Claude Sonnet, Opus, and GPT-OSS 120B. Since I started using this, they have added Gemini 3 Flash as well. Being a lightweight model, Flash has more generous limits.</p>
+
+<p>I’ve really enjoyed using Gemini Flash. It is extremely fast, and great for offloading lightweight, boilerplate-y work to AI. It may not be the best for serious work, but for small hobby projects, you probably don’t need the firepower of Gemini 3 Pro or Opus.</p>
+
+<p>Cursor has a wider range of models, with many versions of GPT5 being available in addition to Claude and Gemini, but I’ve hardly reached for GPT in the past year. Claude models are easily the best available option, with Gemini not far behind, so I’m not missing much.</p>
+
+<h3 id="rate-limits">Rate limits</h3>
+
+<p>I’m still playing with the free tier, where I hit the rate limits for both Gemini and Claude’s bigger models in 3 days, and had to wait 4 more days for it to reset. Gemini Flash lasted much longer, but I eventually ran into limits there as well. That said, I was still surprised by how long I was able to use it with the free quotas. The browser agent also has rate limits, which is rather frustrating.</p>
+
+<p>There’s been a lot of chatter lately about how much Google is limiting the quotas even in the Pro plans. However, considering how generous the free tier is, I don’t think I’ll run into the limits if I got the Pro plan. For personal use, it’s not a dealbreaker, and for work, the Ultra plan is probably better suited.</p>
+
+<p>The AI Pro plan costs $20 (27 CAD here in Canada) and includes 2TB of storage. Considering that I already pay 14 CAD for that much storage right now, the pricing looks very tempting compared to the $20 that I’m paying Cursor for the sporadic use.</p>
+
+<h3 id="verdict">Verdict</h3>
+
+<p>So far, I’m really enjoying using Antigravity. The experience is similar to that of Cursor for the most part, even though the UX does feel a bit less polished at times.</p>
+
+<p>The pricing makes it a very attractive option. It’s easy to play around with the free tier. But even the $20 tier is a steal considering the 2TB of storage, and increased rate limits for non coding AI tools.</p>]]></content><author><name></name></author><category term="ai" /><summary type="html"><![CDATA[For the past few weeks, I’ve been playing around with Antigravity, Google’s new AI powered code editor. It has a free tier, so I wanted to see how well it worked for hobby projects. At work, I primarily use Cursor and Claude Code with Opus. I also have a Cursor Pro subscription for personal use, and wanted to see if Antigravity could replace it.]]></summary></entry><entry><title type="html">Favorite books of 2025</title><link href="https://nithinbekal.com/posts/books-2025/" rel="alternate" type="text/html" title="Favorite books of 2025" /><published>2025-12-31T00:00:00+00:00</published><updated>2025-12-31T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/books-2025</id><content type="html" xml:base="https://nithinbekal.com/posts/books-2025/"><![CDATA[<p>35 books, 17,000 pages. That fell short of the 50 books target I set for myself, but there were quite a few great books in there. Most of my “reading” this year was through audiobooks, so I ended up listening to 240 hours (that’s 10 whole days!) worth of books.</p>
+
+<h2 id="non-fiction">Non fiction</h2>
+
+<h4 id="a-random-walk-down-wall-street-burton-g-malkiel"><a href="https://www.amazon.com/dp/1324035439/">A Random Walk Down Wall Street</a> (Burton G Malkiel)</h4>
+
+<p>Malkiel is one of the earliest advocates for index funds, so a lot of today’s personal finance wisdom comes from this book. Originally written in the 1970s, but regularly updated, it has remained relevant through half a century. He also weaves the narrative much better than most personal finance writers, so it is a delightfully engaging read. He can easily jump from the Dutch tulip bulb craze to Japanese real estate bubble to the 2008 recession and explain the forces of economics at the same time.</p>
+
+<h4 id="100-ways-to-improve-your-writing-gary-provost"><a href="https://www.amazon.com/dp/B07H1V584S/">100 Ways to Improve Your Writing</a> (Gary Provost)</h4>
+
+<p>Not only does Provost teach you how to write better, he gives you beautiful prose that you can learn from along the way. This book has one of my favourite pieces of writing:</p>
+
+<blockquote>
+  <p>This sentence has five words. Here are five more words. Five-word sentences are fine. But several together become monotonous. Listen to what is happening. The writing is getting boring. The sound of it drones. It’s like a stuck record. The ear demands some variety. Now listen. I vary the sentence length, and I create music. Music. The writing sings. It has a pleasant rhythm, a lilt, a harmony. I use short sentences. And I use sentences of medium length. And sometimes, when I am certain the reader is rested, I will engage him with a sentence of considerable length, a sentence that burns with energy and builds with all the impetus of a crescendo, the roll of the drums, the crash of the cymbals–sounds that say listen to this, it is important.</p>
+</blockquote>
+
+<h4 id="the-innovators-dilemma-clayton-m-christensen"><a href="https://www.amazon.com/dp/B0C9JSTM33/">The Innovator’s Dilemma</a> (Clayton M Christensen)</h4>
+
+<p>Explores why disruptive technologies usually come from small startups repackaging existing technologies at a lower cost, and existing successful companies fail at this. The primary example is the disk drive industry, and how the established players couldn’t release disruptive technologies, and instead doubled down on established, “sustaining” technologies.</p>
+
+<h4 id="a-philosophy-of-software-design-john-ousterhout"><a href="https://www.amazon.com/dp/B09B8LFKQL/">A Philosophy of Software Design</a> (John Ousterhout)</h4>
+
+<p>One of my new favourite technical books. This was an interesting contrast to books like Sandi Metz’s <em><a href="https://www.amazon.com/dp/B07F88LY9M/">Practical Object Oriented Design in Ruby</a></em> and Bob Martin’s <em><a href="https://www.amazon.com/dp/B001GSTOAM/">Clean Code</a></em>. Sometimes, I wonder if I’m pushing ideas from those books (like short methods) too far. This book pulls back from those ideas a bit too much for my liking, but it can help you figure out a good middle ground for dealing with complexity in software.</p>
+
+<h4 id="a-peoples-history-of-the-united-states-howard-zinn"><a href="https://www.amazon.com/dp/B015XEWZHI/">A People’s History of the United States</a> (Howard Zinn)</h4>
+
+<p>A retelling of the American history from the perspective of the marginalized groups. The original book is a massive tome, but I listened to an abridged audiobook narrated by Matt Damon. Even the abridged version can be a bit dry at times, but thoroughly illuminating about the origins of modern America.</p>
+
+<h4 id="careless-people-sarah-wynn-williams"><a href="https://www.amazon.com/dp/B0DY9TZD8Z/">Careless People</a> (Sarah Wynn-Williams)</h4>
+
+<p>Wynn-Williams was an exec at Facebook, in charge of government relations. She chronicles the toxic work environment and the leadership’s disregard for ethics as they tried to expand into authoritarian nations like China and Myanmar. Heard about this because Meta Streisand-ed themselves by trying to get it banned.</p>
+
+<h4 id="the-notebook-a-history-of-thinking-on-paper-roland-allen"><a href="https://www.amazon.com/dp/B0D3R76WBZ/">The Notebook: A History of Thinking on Paper</a> (Roland Allen)</h4>
+
+<p>Fascinating history of the notebook, going all the way back to clay tablets, through to da Vinci, Newton, the evolution of double entry bookkeeping, police notebooks and the creation of Moleskine notebooks. When this was recommended to me, I was skeptical it would be interesting to someone who doesn’t use a physical notebook. I was wrong to doubt it, though!</p>
+
+<h4 id="on-writing-stephen-king"><a href="https://www.amazon.com/dp/1982159375/">On Writing</a> (Stephen King)</h4>
+
+<p>One of the masters of storytelling writes about the craft of writing, interleaving it with a memoir about his own writing journey. An entertaining read, even if you don’t want to become a writer.</p>
+
+<h4 id="a-bite-sized-history-of-france-stéphane-hénaut-jeni-mitchell"><a href="https://www.amazon.com/dp/B076VV97HW/">A Bite-Sized History of France</a> (Stéphane Hénaut, Jeni Mitchell)</h4>
+
+<p>A thoroughly entertaining history of France, told primarily through the lens of the history of French cuisine. Having recently visited France for the first time, this was a great way to understand the French love for food.</p>
+
+<h2 id="fiction">Fiction</h2>
+
+<h4 id="all-the-light-we-cannot-see-anthony-doerr"><a href="https://www.amazon.com/dp/B00DPM7TIG/">All The Light We Cannot See</a> (Anthony Doerr)</h4>
+
+<p>The book introduces us to two children in the 1930s - Marie Lauer, a blind Parisian girl and Werner, a German boy with a knack for fixing radios who later becomes a soldier. From there, we follow their journey on the opposite sides of WW2, until they finally encounter each other in the midst of a battle. Incredibly beautiful writing, and one of the more powerful world war novels I’ve ever read.</p>
+
+<h4 id="nettle--bone-t-kingfisher"><a href="https://www.amazon.com/dp/B08QGL9BZD/">Nettle &amp; Bone</a> (T Kingfisher)</h4>
+
+<p>Beautifully written fairy tale. A princess puts together a group to go on a mission to rescue her sister from her abusive husband, who also happens to be the prince of a powerful kingdom.</p>
+
+<h4 id="the-iron-king-maurice-druon"><a href="https://www.amazon.com/dp/B00B0PFYKK/">The Iron King</a> (Maurice Druon)</h4>
+
+<p>Set in the 1300s, the book follows the court of Philip the Fair, and the aftermath of his persecution of the Knights Templar. There’s political intrigue set in a medieval world, with lots of gritty violence, and reminds of <a href="https://www.amazon.com//dp/B000QCS8TW/">Game of Thrones</a>, without dragons. In fact, George R R Martin has cited this as an influence on the series.</p>
+
+<h4 id="parable-of-the-sower-octavia-e-butler"><a href="https://www.amazon.com/dp/B0BZHT26LV/">Parable of the Sower</a> (Octavia E Butler)</h4>
+
+<p>The teenage protagonist suffers from hyper-empathy, feeling the pain of others, and needing to hide it to survive. She lives in an American society that has fallen into anarchy. Escaping violence, she and a couple of friends have to make the dangerous trip North to find a safer place. This part is reminiscent of Cormac McCarthy’s <em><a href="https://www.amazon.com/dp/B000OI0G1Q/">The Road</a></em>. While a brilliant read, one weak area is that it takes a hard turn into the spiritual side. I would have preferred it as a pure speculative, dystopian novel.</p>
+
+<h4 id="wind-and-truth-brandon-sanderson"><a href="https://www.amazon.com/dp/B0CPWQZNQB/">Wind and Truth</a> (Brandon Sanderson)</h4>
+
+<p>Not the best entry in the <em>Stormlight Archive</em>, but the last 400-500 pages whizzed by. Sanderson is really good at writing finales, and he was able to resolve the dozens of plot lines he had in motion reasonably well. The book is structured as 10 separate sections, each dealing with one day. This brought an interesting sense of urgency to parts of the story, but the first half was quite slow.</p>
+
+<h2 id="stats">Stats</h2>
+
+<p>This year, I started collecting some additional stats about my reading:</p>
+
+<ul>
+  <li>35 books, 17000+ pages</li>
+  <li>18 non-fiction vs 17 fiction</li>
+  <li>Formats: 23 audiobooks, 11 ebooks, 1 physical book</li>
+  <li>Top genres: 8 science fiction, 5 fantasy, 4 history, 4 business.</li>
+  <li>241 hours of audiobook listening time (I listen at 1.5 to 2x, so this was probably closer to 120-150 hours)</li>
+</ul>
+
+<h2 id="2026">2026</h2>
+
+<p>Some goals for the new year:</p>
+
+<ul>
+  <li>Balance physical/ebooks with audiobooks: I’ve fallen behind on spending time sitting down with a book, and have relied mostly on audiobooks while walking outside. I want to make more time for actual reading.</li>
+  <li>Read genres other than SFF: My reading has skewed a lot towards science fiction lately. I’ve been working through the list of Hugo award winners, reading 15 winners in the past two years. I want to ease up on that and read more of other genres in the coming months, especially detective fiction.</li>
+  <li>Explore literature in other languages: I haven’t explored much of Kannada, Malayalam or Hindi literature because I can’t read those languages at a comfortable pace. Audiobooks should be great for exploring them.</li>
+</ul>
+
+<div class="note">
+  <p>
+    This is part of my
+    <em>Favorite Books of the Year</em>
+    series.
+    You can find the other posts below,
+    or
+    <a href="https://www.goodreads.com/user/show/1059476-nithin-bekal">follow me on Goodreads</a>.
+  </p>
+
+  <p>
+    <a href="/posts/books-2025/">2025</a> &nbsp;&nbsp;
+    <a href="/posts/books-2024/">2024</a> &nbsp;&nbsp;
+    <a href="/posts/books-2023/">2023</a> &nbsp;&nbsp;
+    <a href="/posts/books-2022/">2022</a> &nbsp;&nbsp;
+    <a href="/posts/books-2021/">2021</a> &nbsp;&nbsp;
+    <a href="/posts/books-2020/">2020</a> &nbsp;&nbsp;
+    <a href="/posts/books-2019/">2019</a> &nbsp;&nbsp;
+    <a href="/posts/books-2018/">2018</a> &nbsp;&nbsp;
+    <a href="/posts/favorite-books-2017/">2017</a> &nbsp;&nbsp;
+    <a href="/posts/favorite-books-2016/">2016</a> &nbsp;&nbsp;
+    <a href="/posts/favorite-books-2015/">2015</a> &nbsp;&nbsp;
+    <a href="/posts/favorite-books-2014/">2014</a> &nbsp;&nbsp;
+    <a href="/posts/favorite-books-2013/">2013</a> &nbsp;&nbsp;
+  </p>
+</div>]]></content><author><name></name></author><category term="books" /><summary type="html"><![CDATA[35 books, 17,000 pages. That fell short of the 50 books target I set for myself, but there were quite a few great books in there. Most of my “reading” this year was through audiobooks, so I ended up listening to 240 hours (that’s 10 whole days!) worth of books.]]></summary></entry><entry><title type="html">What’s new in Ruby 4.0</title><link href="https://nithinbekal.com/posts/ruby-4-0/" rel="alternate" type="text/html" title="What’s new in Ruby 4.0" /><published>2025-12-17T00:00:00+00:00</published><updated>2025-12-17T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/ruby-4-0</id><content type="html" xml:base="https://nithinbekal.com/posts/ruby-4-0/"><![CDATA[<p>Ruby 4.0 will be released next week on Christmas day. This release brings a new JIT compiler, improvements to Ractors, a new mechanism to define namespaces called <code class="language-plaintext highlighter-rouge">Ruby::Box</code>, and a whole lot of other changes.</p>
+
+<p>Although it’s a major version bump, there shouldn’t be any serious breaking changes. This version bump is to celebrate 30 years since the first public release of Ruby.</p>
+
+<h2 id="rubybox"><code class="language-plaintext highlighter-rouge">Ruby::Box</code></h2>
+
+<p><code class="language-plaintext highlighter-rouge">Ruby::Box</code> is an experimental feature that brings isolated namespaces to Ruby. This can be enabled by setting the <code class="language-plaintext highlighter-rouge">RUBY_BOX=1</code> environment variable. This can allow you to do things like loading two versions of a library at the same time like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># foo_v1.rb</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+  <span class="k">def</span> <span class="nf">hello</span>
+    <span class="s2">"Foo version 1"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># foo_v2.rb</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+  <span class="k">def</span> <span class="nf">hello</span>
+    <span class="s2">"Foo version 2"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># main.rb</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="no">Ruby</span><span class="o">::</span><span class="no">Box</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">v1</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="s2">"./foo_v1"</span><span class="p">)</span>
+
+<span class="n">v2</span> <span class="o">=</span> <span class="no">Ruby</span><span class="o">::</span><span class="no">Box</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">v2</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="s2">"./foo_v2"</span><span class="p">)</span>
+
+<span class="n">v1</span><span class="o">::</span><span class="no">Foo</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">hello</span> <span class="c1">#=&gt; "Foo version 1"</span>
+<span class="n">v2</span><span class="o">::</span><span class="no">Foo</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">hello</span> <span class="c1">#=&gt; "Foo version 2"</span>
+</code></pre></div></div>
+
+<p>I find the syntax rather confusing, with the need for instantiating a <code class="language-plaintext highlighter-rouge">Box</code> object. But this is still an experimental feature, so we’ll hopefully have better ergonomics with the final version.</p>
+<h2 id="ractor">Ractor</h2>
+
+<p>Ractor’s API has been redesigned to use <code class="language-plaintext highlighter-rouge">Ractor::Port</code> as the means for communicating between ractors. As a result <code class="language-plaintext highlighter-rouge">Ractor.yield</code> and <code class="language-plaintext highlighter-rouge">Ractor#take</code> have been removed. Now, you would use a ractor port like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">port</span> <span class="o">=</span> <span class="no">Ractor</span><span class="o">::</span><span class="no">Port</span><span class="p">.</span><span class="nf">new</span>
+
+<span class="no">Ractor</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">port</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span>
+  <span class="nb">p</span> <span class="o">&lt;&lt;</span> <span class="s2">"first value"</span>
+  <span class="nb">p</span> <span class="o">&lt;&lt;</span> <span class="s2">"second value"</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="n">port</span><span class="p">.</span><span class="nf">receive</span> <span class="c1">#=&gt; "first value"</span>
+<span class="nb">puts</span> <span class="n">port</span><span class="p">.</span><span class="nf">receive</span> <span class="c1">#=&gt; "second value"</span>
+</code></pre></div></div>
+
+<p>In Ruby 3.4, this would have looked like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ractor</span> <span class="o">=</span> <span class="no">Ractor</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span>
+  <span class="no">Ractor</span><span class="p">.</span><span class="nf">yield</span> <span class="s2">"first value"</span>
+  <span class="no">Ractor</span><span class="p">.</span><span class="nf">yield</span> <span class="s2">"second value"</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="n">ractor</span><span class="p">.</span><span class="nf">take</span>  <span class="c1"># =&gt; "first value"</span>
+<span class="nb">puts</span> <span class="n">ractor</span><span class="p">.</span><span class="nf">take</span>  <span class="c1"># =&gt; "second value"</span>
+</code></pre></div></div>
+
+<h2 id="zjit">ZJIT</h2>
+
+<p>A new JIT compiler called <a href="https://railsatscale.com/2025-05-14-merge-zjit/">ZJIT has been merged into Ruby</a>. This implements a method based JIT compiler, compared to the lazy basic block versioning compiler that YJIT uses. Using a more traditional type of JIT will hopefully make the codebase more accessible to new contributors.</p>
+
+<p>Although ZJIT is faster than the interpreted code, it hasn’t yet caught up with YJIT. The latter is still the recommended JIT for production. However, this sets the stage for some more speedups in the next year.</p>
+
+<h2 id="logical-operators-on-the-next-line">Logical operators on the next line</h2>
+
+<p>The following syntax is now allowed for logical operators <code class="language-plaintext highlighter-rouge">and</code>, <code class="language-plaintext highlighter-rouge">or</code>, <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> and <code class="language-plaintext highlighter-rouge">||</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">condition1?</span>
+  <span class="o">&amp;&amp;</span> <span class="n">condition2?</span>
+  <span class="o">&amp;&amp;</span> <span class="n">condition3?</span>
+  <span class="c1"># do something</span>
+<span class="k">end</span>
+
+<span class="c1"># The above is the same as what we can currently do with:</span>
+
+<span class="k">if</span> <span class="n">condition1?</span> <span class="o">&amp;&amp;</span>
+  <span class="n">condition2?</span> <span class="o">&amp;&amp;</span>
+  <span class="n">condition3?</span>
+  <span class="c1"># do something</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="ruby-top-level-module"><code class="language-plaintext highlighter-rouge">Ruby</code> top level module</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">Ruby</code> top level module was reserved in Ruby 3.4, but now it actually has some constants defined in it:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Ruby</span><span class="o">::</span><span class="no">VERSION</span>
+<span class="c1">#=&gt; "4.0.0"</span>
+
+<span class="no">Ruby</span><span class="o">::</span><span class="no">DESCRIPTION</span>
+<span class="c1">#=&gt; "ruby 4.0.0preview2 (2025-11-17 master 4fa6e9938c) +PRISM [x86_64-darwin24]"</span>
+
+<span class="c1"># Other constants in the module:</span>
+<span class="no">Ruby</span><span class="p">.</span><span class="nf">constants</span>
+<span class="c1">#=&gt; [:REVISION, :COPYRIGHT, :ENGINE, :ENGINE_VERSION, :DESCRIPTION,</span>
+<span class="c1">#    :VERSION, :RELEASE_DATE, :Box, :PLATFORM, :PATCHLEVEL]</span>
+</code></pre></div></div>
+
+<h2 id="instance_variables_to_inspect"><code class="language-plaintext highlighter-rouge">instance_variables_to_inspect</code></h2>
+
+<p>When <code class="language-plaintext highlighter-rouge">inspect</code> is called on an object, it includes all instance variables, including memoization variables, which can get noisy in larger classes. For instance, the <code class="language-plaintext highlighter-rouge">@area</code> variable shows up below after the <code class="language-plaintext highlighter-rouge">area</code> method is called.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Square</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+    <span class="vi">@width</span> <span class="o">=</span> <span class="n">width</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nf">area</span>
+    <span class="vi">@area</span> <span class="o">||=</span> <span class="vi">@width</span> <span class="o">*</span> <span class="vi">@width</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">square</span> <span class="o">=</span> <span class="no">Square</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">square</span> <span class="c1">#=&gt; #&lt;Square:0x000000011f280ff8 @width=5&gt;</span>
+
+<span class="n">square</span><span class="p">.</span><span class="nf">area</span> <span class="c1">#=&gt; 25</span>
+<span class="nb">puts</span> <span class="n">square</span> <span class="c1">#=&gt; =&gt; #&lt;Square:0x000000011f280ff8 @area=25 @width=5&gt;</span>
+</code></pre></div></div>
+
+<p>However, by defining which variables should be shown like this, we can make the inspect output less noisy.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Square</span>
+  <span class="c1"># ...</span>
+
+  <span class="kp">private</span>
+  
+  <span class="k">def</span> <span class="nf">instance_variables_to_inspect</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:@width</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="n">square</span><span class="p">.</span><span class="nf">area</span> <span class="c1"># 25</span>
+<span class="nb">puts</span> <span class="n">square</span> <span class="c1">#=&gt; =&gt; #&lt;Square:0x000000011f280ff8 @width=5&gt;</span>
+</code></pre></div></div>
+
+<h2 id="arrayrfind"><code class="language-plaintext highlighter-rouge">Array#rfind</code></h2>
+
+<p><code class="language-plaintext highlighter-rouge">Array#rfind</code> has been implemented to find the last element matching a condition. This is a more efficient alternative to <code class="language-plaintext highlighter-rouge">reverse_each.find</code>. It avoids an array allocation that happens when calling <code class="language-plaintext highlighter-rouge">Enumerable#reverse_each</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># new</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">].</span><span class="nf">rfind</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:odd?</span><span class="p">)</span> <span class="c1">#=&gt; 7</span>
+
+<span class="c1"># old</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">].</span><span class="nf">reverse_each</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:odd?</span><span class="p">)</span> <span class="c1">#=&gt; 7</span>
+</code></pre></div></div>
+
+<p>At the same time, <code class="language-plaintext highlighter-rouge">Array#find</code> has also been added, which is a more efficient implementation than <code class="language-plaintext highlighter-rouge">Enumerable#find</code> that was being used before.</p>
+
+<h2 id="other-changes">Other changes</h2>
+
+<ul>
+  <li><a href="https://railsatscale.com/2025-05-21-fast-allocations-in-ruby-3-5/">Object allocations are significantly faster</a> - over 2x without JIT and almost 4x with JIT enabled.</li>
+  <li><a href="https://github.com/ruby/rjit">RJIT</a> has been extracted into a separate gem.</li>
+  <li><code class="language-plaintext highlighter-rouge">Set</code> and <code class="language-plaintext highlighter-rouge">Pathname</code> are now core classes. Previously, <code class="language-plaintext highlighter-rouge">Set</code> was an autoloaded stdlib class, while  <code class="language-plaintext highlighter-rouge">Pathname</code> was an autoloaded default gem.</li>
+  <li>CGI library has been removed from default gems, but a few commonly used features such as <code class="language-plaintext highlighter-rouge">CGI.escape</code> and related methods are retained and can be used by requiring <code class="language-plaintext highlighter-rouge">cgi/escape</code>.</li>
+</ul>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>This post highlights changes that I personally found most interesting, and skip over features I might not use. If you’re looking for a more comprehensive look at the release, I highly recommend looking at the <a href="https://www.ruby-lang.org/en/news/2025/11/17/ruby-4-0-0-preview2-released/">release announcement</a>, and <a href="https://docs.ruby-lang.org/en/master/NEWS_md.html">changelog</a>. The <a href="https://rubyreferences.github.io/rubychanges/4.0.html">Ruby References</a> website is another fantastic resource if you want a deeper dive into all of the changes in this version.</p>
+
+<div class="note">
+  <p>
+    This article is part of the <em>What's New in Ruby</em> series.
+    To read about a different version of Ruby,
+    pick the version here:
+  </p>
+
+  <p>
+    <a href="/posts/ruby-2-3-features/">2.3</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-2-4-features/">2.4</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-2-5-features/">2.5</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-2-6/">2.6</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-2-7/">2.7</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-3-0/">3.0</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-3-1/">3.1</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-3-2/">3.2</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-3-3/">3.3</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-3-4/">3.4</a>
+    &nbsp;&nbsp;
+    <a href="/posts/ruby-4-0/">4.0</a>
+  </p>
+</div>]]></content><author><name></name></author><category term="ruby" /><summary type="html"><![CDATA[Ruby 4.0 will be released next week on Christmas day. This release brings a new JIT compiler, improvements to Ractors, a new mechanism to define namespaces called Ruby::Box, and a whole lot of other changes.]]></summary></entry><entry><title type="html">Review: Airpods Pro 2 with Android</title><link href="https://nithinbekal.com/posts/airpods-pro-review/" rel="alternate" type="text/html" title="Review: Airpods Pro 2 with Android" /><published>2025-11-25T00:00:00+00:00</published><updated>2025-11-25T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/airpods-pro-review</id><content type="html" xml:base="https://nithinbekal.com/posts/airpods-pro-review/"><![CDATA[<p>I’ve been using the Airpods Pro 2 with an Android phone for the past few months. Recently, I came across the <a href="https://github.com/kavishdevar/librepods">Librepods</a> project, which aims to unlock Apple exclusive features available for Android users. This requires rooting the phone, so I’m too keen on installing it, but I was curious about what I’m missing, which prompted this post.</p>
+
+<p>This review is about 3 years too late, because the newer Airpods Pro 3 are already out. But most of these observations are about using the Airpods Pro 2 with Android, which should mostly also apply to the newer generation.</p>
+
+<p>I’ve avoided the Airpods Pro 2 in the past because they have a reputation of not working too well with Android. But after using it for 3 months, I realized it’s a viable choice for Android users, albeit rather pricy for the features available, compared to other options in the price range.</p>
+
+<h3 id="what-works-well">What works well</h3>
+
+<p><strong>Sound quality</strong> is leagues above the Jaybird Vista and the Galaxy Buds Live that I’ve been using daily until now. I’m not an audiophile, but I’d say they sound about as good as the Sennheiser HD1 over the ear headphones that I used in the past.</p>
+
+<p><strong>Noise cancellation</strong> is where it really blew me away. The in-ear fit is great, so I found the noise cancellation better than that of the HD1s. The Galaxy Buds Live are technically ANC earbuds, but they do a worse job than the non-ANC Jaybirds with isolating noise, so the Airpods are huge jump.</p>
+
+<p><strong>Controls</strong>. You can use the stem to control a bunch of things, like answering calls, play/pause, volume and toggling noise cancellation. You’ll need an Apple device to change what each action does, but I’ve been happy with the default settings.</p>
+
+<p><strong>Battery life</strong> is pretty decent at 6 hours, and with the charging case that goes up to 30 hours, so I’ve only ever run out of battery a couple of times. Even then charging for a few minutes will top it up enough for a while. With wireless charging support, it’s easy to throw it on to a charging pad, and not worry about it for days.</p>
+
+<h3 id="what-doesnt-work-well">What doesn’t work well</h3>
+
+<p><strong>Spatial audio</strong> is something I didn’t know I wanted until I tried using it with the iPad this week. The head tracking makes it so much more immersive, and it sounds a lot better. Really wish this worked on Android.</p>
+
+<p><strong>Conversation awareness</strong> automatically lowers the volume and enhances voices when it detects that you’re speaking to someone. This is exclusive to Apple devices. On Android, it only turns off noise cancellation when nothing is playing, which isn’t particularly useful.</p>
+
+<p><strong>Automatic ear detection</strong> is the other one where taking off one of the earbuds will pause whatever’s playing, but this doesn’t work with Android either.</p>
+
+<p><strong>Battery status</strong> isn’t visible when connected to Android. This is a bit annoying, but I’ve mostly not had to worry about battery levels, so it’s not a huge downside.</p>
+
+<p><strong>Firmware updates</strong> will only work if it’s connected to an Apple device, which is a problem if you don’t have any devices you can connect it to.</p>
+
+<p><strong>Customizing the settings</strong> of the Airpods can only be done on Apple devices. The stock settings work well for me so it’s not a big problem, but having a Macbook to tweak it is nice. Apple doesn’t let you easily tweak the EQ even within their ecosystem, so this is mostly for customizing the controls on the buds.</p>
+
+<p><strong>Device switching</strong> works seamlessly between my Macbook and iPad. I could have two videos open, and it will switch to whichever device starts playing. This is one where I can understand why this won’t work on Android.</p>
+
+<h3 id="other-factors">Other factors</h3>
+
+<p><strong>Comfort</strong>: They are very lightweight, but I still found them less comfortable than the Jaybird Vista. The latter have fins to stabilize the earpods for workouts, so I find them better for longer use, while the Airpods become tiring after a couple of hours. Ironically, I’ve been using the Airpods more for workouts, and the Vistas for long calls!</p>
+
+<p><strong>No AptX codec suport</strong>, so you’ll have to switch to AAC codecs on Android. AptX has lower latencies which is useful for keeping audio in sync with video. I haven’t been able to notice any lag, and AAC does have better sound quality, so I’m not too bothered by the lack of AptX support.</p>
+
+<p><strong>No voice assistant</strong> unless you have an iPhone. I wouldn’t feel comfortable talking to a voice assistant in public anyway, so not having to use Siri is actually a pro, in my book.</p>
+
+<h3 id="verdict">Verdict</h3>
+
+<p>Overall, I’m happy with the Airpods. Now that I’ve tried out spatial audio, I’m going to miss that on the phone, and ear detection would have been nice, but i’m still happy with everything else. However, if there are things that really bother you, installing <a href="https://github.com/kavishdevar/librepods">Librepods</a> should solve most problems.</p>
+
+<p>I got the Airpods for free as part of a promo, but if I were buying a pair of today, I’d look more closely at alternatives that work well with Android.  Both Sony and Bose seem to have similar earbuds that work great with Android. However, despite the flaws, the Airpods would be right up there for consideration.</p>]]></content><author><name></name></author><category term="reviews" /><summary type="html"><![CDATA[I’ve been using the Airpods Pro 2 with an Android phone for the past few months. Recently, I came across the Librepods project, which aims to unlock Apple exclusive features available for Android users. This requires rooting the phone, so I’m too keen on installing it, but I was curious about what I’m missing, which prompted this post.]]></summary></entry><entry><title type="html">Obsidian Bases: Formula for star ratings with half stars</title><link href="https://nithinbekal.com/posts/obsidian-star-ratings-formula/" rel="alternate" type="text/html" title="Obsidian Bases: Formula for star ratings with half stars" /><published>2025-11-14T00:00:00+00:00</published><updated>2025-11-14T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/obsidian-star-ratings-formula</id><content type="html" xml:base="https://nithinbekal.com/posts/obsidian-star-ratings-formula/"><![CDATA[<p>I recently <a href="/posts/logseq-to-obsidian/">started using Obsidian</a> and have been enjoying the Bases feature, which lets you create database-like views using structured notes.</p>
+
+<p>I have a bunch of movie ratings in my notes, and I wanted to display them as stars rather than numbers. The ratings are stored as properties on the notes:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">type</span><span class="pi">:</span> <span class="pi">[[</span><span class="nv">Movies</span><span class="pi">]]</span>
+<span class="na">rating</span><span class="pi">:</span> <span class="m">4</span>
+</code></pre></div></div>
+
+<p>Now that I have this data, it’s easy to create a view by querying for notes of <code class="language-plaintext highlighter-rouge">type: [[Movies]]</code>, and adding ratings as one of the properties.</p>
+
+<p><img src="https://s3.us-east-1.amazonaws.com/nithinbekal.com/blog/obsidian-star-ratings/obsidian-movie-ratings-number.png" alt="Movie ratings table in Obsidian with numeric ratings" /></p>
+
+<p>I wanted star ratings to make this easier to read. I came across <a href="https://tylersticka.com/journal/obsidian-bases-star-ratings-and-automatic-covers/">this article by Tyler Sticka</a> with a formula for star ratings:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">'</span><span class="s1">⭐⭐⭐⭐⭐</span><span class="dl">'</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">rating</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">icon</span><span class="p">(</span><span class="dl">'</span><span class="s1">star</span><span class="dl">'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Here’s how it looks:</p>
+
+<p><img src="https://s3.us-east-1.amazonaws.com/nithinbekal.com/blog/obsidian-star-ratings/obsidian-movie-ratings-lucide-icon.png" alt="Movie ratings table in Obsidian with star icons" /></p>
+
+<p>This works for whole numbers, but I use half stars in my ratings. Something rated as 4.5 stars will show up as 4 stars. To add half stars, we need to modify the formula to this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+  <span class="dl">'</span><span class="s1">⭐⭐⭐⭐⭐</span><span class="dl">'</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">rating</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">''</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">icon</span><span class="p">(</span><span class="dl">'</span><span class="s1">star</span><span class="dl">'</span><span class="p">)),</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">number</span><span class="p">(</span><span class="nx">rating</span><span class="p">)</span> <span class="o">-</span> <span class="nx">number</span><span class="p">(</span><span class="nx">rating</span><span class="p">).</span><span class="nx">floor</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nx">icon</span><span class="p">(</span><span class="dl">'</span><span class="s1">star-half</span><span class="dl">'</span><span class="p">),</span> <span class="dl">''</span><span class="p">)</span>
+<span class="p">].</span><span class="nx">flat</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>This adds a half star when needed:</p>
+
+<p><img src="https://s3.us-east-1.amazonaws.com/nithinbekal.com/blog/obsidian-star-ratings/obsidian-movie-ratings-lucide-icon-half-star.png" alt="Movie ratings table in Obsidian with emoji stars" /></p>
+
+<p>However, I wasn’t too happy with the appearance of the builtin star icons, and I prefer the use of the emoji ⭐️ for this. This makes the first part of the formula much simpler:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">'</span><span class="s1">⭐⭐⭐⭐⭐</span><span class="dl">'</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">rating</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://s3.us-east-1.amazonaws.com/nithinbekal.com/blog/obsidian-star-ratings/obsidian-movie-ratings-emoji.png" alt="Movie ratings table in Obsidian with numeric ratings" /></p>
+
+<p>Now, there’s no half star emoji, so I decided to use the ½ character instead, so the final formula looks like:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+  <span class="dl">'</span><span class="s1">⭐⭐⭐⭐⭐</span><span class="dl">'</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">rating</span><span class="p">),</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">number</span><span class="p">(</span><span class="nx">rating</span><span class="p">)</span> <span class="o">-</span> <span class="nx">number</span><span class="p">(</span><span class="nx">rating</span><span class="p">).</span><span class="nx">floor</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="dl">'</span><span class="s1">½</span><span class="dl">'</span><span class="p">,</span> <span class="dl">''</span><span class="p">)</span>
+<span class="p">].</span><span class="nx">flat</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>This is what the table finally looks like:</p>
+
+<p><img src="https://s3.us-east-1.amazonaws.com/nithinbekal.com/blog/obsidian-star-ratings/obsidian-movie-ratings-emoji-half-star.png" alt="Movie ratings table in Obsidian with numeric ratings" /></p>
+
+<p>I like how easy it is to customize these tables, and how well these <a href="https://help.obsidian.md/bases/functions#%60icon()%60">formula functions are documented</a>.</p>]]></content><author><name></name></author><category term="obsidian" /><summary type="html"><![CDATA[I recently started using Obsidian and have been enjoying the Bases feature, which lets you create database-like views using structured notes.]]></summary></entry><entry><title type="html">Moving form Logseq to Obsidian</title><link href="https://nithinbekal.com/posts/logseq-to-obsidian/" rel="alternate" type="text/html" title="Moving form Logseq to Obsidian" /><published>2025-11-10T00:00:00+00:00</published><updated>2025-11-10T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/logseq-to-obsidian</id><content type="html" xml:base="https://nithinbekal.com/posts/logseq-to-obsidian/"><![CDATA[<p>I switched to Obsidian for note taking this week, after over 3 years of using Logseq. Despite loving Logseq’s outliner format, I’ve found the app, especially the mobile app, to be slow and frustrating to use. If you’re looking to choose between the two, I hope the notes below help you see some of the tradeoffs.</p>
+
+<p>I considered Obsidian and Notion. I like Notion’s features and polish, but Obsidian won because it uses local markdown files, just like Logseq. If I decide to move to another app, the migration should be as easy as this one.!</p>
+
+<p><img src="https://s3.us-east-1.amazonaws.com/nithinbekal.com/blog/logseq-to-obsidian/obsidian-layout.png" alt="My Obsidian layout" /></p>
+
+<h2 id="migrating-the-notes">Migrating the notes</h2>
+
+<p>Logseq and Obsidian both use markdown files to store notes, so the migration isn’t particularly complicated. You can even point Obsidian to the folder containing your Logseq notes, and things will mostly work.</p>
+
+<p>That said, there are some differences in how things like tags and namespaces work, so I used the<a href="https://github.com/NishantTharani/LogSeqToObsidian">LogSeqToObsidian</a> script to clean up the notes. This made the transition easier. Here’s the command I ran:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run convert_notes.py <span class="se">\</span>
+  <span class="nt">--logseq</span> ~/Documents/logseq <span class="se">\</span>
+  <span class="nt">--output</span> ~/Documents/Obsidian <span class="se">\</span>
+  <span class="nt">--overwrite_output</span> <span class="se">\</span>
+  <span class="nt">--convert_tags_to_links</span> <span class="se">\</span>
+  <span class="nt">--tag_prop_to_taglist</span> <span class="se">\</span>
+  <span class="nt">--journal_dashes</span> <span class="se">\</span>
+  <span class="nt">--ignore_dot_for_namespaces</span>
+</code></pre></div></div>
+
+<p>This isn’t perfect, though. Some Logseq specific annotations are still around, but I’m not too worried about them. I can clean them up gradually as and when I encounter them.</p>
+
+<h2 id="what-im-enjoying-about-obsidian">What I’m enjoying about Obsidian</h2>
+
+<p><strong>Editing experience</strong>: Obsidian is the best markdown editor I’ve ever used.  I’m already using it to draft blog posts, starting with this one. Jotting down observations about the migration in my daily notes made it easy to bring everything together into this post.</p>
+
+<p><strong>Performance</strong>: The app is so snappy, both on desktop and mobile. This was a huge problem with Logseq, especially on mobile, which made writing very frustrating.</p>
+
+<p><strong>Mobile app</strong>: The Logseq mobile app is a mess. Sometime the text that I typed would just disappear. Or text would flow outside the viewport, so I can’t see what I’m typing. The bottom bar containing the search button, would often disappear. Meanwhile, the Obsidian app has worked flawlessly so far. In fact, I’ve even done some editing and proofreading of this post on my phone.</p>
+
+<p><strong>Bases</strong>: Obsidian’s databases feature is called Bases, and I much prefer this approach for querying structured data to Logseq’s datalog queries, which I could never understand. There’s a UI for filtering results, rather than queries. But there are also formulas that you can reach for if you need something more.</p>
+
+<p><strong>Polished UI</strong>: Although both Logseq and Obsidian mostly look similar, I’m enjoying the polish that Obsidian brings. I like being able to rearrange UI elements like the bookmarks pane. The table view for bases is also much nicer than the query results table in Logseq. The default theme is also pretty great, so I haven’t had to look for alternatives.</p>
+
+<p><strong>Plugins</strong>: The plugin ecosystem looks so much richer in Obsidian. The plugins API also seems to allow more complex functionality to be added by third parties. I’m starting slow with plugins, and only have a couple of plugins so far. There are a few others that I want to try, such as <a href="https://github.com/Ordeeper/obsidian-journaling-plugin">Journaling</a> and <a href="https://github.com/brianpetro/obsidian-smart-connections">Smart Connections</a>.</p>
+
+<p><strong>Focus on markdown</strong>: The Logseq team is rebuilding the app to use a DB instead of markdown files. This still hasn’t shipped, and in the meanwhile, work on the markdown version has stalled for over two years. Obsidian’s focus on markdown means that the app is constantly getting updates. And if I decide to move to another app, the data will still be portable.</p>
+
+<h2 id="what-i-miss-from-logseq">What I miss from Logseq</h2>
+
+<p><strong>Namespaces</strong>: Being able to organize travel notes as <code class="language-plaintext highlighter-rouge">Travel/2025/Paris</code> was really convenient. If you went to the <code class="language-plaintext highlighter-rouge">Travel</code> page, you could see links to the subpages (<code class="language-plaintext highlighter-rouge">Travel/2025</code>, <code class="language-plaintext highlighter-rouge">Travel/2025/Paris</code> etc), but now if I link to that page, I will only see the last part (<code class="language-plaintext highlighter-rouge">Paris</code>). It’s confusing if you have a separate page for notes about the city. Now I’m thinking of using dashes in the file name (like <code class="language-plaintext highlighter-rouge">Travel - 2025 - Paris</code>) and adding metadata for organization. There’s going to be a fair bit of manual work updating notes where I used namespaces.</p>
+
+<p><strong>Journals timeline</strong>: Logseq has a nice chronological view for journal entries, which makes it easy to scroll through last few days’ notes. In Obsidian, you have to type the date to actually go to a page. It’s also missing an easy shortcut to go to previous/next day’s entry. I  needed to install a third party calendar plugin to navigate journal dates. I might try the <a href="https://github.com/Ordeeper/obsidian-journaling-plugin">Journaling</a> plugin to see if that helps.</p>
+
+<p><strong>Flashcards</strong>: Obsidian doesn’t have a native spaced repetition feature like Logseq does. It’s not a dealbreaker, and I don’t use it all that much, but it was nice to have.</p>
+
+<p><strong>Inline metadata</strong>: Logseq lets you add metadata to any node anywhere. For instance, you could add a node for a book directly in today’s journal entry, and add a rating to it.  Obsidian, on the other hand, only supports metadata at the page level, so you’ll have to create a separate page for each book and then attach metadata to it.</p>
+
+<p><strong>Outliner</strong>: Working with bullet points everywhere was very convenient for journal entries in Logseq. I’m going to miss that. I’m using bullet points out of habit anyway, even though you don’t get any benefits of structuring notes that way.</p>
+
+<p><strong>Pasting links into text</strong>: In Logseq, I can select some text and paste a URL, and it will automatically link it, while Obsidian will replace that text with the URL. There are plugins that fix this, but this should be the default behavior.</p>
+
+<h2 id="organizational-system">Organizational system</h2>
+
+<p>I’m not trying too hard to put in an organization system this early. For now, most notes are stored in the root folder. Search and links are doing a good enough job.</p>
+
+<p>There are a few exceptions. Daily notes live in <code class="language-plaintext highlighter-rouge">journals</code>. Notes containing structured information that I query in bases, such as books or movies, have their own folders.</p>
+
+<h2 id="sync-and-pricing">Sync and pricing</h2>
+
+<p>Both Logseq and Obsidian have basic sync options that let you sync your data across devices, starting at $5/month. However, Logseq is much more generous about limits, allowing 10 graphs with 10GB of storage, while Obsidian allows one vault and 1GB storage. You’ll need to pay twice as much to get similar limits as Logseq.</p>
+
+<p>The basic plan is more than enough for me. Most of my 1600+ files are plain text, so I’m using about 1% of that limit.</p>
+
+<h2 id="final-thoughts">Final thoughts</h2>
+
+<p>The transition has been surprisingly easy. A big part of this is because both tools are markdown-based, so it’s easy for one to read files created by the other. I’m writing more now because it’s almost as easy to jot down thoughts on the phone as it is on the laptop.</p>
+
+<p>I’ll continue using Logseq at work for now because it’s the recommended notes app there. My vault is strictly local and mainly used for tracking todos, so many of my biggest gripes about the app don’t apply there.</p>]]></content><author><name></name></author><category term="logseq" /><category term="obsidian" /><summary type="html"><![CDATA[I switched to Obsidian for note taking this week, after over 3 years of using Logseq. Despite loving Logseq’s outliner format, I’ve found the app, especially the mobile app, to be slow and frustrating to use. If you’re looking to choose between the two, I hope the notes below help you see some of the tradeoffs.]]></summary></entry><entry><title type="html">Stop memoizing Hash lookups in Ruby</title><link href="https://nithinbekal.com/posts/ruby-hash-memoization/" rel="alternate" type="text/html" title="Stop memoizing Hash lookups in Ruby" /><published>2025-07-11T00:00:00+00:00</published><updated>2025-07-11T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/ruby-hash-memoization</id><content type="html" xml:base="https://nithinbekal.com/posts/ruby-hash-memoization/"><![CDATA[<p>When a method performs a slow operation,
+memoizing the result using instance variables is a useful optimization.
+However, I’ve often seen people (including myself, sometimes!)
+reaching for memoization for things that don’t need to be optimized.</p>
+
+<p>One common example is when there’s a class that wraps a Hash object.
+Hashes in Ruby are quite well optimized,
+so do you really need to memoize the result of the hash lookup?
+Let’s benchmark and find out.</p>
+
+<h2 id="benchmarks">Benchmarks</h2>
+
+<p>Let’s start with a simple <code class="language-plaintext highlighter-rouge">Setting</code> class that takes a data hash with <code class="language-plaintext highlighter-rouge">type</code> and <code class="language-plaintext highlighter-rouge">value</code> keys.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Setting</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="vi">@data</span> <span class="o">=</span> <span class="n">data</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">type</span>
+    <span class="vi">@data</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">type_memoized</span>
+    <span class="vi">@type</span> <span class="o">||=</span> <span class="vi">@data</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>There’s a <code class="language-plaintext highlighter-rouge">type</code> method here, and I’ve added a <code class="language-plaintext highlighter-rouge">type_memoized</code> method for comparison.
+Now let’s benchmark the two methods:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setting</span> <span class="o">=</span> <span class="no">Setting</span><span class="p">.</span><span class="nf">new</span><span class="p">({</span> <span class="s2">"type"</span> <span class="o">=&gt;</span> <span class="s2">"string"</span><span class="p">,</span> <span class="s2">"value"</span> <span class="o">=&gt;</span> <span class="s2">"hello"</span> <span class="p">})</span>
+
+<span class="no">Benchmark</span><span class="p">.</span><span class="nf">ips</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"type"</span><span class="p">)</span> <span class="p">{</span> <span class="n">setting</span><span class="p">.</span><span class="nf">type</span> <span class="p">}</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"memoized type"</span><span class="p">)</span> <span class="p">{</span> <span class="n">setting</span><span class="p">.</span><span class="nf">type_memoized</span> <span class="p">}</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">compare!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Running this showed that memoization does indeed make things faster.
+On my 2019 Intel Macbook, this showed a 1.31x improvement:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby 3.4.4 (2025-05-14 revision a38531fd3f) +PRISM [x86_64-darwin24]
+Warming up --------------------------------------
+         type     1.339M i/100ms
+memoized type     1.586M i/100ms
+Calculating -------------------------------------
+         type     12.411M (± 1.0%) i/s   (80.57 ns/i) -     62.954M in   5.072739s
+memoized type     16.214M (± 1.0%) i/s   (61.68 ns/i) -     82.453M in   5.085992s
+
+Comparison:
+memoized type: 16213611.7 i/s
+         type: 12411448.7 i/s - 1.31x  slower
+</code></pre></div></div>
+
+<p>However, you will notice that in actual time per method call,
+the difference is tiny - less than 20 nanoseconds on my 6 year old Macbook!
+Unless you’re calling this thousands of times in a loop, this will likely never be a bottleneck in your code.</p>
+
+<h2 id="looking-up-nonexistent-keys">Looking up nonexistent keys</h2>
+
+<p>Let’s look at one other case.
+What happens when we memoize a lookup for a key that doesn’t exist?</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setting_without_type</span> <span class="o">=</span> <span class="no">Setting</span><span class="p">.</span><span class="nf">new</span><span class="p">({</span> <span class="s2">"value"</span> <span class="o">=&gt;</span> <span class="s2">"hello"</span> <span class="p">})</span>
+
+<span class="no">Benchmark</span><span class="p">.</span><span class="nf">ips</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"missing key"</span><span class="p">)</span> <span class="p">{</span> <span class="n">setting_without_type</span><span class="p">.</span><span class="nf">type</span> <span class="p">}</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"memoized missing key"</span><span class="p">)</span> <span class="p">{</span> <span class="n">setting_without_type</span><span class="p">.</span><span class="nf">type_memoized</span> <span class="p">}</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">compare!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>This time, the memoized version is actually 1.2x slower!
+This is because <code class="language-plaintext highlighter-rouge">@data["type"]</code> returns nil every time,
+so we don’t ever return the memoized value.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         missing key     13.163M (± 1.4%) i/s   (75.97 ns/i) -     66.077M in   5.021125s
+memoized missing key     10.853M (± 4.3%) i/s   (92.14 ns/i) -     55.153M in   5.091847s
+
+Comparison:
+         missing key: 13162501.1 i/s
+memoized missing key: 10852595.0 i/s - 1.21x  slower
+</code></pre></div></div>
+
+<p><strong>Update</strong>: As <a href="https://github.com/phallstrom">@phallstorm</a> mentions in the comments below,
+we could prevent the cache misses by using the <code class="language-plaintext highlighter-rouge">if defined?(@type)</code> memoization pattern.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">type_memoized_correctly</span>
+  <span class="k">return</span> <span class="vi">@type</span> <span class="k">if</span> <span class="k">defined?</span><span class="p">(</span><span class="vi">@type</span><span class="p">)</span>
+  <span class="vi">@type</span> <span class="o">=</span> <span class="vi">@data</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>At this point, we’ve achieved similar performance as the case where the key is present.
+However, the downside is that more than half the method is now memoization logic,
+without too much performance benefit.</p>
+
+<h2 id="nested-keys">Nested keys</h2>
+
+<p>Finally, let’s see what happens when we’re dealing with nested hashes:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Setting</span>
+  <span class="c1"># ...</span>
+
+  <span class="k">def</span> <span class="nf">nested_value</span>
+    <span class="vi">@data</span><span class="p">[</span><span class="s2">"nested"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">nested_value_memoized</span>
+    <span class="vi">@nested_value</span> <span class="o">||=</span> <span class="vi">@data</span><span class="p">[</span><span class="s2">"nested"</span><span class="p">][</span><span class="s2">"value"</span><span class="p">]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">setting</span> <span class="o">=</span> <span class="no">Setting</span><span class="p">.</span><span class="nf">new</span><span class="p">({</span> <span class="s2">"nested"</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">"value"</span> <span class="o">=&gt;</span> <span class="s2">"hello"</span> <span class="p">}</span> <span class="p">})</span>
+
+<span class="no">Benchmark</span><span class="p">.</span><span class="nf">ips</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"nested key"</span><span class="p">)</span> <span class="p">{</span> <span class="n">setting</span><span class="p">.</span><span class="nf">nested_value</span> <span class="p">}</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"memoized nested key"</span><span class="p">)</span> <span class="p">{</span> <span class="n">setting</span><span class="p">.</span><span class="nf">nested_value_memoized</span> <span class="p">}</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">compare!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>This time the memoized version is about 1.6x faster.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         nested key     10.654M (± 5.6%) i/s   (93.86 ns/i) -     54.107M in   5.097061s
+memoized nested key     16.867M (± 1.3%) i/s   (59.29 ns/i) -     85.219M in   5.053237s
+
+Comparison:
+memoized nested key: 16866963.5 i/s
+         nested key: 10654347.8 i/s - 1.58x  slower
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The highlights from the benchmarks are:</p>
+
+<ul>
+  <li>Hash lookups are already extremely fast, in the order of nanoseconds.</li>
+  <li>🔼 1.3x speedup on memoizing a hash lookup</li>
+  <li>🔼 1.6x speedup if memoizing a two-level nested hash</li>
+  <li>🔻 1.2x slowdown on memoizing a hash lookup where the key doesn’t exist.</li>
+</ul>
+
+<p>So, do you really need to memoize a hash lookup?
+Most likely not.
+Hash lookups are already optimized at the language level,
+so the difference between that and instance variable lookups is already tiny.</p>
+
+<p>Reserve memoization for cases where it really matters,
+such as database calls or really expensive computations.</p>
+
+<p>There’s no need to optimize at this level unless a profiler has showed you that it will speed things up.
+There’s probably something in there that is multiple orders of magnitude slower that you can optimize.</p>]]></content><author><name></name></author><category term="ruby" /><summary type="html"><![CDATA[When a method performs a slow operation, memoizing the result using instance variables is a useful optimization. However, I’ve often seen people (including myself, sometimes!) reaching for memoization for things that don’t need to be optimized.]]></summary></entry><entry><title type="html">Migrating Postgres to SQLite using the Sequel gem</title><link href="https://nithinbekal.com/posts/psql-sqlite3-sequel/" rel="alternate" type="text/html" title="Migrating Postgres to SQLite using the Sequel gem" /><published>2025-06-26T00:00:00+00:00</published><updated>2025-06-26T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/psql-sqlite3-sequel</id><content type="html" xml:base="https://nithinbekal.com/posts/psql-sqlite3-sequel/"><![CDATA[<p>In my previous post, I wrote about exporting the postgres database for
+<a href="https://devlibrary.org/">devlibrary</a> from fly.io to a local file.
+Now, I want to convert that into a sqlite database,
+so I can get rid of the dependency on a separate database server.</p>
+
+<p>The <a href="https://github.com/jeremyevans/sequel">sequel gem</a> allows connecting to one database,
+and dumping the contents into another.</p>
+
+<p>First, let’s import that dump into local postgres database.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql devlibrary_development &lt; devlibrary-dump.sql
+</code></pre></div></div>
+
+<p>Next, we’ll install <code class="language-plaintext highlighter-rouge">sequel</code> and <code class="language-plaintext highlighter-rouge">sqlite3</code> gems.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install sequel sqlite3
+</code></pre></div></div>
+
+<p>Finally, we can dump the postgres database straight into an sqlite3 database using:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sequel -C postgres://localhost/devlibrary_development \
+    sqlite://storage/development.sqlite3
+</code></pre></div></div>
+
+<p>And that’s it - we now have a sqlite3 file that can be used by a Rails app.
+In fact, <a href="https://devlibrary.org/">devlibrary</a> is now actually backed by a sqlite database!</p>]]></content><author><name></name></author><category term="postgres" /><category term="ruby" /><category term="sqlite" /><summary type="html"><![CDATA[In my previous post, I wrote about exporting the postgres database for devlibrary from fly.io to a local file. Now, I want to convert that into a sqlite database, so I can get rid of the dependency on a separate database server.]]></summary></entry><entry><title type="html">Exporting fly.io postgres database</title><link href="https://nithinbekal.com/posts/fly-io-postgres-export/" rel="alternate" type="text/html" title="Exporting fly.io postgres database" /><published>2025-06-25T00:00:00+00:00</published><updated>2025-06-25T00:00:00+00:00</updated><id>https://nithinbekal.com/posts/fly-io-postgres-export</id><content type="html" xml:base="https://nithinbekal.com/posts/fly-io-postgres-export/"><![CDATA[<p>Recently, I’ve been using fly.io for small hobby projects like <a href="https://devlibrary.org/">devlibrary</a>.
+However, I’ve wanted to simplify the setup even further by replacing the app’s postgres DB with sqlite.
+To start, I needed to figure out how to export the database to my local machine.</p>
+
+<p>First, start a fly proxy so you can connect to the remote database.
+This will create a proxy running in <code class="language-plaintext highlighter-rouge">localhost:5434</code> for a postgres app with the name <code class="language-plaintext highlighter-rouge">devlibrary-db</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fly proxy 5434:5432 -a devlibrary-db
+</code></pre></div></div>
+
+<p>The database dump needs a password, which can be extracted from the <code class="language-plaintext highlighter-rouge">DATABASE_URL</code> env variable. This can be fetched from:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fly ssh console -C "printenv" | grep DATABASE_URL
+</code></pre></div></div>
+
+<p>Then, in another terminal window run the <code class="language-plaintext highlighter-rouge">pg_dump</code> command, and enter the password when prompted:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pg_dump -h localhost -p 5434 -U devlibrary devlibrary &gt; devlibrary-dump.sql
+</code></pre></div></div>
+
+<p>At this point, I wanted to test this by loading the data into my local database:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql devlibrary &lt; my-db-dump.sql
+</code></pre></div></div>
+
+<p>At this point, the dump is ready to be converted to a sqlite DB, but that’s for another post.</p>]]></content><author><name></name></author><category term="postgres" /><category term="rails" /><summary type="html"><![CDATA[Recently, I’ve been using fly.io for small hobby projects like devlibrary. However, I’ve wanted to simplify the setup even further by replacing the app’s postgres DB with sqlite. To start, I needed to figure out how to export the database to my local machine.]]></summary></entry></feed>

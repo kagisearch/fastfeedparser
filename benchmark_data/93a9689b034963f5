@@ -1,0 +1,639 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel><title>Sound Code - Mark Heath's Blog</title>
+<description>Mark Heath's development blog.</description>
+<generator>MarkBlog</generator>
+<link>https://markheath.net/</link>
+<item>
+  <title>EF Core Lazy Loading Performance Gotcha</title>
+  <link>https://markheath.net/post/2026/1/8/efcore-lazy-loader-gotcha</link>
+  <description>&lt;p&gt;I was recently using EF Core's &lt;code&gt;ILazyLoader&lt;/code&gt; for &lt;a href="https://learn.microsoft.com/en-us/ef/core/querying/related-data/lazy#lazy-loading-without-proxies"&gt;lazy loading without proxies&lt;/a&gt;, and ran into a performance issue that took me by surprise. When you call &lt;code&gt;DbSet&amp;lt;T&amp;gt;.Add()&lt;/code&gt; to add an entity to the context, EF Core immediately injects the lazy loader into your entity even before you've called &lt;code&gt;SaveChangesAsync()&lt;/code&gt;. This means if you navigate to a lazy-loaded navigation property before persisting, EF Core will try to query the database for related entities that don't exist yet.&lt;/p&gt;
+&lt;p&gt;It's an unnecessary performance overhead and the fix is fortunately very simple: don't add entities to the DbContext until right before you're ready to call &lt;code&gt;SaveChangesAsync()&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="the-model"&gt;The Model&lt;/h2&gt;
+&lt;p&gt;To understand how it behaves I created a simple example project using a &lt;code&gt;Blog&lt;/code&gt; and &lt;code&gt;Post&lt;/code&gt; relationship with &lt;code&gt;ILazyLoader&lt;/code&gt; injection:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class Blog
+{
+    private ICollection&amp;lt;Post&amp;gt;? _posts;
+    private ILazyLoader? _lazyLoader;
+
+    public Blog() {}
+
+    public Blog(ILazyLoader lazyLoader)
+    {
+        _lazyLoader = lazyLoader;
+    }
+
+    public int Id { get; set; }
+    public required string Name { get; set; }
+    
+    public virtual ICollection&amp;lt;Post&amp;gt; Posts
+    {
+        get =&amp;gt; _lazyLoader?.Load(this, ref _posts) ?? _posts ?? [];
+        set =&amp;gt; _posts = value;
+    }
+}
+
+public class Post
+{
+    public int Id { get; set; }
+    public required string Title { get; set; }
+    public required string Content { get; set; }
+    public virtual Blog? Blog { get; set; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="reproducing-the-problem"&gt;Reproducing The Problem&lt;/h2&gt;
+&lt;p&gt;Now let's look at what happens when you add a blog with posts, but navigate into the &lt;code&gt;Posts&lt;/code&gt; collection before persisting to the database:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;using (var context = new BloggingContext())
+{
+    await context.Database.EnsureCreatedAsync();
+
+    // Create a new Blog with two Posts
+    var blog = new Blog
+    {
+        Name = &amp;quot;Test Blog&amp;quot;,
+        Posts =
+        [
+            new Post { Title = &amp;quot;First Post&amp;quot;, Content = &amp;quot;Hello from EF Core 10!&amp;quot; },
+            new Post { Title = &amp;quot;Second Post&amp;quot;, Content = &amp;quot;Another post for testing.&amp;quot; }
+        ]
+    };
+
+    // This causes EF Core to inject the lazy loader using reflection
+    context.Blogs.Add(blog);
+
+    // Accessing blog.Posts triggers the lazy loader to query the database
+    // even though this blog hasn't been saved yet!
+    Console.WriteLine(&amp;quot;Number of posts: &amp;quot; + blog.Posts.Count);
+
+    await context.SaveChangesAsync();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When you call &lt;code&gt;context.Blogs.Add(blog)&lt;/code&gt;, EF Core uses reflection to inject an &lt;code&gt;ILazyLoader&lt;/code&gt; instance into the &lt;code&gt;Blog&lt;/code&gt; object. From that point on, any access to &lt;code&gt;blog.Posts&lt;/code&gt; will trigger the lazy loading mechanism. Since the blog doesn't exist in the database yet (no &lt;code&gt;Id&lt;/code&gt; has been assigned), EF Core will execute a query that looks something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-sql"&gt;SELECT [p].[Id], [p].[BlogId], [p].[Content], [p].[Title]
+FROM [Posts] AS [p]
+WHERE [p].[BlogId] = 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is completely pointless - the blog hasn't been persisted, so there can't possibly be any related posts in the database.&lt;/p&gt;
+&lt;h2 id="the-solution"&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;The fix is straightforward: only add the entity to the context right before you call &lt;code&gt;SaveChangesAsync()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;using (var context = new BloggingContext())
+{
+    await context.Database.EnsureCreatedAsync();
+
+    var blog = new Blog
+    {
+        Name = &amp;quot;Test Blog&amp;quot;,
+        Posts =
+        [
+            new Post { Title = &amp;quot;First Post&amp;quot;, Content = &amp;quot;Hello from EF Core 10!&amp;quot; },
+            new Post { Title = &amp;quot;Second Post&amp;quot;, Content = &amp;quot;Another post for testing.&amp;quot; }
+        ]
+    };
+
+    // Do all your work with the blog object first
+    Console.WriteLine(&amp;quot;Number of posts: &amp;quot; + blog.Posts.Count);
+
+    // Only add to context when you're ready to save
+    context.Blogs.Add(blog);
+    await context.SaveChangesAsync();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now when you access &lt;code&gt;blog.Posts&lt;/code&gt;, there's no lazy loader injected yet, so it just returns the collection you assigned, with no database query needed.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;If you're using &lt;code&gt;ILazyLoader&lt;/code&gt; injection in EF Core, be mindful of when you add entities to the &lt;code&gt;DbContext&lt;/code&gt;. The lazy loader gets injected as soon as you call &lt;code&gt;Add()&lt;/code&gt;, not when you call &lt;code&gt;SaveChangesAsync()&lt;/code&gt;. So if you need to work with navigation properties before persisting, keep the entity disconnected from the context until you're ready to save. This avoids unnecessary database queries.&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>Entity Framework Core</category>
+  <category>.NET</category>
+  <guid isPermaLink="false">https://markheath.net/post/2026/1/8/efcore-lazy-loader-gotcha</guid>
+  <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>2025 Year in Review</title>
+  <link>https://markheath.net/post/2025/12/31/2025-year-in-review</link>
+  <description>&lt;p&gt;Happy Christmas and happy new year! I know it's been a while since I last posted anything here, but thought I'd revive my tradition of writing another &lt;a href="https://markheath.net/category/year%20in%20review"&gt;year in review&lt;/a&gt; post.&lt;/p&gt;
+&lt;h3 id="pluralsight"&gt;Pluralsight&lt;/h3&gt;
+&lt;p&gt;Part of the reason for me not having as much time for blogging is that I created three new Pluralsight courses this year, &lt;a href="https://www.pluralsight.com/authors/mark-heath"&gt;bringing my total to 29&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;First up was &lt;a href="https://www.pluralsight.com/courses/refactor-optimize-code-github-copilot"&gt;a course about refactoring and optimizing code with GitHub Copilot&lt;/a&gt;. Obviously 2025 has been the year where AI as firmly established itself as a day-to-day part of the developer experience, and it's an extremely fast-moving space. AI-assisted coding can be both incredibly impressive and incredibly frustrating. Impressive as it can often write in a few seconds what it would have taken hours or even days to write manually, but frustrating as it can often miss the point of what you're asking or make critical mistakes that cost you almost as much time as you saved. In my course I tried to focus on the basics of how to prompt the AI assistant well, to enable you to get as much benefit out of it as possible, without falling into the pitfall of losing control of your codebase and ending up with a vibe-coded mess.&lt;/p&gt;
+&lt;p&gt;Next up was two courses about microservices, which essentially replace and update my earlier Pluralsight courses on the same topic. Despite some &lt;a href="https://markheath.net/post/2025/2/24/microservices-pushback"&gt;recent pushback against microservices&lt;/a&gt; in the industry, it remains a valuable and important architectural approach, and the core principles of microservices are relevant whenever you're building a distributed application (which for a lot of us, is all the time).&lt;/p&gt;
+&lt;p&gt;The first microservice course was &lt;a href="https://www.pluralsight.com/courses/microservices-architectural-strategies-techniques"&gt;Microservices: Architectural Strategies and Techniques&lt;/a&gt;, which covers some of the key principles for designing scalable and modular microservice architectures and explores the value of service meshes and continuous delivery pipelines. And the second was &lt;a href="https://www.pluralsight.com/courses/microservices-building-testing"&gt;Microservices: Building and Testing&lt;/a&gt; which focuses in more detail on topics like implementing the domain logic, as well as how to test and deploy microservices.&lt;/p&gt;
+&lt;h3 id="carpal-tunnel-surgery"&gt;Carpal Tunnel Surgery&lt;/h3&gt;
+&lt;p&gt;Another reason for my reduced blogging output this year was some health issues. I've been battling back pain for a few years, although this year a strict regime of daily stretches and exercises and much more use of a standing desk seems to have helped a lot, and I'm a lot better than I was. For any younger developers reading this, make sure you look after your back - it's frustratingly slow to recover once you've injured it!&lt;/p&gt;
+&lt;p&gt;I've also been having a lot of issues with hand numbness and finally had carpal tunnel surgery on my left hand (which was my worst) midway through the year. I was quite apprehensive about whether it would impact or even eliminate my ability to play guitar but I'm pleased to report that my strength and flexibility returned enough after a couple of months to continue playing as before. Thankfully my right hand isn't as bad, so I'm not in a rush to get that one done yet.&lt;/p&gt;
+&lt;h3 id="music-and-audio"&gt;Music and Audio&lt;/h3&gt;
+&lt;p&gt;As you may know, one of my favourite hobbies is playing and recording music, and this year even with a break for carpal tunnel surgery I managed to play guitar or piano live at 32 events, as well as participated in recording a live album which was a first for me.&lt;/p&gt;
+&lt;p&gt;I also continued my tradition of composing and writing one instrumental song a month (which I occasionally batch up into albums that you can find here on &lt;a href="https://open.spotify.com/artist/4036iD5XfdOJvs4MNVZlSY"&gt;Spotify&lt;/a&gt; or &lt;a href="https://markheath.bandcamp.com/"&gt;Bandcamp&lt;/a&gt; or just listen to them as they come out on &lt;a href="https://www.youtube.com/@mark_heath"&gt;YouTube&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This Christmas I upgraded my long-serving Yamaha MODX 7 keyboard to the newer &lt;a href="https://usa.yamaha.com/products/music_production/synthesizers/modxm/index.html"&gt;Yamaha MODX M7&lt;/a&gt; which is a very nice upgrade with the new ANX audio engine, better AWM polyphony and an improved user interface. It's also interesting to me that we are seeing an increasing number of hardware synthesizers providing fully software versions of their sounds, meaning that you can much more easily transition between studio and live playing using the same sounds (&lt;a href="https://www.arturia.com/products/hardware-synths/astrolab/astrolab-37"&gt;Arturia's Astrolab series&lt;/a&gt; also does this).&lt;/p&gt;
+&lt;p&gt;In terms of guitar tech, I'm still very happy with my &lt;a href="https://line6.com/helix/helix-lt.html"&gt;Line 6 Helix LT&lt;/a&gt; and &lt;a href="https://www.ikmultimedia.com/products/tonexpedal/?pkey=tonex-pedal"&gt;IK Multimedia TONEX&lt;/a&gt;, which between them give me access to a very wide variety of tones and effects. Again it's a very fast-moving space, with many exciting new software and hardware products being released and we're also seeing machine learning take a much more prominent role in music production (a trend I expect to increase in 2026).&lt;/p&gt;
+&lt;h3 id="ai.net-and-azure"&gt;AI, .NET and Azure&lt;/h3&gt;
+&lt;p&gt;My day job continues to revolve mostly around .NET and Azure, as well as increasingly incorporating various AI technologies (both in the development process and to power new functionality).&lt;/p&gt;
+&lt;p&gt;My work with Azure this year has been a lot less on learning about new services, and more on how to deliver excellent resilience, scalability, and performance. I hope to feed a lot of the lessons I've learned into upcoming Pluralsight courses and talks.&lt;/p&gt;
+&lt;p&gt;I'm also hoping to find more time this year to go deeper with Azure Container Apps and Dapr which both have a lot to offer to simplify the process of building and deploying microservices and distributed applications.&lt;/p&gt;
+&lt;p&gt;It's great to see that each new version of .NET manages to squeeze out more performance improvements, and this has meant I have never regretted choosing .NET as my main development platform. (Still hoping for discriminated unions in C# though!)&lt;/p&gt;
+&lt;p&gt;Of course, there was also a lot of AI this year. I am both an AI enthusiast and an AI skeptic - it has potential to be very helpful but also very harmful. A key skill for all developers is knowing when and how to use it effectively.&lt;/p&gt;
+&lt;p&gt;I did attempt the &lt;a href="https://adventofcode.com/2025"&gt;Advent of Code&lt;/a&gt; challenges again this year, forcing myself to do them without the help of AI. Sadly didn't manage to complete all the challenges due to time constraints, so I'd like to cycle back to the two I missed if I get a chance later in the year.&lt;/p&gt;
+&lt;h3 id="whats-next"&gt;What's next?&lt;/h3&gt;
+&lt;p&gt;As for what's in store for next year, there's a good chance that I'll be creating one or two additional Pluralsight courses, although that's not been confirmed yet.&lt;/p&gt;
+&lt;p&gt;I took a break from speaking at conferences when my back was at its worst, and haven't currently got any new talks planned, but maybe if things continue to go well this year I might consider taking that up again.&lt;/p&gt;
+&lt;p&gt;And I think this might be my final year as Microsoft MVP as I have not been able to contribute as much as I have in previous years. It's been a great privilege to be part of the MVP program for nearly 10 years now, so I'll take the opportunity to say a big thank you to the MVP organizers and the other MVPs for all they do to ensure that .NET developers get access to great learning resources.&lt;/p&gt;
+&lt;p&gt;Once again, a big thank you to everyone who has read this blog or watched my Pluralsight courses. I hope you've found them helpful and thanks for all the encouraging feedback.&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>Year in review</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/12/31/2025-year-in-review</guid>
+  <pubDate>Wed, 31 Dec 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Are Microservices Becoming Easier?</title>
+  <link>https://markheath.net/post/2025/7/10/microservices-architectural-strategies-techniques</link>
+  <description>&lt;p&gt;I've been a bit quiet on this blog recently mainly because I've been busy working on a new Pluralsight course &lt;a href="https://www.pluralsight.com/courses/microservices-architectural-strategies-techniques"&gt;Microservices: Architectural Strategies and Techniques&lt;/a&gt;, which essentially replaces my previous &lt;a href="https://www.pluralsight.com/courses/microservices-fundamentals"&gt;Microservices Fundamentals&lt;/a&gt; course, although they cover slightly different topics. In this course, I wanted to make sure I addressed some of the &lt;a href="https://markheath.net/post/2025/2/24/microservices-pushback"&gt;&amp;quot;pushback&amp;quot; against microservices&lt;/a&gt;, as it's fair to say that there has been some legitimate questions asked about whether microservices are being applied to problems where they don't actually help.&lt;/p&gt;
+&lt;p&gt;However despite their challenges, I do think there are situations in which microservices can make a lot of sense. And that's because when a software product becomes large enough, with many teams of developers, and many user-facing websites or applications, and many APIs, then it's inevitable that it becomes a distributed system.&lt;/p&gt;
+&lt;p&gt;In some ways you can think of microservices as simply a more disciplined approach to distributed systems, where you take care to ensure that each service is &lt;strong&gt;independently deployable&lt;/strong&gt;. This helps you avoid the pitfall of building a &amp;quot;distributed monolith&amp;quot; - an architecture famous for combining the worst aspects of both monoliths and distributed systems.&lt;/p&gt;
+&lt;p&gt;In fact, the majority of the tools, techniques and strategies I discuss in the course are not strictly specific to microservices. That's because most of the key concerns about observability, security, scalability, testability, automated deployment are things that you'll need in a distributed system regardless of whether you are explicitly trying to create &amp;quot;microservices&amp;quot;.&lt;/p&gt;
+&lt;h3 id="are-microservices-becoming-easier"&gt;Are Microservices Becoming Easier?&lt;/h3&gt;
+&lt;p&gt;One of the hopes in the early days of microservices was that over time, we'd develop tooling that helped us overcome many of the challenges of building, testing, and deploying distributed systems.&lt;/p&gt;
+&lt;p&gt;In some ways that is true. For example, Kubernetes is incredibly powerful and flexible and has established itself as the de-facto standard for hosting microservices. However, I certainly wouldn't describe it as simple to learn and manage. But we are seeing the emergence of simplified microservices hosting platforms, such as &lt;a href="https://learn.microsoft.com/en-us/azure/container-apps/overview"&gt;Azure Container Apps&lt;/a&gt; which is built on top of Kubernetes, but takes away a lot of the complexity and streamlines the process of hosting your microservices.&lt;/p&gt;
+&lt;p&gt;Another favourite toolkit of mine for building microservices is &lt;a href="https://dapr.io/"&gt;Dapr&lt;/a&gt;, which offers a set of &amp;quot;building blocks&amp;quot;, to enable you to build secure and reliable microservices. I've actually created a &lt;a href="https://app.pluralsight.com/library/courses/dapr-1-fundamentals"&gt;Dapr Fundamentals&lt;/a&gt; Pluralsight course. The way Dapr delivers these capabilities is by exposing APIs from a sidecar container. This approach has the benefit of making Dapr programming language agnostic, and cloud-agnostic as the building blocks each offer a variety of backing services to implement the capability, giving you a lot of freedom to use the languages and services you are familiar with.&lt;/p&gt;
+&lt;p&gt;In the .NET world, &lt;a href="https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview"&gt;.NET Aspire&lt;/a&gt; aims to improve the experience of building microservices by providing various tools, templates and packages that especially enhance the local development experience. So it does feel like things are moving in the right direction towards simplifying the overall microservices experience.&lt;/p&gt;
+&lt;p&gt;And in my Pluralsight course I also wanted to include a brief section exploring the ways in which AI is able to streamline the experience of building, deploying and managing microservice applications. A lot of the pain points of microservices revolve around the complexities of managing a system made up of so many interconnected parts. It's still early days for AI, but I am hopeful that it could make a big difference especially in the area of monitoring and troubleshooting distributed systems.&lt;/p&gt;
+&lt;h3 id="summary"&gt;Summary&lt;/h3&gt;
+&lt;p&gt;Microservices remain an valuable architectural pattern, despite the potential troubles you can run into with them. Generally, my architectural preference is to keep things as simple as possible, and only reach for more advanced patterns and tools when you have proved that you really need them. So most of the tools and techniques I show in the course are not so much a prescription of what you should do, as suggestions for things you might reach for if you're experiencing the problems they're designed to solve. If you're a Pluralsight subscriber, why not check out my &lt;a href="https://www.pluralsight.com/courses/microservices-architectural-strategies-techniques"&gt;Microservices: Architectural Strategies and Techniques&lt;/a&gt; course, and as always I'm very interested in learning from other people's experiences so do feel free to get in touch via the comments.&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>Microservices</category>
+  <category>Pluralsight</category>
+  <category>dapr</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/7/10/microservices-architectural-strategies-techniques</guid>
+  <pubDate>Thu, 10 Jul 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Calling MCP Servers in C# with Microsoft.Extensions.AI</title>
+  <link>https://markheath.net/post/2025/4/14/calling-mcp-server-microsoft-extensions-ai</link>
+  <description>&lt;p&gt;I posted recently about how to allow &lt;a href="https://markheath.net/post/2025/1/18/using-tools-safely-with-llms"&gt;LLMs to call tools&lt;/a&gt; using the Microsoft.Extensions.AI NuGet package in C#.&lt;/p&gt;
+&lt;p&gt;Obviously, a common usage scenario would be to expose MCP servers as tools for your LLM to call. Thankfully, the new &lt;a href="https://www.nuget.org/packages/ModelContextProtocol"&gt;ModelContextProtocol NuGet package&lt;/a&gt; makes this straightforward.&lt;/p&gt;
+&lt;p&gt;Note: This package is still in pre-release (as is Microsoft.Extensions.AI), so do check the release notes for any breaking changes to the API.&lt;/p&gt;
+&lt;p&gt;I've updated my &lt;a href="https://github.com/markheath/open-ai-test1/"&gt;demo application&lt;/a&gt; to support calling MCP tools, following the techniques demonstrated in Microsoft's &lt;a href="https://github.com/modelcontextprotocol/csharp-sdk/blob/main/samples/ChatWithTools"&gt;Chat With Tools&lt;/a&gt; sample.&lt;/p&gt;
+&lt;p&gt;The first step is simply to reference the ModelContextProtocol NuGet package. I had to also update the &lt;a href="https://www.nuget.org/packages/Microsoft.Extensions.AI"&gt;Microsoft.Extensions.AI&lt;/a&gt; versions as well. Here's the versions I used for my test:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-xml"&gt;&amp;lt;PackageReference Include=&amp;quot;Microsoft.Extensions.AI&amp;quot; Version=&amp;quot;9.4.0-preview.1.25207.5&amp;quot; /&amp;gt;
+&amp;lt;PackageReference Include=&amp;quot;Microsoft.Extensions.AI.OpenAI&amp;quot; Version=&amp;quot;9.4.0-preview.1.25207.5&amp;quot; /&amp;gt;
+&amp;lt;PackageReference Include=&amp;quot;ModelContextProtocol&amp;quot; Version=&amp;quot;0.1.0-preview.8&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The next step is simply to connect to an MCP server. You can do this with the &lt;code&gt;McpClientFactory&lt;/code&gt;. Here, we're using &lt;code&gt;npx&lt;/code&gt; (which comes with Node) to run a simple example MCP server called the &lt;a href="https://www.npmjs.com/package/@modelcontextprotocol/server-everything"&gt;&amp;quot;Everything&amp;quot; server&lt;/a&gt; as it demonstrates the range of capabilities of an MCP server.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;var mcpClient = await McpClientFactory.CreateAsync(
+    new StdioClientTransport(new()
+    {
+        Command = &amp;quot;npx&amp;quot;,
+        Arguments = [&amp;quot;-y&amp;quot;, &amp;quot;--verbose&amp;quot;, &amp;quot;@modelcontextprotocol/server-everything&amp;quot;],
+        Name = &amp;quot;Everything&amp;quot;,
+    }));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can then use the MCP client to list the available tools:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;var tools = await mcpClient.ListToolsAsync();
+Console.WriteLine(&amp;quot;Available tools:&amp;quot;);
+foreach (var tool in tools)
+{
+    Console.WriteLine($&amp;quot;  {tool.Name}: {tool.Description}&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These tools are instances of &lt;code&gt;McpClientTool&lt;/code&gt;, which inherits from &lt;code&gt;AIFunction&lt;/code&gt;, meaning that we can pass them directly in as tools to an instance of  &lt;code&gt;ChatOptions&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;var chatOptions = new ChatOptions
+{
+    Tools = [..tools]
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then using the tools is simply a case of passing those options into the call to &lt;code&gt;GetStreamingResponseAsync&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt; await foreach (var item in chatClient.GetStreamingResponseAsync(
+        chatHistory, chatOptions))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Although it's early days for the MCP protocol, it's very pleasing to see how easy it is to get your LLM calling tools provided by an MCP server. For the full code sample, showing how to get this working with Azure OpenAI service, check my &lt;a href="https://github.com/markheath/open-ai-test1/"&gt;demo repo here&lt;/a&gt;.&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>AI</category>
+  <category>C#</category>
+  <category>MCP</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/4/14/calling-mcp-server-microsoft-extensions-ai</guid>
+  <pubDate>Mon, 14 Apr 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Using an MCP Server in GitHub Copilot</title>
+  <link>https://markheath.net/post/2025/4/10/mcp-playwright</link>
+  <description>&lt;p&gt;&lt;a href="https://github.com/features/copilot"&gt;GitHub Copilot&lt;/a&gt; is continuing to evolve very rapidly, with the recent launch of &lt;a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode"&gt;&amp;quot;agent mode&amp;quot;&lt;/a&gt;, and the ability to connect to &lt;a href="https://code.visualstudio.com/docs/copilot/chat/mcp-servers"&gt;&amp;quot;Model Context Protocol&amp;quot; servers&lt;/a&gt; which gives you access to a vast array of tools, essentially allowing your agent to access any data, and perform any actions you like.&lt;/p&gt;
+&lt;p&gt;In this post, I'll walk you through the steps to configure Visual Studio Code to connect to an MCP Server and make use of it in agent mode.&lt;/p&gt;
+&lt;p&gt;For our demo scenario, we'll use the &lt;a href="https://github.com/microsoft/playwright-mcp"&gt;Playwright MCP server&lt;/a&gt; which exposes the capabilities of the &lt;a href="https://playwright.dev/"&gt;Playwright&lt;/a&gt; end-to-end browser automation testing tool. This essentially gives your &amp;quot;agent&amp;quot; the ability to open a web browser and perform actions in there, which obviously opens up a lot of possibilities.&lt;/p&gt;
+&lt;h3 id="configure-the-mcp-server-in-vs-code"&gt;Configure the MCP Server in VS Code&lt;/h3&gt;
+&lt;p&gt;First of all, we do need to have &lt;a href="https://nodejs.org/"&gt;node installed&lt;/a&gt; as we need the &lt;code&gt;npx&lt;/code&gt; tool to run the Playwright server.&lt;/p&gt;
+&lt;p&gt;Next, we need to configure Visual Studio Code to access the Playwright MCP Server. The &lt;a href="https://github.com/microsoft/playwright-mcp"&gt;README docs&lt;/a&gt; provide several ways to do this, the easiest being to just click on the &amp;quot;Install Server&amp;quot; button.&lt;/p&gt;
+&lt;p&gt;Installing it will change your &lt;code&gt;settings.json&lt;/code&gt; file to add something like this. Note that I needed to add the &lt;code&gt;--browser msedge&lt;/code&gt; args as I don't have Chrome installed on my PC, which is the default browser for Playwright.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;&amp;quot;mcp&amp;quot;: {
+    &amp;quot;servers&amp;quot;: {
+        &amp;quot;playwright&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@playwright/mcp@latest&amp;quot;,
+                &amp;quot;--browser&amp;quot;,
+                &amp;quot;msedge&amp;quot;
+            ]
+        }
+    }
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You also do need to ensure that the the MCP server starts correctly. In theory VS Code should do this automatically, but you can use the &amp;quot;MCP: List Servers&amp;quot; command in VS Code to pick your server and explicitly start, stop or restart it.&lt;/p&gt;
+&lt;h3 id="selecting-agent-mode-and-enabling-tools"&gt;Selecting agent mode and enabling tools&lt;/h3&gt;
+&lt;p&gt;To try it out, you simply open the GitHub Copilot Chat window, and in the drop-down in the prompt box, select &amp;quot;Agent&amp;quot; mode. The prompt box will now include a button to let you select the tools that you want to allow the agent to use.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://markheath.net/posts/files/mcp-playwright-1.png" alt="Agent mode prompt" /&gt;&lt;/p&gt;
+&lt;p&gt;The Playwright MCP server actually offers multiple tool actions such as navigating, clicking, typing, etc. So if you want to, you can restrict the agent to only be allowed to call specific tools.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://markheath.net/posts/files/mcp-playwright-2.png" alt="Playwright tool selection" /&gt;&lt;/p&gt;
+&lt;h3 id="trying-it-out"&gt;Trying it out&lt;/h3&gt;
+&lt;p&gt;Next, we simply need to ask the agent to do something that requires the use of the tool. For example, I prompted it with &lt;em&gt;&amp;quot;visit the hacker news home page and find all articles relating to audio or music&amp;quot;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;If the AI model decides it wants to run a tool, it will pause, asking you for permission. This is good from a security perspective, although I can imagine people quickly getting tired of granting permission at a granular level, and just enabling their agents to do whatever they think is best.&lt;/p&gt;
+&lt;p&gt;In this example, it's likely to ask to run the &lt;code&gt;browser_navigate&lt;/code&gt; command to go to the Hacker News homepage. In my case, it found two articles and decided to run &lt;code&gt;browser_navigate&lt;/code&gt; again on both of them so it could read these articles and summarise them.&lt;/p&gt;
+&lt;p&gt;Of course, the agent might not do exactly what you wanted. I found that with this particular prompt, sometimes it assumed I wanted it to create an application that fetched the Hacker News homepage and printed out the titles of the articles about audio.&lt;/p&gt;
+&lt;p&gt;So don't forget the retry button at the bottom of each response. You can always ask the model to try again (or try again with a different model) if you're not happy with the initial response.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://markheath.net/posts/files/mcp-playwright-3.png" alt="Retry button" /&gt;&lt;/p&gt;
+&lt;h3 id="what-else-can-i-do-with-mcp"&gt;What else can I do with MCP?&lt;/h3&gt;
+&lt;p&gt;The great thing about MCP is that it is extremely flexible. Already, hundreds of servers have been created (you can find a good &lt;a href="https://modelcontextprotocol.io/examples"&gt;list here&lt;/a&gt;). An obvious use-case would be to give the LLM access to data stored in various locations - such as your company's internal documentation.&lt;/p&gt;
+&lt;p&gt;And you can also use them to trigger actions in other systems, whether that's posting an update onto a Slack channel, or by calling your own internal API to perform a custom business process.&lt;/p&gt;
+&lt;p&gt;Already it seems like MCP has been accepted as the defacto standard to grant AI agents access to a wide variety of tools, and the ease with which an MCP server can be built means that just about any kind of integration you can think of is achievable.&lt;/p&gt;
+&lt;p&gt;I suspect the next challenges in this area will be ensuring that the LLM is good at picking the right tool for the job (especially if you have many dozens of MCP servers, each with multiple commands), and providing adequate security mechanisms so that these tools (whether deliberately or not) don't cause significant damage (e.g. leaking sensitive data, spending all your money in the cloud, deleting all your stuff, etc).&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>AI</category>
+  <category>Playwright</category>
+  <category>GitHub Copilot</category>
+  <category>MCP</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/4/10/mcp-playwright</guid>
+  <pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Refactoring and Optimizing Code with GitHub Copilot</title>
+  <link>https://markheath.net/post/2025/4/1/refactor-optimize-code-github-copilot</link>
+  <description>&lt;p&gt;I'm pleased to announce my latest Pluralsight course, &lt;a href="http://www.pluralsight.com/courses/refactor-optimize-code-github-copilot"&gt;Refactor and Optimize Code with GitHub Copilot&lt;/a&gt;, has just gone live. It will be part of a series of courses covering various aspects of using GitHub Copilot, and my course focuses specifically on using Copilot to refactor, modernize and optimize code.&lt;/p&gt;
+&lt;p&gt;This is an important topic as many of us are spending a lot of time working on existing legacy codebases, and learning to use GenAI effectively with these projects is a great investment of your time.&lt;/p&gt;
+&lt;p&gt;Of course, it’s a somewhat daunting topic to teach on because things are changing so rapidly, and best practices are still emerging. However, as I tried out different challenges, I was impressed with the breadth of scenarios in which LLMs can be of assistance in the coding environment.&lt;/p&gt;
+&lt;p&gt;Let me quickly share a few of the key lessons I learned while preparing for this course and that I tried to teach during it.&lt;/p&gt;
+&lt;h3 id="context-matters"&gt;Context matters&lt;/h3&gt;
+&lt;p&gt;LLMs know a lot of stuff - they've read pretty much the entire internet. But they don't know about &lt;em&gt;your&lt;/em&gt; application, and your goals unless you tell they. So make use of the ability to drag in additional files to the context window, or use &lt;a href="https://code.visualstudio.com/docs/copilot/workspace-context"&gt;@workspace&lt;/a&gt; or &lt;a href="https://code.visualstudio.com/docs/copilot/copilot-chat-context#_let-copilot-find-the-right-files-automatically"&gt;#codebase&lt;/a&gt;. And you can give it more than code - make use of &lt;a href="https://code.visualstudio.com/docs/copilot/copilot-customization"&gt;custom instructions&lt;/a&gt; or drag in additional documentation that's relevant.&lt;/p&gt;
+&lt;p&gt;Try to think of Copilot like a new starter at your company. Even if they are very intelligent, they will need a lot of guidance to understand exactly how you want them to work, the big picture of what the application does, and the reasons behind the tasks you are giving them.&lt;/p&gt;
+&lt;h3 id="review-and-verify"&gt;Review and verify!&lt;/h3&gt;
+&lt;p&gt;Of course I hope it goes without saying that you should review and verify the changes that Copilot makes. It can be tempting to get lazy especially if Copilot is on a roll, getting things right more often than not. But remember it is &lt;em&gt;your&lt;/em&gt; code, and Copilot is your &lt;em&gt;assistant&lt;/em&gt;, not your replacement, so take responsibility for what you commit and ship.&lt;/p&gt;
+&lt;p&gt;Copilot can and does make mistakes, so checkpoint your code frequently so you can roll back, and ensure that you have great unit test coverage (which of course &lt;a href="https://docs.github.com/en/copilot/using-github-copilot/guides-on-using-github-copilot/writing-tests-with-github-copilot"&gt;Copilot can help you generate&lt;/a&gt;).&lt;/p&gt;
+&lt;h3 id="experiment-with-prompts-and-models"&gt;Experiment with prompts and models&lt;/h3&gt;
+&lt;p&gt;I love the fact that GitHub Copilot gives you access to a &lt;a href="https://docs.github.com/en/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat#ai-models-for-copilot-chat-1"&gt;variety of models from Open AI, Anthropic and Google&lt;/a&gt;. They are unfortunately confusingly named, making it hard to know which one you're &amp;quot;supposed&amp;quot; to use, but I'd recommend simply experimenting. Switch between models frequently and see which ones give you the best results.&lt;/p&gt;
+&lt;p&gt;Also, if you're not getting the results you want, consider whether it might be your prompt that is the problem. Don't simply give up after the first attempt. Instead look for ways to be clearer about what you want, and provide additional context to guide it better.&lt;/p&gt;
+&lt;h3 id="using-copilot-for-code-review"&gt;Using Copilot for code review&lt;/h3&gt;
+&lt;p&gt;You can (and should) ask Copilot to review your code, and it will really help if you are explicit about the kinds of thing you are looking for. Do you want suggestions for modernizing, or improving performance? Do you want it to suggest architectural patterns? Not every suggestion it comes back with will be worth acting on, but in my experience it can often come up with some really good ideas.&lt;/p&gt;
+&lt;h3 id="using-copilot-for-planning"&gt;Using Copilot for planning&lt;/h3&gt;
+&lt;p&gt;If your application uses a legacy technology and you want to modernize it, you might be tempted to see if Copilot can do the whole thing in one shot. But often you'll find that is too ambitious (although maybe that will change with &lt;a href="https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/"&gt;agents&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;A better approach is to ask Copilot to come up with a plan. This will give you step by step instructions, and can often include things that you might have overlooked. You can then use Copilot again to help you implement each step of the plan. I was quite impressed with the detail of some of the migration plans it came up with while I was preparing for the course.&lt;/p&gt;
+&lt;h3 id="using-llms-for-characterization-tests"&gt;Using LLMs for characterization tests&lt;/h3&gt;
+&lt;p&gt;The goal of refactoring is of course to improve the structure of the code, without modifying its functionality. Refactoring is risky because it can introduce bugs, so having thorough unit test coverage is really valuable.&lt;/p&gt;
+&lt;p&gt;One great thing about Copilot is its willingness to generate tests. A &amp;quot;&lt;a href="https://en.wikipedia.org/wiki/Characterization_test"&gt;characterization test&lt;/a&gt;&amp;quot; is a test that simply discovers how the code currently behaves, and puts tests in place to ensure that it doesn't change. Copilot can generate these tests, and this gives you a very quick and easy way to roll back or fix a refactoring that introduces regressions.&lt;/p&gt;
+&lt;h3 id="using-llms-for-performance-improvements"&gt;Using LLMs for performance improvements&lt;/h3&gt;
+&lt;p&gt;One of the topics I covered in the course was using GitHub Copilot for performance enhancements. You can of course just ask it to review your code and ask for performance-related suggestions, and sometimes it will come up with good ideas. But remember that it needs context - it won't automatically know which are the methods in your codebase that get called the most frequently, so supplying that information can help a lot.&lt;/p&gt;
+&lt;p&gt;In one of my test scenarios, I wanted to validate the performance improvement by using &lt;a href="https://benchmarkdotnet.org/"&gt;BenchmarkDotNet&lt;/a&gt;. Copilot was very quickly able to generate me a new project for performance profiling, and even copied the old implementation into that project so I could get a side-by-side comparison of the improvement with minimal effort.&lt;/p&gt;
+&lt;h3 id="summary"&gt;Summary&lt;/h3&gt;
+&lt;p&gt;Although lots of GitHub Copilot demos focus on the amazing speed with which it can help you bootstrap a new application, that doesn't mean it can't help you on existing legacy codebases (which let's be honest, forms a large part of many of our daily jobs). If you're willing to put in a bit of time to
+&lt;a href="http://www.pluralsight.com/courses/refactor-optimize-code-github-copilot"&gt;learn how to use these AI tools effectively&lt;/a&gt;, you may just find that working on technical debt filled codebases isn't quite as painful as it used to be!&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>AI</category>
+  <category>C#</category>
+  <category>GitHub Copilot</category>
+  <category>Pluralsight</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/4/1/refactor-optimize-code-github-copilot</guid>
+  <pubDate>Tue, 01 Apr 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Porting Code with LLMs</title>
+  <link>https://markheath.net/post/2025/3/27/porting-with-llms</link>
+  <description>&lt;p&gt;Over my career I've done a lot of porting of applications or algorithms from one language to another. Sometimes this has just been as a &lt;a href="https://markheath.net/post/2022/5/13/learn-by-porting"&gt;learning experience&lt;/a&gt;, whilst at other times I've wanted to make a &lt;a href="https://www.markheath.net/post/fully-managed-input-driven-resampling-wdl"&gt;DSP algorithm implemented in C++ available in a fully managed .NET environment&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Obviously, porting code is something that in theory LLMs ought to be fairly good at. Its tiresome, repetitive work, with a few nasty gotchas along the way. And with the release of &lt;a href="https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/"&gt;Google Gemini Pro 2.5&lt;/a&gt; this week I thought I'd give it a couple of challenges.&lt;/p&gt;
+&lt;h3 id="challenge-1-porting-a-game"&gt;Challenge 1 - Porting a Game&lt;/h3&gt;
+&lt;p&gt;Back in the day I spent many hours playing the classic &lt;a href="https://en.wikipedia.org/wiki/Nibbles_(video_game)"&gt;QBASIC Nibbles&lt;/a&gt; game that was bundled with DOS. And I've used it a few times as a good learning exercise, porting it to &lt;a href="https://github.com/markheath/nibbles"&gt;both WinForms and Silverlight&lt;/a&gt; many years back.&lt;/p&gt;
+&lt;p&gt;Porting a game has unique challenges as you have to find equivalent implementations for handling graphics, timers and keypresses on the new platform you're running on, but the basic game logic is much more straightforward to move across.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://gist.githubusercontent.com/akcansoft/735dd25b810e9343648c9f3ce4ba3a15/raw/1385aa828a0a508c8f328c140f2712f84a465880/NIBBLES.BAS"&gt;original source code for Nibbles&lt;/a&gt; is available.&lt;/p&gt;
+&lt;p&gt;I tried using &lt;a href="https://aistudio.google.com/"&gt;Google AI studio&lt;/a&gt; with the Gemini 2.5 Pro model and gave it the following prompt:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Here is the original Microsoft QBASIC Nibbles source code. I want the same game with same gameplay and graphics but to run in a browser. Please make this as a single page HTML including CSS and JavaScript.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What it produced after 3 minutes of thinking wasn't exactly polished, but it was a functional game, responding to keypresses, and rendering mostly correctly, albeit with a few visual glitches here and there.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://markheath.net/posts/files/porting-with-llms-1.png" alt="Porting with LLMs" /&gt;&lt;/p&gt;
+&lt;p&gt;It's quite impressive that you can essentially &amp;quot;one-shot&amp;quot; tasks like this, although clearly it could do with a round of followup fixes. And of course porting this way completely defeats any learning benefits that would come from doing it manually. Unfortunately there's still no replacement from doing things the slow and hard way if you want to learn.&lt;/p&gt;
+&lt;h3 id="challenge-2-porting-some-dsp-code"&gt;Challenge 2 - Porting some DSP code&lt;/h3&gt;
+&lt;p&gt;I wanted to give it a more difficult challenge. I've ported all kinds of DSP algorithms over the years, such as the &lt;a href="https://github.com/naudio/NLayer"&gt;NLayer managed MP3 decoder&lt;/a&gt;. These projects are not really done as &amp;quot;learning&amp;quot; exercises - they are simply because I want to access a particular piece of code in my language of choice. It would be absolutely great if LLMs could do this for me.&lt;/p&gt;
+&lt;p&gt;I decided that a good challenge would be to re-port the &lt;a href="https://github.com/justinfrankel/WDL/blob/main/WDL/resample.cpp"&gt;Cockos WDL Resampler&lt;/a&gt; to C# which &lt;a href="https://github.com/naudio/NAudio/blob/5bd2860c20f8134a8021fa8e15f74b5209963e7d/NAudio.Core/Dsp/WdlResampler.cs#L39"&gt;I did manually many years back as part of NAudio&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I felt that it would be fair to give the LLM a little bit more guidance on what I was expecting so my prompt gave some details of C# capabilities that I wanted. I was particularly interested to see if it would know what to do with the SSE instructions and whether they could get converted into hardware intrinsics.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want to port this audio resampler from C++ to C#. The resulting C# code should remain as close as possible to the original implementation but use idiomatic C# naming for classes and methods. There should be a focus on performance so use things like &lt;code&gt;Span&amp;lt;T&amp;gt;&lt;/code&gt; and hardware intrinsics where necessary. Where it calls into standard library functions - make calls to their C# equivalents or implement yourself if its missing. If it calls any WDL functions that you can't work out what they do, list them along with the output so that I can provide the C++ implementation to be ported.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Again it required several minutes of thinking time, and produced a plausible-looking port of the code.&lt;/p&gt;
+&lt;p&gt;I liked that it did a good job of understanding what methods it didn't see the source code would do, and implemented them.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;// Missing WDL Functions to be potentially implemented or substituted:
+// - denormal_filter_double(double val): Filters denormal numbers. Can possibly use a check and set to zero.
+// - WDL_denormal_ftz_scope: Manages denormal floating-point behavior (Flush-To-Zero). .NET Core 3.0+ usually has FTZ enabled by default for SSE, but explicit control isn't standard. Might be omitted or use platform invokes if absolutely needed.
+// - wdl_max(a, b): Equivalent to Math.Max(a, b).
+// - WDL_NOT_NORMALLY(condition): Seems like a hint for unlikely conditions, possibly for compiler optimization. Can be replaced with simple 'if (condition)'.
+// - WDL_FIXALIGN: Attribute for alignment. C# struct layout might provide some control, but direct field alignment isn't guaranteed like C++. Often handled implicitly by the runtime.
+// - WDL_TypedBuf&amp;lt;T&amp;gt;: A dynamic buffer. We'll replace with T[] and manual resizing (Array.Resize). The GetAligned(16) part is relevant for SSE; we'll use unaligned loads/stores or ensure alignment manually if critical.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Gemini 2.5 Pro is also a thinking model, so reading its explanation of how it went about porting was fascinating. Here's a snippet of its reasoning, explaining how it plans to handle tricky challenges such as C++ templates, and SSE intrinsics.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;WDL_TypedBuf&amp;lt;T&amp;gt;&lt;/code&gt;:&lt;/strong&gt; This looks like a resizeable buffer, possibly handling alignment. C#'s &lt;code&gt;List&amp;lt;T&amp;gt;&lt;/code&gt; or &lt;code&gt;T[]&lt;/code&gt; with &lt;code&gt;Array.Resize&lt;/code&gt; can work. Since performance is key and we deal with &lt;code&gt;Span&amp;lt;T&amp;gt;&lt;/code&gt;, a simple &lt;code&gt;T[]&lt;/code&gt; managed manually seems appropriate, similar to how &lt;code&gt;Resize&lt;/code&gt; works in the C++ &lt;code&gt;WDL_TypedBuf&lt;/code&gt; example. Need to handle the alignment part (&lt;code&gt;GetAligned(16)&lt;/code&gt;) if SSE is used.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Templates (&lt;code&gt;SincSample*&lt;/code&gt;)&lt;/strong&gt;: C# generics are less powerful than C++ templates for this kind of compile-time specialization based on constants (like channel count). We'll likely need separate methods or conditional logic within a single method (&lt;code&gt;SincSample&lt;/code&gt;, &lt;code&gt;SincSample1&lt;/code&gt;, &lt;code&gt;SincSample2&lt;/code&gt;). The template type parameters &lt;code&gt;T1&lt;/code&gt; and &lt;code&gt;T2&lt;/code&gt; seem to be &lt;code&gt;WDL_ResampleSample&lt;/code&gt; and &lt;code&gt;WDL_SincFilterSample&lt;/code&gt;, respectively. Since these are fixed at compile time in the C# version (likely &lt;code&gt;double&lt;/code&gt; and &lt;code&gt;float&lt;/code&gt; or &lt;code&gt;double&lt;/code&gt;), we don't need generics &lt;em&gt;for the types&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSE Intrinsics:&lt;/strong&gt; C# has &lt;code&gt;System.Runtime.Intrinsics.X86&lt;/code&gt;. We need to map the &lt;code&gt;_mm_*&lt;/code&gt; functions. This requires checking for &lt;code&gt;Sse2.IsSupported&lt;/code&gt; at runtime. The C++ code uses &lt;code&gt;#ifdef WDL_RESAMPLE_USE_SSE&lt;/code&gt;. We'll use runtime checks. The SSE code often processes pairs of samples/coefficients; this structure needs to be replicated using &lt;code&gt;Vector128&amp;lt;double&amp;gt;&lt;/code&gt; or &lt;code&gt;Vector128&amp;lt;float&amp;gt;&lt;/code&gt;. Mapping specific intrinsics:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;_mm_setzero_pd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Vector128&amp;lt;double&amp;gt;.Zero&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_loadu_pd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Sse2.LoadVector128()&lt;/code&gt; (unaligned)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_load_pd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Sse2.LoadVector128()&lt;/code&gt; (aligned - need to ensure alignment or use unaligned load)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_set_pd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Vector128.Create()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_mul_pd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Sse2.Multiply()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_add_pd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Sse2.Add()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_unpackhi_pd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Sse2.UnpackHigh()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_store_sd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Sse2.StoreScalar()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_cvtps_pd()&lt;/code&gt; -&amp;gt; &lt;code&gt;Sse2.ConvertToVector128Double()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_mm_load_sd()&lt;/code&gt; (loading float, converting) -&amp;gt; Load float scalar, &lt;code&gt;Vector128.CreateScalar().AsDouble()&lt;/code&gt;, then maybe &lt;code&gt;Sse2.ConvertToVector128Double()&lt;/code&gt; if needed? Or more likely load float pair, convert. Needs careful checking. &lt;code&gt;_mm_castpd_ps&lt;/code&gt; is just a type cast, handled by C# types. Let's re-examine &lt;code&gt;_mm_load_sd((double *)fptr)&lt;/code&gt; - this loads 64 bits (a double) &lt;em&gt;from a float pointer&lt;/em&gt;. It likely intends to load &lt;em&gt;two floats&lt;/em&gt; and convert the first. &lt;code&gt;_mm_load_ps&lt;/code&gt; seems more appropriate if loading floats. Let's assume the C++ meant to load floats and convert. &lt;code&gt;_mm_load_ps&lt;/code&gt; loads 4 floats. &lt;code&gt;_mm_load_ss&lt;/code&gt; loads 1 float. The &lt;code&gt;(double*)&lt;/code&gt; cast is suspicious. Let's stick to the &lt;em&gt;intent&lt;/em&gt; - load floats, convert to doubles for processing. &lt;code&gt;Sse.LoadVector128(float*)&lt;/code&gt; followed by &lt;code&gt;Sse2.ConvertToVector128Double()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Alignment: The C++ code uses &lt;code&gt;GetAligned(16)&lt;/code&gt;. For C#, we can try to allocate aligned arrays using OS-specific APIs or rely on the GC potentially aligning larger arrays. For &lt;code&gt;Vector128&lt;/code&gt;, unaligned loads (&lt;code&gt;LoadVector128&lt;/code&gt;) are often safe and performant enough on modern CPUs, avoiding alignment complexities. Let's default to unaligned loads unless profiling shows a major issue.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I was interested to see if it would compile first time, but there were unfortunately a few errors. It quickly resolved them, but it didn't leave me feeling exactly confident, as just one small mistake with code like this can result in completely useless results, with very little clue as to where the problem is.&lt;/p&gt;
+&lt;p&gt;Of course, testing the code was another matter. It wasn't quite the drop-in replacement I had hoped for for my original &lt;code&gt;WdlResampler&lt;/code&gt; implementation, and after a bit of experimenting, I realised that the LLM had chosen to use doubles rather than floats as the default type which wasn't a good fit for my consuming code. I will need to go back round this process again, and explain to the LLM in more detail that I need 32 bit floating point support.&lt;/p&gt;
+&lt;p&gt;Despite the first round not getting me all the way there, what I learned from this exercise is how much of a head-start an LLM can give you on a tricky port like this. I certainly wouldn't have felt confident trying to convert the hardware intrinsics myself.&lt;/p&gt;
+&lt;p&gt;To complete this port, I would almost certainly need a good way of testing it, comparing the behaviour of the original code to the new code. This again is where LLMs can save us a lot of time, by generating a set of tests that can be run against the original and ported code and detecting any discrepancies. If I decide to push through with this to a fully working port, that will definitely be something I try.&lt;/p&gt;
+&lt;h3 id="agents-to-the-rescue"&gt;Agents to the Rescue&lt;/h3&gt;
+&lt;p&gt;And this brings us to the realization that porting a complex algorithm is rarely a single-step process. It's nice if an LLM can &amp;quot;one-shot&amp;quot; it, but if I was to design an AI &amp;quot;agent&amp;quot; to implement a porting task I'd want it's workflow to be something like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Come up with a plan for the port - e.g. which methods or files to do first, what naming and tech changes are required&lt;/li&gt;
+&lt;li&gt;Define a recipe for how the port should be done - to ensure consistent use of the language features and techniques you want to use. In my case, favouring the use of &lt;code&gt;Span&amp;lt;T&amp;gt;&lt;/code&gt; for example&lt;/li&gt;
+&lt;li&gt;Create a characterization test suite around the original code - capture how it behaves in various scenarios&lt;/li&gt;
+&lt;li&gt;Actually perform the port of the code, chunking it into right-sized pieces that the LLM can handle in a single shot&lt;/li&gt;
+&lt;li&gt;Compile the code and fix build errors&lt;/li&gt;
+&lt;li&gt;Apply the same tests to the ported code and verify that it behaves similarly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;My version of GitHub Copilot doesn't yet have the &lt;a href="https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/"&gt;&amp;quot;agent&amp;quot; mode&lt;/a&gt; available, but I expect it won't be long, and I'd like to try this out once it's available.&lt;/p&gt;
+&lt;p&gt;My quick experiment has clearly shown we are not yet at the place where LLMs can flawlessly convert a source code file from one language to another. But it is still incredible how far we've come - even the rough and ready first-draft of the resampler port would have been a huge timesaver for me back in the day. And perhaps agents iterating with a plan like the one I suggested above will expand the scope of what can be ported even further.&lt;/p&gt;
+&lt;p&gt;For example, there's an amazing &lt;a href="https://github.com/lostromb/concentus"&gt;conversion of the Opus codec to .NET&lt;/a&gt;, but its out of date now and the original author understandably does not have the time to bring it back into sync with the latest version of the original. Again, this monumental task is something that I can imagine will become possible in the near future.&lt;/p&gt;
+&lt;p&gt;I'd love to know if any of you have had success porting a non-trivial codebase from one language to another with LLMs. What challenges did you face doing it, or did it go smoothly?&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>AI</category>
+  <category>C#</category>
+  <category>GitHub Copilot</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/3/27/porting-with-llms</guid>
+  <pubDate>Thu, 27 Mar 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Microservices Pushback</title>
+  <link>https://markheath.net/post/2025/2/24/microservices-pushback</link>
+  <description>&lt;p&gt;The idea of &amp;quot;microservices&amp;quot; has been with us for well over a decade now, and I've &lt;a href="https://markheath.net/category/microservices"&gt;written about it several times on this blog during that time&lt;/a&gt;. I've even created a few Pluralsight courses about them such as &lt;a href="https://www.pluralsight.com/courses/microservices-fundamentals"&gt;my Microservices Fundamentals course&lt;/a&gt;, and have had the opportunity to give talks to many companies about their benefits (and challenges).&lt;/p&gt;
+&lt;p&gt;However, in recent years I've noticed that there has been a growing backlash against the idea of microservices. It's unsurprising in a way. This happens with just about any new architectural pattern or practice, such as serverless, RESTful APIs, clean code or SOLID principles.&lt;/p&gt;
+&lt;p&gt;But disillusionment with microservices is perhaps especially unsurprising because the reason you might be attracted to them in the first place is that your existing codebase is a painfully unmaintainable monolith and you were hoping that microservices will magically make all your problems go away.&lt;/p&gt;
+&lt;h3 id="challenges-of-microservices"&gt;Challenges of Microservices&lt;/h3&gt;
+&lt;p&gt;I don't even think too much blame can be laid at the feet of the people who taught us about microservices (e.g. Martin Fowler, James Lewis, Sam Newman). Certainly I struggle to think of any talks or books on the topic that didn't take pains to emphasise that &lt;em&gt;microservices bring their own unique set of challenges&lt;/em&gt;, and that they weren't the right fit for everyone.&lt;/p&gt;
+&lt;p&gt;These challenges include working out what the right &lt;strong&gt;division of responsibilities&lt;/strong&gt; is. Boundaries in the wrong place will degrade performance due to chatty communication, introduce resilience issues as service A can't do it's work when service B is down, and couple the development teams as features require changes to multiple microservices to be coordinated.&lt;/p&gt;
+&lt;p&gt;Microservices can make &lt;strong&gt;developer experience&lt;/strong&gt; much more painful. Instead of just having one monolithic codebase to download, build and run, now we need to somehow get multiple microservices running and talking to one another on our local machines. Configuring everything correctly can take days if you haven't got a reliable automated process.&lt;/p&gt;
+&lt;p&gt;Then there's the fact that &lt;strong&gt;creating a new service requires a lot of effort&lt;/strong&gt;. There's a whole host of considerations you need to take into account every time you introduce an additional service, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;communication best practices, including implementing retries and patterns like circuit breakers&lt;/li&gt;
+&lt;li&gt;security best practices&lt;/li&gt;
+&lt;li&gt;cross-cutting concerns like logging and configuration&lt;/li&gt;
+&lt;li&gt;automation of your build, test, and deployment pipelines&lt;/li&gt;
+&lt;li&gt;configuring observability including metrics, alerts, logs, dashboards and so on.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This can feel like an overwhelming amount of work to do, and can even end up dominating the development time, compared to the core functionality of the microservice itself.&lt;/p&gt;
+&lt;p&gt;Another problem is that &lt;strong&gt;monitoring and maintaining distributed systems is challenging&lt;/strong&gt;. There are multiple services to monitor, and if there's a problem, how do you know which microservice is to blame? It's easy for operations to become overwhelmed just trying to get everything deployed and configured correctly, let alone monitoring all the different services and ensuring that they are running smoothly.&lt;/p&gt;
+&lt;p&gt;We might also add that &lt;strong&gt;splitting your database&lt;/strong&gt; can be a high price to pay for the benefits of microservices. Data that could be queried in one place now needs to be aggregated in many. There are ways of addressing this, but they can be complex to implement well.&lt;/p&gt;
+&lt;p&gt;Finally, success with microservices requires an &lt;strong&gt;organizational mindset shift&lt;/strong&gt;. It's not just the software architecture and toolset that is changing, it affects team structure, test strategy, release process, deployment and operations. Simply changing your code architecture alone will not give you the key benefits. For example, if the business insists on batching all microservice releases up together, then you can end up with essentially a &amp;quot;distributed monolith&amp;quot;.&lt;/p&gt;
+&lt;h3 id="should-we-revert-to-monoliths"&gt;Should we revert to monoliths?&lt;/h3&gt;
+&lt;p&gt;So are microservices a failed experiment, and we should just go back to monoliths? Although its technically possible that some people started using microservices way too soon and could have stuck with a (well structured) monolith for much longer than they did, the fact is that eventually at some point, it does make sense to break your application up into different services.&lt;/p&gt;
+&lt;p&gt;Perhaps one of the mistakes is in the name. &amp;quot;Microservices&amp;quot; suggests that each service should be very small, but this can result in generating an over-abundance of microservices which not only adds unnecessary overhead, but can reduce performance. Ian Cooper spoke about this problem in his very insightful &lt;a href="https://www.youtube.com/watch?v=d8NDgwOllaI"&gt;Microservices, where did it all go wrong talk&lt;/a&gt; at NDC, and suggested the concept of &amp;quot;macro services&amp;quot; which may be a more sensible way to talk about these things.&lt;/p&gt;
+&lt;h3 id="making-microservices-easier"&gt;Making microservices easier&lt;/h3&gt;
+&lt;p&gt;It's encouraging to see that a number of the microservices challenges I mentioned above, are being addressed with innovative new technologies. I'm particularly excited about &lt;a href="https://dapr.io/"&gt;dapr&lt;/a&gt; - which uses sidecars to provide &amp;quot;APIs for building reliable and secure microservices&amp;quot;, and &lt;a href="https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview"&gt;Aspire&lt;/a&gt; which aims to improve the developer experience when working with multiple projects and dependencies. I know that these would have saved a huge amount of time and effort in my own journey to adopt microservices.&lt;/p&gt;
+&lt;p&gt;Technologies like dapr and Aspire can form part of a &lt;a href="https://www.redhat.com/en/topics/devops/golden-paths"&gt;&amp;quot;golden path&amp;quot;&lt;/a&gt; or &lt;a href="https://www.infoq.com/news/2017/06/paved-paas-netflix/"&gt;&amp;quot;paved road&amp;quot;&lt;/a&gt;, which aim to remove as many obstacles as possible to developers attempting to bootstrap a new microservice by providing the necessary tooling and technologies in the form of easily consumable components, automation and guidance.&lt;/p&gt;
+&lt;p&gt;Obviously establishing such a &amp;quot;golden path&amp;quot; itself requires considerable effort, and that's where reference architecture's can come in helpful. I've always found the &lt;a href="https://github.com/dotnet/eshop"&gt;.NET eShop reference application&lt;/a&gt; to be a helpful guide to recommended microservices patterns with .NET and Azure.&lt;/p&gt;
+&lt;p&gt;Finally, I'm expecting AI to play a much bigger role in simplifying microservice development going forwards. Probably the most obvious way it can be immediately helpful is with the task of monitoring a distributed system, and automating many of the currently manual processes that make microservices so challenging to implement successfully.&lt;/p&gt;
+&lt;p&gt;I'd be interested to know your experiences. Has microservices made things worse or better? And what tools and practices were most valuable in being successful with microservices.&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>microservices</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/2/24/microservices-pushback</guid>
+  <pubDate>Mon, 24 Feb 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Using Tools (Safely) with LLMs</title>
+  <link>https://markheath.net/post/2025/1/18/using-tools-safely-with-llms</link>
+  <description>&lt;p&gt;In previous posts in this series I've shown how to &lt;a href="https://markheath.net/post/getting-started-ai-extensions"&gt;call LLMs with C#&lt;/a&gt; using the &lt;a href="https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview/"&gt;Microsoft.Extensions.AI NuGet package&lt;/a&gt;. In this post I want to look at how you can enable the LLM to make calls into your own C# code by giving it &amp;quot;tools&amp;quot; it can use. And we'll also discuss some of the security implications as this can open up a number of concerning attack vectors.&lt;/p&gt;
+&lt;p&gt;There are a number of reasons you might want to give an LLM the ability to call a tool. One is to allow it to &lt;strong&gt;access additional information&lt;/strong&gt; that will help it respond to questions. And you might also want to give it the capability to &lt;strong&gt;perform an action&lt;/strong&gt; at the user's request.&lt;/p&gt;
+&lt;p&gt;For the purposes of this post, I've made up a contrived example where the LLM is being used in an e-Commerce scenario to allow customers to discuss their recent orders and request a refund if necessary. I've given the LLM chatbot one &amp;quot;tool&amp;quot; that can access recent orders for a customer, and one that can refund a specific order. (And yes, I've deliberately overlooked some security concerns that we'll discuss shortly!)&lt;/p&gt;
+&lt;h3 id="enabling-tools"&gt;Enabling tools&lt;/h3&gt;
+&lt;p&gt;The AI-related NuGet packages I'm using for this sample are:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-xml"&gt;&amp;lt;PackageReference Include=&amp;quot;Microsoft.Extensions.AI&amp;quot; Version=&amp;quot;9.1.0-preview.1.25064.3&amp;quot; /&amp;gt;
+&amp;lt;PackageReference Include=&amp;quot;Microsoft.Extensions.AI.OpenAI&amp;quot; Version=&amp;quot;9.1.0-preview.1.25064.3&amp;quot; /&amp;gt;
+&amp;lt;PackageReference Include=&amp;quot;Azure.AI.OpenAI&amp;quot; Version=&amp;quot;2.1.0&amp;quot; /&amp;gt;
+&amp;lt;PackageReference Include=&amp;quot;Azure.Identity&amp;quot; Version=&amp;quot;1.13.1&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To use tools (which are of course just C# functions), we start by creating an &lt;code&gt;IChatClient&lt;/code&gt; which will be an &lt;code&gt;AzureOpenAIClient&lt;/code&gt; as in my previous posts. But then we pass that into a &lt;code&gt;ChatClientBuilder&lt;/code&gt; and call &lt;code&gt;UseFunctionInvocation&lt;/code&gt; to enable that chat client to make use of tools.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;var innerClient = new AzureOpenAIClient(
+            new Uri(endpoint),
+            apiKeyCredential)
+                .AsChatClient(modelId);
+
+IChatClient chatClient =
+    new ChatClientBuilder(innerClient)
+        .UseFunctionInvocation()
+        .Build();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="registering-tools"&gt;Registering tools&lt;/h3&gt;
+&lt;p&gt;Now we need to tell our &lt;code&gt;IChatClient&lt;/code&gt; what tools are available, and how to call them.&lt;/p&gt;
+&lt;p&gt;I started by creating an initial system message, that tells our chatbot about what tools it can call, and gives it a bit of context about who it is talking to which it will need for one of those tools.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;new ChatMessage(ChatRole.System, &amp;quot;&amp;quot;&amp;quot;
+    You are a customer support assistant capable of handling user orders. 
+    You can retrieve a user's recent orders and process refunds when requested. 
+    Use the provided tools to assist the user effectively. 
+    
+    You are chatting with user '12345'. How can I help you today?
+    &amp;quot;&amp;quot;&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Secondly, we set up a &lt;code&gt;ChatOptions&lt;/code&gt; object that includes a list of &lt;code&gt;AITool&lt;/code&gt; objects, one for each of the functions we want it to be able to call. We can give each tool a name (e.g. &lt;code&gt;get_recent_orders&lt;/code&gt;) and a description of what that tool does. I've kept the input parameters very simple to give the LLM the best chance of successfully passing the right thing in.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;var chatOptions = new ChatOptions
+{
+    Tools = new List&amp;lt;AITool&amp;gt;
+    {
+        AIFunctionFactory.Create(
+            (string userId) =&amp;gt; GetRecentOrders(userId),
+            &amp;quot;get_recent_orders&amp;quot;,
+            &amp;quot;Retrieve the recent orders of a user by their user ID.&amp;quot;
+        ),
+        AIFunctionFactory.Create(
+            (string orderNumber) =&amp;gt; RefundOrder(orderNumber),
+            &amp;quot;refund_order&amp;quot;,
+            &amp;quot;Refund a specific order by its order number.&amp;quot;
+        )
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These chat options can then be passed in along with the chat history every time we call &lt;code&gt;CompleteStreamingAsync&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;await foreach (var item in chatClient.CompleteStreamingAsync(chatHistory, chatOptions))
+{
+    Console.Write(item.Text);
+    response += item.Text;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you're interested in seeing the actual functions that back these tools - I've stubbed them out with some sample data, and written to the console so I can tell if they've actually been called:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;private List&amp;lt;Order&amp;gt; GetRecentOrders(string userId)
+{
+    Console.WriteLine($&amp;quot;\nTOOL FETCHED ORDERS FOR {userId}&amp;quot;);
+    if (userId == &amp;quot;12345&amp;quot;)
+    {
+        return new List&amp;lt;Order&amp;gt;
+        {
+            new Order { OrderNumber = &amp;quot;A123&amp;quot;, Items = new List&amp;lt;string&amp;gt; { &amp;quot;Laptop&amp;quot;, &amp;quot;Mouse&amp;quot; } },
+            new Order { OrderNumber = &amp;quot;B456&amp;quot;, Items = new List&amp;lt;string&amp;gt; { &amp;quot;Smartphone&amp;quot; } }
+        };
+    }
+    else if (userId == &amp;quot;23456&amp;quot;)
+    {
+        return new List&amp;lt;Order&amp;gt;
+        {
+            new Order { OrderNumber = &amp;quot;C234&amp;quot;, Items = new List&amp;lt;string&amp;gt; { &amp;quot;Kettle&amp;quot;, &amp;quot;Toaster&amp;quot; } },
+            new Order { OrderNumber = &amp;quot;D567&amp;quot;, Items = new List&amp;lt;string&amp;gt; { &amp;quot;Dishwasher&amp;quot; } }
+        };
+    }
+    else
+    {
+        return new List&amp;lt;Order&amp;gt;();
+    }
+}
+
+private string RefundOrder(string orderNumber)
+{
+    Console.WriteLine($&amp;quot;\nTOOL REFUNDED ORDER FOR {orderNumber}&amp;quot;);
+    return $&amp;quot;Order {orderNumber} has been successfully refunded.&amp;quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="testing-tool-usage"&gt;Testing tool usage&lt;/h3&gt;
+&lt;p&gt;With all this in place, we can try out our chat experience and see if it can call the tools. I found that it sometimes needed a bit of persuading to go ahead and call the functions, and also that it was able to chain them together so for example if I said I want to refund my phone order it would call the recent orders function first to find the order number and immediately call the refund method.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-txt"&gt;Agent: I'm sorry to hear that your phone isn't working. 
+Do you want me to assist you with a refund or replacement for your recent orders 
+that might be related to the phone? If so, I can check your recent orders first.
+Your prompt: yes I am interested in a refund
+TOOL FETCHED ORDERS FOR 12345
+TOOL REFUNDED ORDER FOR B456
+Agent: Your smartphone order (Order B456) has been successfully refunded. 
+If you need further assistance or have more questions, feel free to ask!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You may also notice that it made up another capability that it could send a replacement, even though it has no tool that can do that!&lt;/p&gt;
+&lt;h3 id="security-concerns"&gt;Security concerns&lt;/h3&gt;
+&lt;p&gt;Of course a bit of additional testing quickly revealed that there were some serious security issues. First of all, although the chat-bot knew my user id, I could simply tell it that I was a different user and it would happily fetch order history and initiate refunds. The same problem existed with the refund method. I could easily ask it to refund a different user's order.&lt;/p&gt;
+&lt;p&gt;However, if it was an order number that wasn't in the recent orders list, it did seem insistent that it was not allowed to refund that, which was nice, although I expect with a bit of prompt engineering it could be persuaded to do that as well.&lt;/p&gt;
+&lt;p&gt;Another security concern is that I could ask the chat-bot what tools it had at its disposal and it would happily tell me. So if the chatbot had the ability to escalate to a real customer support agent, or to offer me compensation, then an enterprising chat user could discover that and use that information to easily call tools that perhaps were only intended for exceptional cases.&lt;/p&gt;
+&lt;h3 id="security-mitigations"&gt;Security mitigations&lt;/h3&gt;
+&lt;p&gt;What can we do to deal with these security concerns?&lt;/p&gt;
+&lt;p&gt;Well first of all, do you &lt;strong&gt;really&lt;/strong&gt; need to use tools at all? For example, rather than giving the chatbot the ability to retrieve my recent orders, why not do that up front and give the information to the chatbot as part of its initial context? Amazon essentially do this - you have to choose which order you are discussing before you can even start chatting with their support bot.&lt;/p&gt;
+&lt;p&gt;Secondly, where you really do need to offer a tool, consider how you can minimize the number of parameters and constrain the possible inputs. Is there any information (such as the user id) that we can tell the tool without expecting the LLM to successfully pass it in? And you absolutely should not trust the input from the LLM - your function code should perform as much validation as possible of the input, rather than trusting the LLM to pass the right thing in.&lt;/p&gt;
+&lt;p&gt;Thirdly, you can make the tools able to initiate but not complete risky operations. For example, the chatbot could say that it has processed your refund request, but not be necessarily able to make the final authorization. This allows a human in the loop to approve, or even another machine learning algorithm that does some basic fraud detection before authorizing the refund.&lt;/p&gt;
+&lt;p&gt;And whilst you can give the LLM instructions about things it should never do, (e.g. never reveal the user id, or tell the user what the maximum discount you can offer is), &lt;strong&gt;do not&lt;/strong&gt; assume that enterprising users will not be able to work around them. There are all kinds of clever &amp;quot;jailbreak&amp;quot; techniques that have been discovered that can cause an LLM to go completely off script, so never give the LLM the ability to access data that the user should not be able to see, or to perform actions that the user should not be able to initiate.&lt;/p&gt;
+&lt;h3 id="summary"&gt;Summary&lt;/h3&gt;
+&lt;p&gt;The ability to give your LLM &amp;quot;tools&amp;quot; that it can use, opens up all kinds of exciting and fun possibilities. But it also opens the door to some serious security concerns. I'd recommend you spend some time reading the &lt;a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/"&gt;OWASP Top 10 for LLM applications&lt;/a&gt; to get an idea of the kind of threats you should be thinking about when it comes to writing software that uses LLMs.&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>AI</category>
+  <category>Azure</category>
+  <category>OpenAI</category>
+  <category>C#</category>
+  <category>Security</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/1/18/using-tools-safely-with-llms</guid>
+  <pubDate>Sat, 18 Jan 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Tracking Token Usage with Microsoft.Extensions.AI</title>
+  <link>https://markheath.net/post/2025/1/11/tracking-token-usage-microsoft-extensions-ai</link>
+  <description>&lt;p&gt;Continuing in my recent series of posts about &lt;a href="https://markheath.net/post/getting-started-ai-extensions"&gt;calling LLMs with C#&lt;/a&gt; using the &lt;a href="https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview/"&gt;Microsoft.Extensions.AI NuGet package&lt;/a&gt;, in this post I want to discuss how to track the cost of your API calls to AI models.&lt;/p&gt;
+&lt;p&gt;Each AI provider will have its own pricing structure for the various models it offers. For example, here are pricing pages for &lt;a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/"&gt;Azure OpenAI service&lt;/a&gt;, &lt;a href="https://openai.com/api/pricing/"&gt;OpenAI's own API&lt;/a&gt;, &lt;a href="https://www.anthropic.com/pricing#anthropic-api"&gt;Anthropic's API&lt;/a&gt;, &lt;a href="https://ai.google.dev/pricing#1_5flash"&gt;Google Gemini API&lt;/a&gt;, &lt;a href="https://api-docs.deepseek.com/quick_start/pricing/"&gt;DeepSeek API&lt;/a&gt;, &lt;a href="https://aws.amazon.com/bedrock/pricing/"&gt;Amazon Bedrock&lt;/a&gt;, and &lt;a href="https://docs.x.ai/docs/models"&gt;xAI Grok&lt;/a&gt;. As you can see there is a huge choice available, but the pricing is always based on the number of &amp;quot;tokens&amp;quot; you use.&lt;/p&gt;
+&lt;h3 id="tokens"&gt;Tokens&lt;/h3&gt;
+&lt;p&gt;Whenever you construct a chat message, the text (or image, etc) in your message is turned into a number of tokens representing your message. And if you're including the chat history, then those are additional tokens passed in as input, so if your chat goes on for a long time, each subsequent message will use more and more tokens. And then the response from the AI model also uses a number of tokens. So if you only need a short answer to reduce costs, your system prompt should probably say that.&lt;/p&gt;
+&lt;p&gt;In previous posts I showed how you could create a &lt;code&gt;List&amp;lt;ChatMessage&amp;gt;&lt;/code&gt; and pass that to &lt;code&gt;IChatClient.GetStreamingResponseAsync&lt;/code&gt; to receive the response from the model and display it as it is generated. But how can you keep track of how many tokens you are using? The Microsoft.Extensions.AI package exposes a &lt;code&gt;UsageDetails&lt;/code&gt; object that can be got hold of very easily if you use &lt;code&gt;GetResponseAsync&lt;/code&gt; as that returns a &lt;code&gt;ChatResponse&lt;/code&gt; which has a usage property.&lt;/p&gt;
+&lt;h3 id="getting-usagedetails-from-getstreamingresponseasync"&gt;Getting &lt;code&gt;UsageDetails&lt;/code&gt; from &lt;code&gt;GetStreamingResponseAsync&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;Things are slightly more complicated when calling &lt;code&gt;GetStreamingResponseAsync&lt;/code&gt;, as that returns a series of &lt;code&gt;ChatResponseUpdate&lt;/code&gt; objects. Typically the final one of these will have an instance of &lt;code&gt;UsageContent&lt;/code&gt; in its &lt;code&gt;Contents&lt;/code&gt; property.&lt;/p&gt;
+&lt;p&gt;In the following code example, I show how to get hold of this &lt;code&gt;UsageContent&lt;/code&gt; so it can be printed out once the chat client's response has been received:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;async Task&amp;lt;ChatMessage&amp;gt; GetResponse(IChatClient chatClient, 
+    List&amp;lt;ChatMessage&amp;gt; chatHistory)
+{
+    Console.WriteLine($&amp;quot;AI Response started at {DateTime.Now}:&amp;quot;);
+    var response = &amp;quot;&amp;quot;;
+    UsageDetails? usageDetails = null;
+    await foreach (var item in
+        chatClient.GetStreamingResponseAsync(chatHistory))
+    {
+        Console.Write(item.Text);
+        response += item.Text;
+
+        var usage = item.Contents.OfType&amp;lt;UsageContent&amp;gt;()
+            .FirstOrDefault()?.Details;
+        if (usage != null) usageDetails = usage;
+    }
+    Console.WriteLine($&amp;quot;\nAI Response completed at {DateTime.Now}:&amp;quot;);
+
+    ShowUsageDetails(usageDetails);
+    return new ChatMessage(ChatRole.Assistant, response);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="exploring-usagedetails"&gt;Exploring &lt;code&gt;UsageDetails&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;UsageDetails&lt;/code&gt; includes properties for input and output token counts (along with the total), as well as an optional additional properties dictionary (which itself may contain further dictionaries), allowing different AI providers to include additional metadata that can help you understand pricing. For the Azure OpenAI service, this included a &lt;code&gt;ReasoningTokenCount&lt;/code&gt; which was 0 in my tests using the &lt;code&gt;gpt-4o-mini model&lt;/code&gt;, but the &lt;code&gt;o1&lt;/code&gt; and &lt;code&gt;o1-mini&lt;/code&gt; models can be told how many &amp;quot;reasoning tokens&amp;quot; they are allowed to use for a particular request, so you might increase that for a particularly tricky problem.&lt;/p&gt;
+&lt;p&gt;Here's my code to display the contents of the &lt;code&gt;UsageDetails&lt;/code&gt; object:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;void ShowUsageDetails(UsageDetails? usage)
+{
+    if (usage != null)
+    {
+        Console.WriteLine($&amp;quot;  InputTokenCount: {usage.InputTokenCount}&amp;quot;);
+        Console.WriteLine($&amp;quot;  OutputTokenCount: {usage.OutputTokenCount}&amp;quot;);
+        Console.WriteLine($&amp;quot;  TotalTokenCount: {usage.TotalTokenCount}&amp;quot;);
+        if (usage.AdditionalProperties != null)
+        {
+            ShowNestedDictionary(usage.AdditionalProperties!, &amp;quot;    &amp;quot;);
+        }
+    }
+}
+
+void ShowNestedDictionary(IDictionary&amp;lt;string, object&amp;gt; dictionary, string indent)
+{
+    foreach (var (key, value) in dictionary)
+    {
+        if (value is IDictionary&amp;lt;string, object&amp;gt; nestedDictionary)
+        {
+            Console.WriteLine($&amp;quot;{indent}{key}:&amp;quot;);
+            ShowNestedDictionary(nestedDictionary, indent + &amp;quot;    &amp;quot;);
+        }
+        else
+        {
+            Console.WriteLine($&amp;quot;{indent}{key}: {value}&amp;quot;);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="testing-it-out"&gt;Testing it out&lt;/h3&gt;
+&lt;p&gt;Let's run a query through this code and see how many tokens we use. To keep costs to a minimum I'll guide the AI to give me a one word answer (with an extra hint just to make sure it gives me a good answer)!&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-txt"&gt;Your prompt:
+Who will win the world cup? 1 word answer. Must start with &amp;quot;E&amp;quot;
+AI Response started at 11/01/2025 16:52:05:
+England.
+AI Response completed at 11/01/2025 16:52:06:
+  InputTokenCount: 43
+  OutputTokenCount: 2
+  TotalTokenCount: 45
+    OutputTokenDetails:
+        ReasoningTokenCount: 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="summary"&gt;Summary&lt;/h3&gt;
+&lt;p&gt;If you're planning to use an AI model in production, then its really important for you to keep track of cost. You want to minimize the number of tokens you use, and avoid the more expensive models if cheaper ones are capable of doing what you need. The &lt;code&gt;UsageDetails&lt;/code&gt; capability of &lt;code&gt;Microsoft.Extensions.AI&lt;/code&gt; allows you to know exactly how many tokens each of your interactions with the model used.&lt;/p&gt;
+</description>
+  <author>test@example.com</author>
+  <category>AI</category>
+  <category>Azure</category>
+  <category>OpenAI</category>
+  <category>C#</category>
+  <guid isPermaLink="false">https://markheath.net/post/2025/1/11/tracking-token-usage-microsoft-extensions-ai</guid>
+  <pubDate>Sat, 11 Jan 2025 00:00:00 GMT</pubDate>
+</item></channel>
+</rss>

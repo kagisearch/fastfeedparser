@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+    <channel>
+        <title><![CDATA[BBC News]]></title>
+        <description><![CDATA[BBC News - World]]></description>
+        <link>https://www.bbc.co.uk/news/world</link>
+        <image>
+            <url>https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif</url>
+            <title>BBC News</title>
+            <link>https://www.bbc.co.uk/news/world</link>
+        </image>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Wed, 18 Feb 2026 02:13:51 GMT</lastBuildDate>
+        <atom:link href="https://feeds.bbci.co.uk/news/world/rss.xml" rel="self" type="application/rss+xml"/>
+        <copyright><![CDATA[Copyright: (C) British Broadcasting Corporation, see https://www.bbc.co.uk/usingthebbc/terms-of-use/#15metadataandrssfeeds for terms and conditions of reuse.]]></copyright>
+        <language><![CDATA[en-gb]]></language>
+        <ttl>15</ttl>
+        <item>
+            <title><![CDATA[US civil rights leader Jesse Jackson dies aged 84]]></title>
+            <description><![CDATA[Tributes poured in from politicians who described Jackson as an agent of change and transformative leader. ]]></description>
+            <link>https://www.bbc.com/news/articles/cp81l0e1eg5o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cp81l0e1eg5o#0</guid>
+            <pubDate>Tue, 17 Feb 2026 18:55:33 GMT</pubDate>
+            <media:thumbnail width="240" height="148" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1088/live/9ca4e140-0c34-11f1-b5e2-dd58fc65f0f6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Stephen Colbert says CBS spiked interview with Democrat over FCC fears]]></title>
+            <description><![CDATA[The network denies it stopped the interview with a Texas Democrat from airing but warned it could run afoul of the US broadcast media watchdog. ]]></description>
+            <link>https://www.bbc.com/news/articles/cze0dk3yd5eo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cze0dk3yd5eo#0</guid>
+            <pubDate>Wed, 18 Feb 2026 00:12:01 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8611/live/5895d6b0-0c5e-11f1-ab36-eb9abcfc18cf.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[I would scream in my sleep: Women from Syria's Alawite minority tell of kidnap and rape]]></title>
+            <description><![CDATA[The BBC hears harrowing accounts of assaults appearing to target the sect of former President Assad.]]></description>
+            <link>https://www.bbc.com/news/articles/cn5g751pl7lo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cn5g751pl7lo#0</guid>
+            <pubDate>Wed, 18 Feb 2026 00:20:03 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f46a/live/c29b6760-0b36-11f1-9972-d3f265c101c6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Under pressure from Trump, Venezuela's new president has aces up her sleeve]]></title>
+            <description><![CDATA[Delcy Rodriguez knows its in America's interests for her to be a success]]></description>
+            <link>https://www.bbc.com/news/articles/cn87rv0jdy1o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cn87rv0jdy1o#0</guid>
+            <pubDate>Wed, 18 Feb 2026 00:48:22 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/363f/live/f3c1e430-0be6-11f1-b7e1-afb6d0884c18.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Climber on trial for leaving girlfriend to die on Austria's highest mountain ]]></title>
+            <description><![CDATA[Kerstin G's boyfriend is accused of leaving her unprotected and exhausted close to the summit during a blizzard.]]></description>
+            <link>https://www.bbc.com/news/articles/c5yv9plyjgpo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/c5yv9plyjgpo#0</guid>
+            <pubDate>Wed, 18 Feb 2026 00:41:52 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d711/live/9a10a6d0-0bfd-11f1-9972-d3f265c101c6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[First day of Russia-Ukraine peace talks ends in Geneva]]></title>
+            <description><![CDATA[Negotiations will continue on Wednesday, but expectations for a breakthrough on ending the war are low.]]></description>
+            <link>https://www.bbc.com/news/articles/cge812y2549o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cge812y2549o#0</guid>
+            <pubDate>Tue, 17 Feb 2026 20:05:13 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/c289/live/ed9669b0-0be5-11f1-8d90-772c0d7aea09.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[No DNA matches on glove found in Nancy Guthrie case, police say]]></title>
+            <description><![CDATA[It's been two weeks since the 84 year old's disappearance and authorities say there have not been any arrests ]]></description>
+            <link>https://www.bbc.com/news/articles/cj0dqp9pleeo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cj0dqp9pleeo#0</guid>
+            <pubDate>Wed, 18 Feb 2026 00:14:44 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8004/live/aefcd7a0-0c32-11f1-aea9-35917f4e91eb.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Rescuers search for 10 missing skiers after California avalanche]]></title>
+            <description><![CDATA[Rescuers are racing to the scene, which has seen about 30 inches (76cm) of snowfall in the last 24 hours.]]></description>
+            <link>https://www.bbc.com/news/articles/c62dke15357o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/c62dke15357o#1</guid>
+            <pubDate>Wed, 18 Feb 2026 01:37:35 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3194/live/208f8f00-0c67-11f1-986c-b11ea963c0e7.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Police identify suspect in Rhode Island ice rink shooting]]></title>
+            <description><![CDATA[Two people were killed and three others were injured at a shooting at a high school hockey game in Pawtucket. ]]></description>
+            <link>https://www.bbc.com/news/articles/c75e7wqqq6no?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/c75e7wqqq6no#1</guid>
+            <pubDate>Tue, 17 Feb 2026 15:47:53 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6c65/live/d2ef7ff0-0c0f-11f1-ad4b-755d3b02c9a5.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Nine arrested in France over death of far-right student]]></title>
+            <description><![CDATA[Quentin Deranque died on Saturday, two days after being beaten in Lyon by masked men believed to be far-left militants.]]></description>
+            <link>https://www.bbc.com/news/articles/cvgj1qrqd47o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cvgj1qrqd47o#1</guid>
+            <pubDate>Tue, 17 Feb 2026 21:08:32 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8265/live/5290eb40-0c42-11f1-b8ba-135d136c986f.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Iran says 'guiding principles' agreed with US at nuclear talks]]></title>
+            <description><![CDATA[Tehran also says more work is needed to get a deal - the US is yet to comment on the issue. ]]></description>
+            <link>https://www.bbc.com/news/articles/cwyknjnd706o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cwyknjnd706o#1</guid>
+            <pubDate>Tue, 17 Feb 2026 21:38:33 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1ec3/live/b50ab7a0-0be9-11f1-8d90-772c0d7aea09.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Family of Zambia's ex-President Lungu dismiss poisoning allegation - lawyers]]></title>
+            <description><![CDATA[It is the latest twist over the fate of Lungu's body, which remains in a South African morgue since his death.]]></description>
+            <link>https://www.bbc.com/news/articles/ckg18yqwlplo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/ckg18yqwlplo#1</guid>
+            <pubDate>Tue, 17 Feb 2026 17:04:07 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/eb73/live/6c8f2a30-0c1e-11f1-810d-f3e42df83b46.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Shein under EU investigation over childlike sex dolls]]></title>
+            <description><![CDATA[Europe is examining whether the fast fashion giant breached the Digital Services Act.]]></description>
+            <link>https://www.bbc.com/news/articles/cr7321n1n0eo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cr7321n1n0eo#1</guid>
+            <pubDate>Tue, 17 Feb 2026 19:08:57 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6753/live/4ffad1b0-0c2f-11f1-a62a-a37536f5ddff.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[UK police force assessing Stansted Airport private flights over Epstein ties]]></title>
+            <description><![CDATA[Essex Police says it is assessing information in relation to private flights into and out of the airport.]]></description>
+            <link>https://www.bbc.com/news/articles/c98q4mz831mo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/c98q4mz831mo#1</guid>
+            <pubDate>Tue, 17 Feb 2026 20:52:07 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/56ca/live/32f8af20-0c33-11f1-aea9-35917f4e91eb.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[US soldiers arrive in Nigeria to aid its fight against Islamist militants]]></title>
+            <description><![CDATA[The troops, who landed at an airfield in Bauchi state, will not take part in combat operations, officials say.]]></description>
+            <link>https://www.bbc.com/news/articles/cj6d79gyrdro?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cj6d79gyrdro#1</guid>
+            <pubDate>Tue, 17 Feb 2026 15:03:14 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/45f9/live/b72fa360-0bfd-11f1-b726-1d6e709ef554.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[France releases suspected Russian 'shadow fleet' tanker after fine paid]]></title>
+            <description><![CDATA[French Foreign Minister Jean-Noël Barrot said the vessel was departing Marseille after a payment of "several million euros".]]></description>
+            <link>https://www.bbc.com/news/articles/c8xy4dl2xwgo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/c8xy4dl2xwgo#1</guid>
+            <pubDate>Tue, 17 Feb 2026 14:20:33 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b57c/live/b62e6760-0bfa-11f1-b726-1d6e709ef554.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Lunar New Year 2026: Celebrations around the world]]></title>
+            <description><![CDATA[Millions of people around the world are celebrating the start of the Lunar New Year, with festivities taking place from Hong Kong to Buenos Aires.]]></description>
+            <link>https://www.bbc.com/news/videos/c39wvr1nv2no?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/videos/c39wvr1nv2no#1</guid>
+            <pubDate>Tue, 17 Feb 2026 08:02:39 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6aab/live/1b5b4830-0bd6-11f1-b5e2-dd58fc65f0f6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Hillary Clinton accuses Trump administration of Epstein files 'cover-up' in BBC interview]]></title>
+            <description><![CDATA["Get the files out. They are slow-walking it," the former US secretary of state says. The White House says it has done "more for the victims than Democrats ever did".]]></description>
+            <link>https://www.bbc.com/news/articles/czx47k34yqxo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/czx47k34yqxo#1</guid>
+            <pubDate>Tue, 17 Feb 2026 07:59:55 GMT</pubDate>
+            <media:thumbnail width="240" height="137" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/184b/live/2519e010-0bcd-11f1-b7e1-afb6d0884c18.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[US Senator Mark Kelly tells BBC he will 'seriously consider' White House run]]></title>
+            <description><![CDATA[The former Navy captain and astronaut says "we're in some seriously challenging times".]]></description>
+            <link>https://www.bbc.com/news/articles/cy9gdvl4zv4o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cy9gdvl4zv4o#1</guid>
+            <pubDate>Tue, 17 Feb 2026 02:28:08 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/598d/live/e05941f0-0bb8-11f1-b5e2-dd58fc65f0f6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Gold fever hits South Africa after lucky find in cattle pen]]></title>
+            <description><![CDATA["This is the only hustle we know," miners tell the BBC as they try their luck at the site in Springs.]]></description>
+            <link>https://www.bbc.com/news/articles/c9dne6z4p9qo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/c9dne6z4p9qo#2</guid>
+            <pubDate>Wed, 18 Feb 2026 00:28:35 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/822b/live/a904dd50-0c3e-11f1-b5e2-dd58fc65f0f6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Food prices are surging in Russia. Is the war hitting Russians in the pocket?]]></title>
+            <description><![CDATA[Russia's economy is hanging between stagnation and decline, and ordinary Russians are beginning to feel the pinch.]]></description>
+            <link>https://www.bbc.com/news/articles/c1mjrgkk1m8o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/c1mjrgkk1m8o#2</guid>
+            <pubDate>Wed, 18 Feb 2026 00:19:54 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8e70/live/dc017590-0c31-11f1-9972-d3f265c101c6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Historic trade deals put India on global stage - but challenges remain]]></title>
+            <description><![CDATA[India has signed a string of trade deals recently, but export growth will require deeper reforms, say experts.]]></description>
+            <link>https://www.bbc.com/news/articles/cp81kw4pzd2o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cp81kw4pzd2o#2</guid>
+            <pubDate>Wed, 18 Feb 2026 00:02:20 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cc2b/live/92a1ee50-0a85-11f1-8b85-1da9bd0ede97.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[The man whose bad break-up gave Madonna her breakthrough hit Like A Virgin]]></title>
+            <description><![CDATA[Billy Steinberg, who has died at the age of 75, co-wrote Madonna's 1984 chart-topper Like a Virgin.]]></description>
+            <link>https://www.bbc.com/news/articles/cvgveqzld59o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cvgveqzld59o#2</guid>
+            <pubDate>Tue, 17 Feb 2026 14:22:12 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e452/live/28c50bf0-0c08-11f1-b5e2-dd58fc65f0f6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Jesse Jackson: A life in pictures]]></title>
+            <description><![CDATA[A look back at the remarkable life of the US civil rights activist, who died on Tuesday aged 84. ]]></description>
+            <link>https://www.bbc.com/news/articles/cn0zjz58nzqo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cn0zjz58nzqo#2</guid>
+            <pubDate>Tue, 17 Feb 2026 17:18:19 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/1fc0/live/c0be7f40-0c21-11f1-b639-2bb91f8e49a9.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[The Martin Luther King protege who helped reshape America]]></title>
+            <description><![CDATA[The US civil rights activist's influence spread from the churches of the Deep South to the White House.]]></description>
+            <link>https://www.bbc.com/news/articles/cx77214zz9eo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cx77214zz9eo#2</guid>
+            <pubDate>Tue, 17 Feb 2026 10:04:08 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/998f/live/e848bf80-0bf9-11f1-b726-1d6e709ef554.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[How dark web agent spotted bedroom wall clue to rescue girl from years of harm]]></title>
+            <description><![CDATA[Detectives desperate to locate a 12-year-old, seen abused online, found a surprising lead.
+]]></description>
+            <link>https://www.bbc.com/news/articles/cx2gn239exlo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/cx2gn239exlo#2</guid>
+            <pubDate>Mon, 16 Feb 2026 22:02:33 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5ef8/live/d681e5e0-0827-11f1-b5e2-dd58fc65f0f6.png"/>
+        </item>
+        <item>
+            <title><![CDATA[US build-up of warships and fighter jets tracked near Iran]]></title>
+            <description><![CDATA[BBC Verify has seen US aircraft carrier USS Abraham Lincoln near Iran ahead of talks between the two countries]]></description>
+            <link>https://www.bbc.com/news/articles/c1d64p3q2d0o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/articles/c1d64p3q2d0o#2</guid>
+            <pubDate>Mon, 16 Feb 2026 18:17:18 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bd4c/live/59d67970-0b60-11f1-b5e2-dd58fc65f0f6.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Flying oranges: Italian town celebrates carnival with historic street battle]]></title>
+            <description><![CDATA[A town in northern Italy has started celebrating carnival with its annual Battle of the Oranges where people hurl the fruit at each other for fun.]]></description>
+            <link>https://www.bbc.com/news/videos/cnv6zy10vz4o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/videos/cnv6zy10vz4o#3</guid>
+            <pubDate>Mon, 16 Feb 2026 15:10:12 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/393f/live/b6c9edb0-0b42-11f1-b5e2-dd58fc65f0f6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Giant robot tribute to Brazil's President Lula leads start of Rio Carnival]]></title>
+            <description><![CDATA[Rio de Janeiro's iconic Carnival parades begin with a tribute to Brazil's President Lula, illustrating his rise from poverty to power.]]></description>
+            <link>https://www.bbc.com/news/videos/cgjz234pj3lo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/videos/cgjz234pj3lo#3</guid>
+            <pubDate>Mon, 16 Feb 2026 11:09:42 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f09b/live/ed5e3830-0b20-11f1-9972-d3f265c101c6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Watch: Moment crew docks at International Space Station]]></title>
+            <description><![CDATA[The crew blasted off from Cape Canaveral in a SpaceX Dragon spacecraft atop a Falcon 9 rocket.
+]]></description>
+            <link>https://www.bbc.com/news/videos/c1e9z8jw93yo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/videos/c1e9z8jw93yo#3</guid>
+            <pubDate>Sat, 14 Feb 2026 23:18:04 GMT</pubDate>
+            <media:thumbnail width="240" height="134" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/0cf5/live/28ba8630-09fb-11f1-b5e2-dd58fc65f0f6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Tribes grant the Colorado River legal personhood - can this help save it?]]></title>
+            <description><![CDATA[The river, which runs through seven US states that share it, is currently facing the worst drought in 1,200 years. ]]></description>
+            <link>https://www.bbc.com/news/videos/crmlgpnnzyxo?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/videos/crmlgpnnzyxo#3</guid>
+            <pubDate>Sat, 14 Feb 2026 13:13:13 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8b78/live/608361d0-02c2-11f1-b5e2-dd58fc65f0f6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Gasps and disbelief in US as 'Quad God's' Olympic dream crumbles]]></title>
+            <description><![CDATA[The BBC visited the skating rink in Virginia where the ‘Quad God’ trains, as his closest friends and teammates expected to watch him win gold.]]></description>
+            <link>https://www.bbc.com/news/videos/c93wgxnk351o?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/videos/c93wgxnk351o#3</guid>
+            <pubDate>Sat, 14 Feb 2026 00:13:01 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6cbb/live/d3e2a2e0-0938-11f1-9972-d3f265c101c6.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Watch: 'I am a survivor' Gisèle Pelicot tells BBC Newsnight ]]></title>
+            <description><![CDATA[Ms Pelicot reveals it is "inconceivable" that the man she shared her life with "could have committed these horrors".]]></description>
+            <link>https://www.bbc.com/news/videos/c80jvkem8lro?at_medium=RSS&amp;at_campaign=rss</link>
+            <guid isPermaLink="false">https://www.bbc.com/news/videos/c80jvkem8lro#3</guid>
+            <pubDate>Sat, 14 Feb 2026 06:00:21 GMT</pubDate>
+            <media:thumbnail width="240" height="135" url="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cbd2/live/aa50bb20-0905-11f1-9972-d3f265c101c6.jpg"/>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Lasheen&#39;s Blog</title>
+    <link>https://blog.lasheen.dev/</link>
+    <description>Recent content on Lasheen&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 07 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.lasheen.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VPN Tier List</title>
+      <link>https://blog.lasheen.dev/vpn-tier-list/</link>
+      <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/vpn-tier-list/</guid>
+      <description>A comprehensive guide to VPNs, including a tier list of popular VPN services.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Linux: A Comprehensive Guide 🐧</title>
+      <link>https://blog.lasheen.dev/introduction-to-linux-a-comprehensive-guide/</link>
+      <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/introduction-to-linux-a-comprehensive-guide/</guid>
+      <description>A comprehensive guide to understanding Linux, covering 101 essential concepts for beginners and experienced users alike. Learn about the Linux kernel, system calls, user privileges, basic commands, utilities, scripting, text editors, advanced topics, customization, and more.</description>
+    </item>
+    
+    <item>
+      <title>Navigating the Antivirus Landscape: A Practical Guide</title>
+      <link>https://blog.lasheen.dev/navigating-the-antivirus-landscape-a-practical-guide/</link>
+      <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/navigating-the-antivirus-landscape-a-practical-guide/</guid>
+      <description>A practical guide to navigating the antivirus landscape</description>
+    </item>
+    
+    <item>
+      <title>Linux Desktop Environment : A Tier List Analysis</title>
+      <link>https://blog.lasheen.dev/linux-desktop-environment-a-tier-list-analysis/</link>
+      <pubDate>Fri, 28 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/linux-desktop-environment-a-tier-list-analysis/</guid>
+      <description>A tier list of Linux desktop environment.</description>
+    </item>
+    
+    <item>
+      <title>HDDs vs SSDs</title>
+      <link>https://blog.lasheen.dev/hdds-vs-ssds/</link>
+      <pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/hdds-vs-ssds/</guid>
+      <description>SSDs vs. HDDs: A Comparison of Speed and Storage</description>
+    </item>
+    
+    <item>
+      <title>IPv4 vs IPv6</title>
+      <link>https://blog.lasheen.dev/ipv4-vs-ipv6/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/ipv4-vs-ipv6/</guid>
+      <description>IPv4 vs IPv6 - the evolution of the Internet Protocol</description>
+    </item>
+    
+    <item>
+      <title>Recovering Bitlocker key</title>
+      <link>https://blog.lasheen.dev/recovering-bitlocker-key/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/recovering-bitlocker-key/</guid>
+      <description>How to recover BitLocker key and unlock your computer</description>
+    </item>
+    
+    <item>
+      <title>Creating &#39;Flappier Bird&#39; in Unity</title>
+      <link>https://blog.lasheen.dev/creating-flappier-bird-in-unity/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/creating-flappier-bird-in-unity/</guid>
+      <description>Creating &amp;lsquo;Flappier Bird&amp;rsquo; in Unity Introduction &amp;lsquo;Flappy Bird&amp;rsquo; was and probably still is one of the most popular games in the world, creating a replica of it is one of the most popular things beginner game developers do as a challenge on their own. I didn&amp;rsquo;t do it when I started game development, so why not do it now?
+Creating the bird and the background Let&amp;rsquo;s start by drawing a little bird, and it turned out like this: It surely looks dumb, but it&amp;rsquo;s good enough to make the game, and adding up a simple background: what&amp;rsquo;s missing ?</description>
+    </item>
+    
+    <item>
+      <title>Linux Distributions: A Tier List Analysis</title>
+      <link>https://blog.lasheen.dev/linux-distributions-a-tier-list-analysis/</link>
+      <pubDate>Mon, 10 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/linux-distributions-a-tier-list-analysis/</guid>
+      <description>A tier list of Linux distributions.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Flutter</title>
+      <link>https://blog.lasheen.dev/getting-started-with-flutter/</link>
+      <pubDate>Sat, 25 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/getting-started-with-flutter/</guid>
+      <description>1. Basic questions and comparisons. What is flutter? Flutter is an open-source cross-platform application SDK developed by Google. It is used to develop both Android and iOS applications. Flutter is written in Dart language. Those familiar with Object-Oriented Languages such as Java, Javascript, Objective C or Swift can easily relate to Dart.
+Cross platform vs Native  Cross platform apps are built using a single codebase and can be deployed on multiple platforms.</description>
+    </item>
+    
+    <item>
+      <title>Live stream music with ffmpeg and bash</title>
+      <link>https://blog.lasheen.dev/live-stream-music-with-ffmpeg-and-bash/</link>
+      <pubDate>Wed, 22 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/live-stream-music-with-ffmpeg-and-bash/</guid>
+      <description>How to make your own LOFI radio station with ffmpeg and raspberry pi on youtube</description>
+    </item>
+    
+    <item>
+      <title>Flutter appbar-titlebar-header on linux</title>
+      <link>https://blog.lasheen.dev/flutter-appbar-titlebar-header-on-linux/</link>
+      <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/flutter-appbar-titlebar-header-on-linux/</guid>
+      <description>How to make your flutter header app look good on linux</description>
+    </item>
+    
+    <item>
+      <title> Oracle Cloud Free VPS: 4 CPUs | 24 GB of memory 🚀</title>
+      <link>https://blog.lasheen.dev/oracle-cloud-free-vps-4-cpus-24-gb-of-memory/</link>
+      <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/oracle-cloud-free-vps-4-cpus-24-gb-of-memory/</guid>
+      <description>How to get a free VPS from Oracle Cloud with 4 CPUs and 24 GB of memory</description>
+    </item>
+    
+    <item>
+      <title>Beautiful GitHub Profile Readme</title>
+      <link>https://blog.lasheen.dev/beautiful-github-profile-readme/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/beautiful-github-profile-readme/</guid>
+      <description>How to make your GitHub profile more beautiful</description>
+    </item>
+    
+    <item>
+      <title>Qetaf website devlog</title>
+      <link>https://blog.lasheen.dev/qetaf-website-devlog/</link>
+      <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lasheen.dev/qetaf-website-devlog/</guid>
+      <description>A website to sell honey for a local business that is made with flutter</description>
+    </item>
+    
+    
+  </channel>
+</rss>

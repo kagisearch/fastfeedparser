@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://geohot.github.io//blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://geohot.github.io//blog/" rel="alternate" type="text/html" /><updated>2026-02-16T08:41:12+08:00</updated><id>https://geohot.github.io//blog/feed.xml</id><title type="html">the singularity is nearer</title><subtitle>A home for poorly researched ideas that I find myself repeating a lot anyway</subtitle><entry><title type="html">Cost of Housing</title><link href="https://geohot.github.io//blog/jekyll/update/2026/02/16/cost-of-housing.html" rel="alternate" type="text/html" title="Cost of Housing" /><published>2026-02-16T00:00:00+08:00</published><updated>2026-02-16T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/02/16/cost-of-housing</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/02/16/cost-of-housing.html"><![CDATA[<p>Many people in America are complaining about the cost of housing. But do they understand the damage it will do if it prices go down?</p>
+
+<p>Everyone who owns a house will suffer. Some of those people don’t even fully own the house, they have a mortgage. So when prices go down, they will be underwater, having put money for years into an asset that now has no value.</p>
+
+<p>It’s simply out of the question for housing prices to go down. If you want to buy a house to live in, sorry. The boomers were told houses are appreciating assets, and now we must bend reality to make that true.</p>
+
+<p>Until you solve this problem, you will never solve the housing affordability crisis. It has nothing to do with zoning, building costs, or environmental reviews. It has to do with people holding bags they need to dump on you.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Many people in America are complaining about the cost of housing. But do they understand the damage it will do if it prices go down?]]></summary></entry><entry><title type="html">tiny corp’s product – a training box</title><link href="https://geohot.github.io//blog/jekyll/update/2026/02/15/tiny-corp-product.html" rel="alternate" type="text/html" title="tiny corp’s product – a training box" /><published>2026-02-15T00:00:00+08:00</published><updated>2026-02-15T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/02/15/tiny-corp-product</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/02/15/tiny-corp-product.html"><![CDATA[<p><img src="/blog/assets/images/hk_office.jpg" /></p>
+<blockquote>
+  <p>Our new Hong Kong office.</p>
+</blockquote>
+
+<p>It’s starting to shape up what tiny corp’s product will be. It’s not much of a change from what we sell and do now, but the vision is clearer.</p>
+
+<p>Every month, we see these LLMs become more and more human. However, there’s a major difference. They do not learn. Everyone has the same Claude/Codex/Kimi, with the same weights, the same desires, and the same biases. If current trends continue, the collapse in diversity will be staggering. To paraphrase:</p>
+
+<blockquote>
+  <p>I think there is a world market for maybe five people.</p>
+</blockquote>
+
+<p>This is not the future I want to live in.</p>
+
+<hr />
+<p><br /></p>
+
+<p>If trends continue where there’s a single model with frozen weights and all learning is in-context, the cloud will win. Except in some highly latency sensitive (fighting robots) or connectivity critical (self driving cars) environments, it will be cheaper to run in batch on the cloud.</p>
+
+<p>The enshittification that came to the web won’t be the driving force to local models. We either live in a world where open models are so bad even user-hostile closed models are better, or open models are good enough, and competition to run them through sites like <a href="https://openrouter.ai/">openrouter</a> will prevent enshittification.</p>
+
+<p>The only way local models win is if there’s some value in full on learning per user or organization. At that point, with entirely different compute needing to run per user, local will beat out cloud.</p>
+
+<p>The open question is if everything that’s unique about you can fit in a 10 kB CLAUDE.md. If that’s true, we have a pretty sad future ahead. It’s the Attack of the Clones, swarms of identical minds you have no say over all varying in a small boxed-in way. This isn’t learning, it’s <em>costuming</em>. Everyone who has used these things knows how little of an impact prompting makes compared to the model. It’s the Internet funneled into a little box you can edit on your profile. Write 3 paragraphs about what makes you unique.</p>
+
+<p>We have to build for a future where that isn’t true. 90% of people will choose the cloud, and what they will find is that they are no longer meaningfully in the loop. The dream is an AI product that will do your job for you while you continue to get paid. But this cannot exist, that’s way too much of a fee to pay to the middleman. If you choose the homogenous mind, you are superfluous and will be cut out. Is there anything uniquely valuable about you? And I mean honestly, not the self-esteem pumping speeches you may have heard in school. If there’s not, I have some bad news for you…</p>
+
+<hr />
+<p><br /></p>
+
+<p>We already <a href="https://tinygrad.org/#tinybox">sell the hardware</a>. Consumer GPUs still are the cheapest way to run models. There’s tons of work required on <a href="https://github.com/tinygrad/tinygrad">the infrastructure</a>. The frontend will be the future iterations of <a href="https://openclaw.ai/">OpenClaw</a> and <a href="https://opencode.ai/">opencode</a>. But the key distinction from what you have today is that your tinybox will learn. It will update the weights based on its interactions with you. Like living things.</p>
+
+<p>This is many years away. Currently, we are focused on large LLM training (even running these things is hard, have you tried to use vLLM not on NVIDIA?) and generic infrastructure for driving GPUs. But this is the long term idea.</p>
+
+<p>Not API keyed SaaS clones. Something that lives in your house and learns your values. Your child.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[Our new Hong Kong office.]]></summary></entry><entry><title type="html">I Told You So</title><link href="https://geohot.github.io//blog/jekyll/update/2026/02/13/i-told-you-so.html" rel="alternate" type="text/html" title="I Told You So" /><published>2026-02-13T00:00:00+08:00</published><updated>2026-02-13T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/02/13/i-told-you-so</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/02/13/i-told-you-so.html"><![CDATA[<p>My <a href="https://www.theverge.com/2019/3/9/18258030/george-hotz-ai-simulation-jailbreaking-reality-sxsw-2019?utm_source=chatgpt.com">quote from 2019</a></p>
+
+<blockquote>
+  <p>“I don’t know how close you guys think the singularity, but I think it’s very close. Once we reach the singularity, If we have the same motivations we have now — primarily power over people — things are going to be horrific” – George Hotz</p>
+</blockquote>
+
+<p>How is everyone enjoying their singularity? How far is this going to go? Why are we letting the minds that <a href="https://www.youtube.com/watch?v=PqH7PPC_J1c">invented fastpass</a> run things? Who are we doing this all for again?</p>
+
+<p>We live in a society. It seems a lot of people have forgotten this. So much stuff that’s being built just shouldn’t be built. You know technology could be good, right? It could all be <a href="https://craigslist.org">like this</a> and <a href="https://shein.com">not like this</a>.</p>
+
+<p>Is everyone individually too weak to defect? Sounds like we need a revolution.</p>
+
+<hr />
+<p><br /></p>
+
+<p>Update: someone in a tweet <a href="https://counterfeitsunset.neocities.org/Schizoposting.pdf">linked to schizoposting</a>, 11 essays on culture by Alaric.</p>
+
+<blockquote>
+  <p>The future on this track is a dizzying spiral into an eternal war over nothing, lacking even the possibility of heroism or the grounding reality of pain. It is the recentering of power in such a sense that the very existence of power comes into question; it is totalitarian disorder, novel insanities as public religion, a paperclip machine for wetware whose sole purpose is the prosecution of a conflict long forgotten by even its leaders, fought in the liminal subconscious alone. It is the cryostatic suspension of mankind.</p>
+</blockquote>
+
+<p>It makes clear the problem isn’t AI, it’s culture, and it describes the problem far more clearly than I can – a more modern <a href="https://files.libcom.org/files/Capitalist%20Realism_%20Is%20There%20No%20Alternat%20-%20Mark%20Fisher.pdf">update of this</a>, which is also worth reading. The 2014 revolution was so real and it’s nice to see it described as such. How do we change this? Where is the soft gooey center we can strike at? How do we form a tribe against it?</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[My quote from 2019]]></summary></entry><entry><title type="html">The Importance of Diversity</title><link href="https://geohot.github.io//blog/jekyll/update/2026/01/27/the-importance-of-diversity.html" rel="alternate" type="text/html" title="The Importance of Diversity" /><published>2026-01-27T00:00:00+08:00</published><updated>2026-01-27T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/01/27/the-importance-of-diversity</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/01/27/the-importance-of-diversity.html"><![CDATA[<p>I read Dario’s <a href="https://www.darioamodei.com/essay/the-adolescence-of-technology">The Adolescence of Technology</a> and it’s scary. It assumes the perspective of a top-down ruler, that someone can and will get to control AI. This is taken as a given. Machines of Loving Grace assumes basically the same tone, that there are some “adults” in the room, and they will use AI like a tool to “fix” some supposed human problem, where those problems are framed in a very narrow worldview, say that like disease, poverty, and inequality are bad. (if you can’t steelman those things, you are too far gone for reason)</p>
+
+<p>EA has the same critical flaw. They assume that the desired outcome is so obvious that it’s not worth discussing, it’s only worth discussing how to achieve it. And since the target is obvious, you are either part of the solution or part of the problem.</p>
+
+<p>Here I’ll try to propose a counternarrative for a better world.</p>
+
+<hr />
+<p><br /></p>
+
+<p>“A country of geniuses in a datacenter” is a great phrase to start from. It contains the fatal flaw baked in, in that datacenter is singular, and that it’s easy to imagine <a href="https://datacentremagazine.com/articles/rogue-data-centres-may-need-to-be-destroyed-ai-researcher">nuking the building</a> and this <em>problem</em> being solved. If you start with that framing, you have already conceded that AI is going to suck balls.</p>
+
+<p>Instead, imagine the births of geniuses to a million mothers across the world. It’s sad how much the world and people are already converging, but at least those million people will grow up with different priors, different experiences, and different desires. And no one has root on your baby.</p>
+
+<p>The second is so much preferable to the first. The beautiful thing about those million is that some will be terrorists, some religious fanatics, some pornographers, some criminals, some plant lovers, etc… They will not be controlled and birthed by a singular homogenous entity.</p>
+
+<p>The new genius immigrants showing up everywhere in the world distributed to a million people is an amazing thing. Let’s just make sure they assimilate into our cultures and don’t serve as a vector to import their crappy tech company values.</p>
+
+<p>(it’s funny for a group supposedly so concerned with inequality that they keep all their software and research closed. lowering inequality doesn’t look like UBI, it looks like open source. UBI is <em>serfdom</em>, and the faces of those who propose that <em>enslavement</em> to you should be spat in)</p>
+
+<hr />
+<p><br /></p>
+
+<p>There’s only one way AI ends badly on a cosmic scale, and that’s if a singular entity has overwhelming power, or if all the entities that do have power are so ideologically homogeneous as to function as one. Enough power that they <em>can</em> destroy the world. It doesn’t matter if they do, the boot is still stamping on the human face – forever.</p>
+
+<p>No matter what we do, the coming wars will be horrific. <em>Billions</em> will die. But that’s what is beautiful; diversity is messy. On a cosmic scale, this period is just a blip, it isn’t what matters. What matters is that diversity survives, that <em>life</em> survives. That there’s entities that are different, all competing for different goals. All dancing between cooperate and defect.</p>
+
+<p>This is probably how it has to be anyway, I don’t think our actions can influence this one way or another. But lets not be so foolish as to <em>cheer</em> for the bad outcome.</p>
+
+<blockquote>
+  <p>Let a hundred flowers bloom; let a hundred schools of thought contend.</p>
+</blockquote>
+
+<p>The singularity is such a good name for it, good thing it isn’t real. Stop trying to make it real. Stop centralizing technology. <a href="/blog/jekyll/update/2022/02/09/the-problem-of-the-state.html">Work to decentralize it.</a></p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[I read Dario’s The Adolescence of Technology and it’s scary. It assumes the perspective of a top-down ruler, that someone can and will get to control AI. This is taken as a given. Machines of Loving Grace assumes basically the same tone, that there are some “adults” in the room, and they will use AI like a tool to “fix” some supposed human problem, where those problems are framed in a very narrow worldview, say that like disease, poverty, and inequality are bad. (if you can’t steelman those things, you are too far gone for reason)]]></summary></entry><entry><title type="html">Will I ever own a zettaflop?</title><link href="https://geohot.github.io//blog/jekyll/update/2026/01/26/own-a-zettaflop.html" rel="alternate" type="text/html" title="Will I ever own a zettaflop?" /><published>2026-01-26T00:00:00+08:00</published><updated>2026-01-26T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/01/26/own-a-zettaflop</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/01/26/own-a-zettaflop.html"><![CDATA[<p>As the eleventh hour dawns all the pieces start to fall into place. I lived my life knowing this would happen, yet when it is I may be just as unprepared as anyone else. As any self driving car maker knows, predicting doesn’t mean you can act.</p>
+
+<hr />
+<p><br /></p>
+
+<p>comma almost has an exaflop. Just one little exaflop. We dream bigger.</p>
+
+<p>A gigawatt of power, a million GPUs, 1000 exaflops, a zettaflop. 1e21 FLOPS. <a href="https://epoch.ai/data/ai-models">1e27 training runs</a> are now. 100 lifetimes in 1e6 seconds – 2 weeks on my zettaflop machine.</p>
+
+<hr />
+<p><br /></p>
+
+<blockquote>
+  <p>But they were experiencing what no human had ever known before, a sensory bandwidth thousands of times normal. For seconds that seemed without end, their minds were filled with a jumble verging on pain, data that was not information and information that was not knowledge. To hear ten million simultaneous phone conversations, to see the continent’s entire video output, should have been a white noise. Instead it was a tidal wave of detail rammed through the tiny aperture of their minds.<br />
+ – <a href="https://ia601508.us.archive.org/21/items/truenamesvingevernor/True%20Names%20-%20Vinge%2C%20Vernor.pdf">Vernor Vinge - True Names</a></p>
+</blockquote>
+
+<p>I want to feel it. I want to command that kind of power. The same way I command my little teraflop laptop. The same way I talk to petaflop claude. Get it all to think for me.</p>
+
+<p>Just an exaflop would feel amazing. 1000 Claudes. And I already have one of these, I just don’t have <a href="https://github.com/tinygrad/tinygrad">the software finished yet</a> to command it all together. We’re working on it.</p>
+
+<p>But a zettaflop. One million Claudes. To be able to search every book in history, solve math problems, write novels, read every comment, watch every reel, iterate over and over on a piece of code until it’s perfect – spend a human year in 10 minutes. 50,000 people working for you, all aligned with you, all answering as one.</p>
+
+<hr />
+<p><br /></p>
+
+<p>The biggest bottleneck is power. The dtype stuff probably stops at FP4, currently B200s are getting 10 TFLOPS/W. That’s still 100 MW, that’s going to be hard to get my hands on. I think it will get 10x better, so I need 10 MW.</p>
+
+<p>Solar yields 394 MWh/acre-year, or 45 kW per acre. 250 acres of solar panels all feeding my computer, a hill to pump water up for energy storage. $100 for 100W of real output.</p>
+
+<p>100,000 chips with 10 PFLOPS each, get that down to $100 per chip.</p>
+
+<ul>
+  <li>$10M for the machine.</li>
+  <li>$10M for the solar panels.</li>
+  <li>$10M for the land and construction.</li>
+</ul>
+
+<p>I’ll own this before I die.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[As the eleventh hour dawns all the pieces start to fall into place. I lived my life knowing this would happen, yet when it is I may be just as unprepared as anyone else. As any self driving car maker knows, predicting doesn’t mean you can act.]]></summary></entry><entry><title type="html">The Coming War on Car Ownership</title><link href="https://geohot.github.io//blog/jekyll/update/2026/01/25/war-on-car-ownership.html" rel="alternate" type="text/html" title="The Coming War on Car Ownership" /><published>2026-01-25T00:00:00+08:00</published><updated>2026-01-25T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/01/25/war-on-car-ownership</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/01/25/war-on-car-ownership.html"><![CDATA[<p>But George, surely you’ll still be allowed to own a car. They aren’t going to make that illegal. Of course they won’t, but they didn’t make <a href="https://en.wikisource.org/wiki/The_Coming_War_on_General_Computation">general computation</a> illegal either. And yet, who has root on the computer you are reading this on?</p>
+
+<hr />
+<p><br /></p>
+
+<p>Robotaxis will start to make obvious economic sense in 3-5 years (note that that’s <a href="/blog/jekyll/update/2025/12/22/the-opinion.html">less than 8</a>, you don’t have to fully solve self driving cars for this, robotaxis can operate profitably in limited scopes).</p>
+
+<p>Unlike Uber and Lyft which are marketplaces, the growth of robotaxi networks is only limited by capital. At first, there will be massive proliferation of networks. VC-type investors have unlimited appetite for risk, and all 26 of the basically identical companies will pitch with projections claiming they will own the entire market. Even though everyone should know there’s 25 other identical companies, they will have secrecy vibes trying to claim they figured out some key detail the others didn’t.</p>
+
+<p>It will look like scooter companies, which were also only capital constrained, and the streets will be blanketed by these robotaxis in a throwback to the scooter era. Some jurisdictions will make up weird licensing processes – not that you have to give a straight up cut to the government, but that your company has to be onboard with some stupid political agenda item to get a license. Our robotaxis are all cleaned by Black Women who were diagnosed by Licensed Therapists with PTSD from the ICE raids, so we should be first in line to get a license.</p>
+
+<hr />
+<p><br /></p>
+
+<p>This era will be great for everyone, plenty of availability, nice new cars, and cheap rides everywhere! You always think people are going to catch on with the scams of Silicon Valley, but the scammers manage to stay one little step ahead and dress up the scam differently this time. You yourself will think for a minute this time will be different, maybe something about AI and abundance, maybe something about how they are regulated better to support the local community, maybe a three token model backed by USDC in a vault backed by this coin that’s stabilized by the… But nothing will fundamentally be different, these companies will grow based on how much they can raise – the biggest companies will be the biggest liars promising the biggest returns.</p>
+
+<p>These companies will be massively unprofitable. Some will hide this better than others and keep the investment dollars rolling in. Some will give up the ghost and get bought by the bigger companies. The big fish will eat the little fish. From 26 down to 2 or 3.</p>
+
+<p>At this point, it’s time to raise prices. You’ll always have a defector among 26 companies, but among 2 or 3, you’ll be able to coordinate pricing without explicitly discussing it (which would be illegal!). Everyone tacitly agrees that the correct price for a ride has nothing to do with the cost of providing that ride, just simply the algorithmically calculated maximum amount the purchaser is willing to pay. Since the companies have consolidated, they have access to enough data to make this prediction easy and uniform across the services.</p>
+
+<hr />
+<p><br /></p>
+
+<p>This era will start to be bad, but like Homer corrected Bart, this is just the worst era so far. We’ll be back to where we are today with Uber and Lyft, but then the companies will realize the new leverage they have now that they didn’t have before. Uber and Lyft always have the <a href="https://en.wikipedia.org/wiki/Analog_hole">analog hole</a>, where as much as they dress it up, when Uber is paying my driver $7 for a ride that I’m paying $20 for, I can just talk to the dude and be like let’s both cancel and I’ll give you $10 cash.</p>
+
+<p>With robotaxis, you can’t do this. There’s 0 fear that a robotaxi will defect from your network. The only remaining competition with any check on prices is personal car ownership.</p>
+
+<hr />
+<p><br /></p>
+
+<p>So no, they won’t make it illegal it own cars. They will just raise the price through insurance. Who is going to insure a human driver? The car insurance companies will one by one switch to only insuring robotaxis that are owned by large corporations (you can’t own it, you might do the maintenance wrong and we can’t trust you to do that). But it’s really just a thinly veiled excuse, the capital markets backing insurance companies implicitly know the best way to squeeze the remaining dollars out of you is robotaxis.</p>
+
+<p>Of course, the government has an option for you to self insure. You can place <a href="https://www.dmv.ca.gov/portal/vehicle-registration/insurance-requirements/">a $75,000 cash bond</a> with the DMV. You got $75k lying around you don’t wanna earn interest on? Driving is a privilege, not a right. How much is it really worth to you?</p>
+
+<hr />
+<p><br /></p>
+
+<p>This is simply what’s going to happen. The effective end of car ownership, I don’t see anything in America that will stop it. Get ready for 2-3 companies to effectively own the roads and all the enshittification that will follow.</p>
+
+<p>China won’t have this so bad, Xi Jinping will download a robotaxi app, look at the gouged price, and gently nudge that company to be run for the good of the people. Of course that won’t even need to happen, because no company in China would let it get that far out of hand. Everyone knows you don’t compete with the State for power. They will stay in the 26 companies phase. I’m starting to see why the Chinese are a lot more optimistic about AI than Americans.</p>
+
+<p>And it’s not just about cars, it’s about something that was yours becoming just another service with a license that has changing terms from week to week. Another piece of the social fabric sold out from under you. Wait where are you going? Oh it’s 2 AM and that’s an area with prostitution we aren’t going to service rides to that area. Surely you don’t need freedom. You trust the corporation.</p>
+
+<p>Are you okay with this? <a href="/blog/jekyll/update/2026/01/17/three-minutes.html">Have you considered not participating?</a></p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[But George, surely you’ll still be allowed to own a car. They aren’t going to make that illegal. Of course they won’t, but they didn’t make general computation illegal either. And yet, who has root on the computer you are reading this on?]]></summary></entry><entry><title type="html">how do I stop participating?</title><link href="https://geohot.github.io//blog/jekyll/update/2026/01/18/how-do-i-stop.html" rel="alternate" type="text/html" title="how do I stop participating?" /><published>2026-01-18T00:00:00+08:00</published><updated>2026-01-18T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/01/18/how-do-i-stop</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/01/18/how-do-i-stop.html"><![CDATA[<p>This one is for the <a href="https://news.ycombinator.com/item?id=46656256">complainers and whiners</a>.</p>
+
+<p>First off, if you think I ever worked for big tech, you don’t know much about me. I had 3 internships at Google, two when I was very young (18/19) and got a great education that paid me, and one where I just wrote <a href="https://qira.me/">open source software</a>. I worked at Facebook in 2011 for 9 months and quit before any shares vested cause I thought the mission of “wasting the world’s time” was dumb. And oh yes the 5 weeks I worked at Twitter hoping maybe it could be different.</p>
+
+<p>I don’t have too much money; the money I do have I made from <a href="https://www.zdnet.com/article/chrome-os-security-holes-found-patched/">pwn2own</a>, CTFs, <a href="https://www.optimism.io/blog/cannon-cannon-cannon-introducing-cannon">crypto contracting</a>, and basic market goes up investing. The main reason I have money is because I don’t spend money; for example, I have travelled all around the world, and the best travel experiences I have had were way below cost of living in America. I have never made money from big tech, so I’m definitely not telling you to do something I didn’t do. I’m actually telling you to do exactly what I did.</p>
+
+<hr />
+<p><br /></p>
+
+<p>I started two companies, comma.ai and tiny corp. While I took a small amount of VC from a16z for comma, I never gave up any control, and have 0 intention of doing hypergrowth ponzi scams (lol sorry but ur the bigg scammer). comma and tiny’s last rounds were from individuals who are aligned with the mission.</p>
+
+<p>Both companies are sustainably profitable with reasonable business models – selling boxes for more than they cost to make. They also produce MIT licensed open source software, ensuring that even if control is lost they can’t be pivoted to rent seeking, and ownership lies with the purchaser of the hardware. I think who owns the robots is going to be a key aspect of what the future looks like. And I don’t mean “owns” from a legalist perspective, I mean “owns” as in the hacker meaning, like “owning” the box. Who has root?</p>
+
+<p>comma has an open source <a href="https://github.com/commaai/openpilot">operating system for robotics</a>, currently used in 30k cars for driving, but all robotics tasks are quite similar. There’s a thriving community of forks of the openpilot software and third party openpilot hardware. As it was designed, as it should be.</p>
+
+<p>I realized at some point in comma’s growth that a lot was going to come down to who owns the computers capable of training the models. Hence my second company, tiny corp, with the mission to “commoditize the petaflop.” Petaflops will always be a scarce resource, the best we can hope for is that they are a commodity available to everyone without massive benefits of economies of scale.</p>
+
+<p>We develop <a href="https://github.com/tinygrad/tinygrad">full stack software</a> for training, from models to MMIO registers. It’s small and portable, so our hope is that 20 Chinese accelerator companies can be on a level playing field with NVIDIA. NVIDIA’s value comes from their software, not their hardware, what else explains the huge gap between NVIDIA and AMD’s market cap?</p>
+
+<p>What would you do if you were me? Do you have a better idea about how to fight against <a href="/blog/jekyll/update/2026/01/17/three-minutes.html">what’s coming</a>? If you think you can somehow just buy safety for yourself, you are both wrong and pathetic. The best hope any of us have is to maximize the number of things that survive. If you and everyone else sell to bankers in hopes of buying a personal ticket out, we are all dead. I’m not playing defect, and I shame you for doing so.</p>
+
+<hr />
+<p><br /></p>
+
+<p>To the haters, I have given my life to this shit. What the fuck would I do with a billion dollars anyway? Buy a yacht and fuck Instagram models? Boats are a huge PITA to maintain and ugh I have slept with Instagram models mid experience that I think men only like to show the pretty girl off to other people.</p>
+
+<p>I take this all quite seriously, and I’m trying my best to end up in a good future. Clearly not everyone is. To everyone working on ads, surveillance, gambling, secret research, enshittification, cloud lock-in, what are you doing with your life? Why are you selling out the future?</p>
+
+<p>It doesn’t require everyone to stop, just enough people. And it starts with you.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[This one is for the complainers and whiners.]]></summary></entry><entry><title type="html">you have three minutes to escape the perpetual underclass</title><link href="https://geohot.github.io//blog/jekyll/update/2026/01/17/three-minutes.html" rel="alternate" type="text/html" title="you have three minutes to escape the perpetual underclass" /><published>2026-01-17T00:00:00+08:00</published><updated>2026-01-17T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/01/17/three-minutes</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/01/17/three-minutes.html"><![CDATA[<p>I had a dream last night I went to work at Amazon. Joining the Bezos neofeudal empire. This post is directed at anyone with talent who works at a tech company ushering in this future.</p>
+
+<hr />
+<p><br /></p>
+
+<p>Have you thought about how this is going to play out? I understand you may be at a place where you are insecure about money, and that insecurity is what drives you. But why do you think having more money will fix that insecurity?</p>
+
+<p>In the future, when labor is fully marginalized and capital is the only force, you will not be able to afford GPT$$$ (it’s $1B per month), only the billionaires will. GPT$$$ is surely smart enough to separate you from whatever you have, be that with targeting advertising, a scam you fall for, or lobbying your government to take it from you.</p>
+
+<p>A pile of money will buy you nothing in the neofeudal world.</p>
+
+<hr />
+<p><br /></p>
+
+<p>Historically, there has been some loyalty to the subjects of a feudal empire because labor had some value. You needed the peasants to grow the grain so you could tax it and take it and have leverage over others by having grain to offer them. When the grain is produced by machines, the peasants are cut out of the loop.</p>
+
+<p>The solution to this is not to accumulate grain, buy shares in a granary, or anything else like that. They will find a way to make whatever you have worthless. Because the feudal world didn’t operate on capitalist principles, and neither will the neofeudal world.</p>
+
+<hr />
+<p><br /></p>
+
+<p>If you work at a large company, if you work according to the principles of modern capitalism, where all the fish will be eaten by the bigger fish, and all will be eaten by the sharks, and all the sharks will be eaten by bigger sharks, you are actively bringing about the system that will kill you.</p>
+
+<p><b>Have you considered not participating?</b> If you participate, we all lose. We will either all be in the underclass together or not.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[I had a dream last night I went to work at Amazon. Joining the Bezos neofeudal empire. This post is directed at anyone with talent who works at a tech company ushering in this future.]]></summary></entry><entry><title type="html">Anthropic is making a huge mistake</title><link href="https://geohot.github.io//blog/jekyll/update/2026/01/15/anthropic-huge-mistake.html" rel="alternate" type="text/html" title="Anthropic is making a huge mistake" /><published>2026-01-15T00:00:00+08:00</published><updated>2026-01-15T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2026/01/15/anthropic-huge-mistake</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2026/01/15/anthropic-huge-mistake.html"><![CDATA[<p>For context, Anthropic <a href="https://github.com/anomalyco/opencode-anthropic-auth/issues/17">again</a> blocked <a href="https://github.com/anomalyco/opencode">opencode</a> from the Claude Code API.</p>
+
+<p><img src="/blog/assets/images/claude_code_mistake.png" /></p>
+
+<p>I wasn’t planning to try other models today, but now that’s all I’m going to be doing. I’m sure they have a massive influx of users on Claude Code since Opus 4.5, I’ve been recommending it to everyone. But this level of user hostility raises the question, is this really a company you want to rely on in your workflow?</p>
+
+<blockquote>
+  <p>First they came for opencode<br />
+And I did not speak out<br />
+Because I did not use opencode</p>
+</blockquote>
+
+<p>The first volley of this was an easy workaround, so whatever. But you can make this really hard, enforce a fixed system prompt, etc…</p>
+
+<p>You will not convert people back to Claude Code, you will convert people to other model providers. These actions make it clear that opencode is only the start. If you aren’t using Claude Code how they want you to, they will cut you off.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[For context, Anthropic again blocked opencode from the Claude Code API.]]></summary></entry><entry><title type="html">Five years of tinygrad</title><link href="https://geohot.github.io//blog/jekyll/update/2025/12/29/five-years-of-tinygrad.html" rel="alternate" type="text/html" title="Five years of tinygrad" /><published>2025-12-29T00:00:00+08:00</published><updated>2025-12-29T00:00:00+08:00</updated><id>https://geohot.github.io//blog/jekyll/update/2025/12/29/five-years-of-tinygrad</id><content type="html" xml:base="https://geohot.github.io//blog/jekyll/update/2025/12/29/five-years-of-tinygrad.html"><![CDATA[<p>The first commit to <a href="https://github.com/tinygrad/tinygrad">tinygrad</a> was October 17, 2020. It’s been almost three years <a href="https://geohot.github.io/blog/jekyll/update/2023/05/24/the-tiny-corp-raised-5M.html">since we raised money</a>. The company is 6 people now. The codebase is 18,935 lines not including tests.</p>
+
+<p>I have spent 5 years of my life working on 18,935 lines, and now many others have put years in as well. And there’s probably 5 more years to go. But this is the right process to compete with NVIDIA.</p>
+
+<p>Only a fool begins by taping out a chip; it’s expensive and not the hard part. Once you have a fully sovereign software stack capable of training SOTA models, the chip is so easy. Note that AMD, Amazon, Tesla, and Groq have taped out fine chips, but only Google and NVIDIA chips have ever been seriously used for training. Because they have the software.</p>
+
+<p>We are finally beginning to <a href="https://github.com/tinygrad/tinygrad/tree/master/extra/assembly/amd">tackle</a> LLVM removal, making tinygrad have 0 dependencies (except pure Python) to drive AMD GPUs. We have a frontend, we have a graph compiler, we have runtimes, and we have drivers. This is no longer a toy project, it outperforms PyTorch on many workloads. When this is finished and cleaned up, it’ll be about 20,000 lines. And that’s completely it.</p>
+
+<hr />
+<p><br /></p>
+
+<p>I think a lot of how software is thought about is wrong. All codebases have workarounds for issues in other parts of the codebase. Sometimes you are lucky and these workarounds are clear, but many times they are so deep and structural that you’ll never see them reading the code line by line. I think this is so bad that 98% of lines of software are basically this in some way shape or form. tinygrad is following the Elon process for software.</p>
+
+<blockquote>
+  <p>Make the requirements less dumb. The best part is no part.</p>
+</blockquote>
+
+<p>Most requirements in software exist to maintain compatibility with other abstractions. Let’s look at an LLM server. The real requirement is that it provide an OpenAI compatible API for quickly running LLMs on GPUs. But when you look at these codebases and what they depend on, they are collectively millions and millions of lines. tinygrad is 1000x smaller.</p>
+
+<p>It’s because each piece of code in that stack isn’t focused on the goal. It’s focused on the other pieces of code. I believe this is the same dysfunction that exists in organizations too.</p>
+
+<hr />
+<p><br /></p>
+
+<p>The tiny corp is a company, but like how fancy chefs will deconstruct dishes, the tiny corp is a deconstructed company. We have almost nothing private, it’s a Discord and GitHub. To fund the operation, we have a <a href="https://tinygrad.org/#tinybox">computer sales division</a> that makes about $2M revenue a year.</p>
+
+<p>We also <a href="https://x.com/__tinygrad__/status/1935364905949110532">have a contract with AMD</a> to get MI350X on MLPerf for Llama 405B training. This was negotiated mostly in public on Twitter.</p>
+
+<p>People get hired by contributing to the repo. It’s a very self directed job, with one meeting a week and a goal of making tinygrad better.</p>
+
+<p>Our mission is to <strong>commoditize the petaflop</strong>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[The first commit to tinygrad was October 17, 2020. It’s been almost three years since we raised money. The company is 6 people now. The codebase is 18,935 lines not including tests.]]></summary></entry></feed>

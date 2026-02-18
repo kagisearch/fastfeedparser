@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>Technobabble</title>
+    <link>https://technobabble.bearblog.dev</link>
+    <description>I'm a professional software engineer based in the US. This is my first time making a blog; don't expect much consistency in terms of topics or post frequency...</description>
+    <atom:link href="https://technobabble.bearblog.dev/feed/?type=rss" rel="self" type="application/rss+xml"/>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <lastBuildDate>Wed, 18 Feb 2026 02:17:30 +0000</lastBuildDate>
+    <item>
+      <title>Fine, I'll try AI</title>
+      <link>https://technobabble.bearblog.dev/fine-ill-try-ai/</link>
+      <description>&lt;p&gt;In the last couple weeks, various folks have written about feeling an inflection point using agentic AI for building software. The consensus seems to be that these tools have crossed some threshold into being genuinely game-changing, and maybe there's no turning back. The piece &lt;a href='https://crowprose.com/blog/competence-as-tragedy/'&gt;Competence As Tragedy&lt;/a&gt; especially got me thinking. It's not long, so I'd recommend reading the whole thing, but this feels like the heart of it:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[W]hat does it mean to keep practicing a craft you love when you suspect it's dying?&lt;/p&gt;
+&lt;p&gt;The skills might be depreciating, but the attention, the way of seeing systems, the pleasure of making something work, that's not separable from who I am. I didn't become an engineer because the market demanded it. I became one because my brain works this way, because I like the puzzle, because there's something satisfying about building things that function.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All this has pushed me to reconsider my (so far) lack of use of agentic AI as a professional software engineer. This article is me writing out my thoughts on the matter, as they stand right now, and my decision for how to proceed in this current moment.&lt;/p&gt;
+&lt;h2 id=ethics&gt;Ethics&lt;/h2&gt;&lt;p&gt;First off, I am tired of people writing things like this and not properly acknowledging the ethical issues of generative AI&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;. These models are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Trained on stolen data,&lt;/li&gt;
+&lt;li&gt;Using unreasonable amounts of electricity and other resources at a moment where humanity needs to be cutting down on our environmental impact,&lt;/li&gt;
+&lt;li&gt;Accelerating the atomization of society and the destruction of our shared understanding of the world,&lt;/li&gt;
+&lt;li&gt;Owned by a handful of Silicon Valley oligarchs who clearly have no interest in the well-being of individuals or humanity as a whole, and&lt;/li&gt;
+&lt;li&gt;Likely not even financially viable in their current state, in which case this will cause a major economic crisis when the AI bubble bursts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It sucks a little of my soul each time I hear someone at work talk about AI tools on a purely technical basis, without any consideration of these ethical issues. These are cool and powerful tools, with lots of technical nuance that's interesting to discuss and engineer, but &lt;a href='https://calebhearth.com/dont-get-distracted'&gt;don't get distracted&lt;/a&gt;. We as engineers cannot choose to ignore ethics in our professional decision-making.&lt;/p&gt;
+&lt;p&gt;All that being said, I don't feel that I have any notable impact on the harms being done. I know this is a doomer take, but that's where my head is right now. I'm not going to lead some luddite rebellion against AI at my workplace. My employer already has floating licenses for these tools, so what marginal impact will I have by trying them out? It's not zero, but &lt;a href='https://www.simonpcouch.com/blog/2026-01-20-cc-impact/'&gt;it seems like it's small enough&lt;/a&gt; that I'm willing to begrudgingly continue.&lt;/p&gt;
+&lt;p&gt;There's a chance that if I start using these tools regularly, the ethics will end up making me queasy enough that I choose to disengage even if I find them otherwise useful and/or enjoyable. We'll see.&lt;/p&gt;
+&lt;h2 id=my-history-with-ai&gt;My History With AI&lt;/h2&gt;&lt;p&gt;I've used AI for some one-off personal and professional tasks. These were via chatbots, where I ask a specific question and I'm looking for a clear answer. I have been relatively unimpressed with the results, though I haven't put much effort into changing my usage to prompt better responses.&lt;/p&gt;
+&lt;p&gt;For a while I told myself that once my job had a nice plug-and-play setup for agentic workflows, I would give it a try. But that happened a couple months ago and I haven't touched it. I told myself that if a task came up that felt like a good fit for the AI, I'd give it a go, but that never happened -- each task feels either small enough to not warrant learning a new system, or large enough that I don't want to entrust it to the AI on my first try.&lt;/p&gt;
+&lt;h2 id=so-what-now&gt;So What Now?&lt;/h2&gt;&lt;p&gt;My plan is to spend a week trying my best to learn some of these tools by using them in my day-to-day work.&lt;/p&gt;
+&lt;p&gt;&lt;a href='https://mitchellh.com/writing/my-ai-adoption-journey'&gt;This article&lt;/a&gt; seems like a reasonable guide for how to gradually grow experience around using these tools. On the plus side, I should be able to reuse a lot of the "harness engineering" that my coworkers have been working on as I do this.&lt;/p&gt;
+&lt;p&gt;My main goal from this is to learn. I think I already have a solid understanding of the technology and frameworks surrounding LLMs, and what their strengths and weaknesses are. However, none of that is from practical experience. I can &lt;em&gt;talk about&lt;/em&gt; what the AIs are good at and where they struggle, and I &lt;em&gt;think&lt;/em&gt; I'm right (my opinions are at least formed by reading and talking to smart, informed people). But any time I have a conversation about this stuff, I worry that I might be full of shit. After this week is done, I will hopefully have enough experience to feel confident I'm not full of shit (at least until there's some other paradigm-shift in how programming is done...)&lt;/p&gt;
+&lt;p&gt;After this week-long trial, I'll reassess and see how I'm feeling.&lt;/p&gt;
+&lt;h2 id=im-afraid&gt;I'm Afraid&lt;/h2&gt;&lt;p&gt;This all scares me. I don't like admitting that, but it does.&lt;/p&gt;
+&lt;p&gt;I'm afraid in so many ways for our world and how we're all going to make it through these unprecedented times.&lt;/p&gt;
+&lt;p&gt;I'm afraid that the joy I've always found in programming work will be lost, if programming turns into managing AI agents. Maybe non-AI programming will continue to be a viable option, or maybe I can find similar joy in AI-based workflows, but neither seem like a sure bet.&lt;/p&gt;
+&lt;p&gt;I'm afraid for the long term prospects of being a professional software engineer. I'm 27; I've been programming for almost half my life now. I love it, and for better or worse it's part of my identity. I think I'd struggle if AI significantly cuts down the need for this kind of work and I have to redirect my career path.&lt;/p&gt;
+&lt;p&gt;And I'm afraid for the craft of software itself. If AI tools become the norm for writing software, does that mean perpetual stagnation in language and framework design?&lt;/p&gt;
+&lt;p&gt;I recognize that I may be blowing things out of proportion, but this is the baggage that I've got. It seems likely at this point that AI-assisted software engineering is not just a fad. I hope I've made it clear that I'm not doing this just because "AI is the future, don't get left behind 🚀🚀🚀". But there is also an aspect that I'm afraid lacking this experience will leave me at a disadvantage compared to other developers if/when I end up job-searching in the future.&lt;/p&gt;
+&lt;h2 id=conclusion&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I feel like I'm supposed to have some big smart conclusion for all this, but I don't. I'm giving in and trying agentic AI, despite remaining unhappy with the ethical ramifications of the decision. We'll see how it goes.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;Any time I mention "AI" through the rest of this article, I mean "GenAI". I have significant complaints about the language we use around these things, but that's not for today.&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      <author>hidden (technobabble)</author>
+      <guid isPermaLink="false">https://technobabble.bearblog.dev/fine-ill-try-ai/</guid>
+      <pubDate>Mon, 09 Feb 2026 23:38:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>2025: Year of Weigh Anchor</title>
+      <link>https://technobabble.bearblog.dev/2025-year-of-weigh-anchor/</link>
+      <description>&lt;p&gt;Instead of a New Year's Resolution, I assign each calendar year a "Yearly Theme".&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt; Around the new year, I decided that 2025 shall be the "Year of Weigh Anchor". In a sentence, my goal for this year is:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If I'm anxious about something I'm avoiding, I should do that thing as soon as feasible.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In fact, I've become aware of some chores I'm procrastinating on by writing this. I will continue once they're done!&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;aaaaaand I'm back! That only took (&lt;em&gt;checks watch&lt;/em&gt;) 3 weeks! What was I talking about again?&lt;/p&gt;
+&lt;h1 id=yearly-themes&gt;Yearly Themes&lt;/h1&gt;&lt;p&gt;Unlike a New Year's resolution, a yearly theme doesn't have a failure condition. Themes tend to be adaptable to new and unexpected situations, as well as to shifts in my own perspective. The goal for any given theme is that, by the end of the year, the theme feels embedded in the way I think and go about the world.&lt;/p&gt;
+&lt;h1 id=year-of-weigh-anchor&gt;Year of Weigh Anchor&lt;/h1&gt;&lt;p&gt;As I mentioned in &lt;a href='https://technobabble.bearblog.dev/overcoming-my-political-avoidance/'&gt;my last post&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I tend to be an avoidant person. If something is stressing me out, my gut reaction will be to distract myself with some other bright shiny thing. At times, this leads me to procrastinate on tackling important things in my life.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What I've found, consistently, is that sitting down and doing the thing I've been avoiding isn't nearly as hard or as stressful as I had built it up to be. And then after I've done the thing, the weight is lifted off my shoulders.&lt;/p&gt;
+&lt;p&gt;The idea with this yearly theme is: what if I just &lt;em&gt;did the thing&lt;/em&gt; as soon as possible? If I hoist up this anchor and get the ship moving?&lt;sup class="footnote-ref" id="fnref-2"&gt;&lt;a href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt; I picture this applying in various facets in my life. At work, I sometimes avoid more tedious or stressful tasks. I typically have multiple personal chores that I'm "behind" on at any given moment. And it's easy in personal relationships to avoid the potential discomfort of deeper conversations.&lt;/p&gt;
+&lt;h1 id=the-year-so-far&gt;The Year So Far&lt;/h1&gt;&lt;p&gt;I've been living in this yearly theme for a month and a half now, and ooooh boy have I been weighing some anchor! I don't think any past yearly theme has led to this much insight on the subject matter, and it's only February! Here are a few things I've found already:&lt;/p&gt;
+&lt;h3 id=i-like-writing&gt;I Like Writing!&lt;/h3&gt;&lt;p&gt;This blog only exists because of this yearly theme. I started reading a number of tech and tech-adjacent blogs last year, and I had a feeling of "wouldn't it be neat if I did something like that".&lt;sup class="footnote-ref" id="fnref-3"&gt;&lt;a href="#fn-3"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Then, about a month ago, I realized that I could just do it! So I spun up this blog, and a few times now, I've actually sat down and written something (either because I wanted to, or because it felt like I was avoiding writing, and you know what that means!)&lt;/p&gt;
+&lt;p&gt;I've found that writing, in a somewhat polished style (as opposed to personal notes), forces me to get my thoughts properly arranged on a given topic. And this is then a great tool for actually engaging with a given topic if I would otherwise want to continue avoiding it.&lt;/p&gt;
+&lt;h3 id=prioritization&gt;Prioritization&lt;/h3&gt;&lt;p&gt;Another thing I've learned is that prioritization is hard. Okay, fine, I already knew that, but for some reason I wasn't expecting it to immediately be so important to this theme.&lt;/p&gt;
+&lt;p&gt;I've been more vigilant, trying to notice when I'm anxiously avoiding something, and it turns out I'm almost always a little bit anxious about something or other. There's simply not enough time to &lt;em&gt;do all the things&lt;/em&gt;, so at some point, this becomes a problem of prioritization, which opens a whole other can of worms!&lt;sup class="footnote-ref" id="fnref-4"&gt;&lt;a href="#fn-4"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h1 id=conclusion&gt;Conclusion&lt;/h1&gt;&lt;p&gt;I'm excited to see how the rest of this year goes. If I'm still doing this blog at the end of the year, I'll probably do a retrospective on the theme then.&lt;/p&gt;
+&lt;p&gt;⚓&lt;/p&gt;
+&lt;hr /&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;This was initially inspired by the &lt;a href='https://www.relay.fm/cortex'&gt;Cortex podcast&lt;/a&gt;&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-2"&gt;&lt;p&gt;I like having nautical names for my yearly themes. Credit goes to my partner for coming up with the "weigh anchor" analogy for this year.&lt;a href="#fnref-2" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-3"&gt;&lt;p&gt;I will admit there's a little part of me that wants to be a &lt;em&gt;cool tech blogger&lt;/em&gt;, having brilliant insights and amassing trillions of readers, but honestly I'm happy just doing this mostly for myself for the time being. I also recognize this hasn't really been a "tech" blog so far, which is also fine.&lt;a href="#fnref-3" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-4"&gt;&lt;p&gt;Jesse Alford's posts on &lt;a href='https://nonlinear.garden/archive/problem-zero/'&gt;"problem zero"&lt;/a&gt; and &lt;a href='https://nonlinear.garden/archive/slicing/'&gt;"slicing"&lt;/a&gt; are interesting on this topic (though also frustratingly abstract at times!)&lt;a href="#fnref-4" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      <author>hidden (technobabble)</author>
+      <guid isPermaLink="false">https://technobabble.bearblog.dev/2025-year-of-weigh-anchor/</guid>
+      <pubDate>Wed, 12 Feb 2025 05:22:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Overcoming my Political Avoidance</title>
+      <link>https://technobabble.bearblog.dev/overcoming-my-political-avoidance/</link>
+      <description>&lt;p&gt;Content warning: US politics, mild doomerism&lt;/p&gt;
+&lt;p&gt;I don't know how to engage with US politics in a healthy or productive way right now. In his first weeks in office, Donald Trump is wildly overstepping the jurisdiction of the executive branch, he's invited Elon Musk (along with the techbro lapdogs Elon drags around with him) to root around our nation's institutions with the express goal of destroying them, he's trying to stop the US from providing any international medical aid, he's trying to legislate trans people out of existence, and the list goes on and on&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;. I'm sure there are a dozen other things I could list here, each of which would make my blood fucking boil. Shouldn't we all be doing something about this?!&lt;/p&gt;
+&lt;h1 id=the-rubicon&gt;The Rubicon&lt;/h1&gt;&lt;p&gt;A couple weeks ago, Ian Danskin of Innuendo Studios released a video: &lt;a href='https://www.youtube.com/watch?v=0YFdwfNh5vs'&gt;The South Bank of the Rubicon&lt;/a&gt;. It's less than ten minutes, and I'd recommend you watch the whole thing, but the crux of it is:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I want you to decide, at this moment, what the Rubicon is for you. What is that undeniable instant where, if something drastic does not happen immediately, your rights and freedoms are forfeit? ... When would be the time to act? Write it down. Put it on your phone or your dry-erase board or a post-it on your bathroom mirror, so that when that moment comes, you will remember that this was your Rubicon. ... And ask yourself, when that moment comes, what is the right thing to do? You don't have to have an answer yet, but think on it. Because we haven't been doing it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I'd encourage you to do this too. What specific action could the current administration take, after which you would feel morally obligated to do something in response?&lt;/p&gt;
+&lt;h1 id=my-answer&gt;My Answer&lt;/h1&gt;&lt;p&gt;When I try to engage with this question, I struggle to come up with a "Rubicon" that feels like it could plausibly happen, but that hasn't already been crossed. I can't help but conclude that I &lt;em&gt;should have acted already, and haven't&lt;/em&gt;. And the next logical step in that thought is that I &lt;em&gt;should be acting now, but I'm not&lt;/em&gt;&lt;sup class="footnote-ref" id="fnref-2"&gt;&lt;a href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;. I should be doing something. But I don't know what I could do to help. It feels like anything I would do at an individual level would have no impact against the slight majority of voting Americans who seem committed to making things worse for everyone&lt;sup class="footnote-ref" id="fnref-3"&gt;&lt;a href="#fn-3"&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;And thinking about any of this makes me feel awful. I get a sinking feeling in the pit of my stomach whenever I see anything about the Trump administration. At my job, there are some TVs that are always tuned to CNBC, and often in the past weeks, they're discussing the implications of "Trump 2.0". I see headlines about his tariffs, the TikTok ban, the fact that he wants to meddle in the decisions of the federal bank. All this being reported as if it's business-as-usual, as if our country isn't on a knife's edge right now. And all of it makes me want to crawl in a hole.&lt;/p&gt;
+&lt;h1 id=avoidance&gt;Avoidance&lt;/h1&gt;&lt;p&gt;I've been reading a bunch of tech blogs lately. Reading about topics like "how to write good code", or "what makes a good team" are pleasant and productive-feeling to think about. But I can't shake the feeling that I'm also keeping myself knee-deep in this stuff because I don't want to engage with anything political&lt;sup class="footnote-ref" id="fnref-4"&gt;&lt;a href="#fn-4"&gt;4&lt;/a&gt;&lt;/sup&gt;. I've even been reading a bunch of posts from the early 00's recently (specifically Jeff Atwood's blog &lt;a href='http://blog.codinghorror.com/'&gt;Coding Horror&lt;/a&gt;). It's calming to immerse myself on these topics, with articles written at a time when few considered the deep social and political impacts that technology can (and will!) have. This part of me wants to keep my head down, focus on my craft, and carry on with my life.&lt;/p&gt;
+&lt;p&gt;I tend to be an avoidant person. If something is stressing me out, my gut reaction will be to distract myself with some other bright shiny thing. At times, this leads me to procrastinate on tackling important things in my life. I want to get better at this (this is my current yearly theme, and probably the topic of a future post). I fear I am doing this with politics right now. I don't want to.&lt;/p&gt;
+&lt;h1 id=next-steps&gt;Next Steps&lt;/h1&gt;&lt;p&gt;I need to eat my vegetables and engage more meaningfully with this, as long as I focus on doing so in a way that both:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;is productive. By this I mean it should actually have some impact on the world, beyond me feeling informed.&lt;/li&gt;
+&lt;li&gt;doesn't make me feel awful all the time. If it makes me feel awful, I will eventually stop engaging again&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So if my answer were to start reading more political news (and no other changes), this would fail both tests. I would be significantly more miserable and I wouldn't be making the world any better.&lt;/p&gt;
+&lt;p&gt;So what should I do?&lt;/p&gt;
+&lt;h3 id=drill-down&gt;Drill Down&lt;/h3&gt;&lt;p&gt;I strongly believe that the way people improve the world is by focusing on one specific problem, going deep instead of broad. Then, as long as different people choose different problems, together we will make meaningful progress on each of these fronts. This is something that John Green has discussed regarding his new book &lt;a href='https://www.johngreenbooks.com/everything-is-tuberculosis'&gt;Everything is Tuberculosis&lt;/a&gt; (hint: he's gone deep on Tuberculosis). So one next step for me is to try to pin down a more narrow scope than "US Politics", and focus my energy on understanding the problems in that area and what we should do about them.&lt;/p&gt;
+&lt;p&gt;I will likely still feel somewhat guilty for continuing to avoid some other areas (since Trump and the Republican party will presumably continue to do shitty things that demand attention), but I think this is the way I need to approach this.&lt;/p&gt;
+&lt;p&gt;I'm not entirely sure what front I should choose. I've already done a decent bit of reading on social media and its impacts on our minds and social habits, so something in this realm seems potentially relevant. Unfortunately, with my reading, I don't have any silver-bullet answers, but I suppose that makes sense. These meaningful issues require deep, intentional, ongoing engagement.&lt;/p&gt;
+&lt;h3 id=how-do-i-activism&gt;How do I Activism?&lt;/h3&gt;&lt;p&gt;I also have no real experience with political activism. I vote, and I've attended a protest or two, but the goal of enacting any real change through my actions feels infinitely far away. I think this is something I should do some more studying on.&lt;/p&gt;
+&lt;p&gt;Right now, this feels very open-ended to me. Do I try learning in a leftist, grassroots activism kind of lens? Or do I take try to learn more about the existing systems in place in the US, and how to work within them to effect change? I'll probably look into a variety of things and go from there.&lt;/p&gt;
+&lt;h3 id=donations&gt;Donations&lt;/h3&gt;&lt;p&gt;I also plan to look into charitable organizations that can help with the current situation. I can't promise I will end up donating to these, since I have to weigh whether charities focused on these US issues will have a comparable impact to charities focused on things like climate change, or the health and wellbeing of people in developing nations (which are the areas where the bulk of my charitable donations currently land).&lt;/p&gt;
+&lt;h1 id=conclusion&gt;Conclusion&lt;/h1&gt;&lt;p&gt;I guess I'd recommend you also think about this. Under what conditions would you feel obligated to engage in political action? Have these conditions already been met? If so, what are you going to do?&lt;/p&gt;
+&lt;hr /&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;I'm not citing sources here because, as this article will detail, it &lt;em&gt;stresses me out&lt;/em&gt; to read about this stuff!&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-2"&gt;&lt;p&gt;In moments where I'm really beating myself up, this will then lead to the conclusion &lt;em&gt;I would never take political action in response to any problem that isn't directly harming me&lt;/em&gt;.&lt;a href="#fnref-2" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-3"&gt;&lt;p&gt;I do recognize this is a horribly uncharitable interpretation of things. I know Trump supporters are not actively and consciously choosing to make things worse. However, for me at least, it's hard not to feel like this is what's happening.&lt;a href="#fnref-3" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-4"&gt;&lt;p&gt;Clearly, this comes from a place of significant privilege. Many people do not have the option to ignore politics if they feel like it, especially people who will be more directly impacted by the policies at hand.&lt;a href="#fnref-4" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      <author>hidden (technobabble)</author>
+      <guid isPermaLink="false">https://technobabble.bearblog.dev/overcoming-my-political-avoidance/</guid>
+      <pubDate>Sun, 09 Feb 2025 09:29:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>What I Would Want From a New Job</title>
+      <link>https://technobabble.bearblog.dev/what-i-would-want-from-a-new-job/</link>
+      <description>&lt;p&gt;I've been working as a software engineer for a number of years now, at the same company I joined after graduating as an undergrad. I'm reasonably happy with my current job, but I've been thinking lately about what another role could offer that would pull me away from where I currently am.&lt;/p&gt;
+&lt;p&gt;While I expect some of these would be pretty universal desires, note that this is a snapshot of my own personal takes as of January 2025.&lt;/p&gt;
+&lt;h3 id=basics&gt;Basics&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;The job must be based in █████████&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;, where I currently live. I've got enough ties here that I'm not interested in moving any time soon.&lt;/li&gt;
+&lt;li&gt;I want to work ≤40 hours a week, with little/no time spent "on-call".&lt;/li&gt;
+&lt;li&gt;I want to work next to most of the people I'm working with. I'm glad that COVID has made work-from-home more common for those who prefer it. But for me, I prefer working in an office for two primary reasons:&lt;ul&gt;
+&lt;li&gt;I like the physical gap between being 'at work' and 'at home'&lt;/li&gt;
+&lt;li&gt;I find collaborating with people in-person much more enjoyable and fulfilling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;I want to work on hard problems that require &lt;a href='https://www.youtube.com/watch?v=f84n5oFoZBc'&gt;stepping away and thinking deeply&lt;/a&gt;. I recognize every job has some amount of tedium, but the more of this kind of "deep" work, the better.&lt;/li&gt;
+&lt;li&gt;I want to develop my technical skills, further &lt;a href='https://ludic.mataroa.blog/blog/reverence-for-the-craft-business-and-your-immortal-soul/'&gt;honing my craft&lt;/a&gt; as a software engineer &lt;sup class="footnote-ref" id="fnref-2"&gt;&lt;a href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;. I want to gain exposure to powerful, well-designed systems (programming languages / frameworks / databases / etc.), both because these are useful tools to use and because I can learn things from their design. Some of the following points on this list are instrumental goals towards this end.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=tech&gt;Tech&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;The codebase should all be under version control, and commit messages should be consistently &lt;a href='https://cbea.ms/git-commit/'&gt;good&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;All code should be reviewed by at least one other engineer before being rolled out&lt;/li&gt;
+&lt;li&gt;Documentation should be reasonably prioritized&lt;/li&gt;
+&lt;li&gt;Unit and integration tests should be thorough, and kept green at all times &lt;sup class="footnote-ref" id="fnref-3"&gt;&lt;a href="#fn-3"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Code should be deployed frequently/continuously&lt;/li&gt;
+&lt;li&gt;Engineers should be expected to interact with the users of their system&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you're looking for more thoughts along these lines, check out &lt;a href='https://jvns.ca/blog/2013/12/30/questions-im-asking-in-interviews/'&gt;this article&lt;/a&gt; by Juia Evans, which inspired some of these points.&lt;/p&gt;
+&lt;h3 id=development-approach&gt;Development Approach&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;The people making architectural/design decisions should be the ones most familiar with the system. The engineering team shouldn't be worried about the company's &lt;a href='https://ludic.mataroa.blog/blog/brainwash-an-executive-today/'&gt;CTO getting sold some bag of magical SaaS beans&lt;/a&gt; and derailing everything.&lt;/li&gt;
+&lt;li&gt;The company should have a bias towards doing things &lt;em&gt;right&lt;/em&gt; over doing things &lt;em&gt;quickly&lt;/em&gt;. Care should be taken to ensure code remains readable and maintainable. If something needs to be half-assed to meet a deadline, time and effort should be put in to do it right afterwards.&lt;/li&gt;
+&lt;li&gt;When something in a system goes wrong, the focus should not be on blaming an individual, but instead on identifying and changing the characteristics of the system such that another failure of the same kind can't happen again.&lt;/li&gt;
+&lt;li&gt;The company should have a commitment to its employees' growth and learning in a sustainable way. In practice this could look like employees regularly attending conferences, or employees getting 20% time to work on whatever projects interest them, or even encouraging employees to take occasional sabbaticals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=people&gt;People&lt;/h3&gt;&lt;p&gt;I want to be surrounded by people who are more experienced and more knowledgeable than me, where I can learn and grow in a safe and relatively stable environment.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The company shouldn't be growing its engineering headcount by a significant amount. If a company is doubling in size every &lt;math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt; years, then after &lt;math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt; years I will be more tenured than half the people there (even assuming zero turnover). This is a great situation if I'm looking to move up into management, but that's not currently where my interests lie.&lt;/li&gt;
+&lt;li&gt;The team should have relatively low turnover rate. This limits the amount of manager/team churn, but also is an indicator that the company is a good place to work.&lt;/li&gt;
+&lt;li&gt;The team should be hiring experienced devs, as opposed to hiring folks straight out of college&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My current job fails the first and third of these checks, which has added up to a situation where I'm a few years out of college and I'm one of the most experienced/senior devs on my team. This is exciting in one respect, that I now have a decent bit of influence and respect within the team. But I don't know that much either! I feel like I have a lot more learning to do before I should be taking the role of the wise and knowledgeable expert.&lt;/p&gt;
+&lt;h3 id=not-evil&gt;Not Evil&lt;/h3&gt;&lt;p&gt;My final condition is that I want to feel like my job has a net positive impact on the world. I want to help build some technology that solves a real problem.&lt;/p&gt;
+&lt;p&gt;This filter has gotten tighter for me over the last few years, as I have come to see more and more of the current tech ecosystem as &lt;a href='https://www.wheresyoured.at/never-forgive-them/'&gt;malicious rot&lt;/a&gt;. So many tech 'products' suck not because of incompetence or because companies have failed to find good solutions to genuinely hard problems, but because &lt;a href='https://en.wikipedia.org/wiki/Enshittification'&gt;enshittifying&lt;/a&gt; the product will improve the company's growth metrics. I'm sure I'll continue to be mad at the state of the tech industry in other posts, but suffice to say this filters out many 'big tech' companies, as well as many VC-funded, 'disrupting' startups. If your business is based on an exploitative 'growth at all costs' model, I do not want to work for you.&lt;/p&gt;
+&lt;p&gt;Another consideration on this front is been the strategy of &lt;a href='https://en.wikipedia.org/wiki/Earning_to_give'&gt;earning to give&lt;/a&gt;. This is broadly what I've been doing for the last number of years&lt;sup class="footnote-ref" id="fnref-4"&gt;&lt;a href="#fn-4"&gt;4&lt;/a&gt;&lt;/sup&gt;. My current job, to my estimation, has roughly zero net impact on the world. However, my employer has a generous donation-matching program, which I have been fully utilizing. From a purely utilitarian perspective, this seems great, but I believe I would feel much more fulfilled if my job were also adding &lt;em&gt;some&lt;/em&gt; value to the world, instead of feeling like it's only there for me to earn money from.&lt;/p&gt;
+&lt;h3 id=red-flags&gt;Red Flags&lt;/h3&gt;&lt;p&gt;If a company/team matches any of these, I am going to be wary of working there, even if they otherwise fit my requirements.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The team blindly adheres to a specific development methodology without weighing the pros/cons of the methodology. If there's any required process that happens despite (almost) everyone involved understanding it's a waste of time, that's a very bad sign. Processes should be sufficiently flexible to suit the needs and desires of the team.&lt;/li&gt;
+&lt;li&gt;The company offers unlimited PTO (unless there is genuinely a company culture of taking a lot of PTO under this system). From my understanding, "Unlimited PTO" is often used as a selling point, but in practice often leads to employees taking less PTO because there's no clarity on how much PTO you're expected to take.&lt;/li&gt;
+&lt;li&gt;The company is not currently profitable and isn't going to become profitable in the very near future. I don't want to work on a sinking ship, nor a VC-funded loss-leading startup.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=green-flags&gt;Green Flags&lt;/h3&gt;&lt;p&gt;These are not requirements, but I'd be more interested in a role if the company/team fits any of these:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The company contributes to open-source projects.&lt;/li&gt;
+&lt;li&gt;The company demonstrates a genuine effort to hire and retain a diverse pool of talent. Iris at &lt;a href='https://deadsimpletech.com/'&gt;DeadSimpleTech&lt;/a&gt; has some good writing on what companies can do to help (or more often, simply &lt;em&gt;not hurt&lt;/em&gt;) marginalized people. I don't have any magic barometer to measure a company for this, but the diversity of their existing employees seems a reasonable first-order heuristic.&lt;/li&gt;
+&lt;li&gt;I've recently gotten interested in different programming methodologies, specifically Extreme Programming (XP), along with Test-Driven Development (TDD) and Pair Programming. I said above that &lt;em&gt;blindly&lt;/em&gt; following a methodology is bad, and that is true for these as well. But, I've heard some good things, especially from former employees of &lt;a href='https://en.wikipedia.org/wiki/Pivotal_Software'&gt;Pivotal Software&lt;/a&gt; like &lt;a href='https://www.simplermachines.com/the-mortifying-ordeal-of-pairing-all-day/'&gt;Nat Bennett&lt;/a&gt;&lt;sup class="footnote-ref" id="fnref-5"&gt;&lt;a href="#fn-5"&gt;5&lt;/a&gt;&lt;/sup&gt; and &lt;a href='https://nonlinear.garden/archive/'&gt;Jesse Alford&lt;/a&gt;, and this has made me very interested in trying out some different approaches to collaboration on software engineering projects. This is something I could try to spin up on a small scale within my existing team too, and maybe I will try that at some point.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=conclusion&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I expect it would be exceedingly hard to get a job that matches all of these requirements. I'm initially limiting myself to companies with an office near me where most employees work in-person. I'm also looking for somewhere without significant growth or turnover, which will inherently not have many job openings at any given time. And while I think my tech requirements are not a terribly high bar, I do expect that many companies would fail that as well.&lt;/p&gt;
+&lt;p&gt;I suppose the takeaway from this is that I should stay at my current job, or &lt;a href='https://ludic.mataroa.blog/blog/quitting-my-job-for-the-way-of-pain/'&gt;start something entirely new&lt;/a&gt;. Or maybe I'm too pessimistic about my assessment of how rare these qualities are in companies, and the grass really is greener somewhere else. For the time being though, I'm not looking to start my own business, nor am I eager to try applying to other jobs hoping to find a diamond in the rough. My current job fits my filters well enough. And in any case I'm sure there are other things I want in a job that I haven't explicitly thought of as requirements, because I haven't had a job without them!&lt;/p&gt;
+&lt;p&gt;Here's a &lt;a href='https://news.ycombinator.com/item?id=42800193'&gt;HackerNews Link&lt;/a&gt; for this post.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;Redacted for anonymity&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-2"&gt;&lt;p&gt;Yeah yeah, maybe it's best I &lt;a href='https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/'&gt;avoid putting such a solid label on myself&lt;/a&gt; but I feel like this is fine for where I'm at right now.&lt;a href="#fnref-2" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-3"&gt;&lt;p&gt;I read &lt;a href='https://antithesis.com/blog/is_something_bugging_you/'&gt;this article&lt;/a&gt; recently, and while it is blatantly an advertisement for this company's product, it also really makes me think about the powers you gain when you have truly broad test coverage.&lt;a href="#fnref-3" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-4"&gt;&lt;p&gt;I agree with some of the basic tenets of the 'Effective Altruism' movement, which has popularized this idea. But I'd like to clarify that, from what I've seen, the EA movement also fails to align with my values in some ways.&lt;a href="#fnref-4" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-5"&gt;&lt;p&gt;Okay maybe this article shouldn't be considered hearing a "good thing" about pair programming...&lt;a href="#fnref-5" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      <author>hidden (technobabble)</author>
+      <guid isPermaLink="false">https://technobabble.bearblog.dev/what-i-would-want-from-a-new-job/</guid>
+      <pubDate>Thu, 23 Jan 2025 02:38:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hello World</title>
+      <link>https://technobabble.bearblog.dev/hello-world/</link>
+      <description>&lt;h2 id=who-am-i&gt;Who am I?&lt;/h2&gt;&lt;p&gt;I'm sure I'll talk more about myself as I write here, but I'm a software engineer based in the US.&lt;/p&gt;
+&lt;h2 id=why-am-i-making-a-blog&gt;Why am I making a blog?&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;I've recently been reading a &lt;a href='https://ludic.mataroa.blog/'&gt;bunch&lt;/a&gt; &lt;a href='https://www.cjthex.com/essays/'&gt;of&lt;/a&gt; &lt;a href='https://taalumot.space/essential'&gt;good&lt;/a&gt; &lt;a href='https://nonlinear.garden/'&gt;writing&lt;/a&gt; &lt;a href='https://www.wheresyoured.at/'&gt;online&lt;/a&gt;, and have felt inspired. I am also a big fan of video essays, and would love to try my hand at that as well someday, but a blog seems like a much more manageable scale, if I'm actually trying to finish anything (which if you're reading this, I have finished at least one blog post. Yay!)&lt;/li&gt;
+&lt;li&gt;I sometimes have thoughts that swirl around my head, which won't settle into a coherent shape until I work with them a bit, putting them onto a page. I hope for this to be a space to explore things like that (whatever topics that ends up being over time)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=what-should-you-expect-here&gt;What should you expect here?&lt;/h2&gt;&lt;p&gt;I dunno, I'm just as new to this blog as you are!&lt;/p&gt;
+&lt;p&gt;The current things I'm considering writing about are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;my yearly theme for 2025: "Year of Weigh Anchor"&lt;/li&gt;
+&lt;li&gt;my requirements/wants for a software engineering job&lt;/li&gt;
+&lt;li&gt;my overall thoughts on the state of tech&lt;/li&gt;
+&lt;li&gt;my thoughts on the quote "We can never see past the choices we don't understand" from The Matrix Reloaded&lt;/li&gt;
+&lt;li&gt;the stock market is bad, and here's why&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We'll see what happens!&lt;/p&gt;
+</description>
+      <author>hidden (technobabble)</author>
+      <guid isPermaLink="false">https://technobabble.bearblog.dev/hello-world/</guid>
+      <pubDate>Fri, 17 Jan 2025 02:29:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

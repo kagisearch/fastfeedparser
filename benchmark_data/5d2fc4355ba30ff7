@@ -1,0 +1,1126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+  <channel>
+    <title>Pete Keen</title>
+    <link>https://www.petekeen.net/</link>
+    <atom:link href="https://www.petekeen.net/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>=description</description>
+    <lastBuildDate>Thu, 29 Jan 2026 19:44:34 GMT</lastBuildDate>
+    <language>en</language>
+    <generator>Lume v2.1.4</generator>
+    <item>
+      <title>Homelab Failure Domains</title>
+      <link>https://www.petekeen.net/homelab-failure-domains/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/homelab-failure-domains/</guid>
+      <content:encoded>
+        <![CDATA[<p>Everything is in shambles.</p>
+        <p>One machine is dead and probably not coming back.
+        Services are randomly scattered amongst the survivors.
+        My Kubernetes project is kinda-sorta paused.</p>
+        <p>I'm unnerved and want to get it all sorted out, but I need to do some thinking out loud first.</p>
+        <hr>
+        <p>My infrastructure currently consists of:</p>
+        <ul>
+        <li>
+        <p>Omicron, a Kubernetes cluster that is just barely functioning. It is currently running this site, VMSave, and basically nothing else. Consists of <code>hypnotoad</code>, <code>crushinator</code>, and a control plane VM running on a Wyse 5070 running Proxmox.</p>
+        </li>
+        <li>
+        <p>Nimbus, a Kubernetes cluster that is not functioning at all. I tried building out a GitOps-driven cluster as my second attempt and everything was going swimmingly until <code>nibbler</code>, a historically unreliable piece of hardware that when it works has more cores and memory that the rest of my infra combined, fell over again in yet another inexplicable way.</p>
+        </li>
+        <li>
+        <p>Lrrr, a box with an Intel N150 and 32GB of memory running a VM on top of Proxmox that is hosting almost everything that was previously on the two Kubernetes clusters.</p>
+        </li>
+        </ul>
+        <p>This jumbled state of affairs is basically due to a series of impulsive hardware purchases and &quot;oh that's neat, let's do that&quot; infrastructure changes.</p>
+        <hr>
+        <p>Let's talk about <em>failure domains</em>.</p>
+        <p>I think of a failure domain as a set of risks and mitigation strategies as applied to a particular instance of a service.</p>
+        <p>The canonical example in the software-as-a-service world is &quot;production&quot;, i.e. the instance of the service that the customers touch. The one that makes the money. The primary risk is the money going away if the service goes down.</p>
+        <p>A SaaS shop may have a staging environment, where changes get tested before they hit production. The main risk in staging is inconveniencing your coworkers, but the consequences of that to the company are much less impactful.</p>
+        <p>Each developer in then hopefully has one or more of their own environments in which to actually make the software. These are practially risk free to the company as a whole, only inconvenicing one developer if something goes awry.</p>
+        <hr>
+        <p>Overcomplicated home infrastructure doesn't map neatly into the same failure domains as a SaaS business, of course, but they still exist.</p>
+        <p>When I think about the users of the services in my home I imagine a sort of abstract &quot;household delight&quot; score.
+        Points accrue implicitly when things are running fine and people are able to use the things I'm trying to provide.
+        Points get deducted when they notice things aren't working or when they see me stomping around grumbling about full hard drives and boot errors.</p>
+        <p>By that logic I have three different failure domains (actually four but we'll get to that):</p>
+        <ol>
+        <li>
+        <p>Critical production. The absense of service would be immediately noticed and commented upon, often affecting the comfort of the occupants of the house. Examples: network, DNS, Home Assistant and friends, IoT coordinators.</p>
+        </li>
+        <li>
+        <p>Production: The absense of service would be noticed eventually but even an extended outage wouldn't cause hardship. Examples: Jellyfin, Sonarr and friends, paperless-ngx.</p>
+        </li>
+        <li>
+        <p>Lab: I'm the only one affected by things breaking in the lab. A playground for testing and fucking around.</p>
+        </li>
+        </ol>
+        <p>The fourth failure domain that doesn't neatly map into the above is production services for external users. VMSave and this site are the big ones but there are a few smaller things too.</p>
+        <hr>
+        <p>When I'm brutally honest with myself I have to recognize that the biggest common source of failure in every domain is me. Trying things, adding hardware, replacing software, messing around, testing in production.</p>
+        <p>Often my partner will remark &quot;I don't understand how things just fail!&quot; They usually don't. Failure is an immediate or delayed result of me changing something without considering the impact.</p>
+        <hr>
+        <p>So. What to do.</p>
+        <p>Obviously first I need to deliniate the lab from everything else. Separate hardware for sure, maybe even hide it all behind another router and subnet.</p>
+        <p>For production, one plan would be to just put everything critical and production on the one docker VM and let it be.
+        The machine isn't struggling overall but Jellyfin isn't super great because the N150 doesn't quite have the oomph necessary to transcode some of the stuff we have in real time.</p>
+        <p>Another plan would be to split them onto two machines running docker VMs. This would reduce the churn on critical production and reduce the chances of a change messing things up.</p>
+        <p>Yet another plan would be to spin up a separate Kubernetes cluster for each, moving right along the overcomplicated continuum.</p>
+        <p>The thing is, Kubernetes makes sense to me now that I've worked with it in anger a little. I really think for my application it makes sense, and the problems with Nimbus come down to <code>nibbler</code> being flaky and k8s trying to self-heal without enough resources available.</p>
+        <p>I don't know what to do about external production. My intent was to have it at home out of principle (or maybe out of spite) but it would probably be better to have it in an isolated cloud environment.</p>
+        <p>The one Docker VM is working ok, but it's mixing failure domains which makes me uncomfortable. For now, things are how they are and I can't let myself worry about it too much.</p>
+        <p>Links in the footer if you have comments or ideas. I'd love to hear them.</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 25 Sep 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Kubernetes at the (homelab) Edge</title>
+      <link>https://www.petekeen.net/kubernetes-at-the-homelab-edge/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/kubernetes-at-the-homelab-edge/</guid>
+      <content:encoded>
+        <![CDATA[<p>As I've mentioned before, the RF environment in my house is difficult.
+        The house layout is roughly:</p>
+        <ul>
+        <li>single level house, half of which has a basement under it</li>
+        <li>single level office / mother-in-law-suite / ADU / whatever you want it</li>
+        <li>two car garage in between</li>
+        <li>shed in the back yard</li>
+        </ul>
+        <block diagram of house>
+        <p>The house and ADU are built out of cinder block and brick on the outside and plasterboard (not drywall) on the inside with foil-backed insulation sandwiched in between.
+        The garage is built in between the two buildings, half with the same cinder block and brick construction and half with more modern stick construction.</p>
+        <div style="width: 100%"><img class="thumbnail" style="width: 100%" alt="Diagram of my backyard fiber project" src="https://www.petekeen.net/images/backyard_fiber/conduit.png"></div>
+        <p>These buildings were built in the 1950s when labor was cheap, longevity was valued, and AM radio stations were extremely powerful.</p>
+        <p>The shed is just an ordinary stick and OSB sheathing shed, but it's quite a distance from the house proper.</p>
+        <p>I consider the three buildings and the garage as separate &quot;RF zones&quot;, for lack of a better word.
+        Zigbee and Wi-Fi at 2.4GHz and Wi-Fi 5 at 5GHz do not propagate through the block and foil very well or at all.
+        Z-Wave (900MHz) has a slightly better time but because the house is so spread out and Z-Wave has a fairly low hop limit for mesh packets (4 hops, vs at least 15 for Zigbee) repeaters don't work very well.
+        Lutron Caseta (434MHz) has phenominal range and penetrates the foil with zero issues, but the device variety is severely limited.
+        In particular, there are no Caseta smart locks.</p>
+        <p>Each zone has:</p>
+        <ul>
+        <li>At least one Wi-Fi access point</li>
+        <li>A Z-Wave hub</li>
+        <li>(sometimes) a Zigbee hub</li>
+        <li>(sometimes) RS232 or RS485 to USB converters for equipment like our generator and furnace</li>
+        </ul>
+        <h2 id="previous-solutions" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-at-the-homelab-edge/#previous-solutions" class="header-anchor">Previous Solutions</a></h2>
+        <p>The Z-Wave and Zigbee &quot;hubs&quot; are mostly just USB sticks stuck into a free port on a Dell Wyse 3040 thin client.
+        I've had these little machines running for almost five years through a few different setups.</p>
+        <div style="width: 100%"><img class="thumbnail" style="width: 100%" alt="a Dell Wyse 3040 hanging on a wall with a PoE splitter hanging next to it" src="https://www.petekeen.net/images/kubernetes-at-the-homelab-edge/garage-wyse-3040.png"></div>
+        <p>First, I had <code>ser2net</code> running over Tailscale and had the gateway software, i.e. zwave-js-ui and zigbee2mqtt, running on a server in my house.
+        This was fine, until I had some significant clock skew when a node rebooted (i.e. the CMOS battery was dead and the hunk of junk thought it was 2016) and Tailscale refused to start because it thought the SSL certificate for the Tailscale control plane wasn't valid.</p>
+        <p>The second draft was to just run the gateway software directly on the 3040s.
+        This actually works fine.
+        The 3040s are capable machines, roughly comparable to a Raspberry Pi 4, so they could run a little javascript program just fine.
+        It was somewhat less responsive than running the gateway on the server, though.</p>
+        <p>The third version of this is to use a hardware gateway.
+        I'm currently using one for Zigbee because the location of the house zone's 3040 is not ideal for some important Zigbee devices and they lose connection a lot.
+        I positioned the hardware gateway in a spot that has good Wi-Fi coverage but no Ethernet port and now those devices are rock solid.</p>
+        <h2 id="but-what-if-kubernetes%3F" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-at-the-homelab-edge/#but-what-if-kubernetes%3F" class="header-anchor">But what if Kubernetes?</a></h2>
+        <p>While rolling out Kubernetes I didn't really plan on converting the 3040s because running the gateway software on them was working fine. Just as an experiment I attempted to install Talos on one of my spares.
+        Amazingly, it worked great after making one tweak to the install image.
+        The 3040s are very particular about certain things and they, like many of the SBCs that Talos supports, don't like the swanky console dashboard.
+        After turning that off the machine came right up as a Kubernetes node in the cluster.</p>
+        <p>At idle the Kubernetes workloads plus my cluster's standard DaemonSet pods use about 40% of the machine's 2GiB of memory and roughly 30% of CPU.</p>
+        <div style="width: 100%"><img style="width: 100%" alt="talosctl dashboard viewing one of my Dell Wyse 3040s" src="https://www.petekeen.net/images/kubernetes-at-the-homelab-edge/wyse-3040-talosctl-dashboard.png"></div>
+        <p>That leaves way more than enough to run <code>ser2net</code>.</p>
+        <h2 id="automatic-ser2net-config" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-at-the-homelab-edge/#automatic-ser2net-config" class="header-anchor">Automatic ser2net Config</a></h2>
+        <p>I initially thought that I would use Akri to spawn ser2net.
+        Akri is a project that came out of Microsoft that acts as a generic device plugin for Kubernetes as well as managing what they call &quot;brokers&quot;, which are just programs that attach to whatever device and provide it to the cluster.</p>
+        <p>That sounded perfect for my purposes so I set it up and let it bake for a few days.
+        It did not go well.</p>
+        <p>The big problem is that Akri is just not very stable.
+        Things were randomly falling over in such a way that the Akri-managed Z-Wave ser2net brokers would crash loop overnight.
+        I made no debugging progress so I started on my fallback idea: automatically managing a ser2net config.</p>
+        <p>Realistically, my needs are simple:</p>
+        <ul>
+        <li>I want to present one or more serial devices to the network.</li>
+        <li>I want this to be reliable.</li>
+        <li>I want this to be secure.</li>
+        <li>I don't want to micromanage it.</li>
+        </ul>
+        <p>It turns out, discovering USB serial devices on linux is actually pretty trivial.
+        You just have to follow a bunch of symlinks.</p>
+        <p>This shell script is based on logic found in the <a href="https://github.com/bugst/go-serial/blob/master/enumerator/usb_linux.go#L36"><code>go-serial</code></a> project:</p>
+        <pre><code class="language-sh">set -e
+        set -x
+        
+        # Find all of the TTYs with names we might be interested in
+        ttys=$(ls /sys/class/tty | egrep '(ttyS|ttyHS|ttyUSB|ttyACM|ttyAMA|rfcomm|ttyO|ttymxc)[0-9]{1,3}')
+        
+        for tty in $ttys; do
+        # follow the symlink to find the real device
+        realDevice=$(readlink -f /sys/class/tty/$tty/device)
+        
+        # what subsystem is it?
+        subsystem=$(basename $(readlink -f $realDevice/subsystem))
+        
+        # locate the directory where the usb information is
+        usbdir=&quot;&quot;
+        if [ &quot;$subsystem&quot; = &quot;usb-serial&quot; ]; then
+        # usb-serial is two levels up from the tty
+        usbdir=$(dirname $(dirname $realDevice))
+        elif [ &quot;$subsystem&quot; = &quot;usb&quot; ]; then
+        # regular usb is one level up from the tty
+        usbdir=$(dirname $realDevice)
+        else
+        # we don't care about this device
+        continue
+        fi
+        
+        # read the productId and vendorId attributes from the USB device
+        productId=$(cat $usbdir/idProduct)
+        vendorId=$(cat $usbdir/idVendor)
+        
+        snippetFile=&quot;$vendorId:$productId.yaml&quot;
+        
+        if [ -f &quot;$snippetFile&quot; ]; then
+        sed &quot;s/DEVNODE/\/dev\/$tty/&quot; $snippetFile
+        fi
+        done
+        </code></pre>
+        <p>The last few lines of the loop body look for a YAML snippet available for the specific vendorId/productId pair.
+        If there is one, replace the constant <code>DEVNODE</code> with the actual device path and write it to <code>stdout</code>.</p>
+        <p>Here's what one of the snippets looks like:</p>
+        <pre><code class="language-yaml"># zigbee
+        
+        connection: &amp;zigbee
+        accepter: tcp,6639
+        connector: serialdev,DEVNODE,115200n81,local,dtr=off,rts=off
+        options:
+        kickolduser: true
+        </code></pre>
+        <p>This snippet tells ser2net to open a listening connection on TCP port 6639 and wire it to a serial device at path <code>DEVNODE</code>.
+        Use 115200n81 parity and keep the dtr and rts bits off (this is specific to the Sonoff zigbee stick I'm using).
+        Further, when a new connection opens immediately kick off the old one.</p>
+        <p>I drop the above script, the YAML snippets, and this simple <code>entrypoint.sh</code> script into a <a href="https://github.com/peterkeen/ser2net-auto">container image based on the standard ser2net container</a>.</p>
+        <pre><code class="language-sh">#!/bin/bash
+        
+        set -e
+        set -x
+        set -o pipefail
+        
+        echo &quot;Generating ser2net.yaml&quot;
+        
+        mkdir -p /etc/ser2net
+        ./discover.sh &gt; /etc/ser2net/ser2net.yaml
+        
+        echo &quot;Running ser2net&quot;
+        
+        cat /etc/ser2net/ser2net.yaml
+        
+        exec ser2net -d -l -c /etc/ser2net/ser2net.yaml
+        </code></pre>
+        <p>I then deploy it to my cluster as a DaemonSet targeting nodes labeled with <code>keen.land/serials=true</code>:</p>
+        <pre><code class="language-yaml">apiVersion: apps/v1
+        kind: DaemonSet
+        metadata:
+        name: ser2net
+        namespace: iot-system
+        labels:
+        app: ser2net
+        spec:
+        selector:
+        matchLabels:
+        app: ser2net
+        template:
+        metadata:
+        labels:
+        app: ser2net
+        spec:
+        nodeSelector:
+        keen.land/serials: &quot;true&quot;
+        volumes:
+        - name: devices
+        hostPath:
+        path: /dev
+        imagePullSecrets:
+        - name: ghcr.io
+        containers:
+        - name: ser2net
+        image: &quot;ghcr.io/peterkeen/ser2net-auto:main&quot;
+        securityContext:
+        privileged: true
+        volumeMounts:
+        - name: devices
+        mountPath: /dev
+        restartPolicy: Always
+        hostNetwork: true
+        </code></pre>
+        <p>The interesting things here are that the pod is running in privileged mode on the host network.
+        I thought about using container ports but then I would have to somehow know what DaemonSet pod name mapped to which host.
+        With <code>hostNetwork: true</code> I don't have to think about that and can just use the host's name in my gateway configs.
+        There's an opportunity here to cook up a custom deployment type with something like <a href="https://metacontroller.github.io/metacontroller/intro.html">Metacontroller</a>, which I have installed in the cluster but as of yet haven't done anything with.</p>
+        <h2 id="pros-and-cons" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-at-the-homelab-edge/#pros-and-cons" class="header-anchor">Pros and Cons</a></h2>
+        <p>So all of this work and what do I have?
+        Basically what I had when I started:</p>
+        <ul>
+        <li>ser2net on the devices with the serial ports</li>
+        <li>gateway software running on a server</li>
+        </ul>
+        <p>The big pro of this setup is that I have one consistent management interface.
+        I can set up and tear down ser2net with the exact same interface I use to set up and tear down everything else in the cluster.</p>
+        <p>There are a couple of cons, too.
+        First, this probably uses a touch more power than the old solution because in addition to ser2net the Wyse 3040s are running all of the Kubernetes infrastructure.
+        These things use so little power as is that I don't think it really matters, but it's worth pointing out.</p>
+        <p>Second, there's more to go wrong.
+        Before this I had Alpine running basically nothing except ser2net.
+        The system was static in practice, meaning that there was very little that could break.</p>
+        <p>Now there are several components running all the time that could break with a bad upgrade and could require me to take a crash cart out to each machine.</p>
+        <p>This is also putting more stress on the drives.
+        All of these machines are booting off of significantly overprovisioned high endurance SD cards now so that shouldn't be an issue, but it's still something to keep in mind.
+        The nice thing is that they're entirely stateless so swapping the card and reinstalling should be a quick operation.</p>
+        <p>Ultimately I think this is a good move and I plan to continue down the path of making every non-laptop device run on Kubernetes with very few exceptions.</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 19 May 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Switching to Kubernetes</title>
+      <link>https://www.petekeen.net/kubernetes-homelab/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/kubernetes-homelab/</guid>
+      <content:encoded>
+        <![CDATA[<blockquote>
+        <p>And you may ask yourself, &quot;How do I work this?&quot;<br>
+        And you may ask yourself, &quot;Where is that large home server?&quot;</p>
+        </blockquote>
+        <p>Once upon a time I had a Mac mini. It was hooked up to the tv (because we only had the one) and it ran Plex. It was fine.</p>
+        <p>Later, my new spouse and I moved across the country into a house.
+        I decided that I should get a server because I was going to be a big time consultant and I figured I would need a staging environment.
+        A Dell T30 picked up on super sale arrived soon after.</p>
+        <p>The server sat, ignored, while we suffered through the first few years of one baby, then two babies.</p>
+        <p>Later, we moved to our forever house and I found Home Assistant.
+        I picked up a Raspberry Pi 4. All was good.</p>
+        <p>Except it kind of sucked?
+        A 1GB Pi 4 is pretty limited in what it can practically run.
+        Home Assistant ran mostly ok but anything else was beyond it's capabilities.
+        To eBay!</p>
+        <h2 id="oooh%2C-shiny-hardware" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-homelab/#oooh%2C-shiny-hardware" class="header-anchor">Oooh, shiny hardware</a></h2>
+        <p>Over the past four years I've accumulated a modest menagerie of hardware:</p>
+        <ul>
+        <li>Hypnotoad, a HP 800 G3 mini</li>
+        <li>Crushinator, a HP 800 G3 SFF</li>
+        <li>Morbo, another HP 800 G3 SFF</li>
+        <li>Lrrr, a Dell Wyse 5070 thin client</li>
+        <li>Roberto, another Dell Wyse 5070</li>
+        <li>Nibbler, a Lenovo M80S Gen 3 SFF</li>
+        <li>Shed, another Dell Wyse 5070 (such a boring name)</li>
+        <li>A pack of roving Dell Wyse 3040 thin clients</li>
+        <li>The original Pi 4</li>
+        </ul>
+        <p>The T30, sadly, imploded when I tried to install a video card and fried the motherboard.
+        It's name was Kodos and it was a good box.</p>
+        <h2 id="software%2C-take-1-through-n" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-homelab/#software%2C-take-1-through-n" class="header-anchor">Software, take 1 through N</a></h2>
+        <p>As I was acquiring hardware I was also acquiring software to run on it and developed a somewhat esoteric way of deploying that software.
+        The first interesting version was a self-deploying Docker container.
+        It would get passed the Docker socket and run compose, deciding on the fly what to deploy based on the hostname of the machine.</p>
+        <p>This was fine, but it proved too much for the 3040s which have fragile 8GB eMMC drives.</p>
+        <p>A later version moved the script to my laptop and used Ansible to push Docker compose files out to all the machines.</p>
+        <p>Fine. Fiddly, but fine.</p>
+        <h2 id="software%2C-take-n-%2B-1" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-homelab/#software%2C-take-n-%2B-1" class="header-anchor">Software, take N + 1</a></h2>
+        <p><a href="https://xeiaso.net/">Xe Iaso</a> is a person that I've been following online for years.
+        Recently they went through a <a href="https://xeiaso.net/blog/2024/homelab-v2/">homelab transformation</a>, where for Reasons they decided to switch away from NixOS.
+        After trying various things, much to everyone's chagrin, they settled on Kubernetes running on Talos.</p>
+        <p>Talos seemed to be what I wanted: an immutable, hardened OS designed for one thing and one thing only: Kubernetes.</p>
+        <p>Much like Xe, I had resisted Kubernetes at home for a long time.
+        Too complex. Too much overhead. Just too much.</p>
+        <p>Taking another look at that hardware list, though, I do actually have a somewhat Kubernetes-shaped problem.
+        I want to treat my hardware as respected but mostly interchangable pets.</p>
+        <p>My deployment script was sophisticated but had no ability to just put something somewhere else automatically.
+        It was entirely static, so when something needed to move I would have to restore a backup to the new target and manually redeploy at least part of the world in order to get the ingress set up properly.</p>
+        <p>Kubernetes takes care of that stuff for me.
+        I don't have to think about where any random workload runs and I don't have to think about migrating it somewhere else if the node falls over.
+        DNS, SSL certificates, backups, it all just happens in the background.</p>
+        <h2 id="what's-it-look-like%3F" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-homelab/#what's-it-look-like%3F" class="header-anchor">What's it look like?</a></h2>
+        <p>After a couple of weeks of futzing around and day dreaming I settled on this software stack:</p>
+        <ul>
+        <li>Kubernetes (obvo)</li>
+        <li><a href="https://www.talos.dev/">Talos Linux</a> driven by <a href="https://budimanjojo.github.io/talhelper/latest/">Talhelper</a></li>
+        <li>Helm for off the shelf components, driven by <a href="https://github.com/helmfile/helmfile">Helmfile</a></li>
+        <li><a href="https://longhorn.io/">Longhorn</a> for fast replicated storage</li>
+        <li><a href="https://developer.1password.com/docs/k8s/operator/">1Password Operator</a> for secrets management</li>
+        <li><a href="https://tailscale.com/kb/1236/kubernetes-operator">Tailscale Operator</a> for private ingress and a subnet router to poke at services and pods directly</li>
+        <li><a href="https://kubernetes.github.io/ingress-nginx/">ingress-nginx</a> for internal and external access to services</li>
+        <li><a href="https://metallb.io/">MetalLB</a> to give local services a stable virtual IP address</li>
+        <li><a href="https://cert-manager.io/">cert-manager</a> for automatic LetsEncrypt certificates for services</li>
+        <li><a href="https://kubernetes-sigs.github.io/external-dns/v0.15.0/">external-dns</a> to drive DNS updates for services</li>
+        <li><a href="https://keel.sh/">Keel.sh</a> for automatic image updates</li>
+        <li><a href="https://docs.stakater.com/reloader/index.html">Reloader</a> to reload deployments when linked secrets and configs update</li>
+        <li><a href="https://www.emqx.com/en/emqx-kubernetes-operator">EMQX</a> as the MQTT server for some of my IoT devices (mostly zigbee)</li>
+        <li><a href="https://cloudnative-pg.io/">CloudNative PG</a> for PostgreSQL databases</li>
+        </ul>
+        <p>The next thing to decide was how to divide up the hardware into control plane and worker nodes. Here's what I have so far:</p>
+        <ul>
+        <li>Three (3) control plane nodes: hypnotoad, crushinator, and lrrr</li>
+        <li>Seven (7) local worker nodes: hypnotoad, crushinator, nibbler, shed, three Wyse 3040s hosting Z-Wave sticks</li>
+        <li>One (1) cloud worker node</li>
+        </ul>
+        <p>You might notice that several nodes are doing double duty.</p>
+        <p>Splitting the control plane off to dedicated nodes makes sense when you have a fleet of hundreds of machines in a data center.
+        I don't have that.</p>
+        <p>A small VM running on Lrrr is the only dedicated control plane node. The only reason for that is because Lrrr also hosts my Unifi and Omada network controllers and I haven't worked up the gumption to move those from Proxmox LXCs to k8s workloads.</p>
+        <p>Hypnotoad, Crushinator, and Nibbler are general compute.
+        Nibbler has an Nvidia Tesla P4 GPU, which is not particularly impressive but fun to play with.
+        Both Hypnotoad and Nibbler have iGPUs capable of running many simultaneous Jellyfin streams.
+        Crushinator is a VM taking up most of the host which is also serving as a backup NAS for non-media data.</p>
+        <p>Shed lives in the shed and is connected to a bunch of USB devices, including two SDR radios, a Z-Wave stick, and an RS232-to-USB adapter for the generator.</p>
+        <p>Morbo is running TrueNAS and has no connection to Kubernetes except that some stuff running in k8s uses NFS shares.
+        It's also the backup target for Longhorn and the script I use to backup Talos' etcd database.</p>
+        <h2 id="self-hosting-in-the-cloud" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-homelab/#self-hosting-in-the-cloud" class="header-anchor">Self-hosting in the Cloud</a></h2>
+        <p>Talos has a neat feature built in that they call <a href="https://www.talos.dev/v1.10/talos-guides/network/kubespan/">KubeSpan</a>.
+        This is a Wireguard mesh network between all of the nodes in the cluster that uses a hosted discovery service to exchange public keys.</p>
+        <p>Essentially, you can flip a single option in your Talos configs and have all of your nodes meshed, with a bonus option to send <em>all</em> internal cluster traffic over the Wireguard interface.
+        The discovery service never sees private data, just hashes.
+        It's really cool.</p>
+        <p>I'm using KubeSpan to put one of my nodes on a VPS to get a public IP without exposing my home ISP connection directly.
+        After initial setup I was able to change the firewall to block all inbound ports other than 80, 443, and the KubeSpan UDP port.</p>
+        <p>To actually serve public traffic I installed a separate instance of ingress-nginx that only runs on the cloud node.
+        This instance is set up to directly expose the cloud node's public IP which gets picked up by external-dns automatically.</p>
+        <p>I'm still trying to decide if this single node is enough or if I should get really clever and use a proxy running on Fly to get a public anycast IP.</p>
+        <h2 id="ok%2C-but-what's-running%3F" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-homelab/#ok%2C-but-what's-running%3F" class="header-anchor">Ok, but what's running?</a></h2>
+        <p>Learning how Kubernetes works has been great and this process filled in quite a few gaps in my understanding, but it probably wouldn't have been worth the effort without hosting something useful.</p>
+        <p>Currently I'm hosting a couple of external production workloads:</p>
+        <ul>
+        <li>this blog</li>
+        <li><a href="https://vmsave.petekeen.net/">VMSave</a></li>
+        <li>a handful of very small websites</li>
+        </ul>
+        <p>I'm also running a bunch of homeprod services:</p>
+        <ul>
+        <li><a href="https://www.home-assistant.io/">Home Assistant</a></li>
+        <li><a href="https://github.com/SYSTRAN/faster-whisper">Whisper</a> and <a href="https://github.com/rhasspy/piper">Piper</a>, speech-to-text and text-to-speech tools and components of the Home Assistant voice pipeline</li>
+        <li>four (4) instances of <a href="https://zwave-js.github.io/zwave-js-ui//#/">Z-Wave JS UI</a>, one per RF &quot;zone&quot; (this house has wacky RF behavior)</li>
+        <li>two (2) instances of <a href="https://www.zigbee2mqtt.io/">Zigbee2MQTT</a>, one in each RF zone that has Zigbee devices</li>
+        <li><a href="https://github.com/jgyates/genmon">Genmon</a> keeps tabs on our whole home standby generator</li>
+        <li>A Minecraft server for me and my kids</li>
+        <li><a href="https://docs.paperless-ngx.com/">Paperless-ngx</a> stores and indexes important documents</li>
+        <li><a href="https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder">Ultrafeeder</a> puts the planes flying overhead on a map</li>
+        <li><a href="https://github.com/AirswitchAsa/icloudpd-web">iCloudPD-web</a> for effortless iCloud photo backups</li>
+        <li><a href="https://jellyfin.org/">Jellyfin</a>, an indexer and server for TV shows, movies and music</li>
+        <li><a href="https://sonarr.tv/">Sonarr</a>, <a href="https://radarr.video/">Radarr</a>, <a href="https://prowlarr.com/">Prowlarr</a> and <a href="https://sabnzbd.org/">SABnzbd</a> form the core of our media acquisition system</li>
+        <li><a href="https://docs.jellyseerr.dev/">Jellyseerr</a> makes requesting new media easy for the other people who live in the house</li>
+        <li><a href="https://github.com/crocodilestick/Calibre-Web-Automated">Calibre Web Automated</a> is an amazing tool that serves all of my eBooks to my Kobo eReader</li>
+        <li><a href="https://ollama.com/">Ollama</a> and <a href="https://openwebui.com/">Open Web UI</a> for dinking around with local LLMs</li>
+        <li><a href="https://github.com/bastienwirtz/homer">Homer</a> to keep track of all of the above, set as my browser homepage</li>
+        </ul>
+        <h2 id="left-to-do" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-homelab/#left-to-do" class="header-anchor">Left To Do</a></h2>
+        <p>There are a few things left on the todo list.
+        Roberto is hooked up to a webcam that watches my 3D printer and I haven't touched it yet because it is connected via Wi-Fi which Talos doesn't support at all.</p>
+        <p>I also haven't touched the raspberry pi, mostly for the same reason.
+        The pi is serving as a gateway between a Wi-Fi SD card that lives in my CPAP machine and the rest of the network so that I can scrape the data off without having to pull the card or futz with my laptop's Wi-Fi every day.</p>
+        <p>The Wi-Fi SD card, you see, only exists as an access point. It cannot be put into a mode that connects to another network.
+        The pi has a USB Wi-Fi adapter connected to the card's network and the built-in Wi-Fi connected to the home network with nginx in between serving as a proxy.
+        I don't think this is something that I really want or need to move into k8s.</p>
+        <p>I want to set up some sort of central authn/authz system for the homeprod services.
+        The current fashion seems to be <a href="https://pocket-id.org/">Pocket ID</a> but I haven't been able to get it working reliably.</p>
+        <p>I'm thinking about setting up a small ActivityPub server to play around with.</p>
+        <p>A photo viewer like <a href="https://immich.app/">Immich</a> might be cool to set up.</p>
+        <h2 id="overkill%3F" tabindex="-1"><a href="https://www.petekeen.net/kubernetes-homelab/#overkill%3F" class="header-anchor">Overkill?</a></h2>
+        <p>Of course this is overkill. This could probably all live on a single Wyse 5070 with a couple big harddrives attached.</p>
+        <p>I think it's been worth it to use Kubernetes in anger.
+        I'm really enjoying the ability to deploy whatever I want to the cluster without having to think about where it runs, where it stores data, etc.</p>
+        <p>I've also learned a ton and fixed a bunch of preconceived notions and it's already helped increase reliability in a few things that affect household acceptance in big ways.</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Fri, 09 May 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Using ESPHome Without the Home Assistant Addon</title>
+      <link>https://www.petekeen.net/esphome-without-the-addon/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/esphome-without-the-addon/</guid>
+      <content:encoded>
+        <![CDATA[<p>The &quot;blessed&quot; flow for using ESPHome is the Home Assistant ESPHome Addon.
+        This works well!
+        It has a nice editor and it takes care of some housekeeping tasks for you.
+        If you don't already have a comfortable development workflow it's a very nice way to start.</p>
+        <p>If you <em>do</em> already have a working style that doesn't involve a web UI and a browser editor you can still use ESPHome, you just have to handle those housekeeping tasks yourself.</p>
+        <h2 id="fundamentals" tabindex="-1"><a href="https://www.petekeen.net/esphome-without-the-addon/#fundamentals" class="header-anchor">Fundamentals</a></h2>
+        <p>I think it can be helpful to step back and take a look at the fundamentals of a piece of software like ESPHome before diving headlong into the deep pool of non-standard workflows.</p>
+        <p>At it's base level ESPHome is a microcontroller firmware generator.
+        That is, it reads your YAML config, generates a bunch of C++ files and config files, and then using a compiler and some helper programs it generates a binary program that your microcontroller (usually but not always an ESP32) can run.</p>
+        <p>ESPHome also has a few very useful helpers.
+        First, it can do seamless over the air (OTA) updates once any ESPHome firmware has been installed on a device.</p>
+        <p>Second, it has a pretty powerful web-based UI and configuration editor.</p>
+        <p>Third, ESPHome ships with a &quot;native&quot; binary protocol it can use to talk to Home Assistant (<a href="https://www.petekeen.net/esphome-server-in-python">previously</a>) complete with Noise-based symmetric key encryption.</p>
+        <p>Lastly, it can be used as a Home Assistant addon, which as I said earlier takes care of a few things for you.
+        The OTA update functionality requires a pre-shared key to validate that updates are coming from a known source.
+        The addon takes care of generating that and the Noise secret and sharing these keys with Home Assistant so you don't have to care about them.</p>
+        <h2 id="esphome-on-a-macbook%3F!" tabindex="-1"><a href="https://www.petekeen.net/esphome-without-the-addon/#esphome-on-a-macbook%3F!" class="header-anchor">ESPHome on a Macbook?!</a></h2>
+        <p>My ESPHome workflow doesn't involve the web UI or the addon at all.
+        Instead, I install ESPHome on my Macbook with <code>homebrew</code> and manage the OTA and HA secret keys with 1Password and a small helper script.
+        The script and all of my ESPHome configs live in <a href="https://github.com/keenfamily-us/esphome-configs/tree/main">this public GitHub repo</a>.</p>
+        <p>This is the script as it exists today:</p>
+        <pre><code class="language-bash">#!/bin/bash
+        
+        set -x
+        set -eo pipefail
+        
+        trap &quot;rm common/device_base.yaml&quot; EXIT
+        
+        op inject --in-file common/device_base.yaml.in --out-file common/device_base.yaml
+        
+        command=$1
+        shift
+        
+        if [ $# -eq 0 ]; then
+        configs=&quot;*.yaml&quot;
+        else
+        configs=&quot;$@&quot;
+        fi
+        
+        esphome $command $configs
+        </code></pre>
+        <p>All this is really doing is using 1Password's <code>op inject</code> tool to generate a file with my configured secrets, runs <code>esphome</code>, and makes sure to clean up the generated file with that <code>trap</code> line.
+        The top of <code>device_base.yaml.in</code> looks like this:</p>
+        <pre><code class="language-yaml">substitutions:
+        wifi_ssid: &quot;op://keen.land secrets/ESPHome Secrets/ESPHOME_WIFI_SSID&quot;
+        wifi_password: &quot;op://keen.land secrets/ESPHome Secrets/ESPHOME_WIFI_PASSWORD&quot;
+        fallback_ssid_password: &quot;op://keen.land secrets/ESPHome Secrets/ESPHOME_FALLBACK_SSID_PASSWORD&quot;
+        home_assistant_encryption_key: &quot;op://keen.land secrets/ESPHome Secrets/ESPHOME_HOME_ASSISTANT_ENCRYPTION_KEY&quot;
+        ota_password: &quot;op://keen.land secrets/ESPHome Secrets/ESPHOME_OTA_PASSWORD&quot;
+        </code></pre>
+        <p>All of those are just <code>text</code> entries in the <code>ESPHome Secrets</code> rich text item, but again they can be whatever you want.
+        If you decide to make them <code>password</code> type entries I believe you'd need to add <code>--reveal</code> to the <code>op inject</code> command, but I'm not 100% certain on that.</p>
+        <p>This differs in kind of a fundamental way from the way the web UI / addon work, in so far as the addon will create and manage <em>unique</em> OTA and HA keys for each device.
+        My setup instead uses two keys shared among all of my devices.
+        I don't see this as a significant risk because I don't use esphome devices in higher security contexts (i.e. my door locks are not running esphome), but your threat model is likely different than mine so you should make your own decisions.
+        Nothing is stopping you from using unique keys for every device with this setup, you just have more secrets to manage in 1Password.</p>
+        <h2 id="workflow" tabindex="-1"><a href="https://www.petekeen.net/esphome-without-the-addon/#workflow" class="header-anchor">Workflow</a></h2>
+        <p>My workflow looks like:</p>
+        <pre><code>$ &lt;edit whatever.yaml&gt;
+        $ ./build.sh run whatever.yaml
+        # a bunch of compiler output and then logging from the device itself
+        $ git add whatever.yaml &amp;&amp; git commit -m 'updates' &amp;&amp; git push origin main
+        </code></pre>
+        <p>There aren't many hard edges with this setup.
+        You can put whatever you want into <code>common</code> and you can organize your devices however you want.</p>
+        <p>One exception is that <code>secrets.yaml</code> has some confusing implicit behavior, so I just commit an empty one and use a different file for my secrets.</p>
+        <p>Updating ESPHome is not something I do on a regular basis, but when I do it's basically just <code>brew upgrade esphome &amp;&amp; ./build.sh</code>.</p>
+        <p>The process to add a new ESPHome device to Home Assistant is also fairly streamlined.
+        All you do is attach the ESP32 device to your computer with USB, create a new yaml file, and run <code>./build.sh run &lt;your new file&gt;.yaml</code>.
+        ESPHome will pick up that there's a serially attached device without firmware and handle flashing the new firmware to it.</p>
+        <p>Once ESPHome is running on the new device it should show up in the Home Assistant integrations page and something that can be added.
+        Clicking the accept button will open a config flow where you can paste your Home Assistant key, and then it should work just like any other device.</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 12 Aug 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Automatic Finances</title>
+      <link>https://www.petekeen.net/automatic-finances/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/automatic-finances/</guid>
+      <content:encoded>
+        <![CDATA[<hr>
+        <p>My friend Amy Hoy recently tweeted about financial planning and personal finance.
+        This particular tweet stuck out to me:</p>
+        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">you&#39;d probably think given my love of money that i&#39;d be all over financial planning, but truly i only enjoy earning it and spending it. saving it feels like… freezing cake. i guess you could do it, but why, you have cake</p>&mdash; Amy Hoy ✨ (@amyhoy) <a href="https://twitter.com/amyhoy/status/1097662568645214208?ref_src=twsrc%5Etfw">February 19, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <p>In early 2018 I radically simplified my family's personal financial system and made everything as automatic as possible.
+        Amy and Joel Hooks asked me to write up how it works, so this is the start of a series of short posts about how and why I set everything up.</p>
+        <!--more-->
+        <h2 id="a-little-bit-of-why" tabindex="-1"><a href="https://www.petekeen.net/automatic-finances/#a-little-bit-of-why" class="header-anchor">A Little Bit of Why</a></h2>
+        <p>I prefer to think of myself as a realist.
+        Due to my <a href="https://www.petekeen.net/cancer">health history</a> my wife is likely going to be around longer than me. Her family has some very long lived female members as well. Her grandmother is 103 and her great aunt just passed in 2018 at the ripe old age of 95.</p>
+        <p>I want to make our finances as simple as possible so she doesn't have to worry about them when the inevitable happens.</p>
+        <p>In 2016 my wife and I welcomed our first child into the world and in late 2018 we welcomed our second.
+        They are two more very important reasons why I want things to be simple.
+        If something happens to both my wife and me, I want our intentions with regards to our finances as plain as possible.</p>
+        <p>This system got a trial run in late 2018.
+        My wife was admitted to the hospital at 29 weeks pregnant for preeclampsia, a very dangerous condition that needs close monitoring.
+        My daugther was born at 34 weeks and spent the next five weeks in NICU.</p>
+        <p><strong>I didn't have to touch this system at all.</strong> Not once. I logged in a handful of times to check up on it, but everything just hummed along.</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 31 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Automatic Investing</title>
+      <link>https://www.petekeen.net/automatic-investing/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/automatic-investing/</guid>
+      <content:encoded>
+        <![CDATA[<h2 id="the-setup" tabindex="-1"><a href="https://www.petekeen.net/automatic-investing/#the-setup" class="header-anchor">The Setup</a></h2>
+        <ul>
+        <li>Fidelity Brokerage Account (&quot;brokerage&quot;) with margin enabled</li>
+        <li>Fidelity Roth IRAs</li>
+        <li>Fidelity Solo 401K</li>
+        <li><a href="https://fundresearch.fidelity.com/mutual-funds/summary/31634R109">Fidelity Multi-Asset Index Fund (FFNOX)</a></li>
+        <li><a href="https://www.ishares.com/us/products/239729/ishares-aggressive-allocation-etf">iShares Core Aggressive Allocation ETF</a></li>
+        </ul>
+        <h2 id="how-money-flows" tabindex="-1"><a href="https://www.petekeen.net/automatic-investing/#how-money-flows" class="header-anchor">How Money Flows</a></h2>
+        <ul>
+        <li>Every investable dollar is in FFNOX across all non-401k tax advantaged accounts</li>
+        <li>Every investable dollar in taxable accounts is invested in AOA</li>
+        <li>Automatically contribute to my employer's 401K plan every pay period into whatever fund</li>
+        </ul>
+        <!--more-->
+        <h2 id="why" tabindex="-1"><a href="https://www.petekeen.net/automatic-investing/#why" class="header-anchor">Why</a></h2>
+        <p>I don't want anyone to have to think about where to pull money from at any time.
+        I want me or my wife to be able to login to Fidelity and sell enough to cover cash needs with a very small number of clicks.</p>
+        <p>FFNOX and AOA are <strong>funds of funds</strong>. FFNOX consists of low cost Fidelity funds and AOA consists of low cost Blackrock iShares ETFs.
+        They both invest in approximately 60% US total stock market, 25% international developed total stock market, and 15% US total bond market.
+        This fits our family's desired asset allocation.</p>
+        <p>The brokerage account has <strong>margin</strong> enabled.
+        Margin allows you to borrow up to 50% of the value of your investable assets (everything but cash and CDs) from your broker for any purpose whatsoever.
+        It kicks in while you run out of cash and will automatically pay itself back when you deposit cash in the account.</p>
+        <p>We have margin turned on so that we don't have to worry about selling investments to raise cash while something awful is happening.
+        We can login to Fidelity and sell some FFNOX when it's convenient rather than having to do it one some kind of schedule.</p>
+        <p>Contributing to my employer's 401K plan is an automatic tax break and also means I get my employer's matching contribution.
+        I currently (for 2024) have it set up to max out my employer's match.</p>
+        <p><strong>We don't use robo-investors.</strong>
+        FFNOX's total expenses are capped at 0.08%, or $80 per $100,000 annually.
+        Wealthfront charges 0.25% (more than 3x) <em>on top of</em> the fees for the actual ETFs (typically ~0.1%).
+        <em>Robo-investors are never going to offset their fees</em> when compared to FFNOX or similar funds (Target Retirement funds at Vanguard or Freedom Index funds at Fidelity).</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 31 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Automatic Cash Management</title>
+      <link>https://www.petekeen.net/automatic-cash-management/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/automatic-cash-management/</guid>
+      <content:encoded>
+        <![CDATA[<h2 id="the-setup" tabindex="-1"><a href="https://www.petekeen.net/automatic-cash-management/#the-setup" class="header-anchor">The Setup</a></h2>
+        <ul>
+        <li>One <a href="https://www.fidelity.com/trading/the-fidelity-account">Fidelity Brokerage Account</a> (&quot;brokerage&quot;)</li>
+        <li>One <a href="https://www.fidelity.com/cash-management/fidelity-cash-management-account/overview">Fidelity Cash Management Account</a> (&quot;CMA&quot;)</li>
+        <li>One <a href="https://www.fidelity.com/cash-management/visa-signature-card">Fidelity 2% Cash Back Credit Card</a></li>
+        <li>One <a href="https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited">Chase Freedom Unlimited Credit Card</a></li>
+        <li>One <a href="https://www.chase.com/personal/credit-cards/amazon">Amazon Prime Visa</a></li>
+        </ul>
+        <h2 id="how-money-flows" tabindex="-1"><a href="https://www.petekeen.net/automatic-cash-management/#how-money-flows" class="header-anchor">How Money Flows</a></h2>
+        <ul>
+        <li>Payroll direct deposited into brokerage</li>
+        <li>All non-mortgage recurring expenses are paid with the Fidelity card</li>
+        <li>All Amazon expenses are paid with the Amazon card</li>
+        <li>All other expenses are paid with the Chase card</li>
+        <li>Bills autopay from brokerage (credit cards, insurance, billpay to household vendors)</li>
+        <li>Debit cards and live paper checks written against CMA</li>
+        </ul>
+        <!--more-->
+        <h2 id="why" tabindex="-1"><a href="https://www.petekeen.net/automatic-cash-management/#why" class="header-anchor">Why</a></h2>
+        <p>We use a brokerage account because it lets us keep cash and investments in the same account.
+        All of our cash, including working capital and reserves, sits in the brokerage's <strong>core position</strong>.
+        Our core position is <a href="https://fundresearch.fidelity.com/mutual-funds/summary/316341304">FZFXX</a>, a Federal money market fund that pays ~5% interest as of July 2024.</p>
+        <p>We use the Fidelity credit card because it pays 2% cash back when it's set up to deposit rewards into a Fidelity account.
+        It is also one of the only cards I've seen that can be set to automatically cash out deposits.
+        Ours is set to deposit into the brokerage account.
+        We only use this card for recurring expenses.
+        Non-recurring expenses go on the Chase card because in our experience Chase's fraud detection and customer support is considerably better than Fidelity/Elan.</p>
+        <p>We use the Amazon Prime credit card for all Amazon expenses. This pays 5% back on Amazon purchases which makes it worth it for us. Your milage may vary.</p>
+        <p>We have the CMA so we don't expose the brokerage account number every time we write a paper check.
+        This is probably overly paranoid and is the only significant complication in the entire system.</p>
+        <p>The CMA has &quot;self-funded overdraft protection&quot; turned on which automatically transfers from the brokerage account into the CMA to fund checks and debit card transactions.</p>
+        <p>The brokerage core position is not FDIC insured.
+        <strong>I don't care about FDIC insurance</strong>.
+        FZFXX is composed of ultra short term US Treasury bills.
+        If Treasuries are suddenly not liquid enough to withdraw our money our society has much bigger problems.</p>
+        <p>The CMA's core position <em>is</em> FDIC insured, and the CMA is almost a full brokerage account, but we don't use it as the centerpiece account for two reasons.
+        First, the CMA core position pays shit for interest.
+        Second, the CMA cannot have margin turned on.
+        We'll talk about why that's important in the next post.</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Wed, 31 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>ESPHome Server in Python</title>
+      <link>https://www.petekeen.net/esphome-server-in-python/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/esphome-server-in-python/</guid>
+      <content:encoded>
+        <![CDATA[<p>Last year I installed holiday lights on my house (<a href="https://www.petekeen.net/wled-eufy-permanent-outdoor-lights">previously</a>).
+        At the time I chose a controller that had the following key qualities: a) cheap, b) worked with WLED, c) cheap.</p>
+        <p>After using it for a season I discovered that the reason why this controller is so cheap is because it uses an ESP8266, which is <em>fine</em>,
+        but it doesn't play well with my setup.
+        For example, if I enable the <a href="https://www.home-assistant.io/">Home Assistant</a> integration the controller falls over after a few hours.
+        It also reboots for unknowable reasons sometimes and I would come home to find the lights in their default orange color.</p>
+        <p>I probably could have fixed this with a more powerful controller.
+        I even bought a neat ESP32 controller with a built-in wide range voltage regulator but never got around to setting it up.</p>
+        <p>Loosely, what I want is:</p>
+        <ol>
+        <li>Control the lights without random reboots</li>
+        <li>Easy Home Assistant integration</li>
+        <li>Easy customization</li>
+        <li>No Wi-Fi</li>
+        <li>Use hardware that I already have</li>
+        <li>Tailscale, ideally</li>
+        <li>Learn some stuff</li>
+        </ol>
+        <p>I could have gotten the first two using a more powerful ESP32 module.
+        Third could be done with <a href="https://esphome.io/">ESPHome</a>.
+        Four and five are contradictory while staying within the constraint of an ESP32-based system.</p>
+        <p>Also last year, I built a little box that controls the power for my 3D printer with a Raspberry Pi Pico and a second Klipper instance (<a href="https://www.petekeen.net/secondary-klipper-for-power-control">previously</a>) so naturally I tried to get Klipper to fit in this non-3d-printer shaped hole.
+        I tried so hard.</p>
+        <p>On the surface, Klipper appears to do everything that I want (control addressable LEDs, kind of customizable) but it makes no compromises in wanting to be a 3D printer controller.
+        Most of the firmware is dedicated to running a motion controller, there's a lot of emphasis on scheduling things to happen in the near future, and there's a global <code>printer</code> object.
+        Importantly for my purposes, there's no built-in way to set up a digital input without declaring it a <code>button</code>.</p>
+        <p>It's fine. Klipper is fine. It's just not built to be a generic IO platform.</p>
+        <p>So, what's a reasonable rational person to do?</p>
+        <h2 id="write-an-esphome-protocol-server" tabindex="-1"><a href="https://www.petekeen.net/esphome-server-in-python/#write-an-esphome-protocol-server" class="header-anchor">Write an ESPHome Protocol Server</a></h2>
+        <p>Of course.</p>
+        <p>There are essentially three ways to get arbitrary devices and entities to show up automatically in Home Assistant.</p>
+        <p>First, one can <a href="https://developers.home-assistant.io/docs/creating_component_index/">write a Home Assistant integration</a>.
+        This is fine and good but it doesn't work for me because my devices are far away from the VM that Home Assistant runs in.</p>
+        <p>Second, there's <a href="https://www.home-assistant.io/integrations/mqtt/#mqtt-discovery">MQTT autodiscovery</a>.
+        I know this works because it's how my Zigbee devices integrate with HA, but I just could not make any of the <a href="https://github.com/unixorn/ha-mqtt-discoverable">existing</a> <a href="https://github.com/alexbarcelo/hass-mqtt-things">generic</a> autodiscovery libraries work consistently.
+        Usually I would end up with a bunch of duplicate MQTT devices and then HA would get confused.</p>
+        <p>Third, there's ESPHome.
+        ESPHome is a firmware for ESP modules (think: small devices with wifi like plugs, air quality monitors, etc).
+        ESPHome belongs to the Open Home Foundation, same as Home Assistant, so it has commercial support and a first class HA integration.
+        I already have a bunch of ESPHome devices running in my house, so it seems like a pretty natural fit.</p>
+        <p>The normal and ordinary way of using ESPHome is to write some YAML config that ESPHome compiles into a firmware for your device, then you flash the device and HA sets itself up to interact with the entities you described in YAML. What I want to do is just that last bit, the part where I can tell HA what entities I have and it sets up UI for me.</p>
+        <p>HA talks to ESPHome over what they call their &quot;native API&quot;.
+        The native API is a TCP-based streaming protocol where the ESPHome device is the server and Home Assistant is the client.
+        They exchange protocol buffer encoded messages over either plain TCP or with a Noise-based encryption scheme.</p>
+        <p>Over the last week or so I built a Python implementation of that protocol named <a href="https://github.com/peterkeen/aioesphomeserver">aioesphomeserver</a>, bootstrapping off of the official <a href="https://github.com/esphome/aioesphomeapi">aioesphomeapi</a> client library that HA uses.</p>
+        <h2 id="a-minimal-example" tabindex="-1"><a href="https://www.petekeen.net/esphome-server-in-python/#a-minimal-example" class="header-anchor">A Minimal Example</a></h2>
+        <p>Here's a very simple example of what <code>aioesphomeserver</code> looks like:</p>
+        <pre><code class="language-python">import asyncio
+        
+        from aioesphomeserver import (
+        Device,
+        SwitchEntity,
+        BinarySensorEntity,
+        EntityListener,
+        )
+        
+        class SwitchListener(EntityListener):
+        async def handle(self, key, message):
+        sensor = self.device.get_entity(&quot;test_binary_sensor&quot;)
+        if sensor != None:
+        await sensor.set_state(message.state)
+        
+        device = Device(
+        name = &quot;Test Device&quot;,
+        mac_address = &quot;AC:BC:32:89:0E:C9&quot;,
+        )
+        
+        device.add_entity(
+        BinarySensorEntity(
+        name = &quot;Test Binary Sensor&quot;,
+        )
+        )
+        
+        device.add_entity(
+        SwitchEntity(
+        name = &quot;Test Switch&quot;,
+        )
+        )
+        
+        device.add_entity(
+        SwitchListener(
+        name=&quot;_listener&quot;,
+        entity_id=&quot;test_switch&quot;
+        )
+        )
+        
+        asyncio.run(device.run())
+        </code></pre>
+        <p>From the top, we import a bunch of stuff and then create a class that listens for messages from the device (the <code>handle</code> method).
+        Then, we set up a device with a name and a fake MAC address. <code>Device</code> can generate a random one for you but it doesn't persist, so if you want this device to stick around in HA you should declare a static MAC.</p>
+        <p>We then add some entities to it: a binary sensor, a switch, and an instance of our switch listener configured for <code>Test Switch</code>.</p>
+        <p>Finally, we start the <code>asyncio</code> event loop.</p>
+        <p>With just that, you get the ESPHome web UI:</p>
+        <div style="width: 100%"><img class="thumbnail" style="width: 100%" alt="ESPHome Web UI" src="https://www.petekeen.net/images/esphome-server-in-python/esphome.png"></div>
+        <p>Adding the device to Home Assistant you'll see this:</p>
+        <div style="width: 100%"><img class="thumbnail" style="width: 100%" alt="Home Assistant view" src="https://www.petekeen.net/images/esphome-server-in-python/home-assistant.png"></div>
+        <h2 id="aio-esphome-server-architecture" tabindex="-1"><a href="https://www.petekeen.net/esphome-server-in-python/#aio-esphome-server-architecture" class="header-anchor">AIO ESPHome Server Architecture</a></h2>
+        <p>I tried to follow the spirit of ESPHome's architecture when writing the server.</p>
+        <div style="width: 100%"><img class="thumbnail" style="width: 100%" alt="Home Assistant device view for the test device" src="https://www.petekeen.net/images/esphome-server-in-python/architecture.png"></div>
+        <p>The <code>Device</code> is a central registrar for <code>Entity</code>s and serves as a message hub.
+        The native API server and web server are entities that plug into the message bus, as are things like <code>SwitchEntity</code> and <code>BinarySensorEntity</code>.
+        Everything is async using Python's <code>asyncio</code>.</p>
+        <p>Any entity with a <code>run</code> method will automatically be scheduled as a task at startup.</p>
+        <h2 id="a-production-example" tabindex="-1"><a href="https://www.petekeen.net/esphome-server-in-python/#a-production-example" class="header-anchor">A Production Example</a></h2>
+        <p>The development case for this library has been driving the addressable LEDs on my house.
+        I found a project named <a href="https://github.com/execuc/u2if">u2if</a> that turns a Raspberry Pi Pico into a USB peripheral that provides a bunch of fun stuff: GPIO, I2C, SPI, PWM, ADC as well as an addressable LED driver for WS2812-compatible lights.
+        The fun wrinkle of the light driver is that it offloads the bitstream generation to the Pico's PIO coprocessors.</p>
+        <p>I <a href="https://github.com/peterkeen/u2if">forked u2if</a> and added a few things:</p>
+        <ul>
+        <li>RGBW support, which was already in the codebase but not available</li>
+        <li>Support for the Pico clone boards I have (SparkFun Pro Micro RP2040)</li>
+        <li>A set of effects for Neopixel along with a console-mode simulator to use while developing</li>
+        <li>A Docker image that bundles the firmware and the Python library</li>
+        </ul>
+        <p>This deployment consists of:</p>
+        <ul>
+        <li>A Dell Wyse 3040 thin client running Alpine Linux that already handles Z-Wave for the garage</li>
+        <li>SparkFun Pro Micro RP2040 running the u2if firmware connected over USB</li>
+        <li>Two channels of RS485 transceivers so I can get the very fast, very unforgiving light control signals 40 feet from where the 3040 is mounted to the wall to where the light power injector lives.</li>
+        </ul>
+        <div style="width: 100%"><img class="thumbnail" style="width: 100%" alt="Project spread out on my desk, including a Dell Wyse 3040 thin client, the USB interface board in a 3d printed box, the RS485 receiver board hooked up to a spool of LEDs via a breadboard." src="https://www.petekeen.net/images/esphome-server-in-python/desk-layout.png"></div>
+        <p>Here is the full script that I'm using to drive the addressable lights on my house:</p>
+        <pre><code class="language-python">import asyncio
+        
+        from machine import WS2812B
+        from neopixel.effects import StaticEffect, BlendEffect, TwinkleEffect
+        
+        from aioesphomeserver import (
+        Device,
+        LightEntity,
+        LightStateResponse,
+        EntityListener,
+        )
+        
+        from aioesphomeapi import LightColorCapability
+        
+        class LightStrip(EntityListener):
+        def __init__(self, *args, strings=[], effects={}, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.strings = strings
+        self.num_pixels = sum([s[1] for s in strings])
+        self.effects = effects
+        
+        self.current_effect_name = None
+        self.current_effect = StaticEffect(count=self.num_pixels)
+        self.white_brightness = 0.0
+        self.color_brightness = 0.0
+        
+        async def handle(self, key, message):
+        if type(message) != LightStateResponse:
+        return
+        
+        await self.device.log(1, f&quot;message.effect: '{message.effect}'&quot;)
+        
+        if message.effect != &quot;&quot; and message.effect != self.current_effect_name:
+        if message.effect in self.effects:
+        self.current_effect_name = message.effect
+        self.current_effect = self.effects[message.effect](self.num_pixels, message)
+        self.current_effect.next_frame()
+        
+        if self.current_effect:
+        self.current_effect.update(message)
+        
+        self.color_brightness = message.color_brightness
+        self.white_brightness = message.brightness
+        
+        if message.state == False:
+        self.color_brightness = 0.0
+        self.white_brightness = 0.0
+        
+        def render(self):
+        pixels = []
+        
+        for i in range(self.num_pixels):
+        color = self.current_effect.pixels[i]
+        
+        pixel = [
+        int(color[0] * 255.0 * self.color_brightness),
+        int(color[1] * 255.0 * self.color_brightness),
+        int(color[2] * 255.0 * self.color_brightness),
+        int(color[3] * 255.0 * self.white_brightness),
+        ]
+        
+        pixels.append(pixel)
+        
+        # partition strings
+        # write to each string
+        cur = 0
+        for string, length in self.strings:
+        last = cur + length - 1
+        string.write(pixels[cur:last])
+        cur = last + 1
+        
+        async def run(self):
+        while True:
+        self.current_effect.next_frame()
+        self.render()
+        await asyncio.sleep(1/24.0)
+        
+        
+        device = Device(
+        name = &quot;Garage Stuff&quot;,
+        mac_address = &quot;7E:85:BA:7E:38:07&quot;,
+        model = &quot;Garage Stuff&quot;
+        )
+        
+        device.add_entity(LightEntity(
+        name=&quot;Front Lights&quot;,
+        color_modes=[LightColorCapability.ON_OFF | LightColorCapability.BRIGHTNESS | LightColorCapability.RGB | LightColorCapability.WHITE],
+        effects=[&quot;Static&quot;, &quot;Twinkle&quot;],
+        ))
+        
+        def make_twinkle_effect(count, state):
+        return BlendEffect(
+        TwinkleEffect(count=count, include_white_channel=True),
+        StaticEffect(count=count, color=[state.red, state.green, state.blue, state.white], include_white_channel=True),
+        mode='lighten',
+        include_white_channel=True,
+        )
+        
+        device.add_entity(LightStrip(
+        name = &quot;_front_lights_strip&quot;,
+        entity_id = &quot;front_lights&quot;,
+        strings = [(WS2812B(23, rgbw = True, color_order=&quot;GRBW&quot;), 20)],
+        effects={
+        &quot;Static&quot;: lambda count, state: StaticEffect(count=count, color=[state.red, state.green, state.blue, state.white], include_white_channel=True),
+        &quot;Twinkle&quot;: make_twinkle_effect,
+        },
+        ))
+        
+        asyncio.run(device.run())
+        </code></pre>
+        <p>The structure is basically the same as the minimal example.
+        We import some stuff, we set up an <code>EntityListener</code> class, and then we set up a <code>Device</code> with a <code>LightEntity</code> and an instance of the listener .</p>
+        <p>In this case, the listener listens for state responses from a <code>Light</code> entity and renders pixels according to a set of effects.
+        It also has a <code>run</code> method that renders the current effect out every 1/24th of a second.</p>
+        <h2 id="should-you-use-this%3F" tabindex="-1"><a href="https://www.petekeen.net/esphome-server-in-python/#should-you-use-this%3F" class="header-anchor">Should you use this?</a></h2>
+        <p>I don't know!</p>
+        <p>If your constraints match mine, maybe it'd be helpful.
+        If you want to expose a thing to Home Assistant and would rather have it show up as an ESPHome device rather than, say, writing your own HA integration or messing with MQTT or writing RESTful API handlers, this would probably be useful.</p>
+        <p>That said, I think if your use case fits within ESPHome proper you should use that.
+        ESPHome has built in drivers for so many things and is going to be better supported (i.e. people are paid to work on it).</p>
+        <p>Pretty neat though, eh?</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Simply Complicated Automatic Sprinkler</title>
+      <link>https://www.petekeen.net/simply-complicated-automatic-sprinkler/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/simply-complicated-automatic-sprinkler/</guid>
+      <content:encoded>
+        <![CDATA[<p>I've never owned a sprinkler before.
+        I've just never had a need for one.</p>
+        <p>Until this past Monday, when I installed some grass seed and couldn't promise myself that I'd water it twice a day every day for the next month as one is supposed to do.</p>
+        <p>A normal person would just buy a mechanical or stand-alone timer device and be done with it.
+        Not me.
+        No way.</p>
+        <p>My first thought (a completely normal one, mind you) was to grab an esp32 and a relay board out of my parts bin and liberally apply ESPHome to the problem.
+        This didn't happen because I recently cleaned my office and put those parts in a bin that I can't quite find right now.</p>
+        <p><em>cough</em>. Anyway.</p>
+        <p>My fallback plan was to grab a Z-Wave relay that was more readily at hand and just (&quot;just&quot;) use Home Assistant as the timer.</p>
+        <!--more-->
+        <h2 id="parts-list" tabindex="-1"><a href="https://www.petekeen.net/simply-complicated-automatic-sprinkler/#parts-list" class="header-anchor">Parts List</a></h2>
+        <ul>
+        <li><a href="https://www.getzooz.com/zooz-zen17-universal-relay/">Zooz Z-Wave ZEN17 Universal Relay</a></li>
+        <li><a href="https://www.orbitonline.com/products/l-series-automatic-inline-valve">Orbit 3/4&quot; inline sprinker valve</a></li>
+        <li>3/4&quot; NPT to garden hose thread adapters</li>
+        <li>Generic 24VAC transformer</li>
+        <li>5 position terminal block</li>
+        <li>18AWG stranded two conductor silicone jacketed wire</li>
+        <li>some random crimp on butt connectors I had laying around</li>
+        <li>A sprinkler</li>
+        </ul>
+        <p>In-ground sprinkler valves in the US pretty universally use 24V AC power.
+        This is a very common signaling voltage for HVAC and other controls in residental settings so it makes sense.
+        For example, non-smart doorbells are also generally 24-ish VAC.</p>
+        <p>The neatest thing about the Zooz ZEN17 (and it's friend the ZEN16) is that it can be powered by USB-C or 12-24 volt DC <em>or AC</em>.
+        That means I can get away with just one power supply for the whole contraption without having to get any kind of fancy voltage regulator.</p>
+        <p>Sprinker valves come in a variety of sizes, none of which are directly compatible with garden hoses.
+        In the US and Canada residental garden hoses have a universal connector size and thread: 3/4&quot; NH (national hose) (or GHT (garden hose thread)), otherwise known as <a href="https://webstore.ansi.org/standards/asme/asmeb1201991r2013">ANSI B1.20.7</a>.
+        So, I needed some thread adapters.
+        Your local hardware store or supermegaglobal online bazaar named after a river in Brazil will provide you with many options.</p>
+        <h2 id="assembly" tabindex="-1"><a href="https://www.petekeen.net/simply-complicated-automatic-sprinkler/#assembly" class="header-anchor">Assembly</a></h2>
+        <p>I didn't take any good pictures of the prototyping and assembly process.
+        Hopefully these will be sufficient.</p>
+        <div style="width: 100%"><img class="thumbnail" style="width: 100%" alt="Relay and power supply" src="https://www.petekeen.net/images/sprinkler/inside.png"></div>
+        <p>As you can see, the power supply is connected directly to the relay (via a small terminal block affixed to the relay with a command strip) and the red and black wires lead to the valve.
+        One of the valve wires is connected directly to the power supply and the other is connected to the NO (normal open) terminal on one of the relays in the ZEN17.
+        A short jumper wire is connected from the other leg of the power supply to the C (common) terminal on the same relay.</p>
+        <div style="width: 100%"><img class="thumbnail" style="width: 100%" alt="Outside valve assembly" src="https://www.petekeen.net/images/sprinkler/valve.png"></div>
+        <p>Here's a shot of the valve itself.
+        You can see the green valve body, the black solenoid that activates the valve, and the brass thread adapters.
+        You can also see the craptastic butt splice things I used, which will be replaced with proper waterproof junctions as soon as they arrive.</p>
+        <p>The grey and orange piece on the right is a quick release adapter.
+        I have quick releases on the spigot and all of the hoses, which lets me easily install and remove the valve as needed.</p>
+        <h2 id="home-assistant" tabindex="-1"><a href="https://www.petekeen.net/simply-complicated-automatic-sprinkler/#home-assistant" class="header-anchor">Home Assistant</a></h2>
+        <p>A generic relay isn't much good without something to control it, so let's turn to Home Assistant.</p>
+        <p>The central component of the sprinkler controller is a 5 minute timer helper which ties with two automations:</p>
+        <ol>
+        <li>
+        <p>Sprinkler Start triggers at 8:30am and 5:30pm and starts the timer, but only if the forecast precipitation probability from OpenWeatherMap is less than 50%.</p>
+        </li>
+        <li>
+        <p>Sprinkler Relay triggers whenever the timer changes state.</p>
+        </li>
+        </ol>
+        <p>Sprinkler Relay uses a Choice action with two branches:</p>
+        <ul>
+        <li>Timer active and relay off -&gt; turn the relay on</li>
+        <li>Timer idle and relay on -&gt; turn the relay off</li>
+        </ul>
+        <p>I also have a Time Pattern trigger on Sprinkler Relay that runs every minute.
+        This acts as sort of a failsafe, so that if the timer ends during a Home Assistant restart, the sprinkler will shut off with at most an extra minute of runtime.</p>
+        <p>Here's Sprinkler Start in YAML:</p>
+        <pre><code class="language-yaml">alias: Sprinkler Start
+        description: &quot;&quot;
+        trigger:
+        - platform: time
+        at: &quot;08:30:00&quot;
+        - platform: time
+        at: &quot;17:30:00&quot;
+        condition:
+        - condition: numeric_state
+        entity_id: sensor.openweathermap_forecast_precipitation_probability
+        below: 50
+        action:
+        - service: timer.start
+        metadata: {}
+        data: {}
+        target:
+        entity_id: timer.sprinkler_runtime
+        - service: notify.all_phones
+        metadata: {}
+        data:
+        message: Sprinkler has started
+        title: Sprinkler
+        mode: single
+        </code></pre>
+        <p>and here's Sprinkler Relay:</p>
+        <pre><code class="language-yaml">alias: Sprinkler Relay
+        description: &quot;&quot;
+        trigger:
+        - platform: state
+        entity_id:
+        - timer.sprinkler_runtime
+        - platform: time_pattern
+        minutes: &quot;*&quot;
+        condition: []
+        action:
+        - choose:
+        - conditions:
+        - condition: state
+        entity_id: timer.sprinkler_runtime
+        state: idle
+        - condition: state
+        entity_id: switch.universal_relay_1
+        state: &quot;on&quot;
+        sequence:
+        - service: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+        entity_id: switch.universal_relay_1
+        - conditions:
+        - condition: state
+        entity_id: timer.sprinkler_runtime
+        state: active
+        - condition: state
+        entity_id: switch.universal_relay_1
+        state: &quot;off&quot;
+        sequence:
+        - service: switch.turn_on
+        metadata: {}
+        data: {}
+        target:
+        entity_id: switch.universal_relay_1
+        mode: single
+        </code></pre>
+        <p>So, what do I have after all of that?
+        I have a sprinkler valve that <em>could</em> be automated with a wrist watch but is <em>actually</em> automated by a Rube Goldberg-esque stack of technology, including radio protocols, ethernet, virtual machines, Python, Javascript, and Tailscale (because of course).</p>
+        <p>Simple!</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Thu, 02 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Using a Static JSON File in Home Assistant</title>
+      <link>https://www.petekeen.net/static-json-in-home-assistant/</link>
+      <guid isPermaLink="false">https://www.petekeen.net/static-json-in-home-assistant/</guid>
+      <content:encoded>
+        <![CDATA[<p>Recently I found myself needing to bring some JSON from a file into a Home Assistant sensor.
+        Specifically, the electricity rates for my power company are woefully out of date on OpenEI so I decided I could just maintain the data myself.</p>
+        <p>Home Assistant doesn't have a direct way to read JSON data from a file into a sensor.
+        There's the <a href="https://www.home-assistant.io/integrations/file/">File</a> platform which has a promising name but is actually a trap.
+        File is meant for use cases where something writes to, say, a CSV file continuously and you just want to read the most recent line. It specifically does not read the whole file.</p>
+        <p>After a lot of searching I came across the <a href="https://www.home-assistant.io/integrations/command_line/">Command Line</a> platform.
+        The integration does a number of things, but for our purposes it lets you periodically run a command within the context of the Home Assistant container and bring the output back into Home Assistant as a sensor.</p>
+        <!--more-->
+        <p>Let's say you have a JSON file named <code>rate.json</code> in your Home Assistant configuration directory:</p>
+        <pre><code class="language-json">{
+        &quot;name&quot;: &quot;Base Rate&quot;,
+        &quot;rate&quot;: 0.15
+        }
+        </code></pre>
+        <p>You can bring that into a sensor with the following snippet in your <code>configuration.yaml</code> file:</p>
+        <pre><code class="language-yaml">command_line:
+        - sensor:
+        name: &quot;Electrity Rate&quot;
+        command: 'cat rate.json',
+        value_template: &quot;{{ value_json['rate'] }}&quot;
+        unit_of_measurement: &quot;USD/kWh&quot;,
+        json_attributes:
+        - name
+        - rate
+        </code></pre>
+        <p>This config does a couple things.
+        The <code>command</code> key specifies what command HA should run, in this case <code>cat</code> to read the file to <code>stdout</code>.
+        <code>value_template</code> extracts the <code>rate</code> key from the file into the sensor's value.
+        The <code>json_attributes</code> list pulls the list of keys into attributes in the sensor, which you can later access from a template using <code>state_attr()</code>.
+        I have also specfied <code>unit_of_measurement</code> here just because the Energy reporting system needs that if you want to use this as an input.</p>
+        <p>So, the above is great if you have one static set of attributes to bring in, but sensor values can be at most 255 characters.
+        What if you have a bigger file that you need to pull just a little data out of?</p>
+        <p>Let's say we have this slightly bigger file <code>rates.json</code>:</p>
+        <pre><code class="language-json">[
+        {
+        &quot;id&quot;: &quot;d1-11_summer_on_peak&quot;,
+        &quot;name&quot;: &quot;Summer Peak&quot;,
+        &quot;months&quot;: [6, 7, 8, 9],
+        &quot;days&quot;: [1, 2, 3, 4, 5],
+        &quot;hours&quot;: [15, 16, 17, 18],
+        &quot;rate&quot;: 0.23525,
+        &quot;peak&quot;: true
+        },
+        {
+        &quot;id&quot;: &quot;d1-11_summer_off_peak&quot;,
+        &quot;name&quot;: &quot;Summer Off-Peak&quot;,
+        &quot;months&quot;: [6, 7, 8, 9],
+        &quot;days&quot;: [0, 1, 2, 3, 4, 5, 6],
+        &quot;hours&quot;: [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+        &quot;rate&quot;: 0.17859,
+        &quot;peak&quot;: false
+        },
+        {
+        &quot;id&quot;: &quot;d1-11_winter_on_peak&quot;,
+        &quot;name&quot;: &quot;Winter Peak&quot;,
+        &quot;months&quot;: [1, 2, 3, 4, 5, 10, 11, 12],
+        &quot;days&quot;: [1, 2, 3, 4, 5],
+        &quot;hours&quot;: [15, 16, 17, 18],
+        &quot;rate&quot;: 0.17879,
+        &quot;peak&quot;: true
+        },
+        {
+        &quot;id&quot;: &quot;d1-11_winter_off_peak&quot;,
+        &quot;name&quot;: &quot;Winter Off-Peak&quot;,
+        &quot;months&quot;: [1, 2, 3, 4, 5, 10, 11, 12],
+        &quot;days&quot;: [0, 1, 2, 3, 4, 5, 6],
+        &quot;hours&quot;: [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+        &quot;rate&quot;: 0.1658,
+        &quot;peak&quot;: false
+        }
+        ]
+        </code></pre>
+        <p>This file describes the rate structure that's in effect at my house, DTE rate D1.11.
+        Each entry in the array is a rate, and the first matching rate based on month, weekday, and hour is the effective rate.</p>
+        <p>Ordinarily one might reach for a HACS integration or something, but the Home Assistant container has another trick up it's sleeve: it bundles <code>jq</code>.</p>
+        <p><a href="https://jqlang.github.io/jq/"><code>jq</code></a> is a tool for querying and manipulating JSON streams.
+        This essay isn't meant to be a <code>jq</code> tutorial so we're not going to go in depth into what this query in <code>rate_filter.jq</code> does, but in broad strokes it picks the first matching rate from the input file and extracts just the name, rate, and peak keys.</p>
+        <pre><code>map(select(
+        (.months[] | contains($ARGS.positional[0] | tonumber))
+        and (.days[] | contains($ARGS.positional[1] | tonumber))
+        and (.hours[] | contains($ARGS.positional[2] | tonumber))
+        ))[0] | {name, rate, peak}
+        </code></pre>
+        <p>Here's a modified command line sensor that runs <code>jq</code> appropriately:</p>
+        <pre><code>command_line:
+        - sensor:
+        name: &quot;DTE Rate&quot;
+        command: 'jq -f rate_filter.jq rates.json --args {{ now().month }} {{ now().isoweekday() % 7 }} {{ now().hour }}'
+        value_template: &quot;{{ value_json['rate'] }}&quot;
+        unit_of_measurement: USD/kWh
+        json_attributes:
+        - name
+        - rate
+        - peak
+        </code></pre>
+        <p>The relevant change here is to the <code>command</code> key, which now invokes <code>jq</code> with the <code>-f</code> argument to pass the filter as a file rather than trying to quote everything properly within HA, then passes the actual <code>rates.json</code> file, then treats the rest of the arguments as positional args.
+        These are accessed within <code>rate_filter.jq</code> as <code>$ARGS.positional[0]</code> etc.</p>
+        <p>With this set up I can access the current electric rate within my Home Assistant in a way that is compatible with the Energy dashboard, which is completely local, and which should be easy to maintain in the future.</p>
+        <p>The above isn't at all specific to electric rates, by the way. This technique should work for any data that you need in HA but is more complicated than a plain input can work with.</p>
+        ]]>
+      </content:encoded>
+      <pubDate>Mon, 08 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

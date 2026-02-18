@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>sencjw: blog</title>
+    <link href="http://sencjw.com/atom.xml" rel="self" />
+    <link href="http://sencjw.com" />
+    <id>http://sencjw.com/atom.xml</id>
+    <author>
+        <name>Chris Wilson</name>
+        <email>chris@sencjw.com</email>
+    </author>
+    <updated>2019-08-25T00:00:00Z</updated>
+    <entry>
+    <title>Embedded Software</title>
+    <link href="http://sencjw.com/posts/2019-08-25-Embedded-software.html" />
+    <id>http://sencjw.com/posts/2019-08-25-Embedded-software.html</id>
+    <published>2019-08-25T00:00:00Z</published>
+    <updated>2019-08-25T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>Embedded Software</h1>
+    <p>
+      Posted on August 25, 2019
+      
+    </p>
+  </header>
+
+  <p>I’ve been really fascinated lately (last ~1 yr or so) by <em>embedded software</em>. In short, software that’s written to run on devices that are <em>tiny</em> by today’s standards. A typical microcontroller, say an ARM Cortex M4, may spec out as:</p>
+<ul>
+<li>80MHz 32-bit processor</li>
+<li>256KB <a href="https://en.wikipedia.org/wiki/Flash_memory">Flash</a></li>
+<li>32KB <a href="https://en.wikipedia.org/wiki/Static_random-access_memory">SRAM</a></li>
+<li>2KB <a href="https://en.wikipedia.org/wiki/EEPROM">EEPROM</a></li>
+</ul>
+<p>In short, not a whole lot of storage for your programs and <em>really</em> not a lot of RAM to work within. Plus, you may not have a ton of extra cycles in which to accomplish what you’d want to do. Everything about developing for these systems demands a style of work that is exceedingly parsimonious. And to Johnny or Julie web-dev, you’ll come across as a grubby ascetic howling from your mountain shack about <em>individual bytes!</em></p>
+<p>Okay. So what does one get in trade for all this digital self-deprivation? Two big features that I’ve noticed are:</p>
+<ul>
+<li>Low-latency and predictable timing</li>
+<li>Interacting with the real world</li>
+</ul>
+<h2 id="low-latency-and-predictable-timing">Low latency and predictable timing</h2>
+<p>An embedded system can react to input quickly largely because it isn’t doing anything else. The processor is humming along at its 80MHz, completing a cycle each 12.5 nanoseconds, when some event happens (lingo: “trigger an interrupt”). In a smallish number of cycles, code to handle that event can start running. The exact figure varies, but it’s quick: say 150-250ns. If you can set a flag or otherwise do simple operations then the whole interrupt may last only 500ns. This brings within reach the ability to run some bit of code at a megahertz rate. As far as us pokey humans are concerned, the system reacts instantly.</p>
+<p>For me, both as a software developer and consumer, this immediate responsiveness is a deeply satisfying aspect of embedded development. As a user, I love the idea that when I press a button something <em>happens</em> and that it happens <em>fast</em>. And as a creator, being able to accomplish this feat feels like a superpower.</p>
+<h2 id="interacting-with-the-real-world">Interacting with the real world</h2>
+<p>Speaking of a superpower, what could be more magical than being able to reach out of the digital world and poke bits into meatspace? Or the reverse, to sample what’s going on “out there” and react to it, computationally. A sensor reading becomes a byte in a register, all ready to work with.</p>
+<p>Astute readers now clear their throats:</p>
+<blockquote>
+<p>What about combining the <em>sampling</em> with the <em>poking</em>? And doing that over and over automatically to, like, <em>control</em> stuff?</p>
+</blockquote>
+<p>Yup. That is both emphatically <a href="https://en.wikipedia.org/wiki/Control_system">a thing</a> and <a href="https://en.wikipedia.org/wiki/Control_theory">really cool</a>. Cool.</p>
+<h2 id="ongoing">Ongoing</h2>
+<p>Anyway this is a thing that I think is pretty cool and I’ve been digging into it. As a fun kicker there’s lots of cross-pollination with other things that I also think are cool. While the term <em>Internet of Things</em> is reaching toxic levels of buzzwordiness, there’s a kernel of really neat stuff there. It’s extending the internet’s feelers and actuators into the real world. It involves radio protocols like WiFi, <a href="https://lora-alliance.org">LoRa</a>, <a href="https://en.wikipedia.org/wiki/Bluetooth_Low_Energy">BLE</a>, and <a href="https://www.rs-online.com/designspark/eleven-internet-of-things-iot-protocols-you-need-to-know-about">many others</a>. You can even use <a href="https://chirp.io">audio frequencies as your data transport</a>.</p>
+<p>As work on projects, I’ll write about them here. Or over on the tech blog.</p>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>The Onion Approach</title>
+    <link href="http://sencjw.com/posts/2018-01-22-The-Onion-Approach.html" />
+    <id>http://sencjw.com/posts/2018-01-22-The-Onion-Approach.html</id>
+    <published>2018-01-22T00:00:00Z</published>
+    <updated>2018-01-22T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>The Onion Approach</h1>
+    <p>
+      Posted on January 22, 2018
+      
+    </p>
+  </header>
+
+  <p>I was once watching a lecture on TV – where I’m from there’s an over-the-air channel that’s just university lectures. Anywho, there I was, listening to a botanist, geneticist, or food chemist (don’t know which) talk about all the health benefits that eating <em>raw</em> onions confer. But raw is the operative word, there are all kinds of organic sulfur compounds that break down when the onion is cooked. Knowing this, we have two choices:</p>
+<ol type="1">
+<li>Breed onions that have boat loads of the healthful organic sulfur compounds that we’re looking for. These would be super onions and would accordingly be super healthful to eat.</li>
+<li>Breed onions that have <em>as little as possible</em> of those same healthy sulfur compounds. These would be meh, nutritionally speaking, but would still have some oomph.</li>
+</ol>
+<p>Well, duh, breed <strong>Onion 1</strong>, right? Here’s the twist. Scientists are clever about what the data really means. They also found out that nobody would actually eat <strong>Onion 1</strong>. It would simply be too strong to tolerate eating it raw – raw is the whole point.</p>
+<p>To optimize the amount of these valuable organic sulfur compounds that people actually ingest, we’re drawn to the counter-intuitive notion that we should breed <strong>Onion 2.</strong></p>
+<p>I smell a lesson here that bums me out a little. For any approach that would improve everyones’ lives<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, but they’d also find unpalatable, we’re kinda forced to abandon it. Or if not abandon, being realistic, we shouldn’t get our hopes up that people will take it up in droves. We should look for things that minimize unpalatability so that people will adopt it eagerly. Even at the cost of most of the benefits, this is a net win, <em>maximize by minimizing</em>. If we can find things that are both palatable and have a big benefit – hold onto your hats. But my suspicion is that lots more things are in the tradeoff category.</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>For any real-world thing, this is hard to say. For notoriously-hard-to-study software, where studies don’t seem to say much definitively, even more so. But let’s just us friends pretend that we’ve got a slam-dunk here.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>Practical Haskell</title>
+    <link href="http://sencjw.com/posts/2017-10-20-practical-haskell.html" />
+    <id>http://sencjw.com/posts/2017-10-20-practical-haskell.html</id>
+    <published>2017-10-20T00:00:00Z</published>
+    <updated>2017-10-20T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>Practical Haskell</h1>
+    <p>
+      Posted on October 20, 2017
+      
+    </p>
+  </header>
+
+  <p>Alternate title: <em>A Haskell Talk That Would Definitely Be Rejected At a Functional Programming Conference</em></p>
+<p>First, for some background context, please go read <a href="https://www.snoyman.com/blog/2017/04/haskell-success-stories">Haskell Success Stories</a>.</p>
+<p>While it’s not true, there’s the perception out there that Haskell’s only good for doing math-y things. Got some high-finance doohickey that you need to write? Sure. Do you need to write a [Boring Line-of-business Application][]? Not so much. There are bits and pieces out there, but it can be tough to bring them together. Sometimes what you see is a novel encoding of a known problem but in a functional context. Like it could be show-and-tell about a functional data structure (many great articles fall into this category). Others are about getting a grip on some advanced technique, e.g. <em>free monads</em>, <em>lenses</em>, <em>profunctors</em>, etc. I love these sorts of articles! But others have written many and have written them much better than I could. I want to put out a few articles on how to accomplish some meat-and-potatoes software tasks.</p>
+<p>The three avenues I used when I started learning Haskell were: “Real World Haskell,” flailing around in the REPL endlessly, and reading blog posts. Maybe more than other languages, Haskell has a <em>distributed tutorial</em> that comprises a vast collection of programming blog posts <em>out there.</em> Collectively, these make up a lot of <em>The Literature</em>.</p>
+<p>One thing that I want to add to that corpus is <em>my take</em> on writing day-to-day Haskell code. This is the kind of thing that probably seems super mundane and not interesting to many Haskellers, and that’s okay. My audience here is people who have the impression that you can write a compiler with Haskell, but you can’t send an email. They may think Haskell is “good” but the unsaid follow-on thought is “…for problems I don’t have.” In blabbing about how I do some of those ordinary things, I want that person to come away thinking: “oh, it’s nice for my <em>regular</em> problems, too.”</p>
+<p>I’m hoping that this will be a series of posts where I can show several examples. The first one on the docket is something that always sort of bugged me in Ruby on Rails: “Job Scheduling.” Wikipedia has a <a href="https://en.wikipedia.org/wiki/Job_scheduler">longish page</a> about all the forms that that problem can take, but what I had in mind is the prototypical <a href="http://sidekiq.org/">Sidekiq</a> app. If you’ve never met Sidekiq it’s a job queuing system that uses Redis to persist descriptions of “jobs” to run. Later, in an entirely different <em>OS process</em>, Sidekiq pops jobs off the queue and then runs them.</p>
+<p>This is a pretty common thing for <em>The Business</em> to want. There are lots of tasks that need to get done but they don’t need to get done <em>now</em>. It is perfectly fine to push them off to the side and continue with some other workflow. This makes a lot of sense. The garden-variety Rails web application would get bogged down if it had to run a lengthy, I/O-intensive side-quest in the middle of a controller action. Enqueuing a job is a quick process, so that the synchronous web request can complete. Once a job is scheduled, a worker from the pool will pick it up anon.</p>
+<p>Let’s build a toy version of that.</p>
+<h2 id="jobscheduler.hs---queue-management">JobScheduler.hs - Queue Management</h2>
+<p>It’s been said that <a href="https://twitter.com/gabrielg439/status/701871069607505921">an idiomatic Haskell program is 20 lines of imports, 6 language extensions, and 1 line of Perl</a>. I cut through that thicket with a custom prelude, <code>Preamble</code>. You can go check it out if you’d like, but it’s just there to import and then re-export common libraries. Let’s start with some bookkeeping that we need for working with the queue itself:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" title="1"><span class="co">--------------------------</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">-- Data types</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">type</span> <span class="dt">Task</span> <span class="fu">=</span> <span class="dt">Maybe</span> <span class="dt">JobParser.JobSpec</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">type</span> <span class="dt">JobQueue</span> <span class="fu">=</span> <span class="dt">TChan</span> <span class="dt">Task</span></a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8"></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">--------------------------</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">-- Functions</span></a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">-- | Start up a worker pool of &#39;k&#39; members. Return the &#39;TChan&#39; that can be</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">-- used to assign work to the pool.</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="fu">init</span><span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">JobQueue</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="fu">init</span> k <span class="fu">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb1-17" title="17">    reportQueue <span class="ot">&lt;-</span> newTChanIO</a>
+<a class="sourceLine" id="cb1-18" title="18">    jobQueue <span class="ot">&lt;-</span> newTChanIO</a>
+<a class="sourceLine" id="cb1-19" title="19"></a>
+<a class="sourceLine" id="cb1-20" title="20">    <span class="co">-- start the report writer worker listening on the reportQueue</span></a>
+<a class="sourceLine" id="cb1-21" title="21">    _ <span class="ot">&lt;-</span> forkIO (reportWriter reportQueue)</a>
+<a class="sourceLine" id="cb1-22" title="22"></a>
+<a class="sourceLine" id="cb1-23" title="23">    <span class="co">-- start worker threads 1 through k, all listening on the jobQueue</span></a>
+<a class="sourceLine" id="cb1-24" title="24">    forM_ [<span class="dv">1</span><span class="fu">..</span>k] <span class="fu">$</span> \workerNum <span class="ot">-&gt;</span></a>
+<a class="sourceLine" id="cb1-25" title="25">        forkIO (worker reportQueue jobQueue workerNum)</a>
+<a class="sourceLine" id="cb1-26" title="26"></a>
+<a class="sourceLine" id="cb1-27" title="27">    <span class="co">-- return the jobQueue (so we can add jobs to it later)</span></a>
+<a class="sourceLine" id="cb1-28" title="28">    <span class="fu">return</span> jobQueue</a>
+<a class="sourceLine" id="cb1-29" title="29"></a>
+<a class="sourceLine" id="cb1-30" title="30"></a>
+<a class="sourceLine" id="cb1-31" title="31"><span class="co">-- | Spam &#39;Nothing&#39; task into the job queue. When a worker receives a</span></a>
+<a class="sourceLine" id="cb1-32" title="32"><span class="co">-- &#39;Nothing&#39; &#39;Task&#39;, it will quit.</span></a>
+<a class="sourceLine" id="cb1-33" title="33"><span class="ot">shutdown ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">JobQueue</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</a>
+<a class="sourceLine" id="cb1-34" title="34">shutdown k jobQueue <span class="fu">=</span> atomically <span class="fu">$</span></a>
+<a class="sourceLine" id="cb1-35" title="35">    replicateM_ k (writeTChan jobQueue <span class="dt">Nothing</span>)</a>
+<a class="sourceLine" id="cb1-36" title="36"></a>
+<a class="sourceLine" id="cb1-37" title="37"></a>
+<a class="sourceLine" id="cb1-38" title="38"><span class="co">-- | Add a job to the queue specified by a &#39;JobParser.JobSpec&#39;.</span></a>
+<a class="sourceLine" id="cb1-39" title="39"><span class="ot">enqueue ::</span> <span class="dt">MonadIO</span> m <span class="ot">=&gt;</span> <span class="dt">JobParser.JobSpec</span> <span class="ot">-&gt;</span> <span class="dt">JobQueue</span> <span class="ot">-&gt;</span> m ()</a>
+<a class="sourceLine" id="cb1-40" title="40">enqueue jobSpec jobQueue <span class="fu">=</span> liftIO <span class="fu">.</span> atomically <span class="fu">$</span></a>
+<a class="sourceLine" id="cb1-41" title="41">    writeTChan jobQueue (<span class="dt">Just</span> jobSpec)</a></code></pre></div>
+<p><code>init</code> creates the <code>JobQueue</code> itself and spawns <code>k</code> workers to watch the output of that queue. We’re using a <code>TChan Task</code> (a transactional channel that can carry <code>Task</code> values). This is a lot like a <a href="https://gobyexample.com/channels">Golang channel</a> except we additionally get transactional semantics around the reading and writing of the channel. For instance, we could read from one channel and write to another and wrap the whole thing in <code>atomically</code>. Outside of that block we’d only be able to observe both happen or neither happen. We also create a <code>reportQueue</code>/<code>reportWriter</code> which will asynchronously collect log messages and print them to the terminal.</p>
+<p><code>shutdown</code> sends <code>k</code> <em>quit</em> messages to the worker pool. When a worker receives a <code>Nothing</code> value, it’ll quit. This will terminate that worker’s thread.</p>
+<p>Lastly, <code>enqueue</code> writes a new job into the <code>jobQueue</code>. We’ll talk more about what a <code>JobSpec</code> is in a minute, but it’s really just a description of a job to run. We need to wrap the <code>jobSpec</code> in <code>Just</code> to distinguish it from <code>Nothing</code>, which would kill the worker thread.</p>
+<h2 id="jobscheduler.hs---workers-and-jobs">JobScheduler.hs - Workers and Jobs</h2>
+<p>Now that we’ve got our queue all prepped, we can handle jobs that come down the pike.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb2-1" title="1"><span class="co">-- | Watch the report queue for messages and write them to the terminal</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ot">reportWriter ::</span> <span class="dt">TChan</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</a>
+<a class="sourceLine" id="cb2-3" title="3">reportWriter chan <span class="fu">=</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    forever <span class="fu">$</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb2-5" title="5">        msg <span class="ot">&lt;-</span> atomically (readTChan chan)</a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="fu">putStrLn</span> msg</a>
+<a class="sourceLine" id="cb2-7" title="7">        hFlush stdout</a>
+<a class="sourceLine" id="cb2-8" title="8"></a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">-- | Run a worker. It can write to the report queue and it can read from the</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">-- jobQueue. It is also assigned a sequential number as a label, so we</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">-- know it&#39;s &quot;worker 1,&quot; for example. The actual job is done in the</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">-- &#39;performJob&#39; helper. This prints the job&#39;s name from the &#39;JobSpec&#39;</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">-- and then waits the given duration in seconds. Then it prints that</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">-- it&#39;s finished.</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="ot">worker ::</span> <span class="dt">TChan</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">JobQueue</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</a>
+<a class="sourceLine" id="cb2-17" title="17">worker reportQueue jobQueue workerNum <span class="fu">=</span> loop</a>
+<a class="sourceLine" id="cb2-18" title="18">    <span class="kw">where</span></a>
+<a class="sourceLine" id="cb2-19" title="19">        loop <span class="fu">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb2-20" title="20">            job <span class="ot">&lt;-</span> atomically (readTChan jobQueue)</a>
+<a class="sourceLine" id="cb2-21" title="21">                <span class="kw">case</span> job <span class="kw">of</span></a>
+<a class="sourceLine" id="cb2-22" title="22">                    <span class="dt">Nothing</span> <span class="ot">-&gt;</span> <span class="fu">return</span> ()</a>
+<a class="sourceLine" id="cb2-23" title="23">                    <span class="dt">Just</span> spec  <span class="ot">-&gt;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb2-24" title="24">                        performJob spec reportQueue workerNum</a>
+<a class="sourceLine" id="cb2-25" title="25">                        loop</a>
+<a class="sourceLine" id="cb2-26" title="26"></a>
+<a class="sourceLine" id="cb2-27" title="27"></a>
+<a class="sourceLine" id="cb2-28" title="28"><span class="co">-- | Actually perform the specified job. In this case we just sleep for</span></a>
+<a class="sourceLine" id="cb2-29" title="29"><span class="co">-- however long the job specifies.</span></a>
+<a class="sourceLine" id="cb2-30" title="30"><span class="ot">performJob ::</span> <span class="dt">JobParser.JobSpec</span> <span class="ot">-&gt;</span> <span class="dt">TChan</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</a>
+<a class="sourceLine" id="cb2-31" title="31">performJob (<span class="dt">JobParser.JobSpec</span> name duration) reportQueue workerNum <span class="fu">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb2-32" title="32">    <span class="kw">let</span> startMsg <span class="fu">=</span> printf <span class="st">&quot;WORKER %d STARTING JOB: %s&quot;</span> workerNum name</a>
+<a class="sourceLine" id="cb2-33" title="33">        finishMsg <span class="fu">=</span> printf <span class="st">&quot;WORKER %d FINISHED: %s&quot;</span> workerNum name</a>
+<a class="sourceLine" id="cb2-34" title="34">    atomically (writeTChan reportQueue startMsg)</a>
+<a class="sourceLine" id="cb2-35" title="35">    threadDelay (<span class="dv">1000000</span> <span class="fu">*</span> duration)</a>
+<a class="sourceLine" id="cb2-36" title="36">    atomically (writeTChan reportQueue finishMsg)</a></code></pre></div>
+<p>I mentioned briefly that we have a (sort of) parallel work queue for logging messages. This is the worker that deals with that queue. <code>reportWriter</code> loops forever, pulling <code>String</code> messages off the queue and writing them to the terminal. This seems trivial, but if we logged directly from the worker threads we’d sometimes get some Zalgo text instead of a sensible message. The threads could interleave in any order. We sidestep this by writing messages into a channel and then printing them in an orderly fashion.</p>
+<p>The <code>worker</code> is the central figure on stage. We bring together the <code>jobQueue</code>, the <code>reportQueue</code>, an <code>Int</code> (for identifying the worker, not really needed, but nice for logging), and handle jobs coming in through the queue. We loop forever pulling jobs off the queue. If the job’s value is <code>Nothing</code> then we’ll yield a value rather than looping again, this ends the thread. Otherwise, we extract the <code>JobSpec</code> and pass the resulting payload along to <code>performJob</code>. We then loop again.</p>
+<p><code>performJob</code> opens up the payload and performs the job. In my simulation here, the “job” such as it is, is just a number. This code announces to the world that it’s starting work, sleeps for that number of seconds, and then announces it’s done<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<h2 id="jobparser.hs">JobParser.hs</h2>
+<p>Jobs are sent to the server in simple XML format like so:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">&lt;job&gt;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="kw">&lt;jobName&gt;</span>10-second job<span class="kw">&lt;/jobName&gt;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="kw">&lt;seconds&gt;</span>10<span class="kw">&lt;/seconds&gt;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">&lt;/job&gt;</span></a></code></pre></div>
+<p>JSON it ain’t, but I wanted to make this more Enterprisey, right? So let’s extract the juicy business data inside:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb4-1" title="1"><span class="co">-- | The job spec is the name and the duration of the job. Nothing too</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">-- weird. The duration is converted into an &#39;Int&#39;.</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">data</span> <span class="dt">JobSpec</span> <span class="fu">=</span> <span class="dt">JobSpec</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    {<span class="ot"> jobName     ::</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    ,<span class="ot"> jobDuration ::</span> <span class="dt">Int</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    }</a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8"></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">-- | We convert from &#39;XmlSource&#39; which has instances for various</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">-- text-ual type things: &#39;String&#39;, &#39;ByteString&#39;, &#39;Text&#39;, etc. If parsing</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">-- succeeds we&#39;ll end up with a &#39;JobSpec&#39;. </span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="ot">parseJob ::</span> <span class="dt">Lexer.XmlSource</span> s <span class="ot">=&gt;</span> s <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">JobSpec</span></a>
+<a class="sourceLine" id="cb4-13" title="13">parseJob s <span class="fu">=</span> XML.parseXMLDoc s <span class="fu">&gt;&gt;=</span> getJob</a>
+<a class="sourceLine" id="cb4-14" title="14"></a>
+<a class="sourceLine" id="cb4-15" title="15"></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">-- | Extract the &quot;jobName&quot; and &quot;seconds&quot; fields out of the XML document.</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="ot">getJob ::</span> <span class="dt">XML.Element</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> <span class="dt">JobSpec</span></a>
+<a class="sourceLine" id="cb4-18" title="18">getJob el <span class="fu">=</span> liftA2 <span class="dt">JobSpec</span></a>
+<a class="sourceLine" id="cb4-19" title="19">    (XML.strContent <span class="fu">&lt;$&gt;</span> XML.filterChildName (byName <span class="st">&quot;jobName&quot;</span>) el)</a>
+<a class="sourceLine" id="cb4-20" title="20">    (<span class="fu">read</span> <span class="fu">.</span> XML.strContent <span class="fu">&lt;$&gt;</span> XML.filterChildName (byName <span class="st">&quot;seconds&quot;</span>) el)</a>
+<a class="sourceLine" id="cb4-21" title="21"></a>
+<a class="sourceLine" id="cb4-22" title="22"></a>
+<a class="sourceLine" id="cb4-23" title="23"><span class="co">-- | A helper function that will search by the name of the tag (rather</span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="co">-- than attributes or other XML-y things).</span></a>
+<a class="sourceLine" id="cb4-25" title="25"><span class="ot">byName ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">XML.QName</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span></a>
+<a class="sourceLine" id="cb4-26" title="26">byName needle haystack <span class="fu">=</span> XML.qName haystack <span class="fu">==</span> needle</a></code></pre></div>
+<p>If you’re used to looking at parsing type code that shouldn’t look too different. Haskell’s typical style is to have a functon amounting to <code>TextBlob -&gt; Maybe BusinessBlob</code> somewhere. Even if this function is internally complex, the exterior API will examine unstructured input and give a thumbs up or down. The nice part about this, once you’ve tested your parser reasonably well, is that once input text passes muster then you don’t have to worry about it any longer. You go from opaque blob directly to a business domain object<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> <em>or</em> a reason why you couldn’t.</p>
+<h2 id="web.hs---putting-it-together">Web.hs - Putting it Together</h2>
+<p>We tie the job queue together with the job specs by allowing them to be submitted via a POST. We have two routes, a bogus one just to make sure the webapp is up – if you like that sort of thing. The action happens when someone POSTS an XML JobSpec to <code>/upload</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb5-1" title="1"><span class="ot">app ::</span> <span class="dt">JobScheduler.JobQueue</span> <span class="ot">-&gt;</span> <span class="dt">Scotty.ScottyM</span> ()</a>
+<a class="sourceLine" id="cb5-2" title="2">app jobQueue <span class="fu">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    Scotty.get <span class="st">&quot;/&quot;</span> <span class="fu">$</span></a>
+<a class="sourceLine" id="cb5-4" title="4">        Scotty.text <span class="st">&quot;hello&quot;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"></a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="co">-- upload action</span></a>
+<a class="sourceLine" id="cb5-7" title="7">    Scotty.post <span class="st">&quot;/upload&quot;</span> <span class="fu">$</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb5-8" title="8">        maybeJobSpec <span class="ot">&lt;-</span> withUploadedFile JobParser.parseJob</a>
+<a class="sourceLine" id="cb5-9" title="9">        maybeJobSpec <span class="ot">`or400`</span> \jobSpec <span class="ot">-&gt;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb5-10" title="10">            JobScheduler.enqueue jobSpec jobQueue</a>
+<a class="sourceLine" id="cb5-11" title="11">            Scotty.status _200</a>
+<a class="sourceLine" id="cb5-12" title="12"></a>
+<a class="sourceLine" id="cb5-13" title="13"></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="ot">withUploadedFile ::</span> (<span class="dt">BL.ByteString</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a) <span class="ot">-&gt;</span> <span class="dt">Scotty.ActionM</span> (<span class="dt">Maybe</span> a)</a>
+<a class="sourceLine" id="cb5-15" title="15">withUploadedFile f <span class="fu">=</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb5-16" title="16">    files <span class="ot">&lt;-</span> Scotty.files</a>
+<a class="sourceLine" id="cb5-17" title="17">    <span class="kw">case</span> files <span class="kw">of</span></a>
+<a class="sourceLine" id="cb5-18" title="18">        [] <span class="ot">-&gt;</span> <span class="kw">do</span>                               <span class="co">-- no files uploaded</span></a>
+<a class="sourceLine" id="cb5-19" title="19">            Scotty.status _422</a>
+<a class="sourceLine" id="cb5-20" title="20">            <span class="fu">return</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb5-21" title="21">        ((_, fileInfo)<span class="fu">:</span>_) <span class="ot">-&gt;</span>                   <span class="co">-- at least one file</span></a>
+<a class="sourceLine" id="cb5-22" title="22">            <span class="fu">return</span> (f (fileContent fileInfo))</a>
+<a class="sourceLine" id="cb5-23" title="23"></a>
+<a class="sourceLine" id="cb5-24" title="24"></a>
+<a class="sourceLine" id="cb5-25" title="25"><span class="ot">or400 ::</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Scotty.ActionM</span> ()) <span class="ot">-&gt;</span> <span class="dt">Scotty.ActionM</span> ()</a>
+<a class="sourceLine" id="cb5-26" title="26">or400 m f <span class="fu">=</span> <span class="fu">maybe</span> (Scotty.status _400) f m</a></code></pre></div>
+<p>First we try to extract an uploaded file from the HTTP POST. <code>withUploadedFile</code> is a helper function that takes care of this pattern. It rummages around where the uploaded files ought to be, if there are any, and returns a 422 status if one wasn’t found. If it does find at least one file then we extract the <code>fileContent</code> from that payload and pass it to the callback function, <code>f</code>. This function should expect to receive a <code>ByteString</code> and maybe return some value.</p>
+<p>Back in the <em>upload action</em>, we use this to compose the pedestrian workflow of “receive upload, check if it was <em>really</em> an upload, and then parse it, if indeed it’s parseable.” We use <code>or400</code> to handle the case when we couldn’t parse the XML, responding with an HTTP 400 if so. Otherwise, we have a real-live <code>jobSpec</code>. We <code>enqueue</code> it in the <code>jobQueue</code> and then respond with an HTTP 200.</p>
+<h2 id="main.hs---starting-the-queue-and-web-server">Main.hs - starting the queue and web server</h2>
+<p>Last thing to do is to start the thing!</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb6-1" title="1"><span class="ot">main ::</span> <span class="dt">IO</span> ()</a>
+<a class="sourceLine" id="cb6-2" title="2">main <span class="fu">=</span></a>
+<a class="sourceLine" id="cb6-3" title="3">  bracket (JobScheduler.init <span class="dv">4</span>) (JobScheduler.shutdown <span class="dv">4</span>) <span class="fu">$</span> \jobQueue <span class="ot">-&gt;</span></a>
+<a class="sourceLine" id="cb6-4" title="4">    scotty <span class="dv">8000</span> (Web.app jobQueue)</a></code></pre></div>
+<p>We’re using <code>bracket</code> to make sure that the job queue is properly started and cleaned up in case we abort somewhere. The pattern is that <code>init</code> returns the <em>resource</em> (<code>JobQueue</code>) <code>shutdown 4</code> has the, partially-applied, type <code>JobQueue -&gt; IO ()</code>. And the inner <em>action</em> is a function of <code>jobQueue</code> as well.</p>
+<pre><code>bracket :: IO a -&gt; (a -&gt; IO b) -&gt; (a -&gt; IO c) -&gt; IO c
+           ^^^^^   ^^^^^^^^^^^    ^^^^^^^^^^^
+             |          |              &#39;- use
+             |          &#39;- clean up
+             `- Acquire resource</code></pre>
+<p>And then we start the web app, passing in the <code>jobQueue</code> so that it’s available within. There you have it!</p>
+<h2 id="running-the-simulation">Running the “simulation”</h2>
+<p>Let’s take it for a spin. I’ll fire off a bunch of jobs and see how the system responds:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">for</span> <span class="fu">file</span> in <span class="kw">`</span><span class="fu">ls</span> *xml<span class="kw">`</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">do</span></a>
+<a class="sourceLine" id="cb8-3" title="3">	<span class="ex">curl</span> -XPOST -F <span class="st">&quot;upload=@</span><span class="va">${file}</span><span class="st">&quot;</span> http://127.0.0.1:8000/upload</a>
+<a class="sourceLine" id="cb8-4" title="4">	<span class="fu">sleep</span> 1</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="kw">done</span></a></code></pre></div>
+<p>This submits each the five sample jobs at a 1 second interval. It isn’t that important, but I thought the simulation should suggest that new jobs can arrive at any time. And then we can check on the server to see how they’ve been processed:</p>
+<pre><code>WORKER 4 STARTING JOB: 10-second job
+WORKER 1 STARTING JOB: 15-second job
+WORKER 3 STARTING JOB: 20-second job
+WORKER 2 STARTING JOB: 2-second job
+WORKER 2 FINISHED: 2-second job
+WORKER 2 STARTING JOB: 5-second job
+WORKER 4 FINISHED: 10-second job
+WORKER 2 FINISHED: 5-second job
+WORKER 1 FINISHED: 15-second job
+WORKER 3 FINISHED: 20-second job</code></pre>
+<p>An interesting thing to note is that there are 5 jobs but only 4 workers. We can see this in the trace. When WORKER 2 finishes the 2-second job, the 5-second job is waiting in the queue. WORKER 2 then picks up the 5-second job and continues. These jobs are on a simple fixed timer, but you could imagine each job taking a variable amount of processing time before finishing.</p>
+<h2 id="full-example">Full example</h2>
+<p>You can check out the full code here: <a href="https://github.com/twopoint718/job-scheduler" class="uri">https://github.com/twopoint718/job-scheduler</a></p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The <em>modus operandi</em> of the ideal programmer, amirite?<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>In reality, you’ll probably go to a <a href="https://en.wikipedia.org/wiki/Data_transfer_object">DTO</a> rather than an internal domain datatype directly. Also, to be very clear I’m using <em>object</em> in a lowercase discussion kind of way and not an uppercase UML kind of way.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>The Quick Hack v. Developing Software</title>
+    <link href="http://sencjw.com/posts/2015-01-08-the-quick-hack.html" />
+    <id>http://sencjw.com/posts/2015-01-08-the-quick-hack.html</id>
+    <published>2015-01-08T00:00:00Z</published>
+    <updated>2015-01-08T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>The Quick Hack v. Developing Software</h1>
+    <p>
+      Posted on January  8, 2015
+      
+    </p>
+  </header>
+
+  <p>I find that I operate in one of two <em>modes</em> when I’m writing software. I’m either approaching a project as <em>a quick hack</em> or as <em>developing software</em>. As much as anything else, this affects how I approach the project and what kinds of results that I get.</p>
+<p>When I’m operating under the auspices of the quick hack, everything is moving toward and subordinate to the goal. The end product of the quick hack is everything. I approach the actual hacking in a fit of pique, it’s <em>annoying</em> that this thing isn’t done yet. I always take the way that’s most expedient and I’m always looking for a shortcut or quick fix.</p>
+<p>When I set out to <em>develop software</em> my mindset is different. Here I’m nurturing a seed of an idea. I’m taking small pieces and building connections between them. I have the sense that I’m making something new, or at least I’m making something that’s <em>mine</em> – I feel ownership. I also assume that the thing that I’m building has to last.</p>
+<p>The natural habitat of a quick hack is a framework. When I’m confronted with something that doesn’t fit, I look for that next StackOverflow answer that’ll tell me how to shoehorn it in among the Tetris pieces that I already have. The framework is not malleable, I must square-off my round peg.</p>
+<p>Libraries are what support developing software. Properly in charge, I choose a subordinate library and apply its talents appropriately. There is no hint of having to make my design fit within the strictures of someone else’s plan. I have the skeleton, I merely need the flesh. If I find that a library no longer suits my needs, it is easily removed. Well-scoped libraries tend to match one another much more closely than frameworks do. The problem that the library solves, the abstraction that it grants, tends to be more universal than a framework. Two HTTP client libraries will tend to expose those actions that HTTP supports. With a framework, I must first accept its world-view before I can start using it.</p>
+<p>As I’ve grown as a software developer, I’ve come to believe that whenever possible I should use libraries over frameworks. This has been said <a href="http://tom.lokhorst.eu/2010/09/why-libraries-are-better-than-frameworks">many</a> <a href="http://discuss.joelonsoftware.com/default.asp?joel.3.219431.12&amp;">times</a> <a href="http://blog.orderharmony.com/2011/07/libraries-vs-frameworks.html">before</a>, but now I’m <em>getting there</em> via my own experience. I’m beginning to see that the advantages of frameworks can be matched by a powerful language combined with a little sense about the high-level architecture that the application demands. Over time, I’ve developed my own palette of designs and code to accomplish most tasks. I can act as a <a href="http://en.wikipedia.org/wiki/Linker_(computing)#Static_linking">linker</a>, assembling only those functions that are needed to accomplish the task at hand.</p>
+<p>Lastly, I worry that time and brainpower that I pour into frameworks goes unrewarded. When I don’t want to use a framework, the framework changes, or I want to do something that the framework doesn’t support, I’m left out in the cold. All of these scenarios play out often. Each time a new version of Rails comes out, it is infused with whatever OOP fashion is reigning at the time: concerns, presenters, etc. The way that I <em>used</em> to do something is rendered obsolete without warning and without recourse. The knowledge that I had about how to work with the framework has gone stale – like money, “you can’t take it with you.”</p>
+<p>I think that it is time that we, as software developers, become responsible for our own fate. Make decisions, find out what works, learn! We have no excuse for being held hostage to decisions that we didn’t make just because we didn’t understand the nature of the decision. Software development is more than just filling in the blanks on some giant MadLibs of a framework. Software is the most infinitely pliable medium of design that the world has ever seen. Like a proof, if you can show your reasoning to be sound you can do it that way. There’s no limit, so go out and build!</p>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>Haskell Meetup!</title>
+    <link href="http://sencjw.com/posts/2015-01-03-meetup.html" />
+    <id>http://sencjw.com/posts/2015-01-03-meetup.html</id>
+    <published>2015-01-03T00:00:00Z</published>
+    <updated>2015-01-03T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>Haskell Meetup!</h1>
+    <p>
+      Posted on January  3, 2015
+      
+    </p>
+  </header>
+
+  <figure>
+<img src="../images/mad_haskell.svg" alt="Haskell logo" /><figcaption>Haskell logo</figcaption>
+</figure>
+<p>We’re doing a <a href="http://www.meetup.com/Madison-Haskell-Users-Group/">Haskell Meetup</a> in Madison! I’m really eager to see what comes out of this. I remember that I first heard about Bendyworks because of a Clojure meetup. Getting a bunch of like-minded people together will be fun. Besides, maybe I can find some more people to blab to about free monads.</p>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>Getting to write Haskell at work</title>
+    <link href="http://sencjw.com/posts/2014-12-22-haskell-at-work.html" />
+    <id>http://sencjw.com/posts/2014-12-22-haskell-at-work.html</id>
+    <published>2014-12-22T00:00:00Z</published>
+    <updated>2014-12-22T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>Getting to write Haskell at work</h1>
+    <p>
+      Posted on December 22, 2014
+      
+    </p>
+  </header>
+
+  <p>Jon and I recently worked on a medium-sized Haskell project: <a href="https://github.com/bendyworks/api-server" class="uri">https://github.com/bendyworks/api-server</a>. It has been immensely gratifying to be able to work on this sort of thing at work. It also makes me realize the current dismal state of things. I tend to not try to wade into “language wars” or say things like “my way of doing things is better…” But after having worked on this project, I’m a little bit sad to work on other things. Some of the things that I noticed:</p>
+<ul>
+<li>Getting something to build and run took more up-front effort</li>
+<li>…but that was probably a good thing</li>
+<li>Jumping back into the project was easier</li>
+<li>Finding the bugs that did occur was straightforward</li>
+<li>We wrote fewer tests than similar Ruby project</li>
+<li>Tests were <em>much</em> more effective (e.g. simply round-tripping something through the database flushed out a bunch of errors)</li>
+</ul>
+<p>What I think gets lost in these sorts of commentaries or comparisons and what I don’t want to get lost here is that there’s a <em>clear-win</em> sense to it that people tend to miss. That is, I think that these sorts of posts <a href="http://en.wiktionary.org/wiki/bury_the_lede">bury the lede</a> by not starting with: <em>“Of course Haskell is the way to go, but here are some drawbacks…”</em></p>
+<p>The above list omits things like the fact that even though it took longer to get something up and running, what that <em>means</em> is that if we ignored all the help that Haskell was providing us, we’d only succeed in getting something <em>incorrect</em> up and running sooner. Is it better to get the wrong answer faster? I don’t think so. But I admit that that position may be up to people’s personal taste. This experience has left me grappling with a sinking feeling, that the current development economy that I’m a part of: startups writing web apps, large companies wanting new features added to existing code, and other similar uses cases simply <em>does not or cannot support quality</em>. I’m suspect that using languages and techniques that squash most bugs and enable code to be reasonably bug-free are just too expensive. Quality isn’t a priority. We as an industry have chosen “give me the wrong answer, as long as it is quick.”</p>
+<p>Don’t get me wrong, that’s a reasonable choice to make and it’s how engineering works. We have to build what the market will support. “Fast, good, and cheap; pick 2.” We seem to have pretty much given up on <em>good</em> and are just playing with variations on fast and cheap.</p>
+<p>If that sounds bleak, I don’t mean it to. I <em>want</em> to inject quality as an option, but I realize that it’s going to have to happen by going through the system not around it. There’s no royal road to software nirvana. Perhaps we can frame the problem in a way that will make companies take notice. Michael Snoyman put it <a href="http://www.yesodweb.com/blog/2012/08/webinar-oreilly">this way</a>:</p>
+<blockquote>
+<p>Minimizing bugs is a feature that you can sell people on. If I’m comparing product A and product B, and I have some reason to believe product B will have less bugs, I’m very likely to buy it. It can win out over other aspects of the product, such as cost (do you really want to pay for bugs?), ease-of-use (it sure was easy to generate that invalid output), or extra capabilities (hey look, this product can do 50 things badly).</p>
+</blockquote>
+<p>Maybe that’s the tagline for developing code with Haskell: “do you really want to pay for bugs?” If desirable features have a positive cost (e.g. “how much would you pay for software that could do X?”) would bugs have a negative cost? (e.g. “how much would you pay for software that didn’t do X?”). It opens the possibility of getting hard numbers on the “negative feature cost” of bugs, (e.g. “I would pay an extra 10% if my software never did X”). And <em>that</em> in turn opens some headroom for using something like Haskell.</p>
+<p>Put another way, I think that bugs are often <em>undervalued</em>. Bugs hurt “delivered value” a lot more than seems to be widely acknowledged. Sure it can be nice to be the first one to market, or have the biggest mindshare, but all that will fade fast if the fail whale persists.</p>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>Writing code that I'm not smart enough to write</title>
+    <link href="http://sencjw.com/posts/2014-08-17-not-smart-enough.html" />
+    <id>http://sencjw.com/posts/2014-08-17-not-smart-enough.html</id>
+    <published>2014-08-17T00:00:00Z</published>
+    <updated>2014-08-17T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>Writing code that I'm not smart enough to write</h1>
+    <p>
+      Posted on August 17, 2014
+      
+    </p>
+  </header>
+
+  <p>I gave a short talk this week on my trip to <a href="http://www.lambdajam.com/">Lambda Jam</a> a few weeks ago. The topic grew out of a programming exercise/talk given by <a href="https://a.confui.com/-cv6PWx31">Runar Bjarnason</a> called “Let’s make a programming language.”</p>
+<p>This talk is about how I was able (with some help) to write code that I didn’t really know how to write. It’s an enlightening experience when you can <em>figure out</em> code just by exploring and reasoning. It’s been one of the reasons why, even when I find it tough or confusing, that functional programming has continued to draw me in.</p>
+<p><a href="/talks/not_smart_enough_to_write.pdf">Writing Code I’m Not Smart Enough to Write</a></p>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>BayHac2014</title>
+    <link href="http://sencjw.com/posts/2014-05-19-bayhac-2014.html" />
+    <id>http://sencjw.com/posts/2014-05-19-bayhac-2014.html</id>
+    <published>2014-05-19T00:00:00Z</published>
+    <updated>2014-05-19T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>BayHac2014</h1>
+    <p>
+      Posted on May 19, 2014
+      
+    </p>
+  </header>
+
+  <p>I’m making my way back from <a href="http://www.haskell.org/haskellwiki/BayHac2014">BayHac 2014</a> as I write this but I wanted to put down a few thoughts while they’re still fresh.</p>
+<h2 id="friday">Friday</h2>
+<p>The hackathon started out with a talk on Pipes by Gabriel Gonzalez and then one on Free Monads by Dan Piponi. Both were excellent. And <em>excellent</em> here means that I think they were both the most lucid explanations of their respective topic that I’ve yet seen.</p>
+<p>Gabriel’s talk really helped to solidify my understanding of where pipes sit relative to <a href="http://hackage.haskell.org/package/conduit-1.0.15">conduit</a>, the other streaming-data library that I’m familiar with. The emphasis in the pipes talk was on the intuition behind the <a href="http://hackage.haskell.org/package/pipes-4.1.2/docs/Pipes.html#t:ListT"><code>ListT</code></a> type and the <a href="http://hackage.haskell.org/package/pipes-4.1.2/docs/Pipes.html#t:yield"><code>yield</code></a> and <a href="http://hackage.haskell.org/package/pipes-4.1.2/docs/Pipes.html#t:await"><code>await</code></a> functions.</p>
+<p>Dan Piponi spoke on free monads, <a href="https://docs.google.com/file/d/0B51SFgxqMDS-NDBOX0ZDdW52dEE/edit">Free, but not as in beer or speech</a> (<a href="https://plus.google.com/u/0/events/cu5t5s2g14t4fqmapft5bcatqeg">video</a>), by first starting with an algebraic structure called a <em>magma</em>, which is simply a single, closed binary operation on a set:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">class</span> <span class="dt">Magma</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="ot">    o ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</a></code></pre></div>
+<p>Next he suggested the idea of the “least special magma.” We want to capture the idea that we can do this binary operation, and that we have things that are part of the set (the <code>a</code> above). This leads us to a tree:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">data</span> <span class="dt">FreeMagma</span> a <span class="fu">=</span> <span class="dt">Var</span> a</a>
+<a class="sourceLine" id="cb2-2" title="2">                 <span class="fu">|</span> <span class="dt">Tree</span> (<span class="dt">FreeMagma</span> a) (<span class="dt">FreeMagma</span> a)</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">instance</span> <span class="dt">Magma</span> (<span class="dt">FreeMagma</span> a) <span class="kw">where</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    o <span class="fu">=</span> <span class="dt">Tree</span></a></code></pre></div>
+<p>So the idea is that we’re combining two subexpressions (which could be just <code>Var a</code>, of course) and that’s it. The <em>structure</em> embodies the operation that we’re interested in. I don’t want to recapitulate the talk, but here’s one last slide. We can kinda crawl the structure that we’ve set up in order to evaluate the free magma:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb3-1" title="1"><span class="ot">interpretMagma ::</span> <span class="dt">Magma</span> b <span class="ot">=&gt;</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> (<span class="dt">FreeMagma</span> a <span class="ot">-&gt;</span> b)</a>
+<a class="sourceLine" id="cb3-2" title="2">interpretMagma f (<span class="dt">Var</span> a) <span class="fu">=</span> f a</a>
+<a class="sourceLine" id="cb3-3" title="3">interpretMagma f (<span class="dt">Tree</span> a b) <span class="fu">=</span> interpretMagma f a <span class="ot">`o`</span> interpretMagma f b</a></code></pre></div>
+<p>Evaluating this thing is really just replacing the structure with elements of our choosing according to some rule.</p>
+<p>The talk goes on (and the plot thickens!) by moving into free monoids and then, free monads. It was a great introduction!</p>
+<h2 id="saturday">Saturday</h2>
+<p>Saturday I was able to attend part of the <a href="http://yesodweb.com/">Yesod</a> class (and I’m already a little familiar with Yesod), so the introduction was mostly things I’ve covered on my own. As an aside, I was <em>scheduled</em> for the Lens class and I say scheduled because BayHac was <em>very</em> popular and classes were randomly assigned based up on interest and space. Most classes were packed.</p>
+<p>The lens introduction by Shachaf Ben-Kiki was great. I’ve been reading up on these a lot lately so for me the ground had been prepared in just the right way for me to get a lot out of this. Shachaf moved at a brisk pace, whether through practice or sheer type-signature-fu, he hammered out types and definitions for things like lenses and traversals about as fast as I type prose. This class really lit a bulb for me about why the types work the way that they do for lenses. My very hand-wavey summary of this was that a lens is like having a writer monad “logging” the parts of some structure you’re interested in walking over. But rather than being interested in the <em>value</em> that the writer produces it’s the <em>log</em> that you want.</p>
+<p><em>Caution, the following is based on my own emerging understanding of Lenses. Please pardon any errors (and I welcome corrections).</em></p>
+<p>What started to make sense for me was the connection between <a href="https://hackage.haskell.org/package/lens-4.1.2/docs/Control-Lens-Setter.html#v:over">over</a>, <a href="http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-Traversable.html#v:traverse">traverse</a>, and <a href="http://hackage.haskell.org/package/lens-4.1.2.1/docs/Control-Lens-Lens.html#t:Lens">Lens</a>.</p>
+<p>First, looking at traverse, which has the type:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">traverse</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ot">  ::</span> (<span class="dt">Traversable</span> t, <span class="dt">Applicative</span> f) <span class="ot">=&gt;</span> (a <span class="ot">-&gt;</span> f b) <span class="ot">-&gt;</span> t a <span class="ot">-&gt;</span> f (t b)</a></code></pre></div>
+<p>you can think of it as a sort of generalized <a href="http://hackage.haskell.org/package/base-4.7.0.0/docs/Data-List.html#v:map">map</a> (I do). We know the <code>f</code> above is a Functor because:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">class</span> <span class="dt">Functor</span> f <span class="ot">=&gt;</span> <span class="dt">Applicative</span> f <span class="kw">where</span> <span class="fu">...</span></a></code></pre></div>
+<p>So, picking an Applicative, say the <a href="http://hackage.haskell.org/package/transformers-0.4.1.0/docs/Data-Functor-Identity.html#t:Identity">Identity</a> Applicative, you can write something like map:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb6-1" title="1"><span class="ot">map&#39; ::</span> <span class="dt">Traversable</span> t <span class="ot">=&gt;</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> t a <span class="ot">-&gt;</span> t b</a>
+<a class="sourceLine" id="cb6-2" title="2">map&#39; f <span class="fu">=</span> runIdentity <span class="fu">.</span> <span class="fu">traverse</span> (<span class="dt">Identity</span> <span class="fu">.</span> f)</a></code></pre></div>
+<p>notice how we’re sort of “packaging” up the result of the function in a dummy Applicative (<code>runIdentity . Identity == id</code>), which we then immediately discard. This is exactly the sort of sleight of hand that we need for Lens:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">type</span> <span class="dt">Lens</span> s t a b <span class="fu">=</span> <span class="kw">forall</span> f<span class="fu">.</span> <span class="dt">Functor</span> f <span class="ot">=&gt;</span> (a <span class="ot">-&gt;</span> f b) <span class="ot">-&gt;</span> s <span class="ot">-&gt;</span> f t</a></code></pre></div>
+<p>Notice how the <a href="https://hackage.haskell.org/package/lens-4.1.2/docs/Control-Lens-Getter.html#v:view">view</a> function does something really similar:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb8-1" title="1"><span class="ot">view ::</span> <span class="dt">MonadReader</span> s m <span class="ot">=&gt;</span> <span class="dt">Getting</span> a s a <span class="ot">-&gt;</span> m a</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="co">-- re-written with definition of Getting</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="ot">view ::</span> <span class="dt">MonadReader</span> s m <span class="ot">=&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Const</span> a a) <span class="ot">-&gt;</span> s <span class="ot">-&gt;</span> <span class="dt">Const</span> a s <span class="ot">-&gt;</span> m a</a></code></pre></div>
+<p><code>Const</code> is similar to <code>Identity</code> in that it has a “weird” definition:</p>
+<p>`<code>haskell instance Functor (Const m) where     fmap _ (Const v) = Const v    -- the function doesn't matter!</code></p>
+<p>putting that all together (and I’m still a bit fuzzy on how the types work out on these) gives you something that takes a Lens of some structure but then <em>ignores</em> that structure (the <code>s</code> in the <code>Const a s</code>). So you’re getting your structure with the value picked out, but then ignoring the structure (and leaving just the value you’re interested in).</p>
+<p>That’s really handwavey, but here’s an example:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">data</span> <span class="dt">Person</span> <span class="fu">=</span> <span class="dt">Person</span> {<span class="ot"> fn ::</span> <span class="dt">String</span> ,<span class="ot"> ln ::</span> <span class="dt">String</span> }</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">-- e.g. fn (Person &quot;Chris&quot; &quot;Wilson&quot;) == &quot;Chris&quot;)</span></a></code></pre></div>
+<p>Now I can make a <code>Lens</code> of <code>fn</code> by specifying my own getter and setter functions:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb10-1" title="1">fnLens <span class="fu">=</span> lens fn (\(<span class="dt">Person</span> a b) v <span class="ot">-&gt;</span> <span class="dt">Person</span> v b)</a></code></pre></div>
+<p>Now I can use that to access the <code>Person</code> structure:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb11-1" title="1">view fnLens (<span class="dt">Person</span> <span class="st">&quot;Chris&quot;</span> <span class="st">&quot;Wilson&quot;</span>)</a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="co">-- &quot;Chris&quot;</span></a></code></pre></div>
+<p>And the type would be something like:</p>
+<pre><code>view   :: (a -&gt; Const a a)                -- as above
+       -&gt; s
+       -&gt; Const a s
+       -&gt; m a
+
+fnLens :: (String -&gt; Const String String) -- subbing in types
+       -&gt; Person
+       -&gt; Const String Person
+
+view fnLens :: MonadReader Person m =&gt; m String</code></pre>
+<p>The above type signature is a bit wonky, but I think it captures what’s happening as the types unify. So it all boils down to something that extracts a <code>String</code> from a <code>Person</code>. But the intuition that is starting to grow for me is that Lenses let you use a carefully-chosen (i.e. <code>Const</code>) <code>Functor</code> to “smuggle” a value out of a bigger structure.</p>
+<h2 id="sunday">Sunday</h2>
+<p>I spent a lot of time on Sunday working on Joe Nelson’s <a href="https://github.com/begriffs/haskell-vim-now">haskell-vim-now</a> one-line Haskell Vim installer. Lots of people were excited about the prospect of having an easy-to-install Vim mode. I think that this has made a lot of progress. If you like Vim and want to do Haskell development, go install it now. If you want to just install it here, just run this:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="ex">curl</span> -o - https://raw.githubusercontent.com/begriffs/haskell-vim-now/master/install.sh <span class="kw">|</span> <span class="fu">bash</span></a></code></pre></div>
+<p>But please see the <a href="https://github.com/begriffs/haskell-vim-now/blob/master/README.md">README</a> for keybindings and general tips on use. Also, if there is anything that you’d like to see included or revised, you are <a href="https://github.com/begriffs/haskell-vim-now/issues">invited to submit an issue</a>.</p>
+<p>I also spent some time talking with the <a href="https://snowdrift.coop">Snowdrift.coop</a> developers. This is a funding platform that seeks to crowdfund ongoing Free/Libre/Open Source projects. They have a nice <a href="https://snowdrift.coop/p/snowdrift/w/intro">intro</a>. The Haskell angle here is that this is a Yesod app: source <a href="https://github.com/dlthomas/snowdrift">on Github</a> and <a href="https://gitorious.org/snowdrift/snowdrift/source/6b587c9c176aa24917c7403dbadd3778e17d08b4:">on Gitorious</a>.</p>
+<h2 id="summary">Summary</h2>
+<p>BayHac was a great experince! I got to meet with a bunch of people that I had only been following online so far. And I think it really fired me up to write more production Haskell. I’m even looking for ways to integrate it into Bendyworks’ development.</p>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>Lenses 101 (for me)</title>
+    <link href="http://sencjw.com/posts/2014-04-30-lenses-101.html" />
+    <id>http://sencjw.com/posts/2014-04-30-lenses-101.html</id>
+    <published>2014-04-30T00:00:00Z</published>
+    <updated>2014-04-30T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>Lenses 101 (for me)</h1>
+    <p>
+      Posted on April 30, 2014
+      
+    </p>
+  </header>
+
+  <p><em>Note:</em> This is a short commentary on the new <a href="http://www.serpentine.com/wreq/">wreq library</a>. These comments were directed at my coworkers, but I thought they’d be interesting here. This post is literate Haskell, you should be able to cut-n-paste.</p>
+<hr />
+<div class="sourceCode" id="cb1"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" title="1"><span class="ot">{-# LANGUAGE TemplateHaskell #-}</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">import</span> <span class="dt">Control.Lens</span></a></code></pre></div>
+<p>I think a big reason why I’m so stoked about this is that it’s a solid library that’s offering a lens-based API (something that I think will show up more and more as time goes on). I’m still digging into them, but lenses are sort of like the “.” (dot) from Ruby, but implemented as a library and infinitely more flexible:</p>
+<p>Getters:</p>
+<p>your basic “getter” is ^. (carrot-dot, aka “view”) It lets you “view” things:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb2-1" title="1"><span class="co">-- basic &quot;Person&quot; data</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">data</span> <span class="dt">Person</span> <span class="fu">=</span> <span class="dt">Person</span> {<span class="ot">_fn::</span><span class="dt">String</span>,<span class="ot"> _ln::</span><span class="dt">String</span>,<span class="ot"> _email::</span><span class="dt">String</span>} <span class="kw">deriving</span> <span class="dt">Show</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ot">me ::</span> <span class="dt">Person</span></a>
+<a class="sourceLine" id="cb2-5" title="5">me <span class="fu">=</span> <span class="dt">Person</span> {_fn<span class="fu">=</span><span class="st">&quot;Chris&quot;</span>, _ln<span class="fu">=</span><span class="st">&quot;Wilson&quot;</span>, _email<span class="fu">=</span><span class="st">&quot;chris@bendyworks.com&quot;</span>}</a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="fu">$</span>(makeLenses &#39;<span class="dt">&#39;Person</span>) <span class="co">-- autogen the getters/setters</span></a></code></pre></div>
+<p>And using it to view inside the Person datatype:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb3-1" title="1">ex1 <span class="fu">=</span> me<span class="fu">^.</span>fn</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">-- &quot;Chris&quot;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">ex2 <span class="fu">=</span> me<span class="fu">^.</span>email</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">-- &quot;chris@bendyworks.com&quot;</span></a></code></pre></div>
+<p>Next you’ve got your “setter” (it just updates, non-destructively returning a new thing), also called “set”:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb4-1" title="1">ex3 <span class="fu">=</span> set fn <span class="st">&quot;Christopher&quot;</span> me</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">-- Person {_fn = &quot;Christopher&quot;, _ln = &quot;Wilson&quot;, _email = &quot;chris@bendyworks.com&quot;}</span></a></code></pre></div>
+<p>or saying it with operators (the &amp; above is reverse function application, the function on the right is applied to the data on the left, kinda like a shell pipeline):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb5-1" title="1">ex4 <span class="fu">=</span> me <span class="fu">&amp;</span> fn<span class="fu">.~</span><span class="st">&quot;Christopher&quot;</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">-- Person {_fn = &quot;Christopher&quot;, _ln = &quot;Wilson&quot;, _email = &quot;chris@bendyworks.com&quot;}</span></a></code></pre></div>
+<p>“But Chris!” you interject, “that’s just lame-o ‘.’ that’s in Ruby ALREADY! Show me some lazer-beam stuff!” Okay, lenses also do traversing! That is you can get/set a bunch of things at once:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb6-1" title="1"><span class="co">-- bendyworks</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">data</span> <span class="dt">Bendyworks</span> <span class="fu">=</span> <span class="dt">Bendyworks</span> {<span class="ot">_employees::</span>[<span class="dt">Person</span>]} <span class="kw">deriving</span> <span class="dt">Show</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="fu">$</span>(makeLenses &#39;<span class="dt">&#39;Bendyworks</span>)</a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">-- some setting up</span></a>
+<a class="sourceLine" id="cb6-5" title="5">bendy <span class="fu">=</span> <span class="dt">Bendyworks</span> {_employees <span class="fu">=</span></a>
+<a class="sourceLine" id="cb6-6" title="6">    [ <span class="dt">Person</span> <span class="st">&quot;Amy&quot;</span> <span class="st">&quot;Unger&quot;</span> <span class="st">&quot;amy@bendyworks.com&quot;</span></a>
+<a class="sourceLine" id="cb6-7" title="7">    <span class="co">-- ...</span></a>
+<a class="sourceLine" id="cb6-8" title="8">    , <span class="dt">Person</span> <span class="st">&quot;Will&quot;</span> <span class="st">&quot;Strinz&quot;</span> <span class="st">&quot;will@bendyworks.com&quot;</span></a>
+<a class="sourceLine" id="cb6-9" title="9">    ]} <span class="co">-- all employees (imagine)</span></a></code></pre></div>
+<p>Now we traverse over the employees field of the Bendyworks structure, and we can compose a getter with that!</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb7-1" title="1">ex5 <span class="fu">=</span> bendy <span class="fu">^..</span> employees<span class="fu">.</span>traversed<span class="fu">.</span>fn</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co">-- [&quot;Amy&quot;, ..., &quot;Will&quot;]</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4">ex6 <span class="fu">=</span> bendy <span class="fu">^..</span> employees<span class="fu">.</span>traversed<span class="fu">.</span>email</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">-- [&quot;amy@bendyworks.com&quot;, ..., &quot;will@bendyworks.com&quot;]</span></a></code></pre></div>
+<p>The thing that’s kinda cool is that “employees.traversed.fn” forms a sort-of lens on the whole Bendyworks datatype, letting us walk over it and pull out values. The traversal is a first-class thing (those ’.’s in the name are just plain-old function composition!). We can store it and use it as a new accessor:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb8-1" title="1"><span class="ot">emails ::</span> <span class="dt">Traversal&#39;</span> <span class="dt">Bendyworks</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb8-2" title="2">emails <span class="fu">=</span> employees<span class="fu">.</span>traversed<span class="fu">.</span>email</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4">ex7 <span class="fu">=</span> bendy <span class="fu">^..</span> emails</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="co">-- [...] -- just like above</span></a></code></pre></div>
+<p>They’re really composable! You can set a traversal with your old friend .~ (set):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode literate haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb9-1" title="1">ex8 <span class="fu">=</span> bendy <span class="fu">&amp;</span> emails <span class="fu">.~</span> <span class="st">&quot;[HIDDEN]&quot;</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">-- Bendyworks {_employees = [Person {_fn=&quot;Amy&quot;,...,_email=&quot;[HIDDEN]&quot;}, ...]}</span></a></code></pre></div>
+<p>That’s simultaneously setting the emails of all Bendyworkers to the string “[HIDDEN]”. Notice how, if you squint, it’s like the .~ is a SUPER-DOT that can set a bunch of stuff at once. I think it is way cool. I’m just starting to look at the lens library and it’s big. There are tons of functions in there and a lot ground covered. But I think that as time goes on this will become pretty common. Functional getters and setters FTW!</p>
+</article>
+]]></summary>
+</entry>
+<entry>
+    <title>Feynman Understands Programming</title>
+    <link href="http://sencjw.com/posts/2014-04-22-feynman-understands-programming.html" />
+    <id>http://sencjw.com/posts/2014-04-22-feynman-understands-programming.html</id>
+    <published>2014-04-22T00:00:00Z</published>
+    <updated>2014-04-22T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+  <header>
+    <h1>Feynman Understands Programming</h1>
+    <p>
+      Posted on April 22, 2014
+      
+    </p>
+  </header>
+
+  <p>Watch this video of Feynman explaining how he does physics work. Programming works the same way!</p>
+<p>Here’s the translation key: replace “theory” with “a potential program that solves my problem.” And replace “consequences of the theory” with either the correct operation of the program or of bugs (as revealed by tests breaking). All the intervening layers of software make it hard to <em>really</em> know what’s going on. The best that we can hope for is, like Feynman explains, “qualitative understanding” of what the program should do. Before we can write programs, we have to have an idea of what we expect that program to do. Critically, we also have to have an idea of <em>if</em> that expectation were true (or false) <em>what other things would we expect to see?</em> Programming is hard because we have to envision these other phantom worlds and treat them as equally real until we know they aren’t.</p>
+<p>Stay tuned for when he begins talking about how important unbroken stretches of time are for working on (programming). Feynman’s solution is to cultivate an aura of <em>irresponsibility</em> so that he’ll have time to do physics.</p>
+<iframe width="420" height="315" src="//www.youtube.com/embed/Bgaw9qe7DEE?start=2160" frameborder="0" allowfullscreen>
+</iframe>
+</article>
+]]></summary>
+</entry>
+
+</feed>

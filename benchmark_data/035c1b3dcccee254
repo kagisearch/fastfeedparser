@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>O! Mr Speaker!</title>
+	<atom:link href="https://www.mrspeaker.net/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.mrspeaker.net</link>
+	<description>Javascript flâneur, internet flibbertygibbert</description>
+	<lastBuildDate>Fri, 23 Aug 2024 12:20:49 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.4</generator>
+	<item>
+		<title>Fire/Escape</title>
+		<link>https://www.mrspeaker.net/2024/08/22/fire-escape/</link>
+					<comments>https://www.mrspeaker.net/2024/08/22/fire-escape/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Thu, 22 Aug 2024 02:34:05 +0000</pubDate>
+				<category><![CDATA[Nerd]]></category>
+		<category><![CDATA[c]]></category>
+		<category><![CDATA[C64]]></category>
+		<category><![CDATA[demoscene]]></category>
+		<category><![CDATA[l337]]></category>
+		<category><![CDATA[term]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=5100</guid>
+
+					<description><![CDATA[Well well well, it's been quite a while! Nice to see you again. Sorry for the delay... I forgot my blog password, and I had to run some errands, the decade just got away from me. Anyway, the password was qwerty123 so let's get on with it... Today's thing is a terminal-based 90s demo effect [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Well well well, it's been quite a while! Nice to see you again. Sorry for the delay... I forgot my blog password, and I had to run some errands, the decade just got away from me. Anyway, the password was qwerty123 so let's get on with it...</p>
+
+
+
+<p>Today's thing is a terminal-based 90s demo effect using ANSI escape sequences (<a href="https://youtu.be/Drx12AXC0FU" data-type="link" data-id="https://youtu.be/Drx12AXC0FU">here 'tis on youtube</a>). It's the first such sequences I've written by hand. I <em>kind</em> of knew they existed, but just thought they were encoding errors to be cut and paste from random blogs to make the command line prompt all colorful. Turns out they are not at all complicated: just a couple of bytes that signal to your terminal emulator you want to do something besides printing boring text.</p>
+
+
+
+<a href="https://youtu.be/Drx12AXC0FU"><img decoding="async" src="https://www.mrspeaker.net/images/fireescape-1024x622.png" alt="Fire/Escape"></a>
+
+
+
+<p>All of the sequences start with the code generated when you hit the "escape" key. But you can't press escape inside a string in your text editor though - so you need to use the escape character "<code>\e"</code> (AKA "\x1b", AKA "\033", AKA "\27" in hex, octal, and decimal respectively) followed by a "[". This is called a Control Sequence Introducer (CSI). It introduces the control sequence. When your terminal sees this it will know you want to do something fancy, not just print to the screen.</p>
+
+
+
+<p>The most common fancy thing to do is change the text color. This is done with the command <code>38;5;&lt;n&gt;m</code>, where <code>&lt;n&gt;</code> is the color you want to change to. So, try this out in your terminal emulator: <code>echo -e "\e[38;5;2mWhy, hello"</code>. You should get the text "Why, hello" in green (by the way, the -e flag in <code>echo</code> is to say "interpret escape sequences - don't just print \e thanks"). Here's a list of the standard-ish colors:</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://www.mrspeaker.net/images/ansi-cols.png"><img fetchpriority="high" decoding="async" width="1024" height="320" src="https://www.mrspeaker.net/images/ansi-cols-1024x320.png" alt="" class="wp-image-5110" srcset="https://www.mrspeaker.net/images/ansi-cols-1024x320.png 1024w, https://www.mrspeaker.net/images/ansi-cols-300x94.png 300w, https://www.mrspeaker.net/images/ansi-cols-768x240.png 768w, https://www.mrspeaker.net/images/ansi-cols.png 1039w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<p>Besides changing colours you can do a <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_(Control_Sequence_Introducer)_sequences">bunch of other stuff too</a>... like moving the cursor to any x/y position. <code>echo -e "\e[5;10H"</code> will move the cursor to the x/y position (10,5) . Hmmm, interesting...</p>
+
+
+
+<p>Naturally after learning I could put coloured text wherever I want on a screen, my initial instinct was to use this new-found knowledge to attempt a 90s demo effect. Specifically the 90s demo effect from the <a href="https://archive.gamedev.net/archive/reference/articles/article364.html" data-type="link" data-id="https://archive.gamedev.net/archive/reference/articles/article364.html">ASM FIRE</a> chapter of the seminal work <a href="https://archive.gamedev.net/archive/reference/listed82.html?categoryid=130">VGA Trainer Program by DENTHOR of ASPHYXIA</a>. This series affected me deeply when it was released. So much so that I didn't even have to go looking for it to implement the fire effect - it was burned into my brain.</p>
+
+
+
+<p>Though remembering this particular algorithm is not so impressive, as the whole thing boils down to:</p>
+
+
+
+<pre class="wp-block-preformatted"><code>for each cell:<br>   take the average of the 4 cells underneath it<br>      </code><br>      <code>*    &lt;- Current cell<br>     123   &lt;- cells directly under<br>      4    &lt;- cell two rows down</code></pre>
+
+
+
+<p>So simple, but the effect turned out really nice and runs surprisingly smoothly in all the terminals I've tried it on. The biggest cheat I got away with is that there's a usable gradient in the default ANSI color list. If you look at the table of colors above: 51 is a bright green. I put that randomly in the bottom row. The average of the cells above reduce as the fire moves propagate upwards - ending at color 16: all black. It would look better with a hand-crafted gradient, but I kind of like the green/blue magic fire.</p>
+
+
+
+<p> I <a href="https://youtu.be/Drx12AXC0FU">plopped the demo on YouTube</a> so you can see it in action. It didn't feel right to have such an old-school effect without a suitable tune playing, so I paired it with my first-and-only C64 SID tune I've ever made (using GoatTracker). It really needs some scrolling texts and greets, but... I got bored.</p>
+
+
+
+<p>I do plan to make a game with this amazing technology - so if I do anything with it I'll let you know. Here's <a href="https://github.com/mrspeaker/terry/blob/main/demo.c">the C code for the fire</a> if you want to have a go.</p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2024/08/22/fire-escape/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Your Last Ever Computer</title>
+		<link>https://www.mrspeaker.net/2022/02/24/last-ever-computer/</link>
+					<comments>https://www.mrspeaker.net/2022/02/24/last-ever-computer/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Thu, 24 Feb 2022 08:23:51 +0000</pubDate>
+				<category><![CDATA[The common man]]></category>
+		<category><![CDATA[Wide world]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=5071</guid>
+
+					<description><![CDATA[I gaze across the calm morning ocean as I sip my coffee. The computer takes a while to boot, and watching the ocean is more relaxing than the torrent of kernel messages that (hopefully) say things are loading nominally. I wonder if there will be any deliveries today. It's been a while, and recent weather [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>I gaze across the calm morning ocean as I sip my coffee. The computer takes a while to boot, and watching the ocean is more relaxing than the torrent of kernel messages that (hopefully) say things are loading nominally.</p>
+
+
+
+<p>I wonder if there will be any deliveries today. It's been a while, and recent weather has not been good.</p>
+
+
+
+<p>A login prompt appears. I mindlessly enter my password. I should really just get rid of the prompt but it's a comforting tidbit of nostalgia. Makes me feel like <em>work</em> is about to happen. Hmm, what to work on though? I'm not sure yet. Something fun.</p>
+
+
+
+<span id="more-5071"></span>
+
+
+
+<p>I run some diagnostics while I decide. Same bad RAM, same bad disk sectors. That's nice. I don't know if any supplies will arrive today, but I do know that even if they did - they wouldn't include computer parts. The last RAM module rolled off the factory floor a long time ago, and the chance of that kind of treasure around here is, well, zero.</p>
+
+
+
+<p>Maybe I'll work on my game, I think. I gaze across the calm morning ocean, sipping my coffee…</p>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>Oh, hi folks! Don't fret... what you've just read is a fun bit of fiction: we're not <em>actually</em> living in a world of massive supply-chain breakdowns combined with climate-induced, super-virus-fueled de-globalization. Everything is fine!</p>
+
+
+
+<p>But still - and this is just a theoretical exercise - say you wanted a computer that would last <em>as long as possible</em>: <strong>how would you build it?</strong></p>
+
+
+
+<p>In this scenario, you have access to <strong>stable electricity</strong>, and (if you start now) a modest <strong>stock-pile of replacement parts</strong>. Of course, you don't want to OVER-engineer these things: that's just inelegant. What parts do you use?</p>
+
+
+
+<h2 class="wp-block-heading">A baseline</h2>
+
+
+
+<p>…Recently I dug up my old <a href="http://www.oldcomputers.net/amiga500.html">Amiga 500</a>. It was a lot more yellow than it used to be, but still delightful. This beast saw heavy use in the 90s. Light use in the 2000s. Not much use at all in the 2010s. I plugged it in and fired up Workbench. Worked perfectly. Sufflepuck Cafe: worked perfectly. My copy of ProTracker: sadly did not make it.</p>
+
+
+
+<p>It hasn't been a "daily driver", but it gives me some hope: a 30-year-old machine capable of playing good games, making my own games, making MOD tracker songs, and doing simple photoshoping and animations.</p>
+
+
+
+<h2 class="wp-block-heading">The specs</h2>
+
+
+
+<p>A "desert island computer" should be more robust and powerful than an Amiga 500. Certainly powerful enough to run an Amiga 500 emulator, but let's say it roughly needs to:</p>
+
+
+
+<ul class="wp-block-list"><li>Support a <strong>decent development environment</strong> (because I like developing things). </li><li><strong>Run mid-tier games</strong>: say, <em>Kerbal Space Program</em> or lower. </li><li><strong>Play video files</strong> at a watchable quality. </li><li>(Optionally) Be powerful enough to do some basic <strong>3D modelling and video-editing</strong> work (so, some kind of graphics-card <em>oompf</em> would be a nice extra).</li><li>Have a <strong>storage solution</strong> that is big, reliable, and lasts a long long time. It's not so useful having video playback capabilities if it's only to watch <a href="https://archive.org/details/deathrace2000">Death Race 2000</a> on an endless loop.</li></ul>
+
+
+
+<h2 class="wp-block-heading">Over to you...</h2>
+
+
+
+<p>I have a 2013 MacBook Pro that I've battered hard over the years - it works amazingly well, given that I once knocked most of a cup of tea in it. But I couldn't fix it if anything died. And I haven't built my own computer since the early 2000s: I don't even know how you'd begin anymore. </p>
+
+
+
+<p>That's why I'm asking. How would you design a system that could reliably run for decades? What components would you consider "must haves" and "nice to haves" while stockpiling supplies? What steps would you take to maximize longevity? </p>
+
+
+
+<p>How would you build your last ever computer?</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2022/02/24/last-ever-computer/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Basic-er BASIC</title>
+		<link>https://www.mrspeaker.net/2021/10/08/basic-er-basic/</link>
+					<comments>https://www.mrspeaker.net/2021/10/08/basic-er-basic/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Fri, 08 Oct 2021 09:07:00 +0000</pubDate>
+				<category><![CDATA[Nerd]]></category>
+		<category><![CDATA[Basic]]></category>
+		<category><![CDATA[C64]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=4955</guid>
+
+					<description><![CDATA[Today I wrote an "eBASIC" code snippet that contained a macro. The macro expansion included another macro that when expanded generated 6502 assembler code - which itself happened to contain a KickAssembler macro: that in turn generated its own 6502 assembler. The result of the entire macro formed part of a BASIC program that POKEd [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<img decoding="async" src="https://www.mrspeaker.net/images/ebas1.jpg" alt="C64" class="frame-right">
+
+
+
+<p>Today I wrote an "eBASIC" code snippet that contained a macro. The macro expansion included <em>another</em> macro that when expanded generated 6502 assembler code - which itself happened to contain a <a href="http://www.theweb.dk/KickAssembler/webhelp/content/cpt_FunctionsAndMacros.html">KickAssembler macro</a>: that <em>in turn</em> generated its own 6502 assembler. The result of the entire macro formed part of a BASIC program that <a href="https://www.c64-wiki.com/wiki/POKE">POKEd</a> the assembled bytes into memory and called the machine code via <a href="https://www.c64-wiki.com/wiki/SYS">SYS</a>. The final BASIC program was then <a href="https://www.c64-wiki.com/wiki/MOSpeed">compiled</a> <em>back to machine language</em> as a <code>.prg</code> file and run in a JavaScript Commodore 64 emulator. The output of the running emulator was used as an input texture to a WebGL shader, and rendered as the screen of a 3D model of a C64 computer monitor, updating 60 times a second.</p>
+
+
+
+<p>This is the story of the funnest thing I've worked on, ever.</p>
+
+
+
+<p>It started as a simple text-munging script to "save some time" while writing <a href="https://www.c64-wiki.com/wiki/BASIC">Commodore 64 BASIC</a>. It ballooned into <strong>eBASIC</strong>: a cornucopia of scope-creepy feature additions. File includes, macros, inline 6502 assembly compilation... I estimate I'll have to write at least fifty BASIC programs to break-even, in regards to the amount of time spent on my <a href="https://github.com/mrspeaker/ebas2bas">eBASIC-to-BASIC</a> tool.</p>
+
+
+
+<a href="https://github.com/mrspeaker/ebas2bas"><img decoding="async" src="/images/ebas2bas.jpg" alt="eBASIC -&gt; BASIC tranformation"/></a>
+
+
+
+<span id="more-4955"></span>
+
+
+
+<p>Lately I've been tinkering with creating a game (I mentioned it in my <a href="https://www.mrspeaker.net/2021/09/11/why-webgl-colors-dont-look-like-blender-colors/">WebGL gamma-correction</a> post) - the centerpiece of which is an emulated Commodore 64 computer. For the game content I need to write a lot of C64 software, and the easiest way to get that done (I reasoned) was with BASIC.</p>
+
+
+
+<p>The programs would largely comprise of screens of text display (with some embellishments) - so I didn't need anything fancy. Initially. But as the programs grew, things got hairy. The first thing I found was I always needed more line numbers. And also, writing line numbers is <em>really</em> annoying.</p>
+
+
+
+<p class="note">If you've never written C64 BASIC, you might not know that you need to <em>manually assign a number</em> to every line of code. The lines are ordered - so if you have code:<br/>
+<code>1 PRINT "Mr SPeaker RuleZ"</code><br/>
+<code>2 GOTO 1</code><br/>
+... you can't put any instructions in between the two lines! You need to re-number line 2 to, say, line number 3. Traditionally you minimize this issue by having larger gaps as you go: <br/>
+<code>10 PRINT "mR SpEAker ruLez"</code><br/>
+<code>20 GOTO 10</code><br/>
+Now you can add more lines between 10 and 20. But you still eventually run out as you add more and more stuff!</p>
+
+
+
+<h2 class="wp-block-heading">The original goal: No Line Numbers</h2>
+
+
+
+<p>I decided it was time to automate. I'd make a quick little script that would take a BASIC program without line numbers, and add them automatically. For GOTOs and GOSUBs (statements that require a target line number) I'd use labels indicated with a tilde. So the source:</p>
+
+
+
+<pre class="wp-block-code"><code>~top
+  print "automation saves time! I promise!"
+  goto ~top</code></pre>
+
+
+
+<p>Would be transformed in to:</p>
+
+
+
+<pre class="wp-block-code"><code>10 print "automation saves time! I promise!"
+20 goto 10</code></pre>
+
+
+
+<p>A simple regex finds all the label targets, and a second pass replaces calls with the assigned line number. It worked a treat, and only took me 30 minutes to write, polish, and integrate in to my build process. A job well done! Time to get back to the real work of making the game...</p>
+
+
+
+<p>...Though... you know what would be good? - I started to think to myself - would be if I could use <em>hex and binary numbers</em> instead of decimal. I have to bust out the calculator every time I go to POKE a VIC chip address. I know <code>$d018</code>, I don't know 53272.</p>
+
+
+
+<img decoding="async" src="https://www.mrspeaker.net/images/spr_or.png" alt="outrun" class="sprite" />
+
+
+
+<h2 class="wp-block-heading">Tiny enhancements: Hex, Binary, Comments</h2>
+
+
+
+<p>C64 BASIC only supports decimal numbers. I want to do "<code>POKE 0xd012, 0xff</code>", or "<code>POKE 1,0b11111011"</code>. And in fact, even better if it supported the underscore separator: "<code>POKE 1,0b_1111_1101"</code> to easily be able to tell which bits are set.</p>
+
+
+
+<pre class="wp-block-code"><code>const regexReplace = (line, regex, f) =&gt;
+  &#91;...line.matchAll(new RegExp(regex, "g"))].reduce(f, line);
+
+const replaceHex = (line) =&gt;
+  regexReplace(line, "0x&#91;0-9a-fA-F_]+", (line, match) =&gt;
+    line.replace(match&#91;0], parseInt(match&#91;0].replace(/_/g, ""), 16))
+  );
+
+const replaceBinary = (line) =&gt;
+  regexReplace(line, "0b(&#91;0-1_]+)", (line, match) =&gt;
+    line.replace(match&#91;0], parseInt(match&#91;1].replace(/_/g, ""), 2))
+  );</code></pre>
+
+
+
+<p>Again, a couple of quick-n-dirty regexs and we were away! I composed the <code>replaceHex</code> and <code>replaceBinary</code> functions and mapped them over the program lines. Another 20 minutes, another big time saver!</p>
+
+
+
+<p>One more easy one while I was here: Normally comments in BASIC use the REM keyword (e.g., <code>10 REM This is a comment!</code>), but I don't need them in my compiled program, taking up valuable tokens. So I just parse out lines starting with hash sign (e.g., <code># comment begone!</code>). If I want the comment to actually appear, use as standard REM statement.</p>
+
+
+
+<p>An hour-or-so in total and I'd immensely improved my BASIC coding experience! Such a good feeling making a productivity tool. I sure hope the feeling isn't addictive...</p>
+
+
+
+<p>...</p>
+
+
+
+<h2 class="wp-block-heading">Scope is creeping: Multi-lines, macros</h2>
+
+
+
+<p>Ok, just one more thing. I now had the ability to make my code more readable with blank lines and comments - but that's not what BASIC programs <em>look</em> like. You don't have a lot of space on the C64, so a standard technique is to jam as many commands as you can on to one line. Usually a lot of commands. I want a "continue" token that will let the source code be easy to read, but the BASIC be... BASIC.</p>
+
+
+
+<pre class="wp-block-code"><code>for n=0 to 62 :
+  read q :
+  poke 0x340+n,q :
+next</code></pre>
+
+
+
+<p>I ran a <code>reduce</code> over the source, so that any line ending up with a colon would be concatenated with the next. The output is the much more BASIC-looking:</p>
+
+
+
+<pre class="wp-block-code"><code>10 for n=0 to 62 :read q :poke 832+n,q :next</code></pre>
+
+
+
+<p>I put all my new tools to work cleaning up some existing BASIC game code. Refactoring a few programs turned up quite a bit of duplication. For example, there was fancy-looking rainbow text colors in a bunch of places - which meant manually inserting the color codes in between each text characters. This made the text hard to read in the source code, and was tedious to update.</p>
+
+
+
+<p>I knew what the answer was. And I knew I was at a crossroads. Obviously my language (I was now calling it "my language") needed macros. Obviously I shouldn't be wasting time adding macros to my language. And obviously I should get back to <strong><em>making the flippin' game</em></strong>!</p>
+
+
+
+<p>...</p>
+
+
+
+<img decoding="async" src="https://www.mrspeaker.net/images/spr_pb.png" alt="paper boy" class="sprite" />
+
+
+
+<p>So, <strong>macros</strong> in eBASIC are JavaScript functions that can be called from tags in the eBASIC source code. The return value of the functions are injected in place of the calling tag. If the return result is an array, then multiple lines will be injected. Here, for example, is a call to a macro inside a string that will be printed:</p>
+
+
+
+<pre class="wp-block-code"><code>print "{{ rainbow("hello") }}"</code></pre>
+
+
+
+<p>The <code>rainbow</code> function expands to the following BASIC, where each character in the word <code>hello</code> is split and preceded by a different C64 color code:</p>
+
+
+
+<pre class="wp-block-code"><code>10 print "{wht}h{red}e{cyn}l{pur}l{grn}o"</code></pre>
+
+
+
+<p>And the macro implementation is standard JavaScript. You can define the macros anywhere in the source file - I usually stick them at the bottom of the page. Here is the code for "rainbow-izing" a string:</p>
+
+
+
+<pre class="wp-block-code"><code>{! rainbow = (str) =&gt; {
+  // COLS is a magic list of C64 cols.
+  const cols = COLS.slice(1);
+  return mapped = str.split("")
+    .map((c,i) =&gt; `{${cols&#91;i%cols.length]}}${c}`)
+    .join("");
+} !}</code></pre>
+
+
+
+<p><strong>Macro definitions</strong> are normal JS function, wrapped in a curly-brace-with-exclaimation-mark tag. <strong>Macro calls</strong> are standard JS function calls, wrapped in double-curly-braces. eBASIC finds all of the blocks of macro definitions - parses their name, arguments, and code bode - then makes them into callable functions:</p>
+
+
+
+<pre class="wp-block-code"><code>env&#91;m.name] = new Function(...m.args, "with(this){ " + body + "}");</code></pre>
+
+
+
+<p>In a second pass of the source, any macro calls are expanded within a minimal "context" that has access to other macros, as well as some useful constants (well, one constant so far: <code>COLS</code> - which is a list of C64 color tokens).</p>
+
+
+
+<pre class="wp-block-code"><code>const ctx = { COLS: &#91;"blk", "wht", "red", ... ] };
+const res = env&#91;func].apply(ctx, args);</code></pre>
+
+
+
+<h2 class="wp-block-heading">"Necessary" creep: File includes</h2>
+
+
+
+<p>Being able to return an array from the macro means you can generate all sorts of source code. It allowed me to really clean up and de-dupe my programs - but it also spawned another problem. Now I <s>wanted</s> needed to use my custom macros across multiple source files. Sigh. No point fighting it, just implement <strong>file includes</strong>:</p>
+
+
+
+<pre class="wp-block-code"><code>{{ "./snippets/custom_chars.ebas" }}</code></pre>
+
+
+
+<p>File includes use the same syntax as macro calls, but contain just a single string - the name and path of the file to include. The contents will be split into lines, and injected wherever the tag is. </p>
+
+
+
+<p>Because this step happens right at the beginning, the <em>type</em> of the content is not important: it will just be dumped directly, and then processed by subsequent steps - so it can be plain BASIC, more eBASIC, and even macros or asm (covered shortly). The include files are recursively processed: an include file can include include files of its own.</p>
+
+
+
+<pre class="wp-block-code"><code>async function includify(lines) {
+  return lines.reduce(async (acp, line) =&gt; {
+    const ac = await acp;
+    ...
+    const txt = await readFile(name); // load file contents
+    const inc = await includify(txt.split("\n"));
+    return &#91;...ac, ...inc]; // inject contents into source lines
+  }, &#91;]);
+}</code></pre>
+
+
+
+<img decoding="async" src="https://www.mrspeaker.net/images/spr_wb.png" alt="wonder boy" class="sprite" />
+
+
+
+<h2 class="wp-block-heading">Scope is bounding: Inline assembly compilation</h2>
+
+
+
+<p>Inline assembly. This idea had been percolating in my brain since the very beginning. I finally allowed myself to start this feature <em>on the condition</em> that I make it the absolutely last feature I would add before getting back to the game. </p>
+
+
+
+<p>The goal was to have blocks of assembly that would be compiled with <a href="http://www.theweb.dk/KickAssembler/Main.html">KickAssembler</a> (my assembler of choice). The compiled bytes are converted to DATA statements that are POKEd into memory then called via SYS.</p>
+
+
+
+<pre class="wp-block-code"><code>{{!"set screen colors via asm"
+  *=$c000
+  lda #0    // 0 = color black
+  sta $d020 // set border color
+  sta $d021 // set background color
+  rts       // return from subroutine
+!}}</code></pre>
+
+
+
+<p>This snippet of 6502 assembler sets the base location to $c000. The instructions set the background and border colors. After conversion they should become the following BASIC code:</p>
+
+
+
+<pre class="wp-block-code"><code>10 rem set screen colors via asm
+20 data 169,0,141,32,208,141,33,208,96
+30 for za = 0 to 8
+40 read zb:poke 49152+za,zb:next za
+50 sys 49152</code></pre>
+
+
+
+<p>If you are unfamiliar with 6502 opcodes, the line 20 data statements represent the assembled code above: <code>LDA</code> (LoaD the Accululator) is opcode <code>0xA9</code> (169 decimal). The final command in the routine is <code>RTS</code> which is opcode <code>0x60</code>, or 96 in decimal. The 9 bytes of the program are POKEd into memory from address <code>$c000</code> (49152 decimal), and then executed with <code>SYS 49152</code>.</p>
+
+
+
+<p>My script finds blocks of assembler wrapped in the proper (increasingly confusing) tags. Using a child process, it runs shell commands to compile. Unfortunately, KickAssembler doesn't work directly with stdin/stdout (as far as I can tell), so I write the block to a temp file, then compile using the temp file as source, and another as destination. The bytes are read back from disk, ready for POKE-ing.</p>
+
+
+
+<p class="note">Because I couldn't figure out how to convert a <code>stdin</code> stream to bytes from <code>cat</code> in Node, I ended up piping the file through <code>xxd</code> and stripping the bytes out of the text conversion. Super dodgy.</p>
+
+
+
+<p>There's a couple of extra features I include: you can include a title (that appears as a REM statement, and shows up in compilation/error output), and also a way to inject a block at the next byte, rather than needing to specify a memory address like <code>*=$c000</code> manually for every block. </p>
+
+
+
+<p>An unintentional feature: because it uses KickAssembler, all of <em>its</em> macros and functionality are available in the inline blocks. Which is a bit mind-bending. And as the assembly compilation happens early in the transformation - you can "include" the inline block from a different file - or wrap the <strong>include tag</strong> in an <strong>inline asm block tag</strong> so you can include full regular <code>.asm </code>files.</p>
+
+
+
+<img decoding="async" src="https://www.mrspeaker.net/images/spr_kfm.png" alt="kungfu master" class="sprite" />
+
+
+
+<p>So far it seems to work ludicrously well: even for complex assembly programs using interrupts. It's so convenient, and just... fun. Some 8-bit systems of the day (such as the <a href="https://worldofspectrum.org/z88forever/dn327/basicasm.htm">BBC micro</a>) had this as a default feature. I really wish it had been in C64 BASIC as it would have made such a great learning tool as a kid.</p>
+
+
+
+<pre class="wp-block-code"><code>const includified = await includify(input);
+const asmified    = await inlineASMify(includified);
+const macrofied   = macrofy(asmified);
+const decommented = decomment(macrofied);
+const sameLinered = sameLinerize(decommented);
+const numberized  = numberize(sameLinered);
+const decimalized = decimalize(numberized);
+const output      = stringify(decimalized);</code></pre>
+
+
+
+<h2 class="wp-block-heading">Regrets?</h2>
+
+
+
+<p>None. </p>
+
+
+
+<p>Sure, the scope creeped and creeped. I had started devising an AST for the language before I realized I had creeped too far. </p>
+
+
+
+<p>And sure, I ended up pouring a bunch of time into something that <em>even I</em> probably won't need. But really, I have no explicit intention of actually ever releasing this game anyway. It's my game-dev equivalent of (*ahem* a sub-section of) jazz: more entertaining to <em>produce</em> than to <em>consume</em>. This game is turning into the funnest thing I've ever worked on, and creating <a href="https://github.com/mrspeaker/ebas2bas">eBASIC-to-BASIC</a> just made it more fun. </p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2021/10/08/basic-er-basic/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>NBA Jam, um, tank-mode?</title>
+		<link>https://www.mrspeaker.net/2021/09/21/nba-jam-tank-mode/</link>
+					<comments>https://www.mrspeaker.net/2021/09/21/nba-jam-tank-mode/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Tue, 21 Sep 2021 13:02:00 +0000</pubDate>
+				<category><![CDATA[Game]]></category>
+		<category><![CDATA[The common man]]></category>
+		<category><![CDATA[Wide world]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=4930</guid>
+
+					<description><![CDATA[Eight minutes ago I had a flashback. The following is my stream-of-consciousness account of those eight minutes. I refuse to google it to see if it's true, or if I imagined the whole thing. The year was… 1992? 1993? I was playing the hit arcade game NBA Jam. A lot. I remember playing NBA Jam [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="note">Eight minutes ago I had a flashback. The following is my stream-of-consciousness account of those eight minutes. I refuse to google it to see if it's true, or if I imagined the whole thing.</p>
+
+
+
+<img decoding="async" src="/images/pippenzone.jpg" alt="big-head Pippen in Battlezone" class="frame-right" width="300">
+
+
+
+<p>The year was… 1992? 1993? I was playing the hit arcade game <a href="https://videogamehistory.fandom.com/wiki/NBA_Jam">NBA Jam</a>. A lot. I remember playing NBA Jam <em>a lot</em>. At the time the NBA was huge where I lived. I spent uncountable weekends delivering newspapers so I could blow it all on a pair of Jordan 5s, and let me tell you - I loved those shoes.</p>
+
+
+
+<p>Anyway, one day I was at the local bowling-alley arcade with a friend. We'd heard a rumour that you could use whipper-snipper (weed eater/weedwacker in other countries) wire - bend it into a square shape that had edges the same radius as a coin - and push it into the coin slot of arcade machines to get free credits.</p>
+
+
+
+<p>After an hour or so we concluded that it wasn't true at all. We reverted to real money.</p>
+
+
+
+<p>Buuut, also, <em>someone else</em> had also told us about a new cheat code for NBA Jam! Of course everyone knew the "Big Head" cheats (a cousin's friend's cousin's friend told me about that one), but apparently there was another better one. A very elaborate one. One that would trigger <em>a whole new game</em>!</p>
+
+
+
+<span id="more-4930"></span>
+
+
+
+<p>We were just kids, but even we were sure that sounded like rubbish.</p>
+
+
+
+<p>It turned it wasn't rubbish and I'm 80% sure I actually saw it work for real (again, I refuse to google it).</p>
+
+
+
+<p>So, you were supposed to put in your coins, then do the cheat code before the game started. The joystick/button sequence was elaborate, and we failed it many many times. We'd all-but given up on it when suddenly, unexpectedly, the screen went blank.</p>
+
+
+
+<p>Instead of NBA Jam, there was something else: a 3D tank game! It kind of looked like the old Battlezone game, but with filled polygons instead of wireframe models. You could control the tanks and shoot projectiles. The rules of the game were unclear - and we died pretty quickly.</p>
+
+
+
+<p>I'm not sure if this next bit is true, but I seem to remember we actually <em>lost the credits</em> to play NBA Jam by starting the tank game. Like, we played the stupid 3D tank game, then we died, then it just said "insert coins to play NBA Jam".</p>
+
+
+
+<p>It was a boring 3D tank game, and 3D sucked then even more then than it does now - so we never tried the cheat again. But I tell you, wow it was it exciting when it worked for the first time! How did this secret information manage to reach the remote suburb of my childhood?!</p>
+
+
+
+<p>Ever since that day, anytime I've heard a crazy rumour about how something works, I've given it a go (or two, or three) just to see if turns out to be another <em>NBA Jam Tank Mode</em>. (I've also hidden easter eggs in everything I've touched. <strong>Easter eggs are life</strong>.)</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2021/09/21/nba-jam-tank-mode/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Why WebGL colors don&#8217;t look like Blender colors</title>
+		<link>https://www.mrspeaker.net/2021/09/11/why-webgl-colors-dont-look-like-blender-colors/</link>
+					<comments>https://www.mrspeaker.net/2021/09/11/why-webgl-colors-dont-look-like-blender-colors/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Sat, 11 Sep 2021 07:30:00 +0000</pubDate>
+				<category><![CDATA[3D]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=4815</guid>
+
+					<description><![CDATA[The following is an account of my embarrassing ignorance on color spaces, gamma correction, and pretty-much everything to do with how a computer outputs things to a monitor. Recently I've been kicking around an idea for probably the greatest retro-video-game game of all time. I'm 40% sure it will be amazing and spawn a whole [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="note">The following is an account of my embarrassing ignorance on color spaces, gamma correction, and pretty-much everything to do with how a computer outputs things to a monitor.</p>
+
+<p>Recently I've been kicking around an idea for probably the greatest retro-video-game game of all time. I'm 40% sure it will be amazing and spawn a whole new genre of games. I'm also 60% sure it will be not as fun as I imagine, so I thought I'd better test it out first.</p>
+
+<p>As part of prototyping I made some placeholder models in <a href="https://www.blender.org/" title="Blender: a free and open source 3D creation suite">Blender</a>. I added textures to a couple of the models, but - in the interests of saving time - assigned simple solid colors for the rest.</p>
+
+<img decoding="async" src="/images/gamma/01-blender-original.jpg" alt="Blender model of my bedroom in the 80s" />
+
+<p>Next I exported the file as an <code>.obj</code> file and wrote a parser to read the vertex data and materials. These could then be displayed in the browser using WebGL2, as seen in the screen shot below.</p>
+
+<p>Everything (except for the crazy PETSCII background and the C64 computer display) is rendered using a single vertex shader and a single fragment shader.</p>
+
+<img decoding="async" src="/images/gamma/02-webgl2-raw.jpg" alt="WebGL rendering of my bedroom in the 80s" />
+
+<p>With the scene-renderer working ~fine~ (well, considering the limited amount of work I put into the shaders) it was time to move on to the game logic... but something was bugging me.</p>
+
+<span id="more-4815"></span><p>The models with textures looked good enough, but the ones with the "solid color" materials looked darker, and a completely different hue from the Blender source. It really didn't matter, because I was going to texture everything anyway. So who cares hey? Hey?</p>
+
+<p class="note">I bet many of you know where this is going. I bet I should have known too.</p>
+
+<h3>Where did things go wrong?</h3>
+
+<p>At first I thought the lighting was just too dark - but making it brighter doesn't fix the hue shift. To simplify things (and figure out where the problem was coming from), I rendered everything "flat" without shadows. Then I could color-pick the output to compare it with the values in the material data.</p>
+
+<img decoding="async" src="/images/gamma/03-color-pick.jpg" alt="color picking values from the browser, and Blender" />
+
+<p>Oddly, the WebGL rendering had very similar RGB values to those in the Blender file (and the exported material data): but the colors were obviously quite different. Even stranger, it was the <em>WebGL version</em> that looked correct while the Blender version looked wrong: an RGB value of <code>(0.45,0.18,0.09)</code> does look like "Mocha". If I color-picked Blender's <em>Base Color</em>, the result was a much brighter <code>(0.71, 0.46, 0.30)</code> (Aka "Santa Fe") rather than its purported values.</p>
+
+<h3>A sinking feeling</h3>
+
+<p>So at this stage the answer was obvious: my very simple model renderer was correct and Blender 2.9 was wrong and broken. Hmm, that sounds... extremely unlikely. A feeling of dread starts to descend. Is this some kind of <em>color space something-something issue</em>?! Uh oh.</p>
+
+<p>This sounds like a rabbit hole.</p>
+
+<p>I know colors are hard, but I've been able to hide from their complexities for so many years - and was hoping to continue hiding.</p>
+
+<p>"It's just a quick prototype, get on with the game logic!" I mumbled to myself as I started thinking about things I associate with term "<a href="https://en.wikipedia.org/wiki/Color_space">color space</a>": <em>those annoying monitor calibration apps</em>, <em>that dialog box I ignore when photoshop starts</em>, <em>gamma levels</em>... Wait, could this be a gamma issue? <em>Am I supposed to do my own gamma correction in WebGL?</em></p>
+
+<p>I spelunked through the WebGL mailing list archives and found <a href="https://www.khronos.org/webgl/public-mailing-list/public_webgl/1009/msg00002.php">an old post</a> that began: "Gamma correction is a tricky business.". The feeling of dread swells...</p>
+
+<p>...But then the post continues: <pre>The equation for gamma is Vout = pow ( Vin, gamma ) ; 
+...where gamma is around 1/2.2 for CRT's and 
+CRT-emulators such as LCD's and plasma displays.</pre></p>
+
+<p>Hey, a chance for a quick fix and to put off learning about color spaces! Let's test it out! Applying the gamma correction to my fragment shader (where <code>color</code> is a <code>vec3</code> RGB color):
+<pre><code>float gamma = 1.0 / 2.2;
+out_color = vec4(pow(color, vec3(gamma)), 1.0);</code></pre>
+</p>
+
+<img decoding="async" src="/images/gamma/04-webgl2-gamma.jpg" alt="Gamma-corrected scene" />
+<p>Oh my, that was it! The result looks <em>much</em> closer to the original colors in Blender, and the contrast is much nicer. Blender is obviously doing it's own gamma-correction (note to self: go find the code), and the gamma exponent value looks pretty close to 1/2.2. I'm sure it's <em>far</em> more complicated than that, but hey... the colors match!</p>
+
+<h3>Gamma-correction and images</h3>
+
+<p>So, all's well that ends well - back to game dev then? Nope. That's not how rabbit holes work. </p>
+
+<p>My scene has both textured models and non-textured models. The textures were fine <em>before</em> I added the gamma correction. I needed to explicitly <em>not</em> apply the code above to any textures else they became over-bright and washed out. But then, how was Blender doing it?</p>
+
+<p>Looking at the shading nodes in my Blender scene - where the image texture is connected to the Base color - there is a dropdown called "Color Space" that defaults to "<a href="https://en.wikipedia.org/wiki/SRGB">sRGB</a>". If I change that to "Linear" the image is washed out and bright like my corrected version. The texture images are already gamma corrected.</p>
+
+<h3>The right way to do it? Learning it properly?</h3>
+
+<p>The <em>proper</em> thing to do at this point is to sit down and do some research. Learn how color spaces are used, and how they should be integrated into my WebGL workflow. But then I wouldn't be making my game. So I'm going to punt on this one - but it will be a short punt. I know my nascent ignorance will come back to bight me soon.</p>
+
+<p>One thing I <em>do</em> know is that it's not enough to just "not apply gamma correction to the image textures". As the mailing-list post makes clear: "<code>pow ( Vin * light, gamma ) != pow ( Vin, gamma ) * light</code>". You need to do all lighting calculations on non-corrected inputs.</p>
+
+<p>My thinking is that I should bake the textures from blender out in linear space (with gamma = 1.0, exposure=0.0). Then they should be lit, have fog applied etc in my shader, and <em>only finally</em> have the gamma=2.2 applied to it at the end of the shader.</p>
+
+<p>But I don't think that's all either. In all the examples of textured models I've seen over the year, none ever look like the texture images are too dark with bad contrast... So I'm not sure.</p>
+
+<p>For now I'll just continue hiding from color spaces.</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2021/09/11/why-webgl-colors-dont-look-like-blender-colors/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Note to self: Math.hypot() still exists</title>
+		<link>https://www.mrspeaker.net/2021/08/24/note-to-self-math-hypot-still-exists/</link>
+					<comments>https://www.mrspeaker.net/2021/08/24/note-to-self-math-hypot-still-exists/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Tue, 24 Aug 2021 00:04:58 +0000</pubDate>
+				<category><![CDATA[Javascript]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=4776</guid>
+
+					<description><![CDATA[C'mon Mr Speaker, stop re-writing your "distance" function every project... Math.hypot() has been around for ages now! Math.hypot(1,1); // 1.4142135623730951 (So has Math.SQRT2. I also forgot I already remembered and re-forgot that)]]></description>
+										<content:encoded><![CDATA[<p>C'mon Mr Speaker, stop re-writing your "<code>distance"</code> function every project... <code>Math.hypot()</code> has been around for ages now!</p>
+<pre><code>Math.hypot(1,1); // 1.4142135623730951</code></pre>
+<p>(So has <code>Math.SQRT2</code>. I also forgot I already <a href="https://www.mrspeaker.net/2019/03/15/where-the-heck-v2/">remembered and re-forgot</a> that)</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2021/08/24/note-to-self-math-hypot-still-exists/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>USB Mini Shawarma</title>
+		<link>https://www.mrspeaker.net/2020/12/24/usb-mini-shawarma/</link>
+					<comments>https://www.mrspeaker.net/2020/12/24/usb-mini-shawarma/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Wed, 23 Dec 2020 17:11:00 +0000</pubDate>
+				<category><![CDATA[The common man]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=4773</guid>
+
+					<description><![CDATA[Years ago I had a genius idea of making a USB-powered mini shawarma machine that you could have on your desk, and shave off bits of meat during the day. Sometimes I still lay awake at night, wondering if that would have worked.]]></description>
+										<content:encoded><![CDATA[<p> Years ago I had a genius idea of making a USB-powered mini shawarma machine that you could have on your desk, and shave off bits of meat during the day. Sometimes I still lay awake at night, wondering if that would have worked.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2020/12/24/usb-mini-shawarma/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>And&#8230; goodbye JavaScript!</title>
+		<link>https://www.mrspeaker.net/2020/07/06/and-goodbye-javascript/</link>
+					<comments>https://www.mrspeaker.net/2020/07/06/and-goodbye-javascript/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Mon, 06 Jul 2020 13:45:00 +0000</pubDate>
+				<category><![CDATA[Javascript]]></category>
+		<category><![CDATA[jQuery]]></category>
+		<category><![CDATA[Nerd]]></category>
+		<category><![CDATA[performance]]></category>
+		<category><![CDATA[tracking]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=4754</guid>
+
+					<description><![CDATA[When I de-bloated my piece of the web, I noted that the largest asset I was serving on my blog was a local version of jQuery - coming in at some 70+ kilobytes - that "I still need to insert into the head of my page for historical reasons: 15 years ago I in-lined lots [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>When I <a href="https://www.mrspeaker.net/2019/06/06/de-bloating-mr-speaker/">de-bloated my piece of the web</a>, I noted that the largest asset I was serving on my blog was a local version of jQuery - coming in at some 70+ kilobytes - that "I still need to insert into the head of my page for historical reasons: 15 years ago I in-lined lots of my wacky JavaScript experiments".</p>
+<p>But things change: we are now in the middle of a bloat-a-demic. Web sites are tracking and expanding far beyond sustainable levels... and emergency measures <em>must</em> be taken.</p>
+<p>So I have done the unthinkable. I have pulled the plug on JavaScript on my blog. All of it. Now the total number of network requests (not counting any images inside of posts) comes in at six (6):</p>
+<ul class="org-ul">
+<li>/ : 35k</li>
+<li>style.css : 7.7k</li>
+<li>mrman-up.jpg : 43k</li>
+<li>mrspeaker.png : 17k</li>
+<li>mrman.jpg : 43k</li>
+<li>favicon.ico : 1.5k</li>
+</ul>
+<p>And `mrman.jpg` and `mrman-up.jpg` are the same image, flipped vertically - so I should certainly lose one of them. 1.5k for a favicon seems a bit hefty - I should check that. And I did some more tweaking of my old php software and made the html output prettier and leaner, but I'm sure there's more to improve in there too.</p>
+<p>Naturally, "no scripts" means my wacky JavaScript experiments have been killed dead… and that simply can not stand. I'll commence the long process of de-jquery-fying them and making them run stand-alone (mostly they were just using JQuery for the `$(document).ready` anyways).</p>
+<p>But it feels pretty good to go cruft-free. Having dropped the kilobytes (down originally from around 5Mb (!) to around 200k for a full page of posts) I feel like a whole new webmaster. A giant weight has been lifted.</p>
+<p>Until the next big web trend comes along, of course.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2020/07/06/and-goodbye-javascript/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Monads for Babies</title>
+		<link>https://www.mrspeaker.net/2020/06/26/monads-for-babies/</link>
+					<comments>https://www.mrspeaker.net/2020/06/26/monads-for-babies/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Thu, 25 Jun 2020 16:32:00 +0000</pubDate>
+				<category><![CDATA[Nerd]]></category>
+		<category><![CDATA[Wide world]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=4732</guid>
+
+					<description><![CDATA[Monads for Babies is the first in a series that teaches computer science to toddlers. It's only available in digital form at the moment (png format, embedded below), so I suggest `right-click -&#62; print` so you can read it to the lil' tigers at bed time: Support my Patreon if you'd like to see more.]]></description>
+										<content:encoded><![CDATA[
+<p><em>Monads for Babies</em> is the first in a series that teaches computer science to toddlers. It's only available in digital form at the moment (png format, embedded below), so I suggest `right-click -&gt; print` so you can read it to the lil' tigers at bed time:</p>
+<p><img decoding="async" src="/images/monadsForBabies.png" title="Monads for Babies"></p>
+<p>Support my Patreon if you'd like to see more.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2020/06/26/monads-for-babies/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>A most useful function</title>
+		<link>https://www.mrspeaker.net/2020/06/24/a-most-useful-function/</link>
+					<comments>https://www.mrspeaker.net/2020/06/24/a-most-useful-function/#respond</comments>
+		
+		<dc:creator><![CDATA[Mr Speaker]]></dc:creator>
+		<pubDate>Tue, 23 Jun 2020 15:25:00 +0000</pubDate>
+				<category><![CDATA[Emacs]]></category>
+		<category><![CDATA[HTML5]]></category>
+		<category><![CDATA[Nerd]]></category>
+		<guid isPermaLink="false">https://www.mrspeaker.net/?p=4727</guid>
+
+					<description><![CDATA[Hot on the heels of my web colors rant, comes this amazing piece of Emacs Lisp I now have in my init file: (defun web-color () (interactive) (let ((cols '("AliceBlue" "AntiqueWhite" "Aqua" "Aquamarine" "Azure" "Beige" "Bisque" "Black" "BlanchedAlmond" "Blue" "BlueViolet" "Brown" "BurlyWood" "CadetBlue" "Chartreuse" "Chocolate" "Coral" "CornflowerBlue" "Cornsilk" "Crimson" "Cyan" "DarkBlue" "DarkCyan" "DarkGoldenRod" "DarkGray" "DarkGreen" [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p> Hot on the heels of my <a href="https://www.mrspeaker.net/2020/06/11/olive-vs-olivedrab/">web colors</a> rant, comes this amazing piece of Emacs Lisp I now have in my init file: </p>
+<div class="org-src-container">
+<label class="org-src-name"><em></em></label></p>
+<pre class="src src-emacs-lisp" id="nil">(<span style="color: #b5bd68;">defun</span> <span style="color: #de935f;">web-color</span> ()
+  (<span style="color: #b5bd68;">interactive</span>)
+  (<span style="color: #b5bd68;">let</span> ((cols '(<span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #f0f8ff;">AliceBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #faebd7;">AntiqueWhite</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Aqua"</span> <span style="color: #8abeb7;">"Aquamarine"</span>
+     <span style="color: #8abeb7;">"Azure"</span> <span style="color: #8abeb7;">"Beige"</span> <span style="color: #8abeb7;">"Bisque"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #000000;">Black</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffebcd;">BlanchedAlmond</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #0000ff;">Blue</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #8a2be2;">BlueViolet</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #a52a2a;">Brown</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"BurlyWood"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #5f9ea0;">CadetBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Chartreuse"</span>
+     <span style="color: #8abeb7;">"Chocolate"</span> <span style="color: #8abeb7;">"Coral"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #6495ed;">CornflowerBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Cornsilk"</span> <span style="color: #8abeb7;">"Crimson"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #00ffff;">Cyan</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #00008b;">DarkBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #008b8b;">DarkCyan</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"DarkGoldenRod"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #a9a9a9;">DarkGray</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #006400;">DarkGreen</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #bdb76b;">DarkKhaki</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #8b008b;">DarkMagenta</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #556b2f;">DarkOliveGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Darkorange"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #9932cc;">DarkOrchid</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #8b0000;">DarkRed</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #e9967a;">DarkSalmon</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #8fbc8f;">DarkSeaGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #483d8b;">DarkSlateBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #2f4f4f;">DarkSlateGray</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #00ced1;">DarkTurquoise</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #9400d3;">DarkViolet</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #ff1493;">DeepPink</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #00bfff;">DeepSkyBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #696969;">DimGray</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #1e90ff;">DodgerBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"FireBrick"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #fffaf0;">FloralWhite</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #228b22;">ForestGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Fuchsia"</span>
+     <span style="color: #8abeb7;">"Gainsboro"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #f8f8ff;">GhostWhite</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Gold"</span> <span style="color: #8abeb7;">"GoldenRod"</span> <span style="color: #8abeb7;">"Gray"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #00ff00;">Green</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #adff2f;">GreenYellow</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"HoneyDew"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ff69b4;">HotPink</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #cd5c5c;">IndianRed</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Indigo"</span> <span style="color: #8abeb7;">"Ivory"</span>
+     <span style="color: #8abeb7;">"Khaki"</span> <span style="color: #8abeb7;">"Lavender"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #fff0f5;">LavenderBlush</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #7cfc00;">LawnGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #fffacd;">LemonChiffon</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #add8e6;">LightBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #f08080;">LightCoral</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #e0ffff;">LightCyan</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"LightGoldenRodYellow"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #d3d3d3;">LightGray</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #90ee90;">LightGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffb6c1;">LightPink</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffa07a;">LightSalmon</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #20b2aa;">LightSeaGreen</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #87cefa;">LightSkyBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #778899;">LightSlateGray</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #b0c4de;">LightSteelBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffffe0;">LightYellow</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Lime"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #32cd32;">LimeGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Linen"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #ff00ff;">Magenta</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Maroon"</span> <span style="color: #8abeb7;">"MediumAquaMarine"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #0000cd;">MediumBlue</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #ba55d3;">MediumOrchid</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #9370db;">MediumPurple</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #3cb371;">MediumSeaGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #7b68ee;">MediumSlateBlue</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #00fa9a;">MediumSpringGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #48d1cc;">MediumTurquoise</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #c71585;">MediumVioletRed</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #191970;">MidnightBlue</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #f5fffa;">MintCream</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffe4e1;">MistyRose</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Moccasin"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffdead;">NavajoWhite</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Navy"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #fdf5e6;">OldLace</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"Olive"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #6b8e23;">OliveDrab</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffa500;">Orange</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #ff4500;">OrangeRed</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Orchid"</span> <span style="color: #8abeb7;">"PaleGoldenRod"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #98fb98;">PaleGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #afeeee;">PaleTurquoise</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #db7093;">PaleVioletRed</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffefd5;">PapayaWhip</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffdab9;">PeachPuff</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"Peru"</span> <span style="color: #8abeb7;">"Pink"</span> <span style="color: #8abeb7;">"Plum"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #b0e0e6;">PowderBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #a020f0;">Purple</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #ff0000;">Red</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #bc8f8f;">RosyBrown</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #4169e1;">RoyalBlue</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #8b4513;">SaddleBrown</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Salmon"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #f4a460;">SandyBrown</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #2e8b57;">SeaGreen</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"SeaShell"</span> <span style="color: #8abeb7;">"Sienna"</span>
+     <span style="color: #8abeb7;">"Silver"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #87ceeb;">SkyBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #6a5acd;">SlateBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #708090;">SlateGray</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Snow"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #00ff7f;">SpringGreen</span><span style="color: #8abeb7;">"</span>
+     <span style="color: #8abeb7;">"</span><span style="color: #ffffff; background-color: #4682b4;">SteelBlue</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"Tan"</span> <span style="color: #8abeb7;">"Teal"</span> <span style="color: #8abeb7;">"Thistle"</span> <span style="color: #8abeb7;">"Tomato"</span> <span style="color: #8abeb7;">"Turquoise"</span> <span style="color: #8abeb7;">"Violet"</span>
+     <span style="color: #8abeb7;">"Wheat"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffffff;">White</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #f5f5f5;">WhiteSmoke</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #ffff00;">Yellow</span><span style="color: #8abeb7;">"</span> <span style="color: #8abeb7;">"</span><span style="color: #000000; background-color: #9acd32;">YellowGreen</span><span style="color: #8abeb7;">"</span>)))
+    (insert (nth (random (length cols)) cols))))
+</pre>
+</div>
+<p> Calling it with `M-x w-c` (from anywhere you care to type things) injects a random entry - so you get a wonderful rainbow of weird names, instead of forgetting them all every time and just choosing "lemonchiffon". </p>
+<p> Debugging has never looked so good. </p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.mrspeaker.net/2020/06/24/a-most-useful-function/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

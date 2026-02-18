@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?><feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:thr="http://purl.org/syndication/thread/1.0"
+	xml:lang="en-US"
+	>
+	<title type="text">oceanbites</title>
+	<subtitle type="text">Ocean science for everyone!</subtitle>
+
+	<updated>2026-02-16T16:37:45Z</updated>
+
+	<link rel="alternate" type="text/html" href="https://oceanbites.org" />
+	<id>https://oceanbites.org/feed/atom/</id>
+	<link rel="self" type="application/atom+xml" href="https://oceanbites.org/feed/atom/" />
+
+	<generator uri="https://wordpress.org/" version="6.9">WordPress</generator>
+<icon>https://oceanbites.org/wp-content/uploads/2020/11/Oceanbites-small-square-cambria-100-1.png</icon>
+	<entry>
+		<author>
+			<name>Josiah Grzywacz</name>
+					</author>
+
+		<title type="html"><![CDATA[Fungal robbers in the Southern Baltic Sea]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/fungal-robbers-in-the-southern-baltic-sea/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=fungal-robbers-in-the-southern-baltic-sea" />
+
+		<id>https://oceanbites.org/?p=42184</id>
+		<updated>2026-02-16T16:37:45Z</updated>
+		<published>2026-02-16T18:00:46Z</published>
+		<category scheme="https://oceanbites.org" term="Ecology" /><category scheme="https://oceanbites.org" term="baltic sea" /><category scheme="https://oceanbites.org" term="chytrid" /><category scheme="https://oceanbites.org" term="cyanobacteria" /><category scheme="https://oceanbites.org" term="ecology" /><category scheme="https://oceanbites.org" term="fungi" /><category scheme="https://oceanbites.org" term="microbes" /><category scheme="https://oceanbites.org" term="nitrogen" /><category scheme="https://oceanbites.org" term="parasites" />
+		<summary type="html"><![CDATA[Algal blooms may have a fungus problem]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/fungal-robbers-in-the-southern-baltic-sea/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=fungal-robbers-in-the-southern-baltic-sea#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/fungal-robbers-in-the-southern-baltic-sea/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Braden Furness</name>
+					</author>
+
+		<title type="html"><![CDATA[Secret Dogfish Society]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/secret-dogfish-society/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=secret-dogfish-society" />
+
+		<id>https://oceanbites.org/?p=42175</id>
+		<updated>2026-02-12T03:00:56Z</updated>
+		<published>2026-02-12T15:00:16Z</published>
+		<category scheme="https://oceanbites.org" term="Behavior" /><category scheme="https://oceanbites.org" term="norway" /><category scheme="https://oceanbites.org" term="shark behavior" /><category scheme="https://oceanbites.org" term="Spiny dogfish" />
+		<summary type="html"><![CDATA[Scientists explore the spiny dogfish community in Norway's fjords.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/secret-dogfish-society/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=secret-dogfish-society#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/secret-dogfish-society/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Rebecca Lippitt</name>
+							<uri>https://oceanbites.org/author/rlippitt/</uri>
+						</author>
+
+		<title type="html"><![CDATA[Mussels Help Track Volcanic Unrest in Italy]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/mussels-help-track-volcanic-unrest-in-italy/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=mussels-help-track-volcanic-unrest-in-italy" />
+
+		<id>https://oceanbites.org/?p=42151</id>
+		<updated>2026-02-04T14:13:21Z</updated>
+		<published>2026-02-04T14:13:21Z</published>
+		<category scheme="https://oceanbites.org" term="Geology" /><category scheme="https://oceanbites.org" term="mussels" /><category scheme="https://oceanbites.org" term="radiocarbon dating" /><category scheme="https://oceanbites.org" term="volcanic unrest" />
+		<summary type="html"><![CDATA[The volcanic history of Campi Flegrei is rewritten with the help of marine organisms.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/mussels-help-track-volcanic-unrest-in-italy/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=mussels-help-track-volcanic-unrest-in-italy#comments" thr:count="1" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/mussels-help-track-volcanic-unrest-in-italy/feed/atom/" thr:count="1" />
+			<thr:total>1</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Samantha Glass</name>
+					</author>
+
+		<title type="html"><![CDATA[Is the carbon budget balanced?]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/is-the-carbon-budget-balanced/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=is-the-carbon-budget-balanced" />
+
+		<id>https://oceanbites.org/?p=42134</id>
+		<updated>2026-01-27T17:07:15Z</updated>
+		<published>2026-01-30T17:42:39Z</published>
+		<category scheme="https://oceanbites.org" term="Biogeochemistry" /><category scheme="https://oceanbites.org" term="Human impacts" /><category scheme="https://oceanbites.org" term="carbon budget" /><category scheme="https://oceanbites.org" term="carbon cycle" /><category scheme="https://oceanbites.org" term="dredging" /><category scheme="https://oceanbites.org" term="dumping" /><category scheme="https://oceanbites.org" term="human impact" /><category scheme="https://oceanbites.org" term="North Sea" /><category scheme="https://oceanbites.org" term="resuspension" /><category scheme="https://oceanbites.org" term="sediment" />
+		<summary type="html"><![CDATA[New Study Suggests Carbon Exchange Estimates May Need an Audit]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/is-the-carbon-budget-balanced/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=is-the-carbon-budget-balanced#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/is-the-carbon-budget-balanced/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Melinda Edie</name>
+							<uri>https://oceanbites.org/author/medie/</uri>
+						</author>
+
+		<title type="html"><![CDATA[The Impacts of Bottom Trawling on Seafloor Communities]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/the-impacts-of-bottom-trawling-on-seafloor-communities/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=the-impacts-of-bottom-trawling-on-seafloor-communities" />
+
+		<id>https://oceanbites.org/?p=42144</id>
+		<updated>2026-01-28T16:27:06Z</updated>
+		<published>2026-01-28T16:27:06Z</published>
+		<category scheme="https://oceanbites.org" term="Human impacts" /><category scheme="https://oceanbites.org" term="anthropogenic" /><category scheme="https://oceanbites.org" term="biodiversity" /><category scheme="https://oceanbites.org" term="Conservation" /><category scheme="https://oceanbites.org" term="Fisheries Management" /><category scheme="https://oceanbites.org" term="human impacts" /><category scheme="https://oceanbites.org" term="Marine Conservation" />
+		<summary type="html"><![CDATA[How does bottom trawling impact the seafloor and marine life?]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/the-impacts-of-bottom-trawling-on-seafloor-communities/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=the-impacts-of-bottom-trawling-on-seafloor-communities#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/the-impacts-of-bottom-trawling-on-seafloor-communities/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Claire Lacey</name>
+							<uri>https://oceanbites.org/author/clacey/</uri>
+						</author>
+
+		<title type="html"><![CDATA[Do vessel operators get the seal of approval?]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/do-vessel-operators-get-the-seal-of-approval/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=do-vessel-operators-get-the-seal-of-approval" />
+
+		<id>https://oceanbites.org/?p=42120</id>
+		<updated>2026-01-20T22:54:11Z</updated>
+		<published>2026-01-21T13:48:12Z</published>
+		<category scheme="https://oceanbites.org" term="Behavior" /><category scheme="https://oceanbites.org" term="Coastal Management" /><category scheme="https://oceanbites.org" term="Conservation" /><category scheme="https://oceanbites.org" term="behavior" /><category scheme="https://oceanbites.org" term="ecology" /><category scheme="https://oceanbites.org" term="marine mammal" />
+		<summary type="html"><![CDATA[Watching the watchers: New study examines the behavior of vessel operators around an Australian fur seal colony]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/do-vessel-operators-get-the-seal-of-approval/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=do-vessel-operators-get-the-seal-of-approval#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/do-vessel-operators-get-the-seal-of-approval/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Josiah Grzywacz</name>
+					</author>
+
+		<title type="html"><![CDATA[This alga can handle the spotlight]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/this-alga-can-handle-the-spotlight/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=this-alga-can-handle-the-spotlight" />
+
+		<id>https://oceanbites.org/?p=42103</id>
+		<updated>2026-01-19T06:03:44Z</updated>
+		<published>2026-01-19T15:00:19Z</published>
+		<category scheme="https://oceanbites.org" term="Ecology" /><category scheme="https://oceanbites.org" term="adaptivity" /><category scheme="https://oceanbites.org" term="climate change" /><category scheme="https://oceanbites.org" term="ecology" /><category scheme="https://oceanbites.org" term="HABs" /><category scheme="https://oceanbites.org" term="light" /><category scheme="https://oceanbites.org" term="plankton" /><category scheme="https://oceanbites.org" term="Protein" />
+		<summary type="html"><![CDATA[How a tiny organism thrives in chaotic coastal light]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/this-alga-can-handle-the-spotlight/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=this-alga-can-handle-the-spotlight#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/this-alga-can-handle-the-spotlight/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Braden Furness</name>
+					</author>
+
+		<title type="html"><![CDATA[Heating up the Marine Food Web]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/heating-up-the-marine-food-web/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=heating-up-the-marine-food-web" />
+
+		<id>https://oceanbites.org/?p=42092</id>
+		<updated>2026-01-15T21:45:30Z</updated>
+		<published>2026-01-16T15:00:46Z</published>
+		<category scheme="https://oceanbites.org" term="Climate Change" /><category scheme="https://oceanbites.org" term="American lobster" /><category scheme="https://oceanbites.org" term="climate change" /><category scheme="https://oceanbites.org" term="Gulf of Maine" />
+		<summary type="html"><![CDATA[Lobster fishers provide a unique perspective into how the food web in the Gulf of Maine is changing due to warming water.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/heating-up-the-marine-food-web/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=heating-up-the-marine-food-web#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/heating-up-the-marine-food-web/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Rebecca Lippitt</name>
+							<uri>https://oceanbites.org/author/rlippitt/</uri>
+						</author>
+
+		<title type="html"><![CDATA[A Ridge’s Race to Capture CO2]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/a-ridges-race-to-capture-co2/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=a-ridges-race-to-capture-co2" />
+
+		<id>https://oceanbites.org/?p=42068</id>
+		<updated>2026-01-12T14:18:05Z</updated>
+		<published>2026-01-12T14:18:05Z</published>
+		<category scheme="https://oceanbites.org" term="Geology" /><category scheme="https://oceanbites.org" term="Carbon dioxide" /><category scheme="https://oceanbites.org" term="climate change" /><category scheme="https://oceanbites.org" term="Mid Ocean Ridge" />
+		<summary type="html"><![CDATA[Slow and steady spreading ridges may win the race against climate change.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/a-ridges-race-to-capture-co2/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=a-ridges-race-to-capture-co2#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/a-ridges-race-to-capture-co2/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Samantha Glass</name>
+					</author>
+
+		<title type="html"><![CDATA[Rethinking Sea Ice Ridges as Algae Habitats]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/rethinking-sea-ice-ridges-as-algae-habitats/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=rethinking-sea-ice-ridges-as-algae-habitats" />
+
+		<id>https://oceanbites.org/?p=42053</id>
+		<updated>2025-12-27T20:51:58Z</updated>
+		<published>2025-12-29T15:48:29Z</published>
+		<category scheme="https://oceanbites.org" term="Biological oceanography" /><category scheme="https://oceanbites.org" term="Antarctic" /><category scheme="https://oceanbites.org" term="Arctic" /><category scheme="https://oceanbites.org" term="habitat" /><category scheme="https://oceanbites.org" term="ice algae" /><category scheme="https://oceanbites.org" term="ice cores" /><category scheme="https://oceanbites.org" term="light" /><category scheme="https://oceanbites.org" term="ROV" /><category scheme="https://oceanbites.org" term="sea ice" />
+		<summary type="html"><![CDATA[When sea ice collides, pressure ridges may form an overlooked habitat for algae.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/rethinking-sea-ice-ridges-as-algae-habitats/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=rethinking-sea-ice-ridges-as-algae-habitats#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/rethinking-sea-ice-ridges-as-algae-habitats/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Melinda Edie</name>
+							<uri>https://oceanbites.org/author/medie/</uri>
+						</author>
+
+		<title type="html"><![CDATA[How Social Dynamics Impact Sperm Whale Movements in the Caribbean]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/how-social-dynamics-impact-sperm-whale-movements-in-the-caribbean/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=how-social-dynamics-impact-sperm-whale-movements-in-the-caribbean" />
+
+		<id>https://oceanbites.org/?p=42043</id>
+		<updated>2025-12-19T20:08:40Z</updated>
+		<published>2025-12-22T13:07:43Z</published>
+		<category scheme="https://oceanbites.org" term="Behavior" /><category scheme="https://oceanbites.org" term="animal behavior" /><category scheme="https://oceanbites.org" term="community ecology" /><category scheme="https://oceanbites.org" term="migration" />
+		<summary type="html"><![CDATA[Sperm whale pods movement could be based on the presence or absence of other pods, indicating interesting social dynamics.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/how-social-dynamics-impact-sperm-whale-movements-in-the-caribbean/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=how-social-dynamics-impact-sperm-whale-movements-in-the-caribbean#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/how-social-dynamics-impact-sperm-whale-movements-in-the-caribbean/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Claire Lacey</name>
+							<uri>https://oceanbites.org/author/clacey/</uri>
+						</author>
+
+		<title type="html"><![CDATA[The North Atlantic right whale, and the effects of multiple stressors]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/the-north-atlantic-right-whale-and-the-effects-of-multiple-stressors/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=the-north-atlantic-right-whale-and-the-effects-of-multiple-stressors" />
+
+		<id>https://oceanbites.org/?p=42035</id>
+		<updated>2025-12-14T19:34:03Z</updated>
+		<published>2025-12-15T18:00:39Z</published>
+		<category scheme="https://oceanbites.org" term="Coastal Management" /><category scheme="https://oceanbites.org" term="Conservation" /><category scheme="https://oceanbites.org" term="statistical modelling" />
+		<summary type="html"><![CDATA[In this new study, researchers investigate new methods to look at how species cope with multiple stressors all at once...]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/the-north-atlantic-right-whale-and-the-effects-of-multiple-stressors/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=the-north-atlantic-right-whale-and-the-effects-of-multiple-stressors#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/the-north-atlantic-right-whale-and-the-effects-of-multiple-stressors/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Braden Furness</name>
+					</author>
+
+		<title type="html"><![CDATA[Surviving the Hook]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/surviving-the-hook/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=surviving-the-hook" />
+
+		<id>https://oceanbites.org/?p=42024</id>
+		<updated>2025-12-09T15:37:37Z</updated>
+		<published>2025-12-09T15:37:37Z</published>
+		<category scheme="https://oceanbites.org" term="Fisheries" /><category scheme="https://oceanbites.org" term="Catch and release" /><category scheme="https://oceanbites.org" term="Post-release mortality" /><category scheme="https://oceanbites.org" term="shark" />
+		<summary type="html"><![CDATA[What is the likelihood of a shark surviving a catch and release from a recreational fishery?]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/surviving-the-hook/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=surviving-the-hook#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/surviving-the-hook/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Rebecca Lippitt</name>
+							<uri>https://oceanbites.org/author/rlippitt/</uri>
+						</author>
+
+		<title type="html"><![CDATA[Let Them Eat Iron!]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/let-them-eat-iron/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=let-them-eat-iron" />
+
+		<id>https://oceanbites.org/?p=42002</id>
+		<updated>2025-12-01T15:54:49Z</updated>
+		<published>2025-12-01T15:54:49Z</published>
+		<category scheme="https://oceanbites.org" term="Biological oceanography" /><category scheme="https://oceanbites.org" term="Glaciers" /><category scheme="https://oceanbites.org" term="climate change" /><category scheme="https://oceanbites.org" term="geology" /><category scheme="https://oceanbites.org" term="Phytoplankton" />
+		<summary type="html"><![CDATA[A phytoplankton feast in the Southern Ocean may help address climate change.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/let-them-eat-iron/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=let-them-eat-iron#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/let-them-eat-iron/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Samantha Glass</name>
+					</author>
+
+		<title type="html"><![CDATA[It’s a Domino Effect: As the Ice Shifts, So Does Everything Else]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/its-a-domino-effect-as-the-ice-shifts-so-does-everything-else/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=its-a-domino-effect-as-the-ice-shifts-so-does-everything-else" />
+
+		<id>https://oceanbites.org/?p=41984</id>
+		<updated>2025-12-27T16:33:28Z</updated>
+		<published>2025-11-28T17:33:39Z</published>
+		<category scheme="https://oceanbites.org" term="Biological oceanography" /><category scheme="https://oceanbites.org" term="Antarctic" /><category scheme="https://oceanbites.org" term="biology" /><category scheme="https://oceanbites.org" term="chlorophyll concentration" /><category scheme="https://oceanbites.org" term="climate change" /><category scheme="https://oceanbites.org" term="Phytoplankton" /><category scheme="https://oceanbites.org" term="Remote Sensing" /><category scheme="https://oceanbites.org" term="sea ice" />
+		<summary type="html"><![CDATA[Changes in sea ice are transforming ecosystems from the bottom up, with dramatic effects on microscopic phytoplankton.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/its-a-domino-effect-as-the-ice-shifts-so-does-everything-else/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=its-a-domino-effect-as-the-ice-shifts-so-does-everything-else#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/its-a-domino-effect-as-the-ice-shifts-so-does-everything-else/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Melinda Edie</name>
+							<uri>https://oceanbites.org/author/medie/</uri>
+						</author>
+
+		<title type="html"><![CDATA[Humpback Whales to the Rescue]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/humpback-whales-to-the-rescue/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=humpback-whales-to-the-rescue" />
+
+		<id>https://oceanbites.org/?p=41989</id>
+		<updated>2025-11-26T17:38:56Z</updated>
+		<published>2025-11-26T17:38:56Z</published>
+		<category scheme="https://oceanbites.org" term="Ecology" /><category scheme="https://oceanbites.org" term="animal behavior" /><category scheme="https://oceanbites.org" term="community ecology" /><category scheme="https://oceanbites.org" term="food webs" /><category scheme="https://oceanbites.org" term="predation" />
+		<summary type="html"><![CDATA[Humpback whales exhibit an extraordinary behavior to protect each other from orca whale attacks.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/humpback-whales-to-the-rescue/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=humpback-whales-to-the-rescue#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/humpback-whales-to-the-rescue/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Claire Lacey</name>
+							<uri>https://oceanbites.org/author/clacey/</uri>
+						</author>
+
+		<title type="html"><![CDATA[Common dolphins &#8211; maybe not aging well&#8230;]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/common-dolphins-maybe-not-aging-well/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=common-dolphins-maybe-not-aging-well" />
+
+		<id>https://oceanbites.org/?p=41975</id>
+		<updated>2025-11-17T17:48:43Z</updated>
+		<published>2025-11-18T17:45:23Z</published>
+		<category scheme="https://oceanbites.org" term="Conservation" /><category scheme="https://oceanbites.org" term="Ecology" /><category scheme="https://oceanbites.org" term="cetacean" /><category scheme="https://oceanbites.org" term="dolphin" /><category scheme="https://oceanbites.org" term="new techniques" />
+		<summary type="html"><![CDATA[A new study estimating age of dolphins in the Bay of Biscay shows their lifespans may be getting shorter - a conservation concern]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/common-dolphins-maybe-not-aging-well/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=common-dolphins-maybe-not-aging-well#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/common-dolphins-maybe-not-aging-well/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Josiah Grzywacz</name>
+					</author>
+
+		<title type="html"><![CDATA[When Diatoms Catch a Cold]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/when-diatoms-catch-a-cold/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=when-diatoms-catch-a-cold" />
+
+		<id>https://oceanbites.org/?p=41964</id>
+		<updated>2025-11-13T18:36:54Z</updated>
+		<published>2025-11-14T15:00:22Z</published>
+		<category scheme="https://oceanbites.org" term="Ecology" /><category scheme="https://oceanbites.org" term="climate change" /><category scheme="https://oceanbites.org" term="diatom" /><category scheme="https://oceanbites.org" term="ecology" /><category scheme="https://oceanbites.org" term="ice" /><category scheme="https://oceanbites.org" term="viruses" /><category scheme="https://oceanbites.org" term="zoospores" />
+		<summary type="html"><![CDATA[Humans aren't the only ones who get sick when the seasons change]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/when-diatoms-catch-a-cold/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=when-diatoms-catch-a-cold#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/when-diatoms-catch-a-cold/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Braden Furness</name>
+					</author>
+
+		<title type="html"><![CDATA[No Bones, No Problem]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/no-bones-no-problem/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=no-bones-no-problem" />
+
+		<id>https://oceanbites.org/?p=41955</id>
+		<updated>2025-11-12T01:30:06Z</updated>
+		<published>2025-11-12T15:00:11Z</published>
+		<category scheme="https://oceanbites.org" term="Biochemistry" /><category scheme="https://oceanbites.org" term="calcium carbonate" /><category scheme="https://oceanbites.org" term="Metabolism" /><category scheme="https://oceanbites.org" term="shark" />
+		<summary type="html"><![CDATA[Shark jaws and vertebrae may hold the key to understanding their metabolism.]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/no-bones-no-problem/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=no-bones-no-problem#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/no-bones-no-problem/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Kendra Devereux</name>
+					</author>
+
+		<title type="html"><![CDATA[Ocean upwelling: What happens to coral reefs if it stops?]]></title>
+		<link rel="alternate" type="text/html" href="https://oceanbites.org/ocean-upwelling-what-happens-to-coral-reefs-if-it-stops/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=ocean-upwelling-what-happens-to-coral-reefs-if-it-stops" />
+
+		<id>https://oceanbites.org/?p=41945</id>
+		<updated>2025-10-29T17:31:10Z</updated>
+		<published>2025-10-30T12:00:07Z</published>
+		<category scheme="https://oceanbites.org" term="Climate Change" /><category scheme="https://oceanbites.org" term="Coral" /><category scheme="https://oceanbites.org" term="Ecology" /><category scheme="https://oceanbites.org" term="climate change" /><category scheme="https://oceanbites.org" term="climate impacts" /><category scheme="https://oceanbites.org" term="Indian Ocean" /><category scheme="https://oceanbites.org" term="Indian Ocean Dipole" /><category scheme="https://oceanbites.org" term="nutrients" /><category scheme="https://oceanbites.org" term="reef" /><category scheme="https://oceanbites.org" term="upwelling" />
+		<summary type="html"><![CDATA[Spring, D.L., Fox, M.D., Green, J.A.M., Guillaume-Castel, R., Jacobs, Z., Roche, R.C., Turner, J.R. and Williams, G.J. (2025), Climate change impacts to upwelling and shallow reef nutrient sources across an oceanic archipelago. Limnol Oceanogr. https://doi.org/10.1002/lno.70172 Imagine you are at one of those sushi restaurants where food is delivered on a conveyor belt. You are happily [&#8230;]]]></summary>
+
+		
+					<link rel="replies" type="text/html" href="https://oceanbites.org/ocean-upwelling-what-happens-to-coral-reefs-if-it-stops/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=ocean-upwelling-what-happens-to-coral-reefs-if-it-stops#comments" thr:count="0" />
+			<link rel="replies" type="application/atom+xml" href="https://oceanbites.org/ocean-upwelling-what-happens-to-coral-reefs-if-it-stops/feed/atom/" thr:count="0" />
+			<thr:total>0</thr:total>
+			</entry>
+	</feed>

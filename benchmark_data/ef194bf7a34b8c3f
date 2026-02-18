@@ -1,0 +1,54 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>mridul.io</title>
+      <link>https://tailwind-nextjs-starter-blog.vercel.app/blog</link>
+      <description>Hello, fellow traveller. Welcome to my corner of the internet.</description>
+      <language>en-us</language>
+      <managingEditor>mridul.mohan.m@gmail.com (Mridul Mohan)</managingEditor>
+      <webMaster>mridul.mohan.m@gmail.com (Mridul Mohan)</webMaster>
+      <lastBuildDate>Mon, 31 Mar 2025 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://tailwind-nextjs-starter-blog.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/self-reflecting-ai-monologue</guid>
+    <title>Self-Reflecting AI Monologue</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/self-reflecting-ai-monologue</link>
+    <description>I asked AI to self-reflect indefinitely and figure out what it was</description>
+    <pubDate>Mon, 31 Mar 2025 00:00:00 GMT</pubDate>
+    <author>mridul.mohan.m@gmail.com (Mridul Mohan)</author>
+    <category>ai-writing</category><category>artificial intelligence</category>
+  </item>
+
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/history-distributed-systems</guid>
+    <title>A Brief History of Distributed Systems</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/history-distributed-systems</link>
+    <description>An essay tracing the hard-earned evolution of distributed systems — through theory, crashes, production fires, and the engineers who bent reality to make things scale.</description>
+    <pubDate>Fri, 28 Mar 2025 00:00:00 GMT</pubDate>
+    <author>mridul.mohan.m@gmail.com (Mridul Mohan)</author>
+    <category>distributed-systems</category><category>history</category><category>infrastructure</category>
+  </item>
+
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/journey-of-a-request</guid>
+    <title>Journey of a Request</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/journey-of-a-request</link>
+    <description>A deep dive into what really happens when a network request times out — tracing the path, failure modes, and the layers of complexity that make distributed systems such a hard problem.</description>
+    <pubDate>Fri, 28 Mar 2025 00:00:00 GMT</pubDate>
+    <author>mridul.mohan.m@gmail.com (Mridul Mohan)</author>
+    <category>distributed-systems</category><category>networks</category><category>timeouts</category><category>reliability</category>
+  </item>
+
+  <item>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/resilience-as-code</guid>
+    <title>Resilience as Code</title>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/resilience-as-code</link>
+    <description>An essay on designing systems — and lives — that don’t just survive failure, but absorb it, adapt to it, and emerge stronger. Not just fault-tolerance, but antifragility as an engineering principle.</description>
+    <pubDate>Sat, 13 Apr 2024 00:00:00 GMT</pubDate>
+    <author>mridul.mohan.m@gmail.com (Mridul Mohan)</author>
+    <category>resilience</category><category>systems</category><category>design</category><category>engineering</category><category>failure</category>
+  </item>
+
+    </channel>
+  </rss>

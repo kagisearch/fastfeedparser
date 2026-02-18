@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><description>Postings for Rails developers. From Daniel Kehoe and the RailsApps project.</description><title>RailsApps</title><generator>Tumblr (3.0; @rails-apps)</generator><link>https://blog.railsapps.org/</link><item><title>Railsapps Obituary</title><description>&lt;p&gt;I&amp;rsquo;ve updated the website at &lt;a href="https://railsapps.org/"&gt;railsapps.org&lt;/a&gt; to announce the project is no longer maintained. See the website for details.&lt;/p&gt;
+
+&lt;p&gt;The project was popular from 2012 to 2018. Tens of thousands of developers worldwide got started with Rails using the Railsapps project and my accompanying books and tutorials. Interest in Rails began to decline in 2018 and I moved on to other work.&lt;/p&gt;
+
+&lt;p&gt;Rails remains a popular and useful web application framework, though many new developers now begin with JavaScript frameworks. Fortunately, many excellent tutorials and starter applications are now available for developers who want to get started with Rails, making the Railsapps project obsolete.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m grateful for the support I received for the Railsapps project and for the knowledge, opportunities, and new experiences that came to me through the project. Bless you all 🙏.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/705333874478235648</link><guid>https://blog.railsapps.org/post/705333874478235648</guid><pubDate>Mon, 02 Jan 2023 03:26:40 -0800</pubDate></item><item><title>RailsApps Tutorials Now Free</title><description>&lt;p&gt;I&amp;rsquo;m offering all the &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt;, plus the &lt;em&gt;Learn Ruby on Rails&lt;/em&gt; books, for free. Until now, the combination of the books, the advanced tutorials and the videos were available for a one-time purchase of $95. Over 800 developers have purchased the RailsApps Tutorials in the previous four years. But Rails moves fast with major releases every two years. Rails 6.0 will soon be released. Though the &lt;em&gt;Learn Ruby on Rails&lt;/em&gt; books have been updated for Rails 5.1 and the &lt;a href="http://railsapps.github.io/"&gt;RailsApps example applications&lt;/a&gt; are up to date for Rails 5.0, the tutorials are written for Rails 4.2. I&amp;rsquo;d like to update all the material but until I&amp;rsquo;ve done so, I&amp;rsquo;m going to make access free for all the material.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/185538133195</link><guid>https://blog.railsapps.org/post/185538133195</guid><pubDate>Wed, 12 Jun 2019 02:08:54 -0700</pubDate></item><item><title>'Learn Ruby on Rails' Updated for Rails 5.1</title><description>&lt;p&gt;I&amp;rsquo;ve completed the Rails 5.1 update for Book Two of my book series &lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;Learn Ruby on Rails&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s important to have an accurate and up-to-date tutorial for beginners getting started with Rails. I&amp;rsquo;ve updated all the code examples in the book for Rails 5.1.&lt;/p&gt;
+
+&lt;p&gt;The book shows how to integrate Bootstrap with Rails for layout and styling. Rails 5.1 drops jQuery which is required by Bootstrap so I&amp;rsquo;ve updated the book to show how to add a jQuery gem and modify the &lt;code&gt;application.js&lt;/code&gt; manifest.&lt;/p&gt;
+
+&lt;p&gt;In previous editions of the book, I used the SimpleForm gem because I liked the elegance and simplicity of the form helpers in SimpleForm. It made forms a little easier for beginners. However the release of Rails 5.1 broke SimpleForm and it took a few weeks for a new release of SimpleForm to resolve the Rails 5.1 issues. I&amp;rsquo;ve decided to eliminate the dependency on SimpleForm, so the new edition of the book uses the new &lt;code&gt;form_with&lt;/code&gt; helper.&lt;/p&gt;
+
+&lt;p&gt;The updates to the &lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;Learn Ruby on Rails&lt;/a&gt; book were made possible by contributors to my recent &lt;a href="https://www.kickstarter.com/projects/909377477/rails-composer-for-rails-51?ref=1khm13"&gt;Kickstarter campaign&lt;/a&gt; for  Rails Composer.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/162623576020</link><guid>https://blog.railsapps.org/post/162623576020</guid><pubDate>Wed, 05 Jul 2017 02:16:40 -0700</pubDate></item><item><title>Successful Kickstarter</title><description>&lt;p&gt;On June 5, 2017 we successfully concluded a Kickstarter campaign to raise funds to update Rails Composer for Rails 5.1. 122 backers pledged $6,963. I&amp;rsquo;m always awed at the community support for the project. Thank you!&lt;/p&gt;
+
+&lt;p&gt;With support from the community, I will work on a new version of Rails Composer and update the RailsApps example applications for Rails 5.1.&lt;/p&gt;
+
+&lt;p&gt;Rails 5.1 requires extensive changes to the RailsApps example applications. All of the example applications use Bootstrap for layout and styling. Bootstrap requires jQuery but Rails 5.1 drops jQuery so we&amp;rsquo;ve got to add a jQuery gem and modify the &lt;code&gt;application.js&lt;/code&gt; manifest to restore the jQuery dependency.&lt;/p&gt;
+
+&lt;p&gt;In Rails 5.1, the familiar &lt;code&gt;form_for&lt;/code&gt; and &lt;code&gt;form_tag&lt;/code&gt; helpers are replaced by a new consolidated &lt;code&gt;form_with&lt;/code&gt; helper. The &lt;code&gt;form_for&lt;/code&gt; and &lt;code&gt;form_tag&lt;/code&gt; helpers will be deprecated in a future version of Rails so we have to take them out. Forms are ubiquitous in every web application. We&amp;rsquo;ll have to rework every form in every example application.&lt;/p&gt;
+
+&lt;p&gt;Before I tackle the updates to Rails Composer and the RailsApps example applications, I&amp;rsquo;ll update Book Two of my book series &lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;Learn Ruby on Rails&lt;/a&gt;. Beginners starting with Rails need an accurate and up-to-date tutorial to get started with Rails.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/162623201550</link><guid>https://blog.railsapps.org/post/162623201550</guid><pubDate>Wed, 05 Jul 2017 01:54:33 -0700</pubDate></item><item><title>Kickstarter for Rails Composer</title><description>&lt;p&gt;At the end of April I was invited to speak about &lt;a href="http://www.railscomposer.com/"&gt;Rails Composer&lt;/a&gt; at the &lt;a href="http://rubyhack.com/"&gt;RubyHACK&lt;/a&gt; conference in Salt Lake City. Half the audience already knew about Rails Composer and everyone was very enthusiastic. Judging from the response, Rails Composer has become a popular tool for Rails developers.&lt;/p&gt;
+
+&lt;p&gt;After the conference, RubyHACK participant Ian Mercaldi wrote a great blog post on &lt;a href="http://im-portfolio.herokuapp.com/blogs/starting-new-apps-with-rails-composer"&gt;&amp;ldquo;Starting New Apps With Rails Composer&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="https://64.media.tumblr.com/6b4f3c68a8f6cd11470c010738874de1/tumblr_inline_opb90zNKKR1qkyz8s_540.png" alt=""/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Kickstarter Campaign&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Rails 5.1 is out and I&amp;rsquo;d like to update Rails Composer to include JavaScript frameworks:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;React&lt;/li&gt;
+&lt;li&gt;Angular&lt;/li&gt;
+&lt;li&gt;Vue.js&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;d like to ask you to &lt;a href="https://www.kickstarter.com/projects/909377477/rails-composer-for-rails-51?ref=1khm13"&gt;contribute to the Kickstarter campaign&lt;/a&gt; to update Rails Composer for Rails 5.1 and add options for JavaScript frameworks. In 2015 I was able to raise $8,505 through a Kickstarter campaign to add Bootstrap templates to Rails Composer. I&amp;rsquo;m hoping to raise half that amount with the current Kickstarter campaign. If you contribute, there are great rewards such as the &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt; and subscriptions to Chris Oliver&amp;rsquo;s GoRails screencasts and Michael Hartl&amp;rsquo;s
+Learn Enough Society.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.kickstarter.com/projects/909377477/rails-composer-for-rails-51?ref=1khm13"&gt;&lt;img src="https://64.media.tumblr.com/bb4205efda79f31da255ee01d34e95a7/tumblr_inline_opb94xnxs91qkyz8s_540.png" alt=""/&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The community of Rails developers keeps Rails Composer going with its enthusiasm. It&amp;rsquo;d be great if you can help with a
+&lt;a href="https://www.kickstarter.com/projects/909377477/rails-composer-for-rails-51?ref=1khm13"&gt;contribution to the Kickstarter campaign&lt;/a&gt;.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/160219535860</link><guid>https://blog.railsapps.org/post/160219535860</guid><pubDate>Mon, 01 May 2017 22:44:04 -0700</pubDate></item><item><title>RailsApps Examples for Rails 5.0</title><description>&lt;p&gt;Today I finished updating the &lt;a href="https://github.com/RailsApps"&gt;RailsApps example applications&lt;/a&gt; for Rails 5.0.&lt;/p&gt;
+
+&lt;p&gt;I currently maintain eleven example applications on GitHub, ranging from simple to moderately complex. The &lt;a href="http://www.railscomposer.com/"&gt;Rails Composer&lt;/a&gt; tool will generate any of the example applications. You can use the example applications as starter applications. Or use the example applications as reference implementations so you can see how basic features like authentication are implemented.&lt;/p&gt;
+
+&lt;p&gt;Here are the eleven example applications:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;learn-rails&lt;/li&gt;
+&lt;li&gt;rails-bootstrap&lt;/li&gt;
+&lt;li&gt;rails-foundation&lt;/li&gt;
+&lt;li&gt;rails-mailinglist-activejob&lt;/li&gt;
+&lt;li&gt;rails-omniauth&lt;/li&gt;
+&lt;li&gt;rails-devise&lt;/li&gt;
+&lt;li&gt;rails-devise-roles&lt;/li&gt;
+&lt;li&gt;rails-devise-pundit&lt;/li&gt;
+&lt;li&gt;rails-signup-download&lt;/li&gt;
+&lt;li&gt;rails-stripe-checkout&lt;/li&gt;
+&lt;li&gt;rails-stripe-coupons&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;a href="http://railsdiff.org/"&gt;RailsDiff&lt;/a&gt; web site is the best way to see changes between versions of Rails in the default starter application. Rails 5.0 changes many of the boilerplate files in the Rails default starter application.  In Rails 5.0, we also change models to inherit from an ApplicationRecord class and change jobs to inherit from an ApplicationJob class.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve also made changes to the &lt;a href="http://www.railscomposer.com/"&gt;Rails Composer&lt;/a&gt; tool so it generates applications correctly for Rails 5.0.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve also recently revised the free &lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;Learn Ruby on Rails&lt;/a&gt; book for Rails 5.0. Together with the book, the revised example applications should make it easier for beginners to get started with Rails.&lt;/p&gt;
+
+&lt;p&gt;Thank you to everyone who supports the RailsApps project with your appreciation and encouragement.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/153039982495</link><guid>https://blog.railsapps.org/post/153039982495</guid><pubDate>Fri, 11 Nov 2016 07:22:18 -0800</pubDate></item><item><title>‘Learn Ruby on Rails’ Book Updated for Rails 5.0</title><description>&lt;p&gt;Today I&amp;rsquo;ve released the Rails 5.0 version of Book Two of the book set &lt;em&gt;&lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;Learn Ruby on Rails&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A big thank you to the &lt;a href="https://www.kickstarter.com/projects/909377477/learn-ruby-on-rails-5"&gt;Kickstarter backers&lt;/a&gt; who made the revision possible!&lt;/p&gt;
+
+&lt;p&gt;To get your own copy of the Rails 5.0 book, use the invitation code you&amp;rsquo;ll find on the welcome page at&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://learn-rails.com/"&gt;&lt;strong&gt;learn-rails.com&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve got access to the advanced &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt;, you&amp;rsquo;ll find you&amp;rsquo;ve already got the revised &lt;em&gt;Learn Ruby on Rails&lt;/em&gt; Book Two available with the videos and advanced tutorials.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://learn-rails.com/images/book_2.jpg" alt="book cover"/&gt;&lt;/p&gt;
+
+&lt;p&gt;All the code in the tutorial application has now been updated for Rails 5.0. The book now uses the more popular Bootstrap front-end framework instead of the Zurb Foundation front-end framework. And I&amp;rsquo;ve made extensive revisions for greater clarity and easier troubleshooting.&lt;/p&gt;
+
+&lt;p&gt;It took longer than planned to make all the updates but it&amp;rsquo;s worth it, as it breathes new life into the book. It means the book will continue to help all beginners make a start with Rails.&lt;/p&gt;
+
+&lt;p&gt;Thank you!&lt;/p&gt;</description><link>https://blog.railsapps.org/post/152758764850</link><guid>https://blog.railsapps.org/post/152758764850</guid><pubDate>Fri, 04 Nov 2016 23:56:01 -0700</pubDate></item><item><title>Updates to RailsApps Example Applications</title><description>&lt;p&gt;I&amp;rsquo;ve begun updating the RailsApps example applications. So far, I&amp;rsquo;ve updated all the example applications to Ruby 2.3.1 and Rails 4.2.7 with the goal of eventually updating all the example applications to Rails 5.0.&lt;/p&gt;
+
+&lt;p&gt;Several of the example applications use Devise for authentication and Devise 4 introduced a new syntax for handling parameters submitted in registration and sign-in forms. I&amp;rsquo;ve updated the relevant example applications to accommodate Devise 4. In the process, I moved the logic for handling parameters from an initializer file to the project application controller, to follow recommendations of the Devise maintainers (see &lt;a href="https://github.com/RailsApps/rails-devise/issues/17"&gt;Devise initializer issue&lt;/a&gt; for details.)&lt;/p&gt;
+
+&lt;p&gt;Between the RailsApps example applications, the Rails Composer tools, and my &lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;Learn Ruby on Rails&lt;/a&gt; books, there&amp;rsquo;s a lot of work to be done to accommodate Rails 5.0 and keep the project current. I&amp;rsquo;m grateful to backers of the &lt;a href="https://www.kickstarter.com/projects/909377477/learn-ruby-on-rails-5"&gt;Kickstarter campaign&lt;/a&gt; for offering support so I can revise the &lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;Learn Ruby on Rails&lt;/a&gt; book and I&amp;rsquo;m continuing maintenance of other aspects of the RailsApps project as well, starting with updates of the example applications.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/151658152335</link><guid>https://blog.railsapps.org/post/151658152335</guid><pubDate>Tue, 11 Oct 2016 06:29:35 -0700</pubDate></item><item><title>Bootstrap 4 Option in Rails Composer</title><description>&lt;p&gt;Bootstrap 4, the frontend framework, is in alpha release now. Many developers are already using it, so I&amp;rsquo;ve added it as an option to Rails Composer. Now, when you generate a starter application with Rails Composer, you can choose Bootstrap 4. You&amp;rsquo;ll get the &lt;a href="https://github.com/twbs/bootstrap-rubygem"&gt;bootstrap-rubygem&lt;/a&gt; with proper configuration of assets plus a navigation bar and flash messages styled for Bootstrap 4.&lt;/p&gt;
+
+&lt;p&gt;Rails Composer relies on the &lt;a href="https://github.com/RailsApps/rails_layout"&gt;rails_layout gem&lt;/a&gt; to generate the navigation bar, flash messages, and layout files. There&amp;rsquo;s a &lt;a href="https://github.com/RailsApps/rails-bootstrap"&gt;rails-bootstrap&lt;/a&gt; example application that shows how to integrate Bootstrap 4 with Rails.&lt;/p&gt;
+
+&lt;p&gt;Developer &lt;a href="https://github.com/precise54"&gt;David Smith&lt;/a&gt; of Newcastle, Australia, contributed the updates to the rails-bootstrap example application. I asked on the &lt;a href="http://mailinglist.railscomposer.com/"&gt;Rails Composer mailing list&lt;/a&gt; for assistance from developers who had experience with Bootstrap 4 and David Smith responded with a &lt;a href="https://github.com/RailsApps/rails-bootstrap/pull/30"&gt;pull request&lt;/a&gt; within a few hours of receiving my email. His help made it easy to add the Bootstrap 4 Option to Rails Composer. Thanks, David!&lt;/p&gt;
+
+&lt;p&gt;Should you start using Bootstrap 4? Maybe for new projects. If you want to integrate existing Bootstrap themes into your Rails project, you&amp;rsquo;ll need to wait until the theme creators release Bootstrap 4 versions. And for existing projects? Bootstrap 4 is a major reworking of the framework. I would not recommend updating a Bootstrap 3 project to Bootstrap 4.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/150301195500</link><guid>https://blog.railsapps.org/post/150301195500</guid><pubDate>Mon, 12 Sep 2016 00:03:09 -0700</pubDate></item><item><title>Rails Composer for Rails 5.0</title><description>&lt;p&gt;For those who are following my digital nomad progress, I&amp;rsquo;m currently in Sydney, Australia with plans to return to SE Asia soon (it&amp;rsquo;s getting cold here in Australia). I&amp;rsquo;ve spent several months performing consulting work on a stealth project in Bali and now in Australia. I&amp;rsquo;m keeping the RailsApps project going, though, and I&amp;rsquo;ve recently updated &lt;a href="http://www.railscomposer.com"&gt;Rails Composer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Rails 5 now prefers Puma instead of WEBrick as the default web server, so Rails Composer will no longer offer WEBrick as an option.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve removed Figaro as an option for configuration variables as it seems it is no longer commonly used and the option caused errors for some people (&lt;a href="https://github.com/RailsApps/rails-composer/issues/209"&gt;issue 209&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Please open an issue if you use Rails Composer with Rails 5 and encounter any problems.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/145099949715</link><guid>https://blog.railsapps.org/post/145099949715</guid><pubDate>Sun, 29 May 2016 06:16:29 -0700</pubDate></item><item><title>RailsApps Year in Review</title><description>&lt;p&gt;It&amp;rsquo;s been a year of transition for &lt;a href="http://railsapps.github.io/"&gt;RailsApps&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I wanted to find a way to support the open source project, working on it full time, without relying on corporate subsidies or consulting work. The initial plan was to sell subscriptions to support the project. Some people signed up to support the project; others signed up just to read the tutorials. That worked for the first two years but the tutorials got longer and more complex and it became difficult to support the software at the core of the project while writing tutorials. Revenues began to decline because people who wanted new tutorials every month were disappointed.&lt;/p&gt;
+
+&lt;p&gt;Facing declining revenues for the project, I left San Francisco and began living as a digital nomad, looking for cheaper places to live so I could keep the project going. I&amp;rsquo;ve had great experiences living in South Africa and Southeast Asia but revenues have continued to decline.&lt;/p&gt;
+
+&lt;p&gt;In July, I tried a new approach for the project, and stopped selling the tutorials on a subscription basis. Instead, I began selling the tutorials for a one-time fee of $95 as the &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt;, refocusing my efforts on maintaining the software at the core of the project. Tutorial sales didn&amp;rsquo;t make up for the loss of subscription revenue, so I raised money for the project with a Kickstarter campaign in October. The Kickstarter campaign raised $8505 from 152 backers, which allowed me to add important new features to Rails Composer, and provided enough revenue to support the project through the end of 2015.&lt;/p&gt;
+
+&lt;p&gt;Before I tell you about my plans for 2016, I&amp;rsquo;d like to review what I accomplished in 2015.&lt;/p&gt;
+
+&lt;p&gt;Throughout the year, I&amp;rsquo;ve kept the dozen RailsApps example applications updated for each new release of Rails, Ruby, and gems such as Gibbon. That has also meant periodic revisions to the dozen tutorials that accompany the example applications, as well as the &lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;&lt;em&gt;Learn Ruby on Rails&lt;/em&gt;&lt;/a&gt; book.&lt;/p&gt;
+
+&lt;p&gt;I also released &lt;a href="http://www.railscomposer.com/"&gt;Rails Composer&lt;/a&gt; with new features such as Bootstrap page templates and the Administrate gem option.&lt;/p&gt;
+
+&lt;p&gt;Rails Composer now has 2285 registered users (and many hundreds more who aren&amp;rsquo;t signed up for the mailing list). Over 200 people have paid for the tutorials at a price of $95. Over 1000 people have obtained the &lt;em&gt;Learn Ruby on Rails&lt;/em&gt; book from Amazon. And over 1000 students have obtained the book for free through Rails Girls, RailsBridge, or other organizations.&lt;/p&gt;
+
+&lt;p&gt;My original vision for RailsApps was to provide a dozen starter applications, along with tutorials for each starter application, plus the Rails Composer tool to generate the starter applications. The intent was to save time and effort for developers starting new projects, as well provide up-to-date &amp;ldquo;reference implementations&amp;rdquo; of basic Rails applications since Rails changes so frequently. Looking back, I&amp;rsquo;ve succeeded at accomplishing the original goals and sustaining the project in 2015.&lt;/p&gt;
+
+&lt;p&gt;I have a lot of work to do to meet RailsApps project goals in 2016. The Rails 5.0 beta is out now. Extensive revisions are required for all the example applications, the tutorials, and the &lt;em&gt;Learn Ruby on Rails&lt;/em&gt; book to update the project to Rails 5.0. If I make the updates to Rails 5.0, the project will continue to be useful for at least two more years. Without an update to Rails 5.0, the project will reach its end of life very soon.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;d also like to continue to add features to Rails Composer and build new example applications. With Rails 5.0 out, we need some examples of API-only Rails applications, perhaps integrated with JavaScript frameworks like React. I&amp;rsquo;m eager to explore these emerging approaches to web application development.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/136523299920</link><guid>https://blog.railsapps.org/post/136523299920</guid><pubDate>Sun, 03 Jan 2016 01:42:21 -0800</pubDate></item><item><title>Administrate Gem Added to Rails Composer</title><description>&lt;p&gt;The folks at &lt;a href="https://thoughtbot.com/open-source"&gt;Thoughtbot&lt;/a&gt; released a new gem for administrative dashboards. It&amp;rsquo;s named &lt;a href="https://github.com/thoughtbot/administrate"&gt;Administrate&lt;/a&gt; and though it&amp;rsquo;s new, it&amp;rsquo;s well-designed and useful. Developers often use the &lt;a href="http://activeadmin.info/"&gt;ActiveAdmin&lt;/a&gt; or &lt;a href="https://github.com/sferik/rails_admin"&gt;RailsAdmin&lt;/a&gt; gems to build admin dashboards, but I&amp;rsquo;ve never added them to Rails Composer. The &lt;a href="https://github.com/upmin/upmin-admin-ruby"&gt;Upmin&lt;/a&gt; gem has been a better alternative and it&amp;rsquo;s an option in &lt;a href="http://www.railscomposer.com/"&gt;Rails Composer&lt;/a&gt; when you&amp;rsquo;ve selected options for authentication and authorization.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="https://github.com/thoughtbot/administrate"&gt;Administrate&lt;/a&gt; gem is a welcome addition, so I&amp;rsquo;ve added it to Rails Composer. Like Upmin, it&amp;rsquo;ll be a choice when you&amp;rsquo;ve selected options for authentication and authorization. If you&amp;rsquo;d like to try it, build an application with Rails Composer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rails new myapp -m &lt;a href="https://raw.github.com/RailsApps/rails-composer/master/composer.rb"&gt;https://raw.github.com/RailsApps/rails-composer/master/composer.rb&lt;/a&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Choose &amp;ldquo;Build a RailsApps example application.&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Build a starter application?
+
+1)  Build a RailsApps example application
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pick the &amp;ldquo;rails-devise-roles&amp;rdquo; starter application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Choose a starter application.
+
+...
+
+7)  rails-devise-roles
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And you&amp;rsquo;ll see an option to select Administrate or Upmin:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Admin interface for database?
+    1)  None
+    2)  Thoughtbot Administrate
+    3)  Upmin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also select Administrate or Upmin when you build a custom starter application.&lt;/p&gt;
+
+&lt;p&gt;Chris Oliver of &lt;a href="https://gorails.com/"&gt;GoRails&lt;/a&gt; has a &lt;a href="https://gorails.com/episodes/administrate?autoplay=1"&gt;screencast&lt;/a&gt; that shows how to customize Administrate. Build an application with Rails Composer and try it out.&lt;/p&gt;
+
+&lt;p&gt;My thanks to everyone who supported the Kickstarter for Rails Composer. Your support gave me the opportunity to add &lt;a href="http://blog.railsapps.org/post/132666060115/bootstrap-templates-added-to-rails-composer"&gt;Bootstrap Templates to Rails Composer&lt;/a&gt;. I hope you like the new option to use the Administrate gem.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/133787233100</link><guid>https://blog.railsapps.org/post/133787233100</guid><pubDate>Mon, 23 Nov 2015 01:44:17 -0800</pubDate></item><item><title>Bootstrap Templates Added to Rails Composer</title><description>&lt;p&gt;&lt;a href="https://github.com/RailsApps/rails-composer"&gt;Rails Composer&lt;/a&gt; is a quick way to build Rails starter applications.&lt;/p&gt;
+
+&lt;p&gt;Now I&amp;rsquo;ve released Rails Composer with a collection of &lt;a href="http://startbootstrap.com/template-categories/all/"&gt;Bootstrap page templates&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Give it a try! Generate a Rails application with Rails Composer and select Bootstrap as your front-end framework. You&amp;rsquo;ll get an option to install any of 23 different Bootstrap page templates.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how to run Rails Composer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rails new myapp -m &lt;a href="https://raw.github.com/RailsApps/rails-composer/master/composer.rb"&gt;https://raw.github.com/RailsApps/rails-composer/master/composer.rb&lt;/a&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For a quick demo, choose &amp;ldquo;Build a RailsApps example application.&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Build a starter application?
+
+1)  Build a RailsApps example application
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pick a starter application such as &amp;ldquo;rails-devise-roles.&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Choose a starter application.
+
+...
+
+7)  rails-devise-roles
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For a front-end framework, pick &amp;ldquo;Bootstrap 3.3.&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Front-end framework?
+
+...
+
+2)  Bootstrap 3.3
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Select a few more options and soon you&amp;rsquo;ll see a list of 23 different Bootstrap page templates.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Add Bootstrap page templates?
+
+    1)  None
+
+    2)  1 Col Portfolio
+
+    3)  2 Col Portfolio
+
+    4)  3 Col Portfolio
+
+    5)  4 Col Portfolio
+
+    6)  Bare
+
+    7)  Blog Home
+
+    8)  Business Casual
+
+    9)  Business Frontpage
+
+   10)  Clean Blog
+
+   11)  Full Width Pics
+
+   12)  Heroic Features
+
+   13)  Landing Page
+
+   14)  Modern Business
+
+   15)  One Page Wonder
+
+   16)  Portfolio Item
+
+   17)  Round About
+
+   18)  Shop Homepage
+
+   19)  Shop Item
+
+   20)  Simple Sidebar
+
+   21)  Small Business
+
+   22)  Stylish Portfolio
+
+   23)  The Big Picture
+
+   24)  Thumbnail Gallery
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Try number 14, &amp;ldquo;Modern Business,&amp;rdquo; to see a truly impressive website. Most of the Bootstrap page templates are single page templates that replace the default starter application home page. But &amp;ldquo;Modern Business,&amp;rdquo; &amp;ldquo;Blog Home,&amp;rdquo; &amp;ldquo;Business Casual,&amp;rdquo; and &amp;ldquo;Clean Blog&amp;rdquo; contain multiple pages you can use for your web application.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to see what all the templates look like, browse the &lt;a href="http://startbootstrap.com/template-categories/all/"&gt;Start Bootstrap&lt;/a&gt; website for a gallery of Bootstrap themes &amp;amp; templates. You can use any of the templates for free under &lt;a href="http://www.apache.org/licenses/LICENSE-2.0"&gt;Apache License v2.0&lt;/a&gt; license terms. I asked David Miller, the creator of Start Bootstrap, if I could include the templates in Rails Composer and he encouraged me to do so. A big thanks to David Miller and his Start Bootstrap team for their generosity!&lt;/p&gt;
+
+&lt;p&gt;Everyone who contributed to the &lt;a href="https://www.kickstarter.com/projects/909377477/rails-composer-with-rails-tutorials"&gt;Kickstarter campaign&lt;/a&gt; deserves big thanks, as well. It&amp;rsquo;s the people who purchase the &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt; or who contributed to the Kickstarter campaign who keep the RailsApps project alive.&lt;/p&gt;
+
+&lt;p&gt;Please try the new feature and let me know if it needs improvement. You can open a &lt;a href="https://github.com/RailsApps/rails-composer/issues"&gt;GitHub issue&lt;/a&gt; and give me your feedback.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/132666060115</link><guid>https://blog.railsapps.org/post/132666060115</guid><pubDate>Fri, 06 Nov 2015 06:58:21 -0800</pubDate></item><item><title>New CSS Framework Filename</title><description>&lt;p&gt;All the RailsApps example applications add either the Bootstrap or Foundation front-end frameworks using a file &lt;code&gt;framework_and_overrides.css.scss&lt;/code&gt;. Files in the folder &lt;code&gt;app/assets/stylesheets&lt;/code&gt; are loaded in alphabetical order unless the manifest in &lt;code&gt;application.css.scss&lt;/code&gt; specifies the files by name.&lt;/p&gt;
+
+&lt;p&gt;Today I added a custom CSS file to a project with filename that preceded &lt;code&gt;framework_and_overrides.css.scss&lt;/code&gt; in alphabetical order. My custom CSS rules were overridden by the Bootstrap CSS, which is not what I wanted. I realized I could remove the &lt;code&gt;*= require_tree .&lt;/code&gt; directive in the &lt;code&gt;application.css.scss&lt;/code&gt; manifest and specify the files to load in the order I wanted. It&amp;rsquo;s easier to rename the &lt;code&gt;framework_and_overrides.css.scss&lt;/code&gt; as &lt;code&gt;1st_load_framework.css.scss&lt;/code&gt; and have it load first, automatically.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve changed the &lt;a href="https://github.com/RailsApps/rails_layout"&gt;rails_layout&lt;/a&gt; gem to use the new &lt;code&gt;1st_load_framework.css.scss&lt;/code&gt; filename. I&amp;rsquo;ll also change the filename in all the RailsApps example applications. I hope this doesn&amp;rsquo;t make a mess for anyone. I think the change is harmless and will simply the process of adding custom CSS files to RailsApps starter applications.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/131408512345</link><guid>https://blog.railsapps.org/post/131408512345</guid><pubDate>Sun, 18 Oct 2015 03:08:42 -0700</pubDate></item><item><title>Successful Kickstarter</title><description>&lt;p&gt;&lt;img src="https://64.media.tumblr.com/a6712a6741263aead55cf84bf0793913/tumblr_inline_nwet0b2kgB1qkyz8s_540.png" alt=""/&gt;&lt;/p&gt;
+
+&lt;p&gt;I wrapped up the Kickstarter campaign for Rails Composer. It was a success! 152 backers pledged $8,505. I&amp;rsquo;m grateful for the outpouring of support.&lt;/p&gt;
+
+&lt;p&gt;It helped that I had great rewards for contributors, with free trial memberships from Learneroo, GoRails, RailsClips, and the Hero Pro Rails tutorial from Code4Startup, as well as my own &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt;. By now, all contributors have received emails explaining how to collect their rewards.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m currently working to add Bootstrap templates to Rails Composer. I hope to deliver the new feature soon!&lt;/p&gt;</description><link>https://blog.railsapps.org/post/131407820090</link><guid>https://blog.railsapps.org/post/131407820090</guid><pubDate>Sun, 18 Oct 2015 02:46:07 -0700</pubDate></item><item><title>Interview on Ruby Rogues</title><description>&lt;p&gt;If you&amp;rsquo;d like to hear about my digital nomad life and the backstory of the RailsApps project, you can listen to an &lt;a href="https://devchat.tv/ruby-rogues/227-rr-rails-composer-railsapps-and-tutorials-with-daniel-kehoe"&gt;interview on Ruby Rogues&lt;/a&gt; with me that was released today.&lt;/p&gt;
+
+&lt;p&gt;We talked about Rails Composer, who uses it and why, and if it&amp;rsquo;s suitable for people learning Rails. Ruby Rogues always asks guests for &amp;ldquo;picks&amp;rdquo; for products and services, and mine were the &lt;a href="http://pinegrow.com/"&gt;Pinegrow web editor&lt;/a&gt;, &lt;a href="https://nomadlist.com/"&gt;Nomadlist.com&lt;/a&gt;, and &lt;a href="http://plazalowyat.com/"&gt;Low Yat Plaza&lt;/a&gt;, my favorite gadget mall in Kuala Lumpur, Malaysia.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/130245668385</link><guid>https://blog.railsapps.org/post/130245668385</guid><pubDate>Wed, 30 Sep 2015 20:24:15 -0700</pubDate></item><item><title>‘Learn Ruby on Rails’ Updated</title><description>&lt;p&gt;I’ve updated the book &lt;i&gt;Learn Ruby on Rails&lt;/i&gt; and replaced the versions on the sites &lt;a href="http://learn-rails.com/"&gt;learn-rails.com&lt;/a&gt; and &lt;a href="https://tutorials.railsapps.org/"&gt;tutorials.railsapps.org&lt;/a&gt;. I’ve submitted a new version to Amazon as well. This is book version 2.2.1.&lt;/p&gt;&lt;figure data-orig-width="125" data-orig-height="200"&gt;&lt;img src="https://64.media.tumblr.com/178f9b362b3341be27838158266e0c47/tumblr_inline_nuxcsyA4lM1qkyz8s_540.jpg" data-orig-width="125" data-orig-height="200"/&gt;&lt;/figure&gt;&lt;p&gt;The tutorial application has a mailing list feature that shows readers how to use Rails to connect to an external service. We connect to MailChimp using the &lt;a href="https://github.com/amro/gibbon"&gt;Gibbon gem&lt;/a&gt;. MailChimp recently updated their API to a new version 3.0. Gibbon 2.0.0 was released July 29 to accommodate the new MailChimp API. The changes broke six of the &lt;a href="https://github.com/RailsApps"&gt;RailsApps example applications&lt;/a&gt; (they are now updated) and required changes to the &lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;&lt;i&gt;Learn Ruby on Rails&lt;/i&gt;&lt;/a&gt; book.&lt;/p&gt;
+
+&lt;p&gt;I’ve also updated the book for Ruby from version 2.2.0 to 2.2.3 and Rails from version 4.2.0 to 4.2.4.&lt;/p&gt;
+
+&lt;p&gt;Finally, earlier editions of the book recommended &lt;a href="https://www.nitrous.io/"&gt;Nitrous.io&lt;/a&gt; for readers using Windows. Nitrous.io is no longer free in all countries so I’m recommending &lt;a href="https://c9.io/"&gt;Cloud9&lt;/a&gt; instead. Cloud9 is full-featured and performs well for developers who want a cloud-based development environment.&lt;/p&gt;
+
+&lt;p&gt;I’m happy to report that the book remains up to date, no easy task for a book that shows how to use open source software. And the book is still receiving five star reviews on Amazon.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/129414185255</link><guid>https://blog.railsapps.org/post/129414185255</guid><pubDate>Sat, 19 Sep 2015 05:46:31 -0700</pubDate></item><item><title>Kickstarter Campaign for Rails Composer</title><description>&lt;p&gt;Launched!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.kickstarter.com/projects/909377477/rails-composer-with-rails-tutorials"&gt;Kickstarter Campaign for Rails Composer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src="https://64.media.tumblr.com/faf6ed83ea9e02ae30bace1310c741ee/tumblr_inline_nubad0aSHA1qkyz8s_540.jpg" alt=""/&gt;&lt;/p&gt;
+
+&lt;p&gt;When the campaign finishes on October 6, I&amp;rsquo;ll add the much-anticipated &amp;ldquo;breakthrough missing feature&amp;rdquo; to &lt;a href="https://github.com/RailsApps/rails-composer"&gt;Rails Composer&lt;/a&gt;. You can &lt;a href="https://www.kickstarter.com/projects/909377477/rails-composer-with-rails-tutorials"&gt;watch the video&lt;/a&gt; to learn more. Spoiler alert: It&amp;rsquo;s several dozen Bootstrap page templates to make Rails Composer even more powerful.&lt;/p&gt;
+
+&lt;p&gt;Kickstarter is a &amp;ldquo;give something, get something&amp;rdquo; kind of place.&amp;ldquo; I&amp;rsquo;ve discounted my own book and tutorials 20% as an incentive to contribute. Of course contributors will have to wait until the campaign ends before getting access to the learning materials. The &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt; are still available at full price &lt;a href="https://tutorials.railsapps.org/"&gt;on the website&lt;/a&gt; for developers who want immediate access.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the amazing line up of rewards for contributors who can wait for delivery in October:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;My book &lt;em&gt;&lt;a href="http://learn-rails.com/learn-ruby-on-rails.html"&gt;LEARN RUBY ON RAILS&lt;/a&gt;&lt;/em&gt; for $9&lt;/li&gt;
+&lt;li&gt;Five of my &lt;em&gt;&lt;a href="https://tutorials.railsapps.org/"&gt;CAPSTONE RAILS TUTORIALS&lt;/a&gt;&lt;/em&gt; for $35&lt;/li&gt;
+&lt;li&gt;Twelve of my &lt;em&gt;&lt;a href="https://tutorials.railsapps.org/"&gt;CAPSTONE RAILS TUTORIALS&lt;/a&gt;&lt;/em&gt; for $76&lt;/li&gt;
+&lt;li&gt;One month membership for &lt;a href="https://www.learneroo.com/"&gt;LEARNEROO.COM&lt;/a&gt; from Ariel Krakowski&lt;/li&gt;
+&lt;li&gt;Two month membership for &lt;a href="https://gorails.com/"&gt;GORAILS&lt;/a&gt; from Chris Oliver&lt;/li&gt;
+&lt;li&gt;Two month membership for &lt;a href="https://devchat.tv/rails-clips"&gt;RAILSCLIPS&lt;/a&gt; from Charles Max Wood&lt;/li&gt;
+&lt;li&gt;One Hero Pro course from Leo Trieu&amp;rsquo;s &lt;a href="https://code4startup.com/"&gt;CODE4STARTUP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;and a GLUTTON REWARD of &lt;em&gt;all of the above&lt;/em&gt; at the $150 pledge level&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is going to be a successful campaign because of these rewards for contributors. No one has ever offered such an amazing collection of top Rails tutorials in one place. With such high-value rewards, I hope people will remember that the real benefit to the community comes from improving Rails Composer.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve gotten incredible support from colleagues such as Peter Cooper of Ruby Weekly, Michael Hartl of the Rails Tutorial, Erik Trautman of the Odin Project, Pat Maddox of RubySteps, Nico Schuele of Railsbricks, Melissa Wahnish of RubySnack, Justin Weiss, Brandon Hilkert, Chris Oliver, Charles Max Wood, Ariel Krakowski, Leo Trieu and many others. My colleagues are truly amazing and generous, donating their educational products as rewards for contributors, and offering me advice and support.&lt;/p&gt;
+
+&lt;p&gt;Thank you!&lt;/p&gt;</description><link>https://blog.railsapps.org/post/128560107725</link><guid>https://blog.railsapps.org/post/128560107725</guid><pubDate>Mon, 07 Sep 2015 07:47:31 -0700</pubDate></item><item><title>Example Applications for Rails 4.2.4</title><description>&lt;p&gt;Not a big deal, but I&amp;rsquo;ve updated the &lt;a href="https://github.com/RailsApps"&gt;RailsApps Example Applications&lt;/a&gt; for Rails 4.2.4. I keep them up to date with the current release.&lt;/p&gt;
+
+&lt;p&gt;Many new Rails developers don&amp;rsquo;t know about these example applications. They are good reference applications if you want to create an application with common gems such as Devise or OmniAuth, add authorization or a front-end framework, or add Stripe for credit card processing. All dozen example applications can be generated by &lt;a href="https://github.com/RailsApps/rails-composer"&gt;Rails Composer&lt;/a&gt; for use as starter applications.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/128559467745</link><guid>https://blog.railsapps.org/post/128559467745</guid><pubDate>Mon, 07 Sep 2015 07:36:19 -0700</pubDate></item><item><title>Upcoming Kickstarter Campaign</title><description>&lt;p&gt;Last month I wrote about &lt;a href="http://blog.railsapps.org/post/124464356030/my-attempt-to-save-the-railsapps-project"&gt;My Attempt to Save the RailsApps Project&lt;/a&gt;. I&amp;rsquo;m no longer selling subscriptions at $19/month to fund the project. Instead, I&amp;rsquo;m offering all the &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt;, plus the &lt;em&gt;Learn Ruby on Rails&lt;/em&gt; book, for a one-time purchase of $95. So far, revenue hasn&amp;rsquo;t returned to the previous level. However, I&amp;rsquo;m hopeful and I&amp;rsquo;ve been working on new features for &lt;a href="http://www.railscomposer.com/"&gt;Rails Composer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;On September 8, 2015, I will launch a &lt;a href="https://www.kickstarter.com/projects/909377477/1836083941?token=c3e5b5f7"&gt;Kickstarter campaign&lt;/a&gt; to raise funds to add a breakthrough missing feature to Rails Composer. I&amp;rsquo;m going to raise $10,000 but I will need your help.&lt;/p&gt;
+
+&lt;p&gt;Kickstarter campaigns for open source projects are often unsuccessful, as the project creators usually only offer thank you&amp;rsquo;s (or sometimes, t-shirts) for software that most people expect to use for free. However, I&amp;rsquo;m going to offer my book, &lt;em&gt;Learn Ruby on Rails&lt;/em&gt;, plus all the &lt;a href="https://tutorials.railsapps.org/"&gt;Capstone Rails Tutorials&lt;/a&gt;, as well as some very attractive premium rewards. I&amp;rsquo;ve already gotten a lot of interest in the upcoming Kickstarter campaign. You can see a preview here:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.kickstarter.com/projects/909377477/1836083941?token=c3e5b5f7"&gt;Kickstarter campaign&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For a successful Kickstarter campaign we need to spread the word to Rails developers who are already using Rails Composer, plus developers who haven&amp;rsquo;t learned about it yet. Blog posts, tweets, and mentions on sites such as Reddit and Hacker News are important to the success of the campaign.&lt;/p&gt;
+
+&lt;p&gt;Can you please fill out this form and tell me how you can help?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fill out the form: &lt;a href="http://goo.gl/forms/FV2JdBtUOk"&gt;How You Can Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On the form, you&amp;rsquo;ll learn more about the missing feature I will add to Rails Composer.&lt;/p&gt;
+
+&lt;p&gt;No action or contribution is too small. Responses to the form will let me know if I have enough support to launch the Kickstarter campaign.&lt;/p&gt;</description><link>https://blog.railsapps.org/post/127372762125</link><guid>https://blog.railsapps.org/post/127372762125</guid><pubDate>Sat, 22 Aug 2015 22:55:53 -0700</pubDate></item></channel></rss>

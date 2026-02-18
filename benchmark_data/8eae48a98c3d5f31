@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thomas Honeyman</title>
+    <link>https://thomashoneyman.com/</link>
+    <description>Recent content on Thomas Honeyman</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Thomas Honeyman</copyright>
+    <lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomashoneyman.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://thomashoneyman.com/guides/real-world-halogen/introduction/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/guides/real-world-halogen/introduction/</guid>
+      <description>I spent most of 2018 working on a moderate (50k total lines of code, 30k PureScript) Halogen application at CitizenNet. The PureScript community is brimming with delightful, helpful people, and my team and I received plenty of advice on best practices from commercial PureScript users at companies like SlamData, Awake Security, Lumi, and more.
+Everything we learned about best practices for building a large Halogen app went straight into yet another closed-source code base.</description>
+    </item>
+    
+    <item>
+      <title>What Are We Building?</title>
+      <link>https://thomashoneyman.com/guides/real-world-halogen/what-are-we-building/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/guides/real-world-halogen/what-are-we-building/</guid>
+      <description>Together we&amp;rsquo;ll build Conduit, a social blogging site a la Medium. We&amp;rsquo;re tasked with building a minimum viable product — something functionally complete and stable, but not over-engineered — with at least a few tests.
+Our lovely project management team, Thinkster, has provided us with a few resources to help guide development:
+ A detailed spec which describes the requirements for the application A complete API, available in hosted version and described with a thoughtful API spec Pre-built Bootstrap 4 styles available via CDN and sample HTML templates for our pages A demo frontend already built in another language to verify things are looking good  With the spec in hand we&amp;rsquo;re ready to step into the design process.</description>
+    </item>
+    
+    <item>
+      <title>Design Data &amp; Pure Functions</title>
+      <link>https://thomashoneyman.com/guides/real-world-halogen/design-data-pure-functions/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/guides/real-world-halogen/design-data-pure-functions/</guid>
+      <description>PureScript has a best-in-class type system with powerful features like algebraic data types, generics, row types, type classes. Let&amp;rsquo;s put this type system to work to help us represent the the data our application will use to support our use cases.
+We&amp;rsquo;ll sometimes use primitive data like strings, booleans, and numbers to represent values in our application. But most data we&amp;rsquo;ll work with have meaning in our application beyond being a boolean or a string.</description>
+    </item>
+    
+    <item>
+      <title>Push Effects To The Edges</title>
+      <link>https://thomashoneyman.com/guides/real-world-halogen/push-effects-to-the-edges/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/guides/real-world-halogen/push-effects-to-the-edges/</guid>
+      <description>So far we&amp;rsquo;ve spent all our time writing core data types and the types of functions that will operate on them. We haven&amp;rsquo;t implemented any of these functions yet. We could go ahead and implement any pure functions we&amp;rsquo;d like, but we should pause before implementing any non-pure functions (functions with Aff or Effect in their type). We need to be careful about how we design effects in our system.</description>
+    </item>
+    
+    <item>
+      <title>Using Halogen Components</title>
+      <link>https://thomashoneyman.com/guides/real-world-halogen/using-halogen-components/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/guides/real-world-halogen/using-halogen-components/</guid>
+      <description>Finally, let&amp;rsquo;s briefly discuss Halogen. Halogen is a declarative, type-safe UI library for PureScript applications. It&amp;rsquo;s the most commonly used framework for applications implemented entirely in PureScript, while projects that depend heavily on the React ecosystem tend to use purescript-react-basic and purescript-react. If you&amp;rsquo;re curious what code written with those libraries look like, you might want to read my article on writing PureScript React components to replace JavaScript code.</description>
+    </item>
+    
+    <item>
+      <title>A Tour Of The Implementation</title>
+      <link>https://thomashoneyman.com/guides/real-world-halogen/tour-of-the-implementation/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/guides/real-world-halogen/tour-of-the-implementation/</guid>
+      <description>Some guides take longer to write than others. Unfortunately, this is one of the long ones. I haven&amp;rsquo;t made it here just yet. Fortunately, the implementation is complete and available on GitHub, with thorough comments.
+If you&amp;rsquo;re getting value from this guide, please consider sharing it with friends and colleagues, despite its unfinished state. If you noticed anything you think could be better, please reach out. I&amp;rsquo;d love to hear from you!</description>
+    </item>
+    
+    <item>
+      <title>Introducing Halogen Hooks</title>
+      <link>https://thomashoneyman.com/articles/introducing-halogen-hooks/</link>
+      <pubDate>Tue, 31 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/articles/introducing-halogen-hooks/</guid>
+      <description>Components are the only way to use local state in Halogen, but they come with strings attached: you have to render something. Components are therefore ideal for writing stateful UI code, but ill-suited for writing reusable stateful logic.
+Stateful logic shows up everywhere in Halogen. State is used for UI concerns like persisting how many times a button has been clicked or whether a modal is open. But state is needed for many use cases which have nothing directly to do with rendering.</description>
+    </item>
+    
+    <item>
+      <title>Practical Profunctor Lenses &amp; Optics In PureScript</title>
+      <link>https://thomashoneyman.com/articles/practical-profunctor-lenses-optics/</link>
+      <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/articles/practical-profunctor-lenses-optics/</guid>
+      <description>Optics are among the most rewarding tools in functional programming. You can use them to manipulate values within data structures without boilerplate &amp;ndash; you just need a few types and functions from an optics library like profunctor-lenses.
+Consider working with a deeply-nested data structure like this one:
+type NestedData = Maybe (Array { foo :: Tuple String (Either Int Boolean), bar :: String }) Faced with this type, ask yourself:</description>
+    </item>
+    
+    <item>
+      <title>How to Write PureScript React Components to Replace JavaScript</title>
+      <link>https://thomashoneyman.com/articles/replace-react-components-with-purescript/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomashoneyman.com/articles/replace-react-components-with-purescript/</guid>
+      <description>I have twice helped migrate large JavaScript apps to PureScript. At CitizenNet we replaced Angular with Halogen and at Awake Security we&amp;rsquo;ve replaced a React application with PureScript React. Both companies have experienced a dramatic drop in bugs and a commensurate rise in maintainability.
+It&amp;rsquo;s relatively easy to replace React because PureScript has several React libraries (including support for Hooks and React Native). These libraries range from the low-level bindings of the react library to the higher-level react-basic and concur libraries (to name just a few).</description>
+    </item>
+    
+  </channel>
+</rss>

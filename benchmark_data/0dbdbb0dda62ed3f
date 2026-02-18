@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>recaffeinate</title>
+    <link>https://www.recaffeinate.co/index.xml</link>
+    <description>Recent content on recaffeinate</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>nate@barbettini.com (Nate Barbettini)</managingEditor>
+    <webMaster>nate@barbettini.com (Nate Barbettini)</webMaster>
+    <lastBuildDate>Sun, 06 May 2018 15:37:38 -0700</lastBuildDate>
+    <atom:link href="https://www.recaffeinate.co/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The Little ASP.NET Core Book, revised</title>
+      <link>https://www.recaffeinate.co/post/little-aspnetcore-book-revised/</link>
+      <pubDate>Sun, 06 May 2018 15:37:38 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/little-aspnetcore-book-revised/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/little-aspnetcore-book-mock.png&#34; class=&#34;book-hero&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Last year, I published &lt;a href=&#34;https://www.recaffeinate.co/book&#34;&gt;The Little ASP.NET Core Book&lt;/a&gt;, a friendly and free introduction to web programming. The book is published under a Creative Commons license, and the source is freely available &lt;a href=&#34;https://github.com/nbarbettini/little-aspnetcore-book&#34;&gt;on Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;People from all over the world have read it to learn how to build modern web applications, or just to brush up on what&amp;rsquo;s new in ASP.NET Core 2.0.&lt;/p&gt;
+
+&lt;div class=&#34;clear&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;Today, I&amp;rsquo;m releasing an updated version that adds brand-new content and incorporates many suggestions from readers. Keep reading to learn more, or &lt;a href=&#34;https://www.recaffeinate.co/book&#34;&gt;download a copy&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;version-1-1&#34;&gt;Version 1.1&lt;/h2&gt;
+
+&lt;p&gt;After getting some great &lt;a href=&#34;https://github.com/nbarbettini/little-aspnetcore-book/issues?utf8=%E2%9C%93&amp;amp;q=is%3Aissue&#34;&gt;feedback&lt;/a&gt; from the community, it was clear that there was demand for an updated, revised book. I&amp;rsquo;m calling this release version 1.1, and it includes a number of changes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Removed the AJAX pattern to focus even more on MVC best practices&lt;/li&gt;
+&lt;li&gt;Removed Facebook login to reduce problems for first-time readers&lt;/li&gt;
+&lt;li&gt;Updated the Docker deployment instructions to reflect the latest practices&lt;/li&gt;
+&lt;li&gt;A new jacket design&lt;/li&gt;
+&lt;li&gt;Many typo fixes and small suggestions!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;re curious, you can see the &lt;a href=&#34;https://github.com/nbarbettini/little-aspnetcore-book/releases&#34;&gt;full changelog&lt;/a&gt; on Github. The latest version is always available from &lt;a href=&#34;https://www.recaffeinate.co/book&#34;&gt;littleasp.net/book&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;get-ready-for-asp-net-core-2-1&#34;&gt;Get ready for ASP.NET Core 2.1&lt;/h2&gt;
+
+&lt;p&gt;ASP.NET Core 2.1 is &lt;a href=&#34;https://blogs.msdn.microsoft.com/webdev/2018/02/02/asp-net-core-2-1-roadmap/&#34;&gt;on the horizon&lt;/a&gt;, and it contains some exciting new features. After 2.1 is available, I&amp;rsquo;m planning to release another update to the book with even more new content. You can stay updated by subscribing to my &lt;a href=&#34;http://eepurl.com/cXACob&#34; target=&#34;_blank&#34;&gt;email list&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Has this book been helpful to you? How would you like to see it expanded? Let me know in the comments below!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Enforce HTTPS correctly in ASP.NET Core APIs</title>
+      <link>https://www.recaffeinate.co/post/enforce-https-aspnetcore-api/</link>
+      <pubDate>Wed, 28 Mar 2018 21:07:39 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/enforce-https-aspnetcore-api/</guid>
+      <description>&lt;p&gt;Most ASP.NET developers are familiar with the &lt;code&gt;[RequireHttps]&lt;/code&gt; attribute that forces HTTPS connections for a particular route or controller. However, if you&amp;rsquo;re building an API in ASP.NET Core, the &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl&#34;&gt;official documentation&lt;/a&gt; includes this warning:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Do &lt;strong&gt;not&lt;/strong&gt; use RequireHttpsAttribute on Web APIs that receive sensitive information. RequireHttpsAttribute uses HTTP status codes to redirect browsers from HTTP to HTTPS. API clients may not understand or obey redirects from HTTP to HTTPS.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It&amp;rsquo;s important to use HTTPS for &lt;em&gt;both&lt;/em&gt; your browser applications and APIs, but &lt;code&gt;[RequireHttps]&lt;/code&gt; only focuses on the former. How should you enforce HTTPS for APIs?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;why-not-requirehttps&#34;&gt;Why not RequireHttps?&lt;/h2&gt;
+
+&lt;p&gt;If you&amp;rsquo;re wondering why you shouldn&amp;rsquo;t use &lt;code&gt;[RequireHttps]&lt;/code&gt;, take a look at what happens when you use the attribute on a controller:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET http://api.example.com/values
+
+302 Found
+Location: https://api.example.com/values
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;[RequireHttps]&lt;/code&gt; automatically returns the &lt;code&gt;302 Found&lt;/code&gt; HTTP status code, which will redirect a browser to the secure version of the URL. This has two problems for APIs:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;API clients may not pay attention to 302 redirects&lt;/li&gt;
+&lt;li&gt;Any sensitive information a client attempts to send over HTTP could be intercepted&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The latter is important to understand. If your API accepts an insecure connection, this can happen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;POST http://api.example.com/mysecret
+Content-Type: application/json
+
+{
+  &amp;quot;secret&amp;quot;: &amp;quot;I like JavaScript&amp;quot;
+}
+
+302 Found
+Location: https://api.example.com/mysecret
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It doesn&amp;rsquo;t matter if the server tries to redirect the request, or even closes it with an error code. The data (and my secret love of JavaScript) was sent unencrypted and could have been intercepted.&lt;/p&gt;
+
+&lt;p&gt;As the docs state, it&amp;rsquo;s a better idea to simply reject insecure HTTP requests entirely. If your API clients aren&amp;rsquo;t sending sensitive information, you could also return an error code like &lt;code&gt;400 Bad Request&lt;/code&gt;. I&amp;rsquo;ll show you how to do both.&lt;/p&gt;
+
+&lt;h2 id=&#34;reject-all-insecure-connections&#34;&gt;Reject all insecure connections&lt;/h2&gt;
+
+&lt;p&gt;The best way to ensure your API clients connect over HTTPS is to make it the only option. This removes the possibility of a client trying to send something sensitive over HTTP, even accidentally.&lt;/p&gt;
+
+&lt;p&gt;There are two ways to do this, depending on how you deploy your application:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;At the reverse proxy layer&lt;/strong&gt;. If you have nginx, IIS, or another reverse proxy sitting in front of your application, configure it to only listen on HTTPS. That way, connections over 80 (HTTP) will be rejected.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;At the server&lt;/strong&gt;. If you are serving your application directly from Kestrel (which isn&amp;rsquo;t currently recommended), configure the server to only listen on 443. Thanks to Justin Helsley for pointing this out in the comments:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;.UseKestrel(options =&amp;gt;
+{
+    options.Listen(IPAddress.Loopback, 443, listenOptions =&amp;gt;
+    {
+        listenOptions.UseHttps(&amp;quot;certificate.pfx&amp;quot;, &amp;quot;password&amp;quot;);
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Rui Figueiredo has a great article on &lt;a href=&#34;https://www.blinkingcaret.com/2017/03/01/https-asp-net-core/&#34;&gt;configuring HTTPS in ASP.NET Core from scratch&lt;/a&gt; that dives into the details of configuring nginx, IIS, or Kestrel. 👍&lt;/p&gt;
+
+&lt;h2 id=&#34;return-an-http-error-code&#34;&gt;Return an HTTP error code&lt;/h2&gt;
+
+&lt;p&gt;In some APIs, you may want to allow insecure requests but return a status code like &lt;code&gt;400 Bad Request&lt;/code&gt; to the client. This is &lt;strong&gt;less secure&lt;/strong&gt; than rejecting the connection, because any data the client attempts to send in the request could be leaked as described above.&lt;/p&gt;
+
+&lt;p&gt;However, if this is the pattern your API needs, you can create a custom attribute that overrides the behavior of &lt;code&gt;[RequireHttps]&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;public class RequireHttpsOrCloseAttribute : RequireHttpsAttribute
+{
+    protected override void HandleNonHttpsRequest(AuthorizationFilterContext filterContext)
+    {
+        filterContext.Result = new StatusCodeResult(400);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Setting the &lt;code&gt;Result&lt;/code&gt; property short-circuits the rest of the request pipeline, so the request will immediately return HTTP 400. You can then use &lt;code&gt;[RequireHttpsOrClose]&lt;/code&gt; wherever you&amp;rsquo;d normally use &lt;code&gt;[RequireHttps]&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;[RequireHttpsOrClose]
+public class HomeController
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Depending on your API semantics, you may want to return a different status code. Thanks to Tim VanFosson for this &lt;a href=&#34;https://github.com/nbarbettini/ApiSecurity/blob/master/ApiSecurity/RequireHttpsOrCloseAttribute.cs&#34;&gt;contribution&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;[RequireHttpsOrClose(505)]
+public class HomeController
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;what-about-hsts&#34;&gt;What about HSTS?&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security&#34;&gt;Strict-Transport-Security&lt;/a&gt; header instructs browsers to avoid connecting to your site over HTTP, even accidentally.&lt;/p&gt;
+
+&lt;p&gt;HSTS is only useful for APIs if the API client observes the header. This could make sense if your API client is a browser (as in the case of a single-page app), but I think it&amp;rsquo;s better to simply reject insecure connections in the first place. It certainly can&amp;rsquo;t hurt to return the header, but don&amp;rsquo;t rely on it as your &lt;em&gt;only&lt;/em&gt; method of enforcing HTTPS.&lt;/p&gt;
+
+&lt;p&gt;For browser-based applications on the other hand (MVC, Razor and Razor Pages, and static pages that bootstrap SPAs), I&amp;rsquo;d strongly recommend it! The excellent &lt;a href=&#34;https://docs.nwebsec.com/en/latest/nwebsec/Configuring-hsts.html&#34;&gt;NWebSec package&lt;/a&gt; makes it easy to add HSTS to your pipeline.&lt;/p&gt;
+
+&lt;h2 id=&#34;easy-api-security-extensions&#34;&gt;Easy API security extensions&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ve published the above code as a small package called &lt;a href=&#34;https://www.nuget.org/packages/Recaffeinate.ApiSecurity&#34;&gt;Recaffeinate.ApiSecurity&lt;/a&gt;. The source is on &lt;a href=&#34;https://github.com/nbarbettini/ApiSecurity&#34;&gt;Github&lt;/a&gt; if you want to take a look or add helpers of your own.&lt;/p&gt;
+
+&lt;p&gt;Let me know if you have any questions about API security in ASP.NET Core! Leave a comment below or chat with me on &lt;a href=&#34;https://twitter.com/nbarbettini&#34;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Introducing the OpenID Connect debugger</title>
+      <link>https://www.recaffeinate.co/post/introducing-openid-connect-debugger/</link>
+      <pubDate>Tue, 30 Jan 2018 07:55:31 -0800</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/introducing-openid-connect-debugger/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/post/introducing-openid-connect-debugger/oidcdebugger-gear.png&#34; class=&#34;headshot&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The OAuth 2.0 and OpenID Connect protocols are used all over the web. Big platforms like Google and Facebook use them extensively for both authorization and social login (the ubiquitous Facebook Login button). These protocols are powerful, but unfortunately they aren&amp;rsquo;t always easy to use.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve ever struggled to set up OAuth or OpenID Connect, you&amp;rsquo;re not alone! I got so tired of fighting with bad requests and cryptic responses that I decided to write a tool to make it easier.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;why-oauth-is-hard&#34;&gt;Why OAuth is hard&lt;/h2&gt;
+
+&lt;p&gt;There are a few reasons why OAuth (and OpenID Connect) flows are tricky to implement. There&amp;rsquo;s a lot of confusion around the OAuth protocol, and many people don&amp;rsquo;t quite understand how it&amp;rsquo;s &lt;em&gt;supposed&lt;/em&gt; to work. I didn&amp;rsquo;t fully grasp it myself until recently. (If you&amp;rsquo;re in that camp, I&amp;rsquo;d recommend Keith Casey&amp;rsquo;s excellent &lt;a href=&#34;https://www.lynda.com/Web-Development-tutorials/Web-Security-OAuth-OpenID-Connect/642498-2.html&#34;&gt;Web Security: OAuth and OpenID Connect video course&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;However, even after I understood the protocol better, I still had difficulty:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Getting the initial request working.&lt;/strong&gt; The initial authorization request needs the right client ID, response type, response mode, scopes, etc. Getting everything just right takes some trial and error.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decoding responses.&lt;/strong&gt; If an error occurs, you&amp;rsquo;ll probably get an error response that&amp;rsquo;s URL-encoded, like &lt;code&gt;?error=You+messed+up%21&lt;/code&gt;. Copying that into a URL decoder is another step that gets in the way of figuring out what went wrong.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Capturing POST callbacks.&lt;/strong&gt; If your request was successful, the remote system may POST back to your redirect URI. That&amp;rsquo;s extra annoying to debug, because you need an HTTP server on your end ready to grab and decode the POST body.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I noticed these same frustrations coming up every time I had to work with OAuth and OpenID Connect flows. It seemed like a good place for a tool that could help.&lt;/p&gt;
+
+&lt;h2 id=&#34;introducing-the-openid-connect-debugger&#34;&gt;Introducing the OpenID Connect debugger&lt;/h2&gt;
+
+&lt;p&gt;After a few months of tweaking in my spare time, the first version is ready! Jump over to the &lt;strong&gt;OAuth debugger&lt;/strong&gt; (&lt;a href=&#34;https://oauthdebugger.com&#34;&gt;https://oauthdebugger.com&lt;/a&gt;) or &lt;strong&gt;OpenID Connect debugger&lt;/strong&gt; (&lt;a href=&#34;https://oidcdebugger.com&#34;&gt;https://oidcdebugger.com&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;(The latter includes a checkbox for &lt;code&gt;id_token&lt;/code&gt; and sends the &lt;code&gt;openid&lt;/code&gt; scope by default. That&amp;rsquo;s the only difference! If in doubt, use the &lt;a href=&#34;https://oidcdebugger.com&#34;&gt;OpenID Connect debugger&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to see it in action?&lt;/strong&gt; You can &lt;a href=&#34;https://oidcdebugger.com?authorize_uri_hint=https%3A%2F%2Faccounts.google.com%2Fo%2Foauth2%2Fv2%2Fauth&amp;amp;redirect_uri_hint=https%3A%2F%2Foidcdebugger.com%2Fdebug&amp;amp;client_id_hint=194853530508-urd4bp97kjg9kc2ke7bh28g8e5kkra0h.apps.googleusercontent.com&amp;amp;scope_hint=openid%20profile&amp;amp;state_hint=foobar&amp;amp;response_type_hint=id_token&amp;amp;response_mode_hint=fragment&#34;&gt;try it&lt;/a&gt; with my own demo Google client.&lt;/p&gt;
+
+&lt;p&gt;This tool does two things: first, it helps you assemble the request and get all the parameters just right. It includes form elements for all the common parameters and builds the authorization request URL dynamically.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/post/introducing-openid-connect-debugger/switch-response-mode.gif&#34; alt=&#34;Switch response mode&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Second, it handles the callback response. If the server responds with an error, the message is decoded so you can figure out what went wrong. It doesn&amp;rsquo;t matter if the callback uses the &lt;code&gt;form_post&lt;/code&gt; mode (an HTTP POST), or the &lt;code&gt;query&lt;/code&gt; or &lt;code&gt;fragment&lt;/code&gt; modes (an HTTP GET). The debugger will capture and decode anything you or the authorization server throws at it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/post/introducing-openid-connect-debugger/error-and-success.gif&#34; alt=&#34;Error and success results&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-use-the-debugger&#34;&gt;How to use the debugger&lt;/h2&gt;
+
+&lt;p&gt;All you need to do is temporarily set your OAuth client redirect URI to &lt;code&gt;https://oidcdebugger.com/debug&lt;/code&gt; (or the equivalent on &lt;code&gt;oauthdebugger.com&lt;/code&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/post/introducing-openid-connect-debugger/temp-redirect-uri.png&#34; alt=&#34;Add temporary redirect URI to OAuth client&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve used the debugger to test the flow and get everything working, remove it and point the redirect URI back to your application.&lt;/p&gt;
+
+&lt;h2 id=&#34;request-for-feedback&#34;&gt;Request for feedback&lt;/h2&gt;
+
+&lt;p&gt;Hopefully this tool makes working with OAuth 2.0 and OpenID Connect a little less stressful. &lt;img src=&#34;https://www.recaffeinate.co/img/heart.png&#34; width=&#34;22px&#34; class=&#34;heart-icon&#34; alt=&#34;love&#34;&gt;
+&lt;/p&gt;
+
+&lt;p&gt;What could make this tool more useful? I&amp;rsquo;d love to hear your ideas. Send me your feedback &lt;a href=&#34;https://twitter.com/nbarbettini&#34;&gt;on Twitter&lt;/a&gt; or in the comments below.&lt;/p&gt;
+
+&lt;p&gt;All of the source code is &lt;a href=&#34;https://github.com/nbarbettini/oidc-debugger&#34;&gt;available on Github&lt;/a&gt;. If you run into problems, please file an issue and let me know!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A little book update</title>
+      <link>https://www.recaffeinate.co/post/a-little-book-update/</link>
+      <pubDate>Mon, 20 Nov 2017 07:15:46 -0800</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/a-little-book-update/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s been over two months since I released the &lt;a href=&#34;https://www.recaffeinate.co/book&#34;&gt;Little ASP.NET Core Book&lt;/a&gt;, and I&amp;rsquo;ve been blown away by the response!&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;This looks great. I&amp;rsquo;ve been learning ASP.NET Core with scattered resources around the web, and your book seems to explain everything in a simple way.&amp;rdquo; - &lt;a href=&#34;https://news.ycombinator.com/item?id=15289047&#34;&gt;aesthetics1 on HackerNews&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been excited to see people downloading and tweeting about the book, but I&amp;rsquo;m even more excited to see people forking the content, adding suggestions, and translating it to other languages.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;reading-in-your-own-language&#34;&gt;Reading in your own language&lt;/h2&gt;
+
+&lt;p&gt;A few fantastic polyglot programmers have started translating the Little ASP.NET Core Book to other (spoken) languages.&lt;/p&gt;
+
+&lt;p&gt;Sahin was the first to finish with a Turkish translation, &lt;a href=&#34;https://www.gitbook.com/book/sahinyanlik/kisa-asp-net-core-kitabi/details&#34;&gt;ASP.NET Core El Kitabı&lt;/a&gt;. Translations to Spanish and German are in the works!&lt;/p&gt;
+
+&lt;h2 id=&#34;little-updates&#34;&gt;Little updates&lt;/h2&gt;
+
+&lt;p&gt;The Little ASP.NET Core Book is still a work-in-progress. There have been three &lt;a href=&#34;https://github.com/nbarbettini/little-aspnetcore-book/releases&#34;&gt;minor updates&lt;/a&gt; since the initial launch, all focused on fixing typos and adding small clarifications or suggestions sent in by readers.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m tracking bugs and suggestions &lt;a href=&#34;https://github.com/nbarbettini/little-aspnetcore-book/issues&#34;&gt;on GitHub&lt;/a&gt; and am happy to accept pull requests.&lt;/p&gt;
+
+&lt;p&gt;The latest version of the book is always available from this site, or the short URL &lt;a href=&#34;http://littleasp.net/book&#34;&gt;littleasp.net/book&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;looking-ahead&#34;&gt;Looking ahead&lt;/h2&gt;
+
+&lt;p&gt;So far, the updates have been minor. I&amp;rsquo;m gathering feedback for a 1.1 release of the book, where I plan to improve a couple of areas:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Rewriting the &lt;em&gt;More features&lt;/em&gt; chapter to fully use MVC instead of jQuery&lt;/li&gt;
+&lt;li&gt;More complete explanation of publishing to Docker&lt;/li&gt;
+&lt;li&gt;A discussion of adding HTTPS to the production site&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have suggestions of what you&amp;rsquo;d like to see, feel free to add them on &lt;a href=&#34;https://github.com/nbarbettini/little-aspnetcore-book/issues&#34;&gt;GitHub&lt;/a&gt; or in the comments below!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Introducing the Little ASP.NET Core Book</title>
+      <link>https://www.recaffeinate.co/post/introducing-little-aspnetcore-book/</link>
+      <pubDate>Tue, 19 Sep 2017 07:05:38 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/introducing-little-aspnetcore-book/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/little-aspnetcore-book-mock.png&#34; class=&#34;headshot&#34;&gt;
+Today I&amp;rsquo;m excited to release my side project for the last few months: the &lt;a href=&#34;https://www.recaffeinate.co/book&#34;&gt;Little ASP.NET Core Book&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;This &lt;strong&gt;free&lt;/strong&gt; book is a short introduction to the &lt;a href=&#34;https://docs.asp.net&#34;&gt;ASP.NET Core 2.0&lt;/a&gt; web framework. If you&amp;rsquo;ve never built apps in C# or ASP.NET (or even if you have!), this book will teach you the basics of building modern, fast web applications using ASP.NET Core.&lt;/p&gt;
+
+&lt;p&gt;Get a free copy on the &lt;a href=&#34;https://www.recaffeinate.co/book&#34;&gt;book page&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;why-write-a-free-book&#34;&gt;Why write a free book?&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ve always wanted to write and publish a technical book. I made plans last year to write a book about ASP.NET Core 1.0, but life wonderfully got in the way in the form of a wedding, a honeymoon, and a new job.&lt;/p&gt;
+
+&lt;p&gt;As the release date for ASP.NET Core 2.0 approached, I wanted to create something to give back to the community and help folks learn about this awesome web framework. I didn&amp;rsquo;t have the time to write a full 400 page technical monster, so I decided to write a short introductory book instead.&lt;/p&gt;
+
+&lt;h2 id=&#34;go-forth-and-learn&#34;&gt;Go forth and learn!&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://www.recaffeinate.co/book&#34;&gt;Little ASP.NET Core Book&lt;/a&gt; was born in a single caffeine-fueled weekend, followed by many short bursts of editing. My hope is that it helps you learn something new.&lt;/p&gt;
+
+&lt;p&gt;The book lives &lt;a href=&#34;https://github.com/nbarbettini/little-aspnetcore-book&#34;&gt;on Github&lt;/a&gt; and is licensed under the &lt;a href=&#34;https://creativecommons.org/licenses/by/4.0/&#34;&gt;Creative Commons Attribution&lt;/a&gt; license. As always, please share your feedback and critiques.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Set up the ultimate Windows 10 console</title>
+      <link>https://www.recaffeinate.co/post/set-up-ultimate-windows-10-console/</link>
+      <pubDate>Thu, 10 Aug 2017 07:32:58 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/set-up-ultimate-windows-10-console/</guid>
+      <description>&lt;p&gt;The console (terminal) on Windows has come a long way since command.com. PowerShell might seem weird at first if you&amp;rsquo;re used to bash on *nix, but it&amp;rsquo;s grown into a very powerful console and scripting tool.&lt;/p&gt;
+
+&lt;p&gt;Over the years, I&amp;rsquo;ve gathered a list of my favorite plugins and tweaks to make PowerShell and the console even better. In this post, I&amp;rsquo;ll show you how to customize PowerShell on Windows 10 for an awesome console experience.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conemu-for-a-tabbed-console&#34;&gt;ConEmu for a tabbed console&lt;/h2&gt;
+
+&lt;p&gt;First things first, install &lt;a href=&#34;https://conemu.github.io/&#34;&gt;ConEmu&lt;/a&gt;. ConEmu is a terminal that can run any shell in a tabbed window. In other words, it&amp;rsquo;s a nice &amp;ldquo;frame&amp;rdquo; around PowerShell, cmd.exe, or other CLI applications:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/post/conemu-tabs.gif&#34; alt=&#34;Tabbed consoles in ConEmu&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ConEmu gives you a huge variety of options and ways to customize how the console looks and behaves. Once you start using it, you won&amp;rsquo;t go back to plain powershell.exe.&lt;/p&gt;
+
+&lt;h2 id=&#34;chocolatey-for-package-management&#34;&gt;Chocolatey for package management&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://chocolatey.org/&#34;&gt;Chocolatey&lt;/a&gt; is the missing package manager for Windows. It makes it easy to install and update tools and programs from the console. If you&amp;rsquo;ve used &lt;code&gt;brew&lt;/code&gt; on macOS or &lt;code&gt;apt-get install&lt;/code&gt; on Debian, you&amp;rsquo;ll feel right at home.&lt;/p&gt;
+
+&lt;p&gt;Chocolatey must be installed (and run) from an &lt;strong&gt;administrative&lt;/strong&gt; shell. You can start PowerShell as an admin by searching for and right-clicking on Windows PowerShell in the Start Menu and choosing Run as administrator. Or, in ConEmu, click on the &lt;strong&gt;+&lt;/strong&gt; icon and choose PowerShell (Admin).&lt;/p&gt;
+
+&lt;p&gt;You can refer to the official &lt;a href=&#34;https://chocolatey.org/install&#34;&gt;install instructions&lt;/a&gt;, but here&amp;rsquo;s the gist: from an administrative PowerShell console, run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ps1&#34;&gt;Set-ExecutionPolicy AllSigned; iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Type &lt;code&gt;choco&lt;/code&gt; or &lt;code&gt;choco -?&lt;/code&gt; to make sure it&amp;rsquo;s installed:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/post/choco.gif&#34; alt=&#34;choco&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what you can do with Chocolatey, at a glance:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://chocolatey.org/packages&#34;&gt;Search for packages&lt;/a&gt; and install them with &lt;code&gt;choco install &amp;lt;packagename&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Remove packages with &lt;code&gt;choco uninstall &amp;lt;packagename&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;See what&amp;rsquo;s installed with &lt;code&gt;choco list --local-only&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check for outdated packages with &lt;code&gt;choco outdated&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Upgrade outdated packages with &lt;code&gt;choco upgrade &amp;lt;packagename&amp;gt;&lt;/code&gt; or &lt;code&gt;choco upgrade all&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Much more (try &lt;code&gt;choco -?&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;git-for-windows&#34;&gt;Git for Windows&lt;/h2&gt;
+
+&lt;p&gt;If you use Git for version control, you&amp;rsquo;ll need &lt;a href=&#34;https://git-for-windows.github.io/&#34;&gt;Git for Windows&lt;/a&gt;. You can download and install it from the official site, or with &lt;code&gt;choco install git&lt;/code&gt; (again, make sure you do this from an administrative shell).&lt;/p&gt;
+
+&lt;p&gt;After it&amp;rsquo;s done installing, restart the console and run &lt;code&gt;git --version&lt;/code&gt; to make sure it&amp;rsquo;s on your PATH.&lt;/p&gt;
+
+&lt;h2 id=&#34;posh-git-for-a-nicer-git-experience&#34;&gt;posh-git for a nicer Git experience&lt;/h2&gt;
+
+&lt;p&gt;Once you have Git for Windows installed, you&amp;rsquo;ll definitely want &lt;a href=&#34;https://github.com/dahlbyk/posh-git&#34;&gt;posh-git&lt;/a&gt;. posh-git adds some much-needed conveniences to the Git experience, such as tab-completion and a customizable prompt message:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/post/posh-git-completion.gif&#34; alt=&#34;Prompt and tab completion in posh-git&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Install posh-git with the official &lt;a href=&#34;https://github.com/dahlbyk/posh-git#installation&#34;&gt;installation instructions&lt;/a&gt; or with &lt;code&gt;choco install poshgit&lt;/code&gt;. Then, restart your console and navigate to a local Git repo. If you don&amp;rsquo;t see the current branch in the prompt, run &lt;code&gt;Add-PoshGitToProfile -AllHosts&lt;/code&gt; and restart the console once more.&lt;/p&gt;
+
+&lt;h2 id=&#34;further-reading&#34;&gt;Further reading&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://haacked.com/archive/2015/10/29/git-shell/&#34;&gt;Set up a smoking Git shell on Windows&lt;/a&gt; by Phil Haack&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://haacked.com/archive/2011/12/13/better-git-with-powershell.aspx/&#34;&gt;Better Git with PowerShell&lt;/a&gt; also by Phil Haack&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/q/60950/3191599&#34;&gt;Is there a better Windows Console Window?&lt;/a&gt; on StackOverflow&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What are your favorite console tweaks? Let me know in the comments!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Async/await in a console application</title>
+      <link>https://www.recaffeinate.co/post/how-to-await-console-application/</link>
+      <pubDate>Tue, 08 Aug 2017 07:49:04 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/how-to-await-console-application/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m a big fan of the async/await pattern introduced in C#. It&amp;rsquo;s one of the best ways to reason about asynchronous code, and it&amp;rsquo;s spreading to &lt;a href=&#34;https://www.python.org/dev/peps/pep-0492/&#34;&gt;Python&lt;/a&gt; and &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await&#34;&gt;JavaScript&lt;/a&gt; too.&lt;/p&gt;
+
+&lt;p&gt;Every once in a while, I need to run some async code in a .NET command-line application, but the Console Application template in Visual Studio makes it annoyingly difficult to do.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the problem: the entry point of a C# console application is &lt;code&gt;static void Main()&lt;/code&gt;. In order to await asynchronous code, the method must be marked with &lt;code&gt;async&lt;/code&gt;, but doing this results in a compiler error:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;an entry point cannot be marked with the &amp;lsquo;async&amp;rsquo; modifier&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An easy fix is to move the async code block into a separate method that you can mark with &lt;code&gt;async&lt;/code&gt; and call from &lt;code&gt;Main&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;class Program
+{
+    static void Main(string[] args)
+    {
+        // Call SomeAsyncCode() somehow
+    }
+
+    private static async Task SomeAsyncCode()
+    {
+        // Use await here!
+        await Task.Delay(10);
+
+        // Other async goodness...
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You &lt;em&gt;could&lt;/em&gt; synchronously wait for the async method by using &lt;code&gt;.Result&lt;/code&gt; or &lt;code&gt;.Wait()&lt;/code&gt;, but this causes a different problem that may not be obvious at first.&lt;/p&gt;
+
+&lt;h2 id=&#34;exceptions-wrapped-in-aggregateexception&#34;&gt;Exceptions wrapped in AggregateException&lt;/h2&gt;
+
+&lt;p&gt;What happens when your asynchronous code throws an exception?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;static void Main(string[] args)
+{
+    try
+    {
+        var result = SomeAsyncCode().Result;
+    }
+    catch (ArgumentException aex)
+    {
+        Console.WriteLine($&amp;quot;Caught ArgumentException: {aex.Message}&amp;quot;);
+    }
+}
+
+private static async Task&amp;lt;string&amp;gt; SomeAsyncCode()
+{
+    await Task.Delay(10);
+    throw new ArgumentException(&amp;quot;Oh noes!&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;d expect this code to catch and log the &lt;code&gt;ArgumentException&lt;/code&gt;, but it doesn&amp;rsquo;t. Instead of catching the &lt;code&gt;ArgumentException&lt;/code&gt;, the program will crash with an unhandled &lt;code&gt;AggregateException&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/post/aggregate-exception.jpg&#34; alt=&#34;An unhandled exception of type &#39;System.AggregateException&#39; occurred in mscorlib.dll. One or more errors occurred&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Where did &lt;code&gt;AggregateException&lt;/code&gt; come from? (Warning: compiler internals ahead. Skip down if you just want the solution!)&lt;/p&gt;
+
+&lt;p&gt;Under the hood, the compiler generates a state machine to handle the async code block. Every exception that occurs while executing the async code is rolled up in an &lt;code&gt;AggregateException&lt;/code&gt;. In this case, the &lt;code&gt;AggregateException&lt;/code&gt; wraps a single &lt;code&gt;ArgumentException&lt;/code&gt;, but it could contain multiple exceptions.&lt;/p&gt;
+
+&lt;p&gt;You don&amp;rsquo;t normally see &lt;code&gt;AggregateException&lt;/code&gt; when you use &lt;code&gt;await&lt;/code&gt;, because the compiler &amp;ldquo;unrolls&amp;rdquo; the &lt;code&gt;AggregateException&lt;/code&gt; for you and throws the first one it sees. It&amp;rsquo;s part of the syntactic sugar that comes with &lt;code&gt;await&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you block with &lt;code&gt;.Result&lt;/code&gt; or &lt;code&gt;.Wait()&lt;/code&gt; instead of using &lt;code&gt;await&lt;/code&gt;, you have to deal with the &lt;code&gt;AggregateException&lt;/code&gt; behavior yourself.&lt;/p&gt;
+
+&lt;h2 id=&#34;unwrap-exceptions-manually&#34;&gt;Unwrap exceptions manually&lt;/h2&gt;
+
+&lt;p&gt;Instead of blocking with &lt;code&gt;.Result&lt;/code&gt;, use &lt;code&gt;.GetAwaiter().GetResult()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;try
+{
+    var result = SomeAsyncCode().GetAwaiter().GetResult();
+}
+catch (ArgumentException aex)
+{
+    Console.WriteLine($&amp;quot;Caught ArgumentException: {aex.Message}&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This time, the &lt;code&gt;ArgumentException&lt;/code&gt; will be caught as you&amp;rsquo;d expect, because &lt;code&gt;.GetAwaiter().GetResult()&lt;/code&gt; unrolls the first exception the same way &lt;code&gt;await&lt;/code&gt; does. This approach follows the &lt;a href=&#34;https://en.wikipedia.org/wiki/Principle_of_least_astonishment&#34;&gt;principle of least surprise&lt;/a&gt; and is easier to understand.&lt;/p&gt;
+
+&lt;h2 id=&#34;coming-soon-async-main&#34;&gt;Coming soon: async main&lt;/h2&gt;
+
+&lt;p&gt;There&amp;rsquo;s currently a &lt;a href=&#34;https://github.com/dotnet/csharplang/issues/97&#34;&gt;proposal on the C# Language board&lt;/a&gt; to add &amp;ldquo;native&amp;rdquo; async entry points in C# 7.1. If this proposal is accepted and added to the language, the above example becomes much simpler (and more familiar) with &lt;code&gt;await&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;static async Task Main(string[] args)
+{
+    try
+    {
+        await Task.Delay(10);
+        throw new ArgumentException(&amp;quot;Oh noes!&amp;quot;);
+    }
+    catch (ArgumentException aex)
+    {
+        Console.WriteLine($&amp;quot;Caught ArgumentException: {aex.Message}&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I like the proposed syntax and hope it makes the cut. Until then, I&amp;rsquo;ll stick with the &lt;code&gt;GetAwaiter().GetResult()&lt;/code&gt; workaround!&lt;/p&gt;
+
+&lt;h2 id=&#34;further-reading&#34;&gt;Further reading&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/q/17284517/3191599&#34;&gt;Is Task.Result the same as .GetAwaiter.GetResult()?&lt;/a&gt; on StackOverflow&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.stephencleary.com/2014/12/a-tour-of-task-part-6-results.html&#34;&gt;A Tour of Task, Part 6: Results&lt;/a&gt; on Stephen Cleary&amp;rsquo;s blog&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dotnet/csharplang/issues/97&#34;&gt;Champion &amp;ldquo;Async Main&amp;rdquo; (C# 7.1)&lt;/a&gt; on dotnet/csharplang&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Serialize all errors as JSON in ASP.NET Core</title>
+      <link>https://www.recaffeinate.co/post/serialize-errors-as-json-in-aspnetcore/</link>
+      <pubDate>Tue, 01 Aug 2017 12:55:32 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/serialize-errors-as-json-in-aspnetcore/</guid>
+      <description>&lt;p&gt;A web API that returns JSON responses should be expected to return errors or exceptions as JSON messages, too. You can use &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters#exception-filters&#34;&gt;exception filters&lt;/a&gt; in ASP.NET Core MVC to trap and serialize exceptions that occur within MVC. However, if an exception is thrown before (or after) the MVC pipeline, it won&amp;rsquo;t be handled by the filter and the client will get an ugly error message (or a &lt;code&gt;500 Internal Server Error&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;A more universal solution that can trap and serialize &lt;em&gt;any&lt;/em&gt; exception that happens during a request is an exception handling middleware component. The syntax is a little different than an exception filter, but the principle is the same.&lt;/p&gt;
+
+&lt;p&gt;In this post, I&amp;rsquo;ll show you how to write error handling middleware and how to extend it with custom behavior.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;exception-middleware&#34;&gt;Exception middleware&lt;/h2&gt;
+
+&lt;p&gt;The basic pattern for any ASP.NET Core middleware is a class with an &lt;code&gt;Invoke&lt;/code&gt; method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;public class BasicMiddleware
+{
+    public Task Invoke(HttpContext context)
+    {
+        // do something with context
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can&amp;rsquo;t use &lt;code&gt;catch&lt;/code&gt; to trap an exception here, because the exception has already occured by the time the middleware is called. Instead, use &lt;code&gt;IExceptionHandlerFeature.Error&lt;/code&gt; to retrieve it.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a working example that uses JSON.NET to serialize a custom response:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;public class JsonExceptionMiddleware
+{
+    public async Task Invoke(HttpContext context)
+    {
+        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+        var ex = context.Features.Get&amp;lt;IExceptionHandlerFeature&amp;gt;()?.Error;
+        if (ex == null) return;
+
+        var error = new 
+        {
+            message = ex.Message
+        };
+
+        context.Response.ContentType = &amp;quot;application/json&amp;quot;;
+
+        using (var writer = new StreamWriter(context.Response.Body))
+        {
+            new JsonSerializer().Serialize(writer, error);
+            await writer.FlushAsync().ConfigureAwait(false);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;UseExceptionHandler&lt;/code&gt; method in the &lt;code&gt;Configure&lt;/code&gt; method of the &lt;code&gt;Startup&lt;/code&gt; class adds your exception handling middleware to the ASP.NET Core pipeline. Since order matters for middleware, make sure you wire it up above the &lt;code&gt;UseMvc&lt;/code&gt; line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    // other code...
+    
+    app.UseExceptionHandler(new ExceptionHandlerOptions 
+    {
+        ExceptionHandler = new JsonExceptionMiddleware().Invoke
+    });
+    
+    app.UseMvc();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now your middleware will be invoked whenever an unhandled exception occurs anywhere in your ASP.NET Core application.&lt;/p&gt;
+
+&lt;h2 id=&#34;return-more-detail-in-development&#34;&gt;Return more detail in development&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s a good idea to return generic error messages in production, so you don&amp;rsquo;t leak information about your application. However, in development, the more detail the better.&lt;/p&gt;
+
+&lt;p&gt;You can use &lt;code&gt;IHostingEnvironment&lt;/code&gt; in the &lt;code&gt;Configure&lt;/code&gt; method to determine whether ASP.NET Core is running in &lt;a href=&#34;https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments&#34;&gt;development or production mode&lt;/a&gt;. It can be passed to your middleware component:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;// env is injected in the Configure method constructor
+app.UseExceptionHandler(new ExceptionHandlerOptions 
+{
+    ExceptionHandler = new JsonExceptionMiddleware(env).Invoke
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By passing &lt;code&gt;IHostingEnvironment&lt;/code&gt; to your exception handling middleware, the middleware code can choose whether to respond with a generic message, or the full exception message and stack trace:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;if (env.IsDevelopment())
+{
+    error.Message = ex.Message;
+    error.Detail = ex.StackTrace;
+}
+else
+{
+    error.Message = DefaultErrorMessage;
+    error.Detail = ex.Message;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alternatively, you could perform this check in the &lt;code&gt;Configure&lt;/code&gt; method, and add different middleware to the pipeline if the app was in development versus production mode.&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s a full example of this exception handler class in my &lt;a href=&#34;https://github.com/nbarbettini/BeautifulRestApi/&#34;&gt;Beautiful REST API example&lt;/a&gt; repo. Check out &lt;a href=&#34;https://github.com/nbarbettini/BeautifulRestApi/blob/master/src/Infrastructure/JsonExceptionMiddleware.cs&#34;&gt;JsonExceptionMiddleware.cs&lt;/a&gt; if you&amp;rsquo;re curious!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Modeling beautiful JSON APIs with Ion</title>
+      <link>https://www.recaffeinate.co/post/modeling-json-api-with-ion/</link>
+      <pubDate>Thu, 27 Jul 2017 07:03:16 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/modeling-json-api-with-ion/</guid>
+      <description>&lt;p&gt;JSON is by far the most popular response format for APIs today. It&amp;rsquo;s not hard to see why: it&amp;rsquo;s easy for both humans and machines to read. Virtually all platforms and devices can read and write JSON, making it nearly as ubiquitous as HTML. JSON is unstructured and &amp;ldquo;squishy&amp;rdquo;, which makes it easy to model dynamic responses. (Maybe a little too easy.)&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re building an API, especially one with more than a few endpoints, you&amp;rsquo;ll likely want to adopt a schema or pattern for your responses. This could be as simple as one or two common response properties, or it could be a complex message envelope. Unlike XML, JSON doesn&amp;rsquo;t have a built-in way of defining a document schema (the downside of being unstructured and squishy).&lt;/p&gt;
+
+&lt;p&gt;There are a few popular ways to add schemas to JSON, but they all have drawbacks. In this post, I&amp;rsquo;ll examine some of those drawbacks, and show you how to use &lt;a href=&#34;https://ionspec.org/&#34;&gt;Ion&lt;/a&gt; to create intuitive, beautiful REST APIs.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;existing-json-schema-formats&#34;&gt;Existing JSON schema formats&lt;/h2&gt;
+
+&lt;p&gt;Schema-fied JSON comes in two basic flavors, depending on the goal: making JSON work more like XML, or facilitating HATEOAS. (HATEOAS is the core REST idea that APIs should express behavior as links in the response document. Read more in my &lt;a href=&#34;https://www.recaffeinate.co/post/what-is-hateoas/&#34;&gt;introduction to HATEOAS&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://json-schema.org&#34;&gt;JSON-Schema&lt;/a&gt; falls into the first camp. If you need to define a strict, XSD-style message schema, JSON-Schema might be a good choice. It&amp;rsquo;s a little too heavy for my taste.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://stateless.co/hal_specification.html&#34;&gt;HAL&lt;/a&gt;, &lt;a href=&#34;http://jsonapi.org/&#34;&gt;JSON-API&lt;/a&gt;, and &lt;a href=&#34;http://amundsen.com/media-types/collection/&#34;&gt;Collection+JSON&lt;/a&gt; are examples of formats that help facilitate &lt;a href=&#34;https://www.recaffeinate.co/post/what-is-hateoas/&#34;&gt;HATEOAS&lt;/a&gt; and linking in JSON APIs.&lt;/p&gt;
+
+&lt;p&gt;Both HAL and JSON-API documents tend to look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;_links&amp;quot;: {
+    &amp;quot;self&amp;quot;: &amp;quot;https://api.example.io/posts/1&amp;quot;,
+    &amp;quot;next&amp;quot;: &amp;quot;https://api.example.io/posts/2
+  },
+  // the rest of the document...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This results in documents with huge chunks of links tacked onto the top or bottom. Machines won&amp;rsquo;t care, but it&amp;rsquo;s awkward for humans to reason about. When was the last time you bundled up all the &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; tags at the bottom of your HTML document?&lt;/p&gt;
+
+&lt;h2 id=&#34;the-ion-hypermedia-type&#34;&gt;The Ion hypermedia type&lt;/h2&gt;
+
+&lt;p&gt;There&amp;rsquo;s a new kid on the block called &lt;a href=&#34;https://ionspec.org/&#34;&gt;Ion&lt;/a&gt; (not to be confused with Amazon&amp;rsquo;s &lt;a href=&#34;https://amzn.github.io/ion-docs/index.html&#34;&gt;Ion serialization format&lt;/a&gt;). Ion describes itself as &lt;em&gt;an intuitive JSON-based hypermedia type for REST&lt;/em&gt;. It&amp;rsquo;s currently being finalized and will be sent to the IETF as a formal draft soon.&lt;/p&gt;
+
+&lt;p&gt;Like HAL and JSON-API, Ion is meant to help facilitate HATEOAS in a JSON API. Unlike the others, it&amp;rsquo;s a very short and simple specification that puts a strong emphasis on being friendly to both humans and machines, while only adding a minimal amount of cruft to JSON.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a basic Ion document:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;firstName&amp;quot;: &amp;quot;Luke&amp;quot;,
+  &amp;quot;lastName&amp;quot;: &amp;quot;Skywalker&amp;quot;,
+  &amp;quot;homeworld&amp;quot;: &amp;quot;Tattooine&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In other words, any valid JSON is already valid Ion!&lt;/p&gt;
+
+&lt;h2 id=&#34;linking-between-resources&#34;&gt;Linking between resources&lt;/h2&gt;
+
+&lt;p&gt;Ion adds metadata to an existing JSON structure, but aims to do it in a minimal and clean way. For example, a link between resources is a simple object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;firstName&amp;quot;: &amp;quot;Luke&amp;quot;,
+  &amp;quot;lastName&amp;quot;: &amp;quot;Skywalker&amp;quot;,
+  &amp;quot;homeworld&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/planets/tattooine&amp;quot; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Just like HTML, Ion links appear naturally in the document, where you&amp;rsquo;d expect them to.&lt;/p&gt;
+
+&lt;p&gt;Links can have additional metadata in the form of a &lt;a href=&#34;https://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1&#34;&gt;link relation&lt;/a&gt;, such as &lt;code&gt;self&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;self&amp;quot;: {
+      &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/people/100&amp;quot;,
+      &amp;quot;rel&amp;quot;: [&amp;quot;self&amp;quot;]
+  },
+  &amp;quot;firstName&amp;quot;: &amp;quot;Luke&amp;quot;,
+  &amp;quot;lastName&amp;quot;: &amp;quot;Skywalker&amp;quot;,
+  &amp;quot;homeworld&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/planets/tattooine&amp;quot; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you think of &lt;a href=&#34;https://www.recaffeinate.co/post/what-is-hateoas/&#34;&gt;HATEOAS&lt;/a&gt; with the &amp;ldquo;API clients are like browsers&amp;rdquo; analogy, a link between resources is like an &lt;code&gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;&lt;/code&gt;, and a self-referential link is like the current location.&lt;/p&gt;
+
+&lt;p&gt;Because it&amp;rsquo;s common to include a self-referential link in responses, the Ion spec will implicitly assume a root &lt;code&gt;href&lt;/code&gt; member has a &lt;code&gt;self&lt;/code&gt; relation. This resource is equivalent to the one above:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/people/100&amp;quot;,
+  &amp;quot;firstName&amp;quot;: &amp;quot;Luke&amp;quot;,
+  &amp;quot;lastName&amp;quot;: &amp;quot;Skywalker&amp;quot;,
+  &amp;quot;homeworld&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/planets/tattooine&amp;quot; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;collections-of-resources&#34;&gt;Collections of resources&lt;/h2&gt;
+
+&lt;p&gt;Ion also defines what collections (arrays) of resources should look like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/people&amp;quot;
+  &amp;quot;rel&amp;quot;: [&amp;quot;collection&amp;quot;],
+  &amp;quot;value&amp;quot;: [
+    {
+      &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/people/100&amp;quot;,
+      &amp;quot;firstName&amp;quot;: &amp;quot;Luke&amp;quot;,
+      &amp;quot;lastName&amp;quot;: &amp;quot;Skywalker&amp;quot;,
+      &amp;quot;homeworld&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/planets/tattooine&amp;quot; }
+    },
+    {
+      &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/people/101&amp;quot;,
+      &amp;quot;firstName&amp;quot;: &amp;quot;Han&amp;quot;,
+      &amp;quot;lastName&amp;quot;: &amp;quot;Solo&amp;quot;,
+      &amp;quot;homeworld&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;https://api.galaxy/planets/corellia&amp;quot; }
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It&amp;rsquo;s easy to extend this basic collection definition to include more behavior, such as pagination.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I really like Ion&amp;rsquo;s approach to minimal metadata. Links between resources is one half of the HATEOAS story, but to fully close the loop we also need a way to model state changes (such as creating or updating resources). I&amp;rsquo;ll cover one of Ion&amp;rsquo;s best features, &lt;a href=&#34;https://ionspec.org/#forms&#34;&gt;Forms&lt;/a&gt;, in a future post.&lt;/p&gt;
+
+&lt;p&gt;If you want to get involved, the Ion Working Group is &lt;a href=&#34;https://github.com/ionwg/ion-doc/issues&#34;&gt;on GitHub&lt;/a&gt; and actively soliciting feedback on the formal Ion draft.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>What is HATEOAS?</title>
+      <link>https://www.recaffeinate.co/post/what-is-hateoas/</link>
+      <pubDate>Tue, 25 Jul 2017 09:52:10 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/what-is-hateoas/</guid>
+      <description>&lt;p&gt;HATEOAS, or &lt;em&gt;Hypermedia as the Engine of Application State&lt;/em&gt;, is a complicated-sounding term for a simple idea:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;A client interacts with a REST API entirely through the responses provided dynamically by the server.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Put even more simply:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;You shouldn&amp;rsquo;t need &lt;em&gt;any&lt;/em&gt; documentation or out-of-band information to use a REST API.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This may sound odd, because the first stop for any developer working with a new API is the documentation. How could you interact with an unfamiliar API without any out-of-band information?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;You typically need to read API docs to understand:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What endpoints are available&lt;/li&gt;
+&lt;li&gt;How requests are structured&lt;/li&gt;
+&lt;li&gt;What responses to expect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One of the distinguishing features of the REST architecture is this idea that the responses &lt;em&gt;themselves&lt;/em&gt; should tell you what you can do and how you can do it. This is HATEOAS in a nutshell, although it could also be referred to as &amp;ldquo;discoverability&amp;rdquo;.&lt;/p&gt;
+
+&lt;h2 id=&#34;clients-are-like-browsers&#34;&gt;Clients are like browsers&lt;/h2&gt;
+
+&lt;p&gt;Think about how your browser interacts with a site like &lt;a href=&#34;https://en.wikipedia.org/wiki/HATEOAS&#34;&gt;Wikipedia&lt;/a&gt;. It doesn&amp;rsquo;t have any special Wikipedia-specific code &amp;ndash; it knows how to render HTML and CSS, and that&amp;rsquo;s about it (relatively speaking). Everything the browser needs to know about what it can do next is included in the document itself!&lt;/p&gt;
+
+&lt;p&gt;Imagine this simplified response:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html&amp;gt;
+  &amp;lt;a href=&amp;quot;/wiki/Main_Page&amp;quot;&amp;gt;Main Page&amp;lt;/a&amp;gt;
+  &amp;lt;a href=&amp;quot;wiki/Help:Contents&amp;quot;&amp;gt;Help&amp;lt;/a&amp;gt;
+
+  &amp;lt;form name=&amp;quot;login&amp;quot; action=&amp;quot;/login&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;
+    &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot;&amp;gt;
+    &amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;password&amp;quot;&amp;gt;
+    &amp;lt;input type=&amp;quot;submit&amp;quot;&amp;gt;
+  &amp;lt;/form&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A REST API might return JSON or XML instead, but the principle is the same. Here&amp;rsquo;s what a JSON response might look like, modeled with &lt;a href=&#34;https://www.recaffeinate.co/post/modeling-json-api-with-ion/&#34;&gt;Ion&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;main&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;/wiki/Main_Page&amp;quot; },
+  &amp;quot;help&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;/wiki/Help:Contents&amp;quot; },
+
+  &amp;quot;login&amp;quot;: {
+    &amp;quot;href&amp;quot;: &amp;quot;/login&amp;quot;,
+    &amp;quot;rel&amp;quot;: [&amp;quot;form&amp;quot;],
+    &amp;quot;method&amp;quot;: &amp;quot;POST&amp;quot;,
+    &amp;quot;value&amp;quot;: [
+      { &amp;quot;name&amp;quot;: &amp;quot;username&amp;quot; },
+      { &amp;quot;name&amp;quot;: &amp;quot;password&amp;quot;, &amp;quot;secret&amp;quot;: true }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you think of the client like a browser, you already understand HATEOAS.&lt;/p&gt;
+
+&lt;h2 id=&#34;links-and-state-transitions&#34;&gt;Links and state transitions&lt;/h2&gt;
+
+&lt;p&gt;There are two ideas represented in the example above: &lt;strong&gt;links&lt;/strong&gt; between resources, and &lt;strong&gt;state transitions&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;A state transition is anything that you can do that changes the application state &amp;ndash; like logging in, creating a new post, or deleting a resource. In HTTP, these are &amp;ldquo;unsafe&amp;rdquo; verbs like PUT, POST, and DELETE. HTML represents these as &lt;code&gt;form&lt;/code&gt; elements.&lt;/p&gt;
+
+&lt;p&gt;To truly satisfy the HATEOAS constraint, a REST API should express both where the client can go (a graph of links) and what it can change (allowed state transitions) in the response document.&lt;/p&gt;
+
+&lt;h2 id=&#34;entry-point-or-root-document&#34;&gt;Entry point or root document&lt;/h2&gt;
+
+&lt;p&gt;When you use your browser to visit a deep URL, you rarely type the entire address manually. Instead, you visit the site&amp;rsquo;s home page (or a bookmark you already have) and then use links to navigate to the location you want.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s no different for REST APIs &amp;ndash; a starting point or &amp;ldquo;root&amp;rdquo; document allows a client to truly discover how to use an API just like a browser.&lt;/p&gt;
+
+&lt;p&gt;A simple root document could look like (using &lt;a href=&#34;https://www.recaffeinate.co/post/modeling-json-api-with-ion/&#34;&gt;Ion&lt;/a&gt; again):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;href&amp;quot;: &amp;quot;https://api.example.io&amp;quot;,
+  &amp;quot;users&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;https://api.example.io/users&amp;quot; },
+  &amp;quot;orders&amp;quot;: { &amp;quot;href&amp;quot;: &amp;quot;https://api.example.io/orders&amp;quot; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;further-reading&#34;&gt;Further reading&lt;/h2&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t understand the concept of HATEOAS when I first started working on APIs, but the analogy to web browsers finally &amp;ldquo;clicked&amp;rdquo; it into place.&lt;/p&gt;
+
+&lt;p&gt;If you want to explore this idea further, here&amp;rsquo;s some good reading:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dr. Fielding&amp;rsquo;s &lt;a href=&#34;http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm&#34;&gt;doctoral dissertation on REST&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;REST Cookbook on &lt;a href=&#34;http://restcookbook.com/Basics/hateoas/&#34;&gt;HATEOAS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Close Notepad with Control-W</title>
+      <link>https://www.recaffeinate.co/post/close-notepad-ctrl-w/</link>
+      <pubDate>Sun, 22 May 2016 16:03:11 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/close-notepad-ctrl-w/</guid>
+      <description>&lt;p&gt;I use &lt;a href=&#34;https://atom.io/&#34;&gt;Atom&lt;/a&gt; and &lt;a href=&#34;https://notepad-plus-plus.org/&#34;&gt;Notepad++&lt;/a&gt; for most text editing tasks on Windows, but occasionally I&amp;rsquo;ll drop down to good, trusty Notepad. It loads fast and handles bare-bones editing tasks without much fuss. However, I found it annoying that there was no shortcut to quit Notepad other than Alt-F4, which feels awkward on my keyboard. Why can&amp;rsquo;t I use Ctrl-W?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Ctrl-W has a long history: it&amp;rsquo;s always been the shortcut to close Windows Explorer (folder) windows. When tabbed browsing came onto the scene, it became the de facto shortcut for closing browser windows and tabs. It&amp;rsquo;s downright muscle memory for me at this point.&lt;/p&gt;
+
+&lt;p&gt;I see Notepad when I do &lt;code&gt;git commit&lt;/code&gt;, thanks to &lt;a href=&#34;https://github.com/github/GitPad&#34;&gt;GitPad&lt;/a&gt;. My muscle memory tries to type a message and press Ctrl-W to close the window, so why fight it?&lt;/p&gt;
+
+&lt;p&gt;It turns out it&amp;rsquo;s easy to add the missing keyboard shortcut. I created a simple &lt;a href=&#34;https://autohotkey.com/&#34;&gt;AutoHotkey&lt;/a&gt; script:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/29b8b688b5b6a0e9a7dccc7ff3e62314.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;The script works by listening for Ctrl-W in any active Notepad.exe window, and remapping it to Alt-F4.&lt;/p&gt;
+
+&lt;p&gt;I put a shortcut to the &lt;code&gt;.ahk&lt;/code&gt; file in my Windows Start Menu Startup folder (yes, that still exists!), and now I can use my keyboard muscle memory without fail.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Asynchronous uppercase at scale</title>
+      <link>https://www.recaffeinate.co/post/async-uppercase-at-scale/</link>
+      <pubDate>Sun, 10 Apr 2016 16:30:57 -0700</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/post/async-uppercase-at-scale/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://shoutcloud.io/&#34;&gt;shoutcloud.io&lt;/a&gt; is a hilarious parody of software-as-a-service offerings that provides All Caps as a Service. If you aren&amp;rsquo;t happy with the uppercasing function built into your language of choice, you can make an (absolutely spurious) HTTP request to &lt;code&gt;API.SHOUTCLOUD.IO/V1/SHOUT&lt;/code&gt; and get back a shoutier version of any string.&lt;/p&gt;
+
+&lt;p&gt;Shoutcloud proudly states that they have libraries for &amp;ldquo;leading webscale platforms&amp;rdquo; like Node, Ruby, and Go. Sadly, they seem to have left out the .NET stack. What&amp;rsquo;s a responsible .NET developer to do?&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Have no fear: &lt;a href=&#34;https://www.nuget.org/packages/Shoutcloud.NET&#34;&gt;Shoutcloud.NET&lt;/a&gt; is here. If you aren&amp;rsquo;t happy with &lt;code&gt;string.ToUpper()&lt;/code&gt;, and want to do things over HTTP for no reason, this library is for you!&lt;/p&gt;
+
+&lt;p&gt;Install it via the Package Manager GUI, or the console:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PM&amp;gt; install-package Shoutcloud.NET
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, make HTTP requests to get uppercased strings thousands of times slower than native code:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/c8e2e400e0ed7ab8647d00750ffd075f.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Of course, there&amp;rsquo;s full compatibility with the TPL: &lt;code&gt;UPCASE&lt;/code&gt; returns an awaitable Task, and takes an optional &lt;code&gt;CancellationToken&lt;/code&gt; parameter. (You may be shouting, but you&amp;rsquo;re not a barbarian!)&lt;/p&gt;
+
+&lt;p&gt;The library is compatible with these platforms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;.NET framework 4.5.1 and higher&lt;/li&gt;
+&lt;li&gt;DNX (full) 4.5.1 and higher&lt;/li&gt;
+&lt;li&gt;DNX (CoreCLR, &lt;code&gt;dotnet&lt;/code&gt;) 5.4 and higher&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The source code is &lt;a href=&#34;https://github.com/nbarbettini/SHOUTCLOUD.NET&#34;&gt;on Github&lt;/a&gt;. Happy shouting!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>About me</title>
+      <link>https://www.recaffeinate.co/about/</link>
+      <pubDate>Sun, 28 Feb 2016 13:33:03 -0800</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/about/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/headshot.jpg&#34; class=&#34;headshot&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;hi-i-m-nate&#34;&gt;Hi, I&amp;rsquo;m Nate.&lt;/h4&gt;
+
+&lt;p&gt;I build products and teams that solve problems. I love dissecting complexity and communicating solutions in a clear, approachable way.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve worked as a full-stack developer, technical instructor, SDK engineer, developer advocate, and technical product manager. I wrote &lt;a href=&#34;https://www.recaffeinate.co/book&#34;&gt;a free book&lt;/a&gt; on ASP.NET Core and was a Microsoft MVP from 2017 - 2019.&lt;/p&gt;
+
+&lt;div class=&#34;clear&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;I&amp;rsquo;m the co-founder and CTO at &lt;a href=&#34;https://www.cobbler.io&#34;&gt;Cobbler&lt;/a&gt;, where we&amp;rsquo;re building a platform to help every employee get actionable insights from their budgets and spending.&lt;/p&gt;
+
+&lt;p&gt;Besides writing here, I&amp;rsquo;ve published &lt;a href=&#34;https://www.linkedin.com/learning/instructors/nate-barbettini&#34;&gt;courses on LinkedIn Learning&lt;/a&gt; and free &lt;a href=&#34;https://www.youtube.com/playlist?list=PLLRFyxYl_5YjpoPB1ryUbrCM7tmKFUNBV&#34;&gt;technical talks on YouTube&lt;/a&gt;. You can follow me on Twitter (&lt;a href=&#34;https://twitter.com/nbarbettini&#34;&gt;@nbarbettini&lt;/a&gt;) to get notified whenever I publish anything new.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Little ASP.NET Core Book</title>
+      <link>https://www.recaffeinate.co/book/</link>
+      <pubDate>Sun, 28 Feb 2016 13:33:03 -0800</pubDate>
+      <author>nate@barbettini.com (Nate Barbettini)</author>
+      <guid>https://www.recaffeinate.co/book/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://www.recaffeinate.co/img/little-aspnetcore-book-mock.png&#34; class=&#34;book-hero&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;I wrote this short free book to help people learn about ASP.NET Core, a new framework for building web applications and APIs.&lt;/p&gt;
+
+&lt;h5 id=&#34;is-this-book-for-me&#34;&gt;Is this book for me?&lt;/h5&gt;
+
+&lt;p&gt;If you&amp;rsquo;re new to programming, already code in another backend language (like Node, Ruby, or Java), or are an ASP.NET MVC developer, this book will help you learn something new!&lt;/p&gt;
+
+&lt;div class=&#34;clear&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;Scroll down to get a copy. Or, read more about how and why I wrote the book in my &lt;a href=&#34;https://www.recaffeinate.co/post/introducing-little-aspnetcore-book/&#34;&gt;introductory blog post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-friendly-introduction-to-web-programming&#34;&gt;A friendly introduction to web programming&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Dear God, I wish I had this book when I was learning .NET! - Mikael&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You don&amp;rsquo;t need to know anything about web programing or ASP.NET Core to get started! &lt;em&gt;The Little ASP.NET Core Book&lt;/em&gt; is structured as a tutorial. You&amp;rsquo;ll build an app from start to finish and learn:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How to build an application with the ASP.NET Core framework&lt;/li&gt;
+&lt;li&gt;The basics of the MVC (Model-View-Controller) pattern&lt;/li&gt;
+&lt;li&gt;How to read and write data to a database&lt;/li&gt;
+&lt;li&gt;How to add login, registration, and security&lt;/li&gt;
+&lt;li&gt;How to deploy the app to the web&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;get-the-book&#34;&gt;Get the book&lt;/h2&gt;
+
+&lt;p&gt;Read the book &lt;a href=&#34;https://nbarbettini.gitbooks.io/little-asp-net-core-book/content/&#34; target=&#34;_blank&#34;
+    onclick=&#34;sendClickEvent(&#39;little-aspnetcore-book-online&#39;);&#34;&gt;online on GitBook&lt;/a&gt;, or download it for offline reading in &lt;a href=&#34;https://s3.amazonaws.com/recaffeinate-files/LittleAspNetCoreBook.pdf&#34; target=&#34;_blank&#34;
+    onclick=&#34;sendClickEvent(&#39;little-aspnetcore-book-pdf&#39;);&#34;&gt;PDF&lt;/a&gt;, &lt;a href=&#34;https://www.gitbook.com/download/mobi/book/nbarbettini/little-asp-net-core-book&#34;
+    onclick=&#34;sendClickEvent(&#39;little-aspnetcore-book-mobi&#39;);&#34;&gt;Mobi&lt;/a&gt;, or &lt;a href=&#34;https://www.gitbook.com/download/epub/book/nbarbettini/little-asp-net-core-book&#34; 
+    onclick=&#34;sendClickEvent(&#39;little-aspnetcore-book-epub&#39;);&#34;&gt;ePub&lt;/a&gt; format. It&amp;rsquo;s yours to share and copy as much as you&amp;rsquo;d like under the &lt;a href=&#34;https://creativecommons.org/licenses/by/4.0/&#34;&gt;Creative Commons Attribution&lt;/a&gt; license.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The Little ASP.NET Core Book&lt;/em&gt; will always be completely free. I regularly update the book to add new content and fix issues. The links above will always point to the latest version.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to stay updated?&lt;/strong&gt; Subscribe to my spam-free &lt;a href=&#34;http://eepurl.com/cXACob&#34; target=&#34;_blank&#34;&gt;email list&lt;/a&gt;, or watch the &lt;a href=&#34;https://github.com/nbarbettini/little-aspnetcore-book&#34;&gt;project on Github&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

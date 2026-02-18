@@ -1,0 +1,2020 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Richard Rodger</title>
+	<atom:link href="https://www.richardrodger.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.richardrodger.com</link>
+	<description></description>
+	<lastBuildDate>Fri, 22 Mar 2024 09:54:21 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<item>
+		<title>The Voxgig Podcast Chatbot: Triggering Ingestion, and some Debugging DX</title>
+		<link>https://www.richardrodger.com/2024/03/22/the-voxgig-podcast-chatbot-triggering-ingestion-and-some-debugging-dx/</link>
+					<comments>https://www.richardrodger.com/2024/03/22/the-voxgig-podcast-chatbot-triggering-ingestion-and-some-debugging-dx/#respond</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Fri, 22 Mar 2024 09:54:19 +0000</pubDate>
+				<category><![CDATA[chatbot]]></category>
+		<category><![CDATA[Node.js]]></category>
+		<category><![CDATA[senecajs]]></category>
+		<guid isPermaLink="false">https://www.richardrodger.com/?p=266</guid>
+
+					<description><![CDATA[<p>This is the third post in a series I&#8217;m writing about a new Minimal Viable Product we&#8217;ve released at Voxgig that turns your podcast into a chatbot. Your visitors can now ask your guests questions directly! The first post is &#8230; <a href="https://www.richardrodger.com/2024/03/22/the-voxgig-podcast-chatbot-triggering-ingestion-and-some-debugging-dx/">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/2024/03/22/the-voxgig-podcast-chatbot-triggering-ingestion-and-some-debugging-dx/">The Voxgig Podcast Chatbot: Triggering Ingestion, and some Debugging DX</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>This is the third post in a series I&#8217;m writing about a new <a href="https://www.voxgig.com/podcast">Minimal Viable Product</a> we&#8217;ve released at Voxgig that turns your podcast into a chatbot. Your visitors can now ask your guests questions directly! The first post is here: <a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Building a Podcast Chatbot for Voxgig</a> and you find the <a href="#other-posts-in-this-series">full list</a> at the end of this post.</p>
+</blockquote>
+
+
+
+<p>The problem with podcasts is that they tend to have new episodes. This is annoying because you can&#8217;t just ingest all the episodes once and be done with it. You have to set up a regular process (once a day is sufficient) to download the podcast RSS feed, check for new episodes and changes to old episodes, and run part of the data ingestion process again.</p>
+
+
+
+<p>To model this business logic, the system uses two separate messages:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>aim:ingest,subscribe:podcast</code>: subscribe to a podcast, called only once to setup the podcast in the system</li>
+
+
+
+<li><code>aim:ingest:ingest:podcast</code>: actually process each episode and ingest the content</li>
+</ul>
+
+
+
+<p>The <code>ingest:podcast</code> message is the one we will run on a daily basis. For the moment, let&#8217;s ignore the devops side of this system (it&#8217;s still under development at the time of writing), and focus on processing the episodes of a podcast.</p>
+
+
+
+<p>The podcast RSS gives us the list of episodes, so we need to download the RSS to get the latest version. This does mean that on the initial subscription, in our system, the RSS gets downloaded twice. We can easily solve this problem by adding a parameter to the <code>ingest:podcast</code> message (and we may yet do that in future), but for now, we are deliberately not going to solve this problem. The other more important parts of the codebase to work on. Downloading the same RSS twice to complete a one-time business process is not exactly a fundamental issue. Let&#8217;s invoke <a href="https://wiki.c2.com/?PrematureOptimization">&#8220;premature optimization is the root of all evil&#8221;</a> and leave it at that for the moment.</p>
+
+
+
+<p>This little decision lets us keep the <code>ingest:podcast</code> message implementation simpler for now. Let&#8217;s look at the code, but this time also think about error handling. This message assumes we have already subscribed to a podcast in our system. That, for the moment, just means we saved an entry in the <code>pdm/podcast</code> table.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Since we have abstracted away the database (see the <a href="https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/">previous post</a> in this series), we&#8217;ll use the term <em>table</em> to refer to a generic idea of an entity store that can persist records that look like JSON documents, and can query these records, at least using to level properties. That&#8217;s pretty much all we need. We use the convention <code>entity-base/entity-name</code> to describe these entity stores and give them some namespacing.</p>
+</blockquote>
+
+
+
+<p>The podcast entry must exist, so we need to know its ID. This must be a parameter to the message action, let&#8217;s call it <code>podcast_id</code>. We try to load this podcast and need to respond with an error if it does not exist.</p>
+
+
+
+<p>Is this error a system error, one that is in some way fatal to the process, or would leave to corrupted data? Nope. This is an ordinary everyday business logic bug. Somehow a podcast ID got sent to us that isn&#8217;t correct. We just reject it, but there&#8217;s no need to panic. Thus, we don&#8217;t throw an exception, or return a bad HTTP error, or do anything out of the ordinary. We just respond with a JSON message that indicates, by a convention of its schema, that there was a business problem.</p>
+
+
+
+<p>The general schema that we use for message responses (when there is one!) is:</p>
+
+
+
+<pre class="wp-block-code"><code>{
+  ok: boolean,  // If true, message was accepted and processed successfully
+  why: string,  // If ok is false, optionally supply a free-form debugging code useful to humans
+  // Other properties, perhaps well-defined, providing additional response data
+}
+</code></pre>
+
+
+
+<p>Let&#8217;s put all this together in code:</p>
+
+
+
+<pre class="wp-block-code"><code>async function ingest_podcast(this: any, msg: any, meta: any) {
+  const seneca = this
+  const debug = seneca.shared.debug(meta.action)
+
+  const out: any = { ok: false, why: &#039;&#039; }
+
+  const podcast_id = out.podcast_id = msg.podcast_id
+
+  debug &amp;&amp; debug(&#039;START&#039;, podcast_id)
+
+  let podcastEnt = await seneca.entity(&#039;pdm/podcast&#039;).load$(podcast_id)
+
+  if (null == podcastEnt) {
+    out.why = &#039;podcast-not-found&#039;
+    debug &amp;&amp; debug(&#039;FAIL-PODCAST-ENTITY&#039;, podcast_id, out)
+    return out
+  }
+
+  // Process episodes here...
+
+  return out
+}
+</code></pre>
+
+
+
+<p>It&#8217;s useful to have a &#8220;debug&#8221; mode for your microservices, that can produce additional log entries for debugging, both locally and when deployed. Some log entries might involve additional work to generate, so you want to avoid that when running normally.</p>
+
+
+
+<p>Also, it&#8217;s tedious to keep adding context information to each log entry, such as the name of the microservice, the name of the message action function, and so on. Thus we make use of a shared utility that provides a debug function: <code>seneca.shared.debug</code>, and we pass in the current message details (the <code>meta</code> parameter) so it can generate a full log entry.</p>
+
+
+
+<p>If debug mode is not enabled, <code>seneca.shared.debug</code> will return <code>null</code>, so we can use that to short circuit any costly log entry code, using the idiom:</p>
+
+
+
+<pre class="wp-block-code"><code>debug &amp;&amp; debug(...)
+</code></pre>
+
+
+
+<p>We&#8217;ll cover shared utilities in a later post, but if you want to look at the code, review <a href="https://github.com/voxgig/podmind/blob/main/backend/src/srv/ingest/ingest-prepare.ts">ingest-prepare.ts</a>.</p>
+
+
+
+<p>Our code tries to load the podcast, and if it is not found, bails immediately by returning the response:</p>
+
+
+
+<pre class="wp-block-code"><code>{
+  ok: false,
+  podcast_id: &#039;...&#039;,
+  why: &#039;podcast-not-found&#039;
+}
+</code></pre>
+
+
+
+<p>We do a few things here to make debugging easier. When deployed, debugging becomes harder, so the more information you can give yourself, the better.</p>
+
+
+
+<p>As well as the expected <code>ok</code> and <code>why</code> properties, we also include the <code>podcast_id</code> parameter in the response. In a system under high load, you might only see the body of the response in the current section of the log that you&#8217;re looking at, so give yourself as much context as possible.</p>
+
+
+
+<p>For debug mode, we also emit a log entry, and add a test prefix that is easier to identify or search for: <code>&quot;FAIL-PODCAST-ENTITY&quot;</code>. Ultimately you&#8217;ll want to look at the line of code that caused the problem, but having a unique string is a great help when isolating the flow of the error. It also helps a great deal with working remotely with colleagues. This is a poor substitute for proper error codes for sure, but is a classic <a href="https://en.wikipedia.org/wiki/Pareto_principle">80/20 solution</a> that can be improved as needed.</p>
+
+
+
+<p>You&#8217;ll also notice some defensive pessimistic code here. We assume the message will fail, and initialize <code>ok: false</code>. This also helps us be lazy developers, as we only have to set the <code>why</code> property when <a href="https://gomakethings.com/the-early-return-pattern-in-javascript/">returning early</a> due to an error.</p>
+
+
+
+<p>Most error conditions in this codebase are handled in the same way, and you can see them in the <a href="https://github.com/voxgig/podmind/tree/main/backend">source code</a>. We&#8217;ll omit them in most cases it the rest of this series to keep the example code shorter.</p>
+
+
+
+<p>Let&#8217;s proceed to the next step: download and save the RSS:</p>
+
+
+
+<pre class="wp-block-code"><code>  const batch: string = out.batch = msg.batch
+  ...
+  
+  let podcastEnt = await seneca.entity(&#039;pdm/podcast&#039;).load$(podcast_id)
+
+  let feed = podcastEnt.feed
+
+  let rssRes = await seneca.shared.getRSS(debug, feed, podcast_id, mark)
+
+  let rss = rssRes.rss
+  let feedname = encodeURIComponent(feed.toLowerCase().replace(/^https?:\/\//, &#039;&#039;))
+
+  await seneca.entity(&#039;pdm/rss&#039;).save$({
+    id: &#039;rss01/&#039; + feedname + &#039;/&#039; +
+      podcastEnt.id + &#039;-&#039; + batch + &#039;.rss&#039;,
+    rss
+  })
+</code></pre>
+
+
+
+<p>We introduce a new parameter, <code>batch</code>, which is a string identifying the current podcast ingestion process. This is a classic &#8220;batch&#8221; job run once a day, so we create a unique identifier to help track this job (and you thought using LLMs and AI models was sexy! No, production coding is the same old boring thing it&#8217;s always been since the 1950&#8217;s &#8211; batch jobs!).</p>
+
+
+
+<p>The table <code>pdm/rss</code> is special &#8211; it is a folder in an <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html">S3 bucket</a> where we dump the RSS files. It is not special within our code, however, and looks just like any other database table. We do specify the data entity <code>id</code> directly, as this will become the file name in the S3 bucket.</p>
+
+
+
+<p>As we discussed in a previous post, using the same abstraction for different persistence mechanisms makes our code much cleaner and easier to refactor. Changing cloud provider, or even just deciding to use an actual database table in future, won&#8217;t require any changes to this code. But more importantly, we can unit test our business logic locally without even setting up fake S3 docker containers or other nonsense.</p>
+
+
+
+<p>We store the RSS because we will need it for debugging, and we might want to use it in other ways later. Also, it is good to have a record of the state of a given podcast RSS at a given date and time so we can track changes.</p>
+
+
+
+<p>We get the individual episode details from the <code>items</code> property of the RSS (we parse it using the <a href="https://github.com/rbren/rss-parser"><code>rss-parser</code> package</a>) to handle RSS variants. We loop over each episode and emit a <code>process:episode</code> event for each one.</p>
+
+
+
+<p>We&#8217;re not bothering to check for changes to episodes here. That logic should live in <code>process:episode</code> as that message &#8220;understands&#8221; episodes.</p>
+
+
+
+<p>We also include the episode data in each message. This is a calculated risk. In general, you should keep your messages small, and reference data using an id. But in this case, we can safely assume the RSS content is &#8220;reasonable&#8221;. If the content is too large, we&#8217;ll just let this message fail and then think about whether we even want to solve the problem later.</p>
+
+
+
+<pre class="wp-block-code"><code>  let episodes = rss.items
+
+  out.episodes = episodes.length
+  episodeEnd = episodes.length
+
+  for (let epI = episodeStart; epI &lt; episodeEnd; epI++) {
+    let episode = episodes&#091;epI]
+    await handleEpisode(episode, epI)
+  }
+
+  async function handleEpisode(episode: any, epI: number) {
+    await seneca.post(&#039;aim:ingest,process:episode&#039;, {
+      episode,
+      podcast_id,
+      batch,
+    })
+  }
+
+  out.ok = true
+
+  return out
+</code></pre>
+
+
+
+<p>When deployed, the <code>process:episode</code> message is triggered asynchronously, but we still wait for the message queue to accept it (hence the <code>await</code>). Locally it is just a normal message and we wait for the actual business logic to complete.</p>
+
+
+
+<p>Once we&#8217;ve sent all the <code>process:episode</code> messages, we&#8217;re done. We set <code>ok: true</code> and return a response.</p>
+
+
+
+<p>In the next post in this series, we&#8217;ll look at the processing of each episode, including (finally!) our first usage of an LLM, which we&#8217;ll use to extract additional information from the episode description.</p>
+
+
+
+<h2 class="wp-block-heading" id="other-posts-in-this-series">Other Posts in this Series</h2>
+
+
+
+<ol class="wp-block-list">
+<li><p><a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Building a Podcast Chatbot for Voxgig</a></p>
+</li>
+
+
+
+<li><p><a href="https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/">The Voxgig Podcast Chatbot is Production Code</a></p>
+</li>
+
+
+
+<li><p><a href="https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/">The Voxgig Podcast Chatbot: First, Subscribe!</a></p>
+</li>
+
+
+
+<li><p><em>This Post</em></p>
+</li>
+</ol><p>The post <a href="https://www.richardrodger.com/2024/03/22/the-voxgig-podcast-chatbot-triggering-ingestion-and-some-debugging-dx/">The Voxgig Podcast Chatbot: Triggering Ingestion, and some Debugging DX</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/2024/03/22/the-voxgig-podcast-chatbot-triggering-ingestion-and-some-debugging-dx/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>The Voxgig Podcast Chatbot: First, Subscribe!</title>
+		<link>https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/</link>
+					<comments>https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/#respond</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Wed, 28 Feb 2024 23:12:41 +0000</pubDate>
+				<category><![CDATA[chatbot]]></category>
+		<category><![CDATA[Node.js]]></category>
+		<category><![CDATA[senecajs]]></category>
+		<guid isPermaLink="false">https://www.richardrodger.com/?p=261</guid>
+
+					<description><![CDATA[<p>This is the third post in a series I&#8217;m writing about a new Minimal Viable Product we&#8217;ve released at Voxgig that turns your podcast into a chatbot. Your visitors can now ask your guests questions directly! The first post is &#8230; <a href="https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/">The Voxgig Podcast Chatbot: First, Subscribe!</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>This is the third post in a series I&#8217;m writing about a new <a href="https://www.voxgig.com/podcast">Minimal Viable Product</a> we&#8217;ve released at Voxgig that turns your podcast into a chatbot. Your visitors can now ask your guests questions directly!</p>
+
+
+
+<p>The first post is here: <a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Building a Podcast Chatbot for
+Voxgig</a>
+and you find the <a href="#other-posts-in-this-series">full list</a> at the end of this post.</p>
+
+
+
+<p>We want to ingest a podcast. The podcast episodes are described in an RSS feed that also contains the metadata about the podcast. We send a message to the microservices system describing what we want to happen:</p>
+
+
+
+<pre class="wp-block-code"><code>{
+  aim:       &#039;ingest&#039;,   // The &quot;aim&quot; of the message is the `ingest` service.
+  subscribe: &#039;podcast&#039;,  // The instruction to the `ingest` service.
+  feed:      &#039;https://feeds.resonaterecordings.com/voxgig-fireside-podcast&#039;
+}
+</code></pre>
+
+
+
+<p>The system routes this message to our implementation code (we&#8217;ll come back to how that happens later in this series). Since this is a <a href="https://www.typescriptlang.org/">TypeScript</a> code base, our implementation is a TypeScript function:</p>
+
+
+
+<pre class="wp-block-code"><code>async function subscribe_podcast(this: any, msg: any, meta: any) {
+  let out: any = { ok: false }
+  
+  out.why = &#039;no-code-yet&#039; 
+  
+  return out
+}
+</code></pre>
+
+
+
+<p>As a convention, our microservices accept messages that are JSON documents and also respond with messages that are JSON documents. There may not be a response (if the message is an &#8220;event&#8221;), but if there is, we use the property <code>ok: boolean</code> to indicate the success or failure of the message, and use the <code>why: string</code> property to provide an error reason to the sender.</p>
+
+
+
+<p>Why use this convention? You can&#8217;t throw exceptions over the network (easily or naturally). But you also don&#8217;t want to use exceptions for business logic failures. The system itself hasn&#8217;t failed, just some business logic process.</p>
+
+
+
+<p>Our initial implementation does nothing except fail, but we can still test it by using the REPL:</p>
+
+
+
+<pre class="wp-block-code"><code>boqr/pdm-local&gt; aim:ingest,subscribe:podcast
+{
+  ok: false,
+  why: &#039;no-code-yet&#039;
+}
+</code></pre>
+
+
+
+<p>Now we can start to write code to fill out the implementation, which will get hot-reloaded as we go, and we can keep using the REPL to test it. This is what they call <a href="https://developerexperience.io/articles/good-developer-experience"><em>Developer Experience</em></a> folks.</p>
+
+
+
+<p>Let&#8217;s pause for a minute before writing any more code. We want our system to handle more than one podcast, and we know that we will need to process each podcast episode separately (download the audio, transcribe it, create a vector &#8220;embedding&#8221; etc.). So in this message action, all we should do is download the RSS, and then send another message to start the actual ingestion process. That way we separate obtaining the podcast RSS feed, from operating on that feed. This will make development and testing easier because once we have the feed, we can run ingestion multiple times without downloading the RSS each time. And trust me, when you build an AI chatbot, you need to rerun your pipeline <em>a lot</em>.</p>
+
+
+
+<p>Here is the basic functionality:</p>
+
+
+
+<pre class="wp-block-code"><code>import type { RSS } from &#039;./ingest-types&#039;
+
+async function subscribe_podcast(this: any, msg: any, meta: any) {
+  // The current seneca instance.
+  const seneca = this
+  
+  let out: any = { ok: false }
+  
+  // RSS URL
+  let feed = out.feed = &#039;&#039; + msg.feed
+
+  // Processing controls
+  let doUpdate = out.doUpdate = !!msg.doUpdate
+  let doIngest = out.doIngest = !!msg.doIngest
+
+  // Load the podcast by feed URL too see if we are already subscribed
+  let podcastEnt = await seneca.entity(&#039;pdm/podcast&#039;).load$({ feed })
+
+  // Download the RSS feed if new or updating
+  if (null == podcastEnt || doUpdate) {
+    let rssRes = await seneca.shared.getRSS(feed)
+    
+    let rss = rssRes.rss as RSS
+
+    podcastEnt = podcastEnt || seneca.entity(&#039;pdm/podcast&#039;).make$()
+    podcastEnt = await podcastEnt.save$({
+      feed,
+      title: rss.title,
+      desc: rss.description,
+    })
+  }
+
+  if (null != podcastEnt) {
+    out.ok = true
+    out.podcast = podcastEnt.data$(false)
+
+    if (doIngest) {
+      await seneca.post(&#039;aim:ingest,ingest:podcast&#039;, {
+        podcast_id: podcastEnt.id,
+        doUpdate,
+        doIngest,
+      })
+    }
+  }
+  else {
+    out.why = &#039;podcast-not-found&#039;
+  }
+  
+  return out
+}
+</code></pre>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Typescript types: so there&#8217;s a lot of <code>any</code> types in this code. There will be a future refactoring to improve this situation. For now, remember that network messages are not function calls, and the messages are validated in other ways.</p>
+</blockquote>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Yoda conditions: (<code>null == foo</code>) <a href="https://en.wikipedia.org/wiki/Yoda_conditions">Safer, this is, young Padawan</a></p>
+</blockquote>
+
+
+
+<p>I&#8217;ve removed most of the debugging, tracing, and control code, but what
+you see above is the real implementation. Let&#8217;s unpack what it does.</p>
+
+
+
+<p>This message action expects a message that gives us the feed URL in the <code>feed</code> property. But it also looks for optional <code>doUpdate</code> and <code>doIngest</code> boolean properties. These are used to control how far we progress along the ingestion pipeline.</p>
+
+
+
+<p>The <code>doUpdate</code> property must be <code>true</code> to download the RSS feed and &#8220;update&#8221; the podcast.</p>
+
+
+
+<p>The <code>doIngest</code> property must be <code>true</code> to send the ingestion message to start ingesting individual episodes.</p>
+
+
+
+<p>You can use these properties in the REPL to switch off parts of the pipeline to concentrate on validating and developing the parts you want to work on.</p>
+
+
+
+<p>Note that we also add these properties to the <code>out</code> variable and send them back with the response. This makes debugging easier, especially when looking at logs.</p>
+
+
+
+<h2 class="wp-block-heading" id="new-or-existing-podcast">New or Existing Podcast?</h2>
+
+
+
+<p>The first real work happens when we try to load the podcast from our database using the feed URL. If it already exists, we use the existing database row. The <a href="https://senecajs.org/">Seneca</a> framework has a fundamental design principle: <strong>everything is a message</strong>. That includes database access (or is there a database at all? Who knows&#8230;).</p>
+
+
+
+<p>As a convenience, database messages are wrapped in a traditional <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping">Object Relational Mapper</a> interface. Seneca also supports <a href="https://en.wikipedia.org/wiki/Namespace">name-spacing</a> data entities. I&#8217;ll explain more about Seneca&#8217;s persistence system as we go, so you&#8217;ll have to take things a little on faith at the start.</p>
+
+
+
+<p>Let&#8217;s try to load a podcast from the database:</p>
+
+
+
+<pre class="wp-block-code"><code>let podcastEnt = await seneca.entity(&#039;pdm/podcast&#039;).load$({ feed })
+</code></pre>
+
+
+
+<p>This is an asynchronous operation (we have to wait for the database), hence we have to <code>await</code> a promise. The <code>entity</code> method creates a new entity object for us, loading data from whatever table or data source is mapped to the <code>pdm/podcast</code> entity. The Seneca entity ORM provides standard methods that all end in <code>$</code> to avoid clashing with your own database column names. The <code>load$</code> method takes a query object and returns the first entity that matches the field values in the query.</p>
+
+
+
+<p>In this system, the <code>pdm</code> namespace is used for tables relating to our podcast chatbot business logic. We will also make use of Seneca plugins that provide standard functionality (such as user accounts) that use the <code>sys</code> namespace. By using our own namespace, we ensure our own tables never conflict with any of the Seneca plugins we might want to use later. I did say this was production code. This is the sort of thing you have to worry about in production applications.</p>
+
+
+
+<figure class="wp-block-image size-full"><a href="https://www.richardrodger.com/wp-content/uploads/2024/02/you-know-who-jumping-around-shouting-namespaces.webp"><img fetchpriority="high" decoding="async" width="1024" height="1024" src="https://www.richardrodger.com/wp-content/uploads/2024/02/you-know-who-jumping-around-shouting-namespaces.webp" alt="" class="wp-image-262" srcset="https://www.richardrodger.com/wp-content/uploads/2024/02/you-know-who-jumping-around-shouting-namespaces.webp 1024w, https://www.richardrodger.com/wp-content/uploads/2024/02/you-know-who-jumping-around-shouting-namespaces-300x300.webp 300w, https://www.richardrodger.com/wp-content/uploads/2024/02/you-know-who-jumping-around-shouting-namespaces-150x150.webp 150w, https://www.richardrodger.com/wp-content/uploads/2024/02/you-know-who-jumping-around-shouting-namespaces-768x768.webp 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<p>If the podcast does not exist in our system, or if <code>doUpdate</code> is <code>true</code>, then we proceed to download the RSS feed, set some fields on the <code>pdm/podcast</code> entity, and save it to the database.</p>
+
+
+
+<p>Cool. So now, if we do have a podcast (<code>null != podcastEnt</code>), then we can proceed to ingest it if <code>doIngest</code> is <code>true</code>. We send a new message but do not expect a reply. We are emitting the message as an event. Locally, the message gets routed inside our single process monolith. When deployed to AWS, our message will get sent out over a <a href="https://aws.amazon.com/sqs/">Simple Queue Service</a> topic to whoever is interested in it for further processing. Either way, we do have to wait for the message to be posted.</p>
+
+
+
+<p>Notice that the mental model of &#8220;it&#8217;s all just JSON messages all the way down&#8221; means we don&#8217;t have to (in this code) think about message routing architectures, microservice design patterns, or what service SDK we need to use. We can concentrate on our own business logic.</p>
+
+
+
+<figure class="wp-block-image size-full"><a href="https://www.richardrodger.com/wp-content/uploads/2024/02/just-send-some-json-shinji.jpg"><img decoding="async" width="701" height="499" src="https://www.richardrodger.com/wp-content/uploads/2024/02/just-send-some-json-shinji.jpg" alt="" class="wp-image-263" srcset="https://www.richardrodger.com/wp-content/uploads/2024/02/just-send-some-json-shinji.jpg 701w, https://www.richardrodger.com/wp-content/uploads/2024/02/just-send-some-json-shinji-300x214.jpg 300w" sizes="(max-width: 701px) 100vw, 701px" /></a></figure>
+
+
+
+<a name="other-posts-in-this-series"></a><h2 class="wp-block-heading">Other posts in this series</h2>
+
+
+
+<ol class="wp-block-list">
+<li><p><a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Building a Podcast Chatbot for Voxgig</a></p></li>
+
+
+
+<li><p><a href="https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/">The Voxgig Podcast Chatbot is Production Code</a></p></li>
+
+
+
+<li><p><em>This Post</em></p>
+</li>
+</ol><p>The post <a href="https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/">The Voxgig Podcast Chatbot: First, Subscribe!</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>The Voxgig Podcast Chatbot is Production Code</title>
+		<link>https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/</link>
+					<comments>https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/#respond</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Fri, 23 Feb 2024 11:31:29 +0000</pubDate>
+				<category><![CDATA[chatbot]]></category>
+		<category><![CDATA[Node.js]]></category>
+		<category><![CDATA[senecajs]]></category>
+		<guid isPermaLink="false">https://www.richardrodger.com/?p=256</guid>
+
+					<description><![CDATA[<p>This post is&#160;part of a series. This is the second post in a series I&#8217;m writing about a new Minimal Viable Product we&#8217;ve released at Voxgig that turns your podcast into a chatbot. Your visitors can now ask your guests &#8230; <a href="https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/">The Voxgig Podcast Chatbot is Production Code</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>This post is&nbsp;<a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/#other-posts-in-this-series">part of a series</a>.</p>
+
+
+
+<p>This is the second post in a series I&#8217;m writing about a new <a href="https://www.voxgig.com/podcast">Minimal Viable Product</a> we&#8217;ve released at Voxgig that turns your podcast into a chatbot. Your visitors can now ask your guests questions directly!</p>
+
+
+
+<p>The first post is here: <a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Building a Podcast Chatbot for
+Voxgig</a></p>
+
+
+
+<p>In this series, I&#8217;ll dive into the code that implements the
+chatbot. It&#8217;s all open source so you can cut and paste to have your
+own one.</p>
+
+
+
+<p>Since it is production-grade code, not just an example for the sake of
+some &#8220;content&#8221;, we&#8217;ll navigate through the code in baby steps by
+focusing on specific tasks, rather than trying to go
+top-to-bottom. Production code has to do a lot of things, so rather
+than trying to start at the start, we&#8217;ll start in a reasonable place
+so you can see useful code right away.</p>
+
+
+
+<p>We have a podcast RSS feed URL, and we want to trigger ingestion of
+the episodes into the chatbot. Where do we begin?</p>
+
+
+
+<p>Well, we have to download and parse the RSS feed. There&#8217;s a great RSS
+parser package that we can use:
+<a href="https://github.com/rbren/rss-parser">rss-parser</a> &#8211; thank you to
+<a href="https://rbren.io/">Robert Brennan</a>! To get the RSS feed we need one line of code:</p>
+
+
+
+<pre class="wp-block-code"><code>await Parser.parseURL(feed)
+</code></pre>
+
+
+
+<p>That returns the contents of the feed (which is XML), as a JSON
+document so it&#8217;s nice and easy to work with. We&#8217;ll loop through all
+the episodes, download the audio, get it transcribed with a
+speech-to-text service (<a href="deepgram.com">Deepgram</a> in the first
+version), and then sprinkle some <a href="https://www.promptingguide.ai/techniques/rag">Retrieval Augmented
+Generation</a> magic pixie
+dust over everything to make the chatbot work.</p>
+
+
+
+<p>But first, let&#8217;s do some software architecture. This is not meant to
+be a toy. The system deploys to AWS, and uses Lambda Functions,
+DynamoDB, S3, SQS, and other fun AWS stuff.</p>
+
+
+
+<p>Also, the system is a microservice system when deployed, but a local
+monolith when developing locally. How that all works is something
+we&#8217;ll come back to in later posts.</p>
+
+
+
+<p>Since we are downloading RSS feeds, we are effectively an RSS reader,
+and thus we can have the concept of &#8220;subscribing&#8221; to a feed in our
+system. That means we need to have a microservice that can accept an
+instruction to subscribe to a podcast.</p>
+
+
+
+<p>The microservice is called
+<a href="https://github.com/voxgig/podmind/tree/main/backend/src/srv/ingest"><code>ingest</code></a>
+and the message that we send to the microservice to subscribe to a
+podcast (and optionally trigger ingestion) looks like this:</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;code&gt;{
+  aim:       &#039;ingest&#039;,   // The &quot;aim&quot; of the message is the `ingest` service.
+  subscribe: &#039;podcast&#039;,  // The instruction to the `ingest` service.
+  feed:      &#039;https://feeds.resonaterecordings.com/voxgig-fireside-podcast&#039;
+}</code>
+</code></pre>
+
+
+
+<p>There are more properties, but we&#8217;ll come back to those later. Also,
+I&#8217;m a big fan of the <a href="https://thethreevirtues.com/">Three Virtues</a>:
+Laziness, Impatience, and Hubris. The string <code>&quot;aim&quot;</code> is three
+characters and one syllable, whereas <code>&quot;service&quot;</code> is seven characters
+and two syllables. Also <code>&quot;service&quot;</code> is a term that is going to be
+horrendously overloaded and over-used in any codebase. Using <a href="https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/">short
+non-technical Anglo-Saxon
+words</a>
+to stand for project-specific concepts is a great way to reduce
+overall confusion in a large code base that you will have to maintain
+for a long time. My favorite programming tool has always been a
+thesaurus.</p>
+
+
+
+<p>I&#8217;m completely ignoring, for now, all questions about how this
+message, which is a JSON document, gets routed to the <code>ingest</code>
+microservice. But let&#8217;s look at the two main ways that we can send
+this message.</p>
+
+
+
+<p>In code, you can send this message (perhaps as a result of a new user
+filling out a form with their RSS feed URL) by using the <a href="https://senecajs.org/">Seneca
+Framework</a> microservices library:</p>
+
+
+
+<pre class="wp-block-code"><code>const result = await seneca.post({
+  aim:       &#039;ingest&#039;,
+  subscribe: &#039;podcast&#039;,
+  feed:      &#039;https://feeds.resonaterecordings.com/voxgig-fireside-podcast&#039;
+})
+</code></pre>
+
+
+
+<p>Oh wait, we forgot to be lazy. Let&#8217;s try that again:</p>
+
+
+
+<pre class="wp-block-code"><code>const result = await seneca.post(&#039;aim:ingest,subscribe:podcast&#039;,
+  feed: &#039;https://feeds.resonaterecordings.com/voxgig-fireside-podcast&#039;
+})
+</code></pre>
+
+
+
+<p>Notice that there is no indication of how this message is transported
+to the <code>ingest</code> service. No HTTP calling code, no message topic,
+nothing. That&#8217;s important. Because the shortest path to the dreaded
+<a href="https://joaovasques.medium.com/your-distributed-monoliths-are-secretly-plotting-against-you-4c1b20324a31">distributed
+monolith</a>
+is not to use a message abstraction layer.</p>
+
+
+
+<p>The other way to send this message, which you&#8217;ll see quite a bit in
+this series, is to use a REPL:</p>
+
+
+
+<pre class="wp-block-code"><code>$ npm run repl-dev
+
+&gt; @voxgig/podmind-backend@0.3.3 repl-dev
+&gt; seneca-repl aws://lambda/pdm01-backend01-dev-monitor?region=us-east-1
+
+Connected to Seneca: {
+  version: &#039;3.34.1&#039;,
+  id: &#039;6ejf/monitor-pdm01-dev@0.3.3&#039;,
+  when: 1708685110275
+}
+6ejf/monitor-pdm01-dev@0.3.3&gt; aim:ingest,subscribe:podcast,doIngest:false,feed:&#039;https://feeds.resonaterecordings.com/voxgig-fireside-podcast&#039;
+{
+  ok: true,
+  why: &#039;&#039;,
+  batch: &#039;B2024022310460874&#039;,
+  mark: &#039;Ml032jm&#039;,
+  feed: &#039;https://feeds.resonaterecordings.com/voxgig-fireside-podcast&#039;,
+  doUpdate: false,
+  doIngest: false,
+  doAudio: false,
+  doTranscribe: false,
+  episodeStart: 0,
+  episodeEnd: -1,
+  chunkEnd: -1,
+  podcast: Entity {
+    &#039;entity$&#039;: &#039;-/pdm/podcast&#039;,
+    feed: &#039;https://feeds.resonaterecordings.com/voxgig-fireside-podcast&#039;,
+    t_mh: 2024020722371877,
+    t_m: 1707345438776,
+    t_ch: 2024012801013692,
+    t_c: 1706403696926,
+    id: &#039;pdfxc5&#039;,
+    batch: &#039;B2024020722371839&#039;,
+    title: &#039;Fireside with Voxgig&#039;,
+    desc: &#039;\n&#039; +
+      &#039;            This DevRel focused podcast allows entrepreneur, author and coder Richard Rodger introduce you to interesting leaders and experienced professionals in the tech community. Richard and his guests chat not just about their current work or latest trend, but also about their experiences, good and bad, throughout their career. DevRel requires so many different skills and you can come to it from so many routes, that this podcast has featured conference creators, entrepreneurs, open source maintainers, developer advocates and community managers. Join us to learn about just how varied DevRel can be and get ideas to expand your work, impact and community.\n&#039; +
+      &#039;        &#039;
+  }
+}
+</code></pre>
+
+
+
+<p>I literally just REPL&#8217;d into my live system and sent that message so
+I could cut and paste that example for you.</p>
+
+
+
+<p>That <code>doIngest</code> parameter lets me turn off ingestion. No point
+ingesting a podcast I&#8217;m already up-to-date with, just for the sake of
+an example. The message action, implemented in the <code>ingest</code> service,
+is synchronous, so I get a response back with the details of the
+podcast stored in my database.</p>
+
+
+
+<p>I can trigger almost any behavior in my system, at any point in the
+ingestion pipeline, using the REPL. I can do this live on AWS, or I
+can do it locally (with hot-reloading), so the <a href="https://www.richardrodger.com/2023/09/04/why-you-should-be-using-a-repl-all-the-way-to-production/">debugging experience is
+just lovely</a>.</p>
+
+
+
+<p>In the next post, we&#8217;ll look at the implementation of the
+<code>aim:ingest,subscribe:podcast</code> message action in detail. That will set
+us up to understand the other messages that focus more on the RAG
+implementation.</p>
+
+
+
+<p>But you don&#8217;t have to wait for me: <a href="https://github.com/voxgig/podmind/tree/main/backend/src/srv/ingest"><code>ingest</code> source code on github</a>.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="640" height="360" src="https://www.richardrodger.com/wp-content/uploads/2024/02/read-the-source-luke.jpg" alt="" class="wp-image-257" srcset="https://www.richardrodger.com/wp-content/uploads/2024/02/read-the-source-luke.jpg 640w, https://www.richardrodger.com/wp-content/uploads/2024/02/read-the-source-luke-300x169.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" /></figure>
+
+
+
+<a name="other-posts-in-this-series"></a><h2 class="wp-block-heading">Other posts in this series</h2>
+
+
+
+<ol class="wp-block-list">
+<li><a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Building a Podcast Chatbot for Voxgig</a></li>
+
+
+
+<li><em>This post!</em></li>
+
+
+
+<li><a href="https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/" title="">The Voxgig Podcast Chatbot: First, Subscribe!</a></li>
+</ol><p>The post <a href="https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/">The Voxgig Podcast Chatbot is Production Code</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Building a Podcast Chatbot for Voxgig</title>
+		<link>https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/</link>
+					<comments>https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/#respond</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Tue, 20 Feb 2024 14:00:16 +0000</pubDate>
+				<category><![CDATA[chatbot]]></category>
+		<category><![CDATA[Node.js]]></category>
+		<category><![CDATA[senecajs]]></category>
+		<guid isPermaLink="false">https://www.richardrodger.com/?p=254</guid>
+
+					<description><![CDATA[<p>This post is&#160;part of a series. At Voxgig we have now recorded 140 podcast episodes (as of Feb 2024). That&#8217;s a lot of chatting about developer relations. It&#8217;s great if you are a regular listener (thanks!), or have the time &#8230; <a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Building a Podcast Chatbot for Voxgig</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>This post is&nbsp;<a href="#other-posts-in-this-series" title="">part of a series</a>.</p>
+
+
+
+<p>At Voxgig we have now recorded 140 <a href="https://voxgog.com/podcast">podcast</a> episodes (as of Feb 2024). That&#8217;s a lot of chatting about developer relations.  It&#8217;s great if you are a regular listener (thanks!), or have the time to listen to our back catalogue. But what is frustrating is that there is so much wonderful knowledge about developer relations locked up in an audio format that, while enjoyable to listen to, is not accessible or usable in an efficient manner.</p>
+
+
+
+<p>When you need to know something about developer relations, and you
+want to tap into the wisdom of one our guests, you are out of
+luck. Or at least, you were. We decided to turn our coding skills to
+this little problem and write our own AI chatbot to let you ask our
+guests your questions directly.</p>
+
+
+
+<p>If you go to the <a href="https://voxgog.com/podcast">Voxgig podcast page</a>,
+you can now see a little chatbot widget, and when you type in a
+question, you get a reasonably good answer!</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://www.richardrodger.com/wp-content/uploads/2024/02/voxgig-podmind-screenshot-01.png"><img loading="lazy" decoding="async" width="1024" height="458" src="https://www.richardrodger.com/wp-content/uploads/2024/02/voxgig-podmind-screenshot-01-1024x458.png" alt="" class="wp-image-255" srcset="https://www.richardrodger.com/wp-content/uploads/2024/02/voxgig-podmind-screenshot-01-1024x458.png 1024w, https://www.richardrodger.com/wp-content/uploads/2024/02/voxgig-podmind-screenshot-01-300x134.png 300w, https://www.richardrodger.com/wp-content/uploads/2024/02/voxgig-podmind-screenshot-01-768x343.png 768w, https://www.richardrodger.com/wp-content/uploads/2024/02/voxgig-podmind-screenshot-01-1536x687.png 1536w, https://www.richardrodger.com/wp-content/uploads/2024/02/voxgig-podmind-screenshot-01-2048x916.png 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<p>Now this is a very crude initial version, and we are actively
+improving it. The chatbot uses <a href="https://www.promptingguide.ai/techniques/rag">Retrieval Augmented
+Generation</a> (RAG) to
+ingest all our podcast episodes, and let you ask questions of our
+guests directly.</p>
+
+
+
+<p>We decided to open-source the entire project. Building a RAG ingestor
+and query engine is a natural fit for microservices (there are lots of
+little asynchronous tasks). So if you&#8217;d like your own podcast chatbot,
+just cut and paste our code:
+<a href="https://github.com/voxgig/podmind">github.com/voxgig/podmind</a>.</p>
+
+
+
+<p>We&#8217;ve had such an enthusiastic reaction to this fun little project
+we&#8217;ve decided to take it further and extend the chatbot to handle all
+sorts of developer content. We&#8217;re also adding the ability to easily
+experiment with the prompt and the &#8220;chunker&#8221; (stay tuned if you want
+to know all about that stuff).</p>
+
+
+
+<p>We&#8217;re going to &#8220;build in public&#8221; with this project. You&#8217;ll be able to
+follow along at a source-code level as we make it more and more
+useful.</p>
+
+
+
+<p>To get started, here are the microservices and what each one does:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>audio</code> &#8211; Transcribes audio to dialogue text (using <a href="https://deepgram.com/">Deepgram</a>).</li>
+
+
+
+<li><code>auth</code> &#8211; User identity &#8211; for the user analytics dashboard.</li>
+
+
+
+<li><code>chat</code> &#8211; Perform chat queries.</li>
+
+
+
+<li><code>chunk</code> &#8211; The &#8220;chunker&#8221; that splits the transcript into chunks for the vector db.</li>
+
+
+
+<li><code>embed</code> &#8211; Embed the chunks as vectors so you can do similarity searches.</li>
+
+
+
+<li><code>entity</code> &#8211; General purpose persistent entity operations.</li>
+
+
+
+<li><code>ingest</code> &#8211; Ingestor to orchestrate the ingestion process.</li>
+
+
+
+<li><code>monitor</code> &#8211; Monitoring and debugging of the system, provides a <a href="https://www.richardrodger.com/2023/09/04/why-you-should-be-using-a-repl-all-the-way-to-production/">REPL</a>.</li>
+
+
+
+<li><code>store</code> &#8211; Store audio and RSS files.</li>
+
+
+
+<li><code>user</code> &#8211; User management.</li>
+
+
+
+<li><code>widget</code> &#8211; The API for the embeddable chat widget (which is a proper web component).</li>
+</ul>
+
+
+
+<p>We run this system as a &#8220;local monolith&#8221;, but deploy it as Lambdas on AWS.</p>
+
+
+
+<p>A lot of our development is done in a REPL with hot reloading, so we can alter business logic and experiment on the fly, even with our deployed Lambdas. We&#8217;ll get into this in later posts, but here is an example of submitting a question to the live <code>chat</code> service Lambda:</p>
+
+
+
+<pre class="wp-block-code"><code>$ seneca-repl aws://lambda/pdm01-backend01-dev-monitor?region=us-east-1
+
+&gt; @voxgig/podmind-backend@0.3.3 repl-dev
+&gt; seneca-repl aws://lambda/pdm01-backend01-dev-monitor?region=us-east-1
+
+Connected to Seneca: {
+  version: &#039;3.34.1&#039;,
+  id: &#039;axjz/monitor-pdm01-dev@0.3.3&#039;,
+  when: 1708436725968
+}
+axjz/monitor-pdm01-dev@0.3.3&gt; aim:chat,chat:query,query:&#039;what is devrel?&#039;
+{
+  ok: true,
+  why: &#039;&#039;,
+  answer: &quot;DevRel, short for Developer Relations, is a field within the tech industry that primarily focuses on building and maintaining relationships between companies and developers. DevRel professionals often act as intermediaries between developers and the companies they serve, bridging the gap between technical know-how and the business needs of a product. They help developers understand how a company&#039;s product works and are always on the lookout for opportunities to improve the overall developer experience.&quot;,
+  context: {
+    hits: &#091; ... ]
+  }
+}
+</code></pre>
+
+
+
+<p>We&#8217;re a TypeScript/JavaScript shop, so that&#8217;s what we&#8217;re using right now. I would not be surprised if a Python microservice or two appears in the future, but for now, we&#8217;ll stick to what we know best.  This is the start of a series &#8211; I&#8217;ll add links to more posts as we go.</p>
+
+
+
+<a name="other-posts-in-this-series"></a><h2 class="wp-block-heading">Other posts in this series</h2>
+
+
+
+<ol class="wp-block-list">
+<li><em>This post!</em></li>
+
+
+
+<li><a href="https://www.richardrodger.com/2024/02/23/the-voxgig-podcast-chatbot-is-production-code/" target="_blank" rel="noopener" title="">The Voxgig Podcast Chatbot is Production Code</a></li>
+
+
+
+<li><a href="https://www.richardrodger.com/2024/02/28/the-voxgig-podcast-chatbot-first-subscribe/" title="">The Voxgig Podcast Chatbot: First, Subscribe!</a></li>
+</ol><p>The post <a href="https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/">Building a Podcast Chatbot for Voxgig</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/2024/02/20/building-a-podcast-chatbot-for-voxgig/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Why you should be using a REPL all the way to production</title>
+		<link>https://www.richardrodger.com/2023/09/04/why-you-should-be-using-a-repl-all-the-way-to-production/</link>
+					<comments>https://www.richardrodger.com/2023/09/04/why-you-should-be-using-a-repl-all-the-way-to-production/#respond</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Mon, 04 Sep 2023 09:51:35 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.richardrodger.com/?p=249</guid>
+
+					<description><![CDATA[<p>Let’s talk about one of the most productive tools a coder can use: the REPL! The first half of this article gives you a short introduction to the subject if you’re not a coder. If you are a coder, skip &#8230; <a href="https://www.richardrodger.com/2023/09/04/why-you-should-be-using-a-repl-all-the-way-to-production/">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/2023/09/04/why-you-should-be-using-a-repl-all-the-way-to-production/">Why you should be using a REPL all the way to production</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>Let’s talk about one of the most productive tools a coder can use: the <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a>! The first half of this article gives you a short introduction to the subject if you’re not a coder. If you are a coder, skip ahead to the second half where I talk about using REPLs in production (“with great power comes great responsibility”).</p>
+
+
+
+<p>I recently released a long overdue update to the <a href="https://senecajs.org/">Seneca</a> REPL plugin (A <a href="https://nodejs.org/">Node.js</a> <a href="https://martinfowler.com/microservices/">microservices</a> framework). Since I’m also a fan of <a href="https://fastify.dev/">fastify</a> (a web framework for Node.js) I couldn’t resist submitting a plugin proposal for a fastify REPL too, since we’ve been having far too much fun with our Seneca REPL, and fastify users are missing out!</p>
+
+
+
+<p>Why this renewed focus on a feature I first built years ago? What’s so great about REPLs anyway?</p>
+
+
+
+<p>A REPL (Read-Execute-Print-Loop) is a coding tool that lets you interact directly with a running system. The browser console is easily the most used REPL, and essential to the development of any complex web application. You can type in code directly, and see results right away. Rather than waiting for your code to compile, deploy or load, you can make changes immediately. You get direct feedback with no delays that lets you stay focused on the work.</p>
+
+
+
+<p>Programming systems provide a REPL as an interactive text interface that lets you write code, usually in a more lenient or shorthand form. You don’t have to formally declare variables. You get access to predefined useful state objects (in the browser, you can access the `document` object, among many others). The essential thing is that you are given access to the live running system, whether that is a web browser, or a local development server, or something else.</p>
+
+
+
+<p>Coders use a REPL to debug problems directly, to inspect data to figure out what is going on, to experiment with new code to see what works, to get a feel for a new API (Application Programming Interface), to manipulate data, and even to administer deployed systems.</p>
+
+
+
+<p>If a new system doesn’t yet have a REPL, coders will always build one for it. Why does this happen? In more ordinary software development, you write some code, save it, and then run the code, often as part of a test suite. If you’re lucky, your test suite is pretty fast, on the order of seconds. More usually, it can take minutes to run for a production system.</p>
+
+
+
+<p>There’s a huge amount of friction in writing or changing some code, then switching to another place to run the code, and then waiting for results. Programming is a lot like the spinning plates performance act. The coder has to spin up multiple mental states and keep them all in their head, so that they can tie the pieces together to solve the problem. Get interrupted while you’re waiting for your tests to complete? Good luck fixing that bug–now you have to rebuild your mental state again, which can easily take a few minutes of focused thought.</p>
+
+
+
+<p>As an aside, this is why “collaborative” open plan offices make your developers super unhappy and unproductive–they need to <a href="https://www.linkedin.com/posts/ian-mcclean-46b7681_minimise-distraction-activity-7056953069778939904--b99">concentrate, not chit chat!</a></p>
+
+
+
+<p>The coding tool that makes unnecessary wait time go away is the REPL. You don’t have to context-switch half as much. The code is run and you see the results right away, so you can stay focused and get the solution. Often you’d be able to copy and paste the rough code out of the REPL into your editor, and fix it up to be production grade.</p>
+
+
+
+<p>Not all code is the same. REPLs work best with “business logic” code, and user interface code. When you’re writing code that’s more about computer science algorithms, or core library code, you spend much more time just thinking rather than smashing the keyboard. But when you have a documented business requirement, the work is more about gluing the parts together than inventing new algorithms. What counts is being able to ensure your data has the right structure, and you are calling the right APIs in the right way. A REPL makes this work much easier.</p>
+
+
+
+<p>Where (and when) does the idea of a REPL come from? Probably in 1958, from <a href="https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)">John McCarthy</a>, the inventor of the Lisp language. Interactive evaluation of expressions was an essential feature of <a href="https://twobithistory.org/2018/10/14/lisp.html">Lisp</a> right from the start. If you had had to code using <a href="https://www.computermuseumofamerica.org/2022/09/16/what-are-punch-cards-in-early-computers/">punch cards</a> up to that point, you’d probably be pretty keen on having a REPL too.&nbsp;</p>
+
+
+
+<p>The <a href="https://squeak.org/">Smalltalk</a> programming environment took the idea of a REPL to the next level, by making the entire system “live”. You coded by manipulating the state of the live system using an editor that was basically a REPL. Saving your project was the same as serializing the current state.</p>
+
+
+
+<p>Although it didn’t really work out, the <a href="https://renenyffenegger.ch/notes/development/databases/SQL/history/SEQUEL">database query language SQL</a> was supposed to be a way to “talk” to databases using human-like language. But us programmers still get the benefit of an interactive language to manipulate data.</p>
+
+
+
+<p>The REPL environment that most non-coders would be familiar with is a spreadsheet. You edit formulas and you see immediate results. This is very gratifying! Programmers enjoy the same serotonin kick. And it gets the work done faster. <a href="https://www.youtube.com/watch?v=kOO31qFmi9A">Enjoy the cheese!</a></p>
+
+
+
+<p>With machine learning finally starting to deliver, many folks are getting exposed to another form of the REPL: the interactive notebook. First seen in the realm of statistical analytics and mathematics, with systems like <a href="https://www.wolfram.com/mathematica/">Mathematica</a>, notebooks such as <a href="https://jupyter.org/">Jupyter</a> now provide a comfortable interface to complex underlying systems.</p>
+
+
+
+<p>And we are not far off the holy grail of REPLs–the fully competent natural language interface provided by the new generation of artificial intelligence LLMs (<a href="https://mark-riedl.medium.com/a-very-gentle-introduction-to-large-language-models-without-the-hype-5f67941fa59e">Large Language Models</a>). Just playing around with a service like <a href="https://chat.openai.com/">ChatGPT</a> will give you an instant feel for why coders are so keen on having a REPL available.</p>
+
+
+
+<p>There’s even a <a href="https://www.badunicorn.vc/">marked-for-unicorn</a> status tech startup called <a href="https://replit.com/">repl.it</a> that provides software developers with, you guessed it, an online REPL-like environment for coding.</p>
+
+
+
+<p>OK, let’s get a bit more technical. If you’re a coder and have used REPLs occasionally but have not found them to be that useful, let’s dive into how you can use them to get some <a href="https://www.youtube.com/watch?v=zgt-jNqbxF8">super powers</a>.</p>
+
+
+
+<p>First, find a REPL! Here’s a list. The fact that almost every serious programming environment has one should tell you REPLs are a serious tool you need to master.</p>
+
+
+
+<ul class="wp-block-list">
+<li>Python:
+<ul class="wp-block-list">
+<li><a href="https://docs.python.org/3/tutorial/interpreter.html">Default Python shell</a></li>
+
+
+
+<li><a href="https://ipython.org/documentation.html">IPython</a></li>
+
+
+
+<li><a href="https://bpython-interpreter.org/">bpython</a></li>
+</ul>
+</li>
+
+
+
+<li>Ruby:
+<ul class="wp-block-list">
+<li><a href="https://docs.ruby-lang.org/en/2.7.0/IRB.html">irb (Interactive Ruby)</a></li>
+</ul>
+</li>
+
+
+
+<li>JavaScript:
+<ul class="wp-block-list">
+<li><a href="https://nodejs.org/api/repl.html">Node.js</a></li>
+
+
+
+<li><a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console">Browsers&#8217; Console</a></li>
+</ul>
+</li>
+
+
+
+<li>Lisp/Scheme/Clojure:
+<ul class="wp-block-list">
+<li><a href="https://www.gnu.org/software/mit-scheme/documentation/mit-scheme-ref.html">GNU Clisp, Scheme, and other implementations</a></li>
+
+
+
+<li><a href="https://clojure.org/guides/repl/introduction">Clojure</a></li>
+</ul>
+</li>
+
+
+
+<li>Scala:
+<ul class="wp-block-list">
+<li><a href="https://docs.scala-lang.org/overviews/repl/overview.html">Scala REPL</a></li>
+</ul>
+</li>
+
+
+
+<li>Haskell:
+<ul class="wp-block-list">
+<li><a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html">ghci</a></li>
+</ul>
+</li>
+
+
+
+<li>Java:
+<ul class="wp-block-list">
+<li><a href="https://docs.oracle.com/javase/9/jshell/toc.htm">jshell</a></li>
+</ul>
+</li>
+
+
+
+<li>Groovy:
+<ul class="wp-block-list">
+<li><a href="http://groovy-lang.org/groovysh.html">groovysh</a></li>
+</ul>
+</li>
+
+
+
+<li>Erlang:
+<ul class="wp-block-list">
+<li><a href="http://erlang.org/doc/man/erl.html">erl</a></li>
+</ul>
+</li>
+
+
+
+<li>Elixir:
+<ul class="wp-block-list">
+<li><a href="https://hexdocs.pm/iex/IEx.html">iex</a></li>
+</ul>
+</li>
+
+
+
+<li>R:
+<ul class="wp-block-list">
+<li><a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html">R documentation</a></li>
+</ul>
+</li>
+
+
+
+<li>Perl:
+<ul class="wp-block-list">
+<li><a href="https://perldoc.perl.org/perldebug.html">perl debug mode</a></li>
+
+
+
+<li><a href="https://metacpan.org/pod/Reply">re.pl</a></li>
+</ul>
+</li>
+
+
+
+<li>Lua:
+<ul class="wp-block-list">
+<li><a href="https://www.lua.org/manual/5.1/">Lua documentation</a></li>
+</ul>
+</li>
+
+
+
+<li>Swift:
+<ul class="wp-block-list">
+<li><a href="https://docs.swift.org/swift-book/LanguageGuide/InteractivePlayground.html">Swift REPL</a></li>
+</ul>
+</li>
+
+
+
+<li>Go:
+<ul class="wp-block-list">
+<li><a href="https://github.com/motemen/gore">gore (third-party)</a></li>
+</ul>
+</li>
+
+
+
+<li>Julia:
+<ul class="wp-block-list">
+<li><a href="https://docs.julialang.org/en/v1/stdlib/REPL/">Julia REPL</a></li>
+</ul>
+</li>
+
+
+
+<li>OCaml:
+<ul class="wp-block-list">
+<li><a href="https://github.com/ocaml-community/utop">utop</a></li>
+
+
+
+<li><a href="https://caml.inria.fr/pub/docs/manual-ocaml/toplevel.html">Default OCaml REPL</a></li>
+</ul>
+</li>
+
+
+
+<li>F#:
+<ul class="wp-block-list">
+<li><a href="https://docs.microsoft.com/en-us/dotnet/fsharp/tutorials/fsharp-interactive/">fsi</a></li>
+</ul>
+</li>
+
+
+
+<li>C#:
+<ul class="wp-block-list">
+<li><a href="https://docs.microsoft.com/en-us/visualstudio/csharp/csharp-interactive-repl-in-visual-studio">C# Interactive Window in Visual Studio</a></li>
+
+
+
+<li><a href="https://github.com/dotnet/roslyn/wiki/Interactive-Window">csi command-line tool</a></li>
+</ul>
+</li>
+
+
+
+<li>Kotlin:
+<ul class="wp-block-list">
+<li><a href="https://kotlinlang.org/docs/whatsnew13.html#kotlin-repl">Kotlin REPL</a></li>
+</ul>
+</li>
+
+
+
+<li>Crystal:
+<ul class="wp-block-list">
+<li><a href="https://github.com/crystal-lang-tools/icr">icr</a></li>
+</ul>
+</li>
+
+
+
+<li>Rust:
+<ul class="wp-block-list">
+<li><a href="https://github.com/google/evcxr">evcxr (third-party)</a></li>
+</ul>
+</li>
+
+
+
+<li>PHP:
+<ul class="wp-block-list">
+<li><a href="https://www.php.net/manual/en/features.commandline.interactive.php">php -a</a></li>
+</ul>
+</li>
+
+
+
+<li>MATLAB:
+<ul class="wp-block-list">
+<li><a href="https://www.mathworks.com/help/matlab/matlab_env/enter-statements-in-command-window.html">MATLAB documentation</a></li>
+</ul>
+</li>
+
+
+
+<li>Shell scripting languages:
+<ul class="wp-block-list">
+<li><a href="https://www.gnu.org/software/bash/manual/bash.html">Bash, Zsh, and other Unix shells</a></li>
+</ul>
+</li>
+
+
+
+<li>Racket:
+<ul class="wp-block-list">
+<li><a href="https://docs.racket-lang.org/drracket/interactive.html">Racket documentation</a></li>
+</ul>
+</li>
+
+
+
+<li>Prolog:
+<ul class="wp-block-list">
+<li><a href="https://www.swi-prolog.org/pldoc/doc_for?object=section(%27A.14%27)">SWI-Prolog and other implementations</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+<p>Let’s talk about what you can do with REPLs and why you would want one. I’ll start with the ordinary stuff and work my way up to the <a href="https://thedailywtf.com/articles/The-System">definitely controversial radioactive-spider use cases</a>.&nbsp;</p>
+
+
+
+<p>You write some code. You compile it (for most languages). You run your unit tests. Or you run a small script to check things. Or you start up your system and then manually interact with it to check if your code works.</p>
+
+
+
+<p>This cycle takes time. You spend a lot of time just waiting for compilation to complete, or the unit testing framework to boot up and then run your tests. Each individual delay might take a few seconds, but it all adds up. Pretty soon you’re on Twitter or Youtube or Discord and you lose twenty minutes before you drag yourself back to work. There are decades worth of articles all over the web about the productivity horrors of “context switching” and how it kills your concentration. You work best as a developer when you can get into that <a href="https://www.ted.com/talks/mihaly_csikszentmihalyi_flow_the_secret_to_happiness">magical “flow state” where the code just pours out of your brain</a>.</p>
+
+
+
+<p>You know what makes flow state easy to maintain? A REPL! You write, you see results. <a href="https://www.youtube.com/watch?v=ub747pprmJ8">Right here, right now</a>. If that REPL is exposed by a local version of the system you’re working on, it gets even better. You stay in flow working on your system. Out pours the code!</p>
+
+
+
+<p>Now let’s take it to the next level. If you rig up some sort of hot-reloading into your system (there’s always a way to do this in your language of choice), you can debug in flow state without those restart wait times that break your concentration. Instant, instant feedback. <a href="https://www.youtube.com/watch?v=uASnEyRG_uQ">That’s the drug we need</a>.</p>
+
+
+
+<p>You run your code in the REPL. It’s broken. Alt-Tab back to your editor, make a change. Alt-Tab back to the REPL. Hit the up-arrow key, hit return, see results. Still broken? Repeat. Fixed? Alt-Tab, run the unit tests and <a href="http://www.extremeprogramming.org/rules/unittests.html">bask in the glow of green</a>. Go grab a coffee. <a href="https://gwern.net/doc/cs/algorithm/2001-demarco-peopleware-whymeasureperformance.pdf">You’re a 10X dev</a>.</p>
+
+
+
+<p>The feeling of intellectual reward you get from not wasting any time waiting for the machine is not something you’ll ever want to give up on again once you’ve tasted it.</p>
+
+
+
+<p>And up another level. Take your REPL and start adding custom commands and shortcuts. Your command history will have lots of code that you keep using again and again. Turn that repeated code into shortcuts. Apart from the righteous satisfaction every dev gets from <a href="https://www.cs.cmu.edu/~awb/linux.history.html">building their own tools</a>, you just made yourself and your team a lot faster and a lot happier.</p>
+
+
+
+<p>At this point it’s time to invoke the <a href="https://thethreevirtues.com/">eternal three virtues of programming</a>:</p>
+
+
+
+<p>According to Larry Wall, the original author of the Perl programming language, there are <strong>three great virtues of a programmer</strong>; Laziness, Impatience and Hubris</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Laziness</strong>: The quality that makes you go to great effort to reduce overall energy expenditure. It makes you write labor-saving programs that other people will find useful and document what you wrote so you don&#8217;t have to answer so many questions about it.</li>
+
+
+
+<li><strong>Impatience</strong>: The anger you feel when the computer is being lazy. This makes you write programs that don&#8217;t just react to your needs, but actually anticipate them. Or at least pretend to.</li>
+
+
+
+<li><strong>Hubris</strong>: The quality that makes you write (and maintain) programs that other people won&#8217;t want to say bad things about.</li>
+</ol>
+
+
+
+<p>[<a href="https://www.oreilly.com/library/view/programming-perl-4th/9781449321451/">“Programming Perl&#8221;</a>, 2nd Edition, O&#8217;Reilly &amp; Associates, 1996]</p>
+
+
+
+<p>Nothing is more faithful to the Three Virtues than a REPL (or perhaps <a href="https://www.perl.org/">Perl</a>, or <a href="https://www.raku.org/">Raku</a> nowadays, I guess).</p>
+
+
+
+<p>Your shortcuts can go beyond mere abbreviations. All large systems define conceptual abstractions for the system itself. How do you represent data? Operations on that data? Components? User interactions? API requests? All these things and more can be “<a href="https://ericnormand.me/podcast/what-is-to-reify-in-software">reified</a>” in the REPL. Given form and substance, so that you can use them directly.</p>
+
+
+
+<p>Here’s an example. Let’s say you use an <a href="https://opensource.com/article/17/11/django-orm">Object-Relation-Mapper</a> to talk to your database. Maybe your code looks like this:</p>
+
+
+
+<p>&#8220;`</p>
+
+
+
+<p>let alice = new User({ name: “Alice”, role: “admin” })</p>
+
+
+
+<p>alice.save()</p>
+
+
+
+<p>&#8220;`</p>
+
+
+
+<p>You could type that into the REPL directly. Or you could lift up (“reify”) the “idea” of data entities into a system of shortcuts:</p>
+
+
+
+<p>&#8220;`</p>
+
+
+
+<p>&gt; save user {name:alice,role:admin}</p>
+
+
+
+<p>&#8220;`</p>
+
+
+
+<p>Here’s another example. Let’s say you’re working on a REST API. Sure you’ve got <a href="https://curl.se/">curl</a> and <a href="https://www.postman.com/">postman</a> to help with testing and debugging, but again, they do require a context-switch. Not much, but it adds up. Instead, use the REPL:</p>
+
+
+
+<p>&#8220;`</p>
+
+
+
+<p>&gt; GET /api/users</p>
+
+
+
+<p>[ …list of user objects… ]</p>
+
+
+
+<p>&#8220;`</p>
+
+
+
+<p>Once you start to build up a set of shortcuts, they become a <a href="https://tek-ritr.com/its-more-than-chaucer/">vernacular</a> that makes you and your team very happy developers. And fast.</p>
+
+
+
+<p>Where can you go next? I’m sure you’ll be very familiar with <a href="https://blog.codinghorror.com/the-works-on-my-machine-certification-program/">code working perfectly on your local machine</a>, and breaking once deployed to a build server, or to staging or production. This is normal. No amount of testing will save you. Indeed the purpose of build or staging servers is to find exactly these fracture points where different environments break your code.</p>
+
+
+
+<p>That’s nice. What isn’t nice is the pain of debugging code that is broken on staging. Welcome to log file hell. We won’t wade into the Big Fight about <a href="https://buttondown.email/geoffreylitt/archive/starting-this-newsletter-print-debugging-byoc/">print-versus-debugger</a> debugging, but when it comes to staging servers, all you often get is a log file.</p>
+
+
+
+<p>So you add some print statements and you redeploy. Then you wait for the remote system to churn. Then you load up your log files (probably in a clunky web interface), and try to make sense of the output, most of which is utterly irrelevant. You thought flow state was hard to maintain for local dev work? There ain’t no flow state here. This work is grueling and slow and very not fun.</p>
+
+
+
+<p>Wouldn’t you like a REPL into staging? With a REPL you just look at things directly and muck about debugging right on the system, with the staging data. This is the way to debug! And if your REPL also includes some commands for data querying and modification, then you don’t even need to Alt-Tab over the database interface. Bugs and issues on staging can be resolved in nearly the same way, and nearly as fast as local issues. Happy happy developer!</p>
+
+
+
+<p>When you implement a REPL to give you access to staging, you may not always just be able to expose an open network port, which is the normal mode of connection to a REPL. For things like serverless functions, you’ll need to co-opt the cloud infrastructure to let you submit commands and get responses. Use things like AWS Lambda invocation to get your commands up into the cloud. What matters is the developer experience of an interactive terminal. What happens behind the curtain is an implementation detail.&nbsp;</p>
+
+
+
+<p>At this point you will need to start thinking more seriously about access control. Staging servers, build servers, and test servers are shared infrastructure. Who gets REPL access and what can they do? That has to be context dependent, but here’s some things that have worked well for me.</p>
+
+
+
+<p>If your system has a concept of user accounts with permissions, reuse that abstraction. Each REPL is operated as a user in the system. You’ll need to add some way to login or provide an access token. If you have an external API that provides this already, you’re nearly home and dry.</p>
+
+
+
+<p>If you don’t have a concept of a user, then you’ll need to at least provide a set of access levels, and restrictions for those levels. This is no different from other kinds of infrastructure work that you do to make your systems easy to monitor and maintain.</p>
+
+
+
+<p>You will also want to control access at a high level such as network layers and application domains. This is again very much context dependent, but things like <a href="https://kubernetes.io/docs/reference/kubectl/kubectl/">kubectl</a> take you most of the way there.</p>
+
+
+
+<p>And here’s the big one: TURN OFF THE REPL IN PRODUCTION. You really don’t want an active REPL to go live (well…unless you do–see below!). The safest way to do this is to treat the REPL as being under feature flag control, switched off by default. Add some failsafes by also checking general environment characteristics, like system variables. A REPL falls into the same bucket as system monitoring and control, so you can apply the same DevOps control principles.&nbsp;</p>
+
+
+
+<p>And finally, you can run a REPL in production. It’s not as crazy as it sounds. A REPL lets you resolve emergency production issues. It gives you a fine-grained administration interface. It lets you perform maintenance you have not yet automated. These are all massive time savers, especially in the early days of a startup, before you have full systems in place.</p>
+
+
+
+<p>Access to the production REPL should be very tightly controlled. And I like to add in additional layers of security, such as time-based one-time password verification. You could even start using SSL certs if you’re really paranoid.</p>
+
+
+
+<p>I have found that the operational benefits for power users are worth the risk.</p>
+
+
+
+<p>There is one important thing you’ll need to add to your REPL implementation if you go all the way to production. An audit log. You’ll need to keep a log of all the commands, and who ran them. And you’ll need to add some scrubbing logic to remove sensitive data. Your REPL is now a serious systems management tool, so will require more effort to maintain.</p>
+
+
+
+<p>I’ve been using REPLs in all these ways for more than a decade. A REPL makes me faster and happier as a developer. It will make you faster and happier too &#8211; use a REPL!</p><p>The post <a href="https://www.richardrodger.com/2023/09/04/why-you-should-be-using-a-repl-all-the-way-to-production/">Why you should be using a REPL all the way to production</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/2023/09/04/why-you-should-be-using-a-repl-all-the-way-to-production/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>@seneca/repl Version 6 Released!</title>
+		<link>https://www.richardrodger.com/2023/08/02/seneca-repl-version-6-released/</link>
+					<comments>https://www.richardrodger.com/2023/08/02/seneca-repl-version-6-released/#respond</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Wed, 02 Aug 2023 16:56:58 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://www.richardrodger.com/?p=246</guid>
+
+					<description><![CDATA[<p>I&#8217;ve released a substantial update to the&#160;@seneca/repl&#160;plugin! The&#160;@seneca/repl&#160;plugin provides a&#160;REPL&#160;for the Seneca microservices framework. As one of the earliest plugins, it has proven to be incredibly useful. A REPL (Read-Execute-Print-Loop) offers an interactive space to write code and execute it &#8230; <a href="https://www.richardrodger.com/2023/08/02/seneca-repl-version-6-released/">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/2023/08/02/seneca-repl-version-6-released/">@seneca/repl Version 6 Released!</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>I&#8217;ve released a substantial update to the&nbsp;<a href="https://github.com/senecajs/seneca-repl">@seneca/repl</a>&nbsp;plugin!</p>
+
+
+
+<p>The&nbsp;<a href="https://github.com/senecajs/seneca-repl">@seneca/repl</a>&nbsp;plugin provides a&nbsp;<a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a>&nbsp;for the Seneca microservices framework. As one of the earliest plugins, it has proven to be incredibly useful. A REPL (Read-Execute-Print-Loop) offers an interactive space to write code and execute it instantly. If you&#8217;ve ever used the browser console or run the command&nbsp;<code>node</code>&nbsp;in Node.js, you&#8217;ve used a REPL.</p>
+
+
+
+<p>To learn more about the plan for this release, refer to my previous post:&nbsp;<a href="http://www.richardrodger.com/2023/07/26/seneca-repl-version-2-x-plan/">@seneca/repl version 2.x plan</a>&nbsp;(Yes, I did say 2.x &#8211; that was a brain glitch!). Read that post to understand what the Seneca REPL can do for you.</p>
+
+
+
+<h2 class="wp-block-heading"><a href="https://github.com/senecajs/seneca-repl/blob/main/doc/version-6-release-pub.md#new-feature-entity-commands"></a>New Feature: Entity Commands</h2>
+
+
+
+<p>The Seneca REPL allows you to send messages directly to a running Seneca instance, just by entering the JSON source of the message. In fact, it&#8217;s even simpler than that, as the REPL accepts a relaxed form of JSON called&nbsp;<a href="https://github.com/jsonicjs/jsonic">Jsonic</a>, which lets you avoid most strict JSON syntax rules.</p>
+
+
+
+<p>Here&#8217;s an example of using the REPL to get the status of a Seneca instance:</p>
+
+
+
+<pre class="wp-block-preformatted">$ seneca-repl
+&gt; role:seneca,stats:true
+{
+  start: '2023-08-01T19:23:23.274Z',
+  act: { calls: 105, done: 104, fails: 0, cache: 0 },
+  actmap: undefined,
+  now: '2023-08-01T19:29:00.108Z',
+  uptime: 336834
+}</pre>
+
+
+
+<p>In this interaction, the full JSON message was submitted:</p>
+
+
+
+<pre class="wp-block-preformatted">{ "role":"seneca", "stats":true }</pre>
+
+
+
+<p>This is equivalent to the Seneca API call:</p>
+
+
+
+<pre class="wp-block-preformatted">seneca.act({ "role":"seneca", "stats":true })</pre>
+
+
+
+<p>Also, since Seneca accepts Jsonic too:</p>
+
+
+
+<pre class="wp-block-preformatted">seneca.act('role:seneca,stats:true')</pre>
+
+
+
+<p>When working with Seneca data entities that provide a simple&nbsp;<a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping">ORM</a>&nbsp;to access your database, you can interact with them using standard Seneca messages. For example:</p>
+
+
+
+<pre class="wp-block-preformatted">seneca.entity('foo').list$() // lists all rows in the table "foo"</pre>
+
+
+
+<p>In the REPL, this would be the equivalent message:</p>
+
+
+
+<pre class="wp-block-preformatted">&gt; sys:entity,cmd:load,name:foo</pre>
+
+
+
+<p>The REPL itself also provides a Seneca instance, allowing you to write standard Seneca code.</p>
+
+
+
+<p>However, adhering to&nbsp;<a href="https://thethreevirtues.com/">Larry Wall&#8217;s programming virtues: Laziness, Impatience, and Hubris</a>, I&#8217;ve introduced a REPL shortcut for data entities, as they are empirically the most common use case for the REPL.</p>
+
+
+
+<p>Each entity operation (<code>list$, load$, save$, remove$</code>) gets its own REPL command, all following the same syntax:</p>
+
+
+
+<pre class="wp-block-preformatted">CMD$ CANON [QUERY]</pre>
+
+
+
+<p>Here are some examples:</p>
+
+
+
+<pre class="wp-block-preformatted">&gt; list$ sys/user
+&gt; list$ sys/user group:foo
+&gt; save$ sys/user id:aaa,group:bar
+&gt; load$ sys/user aaa</pre>
+
+
+
+<p>The REPL commands provide various functions to manage data entities, and details and examples can be found in the article.</p>
+
+
+
+<h2 class="wp-block-heading"><a href="https://github.com/senecajs/seneca-repl/blob/main/doc/version-6-release-pub.md#new-feature-auto-reconnection"></a>New Feature: Auto Reconnection</h2>
+
+
+
+<p>To enhance developer experience, the REPL client now automatically reconnects to the server if disconnected, using a backoff mechanism. You can also hit the return key to reconnect instantly.</p>
+
+
+
+<h2 class="wp-block-heading"><a href="https://github.com/senecajs/seneca-repl/blob/main/doc/version-6-release-pub.md#new-feature-repl-tunnels"></a>New Feature: REPL Tunnels</h2>
+
+
+
+<p>Configuring REPL tunnels has been simplified, and it&#8217;s now possible to drive the REPL using Seneca messages. We&#8217;ve introduced HTTP and AWS Lambda tunnels, and detailed instructions are provided in the article.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><strong>WARNING:</strong>&nbsp;This feature is a security risk! Don&#8217;t expose your production systems without additional access controls.</p>
+</blockquote>
+
+
+
+<h2 class="wp-block-heading"><a href="https://github.com/senecajs/seneca-repl/blob/main/doc/version-6-release-pub.md#new-feature-isolated-history"></a>New Feature: Isolated History</h2>
+
+
+
+<p>This release improves command history storage, now saved locally in a hidden&nbsp;<code>.seneca</code>&nbsp;folder in your home folder. It keeps a separate history for each unique connection URL, and histories are not truncated.</p>
+
+
+
+<pre class="wp-block-preformatted">$ seneca-repl localhost?project=foo # unique command history for the "foo" project
+$ seneca-repl localhost?project=bar # unique command history for the "bar" project</pre>
+
+
+
+<h1 class="wp-block-heading"><a href="https://github.com/senecajs/seneca-repl/blob/main/doc/version-6-release-pub.md#done"></a>Done!</h1>
+
+
+
+<p>With this new, eagerly anticipated release of the @seneca/repl plugin, there are many features to explore and enjoy. As it&#8217;s open-source, you can find it on&nbsp;<a href="https://github.com/senecajs/seneca-repl">GitHub</a>, where you&#8217;re welcome to submit bugs, issues, and feature requests. Enjoy!</p><p>The post <a href="https://www.richardrodger.com/2023/08/02/seneca-repl-version-6-released/">@seneca/repl Version 6 Released!</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/2023/08/02/seneca-repl-version-6-released/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>@seneca/repl version 2.x plan</title>
+		<link>https://www.richardrodger.com/2023/07/26/seneca-repl-version-2-x-plan/</link>
+					<comments>https://www.richardrodger.com/2023/07/26/seneca-repl-version-2-x-plan/#comments</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Wed, 26 Jul 2023 12:38:36 +0000</pubDate>
+				<category><![CDATA[Node.js]]></category>
+		<category><![CDATA[senecajs]]></category>
+		<guid isPermaLink="false">http://www.richardrodger.com/?p=245</guid>
+
+					<description><![CDATA[<p>I&#8217;m updating the @seneca/repl plugin! Here is the basic plan. NOTE: There&#8217;s a @seneca/repl dev Github Project to track this work. The @seneca/repl plugin provides a REPL for the seneca microservices framework. It is one of the earliest plugins, and &#8230; <a href="https://www.richardrodger.com/2023/07/26/seneca-repl-version-2-x-plan/">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/2023/07/26/seneca-repl-version-2-x-plan/">@seneca/repl version 2.x plan</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>I&#8217;m updating the <a href="https://github.com/senecajs/seneca-repl">@seneca/repl</a> plugin! Here is the basic plan.</p>
+
+
+
+<p>NOTE: There&#8217;s a <a href="https://github.com/orgs/senecajs/projects/2"><code>@seneca/repl dev</code> Github Project</a> to track this work.</p>
+
+
+
+<p>The <a href="https://github.com/senecajs/seneca-repl">@seneca/repl</a> plugin provides a <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a> for the seneca microservices framework. It is one of the earliest plugins, and has proven to be one of the most useful. A REPL (Read-Execute-Print-Loop) is an interactive space to write code and get it executed right away. If you&#8217;ve used the browser console, you&#8217;ve used a REPL. With Node.js, you also get a REPL, just run the command <code>node</code> by itself and off you go!</p>
+
+
+
+<p>The big thing about a REPL is the speed boost it gives your development process. You just type stuff in and it works right away. You can directly inspect objects to see what they are made of. Debugging is much easier.</p>
+
+
+
+<p>The Seneca REPL provides you with the standard Node.js REPL &#8212; you can execute arbitrary JavaScript. But it also provides you with access to the root Seneca instance, and with shortcuts to post Seneca messages, and examine the running Seneca system.</p>
+
+
+
+<p>For example, if you have a message <code>foo:bar,zed:qaz</code>, then you can post that message directly in the REPL:</p>
+
+
+
+<pre class="wp-block-code"><code> &gt; foo:bar,zed:qaz </code></pre>
+
+
+
+<p>The REPL accepts any valid JSON (or the equivalent Jsonic form of abbreviated JSON) as an input and attempts to post the input as a message, printing the result. Combine this with hot-reloading from the <a href="https://github.com/senecajs/seneca-reload">@seneca/reload</a> plugin and you have a lovely little high speed local development environment for your microservice system.</p>
+
+
+
+<p>An update for <a href="https://github.com/senecajs/seneca-repl">@seneca/repl</a> is long overdue. I&#8217;ve created a Github project to track the main tasks. The most important new feature is the ability to interact with the REPL when your microservice is running in a serverless context.</p>
+
+
+
+<p>A traditional REPL exposes a network port and you cannot do that over the network. This is fine for local development, but it is not supported in a serverless context. However most serverless environments provide an invocation mechanism so you can send messages to your deployed function. I&#8217;m extending <a href="https://github.com/senecajs/seneca-repl">@seneca/repl</a> so that it can support this interaction pathway by providing a special message: <code>sys:repl,send:cmd</code> that can run REPL commands and collect their output.</p>
+
+
+
+<p>To implement this some refactoring is required. The old codebase is pretty old. As in, callback-hell old. It also assumes a network socket. So this all has to be pulled apart and abstracted a little. The code is very much streams-based, and that also makes it fun, as the streams have to be marshalled to operate via a request/response interaction.</p>
+
+
+
+<p>One issue in the existing code is the lack of a delimiter for the command result. It all sort of works by accident! I&#8217;m going to use NUL as the delimiter to mark the end of command response text. This should also clear up some bizarro bugs.</p>
+
+
+
+<p>The other new feature is more direct support for Seneca entities with an extended set of special commands: <code>list$</code>, <code>save$</code>, <code>load$</code>, etc. that mirror the Seneca entity operations. This is a pretty big use case and we&#8217;ve been putting up with the kludgy workaround of using entity messages directly for … too many years, sigh.</p>
+
+
+
+<p>On the command-line side, the REPL client needs to be extended to perform serverless invocations. A stream overlay will be used for this to preserve streams as the basic abstraction for REPL communication.</p>
+
+
+
+<p>The other tasks are housekeeping to move to the new Seneca standard test runner, <a href="https://jestjs.io/">Jest</a>, and convert the codebase to <a href="https://www.typescriptlang.org/">Typescript</a>.</p>
+
+
+
+<p>Once this release is out, the <a href="https://github.com/senecajs/seneca-gateway">@seneca/gateway</a> plugins will need to be updated to handle security more generally when exposing a REPL. At the moment we tend to use a <code>monitor</code> serverless function that has no external exposure, and can only be called by invocation with appropriate credentials. This <code>monitor</code> function also uses our little trick of embedding all the other microservices as a modular monolith so that you can use the REPL to post any message. While this is mostly sufficient in practice, it would be nice to also be able to invoke any function directly via the REPL.</p><p>The post <a href="https://www.richardrodger.com/2023/07/26/seneca-repl-version-2-x-plan/">@seneca/repl version 2.x plan</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/2023/07/26/seneca-repl-version-2-x-plan/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>The Tao of Microservices</title>
+		<link>https://www.richardrodger.com/tao-of-microservices</link>
+					<comments>https://www.richardrodger.com/tao-of-microservices#comments</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Wed, 24 Feb 2016 16:39:36 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://www.richardrodger.com/?p=234</guid>
+
+					<description><![CDATA[<p>My book on the microservice architecture is in early release! This book is based on five years of building microservice systems, of all shapes and sizes. It is a comprehensive guide to using the architecture based on practical experience. I&#8217;ve &#8230; <a href="https://www.richardrodger.com/tao-of-microservices">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/tao-of-microservices">The Tao of Microservices</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p><a title="The Tao of Microservices Book" href="https://manning.com/books/the-tao-of-microservices?a_aid=tms&amp;a_bid=3b7806c8"><img loading="lazy" decoding="async" class=" size-medium wp-image-233 alignleft" src="http://www.richardrodger.com/wp-content/uploads/2016/02/tms-cover-medium-239x300.png" alt="tms-cover-medium" width="239" height="300" srcset="https://www.richardrodger.com/wp-content/uploads/2016/02/tms-cover-medium-239x300.png 239w, https://www.richardrodger.com/wp-content/uploads/2016/02/tms-cover-medium-815x1024.png 815w, https://www.richardrodger.com/wp-content/uploads/2016/02/tms-cover-medium.png 992w" sizes="auto, (max-width: 239px) 100vw, 239px" /></a></p>
+<p>My <a title="The Tao of Microservices" href="https://manning.com/books/the-tao-of-microservices?a_aid=tms&amp;a_bid=3b7806c8">book on the microservice architecture</a> is in early release! This book is based on five years of building microservice systems, of all shapes and sizes. It is a comprehensive guide to using the architecture based on practical experience. I&#8217;ve made <a title="Surviving Microservices / microxchg.io 2016 Conference Talk" href="https://www.youtube.com/watch?v=0pfghZxlFSg">many, many mistakes along the way</a> &#8211; you don&#8217;t have to!</p>
+<p>The number one reason to use microservices is that they put the fun back into building software systems. Forget about all the serious reasons for the moment. As a matter of personal experience, the microservice architecture is just so much more enjoyable to work with. I&#8217;ve been building systems this way since about 2011. Systems big and small. I&#8217;ve tried most of the permutations. More often than not, it has all worked out wonderfully well. Each time things get better. A good idea should get better the harder you work it. I&#8217;ve worked microservices pretty hard, and I&#8217;m still working them, and I&#8217;m still coming back for more. The closer you look, the better they get. And they make you feel wonderful.</p>
+<p>I&#8217;ve decided to write another book, despite swearing that I would never write one again. Writing is the most painful thing you can do to your brain. It forces you to think clearly! A most uncomfortable experience. The wonderful thing about putting your ideas on paper is that it starts a conversation. There is no question that a great deal of work remains to be done to refine the microservice idea. That only happens when we apply our collective intelligence to the problem. This book is a field report from the front lines of the microservice architecture. It captures an approach that has evolved from practical iteration.</p>
+<p>At the end of 2011 I co-founded a software consultancy. I had finally had enough of the startup merry-go-round, and decided to try a different business model. As it turns out, it was a hidden passion, and we have had great success and grown quickly. Part of that success is due to our adoption of the microservice architecture (the other part is our participation in the open source community). Microservices let us deliver quickly. Fact. If you want empirical evidence that microservices actually work in practice, <a href="http://nearform.com">nearform.com</a> is it. The great thing about software consultancy is that you get to work with so many people and companies, and so many different technical challenges, from greenfield projects to massive legacy integrations. It&#8217;s always interesting to hear how Netflix, or Uber, or Amazon are using microservices, and they have very much moved the needle (thank you guys!). But there is still the criticism that these are unicorns, special cases, and that you need the vast resources and teams of rock star coders to make it actually work in practice. The great thing about consultancy is that you can gain such a wide range of experience that you can really see how software development plays out in many different contexts. Microservices can work for any team, right from the word go.</p>
+<p>So why are they so much fun? Because they are little building blocks that snap together easily and let you build big systems without melting your brain. So much of the pain of software development comes from the mental effort required to keep lots of spinning plates in the air. Our language platforms have too many features, and too much power. This power is great, a<a title="Kessler Syndrome" href="https://en.wikipedia.org/wiki/Kessler_syndrome"><img loading="lazy" decoding="async" class=" size-medium wp-image-235 alignleft" src="http://www.richardrodger.com/wp-content/uploads/2016/02/300px-Debris-GEO1280-300x240.jpg" alt="300px-Debris-GEO1280" width="300" height="240" /></a>nd fun to code, <em>when the code-base is small</em>. As soon as it reaches enterprise-grade applications, with massive code-bases, it becomes very not fun. This is called technical debt. It sucks. Technical debt is the reason for lost weekends, death marches, and failed projects. Microservices are the antidote to technical debt. They make it very hard to take out that loan. They are small, so you can&#8217;t shoot yourself in the foot.</p>
+<p>Microservices work because they give you<a title="Gerald Sussman on Flexible Systems" href="https://vimeo.com/151465912 "> a scalable component model based on the principle of additivity</a>. Need a new feature? Write a new microservice! The immediate criticism is that with so many moving parts, this is a nightmare to deploy, and impossible to understand. Well certainly, if you think microservices are just a <a href="https://en.wikipedia.org/wiki/Service-oriented_architecture">Service-Oriented Architecture</a>, with more and smaller services, then you&#8217;d be dead right. <a href="http://www.svds.com/evaluating-microservices-real-world-lessons/">That</a> <a href="http://particular.net/blog/microservices-future-or-empty-hype">would</a> <a href="http://highscalability.com/blog/2014/4/8/microservices-not-a-free-lunch.html">be</a> <a href="http://blog.christianposta.com/microservices/youre-not-going-to-do-microservices/">a</a> <a href="http://www.codingthearchitecture.com/2014/07/06/distributed_big_balls_of_mud.html">disaster</a>. The key to making it work is to stop obsessing about the services, and turn to the messages between services. The messages can be catalogued. They form a domain language. They can be directly connected to the business requirements. The desired behavior of the messages, and their interactions, can be declaratively defined (<a href="http://senecajs.org">pattern-matching</a> is a good approach). Once you have the list of messages, you group them into services. The number of service instances, and the nature of their deployment, and even the transport mechanisms that you use to move messages, are all ultimately infrastructural issues that can be solved with deployment automation and management (you should be doing this anyway, <a title="Knight Capital Deployment Disaster" href="http://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/">even for monoliths</a>!). They are not fundamental weaknesses, no more than the need to compile a high-level language into machine code is a weakness &#8211; it is just a practicality.</p>
+<p>The book has two key aims. First, to give you the practical and theoretical tools to design, build and deploy microservice architectures that work, and that give you the benefits of rapid development, flexibility in the face of changing requirements, and continuous delivery. Second, you need to understand the trade-offs of the architecture, so that you can understand the advantages and disadvantages of choosing to use microservices. Your own situation is always relevant. It is your job to make the decision. The problem with all the noise, all the blog posts for and against, is that it is very hard to get a clear understanding of the consequences of your decisions as a software developer. This book is a field report &#8211; a concise summary of my five year journey, and the place where I am now. <a title="The Tao of Microservices Book" href="https://manning.com/books/the-tao-of-microservices?a_aid=tms&amp;a_bid=3b7806c8">Compress my five years in 5 hours of reading, and make your own decision about microservices.</a></p><p>The post <a href="https://www.richardrodger.com/tao-of-microservices">The Tao of Microservices</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/tao-of-microservices/feed/</wfw:commentRss>
+			<slash:comments>6</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Seneca, A Microservices framework for Node.js</title>
+		<link>https://www.richardrodger.com/seneca-microservices-nodejs</link>
+					<comments>https://www.richardrodger.com/seneca-microservices-nodejs#comments</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Thu, 14 Jan 2016 19:15:05 +0000</pubDate>
+				<category><![CDATA[Node.js]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://www.richardrodger.com/?p=228</guid>
+
+					<description><![CDATA[<p>The release of Seneca 1.0 represents 5 years of open source evolution, and not a little blood, sweat and tears. The thing I am most happy about is the fact that I did not do the release &#8211; Wyatt had &#8230; <a href="https://www.richardrodger.com/seneca-microservices-nodejs">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/seneca-microservices-nodejs">Seneca, A Microservices framework for Node.js</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>The release of <a title="Seneca" href="http://senecajs.org">Seneca 1.0</a> represents 5 years of open source evolution, and not a little blood, sweat and tears. The thing I am most happy about is the fact that I did not do the release &#8211; <a title="Wyatt Preul" href="http://jsgeek.com/">Wyatt</a> had that honor, with <a title="Dean McDonnell" href="http://mcdonnelldean.me/">Dean</a> and <a title="Matteo Collina" href="http://www.matteocollina.com/">Matteo</a> keeping him honest! Seneca is now a community, not just one developer&#8217;s itch. And if you ask me about the future, the first priority is the care and feeding of the community. Building the rules of conduct, guiding principles, decision making processes, great documentation, and all the other stuff that isn&#8217;t code. We want to be good open source citizens.</p>
+<h2>Microservices for Node.js</h2>
+<p>So you want to write microservices in Node.js? Seneca&#8217;s job is to make your life easier. The funny thing is, Seneca did not start out as a microservices framework at all. It was a framework for building <a title="Minimum Viable Product" href="http://steveblank.com/2013/07/22/an-mvp-is-not-a-cheaper-product-its-about-smart-learning/">Minimum Viable Products</a>. To build an MVP, you need to be able to plug together pieces of code quickly. You should be able to list a set of basic functionalities, such as user accounts, database connectors, content delivery, administration backends, etc, and get a web application that &#8220;just works&#8221;. You then extend and enhance to add your own secret sauce.</p>
+<p>I really liked the way that <a title="Ruby on Rails" href="http://rubyonrails.org/">Rails</a> (for Ruby) and <a title="Django Project" href="https://www.djangoproject.com/">Django</a> (for Python) had ecosystems of &#8220;business logic&#8221; components that you could (almost!) just plug in. But having built systems with both platforms, the reality on the ground was a little different. The promise was that, unlike, say Java (where I spent far too many years building &#8220;enterprise&#8221; systems), Rails or Django would let you develop an MVP very quickly. This was only half true. Certainly, if you stuck to the rules, and mostly followed the <a title="Model-View-Controller" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller</a> style, you could get pretty far. But the component systems of these platforms always ended up creating technical debt. There were just too many integration hooks, too much opportunity for complexity to creep in. The underlying problem was that neither system had any fundamental structural model to unify the component architecture. It was all special cases, neat tricks, and <a title="Monkey Patching" href="http://www.justinweiss.com/articles/3-ways-to-monkey-patch-without-making-a-mess/">monkey patching</a>.</p>
+<h2>Software components</h2>
+<p>What are software components anyway? They are pieces of functionality that you can glue together. And, by glue, we mean <em>compose</em>. And yes, composability is why people get all hot and bothered about <a title="El Reg takes on Functors" href="http://www.theregister.co.uk/2016/01/13/stob_remember_the_monoids/">category theory and monads and all that jazz</a>. Back in the real world, the ability to compose software components together is the essence of their value. The thing people love about UNIX command line tools is that you can pipe them together using simple streams of data. It&#8217;s a simple component model that works really well. Other component models have the same goal, but don&#8217;t quite get there. Take object-oriented programming. Objects are meant to be components. And yet getting objects to work together is &#8230; rather awkward. I never fail to be struck by the irony that despite the supposed power of inheritance, interfaces, polymorphism, and such, you still need a book of <del>spells</del> <a title="Gang of Four Design Patterns" href="https://en.wikipedia.org/wiki/Design_Patterns">design patterns</a> to &#8220;code proper&#8221;. Seems like all that power just lets you make a bigger mess.</p>
+<p>Functional programming is a quite a bit better, mostly because functions are more uniform, and thus easier to compose. And many functional programming languages have pattern matching. Now pattern matching is terribly simple, like UNIX pipes, but also terribly powerful, also like UNIX pipes. The pattern of your input determines which function to call. And handling special cases is easy &#8211; just add more functions for more specific patterns. The nice thing about this approach is that the general cases can remain general, with simple data structures and logic. Pattern matching is a powerful way to fight technical debt. And it&#8217;s useful by itself, so you don&#8217;t have to go functional if you don&#8217;t want to.</p>
+<h2>The Genesis of Seneca</h2>
+<p>By 2010 I had finally become quite allergic to Java. I had tried Ruby and Python, and their primary frameworks, and found them wanting. And then I came across this little science experiment called <a title="Node.js" href="https://nodejs.org">Node.js</a>. My first reaction, like that of many, was &#8230; JavaScript? srsly? But then I remembered that the <a title="JSON" href="http://json.org">json.org</a> coder, Douglas Crockford, had written a book about JavaScript. I read that book, <em>JavaScript, the Good Parts</em>, and felt better. And a toy language became how I fed myself and my family.</p>
+<p>At the time I was heavily involved in the mobile web and HTML5 worlds, and quite convinced that native mobile apps were on the way out (oh yeah &#8230; real soon now). I had even helped build a startup, <a title="FeedHenry" href="http://feedhenry.com">feedhenry.com</a> (since acquired by RedHat), based on the idea. But then life took a different course. A new baby, our third, and an offer of a book deal, and a desire to return to freelancing, and the promise of much higher productivity with Node.js, combined to push me into independence once again. I was back writing code, and it was fun!</p>
+<p>Just a small hitch. The Node.js module system, <a title="NPM" href="http://npmjs.org">npmjs.org</a>, is fantastic, and there are many many great modules. Most of them are infrastructural in nature &#8211; utilities. Yes, they are software components, and yes, the Node.js module system is also a pretty good software component model. But, it still suffers from the complexity inherent in the underlying JavaScript language. Node modules are sort of composable, and there are good examples, like <a title="hapi" href="http://hapijs.com/">hapi</a>, or <a title="Substack's Streams Handbook" href="https://github.com/substack/stream-handbook">streams</a>, but there was still no easy way to componentize &#8220;business logic&#8221;. As a freelancer I lived or died by my ability to deliver features. Rewriting the business logic for user account management, or for shopping carts, or payment integrations, or content management, was killing my margins. I decided to build a component model based on pattern matching.</p>
+<p>The model is really simple. Components are nothing more than a set of inbound and outbound messages. They are entirely defined by the messages they accept, and the messages they emit. We say nothing about internal data structures, or even causality between messages. A component is fully specified by these two lists of messages.</p>
+<p>Let&#8217;s say we are writing a little blogging engine. You can post entries. Entries have a <em>title</em> and <em>body</em> text. So you have <em>post-entry</em> message, and it contains the <em>title</em> and <em>body</em> data. Now you have to answer the questions:</p>
+<ul>
+<li>Who sends this <em>post-entry</em> message?</li>
+<li>Who receives it? Does more than one component receive it?</li>
+<li>What is an &#8220;entry&#8221; anyway?</li>
+<li>And what is a message type? What type is <em>post-entry</em>?</li>
+</ul>
+<p>And this is just inside the same process. I was not even thinking about distributed systems of microservices at this stage. All I knew was, encoding the messages as method calls on an object was not the way to go &#8211; that leads to the same old madness.</p>
+<p>The key question is, what is a message type? It&#8217;s a hard one to answer. You end up going down the road of schema validation, contracts, and other such nastiness. One way to answer hard questions is not to answer them at all &#8211; a common trick among mathematicians. Do parallel lines ever meet? Decide that the question is unanswerable and you get whole new geometries! Pattern matching lets you side-step the question of message types. Here&#8217;s how it works:</p>
+<p>Let&#8217;s say the <em>post-entry</em> message looks something like:</p>
+<pre class="qoate-code">
+{
+  "title": "Down with this sort of thing!",
+  "body": "Careful now!"
+}
+</pre>
+<p>What if we just send it to all components? Let each component decide if the message is important. That avoids the question of message routing. Still, it&#8217;s hard to recognize the messages you care about, so let&#8217;s make it a little easier. Let&#8217;s tag the message with a fixed property:</p>
+<pre class="qoate-code">
+{
+  "post": "entry",
+  "title": "Down with this sort of thing!",
+  "body": "Careful now!"
+}
+</pre>
+<p>Now any components that care about the posting of entries can pattern match messages by looking for a top level <em>post:entry</em> property and value pair. Let&#8217;s say we have at least a <em>PostEntry</em> component that handles posted entries &#8211; perhaps it saves them to a database.</p>
+<p>There are some nice consequences to pattern matching. Components that emit this message do not need to know about components that consume it. Nor do components that consume the message need to know about the emitting components. That&#8217;s decoupling, right there! Messages do not need to be addressed to anybody. The need to have a target for messages is the downfall of many a component architecture. To call a method, you need an object instance, and we avoid that need with patterns. Another consequence: any number of components or component instances can react to the message. That&#8217;s not an architectural decision you have to make in advance.</p>
+<p>Isn&#8217;t this just an event-driven architecture? No. Events are sent and received from topics, and topics are pretty much equivalent to addresses. You have to know the topic name on the sending side.</p>
+<p>Isn&#8217;t the tag just a backdoor type? On a theoretical level, probably! On a practical level, not really. It doesn&#8217;t impose that same constraints that types do, nor provide any ability to validate correctness. Nor does it impose a schema. This approach to component communication is very much in the school of <a title="Postel's Law" href="https://en.wikipedia.org/wiki/Robustness_principle">Postel&#8217;s Law</a>: &#8220;be strict in what you emit, liberal in what you accept&#8221;. And the label that we are using for this message, <em>post-entry</em>, is not a type, just an informal name.</p>
+<h2>Practical Pattern Matching</h2>
+<p>Messages do have to make it from one component to another eventually. But the mapping from patterns to components does <em>not</em> reside in the component themselves. You can put that information in a separate place, and implement the mapping separately, and in many different ways. I wrote a little pattern-matching engine to do this work: <a title="patrun module" href="https://github.com/rjrodger/patrun">patrun</a>. The way that you &#8220;wire&#8221; up components is thus independent, declarative, simple to understand, and yet dynamically configurable.</p>
+<p>Now let&#8217;s kick it up a gear. Let&#8217;s add a feature to our system. Blog posts can contain an image! Woohoo! In a traditional software architecture, you&#8217;d have to modify your system to support this new feature. You&#8217;d have to extend your data models, create sub-classes, update data schemas, change method signatures, update unit tests, and so on, and so forth. No wonder software projects are always late and over-budget.</p>
+<p>Stepping back for a minute, the <em>post-entry</em> messages now look like this:</p>
+<pre class="qoate-code">
+{
+  "post": "entry",
+  "title": "Down with this sort of thing!",
+  "body": "Careful now!"
+  "image": "http://www.richardrodger.com/wp-content/uploads/2016/01/careful-now-down-with-this-sort-of-thing.jpg" // OPTIONAL!
+}
+</pre>
+<p>Sometimes the message has an image property, sometimes it doesn&#8217;t. Does this break anything? The original <em>PostEntry</em> component that handled <em>post-entry</em> messages still works! It just ignores the extra <em>image</em> property &#8211; it means nothing.</p>
+<p>Now, add a new component to the system that can handle entries with images: let&#8217;s call it <em>PostImageEntry</em>. Any time <em>PostImageEntry</em> sees a message that contains both <em>post:entry</em>, and an <em>image</em> property, then it has a match, and it acts on the message.</p>
+<p>There&#8217;s an obvious problem. The original <em>PostEntry</em> component is also going to act on the same message, which is not what you want. There&#8217;s an easy solution. Add a rule that more specific matches win. <em>PostImageEntry</em> matches more properties than <em>PostEntry</em>, so it wins. The nice thing is, you never had to change the code of the original <em>PostEntry</em> to make this work. All you did was add new code. Not needing to modify old code removes entire classes of potential bugs.</p>
+<p>The &#8220;more specific matches win&#8221; rule gives you extensible components. Every time you have a new feature or a special case, match against the property of the message that makes it special. You end up with a set of components where the ones written early in the project are more general, and the ones written later are more specific, and at no point did you ever have to refactor.</p>
+<p>It gets better. Older components that are &#8220;a bit wrong&#8221; and no longer relevant &#8211; they&#8217;re <a title="Greg Young: Disposable Code" href="https://vimeo.com/108441214?ref=tw-share">disposable</a>! Throw them away and rewrite better components. The consequences are local, not global, so rewriting is cheap and safe.</p>
+<p>What about composability? Well, let&#8217;s say one of your clients is a strict libertarian, and believes all forms of censorship are evil, but another client is deeply traditional and simply won&#8217;t tolerate any foul language on their blogging site. Where do you add logic to deal with this?</p>
+<p>Try this: write a <em>NicePostEntry</em> component. It checks for foul language, and replaces any objectionable words in the body property with the string &#8220;BEEP!&#8221;. The <em>NicePostEntry</em> component matches the pattern <em>post:entry</em>, and so captures all <em>post-entry</em> messages. Again we have the problem that this conflicts with our existing <em>PostEntry</em>. The solution is to allow pattern overrides.</p>
+<p>We allow <em>NicePostEntry</em> to override the <em>post:entry</em> pattern. But we also give <em>NicePostEntry</em> a reference to the <a title="Seneca priors tutorial" href="http://senecajs.org/tutorials/understanding-prior-actions.html"><em>prior</em></a> component that was attached to that pattern. <em>NicePostEntry</em> can then modify the message as it sees fit, and pass it on to the prior component. This is composition! As an abuse of syntax, we can say, with respect to the pattern <em>post:entry</em>, messages are processed as</p>
+<pre class="qoate-code">
+PostEntry( NicePostEntry( message ) )
+</pre>
+<p>What about <em>post-entry</em> messages with images? Since we have a separate pattern matching engine, we set up our rules to handle both cases:</p>
+<pre class="qoate-code">
+post:entry, image: undefined -&gt; PostEntry( NicePostEntry( message ) )
+post:entry, image: defined -&gt; PostImageEntry( NicePostEntry( message ) )
+</pre>
+<h2>Business Logic Components</h2>
+<p>This simple little model gives you pretty much all you need for handling the ever-changing requirements of &#8220;business logic&#8221;. It works because you don&#8217;t need to design a data model in advance, you don&#8217;t need to design an object model in advance, and you don&#8217;t even need to design message schemas in advance. You start with your best guess of the simpler messages in the system, and you know you have a get-out-of-jail: new features can be handled with new properties, and they won&#8217;t break old features.</p>
+<p>If you think about it, there is quite a direct path from informal business requirements, to &#8220;things that happen&#8221; in the system, to messages between components. It&#8217;s quite easy to specify the system in terms of messages. In fact, you don&#8217;t really need to worry about deciding which components to build up front. You can group messages into natural components as you go, or split them out into separate components if the components get too complex.</p>
+<p>And this gets you to the point where you can write very general components that handle all sorts of common application features, in a very generic way, and then enhance and compose as needed for needs of an individual project. If you look at the <a title="Seneca plugins" href="http://senecajs.org/plugins/">plugin page for Seneca</a>, you&#8217;ll see there are plugins (software components) for all sorts of things. They all communicate using pattern matching on messages, and so are resilient to versioning issues, allow for alternative implementations, and most importantly, allow the community to build new plugins, for new features, without any &#8220;command and control&#8221; nonsense. Anyone can write any old Seneca plugin, any old way they like. Of course, there are some <a title="Seneca plugin conventions" href="http://senecajs.org/tutorials/how-to-write-a-plugin.html">conventions</a>, and we do maintain a curated list of well-behaved plugins on the Seneca site. Still, in your own projects, you&#8217;re pretty much free to do whatever you like &#8211; it&#8217;s all just messages at the end of the day.</p>
+<p>By the time Seneca had become a useful component system in late 2011, I co-founded <a title="nearForm" href="http://nearform.com">nearForm</a> with <a title="Cian O'Maidín" href="https://twitter.com/cianomaidin">Cian O&#8217;Maidín</a>. We saw the potential in Node.js and decided we wanted to be part of something big. Seneca became a vital part of our ability to delivery quickly and effectively for clients. We&#8217;re based in Ireland, so not only are most of our clients remote, most of our developers are also remote. The ability to separate development work into well-defined components, with interfaces specified by message patterns, along with a body of plug-and-play business components, allowed us to excel at delivery, and is one of the cornerstones of our success in software professional services. We did hit one major snag though, and it illustrates an important trade-off and limitation of this approach (and you thought this was all rainbows and unicorns, oh no&#8230;).</p>
+<h2>Data Modeling</h2>
+<p>The problem was data, specifically, data models. How do you map the classical idea of a data schema onto a system with no types, and arbitrary messages? Our first instinct was to hide all data manipulation inside each component, and treat messages as extracts of relevant data only. This worked, but was not entirely comfortable. You&#8217;ll notice a similar problem in microservice architectures. If one microservice &#8220;owns&#8221; all the data for a given entity, say users, then how do other pieces of business logic in other microservices access and manipulate that data?</p>
+<p>At the time we were blissfully unaware of <a title="Domain Drive Design" href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design</a>, and still rather enamored with the <a title="ActiveRecord" href="https://en.wikipedia.org/wiki/Active_record_pattern">ActiveRecord</a> design pattern. We did have a problem to solve. Components needed a common data model to facilitate interactions, and we also wanted to be database independent (in consulting, especially for large clients, you don&#8217;t always get to choose the database).</p>
+<p>We decided to model data using a set of standard messages patterns corresponding (almost) to the basic Create-Read-Update-Delete data operations. Seneca thus offers a conventional set of message patterns of the form <em>role:entity, cmd:save|load|remove|list</em> that operate on &#8220;data entities&#8221;. Pattern matching makes it easy to support optional namespaces, so that you can have &#8220;system&#8221; entities for well established plugins (say for user accounts), and even support things like multi-tenancy. Because all data entity operations reduce to messages, it&#8217;s easy to get fancy, and use different databases for different kinds of data, whilst retaining the same API. That&#8217;s cool. It lets you do things like switch database mid-project without much pain. Start with MongoDB because in the early days your schema is unstable, and end with Postgres, because the client insists on a relational database for production.</p>
+<p>You can use pattern composition to add things like data validation and manipulation, access controls, caching, and custom business rules (this is equivalent to adding custom methods to an ActiveRecord). This is all very nice, and works really well in real-world projects. We&#8217;re still in business after all! For more details, the <a title="Seneca Data Entities" href="http://senecajs.org/tutorials/understanding-data-entities.html">Seneca data entity tutorial</a> has you covered.</p>
+<p>So what&#8217;s the catch? The trade-off is that you have a lowest-common denominator data model. You get what is essentially a key-value store, but with reasonable, if limited, query capabilities. You certainly don&#8217;t get to write SQL, or have any concept of relations. You don&#8217;t get table joins. You have to accept denormalization.</p>
+<p>Now, on the other hand, one can argue that a simplified data model gives you better scalability and performance, and also forces you to face up to data consistency choices that you should be making. The days of hiding behind &#8220;transactions&#8221; are gone, especially with the number of users we have to deal with.</p>
+<p>The way that Seneca handles data will be expanding. We will certainly retain our simplified model, and use that as the basis for core components. It works, and it works pretty well, but we won&#8217;t hide the choices that it entails either. Luckily, the message model allows us, and you, to enhance what&#8217;s already there, and push forward. One of our core values is respect for developers that have chosen to use the framework, and that means you&#8217;ll never suffer from global thermonuclear version breakage. We&#8217;ll keep your old code running. <b>Backwards compatibility is in our blood</b>. You might have to switch on a flag or add a supporting plugin, but we&#8217;ll never ask you to refactor.</p>
+<h2>Microservices</h2>
+<p>Oh yeah &#8230; those. So we invited <a title="Fred George" href="http://www.slideshare.net/fredgeorge">Fred George</a> to speak at one of our Node.js meetups in Dublin in 2013, about &#8220;Programmer Anarchy&#8221;, and he pretty much melted our brains. We had discovered microservices, and we loved the idea. Yes, lots of practical problems, like deployment and configuration, and network complexity &#8211; <a title="Microservices not a free lunch" href="http://highscalability.com/blog/2014/4/8/microservices-not-a-free-lunch.html">not a free lunch by any means</a>. But very tasty, and worth paying for!</p>
+<p>We did have a little secret weapon &#8211; Seneca. Microservices are really just independently deployable and scalable software components. But how do they communicate? Well, we had already solved that problem! Pattern matching. All we need to know was figure out the networking piece.</p>
+<p>To preserve the simple view of the world that we had created, it was obvious that microservices should not know about each other, in any way. Microservices based on web services offering REST interfaces suffer from the problem of addressing &#8211; where does the microservice live? You need to know the network address of the other side.</p>
+<p>Now, you can solve this problem in many different ways &#8211; service registries, proxies, virtual network overlays, message buses, and combinations thereof. The problem with most approaches is that your microservice code is still closely bound to the transport mechanism. For example, say you decide to use redis, because you like the publish-subscribe pattern. Well if you use a redis library directly, then it&#8217;s going to be hard to move to Kafka when you need to scale. Sure you can write an abstraction layer, but that&#8217;s more work again. Alternatively, you could use system designed exactly for the microservice architecture &#8211; <a title="Akka" href="http://akka.io/">Akka</a>, say. That does tend tie you down to a particular language platform (Yes, Seneca is Node.js, but the messages are JSON, so polyglot services are much easier than a custom protocol)</p>
+<p>We decided to adopt the strategy of <em>transport independence</em>. Microservices should neither know nor care how messages arrive or are sent. That is configuration information, and should not require changes to the business logic code. The pattern matching message architecture made it very easy to make this work. Provide a transport plugin that matches the outbound message patterns. The transport plugin sends these messages out onto the network. The transport plugin can also accept messages from the network and submit them to local plugins. From the perspective of all other Seneca plugins, nothing has changed. <strong>The transport plugin is just another plugin.</strong></p>
+<p>We converted Seneca into a microservices framework, with no code changes. We just wrote some new plugins. Of course, later we added API conveniences, and things like message correlation identifiers, but even now Seneca is a microservices platform built entirely from plugins. That means you&#8217;re not stuck with our opinion on microservices. You can easily write your own transports.</p>
+<p>DANGER: You can&#8217;t allow yourself to think that all messages are local, and the network is &#8220;hidden&#8221;, that&#8217;s a <a title="Fallacies of Distributed Computing" href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">network fallacy</a>. Instead, adopt the mindset that all messages are distributed, and thus subject to failure on the network. In the era of cloud computing, that&#8217;s probably going to end up being true for your system anyway.</p>
+<p>The plugin approach to message transport gives you a very flexible structure for your microservices. You write your own code in a normal Node.js module, which you can unit test in the normal way. You put your module into a Seneca plugin, and expose it&#8217;s functionality via a set of message patterns (or for simple cases, just write a plugin directly). Then you write a separate execution script, to run your microservice. The execution script &#8220;wires&#8221; up the microservice to the rest of the network. It handles the configuration of the microservice, including details like network configuration. Just as with Seneca data entities, you can change your microservice communication strategy from HTTP REST to a RabbitMQ message queue, without any changes to your business logic code. Just write a new execution script &#8211; it&#8217;s only a couple of lines of configuration code.</p>
+<p>To see actual code, and try this out for yourself, try the <a title="NodeZoo workshop" href="https://github.com/rjrodger/nodezoo">NodeZoo workshop</a>.</p>
+<h2>Service Discovery</h2>
+<p>For the transport plugins, we started as simply as we could. In fact, the basic transport is pretty much just point-to-point HTTP REST, and you do need to provide an address &#8211; the IP and port of the remote service. But this is OK &#8211; your business logic never needs to know, and can be written under the useful fiction that it can send and receive any message, and it will still &#8220;just work&#8221;.</p>
+<p>This approach has another useful feature &#8211; testing and mocking is easy. Simply provide stub implementations of the message patterns that your microservice expects. No need for the laborious re-construction of the object hierarchies of third party libraries. Testing reduces to verifying that inbound and outbound messages have the expected behavior and content. Much simpler than testing the nooks and crannies of all the weird and wonderful APIs you can construct just with normal language features in JavaScript.</p>
+<p>Despite these advantages, service discovery had remained an awkward practicality, until recently that is. The problem is that you still have to get the network location of the other services, or at least the port numbers if using a proxy, or the location of the message bus, or use a central service registry, or set up fancy virtual DNS, or find some other way to get location information to the right place. We used all of these strategies, and more, to mitigate the problems that this issue causes in production, and also for local development.</p>
+<p>But the pressure was mounting from our user community. Everybody wants a free lunch in the end. So we started to experiment with mesh networking. Microservices should configure each other, and share information directly with each other, in a decentralized way. The problem with most of the current service discovery mechanisms is that they use a central point of control to manage the microservice system. Consider the drawbacks. The central registry can easily get out of date. Services come and go as they fail and restart, or as the system scales up or down. The registry may not know about all of the healthy services, and may direct clients to use unhealthy services. Detecting unhealthy services has to be done by heart-beating, but that is vulnerable to slow failures, where the service, under load, may just be taking longer to respond. All-in-all, centralized microservice configuration is tricky, and offers a valid criticism of the entire approach in production.</p>
+<p>Nonetheless, we were determined to find a solution. The advantages of microservices far outweigh even this problem. They really do make continuous deployment very simple, and provide you with meaningful ways to <a title="Measuring Microservices" href="http://microxchg.io/2015/talk/richard_roger_measuring_microservices.html">measure the health of your system</a>. There had to be a way to let microservices discover each other dynamically, and without a central point of failure.</p>
+<p>It was with some interest that we noticed what <a title="Uber Algorithm" href="http://www.infoq.com/news/2015/03/uber-realtime-market-platform">Uber</a> was doing with the <a title="SWIM algorithm" href="http://www.cs.cornell.edu/~asdas/research/dsn02-SWIM.pdf">SWIM algorithm</a>. It&#8217;s powerful stuff. Essentially it lets a microservice join a network of other microservices, and then they all share information. But not by broadcasting, which has scaling issues, but by infection. Information (such as the start up of a new microservice) moves through the network like an infection, with neighbors infecting each other. Get the mechanics right, throw in a little randomness, and you get fantastic performance and scalability. You also know very quickly if a microservice is unhealthy. It&#8217;s pretty sweet!</p>
+<p>We wanted to use it, but there was another microservice function we had to build first &#8211; client-side load-balancing. You put a little load-balancer inside your client microservice, rather than using an external one (such as nginx or HAProxy). <a title="Netflix Ribbon" href="http://techblog.netflix.com/2013/01/announcing-ribbon-tying-netflix-mid.html">Netflix&#8217;s ribbon</a> is a great example. The philosophy of Seneca is that all configurations have their place, and we wanted to offer <a title="Seneca Balance Client" href="https://github.com/rjrodger/seneca-balance-client">client-side load-balancing</a> as a possibility.</p>
+<p>The trick is to make the balancer dynamically reconfigurable. The balancer is a transport, so it routes any messages that match remote patterns to remote services. Now we also use Seneca&#8217;s strengths to make this independent of the transport. You compose the balancer together with the underlying transport, and you can balance over any remote mechanism &#8211; HTTP end points, message buses, TCP streams, etc. Any combination of message pattern and transport is possible (you can see why fans of functional programming get excited by composition).</p>
+<p>The next step is to provide a <a title="Seneca Mesh" href="https://github.com/rjrodger/seneca-mesh">mesh networking plugin</a>. All that plugin does is join the mesh of microservices using the SWIM algorithm (Thanks <a title="Rui Hu" href="http://mrhooray.com/">Rui Hu</a>!). It then announces to the world the message patterns that the current microservice wants to listen for. The pattern information is disseminated throughout the network, and the client-side load-balancers dynamically add the new microservice to their balance tables. The balancer is able to support both actor (where listening services round-robin messages) and publish (where all listening services get each message) modes of operation. This provides you with a complete microservice network configuration. Except there is no configuration!</p>
+<p>At the moment, our implementation still depends on &#8220;well-known&#8221; entry points. You have to run a few base nodes at predetermined locations, so that microservices know where to look to join the network &#8211; <a title="Peter Elger, nearForm VP Eng." href="https://github.com/pelger">Peter</a> is fixing that one for us, and soon the network will be completely self-managing.</p>
+<p>With mesh networking, Seneca has now made microservice service discovery pretty much a solved problem. Even if we do say so ourselves!</p>
+<h2>Welcome to the Community!</h2>
+<p>It has been an honor, and privilege, to start and then participate in an active and growing open source project. It is really very special when people put so much trust in your code that they use it in production. It&#8217;s easy to forget how significant that is. And I am incredibly grateful to everybody that has contributed to Seneca over the years &#8211; Thank You!</p>
+<p>We want to be a great project to <a title="Contribute to Seneca" href="http://senecajs.org/contribute/">contribute</a> to, a safe project for any developer, and to be friendly community. We&#8217;re lucky that our plugin architecture gives us a simple mechanism for contributions, and also allows contributors to do things their own way. We will curate the main <a title="Seneca Org" href="http://senecajs.org/">Seneca organization</a> to have a consistent and well-tested set of plugins, and of course some rules will be needed to do that. That said, we want to live by <a title="Seneca Principles" href="http://senecajs.org/contribute/details/principles.html">principles</a>, not regulations.</p>
+<p>The microservices architecture is very young, and is fertile territory for research and experimentation. This is our contribution.</p><p>The post <a href="https://www.richardrodger.com/seneca-microservices-nodejs">Seneca, A Microservices framework for Node.js</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/seneca-microservices-nodejs/feed/</wfw:commentRss>
+			<slash:comments>13</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Monolithic Node.js</title>
+		<link>https://www.richardrodger.com/monolithic-nodejs</link>
+					<comments>https://www.richardrodger.com/monolithic-nodejs#comments</comments>
+		
+		<dc:creator><![CDATA[Richard Rodger]]></dc:creator>
+		<pubDate>Tue, 03 Dec 2013 16:30:28 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://www.richardrodger.com/?p=213</guid>
+
+					<description><![CDATA[<p>Are large-scale Node.js systems possible? Empirically, the answer is yes. Walmart and Paypal have both shown that it can be done. The quick criticism is that you need 10X engineers. This a classic, and well-founded criticism. New ways of doing &#8230; <a href="https://www.richardrodger.com/monolithic-nodejs">Continue reading <span class="meta-nav">&#8594;</span></a></p>
+<p>The post <a href="https://www.richardrodger.com/monolithic-nodejs">Monolithic Node.js</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>Are large-scale Node.js systems possible? Empirically, the answer is yes. <a href="https://twitter.com/eranhammer/status/407784258170667009">Walmart</a> and <a href="http://www.nearform.com/nodecrunch/release-the-kracken-how-paypal-is-being-revolutionized-by-node-js-and-lean-ux">Paypal</a> have both shown that it can be done. The quick criticism is that you need 10X engineers. This a classic, and well-founded criticism. New ways of doing things are often found to be exceptionally productive, precisely because brilliant minds self-select for the new and interesting.</p>
+<p>So let&#8217;s rephrase the question. Are large-scale Node.js systems possible with mainstream developers? If you believe that these large-scale Node.js systems will resemble the large-scale Java and .Net systems you have known and loved, then the answer is, emphatically, no. JavaScript is far too weak a language to support the complexity inherent in systems of such scale. It&#8217;s not exactly type-safe, and half the language is unusable. There&#8217;s a reason the best-selling book on the language is called JavaScript, The Good Parts.</p>
+<p>Despite this, we&#8217;ve managed to build quite a few large-scale systems at my company, nearForm. Here&#8217;s what we&#8217;ve learned, and how we do it.</p>
+<p>The defining attribute of most large-scale, mainstream traditional systems is that they are monolithic. That is, a single large codebase, with many files, thousands of classes, and innumerable configuration files (in XML, if you&#8217;re lucky). Trying to build a system like this in JavaScript is indeed the path to madness. The visceral rejection of Node.js that you see from some quarters is often the spidey-sense of an experienced enterprise developer zapping them between the eyes. JavaScript? No! This reaction is entirely justified. Java and .Net have been designed to survive enterprise development. They enable monolithic architecture.</p>
+<p>There are of course systems built in Java and .Net that are not monolithic, that are more structured. I&#8217;ve built in both styles myself. But it takes effort, and even the best systems fall to technical debt over time. It&#8217;s too easy to fall back into the monolithic trap.</p>
+<p><strong>Monolithic Systems are Bad</strong></p>
+<p>What is so bad about monolithic systems anyway? What does it mean for a system to be “monolithic”? The simplest definition is a system that cannot survive the loss of any of its parts. You pull one part out, and the whole thing fails. Each part is connected to the others, and interdependent on them.</p>
+<p>The term monolith means single stone, and is derived from the ancient greek. The ancient city of Petra in modern-day Jordan is one of the best examples of monolithic architecture. Its buildings are constructed in one piece, hewn directly from the cliff face of a rocky mountain. It also provides a perfect example of the failure mode of monolithic systems. In 363AD an earthquake damaged many of the buildings, and the complex system of aqueducts. As these were carved directly into the mountain, they were impossible to repair, and the city fell into terminal decline.</p>
+<p>So it goes with monolithic software. Technical debt, the complexity built into the system over time, makes the system impossible to repair or extend at reasonable cost as the environment changes. You end up with things like month-long code freezes in December so that the crucial Christmas shopping season is not affected by unknowable side-effects.</p>
+<p>The other effect of monolithic software is more pernicious. It generates software development processes and methodologies. Because the system has so many dependencies, you must be very careful how you let developers change it. A lot of effort must be expended to prevent breakage. Our current approaches, from waterfall to agile, serve simply to enable monolithic systems. They enable us to build bigger and add more complexity. Even unit testing is an enabler. You thought unit testing was the good guy? It&#8217;s not. If you do it properly, it just lets you build bigger, not smarter.</p>
+<p><strong>Modular Systems are Good</strong></p>
+<p>So what are we supposed to do, as software developers, to avoid building monolithic systems. There are no prizes for knowing the answer. Build modular systems! The definition of a modular system is simply the inverse: each part stands alone, and the system is still useful when parts are missing.</p>
+<p>Modular software should therefore be composed of components, each, by definition, reusable in many contexts. The idea of reusable software components is one of the Holy Grails of software development.</p>
+<p>The greatest modular system humanity has created to date is the intermodal shipping container. This is a steel box that comes in a standard set of sizes, most commonly 8&#8242; wide, 8&#8217;6&#8221; tall, and 20 or 40 feet long. This standardisation enables huge efficiency in the transport of goods. Each container is re-usable and has a standardised “API”, so to speak.</p>
+<p>Sadly, software components are nothing like this. Each must necessarily have it&#8217;s own API. There are dependency hierarchies. There are versioning issues. Nonetheless, we persist in trying to build modular systems, because we know it is the only real way to deal with complexity.</p>
+<p>There have been some success stories, mostly at the infrastructure level. UNIX pipes, and the UNIX philosophy of small programs that communicate over pipes, works rather well in practice. But it only takes you so far.</p>
+<p>Other attempts, such as CORBA, or Microsoft&#8217;s OLE, have suffered under their own weight. We&#8217;ve grown rather fond of JSON-based REST services in recent years. Anyone who&#8217;s been at the mercy of third party APIs, and I&#8217;m looking at you, Facebook, will know that this is no promised-land either.</p>
+<p><strong>Objects are Hell</strong></p>
+<p>The one big idea for modular software that seems to have stuck to the wall, is the object-oriented paradigm.</p>
+<p>Objects are supposed to be reusable representations of the world, both abstract and real. The tools of object-oriented development; interfaces, inheritance, polymorphism, dynamic methods, and so on, are supposed to provide us with the power to represent anything we need to build. These tools are supposed to enable us to build objects in a modular reusable way.</p>
+<p>The fundamental idea of objects is really quite broken when you think about it. The object approach is to break the world into discrete entities with well-defined properties. This assumes that the world will agree to being broken up in such a way. Anyone who has tried to create an well-designed inheritance hierarchy will be familiar with how this falls apart.</p>
+<p>Let&#8217;s say we have a Ball class, representing, well, a ball. We then define a BouncingBall, and a RollingBall, both inheriting from the base Ball class, each having suitable extensions of properties and methods. What happens when we need a ball than can both bounce and roll</p>
+<p>Admittedly, inheritance is an easy target for criticism, and the solution to this problem is well-understood. Behaviours (bouncing and rolling) are not essential things, and should be composed instead. That this is known does not prevent a great deal of inheritance making it&#8217;s way into production systems. So the problem remains.</p>
+<p>Objects are really much worse than you think. They are derived from a naïve mathematical view of the world. The idea that there are sets of pure, platonic things, all of which share the same properties and characteristics. On the surface this seems reasonable. Scratch the surface and you find that this idea breaks down in the face of the real world. The real world is messy. It even breaks down in the mathematical world. Does the set of all sets that do not contain themselves contain itself? You tell me.</p>
+<p>The ultimate weakness of objects is that they are simply enablers for more monolithic development. Think about it. Objects are grab bags of everything a system needs. You have properties, private and public. You have methods, perhaps overridden above or below. You have state. There are countless systems suffering from the Big Ball of Mud anti-pattern, where a few enormous classes contain most of the tangled logic. There are just too many different kinds of thing that can go into an object.</p>
+<p>But objects have one last line of defense. Design patterns! Let&#8217;s take a closer look at what design patterns can do for us.</p>
+<p><strong>Bad Patterns are Beautiful</strong></p>
+<p>In 1783 Count Hans Axel von Fersen commissioned a pocket watch for the then Queen of France, Marie Antoinette. The count was known to have had a rather close relationship with the Queen, and the extravagance of the pocket watch suggests it was very close indeed. The watch was to contain every possible chronometric feature of the day; a stopwatch, an audible chime, a power meter, and a thermometer, among others. The master watchmaker, Abraham-Louis Breguet was tasked with the project. Neither Marie Antoinette, Count Fersen, nor Breguet himself lived to see the watch completed. It was finally finished in 1837, by Breguet&#8217;s son. It is one of the most beautiful projects to have been delivered late and over-budget.</p>
+<p>It is not for nothing that additional features beyond basic time keeping are known as complications in the jargon of the watchmaker. The watches themselves possess a strange property. The more complex they are, the more intricate, the more monolithic, the more beautiful they are considered. But they are not baroque without purpose. Form must follow function. The complexity is necessary, given their mechanical nature.</p>
+<p>We accept this because the watches are singular pieces of artistry. You would find yourself under the guillotine along with Marie Antoinette in short order if you tried to justify contemporary software projects as singular pieces of artistry. And yet, as software developers, we revel in the intricacies we can build. The depth of patterns that we can apply. The architectures we can compose.</p>
+<p>The complexity of the Marie Antoinette is seductive. It is self-justifying. Our overly complex software is seductive in the same way. What journeyman programmer has not launched headlong into a grand architecture, obsessed by the aesthetic of their newly imagined design? The intricacy is compounded by the failings of their chosen language and platform.</p>
+<p>If you have built systems using one of the major object-oriented languages, you will have experienced this. To build a system of any significant size, you must roll out your Gang-of-Four design patterns. We are all so grateful for this bible that we have forgotten to ask a basic question. Why are design patterns needed at all? Why do you need to know 100+ patterns to use objects safely? This is code smell!</p>
+<p>Just because the patterns work, does not mean they are good. We are treating the symptoms, not the disease. There is truth in the old joke that all programming languages end up being incomplete, buggy versions of LISP. That&#8217;s pretty much what design patterns are doing for you. This is not an endorsement of functional programming either, or any language structure. They all have similar failings. I&#8217;m just having a go at the object-oriented languages because it&#8217;s easy!</p>
+<p>Just because you can use design patterns in the right way does not mean using design patterns is the right thing to do. There is something fundamentally wrong with languages that need design patterns, and I think I know what it is.</p>
+<p>But before we get into that, let&#8217;s take a look at a few things that have the right smell. Let&#8217;s take a look at the Node.js module system.</p>
+<p><strong>Node.js Modules are Sweet</strong></p>
+<p>If you&#8217;ve built systems in Java or .Net, you&#8217;ll have run into the dreaded problem of dependency hell. You&#8217;re trying to use component A, which depends on version 1 of component C. But you&#8217;re also trying to use component B, which depends on version 2 of component C. You end up stuck in a catch-22, and all of the solutions are a kludge. Other platforms, like Ruby or Google&#8217;s new Go language may make it easier to find and install components, but they don&#8217;t solve this problem either.</p>
+<p>As an accident of history, JavaScript has no built-in module system (at least, not yet). This weakness has turned out to be a hidden strength. Not only has it created the opportunity to experiment with different approaches to defining modules, but it also means that all JavaScript module systems must survive within the constraints of the language. Modules end up being local variables that do not pollute the global namespace. This means that module A can load version 1 of module C, and module B can load version 2 of module C, and everything still works.</p>
+<p>The Node Package Manager, npm, provides the infrastructure necessary to use modules in practice. As a result, Node.js projects suffer very little dependency hell. Further, it means that Node.js modules can afford to be small, and have many dependencies. You end up with a large number of small focused modules, rather than a limited set of popular modules. In other platforms, this limited set of popular modules end up being monolithic because they need to be self-sufficient and do as much as possible. Having dependencies would be death.</p>
+<p>Modules also naturally tend to have a much lower public API to code ratio. They are far more encapsulated than objects. You can&#8217;t as a rule misuse them in the same way objects can be misused. The only real way to extend modules is to compose them into new modules, and that&#8217;s a good thing.</p>
+<p>The Node.js module system, as implemented by npm, is the closest anybody has come in a long time to a safe mechanism for software re-use. At least half the value of the entire Node.js platform lies in npm. You can see this from the exponential growth rate of the number of modules, and the amount of downloads.</p>
+<p><strong>Node.js Patterns are Simple</strong></p>
+<p>If you count the number of spirals in the seed pattern at the centre of a sunflower, you&#8217;ll always end up with a fibonacci number. This is a famous mathematical number sequence, where the next fibonacci number is equal to the sum of the previous two. You start with 0 and 1, and it continues 1, 2, 3, 5, 8, 13, 21, 34, and so on. The sequence grows quickly, and calculating later fibonacci numbers is CPU intensive due to their size.</p>
+<p>There&#8217;s a famous blog post attacking Node.js for being a terrible idea. An example is given of a recursive algorithm to calculate fibonacci numbers. As this is particularly CPU intensive, and as Node.js only has one thread, the performance of this fibonacci service is terrible. Many rebuttals and proposed solutions later, it is still the case that Node.js is single-threaded, and CPU intensive work will still kill your server.</p>
+<p>If you come from a language that supports threads, this seems like a killer blow. How can you possibly build real systems? The are two things that you do. You delegate concurrency to the operating system, using processes instead of threads. And you avoid CPU intensive tasks in code that needs to respond quickly. Put that work on a queue and handle it asynchronously. This turns out to be more than sufficient in practice.</p>
+<p>Threads are notoriously difficult things to get right. Node.js wins by avoiding them altogether. Your code becomes much easier to reason about.</p>
+<p>This is the rule for many things in Node, when compared to object-oriented languages. There is simply no need for a great many of the patterns and architectures. There was a discussion recently on the Node.js mailing list about how to implement the singleton pattern in JavaScript. While you can do this in JavaScript using prototypical inheritance, there&#8217;s really very little need in practice, because modules tend to look after these things internally. In fact, the best way to achieve the same thing using Node.js is to implement a standalone service that other parts of your system communicate with over the network.</p>
+<p>Node.js does require you to learn some new patterns, but they are few in number, and have broad application. The most iconic is the callback pattern, where you provide a function that will be called when the system has more data for you to work with. The signature of this function is always: an error object first, if there was an error. Otherwise the first argument is null. The second argument is always the result data.</p>
+<p>The callback function arises naturally from the event handling loop that Node.js uses to dispatch data as it comes in and out of the system. JavaScript, the language, designed for handling user interface events in the browser, turns out to be well-suited to handling data events on the server-side as a result.</p>
+<p>The first thing you end up doing with Node.js when you start to use it is to to create callback spaghetti. You end up with massively indented code, with callback within callback. After some practice you quickly learn to structure your code using well-named functions, chaining, and libraries like the async module. In practice, callbacks, while they take some getting used to, do not cause any real problems.</p>
+<p>What you do get is a common interface structure for almost all module APIs. This is in stark contrast to the number of different ways you can interact with object-oriented APIs. The learning surface is greatly reduced.</p>
+<p>The other great pattern in Node.js is streams. These are baked into the core APIs, and they let you manipulate and transform data easily and succinctly. Data flows are such a common requirement that you will find the stream concept used all over the place. As with callbacks, the basic structure is very simple. You pipe data from one stream to another. You compose data manipulations by building up sets of streams connected by pipes. You can even have duplex streams that can read and write data in both directions. This abstraction leads to very clean code.</p>
+<p>Because JavaScript is a semi-functional language, and because it does not provide all the trappings of traditional object-oriented code, you end up with a much smaller set of core patterns. Once you learn them, you can read and understand most of the code you see. It is not uncommon in Node.js projects to review the code of third party modules to gain a greater understanding of how they work. The effort you need to expend to do this is substantially less than for other platforms.</p>
+<p><strong>Thinking at the Right Level</strong></p>
+<p>Our programming languages should let us think at the right level, the level of the problems we are trying to solve. Most languages fail miserably at this. To use an analogy, we&#8217;d like to think in terms of beer, but we end up thinking in terms of the grains that were used to brew the beer.</p>
+<p>Our abstractions are at too low a level, or end up being inappropriate. Our languages do not enable us to easily compose their low level elements into things at the right level. The complexity in doing so trips us up, and we end up with broken, leaky abstractions.</p>
+<p>Most of the time, when we build things with software, we are trying to model use cases. We are trying to model things that happen in the world. The underlying entities are less important. There is an important data point in the observation that beginning programmers write naïve procedural code, and only later learn to create appropriate data structures. This is telling us something about the human mind. We are able to get things done by using our intelligence to accommodate differences in the entities that make up our world.</p>
+<p>A bean-bag chair is still a chair. Every human knows how to sit in one. It has no back, and no legs, but you can still perform the use-case: sitting. If you&#8217;ve modeled a chair as a object with well-defined properties, such as assuming it has legs, you fail in cases like these.</p>
+<p>We know that the code to send an email should not be tightly coupled to the API of the particular email sending service we are using. And yet if you create an abstract email sending API layer, it inevitably breaks when you change the implementation because you can&#8217;t anticipate all the variants needed. It&#8217;s much better to be able to say, “send this email, here&#8217;s everything I&#8217;ve got, you figure it out!”</p>
+<p>To build large-scale systems you need to represent this action-oriented way of looking at the world. This is why design patterns fail. They are all about static representations of perfect ontologies. The world does not work like that. Our brains do not work like that.</p>
+<p>How does this play out in practice? What are the new “design patterns”? In our client projects, we use two main tools: micro-services, and pattern matching.</p>
+<p><strong>Micro-Services Scale</strong></p>
+<p>We can use biological cells as an inspiration for building robust scalable systems. Biological cells have a number of interesting properties. They are small and single-purpose. There are many of them. They communicate using messages. Death is expected and natural.</p>
+<p>Let&#8217;s apply this to our software systems. Instead of building a monolithic 100 000 line codebase, build 100 small services, each 100 lines long. <a href="http://www.google.com/search?client=safari&amp;rls=en&amp;q=fred+george+programmer+anarchy">Fred George, (the inventor of programmer anarchy)</a> one of the biggest proponents of this approach, calls these small programs micro-services.</p>
+<p>The micro-services approach is a radically different way of building systems. The services each perform a very limited task. This has the nice effect that they are easy to verify. You can eye-ball them. Testing is much less important.</p>
+<p>On the human side, it also means that the code is easy to rewrite, even in a different language. If a junior engineer writes a bad implementation, you can throw it away. They can be written in pretty much any language. If you don&#8217;t understand the code, you throw it away and rewrite. Micro-services are easy to replace.</p>
+<p>Micro-services communicate with each other by sending messages. You can send these messages directly over internal HTTP, or use a message queue for more scale. In fact, the transport mechanism does not matter all that much. From the perspective of the service, it just deals with whatever messages come it&#8217;s way. When you&#8217;re building services in Node.js, JSON is the most natural formatting choice. It works well for other languages too.</p>
+<p>They are easy to scale. They offer a much finer grained level of scaling then simply adding more servers running a single system. You just scale the parts you need. We&#8217;ve not found the management of all these processes to be too onerous either. In general you can use monitoring utilities to ensure that the correct number of services stay running.</p>
+<p>Death becomes relatively trivial. You&#8217;re going to have more than one instance of important services running, and restarts are quick. If something strange happens, just die and restart. In fact, you can make your system incredibly robust if you build preprogrammed death into the services, so that they die and restart randomly over time. This prevents the build up of all sorts of corruption. Micro-services let you behave very badly. Deployments to live systems are easy. Just start replacing a few services to see what happens. Rolling back is trivial – relaunch the old versions.</p>
+<p>Micro-services also let you scale humans, both at the individual and team level. Individual brains find micro-services much easier to work with, because the scope of consideration is so small, and there are few side-effects. You can concentrate on the use-case in hand.</p>
+<p>Teams also scale. It&#8217;s much easier to break up the work into services, and know that there will be few dependencies and blockages between team members. This is really quite liberating when you experience it. No process required. It flows naturally out of the architecture.</p>
+<p>Finally, micro-services let you map your use-cases to independent units of software. They allow you to think in terms of what should happen. This let&#8217;s you get beyond the conceptual changes that objects impose.</p>
+<p><strong>Pattern Matching Rules</strong></p>
+<p>Micro-services can bring you a long way, but we&#8217;ve found that you need a way to compose them so that they can be reused and customised. We use pattern matching to do this.</p>
+<p>This is once more about trying to think at the right level. The messages that flow between services need to find their way to the right service, in the right form, with the right preparation.</p>
+<p>The pattern matching does not need to be complex. In fact, the simpler the better. This is all about making systems workable for human minds. We simply test the values of the properties in the message, and if you can match more properties than some other service, you win.</p>
+<p>This simple approach makes it very easy to customise behaviour. If you&#8217;ve ever had to implement sales tax rules, you&#8217;ll know how tricky they can be. You need to take into account the country, perhaps the state, the type of good, the local bylaws. Patterns make this really easy. Start with the general case, and add any special cases as you need them. The messages may or may not contain all the properties. It&#8217;s not a problem, because special properties are only relevant for special cases anyway.</p>
+<p>Cross-cutting concerns are also easy to support with pattern matching. For example, to log all the message related to saving data, simply grab those as they appear, make the log entry, and then send the message on its way. You can add permissions, caching, multiple databases. All without affecting the underlying services. Of course, some work is needed to layer up the pattern matching the way you need it, but this is straightforward in practice.</p>
+<p>The greatest benefit that we have seen is the ability to compose and customise services. Software components are only reusable to the extent that they can be reused. Pattern matching lets you do this in a very decoupled way. Since all you care about is transforming the message in some way, you won&#8217;t break lower services so long as your transformations are additive.</p>
+<p>A good example here is user registration. You might have a basic registration service that saves the user to a database. But then you&#8217;ll want to do things like send out a welcome email, configure their settings, verify their credit card, or any number of project-specific pieces of business logic. You don&#8217;t extend user registration by inheriting from a base class. You extend by watching out for user registration messages. There is very little scope for breakage.</p>
+<p>Obviously, while these two strategies, micro-services, and pattern matching, can be implemented and used directly, it&#8217;s much easier do so in the context of a toolkit. We have, of course, written one for Node.js, called <a href="http://senecajs.org/">Seneca</a>.</p>
+<p><strong>Galileo&#8217;s Moons</strong></p>
+<p>We&#8217;re building our business on the belief that the language tools that we have used to build large systems in the past are insufficient. They do not deliver. The are troublesome and unproductive.</p>
+<p>This is not surprising. Many programming languages, and object-oriented ones in particular, are motivated by ideas of mathematical purity. They have rough edges and conceptual black holes, because they were easier to implement that way. JavaScript is to an extent guilty of all this too. But it is a small language, and it does give us the freedom to work around these mistakes. We&#8217;re not in the business of inventing new programming languages, so JavaScript will have to do the job. We are in the business of doing things better. Node.js and JavaScript help us do that, because they make it easy to work with micro-services, and pattern matching, our preferred approach to large-scale systems development.</p>
+<p>In 1610, the great italian astronomer, Galileo Galilei, published a small pamphlet describing the discoveries he had made with his new telescope. This document, Sidereus Nuncius (the Starry Messenger) changed our view of the world.</p>
+<p>Galileo had observed that four stars near the planet Jupiter behaved in a very strange way. They seemed to move in a straight line backwards and forwards across the planet. The only reasonable explanation is that there were moons orbiting Jupiter, and Galileo was observing them side-on. This simple realisation showed that some celestial bodies did not orbit the earth, and ultimately destroyed the Ptolemaic theory, that the sun orbited the earth.</p>
+<p>We need to change the way we think about programming. We need to start from the facts of our own mental abilities. The thought patterns we are good at. If we align our programming languages with our abilities, we can build much larger systems. We can keep one step ahead of technical debt, and we can make programming fun again.</p><p>The post <a href="https://www.richardrodger.com/monolithic-nodejs">Monolithic Node.js</a> first appeared on <a href="https://www.richardrodger.com">Richard Rodger</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://www.richardrodger.com/monolithic-nodejs/feed/</wfw:commentRss>
+			<slash:comments>74</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

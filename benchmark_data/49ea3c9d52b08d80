@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
+	>
+
+<channel>
+	<title>Ray Woodcock&#039;s Latest</title>
+	<atom:link href="https://raywoodcockslatest.wordpress.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://raywoodcockslatest.wordpress.com</link>
+	<description>It&#039;s complicated</description>
+	<lastBuildDate>Wed, 18 Feb 2026 01:46:04 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>http://wordpress.com/</generator>
+<site xmlns="com-wordpress:feed-additions:1">37775172</site><cloud domain='raywoodcockslatest.wordpress.com' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
+<image>
+		<url>https://s0.wp.com/i/buttonw-com.png</url>
+		<title>Ray Woodcock&#039;s Latest</title>
+		<link>https://raywoodcockslatest.wordpress.com</link>
+	</image>
+	<atom:link rel="search" type="application/opensearchdescription+xml" href="https://raywoodcockslatest.wordpress.com/osd.xml" title="Ray Woodcock&#039;s Latest" />
+	<atom:link rel='hub' href='https://raywoodcockslatest.wordpress.com/?pushpress=hub'/>
+	<item>
+		<title>The Russian Doll: Two Passes with zpaqfranz</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/02/14/russian-doll/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/02/14/russian-doll/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Sun, 15 Feb 2026 04:45:33 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[chunk]]></category>
+		<category><![CDATA[deduplicate]]></category>
+		<category><![CDATA[deduplication]]></category>
+		<category><![CDATA[fragment]]></category>
+		<category><![CDATA[large]]></category>
+		<category><![CDATA[multiple]]></category>
+		<category><![CDATA[pass]]></category>
+		<category><![CDATA[passes]]></category>
+		<category><![CDATA[repeat]]></category>
+		<category><![CDATA[Russian doll]]></category>
+		<category><![CDATA[Russian dolls]]></category>
+		<category><![CDATA[second]]></category>
+		<category><![CDATA[size]]></category>
+		<category><![CDATA[sizes]]></category>
+		<category><![CDATA[small]]></category>
+		<category><![CDATA[tries]]></category>
+		<category><![CDATA[try]]></category>
+		<category><![CDATA[two]]></category>
+		<category><![CDATA[ZPAQ]]></category>
+		<category><![CDATA[zpaqfranz]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25839</guid>
+
+					<description><![CDATA[I converted a recent Gemini chat into this blog post, using roughly the technique described in another post. I saved this post because I wanted to record this form of the debate. In this discussion, Gemini came around to believing that my idea would work. Perplexity, ChatGPT, and Grok did not. Claude pleaded ignorance of [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/02/14/russian-doll/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25839</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+
+		<media:content url="https://raywoodcockslatest.wordpress.com/wp-content/uploads/2026/02/x1.png" medium="image" />
+	</item>
+		<item>
+		<title>Borg or ZPAQ/franz?</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/02/12/borg-or-zpaqfranz/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/02/12/borg-or-zpaqfranz/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Thu, 12 Feb 2026 22:49:41 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[accuracy]]></category>
+		<category><![CDATA[accurate]]></category>
+		<category><![CDATA[Borg]]></category>
+		<category><![CDATA[choice]]></category>
+		<category><![CDATA[choose]]></category>
+		<category><![CDATA[compare]]></category>
+		<category><![CDATA[corrupt]]></category>
+		<category><![CDATA[corruption]]></category>
+		<category><![CDATA[decide]]></category>
+		<category><![CDATA[decision]]></category>
+		<category><![CDATA[deduplicate]]></category>
+		<category><![CDATA[deduplicating]]></category>
+		<category><![CDATA[deduplication]]></category>
+		<category><![CDATA[deduplicator]]></category>
+		<category><![CDATA[efficiency]]></category>
+		<category><![CDATA[efficient]]></category>
+		<category><![CDATA[speed]]></category>
+		<category><![CDATA[test]]></category>
+		<category><![CDATA[tested]]></category>
+		<category><![CDATA[testing]]></category>
+		<category><![CDATA[ZPAQ]]></category>
+		<category><![CDATA[zpaqfranz]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25797</guid>
+
+					<description><![CDATA[It was 2025. I was learning how to use AI. And one of the biggest mistakes I made, in that regard, was to let AIs lead on the question of whether I should stick with Borg or switch to ZPAQ or to its zpaqfranz fork (sometimes referred to here, collectively, as ZPAQ/franz). Now, at this [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/02/12/borg-or-zpaqfranz/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25797</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+
+		<media:content url="https://raywoodcockslatest.wordpress.com/wp-content/uploads/2026/02/zpaqfranz-method.png" medium="image" />
+	</item>
+		<item>
+		<title>Shrinking a .dd</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/01/26/dd-shrink/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/01/26/dd-shrink/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Mon, 26 Jan 2026 07:21:37 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blank]]></category>
+		<category><![CDATA[dd]]></category>
+		<category><![CDATA[drive]]></category>
+		<category><![CDATA[image]]></category>
+		<category><![CDATA[shrink]]></category>
+		<category><![CDATA[shrinking]]></category>
+		<category><![CDATA[shrunk]]></category>
+		<category><![CDATA[shrunken]]></category>
+		<category><![CDATA[space]]></category>
+		<category><![CDATA[trim]]></category>
+		<category><![CDATA[truncate]]></category>
+		<category><![CDATA[truncated]]></category>
+		<category><![CDATA[truncating]]></category>
+		<category><![CDATA[unallocated]]></category>
+		<category><![CDATA[USB]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25549</guid>
+
+					<description><![CDATA[Contents Introduction Using GParted Using DiskGenius Special Case: YUMI exFAT A Note on virt-sparsify . Introduction As discussed in another post, I was in the process of shrinking large files to smaller files. I was doing this to reduce the amount of space they took on my drive, while preserving their deduplicability for purposes of [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/01/26/dd-shrink/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25549</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>ADI, .dd, VMDK: Converting among AOMEI, Raw, and VMware Formats</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/01/16/adi-to-vmdk/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/01/16/adi-to-vmdk/#comments</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Fri, 16 Jan 2026 15:09:58 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25411</guid>
+
+					<description><![CDATA[[Under reconstruction] &#160; I had a number of drive image backups. Most of these were in the proprietary .adi format used by AOMEI Backupper Standard (i.e., the free version). Those tended to be backups of various Windows installations. Others were in raw image format. I had converted my other (e.g., Acronis) images to one of [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/01/16/adi-to-vmdk/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25411</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Converting Windows Installations and System Images to Bootable VHDX</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/01/16/bootable-vhdx/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/01/16/bootable-vhdx/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Fri, 16 Jan 2026 07:14:41 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[bare metal]]></category>
+		<category><![CDATA[boot]]></category>
+		<category><![CDATA[bootable]]></category>
+		<category><![CDATA[conversion]]></category>
+		<category><![CDATA[convert]]></category>
+		<category><![CDATA[drive]]></category>
+		<category><![CDATA[image]]></category>
+		<category><![CDATA[incompatibility]]></category>
+		<category><![CDATA[incompatible]]></category>
+		<category><![CDATA[installation]]></category>
+		<category><![CDATA[native]]></category>
+		<category><![CDATA[problem]]></category>
+		<category><![CDATA[system]]></category>
+		<category><![CDATA[vhdx]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25397</guid>
+
+					<description><![CDATA[Another post discusses conversion of various materials to formats that would be highly conducive to ZPAQ deduplication. One part of that project involved conversion of compressed drive images to noncompressed and nonproprietary formats capable of restoring a bootable physical installation. For this purpose, bootable VHDX appeared promising. This post describes my exploration of that format. [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/01/16/bootable-vhdx/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25397</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Converting a Running Win11 Installation to Native-Boot VHDX via Disk2vhd (Fail)</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/01/15/disk2vhd-native-boot/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/01/15/disk2vhd-native-boot/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Thu, 15 Jan 2026 16:30:47 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Disk2vhd]]></category>
+		<category><![CDATA[DISM]]></category>
+		<category><![CDATA[doesn't]]></category>
+		<category><![CDATA[fail]]></category>
+		<category><![CDATA[native boot]]></category>
+		<category><![CDATA[natively]]></category>
+		<category><![CDATA[not]]></category>
+		<category><![CDATA[problem]]></category>
+		<category><![CDATA[troubleshoot]]></category>
+		<category><![CDATA[troubleshooting]]></category>
+		<category><![CDATA[vhdx]]></category>
+		<category><![CDATA[Win11]]></category>
+		<category><![CDATA[Windows 11]]></category>
+		<category><![CDATA[work]]></category>
+		<category><![CDATA[working]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25357</guid>
+
+					<description><![CDATA[As described in another post, I was looking for a way to convert my Windows 11 desktop PC system to native-boot VHDX. My unsuccessful first attempt used DISM. This time around, I wanted to try Sysinternals Disk2vhd. This one did not require me to be offline. When I asked several AIs for their suggestions, this was [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/01/15/disk2vhd-native-boot/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25357</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Converting a Perplexity or Gemini AI Chat to a WordPress.com Post</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/01/15/perplexity-to-wordpress/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/01/15/perplexity-to-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Thu, 15 Jan 2026 15:17:56 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[chat]]></category>
+		<category><![CDATA[classic editor]]></category>
+		<category><![CDATA[conversion]]></category>
+		<category><![CDATA[convert]]></category>
+		<category><![CDATA[converted]]></category>
+		<category><![CDATA[converting]]></category>
+		<category><![CDATA[copy]]></category>
+		<category><![CDATA[cut]]></category>
+		<category><![CDATA[discussion]]></category>
+		<category><![CDATA[Exchange]]></category>
+		<category><![CDATA[how to]]></category>
+		<category><![CDATA[LLM]]></category>
+		<category><![CDATA[paste]]></category>
+		<category><![CDATA[Perplexity]]></category>
+		<category><![CDATA[WordPress]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25341</guid>
+
+					<description><![CDATA[Another post contains the text of a discussion I had with Perplexity. This post summarizes the steps I took to convert that discussion to WordPress. Note that I was using WordPress Classic Editor, not the block editor. Last time I checked, the block editor did not permit some of the steps taken in efforts like [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/01/15/perplexity-to-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25341</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Perplexity Chat: Converting a Win11 Active Installation to Native-Boot VHDX via DISM (Fail)</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/01/15/perplexity-vhdx-fail/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/01/15/perplexity-vhdx-fail/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Thu, 15 Jan 2026 09:12:57 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[boot]]></category>
+		<category><![CDATA[bootable]]></category>
+		<category><![CDATA[conversion]]></category>
+		<category><![CDATA[convert]]></category>
+		<category><![CDATA[converted]]></category>
+		<category><![CDATA[converting]]></category>
+		<category><![CDATA[converts]]></category>
+		<category><![CDATA[how to]]></category>
+		<category><![CDATA[installation]]></category>
+		<category><![CDATA[native]]></category>
+		<category><![CDATA[Perplexity]]></category>
+		<category><![CDATA[system]]></category>
+		<category><![CDATA[vhdx]]></category>
+		<category><![CDATA[Win11]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[Windows 11]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25306</guid>
+
+					<description><![CDATA[As indicated in another post, I was looking for a way to convert my desktop PC&#8217;s operational Windows 11 installation to a bootable VHDX. This post presents my chat with Perplexity.ai in which we worked through an approach based on Microsoft&#8217;s Deployment Image Servicing and Management (DISM). DISM was supposed to capture a native-bootable image [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/01/15/perplexity-vhdx-fail/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25306</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Preparing to Back up Drive C Using CLEAN_C.BAT</title>
+		<link>https://raywoodcockslatest.wordpress.com/2026/01/11/clean_c/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2026/01/11/clean_c/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Mon, 12 Jan 2026 04:44:12 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25277</guid>
+
+					<description><![CDATA[Before backing up drive C (in e.g., a drive image) on Windows 11, I found it helpful to reduce junk files, run system tests, and generally try to save the system in relatively compact and working form. This post describes the steps I took. An earlier post discusses some of these steps in more detail. [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2026/01/11/clean_c/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25277</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Welcoming Back the Previous Version of Ray Woodcock&#8217;s Latest</title>
+		<link>https://raywoodcockslatest.wordpress.com/2025/12/30/blogger-redux/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2025/12/30/blogger-redux/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Wed, 31 Dec 2025 03:26:27 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[archives]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[Blogger]]></category>
+		<category><![CDATA[ray woodcock]]></category>
+		<category><![CDATA[Ray Woodcock's Latest]]></category>
+		<category><![CDATA[WordPress]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25214</guid>
+
+					<description><![CDATA[On June 29, 2012, the first post in this blog announced my transition from Ray Woodcock&#8217;s Latest at Blogger, which Google purchased and ruined. Ever since, the 445 posts in that prior incarnation have been hard to find &#8211; for some purposes, they have been lost. In this post, I am announcing that I have [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2025/12/30/blogger-redux/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25214</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Debating ChatGPT on Suspicious Gmail Behavior</title>
+		<link>https://raywoodcockslatest.wordpress.com/2025/12/26/chatgpt-gmail/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2025/12/26/chatgpt-gmail/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Fri, 26 Dec 2025 06:09:16 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[AIs]]></category>
+		<category><![CDATA[ChatGPT]]></category>
+		<category><![CDATA[delay]]></category>
+		<category><![CDATA[delays]]></category>
+		<category><![CDATA[deliver]]></category>
+		<category><![CDATA[delivery]]></category>
+		<category><![CDATA[email]]></category>
+		<category><![CDATA[emails]]></category>
+		<category><![CDATA[fail]]></category>
+		<category><![CDATA[failure]]></category>
+		<category><![CDATA[Gmail]]></category>
+		<category><![CDATA[Google]]></category>
+		<category><![CDATA[LLM]]></category>
+		<category><![CDATA[LLMs]]></category>
+		<category><![CDATA[nondelivery]]></category>
+		<category><![CDATA[odd]]></category>
+		<category><![CDATA[shadowban]]></category>
+		<category><![CDATA[shadowbanned]]></category>
+		<category><![CDATA[shadowbanning]]></category>
+		<category><![CDATA[shadowbans]]></category>
+		<category><![CDATA[strange]]></category>
+		<category><![CDATA[suppress]]></category>
+		<category><![CDATA[suppression]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=25110</guid>
+
+					<description><![CDATA[I had an odd experience with email. I asked ChatGPT about it. The result was not typical. I have generally found ChatGPT to be informative and openminded. This was enough of a departure from that to make me want to record it. (Other posts report similar encounters in discussions of med schools and toothbrushing.) I [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2025/12/26/chatgpt-gmail/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">25110</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Streamlining Windows and Ubuntu Drive Images for Deduplication</title>
+		<link>https://raywoodcockslatest.wordpress.com/2025/08/30/dd-dedup/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2025/08/30/dd-dedup/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Sat, 30 Aug 2025 07:41:12 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[AOMEI]]></category>
+		<category><![CDATA[backup]]></category>
+		<category><![CDATA[Backupper]]></category>
+		<category><![CDATA[backups]]></category>
+		<category><![CDATA[Borg]]></category>
+		<category><![CDATA[Clonezilla]]></category>
+		<category><![CDATA[compress]]></category>
+		<category><![CDATA[compression]]></category>
+		<category><![CDATA[dd]]></category>
+		<category><![CDATA[deduplicate]]></category>
+		<category><![CDATA[deduplicating]]></category>
+		<category><![CDATA[deduplication]]></category>
+		<category><![CDATA[disk]]></category>
+		<category><![CDATA[drive]]></category>
+		<category><![CDATA[duplicate]]></category>
+		<category><![CDATA[EaseUS]]></category>
+		<category><![CDATA[hard]]></category>
+		<category><![CDATA[HDD]]></category>
+		<category><![CDATA[HDDs]]></category>
+		<category><![CDATA[image]]></category>
+		<category><![CDATA[images]]></category>
+		<category><![CDATA[imaging]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Macrium]]></category>
+		<category><![CDATA[partclone]]></category>
+		<category><![CDATA[Rescuezilla]]></category>
+		<category><![CDATA[solid state]]></category>
+		<category><![CDATA[SSD]]></category>
+		<category><![CDATA[SSDs]]></category>
+		<category><![CDATA[Ubuntu]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[ZPAQ]]></category>
+		<category><![CDATA[zpaqfranz]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=24695</guid>
+
+					<description><![CDATA[This post introduces issues that I returned to more comprehensively in early 2026. &#160; Contents The Problem Virtual Approaches Considering dd The Proposed dd Solution A Proposed dd Loop Device Procedure . The Problem As described in another post, I was using zpaqfranz, a fork of ZPAQ (sometimes cited collectively, here, as ZPAQ/franz), to deduplicate large archives for [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2025/08/30/dd-dedup/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">24695</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Velcro Alternative for Mini PC VESA Mount</title>
+		<link>https://raywoodcockslatest.wordpress.com/2025/07/05/beelink-velcro/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2025/07/05/beelink-velcro/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Sat, 05 Jul 2025 15:20:04 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[180]]></category>
+		<category><![CDATA[90]]></category>
+		<category><![CDATA[attach]]></category>
+		<category><![CDATA[attachment]]></category>
+		<category><![CDATA[back]]></category>
+		<category><![CDATA[Beelink]]></category>
+		<category><![CDATA[bracket]]></category>
+		<category><![CDATA[cable]]></category>
+		<category><![CDATA[cables]]></category>
+		<category><![CDATA[cord]]></category>
+		<category><![CDATA[cords]]></category>
+		<category><![CDATA[degree]]></category>
+		<category><![CDATA[degrees]]></category>
+		<category><![CDATA[detach]]></category>
+		<category><![CDATA[display]]></category>
+		<category><![CDATA[mini PC]]></category>
+		<category><![CDATA[monitor]]></category>
+		<category><![CDATA[mount]]></category>
+		<category><![CDATA[points]]></category>
+		<category><![CDATA[stand]]></category>
+		<category><![CDATA[Velcro]]></category>
+		<category><![CDATA[VESA]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=24520</guid>
+
+					<description><![CDATA[I had a Beelink SER5 Max mini PC. I wanted to mount it to the back of a monitor, VESA-style. Problem: the hardware included with the Beelink would provide for only a half-assed mount, as illustrated in this screenshot from Beelink&#8217;s video: The bottom edge of that picture shows the top end of the monitor&#8217;s [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2025/07/05/beelink-velcro/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">24520</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+
+		<media:content url="https://raywoodcockslatest.wordpress.com/wp-content/uploads/2025/07/xbeelink-mount.png" medium="image" />
+
+		<media:content url="https://raywoodcockslatest.wordpress.com/wp-content/uploads/2025/07/xmsi.png" medium="image" />
+
+		<media:content url="https://raywoodcockslatest.wordpress.com/wp-content/uploads/2025/07/xbeelink.png" medium="image" />
+	</item>
+		<item>
+		<title>Good News About the Plastic-Eating Microbes That Will Kill Us All</title>
+		<link>https://raywoodcockslatest.wordpress.com/2025/06/24/good-news-about-the-plastic-eating-microbes-that-will-kill-us-all/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2025/06/24/good-news-about-the-plastic-eating-microbes-that-will-kill-us-all/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Wed, 25 Jun 2025 01:23:17 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[acetaminophen]]></category>
+		<category><![CDATA[bug]]></category>
+		<category><![CDATA[bugs]]></category>
+		<category><![CDATA[consume]]></category>
+		<category><![CDATA[convert]]></category>
+		<category><![CDATA[eat]]></category>
+		<category><![CDATA[eating]]></category>
+		<category><![CDATA[microbe]]></category>
+		<category><![CDATA[microbes]]></category>
+		<category><![CDATA[microplastics]]></category>
+		<category><![CDATA[plastic]]></category>
+		<category><![CDATA[polyethylene]]></category>
+		<category><![CDATA[Tylenol]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=24459</guid>
+
+					<description><![CDATA[This feels like 2003, when we decided to declare war on Iraq. I was saying that didn&#8217;t immediately sound like a bright idea. One difference: back then, I wasn&#8217;t blogging about things. And that&#8217;s a pity. Because if I had been, it could have been just like now, when I&#8217;m saying stuff that nobody hears. [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2025/06/24/good-news-about-the-plastic-eating-microbes-that-will-kill-us-all/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">24459</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Choosing an Air Purifier for a Large Space &#8211; Progress Notes</title>
+		<link>https://raywoodcockslatest.wordpress.com/2025/06/23/choosing-air-purifier/</link>
+					<comments>https://raywoodcockslatest.wordpress.com/2025/06/23/choosing-air-purifier/#respond</comments>
+		
+		<dc:creator><![CDATA[Ray Woodcock]]></dc:creator>
+		<pubDate>Tue, 24 Jun 2025 03:40:06 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[air]]></category>
+		<category><![CDATA[box]]></category>
+		<category><![CDATA[carbon]]></category>
+		<category><![CDATA[corsi]]></category>
+		<category><![CDATA[fan]]></category>
+		<category><![CDATA[filter]]></category>
+		<category><![CDATA[filters]]></category>
+		<category><![CDATA[filtration]]></category>
+		<category><![CDATA[frame]]></category>
+		<category><![CDATA[HVAC]]></category>
+		<category><![CDATA[matter]]></category>
+		<category><![CDATA[ozone]]></category>
+		<category><![CDATA[particle]]></category>
+		<category><![CDATA[particles]]></category>
+		<category><![CDATA[particulate]]></category>
+		<category><![CDATA[PM2.5]]></category>
+		<category><![CDATA[pollution]]></category>
+		<category><![CDATA[purification]]></category>
+		<category><![CDATA[purifier]]></category>
+		<category><![CDATA[purifiers]]></category>
+		<category><![CDATA[purify]]></category>
+		<category><![CDATA[rosenthal]]></category>
+		<category><![CDATA[shroud]]></category>
+		<category><![CDATA[VOC]]></category>
+		<category><![CDATA[VOCs]]></category>
+		<guid isPermaLink="false">http://raywoodcockslatest.wordpress.com/?p=24450</guid>
+
+					<description><![CDATA[In 2019, I wrote a post investigating the possibility that certain adverse cardiac events were due to air pollution. That inquiry didn&#8217;t lead to any specific action steps because, as that post hints, an incompetent cardiologist led me down a blind alley. The question came up again, in autumn 2021, when I began looking into [&#8230;]]]></description>
+		
+					<wfw:commentRss>https://raywoodcockslatest.wordpress.com/2025/06/23/choosing-air-purifier/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">24450</post-id>
+		<media:content url="https://0.gravatar.com/avatar/6540c9e429e5bd928468e1c5d1a954a4e0131a18b6aa15460e50f57948ef2a21?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">Ray</media:title>
+		</media:content>
+
+		<media:content url="https://raywoodcockslatest.wordpress.com/wp-content/uploads/2025/06/xclaude.png" medium="image" />
+
+		<media:content url="https://raywoodcockslatest.wordpress.com/wp-content/uploads/2025/06/xvornado-810.jpg" medium="image" />
+	</item>
+	</channel>
+</rss>

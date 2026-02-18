@@ -1,0 +1,2173 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>TechTinkering - Retro Computers, Programming, General Technical Tinkering</title>
+  <link href="https://techtinkering.com/feed.xml" rel="self"/>
+  <link href="https://techtinkering.com"/>
+  <updated>2023-11-15</updated>
+  <id>https://techtinkering.com/feed.xml</id>
+  <generator uri="https://github.com/lawrencewoodman/tekyll">teykll</generator>
+    <entry>
+      <title>Modula-2 Compilers on CP/M</title>
+      <id>https://techtinkering.com/articles/modula-2-compilers-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/modula-2-compilers-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2022-09-10
+        </published>
+
+        <updated>
+          2022-09-10
+        </updated>
+
+        <summary>Modula-2 is a great language in general and is a good choice for programming on CP/M.  There are three good compilers available for CP/M which all require a Z80 processor and we'll compare each in turn</summary>
+    </entry>
+    <entry>
+      <title>Is SUBLEQ the Right Choice for a VM?</title>
+      <id>https://techtinkering.com/articles/is-subleq-the-right-choice-for-a-vm/</id>
+      <link href="https://techtinkering.com/articles/is-subleq-the-right-choice-for-a-vm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2022-06-24
+        </published>
+
+        <updated>
+          2022-06-24
+        </updated>
+
+        <summary>SUBLEQ is an interesting architecture because of its simplicity, adaptability and power.  It is therefore an attractive choice for a simple virtual machine.  However, this comes at a cost which we will</summary>
+    </entry>
+    <entry>
+      <title>XCCP: A Shell Extension for CP/M</title>
+      <id>https://techtinkering.com/articles/xccp-a-shell-extension-for-cpm/</id>
+      <link href="https://techtinkering.com/articles/xccp-a-shell-extension-for-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2022-06-01
+        </published>
+
+        <updated>
+          2022-06-01
+        </updated>
+
+        <summary>XCCP describes itself as an Extended Console Command Processor for CP/M. It supports the 8080 and v1.0 was released by Anton R. Fleig in 1984.  Like EPEX, XCCP doesn't require installing so we can begi</summary>
+    </entry>
+    <entry>
+      <title>EPEX: An Environment Extension for CP/M</title>
+      <id>https://techtinkering.com/articles/epex-an-environment-extension-for-cpm/</id>
+      <link href="https://techtinkering.com/articles/epex-an-environment-extension-for-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2022-05-18
+        </published>
+
+        <updated>
+          2022-05-18
+        </updated>
+
+        <summary>Epex is an evironment extension for CP/M.  It stands for Environmental Processing EXecutive, and v1.1 was released by James H. Whorton in 1986.  It can make using CP/M much more comfortable at the cost</summary>
+    </entry>
+    <entry>
+      <title>File Comparison Utilities on CP/M</title>
+      <id>https://techtinkering.com/articles/file-comparison-utilities-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/file-comparison-utilities-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2022-04-27
+        </published>
+
+        <updated>
+          2022-04-27
+        </updated>
+
+        <summary>There are many utilities available for CP/M to compare the differences between files and to distribute those differences.  All the utilities in this article can be found on the Walnut Creek CD.
+Binary </summary>
+    </entry>
+    <entry>
+      <title>80 Columns in Software on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/80-columns-in-software-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/80-columns-in-software-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2022-01-20
+        </published>
+
+        <updated>
+          2022-01-20
+        </updated>
+
+        <summary>If you have good eyesight, a well-tuned display and patience it is possible to use 80 columns in software on the VIC-20.  This is really just an experiment but considering the limitations of the Vic I </summary>
+    </entry>
+    <entry>
+      <title>Breakout Style Games on CP/M</title>
+      <id>https://techtinkering.com/articles/breakout-style-games-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/breakout-style-games-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-12-02
+        </published>
+
+        <updated>
+          2021-12-02
+        </updated>
+
+        <summary>Breakout style video games were pretty popular at one time both at Arcades and on home computers.   The games are based on a simple concept where you have to destroy a group of 'bricks' at the top of t</summary>
+    </entry>
+    <entry>
+      <title>64 Column Text Mode on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/64-columns-sideways-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/64-columns-sideways-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-11-18
+        </published>
+
+        <updated>
+          2021-11-18
+        </updated>
+
+        <summary>With a little lateral thinking and by putting the television on its side we can create a 64 column sideways text mode on the VIC-20.  This article will demonstrate this and show how it is done.  Previo</summary>
+    </entry>
+    <entry>
+      <title>Hamurabi and Similar Games on CP/M</title>
+      <id>https://techtinkering.com/articles/hamurabi-and-similar-games-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/hamurabi-and-similar-games-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-10-07
+        </published>
+
+        <updated>
+          2021-10-07
+        </updated>
+
+        <summary>Hamurabi is probably the best known land and resource management game on CP/M.  However, there are a few other similar text-based games that sought to extend the concept such as Dukedom and Kingdom.  T</summary>
+    </entry>
+    <entry>
+      <title>Word Processors on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/word-processors-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/word-processors-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-09-16
+        </published>
+
+        <updated>
+          2021-09-16
+        </updated>
+
+        <summary>Word processing is possible on the VIC-20 and can be surprisingly comfortable despite the small screen text area.  Here I will show a variety of word processors each of which handles the 22 column rest</summary>
+    </entry>
+    <entry>
+      <title>Getting the Address of BASIC Variables on the VIC-20</title>
+      <id>https://techtinkering.com/articles/getting-the-address-of-basic-variables-on-the-vic-20/</id>
+      <link href="https://techtinkering.com/articles/getting-the-address-of-basic-variables-on-the-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-07-14
+        </published>
+
+        <updated>
+          2021-07-14
+        </updated>
+
+        <summary>Getting the address of a BASIC variable can be useful if you want to pass data to a machine code routine or want to access the bytes of a variable directly to improve speed and reduce garbage collectio</summary>
+    </entry>
+    <entry>
+      <title>Saving and Loading Memory on the VIC-20</title>
+      <id>https://techtinkering.com/articles/saving-and-loading-memory-on-the-vic-20/</id>
+      <link href="https://techtinkering.com/articles/saving-and-loading-memory-on-the-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-06-23
+        </published>
+
+        <updated>
+          2021-06-23
+        </updated>
+
+        <summary>Saving and loading memory is quite easy on the VIC-20 once you know how.  However, it isn't obvious how to do this and therefore this article will present a few simple ways of doing it from BASIC and A</summary>
+    </entry>
+    <entry>
+      <title>Advanced Use of .LBR files on CP/M</title>
+      <id>https://techtinkering.com/articles/advanced-use-of-lbr-files-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/advanced-use-of-lbr-files-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-05-31
+        </published>
+
+        <updated>
+          2020-10-13
+        </updated>
+
+        <summary>Lots of utilities make use of .LBR (Library) files to provide extra facilities such as the ability to run commands from archives or mount them as if they were drives.  This article shows some more adva</summary>
+    </entry>
+    <entry>
+      <title>Working with .LBR files on CP/M</title>
+      <id>https://techtinkering.com/articles/working-with-lbr-files-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/working-with-lbr-files-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-05-13
+        </published>
+
+        <updated>
+          2021-05-13
+        </updated>
+
+        <summary>The .LBR (Library) file format was the most common form of multi-file archive on personal computers at one time.  It was created by Gary P. Novosielski in 1982 for use by his LU (Library Utility) progr</summary>
+    </entry>
+    <entry>
+      <title>Basic Line Storage on the VIC-20</title>
+      <id>https://techtinkering.com/articles/basic-line-storage-on-the-vic-20/</id>
+      <link href="https://techtinkering.com/articles/basic-line-storage-on-the-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-03-17
+        </published>
+
+        <updated>
+          2021-03-17
+        </updated>
+
+        <summary>BASIC programs are stored in memory using a simple structure that we can investigate and manipulate.  This article will show how they are stored and contains a BASIC program to go through each line of </summary>
+    </entry>
+    <entry>
+      <title>Programming in Assembly with VICMON on the VIC-20</title>
+      <id>https://techtinkering.com/articles/programming-in-assembly-with-vicmon-on-the-vic-20/</id>
+      <link href="https://techtinkering.com/articles/programming-in-assembly-with-vicmon-on-the-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-02-22
+        </published>
+
+        <updated>
+          2021-02-22
+        </updated>
+
+        <summary>VICMON is a machine language monitor released by Commodore in 1982 and is great for programming the VIC-20.  Its interactive nature means that it can often be quicker to develop via this rather than us</summary>
+    </entry>
+    <entry>
+      <title>Storing Machine Code in REM Statements on the VIC-20</title>
+      <id>https://techtinkering.com/articles/storing-machine-code-in-rem-statements-on-the-vic-20/</id>
+      <link href="https://techtinkering.com/articles/storing-machine-code-in-rem-statements-on-the-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-01-25
+        </published>
+
+        <updated>
+          2021-01-25
+        </updated>
+
+        <summary>BASIC programs often contain machine code routines but they take up quite a lot of space in BASIC.  An interesting way to reduce the amount of space that they take is to store the machine code in REM s</summary>
+    </entry>
+    <entry>
+      <title>Re-execute Programs in Memory on CP/M</title>
+      <id>https://techtinkering.com/articles/re-execute-programs-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/re-execute-programs-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2021-01-11
+        </published>
+
+        <updated>
+          2021-01-11
+        </updated>
+
+        <summary>After a transient program terminates on CP/M it's often possible to re-execute it  in memory without having to reload it from disk.  This is a great little trick if using slow disks as it's much quicke</summary>
+    </entry>
+    <entry>
+      <title>Visualizing Zero Page on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/visualizing-zero-page-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/visualizing-zero-page-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-12-21
+        </published>
+
+        <updated>
+          2020-12-21
+        </updated>
+
+        <summary>The VIC-20 is a very flexible little machine and allows us to choose which area of memory represents the screen map.   One interesting thing we can do is use this to visualize a section of memory such </summary>
+    </entry>
+    <entry>
+      <title>Code and Data in Display Memory on the VIC-20</title>
+      <id>https://techtinkering.com/articles/code-and-data-in-display-memory-on-the-vic-20/</id>
+      <link href="https://techtinkering.com/articles/code-and-data-in-display-memory-on-the-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-12-07
+        </published>
+
+        <updated>
+          2020-12-07
+        </updated>
+
+        <summary>The unexpanded Commodore VIC-20 only had 5K of RAM and therefore creative ways had to be found to maximize the available RAM.  The display memory would use some of this memory and therefore one option </summary>
+    </entry>
+    <entry>
+      <title>I Love ED on CP/M</title>
+      <id>https://techtinkering.com/articles/i-love-ed-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/i-love-ed-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-11-23
+        </published>
+
+        <updated>
+          2020-11-23
+        </updated>
+
+        <summary>I love ED on CP/M.  It's often derided but I think it's just misunderstood and with a little practise its true value can shine through.  It's elegant, easy to learn and only has about 25 commands but t</summary>
+    </entry>
+    <entry>
+      <title>Double-Width C64 Style Font on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/double-width-c64-style-font-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/double-width-c64-style-font-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-11-09
+        </published>
+
+        <updated>
+          2020-11-09
+        </updated>
+
+        <summary>The C64 used a fatter double-width font because the video quality of early VIC-IIs wasn't very good.  Therefore they had to make the C64's font fatter than the VIC-20's.  However, this fatter font look</summary>
+    </entry>
+    <entry>
+      <title>The Pilot Programming Language on CP/M</title>
+      <id>https://techtinkering.com/articles/the-pilot-programming-language-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/the-pilot-programming-language-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-10-22
+        </published>
+
+        <updated>
+          2020-10-22
+        </updated>
+
+        <summary>Pilot was created by John A. Starkweather in the early 1960s as a programming language for Computer Assisted Instruction.  It has often been compared to Logo because of its use with children.  However,</summary>
+    </entry>
+    <entry>
+      <title>Walnut Creek CD: C64 Images</title>
+      <id>https://techtinkering.com/articles/walnut-creek-cd-c64-images/</id>
+      <link href="https://techtinkering.com/articles/walnut-creek-cd-c64-images/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-09-24
+        </published>
+
+        <updated>
+          2020-09-26
+        </updated>
+
+        <summary>The Walnut Creek CD has a number of images on it from the 1980s and this article displays a selection of the Commodore C64 images that can be found on the CD.  The quality of some of these pictures is </summary>
+    </entry>
+    <entry>
+      <title>Walnut Creek CD: .RLE Images</title>
+      <id>https://techtinkering.com/articles/walnut-creek-cd-rle-images/</id>
+      <link href="https://techtinkering.com/articles/walnut-creek-cd-rle-images/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-09-17
+        </published>
+
+        <updated>
+          2020-09-17
+        </updated>
+
+        <summary>The Walnut Creek CD has lots of images on it from the 1980s and this article displays a selection of the .RLE images that can be found on the CD.  Where there are duplicates they are only shown once.
+.</summary>
+    </entry>
+    <entry>
+      <title>Image Viewers on CP/M</title>
+      <id>https://techtinkering.com/articles/image-viewers-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/image-viewers-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-09-03
+        </published>
+
+        <updated>
+          2020-09-03
+        </updated>
+
+        <summary>CP/M is by default a text-only affair.  However, many of the machines that can run CP/M have hardware that would allow them to display graphics.  As BBSing started to grow so too did the distribution o</summary>
+    </entry>
+    <entry>
+      <title>Terminal Programs for BBSing on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/terminal-programs-for-bbsing-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/terminal-programs-for-bbsing-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-07-23
+        </published>
+
+        <updated>
+          2020-07-26
+        </updated>
+
+        <summary>The VIC-20 introduced many people into the world of BBSing, but only a few of the many terminal programs that were available for the Vic have survived.  They each have their own pros and cons and here </summary>
+    </entry>
+    <entry>
+      <title>SUBLEQ on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/subleq-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/subleq-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-07-09
+        </published>
+
+        <updated>
+          2020-07-09
+        </updated>
+
+        <summary>I have created a SUBLEQ Virtual Machine for the Commodore VIC-20.  SUBLEQ is a computer architecture that has only one instruction: SUBLEQ.  The instruction stands for SUbtract and Branch if Less than </summary>
+    </entry>
+    <entry>
+      <title>SUBLEQ - A One Instruction Set Computer (OISC)</title>
+      <id>https://techtinkering.com/articles/subleq-a-one-instruction-set-computer/</id>
+      <link href="https://techtinkering.com/articles/subleq-a-one-instruction-set-computer/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-05-29
+        </published>
+
+        <updated>
+          2020-05-29
+        </updated>
+
+        <summary>SUBLEQ has to be one of the easiest architectures to implement in either software or hardware and this is the main reason for its design as a teaching aid.  It has only one instruction, hence why it is</summary>
+    </entry>
+    <entry>
+      <title>Home Computers: 100 Icons that Defined a Digital Generation</title>
+      <id>https://techtinkering.com/articles/home-computers-100-icons-that-defined-a-digital-generation/</id>
+      <link href="https://techtinkering.com/articles/home-computers-100-icons-that-defined-a-digital-generation/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-04-23
+        </published>
+
+        <updated>
+          2020-04-23
+        </updated>
+
+        <summary>As soon as you pick up this coffee table style book you know that you're in for a treat.  A quick flick through reveals page after page of beautiful photos accompanied by well layed out text describing</summary>
+    </entry>
+    <entry>
+      <title>The Mouse Programming Language on CP/M</title>
+      <id>https://techtinkering.com/articles/the-mouse-programming-language-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/the-mouse-programming-language-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-03-11
+        </published>
+
+        <updated>
+          2020-03-11
+        </updated>
+
+        <summary>Mouse is an interpreted stack orientated language designed by Peter Grogono around 1975.  It was designed to be a small but powerful language for microcomputers, similar to Forth, but much simpler.  On</summary>
+    </entry>
+    <entry>
+      <title>Sweet 16 (The 6502 Dream Machine) Ported to the VIC-20</title>
+      <id>https://techtinkering.com/articles/sweet-16-the-6502-dream-machine-ported-to-the-vic-20/</id>
+      <link href="https://techtinkering.com/articles/sweet-16-the-6502-dream-machine-ported-to-the-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-02-29
+        </published>
+
+        <updated>
+          2020-02-29
+        </updated>
+
+        <summary>Sweet 16 was created by Steve Wozniak to reduce code size and make it easier to handle 16-bit pointers and arithmetic for his Apple Integer BASIC.  He wrote it around 1977 and referred to it in an arti</summary>
+    </entry>
+    <entry>
+      <title>Position Independent Code (6502) on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/position-independent-code-6502-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/position-independent-code-6502-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-02-04
+        </published>
+
+        <updated>
+          2020-02-04
+        </updated>
+
+        <summary>If we are writing 6502 machine code and want to to create a routine or program that can be placed in any location then we have to create Position Independent Code (PIC) or make the code relocatable.  H</summary>
+    </entry>
+    <entry>
+      <title>Adding Basic Stubs to Assembly Language on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/adding-basic-stubs-to-assembly-language-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/adding-basic-stubs-to-assembly-language-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2020-01-16
+        </published>
+
+        <updated>
+          2020-01-16
+        </updated>
+
+        <summary>To make machine language programs more friendly it's nice to add a Basic stub which contains a line with a SYS statement to start the code.  This is easy to do on the VIC-20 and the process gives you a</summary>
+    </entry>
+    <entry>
+      <title>Hand Assembling to Machine Code on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/hand-assembling-to-machine-code-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/hand-assembling-to-machine-code-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-12-18
+        </published>
+
+        <updated>
+          2019-12-18
+        </updated>
+
+        <summary>I quite enjoy designing machine language routines on paper and then hand assembling them.  For many people this would have been their only option until they got a more advanced machine language monitor</summary>
+    </entry>
+    <entry>
+      <title>6502 Machine Language Tables and Aids</title>
+      <id>https://techtinkering.com/articles/6502-machine-language-tables-and-aids/</id>
+      <link href="https://techtinkering.com/articles/6502-machine-language-tables-and-aids/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-12-04
+        </published>
+
+        <updated>
+          2019-12-04
+        </updated>
+
+        <summary>When programming using machine code there are a few useful aids that can make it easier to do.  I have created a couple of tables for the 6502 that can make the process easier.  They are based on table</summary>
+    </entry>
+    <entry>
+      <title>Tokenize/De-tokenize Commodore Basic Programs Using petcat</title>
+      <id>https://techtinkering.com/articles/tokenize-detokenize-commodore-basic-programs-using-petcat/</id>
+      <link href="https://techtinkering.com/articles/tokenize-detokenize-commodore-basic-programs-using-petcat/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-11-21
+        </published>
+
+        <updated>
+          2019-11-21
+        </updated>
+
+        <summary>petcat is a utility provided with the VICE Commodore emulator that you can use to convert Basic source code contained in ASCII text files to .PRG files or vice versa.  It is also able to convert ASCII </summary>
+    </entry>
+    <entry>
+      <title>Changing Screen Dimensions on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/changing-screen-dimensions-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/changing-screen-dimensions-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-11-08
+        </published>
+
+        <updated>
+          2019-11-08
+        </updated>
+
+        <summary>To make the most of the limited amount of memory on the VIC-20, we can increase and decrease the screen size depending on our program's priorities and what we want to achieve.  If we increase the size </summary>
+    </entry>
+    <entry>
+      <title>Moving the Picture Origin on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/moving-the-picture-origin-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/moving-the-picture-origin-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-10-03
+        </published>
+
+        <updated>
+          2019-10-03
+        </updated>
+
+        <summary>The VIC-20's VIC chip provides a simple yet flexible video display and one of the features that can be quite useful is the ability to alter the picture origin on the screen.  This feature allows us to </summary>
+    </entry>
+    <entry>
+      <title>DABAR: A Hebrew Vocabulary Drill System on CP/M</title>
+      <id>https://techtinkering.com/articles/dabar-a-hebrew-vocabulary-drill-system-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/dabar-a-hebrew-vocabulary-drill-system-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-09-19
+        </published>
+
+        <updated>
+          2019-09-19
+        </updated>
+
+        <summary>I recently came across an interesting program called DABAR to drill Hebrew vocabulary.  The program works in a similar way to flash cards, by displaying a word in Hebrew and then asking for its English</summary>
+    </entry>
+    <entry>
+      <title>Spreadsheets on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/spreadsheets-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/spreadsheets-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-09-07
+        </published>
+
+        <updated>
+          2019-09-07
+        </updated>
+
+        <summary>The VIC-20 had a number a spreadsheet programs released for it which despite the limited resources of the Vic could actually be quite usable.  The two best known are SimpliCalc and PractiCalc, but ther</summary>
+    </entry>
+    <entry>
+      <title>40 Columns in Basic on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/articles/40-columns-in-basic-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/articles/40-columns-in-basic-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-08-23
+        </published>
+
+        <updated>
+          2019-08-23
+        </updated>
+
+        <summary>There are a number of programs that allow you to use 40 columns of text from Basic on a Commodore VIC-20.  This can be useful as by default the Vic's screen is 22 columns by 23 rows.  They are supplied</summary>
+    </entry>
+    <entry>
+      <title>Backgammon: The Peelgrunt Game of Gammon IV on CP/M</title>
+      <id>https://techtinkering.com/articles/backgammon-the-peelgrunt-game-of-gammon-iv-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/backgammon-the-peelgrunt-game-of-gammon-iv-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-08-08
+        </published>
+
+        <updated>
+          2019-08-08
+        </updated>
+
+        <summary>My favourite traditional board game is Backgammon and the best version I have found for CP/M is The Peelgrunt Game of Gammon IV, v2.0 released 1st April 1986 by David C. Oshel.  It is available on the </summary>
+    </entry>
+    <entry>
+      <title>DIR Alternatives on CP/M</title>
+      <id>https://techtinkering.com/articles/dir-alternatives-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/dir-alternatives-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-07-13
+        </published>
+
+        <updated>
+          2019-07-29
+        </updated>
+
+        <summary>There are lots of great alternatives to the standard CP/M DIR command, which add extra functionality and combine features that normally have to be accessed through other CP/M commands such as STAT or S</summary>
+    </entry>
+    <entry>
+      <title>Mission: Impossible on CP/M</title>
+      <id>https://techtinkering.com/articles/mission-impossible-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/mission-impossible-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-06-19
+        </published>
+
+        <updated>
+          2019-06-19
+        </updated>
+
+        <summary>Mission: Impossible simulates a foreign espionage mission based on the TV series.  Your mission, should you decide to accept it, is to recover the objects or person taken by enemy agents and hidden in </summary>
+    </entry>
+    <entry>
+      <title>Hunt the Wumpus on CP/M</title>
+      <id>https://techtinkering.com/articles/hunt-the-wumpus-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/hunt-the-wumpus-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-06-13
+        </published>
+
+        <updated>
+          2019-06-15
+        </updated>
+
+        <summary>Hunt The Wumpus was created by Gregory Yob in 1973 after seeing some of the hide and seek style games distributed by the People's Computer Company.  Games such as  Hurkle, Snark and Mugwump were all ba</summary>
+    </entry>
+    <entry>
+      <title>CP/M Standard Console Control Characters</title>
+      <id>https://techtinkering.com/articles/cpm-standard-console-control-characters/</id>
+      <link href="https://techtinkering.com/articles/cpm-standard-console-control-characters/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-06-07
+        </published>
+
+        <updated>
+          2019-06-07
+        </updated>
+
+        <summary>CP/M helped provide a consistent console interface for the user by supporting a number of standard control characters through the BDOS console functions.  This was great for the user and made life much</summary>
+    </entry>
+    <entry>
+      <title>Transferring Files to and from CP/M .D71 Disk Images Using ctools</title>
+      <id>https://techtinkering.com/articles/transferring-files-to-and-from-cpm-d71-disk-images-using-ctools/</id>
+      <link href="https://techtinkering.com/articles/transferring-files-to-and-from-cpm-d71-disk-images-using-ctools/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-05-24
+        </published>
+
+        <updated>
+          2019-05-24
+        </updated>
+
+        <summary>Using Vice to emulate a Commodore 128 running CP/M works very well, but it isn't easy to get CP/M files directly onto and off a .D64/.D71 disk image.  The easiest way to do this under Linux is to use c</summary>
+    </entry>
+    <entry>
+      <title>Emulating a CP/M System With z80pack</title>
+      <id>https://techtinkering.com/articles/emulating-a-cpm-system-with-z80pack/</id>
+      <link href="https://techtinkering.com/articles/emulating-a-cpm-system-with-z80pack/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-05-21
+        </published>
+
+        <updated>
+          2022-11-11
+        </updated>
+
+        <summary>z80pack is great for creating an emulated CP/M system.  It can either be used to create a general CP/M system or can emulate a specific system such as an IMSAI or ALTAIR including a graphical front-pan</summary>
+    </entry>
+    <entry>
+      <title>Instrument Flight Simulator on CP/M</title>
+      <id>https://techtinkering.com/articles/instrument-flight-simulator-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/instrument-flight-simulator-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-05-15
+        </published>
+
+        <updated>
+          2019-05-15
+        </updated>
+
+        <summary>Instrument Flight Simulator is a text mode flight simulator for CP/M which uses standard ASCII characters to display an instrument panel for the plane.  The aim of the game is to land the aircraft safe</summary>
+    </entry>
+    <entry>
+      <title>Interactive File Managers on CP/M</title>
+      <id>https://techtinkering.com/articles/interactive-file-managers-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/interactive-file-managers-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-05-10
+        </published>
+
+        <updated>
+          2019-05-10
+        </updated>
+
+        <summary>CP/M has a number of interactive file managers that can be used to make it easier to handle common file operations rather than using the command line driven commands supplied with CP/M such as: DIR, ER</summary>
+    </entry>
+    <entry>
+      <title>Felix Animation System on CP/M</title>
+      <id>https://techtinkering.com/articles/felix-animation-system-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/felix-animation-system-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-04-23
+        </published>
+
+        <updated>
+          2019-04-23
+        </updated>
+
+        <summary>In 1979 the University of Tennessee/Knoxville's Computer Science Department released Felix v2.1 for CP/M, which is available on the Walnut Creek CD.  It aimed to provide a basis for computer animation </summary>
+    </entry>
+    <entry>
+      <title>Compression and Archiving on CP/M</title>
+      <id>https://techtinkering.com/articles/compression-and-archiving-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/compression-and-archiving-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-04-05
+        </published>
+
+        <updated>
+          2019-05-19
+        </updated>
+
+        <summary>CP/M has the ability to handle lots of different compression and archive formats which was important due to the limited capacity of floppy disks and the cost of downloading/uploading files on BBS's.  T</summary>
+    </entry>
+    <entry>
+      <title>Text Viewers on CP/M</title>
+      <id>https://techtinkering.com/articles/text-viewers-on-cpm/</id>
+      <link href="https://techtinkering.com/articles/text-viewers-on-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-03-27
+        </published>
+
+        <updated>
+          2019-03-27
+        </updated>
+
+        <summary>There are lots of text viewers on CP/M and I want to show the three that I use most often.  I have recently been going through the Walnut Creek CD to see if I can find any better text viewers, but afte</summary>
+    </entry>
+    <entry>
+      <title>Write Hand Man - CP/M's Answer to Sidekick</title>
+      <id>https://techtinkering.com/articles/write-hand-man-cpms-answer-to-sidekick/</id>
+      <link href="https://techtinkering.com/articles/write-hand-man-cpms-answer-to-sidekick/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-03-19
+        </published>
+
+        <updated>
+          2019-04-25
+        </updated>
+
+        <summary>CP/M is a single tasking operating system and having grown-up with single tasking systems this has never really been a problem for me.  There is style of program that would make my life easier, however</summary>
+    </entry>
+    <entry>
+      <title>Benchmarking Basic on Vintage Computers</title>
+      <id>https://techtinkering.com/articles/benchmarking-basic-on-vintage-computers/</id>
+      <link href="https://techtinkering.com/articles/benchmarking-basic-on-vintage-computers/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-03-06
+        </published>
+
+        <updated>
+          2019-03-13
+        </updated>
+
+        <summary>There are a few machines I'm quite interested in comparing so I decided to create a simple Basic benchmark to get an idea of their relative speed.  The benchmark tests 7 aspects and is inspired by qsbb</summary>
+    </entry>
+    <entry>
+      <title>Introducing Ornament a Tcl Template Module</title>
+      <id>https://techtinkering.com/articles/introducing-ornament-a-tcl-template-module/</id>
+      <link href="https://techtinkering.com/articles/introducing-ornament-a-tcl-template-module/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2019-01-02
+        </published>
+
+        <updated>
+          2019-01-02
+        </updated>
+
+        <summary>Ornament is a Tcl template module that allows you to define, parse and compile a template to produce a script which can then be run using a safe interpreter.  The idea came from the Templates and subst</summary>
+    </entry>
+    <entry>
+      <title>Advent of Code 2018: 25 Days, 25 Languages</title>
+      <id>https://techtinkering.com/articles/advent-of-code-2018-25-days-25-languages/</id>
+      <link href="https://techtinkering.com/articles/advent-of-code-2018-25-days-25-languages/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2018-12-01
+        </published>
+
+        <updated>
+          2018-12-30
+        </updated>
+
+        <summary>There are lots of different programming challenges, but this year one in particular has caught my attention and I have decided to take part.  Advent of Code starts 1st December with daily programming p</summary>
+    </entry>
+    <entry>
+      <title>What the Dormouse Said by John Markoff</title>
+      <id>https://techtinkering.com/2016/03/06/book-review-what-the-dormouse-said-by-john-markoff/</id>
+      <link href="https://techtinkering.com/2016/03/06/book-review-what-the-dormouse-said-by-john-markoff/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2016-03-06
+        </published>
+
+        <updated>
+          2016-03-06
+        </updated>
+
+        <summary>The premise of this book is that the 60s/70s counter-culture led to the personal computer revolution. I think the book demonstrated well how this influenced SAIL and how the Augment lab innovations led</summary>
+    </entry>
+    <entry>
+      <title>How to Make Thunderbird Feel Like Geary</title>
+      <id>https://techtinkering.com/2014/06/22/how-to-make-thunderbird-feel-like-geary/</id>
+      <link href="https://techtinkering.com/2014/06/22/how-to-make-thunderbird-feel-like-geary/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2014-06-22
+        </published>
+
+        <updated>
+          2014-06-22
+        </updated>
+
+        <summary>Geary is a lightweight email client inspired by gmail's interface.  Its simple minimalistic interface is quite pleasant to use and initially I was really pleased to switch to it from Thunderbird.  Howe</summary>
+    </entry>
+    <entry>
+      <title>Beware of Immutable Lists for F# Parallel Processing</title>
+      <id>https://techtinkering.com/2014/04/19/beware-of-immutable-lists-for-fsharp-parallel-processing/</id>
+      <link href="https://techtinkering.com/2014/04/19/beware-of-immutable-lists-for-fsharp-parallel-processing/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2014-04-19
+        </published>
+
+        <updated>
+          2014-04-19
+        </updated>
+
+        <summary>With F#, the list often feels like the default choice of data structure.  It is immutable and hence easy to reason about, however its use can come at a great cost.  If you are using lists to process la</summary>
+    </entry>
+    <entry>
+      <title>Rendering Racket Package Scribblings on Github Using gh-pages</title>
+      <id>https://techtinkering.com/2013/08/29/rendering-racket-package-scribblings-on-github-using-gh-pages/</id>
+      <link href="https://techtinkering.com/2013/08/29/rendering-racket-package-scribblings-on-github-using-gh-pages/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-08-29
+        </published>
+
+        <updated>
+          2013-08-29
+        </updated>
+
+        <summary>With the new package management system for Racket, there is a need to host documentation for the package somewhere.  Github allows you to host web pages, and hence a package's documentation, by putting</summary>
+    </entry>
+    <entry>
+      <title>Programmable Character Sets: A Simple Alternative to Bitmap Displays</title>
+      <id>https://techtinkering.com/2013/05/29/programmable-character-sets-a-simple-alternative-to-bitmap-displays/</id>
+      <link href="https://techtinkering.com/2013/05/29/programmable-character-sets-a-simple-alternative-to-bitmap-displays/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-05-29
+        </published>
+
+        <updated>
+          2013-05-29
+        </updated>
+
+        <summary>Programmable or reconfigurable character sets were a simple alternative to fully bitmappable displays.  The main driving force behind their creation was a desire to keep the cost of computers low: RAM </summary>
+    </entry>
+    <entry>
+      <title>Adding a Basic Stub to a VIC-20 Assembly Language Program</title>
+      <id>https://techtinkering.com/2013/05/10/adding-a-basic-stub-to-a-vic-20-assembly-language-program/</id>
+      <link href="https://techtinkering.com/2013/05/10/adding-a-basic-stub-to-a-vic-20-assembly-language-program/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-05-10
+        </published>
+
+        <updated>
+          2013-05-10
+        </updated>
+
+        <summary>To make machine language programs more friendly it is nice to add a basic stub which contains a line with a SYS statement to start the code.  This is easy to do on the Vic-20 and the process gives you </summary>
+    </entry>
+    <entry>
+      <title>Creating a TTY Simulator in Assembly Language on the VIC-20</title>
+      <id>https://techtinkering.com/2013/05/04/creating-a-tty-simulator-in-assembly-language-on-the-vic-20/</id>
+      <link href="https://techtinkering.com/2013/05/04/creating-a-tty-simulator-in-assembly-language-on-the-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-05-04
+        </published>
+
+        <updated>
+          2013-05-04
+        </updated>
+
+        <summary>The Vicmon machine language cartridge is an excellent tool for exploring the Vic-20.  This article and its associated video will show you how to use it to create a simple program that will change the n</summary>
+    </entry>
+    <entry>
+      <title>BBS Ads: Getting the Word Out</title>
+      <id>https://techtinkering.com/2013/04/23/bbs-ads-getting-the-word-out/</id>
+      <link href="https://techtinkering.com/2013/04/23/bbs-ads-getting-the-word-out/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-04-23
+        </published>
+
+        <updated>
+          2013-04-23
+        </updated>
+
+        <summary>BBS Ads were important to users and sysops of BBS's.  There wasn't any universal directory like the phone book, and during the heyday of BBS's (early '80s to the mid '90s), most people couldn't easily </summary>
+    </entry>
+    <entry>
+      <title>Beginning Assembly Programming on the Commodore VIC-20</title>
+      <id>https://techtinkering.com/2013/04/16/beginning-assembly-programming-on-the-commodore-vic-20/</id>
+      <link href="https://techtinkering.com/2013/04/16/beginning-assembly-programming-on-the-commodore-vic-20/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-04-16
+        </published>
+
+        <updated>
+          2019-11-26
+        </updated>
+
+        <summary>The Commodore VIC-20 is a great machine to learn an assembly language on.  It was released in 1981 and was the first computer to sell one million units, which contributes to its popularity today.  The </summary>
+    </entry>
+    <entry>
+      <title>Using C-Kermit to Exchange Files With Telnet BBS's</title>
+      <id>https://techtinkering.com/2013/04/09/using-c-kermit-to-exchange-files-with-telnet-bbs-s/</id>
+      <link href="https://techtinkering.com/2013/04/09/using-c-kermit-to-exchange-files-with-telnet-bbs-s/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-04-09
+        </published>
+
+        <updated>
+          2013-04-09
+        </updated>
+
+        <summary>Most BBSs that are still running now do so via telnet.  In many ways this is great as it allows people from all around the world to access a BBS as if it were local to them.  The problem comes though, </summary>
+    </entry>
+    <entry>
+      <title>Connecting to a Remote Serial Port over TCP/IP</title>
+      <id>https://techtinkering.com/2013/04/02/connecting-to-a-remote-serial-port-over-tcpip/</id>
+      <link href="https://techtinkering.com/2013/04/02/connecting-to-a-remote-serial-port-over-tcpip/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-04-02
+        </published>
+
+        <updated>
+          2019-11-26
+        </updated>
+
+        <summary>Most modern machines don't have a serial port as standard; you could use a USB to serial lead, however, if you have another machine available that does have a serial port you can access it remotely ove</summary>
+    </entry>
+    <entry>
+      <title>Using Netcat to Create ad hoc Links Between Applications or Machines</title>
+      <id>https://techtinkering.com/2013/03/25/using-netcat-to-create-ad-hoc-links-between-applications-and-machines/</id>
+      <link href="https://techtinkering.com/2013/03/25/using-netcat-to-create-ad-hoc-links-between-applications-and-machines/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-03-25
+        </published>
+
+        <updated>
+          2013-03-25
+        </updated>
+
+        <summary>Netcat is a simple Unix utility which reads and writes data across network connections using the TCP or UDP protocol.  It is often described as the &quot;Swiss-army knife for TCP/IP&quot; because of it</summary>
+    </entry>
+    <entry>
+      <title>If Only Borland Had Stuck With Turbo Modula-2 For CP/M</title>
+      <id>https://techtinkering.com/2013/03/12/if-only-borland-had-stuck-with-turbo-modula-2-for-cpm/</id>
+      <link href="https://techtinkering.com/2013/03/12/if-only-borland-had-stuck-with-turbo-modula-2-for-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-03-12
+        </published>
+
+        <updated>
+          2013-03-12
+        </updated>
+
+        <summary>I have written previously about why Turbo Pascal is a Great Choice For Programming Under CP/M and now it is time to talk about what could have been.  You probably haven't heard of Turbo Modula-2 for CP</summary>
+    </entry>
+    <entry>
+      <title>Turbo Pascal: A Great Choice For Programming Under CP/M</title>
+      <id>https://techtinkering.com/2013/03/05/turbo-pascal-a-great-choice-for-programming-under-cpm/</id>
+      <link href="https://techtinkering.com/2013/03/05/turbo-pascal-a-great-choice-for-programming-under-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-03-05
+        </published>
+
+        <updated>
+          2013-03-05
+        </updated>
+
+        <summary>CP/M was blessed with many programming languages, each with their own strengths and weaknesses.  I think that Turbo Pascal stands out from these and I'm not alone.  When Turbo Pascal was released in 19</summary>
+    </entry>
+    <entry>
+      <title>xdgbasedir: A Tcl Module to Access the XDG Base Directory Specification</title>
+      <id>https://techtinkering.com/2013/02/27/xdgbasedir-a-tcl-module-to-access-the-xdg-base-directory-specification/</id>
+      <link href="https://techtinkering.com/2013/02/27/xdgbasedir-a-tcl-module-to-access-the-xdg-base-directory-specification/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-02-27
+        </published>
+
+        <updated>
+          2013-02-27
+        </updated>
+
+        <summary>Unix has traditionally lacked a consistent way of storing user specific and system wide configuration and support files.  This has lead to a mess of dot files in a user's home directory and other assoc</summary>
+    </entry>
+    <entry>
+      <title>Compiling a Tcl Script into an Executable</title>
+      <id>https://techtinkering.com/2013/02/20/compiling-a-tcl-script-into-an-executable/</id>
+      <link href="https://techtinkering.com/2013/02/20/compiling-a-tcl-script-into-an-executable/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-02-20
+        </published>
+
+        <updated>
+          2013-02-20
+        </updated>
+
+        <summary>Locating Tcl scripts to load from an executable can be awkward if you want to make your program cross-platform.  An easier way is to compile a Tcl script directly into the executable and let that scrip</summary>
+    </entry>
+    <entry>
+      <title>Floppy Days: A New Vintage Computing Podcast</title>
+      <id>https://techtinkering.com/2013/02/19/floppy-days-a-new-vintage-computing-podcast/</id>
+      <link href="https://techtinkering.com/2013/02/19/floppy-days-a-new-vintage-computing-podcast/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-02-19
+        </published>
+
+        <updated>
+          2013-02-19
+        </updated>
+
+        <summary>I have just finished listening to the first episode of Floppy Days and I'm pleased to report that it looks like this is going to be a good addition to the vintage computing landscape.  The presenter, R</summary>
+    </entry>
+    <entry>
+      <title>Using Dynamically Generated Header Files with CMake</title>
+      <id>https://techtinkering.com/2013/02/12/using-dynamically-generated-header-files-with-cmake/</id>
+      <link href="https://techtinkering.com/2013/02/12/using-dynamically-generated-header-files-with-cmake/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2013-02-12
+        </published>
+
+        <updated>
+          2013-02-12
+        </updated>
+
+        <summary>Sometimes it can be useful to dynamically generate header files and include them from a C source file.  However, it can be a little difficult getting CMake to recognize when to generate the files and w</summary>
+    </entry>
+    <entry>
+      <title>Embedding an SDL Surface in a Tk Window</title>
+      <id>https://techtinkering.com/2012/06/26/embedding-an-sdl-surface-in-a-tk-window/</id>
+      <link href="https://techtinkering.com/2012/06/26/embedding-an-sdl-surface-in-a-tk-window/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2012-06-26
+        </published>
+
+        <updated>
+          2012-12-02
+        </updated>
+
+        <summary>Tk is great, but sometimes it just isn't fast enough.  SDL is fast, but has no support for input dialogs and other GUI conventions.  By embedding an SDL surface in a Tk window you get the best of both </summary>
+    </entry>
+    <entry>
+      <title>Refactoring: Arm Yourself in the War Against Useless Comments</title>
+      <id>https://techtinkering.com/2012/04/26/refactoring-arm-yourself-in-the-war-against-useless-comments/</id>
+      <link href="https://techtinkering.com/2012/04/26/refactoring-arm-yourself-in-the-war-against-useless-comments/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2012-04-26
+        </published>
+
+        <updated>
+          2012-04-26
+        </updated>
+
+        <summary>Comments, comments, everywhere, but are they making your code clearer or just distracting you?  Comments are meant to be there to explain code and help you to understand it.  However, they are often ou</summary>
+    </entry>
+    <entry>
+      <title>Dealing Sympathetically with Legacy Code</title>
+      <id>https://techtinkering.com/2012/04/20/dealing-sympathetically-with-legacy-code/</id>
+      <link href="https://techtinkering.com/2012/04/20/dealing-sympathetically-with-legacy-code/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2012-04-20
+        </published>
+
+        <updated>
+          2012-04-20
+        </updated>
+
+        <summary>I have often noticed programmers getting worked up about the legacy code they are maintaining.  I know it is annoying having to wade through poor code, or
+worrying about making changes for fear of unex</summary>
+    </entry>
+    <entry>
+      <title>Pisceans and October Babies More Likely to Become Poets.  Scraping Wikipedia Reveals All</title>
+      <id>https://techtinkering.com/2011/09/08/pisceans-and-october-babies-more-likely-to-become-poets/</id>
+      <link href="https://techtinkering.com/2011/09/08/pisceans-and-october-babies-more-likely-to-become-poets/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2011-09-08
+        </published>
+
+        <updated>
+          2011-09-08
+        </updated>
+
+        <summary>This is the second in a series of articles looking into whether when you were born affects your future.  In the previous article I looked at Nobel laureates, which are, of course, from a range of field</summary>
+    </entry>
+    <entry>
+      <title>Does When You Were Born Affect Your Chance of Becoming a Nobel Laureate? Scraping Wikipedia to Find Out</title>
+      <id>https://techtinkering.com/2011/08/24/does-when-you-were-born-affect-your-chance-of-becoming-a-nobel-laureate/</id>
+      <link href="https://techtinkering.com/2011/08/24/does-when-you-were-born-affect-your-chance-of-becoming-a-nobel-laureate/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2011-08-24
+        </published>
+
+        <updated>
+          2011-08-24
+        </updated>
+
+        <summary>There has been a lot of talk in the UK recently about whether when you were born affects your schooling.  Lots of teachers have noticed how pupils born at the end of the Summer often struggle compared </summary>
+    </entry>
+    <entry>
+      <title>Improving the related_posts feature of jekyll</title>
+      <id>https://techtinkering.com/2011/08/17/improving-related-posts-on-jekyll/</id>
+      <link href="https://techtinkering.com/2011/08/17/improving-related-posts-on-jekyll/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2011-08-17
+        </published>
+
+        <updated>
+          2011-08-17
+        </updated>
+
+        <summary>Now that I have converted TechTinkering over to Jekyll, I have come up against a bit of a problem with site.related_posts: The results are always just the latest posts, and are not filtered or ordered </summary>
+    </entry>
+    <entry>
+      <title>Mida - A Microdata parser/extractor library for Ruby</title>
+      <id>https://techtinkering.com/2011/04/16/mida-a-microdata-parser-extractor-library-for-ruby/</id>
+      <link href="https://techtinkering.com/2011/04/16/mida-a-microdata-parser-extractor-library-for-ruby/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2011-04-16
+        </published>
+
+        <updated>
+          2011-04-16
+        </updated>
+
+        <summary>I have recently released Mida as a Gem for parsing/extracting Microdata from web pages.  Not many sites at the moment are using Microdata, in fact, apart from this site, I only know of one other: Trust</summary>
+    </entry>
+    <entry>
+      <title>A Jekyll Plugin to Display Ratings as Star Images</title>
+      <id>https://techtinkering.com/2011/02/15/a-jekyll-plugin-to-display-ratings-as-star-images/</id>
+      <link href="https://techtinkering.com/2011/02/15/a-jekyll-plugin-to-display-ratings-as-star-images/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2011-02-15
+        </published>
+
+        <updated>
+          2011-02-15
+        </updated>
+
+        <summary>I have been using Jekyll a lot recently on the Trust a Friend website and found the need to display a rating as a series of stars.  Initially I implemented this in JavaScript, which worked fine, but I </summary>
+    </entry>
+    <entry>
+      <title>The National Museum of Computing at Bletchley Park</title>
+      <id>https://techtinkering.com/2010/06/15/the-national-museum-of-computing-at-bletchley-park/</id>
+      <link href="https://techtinkering.com/2010/06/15/the-national-museum-of-computing-at-bletchley-park/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2010-06-15
+        </published>
+
+        <updated>
+          2010-06-15
+        </updated>
+
+        <summary>The National Museum of Computing is the UK's largest museum dedicated to computing.  It is located on the Bletchley Park estate just south of Milton Keynes and is easy to get to by car, bus or train.  </summary>
+    </entry>
+    <entry>
+      <title>xAce is Back in Active Development and Looking For Contributors</title>
+      <id>https://techtinkering.com/2010/05/06/xace-is-back-in-active-development-and-looking-for-contributors/</id>
+      <link href="https://techtinkering.com/2010/05/06/xace-is-back-in-active-development-and-looking-for-contributors/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2010-05-06
+        </published>
+
+        <updated>
+          2010-05-06
+        </updated>
+
+        <summary>xAce is a great Jupiter Ace emulator and is in fact the one that I use the most, however it hasn't been actively developed since 1997 and therefore has some shortcomings.  I am keen to improve the emul</summary>
+    </entry>
+    <entry>
+      <title>Introducing TextPix v0.1 - A program to convert an image into a character set and text mode screen data</title>
+      <id>https://techtinkering.com/2010/04/16/introducing-textpix-v0-1/</id>
+      <link href="https://techtinkering.com/2010/04/16/introducing-textpix-v0-1/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2010-04-16
+        </published>
+
+        <updated>
+          2010-04-16
+        </updated>
+
+        <summary>I have today released TextPix v0.1  This is a program to take an image and convert it into a redefined character set and the associated text mode screen data referencing that character set.
+The program</summary>
+    </entry>
+    <entry>
+      <title>Getting Colour ANSI Emulation to Work Properly When Connecting to a BBS With Telnet Under Linux</title>
+      <id>https://techtinkering.com/2010/02/14/getting-colour-ansi-emulation-to-work-properly-when-connecting-to-a-bbs-with-telnet-under-linux/</id>
+      <link href="https://techtinkering.com/2010/02/14/getting-colour-ansi-emulation-to-work-properly-when-connecting-to-a-bbs-with-telnet-under-linux/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2010-02-14
+        </published>
+
+        <updated>
+          2010-02-14
+        </updated>
+
+        <summary>I have noticed that the number of people interested in using telnet to access BBSs seems to be growing, which I'm really pleased to see.  However lots of people seem to be having trouble getting colour</summary>
+    </entry>
+    <entry>
+      <title>Setting up a Beowulf Cluster Using Open MPI on Linux</title>
+      <id>https://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/</id>
+      <link href="https://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-12-02
+        </published>
+
+        <updated>
+          2009-12-02
+        </updated>
+
+        <summary>I have been doing a lot of work recently on Linear Genetic Programming.  This requires a great deal of processing power and to meet this I have been using Open MPI to create a Linux cluster.   What fol</summary>
+    </entry>
+    <entry>
+      <title>My Top 10 Classic Text Mode BSD Games</title>
+      <id>https://techtinkering.com/2009/08/11/my-top-10-classic-text-mode-bsd-games/</id>
+      <link href="https://techtinkering.com/2009/08/11/my-top-10-classic-text-mode-bsd-games/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-08-11
+        </published>
+
+        <updated>
+          2009-08-11
+        </updated>
+
+        <summary>Recently, I have been playing a collection of text mode games that were commonly found on Unix Systems during the 70s and 80s.  These games are surprisingly playable and, for me, they really show that </summary>
+    </entry>
+    <entry>
+      <title>Running 4K FORTRAN on a DEC PDP-8</title>
+      <id>https://techtinkering.com/2009/07/14/running-4k-fortran-on-a-dec-pdp8/</id>
+      <link href="https://techtinkering.com/2009/07/14/running-4k-fortran-on-a-dec-pdp8/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-07-14
+        </published>
+
+        <updated>
+          2009-07-14
+        </updated>
+
+        <summary>4K FORTRAN was a subset of FORTRAN II and was the first high-level language available for the DEC PDP-8.  It consisted of two parts: the 4K FORTRAN Compiler (nicknamed &quot;Fivetran&quot;) and the 4K </summary>
+    </entry>
+    <entry>
+      <title>A Quickstart Guide to Editing Paper Tape With the Symbolic Tape Editor on the DEC PDP-8</title>
+      <id>https://techtinkering.com/2009/06/16/a-quickstart-guide-to-editing-paper-tape-with-the-symbolic-tape-editor-on-the-dec-pdp-8/</id>
+      <link href="https://techtinkering.com/2009/06/16/a-quickstart-guide-to-editing-paper-tape-with-the-symbolic-tape-editor-on-the-dec-pdp-8/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-06-16
+        </published>
+
+        <updated>
+          2009-06-16
+        </updated>
+
+        <summary>Before re-writable storage devices, such as tape drives, become popular for the DEC PDP-8, owners had to rely on paper tape.  This was fine for loading programs on pre-punched tape, but left the proble</summary>
+    </entry>
+    <entry>
+      <title>Electronic Brains: Stories from the Dawn of the Computer Age by Mike Hally</title>
+      <id>https://techtinkering.com/2009/06/03/book-review-electronic-brains-stories-from-the-dawn-of-the-computer-age-by-mike-hally/</id>
+      <link href="https://techtinkering.com/2009/06/03/book-review-electronic-brains-stories-from-the-dawn-of-the-computer-age-by-mike-hally/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-06-03
+        </published>
+
+        <updated>
+          2009-06-03
+        </updated>
+
+        <summary>This is an interesting history of computer development around the world during the 1940s and 50s.  The book grew out of a radio series on BBS Radio 4 and contains lots of original material gained from </summary>
+    </entry>
+    <entry>
+      <title>Emulating a DEC PDP-8 with SimH</title>
+      <id>https://techtinkering.com/2009/05/26/emulating-a-dec-pdp8-with-simh/</id>
+      <link href="https://techtinkering.com/2009/05/26/emulating-a-dec-pdp8-with-simh/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-05-26
+        </published>
+
+        <updated>
+          2009-05-26
+        </updated>
+
+        <summary>The DEC PDP-8 mini-computer was launched on 22 March 1965 and was a great success.  It was fairly cheap for the day and could easily be expanded.  What attracts me most to the PDP-8 is its simple desig</summary>
+    </entry>
+    <entry>
+      <title>Improving the Standard SUBLEQ OISC (One Instruction Set Computer) Architecture</title>
+      <id>https://techtinkering.com/2009/05/15/improving-the-standard-subleq-oisc-architecture/</id>
+      <link href="https://techtinkering.com/2009/05/15/improving-the-standard-subleq-oisc-architecture/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-05-15
+        </published>
+
+        <updated>
+          2009-05-15
+        </updated>
+
+        <summary>When I first came across SUBLEQ,
+I really liked the beauty and simplicity of the design.  However, I have now been experimenting with it for quite a while and have noticed one aspect of the standard im</summary>
+    </entry>
+    <entry>
+      <title>Connecting a Parallel Printer to a Modern Linux Machine Using a LogiLink USB to Parallel Cable, D-SUB 25pin</title>
+      <id>https://techtinkering.com/2009/05/06/connecting-a-parallel-printer-to-a-modern-linux-machine-using-a-logilink-usb-to-parallel-cable/</id>
+      <link href="https://techtinkering.com/2009/05/06/connecting-a-parallel-printer-to-a-modern-linux-machine-using-a-logilink-usb-to-parallel-cable/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-05-06
+        </published>
+
+        <updated>
+          2009-05-06
+        </updated>
+
+        <summary>I have a number of older printers that I would like to connect to my modern machine, but have been unable to do so because my computer doesn't have a parallel interface.  After searching the internet f</summary>
+    </entry>
+    <entry>
+      <title>An Introduction to Corewar</title>
+      <id>https://techtinkering.com/2009/04/30/an-introduction-to-corewar/</id>
+      <link href="https://techtinkering.com/2009/04/30/an-introduction-to-corewar/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-04-30
+        </published>
+
+        <updated>
+          2009-04-30
+        </updated>
+
+        <summary>I remember reading about Corewar roughly 20 years ago and thinking that I will have to have a go at that when I get the time.  As often happens in life, things got in the way and I only recently manage</summary>
+    </entry>
+    <entry>
+      <title>The Smallest Communication Program in the World?</title>
+      <id>https://techtinkering.com/2009/04/23/the-smallest-communication-program-in-the-world/</id>
+      <link href="https://techtinkering.com/2009/04/23/the-smallest-communication-program-in-the-world/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-04-23
+        </published>
+
+        <updated>
+          2009-04-23
+        </updated>
+
+        <summary>I was going through a backup of my dos machine, taken in 1998, and came across some source code which I haven't seen for a long time.  It was great to see that old code, and I must set-up a machine so </summary>
+    </entry>
+    <entry>
+      <title>Hello, World! in SUBLEQ Assembly</title>
+      <id>https://techtinkering.com/2009/03/29/hello-world-in-subleq-assembly/</id>
+      <link href="https://techtinkering.com/2009/03/29/hello-world-in-subleq-assembly/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-03-29
+        </published>
+
+        <updated>
+          2009-03-29
+        </updated>
+
+        <summary>After writing a previous article: The SUBLEQ URISC (Ultimate RISC) / OISC (One Instruction Set Computer) Architecture.  I was left thinking that I should really have given at least a &quot;hello, world</summary>
+    </entry>
+    <entry>
+      <title>An Introduction to Test-Driven Development</title>
+      <id>https://techtinkering.com/2009/03/18/an-introduction-to-test-driven-development/</id>
+      <link href="https://techtinkering.com/2009/03/18/an-introduction-to-test-driven-development/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-03-18
+        </published>
+
+        <updated>
+          2009-03-18
+        </updated>
+
+        <summary>For the past 6 months I have been using Test-Driven Development (TDD) on a new project.  It has made such a difference to the quality of my code, that I feel I just have to share it's benefits with tho</summary>
+    </entry>
+    <entry>
+      <title>The SUBLEQ URISC (Ultimate RISC) / OISC (One Instruction Set Computer) Architecture</title>
+      <id>https://techtinkering.com/2009/03/05/the-subleq-urisc-oisc-architecture/</id>
+      <link href="https://techtinkering.com/2009/03/05/the-subleq-urisc-oisc-architecture/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-03-05
+        </published>
+
+        <updated>
+          2009-03-05
+        </updated>
+
+        <summary>I have been interested in the limits of RISC (Reduced Instruction Set Computer) architecture for a while and recently came across OISC (One Instruction Set Computer) &#92; URISC (Ultimate RISC) archite</summary>
+    </entry>
+    <entry>
+      <title>xAce - A Jupiter Ace Emulator for Unix (Patched to correct garbled display)</title>
+      <id>https://techtinkering.com/2009/02/12/xace-a-jupiter-ace-emulator-for-unix-patched-to-correct-garbled-display/</id>
+      <link href="https://techtinkering.com/2009/02/12/xace-a-jupiter-ace-emulator-for-unix-patched-to-correct-garbled-display/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-02-12
+        </published>
+
+        <updated>
+          2009-02-12
+        </updated>
+
+        <summary>The only Jupiter Ace emulator that I found, which would work under Linux, was written by Edward Patel and is called xace.  There is also a Windows version available, but I don't know anything more abou</summary>
+    </entry>
+    <entry>
+      <title>The Mythical Man-Month: Essays on Software Engineering by Frederick P. Brooks, Jr.</title>
+      <id>https://techtinkering.com/2009/01/26/book-review-the-mythical-man-month-essays-on-software-engineering-by-frederick-p-brooks-jr/</id>
+      <link href="https://techtinkering.com/2009/01/26/book-review-the-mythical-man-month-essays-on-software-engineering-by-frederick-p-brooks-jr/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2009-01-26
+        </published>
+
+        <updated>
+          2009-01-26
+        </updated>
+
+        <summary>This book, written in 1975, offers a fascinating insight into the software engineering process used at that time.  The author draws from his experience as project manager for the IBM System/360 and OS/</summary>
+    </entry>
+    <entry>
+      <title>Bouncing Babies</title>
+      <id>https://techtinkering.com/2008/12/16/bouncing-babies/</id>
+      <link href="https://techtinkering.com/2008/12/16/bouncing-babies/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-12-16
+        </published>
+
+        <updated>
+          2008-12-16
+        </updated>
+
+        <summary>Bouncing Babies is one of the first games I remember playing on an IBM PC Compatible.  I recall looking at this funny game and thinking that it really was a strange concept.  It was released as Sharewa</summary>
+    </entry>
+    <entry>
+      <title>Chinese Man Spotted On Tissue</title>
+      <id>https://techtinkering.com/2008/12/08/chinese-man-spotted-on-tissue/</id>
+      <link href="https://techtinkering.com/2008/12/08/chinese-man-spotted-on-tissue/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-12-08
+        </published>
+
+        <updated>
+          2008-12-08
+        </updated>
+
+        <summary>It really is funny the things that we spot sometimes.  Most of us must have looked up at the clouds and spotted animals, houses and other imagined objects.  We are also used to the occasional news repo</summary>
+    </entry>
+    <entry>
+      <title>My Top 10 Commodore 64 Demos</title>
+      <id>https://techtinkering.com/2008/11/24/my-top-10-commodore-64-demos/</id>
+      <link href="https://techtinkering.com/2008/11/24/my-top-10-commodore-64-demos/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-11-24
+        </published>
+
+        <updated>
+          2008-11-24
+        </updated>
+
+        <summary>There are so many great demos for the Commodore 64 and the demo scene is still thriving.  Surprisingly there are even new effects being created for this machine.  I have spent many hours going through </summary>
+    </entry>
+    <entry>
+      <title>Beneath a Steel Sky, My Favourite Graphical Adventure Game</title>
+      <id>https://techtinkering.com/2008/11/13/beneath-a-steel-sky-my-favourite-graphical-adventure-game/</id>
+      <link href="https://techtinkering.com/2008/11/13/beneath-a-steel-sky-my-favourite-graphical-adventure-game/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-11-13
+        </published>
+
+        <updated>
+          2008-11-13
+        </updated>
+
+        <summary>Beneath a Steel Sky was released for the PC in 1994 by Revolution Software.  It was received well and has gone on to be considered a cult classic.  It uses the Virtual Theatre engine which was first us</summary>
+    </entry>
+    <entry>
+      <title>How to File Good Bug Reports</title>
+      <id>https://techtinkering.com/2008/11/12/how-to-file-good-bug-reports/</id>
+      <link href="https://techtinkering.com/2008/11/12/how-to-file-good-bug-reports/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-11-12
+        </published>
+
+        <updated>
+          2008-11-12
+        </updated>
+
+        <summary>The real advantage of Open Source software is that many people from all around the globe can work to make it better.  This means that bugs can be detected and often fixed much more quickly than with cl</summary>
+    </entry>
+    <entry>
+      <title>Using ScummVM to Play Classic Adventure Games</title>
+      <id>https://techtinkering.com/2008/11/10/using-scummvm-to-play-classic-adventure-games/</id>
+      <link href="https://techtinkering.com/2008/11/10/using-scummvm-to-play-classic-adventure-games/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-11-10
+        </published>
+
+        <updated>
+          2008-11-10
+        </updated>
+
+        <summary>ScummVM is Virtual Machine, that allows you to run adventure games created for a number of game creation engines.  This is a great way of playing those classic adventure games that you loved so much, o</summary>
+    </entry>
+    <entry>
+      <title>Writing my First Program to Toggle in to the IMSAI 8080</title>
+      <id>https://techtinkering.com/2008/11/05/writing-my-first-program-to-toggle-in-to-the-imsai-8080/</id>
+      <link href="https://techtinkering.com/2008/11/05/writing-my-first-program-to-toggle-in-to-the-imsai-8080/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-11-05
+        </published>
+
+        <updated>
+          2008-11-05
+        </updated>
+
+        <summary>I have long been fascinated with entering programs into computers by methods not involving a standard keyboard and monitor.  This interest was peeked by my last article: Using the latest z80pack, versi</summary>
+    </entry>
+    <entry>
+      <title>Using the latest  z80pack, version 1.17, to emulate an Altair 8800 or IMSAI 8080 using the new graphical FrontPanel</title>
+      <id>https://techtinkering.com/2008/10/29/using-the-latest-z80pack-version-1-17-to-emulate-an-altair-8800-or-imsai-8080-using-the-new-graphical-frontpanel/</id>
+      <link href="https://techtinkering.com/2008/10/29/using-the-latest-z80pack-version-1-17-to-emulate-an-altair-8800-or-imsai-8080-using-the-new-graphical-frontpanel/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-10-29
+        </published>
+
+        <updated>
+          2008-10-29
+        </updated>
+
+        <summary>Udo Munk has just released the latest version of his z80pack emulator, version 1.17, which now includes John Kichury's FrontPanel library.  As well as being a superb emulator to run CP/M on, it now giv</summary>
+    </entry>
+    <entry>
+      <title>Is this steamer really not to be used by girls?</title>
+      <id>https://techtinkering.com/2008/10/28/is-this-steamer-really-not-to-be-used-by-girls/</id>
+      <link href="https://techtinkering.com/2008/10/28/is-this-steamer-really-not-to-be-used-by-girls/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-10-28
+        </published>
+
+        <updated>
+          2008-10-28
+        </updated>
+
+        <summary>I was preparing the walls of our nursery on the weekend, ready for the arrival of our first child in December.  I was about to start steaming off the border and thought I'd better look at the instructi</summary>
+    </entry>
+    <entry>
+      <title>Using DOSBox to Run DOS Games and Applications</title>
+      <id>https://techtinkering.com/2008/10/24/using-dosbox-to-run-dos-games-and-applications/</id>
+      <link href="https://techtinkering.com/2008/10/24/using-dosbox-to-run-dos-games-and-applications/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-10-24
+        </published>
+
+        <updated>
+          2008-10-24
+        </updated>
+
+        <summary>There were some brilliant games and applications released for DOS, and some of the games such as Command and Conquer are still very playable.  There are a number of options to play these games today, f</summary>
+    </entry>
+    <entry>
+      <title>Installing the HI-TECH Z80 C Compiler for CP/M</title>
+      <id>https://techtinkering.com/2008/10/22/installing-the-hi-tech-z80-c-compiler-for-cpm/</id>
+      <link href="https://techtinkering.com/2008/10/22/installing-the-hi-tech-z80-c-compiler-for-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-10-22
+        </published>
+
+        <updated>
+          2012-12-11
+        </updated>
+
+        <summary>My language of choice is C and I am currently getting more involved with the CP/M operating system.  I have therefore decided that it would be nice to have a C compiler working under CP/M.  There are a</summary>
+    </entry>
+    <entry>
+      <title>Installing ZDE 1.6, a programmers editor for CP/M</title>
+      <id>https://techtinkering.com/2008/10/21/installing-zde-1-6-a-programmers-editor-for-cpm/</id>
+      <link href="https://techtinkering.com/2008/10/21/installing-zde-1-6-a-programmers-editor-for-cpm/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-10-21
+        </published>
+
+        <updated>
+          2008-10-21
+        </updated>
+
+        <summary>To do any serious programming under CP/M, the first thing you need is a good programmers editor.  There aren't many in the archives, but I have tried most of them and found ZDE to be the best.  It is s</summary>
+    </entry>
+    <entry>
+      <title>Setting up z80pack to Create an Emulated CP/M System</title>
+      <id>https://techtinkering.com/2008/10/17/setting-up-z80pack-to-create-an-emulated-cpm-system/</id>
+      <link href="https://techtinkering.com/2008/10/17/setting-up-z80pack-to-create-an-emulated-cpm-system/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-10-17
+        </published>
+
+        <updated>
+          2019-11-26
+        </updated>
+
+        <summary>I have decided to try out some old CP/M software, but need something to run it on.  I could either do this on my Commodore 128 or through emulation.  Unfortunately the 1571 disk drive for my Commodore </summary>
+    </entry>
+    <entry>
+      <title>PDP-8 in 'Three Days of the Condor'</title>
+      <id>https://techtinkering.com/2008/10/14/pdp-8-in-three-days-of-the-condor/</id>
+      <link href="https://techtinkering.com/2008/10/14/pdp-8-in-three-days-of-the-condor/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-10-14
+        </published>
+
+        <updated>
+          2008-10-14
+        </updated>
+
+        <summary>I watched 'Three Days of the Condor' the other night and loved seeing what I believe is a Dec PDP 8/E being used.  Also featured in connection with this machine was a DecWriter, paper tape reader and p</summary>
+    </entry>
+    <entry>
+      <title>Fundamentals of Operating Systems by A.M. Lister - Second Edition</title>
+      <id>https://techtinkering.com/2008/10/07/book-review-fundamentals-of-operating-systems-by-a-m-lister/</id>
+      <link href="https://techtinkering.com/2008/10/07/book-review-fundamentals-of-operating-systems-by-a-m-lister/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-10-07
+        </published>
+
+        <updated>
+          2008-10-07
+        </updated>
+
+        <summary>It was fascinating to read this book from 1979 and see how operating system design was viewed then, compared to now.  The biggest change being the shift in importance from batch processing to the inter</summary>
+    </entry>
+    <entry>
+      <title>How to share an SSL certificate and still use cookies</title>
+      <id>https://techtinkering.com/2008/09/16/how-to-share-an-ssl-certificate-and-still-use-cookies/</id>
+      <link href="https://techtinkering.com/2008/09/16/how-to-share-an-ssl-certificate-and-still-use-cookies/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-09-16
+        </published>
+
+        <updated>
+          2008-09-16
+        </updated>
+
+        <summary>Website hosting companies often provide a shared SSL certificate, but this presents the web designer with the problem of how to use it for a site that uses cookies.  I have read many people say that th</summary>
+    </entry>
+    <entry>
+      <title>Is Cobol Really Understandable After 14 Years?</title>
+      <id>https://techtinkering.com/2008/08/08/is-cobol-really-understandable-after-14-years/</id>
+      <link href="https://techtinkering.com/2008/08/08/is-cobol-really-understandable-after-14-years/"/>
+        <author>
+          <name>Lawrence Woodman</name>
+          <uri>https://lawrencewoodman.github.io</uri>
+        </author>
+        <published>
+          2008-08-08
+        </published>
+
+        <updated>
+          2008-08-08
+        </updated>
+
+        <summary>COBOL has been in the news quite a lot recently and I have been reading that there are still huge amounts of COBOL code running and being written.  This led me to wonder why this language was still bei</summary>
+    </entry>
+</feed>

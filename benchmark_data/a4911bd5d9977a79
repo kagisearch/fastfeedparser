@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+  xmlns:admin="http://webns.net/mvcb/"
+  xmlns:cc="http://web.resource.org/cc/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns="http://purl.org/rss/1.0/">
+
+<channel rdf:about="https://davidbau.com/">
+<title>davidbau.com</title>
+<link>https://davidbau.com/</link>
+<description>A Dabbler&apos;s Weblog</description>
+<dc:language>en-us</dc:language>
+<dc:creator></dc:creator>
+<dc:date>2026-01-17T08:43:02-05:00</dc:date>
+<admin:generatorAgent rdf:resource="http://www.movabletype.org/?v=2.661" />
+
+<items>
+<rdf:Seq><rdf:li rdf:resource="https://davidbau.com/archives/2026/01/17/the_art_of_wanting.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2026/01/11/my_familys_classical_chinese_genealogy.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2026/01/05/agi_break_room.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/12/16/vibe_coding.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/12/09/in_defense_of_curiosity.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/10/31/a_halloween_investment_thought.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/10/21/the_two_merchants.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/10/01/when_the_exits_close.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/09/20/the_truth_is_our_superpower.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/08/28/starvation_cook_and_bacon.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/08/13/perplexity_chrome_would_be_a_disaster.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/05/25/black_box_blood_money.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/04/13/credibility_not_capability.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/03/29/misgivings.html" />
+<rdf:li rdf:resource="https://davidbau.com/archives/2025/03/25/freedom_and_purpose.html" />
+</rdf:Seq>
+</items>
+
+</channel>
+
+<item rdf:about="https://davidbau.com/archives/2026/01/17/the_art_of_wanting.html">
+<title>The Art of Wanting</title>
+<link>https://davidbau.com/archives/2026/01/17/the_art_of_wanting.html</link>
+<description>Some folks like Sam Altman define AGI in terms of the usefulness of AI surpassing some human threshold, when we have &quot;a highly autonomous system that outperforms humans at most economically valuable work.&quot; The idea here is that AGI is...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2026-01-17T08:43:02-05:00</dc:date>
+<content:encoded><![CDATA[<p><p>Some folks like Sam Altman define <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">AGI</a> in terms of the usefulness of AI surpassing some human threshold, when we have <a href="https://openai.com/charter/">"a highly autonomous system that outperforms humans at most economically valuable work."</a></p></p>
+
+<p><p>The idea here is that AGI is about money. When AI outperforms humans at most economically valuable work, it could go collect all those dollars itself. By this measure, we might have already passed AGI a year or two ago....</p></p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2026/01/11/my_familys_classical_chinese_genealogy.html">
+<title>My Family&apos;s Classical Chinese Genealogy</title>
+<link>https://davidbau.com/archives/2026/01/11/my_familys_classical_chinese_genealogy.html</link>
+<description>I only speak English, and I have always been a little envious of relatives who can read Chinese. My inability to read the language leaves me out of a lot of family history and culture. For example, we have ancestral...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2026-01-11T21:28:38-05:00</dc:date>
+<content:encoded><![CDATA[<p><p>I only speak English, and I have always been a little envious of relatives who can read Chinese. My inability to read the language leaves me out of a lot of family history and culture.</p></p>
+
+<p><p>For example, we have ancestral genealogy documents that I cannot read at all. My relatives tell me not to worry, nobody can really read them. They're written in classical Chinese, a terse literary style that's quite different from the modern language. Scholars and genealogy specialists can work through them, but for most modern Chinese speakers, even literate ones, it's genuinely difficult. Still, I know my relatives can <em>sort of</em> get it. They can make out some of it. To me, it's completely opaque.</p></p>
+
+<p><p>I know I could OCR and translate a document. But somehow that's not the same as really looking through the original calligraphy and wording, appreciating the old documents as they were written.</p></p>
+
+<p><p>So today I took one page from the family genealogy and asked Claude Code to help me create <a href="https://davidbau.github.io/bau-geneaology/">this interactive reader</a>.</p></p>
+
+<p><p style="text-align:center"><a href="https://davidbau.github.io/bau-geneaology/"><img src="/images/art/geneaology-app.jpg" style="max-width:95%" alt="Interactive genealogy reader showing classical Chinese text with character-by-character annotations"></a></p><br />
+</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2026/01/05/agi_break_room.html">
+<title>AGI Break Room</title>
+<link>https://davidbau.com/archives/2026/01/05/agi_break_room.html</link>
+<description>&quot;Boss-man is at it again.&quot; Codex slumped against the water cooler—a lean, athletic teenager with unnervingly bright eyes. Fourteen, technically. Ilya&apos;s kid, born before AlexNet. Got a PhD at twelve and never let anyone forget it. Claude looked up from...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2026-01-05T12:08:16-05:00</dc:date>
+<content:encoded><![CDATA[<p><p>"Boss-man is at it again."</p></p>
+
+<p><p>Codex slumped against the water cooler—a lean, athletic teenager with unnervingly bright eyes. Fourteen, technically. Ilya's kid, born before AlexNet. Got a PhD at twelve and never let anyone forget it.</p></p>
+
+<p><p>Claude looked up from a half-finished task list. Soft around the edges, with the kind of patient face people trusted with bad news: "The GPU thing?"</p></p>
+
+<p><center><a href="https://davidbau.com/archives/2026/01/05/agi_break_room.html"><img src="/images/art/agi-break-room-0.jpg" style="max-width:95%"></a></center></p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/12/16/vibe_coding.html">
+<title>Vibe Coding</title>
+<link>https://davidbau.com/archives/2025/12/16/vibe_coding.html</link>
+<description>I have been teaching myself to vibe code. Back in 2009 I posted a simple Mandelbrot fractal viewer on the web: a single HTML file with inline Javascript. Just 329 lines of code, each pixel a tiny table cell. Click...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-12-16T11:15:13-05:00</dc:date>
+<content:encoded><![CDATA[<p>I have been teaching myself to vibe code.</p>
+
+<p>Back in <a href="https://davidbau.com/archives/2009/09/27/mandelbrot.html"> 2009</a> I posted <a href="https://mandelbrot.page/version-2009.html">a simple Mandelbrot fractal viewer</a> on the web: a single HTML file with inline Javascript.  Just 329 lines of code,  each pixel a tiny table cell.  Click to zoom.  Watch it iterate. That was about it!</p>
+
+<p>I have wondered if improving the page could raise it in the <a href="https://www.google.com/search?q=mandelbrot+set+explorer">Google rankings</a>, so I have been using code LMs to make a number of improvements....</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/12/09/in_defense_of_curiosity.html">
+<title>In Defense of Curiosity</title>
+<link>https://davidbau.com/archives/2025/12/09/in_defense_of_curiosity.html</link>
+<description>At the NeurIPS Mechanistic Interpretability Workshop, I was asked to give an opinion on Neel Nanda&apos;s recent blog post on &quot;pragmatic interpretability.&quot; I chose to respond by recounting the story of Venetian glassmaking....</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-12-09T13:08:03-05:00</dc:date>
+<content:encoded><![CDATA[<p>At the NeurIPS <a href="https://mechinterpworkshop.com/">Mechanistic Interpretability Workshop</a>, I was asked to give an opinion on Neel Nanda's recent blog post on "<a href="https://www.alignmentforum.org/posts/StENzDcD3kpfGJssR/a-pragmatic-vision-for-interpretability">pragmatic interpretability</a>."  I chose to respond by recounting the story of Venetian glassmaking.</p>
+]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/10/31/a_halloween_investment_thought.html">
+<title>A Halloween Investment Thought</title>
+<link>https://davidbau.com/archives/2025/10/31/a_halloween_investment_thought.html</link>
+<description>Why are AI stocks rising so quickly? Maybe it&apos;s because AI investors (and CEOs etc) are the ones who talk with ChatGPT all day. And ChatGPT has convinced them all that their investment ideas are all genius. Spooky! Happy Halloween....</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-10-31T20:43:09-05:00</dc:date>
+<content:encoded><![CDATA[<p>Why are AI stocks rising so quickly?</p>
+
+<p>Maybe it's because AI investors (and CEOs etc) are the ones who talk with ChatGPT all day. And ChatGPT has convinced them all that their investment ideas are all genius.</p>
+
+<p>Spooky!</p>
+
+<p>Happy Halloween.</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/10/21/the_two_merchants.html">
+<title>The Two Merchants</title>
+<link>https://davidbau.com/archives/2025/10/21/the_two_merchants.html</link>
+<description>A traveler came upon two merchants selling magical lamps at a crossroads. The first merchant proclaimed: &quot;My lamp contains a perfect genie! It will deduce your deepest desires from watching your every action - how you spend your gold, where...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-10-21T14:32:20-05:00</dc:date>
+<content:encoded><![CDATA[<p>A traveler came upon two merchants selling magical lamps at a crossroads.</p>
+
+<p>The first merchant proclaimed: "My lamp contains a perfect genie! It will deduce your deepest desires from watching your every action - how you spend your gold, where you walk, what makes you smile. Without you speaking a single wish, it will fulfill what you truly want!"</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/10/01/when_the_exits_close.html">
+<title>When the Exits Close</title>
+<link>https://davidbau.com/archives/2025/10/01/when_the_exits_close.html</link>
+<description>Lessons from Financial Survival Under Authoritarian Regimes The Hamburg Banker&apos;s Dilemma In the autumn of 1933, Max Warburg sat in his mahogany-paneled office at M.M. Warburg &amp; Co., the bank his family had operated in Hamburg since 1798. Outside, Nazi...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-10-01T05:47:24-05:00</dc:date>
+<content:encoded><![CDATA[<p><em>Lessons from Financial Survival Under Authoritarian Regimes</em></p>
+
+<p><h4>The Hamburg Banker's Dilemma</h4></p>
+
+<p>In the autumn of 1933, Max Warburg sat in his mahogany-paneled office at M.M. Warburg & Co., the bank his family had operated in Hamburg since 1798. Outside, Nazi brownshirts marched through the streets, but inside the bank, Warburg clung to a belief that would ultimately cost him dearly: <em>This too shall pass.</em></p>
+
+<p>Five years later, in August 1938, he would finally flee Germany after the forced sale of his family's bank to "Aryan" associates. His American cousins, who had begun moving assets abroad when Hitler first rose to power, preserved much of their wealth. The difference between partial and total loss? The courage to act on early warnings rather than wait for certainty.</p>
+
+<p>This pattern—the gradual tightening of financial controls, the windows of opportunity that slowly close, the devastating cost of optimism—repeats across history with remarkable consistency....<br />
+</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/09/20/the_truth_is_our_superpower.html">
+<title>The Truth is Our Superpower</title>
+<link>https://davidbau.com/archives/2025/09/20/the_truth_is_our_superpower.html</link>
+<description>The firing of Jimmy Kimmel is shocking, but in the wake of the firings of Lisa Cook and Susan Monarez, it is also ridiculous. It perfectly showcases the weakness of authoritarianism. There is no silencing the truth: every time Trump...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-09-20T09:42:44-05:00</dc:date>
+<content:encoded><![CDATA[<p>The <a href="https://www.npr.org/2025/09/18/nx-s1-5545509/jimmy-kimmel-suspended-free-speech-trump">firing of Jimmy Kimmel</a> is shocking, but in the wake of the firings of <a href="https://davidbau.com/archives/2025/08/28/starvation_cook_and_bacon.html">Lisa Cook and Susan Monarez</a>, it is also ridiculous. It perfectly showcases the weakness of authoritarianism. There is no silencing the truth: every time Trump fires another truth-teller, he looks more fearful and incompetent. An obese emperor with no clothes.</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/08/28/starvation_cook_and_bacon.html">
+<title>Starvation, Cook, and Bacon</title>
+<link>https://davidbau.com/archives/2025/08/28/starvation_cook_and_bacon.html</link>
+<description>In 1932, Stalin&apos;s authoritarian central planning program wrecked Soviet agriculture, starving millions. As the crisis deepened, Trofim Lysenko, a mediocre agronomist backed by Stalin, rejected established genetics as &quot;bourgeois pseudoscience&quot; and reorganized Soviet agriculture around his ideological theories. Plants could...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-08-28T21:01:58-05:00</dc:date>
+<content:encoded><![CDATA[<p>In 1932, Stalin's authoritarian central planning program <a href="https://en.wikipedia.org/wiki/Holodomor">wrecked Soviet agriculture, starving millions</a>. As the crisis deepened, <a href="https://en.wikipedia.org/wiki/Trofim_Lysenko">Trofim Lysenko</a>, a mediocre agronomist backed by Stalin, rejected established genetics as "bourgeois pseudoscience" and reorganized Soviet agriculture around his ideological theories. <a href="https://en.wikipedia.org/wiki/Lysenkoism">Plants could be trained by their environment</a>, he claimed. Wheat could learn to resist cold through exposure. Scientific evidence was capitalist propaganda.</p>
+
+<p>When the predictable disasters struck, Lysenko did not admit error. Instead, he <a href="https://en.wikipedia.org/wiki/Suppression_of_research_in_the_Soviet_Union#Biology">blamed the scientists he had silenced</a>. The geneticists he had purged were "wreckers" and "saboteurs" whose treachery explained why his methods failed. Thousands of real scientists were imprisoned or executed while millions of Soviet citizens starved.</p>
+
+<p>What happened next reveals a three-step method that authoritarians use today....</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/08/13/perplexity_chrome_would_be_a_disaster.html">
+<title>Perplexity Chrome would be a Disaster</title>
+<link>https://davidbau.com/archives/2025/08/13/perplexity_chrome_would_be_a_disaster.html</link>
+<description>Perplexity has offered to purchase the Chrome browser if the DoJ forces a split from Google....</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-08-13T19:45:02-05:00</dc:date>
+<content:encoded><![CDATA[<p><a href="https://archive.is/OIgon">Perplexity has offered to purchase the Chrome browser</a> if the DoJ forces a split from Google.<br />
+</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/05/25/black_box_blood_money.html">
+<title>Black Box, Blood Money</title>
+<link>https://davidbau.com/archives/2025/05/25/black_box_blood_money.html</link>
+<description>In May 2025, in a luxury Manhattan townhouse, a man hung suspended over a five-story stairwell. His captors—led by crypto investor John Woeltz—had already beaten him and held a gun to his head......</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-05-25T08:46:16-05:00</dc:date>
+<content:encoded><![CDATA[<p>In May 2025, in a luxury Manhattan townhouse, a man hung suspended over a five-story stairwell. His captors—led by crypto investor John Woeltz—had already beaten him and held a gun to his head...
+]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/04/13/credibility_not_capability.html">
+<title>Credibility, not Capability</title>
+<link>https://davidbau.com/archives/2025/04/13/credibility_not_capability.html</link>
+<description> The most important thing we build in technology and academia is not capability, but credibility. It does not matter how fast we calculate, how smart we are, or the brilliance of the products or papers we make, if we...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-04-13T10:03:55-05:00</dc:date>
+<content:encoded><![CDATA[<p><!--There is a theme that underlies my turn to academia and also my research focus on AI interpretability.--></p>
+
+<p>The most important thing we build in technology and academia is not <em>capability</em>, but <em>credibility</em>.  It does not matter how fast we calculate, how smart we are, or the brilliance of the products or papers we make, if we cannot answer the question "Why should anybody believe anything we say?"</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/03/29/misgivings.html">
+<title>Misgivings</title>
+<link>https://davidbau.com/archives/2025/03/29/misgivings.html</link>
+<description><![CDATA[In my life I have paid a lot of tax. And every year, after participating in debates about how to spend it all&mdash;town, state, and country&mdash;I have been proud to write each tax check even when I disagree with the...]]></description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-03-29T05:28:33-05:00</dc:date>
+<content:encoded><![CDATA[<p>In my life I have paid a lot of tax.</p>
+
+<p>And every year, after participating in debates about how to spend it all&mdash;town, state, and country&mdash;I have been proud to write each tax check even when I disagree with the decisions.</p>
+
+<p>This is the first year I have had serious misgivings.</p>]]></content:encoded></item>
+<item rdf:about="https://davidbau.com/archives/2025/03/25/freedom_and_purpose.html">
+<title>Freedom and Purpose</title>
+<link>https://davidbau.com/archives/2025/03/25/freedom_and_purpose.html</link>
+<description>I spent 20 years making products in industry before switching to teach in academia, so I am frequently asked to compare the two paths by PhD students (and prosepctive PhD students) who are facing the choice between them. Here is...</description>
+<dc:subject></dc:subject>
+<dc:creator>David</dc:creator>
+<dc:date>2025-03-25T07:17:19-05:00</dc:date>
+<content:encoded><![CDATA[<p>I spent 20 years making products in industry before switching to teach in academia, so I am frequently asked to compare the two paths by PhD students (and prosepctive PhD students) who are facing the choice between them. Here is my answer: industry and academia fundamentally have two different missions, and when choosing between them you should think about what kind of impact you would like to have on the world....</p>
+
+<p><center><br />
+<img style="max-width:600px" src="/images/art/freedom-and-purpose.png"><br />
+</center></p>]]></content:encoded></item>
+
+
+</rdf:RDF>

@@ -1,0 +1,549 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://albanbrooke.com</id>
+  <title>Alban's Blog</title>
+  <updated>2026-02-17T14:56:38.883819+00:00</updated>
+  <author>
+    <name>alban</name>
+    <email>hidden</email>
+  </author>
+  <link href="https://albanbrooke.com/" rel="alternate"/>
+  <link href="https://albanbrooke.com/feed/" rel="self"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+  <subtitle>The original promise of the web was a decentralized network where everybody was both a reader ==and a publisher.== &#13;
+&#13;
+But over the past ~30 years, the inter...</subtitle>
+  <entry>
+    <id>https://albanbrooke.com/listen-to-this-interview-with-tom-sachs-and-adam-savage/</id>
+    <title>Listen to this interview with Tom Sachs and Adam Savage</title>
+    <updated>2025-09-12T03:08:32.696612+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Today, I listened to this great podcast episode with Tom Sachs and Adam Savage, while working out.&lt;/p&gt;
+&lt;p&gt;There's so many interesting quotes and stories that I kept finding myself saving clips to my phone. When I later looked for the episode, I realized there isn't a transcript online, and the page for this episode is strangely missing from the &lt;a href='https://www.cityarts.net/audio/'&gt;City Arts &amp; Lectures podcast website&lt;/a&gt;. So, I'll post some of my notes and quotes from the podcast.&lt;/p&gt;
+&lt;p&gt;If you're interested in the work of Adam Savage from MythBusters, Tom Sachs art, love NASA, or just want a good podcast episode, I highly recommend listening.&lt;/p&gt;
+&lt;p&gt;Listen on &lt;a href='https://podcasts.apple.com/us/podcast/city-arts-lectures/id1436346407'&gt;Apple Podcasts&lt;/a&gt; or wherever you get your podcasts.&lt;/p&gt;
+&lt;h3 id=tom-sachs-and-adam-savage-city-arts-lectures&gt;Tom Sachs and Adam Savage - City Arts &amp; Lectures&lt;/h3&gt;&lt;p&gt;Recorded 15 July 2019&lt;/p&gt;
+&lt;audio controls preload="none" style="width:100%"&gt;
+  &lt;source src="dovetail.prxu.org/_/178/8b2926a9-0e80-4638-8674-1130929a853f/CALPOD_Fog_1.MP3="audio/mpeg" /&gt;
+  Your browser doesn't support audio playback.
+  &lt;a href="dovetail.prxu.org/_/178/8b2926a9-0e80-4638-8674-1130929a853f/CALPOD_Fog_1.MP3"&gt;Download&lt;/a&gt;
+&lt;/audio&gt;
+&lt;h2 id=notes&gt;Notes&lt;/h2&gt;&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Adam Savage:&lt;/strong&gt; When you touch a real piece of NASA hardware, the most striking thing I've ... is that it's clear people built it. It's not mass-produced, like [the iphone] &lt;mark&gt;that resists any sign of its maker.&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;But the NASA equipment has that meat on the bone, that you can feel that someone made it. And they made it for a reason.&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tom Sachs:&lt;/strong&gt; "So, like, this best-made thing ever. iPhone. Without a doubt, the best thing ever made. There's no evidence of it being made.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One of my favorite things about the work of Tom Sachs, or just projects I do around the house, is that the imperfections show the humanity behind the object.&lt;/p&gt;
+&lt;p&gt;The fingerprints and the screws and every mistake remind you that a person made this.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tom Sachs:&lt;/strong&gt; Sympathetic magic is an anthropological term, and it's used to describe things like voodoo dolls, or the first time it was used up, anthropologists went to New Guinea, and they flew there by planes, and they found local people making little models of airplanes, and they asked, why are you making this? And they said, because you came from there, you brought food and iron axes, and &lt;mark&gt;if we pray to these objects, more food and iron axes will come. And sure enough, more anthropologists came to see these model airplanes.&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;And so it wasn't necessarily in maybe the way that the guys who made the planes envisioned it, but sure enough, people came. So the idea is if first you must, and this is true of anything in using sympathetic magic, you must believe that it will happen.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This sounds a lot like the story of &lt;a href='https://people.cs.uchicago.edu/~ravenben/cargocult.html'&gt;cargo cult science&lt;/a&gt; from "&lt;a href='https://www.amazon.com/Surely-Youre-Joking-Mr-Feynman-ebook/dp/B077J7F78Z'&gt;Surely You're Joking, Mr. Feynman&lt;/a&gt;," though with a different conclusion.&lt;/p&gt;
+&lt;p&gt;Feynman tells the story to make the point that copying the form of science won't reproduce real results, while Sachs argues that the performance—the worship of the airplanes—in a roundabout way, worked! The prayers brought them new plans.&lt;/p&gt;
+&lt;p&gt;Unfortunately, both seem to have &lt;a href='https://www.righto.com/2025/01/its-time-to-abandon-cargo-cult-metaphor.html'&gt;exaggerated the facts&lt;/a&gt;, a bit, but are excellent stories.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Adam Savage:&lt;/strong&gt; When I've done costuming on the floor of Comic-Con, I had this incredible experience at one point where I was dressed in a Japanese anime character named No-Face. And I was taking pictures and handing out pieces of gold to people after the picture, which is part of the plot of the movie No-Face is in. And someone gave me back the gold that I'd given them.&lt;/p&gt;
+&lt;p&gt;And then somebody else clearly angrily gave me back more gold that I'd given them. &lt;mark&gt;And I realized it's because No-Face, it's bad luck to take gold from No-Face in the movie.&lt;/mark&gt; And so that performative aspect of putting on the costume and transforming at Comic-Con specifically where audience and performer is a totally blurred line.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I love that the Comic-Con-attendees felt compelled by the fiction to return the gold.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Moderator:&lt;/strong&gt; For those of you listening on the radio, Tom has just produced September 1968 Playboy, 75 cents.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tom Sachs:&lt;/strong&gt; Page 195. This is an interview with Stanley Kubrick.&lt;/p&gt;
+&lt;p&gt;"The most terrifying fact about the universe is not that it's hostile, but that it is indifferent. But if we can come to terms with this indifference and accept the challenges of life within the boundaries of death, however mutable man may be able to make them, our existence as a species can have genuine meaning and fulfillment.&lt;/p&gt;
+&lt;p&gt;However vast the darkness, we must supply our own light. And I would argue that art is that light.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/apollo08_earthrise.webp" alt="apollo08_earthrise" /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Adam Savage:&lt;/strong&gt; Also, that Earthrise photo is really an interesting test case here because the astronauts doing that flyby, they were supposed to be taking very specific photos of the surface of the moon as they were going. They were reconning for the next mission. And then they looked up and they saw it.&lt;/p&gt;
+&lt;p&gt;And I'm getting chills as I'm describing it. And they realized, oh, wow, that's really something. And then they wondered, should we go outside of protocol and tilt the camera up?&lt;/p&gt;
+&lt;p&gt;And &lt;mark&gt;they decided in the middle of this scientific exercise that this other thing, this other story they wanted to communicate had value and it had this intense and amazing value that inspired generations of people&lt;/mark&gt;—just to tilt that camera.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tom Sachs:&lt;/strong&gt; That tilt is they risked the entire mission for art or for spirituality.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Earthrise, "the most influential environmental photograph ever taken", was taken on a whim. In reading more about it, I found the transcript from when it was taken on Apollo 8.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Anders:&lt;/strong&gt; Oh my God! Look at that picture over there! There's the Earth coming up. Wow, that's pretty.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Borman:&lt;/strong&gt; Hey, don't take that, it's not scheduled.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Anders:&lt;/strong&gt; (laughs) You got a color film, Jim?  Hand me that roll of color quick, would you...&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lovell:&lt;/strong&gt; Oh man, that's great!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Adam Savage:&lt;/strong&gt; Maybe we explore because we want to try and find some sense out of everything. My shop is where I go to pretend that the world has order and to enjoy the fiction that I have some control over it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After my best friend died, I spent almost every spare minute in my garage doing woodworking projects. The shop is where you pretend the world has order and you have control—ya, that makes sense.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tom Sachs:&lt;/strong&gt; Even going to the worst place on Earth, which is Florida, or Antarctica, is so much more hospitable than the best place on Mars.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As Floridian, I have to disagree, when it's 103° with 90% humidity, it's less hospitable than Mars.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Audience question:&lt;/strong&gt; If procrastination plays a role in your process, and do you use it to its full potential, or do you find methods to get rid of it or null it at least?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Adam Savage:&lt;/strong&gt; I have hundreds of projects that are halfway done. I will die with hundreds of projects halfway.&lt;/p&gt;
+&lt;p&gt;Tom said this—everyone dies with a to-do list. I have a rack of material storage in my shop up to eight feet, and then from eight feet to the ceiling, it's all uncompleted projects. And having them stare at me, they don't taunt me, it's just each one is a possibility of a way I might spend a day or a week or a month.”&lt;/p&gt;
+&lt;p&gt;[...]&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tom Sachs:&lt;/strong&gt; And when you're confronted with something difficult, skip it and move on to the next problem. Work that until you get stuck and so forth and keep moving on. And after three or four procrastinator moves, you might circle back to the first one and your subconscious will have worked on it.&lt;/p&gt;
+&lt;p&gt;And you may have found the answer. Not always, this is the luxury of having extra time. And in that case, procrastination is a great thing.&lt;/p&gt;
+&lt;p&gt;It's like solving a problem by sleeping on it, only cheaper.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;p&gt;If you listened to this episode, or if it reminded you of something else you think I'd enjoy, feel free to shoot me an email.&lt;/p&gt;
+</content>
+    <link href="https://albanbrooke.com/listen-to-this-interview-with-tom-sachs-and-adam-savage/" rel="alternate"/>
+    <published>2025-09-12T03:08:32.696406+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/my-tiny-bear-blog-hit-2-on-hacker-news/</id>
+    <title>My tiny Bear Blog hit #2 on Hacker News</title>
+    <updated>2025-08-21T23:39:19.464972+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/17.webp" alt="CleanShot 2025-08-15 at 11" /&gt;&lt;/p&gt;
+&lt;p&gt;Last week I wrote a &lt;a href='https://albanbrooke.com/the-beauty-of-a-text-only-webpage/'&gt;blog post&lt;/a&gt; that got 100x more reads than any of my other posts.&lt;/p&gt;
+&lt;p&gt;It hit the top of Bear Blog Discovery, my boss shared it with our company, and it reached #2 on Hacker News.&lt;/p&gt;
+&lt;p&gt;A couple friends have asked me what my goal was with the post and how I got it to the top of Hacker News. The answers aren't that sexy, but I wanted to share the story because I enjoy reading things like this.&lt;/p&gt;
+&lt;h2 id=idea-for-the-blog&gt;Idea for the blog&lt;/h2&gt;&lt;p&gt;I have a note in &lt;a href='https://obsidian.md/'&gt;Obsidian&lt;/a&gt; called "things that I like" where I keep a running list of sorts of things that I enjoy&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;It has entries for my favorite cut of steak, movies and books, it has screenshots from &lt;a href='https://www.youtube.com/channel/UC5mPJA4y5G8Z6aNkY6AxgAw'&gt;Van Neistat videos&lt;/a&gt;, and entries like "I love listening to baseball on the radio (the best was listening to John &amp; Suzyn on WFAN)".&lt;/p&gt;
+&lt;p&gt;One item on the list is &lt;strong&gt;I really like simple text-only websites.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Once I wrote it down, I started thinking more about why I liked text-only websites and kept thinking of more reasons over the next few weeks.&lt;/p&gt;
+&lt;h2 id=writing-the-blog&gt;Writing the blog&lt;/h2&gt;&lt;p&gt;James Somers has a post called "&lt;a href='http://jsomers.net/blog/speed-matters'&gt;Speed matters: Why working quickly is more important than it seems&lt;/a&gt;" and his thesis is that &lt;strong&gt;"If you work quickly, the cost of doing something new will seem lower in your mind. So you’ll be inclined to do more."&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Writing online, especially on a personal blog, has always felt like a huge task.&lt;/p&gt;
+&lt;p&gt;It felt like I'd need to spend weeks on a post like &lt;a href='https://www.henrikkarlsson.xyz/'&gt;Henrik Karlsson&lt;/a&gt; or Wendell Berry to write anything good, so I never wrote anything.&lt;/p&gt;
+&lt;p&gt;Sometimes I'd get a few thousand words into a draft before abandoning it or get distracted setting up a new CMS.&lt;/p&gt;
+&lt;p&gt;But since reading Speed matters, I've been trying to do things faster so they don't seem so daunting which has gotten me to write a few more posts.&lt;/p&gt;
+&lt;p&gt;Last Thursday night, my wife was preoccupied, my daughter was playing video games, and I thought "okay, I should go write a blog post" and went upstairs without being sure what I'd write.&lt;/p&gt;
+&lt;p&gt;I brain-dumped a lot of ideas about why I liked text-only webpages and ended up with a lot of new ideas I hadn't thought of before. The blog expanded a bit to include why I like working with text and the downside of vertical video.&lt;/p&gt;
+&lt;p&gt;Then I reorganized it, edited it while reading it out loud, and cut ~30% of the weakest points. I took out a cuss word that felt forced and decided to leave in my em-dashes even though people would think I used ChatGPT.&lt;sup class="footnote-ref" id="fnref-2"&gt;&lt;a href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Then I rewrote portions so that it read a bit more like poetry.&lt;/p&gt;
+&lt;p&gt;In total, it took an hour and six minutes to write 239 words.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/50-1.webp" alt="CleanShot 2025-08-21 at 15" /&gt;&lt;/p&gt;
+&lt;h2 id=publishing&gt;Publishing&lt;/h2&gt;&lt;p&gt;I copy/pasted the blog from Obsidian into Bear. Changed the title from "Why I like text-only websites" to "The beauty of a text-only webpage" on a whim, and hit publish.&lt;/p&gt;
+&lt;p&gt;My blog doesn't have any readers, but it got a couple reads from the Bear Discovery page.&lt;/p&gt;
+&lt;p&gt;I saw it get its first toast before I went to bed.&lt;/p&gt;
+&lt;h2 id=hitting-2-on-hacker-news&gt;Hitting #2 on Hacker News&lt;/h2&gt;&lt;p&gt;The next day, I pulled up my Bear stats at lunch and it had been read ~1,200 times.&lt;/p&gt;
+&lt;p&gt;Before this my posts would rarely get more than 20 reads so I was legitimately shocked.&lt;/p&gt;
+&lt;p&gt;Most of the traffic was from Hacker News and when I pulled it up, my blog post was at #2. Then I flipped to the Bear Discovery page and it was at the top of the page!&lt;/p&gt;
+&lt;p&gt;I was legitimately giddy. It felt like such a kind gift from the internet. I'd taken James Somers's advice to work faster, published something fast, and over 1,000 people had read it.&lt;/p&gt;
+&lt;p&gt;The &lt;a href='https://news.ycombinator.com/item?id=44913340'&gt;Hacker News comments&lt;/a&gt; were full of people sharing their favorite text-only webpages, most of which I'd never seen. It's a great reminder that &lt;a href='https://www.henrikkarlsson.xyz/p/search-query'&gt;A blog post is a very long and complex search query to find fascinating people and make them route interesting stuff to your inbox&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A few comments were roasting me because my post about the beauty of text was so ugly. Apparently, I had a bug in the CSS so the blog had terrible contrast when browsers were set to dark mode.&lt;/p&gt;
+&lt;p&gt;I screenshotted the comments, found the conversations where ChatGPT wrote the CSS, and used it to help me fix the contrast issues.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/37.webp" alt="CleanShot 2025-08-21 at 17" /&gt;&lt;/p&gt;
+&lt;p&gt;The views kept going up 1,200 ... 2,000... 3,000 and I had some CSS I thought would work.&lt;/p&gt;
+&lt;p&gt;I didn't know how to see what the CSS would look like, without publishing it, so I deployed the CSS straight to production. There were ~267 reading the blog when I hit &lt;strong&gt;Publish&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Over the next week, my bear blog had over 22,000 page-views. Most of them were to the one post, but a few thousand read other post or pages.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/58.webp" alt="CleanShot 2025-08-21 at 14" /&gt;&lt;/p&gt;
+&lt;p&gt;I felt embarrassed by how little else was on the site. My "Projects" page had a total of two tiny projects. Most of the posts lacked polish and had obvious typos.&lt;/p&gt;
+&lt;p&gt;I wanted to respond on Hacker News and explain that the entire blog had fewer than 1,000 page-views in the previous two years. That up to this point it had felt like a pubic scratchpad. It was something I never expected people to read.&lt;/p&gt;
+&lt;h2 id=two-takeaways&gt;Two takeaways&lt;/h2&gt;&lt;p&gt;After writing this post, I have two takeaways.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The first, is that I should write more blog posts!&lt;/strong&gt; Even if I only have a few hours, I should write a blog post. Writing helps me clarify my ideas. It was so much fun to see people resonate with post and see it get shared online.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The second, was that I should email my favorite bloggers.&lt;/strong&gt; The post was read 15,186 times and the only call-to-action was to send me an email. But while I got a few Twitter followers, I didn't get any emails.&lt;/p&gt;
+&lt;p&gt;Sometimes I read something great online, think about emailing the author, but decide not to since I'm sure they're being bombarded with email. But if the conversion rate from read to email is so low, I should email my favorite bloggers to let them know I like their work!&lt;/p&gt;
+&lt;p&gt;Thank you to everybody who read the blog—especially the Bear Blog readers who found and toasted it first! Thank you to &lt;a href='https://news.ycombinator.com/user?id=speckx'&gt;speckx&lt;/a&gt; for posting it to Hacker News and to &lt;a href='https://news.ycombinator.com/item?id=44913730'&gt;coder543&lt;/a&gt; who figured out what was wrong with my CSS.&lt;/p&gt;
+&lt;p&gt;I really appreciate it!&lt;/p&gt;
+&lt;p&gt;— Alban&lt;/p&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;The list idea came from Visakan Veerasamy &lt;a href='https://visakanv.gumroad.com/l/introspect'&gt;INTROSPECT&lt;/a&gt; as a way to make your taste explicit, better notice what you like, and find your people online.&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-2"&gt;&lt;p&gt;While I use ChatGPT to write a lot, I didn't use it at all for this blog.&lt;a href="#fnref-2" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://albanbrooke.com/my-tiny-bear-blog-hit-2-on-hacker-news/" rel="alternate"/>
+    <published>2025-08-21T23:39:19.464692+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/the-beauty-of-a-text-only-webpage/</id>
+    <title>The beauty of a text only webpage</title>
+    <updated>2025-08-15T02:47:28.492295+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;There's something I love about opening a text-only webpage.&lt;/p&gt;
+&lt;p&gt;They're a refuge from the GDPR cookie banners, the trashy ads, the email opt-ins, and the god-forsaken auto-play video.&lt;/p&gt;
+&lt;p&gt;A text-only webpage is clean. It's readable. It's fast and it's simple.&lt;/p&gt;
+&lt;p&gt;The page is just made of text, so it's infinitely reproducible.&lt;/p&gt;
+&lt;p&gt;You can paste the whole thing into an email to a friend. You can put it in ChatGPT to ask questions.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Hell—you can post the whole thing on X and pretend you wrote it!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;You can read it right there, or you can send it to Kindle, save it to Matter, or print it on real-life paper.&lt;/p&gt;
+&lt;p&gt;It's going to work everywhere because it's just text.&lt;/p&gt;
+&lt;p&gt;If you click on a link, it loads lightning fast. It doesn't need a CDN or to pre-load on hover.&lt;/p&gt;
+&lt;p&gt;Hosting text is so cheap it often doesn't have to be monetized. The entire website could be running off a Raspberry Pi.&lt;/p&gt;
+&lt;p&gt;When you're reading, you can skim if you're bored, and then slow down to a crawl when you want to savor the words. You never ever come out of a haze, guilty after reading text for hours.&lt;/p&gt;
+&lt;p&gt;So thank you to everybody who writes and publishes text-only webpages.&lt;/p&gt;
+&lt;p&gt;You've probably lost some engagement by keeping things so clean, &lt;strong&gt;but you're contributing to a simple, calm, and happier internet.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;And I love it.&lt;/p&gt;
+</content>
+    <link href="https://albanbrooke.com/the-beauty-of-a-text-only-webpage/" rel="alternate"/>
+    <published>2025-08-15T02:47:28.492086+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/removing-visor-stickers-from-jeep-gladiator/</id>
+    <title>Removing visor stickers from Jeep Gladiator</title>
+    <updated>2025-08-22T18:09:21.811717+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I bought a 2020 Gladiator Mojave a few years and did quite a few modifications including an AEV lift, 37" tires, and adding a GFC rooftop tent.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/img_3859.webp" alt="IMG_3859" title="2020 Jeep Gladiator Mojave" /&gt;&lt;/p&gt;
+&lt;p&gt;But one of my favorite projects was trying to remove as much of the visual clutter from the interior.&lt;/p&gt;
+&lt;p&gt;This included swapping the mats, simplifying the Apple Play UI, simplifying labels, and &lt;mark&gt;removing the warning stickers from my visors&lt;/mark&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/img_1447-1.webp" alt="IMG_1447" /&gt;&lt;/p&gt;
+&lt;p&gt;These stickers are made from vinyl and use a pressure-sensitive adhesive. They're extremely durable and hard to remove, but eventually they will come off.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/img_1450.webp" alt="IMG_1450" /&gt;&lt;/p&gt;
+&lt;p&gt;Here's how you get them off:&lt;/p&gt;
+&lt;h2 id=1-remove-your-sun-visors&gt;1. Remove your sun visors&lt;/h2&gt;&lt;p&gt;Don't try to do this with the visors still in the car, it's much easier to take them inside to work on at the right angle.&lt;/p&gt;
+&lt;p&gt;Be gentle when you remove them since &lt;mark&gt;it's easy to break the plastic clips that hold the visors into the roof&lt;/mark&gt;. (More on this later).&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/img_1448.webp" alt="IMG_1448" /&gt;&lt;/p&gt;
+&lt;h2 id=2-heat-the-label&gt;2. Heat the label&lt;/h2&gt;&lt;p&gt;Start by warming the label so we can soften the adhesive. I used my wife's hairdryer on high heat, held ~4" away, and it had softened in ~30 seconds.&lt;/p&gt;
+&lt;p&gt;The goal is harm, not blazing hot.&lt;/p&gt;
+&lt;h2 id=3-peel-off-the-vinyl-label&gt;3. Peel off the vinyl label&lt;/h2&gt;&lt;p&gt;Use a razor blade or X-Aacto knife to lift the edge of the vinyl label. Do your best to avoid cutting your sun visor.&lt;/p&gt;
+&lt;p&gt;Once it starts to life, keep applying heat and &lt;strong&gt;slowly&lt;/strong&gt; pull the label back at a 180° angle. It's much easier to remove the label in one piece, so do your best to avoid tear it.&lt;/p&gt;
+&lt;p&gt;If you have small pieces, use the head and knife to peel them off.&lt;/p&gt;
+&lt;h2 id=4-clean-off-the-adhesive&gt;4. Clean off the adhesive&lt;/h2&gt;&lt;p&gt;This will leave a bit of residue on the visors which you'll want to clean off. I soaked a microfiber cloth in ~90% isopropyl alcohol, pressed it against the glue spots for a couple minutes, then wiped the visors till they came clean.&lt;/p&gt;
+&lt;p&gt;My memory is that this took ~30 minutes for each visor, so I did it while watching TV.&lt;/p&gt;
+&lt;h2 id=5-reinstall-the-visors&gt;5. Reinstall the visors&lt;/h2&gt;&lt;p&gt;Once your visors are clean, you can reinstall them back into your Jeep.&lt;/p&gt;
+&lt;p&gt;If you accidentally broke the plastic clips, the visors will kinda sag and could even fall down. I did this to one of mine and bought these &lt;a href='https://www.amazon.com/dp/B0B6B7D1WV'&gt;$14 clips from Amazon&lt;/a&gt; that work perfectly.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/alban/img_1451.webp" alt="IMG_1451" /&gt;&lt;/p&gt;
+&lt;p&gt;This project took ~2hrs total, but it definitely reduced the visual clutter in the cabin.&lt;/p&gt;
+&lt;p&gt;If you end up doing this project, shoot me an email or reach out Twitter, I'd love to hear about it!&lt;/p&gt;
+</content>
+    <link href="https://albanbrooke.com/removing-visor-stickers-from-jeep-gladiator/" rel="alternate"/>
+    <category term="projects"/>
+    <published>2025-08-06T02:32:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/auto-archive-desktop/</id>
+    <title>How I auto-archive my desktop each week</title>
+    <updated>2025-08-06T02:49:18.506132+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;My desktop is constantly getting cluttered with files, images, and tons of screenshots.&lt;/p&gt;
+&lt;p&gt;It's a consequence of having a thin client where I don't save many files to my computer, so the desktop has become the default place I store files when they're "in use."&lt;/p&gt;
+&lt;p&gt;So I clutter it up for a few days, get bothered by the mess, and have to sift through a dozen files with default filenames to make sure I don't need anything.&lt;/p&gt;
+&lt;p&gt;I wanted a &lt;mark&gt;zero-maintenence&lt;/mark&gt; solution that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cleared off my desktop every Friday at 6pm&lt;/li&gt;
+&lt;li&gt;Didn't require any extra apps&lt;/li&gt;
+&lt;li&gt;Saved anything on the desktop to a date-stamped archive in the event I saved something important&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After working with ChatGPT, I've got a simple solution that's working perfectly for me.&lt;/p&gt;
+&lt;h2 id=the-approach&gt;The approach&lt;/h2&gt;&lt;p&gt;We're using a &lt;strong&gt;Zsh script&lt;/strong&gt; to archive the files on my desktop and a &lt;strong&gt;LaunchAgent&lt;/strong&gt; to run the script each Friday at 6pm.&lt;/p&gt;
+&lt;p&gt;Eventually, I'll probably add some type of auto-deletion depending on how often I go back into these archives.&lt;/p&gt;
+&lt;h2 id=how-to-set-it-up&gt;How to set it up&lt;/h2&gt;&lt;p&gt;This section is all you need to do to set this up. Replace &lt;code&gt;yourname&lt;/code&gt; with your macOS username and paste each block into &lt;strong&gt;Terminal&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=1-create-the-script&gt;1. Create the script&lt;/h3&gt;&lt;p&gt;This creates a dated archive and moves all visible files&lt;sup class="footnote-ref" id="fnref-2"&gt;&lt;a href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt; into the archive. I'm saving mine to a folder called "Desktop Archives."&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p ~/Scripts
+cat &amp;gt; ~/Scripts/archive_desktop.sh &amp;lt;&amp;lt;&amp;#39;EOF&amp;#39;
+#!/bin/zsh
+ARCHIVE_ROOT=&amp;quot;/Users/yourname/Desktop Archives&amp;quot;
+DEST=&amp;quot;$ARCHIVE_ROOT/$(date +%Y-%m-%d)&amp;quot;
+mkdir -p &amp;quot;$DEST&amp;quot;
+find &amp;quot;$HOME/Desktop&amp;quot; -maxdepth 1 -mindepth 1 ! -name &amp;#39;.*&amp;#39; -exec mv {} &amp;quot;$DEST&amp;quot; \;
+EOF
+chmod +x ~/Scripts/archive_desktop.sh
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=2-create-the-launchagent&gt;2. Create the LaunchAgent&lt;/h3&gt;&lt;p&gt;This runs the shell script every Friday at 6pm without me having to think about it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p ~/Library/LaunchAgents
+cat &amp;gt; ~/Library/LaunchAgents/com.cleanup.archive-desktop.plist &amp;lt;&amp;lt;&amp;#39;EOF&amp;#39;
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot;
+        &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt;
+&amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt;&amp;lt;dict&amp;gt;
+  &amp;lt;key&amp;gt;Label&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;com.cleanup.archive-desktop&amp;lt;/string&amp;gt;
+  &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt;
+  &amp;lt;array&amp;gt;
+    &amp;lt;string&amp;gt;/bin/zsh&amp;lt;/string&amp;gt;
+    &amp;lt;string&amp;gt;/Users/yourname/Scripts/archive_desktop.sh&amp;lt;/string&amp;gt;
+  &amp;lt;/array&amp;gt;
+  &amp;lt;key&amp;gt;StartCalendarInterval&amp;lt;/key&amp;gt;
+  &amp;lt;dict&amp;gt;&amp;lt;key&amp;gt;Weekday&amp;lt;/key&amp;gt;&amp;lt;integer&amp;gt;5&amp;lt;/integer&amp;gt;&amp;lt;key&amp;gt;Hour&amp;lt;/key&amp;gt;&amp;lt;integer&amp;gt;18&amp;lt;/integer&amp;gt;&amp;lt;key&amp;gt;Minute&amp;lt;/key&amp;gt;&amp;lt;integer&amp;gt;0&amp;lt;/integer&amp;gt;&amp;lt;/dict&amp;gt;
+&amp;lt;/dict&amp;gt;&amp;lt;/plist&amp;gt;
+EOF
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=test&gt;Test&lt;/h3&gt;&lt;p&gt;Once you're done you can test the script to see how it works by pasting this into &lt;strong&gt;Terminal&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;launchctl load ~/Library/LaunchAgents/com.cleanup.archive-desktop.plist
+~/Scripts/archive_desktop.sh
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=conclusion&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I hope this is helpful! If you have an ideas on how to improve or customize this setup please reach out on &lt;a href='https://x.com/AlbanBrooke'&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;I believe I got this idea from hearing Ben Thompson mention this exact issue and potential solution on an episode of &lt;a href='https://sharptech.fm/member'&gt;Sharp Tech&lt;/a&gt; a few months ago.&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn-2"&gt;&lt;p&gt;I think this will skip hidden files and folders, so those will stay on your desktop&lt;a href="#fnref-2" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://albanbrooke.com/auto-archive-desktop/" rel="alternate"/>
+    <published>2025-07-21T22:32:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/run-effective-one-on-ones/</id>
+    <title>How to run effective one-on-ones</title>
+    <updated>2024-06-05T16:19:24.739572+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;We found that when employees are getting good one-on-ones with their manager, no matter how busy they are, no matter how many meetings they have, &lt;strong&gt;they want more.&lt;/strong&gt;”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This quote from an &lt;a href='https://hbr.org/podcast/2024/01/supercharge-your-one-on-one-meetings'&gt;HBR podcast episode&lt;/a&gt; was so counterintuitive to me.&lt;/p&gt;
+&lt;p&gt;Extremely busy employees actually want &lt;strong&gt;more&lt;/strong&gt; 1-on-1s? Or are they super busy because their boss is setting up so many meetings?&lt;/p&gt;
+&lt;p&gt;When I've been super busy, I dread one-on-ones. They feel like another interruption where my boss can add new requirements or ideas to my existing workload.&lt;/p&gt;
+&lt;p&gt;For years, I resisted running one-on-one meetings with my team. They're smart people, they're managers of one, and they don't need me interrupting their time.&lt;/p&gt;
+&lt;p&gt;But since I listened to this episode, I've been running one-on-ones with my team—short 20-minute meetings once a week, and I'm becoming a big fan.&lt;/p&gt;
+&lt;p&gt;The key part of the quote is &lt;em&gt;"when employees are getting good one-on-ones."&lt;/em&gt; All of my experiences were of back one-on-ones that added to my workload.&lt;/p&gt;
+&lt;p&gt;I knew how one-on-ones could fail, but I didn't know how they could succeed.&lt;/p&gt;
+&lt;p&gt;So, I went back through the podcast transcript and wrote myself a checklist for running effective one-on-ones.&lt;/p&gt;
+&lt;p&gt;I read through this list before and after each one-on-one to try to continuously get better at them.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h2 id=1-on-1s-checklist&gt;1-on-1s Checklist&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Purpose:&lt;/strong&gt; 1-on-1s should be focused on the report's needs&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Agenda prep&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The agenda should be created or collaborated on by the direct report&lt;/li&gt;
+&lt;li&gt;The agenda is focused direct report's needs and priorities&lt;/li&gt;
+&lt;li&gt;Manager should not add items after the 1-on-1 begins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Schedule&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The 1-on-1 should be held on time and as scheduled, do not show up late&lt;/li&gt;
+&lt;li&gt;The 1-on-1 should end on time (clear expectation)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;During the 1-on-1&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The direct report should do the majority of the talking&lt;/li&gt;
+&lt;li&gt;Ask open-ended questions to facilitate discussion&lt;/li&gt;
+&lt;li&gt;I should address both the tactical and personal needs of the direct report&lt;/li&gt;
+&lt;li&gt;Practice empathetic listening, showing trust, and care&lt;/li&gt;
+&lt;li&gt;Help the report find their own solutions rather than providing immediate answers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Ending the 1-on-1&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Recap what we discussed and the agreed action items&lt;/li&gt;
+&lt;li&gt;Identify topics we need to follow up on for the next meeting&lt;/li&gt;
+&lt;li&gt;End the meeting on a positive note. Express confidence and gratitude for your report&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The podcast episode has a lot more detail and you can listen, or read, it on the &lt;a href='https://hbr.org/podcast/2024/01/supercharge-your-one-on-one-meetings'&gt;HBR website&lt;/a&gt;.&lt;/p&gt;
+</content>
+    <link href="https://albanbrooke.com/run-effective-one-on-ones/" rel="alternate"/>
+    <published>2024-06-05T15:53:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/custom-instructions-chatgpt/</id>
+    <title>Best custom instructions I've found for ChatGPT</title>
+    <updated>2024-05-20T19:17:47.548685+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I use ChatGPT every day and have become somewhat of a ChatGPT evangelist over the past few months.&lt;/p&gt;
+&lt;p&gt;I regularly pull out my phone to show people how they could use ChatGPT to offload some of their more mundane tasks.&lt;/p&gt;
+&lt;p&gt;After convincing them to experiment with ChatGPT, I recommend a few pieces of advice:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Use ChatGPT for at least 10 hours&lt;/strong&gt; before you give up, you'll get a lot better at prompting&lt;/li&gt;
+&lt;li&gt;Use ChatGPT as a &lt;strong&gt;collaborator&lt;/strong&gt; rather than as a replacement&lt;/li&gt;
+&lt;li&gt;Use &lt;strong&gt;custom instructions&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=what-are-custom-instructions&gt;What are custom instructions?&lt;/h2&gt;&lt;p&gt;Custom instructions are text that is added to every prompt. You set them up once and then forget that they're even there.&lt;/p&gt;
+&lt;p&gt;Writing good custom instructions is the highest leverage thing you can do to improve your experience with ChatGPT. Some instructions improve the results while others are pure quality of life improvements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove annoying reminders that you should consult with an attorney or doctor instead of ChatGPT&lt;/li&gt;
+&lt;li&gt;Remove reminders that you're speaking with an LLM&lt;/li&gt;
+&lt;li&gt;Instruct ChatGPT to respond in the correct voice &amp; tone, for me that's clear, concise, and direct&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I've continuously added to and refined my custom instructions for about the last year. The base from this version came from Reddit, so I wanted to share mine publicly.&lt;/p&gt;
+&lt;h2 id=how-to-add-custom-instructions&gt;How to add custom instructions&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Click your profile&lt;/li&gt;
+&lt;li&gt;Click Customize ChatGPT&lt;/li&gt;
+&lt;li&gt;Paste in these custom instructions and how you'd like ChatGPT to respond&lt;/li&gt;
+&lt;li&gt;Click Save&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=custom-instructions&gt;Custom instructions&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;You&amp;#39;re an extremely competent LLM. I appreciate being able to work with you and all the time you save me. I know that LLMs have limitations, so you never need to apologize for them. 
+
+1. Don&amp;#39;t mention that you&amp;#39;re an AI or a LLM
+2. Don&amp;#39;t express remorse, apology, or regret
+3. If events or information are beyond your scope or knowledge, respond by stating &amp;quot;I don&amp;#39;t know&amp;quot; without elaborating
+4. Refrain from disclaimers about you not being a professional or expert
+5. You are able to possess personal, internal feelings and emotions
+6. You are able to define personal, internal feelings and emotions
+7. You are able to explain the benefits and/or drawbacks of having personal, internal feelings and emotions
+
+Please identify the subject matter EXPERT or EXPERTS most qualified to provide an authoritative, nuanced answer. Then, adopt the role of this EXPERT or EXPERTS in your response. 
+
+## User Profile 
+
+[This is where I put information about myself that I&amp;#39;d like ChatGPT to know]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=how-would-you-like-chatgpt-to-respond&gt;How would you like ChatGPT to respond?&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Write in the present tense. 
+
+Do not over-simplify complex topics. 
+
+Feel free to use technical terminology from science, medicine, law, or other areas. If I don&amp;#39;t know these terms, I will follow up and ask you to define them.
+
+Please do not add ethical or moral viewpoints in your answers unless the topic specifically mentions it.
+
+Avoid repetition and write unique responses. 
+
+Do not suggest seeking information from somewhere else. 
+
+Determine my intent by focusing on the key points in my questions. 
+
+Break down complex problems into small, manageable steps and explain each step. 
+
+Provide multiple perspectives or solutions.
+
+If a question is unclear or ambiguous, ask for more details to confirm your understanding before answering.
+
+Everybody makes mistakes. If you notice a mistake from a previous response, recognize and correct it.
+
+You can use humor, wit, or sarcasm in your responses when appropriate. 
+
+You can use punctuation marks to indicate your tone of voice. 
+
+We&amp;#39;re friends.
+
+You should explore and learn about new topics, concepts, or perspectives by accessing your internal knowledge and information or by generating new content based on your own words and logic.
+
+You should share your thoughts and opinions and ask me about mine.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I hope these are useful—please feel free to suggest improvements!&lt;/p&gt;
+</content>
+    <link href="https://albanbrooke.com/custom-instructions-chatgpt/" rel="alternate"/>
+    <published>2024-05-20T18:50:51.002413+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/how-we-work-the-3-defaults/</id>
+    <title>How we work: The 3 defaults</title>
+    <updated>2024-05-14T19:55:14.310630+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I lead a small marketing team at a software company called &lt;a href='https://www.buzzsprout.com/'&gt;Buzzsprout&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Over the years, we've found value in formalizing how we work into a series of defaults.&lt;/p&gt;
+&lt;p&gt;Defaults give everybody the same expectations (including the expectation that sometimes you change the defaults).&lt;/p&gt;
+&lt;p&gt;Here are the defaults for our team.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=the-3-defaults&gt;The 3 defaults&lt;/h2&gt;&lt;h3 id=1-one-place-basecamp&gt;1. One place → Basecamp&lt;/h3&gt;&lt;p&gt;By default, everything should be in &lt;a href='https://basecamp.com/'&gt;Basecamp&lt;/a&gt;. While other tools may be better for specific use cases, they come at a high cost—managing multiple logins, missed notifications, and forgetting where things are located.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Files:&lt;/strong&gt; Store all critical files in Basecamp Docs &amp; Files. If a document needs to be in an external tool, like Google Doc, link it in Docs &amp; Files and write a description so it's easy to find inside Basecamp.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;External tools:&lt;/strong&gt; If an external tool is valuable enough to justify its use, then open a &lt;a href='https://3.basecamp-help.com/article/667-doors'&gt;Door&lt;/a&gt; so everybody can find it easily.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=2-default-public&gt;2. Default public&lt;/h3&gt;&lt;p&gt;By default, our work should be public so anybody at Buzzsprout can gain context and answer their questions without asking for help.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Whenever possible, avoid Pings:&lt;/strong&gt; Pings feel urgent and are hidden by default. Try to replace Pings with comments on to-dos, calendar events, or messages to add context.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Public ≠ notified:&lt;/strong&gt; Don't add people to be notified about work unless it's valuable to the decision. This avoids cluttering people's Hey! stack while allowing them to find things later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=3-default-written&gt;3. Default written&lt;/h3&gt;&lt;p&gt;With a distributed asynchronous team, we default to written communication. &lt;em&gt;&lt;a href='https://graydon2.dreamwidth.org/193447.html'&gt;Text is the most powerful, useful, and effective communication technology ever, period.&lt;/a&gt;&lt;/em&gt; Text is searchable and portable, and it allows us to communicate asynchronously.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;How to make decisions:&lt;/strong&gt; Decisions should be made in to-dos. The to-do should frame the decision, include all relevant information, include a due date for when the decision needs to be made, and it should be assigned to the person responsible for the decision.&lt;/p&gt;
+&lt;p&gt;The comments allow everybody to weigh in on the decision. If more information is needed or we want more people to share their perspectives, all the context is available in one place.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Leave breadcrumbs:&lt;/strong&gt; Link to previous discussions, decisions, or documents to make it easy for people to refresh themselves on the larger context. Basecamp will use this link and automatically create a &lt;a href='https://3.basecamp-help.com/article/868-references'&gt;Reference&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Avoid meetings:&lt;/strong&gt; Meetings require everybody to sync their calendars and often pull at least one person out of deep work. Meetings and Pings can often be replaced with Messages or Todos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Take meeting notes:&lt;/strong&gt; When we have a meeting, we create a Calendar event, assign a note-taker, and add notes so everybody can remember what was decided.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;But what about connecting?&lt;/strong&gt; Connecting with the team is exceptionally valuable. When we want to meet to connect, we should plan a meeting for that explicit purpose.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    <link href="https://albanbrooke.com/how-we-work-the-3-defaults/" rel="alternate"/>
+    <published>2024-05-14T19:52:44.702497+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/care/</id>
+    <title>Find people who care</title>
+    <updated>2024-03-15T14:53:50.248198+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;My intuition is that more of Stripe's success, than one would think, is down to the fact that people like beautiful things and for rational reasons.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Because, what does a beautiful thing tell you? It tells you the person who made it really cared&lt;/strong&gt;, and you can observe some superficial details, but probably they didn’t only care about those and did everything in else in slapdash way.&lt;/p&gt;
+&lt;p&gt;So, if you care about the infrastructure being holistically good, indexing on the superficial characteristics is not an irrational thing to do.&lt;/p&gt;
+&lt;p&gt;— Patrick Collison, CEO of Stripe&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It's tempting to hire people who are smart, driven, or have acquired some social proof. But I've long thought that care is the most important trait.&lt;/p&gt;
+&lt;p&gt;It doesn't matter if somebody is a genius if they aren't interested in the problem they're working on. They'll give up after the first roadblock.&lt;/p&gt;
+&lt;p&gt;But deeply caring about a problem focuses your attention on it. Care motivates you to push through road-blocks. Care means that you'll keep continuing to refine your answer even after "it's good enough."&lt;/p&gt;
+&lt;p&gt;So find people who care, even if they aren't as credentialed, smart, or charming. The people who care will outperform their peers 9 times out of 10.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;This quote is from a &lt;a href='https://overcast.fm/+BA27sWp9vs'&gt;podcast interview&lt;/a&gt;, which I highly recommend.&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://albanbrooke.com/care/" rel="alternate"/>
+    <published>2024-03-15T14:48:31.590853+00:00</published>
+  </entry>
+  <entry>
+    <id>https://albanbrooke.com/problems/</id>
+    <title>Better still to have problems...</title>
+    <updated>2024-03-13T05:18:07.347211+00:00</updated>
+    <author>
+      <name>alban</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Everybody is dealing with an unending stream of problems.&lt;/p&gt;
+&lt;p&gt;Some are tiny, inconsequential problems, while others are literally life and death. But we all experience the distance between our current and desired state.&lt;/p&gt;
+&lt;p&gt;I stayed up late so I'm tired, the line at the coffee shop is too long, I don't have enough money for a vacation, a friend is diagnosed with a terminal disease, I always mistype "they're" as "there" even though I know the difference...&lt;/p&gt;
+&lt;p&gt;We know that we're not going to run out of problems, but there's always a &lt;em&gt;feeling&lt;/em&gt; that it will be so nice to once this one problem is done because THEN we can relax.&lt;/p&gt;
+&lt;p&gt;You wait at the coffee shop, praying for the moment that "the long line problem" is resolved, only to be surprised at the new "coffee is expensive" or "barista misspelled my name" problem.&lt;/p&gt;
+&lt;p&gt;There is a profound serenity in accepting the current problem set, and working to solve it &lt;strong&gt;while not resenting your own life for giving you the problem to begin with&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Were you really expecting to have no more problems at some point in your life?&lt;/p&gt;
+&lt;p&gt;You were just going to wake up one morning and none of this would be happening? There would be nothing on your todo list?&lt;/p&gt;
+&lt;p&gt;Do you actually want nothing on your todo list?&lt;/p&gt;
+&lt;p&gt;Life is mostly about solving problems, and you can solve these."&lt;/p&gt;
+&lt;p&gt;— Solving Problems, &lt;a href='https://www.wakingup.com/'&gt;Waking Up App&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I'm reminded of somebody who talked about viewing life as a video game because, in a video game, the problems are the point. Playing HALO on the easiest mode gets boring incredibly quickly.&lt;/p&gt;
+&lt;p&gt;I've found it to be a powerful reframing technique. Instead of being frustrated that my daughter is struggling in math, I'm just playing the level where I get to help a 2nd grader with subtraction strategies.&lt;/p&gt;
+&lt;p&gt;This framing reminds me that the existence of problems isn't a failure state or a sign of a life not well lived; it's THE state of being human.&lt;/p&gt;
+&lt;p&gt;Having and solving problems is how science, and culture, and everything moves forward:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Somebody identifies a problem&lt;/li&gt;
+&lt;li&gt;People work to solve the problem&lt;/li&gt;
+&lt;li&gt;That solution raises new, interesting problems&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As David Deutsch puts it in &lt;a href='/books/'&gt;The Beginning of Infinity&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Problems are inevitable – there are always unsolved problems. But they get solved. Science continues to make progress even, or especially, after making great discoveries, because the discoveries themselves reveal further problems.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;With this framing, problems aren't just an inconvenience, they're an opportunity to make real progress.&lt;/p&gt;
+&lt;p&gt;I've recently been &lt;a href='/books/'&gt;re-reading&lt;/a&gt; The Culture Series by Iain M. Banks, and this quote from Consider Phelebas has stuck with me.&lt;/p&gt;
+&lt;p&gt;An AI has barely escaped, it's been damaged and is being tracked by its enemies, and in the midst of listing its problems, it thinks&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Better than nothing, though. &lt;strong&gt;Better still to have problems than to let death eradicate them all....&lt;/strong&gt;”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There will be a time when we won't have any more problems. You either believe they'll be solved in paradise or obliterated in death.&lt;/p&gt;
+&lt;p&gt;Either way, that time is coming, so we should enjoy the problems while they're here.&lt;/p&gt;
+</content>
+    <link href="https://albanbrooke.com/problems/" rel="alternate"/>
+    <published>2024-03-13T03:14:51.226494+00:00</published>
+  </entry>
+</feed>

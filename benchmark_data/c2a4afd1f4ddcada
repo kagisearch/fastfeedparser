@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bugramming</title>
+    <link>https://bugramming.dev/</link>
+    <description>Recent content on bugramming</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 10 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://bugramming.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The 2 Body Problem</title>
+      <link>https://bugramming.dev/post/the-2-body-problem-better-work-estimates-as-a-developer/</link>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://bugramming.dev/post/the-2-body-problem-better-work-estimates-as-a-developer/</guid>
+      <description>&lt;p&gt;Today, I&amp;rsquo;m going to explore some insights and perspectives that often go unspoken in the process of building a software product &amp;ndash; things most people don&amp;rsquo;t typically discuss openly. I hope that once you read through this blog you will get a good understanding on how to gauge the situation for your work and provide estimates according to your needs properly.&lt;/p&gt;&#xA;&lt;p&gt;Let me feed something inside your mind before reading this post,&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Fail Fast, Build Better</title>
+      <link>https://bugramming.dev/post/fail-fast-build-better/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://bugramming.dev/post/fail-fast-build-better/</guid>
+      <description>&lt;p&gt;Recently I am focusing more on getting to know to build better software before taking it live. I want to discuss mainly on the topic of the role of &amp;ldquo;Rapid Iteration&amp;rdquo; in software engineering and how it saves us from many bugs that we generally encounter on production. We will look at things that will crash our programs early on, so that we can have a peaceful life in production later. It generally feels so counter-intuitive to think about crashing your program while building itself, but trust me! it saves a lot of time once your code is on production &amp;ndash; Let&amp;rsquo;s start with a very simple one!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Simplicity is Contagious</title>
+      <link>https://bugramming.dev/post/simplicity-is-contagious/</link>
+      <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://bugramming.dev/post/simplicity-is-contagious/</guid>
+      <description>&lt;p&gt;I have been programming Go continuously for a long time, I only say &amp;ldquo;long time&amp;rdquo; for a thing when I start developing opinions about it, and I&amp;rsquo;m starting to develop very strong opinions about Go (the programming language).&lt;/p&gt;&#xA;&lt;p&gt;Go is a very simple language but I think that many don&amp;rsquo;t understand the necessity of this simplicity in this programming world. The reason I&amp;rsquo;m writing this is because I miss some of the very simple things that Go provides us and we take it for granted.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://bugramming.dev/archives/</link>
+      <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+      <guid>https://bugramming.dev/archives/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://bugramming.dev/resume/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://bugramming.dev/resume/</guid>
+      <description>&lt;h1 id=&#34;engineer--creator-of-software-tools&#34;&gt;Engineer &amp;amp; Creator &lt;code&gt;of software tools&lt;/code&gt;&lt;/h1&gt;&#xA;&lt;p&gt;Hello and welcome! I’m currently working as a software engineer at &lt;a href=&#34;in.bookmyshow.com&#34;&gt;BookMyShow&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;My career path has taken me across several industries, each offering unique challenges and learning opportunities. I began my journey at &lt;a href=&#34;https://www.instagram.com/noddapp&#34;&gt;Nodd&lt;/a&gt;, a startup focused on building a social media app. There, I joined as a Junior Developer and worked on migrating their backend from a PHP-SQL stack to a more modern &lt;em&gt;(at that time)&lt;/em&gt; Node-Mongo stack, helping to improve performance and scalability. I also took up a challenge to work on their iOS app which gave me a full understanding of frontend as well as backend developemnt process.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>https://bugramming.dev/projects/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://bugramming.dev/projects/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/codekidx/xo&#34;&gt;xo&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/codekidx/sparrow&#34;&gt;sparrow&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/codekidx/rubik&#34;&gt;rubik&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/codekidx/storage-chooser&#34;&gt;storage-chooser&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

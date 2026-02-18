@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://racc.blog</id>
+  <title>Raccoon’s Trash Can</title>
+  <updated>2026-02-18T02:18:12.038675+00:00</updated>
+  <author>
+    <name>raccoon</name>
+    <email>hidden</email>
+  </author>
+  <link href="https://racc.blog/" rel="alternate"/>
+  <link href="https://racc.blog/feed/" rel="self"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+  <subtitle>Hi I’m Adam! I write about life, people, and the thoughts that come with being human :]</subtitle>
+  <entry>
+    <id>https://racc.blog/polski-bearblog/</id>
+    <title>Polski bearblog</title>
+    <updated>2026-02-16T09:57:56.491744+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Ostatnio wszedłem na polską kategorię w discovery i pomyślałem że chciałbym stworzyć coś razem. Osoby, które regularnie piszą na bearblog po polsku można policzyć na palcach jednej ręki.&lt;/p&gt;
+&lt;p&gt;Dlatego piszę ten artykuł. Aby zintegrować się z wami. Jeśli to czytasz i piszesz bloga po polsku, proszę wyślij do mnie maila, którego znajdziesz na mojej stronie głównej.&lt;/p&gt;
+&lt;p&gt;Chcę z &lt;em&gt;tobą&lt;/em&gt; wymienić się tytułami i napisać artykuł na twój wybrany temat. Artykuł napiszę zarówno jak i w języku polskim jak i angielskim, bo w tym języku piszę na swoim blogu, co pozwala mi na dotarcie do szerszego grona odbiorców :]&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/polski-bearblog/" rel="alternate"/>
+    <category term="2026"/>
+    <published>2026-02-16T09:57:56.488907+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/what-ive-learned-from-a-raccoons-ingenuity/</id>
+    <title>What I’ve learned from a raccoon’s ingenuity?</title>
+    <updated>2026-02-16T09:07:47.608750+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;This is my take on an article with &lt;em&gt;see above&lt;/em&gt; title, given by &lt;a href='https://zacharykai.net/'&gt;&lt;strong&gt;Zachary Kai&lt;/strong&gt;&lt;/a&gt; as a part of our title trade! :]&lt;/p&gt;
+&lt;p&gt;Check out &lt;a href='https://zacharykai.net/notes/consciousness'&gt;&lt;strong&gt;their article about consciousness!&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Raccoon. What a fascinating animal.&lt;sup class="footnote-ref" id="fnref-1"&gt;&lt;a href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;They are insanely good at problem solving with whatever is available. They pry, move, lift, they &lt;strong&gt;try&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;They know that progress comes from experimentation and most importantly acting instead of planning. They know that &lt;em&gt;doing&lt;/em&gt; is unmeasurably better than overplanning.&lt;/p&gt;
+&lt;p&gt;They are persistent. If a lid doesn't open they try a different method. If a plan doesn’t work, they seek another one.&lt;/p&gt;
+&lt;p&gt;They learn fast from experience. Raccoons remember what worked and what didn’t, they don’t waste time on repeating mistakes.&lt;/p&gt;
+&lt;p&gt;They are opportunistic. Raccoons use resources that others ignore or consider rubbish. They make use of what’s available instead of assuming they need more.&lt;/p&gt;
+&lt;p&gt;Be like raccoons. Don’t wait for ideal conditions because they may never come. Experiment, adjust, apply. Treat mistakes as feedback and not failure. Improvement comes from doing, not preparing.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+&lt;section class="footnotes"&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;p&gt;Absolutely zero bias&lt;a href="#fnref-1" class="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://racc.blog/what-ive-learned-from-a-raccoons-ingenuity/" rel="alternate"/>
+    <category term="2026"/>
+    <published>2026-02-16T09:04:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/proust-questionnaire/</id>
+    <title>Proust questionnaire</title>
+    <updated>2026-02-17T15:51:45.752078+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Thank you for sharing the questionnaire Zachary Kai!
+If you want to participate check out the &lt;a href='https://zacharykai.net/lists/proust'&gt;&lt;strong&gt;link&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=your-favorite-virtue&gt;Your Favorite Virtue&lt;/h3&gt;&lt;p&gt;Empathy.&lt;/p&gt;
+&lt;h3 id=your-favorite-qualities-in-a-delmanwomandel-person&gt;Your Favorite Qualities In A &lt;del&gt;Man/Woman&lt;/del&gt; Person&lt;/h3&gt;&lt;p&gt;Respect and aforementioned empathy.&lt;/p&gt;
+&lt;h3 id=your-favorite-occupation&gt;Your Favorite Occupation&lt;/h3&gt;&lt;p&gt;Experiencing.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Everything is a win if the goal is to experience.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=your-chief-characteristic&gt;Your Chief Characteristic&lt;/h3&gt;&lt;p&gt;Gentleness. I hope others would agree.&lt;/p&gt;
+&lt;h3 id=your-idea-of-happiness&gt;Your Idea Of Happiness&lt;/h3&gt;&lt;p&gt;Gratefulness for what you already have.&lt;/p&gt;
+&lt;h3 id=your-idea-of-misery&gt;Your Idea Of Misery&lt;/h3&gt;&lt;p&gt;Working a soul-sucking job that you hate.&lt;/p&gt;
+&lt;h3 id=your-favorite-color-and-flower&gt;Your Favorite Color And Flower&lt;/h3&gt;&lt;p&gt;Yellow :] I don’t have a favourite flower though.&lt;/p&gt;
+&lt;h3 id=if-not-yourself-who-would-you-be&gt;If Not Yourself, Who Would You Be?&lt;/h3&gt;&lt;p&gt;A raccoon or a deer.&lt;/p&gt;
+&lt;h3 id=where-would-you-like-to-live&gt;Where Would You Like To Live?&lt;/h3&gt;&lt;p&gt;In a world where people do their own thing. Where people are too busy to look into other’s wallets and bedrooms. Where people would only look into your pot, only to make sure you have something to eat.&lt;/p&gt;
+&lt;h3 id=your-favorite-prose-authors&gt;Your Favorite Prose Authors&lt;/h3&gt;&lt;p&gt;I don’t read prose so I don’t have any.&lt;/p&gt;
+&lt;h3 id=your-favorite-poets&gt;Your Favorite Poets&lt;/h3&gt;&lt;p&gt;Kazimierz Przerwa-Tetmajer&lt;/p&gt;
+&lt;h3 id=your-favorite-painters-and-composers&gt;Your Favorite Painters And Composers&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Painters:&lt;/strong&gt; Claude Monet, Vincent Van Gogh&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Composer:&lt;/strong&gt; Frédéric François Chopin&lt;/p&gt;
+&lt;h3 id=your-favorite-heroesheroines-in-real-life&gt;Your Favorite Heroes/Heroines In Real Life&lt;/h3&gt;&lt;p&gt;Any volunteer and healthcare workers&lt;/p&gt;
+&lt;h3 id=your-favorite-heroesheroines-in-fiction&gt;Your Favorite Heroes/Heroines In Fiction&lt;/h3&gt;&lt;p&gt;I don’t like superheroes&lt;/p&gt;
+&lt;p&gt;If you want real “heroism” search for it in flawed human figures. People who choose courage without powers, who do good quietly, who act morally in messy situations.&lt;/p&gt;
+&lt;h3 id=your-favorite-food-and-drink&gt;Your Favorite Food And Drink&lt;/h3&gt;&lt;p&gt;I could eat fried chicken with fries for the rest of my life.&lt;/p&gt;
+&lt;p&gt;Difficult choice between green tea and coke&lt;/p&gt;
+&lt;h3 id=your-favorite-names&gt;Your Favorite Names&lt;/h3&gt;&lt;p&gt;I don’t have favourite names.
+I only know what names I do not like&lt;/p&gt;
+&lt;h3 id=your-pet-aversion&gt;Your Pet Aversion&lt;/h3&gt;&lt;p&gt;Slow walking and a “titkok influencer”way of talking.&lt;/p&gt;
+&lt;h3 id=what-characters-in-history-do-you-most-dislike&gt;What Characters In History Do You Most Dislike?&lt;/h3&gt;&lt;p&gt;There are obvious ones. I don’t have any niche ones.&lt;/p&gt;
+&lt;h3 id=what-is-your-present-state-of-mind&gt;What Is Your Present State Of Mind?&lt;/h3&gt;&lt;p&gt;Tired.&lt;/p&gt;
+&lt;h3 id=for-what-fault-have-you-most-toleration&gt;For What Fault Have You Most Toleration?&lt;/h3&gt;&lt;p&gt;Impatience.&lt;/p&gt;
+&lt;h3 id=your-favorite-motto&gt;Your Favorite Motto&lt;/h3&gt;&lt;p&gt;“Dum spiro spero” or “ora et labora”&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/proust-questionnaire/" rel="alternate"/>
+    <category term="2026"/>
+    <published>2026-02-15T20:17:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/ambient-music-is-so-peak/</id>
+    <title>Ambient music is so peak!</title>
+    <updated>2026-02-09T17:43:43.681762+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;“Without music, life would be a mistake.” - Friedrich Nietzsche&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I've been listening to a lot of ambient or instrumental rock music recently, and I must say, it’s awesome. Doesn’t require my mind to process lyrics, and it’s easier for me to find new songs, because I’m always picky with the lyrics. With lyric-based music, one bad line can ruin the vibe, whereas with ambient music, it’s more about sound design and atmosphere. I can just switch my brain off, which I was chasing.&lt;/p&gt;
+&lt;p&gt;You should give it a try too!&lt;/p&gt;
+&lt;p&gt;While I’m still at the surface level of the iceberg, my current favourite bands are: Duster and El Ten Eleven.&lt;/p&gt;
+&lt;p&gt;I’m happy to listen to your recommendations! My email is on the home page :]&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/ambient-music-is-so-peak/" rel="alternate"/>
+    <category term="2026"/>
+    <published>2026-02-09T17:42:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/fear-of-being-average/</id>
+    <title>Fear of being average</title>
+    <updated>2026-01-26T13:13:31.071705+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Average is a perfectly neutral word.&lt;/p&gt;
+&lt;p&gt;But what if someone were to call your life average? What would you feel?&lt;/p&gt;
+&lt;p&gt;In statistics, average is a descriptive tool. It does not praise or condemn, it simply names a reference point. In large datasets, someone will always fall near the centre of any measured scale
+let it be life expectancy, income, height, someone has to sit in the middle. But when we take this concept out of mathematics and apply it onto human lives, a tool for describing data turns into a judgment of one's worth.&lt;/p&gt;
+&lt;p&gt;Humans love comparing themselves. Numbers fascinate us because they simplify complexity. But simplification has a cost. It leads to rewarding extremes: exceptional beauty, exceptional success, and expectational failure - especially in mass media. What it leads to is the erasure of average. The middle becomes synonymous with invisible.&lt;/p&gt;
+&lt;p&gt;Once your sense of self depends on your position on a graph, average stops being a description and becomes a threat. If you are not above, you feel below even when you aren’t.&lt;/p&gt;
+&lt;p&gt;However, human life is not one variable. You can’t average curiosity, loyalty, humor, moral courage, values, or the way someone notices small things. Compressing a person into a single metric always produces a lie, even if the math is there.&lt;/p&gt;
+&lt;p&gt;The fear of being average is really the fear of being told your life didn’t matter. But meaning isn’t assigned by percentile. It’s generated by what you do, what you refuse, what you protect, what you care about.&lt;/p&gt;
+&lt;p&gt;The real tragedy isn’t being average.
+It’s wasting your life chasing numbers that were never meant to measure your worth.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/fear-of-being-average/" rel="alternate"/>
+    <category term="2026"/>
+    <published>2026-01-26T13:12:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/ambition-loss-and-reclaiming-purpose/</id>
+    <title>Ambition, loss, and reclaiming purpose</title>
+    <updated>2026-01-18T09:54:28.559386+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Ambition is a direction that we give our lives. For me, ambition is a compass I carry in my heart, one that beams me toward what I’ve decided is my longed-for destination. It gives my days momentum, a clear goal I want to pursue. Every action that puts me closer to that goal feels like a gift to my future self, not like an obligation. Ambition gives my effort purpose.&lt;/p&gt;
+&lt;p&gt;But ambition isn’t static. It doesn’t remain constant or guaranteed. Without it, accomplishments feel hollow, and actions feel purposeless. Apathy creeps in, slowly killing what once was a part of you. You may keep moving, but feel lost, or you may rest on your laurels and do nothing at all. You know deep down, that you’ve gone off-course, yet you don’t care. Life keeps happening, but without a compass, it loses direction.&lt;/p&gt;
+&lt;p&gt;Losing ambition is a slow loss of yourself. Without it, every choice feels arbitrary, every achievement fleeting. You start to question why you’re even moving, or worse, if you should move at all. The energy that once carried you forward turns inward, leaving doubt and restlessness in its place.&lt;/p&gt;
+&lt;p&gt;However, that doesn’t mean that it cannot return.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Energy cannot be created or destroyed; it can only change forms.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A small goal, a personal milestone, or a simple vision of progress can reignite the sense of direction that makes every effort feel meaningful. Ambition is the path that connects who we are today to the person we want to become tomorrow.&lt;/p&gt;
+&lt;p&gt;Reclaiming it is like finding your way home, a reminder that purpose must exist.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/ambition-loss-and-reclaiming-purpose/" rel="alternate"/>
+    <category term="2026"/>
+    <published>2026-01-18T09:54:28.557751+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/i-wouldnt-put-it-past-him/</id>
+    <title>"I wouldn't put it past him"</title>
+    <updated>2026-01-11T12:59:22.399931+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;"I wouldn’t put it past him" is usually said about someone else. But what if we change the pronoun to "me”?&lt;/p&gt;
+&lt;p&gt;I wouldn’t put it past myself&lt;/p&gt;
+&lt;p&gt;Applied to yourself, it becomes honest self-reflection, showing awareness of your capabilities. Instead of only describing events, you use the phrase inwardly - acknowledging your ability for both good and bad and examining what that reveals about you.&lt;/p&gt;
+&lt;p&gt;You become an observer of yourself. This awareness does not excuse mistakes, but it prevents surprises. When you recognise that you wouldn’t put something past yourself, you admit that you are human, not a perfect version of yourself. Recognising your limits before you cross them is the only way to stay in control of your choices.&lt;/p&gt;
+&lt;p&gt;This perspective turns moments of self-doubt into opportunities to learn, and mistakes into reminders of what you can do differently, helping you avoid unnecessary disappointment.&lt;/p&gt;
+&lt;p&gt;Noticing your own patterns this way makes life a little easier. Give it a shot - you might be surprised how much clarity it brings.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/i-wouldnt-put-it-past-him/" rel="alternate"/>
+    <category term="2026"/>
+    <published>2026-01-11T12:59:22.398687+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/monthly-fiction-apoptosis/</id>
+    <title>Monthly Fiction - “Apoptosis”</title>
+    <updated>2026-01-04T11:52:13.536729+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Humanity had slowly become a thing of the past.&lt;/p&gt;
+&lt;p&gt;The disease did not kill quickly. It folded. One protein misaligned. The second followed. What began as a small error had become a chain reaction, a direction towards the end of a species.&lt;/p&gt;
+&lt;p&gt;Speech dissolved into stutter, then silence. Memory followed. Cities remained, while the people inside forgot how to open doors. Hospitals filled with bodies that still breathed but no longer recognized pain. Nothing could slow the disease.&lt;/p&gt;
+&lt;p&gt;The last governments collapsed trying to sterilise reality.&lt;/p&gt;
+&lt;p&gt;Prions survived.&lt;/p&gt;
+&lt;p&gt;They always did.&lt;/p&gt;
+&lt;p&gt;No organism that was once human stood again.&lt;/p&gt;
+&lt;p&gt;Yet an automated laboratory persisted. Inside a class III containment chamber, a single human cell floated in nutrient medium. It was clean. No misfolded proteins, no corruption. Months passed. Power grids failed elsewhere. Here, reactors still ran, like a horse that did not know the race had ended.&lt;/p&gt;
+&lt;p&gt;But nothing is permanent.&lt;/p&gt;
+&lt;p&gt;The cell aged.&lt;/p&gt;
+&lt;p&gt;Proteins degraded naturally. Chaperone molecules struggled to maintain order. Even without prions, entropy was patient. Reactive oxygen species accumulated. Calcium and energy imbalances triggered stress signals. DNA damage markers appeared. Thresholds were crossed.&lt;/p&gt;
+&lt;p&gt;Apoptosis triggered. Caspases activated. The cytoskeleton collapsed inward. DNA fragmented into regular lengths, not to preserve itself, but to allow orderly disposal. The cell packaged its remains into apoptotic bodies, meant for clean removal.&lt;/p&gt;
+&lt;p&gt;No others remained.&lt;/p&gt;
+&lt;p&gt;The last uncontaminated human matter destroyed itself. Not because it was infected, but because it obeyed rules written long before humans learned how fragile shape could be.&lt;/p&gt;
+&lt;p&gt;Outside the bunker, the prion disease persisted. Proteins folded wrong in empty skulls, in bones, in dust.&lt;/p&gt;
+&lt;p&gt;The lab lights stayed on.&lt;/p&gt;
+&lt;p&gt;The incubator remained warm.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/monthly-fiction-apoptosis/" rel="alternate"/>
+    <category term="2026"/>
+    <category term="fiction"/>
+    <published>2026-01-04T11:52:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/my-view-on-new-years-resolution/</id>
+    <title>My view on New Year’s resolution</title>
+    <updated>2026-01-03T23:02:51.322566+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I don’t remember any resolutions I’ve ever made. They were vague, easy to abandon, and never required real commitment. That’s probably why I stopped making them years ago.&lt;/p&gt;
+&lt;p&gt;In my eyes, New Year’s resolutions are nothing more than a coping mechanism, a psychological crutch. They’re just another way of saying “I’ll start tomorrow, not today.” A specific date makes inaction feel justified, even responsible. If you actually want change, you don’t wait for permission from a calendar.&lt;/p&gt;
+&lt;p&gt;Last month, I wanted to do more of x. I didn’t wait for 2026. I started the same day. I believe that I’m still doing it now because the action wasn’t externalised and deferred to a symbolic moment or framed as a “fresh start”. I got through the hard days where I didn’t feel like it, and it’s way easier now.&lt;/p&gt;
+&lt;p&gt;If you need a specific date to begin, you’re most likely not ready to sustain it. Change is hard, and resolutions make it feel easier by postponing responsibility.&lt;/p&gt;
+&lt;p&gt;Also, the phrase “new year, new me” couldn’t be more wrong. It pretends identity can be reset by a date, as if habits, incentives, and weaknesses expire at midnight. They &lt;strong&gt;don’t&lt;/strong&gt;. You wake up on January 1st with the same brain, the same routines, and the same tolerance for discomfort. Nothing structural has changed, so nothing meaningful follows.&lt;/p&gt;
+&lt;p&gt;There is no “old you” and “new you”.&lt;/p&gt;
+&lt;p&gt;There’s only the person who acts or who doesn’t. And it’s you, today.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/my-view-on-new-years-resolution/" rel="alternate"/>
+    <category term="2026"/>
+    <published>2026-01-03T23:02:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://racc.blog/this-years-christmas/</id>
+    <title>This year’s Christmas</title>
+    <updated>2025-12-28T12:43:18.804090+00:00</updated>
+    <author>
+      <name>raccoon</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Christmas this year for me was genuinely enjoyable. I spent time with my family, played board games, and took part in family gatherings, which made the holidays feel warm and meaningful. Even though I was sick and couldn’t go out with my friends, I still enjoyed staying at home.&lt;/p&gt;
+&lt;p&gt;I’m still not fully recovered, but one thing I’m proud of is that I studied consistently, except on Christmas Eve. Some people say Christmas should be a time only for rest, but I can rest while still studying. When I have motivation, it makes no sense to waste it.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Enjoyed the article? Subscribe to my &lt;a href='https://raccoon.bearblog.dev/feed/?type=rss'&gt;&lt;strong&gt;RSS feed&lt;/strong&gt;&lt;/a&gt; :D&lt;/p&gt;
+</content>
+    <link href="https://racc.blog/this-years-christmas/" rel="alternate"/>
+    <category term="2025"/>
+    <published>2025-12-28T12:43:00+00:00</published>
+  </entry>
+</feed>

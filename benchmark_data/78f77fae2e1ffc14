@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytimes.com/namespaces/rss/2.0" version="2.0">
+  <channel>
+    <title>NYT &gt; World News</title>
+    <link>https://www.nytimes.com/section/world</link>
+    <atom:link href="https://rss.nytimes.com/services/xml/rss/nyt/World.xml" rel="self" type="application/rss+xml"></atom:link>
+    <description></description>
+    <language>en-us</language>
+    <copyright>Copyright 2026 The New York Times Company</copyright>
+    <lastBuildDate>Wed, 18 Feb 2026 02:10:00 +0000</lastBuildDate>
+    <pubDate>Wed, 18 Feb 2026 02:09:26 +0000</pubDate>
+    <image>
+      <title>NYT &gt; World News</title>
+      <url>https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png</url>
+      <link>https://www.nytimes.com/section/world</link>
+    </image>
+    <item>
+      <title>Trump Said He’d End the War in Ukraine in a Day. It’s Harder Than He Thought.</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/trump-ukraine-war-putin.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/trump-ukraine-war-putin.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/trump-ukraine-war-putin.html" rel="standout"></atom:link>
+      <description>Russian attacks and Ukrainian civilian deaths rose as President Trump’s peace talks dragged on during his first year back in the White House.</description>
+      <dc:creator>Kim Barker and Oleksandra Mykolyshyn</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 17:49:09 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Invasion of Ukraine (2022)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Peace Process</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deaths (Fatalities)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Civilian Casualties</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Putin, Vladimir V</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Zelensky, Volodymyr</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Russia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Ukraine</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">United States</category>
+      <media:content height="1801" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17int-ukraine-trump-01-kzvh/17int-ukraine-trump-01-kzvh-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Finbarr O&#39;Reilly for The New York Times</media:credit>
+      <media:description>An apartment building that a Russian missile struck in Kyiv, Ukraine, in August. Moscow’s attacks have inflicted a growing toll on Ukrainians.</media:description>
+    </item>
+    <item>
+      <title>Iranians Mourn Slain Protesters With ‘Revolutionary Rage’</title>
+      <link>https://www.nytimes.com/2026/02/17/world/middleeast/iran-memorials-protesters-crackdown.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/middleeast/iran-memorials-protesters-crackdown.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/middleeast/iran-memorials-protesters-crackdown.html" rel="standout"></atom:link>
+      <description>The authorities moved to suppress shows of defiance at ceremonies commemorating 40 days since the death of protesters.</description>
+      <dc:creator>Erika Solomon, Leily Nikounazar, Sanjana Varghese and Jon Hazell</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 18:57:59 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iran</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deaths (Fatalities)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Funerals and Memorials</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Demonstrations, Protests and Riots</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Khamenei, Ali</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1080" medium="image" url="https://static01.nyt.com/images/2026/02/17/17-vid-Zanjan-funeral-10secs-2058-cover/17-vid-Zanjan-funeral-10secs-2058-cover-mediumSquareAt3X.jpg" width="1080"></media:content>
+      <media:credit>Obtained by The New York Times</media:credit>
+    </item>
+    <item>
+      <title>Spain to Investigate Social Media Giants, Escalating Trans-Atlantic Tech Dispute</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/spain-investigate-social-media.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/spain-investigate-social-media.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/spain-investigate-social-media.html" rel="standout"></atom:link>
+      <description>The government wants prosecutors to investigate X, Meta and TikTok, adding to a growing clash between the U.S. and Europe over regulating social media.</description>
+      <dc:creator>Jason Horowitz</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 18:20:21 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Europe</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Spain</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Sanchez Perez-Castejon, Pedro (1972- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">X (Formerly Twitter)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">TikTok (ByteDance)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Meta Platforms Inc</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Social Media</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17int-Spain-Tech-pmbv/17int-Spain-Tech-pmbv-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Pierre-Philippe Marcou/Agence France-Presse — Getty Images</media:credit>
+      <media:description>Prime Minister Pedro Sánchez of Spain in Madrid last month. He asked prosecutors to investigate X, Meta, and TikTok for the spread of child sex abuse material on the platforms.</media:description>
+    </item>
+    <item>
+      <title>A Rio Carnival Party That Goes On and On</title>
+      <link>https://www.nytimes.com/2026/02/17/world/americas/a-rio-carnival-party-that-goes-on-and-on.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/americas/a-rio-carnival-party-that-goes-on-and-on.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/americas/a-rio-carnival-party-that-goes-on-and-on.html" rel="standout"></atom:link>
+      <description>The Boi Tolo, one of the city’s most iconic street parties, has come to represent the glittery, gritty grass-roots celebration far from the glamour of the official parades.</description>
+      <dc:creator>Ana Ionova and Dado Galdieri</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 05:01:20 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Parties (Social)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Brazil</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Rio de Janeiro (Brazil)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17int-brazil-carnival01-photo-bjcz/17int-brazil-carnival01-photo-bjcz-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:description>Revelers taking part in the Boi Tolo on Sunday in Rio de Janeiro.</media:description>
+    </item>
+    <item>
+      <title>The Drone Games: Flying Cameras Are Everywhere at the Winter Olympics</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/drones-winter-olympics-milan-cortina.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/drones-winter-olympics-milan-cortina.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/drones-winter-olympics-milan-cortina.html" rel="standout"></atom:link>
+      <description>The robotic cameras chase behind lugers, skiers and speedskaters across the venues in Northern Italy. Some spectators find they’re as much fun to watch as the athletes.</description>
+      <dc:creator>Jason Horowitz</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 10:03:11 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Drones (Pilotless Planes)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Cameras</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Skeleton (Sport)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Robots and Robotics</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Television</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Fans (Persons)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Bormio (Italy)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Italy</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1243" medium="image" url="https://static01.nyt.com/images/2026/02/15/multimedia/00int-olympics-drones-tlzb/00int-olympics-drones-tlzb-mediumSquareAt3X.jpg" width="1242"></media:content>
+      <media:credit>Vincent Alban/The New York Times</media:credit>
+      <media:description>A drone video camera following speedskaters during the women’s 500-meter race at the Milan Olympics, on Sunday.</media:description>
+    </item>
+    <item>
+      <title>U.S. and Iran Make ‘Good Progress’ in Geneva Talks, Foreign Minister Says</title>
+      <link>https://www.nytimes.com/2026/02/17/us/politics/us-iran-nuclear-talks.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/us/politics/us-iran-nuclear-talks.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/us/politics/us-iran-nuclear-talks.html" rel="standout"></atom:link>
+      <description>The Iranian minister, Abbas Araghchi, said both sides had agreed on a “set of guiding principles.” President Trump has called on Iran to make an immediate accord or face a possible U.S. attack.</description>
+      <dc:creator>Aaron Boxerman, Erika Solomon and Nick Cumming-Bruce</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 23:18:51 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iran</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Nuclear Weapons</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Araghchi, Abbas</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Kushner, Jared</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Witkoff, Steven</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Iran-Israel War (2025- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1801" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17vid-iran-talks-update-cover-fmlk/17vid-iran-talks-update-cover-fmlk-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Valentin Flauraud/Agence France-Presse — Getty Images</media:credit>
+    </item>
+    <item>
+      <title>Trump’s ‘Board of Peace’ Presses Hamas on Disarmament, Officials Say</title>
+      <link>https://www.nytimes.com/2026/02/17/world/middleeast/israel-hamas-board-of-peace-disarmament.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/middleeast/israel-hamas-board-of-peace-disarmament.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/middleeast/israel-hamas-board-of-peace-disarmament.html" rel="standout"></atom:link>
+      <description>The direct talks last week came as officials urgently try to find a breakthrough on the issue of Hamas’s weapons, fearing the cease-fire in Gaza could collapse.</description>
+      <dc:creator>Natan Odenheimer and Adam Rasgon</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 19:03:34 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Israel-Gaza War (2023- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Hamas</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Mladenov, Nickolay E</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Netanyahu, Benjamin</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">al-Hayya, Khalil (1960- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Gaza Strip</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17gaza-talks-01-lhtq/17gaza-talks-01-lhtq-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Saher Alghorra for The New York Times</media:credit>
+      <media:description>Hamas militants searching for the bodies of remaining hostages north of Gaza City, in December.</media:description>
+    </item>
+    <item>
+      <title>Questions Swirl Around Russian Figure Skater in Her Olympic Debut</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/russian-figure-skater-milan-olympics.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/russian-figure-skater-milan-olympics.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/russian-figure-skater-milan-olympics.html" rel="standout"></atom:link>
+      <description>Adeliia Petrosian, 18, has the résumé of a medal contender — and ties to coaches and a skater who were at the center of a doping scandal at the last Winter Games.</description>
+      <dc:creator>Juliet Macur</dc:creator>
+      <pubDate>Wed, 18 Feb 2026 01:05:49 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Petrosian, Adeliia (2007- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Figure Skating</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Valieva, Kamila (2006- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Doping (Sports)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Russia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Tutberidze, Eteri</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1801" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17olympics-russian-skater-lgmv/17olympics-russian-skater-lgmv-mediumSquareAt3X-v2.jpg" width="1800"></media:content>
+      <media:credit>Doug Mills/The New York Times</media:credit>
+      <media:description>Adeliia Petrosian has skated outside Russia only once since 2022. She makes her Olympic debut on Tuesday at the Winter Games in Milan.</media:description>
+    </item>
+    <item>
+      <title>Question of True Remorse When A.I. Helps Write Your Court Apology</title>
+      <link>https://www.nytimes.com/2026/02/17/world/asia/new-zealand-court-ai-apology.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/asia/new-zealand-court-ai-apology.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/asia/new-zealand-court-ai-apology.html" rel="standout"></atom:link>
+      <description>The use of artificial intelligence gave a New Zealand judge pause about the genuineness of the remorse expressed in the apology. It reflects a wider discussion about using A.I. for personal communication.</description>
+      <dc:creator>Ephrat Livni</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 18:09:14 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Artificial Intelligence</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Apologies</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Gilbert, Tom (Judge)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">New Zealand</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Decisions and Verdicts</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/world/00int-NewZealand-AI/00int-NewZealand-AI-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Sanka Vidagama/Agence France-Presse — Getty Images</media:credit>
+      <media:description>The arson case was heard in the District Court in Christchurch, New Zealand.</media:description>
+    </item>
+    <item>
+      <title>Trump’s Ambassador to Belgium Is Summoned After Accusing Officials of Antisemitism</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/belgium-trump-ambassador-anti-semitism.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/belgium-trump-ambassador-anti-semitism.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/belgium-trump-ambassador-anti-semitism.html" rel="standout"></atom:link>
+      <description>The diplomat, Bill White, met with a foreign ministry official at a time of rising tensions between the U.S. and countries in Europe.</description>
+      <dc:creator>Jeanna Smialek and Koba Ryckewaert</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 18:19:46 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">White, Bill (1967- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Anti-Semitism</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Diplomatic Service, Embassies and Consulates</category>
+      <category domain=""></category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Belgium</category>
+      <media:content height="1799" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17belgium-US-anti-semitism-qzcw/17belgium-US-anti-semitism-qzcw-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Kurt Desplenter/Belga, via Agence France-Presse — Getty Images</media:credit>
+      <media:description>Bill White, the U.S. ambassador to Belgium, met on Tuesday with Belgian officials over his social media posts. </media:description>
+    </item>
+    <item>
+      <title>Palmerston, the Former ‘Chief Mouser’ for Britain’s Foreign Office, Dies</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/palmerston-britain-diplomat-dead.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/palmerston-britain-diplomat-dead.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/palmerston-britain-diplomat-dead.html" rel="standout"></atom:link>
+      <description>The cat, who was named after a former prime minister, became a social media star. By the time of his death at about 12, he had more followers than many ambassadors have.</description>
+      <dc:creator>Amelia Nierenberg</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 20:56:47 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Diplomatic Service, Embassies and Consulates</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Cats</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Great Britain</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">London (England)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Bermuda</category>
+      <media:content height="1801" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17INT-UK-CAT-cqvp/17INT-UK-CAT-cqvp-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Kirsty Wigglesworth/Associated Press</media:credit>
+      <media:description>Palmerston sitting on a photographer’s ladder at Downing Street in London, in 2019.</media:description>
+    </item>
+    <item>
+      <title>Ukraine and Russia Hold New Round of Peace Talks, but Expectations Are Low</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/ukraine-russia-peace-talks-switzerland.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/ukraine-russia-peace-talks-switzerland.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/ukraine-russia-peace-talks-switzerland.html" rel="standout"></atom:link>
+      <description>Both sides described previous U.S.-mediated negotiations as productive, although they did not appear to address sticking points like territory and security guarantees.</description>
+      <dc:creator>Constant Méheut</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 18:14:06 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Invasion of Ukraine (2022)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Peace Process</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Russia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Ukraine</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Putin, Vladimir V</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Zelensky, Volodymyr</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Kushner, Jared</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Medinsky, Vladimir</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Witkoff, Steven</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17int-ukraine-talks-01-tlkw/17int-ukraine-talks-01-tlkw-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Tyler Hicks/The New York Times</media:credit>
+      <media:description>A Ukrainian artillery brigade firing in the Zaporizhzhia region of eastern Ukraine in October. The conflict will enter its fifth year later this month.</media:description>
+    </item>
+    <item>
+      <title>Austria Charges Man in Thwarted Attack on Taylor Swift Concert</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/taylor-swift-concert-charges-austria.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/taylor-swift-concert-charges-austria.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/taylor-swift-concert-charges-austria.html" rel="standout"></atom:link>
+      <description>The foiled plot led to the cancellation of three shows in 2024 that Ms. Swift had planned for Austria during her Eras tour.</description>
+      <dc:creator>Ephrat Livni</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 10:51:56 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Terrorism</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Pop and Rock Music</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Bombs and Explosives</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Muslims and Islam</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Islamic State in Iraq and Syria (ISIS)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Swift, Taylor</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Austria</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Vienna (Austria)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1801" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16int-austria-taylorswift-photo-wvpk/16int-austria-taylorswift-photo-wvpk-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Heinz-Peter Bader/Associated Press</media:credit>
+      <media:description>Police officers watching as Taylor Swift fans gather in Vienna in 2024.</media:description>
+    </item>
+    <item>
+      <title>Syrian Army Crosses New Threshold With Advances in Kurdish Regions</title>
+      <link>https://www.nytimes.com/2026/02/16/world/middleeast/syria-army-kurds-war.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/middleeast/syria-army-kurds-war.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/middleeast/syria-army-kurds-war.html" rel="standout"></atom:link>
+      <description>The advance of the Syrian Army into Kurdish regions could put nearly all the country under one authority. But it ends a dream of autonomy for ethnic Kurds.</description>
+      <dc:creator>Carlotta Gall, Hussam Hammoud and Nanna Heitmann</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 20:41:07 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">War and Armed Conflicts</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Kurds</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Secession and Independence Movements</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Islamic State in Iraq and Syria (ISIS)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Syrian Army</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Syrian Democratic Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Hayat Tahrir al-Sham</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">al-Shara, Ahmed (Abu Mohammad al-Jolani) (1982- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Aleppo (Syria)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Deir al-Zour (Syria)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Hasaka (Syria)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Raqqa (Syria)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Syria</category>
+      <media:content height="1801" medium="image" url="https://static01.nyt.com/images/2026/02/13/multimedia/00int-syria-kurds-cpwz/00int-syria-kurds-cpwz-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:description>The Syrian Army has moved into vast new regions, seeking to erase the largest fissure left from the civil war.</media:description>
+    </item>
+    <item>
+      <title>Trump Bets on Diplomacy Without Diplomats</title>
+      <link>https://www.nytimes.com/2026/02/17/us/politics/trump-witkoff-kushner-diplomacy.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/us/politics/trump-witkoff-kushner-diplomacy.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/us/politics/trump-witkoff-kushner-diplomacy.html" rel="standout"></atom:link>
+      <description>President Trump’s most trusted envoys, Steve Witkoff and Jared Kushner, are at the center of the Iran and Ukraine negotiations.</description>
+      <dc:creator>David E. Sanger and Anton Troianovski</dc:creator>
+      <pubDate>Wed, 18 Feb 2026 00:16:00 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Invasion of Ukraine (2022)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Israel-Gaza War (2023- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Biden, Joseph R Jr</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Kushner, Jared</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Putin, Vladimir V</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Rubio, Marco</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Witkoff, Steven</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Gaza Strip</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Donbas (Ukraine)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iran</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Russia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Ukraine</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17dc-prexy-mbtl/17dc-prexy-mbtl-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Nathan Howard for The New York Times</media:credit>
+      <media:description>Steve Witkoff and Jared Kushner in Israel last October.</media:description>
+    </item>
+    <item>
+      <title>Triple the pressure, triple the glory.</title>
+      <link>https://www.nytimes.com/2026/02/17/world/figure-skating-amber-glenn-alysa-liu.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/figure-skating-amber-glenn-alysa-liu.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/figure-skating-amber-glenn-alysa-liu.html" rel="standout"></atom:link>
+      <description>Ami Nakai of Japan leads after the short program ahead of a talented field, including the American Alysa Liu, who is third.</description>
+      <dc:creator>Victor Mather and Doug Mills</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 22:38:55 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Figure Skating</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Liu, Alysa (2005- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Glenn, Amber (1999- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Sakamoto, Kaori (2000- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Nakai, Ami (2008- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Japan</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">United States</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/03/05/multimedia/05olympics-fast-photos-women-figure-skating-short-GRID-PROMO-03-lfhz/05olympics-fast-photos-women-figure-skating-short-GRID-PROMO-03-lfhz-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Doug Mills/The New York Times</media:credit>
+    </item>
+    <item>
+      <title>Fania Fénelon, 74; Memoirs Described Auschwitz Singing</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/fania-fenelon-dead.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/fania-fenelon-dead.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/fania-fenelon-dead.html" rel="standout"></atom:link>
+      <description>In “Playing for Time,” she recounted how singing in an all-female orchestra while in a concentration camp saved her from death.</description>
+      <dc:creator>The New York Times</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 21:27:54 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Fania Fenelon</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">World War II (1939-45)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Concentration Camps</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Holocaust and the Nazi Era</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Books and Literature</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">France</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deaths (Obituaries)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Classical Music</category>
+    </item>
+    <item>
+      <title>Anna Akhmatova, Leading Soviet Poet, Is Dead</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/anna-akhmatova-dead.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/anna-akhmatova-dead.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/anna-akhmatova-dead.html" rel="standout"></atom:link>
+      <description>She was a towering figure in Soviet literature who was once silenced in a Stalinist literary purge.</description>
+      <dc:creator>Special to The New York Times</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 21:26:34 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Akhmatova, Anna</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Books and Literature</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Poetry and Poets</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Writing and Writers</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Communism (Theory and Philosophy)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">USSR (Former Soviet Union)</category>
+      <media:content height="1798" medium="image" url="https://static01.nyt.com/images/2026/02/13/multimedia/00WHM-Akhmatova-Obit-pqfl/00WHM-Akhmatova-Obit-pqfl-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Fine Art Images/Heritage Images/Getty Images</media:credit>
+      <media:description>Anna Akhmatova in the late 1920s.</media:description>
+    </item>
+    <item>
+      <title>Millvina Dean, Titanic’s Last Survivor, Dies at 97</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/millvina-dean-dead.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/millvina-dean-dead.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/millvina-dean-dead.html" rel="standout"></atom:link>
+      <description>She was just 9 weeks old when she was lowered to safety in a mail sack, surviving the worst maritime disaster in history.</description>
+      <dc:creator>John F. Burns</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 21:25:19 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Millvina Dean</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deaths (Obituaries)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Titanic (Ship)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Families and Family Life</category>
+      <media:content height="1456" medium="image" url="https://static01.nyt.com/images/2026/03/06/multimedia/06WHM-Dean-Obit-02-gqjv/06WHM-Dean-Obit-02-gqjv-mediumSquareAt3X.jpg" width="1456"></media:content>
+      <media:credit>Reuters</media:credit>
+      <media:description>Millvina Dean in 1994 peering through a porthole that was part of an exhibit called “The Wreck of the Titanic” at the National Maritime Museum.</media:description>
+    </item>
+    <item>
+      <title>Labubu Diplomacy</title>
+      <link>https://www.nytimes.com/2026/02/17/world/labubu-diplomacy-china-jesse-jackson-iran.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/labubu-diplomacy-china-jesse-jackson-iran.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/labubu-diplomacy-china-jesse-jackson-iran.html" rel="standout"></atom:link>
+      <description>China seems to be winning more hearts and minds abroad. Has it gotten better at soft power?</description>
+      <dc:creator>Katrin Bennhold</dc:creator>
+      <pubDate>Wed, 18 Feb 2026 01:11:17 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">China</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Social Media</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">TikTok (ByteDance)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Fads</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Youth</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Jackson, Jesse L</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iran</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/18/multimedia/18int-theworld-china-cool-promo/18int-theworld-china-cool-promo-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Go Nakamura/Reuters</media:credit>
+    </item>
+    <item>
+      <title>Peru Votes to Impeach President José Jerí</title>
+      <link>https://www.nytimes.com/2026/02/17/world/americas/peru-president-jose-jeri-impeachment.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/americas/peru-president-jose-jeri-impeachment.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/americas/peru-president-jose-jeri-impeachment.html" rel="standout"></atom:link>
+      <description>Peru’s Congress voted to impeach President José Jerí, four months after he replaced Dina Boluarte, who had also been removed from the presidency.</description>
+      <dc:creator>Genevieve Glatsky and Mitra Taj</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 20:41:02 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Impeachment</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Video Recordings, Downloads and Streaming</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Peru</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17-int-peru-impeachment-mpqk/17-int-peru-impeachment-mpqk-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Angela Ponce/Reuters</media:credit>
+      <media:description>José Jerí was sworn in last October as interim president, replacing Dina Boluarte.</media:description>
+    </item>
+    <item>
+      <title>In Africa, Jesse Jackson Was Esteemed for His Fight Against Apartheid</title>
+      <link>https://www.nytimes.com/2026/02/17/world/africa/jesse-jackson-south-africa-apartheid.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/africa/jesse-jackson-south-africa-apartheid.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/africa/jesse-jackson-south-africa-apartheid.html" rel="standout"></atom:link>
+      <description>He made several trips to South Africa, and to other African nations, as a peace broke and a representative of Black America.</description>
+      <dc:creator>John Eligon</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 19:00:49 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Apartheid (Policy)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Civil Rights and Liberties</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Black People</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Race and Ethnicity</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Biko, Steven</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Jackson, Jesse L</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Africa</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Nigeria</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Congo, Democratic Republic of (Congo-Kinshasa)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">South Africa</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Zambia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1801" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17jackson-south-africa-fklc/17jackson-south-africa-fklc-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Gianluigi Guercia/Agence France-Presse — Getty Images</media:credit>
+      <media:description>Jesse Jackson with Nelson Mandela in Johannesburg in 2005.</media:description>
+    </item>
+    <item>
+      <title>Frederick Vreeland, Diplomat and Spy Who Served With Style, Dies at 98</title>
+      <link>https://www.nytimes.com/2026/02/17/style/frederick-vreeland-dead.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/style/frederick-vreeland-dead.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/style/frederick-vreeland-dead.html" rel="standout"></atom:link>
+      <description>A son of the influential fashion editor Diana Vreeland, he had an upbringing well suited to his overt and covert duties during the Cold War.</description>
+      <dc:creator>Penelope Green</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 17:46:38 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Vreeland, Frederick</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deaths (Obituaries)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Espionage and Intelligence Services</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Diplomatic Service, Embassies and Consulates</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Cold War Era</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">High Society and Socialites</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Vreeland, Diana</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Central Intelligence Agency</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Europe</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Morocco</category>
+    </item>
+    <item>
+      <title>A Deadly Medieval Path in England Claims a Modern Victim: An Amazon Van</title>
+      <link>https://www.nytimes.com/2026/02/17/world/europe/broomway-england-amazon-van.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/europe/broomway-england-amazon-van.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/europe/broomway-england-amazon-van.html" rel="standout"></atom:link>
+      <description>The Broomway in Essex is notoriously treacherous because of the quick-moving waters surrounding it. One delivery vehicle didn’t make it.</description>
+      <dc:creator>Ali Watkins</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 17:18:34 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Navigation</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Traffic Accidents and Safety</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Amazon.com Inc</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Essex (England)</category>
+      <media:content height="960" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17xp-broomway1/17xp-broomway1-mediumSquareAt3X.jpg" width="960"></media:content>
+      <media:credit>Neal Threadgold/HM Coastguard Southend on Sea</media:credit>
+      <media:description>An Amazon delivery van was stranded on Sunday after its driver mistakenly steered onto the Broomway, a six-mile path out into the Thames Estuary in England.</media:description>
+    </item>
+    <item>
+      <title>Parents of Some Winter Olympians Face Extreme Fear as Their Children Compete</title>
+      <link>https://www.nytimes.com/2026/02/17/world/olympics/olympics-parents-fear.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/olympics/olympics-parents-fear.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/olympics/olympics-parents-fear.html" rel="standout"></atom:link>
+      <description>When your child races headfirst down an ice chute, leaps off ski jumps or performs snowboard tricks in midair, a medal may not be the main thing you pray for.</description>
+      <dc:creator>Heather Knight, Kim Severson and Bedel Saget</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 17:23:22 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Snowboarding</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Parenting</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Freestyle Skiing</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Children and Childhood</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Sports Injuries</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Psychology and Psychologists</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Gasser, Anna (1991- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Gremaud, Mathilde</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Italy</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17olympics-parents-01-zhcj/17olympics-parents-01-zhcj-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Gabriela Bhaskar/ The New York Times</media:credit>
+      <media:description>Christine and Mark Henderson watched their daughter, Grace Henderson, compete in the women’s freestyle skiing big air qualifiers during the 2026 Winter Olympics.</media:description>
+    </item>
+    <item>
+      <title>Lunar New Year in Photos and Video: Revelers Welcome Year of the Horse</title>
+      <link>https://www.nytimes.com/2026/02/17/world/asia/lunar-new-year-horse-celebrations.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/17/world/asia/lunar-new-year-horse-celebrations.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/17/world/asia/lunar-new-year-horse-celebrations.html" rel="standout"></atom:link>
+      <description>The Lunar New Year, the most important holiday in many Asian countries, is being celebrated around the world.</description>
+      <dc:creator>Yan Zhuang</dc:creator>
+      <pubDate>Wed, 18 Feb 2026 01:22:24 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Lunar New Year</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Fireworks</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Festivals</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Dancing</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Parades</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Bangkok (Thailand)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Beijing (China)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Far East, South and Southeast Asia and Pacific Areas</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Hong Kong</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Shanghai (China)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">South Korea</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Vietnam</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17xp-lunar-photos-cpwf/17xp-lunar-photos-cpwf-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Lisa Marie David/Reuters</media:credit>
+      <media:description>Lion dancers performing at a furniture shop during Lunar New Year celebrations at Chinatown in Manila on Tuesday.</media:description>
+    </item>
+    <item>
+      <title>After Trip to Germany, AOC Expresses Frustrations</title>
+      <link>https://www.nytimes.com/2026/02/16/us/politics/aoc-germany-munich-security-conference.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/us/politics/aoc-germany-munich-security-conference.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/us/politics/aoc-germany-munich-security-conference.html" rel="standout"></atom:link>
+      <description>The congresswoman argued in an interview that presidential speculation, which included scrutiny of her slip-ups, had overshadowed her anti-authoritarian message at the Munich Security Conference.</description>
+      <dc:creator>Kellen Browning</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 01:33:49 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Ocasio-Cortez, Alexandria</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Germany</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Progressivism (Theory and Philosophy)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Right-Wing Extremism and Alt-Right</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Income Inequality</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Populism (Theory and Philosophy)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Authoritarianism (Theory and Philosophy)</category>
+      <media:content height="1801" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16pol-aoc-germany-top-kgvp/16pol-aoc-germany-top-kgvp-mediumSquareAt3X-v2.jpg" width="1800"></media:content>
+      <media:credit>Gordon Welters for The New York Times</media:credit>
+      <media:description>Representative Alexandria Ocasio-Cortez used her trip to Germany to argue that the best way to counteract far-right movements was to address people’s economic struggles.</media:description>
+    </item>
+    <item>
+      <title>Japan Wins Pairs Figure Skating, Knocking China From the Top</title>
+      <link>https://www.nytimes.com/2026/02/16/world/japan-figure-skating-pairs-gold-medal.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/japan-figure-skating-pairs-gold-medal.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/japan-figure-skating-pairs-gold-medal.html" rel="standout"></atom:link>
+      <description>Riku Miura and Ryuichi Kihara of Japan emerged with the gold medal with a flawless, high-scoring performance after Monday’s free skate.</description>
+      <dc:creator>Victor Mather, Doug Mills and Vincent Alban</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 15:52:52 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Figure Skating</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Japan</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/03/05/multimedia/05oly-fast-pairs-figure-skating-GRID-PROMO-01-qfmv/05oly-fast-pairs-figure-skating-GRID-PROMO-01-qfmv-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Doug Mills/The New York Times</media:credit>
+    </item>
+    <item>
+      <title>Auditioning to Beat Trump</title>
+      <link>https://www.nytimes.com/2026/02/16/world/trump-democrats-midterms-aoc-iran.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/trump-democrats-midterms-aoc-iran.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/trump-democrats-midterms-aoc-iran.html" rel="standout"></atom:link>
+      <description>Democrats like A.O.C. are testing out their messages in Europe before the midterms.</description>
+      <dc:creator>Katrin Bennhold</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 05:32:46 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Ocasio-Cortez, Alexandria</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Newsom, Gavin</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Artificial Intelligence</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Polyamory and Non-Monogamous Relationships</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Brazil</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/17/multimedia/17int-theworld-promo-lfmq/17int-theworld-promo-lfmq-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Liesa Johannssen/Reuters</media:credit>
+    </item>
+    <item>
+      <title>‘Tina’ and ‘Milo’ Olympic Mascot Toys Are Almost as Tough to Get as a Medal</title>
+      <link>https://www.nytimes.com/2026/02/16/world/olympics/tina-milo-winter-olympics-plush-toys.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/olympics/tina-milo-winter-olympics-plush-toys.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/olympics/tina-milo-winter-olympics-plush-toys.html" rel="standout"></atom:link>
+      <description>Fans have fallen hard for plush dolls representing Tina and Milo, the mascots of Italy’s Winter Games.</description>
+      <dc:creator>Andrew Keh</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 17:08:09 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Shopping and Retail</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Toys</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Gifts</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Dolls</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Parenting</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Milan (Italy)</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/13/multimedia/olympic-mascot-toys-01-hgjb/olympic-mascot-toys-01-hgjb-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Doug Mills/The New York Times</media:credit>
+      <media:description>Tina, the Winter Olympics mascot, has been a hot commodity.</media:description>
+    </item>
+    <item>
+      <title>Iran Holds Exercises in Strait of Hormuz After Trump Threatens Military Action</title>
+      <link>https://www.nytimes.com/2026/02/16/world/middleeast/iran-strait-hormuz-exercise-talks-geneva-trump.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/middleeast/iran-strait-hormuz-exercise-talks-geneva-trump.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/middleeast/iran-strait-hormuz-exercise-talks-geneva-trump.html" rel="standout"></atom:link>
+      <description>The day before nuclear talks were set to resume, Iran conducted live drills in the Strait of Hormuz, a strategic waterway for oil and gas shipments.</description>
+      <dc:creator>Amelia Nierenberg and Sanam Mahoozi</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 18:03:14 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Islamic Revolutionary Guards Corps</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iran</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Geneva (Switzerland)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Strait of Hormuz</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Persian Gulf</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Nuclear Weapons</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Ships and Shipping</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16int-iran-exercise-photo-bwpl/16int-iran-exercise-photo-bwpl-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Nicolas Economou/Reuters</media:credit>
+      <media:description>The island of Qeshm, in the Strait of Hormuz. The strait is a key shipping lane for oil and gas and connects the Persian Gulf to the open ocean.</media:description>
+    </item>
+    <item>
+      <title>How Spain Is Carving a Different Path on Immigration</title>
+      <link>https://www.nytimes.com/2026/02/16/world/europe/spain-amnesty-immigration.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/europe/spain-amnesty-immigration.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/europe/spain-amnesty-immigration.html" rel="standout"></atom:link>
+      <description>The country is hoping its new amnesty for undocumented immigrants will avoid a public backlash.</description>
+      <dc:creator>Amanda Taub and José Bautista</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 15:57:50 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Foreign Workers</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Spain</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Africa</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Latin America</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16-int-interpreter-spain-immigration-jtzh/16-int-interpreter-spain-immigration-jtzh-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Finbarr O’Reilly for The New York Times</media:credit>
+      <media:description>Lining up outside a Venezuelan Consulate in Madrid last month.</media:description>
+    </item>
+    <item>
+      <title>In Hungary, Marco Rubio Stresses Trump’s Support for Viktor Orban</title>
+      <link>https://www.nytimes.com/2026/02/16/world/europe/rubio-hungary-elections-orban-trump.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/europe/rubio-hungary-elections-orban-trump.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/europe/rubio-hungary-elections-orban-trump.html" rel="standout"></atom:link>
+      <description>The U.S. secretary of state said in Budapest that the president was “deeply committed” to the success of Viktor Orban, who has boasted of creating an “illiberal state.”</description>
+      <dc:creator>Edward Wong</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 23:12:15 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Invasion of Ukraine (2022)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Elections</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Right-Wing Extremism and Alt-Right</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Authoritarianism (Theory and Philosophy)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">European Commission</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">European Union</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Fidesz Party</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Fico, Robert</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Magyar, Peter</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Orban, Viktor</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Putin, Vladimir V</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Rubio, Marco</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Zelensky, Volodymyr</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Budapest (Hungary)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Europe</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16int-rubio-hungary-02-kjfv/16int-rubio-hungary-02-kjfv-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Pool photo by Alex Brandon</media:credit>
+      <media:description>Secretary of State Marco Rubio in Budapest on Monday with Prime Minister Viktor Orban of Hungary. Mr. Orban is facing a potentially tough challenge in national elections in April.</media:description>
+    </item>
+    <item>
+      <title>Ticket Scam Cost the Louvre $12 Million, Investigators Say</title>
+      <link>https://www.nytimes.com/2026/02/16/arts/louvre-museum-ticket-scam-arrests.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/arts/louvre-museum-ticket-scam-arrests.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/arts/louvre-museum-ticket-scam-arrests.html" rel="standout"></atom:link>
+      <description>The Paris prosecutor’s office said a network involving museum employees and tour guides had been operating for a decade.</description>
+      <dc:creator>Ségolène Le Stradic</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 17:36:44 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Louvre Museum</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Frauds and Swindling</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Museums</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Art</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Paris (France)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16cul-louvre-scam-qkvh/16cul-louvre-scam-qkvh-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Dmitry Kostyukov for The New York Times</media:credit>
+      <media:description>Investigators said the suspected scam at the Louvre museum in Paris involved tour guides reusing tickets for different people.</media:description>
+    </item>
+    <item>
+      <title>User Issues With X Appear to Have Resolved</title>
+      <link>https://www.nytimes.com/2026/02/16/technology/twitter-x-outage.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/technology/twitter-x-outage.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/technology/twitter-x-outage.html" rel="standout"></atom:link>
+      <description>The social media site was the subject of user complaints early Monday.</description>
+      <dc:creator>Claire Moses</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 18:30:03 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Computers and the Internet</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Computer Network Outages</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Cloud Computing</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Amazon.com Inc</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">CloudFlare Inc</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">CrowdStrike Inc</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">X (Formerly Twitter)</category>
+    </item>
+    <item>
+      <title>Dana Eden, Co-Creator of ‘Tehran,’ Dies During Filming of Fourth Season</title>
+      <link>https://www.nytimes.com/2026/02/16/world/europe/dana-eden-tehran-dead.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/europe/dana-eden-tehran-dead.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/europe/dana-eden-tehran-dead.html" rel="standout"></atom:link>
+      <description>Ms. Eden, 52, who was also an executive producer of the Emmy-winning show, was found in a hotel room in Athens. Greek police said they did not suspect foul play.</description>
+      <dc:creator>Claire Moses</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 21:31:28 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Television</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_ttl">Tehran (TV Program)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Eden, Dana (1973-2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deaths (Fatalities)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Athens (Greece)</category>
+      <media:content height="1799" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16xp-eden1-jfkp/16xp-eden1-jfkp-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Roy Rochlin/Getty Images</media:credit>
+      <media:description>Dana Eden at the premier of Season 2 of “Tehran” in New York in 2022. </media:description>
+    </item>
+    <item>
+      <title>Rage. Grief. Anxiety. The New Mood in Iran.</title>
+      <link>https://www.nytimes.com/2026/02/16/world/middleeast/iran-protests-crackdown-mood.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/middleeast/iran-protests-crackdown-mood.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/middleeast/iran-protests-crackdown-mood.html" rel="standout"></atom:link>
+      <description>In the aftermath of another wave of antigovernment unrest, Iran is gripped by a mood of collective grief and uncertainty about the future.</description>
+      <dc:creator>Farnaz Fassihi and Leily Nikounazar</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 19:35:13 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Demonstrations, Protests and Riots</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deaths (Fatalities)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Communications and Media Blackouts</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Human Rights and Human Rights Violations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Anger (Emotion)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Khamenei, Ali</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iran</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Tehran (Iran)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16int-iran-mood-ghbm/16int-iran-mood-ghbm-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Vahid Salemi/Associated Press</media:credit>
+      <media:description>A billboard showing the current supreme leader, Ayatollah Ali Khamenei, alongside the Islamic Republic’s founding leader, in Tehran, Iran, last month.</media:description>
+    </item>
+    <item>
+      <title>A Russian ‘Village of Military Valor’ Waits for Its Reward</title>
+      <link>https://www.nytimes.com/2026/02/16/world/europe/russia-ukraine-world-war-2-sedanka.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/europe/russia-ukraine-world-war-2-sedanka.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/europe/russia-ukraine-world-war-2-sedanka.html" rel="standout"></atom:link>
+      <description>Sedanka has only 250 residents, but dozens of its men left for the front. It is wondering whether recognition that the government promised will ever arrive.</description>
+      <dc:creator>Neil MacFarquhar and Milana Mazaeva</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 16:36:19 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Sedanka (Russia)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Invasion of Ukraine (2022)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">World War II (1939-45)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Putin, Vladimir V</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Russia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Ukraine</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Rural Areas</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Indigenous People</category>
+    </item>
+    <item>
+      <title>Prices Jump as Venezuelans Abroad Consider Buying Property Back Home</title>
+      <link>https://www.nytimes.com/2026/02/16/world/americas/venezuela-real-estate-rush.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/americas/venezuela-real-estate-rush.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/americas/venezuela-real-estate-rush.html" rel="standout"></atom:link>
+      <description>Nicolás Maduro’s capture and talk of oil investment have pushed prices higher, even as brokers say enthusiasm is outpacing demand in a weak economy.</description>
+      <dc:creator>Genevieve Glatsky, Maria Ramírez and Nayrobis Rodríguez</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 10:00:28 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Real Estate and Housing (Residential)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Foreign Investments</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Venezuelan-Americans</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Maduro, Nicolas</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Caracas (Venezuela)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Venezuela</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">United States</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/03/world/00int-venezuela-real-estate/00int-venezuela-real-estate-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Alejandro Cegarra for The New York Times</media:credit>
+      <media:description>The capture of President Nicolás Maduro of Venezuela has helped spur growing interest in buying real estate in the country. </media:description>
+    </item>
+    <item>
+      <title>Who’s Pulling the Strings on the World Stage? Ask the Puppets.</title>
+      <link>https://www.nytimes.com/2026/02/16/arts/puppet-regime-bremmer-eurasia.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/arts/puppet-regime-bremmer-eurasia.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/arts/puppet-regime-bremmer-eurasia.html" rel="standout"></atom:link>
+      <description>Eurasia Group, the geopolitical risk consultancy run by Ian Bremmer, gets into the political satire game with its Instagram show “Puppet Regime.”</description>
+      <dc:creator>Kim Córdova</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 21:18:36 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Puppets</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Social Media</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Comedy and Humor</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Carney, Mark J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Gorka, Sebastian</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Kim Jong-un</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Mohammed bin Salman (1985- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Putin, Vladimir V</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Reema bint Bandar bin Sultan, Princess of Saudi Arabia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Alex Kliment</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Eurasia Group</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Bremmer, Ian</category>
+    </item>
+    <item>
+      <title>In Xi Jinping’s Purge of the Military, a Search for Absolute Loyalty</title>
+      <link>https://www.nytimes.com/2026/02/16/world/asia/xi-military-zhang-youxia-mao.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/asia/xi-military-zhang-youxia-mao.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/asia/xi-military-zhang-youxia-mao.html" rel="standout"></atom:link>
+      <description>By reaching back to Maoist tactics of “rectification,” the Chinese leader is signaling that control over the gun requires a state of perpetual cleansing.</description>
+      <dc:creator>Lily Kuo</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 19:33:43 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">China</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Xi Jinping</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Appointments and Executive Changes</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Central Commission for Discipline Inspection (Communist Party of China)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Central Military Commission (China)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Communist Party of China</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">People&#39;s Liberation Army (China)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Mao Zedong</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Zhang Youxia (1950- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Shaanxi Province (China)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Yan&#39;an (China)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16int-china-general-kvzh/16int-china-general-kvzh-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Florence Lo/Reuters</media:credit>
+      <media:description>President Xi Jinping of China at a ceremony with members of the Chinese People’s Liberation Army last year. Over the past two years, Mr. Xi has removed five of the six generals in China’s top military body. </media:description>
+    </item>
+    <item>
+      <title>Cortina’s 70-Year-Old Curling Stadium Is a Star at the Winter Olympics</title>
+      <link>https://www.nytimes.com/2026/02/16/world/europe/cortina-curling-stadium-winter-olympics.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/16/world/europe/cortina-curling-stadium-winter-olympics.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/16/world/europe/cortina-curling-stadium-winter-olympics.html" rel="standout"></atom:link>
+      <description>It hosted the 1956 Olympics and had a role in a James Bond movie. Now Cortina’s beloved stadium is packed with raucous fans, and the occasional cheating scandal, in curling.</description>
+      <dc:creator>Heather Knight</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 10:57:15 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Stadiums and Arenas</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (1956)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Curling</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Hockey, Ice</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Figure Skating</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Architecture</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Fans (Persons)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Cortina d&#39;Ampezzo (Italy)</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/16/multimedia/16olympics-curling-stadium-01-mzkl/16olympics-curling-stadium-01-mzkl-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>James Hill for The New York Times</media:credit>
+      <media:description>The roof of the at the Olympic Stadium in Cortina d’Ampezzo, which is hosting the 2026 Games with Milan.</media:description>
+    </item>
+    <item>
+      <title>Canada Gives U.S. Arms Makers the Cold Shoulder on Military Spending</title>
+      <link>https://www.nytimes.com/2026/02/15/world/canada/canada-military-spending.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/canada/canada-military-spending.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/canada/canada-military-spending.html" rel="standout"></atom:link>
+      <description>Canada plans to unveil a new strategy that will shift its current reliance on American companies to Canadian military suppliers.</description>
+      <dc:creator>Ian Austen</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 22:34:10 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense Contracts</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Arms Trade</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Factories and Manufacturing</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Canada</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Carney, Mark J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">North Atlantic Treaty Organization</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Algoma Steel Incorporated</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Bombardier Inc</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Saab Group</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">ThyssenKrupp AG</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Hanwha Ocean Co Ltd</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/15/multimedia/15canada-military-pjft/15canada-military-pjft-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Spencer Colby/The Canadian Press, via Associated Press</media:credit>
+      <media:description>Prime Minister Mark Carney in Ottawa, Canada, on Wednesday.</media:description>
+    </item>
+    <item>
+      <title>Gisèle Pelicot Speaks</title>
+      <link>https://www.nytimes.com/2026/02/15/world/gisele-pelicot-bangladesh-china-nuclear.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/gisele-pelicot-bangladesh-china-nuclear.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/gisele-pelicot-bangladesh-china-nuclear.html" rel="standout"></atom:link>
+      <description>She was repeatedly drugged by her husband and raped in a series of crimes that shocked the world. Pelicot talked to us about her new memoir.</description>
+      <dc:creator>Katrin Bennhold</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 00:00:44 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Pelicot, Gisele</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Sex Crimes</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">France</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Bangladesh</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Rahman, Tarique</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">China</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Pamuk, Orhan</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_ttl">The Simpsons (TV Program)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/14/magazine/16int-theworld-interview-pelicot-promo/16int-theworld-interview-pelicot-promo-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Philip Gay for The New York Times</media:credit>
+    </item>
+    <item>
+      <title>Three American Speeches at Munich, and Plenty of Confusion</title>
+      <link>https://www.nytimes.com/2026/02/15/world/europe/three-american-speeches-at-munich-and-plenty-of-confusion.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/europe/three-american-speeches-at-munich-and-plenty-of-confusion.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/europe/three-american-speeches-at-munich-and-plenty-of-confusion.html" rel="standout"></atom:link>
+      <description>As the U.S. message veered from shared heritage and values to shared interests and back again, Europeans wondered what kind of alliance they were left with.</description>
+      <dc:creator>Steven Erlanger and David E. Sanger</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 21:01:09 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Invasion of Ukraine (2022)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Right-Wing Extremism and Alt-Right</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Christians and Christianity</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Race and Ethnicity</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Speeches and Statements</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Colby, Elbridge A</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Rubio, Marco</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Vance, J D</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">North Atlantic Treaty Organization</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">European Commission</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">European Union</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Europe</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/15/multimedia/15int-munich-analysis-btgm/15int-munich-analysis-btgm-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Pool photo by Alex Brandon</media:credit>
+      <media:description>Secretary of State Marco Rubio on Sunday in Budapest, Hungary, where he traveled after addressing the Munich Security Conference. </media:description>
+    </item>
+    <item>
+      <title>Europe Today Looks Different From the One Trump’s Team Describes</title>
+      <link>https://www.nytimes.com/2026/02/15/world/europe/europe-rubio-munich.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/europe/europe-rubio-munich.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/europe/europe-rubio-munich.html" rel="standout"></atom:link>
+      <description>Secretary of State Marco Rubio appealed to European leaders in Munich by stressing Christian and cultural bonds that are no longer universal.</description>
+      <dc:creator>Jim Tankersley</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 21:54:30 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deportation</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Illegal Immigration</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Language and Languages</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Immigration and Emigration</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Christians and Christianity</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">European Union</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Social Democratic Party (Germany)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Pew Research Center</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Merz, Friedrich</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Rubio, Marco</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Vance, J D</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Europe</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">France</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Germany</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Munich (Germany)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1799" medium="image" url="https://static01.nyt.com/images/2026/02/15/multimedia/15int-europe-rubio-jwlt/15int-europe-rubio-jwlt-mediumSquareAt3X-v4.jpg" width="1800"></media:content>
+      <media:credit>Alexandra Beier/Agence France-Presse — Getty Images</media:credit>
+      <media:description>Speaking over the weekend at the Munich Security Conference, Secretary of State Marco Rubio said, “We are part of one civilization: Western civilization.”</media:description>
+    </item>
+    <item>
+      <title>Trump’s Stinging Attack on Israel’s President Touches a Nerve</title>
+      <link>https://www.nytimes.com/2026/02/15/world/middleeast/trump-israel-herzog-attacks.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/middleeast/trump-israel-herzog-attacks.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/middleeast/trump-israel-herzog-attacks.html" rel="standout"></atom:link>
+      <description>President Trump called President Isaac Herzog of Israel “disgraceful” because he has not yet pardoned Prime Minister Benjamin Netanyahu in his corruption trial.</description>
+      <dc:creator>Isabel Kershner</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 16:04:39 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Amnesties, Commutations and Pardons</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Ethics and Official Misconduct</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Herzog, Isaac</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Netanyahu, Benjamin</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Israel</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/15/multimedia/15int-trump-herzog-vqkp/15int-trump-herzog-vqkp-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Kenny Holston/The New York Times</media:credit>
+      <media:description>President Trump with Israel’s president, Isaac Herzog, and Prime Minister Benjamin Netanyahu at Ben Gurion Airport in October.</media:description>
+    </item>
+    <item>
+      <title>How Italy’s Federica Brignone Won Gold in Giant Slalom.</title>
+      <link>https://www.nytimes.com/2026/02/15/world/federica-brignone-mikaela-shiffrin-giant-slalom.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/federica-brignone-mikaela-shiffrin-giant-slalom.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/federica-brignone-mikaela-shiffrin-giant-slalom.html" rel="standout"></atom:link>
+      <description>At 35, Federica Brignone of Italy became the oldest Olympic Alpine gold medalist. Mikaela Shiffrin of the U.S. finished a disappointing 11th.</description>
+      <dc:creator>Victor Mather and James Hill</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 11:30:01 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Alpine Skiing</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Records and Achievements</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Brignone, Federica</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Shiffrin, Mikaela</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Italy</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">United States</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1516" medium="image" url="https://static01.nyt.com/images/2026/03/05/multimedia/05olympics-fast-photos-giant-slalom-grid-promo-02-bkvt/05olympics-fast-photos-giant-slalom-grid-promo-02-bkvt-mediumSquareAt3X.jpg" width="1517"></media:content>
+      <media:credit>James Hill for The New York Times</media:credit>
+    </item>
+    <item>
+      <title>Islamist Party’s Rise Overshadows Student Revolution in Bangladesh</title>
+      <link>https://www.nytimes.com/2026/02/15/world/asia/bangladesh-election-students-islam.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/asia/bangladesh-election-students-islam.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/asia/bangladesh-election-students-islam.html" rel="standout"></atom:link>
+      <description>The party is dedicated to running the country under Islamic law, but ran on a more moderate platform. It gained far more seats in last week’s election than it ever had before.</description>
+      <dc:creator>Anupreeta Das and Saif Hasnat</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 16:59:05 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Politics and Government</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Elections</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Demonstrations, Protests and Riots</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Bangladesh</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Jamaat-e-Islami</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Muslims and Islam</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Bangladesh Nationalist Party</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Rahman, Tarique</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Yunus, Muhammad</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Youth</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Colleges and Universities</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Minorities</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/15/multimedia/15INT-BANGLADESH-STUDENTS-hmfv/15INT-BANGLADESH-STUDENTS-hmfv-mediumSquareAt3X-v2.jpg" width="1800"></media:content>
+      <media:credit>Lam Yik Fei for The New York Times</media:credit>
+      <media:description>A poster of Shafiqur Rahman, the leader of Jamaat-e-Islami, on Thursday outside a polling station in Dhaka, Bangladesh.</media:description>
+    </item>
+    <item>
+      <title>Iran Protester Dies in Custody, Raising Fears of Execution</title>
+      <link>https://www.nytimes.com/2026/02/15/world/middleeast/ali-rahbar-iran-protester.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/middleeast/ali-rahbar-iran-protester.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/middleeast/ali-rahbar-iran-protester.html" rel="standout"></atom:link>
+      <description>Rights groups are investigating the death of Ali Rahbar as a potential extrajudicial killing. Iran denies executions have taken place.</description>
+      <dc:creator>Sanam Mahoozi and Erika Solomon</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 23:22:56 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Human Rights and Human Rights Violations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Iran</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Demonstrations, Protests and Riots</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Detainees</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+    </item>
+    <item>
+      <title>You’d Be Surprised to See Where Many Olympians Keep Their Medals</title>
+      <link>https://www.nytimes.com/2026/02/15/world/europe/olympic-medals-sock-drawers.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/europe/olympic-medals-sock-drawers.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/europe/olympic-medals-sock-drawers.html" rel="standout"></atom:link>
+      <description>Athletes train and sweat for years in pursuit of the glittering prizes. Many store them in the least glamorous places.</description>
+      <dc:creator>Andrew Keh</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 16:27:26 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Awards, Decorations and Honors</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Records and Achievements</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Caldwell, Ashley</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Diggins, Jessica (1991- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">George, Tyler (1982- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Lochte, Ryan</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Kwan, Michelle</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Nagasu, Mirai</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Shiffrin, Mikaela</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Paralympic Games</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/15/multimedia/15olympics-medals-04-fvtm-promo/15olympics-medals-04-fvtm-promo-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Jordan Gale for The New York Times</media:credit>
+    </item>
+    <item>
+      <title>How $40-a-Pack Cigarettes Pushed Australians to the Black Market</title>
+      <link>https://www.nytimes.com/2026/02/15/world/asia/how-40-a-pack-cigarettes-pushed-australians-to-the-black-market.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/asia/how-40-a-pack-cigarettes-pushed-australians-to-the-black-market.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/asia/how-40-a-pack-cigarettes-pushed-australians-to-the-black-market.html" rel="standout"></atom:link>
+      <description>Tax hikes made cigarettes in Australia the most expensive in the world. They have also helped fuel a multibillion-dollar criminal enterprise in bootleg tobacco.</description>
+      <dc:creator>Victoria Kim</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 05:01:13 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Australia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Melbourne (Australia)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Victoria (Australia)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Prices (Fares, Fees and Rates)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Black Markets</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Taxation</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Smoking and Tobacco</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Smuggling</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Organized Crime</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Police</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Sales and Excise Taxes</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1799" medium="image" url="https://static01.nyt.com/images/2026/02/12/multimedia/00int-oz-tobacco-01-kzhq/00int-oz-tobacco-01-kzhq-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Matthew Abbott for The New York Times</media:credit>
+    </item>
+    <item>
+      <title>Will A.I. Kill Translation Jobs?</title>
+      <link>https://www.nytimes.com/2026/02/15/world/europe/artificial-intelligence-language-translation.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/15/world/europe/artificial-intelligence-language-translation.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/15/world/europe/artificial-intelligence-language-translation.html" rel="standout"></atom:link>
+      <description>Popular paperbacks are being translated with the help of machines, raising anxiety among professionals in the field.</description>
+      <dc:creator>Jeanna Smialek</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 06:47:09 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Artificial Intelligence</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Translation and Interpreters</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">European Commission</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">European Union</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Belgium</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Brussels (Belgium)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1802" medium="image" url="https://static01.nyt.com/images/2026/02/10/multimedia/00int-ai-translators-01-lgbp/00int-ai-translators-01-lgbp-mediumSquareAt3X-v2.jpg" width="1800"></media:content>
+      <media:credit>Dmitry Kostyukov for The New York Times</media:credit>
+      <media:description>Browsing a bookstore in Paris. Book publishing is an example of how artificial intelligence is sweeping the translation field.</media:description>
+    </item>
+    <item>
+      <title>U.S. Deports Nine Migrants in Secret, Ignoring Legal Protections</title>
+      <link>https://www.nytimes.com/2026/02/14/world/africa/us-secret-deportation-cameroon.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/14/world/africa/us-secret-deportation-cameroon.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/14/world/africa/us-secret-deportation-cameroon.html" rel="standout"></atom:link>
+      <description>Most had court orders protecting them from removal to their home countries, so they were sent to detention in Cameroon.</description>
+      <dc:creator>Pranav Baskar and Hamed Aleaziz</dc:creator>
+      <pubDate>Mon, 16 Feb 2026 14:58:28 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Deportation</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Immigration Detention</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">Immigration and Customs Enforcement (US)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">International Organization for Migration</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Cameroon</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="662" medium="image" url="https://static01.nyt.com/images/2026/02/14/world/14int-cameroon-deportations/14int-cameroon-deportations-mediumSquareAt3X.jpg" width="662"></media:content>
+      <media:description>An undated photo of the compound where the deportees are being held in Yaoundé, Cameroon’s capital.</media:description>
+    </item>
+    <item>
+      <title>French Prosecutors to Investigate Diplomat as Part of Epstein Probe</title>
+      <link>https://www.nytimes.com/2026/02/14/world/europe/france-epstein-files.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/14/world/europe/france-epstein-files.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/14/world/europe/france-epstein-files.html" rel="standout"></atom:link>
+      <description>The Paris prosecutor’s office said it was looking into three new complaints with links to the files and revisiting an earlier investigation into an Epstein associate who died in 2022.</description>
+      <dc:creator>Ségolène Le Stradic</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 15:43:43 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Epstein, Jeffrey E (1953- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Sex Crimes</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Brunel, Jean-Luc (1946- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">France</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Child Abuse and Neglect</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Ethics and Official Misconduct</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">internal-open-access-from-nl</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/14/multimedia/14int-france-epstein-bzqw/14int-france-epstein-bzqw-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Christophe Petit Tesson/EPA, via Shutterstock</media:credit>
+      <media:description>The Santé prison in Paris, where Jean-Luc Brunel, a French modeling agent and Epstein associate who died in February 2022, was held.</media:description>
+    </item>
+    <item>
+      <title>No miracle, but Denmark hockey team gives U.S. a good fight.</title>
+      <link>https://www.nytimes.com/2026/02/14/world/hockey-united-states-denmark-trump.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/14/world/hockey-united-states-denmark-trump.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/14/world/hockey-united-states-denmark-trump.html" rel="standout"></atom:link>
+      <description>The Americans trailed Denmark after one period, but fought back to cruise to a 6-3 victory.</description>
+      <dc:creator>Victor Mather and Doug Mills</dc:creator>
+      <pubDate>Sun, 15 Feb 2026 15:00:26 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Olympic Games (2026)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Hockey, Ice</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">United States</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Denmark</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/03/05/multimedia/05olympics-fast-photos-us-hockey-GRID-PROMO-03-mzbt/05olympics-fast-photos-us-hockey-GRID-PROMO-03-mzbt-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Doug Mills/The New York Times</media:credit>
+    </item>
+    <item>
+      <title>In Munich, Europe Says It Is ‘De-risking’ From the U.S. Amid Trump’s Unpredictability</title>
+      <link>https://www.nytimes.com/2026/02/14/world/europe/europe-munich-rubio-russia.html</link>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/02/14/world/europe/europe-munich-rubio-russia.html</guid>
+      <atom:link href="https://www.nytimes.com/2026/02/14/world/europe/europe-munich-rubio-russia.html" rel="standout"></atom:link>
+      <description>In Munich, European leaders were also talking about “de-risking” from the United States, citing President Trump’s unpredictability.</description>
+      <dc:creator>David E. Sanger</dc:creator>
+      <pubDate>Sat, 14 Feb 2026 19:46:33 +0000</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Invasion of Ukraine (2022)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">North Atlantic Treaty Organization</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org">State Department</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Rubio, Marco</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Trump, Donald J</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Putin, Vladimir V</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Zelensky, Volodymyr</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Europe</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Russia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Ukraine</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">United States</category>
+      <media:content height="1800" medium="image" url="https://static01.nyt.com/images/2026/02/14/multimedia/14int-munich-assess-bzwc/14int-munich-assess-bzwc-mediumSquareAt3X.jpg" width="1800"></media:content>
+      <media:credit>Pool photo by Alex Brandon</media:credit>
+      <media:description>Secretary of State Marco Rubio in Munich on Saturday.</media:description>
+    </item>
+  </channel>
+</rss>

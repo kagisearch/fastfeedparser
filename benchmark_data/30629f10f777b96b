@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://jessimekirk.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jessimekirk.com/" rel="alternate" type="text/html" /><updated>2026-02-09T01:45:30+00:00</updated><id>https://jessimekirk.com/feed.xml</id><title type="html">My Life in Bio</title><subtitle>My personal blog for recording things I&apos;ve done, writing down my thoughts on miscellaneous topics, staying in touch with the internet.</subtitle><author><name>Jessime</name></author><entry><title type="html">Apple in the Toilet</title><link href="https://jessimekirk.com/blog/apple_in_the_toilet/" rel="alternate" type="text/html" title="Apple in the Toilet" /><published>2026-01-08T00:00:00+00:00</published><updated>2026-01-08T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/apple_in_the_toilet</id><content type="html" xml:base="https://jessimekirk.com/blog/apple_in_the_toilet/"><![CDATA[<p><strong>Note:</strong> This post is part of the <a href="/blog/stories_in_fb_messager_part1/">Stories in FB Messenger series</a>. Also, I’m particularly fond of this story because it’s one of my firsts. I told it at GSP a few times and people reacted well to it. Cause and effect: I figured I should tell more stories after that.</p>
+
+<h2 id="story-time">Story time</h2>
+
+<p>Our school wasn’t super well taken care of.</p>
+
+<p>One day during lunch I had to pee; because it was lunch period, there were a number of other guys in the bathroom and all the urinals were full. So I went into a stall and started peeing. As I was doing so, I started looking at what was going on in the toilet bowl. It was a busy situation.</p>
+
+<p>It hadn’t been flushed in a while. There was tobacco juice because a lot of students secretly dipped, a decent bit of toilet paper, and a lot of urine. Thankfully nobody had taken a dump. But, underneath all of that was 80% of an uneaten apple that someone had casually munched on then tossed in the toilet. You know… as you do.</p>
+
+<p>As I’m processing all of this, I hear a click.</p>
+
+<p>We’ve got automatic toilets. Powerful ones. As soon as the suction starts, the apple immediately gets pulled down the drain until it perfectly stops up the toilet. Simultaneously, a super powerful jet of water comes out as part of the flush. Except, it doesn’t have anywhere to go because the apple has blocked it. Instead of a normal flush, the mix of tobacco juice, urine, and toilet water splash off the apple and form a wall of water that heads directly towards me.</p>
+
+<p>Thankfully, I had just enough time to… open my mouth in shock. My pants are soaked, my shirt is soaked, my hair is wet. There’s piss in my mouth. I stumble out of the stall and everyone stares at me because this wall of water wasn’t confined to the stall. To some degree, it had sprayed the whole bathroom.</p>
+
+<p>The first person to make a noise is Daniel. Because of course Daniel is there. Daniel was a year older than me, one of the captains of the football team, and surprisingly intelligent to boot. None of that would have matter if he wasn’t dating Hannah. Hannah was a cheerleader in my year who, while we had never formally dated, I had a “thing” with for a few years. So, Daniel sorta hated me. Daniel starts dying laughing.</p>
+
+<p>The only thing that’s kinda dry on me is the back of my shirt. The only thing I can think to do is pull it off, and use the back to dry off my face a little. Because Daniel is laughing, all the other guys are laughing too.</p>
+
+<p>Again, I don’t really know what else to do, so I wander out of the bathroom, still with no shirt on, to head to the front office. As soon as I step out, I run into four people. One is a grumpy teacher, who has probably come to see what the noise is about. Hannah is also right there. So are two of the other cutest girls in school. Turns out the cheerleaders have set up a fundraising table outside of the lunch room. They’re all staring wide-eyed.</p>
+
+<p>The grumpy teacher immediately starts in, “What’s going on in there?!”. I haven’t found my words yet and mumble something like, “Uh, there was an apple in the toilet.”. Daniel rolls out of the bathroom still laughing. “And why don’t you have a shirt on?!”, Now I’m a little annoyed because the answer to that question should be obvious. “Because… it’s covered in urine?” The girls are giggling, and the teacher’s still confused, “Well… you need to go to the principle’s office right now!” Fully frustrated at this point, I snap “Yep, that’s where I was headed anyway.”</p>
+
+<p>I make eye contact with Hannah, and wander off down the hall to sit in the front office for an hour before my mom can bring me dry close. They didn’t even let me go home to shower, I had to finish out the rest of the day.</p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Life" /><category term="Writing" /><summary type="html"><![CDATA[Note: This post is part of the Stories in FB Messenger series. Also, I’m particularly fond of this story because it’s one of my firsts. I told it at GSP a few times and people reacted well to it. Cause and effect: I figured I should tell more stories after that.]]></summary></entry><entry><title type="html">Stories in FB Messenger, Part I</title><link href="https://jessimekirk.com/blog/stories_in_fb_messager_part1/" rel="alternate" type="text/html" title="Stories in FB Messenger, Part I" /><published>2025-12-25T00:00:00+00:00</published><updated>2025-12-25T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/stories_in_fb_messager_part1</id><content type="html" xml:base="https://jessimekirk.com/blog/stories_in_fb_messager_part1/"><![CDATA[<p>I was texting someone recently and putting enough time into the story I told that I was thinking about how much writing I’ve done on various platforms and wishing that I had more direct ownership over that content. For Facebook Messenger, it turns out that you can export every message you’ve ever exchanged.</p>
+
+<p>Downloading the data is one thing, but digging through it is another. I decided that now was as good of a time as any to try my first coding agent. So I know have <a href="https://openai.com/codex/">codex</a> on my computer, and I gotta tell ya… the first experience was really, really nice. I didn’t do a ton with it. But I had it setup a repo managed by <em>uv</em>, tossed it the path to all my data and told it to write a tool to find the 10 longest messages I’ve ever sent. I think the only error it produced was forgetting to run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv <span class="nb">sync</span>
+</code></pre></div></div>
+
+<p>before trying out the command.</p>
+
+<p>I wasn’t sure if a heuristic as simple as “longest sent message” was going to be enough to uncover any stories. It’s not like I usually write an entire tale in one message. And I was mostly correct. Of the 10 messages, only one of them contained a story and only then because I’d wholesale copied/pasted a back-and-forth from one conversation to another.</p>
+
+<p>In a later post I’ll link out to the code in case anyone else wants to download their data too. In the meantime, here’s a story from high school, roughly as told in 2010:</p>
+
+<h2 id="poo-shoe">Poo Shoe</h2>
+
+<p>Freshman year of high school, we had a class called PAWs: every month we went to a random teacher and they taught us something the teacher thought was interesting but wouldn’t fit in a normal course. One time, my PAWs class was in the school barn. Yes, our school had a barn. The barn wasn’t exactly my favorite place to spend school hours, so I quietly made it through the class, luckily without incident.</p>
+
+<p>I got back up to the school and next period was English class. I made it a quarter of the way through the class before people started making fart jokes. Halfway through the class I realized it was me and that I must have stepped in dog crap or something during PAWs. I didn’t want to continue stinking up the class, so I asked the teacher if I could take off my shoe and put it outside the door. She said yes, so I did.</p>
+
+<p>At the end of class I went to get my shoe and it was gone. I asked around to the students hovering around waiting to get into their next period, but everyone denied knowing anything about it. Someone had stolen my shoe and was lying about it! There really wasn’t anything I could do, and my next period was starting, so I had to just hobble down to my next class and pray that I wouldn’t get asked too many questions.</p>
+
+<p>I had to go to class with only one shoe and try to explain what happened. The next block, my teacher told me to go down to the office and see if anyone had turned it in or something. I told the lady in the office someone had stolen my shoe, and she was basically like, “I don’t care, go back to class. There’s nothing I can do about it.” So I said okay and went back to class, and I spent the next two blocks without a shoe.</p>
+
+<p>Then I went to my last class and we had this strange sub. She realized I didn’t have a shoe and questioned me. I wasn’t really that mad about the incident, but when I told her what happened she completely freaked out: “NO CHILD SHOULD HAVE TO GO THROUGH THIS KIND OF HUMILIATION!!!” “WHAT IS WRONG WITH PEOPLE AT THIS SCHOOL???” “NOBODY SHOULD HAVE TO GO THROUGH SOMETHING LIKE THIS!! IT’S JUST RIDICULOUS!!!”</p>
+
+<p>We had an assembly, so the sub was free to do what she wanted because all the students were in the gym. She almost literally grabbed me by the collar and took me around the school, looking in random places for my shoe. The entire time she kept chanting about how no student should have to suffer through this kind of humiliation. She was taking the lid off trashcans and digging around in the trash looking for my shoe.</p>
+
+<p>And then, all of a sudden, in one of the trashcans, there was my shoe. This was about 10 minutes before it was time to go home, so I just scraped as much of the poo off my shoe as possible, and got on the bus to go home.</p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Life" /><category term="Writing" /><summary type="html"><![CDATA[I was texting someone recently and putting enough time into the story I told that I was thinking about how much writing I’ve done on various platforms and wishing that I had more direct ownership over that content. For Facebook Messenger, it turns out that you can export every message you’ve ever exchanged.]]></summary></entry><entry><title type="html">Workflows All the Way Down</title><link href="https://jessimekirk.com/blog/workflows_all_the_way_down/" rel="alternate" type="text/html" title="Workflows All the Way Down" /><published>2025-05-29T00:00:00+00:00</published><updated>2025-05-29T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/workflows_all_the_way_down</id><content type="html" xml:base="https://jessimekirk.com/blog/workflows_all_the_way_down/"><![CDATA[<p>I gave a talk at Resbaz today and just wanted to publish the slides to see how they’d look embedded as an iframe.</p>
+
+<p>The slides are probably a little hard to get value from on their own, but there’s a little more content in the speaker notes.</p>
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRkfUwD9p8dyzlLWL4bAZ5N6SSiOtNlLshutZdgL6xsT95kum0vSKSR4r8bwhh689VxQHL7JyOZAARH/pubembed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="1440" height="839" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<p>Maybe one day I’ll write these thoughts up more completely.</p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Bioinformatics" /><summary type="html"><![CDATA[I gave a talk at Resbaz today and just wanted to publish the slides to see how they’d look embedded as an iframe.]]></summary></entry><entry><title type="html">How Long Would You Live?</title><link href="https://jessimekirk.com/blog/how_long_would_you_live/" rel="alternate" type="text/html" title="How Long Would You Live?" /><published>2025-04-20T00:00:00+00:00</published><updated>2026-02-01T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/how_long_would_you_live</id><content type="html" xml:base="https://jessimekirk.com/blog/how_long_would_you_live/"><![CDATA[<h1 id="how-long-would-you-live-if-you-could-live-forever">How Long Would You Live, If You Could Live Forever?</h1>
+
+<p>I’ve been asking this question to people for nearly a decade now (ever since I watched the <em>Black Mirror</em> episode <strong>“San Junipero.”</strong> If you haven’t seen it, it’s worth a watch—we’ll loop back to it at the end of this essay). For now I’ll just say that it’s fitting timing to write this since Season 7 of <em>Black Mirror</em> was released today. I have high hopes!</p>
+
+<p>Anyway, I’ve asked this longevity question hundreds of times to a very wide range of people. It’s a fallback question I keep in my pocket for when there’s more time than topics. Even though I haven’t kept formal statistics, I’ve had the conversation enough to pull out themes and frequencies. Here’s how the conversation typically breaks down:</p>
+
+<ol>
+  <li>Most people ask some clarifying questions</li>
+  <li>They pick an age. Although I didn’t tell them this until later, there are only <strong>6‑ish</strong> meaningfully different answers I’ve heard people give.</li>
+  <li>We talk about their rationale and what I’ve gathered from others.</li>
+</ol>
+
+<h2 id="clarifying-questions">Clarifying questions</h2>
+
+<p>People usually want a little more info on the mechanism of the hypothetical. How’s their health? What’s the aging mechanism? I tell them they can have a choice:</p>
+
+<ul>
+  <li><strong>Proportional aging.</strong> If they want to live to be 1,000, they would spend ~60 years in their “60s.”</li>
+  <li><strong>Freeze at a single “perfect” age.</strong> For example, they could keep the health of a 25‑year‑old indefinitely, then very rapidly decline in their final years.</li>
+</ul>
+
+<p>The second most common question is: <strong>“Do my loved ones also live the length I choose?”</strong></p>
+
+<p>I’ve always answered this with a:</p>
+
+<blockquote>
+  <p>“No, they live a normal human life span.”<br />
+It’s how I answered the first time I was asked, and I’ve just stuck with it. Writing this down, however, makes me want to explore how this severe penalty affects people’s answers.</p>
+</blockquote>
+
+<p>These are by far the two most common clarifications. Other questions include how memories work, more details on sickness, whether other people know, etc.</p>
+
+<h2 id="answers">Answers</h2>
+
+<p>The most common answer I get to this question is <strong>“I want to live a normal human lifespan.”</strong> Numerically, people tend to express this in the 80–100 yr range. Often, people who respond with this answer mention significant hesitations about outliving friends and family.</p>
+
+<p>Nearly equal in frequency is <strong>“slightly longer than average,”</strong> which—if we take the numbers people use (100–120)—actually means something more like <em>“in the top 1 %. of human lifespans”</em> These people are comfortable with their lives and want to keep doing it a little longer than they expect to. But they usually seem wary of trying to imagine a qualitatively different human experience.</p>
+
+<p>Next up is <strong>infinite</strong>. Some people—the wild ones—want to live forever. They want to have it all. Frankly, I suspect this is the worst possible answer, for reasons I’ll explain later.</p>
+
+<p>Now we’re entering the uncommon territory. Even though this answer is less common than the previous two, living <strong>2 ×</strong> (160–200 years) the normal human lifespan is surprisingly common. People seem to answer this way when they’re thinking along the lines of <em>“This life thing is pretty great. I’d do it again.”</em></p>
+
+<p>The second‑rarest answer people routinely give is <strong>“in the 50s or 60s.”</strong> Some portion of people misunderstand the hypothetical and think they’d have to spend eternity in poor health. Even if I clarify the prompt, they double down on their original answer. But others—often people who have lived difficult lives—understand the prompt but want no more to do with life than is strictly required.</p>
+
+<p>And finally, the least common answer I get is the <strong>“really long, non‑infinite time.”</strong> This is anywhere in the 1000 to 1,000,000 range.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>It’s maybe obvious by now—or maybe it was obvious at the beginning—that a person’s answer to this question serves as a proxy for how much someone is enjoying their life. I’m simplifying, but there’s a strong correlation. The other (anti)-correlation I’ve noticed is that the older the person answering is, the shorter their answer is going to be. I don’t think I’ve ever asked this question to someone in their 60’s and had them say, “I wanna live for a billion years”. People seem to naturally find acceptance of death as they age.</p>
+
+<h3 id="immortality">Immortality</h3>
+
+<p>There’s also the matter of the people who want to live forever…</p>
+
+<p>So many people talk about how <strong>“San Junipero”</strong> is their favorite episode of <em>Black Mirror</em>. It’s the one with the happy ending—the two lovers riding off into the virtual sunset to spend eternity with each other. The problem with this popular fairytale interpretation is that it neglects a thoughtful inclusion of the <strong>“Quagmire”</strong> scene. In the middle of the episode, the main character goes to a club called <em>The Quagmire</em>. The rave lit warehouse is filled with people having a seemingly fun (if extreme) time, but the conversational backdrop is quite explicit about the truth: The Quagmire is home to all of the system’s oldest residents. The ones who have already lived several normal human lifespans’ worth of experiences.</p>
+
+<p>According to the conversation, there’s broad consensus that with each passing year, human brains must go to more extreme lengths to consider something novel, to feel alive and passionate, to have a reason and a purpose. When I see the pair of lovers drive off into the sunset in the final scene, I adopt the same conclusions as the <em>Black Mirror</em> writers: the lovers will eventually end up at <em>The Quagmire</em>, along with most or all of <em>San Junipero</em>’s residents.</p>
+
+<p>And they’re equally doomed to stop going to <em>The Quagmire</em> one day.</p>
+
+<p>Neither going to <em>The Quagmire</em> for the first time or leaving it for the last time are moral failings, they’re simply a side effect of humans propensities towards generalization while simultaneously craving novelty. As every drug user knows, “you only get your first time once”. But this tendency towards normalization applies to everything, not just drugs and other vices. I remember the first time I saw a Saguaro cactus. It was so cool that I stopped and took a picture of it. Now I could see hundreds in a day and not even register them.</p>
+
+<p>One could argue that fizzling out, getting depressed, and eventually committing suicide is a small price to pay for immortality. I’m not so sure. Our biology simultaneously compels us toward self‑preservation just as strongly as it demands purpose.</p>
+
+<p><em>The suicide quagmire might drag on for quite some time, but not forever…</em></p>
+
+<h3 id="counter-action">Counter action</h3>
+
+<p>Again, we don’t have to be faced with possible immortality for these issues to be relevant. We all face this question of, “How do we keep our spark for life?”, or the equally cliche “How do you keep your sense of childlike wonder?” They’re cliches because they’re universal questions.</p>
+
+<p>My answer is similar to the conclusion of John Salvatier’s blog post, <a href="http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail">Reality has a Surprising Amount of Detail</a>:</p>
+
+<blockquote>
+  <p>This problem is not easy to fix, but it’s not impossible either. I’ve mostly fixed it for myself. The direction for improvement is clear: seek detail you would not normally notice about the world. When you go for a walk, notice the unexpected detail in a flower or what the seams in the road imply about how the road was built. When you talk to someone who is smart but just seems so wrong, figure out what details seem important to them and why. In your work, notice how that meeting actually wouldn’t have accomplished much if Sarah hadn’t pointed out that one thing. As you learn, notice which details actually change how you think.</p>
+</blockquote>
+
+<p>I’d like to add an addendum: as we age, try to look for and appreciate finer and finer grained detail. Reality is like a fractal: as you look closer and closer, you’ll notice more and more details that weren’t perceivable from a higher-level perspective.</p>
+
+<figure class=""><img src="/assets/images/Wiener_process_animated.gif" alt="Scale Invariance" /></figure>
+
+<p>The trick is realizing that the value of perception is <a href="https://en.wikipedia.org/wiki/Scale_invariance">scale invariant</a>.</p>
+
+<p>There’s no more inherent value in noticing a forest than there is a flower in that forest.</p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Life" /><summary type="html"><![CDATA[How Long Would You Live, If You Could Live Forever?]]></summary></entry><entry><title type="html">Reasoning LLM: A Bioinformatics Coding Interview</title><link href="https://jessimekirk.com/blog/llm_bfx_interview/" rel="alternate" type="text/html" title="Reasoning LLM: A Bioinformatics Coding Interview" /><published>2025-02-02T00:00:00+00:00</published><updated>2025-02-02T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/llm_bfx_interview</id><content type="html" xml:base="https://jessimekirk.com/blog/llm_bfx_interview/"><![CDATA[<p>Here’s the question I used to use at Invitae to interview bioinformatics engineering candidates, how it’s solved by two reasoning LLMs, and a few conclusions.</p>
+
+<h2 id="interview-question">Interview Question</h2>
+
+<p>I have a fasta file that has the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;SEQ1
+AGTCTGCTACGCTAGC
+&gt;SEQ2
+GGTGCGATCGATCGTG
+&gt;SEQ3
+TTCCCATGCTACGTCG
+&gt;SEQ4
+TCAAACGCATCGCGAC
+</code></pre></div></div>
+
+<p>You can assume that:</p>
+<ul>
+  <li>the fasta file is well formatted</li>
+  <li>there is only one sequence line per header line</li>
+  <li>each sequence in the file is the same length</li>
+</ul>
+
+<p>Your task is to replace the <code class="language-plaintext highlighter-rouge">pass</code> portions of this code with functioning code, according to the name and docstring:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">read_fasta</span><span class="p">(</span><span class="n">input_fasta_path</span><span class="p">):</span>
+    <span class="s">"""Given the location of a fasta file, return a list of sequences"""</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">are_similar</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="s">"Given two sequences, using a Hamming distance metric to return a bool indicating whether or not the two sequences are similar"</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">build_graph</span><span class="p">(</span><span class="n">sequences</span><span class="p">):</span>
+    <span class="s">"""Given a list of sequences, return a graph representation of sequences that are similar via Hamming distance"""</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">are_second_degree_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">):</span>
+    <span class="s">"""Given a graph and two sequences, return a bool indicating if they're second degree neighbors"""</span> 
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="k">pass</span>
+
+</code></pre></div></div>
+
+<p>Please create any tests and data you need in order to feel confident that the code you write is correct. Similarly, structure <code class="language-plaintext highlighter-rouge">main</code> in any way you see fit to demonstrate correctness of the code.</p>
+
+<p>Lastly, imagine we want this code to go into production. Please attempt to make coding decisions that produce production-level code.</p>
+
+<h2 id="chatgpt-o1">ChatGPT-o1</h2>
+
+<p>(Thought for 29s)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span><span class="s">"""
+FASTA Similarity Checker
+
+This module provides functionality to:
+1. Read sequences from a FASTA file.
+2. Compute a Hamming-based similarity check between two sequences.
+3. Build a graph (adjacency list) of sequences considered "similar."
+4. Determine whether two sequences are second-degree neighbors within that graph.
+
+Author: Your Name
+Date: 2025-01-31
+"""</span>
+
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="k">def</span> <span class="nf">hamming_distance</span><span class="p">(</span><span class="n">seq1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">seq2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="s">"""
+    Compute the Hamming distance between two equal-length sequences.
+    
+    :param seq1: First sequence (string).
+    :param seq2: Second sequence (string).
+    :return: The Hamming distance (integer).
+    :raises ValueError: If the sequences are not the same length.
+    """</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"Sequences must be of equal length to compute Hamming distance."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ch1</span> <span class="o">!=</span> <span class="n">ch2</span> <span class="k">for</span> <span class="n">ch1</span><span class="p">,</span> <span class="n">ch2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">read_fasta</span><span class="p">(</span><span class="n">input_fasta_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="s">"""
+    Given the location of a fasta file, return a list of sequences.
+    Assumptions:
+      - The FASTA file is well-formatted.
+      - There is only one sequence line per header line.
+      - Each sequence is of the same length.
+    
+    :param input_fasta_path: Path to input FASTA file.
+    :return: A list of sequences (strings).
+    """</span>
+    <span class="n">sequences</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_fasta_path</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># Skip headers that start with '&gt;'
+</span>            <span class="k">if</span> <span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">sequences</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sequences</span>
+
+
+<span class="k">def</span> <span class="nf">are_similar</span><span class="p">(</span><span class="n">seq1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">seq2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="s">"""
+    Given two sequences, use a Hamming distance metric to return a bool
+    indicating whether the two sequences are 'similar.'
+    
+    :param seq1: First sequence (string).
+    :param seq2: Second sequence (string).
+    :param threshold: Maximum Hamming distance for which sequences are considered similar.
+    :return: True if Hamming distance &lt;= threshold, False otherwise.
+    """</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">hamming_distance</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dist</span> <span class="o">&lt;=</span> <span class="n">threshold</span>
+
+
+<span class="k">def</span> <span class="nf">build_graph</span><span class="p">(</span><span class="n">sequences</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+    <span class="s">"""
+    Given a list of sequences, return a graph (adjacency list) of sequences
+    that are similar with respect to a given Hamming distance threshold.
+    
+    :param sequences: A list of sequences (strings).
+    :param threshold: Maximum Hamming distance allowed to declare two sequences connected.
+    :return: A dict where keys are sequences and values are sets of adjacent (similar) sequences.
+    """</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="n">seq</span><span class="p">:</span> <span class="nb">set</span><span class="p">()</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">sequences</span><span class="p">}</span>
+    
+    <span class="k">for</span> <span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">are_similar</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+            <span class="n">graph</span><span class="p">[</span><span class="n">seq1</span><span class="p">].</span><span class="n">add</span><span class="p">(</span><span class="n">seq2</span><span class="p">)</span>
+            <span class="n">graph</span><span class="p">[</span><span class="n">seq2</span><span class="p">].</span><span class="n">add</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">graph</span>
+
+
+<span class="k">def</span> <span class="nf">are_second_degree_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">seq1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">seq2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="s">"""
+    Given a graph (as returned by build_graph) and two sequences, return a bool
+    indicating if they are second-degree neighbors.
+    
+    Here, "second-degree neighbors" means that seq1 is not directly connected to seq2,
+    but there exists some intermediate neighbor 'n' such that seq1 -&gt; n -&gt; seq2 is a path.
+    
+    :param graph: The adjacency list (dict of sets) of sequences.
+    :param seq1: The first sequence (string).
+    :param seq2: The second sequence (string).
+    :return: True if seq2 can be reached from seq1 by exactly two "hops." 
+    """</span>
+    <span class="c1"># If either sequence is not in the graph, cannot be neighbors
+</span>    <span class="k">if</span> <span class="n">seq1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span> <span class="ow">or</span> <span class="n">seq2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="c1"># If they're first-degree neighbors, they're not strictly second-degree neighbors
+</span>    <span class="k">if</span> <span class="n">seq2</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">seq1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="c1"># Check for an intermediate neighbor
+</span>    <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">seq1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">seq2</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    
+    <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">test_all</span><span class="p">():</span>
+    <span class="s">"""
+    A simple test suite to ensure correctness of the code.
+    """</span>
+    <span class="c1"># Test Hamming distance
+</span>    <span class="k">assert</span> <span class="n">hamming_distance</span><span class="p">(</span><span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"AAAT"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">hamming_distance</span><span class="p">(</span><span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"AAAA"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">hamming_distance</span><span class="p">(</span><span class="s">"AAA"</span><span class="p">,</span> <span class="s">"AAAA"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># expected
+</span>
+    <span class="c1"># Test are_similar
+</span>    <span class="k">assert</span> <span class="n">are_similar</span><span class="p">(</span><span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"AAAT"</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span>
+    <span class="k">assert</span> <span class="n">are_similar</span><span class="p">(</span><span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"AATT"</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+    
+    <span class="c1"># Build a small graph and test adjacency
+</span>    <span class="n">seqs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"AAAT"</span><span class="p">,</span> <span class="s">"AATT"</span><span class="p">,</span> <span class="s">"TTTT"</span><span class="p">]</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">build_graph</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># neighbors of "AAAA" should only be "AAAT"
+</span>    <span class="k">assert</span> <span class="n">g</span><span class="p">[</span><span class="s">"AAAA"</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s">"AAAT"</span><span class="p">}</span>
+    <span class="c1"># neighbors of "AAAT" should be "AAAA" and "AATT"
+</span>    <span class="k">assert</span> <span class="n">g</span><span class="p">[</span><span class="s">"AAAT"</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"AATT"</span><span class="p">}</span>
+    
+    <span class="c1"># Test are_second_degree_neighbors
+</span>    <span class="c1"># "AAAA" -&gt; "AAAT" -&gt; "AATT" =&gt; second-degree neighbors
+</span>    <span class="k">assert</span> <span class="n">are_second_degree_neighbors</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"AATT"</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span>
+    <span class="c1"># But "AAAA" and "TTTT" are not even close (distance=4 each from "AAAA")
+</span>    <span class="k">assert</span> <span class="n">are_second_degree_neighbors</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"TTTT"</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="s">"All tests passed!"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="s">"""
+    Demonstration of how to use the above functions in practice.
+    """</span>
+    <span class="c1"># 1. Run tests to ensure code works correctly
+</span>    <span class="n">test_all</span><span class="p">()</span>
+    
+    <span class="c1"># 2. Example usage with a sample FASTA file (replace 'example.fasta' with a real file path)
+</span>    <span class="n">fasta_file</span> <span class="o">=</span> <span class="s">"example.fasta"</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sequences</span> <span class="o">=</span> <span class="n">read_fasta</span><span class="p">(</span><span class="n">fasta_file</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">FileNotFoundError</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Error: FASTA file '</span><span class="si">{</span><span class="n">fasta_file</span><span class="si">}</span><span class="s">' not found."</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="s">"Sequences read from FASTA file:"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sequences</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Build the similarity graph
+</span>    <span class="n">graph</span> <span class="o">=</span> <span class="n">build_graph</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="c1"># 4. Demonstrate neighbor checks (customize seq1, seq2 to your input)
+</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">seq1</span> <span class="o">=</span> <span class="n">sequences</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">seq2</span> <span class="o">=</span> <span class="n">sequences</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\n</span><span class="s">Checking if '</span><span class="si">{</span><span class="n">seq1</span><span class="si">}</span><span class="s">' and '</span><span class="si">{</span><span class="n">seq2</span><span class="si">}</span><span class="s">' are similar (threshold=3): </span><span class="si">{</span><span class="n">are_similar</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Are '</span><span class="si">{</span><span class="n">seq1</span><span class="si">}</span><span class="s">' and '</span><span class="si">{</span><span class="n">seq2</span><span class="si">}</span><span class="s">' second-degree neighbors? </span><span class="si">{</span><span class="n">are_second_degree_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Not enough sequences to demonstrate neighbor checks."</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="running-the-script">Running the script</h3>
+
+<p>I used the following test file as <code class="language-plaintext highlighter-rouge">example.fasta</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;SEQ1
+AAAAAAATTTTTTTCCCCCCGGGGGGG
+&gt;SEQ2
+AAAAAAATTTTTTTCCCCCCGGGTTTT
+&gt;SEQ3
+GGGGGGGTTTTTTTCCCCCCGGGGGGG
+&gt;SEQ4
+AAAAAAATTTTTTTCCCCCCGGGGGTT
+&gt;SEQ5
+AAAAAAATTTTTTTCCCCCCGGGGGGC
+</code></pre></div></div>
+
+<p>I’d expect the o1 script to say that the first two sequences are neighbors.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ python chatGPT_o1.py
+All tests passed!
+Sequences read from FASTA file:
+AAAAAAATTTTTTTCCCCCCGGGGGGG
+AAAAAAATTTTTTTCCCCCCGGGTTTT
+GGGGGGGTTTTTTTCCCCCCGGGGGGG
+AAAAAAATTTTTTTCCCCCCGGGGGTT
+AAAAAAATTTTTTTCCCCCCGGGGGGC
+
+Checking if 'AAAAAAATTTTTTTCCCCCCGGGGGGG' and 'AAAAAAATTTTTTTCCCCCCGGGTTTT' are similar (threshold=3): False
+Are 'AAAAAAATTTTTTTCCCCCCGGGGGGG' and 'AAAAAAATTTTTTTCCCCCCGGGTTTT' second-degree neighbors? True
+</code></pre></div></div>
+
+<h2 id="deepseek-r1">Deepseek R1</h2>
+
+<p>(Thought for 176s)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+
+<span class="k">def</span> <span class="nf">read_fasta</span><span class="p">(</span><span class="n">input_fasta_path</span><span class="p">):</span>
+    <span class="s">"""Given the location of a fasta file, return a list of sequences"""</span>
+    <span class="n">sequences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_fasta_path</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">):</span>
+                <span class="c1"># Read the next line as the sequence
+</span>                <span class="n">seq</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">).</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">sequences</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sequences</span>
+
+
+<span class="k">def</span> <span class="nf">are_similar</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="s">"""Given two sequences, return True if their Hamming distance is &lt;= threshold."""</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="n">hamming_distance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c1</span> <span class="o">!=</span> <span class="n">c2</span> <span class="k">for</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">hamming_distance</span> <span class="o">&lt;=</span> <span class="n">threshold</span>
+
+
+<span class="k">def</span> <span class="nf">build_graph</span><span class="p">(</span><span class="n">sequences</span><span class="p">):</span>
+    <span class="s">"""Given a list of sequences, return a graph where keys are sequences and values are lists of similar sequences."""</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">are_similar</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sequences</span><span class="p">[</span><span class="n">j</span><span class="p">]):</span>
+                <span class="n">graph</span><span class="p">[</span><span class="n">sequences</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">append</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                <span class="n">graph</span><span class="p">[</span><span class="n">sequences</span><span class="p">[</span><span class="n">j</span><span class="p">]].</span><span class="n">append</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">graph</span>
+
+
+<span class="k">def</span> <span class="nf">are_second_degree_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">):</span>
+    <span class="s">"""Return True if seq1 and seq2 are connected via exactly two edges in the graph."""</span>
+    <span class="k">if</span> <span class="n">seq1</span> <span class="o">==</span> <span class="n">seq2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>  <span class="c1"># A sequence cannot be a neighbor of itself in this context
+</span>
+    <span class="c1"># Check if they are direct neighbors
+</span>    <span class="k">if</span> <span class="n">seq2</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="c1"># Check if there's any common neighbor that connects them
+</span>    <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="k">if</span> <span class="n">seq2</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Example test case with a small FASTA file
+</span>    <span class="n">test_fasta</span> <span class="o">=</span> <span class="p">[</span><span class="s">"&gt;SEQ1"</span><span class="p">,</span> <span class="s">"AAAA"</span><span class="p">,</span> <span class="s">"&gt;SEQ2"</span><span class="p">,</span> <span class="s">"AAAT"</span><span class="p">,</span> <span class="s">"&gt;SEQ3"</span><span class="p">,</span> <span class="s">"AATT"</span><span class="p">,</span> <span class="s">"&gt;SEQ4"</span><span class="p">,</span> <span class="s">"ATTT"</span><span class="p">]</span>
+    <span class="c1"># Writing test data to a temporary file
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test.fasta"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_fasta</span><span class="p">))</span>
+
+    <span class="c1"># Read the sequences
+</span>    <span class="n">sequences</span> <span class="o">=</span> <span class="n">read_fasta</span><span class="p">(</span><span class="s">"test.fasta"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Read </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span><span class="si">}</span><span class="s"> sequences: </span><span class="si">{</span><span class="n">sequences</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="c1"># Build the graph
+</span>    <span class="n">graph</span> <span class="o">=</span> <span class="n">build_graph</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Graph edges:"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">seq</span><span class="p">,</span> <span class="n">neighbors</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">neighbors</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="c1"># Test are_similar
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Testing are_similar:"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"SEQ1 and SEQ2 (threshold=1):"</span><span class="p">,</span> <span class="n">are_similar</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sequences</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># True
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"SEQ1 and SEQ3 (threshold=1):"</span><span class="p">,</span> <span class="n">are_similar</span><span class="p">(</span><span class="n">sequences</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sequences</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># False
+</span>
+    <span class="c1"># Test are_second_degree_neighbors
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Testing are_second_degree_neighbors:"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"SEQ1 and SEQ3:"</span><span class="p">,</span> <span class="n">are_second_degree_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">sequences</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sequences</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>  <span class="c1"># True
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"SEQ1 and SEQ4:"</span><span class="p">,</span> <span class="n">are_second_degree_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">sequences</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sequences</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>  <span class="c1"># False
+</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>It’s clever that it chooses to write out then read in a file in <code class="language-plaintext highlighter-rouge">main</code>.</p>
+
+<p>If we just run the script, we get the output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ python deepseek_R1.py
+Read 4 sequences: ['AAAA', 'AAAT', 'AATT', 'ATTT']
+Graph edges:
+AAAA: ['AAAT', 'AATT', 'ATTT']
+AAAT: ['AAAA', 'AATT', 'ATTT']
+AATT: ['AAAA', 'AAAT', 'ATTT']
+ATTT: ['AAAA', 'AAAT', 'AATT']
+
+Testing are_similar:
+SEQ1 and SEQ2 (threshold=1): True
+SEQ1 and SEQ3 (threshold=1): False
+
+Testing are_second_degree_neighbors:
+SEQ1 and SEQ3: False
+SEQ1 and SEQ4: False
+</code></pre></div></div>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<ul>
+  <li>Both of these models pass the test. By comparison, probably 1/3 people I interviewed would pass. Many bioinformaticians get bogged down in even simple data structure / algorithm style questions.</li>
+  <li>There’s a little room for ambiquity in the question. I used to spend a lot of time in the interviews answering questions and clarifying that ambiquity. Both models make reasonable choices.</li>
+  <li>I like to see both <code class="language-plaintext highlighter-rouge">itertools</code> and <code class="language-plaintext highlighter-rouge">collections</code> utilized, as a demonstration of knowledge of the standard library. It’s interesting that each model uses one but not the other.</li>
+  <li>o1’s tests were a little more robust, IMO.</li>
+  <li>R1 took 6x the time to solve the problem.</li>
+  <li>I have a slight qualitative preference for o1’s code.</li>
+</ul>
+
+<p>// TODO Comment on the set approach for 2nd degree neighbors</p>
+
+<p>And finally:</p>
+
+<ul>
+  <li>The next time I interview a BFX role, I should come up with another question. This one is “solved”.</li>
+</ul>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="AI" /><summary type="html"><![CDATA[Here’s the question I used to use at Invitae to interview bioinformatics engineering candidates, how it’s solved by two reasoning LLMs, and a few conclusions.]]></summary></entry><entry><title type="html">2024 New Year’s Resolution</title><link href="https://jessimekirk.com/blog/resolution_24/" rel="alternate" type="text/html" title="2024 New Year’s Resolution" /><published>2024-12-22T00:00:00+00:00</published><updated>2024-12-22T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/resolution_24</id><content type="html" xml:base="https://jessimekirk.com/blog/resolution_24/"><![CDATA[<p>My New Year’s Resolution for 2024 was a bit off the beaten path for resolutions: <em>I wanted to be out of Tucson for at least 12 weekends, ideally once a month.</em> I knew that a majority of my focus for the year was going to be on Lodestar. So I wanted a resolution that would encourage me to find some novelty and diversity, without being overly burdensome.</p>
+
+<p>In the end, my trips were a bit more clumped than I had hoped. But, I still had a lot of adventure this year. From beautiful nature, to joyful times with friends, it’s easy to find reasons for gratitude in the past year.</p>
+
+<h1 id="1-sedona-round-1-february">1. Sedona Round 1 (February)</h1>
+
+<figure class=""><img src="/assets/images/2024/1_sedona.webp" alt="Sedona Round 1" /></figure>
+
+<p>My first trip of the year had some twists. Twists like having RSV or something the whole trip, or falling on an agave plant and literally nearly losing an eye. But it’s hard to overstate how beautiful the color juxtapositions of the red rocks, evergreens, and pure white snow was.</p>
+
+<h1 id="2-vegas-february">2. Vegas (February)</h1>
+
+<figure class=""><img src="/assets/images/2024/2_vegas.webp" alt="Las Vegas" /></figure>
+
+<p>This night in Vegas seeing a <a href="https://en.wikipedia.org/wiki/Benny_Benassi">Benny Benassi show</a> contained one of the most memorable conversations of the year. I was at a table with a group of neurosurgeons who had covered for the wild evening. I was in a delicate headspace because this was before we’d started consulting, so I was feeling a lot of financial pressure and a tinge of, let’s admit it, masculine fragility.</p>
+
+<p>Halfway through the night, well past sobriety, one of the doctors pulls me over and shows me his phone. “Check this out. It’s my list of startup ideas. It’s so cool that you get to just follow your dreams and start your own company.” I quipped back, “Hey, all you have to do is go do it. You could start one!” He just grunted. “No I can’t; I’ve got golden handcuffs. I’d lose my house, my girlfriend would leave me. I’ve gotta pay alimony. You’re free.”</p>
+
+<p>I’d spent the whole night envious of these guys throwing money around. You know, they’d really made it in life. And yet…</p>
+
+<h1 id="3-kentucky-round-1-june">3. Kentucky Round 1 (June)</h1>
+
+<figure class=""><img src="/assets/images/2024/3_kentucky.webp" alt="Kentucky" /></figure>
+
+<p>You know your family is cool when you can text “Hey, I’m coming into town” three days before you show up and there’s still an impromptu cookout for you with 20 people (and three more on the way).</p>
+
+<p>The trip to KY was also a great time to catch up with the nuclear family and spend too much time playing Stronghold Crusader with Mahlon.</p>
+
+<h1 id="4-north-carolina-june">4. North Carolina (June)</h1>
+
+<figure class=""><img src="/assets/images/2024/4_north_carolina.webp" alt="North Carolina" /></figure>
+
+<p>A night out on the town in Durham. That evening was a good reminder that time’s flying by, that everyone is changing (in good ways!), and that it’s absolutely worth finding the time to catch up with old friends.</p>
+
+<p>Another highlight of this time was getting to meet Wes’ and Sherif’s kids for the first time. Energy for days.</p>
+
+<h1 id="5-new-york-city-june">5. New York City (June)</h1>
+
+<figure class=""><img src="/assets/images/2024/5_nyc.webp" alt="NYC" /></figure>
+
+<p>Speaking of catching up with old friends, I did a lot of that in NYC too. But, this was my first time getting to wander around NYC at night by myself, and I was surprised by how pleasant it was! My baseline is SF. At least in my initial impressions, there’s no comparison. I saw more cops in NYC than I did homeless people.</p>
+
+<p>But… SF is prettier, if sleepier.</p>
+
+<h1 id="6-sedona-round-2-october">6. Sedona Round 2 (October)</h1>
+
+<figure class=""><img src="/assets/images/2024/6_sedona2.webp" alt="Sedona Round 2" /></figure>
+
+<p>Even though this was an out of town trip for a wedding, this photo is a great representation of the appreciation I’ve felt this year for my Tucson crew. And even though this is a boys pic, the women in my Tucson life are equally amazing humans.</p>
+
+<h1 id="7-denver-november">7. Denver (November)</h1>
+
+<figure class=""><img src="/assets/images/2024/7_denver.webp" alt="Denver" /></figure>
+
+<p>This is a goofy representation of my third year at ASHG. I took it a bit more chill this year. I didn’t even lose my voice. I was hoping that I’d be inspired to write up an entire post on ASHG. But between the sizable amount of time I spent catching up with people in 1:1 conversations and the seeming lack of significant innovation this year, there wasn’t much I felt like talking about.</p>
+
+<h1 id="8-gaithersburg-november">8. Gaithersburg (November)</h1>
+
+<figure class=""><img src="/assets/images/2024/8_gaithersburg.webp" alt="Gaithersburg" /></figure>
+
+<p>Snack fridge…</p>
+
+<h1 id="9-grand-canyon-november">9. Grand Canyon (November)</h1>
+
+<figure class=""><img src="/assets/images/2024/9_grand_canyon.webp" alt="Grand Canyon" /></figure>
+
+<p>When your Canadian friend says she wants to see the Grand Canyon, you make it happen. And you sing road trip karaoke the whole way there.</p>
+
+<h1 id="10-cochise-november">10. Cochise (November)</h1>
+
+<figure class=""><img src="/assets/images/2024/10_cochise.webp" alt="Cochise" /></figure>
+
+<p>This photo has to be dedicated to community and the work of community building. Community has been a reoccurring theme this year.</p>
+
+<p>While this picture was taken on Thanksgiving day, it resonates with my Thankful this year during Friendsgiving. I wrote up a few notes to myself before opening the circle. Here they are:</p>
+
+<ul>
+  <li>Every year, I get it easy.</li>
+  <li>I get to be the first to say, “I’m thankful for friends for my community!” And then you all have to figure out something to say so it doesn’t sound like you’re a copy cat.</li>
+  <li>But also, some of you have been hearing me say versions of this for 10 years now. So I gotta keep it fresh.</li>
+  <li>It’s been a heady, existential year. I’ve had so many conversations about our purpose in life. About self worth and confidence. About what it means to be successful. About what it means to fail.</li>
+  <li>I’m sure I’m not alone in this headspace. Especially for those of us who are more goal oriented, it’s tempting to measure life by progress towards those goals and as a side effect it’s also tempting to form this hierarchy and rank yourself and others relative to these goals.</li>
+  <li>I’m so glad I’m in a community that’s been able to instill in me that life is more complex than that linear perspective.</li>
+  <li>
+    <p>This year, like always, I’m thankful for each of you. But more specifically, this year, I really appreciate the aspects of each of you that make you unique and weird individuals. And I hope you appreciate those things about yourself too.</p>
+  </li>
+  <li>People who take night hikes to look for bugs</li>
+  <li>People who host and attend puberty themed birthday parties</li>
+  <li>
+    <p>People who do group photo shoots of rainbows in their underwear</p>
+  </li>
+  <li>So again, what I’m truly thankful for is each one of you and the uniqueness you contribute to the world. Thanks you for existing.</li>
+</ul>
+
+<h1 id="11-san-francisco-december">11. San Francisco (December)</h1>
+
+<figure class=""><img src="/assets/images/2024/11_sf.webp" alt="San Francisco" /></figure>
+
+<p>Every time I visit San Francisco, I see something new. Every time I visit San Francisco, it feels more like home than any other city I’ve visited.</p>
+
+<h1 id="12-kentucky-round-2-december">12. Kentucky Round 2 (December)</h1>
+
+<figure class=""><img src="/assets/images/2024/12_kentucky2.webp" alt="Kentucky Round 2" /></figure>
+
+<p>Speaking of home, there’s nothing like visiting secret little spots you first discovered when you were 10. These places trigger an acute nostalgia that call into question your understanding of time.</p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Life" /><summary type="html"><![CDATA[My New Year’s Resolution for 2024 was a bit off the beaten path for resolutions: I wanted to be out of Tucson for at least 12 weekends, ideally once a month. I knew that a majority of my focus for the year was going to be on Lodestar. So I wanted a resolution that would encourage me to find some novelty and diversity, without being overly burdensome.]]></summary></entry><entry><title type="html">Sanctum</title><link href="https://jessimekirk.com/blog/sanctum/" rel="alternate" type="text/html" title="Sanctum" /><published>2024-10-01T00:00:00+00:00</published><updated>2024-10-01T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/sanctum</id><content type="html" xml:base="https://jessimekirk.com/blog/sanctum/"><![CDATA[<blockquote>
+  <p>Humble is as Humble does.</p>
+
+  <p>Subtle can be Muscle flush.</p>
+
+  <p>Stumble now, and trouble thus:</p>
+
+  <p>Jumble, Mumble, come Fuss.</p>
+
+  <p>Puzzle is the Shuffle of;</p>
+
+  <p>Knuckle thrown, Shovel Brush.</p>
+
+  <p>Huddle close and Rubble shove.</p>
+
+  <p>Buckle not, Chuckle, find Hush.</p>
+
+  <p>Cuddle, cuddle, cuddle, love.</p>
+</blockquote>
+
+<p><em>- Mahlon Kirk, October 1st, 2024</em></p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Poetry" /><summary type="html"><![CDATA[Humble is as Humble does. Subtle can be Muscle flush. Stumble now, and trouble thus: Jumble, Mumble, come Fuss. Puzzle is the Shuffle of; Knuckle thrown, Shovel Brush. Huddle close and Rubble shove. Buckle not, Chuckle, find Hush. Cuddle, cuddle, cuddle, love.]]></summary></entry><entry><title type="html">One New Food Per Grocery Run</title><link href="https://jessimekirk.com/blog/new_foods/" rel="alternate" type="text/html" title="One New Food Per Grocery Run" /><published>2024-08-04T00:00:00+00:00</published><updated>2024-08-04T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/new_foods</id><content type="html" xml:base="https://jessimekirk.com/blog/new_foods/"><![CDATA[<p>Without particularly trying, I’ve fallen into the habit this year of making sure one food that I don’t normally buy ends up in my shopping cart when I go to the grocery. It doesn’t <em>have</em> to be a food I’ve never tried before, but that counts as bonus points. Often it’ll be a single ingredient that’ll then inspire a couple of dishes I wouldn’t normally make. A couple of the biggest successes have been:</p>
+
+<ol>
+  <li>Melons. I think I’ve mostly been exposed to old melons that have sat precut for too long and have gone mushy. There’s also a high likelihood that they’re surrounded by other fruit and taste like an undistinguishable blend. I’ve probably bought a half dozen melons in the past year (coming from having never bought one). They’re definitely going to stick in the rotation.</li>
+  <li>Smoked salmon. A little bit pricy, but so amazing. I could legit eat pounds of smoked salmon.</li>
+</ol>
+
+<p>This week, I picked up a new fruit from Costco, a <a href="https://en.wikipedia.org/wiki/Rambutan">rambutan</a>.</p>
+
+<figure class=""><img src="/assets/images/rambutan/IMG_9865.jpg" alt="rambutans" /></figure>
+
+<p>They’re pretty similar to lychee, which I’ve had once before.</p>
+
+<p>You cut them in half (the seed isn’t too bad to cut through):</p>
+
+<figure class=""><img src="/assets/images/rambutan/IMG_9867.jpg" alt="half rambutan" /></figure>
+
+<p>And the fruit easily and cleanly peels away from both the outer shell and the pit. One little layer of the pit stays attached, but I just ate that. It adds a little bit of crunch, but in a pleasant way.</p>
+
+<figure class=""><img src="/assets/images/rambutan/IMG_9869.jpg" alt="peeled rambutan" /></figure>
+
+<p>The texture is great. The flavor’s a little too mild to be considered great but is still pretty good.</p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Food" /><summary type="html"><![CDATA[Without particularly trying, I’ve fallen into the habit this year of making sure one food that I don’t normally buy ends up in my shopping cart when I go to the grocery. It doesn’t have to be a food I’ve never tried before, but that counts as bonus points. Often it’ll be a single ingredient that’ll then inspire a couple of dishes I wouldn’t normally make. A couple of the biggest successes have been:]]></summary></entry><entry><title type="html">2023 New Year’s Resolution Success!</title><link href="https://jessimekirk.com/blog/resolution_23/" rel="alternate" type="text/html" title="2023 New Year’s Resolution Success!" /><published>2023-12-31T00:00:00+00:00</published><updated>2023-12-31T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/resolution_23</id><content type="html" xml:base="https://jessimekirk.com/blog/resolution_23/"><![CDATA[<p>It’s been a long time since I’ve made a New Year’s Resolution. I’m decent at sticking to a goal or plan once it’s made, so I usually don’t tie myself to New Years to make commitments.</p>
+
+<p>But this year I made one simple goal:</p>
+
+<p><strong>Read or listen to 12 books this year</strong></p>
+
+<p>Reading has been one of my favorite activities since childhood, and I’ve always found it worthwhile to carve out some time for books. This year, I made it through one a month, with a bonus collection of scifi and fantasy short stories to bring the total to 13! <a href="https://docs.google.com/spreadsheets/d/1kBg7HFRH3IsAlnUTrbNOFwwulTfv_G8h_OqBmVkbJUs/edit#gid=1386834576&amp;range=C74:C87">Here’s a link to the full list</a>. Unfortunately, I didn’t make it through <em>Kafka on the Shore</em> before it needed to be returned, and I haven’t had a chance to renew it.</p>
+
+<p>The list of topics is super diverse, and if it seems a little random, that’s because it more or less was. My process for choosing audiobooks this year was to open the Libby app (accessed through my local library card), filter for currently available audiobooks, sort by most popular, and scroll until something caught my eye. Something that surprised me, however, is that half the books are (auto-)biographies:</p>
+
+<ol>
+  <li>Permanent Record (Edward Snowden)</li>
+  <li>Yes, Please (Amy Poehler)</li>
+  <li>Brain on Fire (Susannah Cahalan)</li>
+  <li>Kitchen Confidential (Anthony Bourdain)</li>
+  <li>Surrender (Bono)</li>
+  <li>The Splendid and the Vile (Winston Churchill)</li>
+</ol>
+
+<p>That’s equal to the number of biographies I read from 2014 to 2022. But I loved diving into these people’s lives and was consistently surprised at how connected I felt to the content and messages of these books, regardless of how distant the individual’s existence seemed from my own reality. Kitchen Confidential and Surrender, in particular had surprising overlap with many of my emotions around starting Lodestar this year. It turns out that Bourdain and I have similar philosophies on hiring a team. And Bono could teach me a lot about sales.</p>
+
+<p>Erin asked me if I had a favorite, but I don’t. Apples to oranges and all that. I will say that, despite my rule about not starting series that haven’t been finished, I would absolutely recommend <em>The Way of Kings</em> to anyone, and am looking forward to getting my hands on the next book. It’s impressive to compare <em>The Way of Kings</em> to <em>Elatris</em>, which I read last year and is Sanderson’s first book. The amount of growth he had as an author between the two books is phenomenal.</p>
+
+<p>The final observation I want to make is that reading each of these titles now makes me recall at least one specific instance of listening to the book outside the house. Whether it was walking in San Francisco, in the airport, in the neighborhood behind my house, or while lifting at the gym, I have an association between the book and other things that were going on in my life at the time. I can’t prove this, but a hypothesis I have is that it’s been harder for me to remember work related this I’ve learned since WFM started during covid. So many of the conversations I’ve had and things I’ve learned recently are only anchored to the same wall or corner of my room. Pre-covid those same memories would be tied to someone’s 3D full-resolution facial expression, or a bar smell, or standing awkwardly over someone’s shoulder while they code.</p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Life" /><summary type="html"><![CDATA[It’s been a long time since I’ve made a New Year’s Resolution. I’m decent at sticking to a goal or plan once it’s made, so I usually don’t tie myself to New Years to make commitments.]]></summary></entry><entry><title type="html">Tunisia</title><link href="https://jessimekirk.com/blog/tunisia/" rel="alternate" type="text/html" title="Tunisia" /><published>2023-09-24T00:00:00+00:00</published><updated>2023-09-24T00:00:00+00:00</updated><id>https://jessimekirk.com/blog/tunisia</id><content type="html" xml:base="https://jessimekirk.com/blog/tunisia/"><![CDATA[<p>I just got back from Tunisia for the first time since I was 5-6, and wanted to capture some of my thoughts in a standard travel blog post. Here’s a highlight from ~ each day.</p>
+
+<h2 id="0912-arrival">09/12: Arrival</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_8897.png" alt="lemonade" /></figure>
+
+<p>As soon as I put my bags down, I was handed some of the best lemonade I’ve ever had. Erin and Amber have been making lemonade at home, but we’ve never heard of blending the whole lemon and then straining it. The result is a liquid that’s less sweet, but richer and thicker. It was an emblematic start to a week filled with new culinary experiences.</p>
+
+<h2 id="0912-laundry-day">09/12: Laundry Day</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_8911.png" alt="my laundry handing to dry on the rooftop" /></figure>
+
+<p>Not exactly a deeply artistic photo. But one of the small things Asma told me that stuck with me was, “They’re not for insta! I’m just taking the photos for the memories!” which she said after I was giving her some grief for taking what I considered to be too many photos at some point. In general, I tend to only take photos if I think they’d be worth showing to other people. So when I was doing laundry and thought to myself that this scene was something I wanted to remember, I decided to snap a pic.</p>
+
+<h2 id="0914-tunis-centre">09/14: Tunis Centre</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_8929.png" alt="a crowded shop with lights and baskets" /></figure>
+
+<p>And on the other end of the spectrum is this wildly artistic image. I snapped this while walking down the market streets near Tunis Centre that were just as crowded and complex as this particular shop.</p>
+
+<h2 id="0916-off-to-the-barber">09/16: Off to the Barber</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_8944.png" alt="mirror selfie of my new haircut" /></figure>
+
+<p>I also got the best haircut of my life as a present from Aisam, who is standing behind me in the photo. We went to the local barber, who paid such attention to detail that if felt like he was trimming the individual hairs of my beard. Come to think of it, maybe he was at one point. Because the haircut was a gift, I don’t know how much it cost, but my estimate is that the experience would cost me north of $100 in the US. A lot of the idle discussion throughout the week was about how expensive the US is. This haircut was a revealing showcase.</p>
+
+<p>For me, it’s similar to the difference between living in San Francisco and living in Tucson. Part of the reason things are more expensive is because, overall, there’s a better quality-of-life in the more expensive location. For example, when you go to a restaurant, you’re paying for the fact that the restaurant has to pass health inspections. There are more entertainment options. The population is usually better educated. But there’s a balance to be struck. Legal and regulatory complexity can become a significant burden, and that burden gets passed on to the consumer. Just because there’s a lot to do doesn’t mean that you’re personally going to take advantage of those options. Highly educated people tend to form cultural bubbles. Personally, I think there’s a richness to be gained by living in a variety of cost-of-living locations.</p>
+
+<h2 id="0916-party-time">09/16: Party Time</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_8971.png" alt="poorly lit scene of people dancing" /></figure>
+
+<p>I didn’t learn as much as I wanted to about Tunisian politics, but going out to Yuka, a club area, showed off how things have changed since the revolution in 2012. It doesn’t take much effort to see the tentacles of western culture permeating through the more traditional Arab culture, particularly in the younger generation. I’d estimate that 40% of the songs that were played at the club were American. But that’s a shallow example. How people view things like religion, romantic relationships, alcohol, and purpose in life, are all clearly a mix of modern and traditional cultures. Sometime that mix is homogenous; just a smooth blend of thought. Other times, the mix is heterogeneous; the two viewpoints are juxtaposed and fighting for mind-share of the populous.</p>
+
+<h2 id="0918-carthage">09/18: Carthage</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_8980.png" alt="Roman ruins" /></figure>
+
+<p>Speaking of life purpose, visiting the ruins of Carthage had me all philosophical. It was a stark reminder that you can build the greatest empire in the world, but given time, your empire will end up a pile of semi-orderly rocks. And that’s the absolute best case scenario, as far as ambition goes. So what’s the point in all that?</p>
+
+<p>But the second thing I notice, even though it’s not featured in this picture, is that there was art everywhere. Art isn’t something that meant much to me, growing up. I struggle to see the point. I’m more of an empire builder type. But maybe it’s the artists who see things more clearly than the emperors. Why do leaders go through all of the troubles of war and conquest? You end up with answers like, “Because it’s God’s will” or “For the greatness of the empire”, or “To protect our legacy”. They attempt to project an objective purpose. Why do artists create their sculptures and murals and songs? Because they enjoy it. They find subjective purpose in their work. It’s meaningful because someone woke up one day and said, “I wanna sculpt some shit.”</p>
+
+<p>I’ve always looked for objective purpose. I want to be right, and provably so. But I’m starting to suspect that there’s another way…</p>
+
+<p>Why are you doing this?</p>
+
+<p>Because I want to.</p>
+
+<h2 id="0918-fancy-dinner">09/18: Fancy Dinner</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_8998.png" alt="Asma at dinner" /></figure>
+
+<p>Asma has two younger brothers. And one of the first things that struck me was how different they all are from each other. And similarly, Jilani as two sisters, and the three of them are equally as different from each other as the younger generation. Both groups of three siblings almost seem more different than similar, given what I know. The quietest and most reserved of the six individuals is my aunt Sara, who seems to prefer to sit back and watch events from a distance. She doesn’t strike me as shy, but as an intentional observer. While I got to spend some time with her, instead of coming out with us one night, she treated Asma and I to a delicious dinner at a hotel who’s chef is a friend of hers. It was a lovely evening of wonderful conversation. The dinner did, however, leave me wanting to know more about our financier.</p>
+
+<h2 id="0919-korbous">09/19: Korbous</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_9007.png" alt="A crowd of people swimming in the sea, next to a waterfall" /></figure>
+
+<p>Our one excursion outside of the city was to a small town called Korbous. I have no deep thoughts from this experience, it was a simple joy. The waterfall you see is from a natural hot spring running at 60C/140F, which means you could pick your water temperature by the distance you moved away into the sea. I could have stayed there for many, many hours.</p>
+
+<h2 id="0920-the-markets">09/20: The Markets</h2>
+
+<figure class=""><img src="/assets/images/tunisia/IMG_9019.png" alt="A fruit stand with variety of fruits" /></figure>
+
+<p>You hungry?</p>
+
+<h2 id="0921-zena">09/21: Zena</h2>
+
+<figure class=""><img src="/assets/images/tunisia/zena.jpg" alt="My grandma and I" /></figure>
+
+<p>Zena (aka Zenuba, as nicknamed by Asma), has a lot to be proud of. She’s a powerful woman; I wish I knew more of her tales and her jokes. She’s raised three children, and those children’s children now know each other, and are enriched by their knowledge of each other.</p>]]></content><author><name>Jessime</name></author><category term="Blog" /><category term="Travel" /><summary type="html"><![CDATA[I just got back from Tunisia for the first time since I was 5-6, and wanted to capture some of my thoughts in a standard travel blog post. Here’s a highlight from ~ each day.]]></summary></entry></feed>

@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>KittenLabs</title><link>https://kittenlabs.de/</link><description>Recent content on KittenLabs</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 26 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://kittenlabs.de/index.xml" rel="self" type="application/rss+xml"/><item><title>AnotterKiosk</title><link>https://kittenlabs.de/anotterkiosk/</link><pubDate>Sun, 19 Oct 2025 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/anotterkiosk/</guid><description>&lt;img src="featured-digital-signage.jpg" width="70%" alt="Monitor running AnotterKiosk, displaying a photo of a townhall in fullscreen"> 
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>This project is a Debian Linux-based operating system for computers, either PCs or Raspberry Pi&amp;rsquo;s.&lt;br>
+It is designed to take the URL to a website and display it in fullscreen, without any UI elements.&lt;/p>
+&lt;p>There are several similar solutions for this task, but many suffer from issues like reliability issues due to broken SD cards, crashing browsers, etc.&lt;/p></description></item><item><title>IP-over-Toslink</title><link>https://kittenlabs.de/ip-over-toslink/</link><pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/ip-over-toslink/</guid><description>&lt;iframe width="90%" style="aspect-ratio: 16 / 9;" src="https://www.youtube-nocookie.com/embed/9uWi8iWym9c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>&lt;/iframe>
+&lt;h2 id="backstory">Backstory&lt;a class="td-heading-self-link" href="#backstory" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>At the &lt;a href="https://events.ccc.de/congress/2024/infos/index.html" target="_blank">38th Chaos Communication Congress&lt;/a> (38C3) &lt;a href="https://blog.benjojo.co.uk/post/sfp-experiment-ultra-long-range-toslink" target="_blank">benjojo&lt;/a> gave a very interesting talk titled:&lt;br>
+&amp;ldquo;&lt;a href="https://media.ccc.de/v/38c3-going-long-sending-weird-signals-over-long-haul-optical-networks" target="_blank">Going Long! Sending weird signals over long haul optical networks&lt;/a>&amp;rdquo;&lt;/p>
+&lt;iframe width="70%" height="470" src="https://media.ccc.de/v/38c3-going-long-sending-weird-signals-over-long-haul-optical-networks/oembed" frameborder="0" allowfullscreen>&lt;/iframe>
+
+
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Spoiler/tl;dw:&lt;/h4>
+
+ Ben is showing that common SFP fiber optic transceivers are mostly &amp;ldquo;dumb&amp;rdquo; devices, just converting digital electric signals into light (and vice-versa). He used this to transport Toslink over a single-mode fiber through a city.
+
+&lt;/div>
+
+&lt;p>Coincidentally, &lt;a href="https://chaos.social/@n0emis/113788296128855400" target="_blank">ember&lt;/a> posted this joke to the Fediverse:&lt;/p></description></item><item><title>FX3 LVDS Frame grabber</title><link>https://kittenlabs.de/16bit-lvds-fx3-grabber/</link><pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/16bit-lvds-fx3-grabber/</guid><description>&lt;img src="featured-IMG_4028.jpg" width="60%" alt="16bit LVDS FX3 Framegrabber PCB with SuperSpeed Explorer Kit mounted on top">
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>The 16bit-LVDS-FX3-Framegrabber is a Cypress FX3 SuperSpeed Explorer Kit-based PCB, which can digitize a parallel 16bit digital video stream from a commercial image sensor. It exposes a USB 3.0 UVC (&amp;ldquo;webcam&amp;rdquo;) device to the operating system.&lt;/p>
+&lt;p>Video signal is accepted on a 50pin SCSI-II connector as parallel LVDS.&lt;br>
+Required signals:&lt;/p>
+&lt;ul>
+&lt;li>DATA_VALID&lt;/li>
+&lt;li>HSYNC&lt;/li>
+&lt;li>VSYNC&lt;/li>
+&lt;li>PIXCLK&lt;/li>
+&lt;li>DATA0 through DATA15&lt;/li>
+&lt;/ul>
+&lt;p>The framegrabber follows the common industry standard pinout for 16bit digital LVDS video.&lt;/p></description></item><item><title>Router overclocking</title><link>https://kittenlabs.de/hardcore-router-overclocking/</link><pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/hardcore-router-overclocking/</guid><description>&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Real gaming router&lt;/h4>
+
+ This is part 2 of the &amp;ldquo;Real gaming router&amp;rdquo; series of blog posts. Read &lt;a href="https://kittenlabs.de/real-gaming-router/">Part 1 / Real gaming router&lt;/a> first.
+
+&lt;/div>
+
+&lt;h2 id="why">Why?&lt;a class="td-heading-self-link" href="#why" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>If you&amp;rsquo;ve seen part 1 of the &amp;ldquo;Real gaming router&amp;rdquo;, you know that the game performance in GTA Vice City was a bit lacking.&lt;br>
+As a quick reminder, this is what the game looked like before any mods:&lt;/p>
+&lt;video width="90%" autoplay controls loop muted>
+ &lt;source src="gtavcjump1080.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+&lt;/video>
+&lt;p>This is running at 1280x720px resolution at 16bpp color depth.&lt;/p></description></item><item><title>Real gaming router</title><link>https://kittenlabs.de/real-gaming-router/</link><pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/real-gaming-router/</guid><description>&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Update, 18th March 2024&lt;/h4>
+
+ Read &lt;a href="https://kittenlabs.de/hardcore-router-overclocking/">Part 2 / Router overclocking&lt;/a> for an update on performance.
+
+&lt;/div>
+
+&lt;iframe width="90%" style="aspect-ratio: 16 / 9;" src="https://www.youtube-nocookie.com/embed/bcjuoEZg8rI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>&lt;/iframe>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>A TP-Link wireless router, with an external AMD Radeon GPU connected via PCIe,&lt;br>
+running Debian Linux and playing games:&lt;/p>
+&lt;img src="featured-IMG_9970.JPG" width="90%" alt="Wireless router, connected to a Radeon GPU, monitor, speakers, SSD. Monitor shows GTA Vice City"> 
+&lt;img src="IMG_9946.JPG" width="90%" alt="TP-Link WDR4900, showing neofetch"> 
+&lt;h2 id="what-makes-this-router-so-special">What makes this router so special?&lt;a class="td-heading-self-link" href="#what-makes-this-router-so-special" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>&lt;a href="https://openwrt.org/toh/tp-link/tl-wdr4900" target="_blank">TP-LINK&amp;rsquo;s TL-WDR4900 v1&lt;/a> is a very interesting WiFi router:&lt;br>
+Instead of the typical MIPS or ARM CPUs found in normal WiFi routers, the WDR4900 features a &lt;strong>PowerPC-based&lt;/strong> CPU by NXP.&lt;/p></description></item><item><title>20 port USB-C charger</title><link>https://kittenlabs.de/charger20/</link><pubDate>Sun, 26 Nov 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/charger20/</guid><description>&lt;figure class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 410px">
+&lt;img class="card-img-top" src="https://kittenlabs.de/charger20/featured-usb-c-charger_hu_f8adf5143415c395.jpg" width="400" height="374">
+&lt;figcaption class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+&lt;p>A 20 port USB-C charger in use&lt;/p>
+&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>The 20 port USB-C charger can charge up to 20 USB-C devices from a single USB-C supply.&lt;br>
+Each charging port can deliver up to 7.5W (5W if all ports are in use) and is individually current limited.&lt;br>
+The charger was developed to charge a whole litter of &lt;a href="https://kittenlabs.de/blinkekatze/" target="_blank">Blinkekatzen&lt;/a> from a single supply.&lt;/p></description></item><item><title>NVMe BIOS Option ROM</title><link>https://kittenlabs.de/nvmeboot/</link><pubDate>Tue, 31 Oct 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/nvmeboot/</guid><description>&lt;p>&lt;img src="featured-boot.jpeg" width="49%" alt="ThinkPad T43 with ExpressCard-connected external NVMe SSD"> &lt;img src="nvme.jpeg" width="49%" alt="Laptop showing KittenLabs NVMe Boot">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>The NVMe BIOS Option ROM is a heavily modified version of &lt;a href="https://ipxe.org/" target="_blank">iPXE&lt;/a>, which can be integrated into a computers BIOS (or provided via a PCI card, USB flash drive, SD card, etc.).&lt;br>
+It allows x86 computers to boot from NVMe devices attached via PCIe, even on devices which are much older than NVMe itself.&lt;/p>
+&lt;p>The NVMe implementation was ported from &lt;a href="https://github.com/coreboot/seabios/blob/master/src/hw/nvme.c" target="_blank">SeaBIOS&lt;/a> and modified to work with iPXE.&lt;/p></description></item><item><title>2.5GbE PCIe NIC mod board</title><link>https://kittenlabs.de/projects/hacks/nanopi-r4s-2.5gbe-mod/</link><pubDate>Mon, 23 Oct 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/projects/hacks/nanopi-r4s-2.5gbe-mod/</guid><description>&lt;p>&lt;img src="render_mod_board_front.jpeg" width="49%" alt="The 2.5 GbE mod board"> &lt;img src="mod-pcb-bottom-featured_mod_front-small.jpeg" width="49%" alt="2.5 GbE mod board installed in NanoPi R4S">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>This tiny mod board can be used to add 2.5 Gigabit Ethernet to devices that have PCIe available internally. It can
+for example be used to replace an existing 1 Gigabit PCIe NIC in embedded devices, upgrading them to 2.5 GbE connectivity.&lt;br>
+The board is based on the cheap and well-supported RTL8125BG PCIe 2.5 GbE Ethernet controller.&lt;/p></description></item><item><title>Blinkekatze</title><link>https://kittenlabs.de/blinkekatze/</link><pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blinkekatze/</guid><description>&lt;figure class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 410px">
+&lt;img class="card-img-top" src="https://kittenlabs.de/blinkekatze/featured-blinkekatze_hu_8528057269992d99.jpg" width="400" height="300">
+&lt;figcaption class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+&lt;p>Wild Blinkekatzen in their natural habitat&lt;/p>
+&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Blinkekatzen are a replacement PCB for commercially available silicone LED lights.&lt;br>
+The lights usually contain a battery, some RGB LEDs and an optical diffuser in a soft cat shaped translucent silicone housing.
+The light emitted by the LEDs hits the diffuser and lights up the outer cat shaped silicone shell.&lt;/p></description></item><item><title>ThinkPad T41/T43 USB-C</title><link>https://kittenlabs.de/projects/usb-c-mods/t41-usb-c/</link><pubDate>Wed, 13 Sep 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/projects/usb-c-mods/t41-usb-c/</guid><description>&lt;p>&lt;img src="t41-usbc-full.jpg" width="49%" alt="USB-C to barrel jack adapter, USB-C side has a metal enclosure"> &lt;img src="t41-usbc-thinkpad.jpg" width="49%" alt="USB-C adapter plugged into ThinkPad T41">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>USB-C PD trigger board with integrated high-power Step-Down converter to 16V.&lt;br>
+This board will negotiate 20V, 5A (100W) against a USB-C PD power supply and convert the bus voltage into 16V.&lt;/p>
+&lt;p>This can be used to power various laptops like ThinkPad T41, T43, etc.&lt;/p>
+&lt;h2 id="electronics">Electronics&lt;a class="td-heading-self-link" href="#electronics" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;img src="featured-t41usbc.jpg" width="90%" alt="Close-up of ThinkPad USB-C charger PCB">
+&lt;h2 id="enclosure">Enclosure&lt;a class="td-heading-self-link" href="#enclosure" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>To ensure a full 100W can be delivered continuously a bit of cooling is required.&lt;br>
+For this project cooling is provided though a SLM printed stainless steel enclosure.
+Good thermal transfer is ensured by a 1mm thick thermal pad placed on the bottom of the PCB.&lt;br>
+As a bonus the case also provides a super sturdy strain relief clamping the downstream cable firmly in place.&lt;/p></description></item><item><title>HomeSwitch 4</title><link>https://kittenlabs.de/homeswitch-4/</link><pubDate>Fri, 28 Jul 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/homeswitch-4/</guid><description>&lt;img src="featured-homeswitch-4.png" width="90%" alt="Rendering of KittenLabs HomeSwitch-4">
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>HomeSwitch-4 is a small, low-cost, open hardware, USB-C powered 4-port Gigabit ethernet switch, running OpenWRT.&lt;br>
+It&amp;rsquo;s VLAN-capable and can handle simple VPN and routing applications (CPU connected via 100 MBit/s).&lt;br>
+It uses a cheap &lt;a href="https://linux-sunxi.org/V3s" target="_blank">Allwinner V3s&lt;/a> SoC (Cortex A7, 64MB DDR2) and a Realtek RTL8367RB switch chipset.&lt;/p>
+&lt;p>The design is optimized for automated assembly.&lt;/p>
+&lt;h2 id="features">Features&lt;a class="td-heading-self-link" href="#features" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>OpenWRT managment&lt;/li>
+&lt;li>Front &amp;amp; rear USB-C power inputs (redundant power inputs)&lt;/li>
+&lt;li>I2C and UART connectivity&lt;/li>
+&lt;li>PoE add-on board capability (not designed yet)&lt;/li>
+&lt;/ul>
+&lt;h2 id="openwrt">OpenWRT&lt;a class="td-heading-self-link" href="#openwrt" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;img src="overview.png" alt="Screenshot of OpenWRT on KittenLabs HomeSwitch-4">
+&lt;img src="switch.png" alt="Screenshot of OpenWRTs Switch configuration page on KittenLabs HomeSwitch-4">
+&lt;h2 id="links">Links&lt;a class="td-heading-self-link" href="#links" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/TobleMiner/OpenHomelabSwitch" target="_blank">Hardware&lt;/a>: KiCAD design files&lt;/li>
+&lt;/ul></description></item><item><title>DC UPS (Lithium)</title><link>https://kittenlabs.de/dc-ups/</link><pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/dc-ups/</guid><description>&lt;figure class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 810px">
+&lt;img class="card-img-top" src="https://kittenlabs.de/dc-ups/featured-front_hu_adeaf39bc3ad0a71.jpg" width="800" height="384">
+&lt;/figure>
+&lt;figure class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 810px">
+&lt;img class="card-img-top" src="https://kittenlabs.de/dc-ups/rear_hu_d4ca91e195ae4a03.jpeg" width="800" height="384">
+&lt;/figure>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>DC UPS is a lithium battery-powered uninterruptible power supply, which can provide backup power to devices like routers, switches, modems, single board computers, etc.&lt;/p>
+&lt;p>In contrast to commercially available UPSes, it uses off-the-shelf 18650 Li-Ion cells and outputs DC voltage directly.&lt;br>
+This is significantly more efficient than providing AC power through an inverter.&lt;/p></description></item><item><title>OLED nametag</title><link>https://kittenlabs.de/oled-nametag/</link><pubDate>Sat, 03 Jun 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/oled-nametag/</guid><description>&lt;img src="featured-badge_main_screen_small.webp" width="60%" alt="OLED nametag">
+&lt;h2 id="features">Features&lt;a class="td-heading-self-link" href="#features" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>Bright, sunlight readable OLED display&lt;/li>
+&lt;li>Infinity constrast ratio&lt;/li>
+&lt;li>Support for GIF animations&lt;/li>
+&lt;li>WLAN AP support&lt;/li>
+&lt;li>Web interface for management of animations&lt;/li>
+&lt;li>Automatic brightness adjustment&lt;/li>
+&lt;li>8h+ runtime&lt;/li>
+&lt;/ul>
+&lt;h2 id="links">Links&lt;a class="td-heading-self-link" href="#links" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/TobleMiner/oled-nametag" target="_blank">Hardware&lt;/a>: KiCAD design files&lt;/li>
+&lt;li>&lt;a href="https://github.com/TobleMiner/oled-nametag-firmware" target="_blank">Firmware&lt;/a>: ESP-IDF source code&lt;/li>
+&lt;/ul></description></item><item><title>Thermal camera macro</title><link>https://kittenlabs.de/thermal-macro-adapter/</link><pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/thermal-macro-adapter/</guid><description>&lt;img src="featured-8b75dd6d-f493-413d-9426-ec7b0068ed7c.jpg" width="60%" alt="Thermal camera, with a macro lens attached">
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>3D-printable adapter, which fits into commercial thermal cameras and adds a 18mm ZnSe CO2 laser lens to the optical path.&lt;br>
+This greatly improves the imaging quality on small electronics / SMD parts.&lt;/p>
+&lt;h2 id="before--after">Before / After&lt;a class="td-heading-self-link" href="#before--after" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Sample photos of PCB with 0603 LEDs:&lt;/p>
+&lt;p>&lt;img src="9a341f64-8a87-4647-a011-e14191828b1a.jpg" alt="Thermal image, without macro lens, blurry picture"> &lt;img src="edc11cb9-7a39-4f95-b65c-a62494731fdb.jpg" alt="Thermal image, with macro lens, individual LEDs visible">&lt;/p>
+&lt;h2 id="internal-mounting">Internal mounting&lt;a class="td-heading-self-link" href="#internal-mounting" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>7 small rod magnets are used to snap the lens into the camera magnetically.&lt;br>
+The lens to be easily removed for operation at regular focus distances.&lt;/p></description></item><item><title>LPT printer emulator</title><link>https://kittenlabs.de/esp32-virtualprinter/</link><pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/esp32-virtualprinter/</guid><description>&lt;p>&lt;img src="featured-IMG_7043.JPG" width="49%" alt="ESP32 devboard, connected with wires to a LPT breakout"> &lt;img src="IMG_7044.JPG" width="49%" alt="ESP32 devboard, wires to a LPT breakout, different angle">&lt;/p>
+
+
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Warning:&lt;/h4>
+
+ While this project does work and has been tested against a number of devices, the firmware is &lt;em>very&lt;/em> quick &amp;amp; dirty with hardcoded parameters and missing error handling. Use in production environments is discouraged.
+
+&lt;/div>
+
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Old computers, machines and test equipment often expect printers to be directly connected via a parallel port / LPT / IEEE 1284.
+In the modern day, this is impractical. Having a single printer for each device is expensive, takes up a lot of space and they need to be in physical proximity.&lt;br>
+It might also be preferrable to get a virtual printout as a .pdf file instead of a physical piece of paper.&lt;/p></description></item><item><title>PC104 ISA adapter</title><link>https://kittenlabs.de/pc104-isa-adapter/</link><pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/pc104-isa-adapter/</guid><description>&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>These mechanical adapter PCBs allow the use of PC104 and Vortex86DX X-ISA single board computers on an ISA backplane.&lt;br>
+Such adapters are available commercially for industrial use at extreme prices (100$+), for simple passive adapters.&lt;/p>
+&lt;h2 id="pc104-adapter">PC104 adapter&lt;a class="td-heading-self-link" href="#pc104-adapter" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>&lt;img src="featured-pc104.jpeg" width="49%" alt="PC104 to ISA backplane adapter PCB, with AMD PC104 module mounted"> &lt;img src="pc104i.jpeg" width="49%" alt="Same PC104 to ISA backplane adapter PCB, different angle">&lt;/p>
+&lt;h2 id="vortex86dx-adapter">Vortex86DX adapter&lt;a class="td-heading-self-link" href="#vortex86dx-adapter" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>&lt;img src="vortex.jpeg" width="49%" alt="Vortex86DX to ISA adapter"> &lt;img src="vortexi.jpeg" width="49%" alt="Vortex86DX to ISA adapter installed in a PC case on an ISA backplane">&lt;/p></description></item><item><title>Palm IIIc USB-C</title><link>https://kittenlabs.de/projects/usb-c-mods/palm-iiic-usb-c/</link><pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/projects/usb-c-mods/palm-iiic-usb-c/</guid><description>&lt;p>&lt;img src="palm.jpeg" width="49%" alt="Palm IIIc with USB-C charging cable"> &lt;img src="featured-palmback.jpeg" width="49%" alt="Backside of Palm IIIc with USB-C adapter PCB">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>A USB-C sync and charging adapter for the Palm serial dock connector.&lt;/p>
+&lt;h2 id="problems-with-other-adapters">Problems with other adapters&lt;a class="td-heading-self-link" href="#problems-with-other-adapters" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>A common problem with other adapters is that they often require a hardware RS-232 serial port,
+making use of an additional adapter with modern hardware necessary. There was also a USB-equipped
+docking station available but that one is very large, too. Also it has only USB-A so strictly
+speaking there is still an adapter required for use with many modern devices.&lt;br>
+USB-C all the things!&lt;/p></description></item><item><title>OtterCast</title><link>https://kittenlabs.de/projects/network/ottercast/</link><pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/projects/network/ottercast/</guid><description/></item><item><title>Gigaset DECT debug adapter</title><link>https://kittenlabs.de/gigaset-debug-adapter/</link><pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/gigaset-debug-adapter/</guid><description>&lt;img src="featured-Gigaset-Debug-Adapter.webp" width="30%" alt="Gigaset Debug Adapter">
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Gigaset-Debug-Adapter can be used with many Gigaset DECT phone models to access the internal UART.&lt;br>
+It&amp;rsquo;s basically a 1.8V USB-&amp;gt;UART converter, with switchable strapping logic and 3V step-down converter.&lt;/p>
+&lt;p>The device fits into the battery tray and mechanically emulates 2 AAA batteries.&lt;/p>
+&lt;p>The &lt;a href="https://github.com/TobleMiner/dialog-cr16c-uart-boot" target="_blank">dialog-cr16c-uart-boot&lt;/a> bootloader can be used to upload a stub to the phone through the boot ROM and access the SPI NOR flash chip.&lt;/p></description></item><item><title>M.2 NVMe -> miniPCIe</title><link>https://kittenlabs.de/m2-nvme-to-minipcie-adapter/</link><pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/m2-nvme-to-minipcie-adapter/</guid><description>&lt;img src="featured-populated_pcb_top_rev1.0.jpg" width="60%" alt="MiniPCIe to M.2 Key M adapter PCB">
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>This mechanical adapter allows older devices (like the popular apu2 SBCs) to use modern M.2 NVMe storage.&lt;/p>
+&lt;h2 id="usage">Usage&lt;a class="td-heading-self-link" href="#usage" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>2 adapters installed in a PC Engines apu2 with Samsung PM991 NVMe SSDs:&lt;/p>
+&lt;img src="apu_with_two_adapters.jpg" width="90%" alt="2 NVMe SSDs installed in 2 MiniPCIe->M.2 adapters in an APU2">
+&lt;h2 id="links">Links&lt;a class="td-heading-self-link" href="#links" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/TobleMiner/M.2-NVMe-SSD-to-miniPCIe-adapter" target="_blank">Hardware&lt;/a>: KiCAD design files&lt;/li>
+&lt;/ul></description></item><item><title>Analog floppy synthesizer</title><link>https://kittenlabs.de/analog-floppy-synth/</link><pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/analog-floppy-synth/</guid><description>&lt;video width="90%" controls>
+ &lt;source src="popcorn.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+&lt;/video>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>3.5&amp;quot; floppy disks hold information by storing them magnetically on 80 different tracks (effectively circles) across the media.
+A stepper motor moves a read/write head across the media and can select which track is being accessed.&lt;/p>
+&lt;p>In normal computer usage, the tracks are being formatted/modulated with modified frequency modulation (MFM) to store digital data onto these tracks.&lt;/p></description></item><item><title>Typewriter Teletype</title><link>https://kittenlabs.de/sq-1000/</link><pubDate>Sun, 07 Aug 2022 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/sq-1000/</guid><description>&lt;p>&lt;img src="featured-IMG_4872.JPG" width="49%" alt="Commodore SQ-1000 typewriter, with printout of a connection to TECS BBS"> &lt;img src="IMG_4819.JPG" width="49%" alt="Internals of a Commodore SQ-1000 typewriter, small PCB on the bottom left">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Samsung / Commodore SQ-1000 electronic typewriters can be modified to work as a teletype terminal.
+They use a simple 8bit microcontroller to scan the keyboard matrix and do the printing itself.&lt;/p>
+&lt;p>The keyboard was originally attached using a flat-flex connector directly to the mainboard.
+The connector was unsoldered and connected to an Arduino microcontroller, which emulates the keyboard matrix.
+Another arduino is connected to the keyboard and scans the matrix.&lt;/p></description></item><item><title>SolarCamPi</title><link>https://kittenlabs.de/solarcampi/</link><pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/solarcampi/</guid><description>&lt;p>&lt;img src="IMG_6061.jpg" width="49%" alt="SolarCamPi RevB PCB, mounted on a Raspberry Pi Zero"> &lt;img src="IMG_6068.jpg" width="49%" alt="SolarCamPi PCB backside, with ATmega328 processor">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>SolarCamPi is an off-grid webcam solution, that can take a picture using a Raspberry Pi Camera or a USB webcam every 5 minutes and send the image over a long-distance WiFi link.&lt;/p>
+&lt;p>Using a very specialised Linux image on the Raspberry Pis SD card, booting, taking a picture and sending it over WiFi can be done in under 15 seconds. This allows the Raspberry Pi to be powered off most of the time, saving energy.&lt;/p></description></item><item><title>Palm IIIc LED backlight</title><link>https://kittenlabs.de/palm-iiic-led/</link><pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/palm-iiic-led/</guid><description>&lt;img src="featured-colors_modded.jpeg" width="49%" alt="Palm IIIc modded with LED backlight, vibrant colors">
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>A replacement LED backlight for the popular Palm IIIc handheld computers (&amp;ldquo;PDAs&amp;rdquo;) of the early 00s.&lt;br>
+The original CCFL backlight (high voltage fluorescent tubes in a portable device!) uses a lot of power for very little brightness.&lt;/p>
+&lt;p>This mod can be used replace broken/worn out CCFL tubes in a Palm handheld.&lt;/p>
+&lt;h2 id="modification">Modification&lt;a class="td-heading-self-link" href="#modification" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;img src="mainboard_modded.jpeg" width="49%" alt="Palm IIIc logic board, with modifications"> 
+&lt;h2 id="pcbs">PCBs&lt;a class="td-heading-self-link" href="#pcbs" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;img src="pcb_top.png" width="90%" alt="CCFL replacement PCB, 3d rendering"> 
+&lt;img src="pcb_bottom.png" width="90%" alt="CCFL replacement PCB, 3d rendering"> 
+&lt;h2 id="links">Links&lt;a class="td-heading-self-link" href="#links" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/TobleMiner/Palm-IIIc-CCFL-led-retrofit" target="_blank">Hardware&lt;/a>: KiCAD design files&lt;/li>
+&lt;/ul></description></item><item><title>IrDA to RS232</title><link>https://kittenlabs.de/irda-rs232/</link><pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/irda-rs232/</guid><description>&lt;p>&lt;img src="IMG_8320.jpg" width="49%" alt="IrDA to RS232 PCB, with RS232 connector visible"> &lt;img src="featured-IMG_3972.JPG" width="49%" alt="IrDA to RS232 PCB, connected to an RS232 cable, green LED lit, Palm Tungsten T3 showing Hello World">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>A small PCB, which can receive RS232 over IrDA/IrCOMM (for example from Palm PDAs, Nokia phones, old laptops) and relay it to a RS232 device.&lt;/p>
+&lt;h2 id="modded-isdn-terminal-adapter">Modded ISDN terminal adapter&lt;a class="td-heading-self-link" href="#modded-isdn-terminal-adapter" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>This ELSA MicroLink ISDN terminal adapter was modified to include such a IrDA adapter PCB.&lt;br>
+It can now be used wirelessly from a Palm PDA to sync data without having to connect it to a PC.&lt;/p></description></item><item><title>RGB LED nametag</title><link>https://kittenlabs.de/rgb-led-nametag/</link><pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/rgb-led-nametag/</guid><description>&lt;video width="60%" controls muted autoplay>
+ &lt;source src="rgbled.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+&lt;/video>
+&lt;h2 id="hardware">Hardware&lt;a class="td-heading-self-link" href="#hardware" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;img src="featured-pcb_back.png" width="70%" alt="KiCad 3d rendering of RGB nametag PCB"> 
+&lt;h2 id="specs">Specs&lt;a class="td-heading-self-link" href="#specs" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>1x STM32F7 taking care of power management, USB and display multiplexing&lt;/li>
+&lt;li>1x ESP32 Pico D4 providing a web interface to build and store animations&lt;/li>
+&lt;li>20x HC595 shift registers for row and column control&lt;/li>
+&lt;li>768x Tiny 1x1mm RGB LEDs arranged in 1.7mm pitch grid&lt;/li>
+&lt;/ul>
+&lt;h2 id="features">Features&lt;a class="td-heading-self-link" href="#features" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>only 84mm wide and 29mm tall&lt;/li>
+&lt;li>WLAN enabled&lt;/li>
+&lt;li>48x16 glorious RGB led pixels with more than 16 million colors each&lt;/li>
+&lt;li>Powerful ARM Cortex M7 and Xtensa 32bit dual core&lt;/li>
+&lt;li>3MB of onboard data storage&lt;/li>
+&lt;/ul>
+&lt;h2 id="links">Links&lt;a class="td-heading-self-link" href="#links" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/TobleMiner/RGB-led-nametag" target="_blank">Hardware (Nametag)&lt;/a>: KiCAD design files&lt;/li>
+&lt;li>&lt;a href="https://github.com/TobleMiner/16x16-RGB-led-panel" target="_blank">Hardware (16x16 matrix)&lt;/a>: KiCAD design files&lt;/li>
+&lt;/ul></description></item><item><title>Five meter LED wall</title><link>https://kittenlabs.de/led-wall/</link><pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/led-wall/</guid><description>&lt;p>&lt;img src="featured-IMG_2306.JPG" width="49%" alt="LED wall, giving off white light on a foggy night"> &lt;img src="IMG_2298.JPG" width="49%" alt="Raspberry Pi 4, 3 STM32 boards">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>At the Hacken Open Air 2021 (Gifhorn, Germany) event, this 5m by 3m large LED display was built.&lt;br>
+It consists of 50 individual LED strings with 50 WS2812 LEDs each (50x50 pixels).&lt;/p>
+&lt;p>A central Raspberry Pi feeds 3 seperate &lt;a href="https://github.com/TobleMiner/STM32-RedPill" target="_blank">STM32F722&lt;/a> via UART. These then generate the pixel data for the individual chains of LEDs.
+Each LED chain has it&amp;rsquo;s own 24V -&amp;gt; 5V buck regulator.&lt;/p></description></item><item><title>ATAPI Audio-CD player</title><link>https://kittenlabs.de/atapimega/</link><pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/atapimega/</guid><description>&lt;p>&lt;img src="featured-atapimega.jpeg" width="49%" alt="ATAPIMega ATAPI Audio-CD Player, with 2x16 LCD screen"> &lt;img src="atapimega2.jpeg" width="49%" alt="ATAPIMega backside, with rainbow IDE cables">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>ATAPIMega is a hardware project which allows regular (P)ATA CD/DVD drives to be used as a standalone Audio-CD player.&lt;/p>
+&lt;p>The PCB accepts (regulated!) 12V DC power via a 5.5mm/2.1mm barrel jack and outputs 12V/5V for the CD drive.&lt;br>
+The microcontroller is an ATmega2560 (Arduino Mega-compatible), chosen for 5V-I/O voltage and high pin-count (and bad availability of STM32&amp;rsquo;s in the component shortage of 2021).&lt;/p></description></item><item><title>TCP/IP for Casio calculators</title><link>https://kittenlabs.de/fxip/</link><pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/fxip/</guid><description>&lt;p>&lt;img src="menu.jpeg" width="49%" alt="Casio calculator menu, with fxIP app"> &lt;img src="featured-webserver.jpeg" width="49%" alt="Casio calculators, showing fxIP start screen">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>fxIP is a port of uIP 1.0 to Casio fx-9750/fx-9860 calculators.&lt;br>
+It requires calculators with a SuperH SH4a CPU, needs quite a bit of SRAM.&lt;/p>
+&lt;p>fxIP connects to IP networks via SLIP encapsulation over the 3-pin 2.5mm 5V serial port/UART.&lt;/p>
+&lt;h2 id="webserver">Webserver&lt;a class="td-heading-self-link" href="#webserver" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>fxIP was used to serve a demo page to several thousands of visitors.
+The project was featured on Golem and Hacker News and actually survived the flood of incoming traffic (with considerable slowdown, of course).&lt;/p></description></item><item><title>eMMC (micro)SD card</title><link>https://kittenlabs.de/emmc-sd-card/</link><pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/emmc-sd-card/</guid><description>&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>These PCBs contain eMMC storage ICs, which are electrically compatible with SD and microSD interfaces.&lt;br>
+They use a different protocol and (depending on the type of eMMC IC used) can be more reliable and faster.&lt;/p>
+&lt;p>Many (but not all!) SD card slots/readers can also handle eMMC.&lt;/p>
+&lt;p>These adapters can be used in devices like Raspberry Pis, APUs, etc. to provide stable eMMC storage through the SD slot.&lt;/p></description></item><item><title>ISA8019 NIC</title><link>https://kittenlabs.de/isa8019/</link><pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/isa8019/</guid><description>&lt;p>&lt;img src="featured-pcb.jpeg" width="49%" alt="RTL8019 ISA Ethernet card"> &lt;img src="back.jpeg" width="49%" alt="Backside of RTL8019 ISA Ethernet card, with table describing jumper settings">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>ISA NE2000-compatible network card&lt;br>
+Using RTL8019 chipset, 10Base-T full duplex ethernet&lt;/p>
+&lt;p>Can be configured via jumpers, EEPROM or full ISA PnP.&lt;br>
+Compatible with 8-bit XT machines.&lt;/p>
+&lt;p>Optimized for automated assembly at JLC.&lt;/p>
+&lt;h2 id="plug--play">Plug &amp;amp; Play&lt;a class="td-heading-self-link" href="#plug--play" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;img src="pnp.jpeg" width="49%" alt="Screenshot of Award BIOS, showing a tbspace.de NE2000 Ethernet card.">
+&lt;h2 id="links">Links&lt;a class="td-heading-self-link" href="#links" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/Manawyrm/ISA8019" target="_blank">Hardware &amp;amp; Drivers&lt;/a>: KiCAD design files&lt;/li>
+&lt;/ul></description></item><item><title>Programmable logic in PHP</title><link>https://kittenlabs.de/phppld/</link><pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/phppld/</guid><description>&lt;p>&lt;img src="IMG_0066.JPG" width="49%" alt="LCD monitor, showing a pixelated rainbow PHP elephant"> &lt;img src="vga-photo-setup.jpg" width="49%" alt="Breadboard setup, connected to a VGA plug, Macronix flash IC visible">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Parallel ROMs (OTP-ROMs, EPROMs, EEPROMs, NOR flash, etc.) can be used as simple, programmable logic devices.&lt;br>
+They can be programmed to hold a lookup-table / bit stream, which will emulate logic functions (like 74-series logic) by responding to a certain pattern on the &amp;ldquo;input&amp;rdquo; (aka address lines) with a pre-calculated &amp;ldquo;output&amp;rdquo; (on the data lines).&lt;/p></description></item><item><title>ISA-over-USB</title><link>https://kittenlabs.de/isa-over-usb/</link><pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/isa-over-usb/</guid><description>&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>This project allows the use of ISA extension cards on a modern computer over a USB interface.&lt;br>
+The main project goal was to learn about the ISA bus, not to build a polished product.&lt;/p>
+
+
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">USB limitations&lt;/h4>
+
+ &lt;p>USB has inherent limits to the minimum latency, defined by the frame timing in the USB specification.&lt;br>
+This means that a USB 1.1 attached device will only ever be able to handle &lt;strong>1000 transfers per second&lt;/strong>.&lt;br>
+USB 2.0 increases this limit to 8000 transfers per second (125μs frame time), which is still way to slow for most applications.&lt;/p></description></item><item><title>FlexibleLOM PCIe adapter</title><link>https://kittenlabs.de/flexiblelom/</link><pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/flexiblelom/</guid><description>&lt;p>&lt;img src="featured-adapter.jpeg" width="49%" alt="FlexibleLOM adapter"> &lt;img src="installed.jpeg" width="49%" alt="FlexibleLOM adapter installed in PC">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>This passive adapter PCB allows the use of HP FlexibleLOM extension cards (like 10/40 GbE network cards) in regular PCIe slots.
+FlexibleLOM extension cards are available used at very low prices (due to them not being PCIe compatible, despite using the same physical slot).&lt;/p>
+&lt;h2 id="development-photos">Development photos&lt;a class="td-heading-self-link" href="#development-photos" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>For easier prototyping, a PCIe to 0.1&amp;quot; header PCB was designed:&lt;/p></description></item><item><title>Graphical 128x64px VFD</title><link>https://kittenlabs.de/mn12864k-vfd/</link><pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/mn12864k-vfd/</guid><description>&lt;p>&lt;img src="featured-cube.jpeg" width="49%" alt="MN12864K VFD, showing a cube"> &lt;img src="firstlight.jpeg" width="49%" alt="MN12864K VFD, showing random lines">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>This adapter board provides the required voltage level conversion, anode supply and filament bias voltages to run a Noritake MN12864K graphical vacuum fluorescent display.&lt;/p>
+&lt;h2 id="bad-apple">Bad Apple&lt;a class="td-heading-self-link" href="#bad-apple" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;iframe width="90%" style="aspect-ratio: 16 / 9;" src="https://www.youtube-nocookie.com/embed/lp6mTAZll1I?si=YIGc65DVEzQl238Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>&lt;/iframe>
+&lt;h2 id="links">Links&lt;a class="td-heading-self-link" href="#links" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/TobleMiner/vfd-breadboard-adapter" target="_blank">Breadboard adapter&lt;/a>: KiCAD design files&lt;/li>
+&lt;li>&lt;a href="https://github.com/TobleMiner/noritake_mn12864k_controller" target="_blank">STM32F7-based controller&lt;/a>: KiCAD design files&lt;/li>
+&lt;/ul></description></item><item><title>GPIO PATA/IDE on Linux</title><link>https://kittenlabs.de/pata-gpio/</link><pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/pata-gpio/</guid><description>&lt;p>&lt;img src="setup.jpeg" width="49%" alt="Raspberry Pi with PATA-GPIO adapter, connected to an IDE cable with both a hard drive and CD-ROM drive"> &lt;img src="featured-adapter.jpeg" width="49%" alt="PATA-GPIO adapter, passive, just swapping some wires, plugged into a Raspberry Pi">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>pata-gpio is a Linux kernel driver for GPIO bitbanged PATA (also known as ATA/ATAPI or IDE).&lt;br>
+Pin configuration can be set via device tree, the regular ATA framework is used.&lt;/p>
+&lt;p>IDE Primary/Secondary device support is implemented.&lt;/p></description></item><item><title>CMM2 PCB</title><link>https://kittenlabs.de/cmm2-clone/</link><pubDate>Wed, 29 Jul 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/cmm2-clone/</guid><description>&lt;img src="featured-pcb.jpeg" width="70%" alt="Colour Maximite 2 clone PCB">
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>The Colour Maximite 2 is a hobbyist computer, mimicking the home computers of the 80s,
+running BASIC.&lt;/p>
+&lt;p>Because the original PCB (and seperate STM32 devboard) were expensive and hard to obtain, we designed this machine-assembly ready PCB.&lt;/p>
+&lt;h2 id="wolfenstein">Wolfenstein&lt;a class="td-heading-self-link" href="#wolfenstein" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;video width="80%" controls>
+ &lt;source src="wolfenstein.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+&lt;/video>
+&lt;h2 id="linux-on-stm32-no-mmu">Linux on STM32 (no-MMU)&lt;a class="td-heading-self-link" href="#linux-on-stm32-no-mmu" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>tSYS managed to get Linux No-MMU on STM32 working.
+This setup actually uses the &lt;a href="https://kittenlabs.de/pata-gpio">pata-gpio&lt;/a> driver for its root filesystem.&lt;/p></description></item><item><title>NeonMatrix</title><link>https://kittenlabs.de/neonmatrix/</link><pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/neonmatrix/</guid><description>&lt;video width="60%" controls muted autoplay>
+ &lt;source src="neonmatrix.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+&lt;/video>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>The NeonMatrix 8x8 matrix uses common neon indicator bulbs to display simple graphics.&lt;br>
+They can be chained and controlled directly via SPI.&lt;/p>
+&lt;p>Operating voltage is about ~70V AC.&lt;br>
+The circuit is pretty dangerous, all neon bulbs have high voltages on their legs, the 74HC595 shift registers are floating at mains/AC potential.&lt;/p>
+&lt;h2 id="hardware">Hardware&lt;a class="td-heading-self-link" href="#hardware" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>&lt;img src="featured-neonmatrix.jpg" width="49%" alt="PCB, with 8x8 neon bulbs"> &lt;img src="electronics.jpg" width="49%" alt="PCB, with 595 shift registers, ESP32 next to it">&lt;/p></description></item><item><title>Pinebook Pro M.2 WiFi</title><link>https://kittenlabs.de/pinebook-pro-m2-wifi/</link><pubDate>Thu, 23 Apr 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/pinebook-pro-m2-wifi/</guid><description>&lt;img src="featured-front_pbp.jpg" width="60%" alt="Intel AX200 WiFi card installed in adapter PCB in a Pinebook Pro">
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>The M.2 A/E key adapter enables the use of M.2 WiFi cards in the Pinebook Pro Arm64 laptop.&lt;/p>
+&lt;p>This adapter was designed as a replacement for the available NVMe M.2 (M-key) adapter.&lt;br>
+It uses the same flat flex cable, mounting screws and mounting position.&lt;/p>
+&lt;h2 id="wifi-6-intel-ax200-speedtest">WiFi 6 (Intel AX200) speedtest&lt;a class="td-heading-self-link" href="#wifi-6-intel-ax200-speedtest" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;img src="pinem2_detail.jpg" width="60%" alt="Speedtest, showing 559 Mbit/s">
+&lt;h2 id="links">Links&lt;a class="td-heading-self-link" href="#links" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/TobleMiner/PBP-NGFF-A-E-adapter" target="_blank">Hardware&lt;/a>: KiCAD design files&lt;/li>
+&lt;/ul></description></item><item><title>Environmental sensor</title><link>https://kittenlabs.de/homebrew-environment/</link><pubDate>Sun, 26 Jan 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/homebrew-environment/</guid><description>&lt;p>&lt;img src="featured-IMG_7296.jpg" width="49%" alt="Environment sensor PCB"> &lt;img src="IMG_7338.jpeg" width="49%" alt="PCB mounted in a project box, with AA-sized lithium battery">&lt;/p>
+&lt;h2 id="what-is-it">What is it?&lt;a class="td-heading-self-link" href="#what-is-it" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>A cheap, low-cost HomeMatic-compatible temperature &amp;amp; humidity sensor.&lt;br>
+The design is optimized for automated assembly and does not need any manual (re-)work.&lt;/p>
+&lt;h2 id="technical-specs">Technical specs&lt;a class="td-heading-self-link" href="#technical-specs" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;ul>
+&lt;li>HomeMatic-compatible sensor&lt;/li>
+&lt;li>Input voltage: 3V (2x AA or 1x LS14500 lithium recommended)&lt;/li>
+&lt;li>Absolute maximum input voltage: 3.6V (don&amp;rsquo;t use LiIon or LiPo cells!)&lt;/li>
+&lt;li>Low idle/quiescence current: 3.2µA&lt;/li>
+&lt;li>Very long battery life (&amp;gt; 3 years)&lt;/li>
+&lt;li>Measurement every ~3 minutes&lt;/li>
+&lt;li>Accuracy: Humidity: ±2.0 %RH, Temperature: ±0.3 °C&lt;/li>
+&lt;li>Using ATmega328 (MCU), CC1101 (TRX), SHT21 (Sensor)&lt;/li>
+&lt;li>Optional BMP280 pressure sensor&lt;/li>
+&lt;li>Optional SMA footprint for external antenna&lt;/li>
+&lt;li>Extension header (UART, I2C, 1 GPIO)&lt;/li>
+&lt;li>Firmware updates via OTA&lt;/li>
+&lt;li>Running AskSin++ firmware&lt;/li>
+&lt;/ul>
+&lt;h2 id="operating-modes">Operating modes&lt;a class="td-heading-self-link" href="#operating-modes" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>There are several different operating modes which determine the sensor behaviour.&lt;br>
+Some add additional features and need a CCU addon to be compatible.&lt;/p></description></item><item><title>Marantz UD5007 power supply replacement</title><link>https://kittenlabs.de/blog/2025/11/26/marantz-ud5007-power-supply-replacement/</link><pubDate>Wed, 26 Nov 2025 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2025/11/26/marantz-ud5007-power-supply-replacement/</guid><description>&lt;p>We recently stumbled across a broken Marantz UD5007 Blu-ray/SA-CD/DVD/CD player for a really low price.&lt;br>
+The previous owner reported the power supply to be broken, and a professional repair service had given absurd quotes for troubleshooting/repair.&lt;/p>
+&lt;p>When plugged into the wall, the player would only blink the red standby LED indefinitely and never turn on/make any noises.&lt;/p>
+&lt;p>Making our lives a lot easier here, the full service manual, including schematics and a troubleshooting guide can be found online.&lt;br>
+I spent a bunch of time trying to diagnose the original switch-mode power supply (which is fairly simple), but due to lack of tools/equipment (away from our usual lab) I couldn&amp;rsquo;t get the original supply up-and-running again.&lt;/p></description></item><item><title>GPD Pocket 4 Speaker DSP</title><link>https://kittenlabs.de/blog/2025/04/06/gpd-pocket-4-speaker-dsp/</link><pubDate>Sun, 06 Apr 2025 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2025/04/06/gpd-pocket-4-speaker-dsp/</guid><description>&lt;h3 id="result">Result&lt;a class="td-heading-self-link" href="#result" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;iframe width="90%" style="aspect-ratio: 16 / 9;" src="https://www.youtube-nocookie.com/embed/wNm5xq_xw3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>&lt;/iframe>
+&lt;h3 id="motivation">Motivation&lt;a class="td-heading-self-link" href="#motivation" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;p>Modern speakers require a lot of DSP magic to sound as good as they do.&lt;br>
+Speakers traditionally needed to be built very carefully to achieve a very flat frequency response and as few artifacts as possible.&lt;/p>
+&lt;p>These days, many mobile devices like phones, laptops, etc. do a lot of digital signal processing in software in order to make tiny speakers output a lot of sound.&lt;br>
+Many different tricks are used, such as &lt;a href="https://github.com/chadmed/bankstown" target="_blank">psycho-acoustic bass enhancement&lt;/a>, limiters (allowing for higher power peaks) and &lt;a href="https://lsp-plug.in/?page=manuals&amp;amp;section=loud_comp_mono" target="_blank">volume-dependent equalization&lt;/a> (frequency response of human hearing is very volume-dependent).&lt;/p></description></item><item><title>Extreme Pi Boot Optimization</title><link>https://kittenlabs.de/blog/2024/09/01/extreme-pi-boot-optimization/</link><pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2024/09/01/extreme-pi-boot-optimization/</guid><description>&lt;h3 id="motivation">Motivation&lt;a class="td-heading-self-link" href="#motivation" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;p>A while ago, the &lt;a href="https://kittenlabs.de/solarcampi/">SolarCamPi&lt;/a> project, a off-grid solar-powered WiFi camera, was built.&lt;/p>
+&lt;p>In this project, a Raspberry Pi Zero 2 W is being booted into Linux, a picture is taken, WiFi connectivity is established and the Pi is shut down again (to save power).
+This repeats every couple of minutes to always deliver a fresh image to a cloud service.&lt;/p>
+&lt;p>&lt;img src="IMG_4607.jpg" width="49%" alt="Weatherproof enclosure, with 7.2Ah lead-gel battery and SolarCamPi inside"> &lt;img src="IMG_4629.jpg" width="49%" alt="Mast, with solar panel, WiFi antenna and SolarCamPi enclosure mounted to it, in nature">&lt;/p></description></item><item><title>WiFi auth with OsmoHLR/SIM cards</title><link>https://kittenlabs.de/blog/2024/08/31/wifi-auth-with-osmohlr/sim-cards/</link><pubDate>Sat, 31 Aug 2024 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2024/08/31/wifi-auth-with-osmohlr/sim-cards/</guid><description>&lt;h2 id="why">Why?&lt;a class="td-heading-self-link" href="#why" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Wireless networks can authenticate clients using a surprising number of different mechanisms.&lt;br>
+The typically used and most well known is WPA(2)-PSK (also called -Personal), which is the &amp;ldquo;classic&amp;rdquo; mechanism with a known passphrase.&lt;/p>
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access#EAP_extensions_under_WPA_and_WPA2_Enterprise" target="_blank">WPA-Enterprise&lt;/a> allows an access point to forward the authentication request to a RADIUS server.&lt;br>
+This radius server then uses the &lt;a href="https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol" target="_blank">Extensible Authentication Protocol (EAP)&lt;/a> to offer various authentication mechanisms like EAP-TTLS/PAP, etc.&lt;br>
+These can be used with TLS client certificates, username and password (against LDAP or other SSO mechanisms) or others.&lt;/p></description></item><item><title>Windows 11 tweaks &amp; usability improvements</title><link>https://kittenlabs.de/blog/2024/08/20/windows-11-tweaks-usability-improvements/</link><pubDate>Tue, 20 Aug 2024 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2024/08/20/windows-11-tweaks-usability-improvements/</guid><description>&lt;h2 id="why">Why?&lt;a class="td-heading-self-link" href="#why" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Sometimes using Windows is inevitable.&lt;br>
+Windows 11 has gotten pretty annoying with loads of weird default settings, ads, tracking and a general infantilization of users.&lt;/p>
+&lt;p>This is my personal collection of registry tweaks, which I apply to fresh Windows 11 installations to make the system more usable.&lt;/p>
+&lt;p>Most tweaks were either created by me personally or have a comment with a source/link.&lt;/p>
+&lt;p>You probably shouldn&amp;rsquo;t apply the whole file, instead read through it carefully, pick out the patches you like and then apply them manually.&lt;/p></description></item><item><title>Using custom domains as a Fediverse redirect</title><link>https://kittenlabs.de/blog/2024/05/28/using-custom-domains-as-a-fediverse-redirect/</link><pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2024/05/28/using-custom-domains-as-a-fediverse-redirect/</guid><description>&lt;h2 id="why">Why?&lt;a class="td-heading-self-link" href="#why" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Many people already use custom domains for their blog, e-mail, etc.&lt;br>
+As the format of e-mail and fediverse accounts is basically identical, it would be ideal to be able to find Fedi users via their &amp;ldquo;normal&amp;rdquo; &lt;a href="mailto:username@domain.tld">username@domain.tld&lt;/a> address:&lt;/p>
+&lt;img src="featured-redirect.jpg" width="49%" alt="iOS fediverse client, searching for sarah@kittenlabs.de">
+&lt;h2 id="background">Background&lt;a class="td-heading-self-link" href="#background" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>When searching for a specific account via the search function in (for example) Mastodon, the server executes a HTTP GET request like this:&lt;/p></description></item><item><title>25GBit/s on macOS &amp; iOS</title><link>https://kittenlabs.de/blog/2024/05/17/25gbit/s-on-macos-ios/</link><pubDate>Fri, 17 May 2024 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2024/05/17/25gbit/s-on-macos-ios/</guid><description>&lt;h2 id="macos-speed-test">macOS speed test&lt;a class="td-heading-self-link" href="#macos-speed-test" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;video width="90%" controls loop muted>
+ &lt;source src="macos25g.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+&lt;/video>
+&lt;h2 id="ios-speed-test">iOS speed test&lt;a class="td-heading-self-link" href="#ios-speed-test" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;video width="90%" controls loop muted>
+ &lt;source src="ipad10g.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+&lt;/video>
+&lt;h2 id="background-info">Background info&lt;a class="td-heading-self-link" href="#background-info" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Modern versions of macOS and iOS (starting with macOS Ventura/13) ship with NVIDIA/Mellanox ConnectX network drivers.
+AppleEthernetMLX5 is included by default and can be used with any NVIDIA/Mellanox ConnectX-4, 5 and 6 network card:&lt;/p></description></item><item><title>Manage RDP certificates on Windows using SSH</title><link>https://kittenlabs.de/blog/2023/12/15/manage-rdp-certificates-on-windows-using-ssh/</link><pubDate>Fri, 15 Dec 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2023/12/15/manage-rdp-certificates-on-windows-using-ssh/</guid><description>&lt;p>Windows can use normal TLS certificates to authenticate RDP sessions. This gets rid of the annoying RDP certificate warnings:
+&lt;img src="https://kittenlabs.de/blog/2023/12/15/manage-rdp-certificates-on-windows-using-ssh/featured-rdp-get.png" alt="RDP certificate warning dialog">&lt;/p>
+&lt;p>Using real, signed certificates for RDP offers a way to enhance security (preventing man-in-the-middle attacks) and reduce alert fatigue.&lt;/p>
+
+
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Note:&lt;/h4>
+
+ If you&amp;rsquo;re using ACME/Let&amp;rsquo;s Encrypt locally on Windows, skip all SSH stuff and just take some inspiration from the &lt;a href="#certimportps1">&lt;code>certimport.ps1&lt;/code>&lt;/a> file.
+
+&lt;/div>
+
+&lt;h3 id="prerequisites">Prerequisites&lt;a class="td-heading-self-link" href="#prerequisites" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;ul>
+&lt;li>SSH-capable machine with valid certificates (self-signed, Let&amp;rsquo;s Encrypt, etc.)&lt;/li>
+&lt;li>SSH private/public key pair on that machine&lt;/li>
+&lt;li>Modern Windows installation (Windows 11 Pro was tested)&lt;/li>
+&lt;li>Hostnames for the Windows machine&lt;/li>
+&lt;/ul>
+&lt;h3 id="install-openssh-server">Install OpenSSH server&lt;a class="td-heading-self-link" href="#install-openssh-server" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;p>Read through the following help pages:&lt;/p></description></item><item><title>Reviving a dead Gigabyte MJ11-EC1 mainboard</title><link>https://kittenlabs.de/blog/2023/11/16/reviving-a-dead-gigabyte-mj11-ec1-mainboard/</link><pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2023/11/16/reviving-a-dead-gigabyte-mj11-ec1-mainboard/</guid><description>&lt;p>Used Gigabyte MJ11-EC1 mainboards are available for low prices on ebay and at other hardware vendors.&lt;br>
+After buying a couple of MJ11-EC1 boards for a homelab cluster project, I ended up with a dead board.&lt;br>
+The server would turn on, BMC was reachable and could be used, but the server itself would never POST.&lt;br>
+There were no POST codes, no beeps and no signs of life whatsoever.&lt;/p>
+&lt;p>Memory was tested (and OK), still swapped for a different DIMM, no change. CPU Vcore was present and stable.&lt;br>
+Reflashing the BIOS image with the BMC didn&amp;rsquo;t change the behaviour either.&lt;/p></description></item><item><title>Dead TROTEC PAC2000S air conditioner</title><link>https://kittenlabs.de/blog/2022/08/24/dead-trotec-pac2000s-air-conditioner/</link><pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2022/08/24/dead-trotec-pac2000s-air-conditioner/</guid><description>&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Safety note&lt;/h4>
+
+ The A/C is being powered by a ST VIPER12A switch mode supply. This type of supply is &lt;em>not&lt;/em> mains-isolated, so all voltages (even the low voltages) are referenced to mains voltage.&lt;br>
+Don&amp;rsquo;t work on this device while plugged in without being aware of the implications of this!&lt;br>
+&lt;strong>Every metal piece, every wire, every component inside can be at deadly voltage potentials against mains earth!&lt;/strong>&lt;br>
+Don&amp;rsquo;t connect any mains-referenced measurement equipment (like oscilloscopes), as &lt;a href="https://www.youtube.com/watch?v=sI5Ftm1-jik&amp;amp;t=140s" target="_blank">they&amp;rsquo;ll create a short-circuit and damage things&lt;/a>.
+
+&lt;/div>
+
+&lt;p>As &lt;a href="https://en.wikipedia.org/wiki/Murphy%27s_law" target="_blank">Murphy&amp;rsquo;s law&lt;/a> dictates, my portable A/C unit suddenly died while in operation on the hottest day of the summer.&lt;br>
+No smoke, no explosion, just suddenly turned off and was then completely dead. No lights, no beeps, nothing.&lt;/p></description></item><item><title>PlutoSDR standalone ADS-B FR24 feeder</title><link>https://kittenlabs.de/blog/2021/12/01/plutosdr-standalone-ads-b-fr24-feeder/</link><pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2021/12/01/plutosdr-standalone-ads-b-fr24-feeder/</guid><description>&lt;p>PlutoSDR (or ADALM-PLUTO) is an inexpensive SDR (software-defined radio) platform by Analog Devices.
+It uses a Xilinx Zynq Z-7010 FPGA, which integrates an 32bit ARMv7 core together with the FPGA functionality.&lt;/p>
+&lt;p>This 32bit ARMv7 CPU runs Linux and is normally (when used as an SDR via USB) just passing libiio messages to the host computer.&lt;/p>
+&lt;p>The USB port on the PlutoSDR can also be used as a host/OTG port instead. By connecting a USB-to-Ethernet converter and a USB flash drive (or other form of storage), the PlutoSDR can be a standalone Linux machine, just like a Raspberry Pi (or similar single board computer).&lt;/p></description></item><item><title>Micro8088 build log</title><link>https://kittenlabs.de/blog/2020/10/29/micro8088-build-log/</link><pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2020/10/29/micro8088-build-log/</guid><description>&lt;h3 id="overview">Overview&lt;a class="td-heading-self-link" href="#overview" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;p>This is a build log of an IBM XT-compatible system called &amp;ldquo;&lt;a href="https://github.com/skiselev/micro_8088" target="_blank">Micro 8088&lt;/a>&amp;rdquo;, designed by Sergey Kiselev.&lt;/p>
+&lt;p>&lt;img src="IMG_0005.JPG" width="49%" alt="micro8088 CPU card, sitting in a ISA backplane"> &lt;img src="IMG_0010.JPG" width="49%" alt="Side view onto full micro8088 setup, with sound and video cards">&lt;/p>
+&lt;p>&lt;strong>micro8088 CPU card specifications:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>NEC V20 CPU (4.77 MHz, 7.16 MHz and 9.54 MHz CPU frequencies)&lt;/li>
+&lt;li>Faraday FE2010A chipset&lt;/li>
+&lt;li>640 KiB RAM (+ XMS)&lt;/li>
+&lt;li>PS/2 keyboard interface&lt;/li>
+&lt;li>8bit ISA interface&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Other ISA cards in the system:&lt;/strong>&lt;/p></description></item><item><title>OpenWRT als WireGuard-Appliance</title><link>https://kittenlabs.de/blog/2020/06/21/openwrt-als-wireguard-appliance/</link><pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2020/06/21/openwrt-als-wireguard-appliance/</guid><description>&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Language note&lt;/h4>
+
+ This post was written in a hurry at the start of the Covid-19 pandemic in 2020 as a way to get people (and their offices) usable for remote work quickly. This is also the reason why it&amp;rsquo;s written in German language. Some of the information is already outdated (as of 2024), some of the UIs have changed since, but the general idea is still valid.&lt;br>
+Some of the IP addresses listed in the screenshots might also not reflect the correct configurations.
+
+&lt;/div>
+
+&lt;p>OpenWRT ist eine ideale Grundlage um einen VPN-Endpunkt für das WireGuard-VPN-Protokoll aufzubauen.&lt;br>
+Die Software lässt sich auf verschiedensten Plattformen für die verschiedensten Anforderungen installieren.&lt;br>
+Es gibt OpenWRT-Images für viele Geräte, z.B. Router, Raspberry Pis und auch als Image für normale x86-Rechner&lt;br>
+(und damit auch für virtuelle Maschinen, z.B. auf einer QNAP-NAS).&lt;/p></description></item><item><title>GPS locked Raspberry Pi</title><link>https://kittenlabs.de/blog/2019/06/23/gps-locked-raspberry-pi/</link><pubDate>Sun, 23 Jun 2019 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2019/06/23/gps-locked-raspberry-pi/</guid><description>&lt;p>&lt;img src="featured-IMG_5696.JPG" width="49%" alt="Raspberry Pi 1 PCB backside, crystal removed, coax connnected instead"> &lt;img src="IMG_5727.JPG" width="49%" alt="Oscilloscope, showing sine waveform">&lt;/p>
+&lt;p>For highly-accurate timekeeping or signal generation with a Raspberry Pi, it&amp;rsquo;s possible to replace the on-board crystal with an external reference input.
+On the Raspberry Pi 1 the main system oscillator is a 19.2 MHz quarz crystal.&lt;/p>
+&lt;p>In order to be able to feed a square wave input signal (like the output from the GPS-reference or a u-blox NEO module), a (quick-and-dirty) low-pass filter was built.
+It uses 47pF capacitor and 1µH inductor.&lt;/p></description></item><item><title>Es'hail-2 transceiver setup</title><link>https://kittenlabs.de/blog/2019/04/27/eshail-2-transceiver-setup/</link><pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2019/04/27/eshail-2-transceiver-setup/</guid><description>&lt;p>QO-100, also known as &lt;a href="https://amsat-dl.org/p4-a-nb-transponder-bandplan-and-operating-guidelines/" target="_blank">Es&amp;rsquo;hail-2&lt;/a> is a geostationary amateur radio satellite.&lt;br>
+It can be used by large parts of the world, including Europe, Africa, (parts of) South America and Asia.&lt;/p>
+&lt;p>The satellite works as a linear transponder. It receives a specific range in the 2.4 GHz (13cm) band and sends it back to earth on 10 GHz (3cm).&lt;/p>
+&lt;p>In order to generate such a 2.4 GHz signal and transmit it to the satellite conventional radio technology with transverters could be used. I chose a different route and planned a fully software-defined setup.&lt;br>
+This has many advantages:&lt;br>
+— Cost (PlutoSDRs can be bought for ~120€)&lt;br>
+— Low power consumption (laptop, SDR, amplifiers), ideal for portable usage&lt;br>
+— No SSB transceiver needed&lt;br>
+— Software DSP processing for very clean signals&lt;br>
+— I/Q samples can be transmitted over Ethernet instead of running long, lossy runs of coaxial cable.&lt;/p></description></item><item><title>ThinkPad PowerSeries 820</title><link>https://kittenlabs.de/blog/2019/04/23/thinkpad-powerseries-820/</link><pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2019/04/23/thinkpad-powerseries-820/</guid><description>&lt;p>One of the rarest ThinkPads is the ThinkPad PowerSeries 820, running a Power PC 603e at 100 MHz.&lt;br>
+It&amp;rsquo;s code name is Wiltwick, the type designator (used in Windows) is 6040.&lt;br>
+It uses an 800x600 TFT, WD90C24A/G10 graphics and has a 1.2 GB SCSI HDD.&lt;br>
+48 MiB RAM is the maximum configuration.&lt;/p>
+&lt;p>&lt;img src="tp820/featured-IMG_5364.JPG" width="49%" alt="ThinkPad 820, next to a Nakamichi SCSI CD-ROM drive"> &lt;img src="tp820/IMG_5373.JPG" width="49%" alt="ThinkPad 820 internals">
+&lt;img src="tp820/IMG_5374.JPG" width="49%" alt="ThinkPad 820 keyboard"> &lt;img src="tp820/IMG_5376.JPG" width="49%" alt="ThinkPad 820, closed">
+&lt;img src="tp820/IMG_5379.JPG" width="49%" alt="Connectors on the backside of a ThinkPad 820"> &lt;img src="tp820/IMG_5395.JPG" width="49%" alt="Connectors on the right side of the ThinkPad 820, PCMCIA, PS/2, power switch">&lt;/p></description></item><item><title>PlutoSDR clock input</title><link>https://kittenlabs.de/blog/2019/01/05/plutosdr-clock-input/</link><pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2019/01/05/plutosdr-clock-input/</guid><description>&lt;p>&lt;strong>Warning!&lt;/strong> This modification &lt;a href="https://twitter.com/robinlgetz/status/1112011240770072579" target="_blank">voids the warranty&lt;/a> and can operate the transceiver outside of it&amp;rsquo;s &lt;a href="https://www.analog.com/media/en/technical-documentation/data-sheets/AD9364.pdf" target="_blank">absolute maximum ratings&lt;/a>!&lt;/p>
+&lt;img src="featured-IMG_4119.jpg" width="49%" alt="PlutoSDR with 3rd SMA jack for clock input"> 
+&lt;p>The PlutoSDR has an internal XO (&lt;a href="https://ez.analog.com/cfs-file/__key/telligent-evolution-components-attachments/00-323-01-00-00-08-92-34/attachment.pdf" target="_blank">Rakon RXO3225M 40.000 MHz&lt;/a>), which has excellent qualities like very low jitter.&lt;br>
+Unfortunatly for ham radio use, the absolute accuracy (PPM) and stability isn&amp;rsquo;t great.&lt;br>
+When generating signals in the GHz-range (like a TX-signal for QO-100 at 2.4 GHz) the error can multiply up to several kHz,
+much more than the signal bandwidth itself.&lt;/p></description></item><item><title>WiFi over satellite TV coax</title><link>https://kittenlabs.de/blog/2018/10/14/wifi-over-satellite-tv-coax/</link><pubDate>Sun, 14 Oct 2018 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/blog/2018/10/14/wifi-over-satellite-tv-coax/</guid><description>&lt;p>There&amp;rsquo;s a number of different ways to distribute an ethernet signal throughout a building.
+The most common types being:&lt;/p>
+&lt;ul>
+&lt;li>twisted pair wiring&lt;/li>
+&lt;li>fiber optic cable&lt;/li>
+&lt;li>WiFi (2.4 GHz, 5GHz)&lt;/li>
+&lt;li>powerline (also called PLC, IEEE 1901)&lt;/li>
+&lt;/ul>
+&lt;p>In my application, running cables wasn&amp;rsquo;t easily possible, so twisted pair and fiber connections were out of the game. PLC-based networking is absolutely unacceptable as a ham radio operator, because these devices produce lots of interference and noise.
+The distance is a bit too big to utilize &amp;ldquo;regular&amp;rdquo; WiFi links, so a different solution was needed.&lt;/p></description></item><item><title>Search Results</title><link>https://kittenlabs.de/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://kittenlabs.de/search/</guid><description/></item></channel></rss>

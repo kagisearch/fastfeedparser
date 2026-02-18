@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UC4Otk-uDioJN0tg6s1QO9lw"/>
+ <id>yt:channel:4Otk-uDioJN0tg6s1QO9lw</id>
+ <yt:channelId>4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+ <title>atomic14</title>
+ <link rel="alternate" href="https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw"/>
+ <author>
+  <name>atomic14</name>
+  <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+ </author>
+ <published>2006-11-19T20:31:49+00:00</published>
+ <entry>
+  <id>yt:video:WLCiZ04W5CQ</id>
+  <yt:videoId>WLCiZ04W5CQ</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>ESP32-S3 WebCam + IR WebCam!</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/WLCiZ04W5CQ"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-02-15T17:49:44+00:00</published>
+  <updated>2026-02-15T22:29:44+00:00</updated>
+  <media:group>
+   <media:title>ESP32-S3 WebCam + IR WebCam!</media:title>
+   <media:content url="https://www.youtube.com/v/WLCiZ04W5CQ?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/WLCiZ04W5CQ/hqdefault.jpg" width="480" height="360"/>
+   <media:description>You can easily make an ESP32-S3 into a WebCam - and you can even turn it into an IR WebCam!
+
+Full video here: https://youtu.be/jyhVxC0ipE8
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="25" average="5.00" min="1" max="5"/>
+    <media:statistics views="1762"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:jyhVxC0ipE8</id>
+  <yt:videoId>jyhVxC0ipE8</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>I Turned an ESP32 into a Thermal USB Webcam</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=jyhVxC0ipE8"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-02-15T08:07:34+00:00</published>
+  <updated>2026-02-15T09:17:07+00:00</updated>
+  <media:group>
+   <media:title>I Turned an ESP32 into a Thermal USB Webcam</media:title>
+   <media:content url="https://www.youtube.com/v/jyhVxC0ipE8?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/jyhVxC0ipE8/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Thanks to https://www.PCBWay.com/?from=atomic for the fantastic PCBs and SMT assembly.
+
+Last time, I made an ESP32 pretend to be a webcam.
+
+This time, it actually is one.
+
+In this video, I take an ESP32-S3 with native USB support and turn it into a real USB UVC webcam — first using a standard camera module, and then something a bit more unusual: a 32×24 pixel infrared (thermal) camera.
+
+Even though the thermal image is tiny, we scale it up, process it, JPEG-encode it, and stream it over USB just like a normal webcam. Surprisingly, it works really well.
+
+Along the way, we cover:
+
+Why ESP32-S3 is required for USB UVC
+
+Why MJPEG makes this much simpler than you’d expect
+
+Turning a 32×24 thermal image into a usable video stream
+
+Nearest-neighbour vs bilinear scaling
+
+A very real hardware bug that looked like a software problem
+
+Practical I2C debugging advice I should follow more often
+
+If you’re interested in USB devices, ESP32-S3 projects, thermal cameras, or just watching me lose time debugging the wrong thing — this one’s for you.
+
+🔗 Related video: ESP32 USB UVC – pretending to be a webcam: https://youtu.be/zhTTmRQLNws
+🤖 GitHub repo: https://github.com/atomic14/esp32-mlx90640-webcam
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="282" average="5.00" min="1" max="5"/>
+    <media:statistics views="5724"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:Wir1jBqvQEs</id>
+  <yt:videoId>Wir1jBqvQEs</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>Amazon Basics vs SanDisk: I Cut Them Open</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=Wir1jBqvQEs"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-02-09T04:51:16+00:00</published>
+  <updated>2026-02-10T10:27:09+00:00</updated>
+  <media:group>
+   <media:title>Amazon Basics vs SanDisk: I Cut Them Open</media:title>
+   <media:content url="https://www.youtube.com/v/Wir1jBqvQEs?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/Wir1jBqvQEs/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Thanks to https://www.PCBWay.com/?from=atomic for the fantastic PCBs and SMT assembly.
+
+We recently repaired a broken AmazonBasics microSD adapter, and a few people in the comments pointed out that these are “built to a price” and probably not the highest quality.
+
+That got me curious.
+
+So in this video, I crack open a cheap AmazonBasics microSD adapter and compare it directly with a branded SanDisk adapter to see what’s actually different on the inside.
+
+Under the microscope, the two designs turn out to be surprisingly different — from how the contacts are made, to how the SD card actually presses against them.
+
+Is the branded one really better?
+Or is the cheaper one good enough?
+
+There’s no benchmarking or speed testing here — this is purely a mechanical and construction teardown, looking at:
+
+Contact design and robustness
+
+How the SD card mates with the pins
+
+Potential failure points
+
+Whether “built to a price” really shows up inside
+
+Let me know what you think in the comments — which design would you trust more?
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="223" average="5.00" min="1" max="5"/>
+    <media:statistics views="4648"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:4k8s3en39D8</id>
+  <yt:videoId>4k8s3en39D8</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>SD Card Adapter Repair #electronics</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/4k8s3en39D8"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-02-03T11:14:12+00:00</published>
+  <updated>2026-02-04T07:42:26+00:00</updated>
+  <media:group>
+   <media:title>SD Card Adapter Repair #electronics</media:title>
+   <media:content url="https://www.youtube.com/v/4k8s3en39D8?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/4k8s3en39D8/hqdefault.jpg" width="480" height="360"/>
+   <media:description>It's a dead SD Card adapter - can we fix it?
+
+Full video here: https://youtu.be/WNOOJvelkcE</media:description>
+   <media:community>
+    <media:starRating count="14" average="5.00" min="1" max="5"/>
+    <media:statistics views="1722"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:JGc8kA3w4gM</id>
+  <yt:videoId>JGc8kA3w4gM</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>ESP32-S3 USB UVC &quot;WebCam&quot;</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/JGc8kA3w4gM"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-02-01T19:53:09+00:00</published>
+  <updated>2026-02-02T19:00:25+00:00</updated>
+  <media:group>
+   <media:title>ESP32-S3 USB UVC &quot;WebCam&quot;</media:title>
+   <media:content url="https://www.youtube.com/v/JGc8kA3w4gM?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/JGc8kA3w4gM/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Full video here: https://youtu.be/zhTTmRQLNws
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="45" average="5.00" min="1" max="5"/>
+    <media:statistics views="4455"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:zhTTmRQLNws</id>
+  <yt:videoId>zhTTmRQLNws</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>My ESP32S3 Thinks It's a WebCam!</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=zhTTmRQLNws"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-02-01T08:47:32+00:00</published>
+  <updated>2026-02-10T11:48:21+00:00</updated>
+  <media:group>
+   <media:title>My ESP32S3 Thinks It's a WebCam!</media:title>
+   <media:content url="https://www.youtube.com/v/zhTTmRQLNws?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/zhTTmRQLNws/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Thanks to https://www.PCBWay.com/?from=atomic for the fantastic PCBs and SMT assembly.
+
+This ESP32-S3 isn’t connected to a camera at all — but your computer thinks it’s a webcam.
+
+In this video, I’m using the ESP32-S3’s native USB support and Espressif’s USB UVC device stack to make it appear as a standard USB webcam. Instead of streaming video from a sensor, it streams generated frames - starting with a static test card, then animated GIFs, and finally a real-time game of Pong.
+
+Along the way, we look at how MJPEG actually works, how long it takes to encode JPEG frames on the ESP32, and what kind of frame-rate budget that leaves you for doing something interesting in real time.
+
+By the end, the ESP32 is generating live video, encoding it on the fly, and sending it over USB like any other webcam - without ever connecting a camera module.
+
+Chapters
+
+00:00 Pong as a webcam?!
+00:15 ESP32-S3 as a USB UVC device
+01:18 Static test card (the boring but important bit)
+02:03 Animated GIFs and MJPEG
+03:14 Frame timing and performance budget
+03:40 Pong running in real time
+
+GitHub Repo: https://github.com/atomic14/esp32-usb-uvc-experiments
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="276" average="5.00" min="1" max="5"/>
+    <media:statistics views="3798"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:AFko_FKqSCk</id>
+  <yt:videoId>AFko_FKqSCk</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>Successful Pick and Place!</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/AFko_FKqSCk"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-01-31T18:23:22+00:00</published>
+  <updated>2026-02-10T11:48:07+00:00</updated>
+  <media:group>
+   <media:title>Successful Pick and Place!</media:title>
+   <media:content url="https://www.youtube.com/v/AFko_FKqSCk?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/AFko_FKqSCk/hqdefault.jpg" width="480" height="360"/>
+   <media:description>We did a really bad job on the solder paste - but only needed to rework a couple of the LEDs.
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="65" average="5.00" min="1" max="5"/>
+    <media:statistics views="3262"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:WNOOJvelkcE</id>
+  <yt:videoId>WNOOJvelkcE</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>Why did I fix this?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=WNOOJvelkcE"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-01-28T17:52:53+00:00</published>
+  <updated>2026-01-31T21:46:31+00:00</updated>
+  <media:group>
+   <media:title>Why did I fix this?</media:title>
+   <media:content url="https://www.youtube.com/v/WNOOJvelkcE?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/WNOOJvelkcE/hqdefault.jpg" width="480" height="360"/>
+   <media:description>This is a very silly video.
+
+I’ve got a drawer full of microSD card adapters, and when one of them stopped working the sensible thing would have been to throw it away.
+
+Instead, I cracked it open, poked around under a microscope, broke it even more… and then somehow managed to bodge it back into a working state.
+
+There’s no real lesson here, no recommendation to try this yourself, and absolutely no reason to trust this adapter ever again — but it was fun to see how these things actually work on the inside.
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="75" average="5.00" min="1" max="5"/>
+    <media:statistics views="1245"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:EEBxGobw1QA</id>
+  <yt:videoId>EEBxGobw1QA</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>I've got a new toy to play with!</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/EEBxGobw1QA"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-01-26T20:52:24+00:00</published>
+  <updated>2026-01-30T22:55:44+00:00</updated>
+  <media:group>
+   <media:title>I've got a new toy to play with!</media:title>
+   <media:content url="https://www.youtube.com/v/EEBxGobw1QA?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/EEBxGobw1QA/hqdefault.jpg" width="480" height="360"/>
+   <media:description>One of my friends has got himself a pick and place machine! This is it running a simple test job,</media:description>
+   <media:community>
+    <media:starRating count="79" average="5.00" min="1" max="5"/>
+    <media:statistics views="4198"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:0SGdzRjO8YQ</id>
+  <yt:videoId>0SGdzRjO8YQ</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>I Spent Hours Debugging My Software…</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=0SGdzRjO8YQ"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-01-25T17:27:11+00:00</published>
+  <updated>2026-01-28T23:12:08+00:00</updated>
+  <media:group>
+   <media:title>I Spent Hours Debugging My Software…</media:title>
+   <media:content url="https://www.youtube.com/v/0SGdzRjO8YQ?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/0SGdzRjO8YQ/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Sometimes the bug isn’t in the code…
+
+I spent way too long debugging what I thought was a software issue on this IR thermal sensor (I²C scans, pull-ups, library swaps… the usual).
+Turns out the problem was much more obvious once I put it under the microscope 👀
+
+If you’re using one of these &quot;cheap&quot; (it's still expensive!) IR modules and it “doesn’t work”, it’s worth checking the soldering on the underside before going too deep down the software rabbit hole.
+
+A proper project video using this module is coming soon 👍
+
+If you want one of the modules you can get them here: https://s.click.aliexpress.com/e/_c4DA1cRh
+
+But shop around for the best price/quality!
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="112" average="5.00" min="1" max="5"/>
+    <media:statistics views="1429"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:jfxzf5G0qgw</id>
+  <yt:videoId>jfxzf5G0qgw</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>Drones and Lasers?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=jfxzf5G0qgw"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-01-22T19:04:38+00:00</published>
+  <updated>2026-01-31T10:44:43+00:00</updated>
+  <media:group>
+   <media:title>Drones and Lasers?</media:title>
+   <media:content url="https://www.youtube.com/v/jfxzf5G0qgw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/jfxzf5G0qgw/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Thanks to https://www.PCBWay.com/?from=atomic for the fantastic PCBs and SMT assembly.
+
+It’s been a while since I did an unbagging video… and apparently I’ve been ordering a lot of stuff from AliExpress.
+
+Drones, lasers, tiny ESP32 boards, weird sensors, a smart mug (??) - the problem is, I genuinely can’t remember what I ordered. So let’s open the bag and find out what’s inside.
+
+A lot of this is random tech I picked up for future projects — some of it surprisingly useful, some of it… questionable. As usual, I’ll power things up, poke at them with a multimeter, and see what might actually turn into a proper project.
+
+In this video:
+- A tiny (and suspiciously cheap) drone: https://s.click.aliexpress.com/e/_c4VUEiE3
+- A laser module and detector: https://s.click.aliexpress.com/e/_c3tVgh4F
+- ESP32-C3 OLED modules: https://s.click.aliexpress.com/e/_c3VaxVvl
+- USB-C PD trigger boards: https://s.click.aliexpress.com/e/_c35Xr0J9
+- Microphones compatible with the INMP441: https://s.click.aliexpress.com/e/_c3PgDWKL
+- Temperature &amp; humidity displays: https://s.click.aliexpress.com/e/_c3B0Q06x
+- A “smart” thermos flask I don’t remember ordering: https://s.click.aliexpress.com/e/_c3aAUOVZ
+- Night Lights: https://s.click.aliexpress.com/e/_c3v1mWq7
+- MAX30102 Heart rate Sensor Module: https://s.click.aliexpress.com/e/_c4KjTlkT
+
+And various other AliExpress surprises.
+
+Several of these are definitely getting their own follow-up videos — especially the ESP32 boards, the microphones, and the laser setup — so if any of that sounds interesting, keep an eye out.
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="66" average="5.00" min="1" max="5"/>
+    <media:statistics views="920"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:RAQBaDWxRQ0</id>
+  <yt:videoId>RAQBaDWxRQ0</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>Train Surgery</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=RAQBaDWxRQ0"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-01-07T15:07:54+00:00</published>
+  <updated>2026-02-06T23:24:24+00:00</updated>
+  <media:group>
+   <media:title>Train Surgery</media:title>
+   <media:content url="https://www.youtube.com/v/RAQBaDWxRQ0?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/RAQBaDWxRQ0/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Thanks to https://www.PCBWay.com/?from=atomic for the fantastic PCBs and SMT assembly.
+
+Slightly belated Christmas video - but I had to wait for the tree to come down before I was allowed to take apart the decorations!
+
+Pretty straightforward fun - make it rechargeable - and turn the volume down! This thing is so damned loud!
+
+If you want your own train set, you can pick one up here: https://s.click.aliexpress.com/e/_c4BuZuJL
+
+The battery charger/boost board is this one: https://s.click.aliexpress.com/e/_c400zH8J
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="88" average="5.00" min="1" max="5"/>
+    <media:statistics views="1427"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:a6UyjNRPPLw</id>
+  <yt:videoId>a6UyjNRPPLw</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>Three ESP32 Rainbow Boards Failed QA — Can we fix them?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=a6UyjNRPPLw"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2026-01-02T11:45:18+00:00</published>
+  <updated>2026-02-01T15:56:17+00:00</updated>
+  <media:group>
+   <media:title>Three ESP32 Rainbow Boards Failed QA — Can we fix them?</media:title>
+   <media:content url="https://www.youtube.com/v/a6UyjNRPPLw?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/a6UyjNRPPLw/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Thanks to https://www.PCBWay.com/?from=atomic for the fantastic PCBs and SMT assembly.
+
+I’ve been assembling another batch of ESP32 Rainbow boards — and three of them failed QA in different and interesting ways.
+
+Let's take a look and see if we can salvage them - or if the boards are only good for spares...
+
+🔕 One board with no sound
+⌨️ One with a dodgy keyboard
+🔌 And one where the ESP32 USB wouldn’t enumerate at all
+
+With a bit of work under the microscope, and some buzzing out of traces, we can work out what's gone wonky and try and fix it.
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="135" average="5.00" min="1" max="5"/>
+    <media:statistics views="2108"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:8h9HuoNHuzU</id>
+  <yt:videoId>8h9HuoNHuzU</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>Christmas tree train!</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/8h9HuoNHuzU"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2025-12-24T16:33:26+00:00</published>
+  <updated>2026-01-24T14:33:32+00:00</updated>
+  <media:group>
+   <media:title>Christmas tree train!</media:title>
+   <media:content url="https://www.youtube.com/v/8h9HuoNHuzU?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/8h9HuoNHuzU/hqdefault.jpg" width="480" height="360"/>
+   <media:description>I think we might need to do a bit of surgery on this to turn the volume down...
+
+If you want one for yourself - they are on sale: https://s.click.aliexpress.com/e/_c4BuZuJL
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="40" average="5.00" min="1" max="5"/>
+    <media:statistics views="2585"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:zyxAkQznIVM</id>
+  <yt:videoId>zyxAkQznIVM</yt:videoId>
+  <yt:channelId>UC4Otk-uDioJN0tg6s1QO9lw</yt:channelId>
+  <title>Stop Using printf() - Debug ESP32 the Right Way</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=zyxAkQznIVM"/>
+  <author>
+   <name>atomic14</name>
+   <uri>https://www.youtube.com/channel/UC4Otk-uDioJN0tg6s1QO9lw</uri>
+  </author>
+  <published>2025-12-18T12:54:28+00:00</published>
+  <updated>2026-02-16T02:03:50+00:00</updated>
+  <media:group>
+   <media:title>Stop Using printf() - Debug ESP32 the Right Way</media:title>
+   <media:content url="https://www.youtube.com/v/zyxAkQznIVM?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/zyxAkQznIVM/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Thanks to https://www.PCBWay.com/?from=atomic for the fantastic PCBs and SMT assembly.
+
+Many ESP32s now have built in USB support - this comes with a fantastic benefit - support for debugging from within your favourite IDE!
+
+---
+If you'd like to help support the channel and help me buy more nonsense - I have a Patreon page: https://www.patreon.com/atomic14
+
+We've also got a shop now! https://shop.atomic14.com
+
+And if you're shopping on AliExpress or Amazon then if you click on these links I will get a little bit of affiliate money:
+
+Aliexpress - https://s.click.aliexpress.com/e/_Ac05mF
+Amazon - https://www.amazon.com/?tag=atomic14-20
+
+You can also join us on Discord here: https://discord.gg/h2DDnDdjD2
+
+There's also the Atomic14 newsletter here: https://atomic14.substack.com/
+
+And don't forget about the MakerNews newsletter - https://makernews.substack.com/</media:description>
+   <media:community>
+    <media:starRating count="251" average="5.00" min="1" max="5"/>
+    <media:statistics views="4515"/>
+   </media:community>
+  </media:group>
+ </entry>
+</feed>

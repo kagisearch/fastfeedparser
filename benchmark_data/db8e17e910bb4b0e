@@ -1,0 +1,1504 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Usability Counts</title>
+	<atom:link href="https://www.usabilitycounts.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.usabilitycounts.com/</link>
+	<description>User Experience and Design</description>
+	<lastBuildDate>Fri, 14 Mar 2025 00:38:52 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.9.1</generator>
+<site xmlns="com-wordpress:feed-additions:1">29155632</site>	<item>
+		<title>Hunting Unicorns &#8211; What makes an effective  UX Professional</title>
+		<link>https://www.usabilitycounts.com/2025/03/05/hunting-unicorns-what-makes-an-effective-ux-professional/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Thu, 06 Mar 2025 01:36:39 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[Presentations]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6606</guid>
+
+					<description><![CDATA[<p>The qualities of an effective UX professional include soft skills are that more important than hard skills. They include empathy, curiosity, and being systematic. Companies need UX professionals to have soft skills so they can thrive in the AI world.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2025/03/05/hunting-unicorns-what-makes-an-effective-ux-professional/">Hunting Unicorns &#8211; What makes an effective  UX Professional</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>I’ve built UX teams at companies at multiple companies, and here’s the thing?—?you need a balanced roster with complementary skills. A UX team isn’t just about finding unicorns who can do everything; it’s about finding specialists who mesh together like a well-oiled machine.</p>
+<p>When resources are tight?—?and they always are?—?you need to be strategic about who you hire first. Generalists help you move fast early on, but as you scale, specialists give you depth.</p>
+<p>This is why I’m obsessive about defining roles clearly and mapping team capabilities against product needs. It’s not the best team, it’s the right team.</p>
+<blockquote><p>There’s a very obvious resource gap of what makes a UX professional effective in most organizations, especially the soft skills. We have to better articulate that.</p></blockquote>
+<figure><img decoding="async" src="https://cdn-images-1.medium.com/max/1600/1*YNJB5KofILA0qYgj4KkDIw.png" alt="A slide I use to explain the competencies of user experience. Initial framework stolen from Nick Finck." width="100%" data-image-id="1*YNJB5KofILA0qYgj4KkDIw.png" /><figcaption><strong>A slide I use to explain the hard competencies of user experience. <a href="https://bsky.app/profile/nickf.bsky.social" target="_blank" rel="noopener" data-href="https://bsky.app/profile/nickf.bsky.social">Initial framework stolen from Nick Finck</a>.</strong></figcaption></figure>
+<p>There’s a ton of content about UX methods and tools, but almost nothing that prepares people for the organizational reality of being a UX professional. Nobody tells you how to navigate politics, sell research findings, or negotiate for resources when everyone wants pixels yesterday.</p>
+<p>The education-to-practice gap is massive. Schools teach idealized processes, but real UX work is messy, constrained, and requires fierce prioritization. They aren’t even teaching the storytelling needed to sell a portfolio or work</p>
+<p>We need more honest resources about how to be effective when you don’t have the time, budget, or executive support you need.</p>
+<h3>Key Soft Skill Qualities of Effective UX Professionals</h3>
+<p>This is all based on a presentation I did years ago with <a href="https://bsky.app/profile/uxhow.bsky.social" target="_blank" rel="noopener" data-href="https://bsky.app/profile/uxhow.bsky.social">Troy Parke</a> about what was needed, and it wasn’t Sketch at the time.</p>
+<p>It was soft skills that really mattered.</p>
+<p><a href="https://www.usabilitycounts.com/2025/03/05/hunting-unicorns-what-makes-an-effective-ux-professional/" target="_blank" rel="noopener" data-href="https://www.usabilitycounts.com/2025/03/05/hunting-unicorns-what-makes-an-effective-ux-professional/">You can view the presentation here</a>.</p>
+<figure><img decoding="async" class="alignleft" src="https://cdn-images-1.medium.com/max/1600/1*o-SqHHDRvgmIkmYqkQwt1A.png" width="100%" data-image-id="1*o-SqHHDRvgmIkmYqkQwt1A.png" /><figcaption><strong>Hunting Unicorns?—?What makes an effective UX Professional</strong></figcaption></figure>
+<h4>Empathic</h4>
+<p>You need empathy in two directions: for users whose problems you’re solving, and for stakeholders and developers with constraints you need to work within. Without this dual empathy, your solutions won’t stick?—?they’ll be technically unfeasible or won’t get organizational buy-in.</p>
+<p>Great UX professionals observe behavior beyond what people say. They recognize the gap between reported and actual behavior, and can translate emotional needs into functional requirements. This deep understanding becomes your design’s North Star.</p>
+<h4>Curious</h4>
+<p>The best UX pros maintain a healthy skepticism about assumptions and constantly ask “why?” They’re never satisfied with surface-level understanding and keep digging until they find root causes, not just symptoms.</p>
+<p>Curiosity drives you to explore beyond the obvious solutions. When someone says “users want X,” the curious designer asks, “What problem are they really trying to solve with X?” This mindset leads to breakthrough innovations rather than incremental improvements.</p>
+<h4>Systematic</h4>
+<p>Systematic UX professionals build repeatable processes that scale beyond themselves. They don’t rely on flashes of inspiration; they create frameworks that consistently deliver results and can be taught to others.</p>
+<p>They understand that chaos is the enemy of good design. By developing systems for everything?—?from research protocols to design critiques?—?they create predictability and efficiency. This lets them focus creative energy on solving problems, not reinventing process.</p>
+<h4>Pragmatic</h4>
+<p>Pragmatic UX pros understand the business context and can prioritize ruthlessly. They know when to fight for the perfect solution and when 80% is good enough to ship, learn, and iterate.</p>
+<p>They translate design decisions into business impact, speaking the language of metrics and outcomes rather than just pixels and experiences. This pragmatism earns them credibility with business stakeholders and ensures design gets a seat at the strategic table.</p>
+<h4>Fearless</h4>
+<p>Fearless UX professionals speak truth to power and aren’t afraid to challenge bad ideas, even from executives. They put user needs above political considerations and have the courage to kill darling features when data shows they’re not working.</p>
+<p>They experiment boldly and embrace the risk of failure as the cost of innovation. When research reveals uncomfortable truths, they don’t hide the findings?—?they champion them as opportunities for improvement, even when it means pivoting from established directions.</p>
+<h4>Self-Aware</h4>
+<p>Self-aware UX professionals recognize their own biases and actively work to counteract them. They understand their strengths and weaknesses and build complementary partnerships rather than pretending to know everything.</p>
+<p>They constantly seek feedback on their work and process, not just from other designers but from developers, product managers, and most importantly, users. This openness to critique prevents blind spots and enables continuous professional growth.</p>
+<h4>Articulate</h4>
+<p>Articulate UX professionals can translate complex design concepts into clear, compelling stories and journeys that motivate action. They adjust their language for different audiences?—?technical for developers, strategic for executives, emotional for marketers.</p>
+<p>They document their thinking visually and verbally, creating artifacts that communicate the “why” behind decisions, not just the “what.” This clarity builds trust and works towards design intent survives implementation, even when they’re not in the room.</p>
+<h4>Passionate</h4>
+<p>Passionate UX professionals care deeply about the craft and continuously push for better outcomes. They’re driven by purpose rather than perfection and find motivation in solving human problems, not just creating pretty interfaces.</p>
+<p>Their enthusiasm is contagious, elevating the importance of user experience throughout the organization so there’s greater adoption. This passion sustains them through inevitable setbacks and fuels the persistence needed to drive meaningful change in product development culture.</p>
+<h3>Applying Key UX qualities in practice</h3>
+<p>Empathetic, Curious and Articulate are essential when understanding user needs. I don’t just ask what users want; I observe what they actually do and dig into the contradictions. By shadowing real users, mapping their emotional journey, and constantly asking “why” behind stated preferences,</p>
+<p>We uncover needs they can’t articulate themselves. This deeper understanding lets me solve root problems instead of symptoms.</p>
+<p>Curious, Systematic and Pragmatic approaches drive how I analyze user data. When facing a mountain of research data, I create frameworks to categorize insights, identify patterns, and prioritize findings based on business impact.</p>
+<p>We translate qualitative observations into quantitative metrics wherever possible, and build repeatable processes that make analysis consistent across projects and team members.</p>
+<p>Articulate and Passionate qualities are my secret weapons for selling design thinking within an organization. I create compelling narratives that connect user needs to business outcomes, making the invisible work of UX visible to decision-makers.</p>
+<p>Our presentations combine emotional user stories with hard data, and I never stop evangelizing until design thinking becomes part of company culture.</p>
+<p>Pragmatic and Fearless traits guide me when convincing developers to build features. I show up with solutions, not just problems, and demonstrate I understand technical constraints.</p>
+<p>We focus on the “why” before the “what,” using prototypes to make concepts tangible. I’m not afraid to push back when necessary, but I always frame discussions around shared goals of building the right thing.</p>
+<h3>Defining the UX profession</h3>
+<figure><img decoding="async" src="https://cdn-images-1.medium.com/max/1600/1*Rc9i2GsQsu1uLbUGnTNULA.png" alt="If this is how we’re defining UX, we’re losing our audience." width="100%" data-image-id="1*Rc9i2GsQsu1uLbUGnTNULA.png" /><figcaption>If this is how we’re defining UX, we’re losing our audience.</figcaption></figure>
+<p>We need to get better at defining who we are as UX professionals because the ambiguity is killing us. When everyone from the marketing intern to the CEO thinks they “do UX,” we lose credibility and impact. By clearly articulating our unique value?—?that we bring empirical, user-centered methods to problem-solving?—?we can carve out our proper place in organizations.</p>
+<blockquote><p>The lack of a clear professional identity leads to misaligned expectations and undervaluation of our work.</p></blockquote>
+<p>When we’re seen as pixel-pushers rather than strategic problem-solvers, we get brought in too late in the process to make a meaningful impact. By defining our role as translators between user needs and business goals, we can shift from decorators to essential partners in product development.</p>
+<h3>Soft skills turn us into superheroes</h3>
+<p>Soft skills are what transform good UX professionals into indispensable team members. While technical skills get you in the door, it’s the ability to influence without authority, navigate organizational politics, and build cross-functional relationships that determines your true impact. These skills turn design challenges into opportunities to reshape product development culture.</p>
+<p>I think of the movie <a href="https://www.imdb.com/title/tt0132347/" target="_blank" rel="noopener" data-href="https://www.imdb.com/title/tt0132347/">Mystery Men</a> for what we could be?—?each of our disparate skills can be combined to really help an organization. The skills may not be obvious, but when we need them, we can wear a cape.</p>
+<blockquote><p>When UX professionals master soft skills, they become organizational superheroes who can bridge silos, and drive alignment around user needs.</p></blockquote>
+<p>The most successful UX leaders I’ve seen aren’t necessarily the best designers?—?they’re the ones who can tell compelling stories, build trust across departments, and inspire others to embrace user-centered thinking as a competitive advantage.</p>
+<h3>About Patrick Neeman</h3>
+<figure><img decoding="async" src="https://cdn-images-1.medium.com/max/1600/1*yCV9v2B29YhFwRu0QqUkwQ.png" alt="[uxGPT] Mastering AI Assistants for User Experience Designers and Product Managers" data-image-id="1*yCV9v2B29YhFwRu0QqUkwQ.png" data-width="700" data-height="100" /><figcaption><a href="http://gptpromptguides.com" target="_blank" rel="noopener" data-href="http://gptpromptguides.com">[uxGPT] Mastering AI Assistants for User Experience Designers and Product Managers</a></figcaption></figure>
+<p>Patrick Neeman is the author of uxGPT: Mastering AI Assistants for User Experience Designers and Product Managers. It’s for sale on Amazon and Gumroad at $9.99 for digital in Kindle, EPUB or PDF format and $19.99 for paperback. <a href="https://www.gptpromptguides.com/" target="_blank" rel="noopener" data-href="https://www.gptpromptguides.com/">Go take a look</a>.</p>
+<p>Patrick is a Director of User Experience Design at Workday working on Document Intelligence and Artificial Intelligence. He’s also an advisor for<a href="https://relevvo.com/" target="_blank" rel="noopener" data-href="https://relevvo.com/"> Relevvo</a>, an AI-based software platform that helps sales and marketing leaders target their potential customers. He has been head of design for the last 14 years at Evisort, Knowable, Icertis, Apptio and Jobvite and has over 20 years experience in the User Experience field.</p>
+<p>He is also the author of<a href="https://www.usabilitycounts.com/" target="_blank" rel="noopener" data-href="https://www.usabilitycounts.com/"> Usability Counts</a>, runs the<a href="http://www.uxdrinkinggame.com/" target="_blank" rel="noopener" data-href="http://www.uxdrinkinggame.com/"> UX Drinking Game</a>.</p>
+<p>You can read more about him at<a href="https://www.perplexity.ai/page/who-is-patrick-neeman-in-ux-RPr41RK1RRWNa7qOxzOssw" target="_blank" rel="noopener" data-href="https://www.perplexity.ai/page/who-is-patrick-neeman-in-ux-RPr41RK1RRWNa7qOxzOssw"> Pexplexity</a>, and connect with at<a href="https://www.linkedin.com/in/patrick-neeman-ux/" target="_blank" rel="noopener" data-href="https://www.linkedin.com/in/patrick-neeman-ux/"> LinkedIn</a>,<a href="https://x.com/usabilitycounts" target="_blank" rel="noopener" data-href="https://x.com/usabilitycounts"> X (Formerly Twitter)</a>,<a href="https://www.threads.net/@usabilitycounts" target="_blank" rel="noopener" data-href="https://www.threads.net/@usabilitycounts"> Threads</a> and<a href="https://substack.com/@patrickneeman?utm_source=user-menu" target="_blank" rel="noopener" data-href="https://substack.com/@patrickneeman?utm_source=user-menu"> Substack</a>.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2025/03/05/hunting-unicorns-what-makes-an-effective-ux-professional/">Hunting Unicorns &#8211; What makes an effective  UX Professional</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6606</post-id>	</item>
+		<item>
+		<title>Leverage Analogous Inspiration in minutes with prompts and uxGPT Analogous Inspiration</title>
+		<link>https://www.usabilitycounts.com/2024/08/15/leverage-analogous-inspiration-in-minutes-with-prompts-and-uxgpt-analogous-inspiration/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Thu, 15 Aug 2024 15:07:45 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6583</guid>
+
+					<description><![CDATA[<p>Researching other domains that solve similar problems to discover unique approaches and strategies that can be adapted to their own context.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/08/15/leverage-analogous-inspiration-in-minutes-with-prompts-and-uxgpt-analogous-inspiration/">Leverage Analogous Inspiration in minutes with prompts and uxGPT Analogous Inspiration</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p class="graf graf--p">A lot of designers work in domains where good design is not as prevalent as you would think, so we have to look elsewhere for inspiration. Analogous inspiration is one of the research methods I love best.</p>
+<p class="graf graf--p"><strong class="markup--strong markup--p-strong">It’s a very divergent activity that allows teams to explore and a perfect for ChatGPT?—?brainstorming new ideas quickly while assessing the quality of those ideas.</strong></p>
+<p class="graf graf--p">By examining how different domains solve similar problems, one can discover unique approaches and strategies that can be adapted to their own context. This cross-pollination of ideas encourages out-of-the-box thinking and helps to break away from conventional solutions that might be limiting progress.</p>
+<blockquote class="graf graf--pullquote"><p>Analogous inspiration often brings fresh perspectives and insights, which can lead to breakthroughs and improvements that would not have been possible within the confines of one’s own field.</p></blockquote>
+<p class="graf graf--p">ChatGPT is good at giving you a list to start with. Since the application has indexed content from thousands of domains, it can draw similar analogies that are useful for this exercise.</p>
+<p class="graf graf--p">Let’s get started.</p>
+<h3 class="graf graf--h3">Start with the domain</h3>
+<p class="graf graf--p">I like starting as wide as possible on analogous inspiration myself because I want to keep a very open mind. This fosters a broader perspective when you draw inspiration from diverse fields, leading to more creative and unique solutions. It also helps in identifying patterns that might not be apparent within the narrow scope of your specific domain.</p>
+<p class="graf graf--p">It also reduces the risk of producing derivative work, ensuring that your solutions are fresh and original. By exploring a wide array of inspirations, you build a rich repository of ideas that can be synthesized and adapted to create groundbreaking innovations.</p>
+<p class="graf graf--p">Now we can start with a big prompt.</p>
+<h4 class="graf graf--h3">Prompt</h4>
+<pre>List 20 applications that are in domains adjacent to customer relationship management in a table.</pre>
+<h3>Add personas</h3>
+<p class="graf graf--p">Now let’s add some context. Adding context, like personas and tasks, to analogous inspiration is essential because it grounds abstract ideas in practical, user-centered realities. Personas represent your target audience, illustrating their goals, needs, and behaviors.</p>
+<p class="graf graf--p">Integrating these personas ensures that the ideas you derive are applicable to the people you’re designing for. You can translate contextual inspirations into actionable insights tailored to your audience.</p>
+<p class="graf graf--p">Tasks integrated into the ask also provide a concrete framework for how users interact with your product. You can see how innovative concepts from different fields can enhance or streamline user experiences. This method bridges the gap between inspiration and implementation, making sure that creative ideas are not just interesting but also functional and effective in real-world scenarios.</p>
+<p class="graf graf--p">This transforms inspiration into a strategic tool, driving solutions that are both imaginative and focused on a similar task at hand.</p>
+<h4 class="graf graf--h3">Prompt</h4>
+<pre>List 20 applications that are in domains adjacent to customer relationship management with personas similar to sales managers or business development representatives and their tasks in a table.</pre>
+<h3 class="graf graf--h3">Add feature</h3>
+<p class="graf graf--p">When I do analogous inspiration, I like adding context, like the feature at hand, because it ensures that the inspiration is directly relevant and actionable. This approach maximizes efficiency of your inspiration process, allowing you to focus on ideas that can be considered for your design.</p>
+<p class="graf graf--p">Also, having this context included helps in communicating your ideas and the related mental models more effectively to stakeholders. It illustrates how specific inspirations contribute to solving design challenges you are addressing. I wouldn’t go much further down in context to keep an open mind, so I usually stop here in this divergent task.</p>
+<p class="graf graf--p">Let’s go down to the feature level to the prompt.</p>
+<h4 class="graf graf--h3">Prompt</h4>
+<pre>List 20 applications that are in domains adjacent to customer relationship management and managing accounts with personas similar to sales managers or business development representatives and their tasks in a table.</pre>
+<h3 class="graf graf--h3">Try out this Custom GPT?—?uxGPT Analogous Inspiration</h3>
+<p class="graf graf--p">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</p>
+<p class="graf graf--p">Try this custom GPT at <a class="markup--anchor markup--p-anchor" href="https://chatgpt.com/g/g-vE3oTDCxN-uxgpt-analogous-inspiration" target="_blank" rel="noopener" data-href="https://chatgpt.com/g/g-vE3oTDCxN-uxgpt-analogous-inspiration">uxGPT Analogous Inspiration</a>.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/08/15/leverage-analogous-inspiration-in-minutes-with-prompts-and-uxgpt-analogous-inspiration/">Leverage Analogous Inspiration in minutes with prompts and uxGPT Analogous Inspiration</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6583</post-id>	</item>
+		<item>
+		<title>How to generate impactful problem statements using prompts and uxGPT Problem Statements</title>
+		<link>https://www.usabilitycounts.com/2024/08/04/how-to-generate-impactful-problem-statements-using-prompts-and-uxgpt-problem-statements/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Sun, 04 Aug 2024 19:15:41 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6578</guid>
+
+					<description><![CDATA[<p>Most people jump to solutions, but understanding the problem first is crucial. Doing this helps align your team on the proper framing.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/08/04/how-to-generate-impactful-problem-statements-using-prompts-and-uxgpt-problem-statements/">How to generate impactful problem statements using prompts and uxGPT Problem Statements</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p><span style="font-weight: 400;">The problem statement: the unsung hero of user experience and product management.</span></p>
+<p><span style="font-weight: 400;">Many jump straight to solutions, but understanding the problem first is crucial. It guides the process, focusing on real issues rather than assumptions, ideally backed by data and research.</span></p>
+<p><span style="font-weight: 400;">This approach prevents scope creep and keeps solutions relevant. It boosts product success by alinging the right problems effectively.</span></p>
+<p><span style="font-weight: 400;">ChatGPT excels at generating multiple problem statements, offering options that reveal nuances teams might miss. It&#8217;s a fantastic brainstorming tool that can save hours of time.</span></p>
+<p><span style="font-weight: 400;">Ready to see it in action? Let&#8217;s dive in.</span></p>
+<h3><b>Start with the domain</b></h3>
+<p><span style="font-weight: 400;">What is the domain you’re solving problems for? Start there.</span></p>
+<p><span style="font-weight: 400;">This high-level systems approach to generate problem statements provides a holistic understanding of the context and interdependencies. This process begins by examining the broader system within which the problem exists.</span></p>
+<p><span style="font-weight: 400;">This top-down perspective helps in seeing overall patterns and pinpointing where the problems could be starting from the very top. This way, our problem statements are grounded in a thorough understanding of the context, leading to more effective and sustainable solutions.</span></p>
+<p><span style="font-weight: 400;">This approach is incredibly effective if you’re starting an application from scratch. You might have one idea where you should start, but if ChatGPT spotlights something else, it may give you a different perspective on your initial problem statement.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Write 10 problem statements for a customer relationship management system in how might we format. How might we should be in bold.</span></pre>
+<h3><b>Add personas</b></h3>
+<p><span style="font-weight: 400;">Next up — the personas.</span></p>
+<p><span style="font-weight: 400;">Incorporating them into problem statements can significantly enhance focus and help to humanize the problem, making it easier for teams to empathize with the end-users and the problem being solved for them. Adding personas can help align the team’s efforts by providing a common understanding of who the target users are, thus fostering collaboration and consistency. </span></p>
+<p><span style="font-weight: 400;">However, an over-reliance on personas might limit creativity, as teams may become too focused on predefined user characteristics and miss out on innovative opportunities.</span></p>
+<p><span style="font-weight: 400;">Let’s add them and see what we come up with.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Write 10 problem statements for business development representatives using a customer relationship management system in how might we format. How might we should be in bold.</span></pre>
+<h3><b>Add features</b></h3>
+<p><span style="font-weight: 400;">When I work with my teams to write problem statements, I include the feature to get started quicker. That way, we can zero in on precise aspects that require attention, leading to more targeted and actionable problem-solving. </span></p>
+<p><span style="font-weight: 400;">The other reality is that most problems aren’t done in a vacuum — they are related to improving an existing solution you have or a similar solution in other systems — so suggesting something that already exists doesn’t bother me when exploring problem statements.</span></p>
+<p><span style="font-weight: 400;">However, there are cons. Focusing too narrowly might cause teams to overlook other opportunities, resulting in solutions that are too isolated or too specific to the feature at hand. </span></p>
+<p><span style="font-weight: 400;">That shouldn’t stop us from trying, so let’s give it a spin.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Write 10 problem statements for business development representatives using a customer relationship management system for account management in how might we format. How might we should be in bold.</span></pre>
+<h3><b>Add outcomes</b></h3>
+<p><span style="font-weight: 400;">Now let’s add the outcomes.</span></p>
+<p><span style="font-weight: 400;">I like to add them because it gives a clear vision of the impact of addressing the problems. It aids in prioritization, so the most impactful problems are tackled first. Additionally, it provides a metric for success, making it easier to evaluate the effectiveness of the implemented solutions. </span></p>
+<p><span style="font-weight: 400;">However, overemphasis on outcomes might also limit creativity; teams may focus solely on achieving declaring results rather than exploring innovative solutions that might have even greater.</span></p>
+<p><span style="font-weight: 400;">Despite these challenges, the benefits of adding outcomes to problem statements, such as clarity, motivation, and strategic alignment, often outweigh the drawbacks. Let’s try it out and see what we get.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Write 10 problem statements for business development representatives using a customer relationship management system for account management with predicted outcomes in how might we format. How might we should be in bold.</span></pre>
+<h3><b>Improving the prompt</b></h3>
+<p><span style="font-weight: 400;">Want to explore even more? Try improving the prompt by asking ChatGPT to do it. </span></p>
+<p><span style="font-weight: 400;">A good number of the prompts I tried returned a better, more detailed prompt. It’s worth a try because it offers a fresh perspective, fine-tunes details, and adds clarity for the final result.</span></p>
+<p><span style="font-weight: 400;">You can suggest specific improvements too, like adding a time frame, asking for more context or removing certain words like ensure, however — that’s my go to edit.</span></p>
+<p><span style="font-weight: 400;">It&#8217;s like having a brainstorming tool that never runs out of ideas. I encourage trying it out.</span></p>
+<h3><b>Prompt</b></h3>
+<p><span style="font-weight: 400;">How would you improve this prompt? </span></p>
+<pre><span style="font-weight: 400;">Write 10 problem statements for business development representatives using a customer relationship management system for account management with predicted outcomes in how might we format. How might we should be in bold.</span></pre>
+<h3><b>Try out this Custom GPT — uxGPT Problem Statements</b></h3>
+<p><span style="font-weight: 400;">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</span></p>
+<p><span style="font-weight: 400;">Try this custom GPT at </span><a href="https://chatgpt.com/g/g-I1JwXMe0l-uxgpt-problem-statements"><span style="font-weight: 400;">uxGPT Problem Statements.</span></a></p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/08/04/how-to-generate-impactful-problem-statements-using-prompts-and-uxgpt-problem-statements/">How to generate impactful problem statements using prompts and uxGPT Problem Statements</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6578</post-id>	</item>
+		<item>
+		<title>Write usability testing questions with prompts and uxGPT Usability Testing Questions</title>
+		<link>https://www.usabilitycounts.com/2024/07/30/write-usability-testing-questions-with-prompts-and-uxgpt-usability-testing-questions/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Wed, 31 Jul 2024 03:30:03 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6569</guid>
+
+					<description><![CDATA[<p>Creating usability test scripts is one of the most effective ways I have used the platform to get started. Try it yourself.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/30/write-usability-testing-questions-with-prompts-and-uxgpt-usability-testing-questions/">Write usability testing questions with prompts and uxGPT Usability Testing Questions</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p><span style="font-weight: 400;">How many of us have gone into usability testing sessions completely unprepared for what we were going to test, or had participants struggle with unclear ambiguous tasks? </span></p>
+<p><span style="font-weight: 400;">Now we can start from a better foundation with ChatGPT. Creating usability test scripts is one of the most effective ways I have used the application to get started. You can save time by quickly generating well-crafted scenarios and tasks without spending hours, leveraging OpenAI’s vast amount of training data. </span></p>
+<blockquote><p><span style="font-weight: 400;">Using the tool helps you craft testing scenarios that get to the heart of user interactions and pain points, all while saving you precious time. </span></p></blockquote>
+<p><span style="font-weight: 400;">Most of the teams I have managed shared these duties with product managers. This was always time-consuming and lacked alignment, but now, not so much. You can craft this with them, collaborating on the prompts.</span></p>
+<p><span style="font-weight: 400;">Here are tips for writing usability test scripts. Most of this is focused on B2B, but you can play with B2C if you change the focus.</span></p>
+<h3><b>Start with the domain</b></h3>
+<p><span style="font-weight: 400;">Begin by declaring the domain you want to usability test. I recommend starting with a specific category.</span></p>
+<p><span style="font-weight: 400;">It’s a good idea to set the context of your research so that you can refine it with deeper analysis and track your journey. To show the answer, you can specify any context, including the number of results or the display form.</span></p>
+<p><span style="font-weight: 400;">We’ll start with our example, customer relationship management.</span></p>
+<p><b>Prompt</b></p>
+<pre><span style="font-weight: 400;">Create 10 usability testing questions about customer relationship management systems.</span></pre>
+<h3><b>Add the feature</b></h3>
+<p><span style="font-weight: 400;">That returned an interesting list, but it wasn’t very targeted so you have to go one level deeper by focusing on a feature.</span></p>
+<blockquote><p><span style="font-weight: 400;">This focus allows you to dig deeper into the user&#8217;s actual experiences and pain points. This will uncover detailed insights about what works well and what doesn&#8217;t, which helps with prioritization and pattern matching on specific needs.</span></p></blockquote>
+<p><span style="font-weight: 400;">Let’s focus on one goal for the feature set — managing multiple accounts. This is really typical use case for customer relationship management. </span></p>
+<p><span style="font-weight: 400;">For extra credit, you can add the requirements and personas as added resources. I did this on another feature where I included scenarios and user stories used to write the specifications, and the questions were much more targeted. You can try it yourself.</span></p>
+<h4><b>Prompt without document</b></h4>
+<pre><span style="font-weight: 400;">Create 10 usability testing questions about managing multiple accounts using customer relationship management systems.</span></pre>
+<h4><b>Prompt with document</b></h4>
+<pre><span style="font-weight: 400;">Create 10 usability testing questions about managing multiple accounts using customer relationship management systems. Use the included documents as a reference for specifications.</span></pre>
+<h3><b>Add protopersonas</b></h3>
+<h4><span style="font-weight: 400;">Now let’s go th the next step — adding a protopersona.</span></h4>
+<h4><span style="font-weight: 400;">Protopersonas ensure that your questions are targeted and relevant, uncovering insights that might be overlooked with a generic approach of looking at all users in the system.</span></h4>
+<blockquote>
+<h4><span style="font-weight: 400;">By tailoring questions to specific personas, you can gather more actionable feedback during user interviews because you’re suggesting a specific role when using the application.</span></h4>
+</blockquote>
+<h4><span style="font-weight: 400;">For the record, I’m calling them protopersonas intentionally because they don’t take the place of talking to users, just formulating questions you may want to ask so you can refine. You can upload a persona from our list of users that we focus on. I won’t cover this during this tutorial, but it is something that you can play with at this point to inform your questions.</span></h4>
+<h4><span style="font-weight: 400;">We’ll add business development representatives and sales managers  for this example.</span></h4>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create 10 usability testing questions about managing multiple accounts as a business development representative using customer relationship management systems.</span></pre>
+<h3><b>Add the tasks</b></h3>
+<h4><span style="font-weight: 400;">Focusing on a specific protopersona with a specific goal is even better because it ensures insights gathered are deeply relevant to specific tasks the user may need to complete. </span></h4>
+<h4><span style="font-weight: 400;">The more specific you get about the what tasks you add, the more it helps narrow down the request. Honing in can uncover nuanced details that might otherwise be overlooked.</span></h4>
+<h4><span style="font-weight: 400;">However sometimes you don’t want to get too specific because you want to explore. I like keeping it open myself because then it might catch something I missed, and it’s a great way to learn how to craft better prompts.</span></h4>
+<h4><span style="font-weight: 400;">We’ll add a business development representative managing multiple accounts to generate qualified leads.</span></h4>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create 10 usability testing questions about managing multiple accounts as a business development representative focusing on generating more qualified leads using customer relationship management systems.</span></pre>
+<h3><b>Test the questions</b></h3>
+<p><span style="font-weight: 400;">This doesn’t replace users, but it gives a bit of a sniff test if the questions make sense. This is crucial because it helps ensure clarity and comprehensibility for participants. provide context and detail, making the questions easier to understand and answer accurately. I love these baselines because I can imagine what to expect during the test. It doesn’t have to be the right answer, it has to be something that I can get a sense of where it’s going to go.</span></p>
+<p><span style="font-weight: 400;">This can reveal potential ambiguities, leading to improved question design. Additionally, if you edit the draft questions, you can paste them back in and ask for the answers using a different prompt.</span></p>
+<h4><b>Sample questions prompt</b></h4>
+<pre><span style="font-weight: 400;">Create 10 usability testing questions about managing multiple accounts as a business development representative focusing on generating more qualified leads using customer relationship management systems. Give three detailed examples of answers to each question.</span></pre>
+<p><b>Sample answers prompt</b></p>
+<pre><span style="font-weight: 400;">Create three sample answers about managing multiple accounts as a business development representative focusing on generating more qualified leads using customer relationship management systems from the entered content.</span></pre>
+<h3><b>Test with a user</b></h3>
+<p><span style="font-weight: 400;">Now that you have your questions, do a dry run with someone in your organization to make any edits or clarifications just like you would do with a set of questions you created.</span></p>
+<p><span style="font-weight: 400;">This helps identify and resolve potential issues, leading smooth execution during the actual test.  This always is needed confirm that all elements work as intended. This preparation improves the quality of feedback, leading to more valuable usability insights.</span></p>
+<h3><b>Try out this Custom GPT — uxGPT Usability Testing Questions</b></h3>
+<p><span style="font-weight: 400;">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</span></p>
+<p><span style="font-weight: 400;">Try this custom GPT at </span><a href="https://chatgpt.com/g/g-GAjXPTaqK-uxgpt-usability-testing-questions"><span style="font-weight: 400;">uxGPT Usability Testing Questions</span></a><span style="font-weight: 400;">.</span></p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/30/write-usability-testing-questions-with-prompts-and-uxgpt-usability-testing-questions/">Write usability testing questions with prompts and uxGPT Usability Testing Questions</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6569</post-id>	</item>
+		<item>
+		<title>How to develop a usability testing plan using prompts and uxGPT Usability Testing Plans</title>
+		<link>https://www.usabilitycounts.com/2024/07/26/how-to-develop-a-usability-testing-plan-using-prompts-and-uxgpt-usability-testing-plans/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Sat, 27 Jul 2024 01:01:26 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6563</guid>
+
+					<description><![CDATA[<p>Usability testing plans are crucial because they ensure that the product you’re building meets its users’ needs and expectations. It’s testing the house before anyone lives in it.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/26/how-to-develop-a-usability-testing-plan-using-prompts-and-uxgpt-usability-testing-plans/">How to develop a usability testing plan using prompts and uxGPT Usability Testing Plans</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p><span style="font-weight: 400;">Now that you have a working prototype of your house, don’t you want to test it? Have a few people walk through? </span></p>
+<p><span style="font-weight: 400;">Of course you do. And you have to have a plan.</span></p>
+<p><span style="font-weight: 400;">Usability testing plans are crucial because they ensure that the product you&#8217;re building meets its users&#8217; needs and expectations. It’s testing the house before anyone lives in it.</span></p>
+<blockquote><p><span style="font-weight: 400;">Having a detailed script and feedback collection table ensures you gather actionable insights. It also lays out clear objectives, defines user personas, and details specific tasks for users to complete that you can compare against other tests. </span></p></blockquote>
+<p><span style="font-weight: 400;">Think of it as a way to catch any issues before they ship. It helps you focus on the user experience, highlighting what works well and what doesn&#8217;t, directly from the people who will be using it daily.</span></p>
+<p><span style="font-weight: 400;">Let’s get started.</span></p>
+<h3><b>Start wide</b></h3>
+<p><span style="font-weight: 400;">Starting with a wide prompt is a solid approach because it gives you a broad foundation to build upon. </span></p>
+<p><span style="font-weight: 400;">The main advantage is flexibility — you can explore different aspects before defining specific tasks and scenarios. It lets you think about all the potential areas to cover without getting too restricted initially. </span></p>
+<p><span style="font-weight: 400;">The downside is that it can be overwhelming and unfocused. Narrowing down the details to avoid ending up with a plan that misses key specifics, like the exact goals, targeted user actions, or detailed feedback methods. Leaving the feature out altogether is probably the biggest miss compared to how usability tests are normally run.</span></p>
+<p><span style="font-weight: 400;">Starting wide allows you to brainstorm before converging on the essential tasks, ensuring you don&#8217;t overlook anything critical in your final, more detailed prompt. I think of it as a very iterative exercise, starting at the widest point possible.</span></p>
+<p><span style="font-weight: 400;">Let’s give it a spin to see what the prompt comes back with.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a usability testing plan for a customer relationship management system.</span></pre>
+<h3><b>Add context</b></h3>
+<p><span style="font-weight: 400;">This more focused prompt helps because it tailors the usability testing plan to the specific needs and behaviors of the personas listed. </span></p>
+<p><span style="font-weight: 400;">Concentrating on these personas allows us to design tests that directly address their unique workflows and challenges. Understanding their goals and motivations also allows us to create scenarios that mirror their real-world tasks, making the test more realistic and the feedback more valuable.</span></p>
+<p><span style="font-weight: 400;">The pros of this focused approach are more relevant test scenarios, which means the feedback directly applies to improving the system for these key users. It also ensures that we&#8217;re not wasting time testing features that aren&#8217;t important to them. </span></p>
+<p><span style="font-weight: 400;">However, a potential con is that this approach might need to pay attention to the needs of other user groups, leading to a product that excels for some users but falls short for others. To mitigate this, it’s important to eventually broaden the testing to include other personas once the core needs are addressed.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a usability testing plan for a customer relationship management system, using Sales Managers and Business Development Representatives as user personas. Consider their goals, motivations, and behaviors.</span></pre>
+<h3><b>Add the feature</b></h3>
+<p><span style="font-weight: 400;">Let’s add the feature to the prompt to see how it works.</span></p>
+<p><span style="font-weight: 400;">Doing this is a best practice for testing because you want focused tasks for the users who would actually use the system. It helps you zero in on the exact needs of the users that would be using the feature, ensuring the feature meets their goal.</span></p>
+<p><span style="font-weight: 400;">One major pro is that it saves time and resources. Instead of testing the entire system, you concentrate on one crucial aspect, which can yield quicker and more meaningful insights. It also makes it easier to recruit participants since you’re addressing their specific needs. </span></p>
+<p><span style="font-weight: 400;">A con is that it might miss out on other important areas of the system that also need testing. Additionally, focusing too narrowly might lead to overlooking how different features interact with each other so it’s something you have to play with. We’ll include a second prompt, like contact management because those two features interact with each other.</span></p>
+<h4><b>Prompts</b></h4>
+<pre><span style="font-weight: 400;">Create a usability testing plan for a customer relationship management system, using Sales Managers and Business Development Representatives as user personas. Consider their goals, motivations, and behaviors. Target account management as the use case.</span></pre>
+<pre><span style="font-weight: 400;">Create a usability testing plan for a customer relationship management system, using Sales Managers and Business Development Representatives as user personas. Consider their goals, motivations, and behaviors. Target account and contact management as the use case.</span></pre>
+<h3><b>Create a template</b></h3>
+<p><span style="font-weight: 400;">Now on to creating a template.</span></p>
+<p><span style="font-weight: 400;">It helps you outline goals, tasks, and user scenarios, making sure everyone on the team knows what&#8217;s up. Additionally, if the template is easy to print out, you can have multiple members record feedback during the session, which is something I recommend. </span></p>
+<p><span style="font-weight: 400;">It’s a way from the computer when watching users by writing down notes, old school.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a usability testing plan for a customer relationship management system with Sales Managers and Business Development Representatives as the user personas. Consider their goals, motivations, and behaviors. Target account management as the use case. Add a script for the testing. Add a table that would be useful in collecting feedback from the session with columns that list in this order: Task, Pass, Fail, and Notes. </span></pre>
+<h3><b>Try out this Custom GPT — uxGPT User Testing Plans</b></h3>
+<p><span style="font-weight: 400;">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</span></p>
+<p><span style="font-weight: 400;">Try this custom GPT at </span><a href="https://chatgpt.com/g/g-S5I5KN7Xi-uxgpt-usability-testing-plans"><span style="font-weight: 400;">uxGPT User Testing Plans</span></a><span style="font-weight: 400;">.</span></p>
+<p>&nbsp;</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/26/how-to-develop-a-usability-testing-plan-using-prompts-and-uxgpt-usability-testing-plans/">How to develop a usability testing plan using prompts and uxGPT Usability Testing Plans</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6563</post-id>	</item>
+		<item>
+		<title>Start with definitions in minutes to help your organization align on language</title>
+		<link>https://www.usabilitycounts.com/2024/07/23/start-with-definitions-in-minutes-to-help-your-organization-align-on-language/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Wed, 24 Jul 2024 01:17:49 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6557</guid>
+
+					<description><![CDATA[<p>Words matter. The sooner you get your team aligned on language, the better. This custom GPT can help.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/23/start-with-definitions-in-minutes-to-help-your-organization-align-on-language/">Start with definitions in minutes to help your organization align on language</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p><span style="font-weight: 400;">Ah, language and definitions.</span></p>
+<p><span style="font-weight: 400;">I’ve personally wasted </span><b>months</b><span style="font-weight: 400;"> with teams defining terms i because we couldn’t align as a group on what to call certain features. </span></p>
+<p><span style="font-weight: 400;">I’ve called things “Fred’s” using a Flintstones metaphor until we get alignment. It’s funny and defuses the words people care about. I’ve also worked in other environments where I arrived late, and they defined terms in a way that was inconsistent with their real meaning. </span></p>
+<p><span style="font-weight: 400;">Because of this, I’ve developed a unique habit of being rather flexible with language because that isn’t a hill I’m willing to die on in most cases.</span></p>
+<p><span style="font-weight: 400;">Language matters a lot, more so than most designers realize — that’s why UX writers and content designers became a thing. </span></p>
+<p><span style="font-weight: 400;">It is one of the most important aspects of user experience because words describe the environment users interact with. Aligning on the language for a domain is crucial when building software because it lays the foundation for clear communication, both while defining the feature and when it’s shipped. </span></p>
+<blockquote><p><span style="font-weight: 400;">In the world of software development, terminology is the common language that bridges gaps between developers, designers, product managers, and users. Additionally, most domains have very defined language concepts—Salesforce as an application was founded in 1999, for example—so whether you like it or not, that foundation is strong and sometimes unchangeable.</span></p></blockquote>
+<p><span style="font-weight: 400;">ChatGPT as a really fancy tape recorder is a great tool for this as a first draft. It’s great. It has all those words and interprets them pretty well.</span></p>
+<p><span style="font-weight: 400;">Let’s get started.</span></p>
+<h3><b>Start wide</b></h3>
+<p><span style="font-weight: 400;">Starting wide begins with the greatest possible context so you can capture everyone&#8217;s definitions that everyone could use. By starting wide, you capture how everyone might interpret the language you are using, so everyone starts at the same place. </span></p>
+<p><span style="font-weight: 400;">As you gather user feedback, you can refine and narrow these definitions, ensuring they remain relevant and agreed upon.</span></p>
+<p><span style="font-weight: 400;">Think of it as building a house: you need a strong framework before you start adding the finer details. But at least everyone knows it&#8217;s a house and what the labels are, so there are fewer arguments about definitions. We’ll discuss this more later in the article.</span></p>
+<p><span style="font-weight: 400;">Back to the task to get you started. When I craft the prompt, I usually start with a long list and ask for their definitions so we can agree on that too.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">List 100 common customer relationship management terms and their definitions that would be used in a user interface. The list should be in a table.</span></pre>
+<h3><b>Add context</b></h3>
+<p><span style="font-weight: 400;">Adding context when establishing definitions with examples is crucial because it bridges the gap between abstract concepts and real-world applications. </span></p>
+<p><span style="font-weight: 400;">Consider the term &#8220;dashboard,&#8221;  a term I have fought with for the last 15 years of my career. It could mean anything from a car&#8217;s control panel to a software interface. However, when you provide an example in the domain that you are working in, such as &#8220;a dashboard displaying real-time sales metrics and we’ll call it Sales as a label,&#8221; everyone immediately gets it. </span></p>
+<blockquote><p><span style="font-weight: 400;">This context also aids in consistency and training. When new users join, or existing users explore new features, well-defined terms with examples ensure a smoother learning curve. They don’t have to guess or seek additional help because the interface itself becomes a guide. </span></p></blockquote>
+<p><span style="font-weight: 400;">Let’s add data examples to our table.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">List 100 common customer relationship management terms, their definitions, and data examples that would be used in a user interface. The list should be in a table. </span></pre>
+<h3><b>Refine</b></h3>
+<p><span style="font-weight: 400;">But what about other words?</span><span style="font-weight: 400;"><br />
+</span><span style="font-weight: 400;"><br />
+</span><span style="font-weight: 400;">Back to the house example. Many rooms have many synonyms, so it&#8217;s important to consider them. A perfect example is the bathroom. This could also be defined as restroom, lavatory, washroom, toilet, powder room, loo, water closet, privy, john, facilities, water closet, comfort station, can, head, commode, outhouse, latrine, potty, chamber, or convenience.</span></p>
+<p><span style="font-weight: 400;">And in software, we have the same arguments like “sign in” and “log in,” which I am dealing with today and have so over the last 20 years.</span></p>
+<p><span style="font-weight: 400;">You should choose language that resonates with a wider audience and demonstrate a deep understanding of your users&#8217; needs. It may seem like a small detail, but investing time in selecting the right words can lead to a more polished, professional, and user-centered interface. </span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">List 100 common customer relationship management terms, synonyms, definitions, and data examples that would be used in a user interface. The list should be in a table.</span></pre>
+<h3><b>Try out this Custom GPT — uxGPT Domain Definitions</b></h3>
+<p><span style="font-weight: 400;">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</span></p>
+<p><span style="font-weight: 400;">Try this custom GPT at </span><a href="https://chatgpt.com/g/g-HL382MxYg-uxgpt-domain-definitions"><span style="font-weight: 400;">uxGPT Domain Definitions</span></a><span style="font-weight: 400;">.</span></p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/23/start-with-definitions-in-minutes-to-help-your-organization-align-on-language/">Start with definitions in minutes to help your organization align on language</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6557</post-id>	</item>
+		<item>
+		<title>Revive the lost art of site maps in minutes with easy-to-use prompts and uxGPT SIte Maps</title>
+		<link>https://www.usabilitycounts.com/2024/07/21/reviving-the-lost-art-of-site-maps-in-minutes-with-easy-to-use-prompts-and-uxgpt-site-maps/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Sun, 21 Jul 2024 18:52:02 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6541</guid>
+
+					<description><![CDATA[<p>You might think site maps are old school, but they’re a secret weapon to keep everyone on the same page. ChatGPT makes it easy to create a draft for review.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/21/reviving-the-lost-art-of-site-maps-in-minutes-with-easy-to-use-prompts-and-uxgpt-site-maps/">Revive the lost art of site maps in minutes with easy-to-use prompts and uxGPT SIte Maps</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p><strong>I miss site maps. </strong></p>
+<p><span style="font-weight: 400;">No one really does them anymore, which sounds like a Yogi Berra quote.</span></p>
+<p><span style="font-weight: 400;">You might think site maps are old school, but for truly knowledgeable and experienced designers, they&#8217;re a secret weapon, especially for us information architects. Site maps give you a bird&#8217;s-eye view of the entire project. </span></p>
+<p><span style="font-weight: 400;">I like them because it’s like having a map before a road trip; you can see where everything is and plan your journey without missing any important stops.</span></p>
+<p><span style="font-weight: 400;">They also help keep everyone on the same page — literally. When you’re working with developers, stakeholders, and content creators, having a clear site map means fewer misunderstandings and smoother communication. It’s all about creating a shared vision where everyone can see the same patterns, and they’re wonderful alignment tools if everyone understands the format.</span></p>
+<p><strong>ChatGPT is rather good at creating them and thinking about some details that were time-consuming before, so get a sense of what you need and what could be missing and can add it to yours. There really isn’t much to the actions needed for an application — it’s called CRUD for a reason — so let’s get started with site mapping.</strong></p>
+<h3><b>Start wide</b></h3>
+<p><span style="font-weight: 400;">Starting with a simple prompt is a solid way to kick off the process because it sets a clear, focused goal right from the get-go. It&#8217;s broad enough to give you creative freedom but specific enough to keep you on track and give you an idea of how other products are structured because very few systems are original today.</span></p>
+<p><span style="font-weight: 400;">This kind of prompt encourages a very high level approach, allowing you to dive into the details and think about the user experience. It&#8217;s a great starting point that balances high-level planning with the need to consider specific user actions and page types in future prompts.</span></p>
+<p><span style="font-weight: 400;">Let’s start.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a site map for a customer relationship management system.</span></pre>
+<h3><b>Refine</b></h3>
+<p><span style="font-weight: 400;">That first prompt was a good start, but now we want to add more structure, and here’s how to do it. Asking for a numbered list sets up a logical, easy-to-follow format that can also act like a checklist. Additionally, it’s helpful to include actions like creating (labeled as new), deleting, updating, and viewing, as these are fundamental interactions users will need when managing their information.</span></p>
+<p><span style="font-weight: 400;">Plus, the focus on multiple levels of detail means nothing gets overlooked, making it perfect for a thorough and user-friendly site map.</span></p>
+<p><span style="font-weight: 400;">Let’s refine.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a site map as a numbered list for a customer relationship management system that is multiple levels deep in detail. Include the actions of creating (labels as new), deleting, updating, and viewing.</span></pre>
+<h3><b>Refine more</b></h3>
+<p><span style="font-weight: 400;">Now let’s add more detail to help categorize the content. </span></p>
+<p><span style="font-weight: 400;">I recommend labeling page types as list, detail, form, report, and confirmation modals to help categorize the content. This makes it easier to visualize the user journey and design accordingly, and it gives structure to system-wide patterns that we can reuse. This is not only when talking to the developers but also when thinking about what components to use from the design system.</span></p>
+<p><span style="font-weight: 400;">Additionally, suggesting page titles not only aids in clarity but also provides a head start in the wireframing process, ensuring consistency in how we are naming elements within the system.</span></p>
+<p><span style="font-weight: 400;">Try out this prompt as an example.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a site map as a numbered list for a customer relationship management system that is multiple levels deep in detail. Include the actions of creating (labeled as new), deleting, updating, and viewing. Label the page types as a list page, a detail page, a form page, a report page, and a confirmation modal, the last specifically for deleting. Suggest page titles for each.</span></pre>
+<h3><b>Refine even more</b></h3>
+<p><span style="font-weight: 400;">Now we can go all out with the following context.</span></p>
+<p><b>Roles and responsibilities:</b><span style="font-weight: 400;"> Specifying different user roles such as Administrator, Manager, and User, along with their respective permissions, ensures that the system is built with security in mind. Attaching them to the site gives even more context.</span></p>
+<p><b>Integrations:</b><span style="font-weight: 400;"> Integrations with third-party applications like email, calendar, and social media ensure seamless connectivity, which is a must for modern, efficient workflows in business-to-business systems. I would include this kind of system in the prompt.</span></p>
+<p><b>Alerts and Notifications:</b><span style="font-weight: 400;"> These actions ensure that users remain aware of critical events, enhancing the system&#8217;s responsiveness and user engagement, and should be considered in the information architecture.</span></p>
+<p><span style="font-weight: 400;">Overall, this prompt sets a solid foundation that most designers don’t consider when designing the site map. It covers functional, security, and usability aspects, which are vital for creating a well-rounded, user-centric application. This is about as detailed as a checklist that you’re going to need when getting started.</span></p>
+<p><span style="font-weight: 400;">It may seem long and overly detailed, but try it — it’s fun.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a site map as a numbered list for every element of a customer relationship management system that is multiple levels deep in detail. Include the actions of creating (labeled as new), deleting, updating, and viewing. Label the page types as a list page, a detail page, a form page, a report page, and a confirmation modal, the last specifically for deleting. Suggest page titles for each. Specify different user roles (e.g., Administrator, Manager, User) and their permissions for each action and page type. Include pages for integrations with third-party applications (e.g., email, calendar, social media) and specify any dashboard or analytics views required. Highlight any required notifications or alerts related to actions.</span></pre>
+<h3><b>Try out this Custom GPT — uxGPT Site Maps</b></h3>
+<p><span style="font-weight: 400;">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</span></p>
+<p><span style="font-weight: 400;">Try this custom GPT at <a href="https://chatgpt.com/g/g-ZysneIW0m-uxgpt-site-maps">uxGPT Site Maps</a>.</span></p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/21/reviving-the-lost-art-of-site-maps-in-minutes-with-easy-to-use-prompts-and-uxgpt-site-maps/">Revive the lost art of site maps in minutes with easy-to-use prompts and uxGPT SIte Maps</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6541</post-id>	</item>
+		<item>
+		<title>Creating personas for better questions with prompts and uxGPT Personas</title>
+		<link>https://www.usabilitycounts.com/2024/07/14/creating-personas-with-prompts-for-better-questions-using-chatgpt-and-uxgpt-personas/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Sun, 14 Jul 2024 15:47:40 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6509</guid>
+
+					<description><![CDATA[<p>The exploration goal is not final answers but asking better questions about your target users. You can do this with these prompts.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/14/creating-personas-with-prompts-for-better-questions-using-chatgpt-and-uxgpt-personas/">Creating personas for better questions with prompts and uxGPT Personas</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<div class="pullquote">
+<p>Designers: You can’t just chat with an AI avatar representing an average of your customers.</p>
+<p>Also designers: This is Jane, a persona I made based on how I imagine our customers. Let’s make all of our decisions based on Jane.</p>
+</div>
+<p><b>There’s a lot of truth to this. I’m crediting </b><a href="https://x.com/perfectKeming"><b>Aaron Benjamin</b></a><b> for the tweet. </b></p>
+<p><b>But back to why we are here.</b></p>
+<p>When I walk into a new place, the first activity I do is gather information to create personas — it could be user interviews, usage data, or whatever — because there has to be some baseline of the users.</p>
+<p>I’ve been in the legal technology space for a while, so I have a pretty good idea of who the users are. In other places, I would have to start from scratch and use my <a href="https://www.usabilitycounts.com/2013/09/10/five-approaches-creating-lightweight-personas/">lightweight personas approach</a> using data as much as I can and use my <a href="https://www.usabilitycounts.com/2017/08/23/download-free-user-experience-templates-use/">personas template</a> for the artifact.</p>
+<p>Those places usually have personas but are a wonderful mess that are more fiction than research. It always surprises me how often previous personas seem more made up and not based on data.</p>
+<p>Based on that tweet, the fancy tape recorder of ChatGPT frankly might be a better baseline than what most organizations have, making this one of the most maligned conversations in how user experience is being affected by AI.</p>
+<blockquote><p>The goal of this exploration is not final answers, but to quote <a href="https://x.com/hpdailyrant">Ha Phan</a>, asking better, more informed questions.</p></blockquote>
+<p>ChatGPT can generate better information to ask better questions because of the vast amount of information used to build the models (admittedly without the permission of some users), then we could.</p>
+<p>With a trust-and-verify model, you can generate better user research questions.</p>
+<p><b>However, I’m not here to start a controversy — I’m here to teach with available tools. Let’s get started.</b></p>
+<h3>Start wide</h3>
+<p>First, let’s define what a good persona should have because they are one of the most misused artifacts designers and product managers use. Alan Cooper, the inventor of personas, <a href="https://onezero.medium.com/in-1983-i-created-secret-weapons-for-interactive-design-d154eb8cfd58">has a great article</a> about the journey,</p>
+<p>A good persona should focus on goals, motivations, and behaviors because these elements provide a clear, actionable understanding of the user.</p>
+<ul>
+<li style="font-weight: 400;" aria-level="1"><b>Goals</b> represent what users aim to achieve.</li>
+<li style="font-weight: 400;" aria-level="1"><b>Motivations</b> delve into the underlying reasons driving users toward their goals.</li>
+<li style="font-weight: 400;" aria-level="1"><b>Behaviors</b> describe how users act to accomplish their goals, including past behaviors.</li>
+</ul>
+<p>By concentrating on these aspects, personas are powerful tools for aligning stakeholders with user needs, fostering empathy, and ensuring that solutions are both relevant and effective. This focus eliminates unnecessary details that could dilute the insights, keeping the persona practical and directly applicable.</p>
+<p>I’m going to start with the most basic of prompts, using the application customer relationship management as with the other articles in this series.</p>
+<h4><b>Prompt</b></h4>
+<pre>Create a persona for a Sales Business Development Representative using a customer relationship management application. Frame the persona with goals, motivations, and behaviors.</pre>
+<h3>Add structure</h3>
+<p>Let’s get rid of the fluff that Chat GPT added.</p>
+<p>A good persona skips demographic details and focuses on background and attitudinal information because demographics often fail to reveal true user needs (age, really?). Instead, understanding a user&#8217;s background provides context, shedding light on their experiences and challenges.</p>
+<p>Attitudinal information captures their mindset and perceptions, which are crucial for tailoring the user experience. By honing in on these aspects, we gain actionable insights into how users think and feel, driving design decisions that resonate more deeply.</p>
+<p>This approach keeps personas relevant and focused, ensuring we design solutions that truly address user pain points and aspirations.</p>
+<h4><b>Prompt</b></h4>
+<pre>Create a persona for a Sales Business Development Representative using a customer relationship management application. Frame the persona with goals, motivations, and behaviors. Include attitudinal information like pain points and background information. Do not include demographic information about this persona.</pre>
+<h3>Add the detailed task</h3>
+<div class="pullquote">A task-based approach also turns the persona exercise into an evergreen activity, refining them based on real research versus at the beginning of a project.</div>
+<p>Now let’s include research that almost never happens because it’s too much work to interview users this way: the task they are performing as a persona.</p>
+<p>Organizations use personas in the abstract because they are a lot of work to create, so they speak of them. I’ve been in many meetings where we speak of the persona but don’t actually interview users that match the persona. If we do, it’s usually after the fact during usability testing.</p>
+<p>When we specify the exact tasks users need to accomplish or the features they interact with, we create a direct line to practical improvements. This detail helps prioritize what matters most to users, guiding the development team to focus on functionality that genuinely enhances the user experience.</p>
+<p>Personas are too abstract without including this detail. Including detailed tasks and features ensures our designs are grounded in real user needs and behaviors.</p>
+<h4><b>Prompt</b></h4>
+<pre>Create a persona for a Sales Business Development Representative using a customer relationship management application, specifically managing accounts. Frame the persona with goals, motivations, and behaviors. Include attitudinal information like pain points and background information. Do not include demographic information about this persona.</pre>
+<h3>Trust and verify</h3>
+<p>Asking user research questions to validate a persona ensures it accurately reflects real users. This is crucial for personas because they must match someone in reality. This validation process roots the persona in actual data, making it a reliable tool for design decisions.</p>
+<p>Skipping this step risks creating a persona based on biases or guesswork, which can lead to misaligned solutions. In short, user research is the compass that keeps our personas—and our designs—true to the real user experience.</p>
+<p>We can easily do this with GPT by adding to the prompt to ask user research questions, as we discussed in the last article.</p>
+<h4><b>Prompt</b></h4>
+<pre>Create a persona for a Sales Business Development Representative using a customer relationship management application, specifically managing accounts. Frame the persona with goals, motivations, and behaviors. Include attitudinal information like pain points and background information. Do not include demographic information about this persona. Generate user research questions that would validate this persona as correct.</pre>
+<h3><b>Others to follow</b></h3>
+<ul>
+<li style="font-weight: 400;" aria-level="1"><a href="https://www.linkedin.com/in/jab56/">JB Booth</a> — She’s doing a lot of work on combining personas with data</li>
+<li style="font-weight: 400;" aria-level="1"><a href="https://x.com/userexperience">Jonathan Lupo</a> — He’s exploring ways to do the same thing, adding data to synthetic personas, with his new consulting firm NXT Humans</li>
+</ul>
+<h3><b>Try out this Custom GPT — uxGPT Personas</b></h3>
+<p>Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</p>
+<ul>
+<li style="font-weight: 400;" aria-level="1">Try this custom GPT at <a href="https://chatgpt.com/g/g-BSYF8GL6u-uxgpt-personas">uxGPT Personas</a>.</li>
+<li style="font-weight: 400;" aria-level="1">If you need a template for a Persona Artifact, you can download it here at <a href="https://www.usabilitycounts.com/2017/08/23/download-free-user-experience-templates-use/">Usability Counts</a>.</li>
+</ul>
+<p>&nbsp;</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/14/creating-personas-with-prompts-for-better-questions-using-chatgpt-and-uxgpt-personas/">Creating personas for better questions with prompts and uxGPT Personas</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6509</post-id>	</item>
+		<item>
+		<title>Write user research questions with prompts and uxGPT Research Questions</title>
+		<link>https://www.usabilitycounts.com/2024/07/10/write-user-research-questions-with-prompts-and-uxgpt-research-questions/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Thu, 11 Jul 2024 05:00:35 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6500</guid>
+
+					<description><![CDATA[<p>Writing user research questions is one of the most effective ways I have used Chat GPT as a starter method. You can save time by quickly generating well-crafted questions by using OpenAI’s vast amount of training data.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/10/write-user-research-questions-with-prompts-and-uxgpt-research-questions/">Write user research questions with prompts and uxGPT Research Questions</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p><span style="font-weight: 400;">How many of us have gone into user interviews unprepared for what we would ask, or other participants have asked something totally outside the lines? </span></p>
+<p><span style="font-weight: 400;">Yes. All of us.</span></p>
+<p><span style="font-weight: 400;">Now we can start from a better foundation with ChatGPT.</span></p>
+<p><span style="font-weight: 400;">Writing user research questions is one of the most effective ways I have used the application as a starter method. You can save time by quickly generating well-crafted questions without spending hours by using OpenAI’s vast amount of training data.</span></p>
+<p><span style="font-weight: 400;">ChatGPT also aligns with best practices in user research. Participants can avoid common pitfalls and most biases, resulting more information to ask better questions. The truth is that when you use OpenAI, there’s always going to be some biases, but that’s correctable with a human in the loop reviewing the draft.</span></p>
+<p><span style="font-weight: 400;">It may feel like having another seasoned UX professional on hand, ready to help you craft questions that get to the heart of user needs and behaviors, all while saving you precious time. </span></p>
+<p><span style="font-weight: 400;">Most of the teams I have managed shared research duties with product managers. This was always time-consuming and lacked alignment, but now, not so much.</span></p>
+<p><span style="font-weight: 400;">These are tips for writing user research question prompts. Most of this is focused on B2B, but you can play with B2C if you change the focus.</span></p>
+<h3><b>Start wide</b></h3>
+<p><span style="font-weight: 400;">Begin by declaring the category you want to research or the areas you want to compare across competitors. I recommend starting with a specific category.</span></p>
+<p><span style="font-weight: 400;">It’s a good idea to set the context of your research so that you can refine it with deeper analysis and track your journey. To show the answer, you can specify any context, including the number of results or the display form.</span></p>
+<p><span style="font-weight: 400;">We’ll start with our example, customer relationship management.</span></p>
+<p><b>Prompt</b></p>
+<pre><span style="font-weight: 400;">Create 10 user research questions about customer relationship management systems.</span></pre>
+<h3><b>Refine</b></h3>
+<p><span style="font-weight: 400;">Focusing on specific features allows you to dig deeper into the user&#8217;s actual experiences and pain points. This will uncover detailed insights about what works well and what doesn&#8217;t, which helps with prioritization and pattern matching on specific needs.</span></p>
+<p><span style="font-weight: 400;">This will also help you gather precise feedback rather than broad, generalized opinions. Ultimately, it leads to a more user-centered product development process.</span></p>
+<p><span style="font-weight: 400;">Asking very general questions for larger systems is too broad, especially if you have a system in place. Let’s focus on one goal for the feature set — managing multiple accounts. This is really typical use case for customer relationship management.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create 10 user research questions about managing multiple accounts using customer relationship management systems.</span></pre>
+<h3><b>Add protopersonas</b></h3>
+<p><span style="font-weight: 400;">Now let’s go another step — adding a protopersona.</span></p>
+<p><span style="font-weight: 400;">Protopersonas ensure that your questions are targeted and relevant, uncovering insights that might be overlooked with a generic approach of looking at all users in the system.</span></p>
+<p><span style="font-weight: 400;">By tailoring questions to specific personas, you can gather more actionable feedback during user interviews because you’re suggesting a specific role when using the application.</span></p>
+<p><span style="font-weight: 400;">For the record, I’m calling them protopersonas intentionally because they don’t take the place of talking to users, just formulating questions you may want to ask so you can refine. You can upload a persona from our list of users that we focus on. I won’t cover this during this tutorial, but it is something that you can play with at this point to inform your questions.</span></p>
+<p><span style="font-weight: 400;">We’ll add a business development representative for this example.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create 10 user research questions about managing multiple accounts as a business development representative using customer relationship management systems.</span></pre>
+<h3><b>Refine more</b></h3>
+<p><span style="font-weight: 400;">Focusing on a specific protopersona with a specific goal is even better because it ensures insights gathered are deeply relevant to specific tasks the user may need to complete. </span></p>
+<p><span style="font-weight: 400;">The more specific you get about the request, the more it helps narrow down the request. Honing in can uncover nuanced and very specific pain points that might otherwise be overlooked.</span></p>
+<p><span style="font-weight: 400;">However sometimes you don’t want to get too specific because you want to explore. I like keeping it open myself because then it might catch something I missed, and it’s a great way to learn how to craft better prompts.</span></p>
+<p><span style="font-weight: 400;">We’ll add a business development representative that manages multiple accounts.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create 10 user research questions about managing multiple accounts as a business development representative focusing on generating more qualified leads using customer relationship management systems.</span></pre>
+<h3><b>Test the questions</b></h3>
+<p><span style="font-weight: 400;">This doesn’t replace users, but it gives a bit of a sniff test if the questions make sense. This is crucial because it helps ensure clarity and comprehensibility for participants. provide context and detail, making the questions easier to understand and answer accurately. </span></p>
+<p><span style="font-weight: 400;">This can reveal potential ambiguities, leading to improved question design. Additionally, if you edit the draft questions, you can paste them back in and ask for the answers using a different prompt.</span></p>
+<h4><b>Sample questions prompt</b></h4>
+<pre><span style="font-weight: 400;">Create 10 user research questions about managing multiple accounts as a business development representative focusing on generating more qualified leads using customer relationship management systems. Give three detailed example answers to each question.</span></pre>
+<h4><b>Sample answers prompt</b></h4>
+<pre><span style="font-weight: 400;">Create three sample answers about managing multiple accounts as a business development representative focusing on generating more qualified leads using customer relationship management systems from entered content.</span></pre>
+<h3><b>Try out this Custom GPT — uxGPT Research Questions</b></h3>
+<p><span style="font-weight: 400;">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</span></p>
+<p><span style="font-weight: 400;">Try this custom GPT at </span><a href="https://chatgpt.com/g/g-lndtGNHgq-uxgpt-research-questions"><span style="font-weight: 400;">uxGPT Research Questions</span></a><span style="font-weight: 400;">.</span></p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/10/write-user-research-questions-with-prompts-and-uxgpt-research-questions/">Write user research questions with prompts and uxGPT Research Questions</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6500</post-id>	</item>
+		<item>
+		<title>Perform a competitive analysis with Chat GPT prompts and uxGPT Competitive Analysis</title>
+		<link>https://www.usabilitycounts.com/2024/07/06/perform-a-competitive-analysis-with-prompts-and-uxgpt-competitive-analysis/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Sat, 06 Jul 2024 16:28:40 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6461</guid>
+
+					<description><![CDATA[<p>Enter a topic, and ChatGPT will give you insights into each competitor's feature set and highlight emerging industry trends and potentially overlooked features.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/06/perform-a-competitive-analysis-with-prompts-and-uxgpt-competitive-analysis/">Perform a competitive analysis with Chat GPT prompts and uxGPT Competitive Analysis</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p class="article-editor-content__paragraph"><strong>Knowing your competitors is important. You have endless reading and categorization to get started to understand the nuances of how they position themselves. It&#8217;s a time-consuming process.</strong></p>
+<p class="article-editor-content__paragraph article-editor-content__has-focus">But it&#8217;s not time consuming anymore with Chat GPT.</p>
+<p><span style="font-weight: 400;">Want an example of performing competitive analysis in minutes? Let&#8217;s start with ChatGPT to see what we can come up with.</span><span style="font-weight: 400;"><br />
+</span><span style="font-weight: 400;"><br />
+</span><span style="font-weight: 400;">Enter a topic, and ChatGPT will give you insights into each competitor&#8217;s feature set. Some content may need to be updated (information about certain products is a couple of years old, so I&#8217;ll move over to Perplexity for a more current answer), but it can highlight emerging industry trends and potentially overlooked features others may have missed.</span></p>
+<p><span style="font-weight: 400;">This summarization is not the final product. It&#8217;s a starting point for initial alignment and can be iterated for refinement, and it sometimes misses smaller players that may be a thread, but it at least gets you started.</span></p>
+<blockquote><p><span style="font-weight: 400;">As long as there&#8217;s enough content for the category, it can return the answer to get you started as a baseline for your competitive analysis.</span></p></blockquote>
+<h3><b>Start wide</b></h3>
+<p><span style="font-weight: 400;">Begin by declaring the category you want to research or the areas you want to compare across competitors. I will start with this prompt to get a generalized list of competitors for the category.</span></p>
+<p><span style="font-weight: 400;">It’s a good idea to set the context of your research so that you can refine it with deeper analysis and see your journey. To show the answer, you can specify any context, including the number of results or the display form.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a competitive investigation table of 10 </span><b>customer relationship management systems</b><span style="font-weight: 400;">, with at least five items for each category.</span></pre>
+<h3><b>Add structure</b></h3>
+<p><span style="font-weight: 400;">The initial answer was pretty good, but I might want to add more structure. The framework I’ll use is a SWOT analysis for strengths, weaknesses, opportunities, and threats. It’s one of my favorites for looking at competitors.</span></p>
+<p><span style="font-weight: 400;">A SWOT analysis is a strategic planning tool used to identify and analyze the internal and external factors that can impact a business or project&#8217;s success. It helps organizations understand their competitive position and develop strategic plans to achieve their goals.</span></p>
+<p><span style="font-weight: 400;">You can use other frameworks (use a prompt of &#8220;What are alternatives to SWOT?&#8221; for fun). Here’s a list:</span></p>
+<ul>
+<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;"><strong>SOAR Analysis</strong> — </span><span style="font-weight: 400;">SOAR focuses on positive aspects and is used for strategic planning by emphasizing the organization&#8217;s strengths and vision for the future.</span></li>
+<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;"><strong>BCG Matrix</strong> — </span><span style="font-weight: 400;">The Boston Consulting Group Matrix helps organizations analyze their product lines or business units.</span></li>
+<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;"><strong>Ansoff Matrix</strong> — </span><span style="font-weight: 400;">The Ansoff Matrix, or Product/Market Expansion Grid, helps organizations determine growth strategies.</span></li>
+</ul>
+<p>We’ll use customer relationship management as the category example.</p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a competitive investigation table of 10 </span><b>customer relationship management systems</b><span style="font-weight: 400;">, categorized by SWOT, with at least five items for each category.</span></pre>
+<h3><b>Refine</b></h3>
+<p><span style="font-weight: 400;">Engage with ChatGPT to iteratively refine the analysis or ask follow-up questions, getting answers in minutes. This interactive process saves time and enhances the depth and precision of your competitive analysis, making it a potent tool for strategic decision-making. </span></p>
+<p><span style="font-weight: 400;">You can do this by rewriting your prompt to include any information you want by comparing your product with others. An even better approach is to include your company in the analysis (sometimes it won’t show up in the initial answer) to get a sense of where your organization sits in the analysis.</span></p>
+<h4><b>Prompt</b></h4>
+<pre><span style="font-weight: 400;">Create a competitive analysis table of 10 customer relationship management systems, </span><b>including HubSpot</b><span style="font-weight: 400;">, categorized by SWOT with at least five items for each category.</span></pre>
+<h3><b>Refine more</b></h3>
+<p><span style="font-weight: 400;">Now, request deeper dives into specific areas. We will add small businesses or integrations with MailChimp in the prompt so there is more detail to influence the conversation. Most of the time, it’ll return a few results not listed in the previous prompt, and that’s good. </span></p>
+<p><span style="font-weight: 400;">It widens the universe of results you can use in your research, showing possibilities you can explore further.</span></p>
+<h4><b>Prompts</b></h4>
+<pre><span style="font-weight: 400;">Create a competitive analysis table of 10 customer relationship management systems </span><b>for mid-sized businesses</b><span style="font-weight: 400;">, including HubSpot, categorized by SWOT with at least five items for each category.</span></pre>
+<pre><span style="font-weight: 400;">Create a competitive analysis table of 10 customer relationship management systems with integrations into MailChimp, including HubSpot, categorized by SWOT with at least five items for each category. </span></pre>
+<h3><b>Try out this Custom GPT — uxGPT Competitive Analysis</b></h3>
+<p><span style="font-weight: 400;">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</span></p>
+<p><span style="font-weight: 400;">Try this custom GPT at </span><a href="https://chatgpt.com/g/g-AbEqiciGH"><span style="font-weight: 400;">uxGPT Competitive Analysis</span></a><span style="font-weight: 400;">.</span></p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/06/perform-a-competitive-analysis-with-prompts-and-uxgpt-competitive-analysis/">Perform a competitive analysis with Chat GPT prompts and uxGPT Competitive Analysis</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6461</post-id>	</item>
+		<item>
+		<title>Figma AI: I’m not worried about my job anytime soon</title>
+		<link>https://www.usabilitycounts.com/2024/07/04/figma-ai-tools-im-not-worried-about-my-job-anytime-soon/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Thu, 04 Jul 2024 19:11:34 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6426</guid>
+
+					<description><![CDATA[<p>The features are awesome but we’re far off from replacing designers. That’s coming from someone immersed in AI every day of the week.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/04/figma-ai-tools-im-not-worried-about-my-job-anytime-soon/">Figma AI: I’m not worried about my job anytime soon</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p id="4c43">I didn’t attend Figma Config 2024 because I could catch up on it virtually, which I did <a class="ba xr" href="https://www.figma.com/blog/introducing-figma-ai/" target="_blank" rel="noopener ugc nofollow">after the fact</a>. The thought of 14,000 designer types in the same place? I’m sure there’s a Groucho Marx quote somewhere in there about a club.</p>
+
+
+
+<p id="8cc8">But I digress.</p>
+
+
+
+<p id="5927">The Figma AI tools are interesting, and having used almost every application known to designerkind to wireframe (QuarkXpress, anyone?), I thought I could add the “been there, done that” perspective.</p>
+
+
+
+<p id="b7d2"><strong class="wm gv">My overall take: I’m not worried about my job anytime soon, and that’s coming from someone immersed in AI every day of the week.</strong></p>
+
+
+
+<p id="9120">I’ve said this before, and I’ll say it again: until someone can write a perfect product requirements document, designers are safe. There is so much nuance in developing some experiences that using AI seems quite a tall task, especially with existing applications where you have to modify work designed by imperfect humans.</p>
+
+
+
+<p id="0a37">And enterprise? Good luck!</p>
+
+
+
+<p id="344b">However, there is a quite of bit of usefulness to the features here (who else gets upset by seeing a Figma file that has frame 54831?) that will speed up the workflow of designers immensely and hopefully will make files much more understandable, but some features still seem like toys.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p id="60bc">People often forget that designers are valued not for the artifacts they create but for how they align through storytelling and knowledge. That’s not about renaming layers or creating content, it’s about weaving a tale that generates value.</p>
+</blockquote>
+
+
+
+<h3 id="77fb" class="wp-block-heading">Renaming layers</h3>
+
+
+
+<h4 id="27d4"><strong class="wm gv">Grade: </strong>A-</h4>
+
+
+
+<p id="7641">Renaming frames in Figma is an information architecture problem — something that most designers have struggled with since Photoshop 3.0 introduced layers, bringing us to layer 0, layer 1, and layer 2 — something that plagues everyone in design when seeing frames 34541 and wondering what it means.</p>
+
+
+
+<p id="528c">And now Figma is at least attempting to fix this. Please, and thank you. I’m sure they’ll be missteps, but at least attempting it will make Figma a better application. This should greatly increase the usability and organization of most Figma files.</p>
+
+
+
+<p id="e5a0">It will also train designers to organize their files better when they see Figma’s patterns.</p>
+
+
+
+<h3 id="98a6" class="wp-block-heading">Generating visual and written content</h3>
+
+
+
+<h4 id="3f6f"><strong class="wm gv">Grade:</strong> B+</h4>
+
+
+
+<p class="is-layout-flow wp-block-quote-is-layout-flow" id="45a7">This feature will save a lot of time.</p>
+
+
+
+<p id="b87c">As I wrote in <a class="ba xr" href="https://www.linkedin.com/feed/update/urn:li:activity:7212896503298736128/" target="_blank" rel="noopener ugc nofollow">another blog post</a> about generating fake data, it is a time-consuming task that most designers hate. If Figma can accurately generate data from previously entered content, I will throw a party. I will see prototypes with realistic content that accurately test designs so developers won’t run into edge cases.</p>
+
+
+
+<p id="df41">When watching the video, I was also impressed with the translation features, but that’s something my company’s platform does today, so it’s not much of a stretch.</p>
+
+
+
+<p id="1982">Additionally, having the image generation tools directly integrated into Figma is incredible. There are already plug-ins that do this — think user profile photos — but having this built right in will provide a more integrated experience, and that I like.</p>
+
+
+
+<h3 id="869e" class="wp-block-heading">Generating new designs</h3>
+
+
+
+<h4 id="c56c"><strong class="wm gv">Grade:</strong> C+</h4>
+
+
+
+<p id="0845">How often do you generate a new website or application from the very beginning?</p>
+
+
+
+<p id="b11d">Yes, I don’t do that much either.</p>
+
+
+
+<p id="6bfa">I’ve always encountered situations where an application design exists (poorly), and we’ve had to work around it and improve it slowly. That meant dealing with many imperfect flows and designs that had to be gradually improved, none of which AI can do now.</p>
+
+
+
+<p id="0dad">Additionally, much of the design work happening now is very cookie-cutter — think the 3-panel marketing website that can be a copy-and-paste job, or using an existing table component — so it might render this tool as a toy for a while.</p>
+
+
+
+<p id="c3d2">All of the examples I saw in the Figma Keynote were fancy tape recorder examples — applications that already exist — so that doesn’t have much usefulness in my world because we’re already designing features that pretty much exist.</p>
+
+
+
+<p id="561e">As a tool to generate new ideas for analogous inspiration?</p>
+
+
+
+<p id="0de6">Absolutely. I could see it as a way to explore concepts quickly, especially during design sprints. Designers too often get stuck in the rut of their existing design systems, so this could be a great application to explore new ideas.</p>
+
+
+
+<h3 id="1255" class="wp-block-heading">Visual search</h3>
+
+
+
+<h4 id="bc9e"><strong class="wm gv">Grade:</strong> C</h4>
+
+
+
+<p id="9b0f">This is what Open AI and similar tools do best — look at existing content and find things so it should excel here. Figma has leveraged that.</p>
+
+
+
+<p id="18a5">As a tool to look for variations of a screen will save an incredible amount of time, especially in environments where designers move fast and treat design artifacts like fast food. The current set of artifacts that we have to go through to find a particular screen that is misnamed from a designer who worked there a long time ago?</p>
+
+
+
+<p id="9d25">It’s hours.</p>
+
+
+
+<p id="d5a8">We’ll use previous assets for new features but it’ll take a long time to get this right, and this is based on real world experience. I give it a B because it’s trial and error to start, but it will improve over time.</p>
+
+
+
+<h3 id="9667" class="wp-block-heading">Auto prototyping</h3>
+
+
+
+<h4 id="aca9"><strong class="wm gv">Grade:</strong> C-</h4>
+
+
+
+<p id="c81a">This. Is. Hard.</p>
+
+
+
+<p id="dc5d">It looked cool from the very outset, but when we built one of those prototypes for demonstration purposes, we spent a lot of time tweaking animations and adding the special sauce that made them fun, and all I saw from the video was simple point-and-click actions and not much else.</p>
+
+
+
+<p id="a507">I really see usefulness upfront when wiring things together, but the real magic will come from the designer, rendering this feature a toy until they can add magic. The wiring is the easy work, but 80 percent of rest matters more.</p>
+
+
+
+<h3 id="934a" class="wp-block-heading">Conclusion</h3>
+
+
+
+<p id="d4b9">My take, again: I’m not worried about my job anytime soon.</p>
+
+
+
+<p id="8119">Most of my take is that existing human behaviors get in the way.</p>
+
+
+
+<p id="7471">It’s the same problem with self-driving cars: it’s the humans around them and the rules they don’t follow. It will take systems time to anticipate our predictably unpredictable behavior, down to our poorly organized Figma files.</p>
+
+
+
+<p id="7d26">However, this is a wonderful set of features that’s still in beta — they’re learning with the rest of us — so I’m excited to see what they come up with. These tools will not replace the original and strategic thought needed to create great experiences.</p>
+
+
+
+<p id="158a">That’s where great designers come in.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/07/04/figma-ai-tools-im-not-worried-about-my-job-anytime-soon/">Figma AI: I’m not worried about my job anytime soon</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6426</post-id>	</item>
+		<item>
+		<title>How to create fake data with prompts and uxGPT Fake Data</title>
+		<link>https://www.usabilitycounts.com/2024/06/29/how-to-create-fake-data-with-prompts-and-uxgpt-fake-data/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Sat, 29 Jun 2024 17:56:44 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">https://www.usabilitycounts.com/?p=6419</guid>
+
+					<description><![CDATA[<p>ChatGPT is a great way to create realistic fake data for your wireframes. You can ensure your designs work using these simple prompts or the uxGPT Fake Data custom GPT.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/06/29/how-to-create-fake-data-with-prompts-and-uxgpt-fake-data/">How to create fake data with prompts and uxGPT Fake Data</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<section class="section section--body">
+<div class="section-content">
+<div class="section-inner sectionLayout--insetColumn">
+<p class="graf graf--p"><strong class="markup--strong markup--p-strong">Part of a series using Chat GPT to accelerate the user experience process.</strong></p>
+<p class="graf graf--p graf--hasDropCapModel graf--hasDropCap">Fake data—the bane of existence for user experience designers. Creating this data is time-consuming and requires much imagination and testing of different content.</p>
+<p class="graf graf--p">I have spent countless hours repeatedly refining this content to ensure the wireframes represent what the application would display. Besides using <a class="markup--anchor markup--p-anchor" href="https://www.bobrosslipsum.com/" target="_blank" rel="noopener" data-href="https://www.bobrosslipsum.com/">Bob Ross Ipsum</a> or the NSFW Samuel L. Jackson Ipsum, I always prefer to simulate the real experience as closely as possible.</p>
+<p class="graf graf--p">Representative data is ridiculously important for several reasons.</p>
+<p class="graf graf--p"><strong class="markup--strong markup--p-strong">It serves as a placeholder that mimics real-world content, helping visualize how the interface will function and behave with actual data. </strong>As it simulates how users interact with the product, we assess usability and functionality more realistically.</p>
+<p class="graf graf--p"><strong class="markup--strong markup--p-strong">Fake data identifies potential design flaws early on.</strong> By integrating representative content, we can better understand how different data types and volumes affect layout. This enables us to test edge cases and ensure the interface remains intuitive and efficient across various scenarios.</p>
+<p class="graf graf--p"><strong class="markup--strong markup--p-strong">Presenting wireframes with fake data facilitates more meaningful discussions and decisions during design reviews.</strong> It shifts the focus from hypothetical situations to concrete examples, prompting productive dialogues about content priorities, information hierarchy, and interaction patterns.</p>
+<blockquote class="graf graf--pullquote"><p>You can’t test your design without having the right representative data in place.</p></blockquote>
+<p class="graf graf--p">Now, Chat GPT accelerates this. It saves hours of time and effort and creates more realistic content to test your concepts.</p>
+<p class="graf graf--p">You can start with a prompt and refine it quickly. Chat GPT will create realistic-looking content and ensure the data looks correct, down to addresses and phone numbers that match the right metropolitan areas.</p>
+<p class="graf graf--p">I’m going to show you how to do it.</p>
+</div>
+</div>
+</section>
+<section class="section section--body">
+<div class="section-content">
+<div class="section-inner sectionLayout--insetColumn">
+<h3 class="graf graf--h3">Start with a prompt</h3>
+<p class="graf graf--p">I would start with the following sentence: “Generate a table of realistic fake data with 25 rows for a (topic) application.” It’s a great way to start because Chat GPT will give you a table of information that it believes is appropriate for the topic you select and suggest fields.</p>
+<p class="graf graf--p">The fields don’t have to be right; they give you a baseline. I always state “realistic fake data” as part of the prompt because it generates more representative data.</p>
+<h4 class="graf graf--h4">Example Topics</h4>
+<ul class="postList">
+<li class="graf graf--li">Tasks</li>
+<li class="graf graf--li">User Profiles</li>
+<li class="graf graf--li">Products</li>
+<li class="graf graf--li">Events</li>
+<li class="graf graf--li">Projects</li>
+<li class="graf graf--li">Settings</li>
+</ul>
+<h4 class="graf graf--h4">Prompt</h4>
+<pre class="graf graf--p">Generate a table of realistic fake data with 25 rows for a customer relationship management application.</pre>
+</div>
+</div>
+</section>
+<section class="section section--body">
+<div class="section-content">
+<div class="section-inner sectionLayout--insetColumn">
+<h3 class="graf graf--h3">Refine columns</h3>
+<p class="graf graf--p">Once you get the result you want from the initial table, you can review it with your stakeholders if you have the right columns. If you don’t, adding them to the prompt is easy. I’ll list the columns and add them below. The revisions are in bold.</p>
+<h4 class="graf graf--h4">Prompt</h4>
+<pre class="graf graf--p">Generate a table of realistic fake data with 25 rows for a customer relationship management application with the following columns: Customer ID, Name, Email Address, Phone, Company, <strong class="markup--strong markup--p-strong">Address, </strong>Industry, <strong class="markup--strong markup--p-strong">Revenue</strong>, <strong class="markup--strong markup--p-strong">First Contacted,</strong> Last Contacted, and Next Follow-Up.</pre>
+</div>
+</div>
+</section>
+<section class="section section--body">
+<div class="section-content">
+<div class="section-inner sectionLayout--insetColumn">
+<h3 class="graf graf--h3">Refine format</h3>
+<p class="graf graf--p">Let’s refine the format.</p>
+<p class="graf graf--p">Fake data in the proper format is crucial because it accurately reflects user behaviors and needs, aligning closely with real-world scenarios. It also gives the engineers the proper context for formatting the data and solves many of the what-it-looks-like questions.</p>
+<p class="graf graf--p">It also handles localization very well, with a few examples listed below.</p>
+<h4 class="graf graf--h4">Format questions</h4>
+<ul class="postList">
+<li class="graf graf--li">What are address formats from around the world?</li>
+<li class="graf graf--li">What are currency formats from around the world?</li>
+<li class="graf graf--li">What are phone number formats from around the world?</li>
+<li class="graf graf--li">What are time formats from around the world?</li>
+<li class="graf graf--li">What are company formats from around the world?</li>
+</ul>
+<h4 class="graf graf--h4">Formats</h4>
+<ul class="postList">
+<li class="graf graf--li">US Street Address in standard format</li>
+<li class="graf graf--li">UK Street Address in standard format</li>
+<li class="graf graf--li">US Phone Number in standard format</li>
+<li class="graf graf--li">Date in YYYY-MM-DD format</li>
+<li class="graf graf--li">Revenue in 7-digit US format</li>
+<li class="graf graf--li">Revenue in 7-digit German format</li>
+<li class="graf graf--li">Revenue in 7-digit Russian format</li>
+</ul>
+<h4 class="graf graf--h4">Prompt</h4>
+<pre class="graf graf--p">Generate a table of realistic fake data with 25 rows for a customer relationship management application with the following columns: <strong class="markup--strong markup--p-strong">Customer ID that’s not sequential,</strong> Name, Email Address, <strong class="markup--strong markup--p-strong">Phone in US format or EU format</strong>, Company, Industry, <strong class="markup--strong markup--p-strong">Revenue in 7-digit US or German or Russian format with proper localization,</strong> <strong class="markup--strong markup--p-strong">First Contacted in YYYY-MM-DD format,</strong> <strong class="markup--strong markup--p-strong">Last Contacted in YYYY-MM-DD format</strong>, <strong class="markup--strong markup--p-strong">Next Follow-Up in YYYY-MM-DD format</strong>.</pre>
+<h3 class="graf graf--h3">Try out this Custom GPT—uxGPT Fake Data</h3>
+<p class="graf graf--p">Don’t want to do the work yourself? Not a problem. I’ve done a lot of the legwork for you.</p>
+<p class="graf graf--p">Try this custom GPT at <a class="markup--anchor markup--p-anchor" href="https://chatgpt.com/g/g-WWckBIpQj-uxgpt-fake-data" target="_blank" rel="noopener" data-href="https://chatgpt.com/g/g-WWckBIpQj-uxgpt-fake-data">uxGPT Fake Data</a>.</p>
+</div>
+</div>
+</section>
+<p>The post <a href="https://www.usabilitycounts.com/2024/06/29/how-to-create-fake-data-with-prompts-and-uxgpt-fake-data/">How to create fake data with prompts and uxGPT Fake Data</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6419</post-id>	</item>
+		<item>
+		<title>What ChatGPT does well and doesn’t do well for User Experience</title>
+		<link>https://www.usabilitycounts.com/2024/06/16/what-chatgpt-does-well-and-doesnt-do-well-for-user-experience/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Sun, 16 Jun 2024 23:27:34 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<category><![CDATA[GPT Prompt Guide]]></category>
+		<guid isPermaLink="false">http://www.usabilitycounts.com/?p=6396</guid>
+
+					<description><![CDATA[<p>We need to understand and use generative AI tools like ChatGPT. If we don't, someone else will. Here are some tips on what works and what doesn't when using it.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/06/16/what-chatgpt-does-well-and-doesnt-do-well-for-user-experience/">What ChatGPT does well and doesn’t do well for User Experience</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p id="ember4003" class="ember-view reader-content-blocks__paragraph"><strong>This is the first installment of how to use ChatGPT for User Experience, diving into each of the artifacts listed and is not comprehensive of all processes. Enjoy the ride.</strong></p>
+<p>I’ve worked in environments where artificial intelligence was part of the equation for eight years. It was everything from audience segmentation to field extraction, but it was a black box that required building precise models: You fed data in and out came an answer that required some level of human review or nuance.</p>
+<p>But then, November 30, 2022, was the day everything changed.  That&#8217;s when ChatGPT entered the scene.</p>
+<p>We were blown away because it was clear that not only could it be added to our product as a feature where people could ask questions about contracts, but it would also change how we work.</p>
+<p>It will shake up the way users experience things so much that we&#8217;ll have to rethink many of our processes in the future. A complete transformation of the field, so to speak.</p>
+<p>Michio Kaku said ChatGPT is just a fancy tape recorder. True.</p>
+<p>Is it a wonderful starting point? Also true.</p>
+<p>We need to understand and use generative AI tools like ChatGPT. If we don&#8217;t, someone else will. Here are some tips on what works and what doesn&#8217;t when using it.</p>
+<h3><b>What ChatGPT does well</b></h3>
+<h4><b>Discovery and Draft Specifications</b></h4>
+<p>Need to create personas in a pinch? ChatGPT&#8217;s got you covered.</p>
+<p>Need multiple problem statements using just a single prompt? ChatGPT is there.</p>
+<p>Need user stories for a basic feature? ChatGPT can do that, too.</p>
+<p>Need to draft every written artifact you can think of for a feature? Yep, ChatGPT handles it all to give you something that’s good enough to get you started and greatly accelerate the process.</p>
+<p>I tried it out on an example feature, and because of how much it sped up how we worked, we use it daily at work. From creating fake data, writing user stories, or looking for analogous inspiration, it’s the baseline of any feature. ChatGPT speeds up early discovery by giving you quick access to a ton of information that is good enough to get started, so you aren’t staring at a bunch of web pages or interviewing many users to get started, helping designers gather and make sense of data quickly.</p>
+<p>Some professionals I know also enrich personas with data so that you can converse with an “artificial” user. It’s not a replacement for the real thing but a good way to ask better questions.</p>
+<p>Whether you&#8217;re identifying relevant studies, breaking down complex ideas, or developing new hypotheses, ChatGPT is a wonderful tool to start with.</p>
+<p>It also boosts brainstorming sessions with fresh perspectives and helps researchers explore new ideas efficiently. Plus, it makes the literature review process a breeze, saving you time and letting you focus on experimental design and analysis.</p>
+<p><b>Example prompts</b></p>
+<pre><b>Problem Statement: </b>Create multiple problem statements in a “How might we?” format for searching through a repository of documents.
+
+<b>User Stories: </b>Write user stories for a document search table where you can search by keyword or filter by certain fields. The actions are searching by keyword (boolean or non-boolean), selecting a filter, adding a filter, clearing a filter, and sorting by field.
+
+<b>User Research Questions: </b>Write user research questions for a document search table where you can search by keyword or filter by certain fields. The actions are searching by keyword (boolean or non-boolean), selecting a filter, adding a filter, clearing a filter, and sorting by field.</pre>
+<p><b>Artifacts</b></p>
+<p>Personas, Analogous Inspiration, Competitive Analysis, User Research Questions, Problem Statements, Predicted Outcomes, User Stories, and Usability Testing Questions.</p>
+<h4><b>Realistic Data</b></h4>
+<p>One of the most time-consuming activities I have had in user experience is creating fake data. I spent hours and hours building out this in wireframes for usability testing prototypes—something that is both fun and time-consuming.</p>
+<p>That process is gone. ChatGPT saves a ton of time doing that now.</p>
+<p>Creating fake data with ChatGPT is a breeze because the model quickly generates contextually relevant and diverse information, especially if you know what fields you want to use. By leveraging its vast training data, ChatGPT can simulate realistic user inputs, behaviors, and scenarios that mimic real-world data patterns.</p>
+<p>And it’s not just about some data — it can create thousands of lines of realistic data to use in development environments.</p>
+<p>This capability allows UX designers to prototype and test interfaces, speeding up the design iteration process. It&#8217;s like having an instant, versatile sandbox to explore and refine user experiences before launching into the real world.</p>
+<p><b>Example prompt</b></p>
+<pre><b>Data Table: </b>Create a table of realistic data for 25 users with the following fields: First Name, Last Name, Email Address, Role (Administrator, Edit User, or Read-Only User), Active Status (yes or No), Added Date, and Last Updated Date in YYYY-MM-DD format.</pre>
+<p><b>Artifacts</b></p>
+<p>Wireframe content</p>
+<h4><b>User Assistance Copy</b></h4>
+<p>As a first draft before you even have the first wireframes, ChatGPT does a good job at writing draft user assistance copy for features. This is due to several key advantages.</p>
+<p>Its adaptability enables ChatGPT to generate content tailored to meet the users where they are at. Whether explaining basic functionalities or troubleshooting intricate issues, ChatGPT can adjust its language and depth of detail accordingly.</p>
+<p>Because it’s a fancy tape recorder that references previous well-known contexts, it can generate a good first draft from which to start.</p>
+<p>ChatGPT&#8217;s consistency ensures that user assistance copy maintains a uniform quality and tone across interactions. You can even specify the style and tone, such as business casual or formal, so it’s tailored to the audience. This builds trust and enhances the overall user experience as long as it is edited and reviewed accordingly.</p>
+<p><b>Example prompt</b></p>
+<pre><b>User Assistance: </b>Write user assistance content for a document search table where you can search by keyword or filter by certain fields. The actions are searching by keyword (boolean or non-boolean), selecting a filter, adding a filter, clearing a filter, and sorting by field.</pre>
+<p><b>Artifacts</b></p>
+<p>Wireframes, in-application content, knowledge base articles.</p>
+<h3><b>What ChatGPT does not do well</b></h3>
+<h4><b>Wireframing</b></h4>
+<p>Until someone can write perfect user stories or product requirements documents, I’m convinced that ChatGPT may assist designers but will never replace them.</p>
+<p>Wireframing isn&#8217;t just about creating a visual blueprint; it&#8217;s about understanding user needs, iterating on ideas, and fostering stakeholder collaboration. There’s a lot of nuance in</p>
+<p>While AI can help generate wireframes faster, it lacks the human intuition, empathy, and domain-specific knowledge required to understand and solve user problems deeply. For example, you can design a search experience, but every use case is slightly different depending on the domain. Searching for merchandising and searching for documents, for example, is a very different experience.</p>
+<p>AI-generated wireframes may overlook the nuanced considerations and contextual insights UX designers bring through research and experience.</p>
+<p>Therefore, while AI can assist, it won&#8217;t replace the critical, human-centered wireframing process in UX design.</p>
+<p><b>Artifacts:</b> Wireframes</p>
+<h4><b>Respect Regulatory Guidelines</b></h4>
+<p>When I had my first conversations with designers about Open AI, we discussed several situations where ChatGPT was a bad fit—music authoring, writing, and other copyrighted material were examples—but the field I work in, Legal Tech, is actually one of the best fits for what ChatGPT can provide.</p>
+<p>ChatGPT as a first draft without nuance? Sure.</p>
+<p>As the final product without a “human in the loop”? Not a chance. There should always be a “human in the loop” to double-check the work, specifically in nuanced situations involving copy and specifications.</p>
+<p>Regulatory environments often require precise and unambiguous communication backed by compliance standards (instructions around banking and finance come to mind). ChatGPT, proficient in generating human-like text, can sometimes not comprehend complex jargon or nuanced frameworks.</p>
+<p>This can lead to inaccuracies, misunderstandings, or even hallucinations in critical communication, potentially resulting in issues for end users.</p>
+<p>ChatGPT excels in many conversational and informational tasks. Still, it is limited: Fancy tape recorders don’t understand complex regulations and have potential biases that make them unsuitable for situations where precision is paramount.</p>
+<p>There will always be a human in the loop here.</p>
+<h3><b>What’s Next</b></h3>
+<p>How we do early ideation and discovery is already changing, especially at the consumer end of user experience. This is reflected in how user experience teams transform as a forcing function to use these tools.</p>
+<p>However, we are very far from completely replacing designers. There may be the need for even more designers going forward because many applications will be transformed for this new era — making knowledge of these tools more important.</p>
+<p>We’ve adapted before, and we can do it again. Act accordingly.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2024/06/16/what-chatgpt-does-well-and-doesnt-do-well-for-user-experience/">What ChatGPT does well and doesn’t do well for User Experience</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6396</post-id>	</item>
+		<item>
+		<title>What to look for in a User Experience mentor: Five tips</title>
+		<link>https://www.usabilitycounts.com/2022/05/01/what-to-look-for-in-a-ux-mentor-five-tips/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Sun, 01 May 2022 22:04:10 +0000</pubDate>
+				<category><![CDATA[No Category]]></category>
+		<category><![CDATA[UX Career Guide]]></category>
+		<guid isPermaLink="false">http://www.usabilitycounts.com/?p=6371</guid>
+
+					<description><![CDATA[<p>Career management is needed for all levels because seeing the path of others before you helps set your journey. Mentorship has shaped much of my career in very positive ways, and can do the same for you.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2022/05/01/what-to-look-for-in-a-ux-mentor-five-tips/">What to look for in a User Experience mentor: Five tips</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>“Should I always have a mentor?”</p>
+<p>Absolutely. Career management is needed for all levels because seeing the path of others before you helps set your journey. Mentorship has shaped much of my career in very positive ways, and can do the same for you.</p>
+<p>I am lucky enough to count experienced professionals as mentors and as friends. They have different experiences that far exceed what I have seen in my career, and more importantly, they care about me as a person. They care whether or not I’m successful and align their advice to my goals. They are authentic about my pursuits and are willing to refer me to opportunities that reflect my interests in skills.</p>
+<div class="pullquote">Each experience was valuable and I have cherished the conversations that I’ve had, even if I didn’t agree with the feedback or stored it for a later date.</div>
+<p>They also give me honest feedback even if I’m not ready to hear it.</p>
+<p>These professionals all have perspectives that are highly varied and valued. Sometimes they ask for mine, which generates other conversations that have been valuable in my professional career, and sometimes my perspective helps set their career context. They also listen more and let me figure out what my path should be without being judgemental.</p>
+<p>I have also paid for executive coaching – hiring two people, one in the domain and one outside of user experience, and both were well worth the money and time spent going through the program. (And it wasn’t a $100 class or a meeting outside of something like General Assembly). I highly recommend that you do the same.</p>
+<p>Each experience was valuable and I have cherished the conversations that I’ve had, even if I didn’t agree with the feedback or stored it for a later date.</p>
+<p><b>It’s up to you to decide what is valuable and what is not.</b></p>
+<p>One of my bosses gave me this piece of wisdom: “It’s up to you to listen and evaluate the tradeoffs of my advice. You can decide to listen or not listen, but you have to choose based on your context.”</p>
+<p>The goal of this article is to give you a single person’s advice on selecting better mentors for your career, avoiding the snake oil vendors in our field.</p>
+<h3><b>Research Their Track Record</b></h3>
+<p>It’s easier to state the red flags. Here are some of them:</p>
+<p><b>Managers and designers that move around.</b> A big red flag for me are people that can’t stay at an organization for longer than two years. It’s fine to have a job or two that doesn’t go long because you aren’t set up for success, but the reality is you want advice from those who have experienced organizations and have managed to work. I don’t trust advice from people whose greatest assets are interviewing and having connections in a company, but don’t have staying power. I hope you consider the same.</p>
+<p><b>Professionals that spend more time on their social media presence rather than designing.</b> If they are advertising outward how awesome they are, they are not building relationships and influencing their own organizations.</p>
+<p><b>Designers that talk about their FAANG experience too much. </b>FAANG Positions are some of the most prized jobs in UX and can offer a good perspective. However, there are many designers that are doing great work at other organizations and that have been successful. They are worth listening to as much as a designer that is working at Facebook and has accomplished no more than redesigning a button.</p>
+<div class="pullquote">If they are advertising outward how awesome they are, they are not building relationships and influencing their own organizations.</div>
+<p><b>Validation from design forums that do not match their resume.</b> That isn’t of value, because design and user experience is a field where the networking only proves they have drunk at a bar. The best validation is from people that have actually worked with them in action in a real work environment. As I have told some of my designer friends; outside of a portfolio presentation, neither has much experience working in the same environment. This is even more applicable for those that have managed to network their way to these organizations.</p>
+<p>The best mentors are sometimes the most boring on social media. They manage teams, stay within their lane, and provide quiet yet powerful advice to their mentees because it is not about their brand or bank account. They don’t crow about how successful their subjects are. They take joy in providing advice and building community without worrying about the future payoff and if the check is in the mail.</p>
+<h3><b>Find Someone Who Isn’t Your Boss</b></h3>
+<p>This is the first piece of advice I’ve given my direct reports about career growth: Find someone who isn’t me to get another perspective on the user experience field.</p>
+<p><b>My motivations as a leader will always be about growing user experience as a company investment.</b> The advice I give a fair amount the time is also what is best for my organization. More often than not my lens will be what meets both of our goals for the next few months (or a year out), and will align my 1:1’s with that designer so we can meet organizational and growth goals.</p>
+<div class="pullquote">More data points are always better, and having perspective outside your direct organization is always important.</div>
+<p>Additionally, I am a single data point and a biased one at that. More data points are always better, and having perspective outside your direct organization is always important.</p>
+<p>This mentor can be a designer or even someone in another role within your company — that alone would be gold because they know the organization — but at the very least they should be someone with similar experience and context so they can give empathetic and compassionate advice, even if they haven’t been there.</p>
+<p>There is one danger about talking to someone in your organization; they might be competing for your next job. You will have to judge for yourself if they are trustworthy.</p>
+<p>No matter what, professionals without a vested interest other than seeing you do well will be able to keep a clear head and can ask about what your values, beliefs and goals are, and ask if their current situation will align with them.</p>
+<p><b>For most mentors, your success is their success.</b></p>
+<h3><b>Prioritize Orthogonal Domain Experience</b></h3>
+<p>It’s great to get advice from Design Twitter because <b>some </b>know what works. There are some very experienced voices worth listening to, and some of the best knowledge comes with a well-researched perspective. However, they are a voice and a data point in the industry and have a very particular and sometimes inadequately tinted lens.</p>
+<p>I look to other fields for a different but related perspective, I count technology leaders, product and program management experts, and marketing professionals as part of my network to receive feedback. For years I talked to recruiters about hiring practices, and other more senior leaders about effective leadership techniques. I have also talked about career positioning with marketers.</p>
+<p><b>The singular lens of User Experience has never been the sole guiding light of my career. </b>User Experience at best acts as a matrixed skill in the organizations I work in It is at its worst as a service. I believe that having empathy for different roles and knowing how to communicate with them is very important to success as a leader. Such a perspective is one you should strongly consider.</p>
+<h3><b>Consider Different Levels Of Experience</b></h3>
+<p>Within user experience, my “mentorship” partners are in positions anywhere from junior designers, to executives that run their own companies.</p>
+<p>Each of them has provided solid feedback from their viewpoints. What I liked about that approach is this; I could ask them the same question, and get a different answer from their own lens within their greater career journey. For example, what a junior designer may consider effective leadership is different from someone at an executive level, and I could learn from each to craft my own management style.</p>
+<p>In the same way user experience professionals approach different personas for testing a concept to cover the largest audience, the same approach should be done for your career. Consider as many perspectives in your field as possible before deciding on an approach.</p>
+<p>Last year I had several conversations with another Director of User Experience at a startup and no matter what, I said he needed to talk to other people about what he should do because I was a singular data point with a perspective much different than others.</p>
+<p>Other data points are very important because we all have different experiences.</p>
+<h3><b>Discuss Needs Before Paying For Advice</b></h3>
+<p>Transparently, I have charged for mentorship in the past, mainly because I was getting so many requests and my time was limited. During the pandemic, teaching in General Assembly plus working a specific career caused burnout, so I have decided to go a different route. I decided to limit my mentorship to a few select people, and I am enjoying it much more.</p>
+<p>Thankfully, others have taken up the slack in a field that quite honestly needs more mentors.</p>
+<div class="pullquote">The free advice before you even sign on the dotted line for more than $100? Do your research. Figure out your goals. That can be done for free before laying out any money.</div>
+<p>There are many — and I mean many — user experience professionals right now offering advice on all kinds of things from portfolio development to career guidance. Some of them are good, some of them not, but a lot are trying to monetize the field in a way that needs to happen. We have to transition from an altruistic field to a professional organization, and this is one way of doing it, even if there isn’t much quality control.</p>
+<p>The free advice before you even sign on the dotted line for more than $100? Do your research. Figure out your goals. That can be done for free before laying out any money.</p>
+<p>Performing research is not about asking them if they have been successful mentoring designers, but asking the designers who have been mentored themselves. There should be a good track record of these mentors leading their designer to a successful outcome, complete with before and after results.</p>
+<p>Both of my executive coaches spent considerable time discussing my professional goals and trajectories before accepting payment.</p>
+<p>For one-on-one toaching, this is absolutely essential in deciding if their services are aligned with your needs.</p>
+<h3><b>Resources Worth Looking At</b></h3>
+<p>I haven’t gone through the below programs myself, and the coaches I did have are far beyond the price point of this audience. However, this is a good place to get started.</p>
+<ul>
+<li><a href="https://www.sarahdoody.com/"><b>Sarah Doody</b></a> — Sarah is a good foundational starting point to move your career forward. She has a true track record, and some of the designers I’ve talked with have said her programs, while not personalized, are fantastic from a baseline.</li>
+<li><a href="https://www.adplist.org/"><b>ADPList</b></a> — This is very much “your mileage may vary,” but many of the professionals here — especially those who aren’t charging — have their hearts in the right place. You can play the field before finding the right mentor to build a relationship with. You can slice and dice the list to fit your needs.</li>
+<li><b>Local Meetups</b> — This is back to design Twitter. Some good people there, but the best people to get mentorship are local to you. You’ll be able to meet them in person and judge if they are authentic.</li>
+<li><b>One of the best I’ve seen is </b><a href="https://www.ladiesthatux.com/"><b>Ladies That UX</b></a><b>.</b> They’re truly trying to grow and support the field without worrying about building their brand. That’s awesome, and they have local chapters.</li>
+<li><a href="https://medium.com/cca-interaction-design-thesis/a-letter-to-the-newly-minted-designer-88adbfaf9245"><b>A Letter to the Newly Minted Designer.</b></a> Christina Wodtke wrote this back in the day, and I still reference it. There are some wonderful pieces of advice i.e. “This is incredibly useful because companies vary in ways you cannot imagine.” That article still holds true in a world where UX is mostly product and not consulting.</li>
+</ul>
+<p>And about the others? I won’t list them by name, but if you want my take on people you’re talking to, reach out. I’m always willing to give an authentic answer, even if you might not like it.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2022/05/01/what-to-look-for-in-a-ux-mentor-five-tips/">What to look for in a User Experience mentor: Five tips</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6371</post-id>	</item>
+		<item>
+		<title>Download free User Experience templates to use</title>
+		<link>https://www.usabilitycounts.com/2017/08/23/download-free-user-experience-templates-use/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Thu, 24 Aug 2017 05:04:55 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<guid isPermaLink="false">http://www.usabilitycounts.com/?p=6229</guid>
+
+					<description><![CDATA[<p>One task that pained me while teaching was watching students scour the Internet for templates they could use to do user research, create site maps, and record usability tests. So I created my own.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2017/08/23/download-free-user-experience-templates-use/">Download free User Experience templates to use</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>I teach at <a href="https://generalassemb.ly/instructors/patrick-neeman/7155">General Assembly in Seattle as a Part Time UX Instructor.</a> One task that pained me early on while teaching was watching students scour the Internet for templates they could use to do user research, create site maps, and record usability tests &#8212; especially documents that could be used by using free collaborative tools. So I created my own. All of them use free tools like <a href="https://www.google.com/docs/about/">Google Docs</a> or <a href="https://www.draw.io/">Draw.io</a> as the platform, and I&#8217;m releasing them to the wild.</p>
+<p>As I reminded my students, as a designer you should never create anything from scratch. I may have &#8220;borrowed&#8221; some of these templates from other people. Additionally, some of the examples show what a Site Map can look like for common website patterns. Most importantly, they emphasize the research and usability testing portion of design, and are orientated to a lean approach of working with others.</p>
+<p>Kudos to <a href="https://twitter.com/rebeccadestello?lang=en">Rebecca Destello</a> for encouraging me to share these documents. She&#8217;ll be using them in an upcoming class at University of Washington.</p>
+<p><strong>I would love to hear your feedback so I turned commenting on. The list will continue to grow as I continue to teach.</strong></p>
+<h3>Google Docs Documents</h3>
+<ul>
+<li><a href="https://drive.google.com/open?id=1KvXZRUvaBZe4GcHI0Vvytt7XPktUgq74VZOIXohEj5w" target="_blank" rel="noopener noreferrer">Problem Statements</a></li>
+<li><a href="https://drive.google.com/open?id=1z-bovSkHFWcMdgrtCLVat3gtyL-WQWP4OpX72M3INQ4" target="_blank" rel="noopener noreferrer">Project Proposal</a></li>
+<li><a href="https://drive.google.com/open?id=1EkiRg0x9PXN0OAMm_BMQ21iGhf4RvPPK9YjuFOtnHzQ" target="_blank" rel="noopener noreferrer">Research Plan</a></li>
+<li><a href="https://drive.google.com/open?id=1KqDznYXuFgYPhY-JF3PoxdVNrOxSNBCCotlyqO53VN8" target="_blank" rel="noopener noreferrer">User Interview Worksheet</a></li>
+<li><a href="https://drive.google.com/open?id=1If_VU6ABWOBV1sNdGeiSj5-IO94PUzZ9GVwNJ5BkTBY" target="_blank" rel="noopener noreferrer">Competitive Analysis Worksheet</a></li>
+<li><a href="https://drive.google.com/open?id=1qdKOXnqyJfzGqfPQGfFGqpp-n67D_FV5AgfZ7Ud37h4" target="_blank" rel="noopener noreferrer">Competitive Analysis Deck</a></li>
+<li><a href="https://drive.google.com/open?id=1G0Gsrs4oCl7s1UZnbzwZLfdSVIzdC_qMj2xi4ikLYIE" target="_blank" rel="noopener noreferrer">Persona Worksheet</a></li>
+<li><a href="https://drive.google.com/open?id=1u_JKn3zWqAKRP0fLx2uzQmOU9V-bZXkUAsicQ1oi3QY" target="_blank" rel="noopener noreferrer">Persona Deck</a></li>
+<li><a href="https://drive.google.com/open?id=14IN1CBhkhghxbEpUCcOax0DtCvmrak0CsnM-uynl3A8" target="_blank" rel="noopener noreferrer">User Story Worksheet</a></li>
+<li><a href="https://drive.google.com/open?id=1tHfCs7QxTO-ueTVaco6N4eSiuhy78jZ0tSkTSWoOO8k" target="_blank" rel="noopener noreferrer">Site Map</a></li>
+<li><a href="https://drive.google.com/open?id=1tfd_Tq_SdJspnFDfcQN5Hm6eVWJCaspUqbBzJ--uKzQ" target="_blank" rel="noopener noreferrer">User Flows</a></li>
+<li><a href="https://drive.google.com/open?id=1TPdGejJEFyIO4vHvC-ndDCCx0KwMn6H7wSEbcS1eaTk" target="_blank" rel="noopener noreferrer">Usability Test Worksheet</a></li>
+</ul>
+<h3>Draw.io Documents</h3>
+<ul>
+<li><a href="https://drive.google.com/open?id=0B8WC3S7kT5S2MDMtN1JXXy1WU3c" target="_blank" rel="noopener noreferrer">Site Map</a></li>
+<li><a href="https://drive.google.com/open?id=0B8WC3S7kT5S2TlAtY1NWVkM0azA" target="_blank" rel="noopener noreferrer">User Flows</a></li>
+</ul>
+<p>The post <a href="https://www.usabilitycounts.com/2017/08/23/download-free-user-experience-templates-use/">Download free User Experience templates to use</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6229</post-id>	</item>
+		<item>
+		<title>What to answer before designing anything</title>
+		<link>https://www.usabilitycounts.com/2017/02/21/answer-designing-anything/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Tue, 21 Feb 2017 19:55:46 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<guid isPermaLink="false">http://www.usabilitycounts.com/?p=6178</guid>
+
+					<description><![CDATA[<p>Design thinking is more framework and less process. It is a set of guideposts so you have a pretty good idea of where you going, and can adjust when it's appropriate.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2017/02/21/answer-designing-anything/">What to answer before designing anything</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>We can talk about <a href="https://en.wikipedia.org/wiki/Design_thinking" target="_blank" rel="noopener">Design Thinking</a>: Empathize, Define, Ideate, Prototype, Test for the uninformed. However, design is more framework and less process. It’s more guideposts, so you have a pretty good idea of where you are going, and adjust when it happens in asynchronous order.</p>
+<p>How many times have you gotten to Test and realized you’re solving the wrong problem? It’s called learning. That’s why design thinking it’s is there so that you can back up and start again.</p>
+<p>The gates help you have informed point of view, whether it is a start-up project or something that’s been existing for a very long time. The key is to go through the first steps of that process — Empathize and Define — in quick order, so you have a foundation to start.</p>
+<p>Here‘s what I answer before designing a single screen.</p>
+<h3>Who are the users?</h3>
+<p>Start here: “This is the user, and the problem we are solving for them is…”</p>
+<p>Most organizations have a pretty good starting point. Some, like Microsoft, have had personas out there for years and had the muscle memory to use them. For other organizations, especially startups that have lucked into the product-market fit, their personas are a mess. The good news is that personas are never truly finished and may change over time.</p>
+<p class="pullquote">If you are designing, it’s always for someone. It’s better to get that someone out in the open so everyone has a common understanding.</p>
+<p><strong>Where to start</strong></p>
+<ul>
+<li>Start with provisional personas — a baseline of who the users are so you can revise them based on further research. There’s a lot of places within organizations you can start this research. We always had a Customer Success group that conducted research on users. It doesn’t take long, other than pressing an elevator button.</li>
+</ul>
+<p><strong>The artifact</strong></p>
+<ul>
+<li>Personas, at least three of them. They should pre-exist, and you’ve been using them to design. I wrote an article about creating lightweight personas, and don’t worry about them being right. Prioritize learning over correctness.</li>
+</ul>
+<p><strong>Estimated time investment</strong></p>
+<ul>
+<li>Less than a day if there are no personas, and 20 minutes if there are. The story always needs to start there.</li>
+</ul>
+<h3>How are they going to use the feature?</h3>
+<p>What’s missing from most product development processes is how the users are going to use features within in the context of their environment. Set time duration, other personas or actors that may interact with the product, and what other processes they use. Include offline process, other products, and unforeseen delays.</p>
+<p>We did this a lot when at Jobvite: discussing how other products like Microsoft Outlook are used to accomplish the task outside of the application. It was important to understand the hiring process, for example, and how the candidates would go through the workflow.</p>
+<p>How important is this? If you ask more users what they want help with most, it’s to save time within in the context of their journey. They want their life to be easier.</p>
+<p><strong>Where to start</strong></p>
+<ul>
+<li>Write an implementation-free user scenario. State the steps the user will have to take go through the steps of using the feature, including any details on they solve the problem today. Emphasize personas and business process, and how long it will take. The time element is important because it might mean the difference between designing a step by step wizard and a different asynchronous guided process.</li>
+</ul>
+<p><strong>The artifact</strong></p>
+<ul>
+<li>The user scenario, ideally 500 words or less. People hate reading more than a page. A good way to test it is by reading it out loud. It should take 10 minutes to read it. Need an example? <a href="https://www.usability.gov/how-to-and-tools/methods/scenarios.html" target="_blank" rel="noopener" data-href="https://www.usability.gov/how-to-and-tools/methods/scenarios.html">Go here</a>.</li>
+</ul>
+<p><strong>Estimated time investment</strong></p>
+<ul>
+<li>A good first draft of a user scenario can take less than 4 hours, and there are a lot of good examples to draw from.</li>
+</ul>
+<h3>Do your products have a similar feature?</h3>
+<p>The most valuable 30 minutes of this process: Screenshots and URLs of what your product does today. Set the context of not only what the product is, and how your personas use it.</p>
+<p>If you are working on an application, you should be familiar how it works, inside and our. Use your product at least a few hours a week.</p>
+<p class="pullquote">While your wireframes may be your understanding, everyone else you are working with is living in the product.</p>
+<p><strong>Where to start</strong></p>
+<ul>
+<li>Document screen shots, so everyone has context. Other participants (i.e. Product Manager or Engineer) in the design process should also be able to do this. The act of documentation meets two important goals: setting the context and forcing the question, “Does this have a similar intent?” Writing and capturing content is a good thing because it forces thought much more than a verbal conversation.</li>
+<li>In meetings, refer to these documents all the time. Ask, “Is this a pattern we can use to shorten development time and keep a consistent user interface?”</li>
+</ul>
+<p><strong>The artifact</strong></p>
+<ul>
+<li>Screenshots. Print them out and tape them to a wall.</li>
+</ul>
+<p><strong>Estimated time investment</strong></p>
+<ul>
+<li>You should be able to do this in less than few hours if the Product Managers are around. Sometimes it’s as simple as asking them, “We’re trying to solve this problem. Do any of your features do this today?”</li>
+</ul>
+<h3>Are there other products that fit the mental model?</h3>
+<p>The internet isn’t a blue sky thing where everything should be reinvented. There are established mental models users understand intimately.</p>
+<p>Product Managers call this competitive analysis. I call this, “Use Google.”</p>
+<p>The rule with my teams: Find five products, and talk to five people that may have used a similar product. Takes a day or less, and you get great ideas out of it.</p>
+<p>For example:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Spreadsheet" target="_blank" rel="noopener" data-href="https://en.wikipedia.org/wiki/Spreadsheet">Spreadsheets</a>: The first electronic spreadsheet, VisiCalc, was invented in 1979 by software pioneer Dan Bricklin. Some spreadsheet applications date back to the 1960’s. The Excel team followed the mental model of other spreadsheets and just did it better. The pre-existing mental model forms the basis of a lot of other applications, like Google Sheets.</li>
+<li><a href="https://en.wikipedia.org/wiki/Online_shopping" target="_blank" rel="noopener" data-href="https://en.wikipedia.org/wiki/Online_shopping">Shopping Carts</a>: Online shopping dates back to 1979. There are millions of examples. Amazon is a good place to start.</li>
+<li><a href="https://en.wikipedia.org/wiki/Classified_advertising" target="_blank" rel="noopener" data-href="https://en.wikipedia.org/wiki/Classified_advertising">Classified Websites</a>: Craigslist is the baseline, but I’m sure there’s a cave wall somewhere in the world where someone etched selling an ox for corn to others in the settlement. Before the internet. Before print. Before almost everything.</li>
+</ul>
+<p>Even the “new stuff” like Voice UX is not new. An acquaintance of mine, Philip Hunter, works on the Amazon Alexa team. His voice experience for automated systems predates Alexa by 20 years, and he holds patents in the field. It’s a pretty good guess he’s not making stuff up.</p>
+<p>There are often barriers to finding examples in your domain. Our competitor’s software requires a significant purchase, which means we regularly don’t have access to competitors. So we look to other categories for the best ideas. If you understand that your users are using all kind of other applications, you can design something that’s familiar and fits their needs.</p>
+<p>So now you know you don’t have permission to reinvent the wheel — invented in 3500 B.C. — let’s get to work.</p>
+<p><strong>Where to start</strong></p>
+<ul>
+<li>Use the same process you performed for your existing product. Find five or so other products that do the same thing and do your research. Admit that you’re stealing ideas and question their context. Use them as a baseline.</li>
+<li>Put them in a document that everyone can access. Even better, post the screen shots on the wall in a hallway. You’ll involve more people in the design process, and they’ll suggest other “like” applications.</li>
+</ul>
+<p><strong>Artifact</strong></p>
+<ul>
+<li>A document containing screenshots. Print them out and tape them to a wall.</li>
+</ul>
+<p><strong>Estimated time investment</strong></p>
+<ul>
+<li>A day or less. Use Google Image Search.</li>
+</ul>
+<h3>Conclusion</h3>
+<p>The elements of this research are simple:</p>
+<ul>
+<li>Understand the user</li>
+<li>Understand environmental context</li>
+<li>Understanding existing tools, internal and external</li>
+</ul>
+<p>They’re essential for starting any design process, but they can be done quickly and efficiently within the constraints of your environments.</p>
+<p>The time investment you need to make before starting up a wireframe tool like Axure — i.e. doing a bit of guerilla research that sometimes involves not talking to users — is important.</p>
+<p>Yes, during your user research you’ll uncover other applications that they use, but if you this, you’ll have a good baseline to start from, which is more than most products have.</p>
+<h3>Recommended Books</h3>
+<ul>
+<li><a href="https://www.amazon.com/dp/B00PKMUHKG/?tag=usabilitycoun-20" target="_blank" rel="noopener" data-href="https://www.amazon.com/dp/B00PKMUHKG/?tag=usabilitycoun-20">How To Make Sense Of Any Mess</a></li>
+<li><a href="https://www.amazon.com/Mental-Models-Aligning-Strategy-Behavior/dp/1933820063/ref=sr_1_1?ie=UTF8&amp;qid=1487876116&amp;sr=8-1&amp;keywords=mental+models" target="_blank" rel="noopener" data-href="https://www.amazon.com/Mental-Models-Aligning-Strategy-Behavior/dp/1933820063/ref=sr_1_1?ie=UTF8&amp;qid=1487876116&amp;sr=8-1&amp;keywords=mental+models">Mental Models: Aligning Design Strategy with Human Behavior</a></li>
+<li><a href="https://www.amazon.com/dp/B00I077Z1M/?tag=usabilitycoun-20" target="_blank" rel="noopener" data-href="https://www.amazon.com/dp/B00I077Z1M/?tag=usabilitycoun-20">Writing Effective Use Cases</a></li>
+</ul>
+<p>The post <a href="https://www.usabilitycounts.com/2017/02/21/answer-designing-anything/">What to answer before designing anything</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6178</post-id>	</item>
+		<item>
+		<title>Six tips before moving to Seattle as a User Experience professional</title>
+		<link>https://www.usabilitycounts.com/2015/06/04/six-tips-before-moving-to-seattle-as-a-ux-professional/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Thu, 04 Jun 2015 14:36:44 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<guid isPermaLink="false">http://www.usabilitycounts.com/?p=5852</guid>
+
+					<description><![CDATA[<p>You’ve heard the nightmares: it rains all the time, the traffic is bad, Microsoft and Amazon dominate the job market, the male to female ratio is so bad the dating scene isn’t, yadda yadda. However, if you’re a California native that can work through this, read on.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2015/06/04/six-tips-before-moving-to-seattle-as-a-ux-professional/">Six tips before moving to Seattle as a User Experience professional</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>You’ve heard all the nightmares: it rains all the time, the traffic is bad, Microsoft and Amazon dominate the job market, the male to female ratio is so bad the dating scene isn’t, yadda yadda. However, if you’re one of the California natives that can work through some of these, read on.<span id="more-5852"></span></p>
+<p><b>Seattle is a great place to find your next User Experience position, at a place with work-life balance and you can work on products focused on business value instead of the me-too economy. </b></p>
+<p>When I talk to others here, there’s a growing sense that the Pacific Northwest could be the next Silicon Valley, and <a href="http://www.onwardsearch.com/career-center/ux-jobs-salary-guide/">Onward Search</a> ranks the Seattle market as the third largest in the U.S. for User Experience opportunities. Microsoft, Amazon, Facebook, and Google are at within a bus stop from where I live, and it&#8217;s half the price of a San Francisco walk-in closet. There are a lot of pluses to living in the Emerald City.</p>
+<p><b>But before you move out of your 510 square foot shoebox in the Mission next to the homeless shelter and drive your U-Haul up I-5, here’s the list.</b></p>
+<h3>Cost of living? High, but not even close to the Bay Area, and it offers similar neighborhood experiences.</h3>
+<p>There may have been a rapid increase in home and rental prices in the Seattle metro, but it’s nothing like the Bay Area. Consider this: a North Beach apartment I rented in December 2009 for $1,500 is now renting for nearly $3,000 a month. The market isn’t as constricted here, and there’s a ton of construction underway to increase the housing stock.</p>
+<p>The downside — no rent control. The first apartment I moved into in Seattle is going for close to $500 more than I paid for it, and I moved last June.</p>
+<p>Salaries aren’t as high, and companies are less willing to get into a bidding war because there aren’t as many places to go. Outside of Microsoft and Amazon, most salaries will be lower than in the Bay Area, but you keep much more because the State of Washington doesn’t levy an income tax. Net, I’m making much more than I did in the Bay Area.</p>
+<p>Seattle is topographically similar to the Bay Area, so there’s a very real division between those that live in Seattle and the Eastside. Each has its advantages, but will also affect the decision about where you work, and there are many places to live that are similar to living in San Francisco without the hassles. Where I live is like a mini San Francisco, but I pay $7 in tolls every day to cross a bridge twice. I mark that up as a quality of life expense.</p>
+<h3>There’s a lot of jobs here, but not many companies — and they’re big.</h3>
+<p>I used to describe Seattle this way: It’s Microsoft and Amazon and Microsoft and Amazon and a few startups and Microsoft and Amazon and a few agencies. Also, there’s Microsoft and Amazon.</p>
+<p>If you stay here, there’s a pretty good chance that you’ll end up working for at least one of them in your career. Many designers have created careers contract surfing between the two. There’s a pretty good chance that the boss you have at Amazon used to work at Microsoft, and vice versa.</p>
+<p>That’s changing.</p>
+<p><a href="http://www.geekwire.com/2015/big-tech-companies-continue-to-set-up-shop-in-seattle-and-lease-rates-soar-as-a-result/">Companies see the Pacific Northwest</a> as the next source of technology talent. HP, Oracle, <a href="http://www.bizjournals.com/seattle/blog/techflash/2014/12/big-lease-disney-expands-downtown-seattle.html">Disney</a>, <a href="http://www.geekwire.com/2015/facebook-reportedly-inks-lease-seattle-building-room-2000-employees/">Facebook</a>, <a href="http://www.geekwire.com/2015/google-opening-portland-office-expanding-presence-in-the-northwest/">Google</a>, <a href="http://www.geekwire.com/2014/twitter-seattle-office/">Twitter</a>, and <a href="http://www.geekwire.com/2014/groupon-leases-space-seattle-room-add-another-75-employees/">Groupon</a> are growing their bases up here to join established companies like <a href="http://www.geekwire.com/2014/zillow-inks-lease-115000-square-feet-nearly-doubling-footprint-downtown-seattle/">Zillow</a>, <a href="http://www.geekwire.com/2014/fast-growing-tableau-inks-lease-space-seattles-fremont-neighborhood/">Tableau</a>, AT&amp;T, T-Mobile, Starbucks, Staples, Adobe, Boeing, and <a href="http://www.geekwire.com/2015/best-buy-to-open-new-tech-development-center-in-seattle-with-room-for-more-than-100-engineers/">BestBuy</a> to build technology teams. Walmart Labs and Google also recently opened locations in Portland. There’s also a growing startup community lead by <a href="http://www.madrona.com/">Madrona Ventures</a> that’s drawing talent, plus many of the mainstays that have been here forever, like White Pages, Moz, and Inrix.</p>
+<p>This provides opportunities to find new challenges that many designers need coming out of companies like Microsoft and Amazon. This provides a necessary labor circulation that encourages the growing of skill sets.</p>
+<p>But much of the work here isn’t exciting conceptual design and innovative startup work: it’s products you’ll be iterating on forever that are less focused on valuations and more focused on making money. That limits the number of greenfield opportunities but offers stability.</p>
+<p>What I do like about Seattle is there seems to be a greater work-life balance than the Bay Area — there isn’t this constant push to be the next valuation unicorn, and that’s good if you’re just <a href="http://www.quora.com/What-are-the-pros-of-moving-to-San-Francisco-from-Seattle">looking for a place</a> to do great work.</p>
+<h3>Seattle is the world’s biggest small town.</h3>
+<p>Because I recruit as part of my job, I have a spreadsheet that maps all of the design resources in Seattle that I’ve found so far on different social networks like LinkedIn. The list totals about 1,800 names, roughly 65 to 70 percent of the market. How connected is this market? I’m a connection or two away from many of them, which turns Seattle into the design version of the <a href="http://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon">Kevin Bacon game</a>.</p>
+<p>The pluses:</p>
+<ul>
+<li>Designers are very approachable because they may know you or of you.</li>
+<li>Networking here is much easier than in the Bay Area because the community is more cohesive and accessible.</li>
+<li>Getting intelligence on working environments is much easier because you probably know someone or of someone that has worked there.</li>
+</ul>
+<p>The minuses:</p>
+<ul>
+<li>Relationships are everything. You can burn bridges all year long in San Francisco. Not so in Seattle.</li>
+<li>This limits access to great opportunities as a newcomer because the best opportunities are restricted to those in the know.</li>
+<li>The person you’re competing against is someone you know, which can be awkward.</li>
+</ul>
+<p>There are designers on Twitter here, but not nearly the number in the Bay Area. Many of the relationships are going to have to be built the old-fashioned way: by meeting people. This means going to <a href="http://www.meetup.com/SeattleUX/">meetups</a>, inviting people out for coffee, and reaching out, one person at a time.</p>
+<p>If you take great care in building relationships here, you can be successful. However, it may be a much slower go of it than in the Bay Area because of the transitory nature of the work there.</p>
+<h3>Design leadership opportunities are few and far between.</h3>
+<p>Seattle is three to four years behind San Francisco in design trends — let’s call it a fast follower — so many companies haven’t figured out that design can have an impact on the bottom line and staffed appropriately. Amazon and Microsoft are both engineer-driven cultures which have spawned a bunch of startups that (guess what!) were founded by ex-Microsofties and Amazonian engineers.</p>
+<p>It’ll be a while before design  finds its place here as it has in the Bay Area, but things are changing. Just not fast enough.</p>
+<p>The dilemma most designers in Seattle face: to grow their careers, they have to leave Seattle and move to San Francisco to get the experience they need building a design team. Many of the companies here recruit leadership from other places because they know the talent pool here for that leadership is limited, and this is similar to a trend that I saw in Los Angeles.</p>
+<p>It’s a “chicken or the egg” problem.</p>
+<p>If you expect to move here to find that dream “Director of User Experience” position and you don’t have that experience for more than a couple of years on your resume, you’re probably not going to get it right off the bat. You might have to network quite a bit, and step out of your comfortable zone &#8212; i.e. build a team from scratch over a few years instead of marrying into the family &#8212; to get the role.</p>
+<p>There are a few places in Seattle with sizable design teams (pockets of Microsoft and Amazon, Expedia, Concur, Avvo, Disney, Moz, and where I work at now). If the place does have that position, it’s a true management role, i.e. you’re building a team and not leading the design yourself.</p>
+<h3>You know that rain thing? Not so much as you would think, but bring your Vitamin D.</h3>
+<p>When people talk about Seattle, they discuss the rain. It rains all the time according to those that don’t live here.</p>
+<p>Not true. It is gloomy. The average cloud cover during the winter hovers in the <a href="https://weatherspark.com/averages/29735/Seattle-Washington-United-States">95 percent range</a>.</p>
+<p>If you have <a href="http://en.wikipedia.org/wiki/Seasonal_affective_disorder">Seasonal Affective Disorder</a>, Seattle is not for you. In December, the sun rises at 8 a.m. and sets at 4 p.m. November, December, and January can depress even the most cheerful of souls, so much so that I recommend that you move here during the winter.</p>
+<p>Conversely, the summers here are amazing.</p>
+<p>The sun rises just after 5 a.m. and sets after 9 p.m., so you don’t get that noticeable sunset feel until almost 10. The weather is never hot: most places in Seattle have never had air conditioning. With all that rain comes the benefit that places to hike around Seattle — and there’s a lot of them — are green year round. If you’re an outdoors or traveling person, the opportunities to enjoy the outdoors in places like Seattle, Vancouver, Portland, and Eastern Washington are endless.</p>
+<p><strong>It’s so green here, something I had never experienced before, that I had allergy problems for the first time in my life.</strong></p>
+<h3>You know that Seattle Freeze thing? It’s real.</h3>
+<p>I’ve lived in Seattle for two and a half years, and I have exactly one friend that’s a native to Seattle (waving to Troy Parke!). There are some personal reasons for this — I spend a lot of time in Vancouver — but it’s incredibly hard to get to know people here, for many reasons, mostly because we’re one of the most introverted places in the United States.</p>
+<p>They have a name for it: <a href="http://en.wikipedia.org/wiki/Seattle_Freeze">The Seattle Freeze</a>.</p>
+<p>Building relationships takes a lot of time here. There are a lot of meetups where you can build friendships, but a lot of the people from outside Seattle, so you just have to go with the flow. Once you get to know people, the relationships you build here are deep and lasting. You just have to work at it.</p>
+<h3>The upshot: This place isn’t the Mission.</h3>
+<p>The opportunities here, the reasonably fair standard of living and decent work-life balance make Seattle a very attractive place to work if you’re a user experience professional. There’s a lot of opportunity for learning and growing your career at a place that is sensible.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2015/06/04/six-tips-before-moving-to-seattle-as-a-ux-professional/">Six tips before moving to Seattle as a User Experience professional</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5852</post-id>	</item>
+		<item>
+		<title>The User Experience interview: How to crush it</title>
+		<link>https://www.usabilitycounts.com/2014/01/29/kill-ux-interview/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Wed, 29 Jan 2014 16:40:03 +0000</pubDate>
+				<category><![CDATA[No Category]]></category>
+		<category><![CDATA[UX Career Guide]]></category>
+		<guid isPermaLink="false">http://www.usabilitycounts.com/?p=5747</guid>
+
+					<description><![CDATA[<p>Interviewing presents incredible opportunities where designers can take control of the interview. Run the interview preparation through the user experience process, and you’ll be ahead of the pack every time.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2014/01/29/kill-ux-interview/">The User Experience interview: How to crush it</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>When you’ve reached the phone screen or the in-person interview step, you’ve gotten past the hard part: you have demonstrated that you have the qualifications to work at the company. You’re now being judged on whether you have the soft skills and culture fit.</p>
+<p>After holding previous talks at <a href="http://www.meetup.com/SeattleUX/events/154052092/">The Seattle UX Meetup group</a>, I’m reminded that many interview expectations are unstated, and most companies don’t understand how to interview.</p>
+<p>The process presents incredible opportunities where you as designers can take control of the interview and show you can fill their need. Run the interview preparation through the user experience process, and you’ll be ahead of the pack every time.<span id="more-5747"></span>I&#8217;m going to skip some of the standard stuff, like take a shower or dress appropriately, because that&#8217;s common sense. Let&#8217;s talk about what really matters.</p>
+<h3>Research The Company And The Team</h3>
+<div class="pullquote">Any User Experience activity should start by understanding the target audience, and job interviews are no different.</div>
+<p>I don’t just mean what the company has made, or its history. Try to know the people, who they are, what they’ve done in the past, and what they might be doing now.</p>
+<p>There’s nothing that impresses me more than when an applicant knows who I am and what my background is. And considering that if they search on Google for my name (“Patrick Neeman”) about the first 60 results, they should know exactly who I am.</p>
+<p>The reason?</p>
+<p>Any User Experience activity should start by understanding the target audience, and job interviews are no different. It shows that the interviewee understands that any process requires research even before you start.</p>
+<p>Remember, the interviewers are your target audience. So how would you do it?</p>
+<p><strong>During most interview loops you are interviewing with up to six people, and each represents a different role and possibly a persona.</strong> They will all have different skill sets and different needs. They will all ask different questions that are relevant to their role in the company. Before you go into the interview, you should understand their role and background so you can be ready for their questions.</p>
+<p>For example, the questions a Product Manager asks should be much different than those from a Design Manager. Understanding that context is key, so that you can answer questions in their language.</p>
+<p>I look for commonalities in experience &#8212; for example, one candidate I interviewed this week had experience similar to mine in the healthcare field &#8212; so we could talk about some of that. It would be awesome if the interviewees actually did that, so that we could discuss what we have learned from each experience and how it applies to our product design today.</p>
+<p>A key question I ask: “How would you explain Apptio to your parents?” It’s a question that is really hard to answer well, so getting a good response is a great indication they have researched the position.</p>
+<h3>Bring An iPad Or Paper Documentation</h3>
+<div class="pullquote">The presentations I find most engaging are iPads and printed documentation.</div>
+<p>Designers bring in their portfolios on different devices. Sometimes it’s a laptop, other times they refer to their website. Occasionally (this happens at Apptio), we present on the big screen.</p>
+<p>The presentations I find most engaging are iPads and printed documentation.</p>
+<p>For iPads, showing work creates a more intimate experience: you can connect directly with the person you are presenting to. On a flight to Vancouver I had a conversation with a game designer, and he discussed that usability tests they had performed showed that users view iPads as a window to the world, looking down to access content. This experience was much different than playing games on an XBox or Playstation, so they had learned how to design their games differently to account for this context.</p>
+<p>Dead tree material can provide the same experience: as you flip through pages, you can tell an amazing story, as with an iPad. It’s a bit more physical with printed paper, but you can be more intimate as you explain your story.</p>
+<p><strong>Remember, it&#8217;s about engagement and telling a story.</strong> As you sit next to your interviewer, look down at the work, explain it, and then look into their eyes to make sure you’re explaining the solution in a context they understand. This creates a very intimate experience that is hard to replicate on other devices, like sit-forward experiences (laptops) or sit-back experiences (presenting on a larger screens).</p>
+<h3>Get In Front Of A Whiteboard</h3>
+<div class="pullquote">Turn interviews into a user experience process sessions, using the whiteboard as your ally.</div>
+<p>What I like best about interviews is that you can get in front of a whiteboard. Talking about collaboration is one thing; demonstrating it with the interviewer is a completely different experience that very few designers take advantage of. Many companies, including Amazon, use this as a way of judging their talent.</p>
+<p>Here’s an approach that works really well, if you’re interviewing with the right company.</p>
+<p>They’ll ask you to design a product or page, and will watch to see how you approach the problem to drive at a solution. There is no right or wrong answer, but there is a right or wrong approach to this question.</p>
+<p><strong>Turn interviews into user experience  sessions, using the whiteboard as your ally and iteration of ideas as your process. </strong></p>
+<p>Example questions:</p>
+<ul>
+<li>Who are the target personas or actors?</li>
+<li>How often will they use it?</li>
+<li>What is the mental model of the user?</li>
+<li>What is the context? Laptop in the office, or mobile on the road?</li>
+<li>What is the prioritization of the flow?</li>
+<li>What are the goals?</li>
+</ul>
+<p>Each question drives home a different point of process. It does so in a way that doesn’t preach the user experience process, which is very important. It also involves them in the process, so you are showing how you can educate them how to do great product design and be collaborative at the same time.</p>
+<p>It’s all about audience context, and this is a great way to show that you understand your audience without being condescending.</p>
+<h3>Have Your Stories Down</h3>
+<div class="pullquote">Most important is practicing the presentation with a very critical audience and getting feedback.</div>
+<p><a href="http://www.usabilitycounts.com/2013/01/17/the-ux-portfolio-telling-your-story/">I’ve talked about having a great UX Portfolio and how important it is to tell stories</a>. What’s more important is telling the story over and over again, and emphasizing the value you bring when you tell it. The more you tell the stories that focus on your storytelling and less on the pictures behind the story, the better you get at presenting your unique value.</p>
+<p>One story I have absolutely down is Bob The Chiropractor, a five page website I built for a friend of mine for beers. It’s a small but incredible story about lead generation. I’ve told that story so many times, I show a maximum of two screens to illustrate the value that I brought to the product &#8212; the initial home page and the Google Analytics conversion page. It’s also a really powerful story because it’s a small project that still clearly illustrates that you can run user experience on almost anything.</p>
+<p><strong>How do you get your stories down? Tell them over and over again, and get feedback from other designers over a drink.</strong></p>
+<p>A few weeks ago, I met up with two designers I’ve mentored. One of the designers is looking for a new position in user experience, but they can’t tell the story of where they working at now because the work is is under NDA.</p>
+<p>So what did the designer do?</p>
+<p>Create a presentation the explains every step of the user experience process they went through, from research to final implementation. Most important is practicing the presentation with a very critical audience and getting feedback. The designer has done this over and over again. Their portfolio is already good, but like any great designer, they want to raise the bar.</p>
+<p>When the presentation is done, they will have the story down so it can be told again and again. This presentation is so good, they’ll get hired before having to tell the story too many times.</p>
+<h3>Engage With The Interviewer</h3>
+<div class="pullquote">If you engage with the interviewer, you can get them talking (good), telling their stories (better), and understand their needs (best).</div>
+<p>During most interviews you’ll have an hour with the interviewer. Your job: engage with that interviewer as much as possible. Show them that you understand their wants and needs.</p>
+<p>The first time I did the UX Resume presentation was at UX Speakeasy in San Diego, California. My co-presenter was Dylan Campbell, principal of <a href="http://highlandersolutions.net/" target="_blank" rel="noopener">Highlander Solutions</a>, a recruiting firm.</p>
+<p>Dylan is a master of telling stories &#8212; he is screenwriter on the side &#8212; and even better at engaging with people. That’s his job as a salesperson, because ultimately sales is engaging with customers. I enjoy conversations with him because not only is he entertaining, he listens and engages me. Dylan makes me feel like a million bucks, even if we haven’t talked in months.</p>
+<p>Back to the event: that engagement was in full force the first night.</p>
+<p>I went to the speakers’ dinner with Dylan, and everyone loved talking with him. He was engaging, telling stories, but more importantly he got everyone else to talk and tell their stories. After the dinner everyone talked about how great Dylan was, but no one really knew who he was. The same goes for interviewing.</p>
+<p><strong>The interviewer is your customer.</strong></p>
+<p>If you engage with the interviewer, you can get them talking (good), telling their stories (better), and understand their needs (best). When you understand their needs, you can frame your experience in terms of solving their problems. It’s a typical user interview &#8212; understand who they are &#8212; but you are in essence giving a report of your findings right then. And people love talking, because very few get asked about what they need and then actually listened to, especially in today’s narcissistic world of Facebook and Twitter.</p>
+<p>The longer you engage with the interviewer, that’s less time that you are forced to talk, and more importantly, there’s fewer opportunities for you to make mistakes during the interview.</p>
+<h3>Conclusion</h3>
+<p>Designers have an amazing advantage over other positions: we can show the work we are involved in and how our value has direct impacts on products. Showing a portfolio is much more powerful than talking about return on investment or performing a code test.</p>
+<p>It’s up to you as a designer to take advantage of this context and turn it into a great opportunity.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2014/01/29/kill-ux-interview/">The User Experience interview: How to crush it</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5747</post-id>	</item>
+		<item>
+		<title>Your Mobile Design Strategy: Responsive, Adaptive, Native, or Not At All?</title>
+		<link>https://www.usabilitycounts.com/2014/01/08/mobile-design-strategy-responsive-adaptive-native/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Wed, 08 Jan 2014 15:28:16 +0000</pubDate>
+				<category><![CDATA[No Category]]></category>
+		<guid isPermaLink="false">http://www.usabilitycounts.com/?p=5731</guid>
+
+					<description><![CDATA[<p>Responsive design is a buzzword in User Experience. Adoption is moving  at blazing speed. Designers are blogging all kinds of advice about what mobile strategy we should follow. But really, mobile first for everything?</p>
+<p>The post <a href="https://www.usabilitycounts.com/2014/01/08/mobile-design-strategy-responsive-adaptive-native/">Your Mobile Design Strategy: Responsive, Adaptive, Native, or Not At All?</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>Responsive design is a buzzword in User Experience. Adoption is moving  at blazing speed. Websites such as Disney.com have redesigned their sites so they work across multiple devices. Designers are blogging all kinds of advice about what mobile strategy we should follow.</p>
+<p><a href="http://www.lukew.com/ff/entry.asp?933">But really, mobile first for everything</a>?<br />
+<span id="more-5731"></span><br />
+Like anything in User Experience, it depends on context. There is no single approach, and yet designers make sweeping declarations before understanding the differences in user needs. There is no one size fits all solution, no matter how many presentations at conferences say so.</p>
+<div class="pullquote">There is no single  approach, and yet designers make sweeping declarations before understanding the differences in user needs.</div>
+<p>Determining your mobile needs is like buying a car: the user may be an Italian speed demon that wants to go fast, a soccer mom that wants utility or a naturist that wants to go offroading. Each has a different context, and no one car can fill every need.</p>
+<p>Before we proceed, here are the definitions:</p>
+<ul>
+<li><strong>Responsive Design:</strong> Designed for multiple devices, adjusting the design based on the device. Equal, but different.</li>
+<li><strong>Adaptive Design:</strong> Designed specifically for a mobile or tablet experience. Not equal and separate.</li>
+<li><strong>Native Application:</strong> A program designed specifically for iOS, Android or Windows. Different and separate.</li>
+<li><strong>No mobile design:</strong> Designed for desktop and tablet only.</li>
+</ul>
+<p>There may be situations where it makes sense to only adapt part of your application to mobile. Analyze  both the tasks (reviewing a document) and the context (in a hotel room) to make a decision on what the application should do.</p>
+<p>You may pursue a strategy that is maybe a combination of all approaches&#8211; responsive, adaptive, native or not at all, but that strategy should only be defined after asking the following questions:</p>
+<h3>Does your website have a lot of return users?</h3>
+<p>How engaged are you with your users? How often do they use your website? Are they coming back daily, weekly, yearly?</p>
+<p>Some websites have what I call single serving content: you’ll go there once, and not return until you need it again. It could be a long time until you go back, so the user wouldn’t install a mobile application.</p>
+<div class="pullquote">Some websites have what I call single serving content: you’ll go there once, and not return until you need it again. It could be a long time until you go back, so the user wouldn’t install a mobile application.</div>
+<p>An example is a marketplace that I designed for a freelance client of mine, <a href="http://www.archeodomains.com/" target="_blank" rel="noopener">Archeo Domains</a>. We went responsive because it was more cost effective. Mobile visits most often would be a “single serving user” &#8212; they come once, but would probably return on their desktop computer to complete the transaction. It’s responsive, but there’s no ROI for a mobile application.</p>
+<p>Mobile applications for sites like Twitter and Facebook are necessary because there’s a lot of return engagement. Users are  performing  actions like posts and messages, and reading more content. Their applications are always on and always notifying, so the users are engaged.</p>
+<h3>Does your website have a lot of expert users?</h3>
+<p>A great example are business to business applications. Users are in the office or at home performing certain tasks several hours a day. Their screens are very complex because they want access to as much information as possible. Speed and utility trump mobility (and for that matter, emotional design).</p>
+<p>Many business to business applications have a lot of expert users that use the application between six to eight hours a day. The users perform complex tasks sometimes on not one but multiple screens. Speed is of the essence. Mobile in any form is not appropriate in that context.</p>
+<div class="pullquote">For tasks like reviewing content and approving workflow steps, adaptive mobile design plus adaptive email design makes sense.</div>
+<p>For tasks like reviewing content and approving workflow steps, adaptive mobile design plus adaptive email design makes sense. Anyone may perform those tasks  and they could be anywhere &#8212; at lunch, on vacation or at home. The application was also designed with the “Everyone Loves Raymond” scenario in mind: managers reviewing documents on their iPad while at home while watching television. Since many applications would contain a single task, it would make sense to adjust the application design for tablet, but not for mobile.</p>
+<h3>Does your website feature a lot of consumable content?</h3>
+<div class="pullquote">It is important to build your website so consumable content could be optimized for the viral loop &#8212; content that is shared once will likely be reshared to other users. The best way to do that? Responsive web design.</div>
+<p>Consumable content is any link that could be shared on a social media network like Facebook, Twitter or Flipboard. The links could be a photo, a news article, or other interesting content that you can share with your friends.</p>
+<p>If yes, build <strong>responsive</strong> because the content will open up within the frame of another application or it will be quick read. This is especially true for non-destination websites. The <a href="http://www.nytimes.com" target="_blank" rel="noopener">NY Times</a>  redesigned their website, and only the article pages are responsive &#8212;  that&#8217;s the content that will be shared on social media. It&#8217;s an interesting and forward thinking choice for business decisions. They don&#8217;t necessarily want repeat users to read their site for free, they want to subscribe to the newspaper and download their native application.</p>
+<p>When I converted Usability Counts to responsive design, I saw a sizable increase in traffic because many of the users were consuming content in their spare time on their mobile devices. The website also works pretty well in Flipboard (I have to add the customer RSS Feed to truly optimize it), so I also saw a bump from that too. The <a href="http://www.uxdrinkinggame.com">UX Drinking Game</a> is another example where a site has a lot of consumable content that could be read in many environments. Both mobile and desktop breakpoints average over 12 page views per user.</p>
+<p>It is important to build your website so consumable content could be optimized for the viral loop &#8212; content that is shared once will likely be reshared to other users on any device. The best way to do that? Responsive web design.</p>
+<h3>Does your website have a mobile audience?</h3>
+<p>Are the users on the road all the time? Is it an action they will never perform in front of a computer? Are their needs immediate?</p>
+<p>If that’s the case, a <strong>mobile application</strong> may be the best approach. Instagram is a great example: users are taking photos with your mobile phone, and sharing content on multiple content platforms &#8212; my Instagram photos to Facebook, Twitter and Tumblr.</p>
+<p>Or, would you walk around San Francisco with a laptop to take photos for Instagram?</p>
+<p><a href="http://www.instagram.com">Instagram</a> does have a website and it is responsive. However the context is that you want to bring your photos with you to share with your friends, so a mobile application is the way to go. The website is minimalist, and is built in a way to drive traffic to the mobile application.</p>
+<p>A site that should have a good mobile application is <a href="http://www.caltrain.com">Caltrain</a>: most of their users need access to updates and timetables, and the only solutions now are applications that aren’t affiliated with Caltrain. Caltrain has failed its users needs, and it probably adds to customer support costs.</p>
+<h3>Does your website require native technology to create a great experience?</h3>
+<p>Spotify and Square are both amazing technologies &#8212; they allow users to use just about any device to use their systems. Spotfiy allows music discovery, but primarily acts as a background application. Square functions as a cash register for small businesses, and that purchase could be anywhere.</p>
+<p>Both work best with native technology, and even Spotify’s desktop use is a native application, sitting in the background as the user performs other tasks, like working. Both are omni channel (the user can access them from any device), but their core use cases are native applications. Square even has an additional requirement &#8212; adding a piece of hardware to swipe credit cards, which will go away as soon we adopt digital wallets.</p>
+<p>PhoneGap can achieve some efficiencies, but even companies like Facebook admits the limitations of mobile web technologies.</p>
+<p>When determining your needs, figure out if specialized technology renders the mobile strategy conversation a moot point.</p>
+<h3>Conclusion</h3>
+<p>When I started writing this article, I discovered quickly there was no one size fits all approach &#8212; you have to make some calls based on the data you have.</p>
+<p>Mobile is will expand and evolve, but you have to make some decisions whether it’s worth it for your organization. Examine your options before deciding on your mobile strategy.</p>
+<p>The post <a href="https://www.usabilitycounts.com/2014/01/08/mobile-design-strategy-responsive-adaptive-native/">Your Mobile Design Strategy: Responsive, Adaptive, Native, or Not At All?</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5731</post-id>	</item>
+		<item>
+		<title>User Experience portfolios: How to tell your story</title>
+		<link>https://www.usabilitycounts.com/2013/12/10/ux-portfolios-tell-story/</link>
+		
+		<dc:creator><![CDATA[Patrick Neeman]]></dc:creator>
+		<pubDate>Wed, 11 Dec 2013 06:38:01 +0000</pubDate>
+				<category><![CDATA[Retweet]]></category>
+		<guid isPermaLink="false">http://www.usabilitycounts.com/?p=5693</guid>
+
+					<description><![CDATA[<p>How to build a great user experience design portfolio and tell stories that get you hired. By Troy Parke and Patrick Neeman, presented at the Seattle Information Architecture &#38; User Experience Meetup December 10, 2013. Thank you Misty Melissa Weaver for inviting us!</p>
+<p>The post <a href="https://www.usabilitycounts.com/2013/12/10/ux-portfolios-tell-story/">User Experience portfolios: How to tell your story</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p><iframe style="border: 1px solid #CCC; border-width: 1px 1px 0; margin-bottom: 5px;" src="http://www.slideshare.net/slideshow/embed_code/29097956" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe></p>
+<p>How to build a great user experience design portfolio and tell stories that get you hired. By <a href="https://twitter.com/UXHow" target="_blank" rel="noopener">Troy Parke</a> and Patrick Neeman, presented at the <a href="http://www.meetup.com/SeattleUX/events/149754592/" target="_blank" rel="noopener">Seattle Information Architecture &amp; User Experience Meetup</a> December 10, 2013.</p>
+<p>Thank you <a href="https://twitter.com/meaningmeasure/" target="_blank" rel="noopener">Misty Melissa Weaver</a> for inviting us!</p>
+<p>The post <a href="https://www.usabilitycounts.com/2013/12/10/ux-portfolios-tell-story/">User Experience portfolios: How to tell your story</a> appeared first on <a href="https://www.usabilitycounts.com">Usability Counts</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5693</post-id>	</item>
+	</channel>
+</rss>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/?utm_source=w3tc&utm_medium=footer_comment&utm_campaign=free_plugin
+
+Page Caching using Disk: Enhanced (SSL caching disabled) 
+
+Served from: www.usabilitycounts.com @ 2026-02-17 19:17:38 by W3 Total Cache
+-->

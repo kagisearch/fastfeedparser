@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Zoocoding by Andrey Tarantsov</title>
+        <link>https://tarantsov.com/blog/</link>
+        <description>Adventures in AI coding and beyond — whatever I'm excited about and exploring at the moment.</description>
+        <language>en-us</language>
+        <atom:link href="https://tarantsov.com/rss.xml" rel="self" type="application/rss+xml"/>
+        
+        <item>
+            <title>Introducing Bureau MCP</title>
+            <link>https://tarantsov.com/bureau/</link>
+            <guid>https://tarantsov.com/bureau/</guid>
+            <pubDate>Tue, 07 Oct 2025 12:00:00 &#43;0000</pubDate>
+            
+            <description>I&amp;rsquo;ve solved the problem of subagents messing up their report files.</description>
+            
+        </item>
+        
+        <item>
+            <title>Not Another Markup Language</title>
+            <link>https://tarantsov.com/naml/</link>
+            <guid>https://tarantsov.com/naml/</guid>
+            <pubDate>Mon, 06 Oct 2025 12:00:00 &#43;0000</pubDate>
+            
+            <description>I present a new superior markup language to rule them all&amp;hellip; not really. Aka the sweet solution to the YAML problem.</description>
+            
+        </item>
+        
+        <item>
+            <title>My all-star zoo, or why I hired Linus Torvalds, Kent Beck and Rob Pike for my AI team</title>
+            <link>https://tarantsov.com/all-star-zoo/</link>
+            <guid>https://tarantsov.com/all-star-zoo/</guid>
+            <pubDate>Mon, 29 Sep 2025 12:00:00 &#43;0000</pubDate>
+            
+            <description>This summer, I transformed Claude Code from a junior intern into an okay engineering team.</description>
+            
+        </item>
+        
+        <item>
+            <title>Senior devs too good for AI? Saving energy, not time</title>
+            <link>https://tarantsov.com/ai-saves-energy-not-time/</link>
+            <guid>https://tarantsov.com/ai-saves-energy-not-time/</guid>
+            <pubDate>Mon, 22 Sep 2025 12:00:00 &#43;0000</pubDate>
+            
+            <description>If you&amp;rsquo;re like me&amp;hellip; the more experience you have, the harder it is for you to gain from coding with AI. And yet, I think I made it work.</description>
+            
+        </item>
+        
+        <item>
+            <title>Sublime Text Workflow That Beats Coda and Espresso</title>
+            <link>https://tarantsov.com/blog/2012/02/sublime-text-workflow-that-beats-coda-and-espresso/</link>
+            <guid>https://tarantsov.com/blog/2012/02/sublime-text-workflow-that-beats-coda-and-espresso/</guid>
+            <pubDate>Thu, 23 Feb 2012 12:00:00 &#43;0000</pubDate>
+            
+            <description>The only episode of my WorkflowThu series that was worth preserving for posterity.</description>
+            
+        </item>
+        
+        <item>
+            <title>The third definition of open, or How I nearly picked GPL for my product, but ended up simply publishing the source with no license (for now)</title>
+            <link>https://tarantsov.com/blog/2012/02/the-third-definition-of-open/</link>
+            <guid>https://tarantsov.com/blog/2012/02/the-third-definition-of-open/</guid>
+            <pubDate>Thu, 09 Feb 2012 12:00:00 &#43;0000</pubDate>
+            
+            <description>Just a bit of historical rant from those days when I was younger and the battles were simpler.</description>
+            
+        </item>
+        
+        <item>
+            <title>Papers Every Programmer Should Read</title>
+            <link>https://tarantsov.com/blog/2011/09/papers-every-programmer-should-read/</link>
+            <guid>https://tarantsov.com/blog/2011/09/papers-every-programmer-should-read/</guid>
+            <pubDate>Sun, 11 Sep 2011 12:00:00 &#43;0000</pubDate>
+            
+            <description>Read some beautiful source code instead.</description>
+            
+        </item>
+        
+        <item>
+            <title>Two Indispensable Email Add-ons (FollowUp.cc &amp; OhLife)</title>
+            <link>https://tarantsov.com/blog/2011/08/two-indispensable-email-add-ons-followup-cc-and-ohlife/</link>
+            <guid>https://tarantsov.com/blog/2011/08/two-indispensable-email-add-ons-followup-cc-and-ohlife/</guid>
+            <pubDate>Sat, 27 Aug 2011 12:00:00 &#43;0000</pubDate>
+            
+            <description>Consider e-mail as the primary UI for your next little project.</description>
+            
+        </item>
+        
+        <item>
+            <title>The Story of LiveReload: The First Anniversary</title>
+            <link>https://tarantsov.com/blog/2011/07/the-story-of-livereload-the-first-anniversary/</link>
+            <guid>https://tarantsov.com/blog/2011/07/the-story-of-livereload-the-first-anniversary/</guid>
+            <pubDate>Fri, 29 Jul 2011 12:00:00 &#43;0000</pubDate>
+            
+            <description>How LiveReload 2 was born out of a failed startup and a brief moment in the spotlight.</description>
+            
+        </item>
+        
+    </channel>
+</rss>

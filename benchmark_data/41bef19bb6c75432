@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kagamino&#39;s Blog</title>
+    <link>https://blog.kagamino.dev/</link>
+    <description>Recent content on Kagamino&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>{year}</copyright>
+    <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blog.kagamino.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computer setup</title>
+      <link>https://blog.kagamino.dev/computer-setup/</link>
+      <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://blog.kagamino.dev/computer-setup/</guid>
+      <description>&lt;h2 id=&#34;editors&#34;&gt;Editors&lt;/h2&gt;&#xA;&lt;p&gt;Of course as a programmer, I use some editors.&#xA;My most used day-to-day are &lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;VSCode&lt;/a&gt; and &lt;a href=&#34;https://zed.dev/&#34;&gt;Zed&lt;/a&gt;.&#xA;VSCode extensions are really great, but when I need something really snappy, Zed is now the default.&#xA;It has also gained a lot of possibilities recently, with the Debugger and Agent tooling.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PostgreSQL aggregation processing speed</title>
+      <link>https://blog.kagamino.dev/posts/postgres-aggregation-speed/</link>
+      <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://blog.kagamino.dev/posts/postgres-aggregation-speed/</guid>
+      <description>&lt;h2 id=&#34;key-takeaways&#34;&gt;Key takeaways&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;JSON is more efficient than JSONB when only reading data&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;JSONB is useful for data processing, when filtering data on the database. But in this test, the higher cost of creating JSONB is not worth it, and there is also a price to convert it back to text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comparing aggregation between EdgeDB and Postgres</title>
+      <link>https://blog.kagamino.dev/posts/edgedb-aggregates/</link>
+      <pubDate>Tue, 24 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://blog.kagamino.dev/posts/edgedb-aggregates/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;https://blog.kagamino.dev/posts/postgres-aggregates/&#34;&gt;previous article on aggregations on Postgres&lt;/a&gt;, we explored different ways of building SQL queries that join several tables.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Efficient PostgreSQL Aggregations</title>
+      <link>https://blog.kagamino.dev/posts/postgres-aggregates/</link>
+      <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://blog.kagamino.dev/posts/postgres-aggregates/</guid>
+      <description>&lt;p&gt;I recently stumbled upon a problem while crafting queries for PostgreSQL at work. We had a query with several correlated subqueries that was becoming too slow for the intended use (a search). I thought that using aggregations would solve it, but in fact it slowed it down, and even added bugs from counting duplicate rows.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

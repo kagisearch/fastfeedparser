@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>software is fun</title>
+    <link>https://blog.drewolson.org/</link>
+    <description>Recent content on software is fun</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://blog.drewolson.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gleam is Pragmatic</title>
+      <link>https://blog.drewolson.org/gleam-is-pragmatic/</link>
+      <pubDate>Sat, 05 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/gleam-is-pragmatic/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve spent the past several years working with functional programming languages
+in my free time &amp;ndash; primarily Haskell and OCaml. I love both languages but also
+find aspects of each frustrating.&lt;/p&gt;
+&lt;p&gt;Haskell is terse and elegant with type classes providing a powerful mechanism
+for ad-hoc polymorphism. However, it can also be confusingly implicit and I
+personally find lazy evaluation to have more downsides than upsides.&lt;/p&gt;
+&lt;p&gt;OCaml is explicit and powerful with a best-in-class module system. However, I
+believe it is often exhaustingly explicit, especially when dealing with custom
+data types in generic containers.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello World Haskell</title>
+      <link>https://blog.drewolson.org/hello-world-haskell/</link>
+      <pubDate>Fri, 16 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/hello-world-haskell/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Teacher&lt;/em&gt;: Hello class! Welcome to your first day of functional programming.
+Today, we’re going to be talking about how to write the classic &amp;ldquo;Hello, World!&amp;rdquo;
+program in Haskell. It’ll be slightly more involved as we’ll ask for the user’s
+name and then greet them. I’m sure many of you have heard scary things about
+Haskell, but I promise you it’ll be fun.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Student&lt;/em&gt;: I heard we have to learn about &lt;code&gt;IO&lt;/code&gt;. That sounds scary!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Easy JSON in Haskell</title>
+      <link>https://blog.drewolson.org/easy-json-in-haskell/</link>
+      <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/easy-json-in-haskell/</guid>
+      <description>&lt;p&gt;So you’ve learned some basic Haskell and you’re feeling really good about
+yourself. You sit down the write some code and you’re presented with a deeply
+nested JSON structure:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;foo&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;bar&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;baz&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;More stuff&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;people&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Drew&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;hobbies&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        { &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bridge&amp;#34;&lt;/span&gt; },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        { &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;haskell&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Jane&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;hobbies&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        { &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;chess&amp;#34;&lt;/span&gt; },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        { &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ocaml&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Your goal is to simply find the name of Drew’s first hobby. LET’S WRITE SOME
+TYPES!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Parsing Permutations</title>
+      <link>https://blog.drewolson.org/parsing-permutations/</link>
+      <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/parsing-permutations/</guid>
+      <description>&lt;p&gt;My favorite game is &lt;a href=&#34;https://en.wikipedia.org/wiki/Duplicate_bridge&#34;&gt;bridge&lt;/a&gt;.
+It&amp;rsquo;s an excellent test of cooperation and strategy. I&amp;rsquo;m in a discord chat
+devoted mostly to the game and folks often share interesting bridge hands with
+one another. I decided it would be fun to build a
+&lt;a href=&#34;https://github.com/drewolson/bridge-diagrams&#34;&gt;program&lt;/a&gt; that parsed a
+simply-formatted bridge hand and produced a plain text bridge diagram.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a defensive problem that &lt;a href=&#34;https://en.wikipedia.org/wiki/Moonraker_(novel)&#34;&gt;Sir Hugo
+Drax&lt;/a&gt; faced at Blades,
+defending a contract of 7♣xx.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ bridge-cli-exe &amp;lt;&amp;lt;&amp;lt; &amp;#39;t987 6543 - 76532 &amp;gt; akqj akqj ak kj9, r/r, imps, s6&amp;#39;
+Vul: R/R   ♠T987
+IMPs       ♥6543
+           ♦
+           ♣76532
+Lead: ♠6    -----     ♠AKQJ
+           |  N  |    ♥AKQJ
+           |    E|    ♦AK
+           |     |    ♣KJ9
+            -----
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I&amp;rsquo;d like to focus on an interesting problem I faced when parsing this input.  I
+wanted the user to be able to enter several elements: the layout (the cards),
+the vulnerability, the type of scoring, and the opening lead, each separated by
+a comma. However, I wanted these elements to be provided &lt;em&gt;in any order&lt;/em&gt;.
+Furthermore, some of these elements were required while others were optional.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Adventures in Looping</title>
+      <link>https://blog.drewolson.org/adventures-in-looping/</link>
+      <pubDate>Wed, 29 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/adventures-in-looping/</guid>
+      <description>&lt;p&gt;I was recently building a Slack bot in Haskell. The core of the Slack
+integration was a never-ending loop that read messages from a web socket and
+performed actions based on the message. But how should I go about looping
+forever in Haskell?&lt;/p&gt;
+&lt;p&gt;My first pass was to use the aptly-named
+&lt;a href=&#34;https://hackage.haskell.org/package/base-4.15.0.0/docs/Control-Monad.html#v:forever&#34;&gt;forever&lt;/a&gt;
+function. My understanding of &lt;code&gt;forever&lt;/code&gt; was that it ran a provided &lt;code&gt;IO&lt;/code&gt; action
+over and over (this understanding was incomplete, we&amp;rsquo;ll get to that). My initial
+code looked vaguely like this:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Declarative Validation</title>
+      <link>https://blog.drewolson.org/declarative-validation/</link>
+      <pubDate>Tue, 27 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/declarative-validation/</guid>
+      <description>&lt;p&gt;In the past two years I&amp;rsquo;ve become reasonably comfortable with both
+&lt;a href=&#34;https://www.purescript.org/&#34;&gt;PureScript&lt;/a&gt; and
+&lt;a href=&#34;https://www.haskell.org/&#34;&gt;Haskell&lt;/a&gt;. I&amp;rsquo;ve learned so many new things while
+diving into the pure functional programming ecosystem and many of these
+techniques can be applied to other paradigms. Unfortunately, the pure FP world
+can feel a bit like another dimension &amp;ndash; where many programming problems have
+elegant solutions but the world of &amp;ldquo;regular&amp;rdquo; programming isn&amp;rsquo;t aware of these
+patterns.&lt;/p&gt;
+&lt;p&gt;One such pattern is called &amp;ldquo;applicative-style validation&amp;rdquo;, but I&amp;rsquo;ll simply call
+it &amp;ldquo;declarative validation&amp;rdquo;. In this post I&amp;rsquo;ll provide some motivation for using
+this technique and then build a small library in
+&lt;a href=&#34;https://www.python.org/&#34;&gt;Python&lt;/a&gt; implementing these ideas.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PureScript and Haskell</title>
+      <link>https://blog.drewolson.org/purescript-and-haskell/</link>
+      <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/purescript-and-haskell/</guid>
+      <description>&lt;p&gt;Two years ago, I starting learning &lt;a href=&#34;https://www.purescript.org&#34;&gt;PureScript&lt;/a&gt;.  I
+had been intrigued by purely functional programming for some time but had failed
+to learn &lt;a href=&#34;https://www.haskell.org/&#34;&gt;Haskell&lt;/a&gt; once or twice. PureScript seemed to
+be a kinder, gentler introduction to this world while retaining the fundamental
+properties of pureness that made Haskell intriguing to me. As part of my
+learning process, I rebuilt a slack bot&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; I had previously written in go.&lt;/p&gt;
+&lt;p&gt;Once I had learned PureScript and become more comfortable with purely functional
+idioms, the next logical step seemed to be learning Haskell. I was surprised to
+discover how much Haskell I already knew from learning PureScript, but core
+features like laziness (PureScript is a strict language) took some getting used
+to.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Parsing Untrusted Input with Elixir</title>
+      <link>https://blog.drewolson.org/parsing-untrusted-input-with-elixir/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/parsing-untrusted-input-with-elixir/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve spent a lot of time in the past year learning
+&lt;a href=&#34;https://www.purescript.org&#34;&gt;PureScript&lt;/a&gt; and it has drastically changed the way
+I think about programming in general. The biggest change in my thinking is
+described by the excellent blog post &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;Parse, don&amp;rsquo;t
+validate&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The most important passage in the post, I think, is this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Consider: what is a parser? Really, a parser is just a function that consumes
+less-structured input and produces more-structured output.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Drawing Fractals with PureScript</title>
+      <link>https://blog.drewolson.org/drawing-fractals-with-purescript/</link>
+      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/drawing-fractals-with-purescript/</guid>
+      <description>&lt;p&gt;Recently, for no good reason, I added an easter egg to my &lt;a href=&#34;https://drewolson.org&#34;&gt;personal
+website&lt;/a&gt;. I love fractals and decided to add a
+visualization of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Dragon_curve&#34;&gt;dragon curve&lt;/a&gt;.
+Here were the requirements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Every 10 seconds, a new iteration of the dragon curve would be drawn.&lt;/li&gt;
+&lt;li&gt;If the user clicked anywhere within the drawing area, a new iteration would be
+drawn and the 10 second clock would be reset.&lt;/li&gt;
+&lt;li&gt;After the 10th iteration is drawn, the drawing should be cleared and the
+process should restart.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I decided to use &lt;a href=&#34;https://en.wikipedia.org/wiki/Scalable_Vector_Graphics&#34;&gt;SVG&lt;/a&gt;
+to draw the lines of the fractal. Initially, I built a solution in
+&lt;a href=&#34;https://elm-lang.org/&#34;&gt;Elm&lt;/a&gt;. However, I was missing the flexibility I&amp;rsquo;d
+experienced with my &lt;a href=&#34;https://blog.drewolson.org/building-a-slack-bot-in-purescript&#34;&gt;previous back end
+work&lt;/a&gt; in
+PureScript and wanted to explore using it on the front end. This post walks
+through the process of rebuilding the solution in PureScript.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Parser Combinators in Elixir</title>
+      <link>https://blog.drewolson.org/parser-combinators-in-elixir/</link>
+      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/parser-combinators-in-elixir/</guid>
+      <description>&lt;p&gt;Delving into the world of &lt;a href=&#34;http://purescript.org&#34;&gt;pure functional programming&lt;/a&gt;
+caused me to learn about parser combinators. Upon returning to Elixir,
+I was excited to see that
+&lt;a href=&#34;https://github.com/dashbitco/nimble_parsec&#34;&gt;nimble_parsec&lt;/a&gt; is a great example
+of a parser combinator library for the Elixir ecosystem.&lt;/p&gt;
+&lt;p&gt;Parser combinators can be notoriously confusing when first learned. In this post
+I&amp;rsquo;ll provide a gentle introduction to parser combinators via &lt;code&gt;nimble_parsec&lt;/code&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;what-is-a-parser-combinator&#34;&gt;What is a Parser Combinator?&lt;/h1&gt;
+&lt;p&gt;Have you ever found yourself writing a regular expression to parse input? I know
+I have. You finally have the syntax correct and then new requirements get
+added. Suddenly you need to support optional tokens, lists of values and other
+complicated types of input. When regular expressions start to break down
+because of complexity, it&amp;rsquo;s time to reach for a more powerful abstraction.
+Enter parser combinators.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building a Slack Bot in PureScript</title>
+      <link>https://blog.drewolson.org/building-a-slack-bot-in-purescript/</link>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/building-a-slack-bot-in-purescript/</guid>
+      <description>&lt;p&gt;I recently &lt;a href=&#34;https://github.com/drewolson/epicbot&#34;&gt;open sourced&lt;/a&gt; my first large
+PureScript project. It&amp;rsquo;s a slack bot that allows searching for cards from the
+&lt;a href=&#34;https://www.epiccardgame.com/&#34;&gt;Epic Card Game&lt;/a&gt;. In this post, I&amp;rsquo;ll discuss the
+process of writing the application, what went well and what went poorly.&lt;/p&gt;
+&lt;h1 id=&#34;an-overview-of-the-slack-bot&#34;&gt;An Overview of the Slack Bot&lt;/h1&gt;
+&lt;p&gt;I was excited about building this project in PureScript because it was
+complicated enough to be interesting but not so complicated as to be
+overwhelming. The key requirements for the bot were:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PureScript Async FFI</title>
+      <link>https://blog.drewolson.org/purescript-async-ffi/</link>
+      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/purescript-async-ffi/</guid>
+      <description>&lt;p&gt;I &lt;a href=&#34;https://blog.drewolson.org/asynchronous-purescript&#34;&gt;recently posted&lt;/a&gt; about
+using &lt;a href=&#34;https://github.com/purescript-contrib/purescript-aff&#34;&gt;Aff&lt;/a&gt; for
+asynchronous effects in PureScript. In this follow-up post, I&amp;rsquo;m going to
+discuss using JavaScript FFI in conjuction with &lt;code&gt;Aff&lt;/code&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;aff-and-ffi&#34;&gt;Aff and FFI&lt;/h1&gt;
+&lt;p&gt;PureScript gives us very nice FFI utilities to call JavaScript code. &lt;code&gt;Aff&lt;/code&gt;
+provides a function called
+&lt;a href=&#34;https://pursuit.purescript.org/packages/purescript-aff/5.1.2/docs/Effect.Aff.Compat#v:fromEffectFnAff&#34;&gt;fromEffectFnAff&lt;/a&gt;
+that lets us turn asynchronous JavaScript behavior into an &lt;code&gt;Aff&lt;/code&gt; in our
+PureScript code.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s create an example that reads a file from the file system using FFI. We&amp;rsquo;ll
+pass our foreign function a &lt;code&gt;String&lt;/code&gt; and expect to get back an &lt;code&gt;Aff String&lt;/code&gt; of
+the contents of the file.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Asynchronous PureScript</title>
+      <link>https://blog.drewolson.org/asynchronous-purescript/</link>
+      <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/asynchronous-purescript/</guid>
+      <description>&lt;p&gt;One of my favorite features of PureScript is its ability to work with
+asynchronous effects. While learning the language, I struggled to find any
+beginner material that introduced the relevant topics and included small
+examples. This post hopes to fill that gap.&lt;/p&gt;
+&lt;h1 id=&#34;getting-started-with-aff&#34;&gt;Getting Started with Aff&lt;/h1&gt;
+&lt;p&gt;PureScript&amp;rsquo;s built-in type for effects is called &lt;code&gt;Effect&lt;/code&gt;. However, this type
+represents &lt;em&gt;synchronous&lt;/em&gt; effects. This means if we want expose &lt;em&gt;asynchronous&lt;/em&gt;
+APIs to our users using &lt;code&gt;Effect&lt;/code&gt;, we&amp;rsquo;re stuck with the callback-style. Here&amp;rsquo;s a
+contrived example that &amp;ldquo;slowly&amp;rdquo; adds two numbers together using &lt;code&gt;Effect&lt;/code&gt;s:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Laziness in PureScript</title>
+      <link>https://blog.drewolson.org/laziness-in-purescript/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/laziness-in-purescript/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been learning &lt;a href=&#34;http://www.purescript.org/&#34;&gt;PureScript&lt;/a&gt; for the past few
+months and really enjoying it. PureScript is a
+&lt;a href=&#34;https://www.haskell.org/&#34;&gt;Haskell&lt;/a&gt; dervied language that compiles to
+JavaScript. You can target &lt;a href=&#34;https://nodejs.org&#34;&gt;node&lt;/a&gt; for the backend or the
+browser for frontend code.&lt;/p&gt;
+&lt;p&gt;One of my favorite features of PureScript is its fantastic interop with
+JavaScript. This makes the language very pragmatic &amp;ndash; though it has a large
+ecosystem of native packages, anything that&amp;rsquo;s missing can easily be handled with
+an existing &lt;a href=&#34;https://www.npmjs.org&#34;&gt;npm&lt;/a&gt; package and interop. PureScript made a
+big departure from Haskell in order to make this interop more convenient. While
+Haskell is a lazy language by default, PureScript is strict.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Go Dependency Injection with Wire</title>
+      <link>https://blog.drewolson.org/go-dependency-injection-with-wire/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/go-dependency-injection-with-wire/</guid>
+      <description>&lt;p&gt;Several months ago I wrote a blog post about &lt;a href=&#34;https://blog.drewolson.org/dependency-injection-in-go/&#34;&gt;dependency injection in
+go&lt;/a&gt;. In the time since
+that post was written, Google has released a fantastic new dependency injection
+container for go called &lt;a href=&#34;https://github.com/google/wire&#34;&gt;wire&lt;/a&gt;. I much prefer
+&lt;code&gt;wire&lt;/code&gt; to other containers in the go ecosystem. This post will explain why.&lt;/p&gt;
+&lt;h1 id=&#34;a-very-brief-primer-on-dependency-injection&#34;&gt;A (Very) Brief Primer on Dependency Injection&lt;/h1&gt;
+&lt;p&gt;Dependency injection (DI) is a style of writing code such that the dependencies
+of a particular object (or, in go, a struct) are provided at the time the object
+is initialized.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Concurrent Ruby with Tasks</title>
+      <link>https://blog.drewolson.org/concurrent-ruby-with-tasks/</link>
+      <pubDate>Mon, 29 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/concurrent-ruby-with-tasks/</guid>
+      <description>&lt;p&gt;Yes, you read the title correctly. And yes, ruby still has a GIL. However, ruby
+has long been able to &lt;a href=&#34;https://yehudakatz.com/2010/08/14/threads-in-ruby-enough-already/&#34;&gt;support
+concurrency&lt;/a&gt;
+for IO-bound calls. Ruby will not block the current thread if it is waiting on
+IO. In practice, this means that many of our ruby programs (like web
+applications) can use ruby&amp;rsquo;s threads to concurrently serve multiple requests.&lt;/p&gt;
+&lt;p&gt;Working directly with ruby&amp;rsquo;s threading primitives can be complicated. This is a
+problem that the
+&lt;a href=&#34;https://github.com/ruby-concurrency/concurrent-ruby&#34;&gt;concurent-ruby&lt;/a&gt; library
+aims to solve. This library is mature and comprehensive but it offers a
+staggering number of APIs for modeling concurrency in your application.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>So You Bought a Pixelbook</title>
+      <link>https://blog.drewolson.org/so-you-bought-a-pixelbook/</link>
+      <pubDate>Sat, 16 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/so-you-bought-a-pixelbook/</guid>
+      <description>&lt;h1 id=&#34;initial-setup&#34;&gt;Initial Setup&lt;/h1&gt;
+&lt;p&gt;First, follow the &lt;code&gt;Quickstart&lt;/code&gt; instructions
+&lt;a href=&#34;https://chromium.googlesource.com/chromiumos/docs/+/master/containers_and_vms.md#Quickstart&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You now have two things set up &amp;ndash; a VM called &lt;code&gt;termina&lt;/code&gt; and a container inside
+of that VM called &lt;code&gt;penguin&lt;/code&gt;. This VM and container are &amp;ldquo;special&amp;rdquo; &amp;ndash; files within
+&lt;code&gt;penguin&lt;/code&gt; are accessible via the &lt;code&gt;Files&lt;/code&gt; app and any GUI applications installed
+inside of &lt;code&gt;penguin&lt;/code&gt; will be accessible via the launcher. Other than that,
+&lt;code&gt;penguin&lt;/code&gt; is just a regular &lt;code&gt;debian stretch&lt;/code&gt;
+&lt;a href=&#34;https://linuxcontainers.org/lxc/introduction/&#34;&gt;LXC&lt;/a&gt; container.&lt;/p&gt;
+&lt;p&gt;To access a shell inside of &lt;code&gt;pengiun&lt;/code&gt; (which is inside of &lt;code&gt;termina&lt;/code&gt;), simply
+launch the &lt;code&gt;Terminal&lt;/code&gt; program. This starts the &lt;code&gt;termina&lt;/code&gt; VM (if not already
+started), starts the &lt;code&gt;penguin&lt;/code&gt; container (if not already started) and drops you
+in a shell.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lazy Providers in Dig</title>
+      <link>https://blog.drewolson.org/lazy-providers-in-dig/</link>
+      <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/lazy-providers-in-dig/</guid>
+      <description>&lt;p&gt;If you haven&amp;rsquo;t yet read my previous post on &lt;a href=&#34;https://blog.drewolson.org/dependency-injection-in-go/&#34;&gt;depedency injection in
+Go&lt;/a&gt;, please do so first.
+This post describes a simple technique to make
+&lt;a href=&#34;https://github.com/uber-go/dig&#34;&gt;dig&amp;rsquo;s&lt;/a&gt; DI container even more powerful.&lt;/p&gt;
+&lt;p&gt;All values provided by dig&amp;rsquo;s container are singletons. The provider is called
+the first time the value is required and the result is cached. All subsequent
+providers that depend on this value used the cached result. This behavior is
+usually very desireable but there are times when we want a fresh value to be
+produced by the container. Often this is useful for data that is scoped by a
+lifecycle that is shorter than the lifecycle of the application itself (say, the
+lifecycle of an HTTP request inside of an HTTP server).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Dependency Injection in Go</title>
+      <link>https://blog.drewolson.org/dependency-injection-in-go/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/dependency-injection-in-go/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Update&lt;/em&gt; - you should probably read my &lt;a href=&#34;https://blog.drewolson.org/go-dependency-injection-with-wire&#34;&gt;more recent
+post&lt;/a&gt; about
+dependency injection with wire.&lt;/p&gt;
+&lt;p&gt;I recently built a small project in Go. I&amp;rsquo;ve been working with Java for the past
+few years and was immediately struck by the lack of momentum behind Dependency
+Injection (DI) in the Go ecosystem. I decided to try building my project using
+Uber&amp;rsquo;s &lt;a href=&#34;https://github.com/uber-go/dig&#34;&gt;dig&lt;/a&gt; library and was very impressed.&lt;/p&gt;
+&lt;p&gt;I found that DI helped solve a lot of problems I had encountered in my previous
+Go applications &amp;ndash; overuse of the &lt;code&gt;init&lt;/code&gt; function, abuse of globals and
+complicated application setup.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Promises as Values</title>
+      <link>https://blog.drewolson.org/promises-as-values/</link>
+      <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/promises-as-values/</guid>
+      <description>&lt;p&gt;I was recently working on a small JavaScript project in which I needed to
+perform several asynchronous operations sequentially. I had a collection of
+images on a page and I needed to fade each of them out one at a time. I ended up
+with a nice technique using
+&lt;a href=&#34;https://blog.drewolson.org/another-perspective-on-promises/&#34;&gt;Promises&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s suppose we have a function that fades out an image given a selector and a
+duration (I was using jQuery, but the details don&amp;rsquo;t matter). We can call this
+function like so:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Elixir&#39;s Secret Weapon</title>
+      <link>https://blog.drewolson.org/elixirs-secret-weapon/</link>
+      <pubDate>Fri, 12 May 2017 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/elixirs-secret-weapon/</guid>
+      <description>&lt;p&gt;I recently began using a new(ish) feature of Elixir that completely transformed
+the way I build programs. I&amp;rsquo;m talking about the special form &lt;code&gt;with&lt;/code&gt;. It can feel
+unfamiliar at first, but it is extremely powerful and flexible. This article
+will explain how &lt;code&gt;with&lt;/code&gt; works and how it can be used to make your code more
+robust to errors. First, though, let&amp;rsquo;s look at the problem &lt;code&gt;with&lt;/code&gt; is trying to
+solve.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Another Perspective on Promises</title>
+      <link>https://blog.drewolson.org/another-perspective-on-promises/</link>
+      <pubDate>Wed, 28 Dec 2016 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/another-perspective-on-promises/</guid>
+      <description>&lt;p&gt;I spent 9 months of this year working on a project using Java 8 and enjoyed it
+much more than I expected. Specifically, the addition of
+&lt;a href=&#34;https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html&#34;&gt;Optional&lt;/a&gt;
+made my code feel cleaner, more functional and less error prone. I had Java 8 on
+the brain when I tackled a small JavaScript project a few weeks ago. After
+finishing it, I decided to go back and try it again using
+&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise&#34;&gt;Promises&lt;/a&gt;.
+I was immediately struck by how similar Promises are to a cousin of the Optional
+&amp;ndash; &lt;a href=&#34;https://doc.rust-lang.org/std/result/&#34;&gt;Result&lt;/a&gt;. In this post I&amp;rsquo;ll describe
+Promises from the perspective of building robust pipelines for your code, later
+showing how Promises also unify synchronous and asynchronous code.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Specify Your API</title>
+      <link>https://blog.drewolson.org/specify-your-api/</link>
+      <pubDate>Fri, 05 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/specify-your-api/</guid>
+      <description>&lt;p&gt;Much of the past 6 years of my professional life has been spent designing,
+implementing and maintaining APIs. I&amp;rsquo;ve learned many things to avoid as well as
+a handful of good techniques. However, it wasn&amp;rsquo;t until 3 months ago that I was
+exposed to a practice I consider the most important thing you can do while
+building APIs. Every production-quality API I build going forward will be
+rigidly and explicitly specified.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Extensible Design with Protocols</title>
+      <link>https://blog.drewolson.org/extensible-design-with-protocols/</link>
+      <pubDate>Sat, 19 Mar 2016 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/extensible-design-with-protocols/</guid>
+      <description>&lt;p&gt;I wrote some code this week that reinforced the power of protocols as a tool for
+software design. The term &amp;ldquo;protocol&amp;rdquo; can mean many things in the world of
+software. Let me clarify that I&amp;rsquo;m using protocol to mean the mechanism used by
+some languages (Elixir, Clojure, etc) to achieve polymorphism. Used properly,
+protocols allow you the provide users of your code with a set of standard
+behavior as well as a clear contract for implementing that behavior on standard
+or custom types.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Elixir Streams</title>
+      <link>https://blog.drewolson.org/elixir-streams/</link>
+      <pubDate>Mon, 08 Jun 2015 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/elixir-streams/</guid>
+      <description>&lt;p&gt;I previously &lt;a href=&#34;http://blog.drewolson.org/the-value-of-explicitness/&#34;&gt;wrote&lt;/a&gt; about
+explicitness in Elixir. One of my favorite ways the language embraces
+explicitness is in its distinction between eager and lazy operations on
+collections. Any time you use the &lt;code&gt;Enum&lt;/code&gt; module, you&amp;rsquo;re performing an eager
+operation. Your collection will be transformed/mapped/enumerated immediately.
+When you use the &lt;code&gt;Stream&lt;/code&gt; module, you&amp;rsquo;re performing lazy operations.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;Stream&lt;/code&gt; module provides many of the same operations as &lt;code&gt;Enum&lt;/code&gt;, but when
+used with &lt;code&gt;Stream&lt;/code&gt; they&amp;rsquo;re describing future computations rather than actions to
+be taken immediately. Conveniently, all streams also implement the &lt;code&gt;Enumerable&lt;/code&gt;
+protocol, meaning they can use any of the functions within &lt;code&gt;Enum&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sanity Tests</title>
+      <link>https://blog.drewolson.org/sanity-tests/</link>
+      <pubDate>Fri, 29 May 2015 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/sanity-tests/</guid>
+      <description>&lt;p&gt;It is common for test &amp;ldquo;classifications&amp;rdquo; to have a plethora of definitions.
+Sanity tests are no different.
+&lt;a href=&#34;http://en.wikipedia.org/wiki/Sanity_testing&#34;&gt;Wikipedia&lt;/a&gt; says the following on
+the subject:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the sanity test [&amp;hellip;] determines whether it is possible and reasonable to
+proceed with further testing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This implies that a sanity test is some sort of &amp;ldquo;pre-test&amp;rdquo; to determine if
+further testing even makes sense.&lt;/p&gt;
+&lt;p&gt;I, however, think of sanity testing as breaking the fourth wall of the codebase.
+I believe sanity testing should test assumptions about the codebase itself
+rather than the behavior of the code.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Value of Explicitness</title>
+      <link>https://blog.drewolson.org/the-value-of-explicitness/</link>
+      <pubDate>Fri, 03 Apr 2015 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/the-value-of-explicitness/</guid>
+      <description>&lt;p&gt;Elixir is often compared to Ruby. It&amp;rsquo;s true that Elixir takes inspiration from
+Ruby&amp;rsquo;s syntax. One of Elixir&amp;rsquo;s core tenets is &amp;ldquo;metaprogramming&amp;rdquo;, something often
+associated with Ruby and its ecosystem. That said, after using Elixir for a
+small amount of time it is immediately obvious that the semantics of the
+languages are very different. More subtly, Elixir focuses on explicitness where
+Ruby is often implicit. In this blog post, I&amp;rsquo;ll discuss Elixir&amp;rsquo;s approach to
+composing functionality in an explicit manner.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>An Empathetic Functional Language</title>
+      <link>https://blog.drewolson.org/an-empathetic-functional-language/</link>
+      <pubDate>Fri, 20 Mar 2015 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/an-empathetic-functional-language/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been writing Elixir code for over a year. Never have I been more excited
+about the prospects of the language and its community. The language is young but
+very promising. Many smart people are getting involved. There&amp;rsquo;s a hell of a
+trajectory here for a language that released 1.0 merely 6 months ago.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been wondering what is it specifically about Elixir that has pulled me in
+and prompted my involvement in the community. In a word, it&amp;rsquo;s empathy. More
+specifically, empathy for the user.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pagination with Phoenix &amp; Ecto</title>
+      <link>https://blog.drewolson.org/pagination-with-phoenix-ecto/</link>
+      <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/pagination-with-phoenix-ecto/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been working on a web application built in Elixir. I&amp;rsquo;m using
+&lt;a href=&#34;http://www.phoenixframework.org/&#34;&gt;Phoenix&lt;/a&gt; as the web framework and
+&lt;a href=&#34;https://github.com/elixir-lang/ecto&#34;&gt;Ecto&lt;/a&gt; to talk to my database. As the
+amount of data in the application grew, I needed to paginate some of the views.
+I wasn&amp;rsquo;t able to find an existing pagination solution for these tools so I ended
+up building my own. This post will discuss what I built.&lt;/p&gt;
+&lt;h1 id=&#34;goal&#34;&gt;Goal&lt;/h1&gt;
+&lt;p&gt;Once we&amp;rsquo;re done, we should be able to paginate any Ecto query using parameters
+provided by a Phoenix controller action. I&amp;rsquo;m going to assume you&amp;rsquo;re familiar
+with building composable Ecto queries. If you aren&amp;rsquo;t, &lt;a href=&#34;http://blog.drewolson.org/composable-queries-ecto/&#34;&gt;read this
+post&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Composable Queries with Ecto</title>
+      <link>https://blog.drewolson.org/composable-queries-with-ecto/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/composable-queries-with-ecto/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;http://blog.drewolson.org/blog/2015/01/19/building-an-elixir-web-app/&#34;&gt;previous
+post&lt;/a&gt; I
+briefly covered some lessons I&amp;rsquo;d learned while building a (kind of real) web app
+in Elixir. Today, I&amp;rsquo;d like to take an in-depth look at composable queries in
+&lt;a href=&#34;https://github.com/elixir-lang/ecto&#34;&gt;Ecto&lt;/a&gt;. First, a brief introduction to
+Ecto.&lt;/p&gt;
+&lt;h1 id=&#34;what-is-ecto&#34;&gt;What is Ecto?&lt;/h1&gt;
+&lt;p&gt;I think of Ecto as a light-weight ORM. Ecto uses Elixir structs to represent
+database tables and provides a DSL for building and executing database queries.
+Because I&amp;rsquo;m boring, we&amp;rsquo;re going to use the ages-old &amp;ldquo;post has many comments&amp;rdquo;
+example to demonstrate Ecto&amp;rsquo;s capabilities. We&amp;rsquo;ll assume we have the following
+models.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building an Elixir Web App</title>
+      <link>https://blog.drewolson.org/building-an-elixir-web-app/</link>
+      <pubDate>Mon, 19 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/building-an-elixir-web-app/</guid>
+      <description>&lt;p&gt;Over the past few months I&amp;rsquo;ve been building a small internal application at
+work. I&amp;rsquo;ve been using &lt;a href=&#34;http://elixir-lang.org&#34;&gt;Elixir&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/elixir-lang/ecto&#34;&gt;Ecto&lt;/a&gt; and
+&lt;a href=&#34;http://phoenixframework.org&#34;&gt;Phoenix&lt;/a&gt; and it&amp;rsquo;s been an absolute blast. I
+thought it would be useful to put together a &amp;ldquo;lessons learned&amp;rdquo; blog post about
+the techniques I&amp;rsquo;ve found helpful using these tools to build a database-backed
+web app.&lt;/p&gt;
+&lt;p&gt;This post is not intended as an introducion to any of the these tools. I assume
+some knowledge of Elixir, Ecto and Phoenix.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Good Software Developers</title>
+      <link>https://blog.drewolson.org/good-software-developers/</link>
+      <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/good-software-developers/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m approaching 8 years as a professional software developer. I&amp;rsquo;ve written a lot
+of code, worked on a few teams and helped build a team from 4 developers to ~60.
+Now, more than ever, I find myself thinking about what it means to be a good
+software developer. Not good as in &amp;ldquo;good is the enemy of great&amp;rdquo;, but good as in
+&amp;ldquo;I want to work with this person again&amp;rdquo;. I think there are three characteristics
+that make someone good in this industry.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Node Streams for APIs</title>
+      <link>https://blog.drewolson.org/node-streams-for-apis/</link>
+      <pubDate>Sat, 04 Jan 2014 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/node-streams-for-apis/</guid>
+      <description>&lt;p&gt;Node streams are a fantastic abstraction for evented programming. They&amp;rsquo;re also
+notoriously hard to implement. In this post, I&amp;rsquo;d like to walk through
+implementing a &lt;a href=&#34;http://blog.nodejs.org/2012/12/20/streams2/&#34;&gt;streams2&lt;/a&gt; &lt;a href=&#34;http://nodejs.org/api/stream.html#stream_class_stream_readable&#34;&gt;Readable
+stream&lt;/a&gt; to wrap
+an API.&lt;/p&gt;
+&lt;h1 id=&#34;the-api&#34;&gt;The API&lt;/h1&gt;
+&lt;p&gt;Suppose we have a web service that returns a list of customers. There might be a
+large number of customers, so this service paginates the results and expects us
+to provide a page number when requesting data. A sample request to the API might
+look something like the line below.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Understanding gen_server with Elixir and Ruby</title>
+      <link>https://blog.drewolson.org/understanding-gen_server-with-elixir-and-ruby/</link>
+      <pubDate>Fri, 25 Oct 2013 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/understanding-gen_server-with-elixir-and-ruby/</guid>
+      <description>&lt;p&gt;Recently, I&amp;rsquo;ve been spending some time working in
+&lt;a href=&#34;http://www.erlang.org/&#34;&gt;Erlang&lt;/a&gt; and &lt;a href=&#34;http://elixir-lang.org/&#34;&gt;Elixir&lt;/a&gt;. I had
+tried to break into Erlang in the past but I was always stymied by the steep
+learning curve of OTP.
+&lt;a href=&#34;http://www.erlang.org/doc/design_principles/gen_server_concepts.html&#34;&gt;gen_server&lt;/a&gt;
+in particular always seemed like black magic to me. However, after attending an
+Erlang workshop at &lt;a href=&#34;http://lambdajam.com/&#34;&gt;Lambda Jam&lt;/a&gt; this year it finally
+clicked for me. After I finally &amp;ldquo;got it&amp;rdquo; I had another realization: it isn&amp;rsquo;t
+that complicated, but there aren&amp;rsquo;t very many good explanations. In this post I&amp;rsquo;m
+going to attempt to explain gen_server using Elixir and
+&lt;a href=&#34;https://www.ruby-lang.org&#34;&gt;Ruby&lt;/a&gt; code and some simple diagrams.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Clojure core.async and Go: A Code Comparison</title>
+      <link>https://blog.drewolson.org/clojure-core.async-and-go-a-code-comparison/</link>
+      <pubDate>Thu, 04 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://blog.drewolson.org/clojure-core.async-and-go-a-code-comparison/</guid>
+      <description>&lt;p&gt;Last week, Rich Hickey announced Clojure core.async in a &lt;a href=&#34;http://clojure.com/blog/2013/06/28/clojure-core-async-channels.html&#34;&gt;blog
+post&lt;/a&gt;. As
+mentioned in the post, the new core.async library has a lot in common with
+&lt;a href=&#34;http://golang.org&#34;&gt;Go&lt;/a&gt;. In this post, I&amp;rsquo;ll compare the fundamental building
+blocks of concurrency in core.async and Go with code examples.&lt;/p&gt;
+&lt;p&gt;Note: Clojure core.async provides two sets of operations on channels. The
+blocking operations are for use with native threads and the non-blocking
+operations are for use with go blocks. In this post, I&amp;rsquo;ll be focusing on the
+non-blocking operations used with go blocks but I&amp;rsquo;ll briefly mention the
+blocking versions.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

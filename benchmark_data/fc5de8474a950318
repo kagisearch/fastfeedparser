@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://blog.thecaptain.dev</id>
+  <title>Captain’s blog</title>
+  <updated>2026-02-18T02:18:17.112985+00:00</updated>
+  <author>
+    <name>captainsblog</name>
+    <email>hidden</email>
+  </author>
+  <link href="https://blog.thecaptain.dev/" rel="alternate"/>
+  <link href="https://blog.thecaptain.dev/feed/" rel="self"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+  <subtitle>...</subtitle>
+  <entry>
+    <id>https://blog.thecaptain.dev/2026/january/coffee/</id>
+    <title>Recipe: milk coffee</title>
+    <updated>2026-01-25T22:53:50.583591+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;For a while, I was on a quest for a perfect poor man’s latte, but now I’ve settled on something a little different: milk brewed coffee. After arriving at the technique, I searched online and couldn’t find anyone else making it the same way, so here’s my recipe.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Grind 1/3 cup of dark roast coffee on the finest grind setting.&lt;/li&gt;
+&lt;li&gt;Bring 1/3 cup of water to a boil.&lt;/li&gt;
+&lt;li&gt;Mix in the ground coffee and simmer until it thickens.&lt;/li&gt;
+&lt;li&gt;Pour in 14 ounces of milk and gradually heat until it reaches 190 degrees.&lt;/li&gt;
+&lt;li&gt;Strain the coffee through a metal coffee filter.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The resulting coffee is bold and agressive, it’s very hot and hits like a slap on the face to wake you up in the morning. I realize that not everyone likes coffee as intense as I do, and if that’s the case with you, any of the parameters can be adjusted for a milder brew.&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2026/january/coffee/" rel="alternate"/>
+    <published>2026-01-25T22:51:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2026/january/enjoyment/</id>
+    <title>How I enjoy my life</title>
+    <updated>2026-01-16T02:56:59.694972+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;To a child, there is no difference between pleasure and enjoyment. The developing psyche is completely immersed in the present moment. As we mature, the tracks of pleasure and enjoyment diverge. Now we confront the reality of constant change, and the impermanence of everything. Some create suffering by resisting change, while others accept change passively. Some are blessed to put themselves in the driver's seat, changing themselves and the environment around them at will.&lt;/p&gt;
+&lt;p&gt;It is so easy to get stuck in a rut pre-determined by your nature and nurture, but I like to remind myself that I am not a product of my environment, but my environment is a product of me.&lt;/p&gt;
+&lt;p&gt;I wrote previously using the metaphor of life as a book. Boredom is the result of inattention, and manifests as mindless page turning. What I'm advocating now is to stop letting everyone else fill in the pages for you.&lt;/p&gt;
+&lt;p&gt;If your life is a book, what do you want to write in this chapter?&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2026/january/enjoyment/" rel="alternate"/>
+    <published>2026-01-16T02:47:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2025/december/bear/</id>
+    <title>Moving to Bear</title>
+    <updated>2025-12-24T16:50:26.257483+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;For this Christmas, I bought myself the gift of a one year Bear Blog subscription. As a former software engineer, I am capable of creating my own blogging website, and have already done so. Why, then, would I choose to host my blog on Bear? Here are my reasons:&lt;/p&gt;
+&lt;h2 id=focus-on-the-writing&gt;Focus on the writing&lt;/h2&gt;&lt;p&gt;I’ve spent much more time fiddling with my code than actually writing words. My website has more than just a blog, but I’ve decided to press pause on the other features now and just focus on writing.&lt;/p&gt;
+&lt;h2 id=taking-a-break-from-ai&gt;Taking a break from AI&lt;/h2&gt;&lt;p&gt;I’ve written in the past about weaning myself off AI so I can write without those training wheels. I’ve still used AI to look for mistakes and clean up my writing. Besides that, all of my coding is AI assisted. For now, I’d like to go for a time with no AI at all. That means putting my computer away where I can’t get to it. Without access to my development environment, Bear provides the simple interface I need to get posts from my phone onto the web.&lt;/p&gt;
+&lt;h2 id=discovery&gt;Discovery&lt;/h2&gt;&lt;p&gt;Having quit social media, there aren’t many ways for people to find my blog. On the free service tier, Bear provides hosting without discovery or custom domains. I want to keep my domain and have my posts appear on the Bear &lt;a href='https://bearblog.dev/discover/'&gt;Discovery feed&lt;/a&gt;. The trending feed is sort of a quasi-social media algorithm as upvotes determine ranking, but the toxic elements of social media are abscent.&lt;/p&gt;
+&lt;h2 id=giving-back-to-the-indieweb&gt;Giving back to the IndieWeb&lt;/h2&gt;&lt;p&gt;As I compiled my blogroll, I was struck by just how many of my favorite feeds are hosted by Bear (and that surprisingly few are on Substack). This made it clear how important Bear is to the IndieWeb. I’m happy to give something back for all the benefit I’ve received as a reader.&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2025/december/bear/" rel="alternate"/>
+    <published>2025-12-24T13:48:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2025/december/resolutions/</id>
+    <title>No new year’s resolutions this year</title>
+    <updated>2025-12-24T12:29:16.688364+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;This is not a manifesto against having new year’s resolutions. Certain goals progress slowly enough that the gradual incrementation of that number on the calendar may well be the best pace of assessing progress, or the lack thereof. One may argue against waiting for the new year to implement necessary changes, while on the other hand, the social implications of committing to goals as others do likewise and holding one another accountable may justify delay. The statistics on failure rates among new year’s resolutioners may encourage individual action as opposed to joining the crowd. This can go back and forth in endless debate, but I’ll choose action over analysis, and if a new year’s resolution spurs one to action, then I’m all for it.&lt;/p&gt;
+&lt;p&gt;I am not setting any for 2026. My reasoning is that I feel they emphasize quantity over quality. Another framework for viewing this distinction is in comparing lateral change to vertical change. A vertical change is climbing the ladder: getting bigger (or smaller), stronger, faster, wealthier, etc. There is cost to pay for every rung, and diminishing rewards as you go. Lateral change, on the other hand, is about exploration rather than exploitation. A typical new year’s resolution might be to read a certain number of books. A lateral approach would ignore the number of books, but might involve reading different books than one normally would, a change of quality that can’t be expressed in quantity.&lt;/p&gt;
+&lt;p&gt;Anyone else rejecting new year’s resolutions this year? There is still time to cancel them now before the new year begins!&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2025/december/resolutions/" rel="alternate"/>
+    <published>2025-12-22T00:41:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2025/december/review/</id>
+    <title>2025 in review</title>
+    <updated>2025-12-24T12:27:38.454562+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Last year, I wrote down four things on my /now page that were really about future intentions. I did get called out for cheating in that way. Maybe I was mentally taking credit for things I had not yet done by putting them there as if they had been done. Perhaps I was not able to think of much to put down pertaining to the now as of that time, so put those there to fill up the space. Since then, I’ve cleaned up my /now page, but I’d like to look back on those four items and review how they played out during 2025.&lt;/p&gt;
+&lt;h3 id=phasing-out-social-media&gt;Phasing out social media&lt;/h3&gt;&lt;p&gt;I waffled on this for a while before decisively pulling the plug on it. Simply put, social media is an addiction. Many critics point to the corporate overlords of these platforms, whose motivation is to farm your attention, which together with billions of other users, is commoditized and sold to the highest bidder. When this is the real game afoot, of course the product will be corrupt! This line of thinking led me to the false promised land of democratized social media. Take away the profit motive and collectivized decision making, turn the platform into a protocol where users have choice in everything. What could go wrong, right?! As I explored this possibility, I even customized my client software to remove features I didn’t like, like likes.&lt;/p&gt;
+&lt;p&gt;What did I learn from all this? I concluded that the original sin of social media is the lack of effort it encourages. This goes for both the content produced, and the act of consuming it. Removing the predatory masters and blatantly addictive features does not solve this problem.&lt;/p&gt;
+&lt;h3 id=thinking-about-moving&gt;Thinking about moving&lt;/h3&gt;&lt;p&gt;Moving as much as I have throughout my life is a hassle. Part of me would like to put down real roots, but then I’d probably feel like I was missing out on experiences like living abroad for a time. Given that I have this wanderlust, I’d like to make the most of it by exploring places I may want to settle down in, and by practicing minimalism as a skill. It’s not that I’m against having stuff, but that I don’t want to be tied down by it.&lt;/p&gt;
+&lt;p&gt;I moved to Arizona at the end of last year, and since then I’ve moved twice within the Phoenix metro area. With a motorcycle as my only transportation, this has put a constant pressure on limiting the things in my possession. Much of my experience being here has been of disillusionment. Constantly getting stuck in bad habit loops while an uninspiring job drains my motivation. There is something worthwhile in this entire experience, however. In the extreme minimalism this life here has pushed me towards, where so much of life has been stripped away, this process of removal has extended to my longtime vice of alcohol. Isolated, far removed from my own past, and worked almost to my breaking point, there was no room left for that menacing comfort. The richness of life can return after the lessons of poverty have been applied.&lt;/p&gt;
+&lt;p&gt;Another benefit to come out of this time has been that facing boredom led to creativity, further development of this website, and other computing projects. I’ve also found more enjoyment of nature here with the fascinating desert flora, usually sunny skies and vibrant colors of the sunrises and sunsets.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/captainsblog/img_20251127_065633.webp" alt="IMG_20251127_065633" /&gt;&lt;/p&gt;
+&lt;h3 id=hoping-to-spend-less-time-in-front-of-the-computer&gt;Hoping to spend less time in front of the computer&lt;/h3&gt;&lt;p&gt;Back then, with a full time computer job and an obsession with tinkering with decentralized social media software on the side, there was no clear path to limiting my screen time. Losing that job was the bitter pill it took to reach a healthier balance between computer technology and the rest of life. Coming down from that extreme excess, I can feel the relief in my body. I think 8 hours of daily screen time, especially combined with sitting, is too much for anyone.&lt;/p&gt;
+&lt;h3 id=planning-to-start-a-blog&gt;Planning to start a blog&lt;/h3&gt;&lt;p&gt;And here we are, thanks for reading my blog! I am grateful that the IndieWeb exists and for everyone who reads this. I could keep a journal, and perhaps I will in the future, but for now I feel that writing in public provides the most advantage in organizing my thoughts and discarding the clutter. I also believe that it gives me a form of accountability. Looking at these four items I wrote about doing last year, they were all difficult, but they all got done. I owe it to you, the reader, to put the effort into my writing and to stand by my words.&lt;/p&gt;
+&lt;h2 id=other-reflections&gt;Other reflections&lt;/h2&gt;&lt;p&gt;Turning my focus now to the wider world, the second term of Donald Trump and the government shutdown gained a lot of attention in the news this past year. At least that’s what I gathered, as I don’t follow the news directly. In my opinion, there is nothing surprising about either of these events. As I see the unfolding of world history, we stand in the midst of a decades long decline of the American Empire. A morally and increasingly financially bankrupt empire. It’s a bumpy road for sure, but the options to veer to the left or to the right appear illusory. The only controls are the gas and brakes: are we going for a crash landing or a nosedive? Also, the voters don’t have their hands on these control. The ballot box offers a &lt;a href='https://en.wikipedia.org/wiki/Placebo_button'&gt;placebo button&lt;/a&gt;. Technology will play a major role in the political reorganization that is underway. The bloat of the system itself produces millions of bullshit jobs, increasing automation will eliminate millions of non-bullshit jobs. Everyone is fighting over scraps, trying to own a piece of a bankrupt future so they can keep their hamster wheel of consumption spinning. Sometimes, the only winning move is not to play.&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2025/december/review/" rel="alternate"/>
+    <published>2025-12-15T02:20:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2025/november/prison/</id>
+    <title>The prison of the present</title>
+    <updated>2025-12-24T12:25:46.753068+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;This is a post about living in the present. Not learning from the past, or living in a way that is harmonious with the future, both yours and of those around you. Forever chained to the present moment. Where every feeling is all that matters. There is no guiding light beyond the convenience, comfort, and pleasures to be had in the present moment.&lt;/p&gt;
+&lt;p&gt;I can’t wake up early enough to have a relaxed morning routine, because I’m too tired now. When I wake up, I can’t spend some time in stillness, because caffeine beckons right now. I’ll pray later because there are new blog posts I want to read now. I wanted to pack enough food for the day, but can’t because it’s time to go to work now.&lt;/p&gt;
+&lt;p&gt;Every day on the job is unsatisfying, because I don’t get to do what I want to be doing now. When break time comes, I can’t get relief from the hectic pace because I need food now. When I get to the store, I spend too much money because I want all those tasty foods right now.&lt;/p&gt;
+&lt;p&gt;I’d like to have a gym routine in the evening after work, but when I get home, I want all the food now, and I’m too tired after eating it. I’d like to go for a walk, but the ever glowing screen seizes my attention now.&lt;/p&gt;
+&lt;p&gt;The day is over, and all I accomplished was the bare minimum. That would be fine if it was to slow down for a spell of relaxing, but this is something different. I’m running from my own shadow, a day late and a dollar short. Too poor to pay attention while my life slips away. Holding on to the chains of the present with white knuckles.&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2025/november/prison/" rel="alternate"/>
+    <published>2025-11-21T22:20:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2025/november/snowbird/</id>
+    <title>One thought on snowbirding</title>
+    <updated>2025-12-24T12:24:08.854791+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I’ve been wanting to make a post about snowbirding for a while now, but I held back because there were so many thoughts I wanted to include and it would take a lot of work to put them all together into a coherent whole. Today I came across &lt;a href='https://www.amitgawande.com/blog/2025/one-thought/'&gt;One Thought&lt;/a&gt; that changed my mind.&lt;/p&gt;
+&lt;p&gt;Here is one thought about snowbirding that I’ve had for a while. It’s that the typical idea of a snowbird as a person who maximizes their consumption to achieve a desired lifestyle—who has two houses full of stuff, only one of which is occupied at a given time—leaves room for the possibility of its counterpart. A reverse snowbird: someone who lives with minimal expense by occupying the undesired spacetime coordinates left vacant in the wealthy snowbird’s pursuit of comfort.&lt;/p&gt;
+&lt;p&gt;As much as I appreciate the Sonoran desert’s mild winter, and recoil at the thought of returning to struggle against subfreezing temperatures, ice and snow, there is a part of me that wants to embrace those challenges, face the heat again under the burning summer sun of the desert, and occupy this little known and mostly unexplored path in life.&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2025/november/snowbird/" rel="alternate"/>
+    <published>2025-11-08T20:31:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2025/october/facts/</id>
+    <title>Ten pointless facts about me</title>
+    <updated>2025-12-24T12:21:50.249502+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href='https://forkingmad.blog/ten-pointless-facts-about-me/'&gt;This challenge&lt;/a&gt; was started by &lt;a href='https://forkingmad.blog'&gt;Forking Mad+&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=do-you-floss-your-teeth&gt;Do you floss your teeth?&lt;/h3&gt;&lt;p&gt;Yes, for me it is the foundation of dental care, as I rarely brush my teeth. I carry floss picks everywhere I go, and reuse them until they break. Before I took the floss pick pill, I never flossed consistently because it was annoying. Now I would feel naked leaving my house without a floss pick.&lt;/p&gt;
+&lt;h3 id=tea-coffee-or-water&gt;Tea, coffee, or water?&lt;/h3&gt;&lt;p&gt;Coffee is the best beverage. Tea comes in second, but I don’t like the taste of plain tea, I like it fermented, in the form of kombucha, mother nature’s soda—probiotic and low in sugar. Water is necessary for hydration and very refreshing on a hot day or in the sauna. I drink reverse osmosis water with sea minerals and sea salt added. I avoid water with fluoride.&lt;/p&gt;
+&lt;h3 id=footwear-preference&gt;Footwear preference?&lt;/h3&gt;&lt;p&gt;Water shoes are the optimal plebeian minimalist shoe. My other main shoe is George brand work slippers. I don’t like shoes with shoelaces.&lt;/p&gt;
+&lt;h3 id=favorite-dessert&gt;Favorite dessert?&lt;/h3&gt;&lt;p&gt;I think most desserts are too sweet, so probably something like lemon pie. The dessert I eat most frequently is ice cream, but I find most ice cream to be too sweet for my preference. If I wasn’t being lazy and impulsive and grabbing a pint at the store to eat in one sitting, then I’d say a lower sugar, homemade ice cream with fresh fruit along with a slice of cherry pie would be a pretty great dessert.&lt;/p&gt;
+&lt;h3 id=the-first-thing-you-do-when-you-wake-up&gt;The first thing you do when you wake up?&lt;/h3&gt;&lt;p&gt;I wake up many times throughout the night, so I’m trying to get an idea of what time it is, and figure out if I should get up yet. Also, I have to pee when I wake up.&lt;/p&gt;
+&lt;h3 id=age-youd-like-to-stick-at&gt;Age you’d like to stick at?&lt;/h3&gt;&lt;p&gt;Past age: 21. Future age: 61.&lt;/p&gt;
+&lt;h3 id=how-many-hats-do-you-own&gt;How many hats do you own?&lt;/h3&gt;&lt;p&gt;I don’t know. Most of them are to keep warm in the winter.&lt;/p&gt;
+&lt;h3 id=describe-the-last-photo-you-took&gt;Describe the last photo you took?&lt;/h3&gt;&lt;p&gt;The lake at Kiwanis Park, near my house.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/captainsblog/img_20250919_143310.webp" alt="" /&gt;&lt;/p&gt;
+&lt;h3 id=worst-tv-show&gt;Worst TV show?&lt;/h3&gt;&lt;p&gt;I don’t watch TV anymore, but back when I did, Lost was probably the worst show that I attempted to watch.&lt;/p&gt;
+&lt;h3 id=as-a-child-what-was-your-aspiration-for-adulthood&gt;As a child, what was your aspiration for adulthood?&lt;/h3&gt;&lt;p&gt;To build my own house and fly airplanes.&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2025/october/facts/" rel="alternate"/>
+    <published>2025-10-19T23:25:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2025/september/budget/</id>
+    <title>My approach to budgeting</title>
+    <updated>2025-12-24T12:17:30.018020+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I stopped keeping a budget of any kind for the past several years, but now I’m moving to a simpler way of budgeting. The tedious ritual of tracking every penny eventually feels meaningless. Perhaps a budget is like financial training wheels: useful in the beginning, but meant to come off eventually.&lt;/p&gt;
+&lt;p&gt;Here were my reasons for letting go:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;After years of budgeting, better spending choices become second nature. You know what a frivolous expense looks like and are used to delaying gratification. With these habits in place, the budget itself becomes an unnecessary formality.&lt;/li&gt;
+&lt;li&gt;If the purpose of budgeting is to reach stability, there comes a time when that stability is achieved and the tool has fulfilled its purpose.&lt;/li&gt;
+&lt;li&gt;Budgeting often comes with a scarcity mindset, where you risk being penny wise and pound foolish. Shifting toward abundance means taking calculated risks, investing in yourself, and learning generosity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I asked ChatGPT for other perspectives on quitting a budget as one matures:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Trust in disciplined instincts. Over time, spending patterns balance themselves without micromanagement.&lt;/li&gt;
+&lt;li&gt;Shift from scarcity to sufficiency. Maturity recognizes that resources ebb and flow.&lt;/li&gt;
+&lt;li&gt;Focus on value, not price. Buy what truly serves your life, not what fits a category.&lt;/li&gt;
+&lt;li&gt;Emotional simplicity. Constantly tracking numbers breeds stress; letting go brings peace.&lt;/li&gt;
+&lt;li&gt;Built-in frugality. With age, impulsive desires fade, making guardrails less necessary.&lt;/li&gt;
+&lt;li&gt;Time is worth more. Energy and attention matter more than squeezing every cent.&lt;/li&gt;
+&lt;li&gt;Confidence in reserves. Habits and savings create a natural buffer.&lt;/li&gt;
+&lt;li&gt;Greater clarity of priorities. With maturity, money follows values without a spreadsheet.&lt;/li&gt;
+&lt;li&gt;Life feels less transactional. Stewardship and gratitude replace ledgers.&lt;/li&gt;
+&lt;li&gt;Spiritual dimension. Trust in providence eases the need for control.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also asked for counterarguments, and the case for lifelong budgeting is strong:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clarity prevents drift and keeps lifestyle creep in check.&lt;/li&gt;
+&lt;li&gt;Guard against self-deception; numbers reveal truths we might prefer to ignore.&lt;/li&gt;
+&lt;li&gt;Adaptation to change. Recessions, medical bills, dependents all shift the equation.&lt;/li&gt;
+&lt;li&gt;Accountability anchor. Writing it down adds structure memory alone cannot provide.&lt;/li&gt;
+&lt;li&gt;Intentional stewardship. Budgets align money with higher purposes.&lt;/li&gt;
+&lt;li&gt;Wealth management scales up. More resources require more oversight.&lt;/li&gt;
+&lt;li&gt;Legacy and responsibility. Budgets shape how you provide for others.&lt;/li&gt;
+&lt;li&gt;Efficiency of resources. Even the wise can waste; budgets channel surplus toward good use.&lt;/li&gt;
+&lt;li&gt;Defense against temptation. Desires do not disappear.&lt;/li&gt;
+&lt;li&gt;Peace of mind. Tracking reduces anxiety by turning the unknown into something tangible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Awareness of both perspectives encourages a more flexible approach. I'll lay out the one that fits my current circumstances.&lt;/p&gt;
+&lt;p&gt;After a recent career change, my income has dropped significantly. The mathematics of compounding makes every leak costly: small losses today become large ones across decades. With perhaps forty years of earning ahead, I need to plug the holes now. At five percent annual growth, a dollar saved today becomes seven by the time I retire.&lt;/p&gt;
+&lt;p&gt;My spending has improved with age, but one category remains unruly: food.&lt;/p&gt;
+&lt;h2 id=rejecting-modern-budget-tools&gt;Rejecting modern budget tools&lt;/h2&gt;&lt;p&gt;I will not return to tools like Mint, which require constant maintenance and worse, represent an invasion of financial privacy. In recent years I have moved deliberately toward digital sovereignty, and there is no going back to the naivete of exposing my finances to corporations or governments.&lt;/p&gt;
+&lt;p&gt;Dave Ramsey’s cash envelope system always appealed to me, but I resisted for the sake of credit card rewards. That objection no longer holds. Cash back is part of the larger trap of consumer spending on credit.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The savings from cash back are an illusion. You earn two percent while processing fees eat up three, a cost that merchants pass on to you. Five percent categories can really seem like a free lunch, but they drain mental energy and often encourage more frivolous spending. Better to support merchants who refuse cards or add surcharges that expose the real cost.&lt;/li&gt;
+&lt;li&gt;We can imagine an ideal of an “atomic economy”, where the atom is the individual. Payments move with minimal friction between individual producers and consumers, without financial middlemen. Bringing this vision to reality will require much effort, especially for online commerce. Where these principles can be put into practice today is in meatspace with cash: sourcing food from local farmers and paying friends for repairs.&lt;/li&gt;
+&lt;li&gt;Cash back is also a kind of “poor tax.” Only those with years of good credit history qualify for premium rewards, yet everyone pays higher prices.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=a-hybrid-cash-envelope-system&gt;A hybrid cash envelope system&lt;/h2&gt;&lt;p&gt;Since food is my only problem area, I plan to use a single cash envelope. At the same time, I want a system that works for both cash and credit. I intend to move more purchases to places that do not accept cards, like the employee-owned WinCo in my area, but I still want flexibility for online niche food purchases, restaurants, or the occasional convenience run.&lt;/p&gt;
+&lt;p&gt;The simplest way is to dedicate a single credit card to food purchases. Others could replicate this across more categories, as long as each has a separate card. At the end of each month, you tally both the envelope and the card statement, and now you have a working hybrid cash envelope system!&lt;/p&gt;
+&lt;p&gt;The main drawback is less visibility during the month. Overspending could sneak up before the tally is done. A rollover budget helps: spend too much and the next month tightens, spend less and gain a surplus for later. The rhythm balances itself.&lt;/p&gt;
+&lt;p&gt;This is all theoretical for now, but in October I will test it in practice. I plan to post a follow-up to report how it works. I hope this experiment inspires others to try new approaches to budgeting and share what they learn.&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2025/september/budget/" rel="alternate"/>
+    <published>2025-09-21T16:06:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://blog.thecaptain.dev/2025/september/turning/</id>
+    <title>Turning the page</title>
+    <updated>2025-12-24T12:14:30.669733+00:00</updated>
+    <author>
+      <name>captainsblog</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Every step we take in life is the turning of another page. I once followed a guru who said that you have to read as many pages as you can of this life and world before you go. I would like to add something to that: make sure you’re really reading them and not just skimming through the book. My journey from Virginia to Washington, DC then back to Virginia then to Texas and finally to here in Arizona has had many pages. Old familiar faces fade into memory with each new home, school, job, church, and circle of friends.&lt;/p&gt;
+&lt;p&gt;Sometimes when we read a book, it’s easy to lose mindfulness and read whole paragraphs that don’t leave their mark. At least with a book, it’s easy to go back and pick up what you missed the first time (that’s why I prefer reading over listening to audiobooks). You don’t get that chance in life!&lt;/p&gt;
+&lt;p&gt;So next time rambling fever strikes, I will look for something I missed on the page that I’m at. Sitting here now on South Mountain, with the setting sun in my eyes and feeling the relief from the blazing heat of Phoenix summer as fall approaches, I won’t be turning the page again just yet.&lt;/p&gt;
+</content>
+    <link href="https://blog.thecaptain.dev/2025/september/turning/" rel="alternate"/>
+    <published>2025-09-07T23:27:00+00:00</published>
+  </entry>
+</feed>

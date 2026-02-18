@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>RSS</title>
+  <atom:link href="https://explog.in/rss.xml" rel="self" type="application/rss+xml" />
+  <link>https://explog.in/</link>
+  <description><![CDATA[]]></description>
+  <language>en</language>
+  <pubDate>Mon, 29 Apr 2024 04:19:56 +0000</pubDate>
+  <lastBuildDate>Mon, 29 Apr 2024 04:19:56 +0000</lastBuildDate>
+  <generator>Emacs 27.1 Org-mode 9.6.28</generator>
+  <webMaster>bhalla.kunal@gmail.com (Kunal Bhalla)</webMaster>
+  <image>
+    <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
+    <title>RSS</title>
+    <link>https://explog.in/</link>
+  </image>
+
+
+  <item>
+    <title>Eating Elephants</title>
+    <link>https://explog.in/notes/elephants.html</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/notes/elephants.html</guid>
+    <pubDate>Sat, 04 Feb 2023 17:57:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    Recommendations on ramping up on large software projects while
+    managing complexity and showing results, learned the hard way.
+    </p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>A Public Slipbox</title>
+    <link>https://explog.in/slipbox/a%20public%20slipbox.html</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/slipbox/a%20public%20slipbox.html</guid>
+    <pubDate>Sun, 05 Dec 2021 23:17:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    Introducing my slip-box: <a href="https://explog.in/slipbox/">https://explog.in/slipbox/</a>.
+    </p>
+
+    <p>
+    I take org notes in <a href="https://logseq.com">logseq</a>; which are then processed with a tiny
+    python script &amp; published using Emacs's org-export with an automatic
+    Github Action every few hours.
+    </p>
+    ]]></description>
+  </item>
+
+
+  <item>
+    <title>Building Developer Tools</title>
+    <link>https://explog.in/notes/devtools/index.html</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/notes/devtools/index.html</guid>
+    <pubDate>Sun, 01 Aug 2021 23:46:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    After spending a large part of my career building tools, I realized I
+    had unconsciously followed a consistent framework for
+    identifying and building developer tools. It seemed like a good idea
+    to make it concrete -- both for sharing and collecting feedback --
+    leading to this series of posts.
+    </p>
+
+    <p>
+    I've been tweaking this series for a few months at this point, and
+    it's really exciting to finally call it done (for now).
+    </p>
+    ]]></description>
+  </item>
+
+
+  <item>
+    <title>More RSS Tweaks</title>
+    <link>https://explog.in/rss.html#orgdee8c8d</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/rss.html#orgdee8c8d</guid>
+    <pubDate>Fri, 09 Jul 2021 20:06:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    Seeing RSS entries published in Recurse Center's aggregator made me
+    realize that the links/entries being published in the feed were
+    broken. This is an attempt at fixing them.
+    </p>
+    ]]></description>
+  </item>
+
+
+  <item>
+    <title>A shiny new expLog</title>
+    <link>https://explog.in/config.html</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/config.html</guid>
+    <pubDate>Mon, 05 Jul 2021 13:05:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    I've reworked how expLog is generated to make it easy to publish by a
+    Github Action, with a shell script to run emacs in batch mode to make
+    this significantly easier.
+    </p>
+
+    <p>
+    The RSS feed became a casualty of this work, but I finally got around
+    to fixing it today, and I hope it gets picked up seamlessly for anyone
+    who had subscribed in the past.
+    </p>
+
+    <p>
+    PS. I've been publicly iterating on a series of posts on <a href="https://explog.in/notes/devtools/index.html">building
+    developer tools</a>; I'm still editing, but I should be finished soon. Let
+    me know if you have any feedback!
+    </p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>Advent of Code</title>
+    <link>https://explog.in/notes/aoc.html</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/notes/aoc.html</guid>
+    <pubDate>Sun, 27 Dec 2020 15:37:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    A quick introduction to Advent of Code for those of you who've never
+    tried it out; as well as vignettes of what I learned from
+    participating in AoC 2020.
+    </p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>A simple neural network</title>
+    <link>https://explog.in/notes/funnn.html</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/notes/funnn.html</guid>
+    <pubDate>Mon, 30 Nov 2020 00:20:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    Belatedly realizing that it's surprisingly simple to implement a
+    neural network from scratch, particularly if you don't care about
+    using it in production -- some developer notes and a snapshot of a
+    basic net in roughly ~150 lines of Rust with minimal dependencies.
+    </p>
+
+    <p>
+    (Unrelated aside: <a href="https://www.youtube.com/watch?v=gFvKvdznUdc">A Notebook Style Guide</a> (<a href="https://github.com/kunalb/nbstyle/blob/master/ANotebookStyleGuide.ipynb">Slides</a>) -- a short talk I
+    gave at JupyterCon 2020 was released on YouTube. It started <a href="https://explog.in/notes/nbstyle.html">as a blog
+    post</a> here earlier this year.)
+    </p>
+    ]]></description>
+  </item>
+
+  <item>
+    <title>An introduction to Panopticon</title>
+    <link>https://explog.in/https://explog.in/notes/panopticon.html</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/https://explog.in/notes/panopticon.html</guid>
+    <pubDate>Sat, 29 Aug 2020 23:05:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    Panopticon is a Python tracer I've written as an alternative to using
+    a debugger. Instead of manually stepping through code, I'd much rather
+    have a computer do it for me.
+    </p>
+
+    <p>
+    Since writing this post panopticon has evolved to include <code>probes</code>:
+    which can instrument code you might not have full control over.
+    </p>
+
+    <p>
+    (I'd initially written this post as documentation, but ultimately
+    realized it's better suited as a post and I can do a much better job
+    of documentation within the project.)
+    </p>
+    ]]></description>
+  </item>
+
+
+  <item>
+    <title>A brand new RSS feed appeared!</title>
+    <link>https://explog.in/rss.html#org77cd204</link>
+    <author>bhalla.kunal@gmail.com (Kunal Bhalla)</author>
+    <guid isPermaLink="false">https://explog.in/rss.html#org77cd204</guid>
+    <pubDate>Mon, 10 Aug 2020 00:52:00 +0000</pubDate>
+
+    <description><![CDATA[<p>
+    This structure of this blog is almost completely maintained by hand: I
+    manually add entries to the index page, often going back to edit
+    existing posts, and several entries are perennial -- such as my Book
+    list, as well as the syntopical collections on different sets of
+    books.
+    </p>
+
+    <p>
+    That makes it fairly tricky to automate an RSS feed: at the same time,
+    enough (4) people have directly reached out to request one. Instead of
+    spending a lot of time building automation that will will inevitably
+    frustrate me, I've decided to maintain it by hand instead (with <code>ox-rss</code>
+    for exports). That means that there aren't going to be any entries for
+    my older posts unless I happen to go back and significantly rewrite &amp; update them.
+    </p>
+
+    <p>
+    If you happen to be new -- welcome! -- and I hope you find the content
+    worth your time; and I'd love any feedback. A semi-curated selection:
+    </p>
+
+    <p>
+    <b>On Emacs</b>
+    </p>
+    <ul class="org-ul">
+    <li><a href="https://explog.in/notes/writingsetup.html">My writing setup</a></li>
+    <li><a href="https://explog.in/notes/tmux.html">Using Tmux with Emacs</a></li>
+    <li><a href="https://explog.in/notes/poet.html">Building poet, my Emacs theme</a></li>
+    <li><a href="https://explog.in/config.html">The configuration behind the blog</a></li>
+    </ul>
+
+    <p>
+    <b>On Software engineering</b>
+    </p>
+    <ul class="org-ul">
+    <li><a href="https://explog.in/notes/debugging.html">Metacognition on Debugging</a></li>
+    <li><a href="https://explog.in/notes/units.html">Always! include units</a></li>
+    <li><a href="https://explog.in/notes/nbstyle.html">A style guide for computational notebooks</a></li>
+    <li><a href="https://explog.in/notes/settrace.html">Using Python's <code>settrace</code></a></li>
+    </ul>
+
+    <p>
+    <b>On Books</b>
+    </p>
+    <ul class="org-ul">
+    <li><a href="https://explog.in/books/index.html">Almost everything I've read for the past several years</a>
+    <ul class="org-ul">
+    <li><a href="https://explog.in/notes/books2016.html">Favorites from 2016</a></li>
+    <li><a href="https://explog.in/notes/books2017.html">Favorites from 2017</a></li>
+    </ul></li>
+    <li>[Extremely rough] <a href="https://explog.in/books/thinking.html">Books on thinking</a></li>
+    </ul>
+
+    <p>
+    Drop me a note by <a href="mailto:bhalla.kunal@gmail.com">email</a> or <a href="https://twitter.com/kunalbhalla">Twitter</a> in case you have any advice,
+    comments or feedback!
+    </p>
+    ]]></description>
+  </item>
+</channel>
+</rss>

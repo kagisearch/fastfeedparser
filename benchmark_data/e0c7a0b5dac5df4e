@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Simon Davies</title>
+        <link>https://simon-davies.name/</link>
+        <atom:link href="https://simon-davies.name/posts/feed.rss" rel="self" type="application/rss+xml" />
+        <description>Simon Davies - Full-Stack Web Developer</description>
+        <language>en-gb</language>
+        <pubDate>Wed, 18 Feb 2026 02:18:46 +0000</pubDate>
+        <lastBuildDate>Wed, 18 Feb 2026 02:18:46 +0000</lastBuildDate>
+
+                    <item>
+                <title>Namespacing Models in Laravel</title>
+                <link>https://simon-davies.name/blog/namespacing-models-laravel</link>
+                <pubDate>Mon, 03 Mar 2014 16:24:00 +0000</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/namespacing-models-laravel</guid>
+                <description><![CDATA[
+                    <p>I have been using <a href="http://laravel.com/">Laravel</a> quite a bit recently and it's a great framework, which is really good fun to code with. I've just started writing a registration system in Laravel and came across a problem which I felt was worth sharing. I was creating the table and model to store the event details and I found that the Event class caused a conflict with one of Laravel's core libraries. The easy work around is to append <span class="code">_model</span> to the model name. But this detracts from laravel's expressive syntax, for example:</p>
+<pre>Event::find(1);</pre>
+<p>Is much more elegant than:</p>
+<pre>Event_model::find(1);</pre>
+<p>This is where <a href="http://php.net/namespaces">namespaces</a> come in, namespaces are a great way to group code to prevent naming collisions. All I do is define a <span class="code">Models</span> namespace at the top of the model.</p>
+<pre>Namespace Models;
+
+use Eloquent; // If your model extends Eloquent you will need this line</pre>
+<p>And then in each of the controllers that I need to use a model just add this line at the top of the file</p>
+<pre>use Models\Event;</pre>
+<p>This means that I can carry on using Laravel's nice expressive syntax without worrying about naming collisions.</p>
+                ]]></description>
+            </item>
+                    <item>
+                <title>Show Woocommerce stock status for unmanaged products</title>
+                <link>https://simon-davies.name/blog/show-woocommerce-stock-status-for-unmanaged-products</link>
+                <pubDate>Tue, 16 Jul 2013 13:42:57 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/show-woocommerce-stock-status-for-unmanaged-products</guid>
+                <description><![CDATA[
+                    The <a title="WooCommerce" href="http://www.woothemes.com/woocommerce/">WooCommerce</a> stock status (In Stock, Out of stock) will only show if WooCommerce is managing the stock for you. I was working on a project and the client wanted the ability to manually set if the product was in stock or not. The code snippet below will allow you to show the stock status for both managed and unmanaged products. Just copy and paste into your themes functions.php file.
+<pre>// Show the status for unmanaged stock products
+add_filter( 'woocommerce_get_availability', 'show_stock_status_for_unmanaged_products', 1, 2);
+function show_stock_status_for_unmanaged_products( $availability, $_product )
+{
+	// Don't do anything if managing stock
+	if($_product-&gt;managing_stock()) return $availability;
+
+	if($_product-&gt;is_in_stock()) :
+		$availability['availability'] = __('In Stock', 'woocommerce');
+		$availability['class'] = '';
+	else :
+		$availability['availability'] = __('Out of Stock', 'woocommerce');
+		$availability['class'] = 'out-of-stock';
+	endif;
+
+	return $availability;
+}</pre>
+                ]]></description>
+            </item>
+                    <item>
+                <title>Setting a different ul bullet colour in CSS</title>
+                <link>https://simon-davies.name/blog/setting-a-different-ul-bullet-colour-in-css</link>
+                <pubDate>Wed, 10 Jul 2013 16:13:27 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/setting-a-different-ul-bullet-colour-in-css</guid>
+                <description><![CDATA[
+                    I've always found it annoying that you can't set a different ul bullet colour through CSS. It should be as simple as:
+<pre>ul {
+	color: red;
+}
+li {
+	color: black;
+}</pre>
+
+But unfortunately CSS will render both black. I came across this again the other day in a project, and I was just about to fire up photoshop and create another bullet-point image. Before I had a thought; why not use the css :before selector. I had been playing earlier that week with the CSS content property to add characters before other elements so surely all I needed to do was find the unicode for the buller character.
+
+I ended up having to use position relative for the ul and absolute for the li to make sure if the text drop to a 2nd line it would align on the left rather than dropping underneath.
+<pre>ul {
+	list-style-type: none;
+	position: relative;
+	margin-left: 1em;
+	padding-left: 0;
+}
+li:before {
+	content: "\2022";
+	position: absolute;
+	left: -1em;
+	color: red;
+	margin-right: 5px;
+}</pre>
+I then went about creating a <a href="http://sass-lang.com/">sass</a> mixin for this to make it easier to recreate this later on, and with thanks to Daniel X Moore's <a href="http://strd6.com/2012/09/how-to-create-a-compass-extension-as-a-rubygem-to-share-sass-mixins/">post</a>, I managed to turn this into a Compass extension which you can download as a RugyGem. See the gem on <a title="Sassy list" href="https://github.com/simonda86/sassy_list">github</a>.
+
+I can now just use the following CSS
+<pre>ul {
+	@include sassy_list(red);
+
+	li {
+		color: black;
+	}
+}</pre>
+                ]]></description>
+            </item>
+                    <item>
+                <title>WP-Admin broken after updating WordPress</title>
+                <link>https://simon-davies.name/blog/wp-admin-broken-after-updating-wordpress</link>
+                <pubDate>Tue, 19 Feb 2013 09:53:27 +0000</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/wp-admin-broken-after-updating-wordpress</guid>
+                <description><![CDATA[
+                    Have you just updated your local of WordPress and its now all broken on MAMP, I've had this problem a few times now so thought it would be worth sharing how to fix this. The problem is caused by the load-scripts.php file being compressed with <a title="Zlib" href="http://en.wikipedia.org/wiki/Zlib">zlib</a>, I first did as suggested on this <a href="http://stackoverflow.com/questions/11916987/uncaught-syntaxerror-unexpected-token-illegal-load-scripts-php1">stackoverflow question</a>. But this still didn't fix the problem after some looking around I noticed that MAMP zlib compression was turned off, when I turned this on WordPress worked fine. I'm not sure why this would fix it as zlib will only send compressed data if the browser lets apache know through the headers. I have a feeling this could be a bug with Chrome, or Mamp sending compressed data when the browser is not expecting it.
+
+To fix this problem you will need to open <span class="code">/Applications/MAMP/conf/php5.4.4/php.ini</span> in your text editor of choice, then search for zlib and you should find the line below.
+<pre>zlib.output_compression = Off</pre>
+You just need to change this line to
+<pre>zlib.output_compression = On</pre>
+Then just restart apache with <span class="code">apachectl restart</span> and hopefully everything should be working again for you.
+
+<strong>NOTE:</strong> After taking these steps I installed a new copy of WordPress and had the problem again, after restarting apache again the problem went away.
+                ]]></description>
+            </item>
+                    <item>
+                <title>Backing up MySQL Databases</title>
+                <link>https://simon-davies.name/blog/backing-up-mysql-databases</link>
+                <pubDate>Tue, 27 Nov 2012 14:00:30 +0000</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/backing-up-mysql-databases</guid>
+                <description><![CDATA[
+                    As a web developer you learn that there is nothing more important than keeping regular backups of your databases. I've created a little bash script to help with Backing up MySQL databases for this I'll use <span class="code">mysqldump. Mysqldump</span> is a nifty little utility that lets you dump the contents of a database to a file, so I use this to create a little bash script that will backup the database at regular intervals, and I'll even chuck in deleting backups older than 30 days so you don't over run with files.
+
+First lets state the obvious security warning here, this script will contain details of your database so make sure you set the correct permissions, I use <span class="code">700</span> but this may change depending on your hosting provider. Also don't place the backup folder in your <span class="code">public_html</span> folder otherwise people will be able to see the contents of your database and again lets make sure the <span class="code">.sql</span> have the correct permissions otherwise over users on your server will be able to access them.
+
+I create a folder in my home folder called <span class="code">_backup</span> and inside here I will have a directory for my backups <span class="code">mysql</span> and a bash script called <span class="code">backup.sh</span>. First I'll create a few variables to contain the database credentials.
+<pre>#!/bin/bash
+
+# Database credentials
+user=""
+password=""
+host=""
+db_name=""</pre>
+The line at the top is the shebang and is used to select the interpreter, in my case this is bash. Next I'll declare a few other variables, 1 for which directory I want to use for the backup files. The other is for the current date as I also like to include the date in the file name.
+<pre># Other options
+backup_path="/path/to/your/home/_backup/mysql"
+date=$(date +"%d-%b-%Y")</pre>
+Now we need to create the actual backup files, before doing so I run <span class="code">umask</span> to set the default permissions for the backup file. This will give me <span class="code">600</span> which will allow only my user to read and write to the file. Then we run the <span class="code">mysqldump</span> utility with are variables from above. I create the file name using the database name and current date, so it's easy to see from the file name which backup is which.
+<pre># Set default file permissions
+umask 177
+
+# Dump database into SQL file
+mysqldump --user=$user --password=$password --host=$host $db_name &gt; $backup_path/$db_name-$date.sql</pre>
+The last step is to delete files older than 30 days, for this we will use the find utility. First we pass the path to the directory that contains the <span class="code">.sql</span> files and use a wildcard to select all. Then we need to set 2 options, the first is <span class="code">mtime</span> which we use to select files that are older than a given amount of days. The next option <span class="code">exec</span> allows us pass the files that are found into another utility, which I will use <span class="code">rm</span> to delete the files. The last few characters are to end the line.
+<pre># Delete files older than 30 days
+find $backup_path/* -mtime +30 -exec rm {} \;</pre>
+And that's it, all you need to do now is setup a cron job to run whenever you want to backup your database. I run this everyday at midnight but you can run it hourly, weekly or however else you want. The whole backup.sh is below.
+<pre>#!/bin/bash
+
+# Database credentials
+user=""
+password=""
+host=""
+db_name=""
+
+# Other options
+backup_path="/path/to/your/home/_backup/mysql"
+date=$(date +"%d-%b-%Y")
+
+# Set default file permissions
+umask 177
+
+# Dump database into SQL file
+mysqldump --user=$user --password=$password --host=$host $db_name &gt; $backup_path/$db_name-$date.sql
+
+# Delete files older than 30 days
+find $backup_path/* -mtime +30 -exec rm {} \;</pre>
+This is creating a local backup of your database files, and to be extra safe you should be backing up these files on another server in a different location as well. If you want help setting this up let me know if comments below.
+                ]]></description>
+            </item>
+                    <item>
+                <title>Website relaunch</title>
+                <link>https://simon-davies.name/blog/website-relaunch</link>
+                <pubDate>Sat, 24 Nov 2012 13:44:51 +0000</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/website-relaunch</guid>
+                <description><![CDATA[
+                    I've found that one of the best parts of putting my site live in May earlier this year, was being able to start again and use what I had learnt to improve my site. Today I have launched my new design and I couldn't be happier with it.
+
+I think as a web developer/designer it's easy procrastinate to much over your own site. When we work on a site for a client we have a specification and deadline to meet so the process is much simpler as you know what you need to deliver and when.
+
+With your own site it's much harder, you don't really have any specific targets or deadline. Also I don't have as much time to dedicate to working on my own site, which usually means I may leave it for a couple of weeks/months come back to it and decide I want to go in a different direction.
+
+This is the problem I faced when working on my site v1.0 I kept changing my mind about the design, layout and content. Which is the main reason why it took over 2 years to get the site live. In the end I wasn't particularly happy with the end result but I decided enough was enough and launched the site. I had some good advice from a good friend and great designer <a href="http://edvinicombe.com/">Ed Vinicombe</a> about how I could improve the design. Instead of using his advice before I launched, I decided it would be better to use this advice to get started on v2.0.
+
+I'm really glad I did this as I learnt a lot from launching the site. I learnt how I wanted the site to work, from the analytics I learnt how people were using the site and I had a much clearer vision in my head of what I wanted from the site. So I used this knowledge to start again.
+
+I was surprised about the amount of traffic that was coming from the search engines looking for answers that were contained in my few blog posts, before launching my site I had mainly thought about my site as my online presence. To mention to friends, family or other industry professionals to show them what I had been up to. This was one of the main reasons to drop to "about me" from the home page, along with Ed's advice.
+
+I had also noticed I was getting a very high bounce rate (around 80%) which I didn't like. I'm pretty sure this is cause mainly people were looking for a quick answer to their problem. So to try and combat this I made use of both categories and tags, previously I had only been using categories. The idea being I could use categories at the top of the page and then tags at the bottom, trying to entice readers to carry on reading more of my articles.
+
+One of my other goals was to go responsive, this had been a goal from before I had even launched the site, mobile is growing massively and I wan't to make sure everyone was getting the best experience possible, and it was also the "in" thing in web.
+
+To construct the new site I have used <a href="http://themble.com/bones/">Bones</a> a responsive boiler plate, which I have used in conjunction which Sass and Compass. I have also now switched over to <a href="http://www.appfog.com/">appfog</a> for hosting using their free tier, as I've been very interested in how PasS has been developing over the past couple of years and of cause it's Free!
+                ]]></description>
+            </item>
+                    <item>
+                <title>PHP Insert into array at position</title>
+                <link>https://simon-davies.name/blog/insert-into-array-at-position</link>
+                <pubDate>Tue, 16 Oct 2012 17:21:14 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/insert-into-array-at-position</guid>
+                <description><![CDATA[
+                    <p lang="php" xml:lang="php">The other day I found myself needing to insert into an array at a given position, so I wrote this little function. For example if you have pulled a list of posts from a database and are going to loop through these to output the HTML, but want to insert an advert after the third post, you can simply insert into an array at the third position.</p>
+<p lang="php" xml:lang="php">The function is pretty simple and takes 3 parameters, the existing array <span class="code">$array</span>, the data to be inserted <span class="code">$var</span> and the position <span class="code">$position</span>. The function then splits the array in two at the given position and merges the first array with the data and then merges again with the 2nd array. The function converts the data to be inserted to an array so you can pass any data type.</p>
+
+<pre lang="php" xml:lang="php">function array_insert($array, $var, $position)
+{
+$before = array_slice($array, 0, $position);
+$after = array_slice($array, $position);
+
+$return = array_merge($before, (array) $var);
+return array_merge($return, $after);
+}</pre>
+<p lang="php" xml:lang="php">You can also see view the <a href="https://gist.github.com/3721826">gist</a>.</p>
+                ]]></description>
+            </item>
+                    <item>
+                <title>Using composer with MAMP&#039;s version of PHP</title>
+                <link>https://simon-davies.name/blog/using-composer-with-mamps-version-of-php</link>
+                <pubDate>Sat, 11 Aug 2012 09:48:27 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/using-composer-with-mamps-version-of-php</guid>
+                <description><![CDATA[
+                    After my laptop has been running really for a couple of weeks now, I have decided to order some new RAM and do a clean install of Lion. This has given me a great opportunity to configure my development environment in a cleaner and more organised way.
+
+As a developer I do install a number of packages to play around with and then either decide its not for me or find there was a better way configuring them and then find myself in a bit of a muddle.
+
+One tool I have been playing with recently is <a title="Composer" href="http://getcomposer.org/">Composer</a> which is a dependency manager, think Ruby Gems but for PHP. Which is a great little tool and I'm really happy to see the community getting behind it and moving forward. After just trying to install composer I ran into a little problem which I thought was worth sharing.
+
+After running <span class="code">curl -s https://getcomposer.org/installer | php</span>, I get the following error:
+<pre>Some settings on your machine make Composer unable to work properly.
+Make sure that you fix the issues listed below and run this script again:
+
+The detect_unicode setting must be disabled.
+Add the following to the end of your `php.ini`:
+ detect_unicode = Off</pre>
+Which looks pretty simple to fix but MAMP should have this setting disabled. So I ran <span class="code">which php</span> and I'm told I'm running <span class="code">/usr/bin/php</span> which is the version of PHP that comes preinstalled with OS X. So we just need to swap this over to the PHP that is installed with MAMP, which is located at <span class="code">/Applications/MAMP/bin/php/php5.4.4/bin</span> (MAMP 2.1.1).
+
+To do this I edit my .bash_profile or .profile if you are using a different shell and add the MAMP version of PHP to the PATH variable.
+<pre>export PATH=/Applications/MAMP/bin/php/php5.4.4/bin:$PATH</pre>
+It's important to append the existing $PATH at the end otherwise the version of PHP in <span class="code">/usr/bin/php</span> will be found and loaded first instead. Save the .bash_profile and reload your profile by typing <span class="code">source ~/.bash_profile</span> and run <span class="code">which php</span>, and if you've done everything right should say <span class="code">/Applications/MAMP/bin/php/php5.4.4/bin/php</span>.
+
+<strong>Note:</strong> Tom has pointed out in the comments that in MAMP 2.1.1 You are unable to run MAMP's PHP from the command line so you will need to update MAMP first.
+                ]]></description>
+            </item>
+                    <item>
+                <title>Using MAMP and Pow on the same machine</title>
+                <link>https://simon-davies.name/blog/using-mamp-and-pow-on-the-same-machine</link>
+                <pubDate>Wed, 01 Aug 2012 11:49:11 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/using-mamp-and-pow-on-the-same-machine</guid>
+                <description><![CDATA[
+                    I've been playing with <a title="Ruby on Rails" href="http://rubyonrails.org/">Ruby on Rails</a> recently and I've been using <a href="http://pow.cx/">Pow</a> as a rack server for the applications I'm working on. So I don't have to keep running "rails server" when I want to test an app out. It's a brilliant little tool from <a href="http://37signals.com/">37 Signals</a> that they describe as a zero-config rack server and it is just that.
+
+The only drawback to Pow is that it highjacks all localhost requests, this means that working with MAMP and Pow simultaneously can be tricky. The easiest and simplest solution would be to leave the MAMP port for apache to the default 8888 so you can access your htdocs folder from http://localhost:8888/
+
+This works fine but it annoys me having to add the port number to all urls, so after a little bit of reading I discovered that Pow only hijacks IPv4 localhost not IPv6 so if we create our hostnames using IPv6 we should be able to get around this. Open up terminal and edit your hosts file, on the mac this is in /etc/hosts.
+<pre>sudo mate /etc/hosts</pre>
+Obviously change mate to your editor of choice. Then from here we need to change any hostnames using the old IPv4 loopback (127.0.0.1) to the new IPv6 loopback (::1). For example change
+<pre>127.0.01 example.test</pre>
+to
+<pre>::1 example.test</pre>
+If you are using Safari or FireFox then this should now be working, if like me you are using Chrome then you will need to enable IPv6. You do this by adding chrome://net-internals/ to your address bar, then go to the DNS page and click the enable IPv6 button. Annoyingly this needs to be done every time chrome is restarted, if anyone knows how to enable this be default I would love to hear in the comments below.
+                ]]></description>
+            </item>
+                    <item>
+                <title>Locking down WordPress</title>
+                <link>https://simon-davies.name/blog/locking-down-wordpress</link>
+                <pubDate>Wed, 11 Jul 2012 15:35:25 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/locking-down-wordpress</guid>
+                <description><![CDATA[
+                    I just came across a free eBook called <a title="Locking down WordPress" href="http://build.codepoet.com/2012/07/10/locking-down-wordpress/">Locking Down WordPress</a> from <a title="CodePoet" href="http://build.codepoet.com/">CodePoet</a> featuring Rachel Baker, Brad Williams, and John Ford. It's an interview style book asking the 3 pro's how they handle security for their sites and is a must for anyone who uses WordPress for their clients as it will save headaches later on!
+                ]]></description>
+            </item>
+                    <item>
+                <title>The dangers of search and replace in WordPress</title>
+                <link>https://simon-davies.name/blog/the-dangers-search-and-replace-in-wordpress</link>
+                <pubDate>Mon, 25 Jun 2012 11:34:35 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/the-dangers-search-and-replace-in-wordpress</guid>
+                <description><![CDATA[
+                    This week I learnt an important lesson when using Search and replace in WordPress. When I'm working on a site in development I have WordPress running on a dev domain so the client can view the website and make any changes via the dashboard. When the site is ready to go live I go about transferring the domain. To do this I also need to update any posts in WordPress that may contain the old dev domain to the new live one.
+
+To do this I use a plugin by <a href="http://twitter.com/bueltge">Bueltge</a> called <a href="http://wordpress.org/extend/plugins/search-and-replace/">Search and replace</a>. This searches your database for a string of text and replaces it with another, which is perfect for replacing old dev URL's for live URL's I have used this numerous times in the past and never had any problems with it.
+
+The problem occurs when using widgets and more specially text widgets. If you have looked into how WordPress stores widgets in the database you will know that each registered widget has its own field in the wp_options table which contains a serialized array of each instance of that widget. To understand how the problem occurs we need to first understand how the serialize PHP function works.
+
+Lets have a look at a simple example of serialising a string.
+<pre lang="php" xml:lang="php">echo serialize("foobar");</pre>
+This would print s:6:"foobar"; The syntax is pretty simple, first the variable type which in this case is a string (s) then the variable length (6) and then the value ("foobar"). Here is a slightly more complex example serialising an array:
+<pre lang="php" xml:lang="php">$array = array('foo', 'bar');
+
+echo serialize($array);</pre>
+Would print: a:2:{i:0;s:3:"foo";i:1;s:3:"bar";}
+
+The problem with Search and Replace lies with the variable length, if we had a url stored in an serialised array such as (s:22:"http://dev.example.com";) and then changed this to (s:22:"http://example.com";) the array would now be invalid as the string has changed but we haven't updated the string length. And more annoyingly if you were then to click on the Widgets page, WordPress would notice that there was an invalid entry in the database and over write this with a blank array, losing all your data!
+
+Unfortunately for me the last database backup I had was from the day before, so I learnt 2 valuable lessons that day. 1) Always backup a database before making any big changes and 2) be wary of Search and Replace especially when using Text Widgets
+
+<strong>UPDATE:</strong> Recently I have been using a script from <a href="http://interconnectit.com/products/search-and-replace-for-wordpress-databases/">interconnect/it</a> that will search and replace serialised data as well.
+                ]]></description>
+            </item>
+                    <item>
+                <title>Finally!</title>
+                <link>https://simon-davies.name/blog/finally</link>
+                <pubDate>Mon, 07 May 2012 12:21:40 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/finally</guid>
+                <description><![CDATA[
+                    Ok so I've finally got my site live and its a great feeling. It has only taken me a year, if anyone says its been longer than this, well they are probably right!
+
+I'm not a designer, which has been one of the major road blocks for me as I've never been that happy with a design that I've put together. I took a lot of inspiration for this design from <a title="Chris Sponner" href="http://twitter.com/chrisspooner">Chris Spooner's</a> article on <a title="How To Build a Stylish Portfolio Web Design Concept" href="http://blog.spoongraphics.co.uk/tutorials/how-to-build-a-stylish-portfolio-web-design-concept">How To Build a Stylish Portfolio Web Design Concept</a>, so I would like to say a big thanks to him.
+
+Please feel free to leave your thoughts on my new site, there are a number of things I would have liked to change or do differently but there is always v2.0!
+                ]]></description>
+            </item>
+                    <item>
+                <title>Syncing MAMP with Dropbox</title>
+                <link>https://simon-davies.name/blog/syncing-mamp-with-dropbox</link>
+                <pubDate>Sat, 05 May 2012 12:27:26 +0100</pubDate>
+                <author>Simon Davies</author>
+                <guid>https://simon-davies.name/blog/syncing-mamp-with-dropbox</guid>
+                <description><![CDATA[
+                    I use <a title="MAMP" href="http://www.mamp.info/en/index.html">MAMP</a> as my local development environment. MAMP is brilliant as it installs the software (Apache, MySQL and PHP) used to run a web server similar to a LAMP server. This is great as it means you can test your files locally without having to upload them first. As I work between a MacBook and an iMac I was looking for a away to keep my projects in sync between the 2 machines. I turned to <a href="http://db.tt/yE7ivkkp">Dropbox</a> which is a service that synchronises a folder on your computer over the internet.
+
+I created a directory called sites in my Dropbox folder and then added my projects in here. All my projects are now sync'd on both machines but if I make any changes to the Database I've got to do this on both machines. You can use Dropbox to sync your databases as well. This isn't the most ideal solution as you can run into some problems, especially if are running both versions of MAMP simultaneously. I've been using this solution for about a year now and not run into any major problems so until I find a better way I'll continue to do so.
+
+To sync your database you will need to move the MAMP db folder to dropbox and then create a symbolic link in the MAMP folder back to the db folder in the dropbox. Before starting make sure your MAMP servers are turned off, then open up terminal and enter.
+<pre>cd ~/Dropbox/
+cp -r /Applications/MAMP/db MAMP_DB
+rm -rf /Applications/MAMP/db</pre>
+<p>This will change the directory to your Dropbox folder, then copy the MAMP db folder to dropbox and remove it from the MAMP directory. Then we have to setup the symbolic link.</p>
+
+<pre>ln -s ~/Dropbox/MAMP_DB/db /Applications/MAMP/db</pre>
+Passing the -s option to the <a href="http://www.oreillynet.com/linux/cmd/cmd.csp?path=l/ln">ln</a> command will create a symbolic link, we then pass source file and the target file. And that's it, restart your MAMP servers and you should be syncing your databases to Dropbox. You will need to run the last 2 commands on any other computers you have MAMP installed.
+
+If two of your MAMP installs update the same file at the same time, the 2nd to finish will not overwrite the existing file it will instead create a <a title="Dropbox Conflicted files" href="https://www.dropbox.com/help/36">conflicted file</a>, to fix this you just need to determine which file has the correct data and delete the other (removing the conflicted message in the file name).
+
+This can cause some problems with your MySQL databases, if you are noticing missing data this is the first place to check. You should keep an eye on the ~/Dropbox/MAMP_DB/db/mysql folder, especially the ibdata1 file as this can be quite large and having multiple copies of this file can quite quickly use up all your of Dropbox space.
+                ]]></description>
+            </item>
+            </channel>
+</rss>

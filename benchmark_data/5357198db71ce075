@@ -1,0 +1,1610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
+  <!-- This is a rebuild of News RSS. If you notice any issues please contact DG-NewsWeb@abc.net.au -->
+  <channel>
+    <title>Top Stories</title>
+    <category>Australian Broadcasting Corporation: All content</category>
+    <link>https://www.abc.net.au/news</link>
+    <atom:link href="https://www.abc.net.au/news" rel="self" type="application/rss+xml" />
+    <description>
+    </description>
+    <language>en-AU</language>
+    <copyright>Copyright 2026, Australian Broadcasting Corporation. All Rights Reserved.</copyright>
+    <pubDate>Wed, 18 Feb 2026 01:41:13 +0000</pubDate>
+    <lastBuildDate>Wed, 18 Feb 2026 01:41:13 +0000</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <managingEditor>Newson1ine@abc.net.au (ABC News)</managingEditor>
+    <image>
+      <title>Top Stories</title>
+      <url>https://live-production.wcms.abc-cdn.net.au/6f61ef606af0bbbcbdaa7c6173a677e2?impolicy=wcms_crop_resize&amp;cropH=144&amp;cropW=144&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=862</url>
+      <link>https://www.abc.net.au/news</link>
+    </image>
+    <item>
+      <title>Millionaire economist's dire warning for Australian property market</title>
+      <link>https://www.abc.net.au/news/2026-02-18/economist-gary-stevenson-warns-australia-losing-the-fair-go/106342536</link>
+      <description>
+        <![CDATA[British economist Gary Stevenson is on a speaking tour, warning Australia will follow the path of the UK with "poverty exploding" unless politicians deal with inequality.]]>
+      </description>
+      <pubDate>Tue, 17 Feb 2026 18:35:06 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/economist-gary-stevenson-warns-australia-losing-the-fair-go/106342536</guid>
+      <media:group>
+        <media:description>Gary Stevenson is on a speaking circuit in Australia, talking about reducing wealth inequality.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/1e724870f4fd9352165edd0dbdef6330?impolicy=wcms_crop_resize&amp;cropH=2813&amp;cropW=5000&amp;xPos=0&amp;yPos=414&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/1e724870f4fd9352165edd0dbdef6330?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=3750&amp;xPos=625&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/1e724870f4fd9352165edd0dbdef6330?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=5000&amp;xPos=0&amp;yPos=208&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/1e724870f4fd9352165edd0dbdef6330?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=2813&amp;xPos=1094&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/1e724870f4fd9352165edd0dbdef6330?impolicy=wcms_crop_resize&amp;cropH=2815&amp;cropW=3754&amp;xPos=615&amp;yPos=331&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/1e724870f4fd9352165edd0dbdef6330?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=2109&amp;xPos=1445&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/1e724870f4fd9352165edd0dbdef6330?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=2813&amp;xPos=1094&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Workers go backwards as wages growth lags inflation over past year</title>
+      <link>https://www.abc.net.au/news/2026-02-18/wage-price-index-lags-inflation-real-wages-of-workers/106356432</link>
+      <description>
+        <![CDATA[Household budgets are being increasingly squeezed, as new data from the Australian Bureau of Statistics confirms workers have been going backwards over the past year.]]>
+      </description>
+      <dc:creator>Daniel Ziffer and Ben Butler</dc:creator>
+      <pubDate>Wed, 18 Feb 2026 01:41:13 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/wage-price-index-lags-inflation-real-wages-of-workers/106356432</guid>
+      <category>Wages and Benefits</category>
+      <category>Inflation</category>
+      <category>Businesses</category>
+      <category>Interest Rates</category>
+      <media:group>
+        <media:description>Ian Cubitt says more than 37 families rely on his business being successful, but times are tough.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/7efbc6ebd21476e70f759b841b1d6004?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1920&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/7efbc6ebd21476e70f759b841b1d6004?impolicy=wcms_crop_resize&amp;cropH=1280&amp;cropW=1280&amp;xPos=374&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/7efbc6ebd21476e70f759b841b1d6004?impolicy=wcms_crop_resize&amp;cropH=1280&amp;cropW=1920&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/7efbc6ebd21476e70f759b841b1d6004?impolicy=wcms_crop_resize&amp;cropH=1280&amp;cropW=960&amp;xPos=534&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/7efbc6ebd21476e70f759b841b1d6004?impolicy=wcms_crop_resize&amp;cropH=1280&amp;cropW=1707&amp;xPos=161&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/7efbc6ebd21476e70f759b841b1d6004?impolicy=wcms_crop_resize&amp;cropH=1280&amp;cropW=720&amp;xPos=654&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/7efbc6ebd21476e70f759b841b1d6004?impolicy=wcms_crop_resize&amp;cropH=1280&amp;cropW=960&amp;xPos=534&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Hanson issues partial apology for suggestion there are no 'good' Muslims</title>
+      <link>https://www.abc.net.au/news/2026-02-18/pauline-hanson-partially-apologises-for-muslim-remarks/106357130</link>
+      <description>
+        <![CDATA[The One Nation leader qualified her earlier remarks, which had been met with condemnation, while reiterating calls for tougher vetting processes for Muslim migrants.]]>
+      </description>
+      <dc:creator>Maani Truu</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 23:00:59 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/pauline-hanson-partially-apologises-for-muslim-remarks/106357130</guid>
+      <category>Pauline Hanson's One Nation</category>
+      <category>Federal Government</category>
+      <category>Government and Politics</category>
+      <category>Federal Parliament</category>
+      <media:group>
+        <media:description>The One Nation leader has received backlash for suggesting there were no "good" Muslims during an interview.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a999eeba0315c3d8589a99497753bfb5?impolicy=wcms_crop_resize&amp;cropH=3128&amp;cropW=5562&amp;xPos=678&amp;yPos=203&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a999eeba0315c3d8589a99497753bfb5?impolicy=wcms_crop_resize&amp;cropH=3512&amp;cropW=3512&amp;xPos=1669&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a999eeba0315c3d8589a99497753bfb5?impolicy=wcms_crop_resize&amp;cropH=3512&amp;cropW=5268&amp;xPos=733&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a999eeba0315c3d8589a99497753bfb5?impolicy=wcms_crop_resize&amp;cropH=3512&amp;cropW=2634&amp;xPos=2116&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a999eeba0315c3d8589a99497753bfb5?impolicy=wcms_crop_resize&amp;cropH=3512&amp;cropW=4683&amp;xPos=1099&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a999eeba0315c3d8589a99497753bfb5?impolicy=wcms_crop_resize&amp;cropH=3512&amp;cropW=1975&amp;xPos=2401&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/a999eeba0315c3d8589a99497753bfb5?impolicy=wcms_crop_resize&amp;cropH=3512&amp;cropW=2634&amp;xPos=2116&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Long-time Bupa customer left $30k out of pocket after shoulder replacement denied</title>
+      <link>https://www.abc.net.au/news/2026-02-18/private-health-patients-discover-exclusions-downgrade-policy/106325324</link>
+      <description>
+        <![CDATA[Australians are increasingly downgrading their health cover, with 360,000 people leaving gold policies since 2020. But some have been left out of pocket for surgeries they thought they were covered for.]]>
+      </description>
+      <dc:creator>Alison Branley</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 18:36:20 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/private-health-patients-discover-exclusions-downgrade-policy/106325324</guid>
+      <category>Health Insurance</category>
+      <category>Surgery</category>
+      <category>Health Policy</category>
+      <category>Insurance</category>
+      <category>Accidents and Emergency Incidents</category>
+      <media:group>
+        <media:description>Marie and Trevor Cox were long term Bupa customers and found their insurance did not cover joint replacements.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/39e432033fbbd810f699c41406af16ff?impolicy=wcms_crop_resize&amp;cropH=2813&amp;cropW=5000&amp;xPos=0&amp;yPos=94&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/39e432033fbbd810f699c41406af16ff?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=3333&amp;xPos=577&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/39e432033fbbd810f699c41406af16ff?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=5000&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/39e432033fbbd810f699c41406af16ff?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=2500&amp;xPos=1250&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/39e432033fbbd810f699c41406af16ff?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=4444&amp;xPos=278&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/39e432033fbbd810f699c41406af16ff?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=1875&amp;xPos=1394&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/39e432033fbbd810f699c41406af16ff?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=2500&amp;xPos=1250&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>'Australia must allow them in': Legal experts on the 'ISIS brides' dilemma</title>
+      <link>https://www.abc.net.au/news/2026-02-18/un-expert-says-isis-families-should-be-returned-to-australia/106354188</link>
+      <description>
+        <![CDATA[Australian families with links to Islamic State fighters should be returned to Australia to prevent harm and potential radicalisation of innocent children, according to United Nations special rapporteur Ben Saul.]]>
+      </description>
+      <dc:creator>Cason Ho, Matthew Doran, and Nick Dole</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 19:28:46 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/un-expert-says-isis-families-should-be-returned-to-australia/106354188</guid>
+      <category>Extremism</category>
+      <category>War</category>
+      <category>Foreign Affairs</category>
+      <media:group>
+        <media:description>An Australian woman and a child leaving the Al-Roj camp in Syria on Febraury 16, 2026.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/5e7e4b2bc237102749c2a86afe09b871?impolicy=wcms_crop_resize&amp;cropH=608&amp;cropW=1080&amp;xPos=0&amp;yPos=104&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/5e7e4b2bc237102749c2a86afe09b871?impolicy=wcms_crop_resize&amp;cropH=677&amp;cropW=677&amp;xPos=271&amp;yPos=102&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/5e7e4b2bc237102749c2a86afe09b871?impolicy=wcms_crop_resize&amp;cropH=720&amp;cropW=1080&amp;xPos=0&amp;yPos=48&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/5e7e4b2bc237102749c2a86afe09b871?impolicy=wcms_crop_resize&amp;cropH=810&amp;cropW=608&amp;xPos=290&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/5e7e4b2bc237102749c2a86afe09b871?impolicy=wcms_crop_resize&amp;cropH=810&amp;cropW=1080&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/5e7e4b2bc237102749c2a86afe09b871?impolicy=wcms_crop_resize&amp;cropH=810&amp;cropW=456&amp;xPos=410&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/5e7e4b2bc237102749c2a86afe09b871?impolicy=wcms_crop_resize&amp;cropH=810&amp;cropW=608&amp;xPos=290&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>A dead teenager, a TikTok brag track and a parent's dismissal of gang activity</title>
+      <link>https://www.abc.net.au/news/2026-02-18/melbourne-youth-gangs-violent-murder-shooting-social-media/106332468</link>
+      <description>
+        <![CDATA[Ater "Elia" Good was gunned down early this year, with police alleging it was a gang-related killing. His parents say their son was not a gang member but are aware activity is on the rise.]]>
+      </description>
+      <pubDate>Tue, 17 Feb 2026 20:45:41 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/melbourne-youth-gangs-violent-murder-shooting-social-media/106332468</guid>
+      <media:group>
+        <media:description>Three men have been charged over the shooting death of 16-year-old Ater Good in Fitzroy in early January.
+ </media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/409b821a7ba4bd887adf1b2799d4c3f7?impolicy=wcms_crop_resize&amp;cropH=400&amp;cropW=711&amp;xPos=4&amp;yPos=0&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/409b821a7ba4bd887adf1b2799d4c3f7?impolicy=wcms_crop_resize&amp;cropH=400&amp;cropW=400&amp;xPos=160&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/409b821a7ba4bd887adf1b2799d4c3f7?impolicy=wcms_crop_resize&amp;cropH=400&amp;cropW=600&amp;xPos=60&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/409b821a7ba4bd887adf1b2799d4c3f7?impolicy=wcms_crop_resize&amp;cropH=400&amp;cropW=300&amp;xPos=210&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/409b821a7ba4bd887adf1b2799d4c3f7?impolicy=wcms_crop_resize&amp;cropH=400&amp;cropW=533&amp;xPos=93&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/409b821a7ba4bd887adf1b2799d4c3f7?impolicy=wcms_crop_resize&amp;cropH=400&amp;cropW=225&amp;xPos=248&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/409b821a7ba4bd887adf1b2799d4c3f7?impolicy=wcms_crop_resize&amp;cropH=400&amp;cropW=300&amp;xPos=210&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Land prices have risen by more than 500 per cent since 2000</title>
+      <link>https://www.abc.net.au/news/2026-02-18/land-prices-blocking-new-housing-report-finds/106349190</link>
+      <description>
+        <![CDATA[A Housing Industry Association report says rising land prices are blocking the construction of new homes.]]>
+      </description>
+      <dc:creator>Ahmed Yussuf</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 23:42:19 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/land-prices-blocking-new-housing-report-finds/106349190</guid>
+      <category>Housing Policy</category>
+      <category>Housing Construction Industry</category>
+      <category>Government and Politics</category>
+      <media:group>
+        <media:description>The report says higher land prices have led to the slowing of the delivery of new housing stock.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a94419d3bbb55257101064cc0be3bbd4?impolicy=wcms_crop_resize&amp;cropH=1688&amp;cropW=3000&amp;xPos=0&amp;yPos=348&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a94419d3bbb55257101064cc0be3bbd4?impolicy=wcms_crop_resize&amp;cropH=2250&amp;cropW=2250&amp;xPos=375&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a94419d3bbb55257101064cc0be3bbd4?impolicy=wcms_crop_resize&amp;cropH=2000&amp;cropW=3000&amp;xPos=0&amp;yPos=248&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a94419d3bbb55257101064cc0be3bbd4?impolicy=wcms_crop_resize&amp;cropH=2250&amp;cropW=1688&amp;xPos=656&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a94419d3bbb55257101064cc0be3bbd4?impolicy=wcms_crop_resize&amp;cropH=2250&amp;cropW=3000&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/a94419d3bbb55257101064cc0be3bbd4?impolicy=wcms_crop_resize&amp;cropH=2250&amp;cropW=1266&amp;xPos=867&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/a94419d3bbb55257101064cc0be3bbd4?impolicy=wcms_crop_resize&amp;cropH=2250&amp;cropW=1688&amp;xPos=656&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Prison conditions for Netflix star Matt Wright revealed</title>
+      <link>https://www.abc.net.au/news/2026-02-18/matt-wright-darwin-correctional-centre-complex-behavioural-unit/106354836</link>
+      <description>
+        <![CDATA[Matt Wright, the star of Netflix's Outback Wrangler, has been separated from the general prison population at the Darwin Correctional Centre where most inmates contend with overcrowding and extreme heat.]]>
+      </description>
+      <dc:creator>Roxanne Fitzgerald</dc:creator>
+      <pubDate>Wed, 18 Feb 2026 00:30:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/matt-wright-darwin-correctional-centre-complex-behavioural-unit/106354836</guid>
+      <category>Prisons</category>
+      <category>State and Territory Government</category>
+      <category>Celebrities</category>
+      <media:group>
+        <media:description>Last year, the NT Supreme Court found Matt Wright guilty of two counts of attempting to pervert the course of justice.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4d2d062b21cec190ca78960021711cdf?impolicy=wcms_crop_resize&amp;cropH=3375&amp;cropW=6000&amp;xPos=0&amp;yPos=625&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4d2d062b21cec190ca78960021711cdf?impolicy=wcms_crop_resize&amp;cropH=4000&amp;cropW=4000&amp;xPos=731&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4d2d062b21cec190ca78960021711cdf?impolicy=wcms_crop_resize&amp;cropH=4000&amp;cropW=6000&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4d2d062b21cec190ca78960021711cdf?impolicy=wcms_crop_resize&amp;cropH=4000&amp;cropW=3000&amp;xPos=1134&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4d2d062b21cec190ca78960021711cdf?impolicy=wcms_crop_resize&amp;cropH=4000&amp;cropW=5333&amp;xPos=333&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4d2d062b21cec190ca78960021711cdf?impolicy=wcms_crop_resize&amp;cropH=4000&amp;cropW=2250&amp;xPos=1538&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/4d2d062b21cec190ca78960021711cdf?impolicy=wcms_crop_resize&amp;cropH=4000&amp;cropW=3000&amp;xPos=1134&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>How Australia's moguls coach almost left the system, and why he stayed</title>
+      <link>https://www.abc.net.au/news/2026-02-18/australia-winter-olympics-coach-peter-mcniel-moguls/106356920</link>
+      <description>
+        <![CDATA[With a background in mathematics and an enviable attention to detail, it would be tempting to think of Australian ski coach Peter McNiel as moguls' answer to Moneyball. The truth is far more detailed.]]>
+      </description>
+      <pubDate>Wed, 18 Feb 2026 01:00:36 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/australia-winter-olympics-coach-peter-mcniel-moguls/106356920</guid>
+      <media:group>
+        <media:description>Peter McNiel (left) paid credit to the rest of his coaching team, including Kate Blamey (right).</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/55393264ea99ed77e29d1d3af20ee54b?impolicy=wcms_crop_resize&amp;cropH=2385&amp;cropW=4240&amp;xPos=0&amp;yPos=445&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/55393264ea99ed77e29d1d3af20ee54b?impolicy=wcms_crop_resize&amp;cropH=2832&amp;cropW=2832&amp;xPos=512&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/55393264ea99ed77e29d1d3af20ee54b?impolicy=wcms_crop_resize&amp;cropH=2307&amp;cropW=3460&amp;xPos=338&amp;yPos=525&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/55393264ea99ed77e29d1d3af20ee54b?impolicy=wcms_crop_resize&amp;cropH=2832&amp;cropW=2124&amp;xPos=811&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/55393264ea99ed77e29d1d3af20ee54b?impolicy=wcms_crop_resize&amp;cropH=2520&amp;cropW=3360&amp;xPos=419&amp;yPos=312&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/55393264ea99ed77e29d1d3af20ee54b?impolicy=wcms_crop_resize&amp;cropH=2832&amp;cropW=1593&amp;xPos=1132&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/55393264ea99ed77e29d1d3af20ee54b?impolicy=wcms_crop_resize&amp;cropH=2832&amp;cropW=2124&amp;xPos=811&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Live: Health insurers surge ahead of premium hike, ASX rises</title>
+      <link>https://www.abc.net.au/news/2026-02-18/asx-markets-business-live-news/106357056</link>
+      <description>
+        <![CDATA[Shares of health insurers have surged ahead of premium hikes while the ASX has started its day higher, and NAB has reported a 30 per cent jump in quarterly profit. Follow live.]]>
+      </description>
+      <dc:creator>David Chau, Yiying Li, and Emilia Terzon</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 21:00:33 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/asx-markets-business-live-news/106357056</guid>
+      <category>Financial Markets</category>
+      <category>Stock Market</category>
+      <category>Company News</category>
+      <category>Currency</category>
+      <media:group>
+        <media:description>Medibank Private added 15,000 new customers last year against the trend of of Australians opting out of health insurance.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ab95d2bc82a02313171e154aae11ae5c?impolicy=wcms_crop_resize&amp;cropH=1400&amp;cropW=2486&amp;xPos=14&amp;yPos=171&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ab95d2bc82a02313171e154aae11ae5c?impolicy=wcms_crop_resize&amp;cropH=1571&amp;cropW=1571&amp;xPos=114&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ab95d2bc82a02313171e154aae11ae5c?impolicy=wcms_crop_resize&amp;cropH=1574&amp;cropW=2359&amp;xPos=70&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ab95d2bc82a02313171e154aae11ae5c?impolicy=wcms_crop_resize&amp;cropH=1571&amp;cropW=1179&amp;xPos=121&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ab95d2bc82a02313171e154aae11ae5c?impolicy=wcms_crop_resize&amp;cropH=1564&amp;cropW=2093&amp;xPos=35&amp;yPos=7&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ab95d2bc82a02313171e154aae11ae5c?impolicy=wcms_crop_resize&amp;cropH=1574&amp;cropW=885&amp;xPos=808&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/ab95d2bc82a02313171e154aae11ae5c?impolicy=wcms_crop_resize&amp;cropH=1571&amp;cropW=1179&amp;xPos=121&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Live: One Nation expecting a 'Melbourne Cup'-like race to decide Farrer candidate</title>
+      <link>https://www.abc.net.au/news/2026-02-18/federal-politics-albanese-taylor-coalition-labor/106356048</link>
+      <description>
+        <![CDATA[One Nation leader Pauline Hanson says about 80 people have applied to be the party's candidate for Farrer in the upcoming by-election. Follow live.]]>
+      </description>
+      <dc:creator>Courtney Gould</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 20:22:44 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/federal-politics-albanese-taylor-coalition-labor/106356048</guid>
+      <category>Government and Politics</category>
+      <category>Federal Government</category>
+      <category>Parliament</category>
+      <media:group>
+        <media:description>Pauline Hanson Jan 21 2026</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/536fe832f1fa8a6e4466e62b39b01756?impolicy=wcms_crop_resize&amp;cropH=1922&amp;cropW=3418&amp;xPos=919&amp;yPos=223&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/536fe832f1fa8a6e4466e62b39b01756?impolicy=wcms_crop_resize&amp;cropH=2814&amp;cropW=2814&amp;xPos=1093&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/536fe832f1fa8a6e4466e62b39b01756?impolicy=wcms_crop_resize&amp;cropH=2814&amp;cropW=4221&amp;xPos=390&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/536fe832f1fa8a6e4466e62b39b01756?impolicy=wcms_crop_resize&amp;cropH=2814&amp;cropW=2111&amp;xPos=1445&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/536fe832f1fa8a6e4466e62b39b01756?impolicy=wcms_crop_resize&amp;cropH=2814&amp;cropW=3752&amp;xPos=624&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/536fe832f1fa8a6e4466e62b39b01756?impolicy=wcms_crop_resize&amp;cropH=2814&amp;cropW=1583&amp;xPos=1709&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/536fe832f1fa8a6e4466e62b39b01756?impolicy=wcms_crop_resize&amp;cropH=2814&amp;cropW=2111&amp;xPos=1445&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>HungryPanda delivery drivers say police contacted family back home</title>
+      <link>https://www.abc.net.au/news/2026-02-18/hungrypanda-riders-chinese-police-threats-sydney-australia/106353996</link>
+      <description>
+        <![CDATA[Riders embroiled in a dispute over pay and conditions with food delivery company HungryPanda in Sydney say Chinese police have asserted pressure back home to stop them protesting.]]>
+      </description>
+      <dc:creator>Bang Xiao, Stephen Dziedzic, and Iris Zhao</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 18:35:47 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/hungrypanda-riders-chinese-police-threats-sydney-australia/106353996</guid>
+      <category>Foreign Affairs</category>
+      <category>Police</category>
+      <category>Gig Economy</category>
+      <category>Industrial Action</category>
+      <media:group>
+        <media:description>HungryPanda delivery drivers receive their orders over a phone app.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/61085808ad4e9ac9ddcdf516500be68e?impolicy=wcms_crop_resize&amp;cropH=2353&amp;cropW=4184&amp;xPos=782&amp;yPos=277&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/61085808ad4e9ac9ddcdf516500be68e?impolicy=wcms_crop_resize&amp;cropH=3057&amp;cropW=3057&amp;xPos=1259&amp;yPos=57&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/61085808ad4e9ac9ddcdf516500be68e?impolicy=wcms_crop_resize&amp;cropH=2789&amp;cropW=4184&amp;xPos=782&amp;yPos=59&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/61085808ad4e9ac9ddcdf516500be68e?impolicy=wcms_crop_resize&amp;cropH=3057&amp;cropW=2293&amp;xPos=1641&amp;yPos=57&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/61085808ad4e9ac9ddcdf516500be68e?impolicy=wcms_crop_resize&amp;cropH=3057&amp;cropW=4076&amp;xPos=782&amp;yPos=57&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/61085808ad4e9ac9ddcdf516500be68e?impolicy=wcms_crop_resize&amp;cropH=3057&amp;cropW=1720&amp;xPos=1928&amp;yPos=57&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/61085808ad4e9ac9ddcdf516500be68e?impolicy=wcms_crop_resize&amp;cropH=3057&amp;cropW=2293&amp;xPos=1641&amp;yPos=57&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>The engineer trying to stop NASA's Artemis II launch going around the Moon</title>
+      <link>https://www.abc.net.au/news/science/2026-02-18/artemis-ii-heat-shield-concerns-charlie-camarda/106233804</link>
+      <description>
+        <![CDATA[After years of delays, NASA's Artemis II mission is aiming to launch next month. But issues with the heat shield are causing some to raise the alarm. ]]>
+      </description>
+      <dc:creator>Jacinta Bowler, Fiona Pepper, and James Bullen</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 18:30:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/science/2026-02-18/artemis-ii-heat-shield-concerns-charlie-camarda/106233804</guid>
+      <category>Space Exploration</category>
+      <category>Spacecraft</category>
+      <category>Science and Technology</category>
+      <category>Science</category>
+      <category>Space</category>
+      <category>The Moon</category>
+      <media:group>
+        <media:description>The Artemis I mission was in space for more than 25 days in 2022.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/417a86037cad5d867856676a7c5705e1?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1920&amp;xPos=0&amp;yPos=103&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/417a86037cad5d867856676a7c5705e1?impolicy=wcms_crop_resize&amp;cropH=1440&amp;cropW=1440&amp;xPos=443&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/417a86037cad5d867856676a7c5705e1?impolicy=wcms_crop_resize&amp;cropH=1280&amp;cropW=1920&amp;xPos=0&amp;yPos=3&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/417a86037cad5d867856676a7c5705e1?impolicy=wcms_crop_resize&amp;cropH=1440&amp;cropW=1080&amp;xPos=623&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/417a86037cad5d867856676a7c5705e1?impolicy=wcms_crop_resize&amp;cropH=1440&amp;cropW=1920&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/417a86037cad5d867856676a7c5705e1?impolicy=wcms_crop_resize&amp;cropH=1440&amp;cropW=810&amp;xPos=917&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/417a86037cad5d867856676a7c5705e1?impolicy=wcms_crop_resize&amp;cropH=1440&amp;cropW=1080&amp;xPos=623&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>One bold investment in an empty building transformed this country town's main street </title>
+      <link>https://www.abc.net.au/news/2026-02-18/young-business-owners-transform-charleville-cbd/106309412</link>
+      <description>
+        <![CDATA[A few years ago, Charleville's main street had lost its spark, with storefronts empty and windows shuttered. So, what does it take to bring a main street back to life?]]>
+      </description>
+      <pubDate>Tue, 17 Feb 2026 19:11:54 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/young-business-owners-transform-charleville-cbd/106309412</guid>
+      <media:group>
+        <media:description>The two-storey building in Charleville was purchased in 2021. </media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/b221072aa270cf1ba3aecc5a2e5d990b?impolicy=wcms_crop_resize&amp;cropH=2268&amp;cropW=4032&amp;xPos=0&amp;yPos=56&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/b221072aa270cf1ba3aecc5a2e5d990b?impolicy=wcms_crop_resize&amp;cropH=3024&amp;cropW=3024&amp;xPos=504&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/b221072aa270cf1ba3aecc5a2e5d990b?impolicy=wcms_crop_resize&amp;cropH=2688&amp;cropW=4032&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/b221072aa270cf1ba3aecc5a2e5d990b?impolicy=wcms_crop_resize&amp;cropH=3024&amp;cropW=2268&amp;xPos=882&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/b221072aa270cf1ba3aecc5a2e5d990b?impolicy=wcms_crop_resize&amp;cropH=3024&amp;cropW=4032&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/b221072aa270cf1ba3aecc5a2e5d990b?impolicy=wcms_crop_resize&amp;cropH=3024&amp;cropW=1701&amp;xPos=1165&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/b221072aa270cf1ba3aecc5a2e5d990b?impolicy=wcms_crop_resize&amp;cropH=3024&amp;cropW=2268&amp;xPos=882&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Iran announces closure of vital shipping route during US nuclear talks</title>
+      <link>https://www.abc.net.au/news/2026-02-18/iran-announces-closure-of-hormuz-strait-amid-us-nuclear-talks/106356970</link>
+      <description>
+        <![CDATA[Iran says it temporarily closed the Strait of Hormuz — a vital international shipping route — as it entered a new round of talks with the US over its nuclear capabilities.]]>
+      </description>
+      <dc:creator>Brad Ryan</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 21:14:58 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/iran-announces-closure-of-hormuz-strait-amid-us-nuclear-talks/106356970</guid>
+      <category>World Politics</category>
+      <category>Unrest, Conflict and War</category>
+      <category>Nuclear Weapons</category>
+      <media:group>
+        <media:description>Abbas Araqchi said the US and Iran reached an understanding over "guiding principles" in their negotiations.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/04b1f645583ee7c99b9a56f110321c80?impolicy=wcms_crop_resize&amp;cropH=2250&amp;cropW=4000&amp;xPos=0&amp;yPos=59&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/04b1f645583ee7c99b9a56f110321c80?impolicy=wcms_crop_resize&amp;cropH=2672&amp;cropW=2672&amp;xPos=1101&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/04b1f645583ee7c99b9a56f110321c80?impolicy=wcms_crop_resize&amp;cropH=2667&amp;cropW=4000&amp;xPos=0&amp;yPos=3&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/04b1f645583ee7c99b9a56f110321c80?impolicy=wcms_crop_resize&amp;cropH=2672&amp;cropW=2004&amp;xPos=1647&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/04b1f645583ee7c99b9a56f110321c80?impolicy=wcms_crop_resize&amp;cropH=2672&amp;cropW=3563&amp;xPos=437&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/04b1f645583ee7c99b9a56f110321c80?impolicy=wcms_crop_resize&amp;cropH=2672&amp;cropW=1503&amp;xPos=1639&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/04b1f645583ee7c99b9a56f110321c80?impolicy=wcms_crop_resize&amp;cropH=2672&amp;cropW=2004&amp;xPos=1647&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Housing to play part in future of both old and new ABC sites in Adelaide</title>
+      <link>https://www.abc.net.au/news/2026-02-18/housing-plans-for-new-and-old-abc-adelaide-sites/106357376</link>
+      <description>
+        <![CDATA[The ABC's managing director says the public broadcaster's current office in Adelaide could be redeveloped in a similar way to an apartment building nearby, while the premier says affordable apartments will still be included on the same property the ABC is moving to in the CBD.]]>
+      </description>
+      <dc:creator>Eugene Boisvert</dc:creator>
+      <pubDate>Wed, 18 Feb 2026 01:31:56 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/housing-plans-for-new-and-old-abc-adelaide-sites/106357376</guid>
+      <category>Media</category>
+      <category>Media Industry</category>
+      <category>Urban Development and Planning</category>
+      <category>Federal Government</category>
+      <category>State and Territory Government</category>
+      <category>ABC</category>
+      <media:group>
+        <media:description>A concept design released by Renewal SA in 2024 for the site where the ABC is moving to.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/456b02efa23056e75b6e27ff4d71c7aa?impolicy=wcms_crop_resize&amp;cropH=636&amp;cropW=1130&amp;xPos=0&amp;yPos=2&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/456b02efa23056e75b6e27ff4d71c7aa?impolicy=wcms_crop_resize&amp;cropH=640&amp;cropW=640&amp;xPos=245&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/456b02efa23056e75b6e27ff4d71c7aa?impolicy=wcms_crop_resize&amp;cropH=640&amp;cropW=960&amp;xPos=85&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/456b02efa23056e75b6e27ff4d71c7aa?impolicy=wcms_crop_resize&amp;cropH=640&amp;cropW=480&amp;xPos=325&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/456b02efa23056e75b6e27ff4d71c7aa?impolicy=wcms_crop_resize&amp;cropH=640&amp;cropW=853&amp;xPos=153&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/456b02efa23056e75b6e27ff4d71c7aa?impolicy=wcms_crop_resize&amp;cropH=640&amp;cropW=360&amp;xPos=326&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/456b02efa23056e75b6e27ff4d71c7aa?impolicy=wcms_crop_resize&amp;cropH=640&amp;cropW=480&amp;xPos=325&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>OCD is often misunderstood. How much do you really know about it?</title>
+      <link>https://www.abc.net.au/news/2026-02-18/elena-ocd-heywire-quiz/106254504</link>
+      <description>
+        <![CDATA[Elena wants people with OCD to know they're not alone. But how well do Australians understand the condition?]]>
+      </description>
+      <pubDate>Tue, 17 Feb 2026 20:06:10 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/elena-ocd-heywire-quiz/106254504</guid>
+      <media:group>
+        <media:description>Elena says it was really difficult to be open about her OCD symptoms.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/f0c17f249e4e9ad54d190ab0c7ffeea1?impolicy=wcms_crop_resize&amp;cropH=2384&amp;cropW=4238&amp;xPos=1&amp;yPos=0&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/f0c17f249e4e9ad54d190ab0c7ffeea1?impolicy=wcms_crop_resize&amp;cropH=2384&amp;cropW=2384&amp;xPos=235&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/f0c17f249e4e9ad54d190ab0c7ffeea1?impolicy=wcms_crop_resize&amp;cropH=2384&amp;cropW=3576&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/f0c17f249e4e9ad54d190ab0c7ffeea1?impolicy=wcms_crop_resize&amp;cropH=2384&amp;cropW=1788&amp;xPos=218&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/f0c17f249e4e9ad54d190ab0c7ffeea1?impolicy=wcms_crop_resize&amp;cropH=2384&amp;cropW=3179&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/f0c17f249e4e9ad54d190ab0c7ffeea1?impolicy=wcms_crop_resize&amp;cropH=2384&amp;cropW=1341&amp;xPos=534&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/f0c17f249e4e9ad54d190ab0c7ffeea1?impolicy=wcms_crop_resize&amp;cropH=2384&amp;cropW=1788&amp;xPos=218&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Civil rights leader Jesse Jackson dies, aged 84 </title>
+      <link>https://www.abc.net.au/news/2026-02-17/civil-rghts-leader-jesse-jackson-dies-age-84/106356528</link>
+      <description>
+        <![CDATA[The two-time Democratic presidential hopeful remembered for powerful speeches died peacefully surrounded by loved ones, his family said. ]]>
+      </description>
+      <pubDate>Tue, 17 Feb 2026 10:00:50 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-17/civil-rghts-leader-jesse-jackson-dies-age-84/106356528</guid>
+      <media:group>
+        <media:description>Jesse Jackson was America's pre-eminent civil rights figure for decades.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/91dde4fd6f534e63ee5dcb05f7b01847?impolicy=wcms_crop_resize&amp;cropH=2813&amp;cropW=5000&amp;xPos=0&amp;yPos=380&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/91dde4fd6f534e63ee5dcb05f7b01847?impolicy=wcms_crop_resize&amp;cropH=3573&amp;cropW=3573&amp;xPos=714&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/91dde4fd6f534e63ee5dcb05f7b01847?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=5000&amp;xPos=0&amp;yPos=120&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/91dde4fd6f534e63ee5dcb05f7b01847?impolicy=wcms_crop_resize&amp;cropH=3180&amp;cropW=2385&amp;xPos=1944&amp;yPos=393&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/91dde4fd6f534e63ee5dcb05f7b01847?impolicy=wcms_crop_resize&amp;cropH=3573&amp;cropW=4764&amp;xPos=118&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/91dde4fd6f534e63ee5dcb05f7b01847?impolicy=wcms_crop_resize&amp;cropH=3573&amp;cropW=2010&amp;xPos=1495&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/91dde4fd6f534e63ee5dcb05f7b01847?impolicy=wcms_crop_resize&amp;cropH=3180&amp;cropW=2385&amp;xPos=1944&amp;yPos=393&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Retelling the story of a bridge that 'tore a nation of people apart'</title>
+      <link>https://www.abc.net.au/news/2026-02-18/ngarrindjeri-women-retell-hindmarsh-island-bridge-story/106282804</link>
+      <description>
+        <![CDATA[In the 1990s, a group of Indigenous women were accused of fabricating claims of sacred sites to stop the construction of a bridge south of Adelaide. It was a decision that has impacted a community for decades.]]>
+      </description>
+      <dc:creator>Rachael Merritt</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 19:50:45 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/ngarrindjeri-women-retell-hindmarsh-island-bridge-story/106282804</guid>
+      <category>Indigenous Culture</category>
+      <category>Indigenous Australians</category>
+      <category>Visual Art</category>
+      <category>History</category>
+      <category>Environmental Impacts</category>
+      <category>Environmental Policy</category>
+      <category>Conservation</category>
+      <category>Documentaries</category>
+      <media:group>
+        <media:description>Sandra Saunders, Ellen Trevorrow and Margaret Brodie have been reunited for the Kumarangk project.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ec331b3c9be54960757828c93b11ea9b?impolicy=wcms_crop_resize&amp;cropH=3942&amp;cropW=7008&amp;xPos=0&amp;yPos=365&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ec331b3c9be54960757828c93b11ea9b?impolicy=wcms_crop_resize&amp;cropH=4672&amp;cropW=4672&amp;xPos=1168&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ec331b3c9be54960757828c93b11ea9b?impolicy=wcms_crop_resize&amp;cropH=4672&amp;cropW=7008&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ec331b3c9be54960757828c93b11ea9b?impolicy=wcms_crop_resize&amp;cropH=4672&amp;cropW=3504&amp;xPos=1752&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ec331b3c9be54960757828c93b11ea9b?impolicy=wcms_crop_resize&amp;cropH=4672&amp;cropW=6229&amp;xPos=390&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/ec331b3c9be54960757828c93b11ea9b?impolicy=wcms_crop_resize&amp;cropH=4672&amp;cropW=2628&amp;xPos=2190&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/ec331b3c9be54960757828c93b11ea9b?impolicy=wcms_crop_resize&amp;cropH=4672&amp;cropW=3504&amp;xPos=1752&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Man who escaped mental health care facility fronts court over Sydney stabbings</title>
+      <link>https://www.abc.net.au/news/2026-02-18/man-charged-with-murder-merrylands-stabbing/106356990</link>
+      <description>
+        <![CDATA[A 25-year-old man police say stabbed a man to death in Merrylands days after fleeing from health authorities has been charged with murder.]]>
+      </description>
+      <pubDate>Tue, 17 Feb 2026 19:30:51 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/man-charged-with-murder-merrylands-stabbing/106356990</guid>
+      <category>Police</category>
+      <category>Crime</category>
+      <media:group>
+        <media:description>The suspect was arrested and taken to Granville police station.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/16f2670e780c906a53b246aeb34d4cd5?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1920&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/16f2670e780c906a53b246aeb34d4cd5?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1080&amp;xPos=660&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/16f2670e780c906a53b246aeb34d4cd5?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1620&amp;xPos=300&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/16f2670e780c906a53b246aeb34d4cd5?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=810&amp;xPos=795&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/16f2670e780c906a53b246aeb34d4cd5?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1440&amp;xPos=480&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/16f2670e780c906a53b246aeb34d4cd5?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=608&amp;xPos=896&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/16f2670e780c906a53b246aeb34d4cd5?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=810&amp;xPos=795&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Track closure will see 'flood' of greyhounds needing new homes</title>
+      <link>https://www.abc.net.au/news/2026-02-18/broken-hill-greyhound-race-track-to-close/106275488</link>
+      <description>
+        <![CDATA[One hundred years of greyhound racing in far west NSW is about to come to an end.]]>
+      </description>
+      <pubDate>Tue, 17 Feb 2026 23:02:29 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/broken-hill-greyhound-race-track-to-close/106275488</guid>
+      <media:group>
+        <media:description>As many as 70 greyhounds will have to be rehomed due to the Broken Hill track closure.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/aebdcded3d5e16fc94447aaff7a9fcef?impolicy=wcms_crop_resize&amp;cropH=2813&amp;cropW=5000&amp;xPos=0&amp;yPos=938&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/aebdcded3d5e16fc94447aaff7a9fcef?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=3750&amp;xPos=685&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/aebdcded3d5e16fc94447aaff7a9fcef?impolicy=wcms_crop_resize&amp;cropH=3333&amp;cropW=5000&amp;xPos=0&amp;yPos=417&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/aebdcded3d5e16fc94447aaff7a9fcef?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=2813&amp;xPos=1154&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/aebdcded3d5e16fc94447aaff7a9fcef?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=5000&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/aebdcded3d5e16fc94447aaff7a9fcef?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=2109&amp;xPos=1506&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/aebdcded3d5e16fc94447aaff7a9fcef?impolicy=wcms_crop_resize&amp;cropH=3750&amp;cropW=2813&amp;xPos=1154&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Man, 19, released without charge after fatal Arnhem Land stabbing</title>
+      <link>https://www.abc.net.au/news/2026-02-18/nt-man-released-without-charge-after-fatal-galiwinku-stabbing/106357704</link>
+      <description>
+        <![CDATA[Police say a 19-year-old man arrested over the stabbing death of another man, 27, on Elcho Island on Saturday has been released without charge "pending further investigations".]]>
+      </description>
+      <pubDate>Wed, 18 Feb 2026 01:12:02 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/nt-man-released-without-charge-after-fatal-galiwinku-stabbing/106357704</guid>
+      <category>Police</category>
+      <category>Indigenous Australians</category>
+      <media:group>
+        <media:description>Officers from multiple units were deployed to Galiwin'ku on Sunday to assist with investigations and community support.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/00467e7736574564f58031e3dd01531e?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1920&amp;xPos=0&amp;yPos=199&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/00467e7736574564f58031e3dd01531e?impolicy=wcms_crop_resize&amp;cropH=1279&amp;cropW=1279&amp;xPos=230&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/00467e7736574564f58031e3dd01531e?impolicy=wcms_crop_resize&amp;cropH=1279&amp;cropW=1919&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/00467e7736574564f58031e3dd01531e?impolicy=wcms_crop_resize&amp;cropH=1279&amp;cropW=959&amp;xPos=383&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/00467e7736574564f58031e3dd01531e?impolicy=wcms_crop_resize&amp;cropH=1279&amp;cropW=1705&amp;xPos=57&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/00467e7736574564f58031e3dd01531e?impolicy=wcms_crop_resize&amp;cropH=1279&amp;cropW=719&amp;xPos=551&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/00467e7736574564f58031e3dd01531e?impolicy=wcms_crop_resize&amp;cropH=1279&amp;cropW=959&amp;xPos=383&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>One man dead, another in serious condition after Bruce Highway crash</title>
+      <link>https://www.abc.net.au/news/2026-02-18/bruce-highway-burpengary-crash-death/106357324</link>
+      <description>
+        <![CDATA[Emergency services were called to the crash in Burpengary just after 10:30pm on Tuesday, where police said multiple vehicles were spotted travelling southbound in the northbound lanes. ]]>
+      </description>
+      <dc:creator>Liana Walker</dc:creator>
+      <pubDate>Tue, 17 Feb 2026 23:11:21 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/bruce-highway-burpengary-crash-death/106357324</guid>
+      <category>Road Accidents and Incidents</category>
+      <category>Accidents and Emergency Incidents</category>
+      <category>Police</category>
+      <media:group>
+        <media:description>A man has died after a head-on crash on the Bruce Highway at Burpengary. </media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4914ce9bddb39695736e5e32fc2b862a?impolicy=wcms_crop_resize&amp;cropH=864&amp;cropW=1536&amp;xPos=0&amp;yPos=657&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4914ce9bddb39695736e5e32fc2b862a?impolicy=wcms_crop_resize&amp;cropH=1536&amp;cropW=1536&amp;xPos=0&amp;yPos=321&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4914ce9bddb39695736e5e32fc2b862a?impolicy=wcms_crop_resize&amp;cropH=1024&amp;cropW=1536&amp;xPos=0&amp;yPos=577&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4914ce9bddb39695736e5e32fc2b862a?impolicy=wcms_crop_resize&amp;cropH=2048&amp;cropW=1536&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4914ce9bddb39695736e5e32fc2b862a?impolicy=wcms_crop_resize&amp;cropH=1152&amp;cropW=1536&amp;xPos=0&amp;yPos=513&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/4914ce9bddb39695736e5e32fc2b862a?impolicy=wcms_crop_resize&amp;cropH=2048&amp;cropW=1152&amp;xPos=195&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/4914ce9bddb39695736e5e32fc2b862a?impolicy=wcms_crop_resize&amp;cropH=2048&amp;cropW=1536&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>$100k worth of cocaine, cannabis and cash seized in Whitsundays</title>
+      <link>https://www.abc.net.au/news/2026-02-18/police-charge-man-and-woman-with-drug-offences-at-airlie-beach/106358094</link>
+      <description>
+        <![CDATA[Two people have been charged after police allegedly found drugs, utensils and cash at an Airlie Beach property.]]>
+      </description>
+      <dc:creator>Yasmine Wright Gittins</dc:creator>
+      <pubDate>Wed, 18 Feb 2026 01:15:33 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/police-charge-man-and-woman-with-drug-offences-at-airlie-beach/106358094</guid>
+      <category>Drug Offences</category>
+      <category>Crime</category>
+      <category>Courts</category>
+      <category>Cocaine</category>
+      <category>Cannabis</category>
+      <media:group>
+        <media:description>Police allege they seized 255 grams of cocaine with a street value of $100,000.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/114fa4c1c6b726ab32108ea9cbe121ab?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1920&amp;xPos=0&amp;yPos=0&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/114fa4c1c6b726ab32108ea9cbe121ab?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1080&amp;xPos=420&amp;yPos=0&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/114fa4c1c6b726ab32108ea9cbe121ab?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1620&amp;xPos=150&amp;yPos=0&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/114fa4c1c6b726ab32108ea9cbe121ab?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=810&amp;xPos=555&amp;yPos=0&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/114fa4c1c6b726ab32108ea9cbe121ab?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=1440&amp;xPos=240&amp;yPos=0&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/114fa4c1c6b726ab32108ea9cbe121ab?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=608&amp;xPos=656&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/114fa4c1c6b726ab32108ea9cbe121ab?impolicy=wcms_crop_resize&amp;cropH=1080&amp;cropW=810&amp;xPos=555&amp;yPos=0&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+    <item>
+      <title>Randa Abdel-Fattah to feature at Sydney Writers' Festival</title>
+      <link>https://www.abc.net.au/news/2026-02-18/randa-abdel-fattah-to-feature-at-sydney-writers-festival/106357178</link>
+      <description>
+        <![CDATA[Sydney Writers' Festival has defended featuring Randa Abdel-Fattah on its 2026 program, saying it is "not in the business of cancelling or censoring writers".]]>
+      </description>
+      <pubDate>Tue, 17 Feb 2026 21:41:48 +0000</pubDate>
+      <guid isPermaLink="true">https://www.abc.net.au/news/2026-02-18/randa-abdel-fattah-to-feature-at-sydney-writers-festival/106357178</guid>
+      <category>Books</category>
+      <category>Author</category>
+      <category>Carnivals and Festivals</category>
+      <media:group>
+        <media:description>Dr Randa Abdel-Fattah will feature at this year's Sydney Writers' Festival.</media:description>
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/42c429e369af7030291c1aa79804dbbc?impolicy=wcms_crop_resize&amp;cropH=1266&amp;cropW=2250&amp;xPos=0&amp;yPos=660&amp;width=862&amp;height=485"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="485"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/42c429e369af7030291c1aa79804dbbc?impolicy=wcms_crop_resize&amp;cropH=1783&amp;cropW=1783&amp;xPos=282&amp;yPos=462&amp;width=862&amp;height=862"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="862"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/42c429e369af7030291c1aa79804dbbc?impolicy=wcms_crop_resize&amp;cropH=1500&amp;cropW=2250&amp;xPos=0&amp;yPos=585&amp;width=862&amp;height=575"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="575"
+            isDefault="true"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/42c429e369af7030291c1aa79804dbbc?impolicy=wcms_crop_resize&amp;cropH=2472&amp;cropW=1854&amp;xPos=292&amp;yPos=453&amp;width=862&amp;height=1149"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1149"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/42c429e369af7030291c1aa79804dbbc?impolicy=wcms_crop_resize&amp;cropH=1688&amp;cropW=2250&amp;xPos=0&amp;yPos=538&amp;width=862&amp;height=647"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="647"
+          />
+        <media:content
+            url="https://live-production.wcms.abc-cdn.net.au/42c429e369af7030291c1aa79804dbbc?impolicy=wcms_crop_resize&amp;cropH=3000&amp;cropW=1688&amp;xPos=375&amp;yPos=0&amp;width=862&amp;height=1533"
+            medium="image"
+            type="image/jpeg"
+            width="862"
+            height="1533"
+          />
+        <media:thumbnail
+            url="https://live-production.wcms.abc-cdn.net.au/42c429e369af7030291c1aa79804dbbc?impolicy=wcms_crop_resize&amp;cropH=2472&amp;cropW=1854&amp;xPos=292&amp;yPos=453&amp;width=862&amp;height=1149"
+            width="862"
+            height="1149"
+          />
+      </media:group>
+    </item>
+  </channel>
+</rss>

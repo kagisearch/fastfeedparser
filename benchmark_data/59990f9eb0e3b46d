@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://herman.bearblog.dev</id>
+  <title>Herman's blog</title>
+  <updated>2026-02-17T21:54:02.864227+00:00</updated>
+  <author>
+    <name>herman</name>
+    <email>hidden</email>
+  </author>
+  <link href="https://herman.bearblog.dev/" rel="alternate"/>
+  <link href="https://herman.bearblog.dev/feed/" rel="self"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+  <subtitle>Hi I'm Herman Martinus. I'm a maker of things, rider of bikes, and hiker of mountains.</subtitle>
+  <entry>
+    <id>https://herman.bearblog.dev/things-that-work/</id>
+    <title>Things that work (for me)</title>
+    <updated>2026-01-20T08:27:41.661368+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;If it ain't broke, don't fix it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While I don't fully subscribe to the above quote, since I think it's important to continually improve things that aren't explicitly broken, every now and then something I use works so well that I consider it a &lt;em&gt;solved problem&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In this post I'll be listing items and tools I use that work so well that I'm likely to be a customer for life, or will never have to purchase another. I've split the list into physical and digital tools and will try to keep this list as up-to-date as possible. This is both for my reference, as well as for others. If something is not listed it means I'm not 100% satisfied with what I'm currently using, even if it's decent.&lt;/p&gt;
+&lt;p&gt;I'm not a minimalist, but I do have a fairly minimalistic approach to the items I buy. I like having one thing that works well (for example, an everything pair of pants), over a selection to choose from each morning.&lt;/p&gt;
+&lt;p&gt;Some of these items are inexpensive and readily available; while some of them are pricy (but in my opinion worth it). Unfortunately sometimes it's hard to circumvent &lt;a href='https://en.wikipedia.org/wiki/Boots_theory' target='_blank'&gt;Sam Vimes boots theory of socioeconomic unfairness&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=digital&gt;Digital&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href='https://tuta.com' target='_blank'&gt;&lt;strong&gt;Tuta mail&lt;/strong&gt;&lt;/a&gt; — This email provider does one thing very well: Email. Yes, there is a calendar, but I don't use it. I use it for the responsive and privacy respecting email service, as well as the essentially unlimited email addresses I can set up on custom domains.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Apple Notes&lt;/strong&gt; — I've tried the other writing tools, and Apple Notes wins (for me) by being simple, and automatically synced. I use this for writing posts, taking notes, and handling my todo list for the day.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visual Studio Code&lt;/strong&gt; — I've tried to become a vim or emacs purist, but couldn't commit. I've tried going back to Sublime, but didn't feel like relearning the shortcuts. I've tried all of the new AI-powered IDEs, but found it stripped the joy of coding. VSC works fine and I'll likely use it until humans aren't allowed to code anymore.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trello&lt;/strong&gt; — This is where I track all my feature requests, ideas, todos, tasks in progress, and tasks put on hold across my various projects. I'm used to the interface and have never had a problem with it. I'm not a power user, nor do I work as part of a team, so it's just right for my use-case.&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://bearblog.dev' target='_blank'&gt;&lt;strong&gt;Bear Blog&lt;/strong&gt;&lt;/a&gt; — This goes without saying. I originally built it for me, so it fits my use-case well. I'm just glad it fits so many other people's use-cases too.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=physical&gt;Physical&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Apple Airpods Pro&lt;/strong&gt; — This is the best product Apple makes. I could switch away from the rest of the Apple ecosystem if necessary, but I'd have to keep my Airpods. The noise cancelling and audio fidelity is unlike any other in-ear headphones I've used, and while they'll probably need to be replaced every 5 years, they're well worth the sleep on long-haul flights alone.&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://en.wikipedia.org/wiki/New_Balance_574' target='_blank'&gt;&lt;strong&gt;New Balance 574 shoes&lt;/strong&gt;&lt;/a&gt; — New Balance created the perfect shoe in the 80s and then never updated them. These shoes are great since they were originally developed as trail running shoes, but have become &lt;em&gt;their own style&lt;/em&gt; while being rugged enough to tackle a light trail, or walk around a city all day. They also have a wide toe box to house my flappers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CeraVe Moisturising Lotion&lt;/strong&gt; — I didn't realise how healthy my skin could be until Emma forced this on me. My skin has been doing great since switching and I'll likely keep using it until CeraVe discontinues the line.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Eucerin sensitive protect sunscreen&lt;/strong&gt; — Similarly, all sunscreens I've tried have left my face oily and shiny. This is the first facial sunscreen that I can realistically wear every day without any issues. It's SPF 50+, which is great for someone who loves being outdoors in sunny South Africa.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Salt of the Earth Crystal deodorant&lt;/strong&gt; — This may sound particularly woo-woo, but I've been using this salt deodorant for the past 8 years and since it doesn't contain any perfume, I smell perfectly neutral all of the time.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;House of Ord felted wool hat&lt;/strong&gt; — I love this hat. It keeps me cool in the sun, but warm when it's cold out. This is due to wool's thermoregulatory properties that evolved to keep the sheep cool in summer and warm in winter. While it's not the most robust hat, I suspect it'll last a few years if I treat it well.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/herman/img_1734.webp" alt="Hat" /&gt;&lt;/p&gt;
+&lt;h3 id=under-consideration&gt;Under consideration&lt;/h3&gt;&lt;p&gt;These are the products I'm using that may make the cut but I haven't used them long enough to be sure.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href='https://shop.lululemon.com/p/men-pants/ABC-Pant-Classic-32/_/prod9000003?color=19222' target='_blank'&gt;&lt;strong&gt;Lululemon ABC pants&lt;/strong&gt;&lt;/a&gt; — These are incredibly comfortable stretch pants that pretend (very convincingly) to be a semi-casual set of chinos. The only hesitation I have with them is that they pick up marks and stains incredibly easily.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Merino wool t-shirts&lt;/strong&gt; — I bought my first merino wool t-shirt recently after rocking cotton for my entire life, and I'm very impressed. These shirts don't get smelly (there are instances of people wearing them for a year straight without issue) and are very soft and comfortable. I'm a bit worried about durability, but if they make packing lighter and are versatile I may slowly start to replace my cotton shirts once they wear out.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I like to be very intentional with my purchases. We live in an 84m^2 apartment and so everything has to have its place to avoid clutter. I understand how possessions can end up owning you, and so I try to keep them as reasonable as possible. A good general rule of thumb is that new things replace worn-out and old things, not add to them. This applies both digitally and physically, since there's only so much mental capacity for digital tools as there is for physical items.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make things as simple as possible but no simpler.&lt;br /&gt;
+— Albert Einstein&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This list was last updated 4 weeks ago.&lt;/em&gt;&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/things-that-work/" rel="alternate"/>
+    <summary>A list of tools and items that JustWork (tm)</summary>
+    <published>2026-01-20T08:30:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/discovery-and-ai/</id>
+    <title>Discovery and AI</title>
+    <updated>2025-12-30T13:00:11.772151+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I browse the discovery feed on Bear daily, both as part of my role as a moderator, and because it's a space I love, populated by a diverse group of interesting people.&lt;/p&gt;
+&lt;p&gt;I've read the posts regarding AI-related content on the discovery feed, and I get it. It's such a prevalent topic right now that it feels inescapable, available everywhere from Christmas dinner to overheard conversation on the subway. It's also becoming quite a polarising one, since it has broad impacts on society and the natural environment.&lt;/p&gt;
+&lt;p&gt;This conversation also raises the question about popular bloggers and how pre-existing audiences should affect discoverability. As with all creative media, once you have a big-enough audience it becomes self-perpetuating that you get more visibility. Think Spotify's 1%. Conveniently, Bear is small enough that bloggers with no audience can still be discovered easily and it's something I'd like to preserve on the platform.&lt;/p&gt;
+&lt;p&gt;In this post I'll try and explain my thinking on these matters, and clear up a few misconceptions.&lt;/p&gt;
+&lt;p&gt;First off, posts that get many upvotes through a large pre-existing audience, or from doing well on Hacker News do not spend disproportionately more time on the discovery feed. Due to how the algorithm works, after a certain number of upvotes, more upvotes have little to no effect. Even a post with 10,000 upvotes won't spend more than a week on page #1. I want Trending to be equally accessible to all bloggers on Bear.&lt;/p&gt;
+&lt;p&gt;While this cap solves the problem of sticky posts, there is a second, less pressing issue: If a blogger has a pre-existing audience, say in the form of a newsletter or Twitter account, some of their existing audience will likely upvote, and that post has a good chance of feature on the Trending page.&lt;/p&gt;
+&lt;p&gt;One of the potential solutions I've considered is either making upvotes available to logged in users only, or Bear account holders receive extra weighting in their upvotes. However, due to how domains work each blog is a new website according to the browser, and so logins don't persist between blogs. This would require logging in to upvote on each site, which isn't feasible.&lt;/p&gt;
+&lt;p&gt;While I moderate Bear for spam, AI-generated content, and people breaking the Code of Conduct, I don't moderate by topic. That removes the egalitarian nature of the platform and puts up topic rails like an interest-group forum or subreddit. While I'm not particularly interested in AI as a topic, I don't feel like it's my place to remove it, in the same way that I don't feel particularly strongly about manga.&lt;/p&gt;
+&lt;p&gt;There is a hide blog feature on the discovery page. If you don't want certain blogs showing up in your feed, add them to the &lt;em&gt;hidden&lt;/em&gt; textarea to never see them again. Similarly to how Bear gives bloggers the ability to create their own tools within the dashboard, I would like to lean into this kind of extensibility for the discovery feed, with hiding blogs being the start. Curation instead of exclusion.&lt;/p&gt;
+&lt;p&gt;This post is just a stream of consciousness of my thoughts on the matter. I have been contemplating this, and, as with most things, it's a nuanced problem to solve. If you have any thoughts or potential solutions, send me an email. I appreciate your input.&lt;/p&gt;
+&lt;p&gt;Enjoy the last 2 days of 2025!&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/discovery-and-ai/" rel="alternate"/>
+    <summary>How ranking works on Bear</summary>
+    <published>2025-12-30T12:04:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/grow-slowly-stay-small/</id>
+    <title>Grow slowly, stay small</title>
+    <updated>2025-12-03T10:29:15.244177+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Quick announcement: I'll be visiting Japan in April, 2026 for about a month and will be on Honshu for most of the trip. Please email me recommendations. If you live nearby, let's have coffee?&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;I've always been fascinated by old, multi-generational Japanese businesses. My leisure-watching on YouTube is usually a long video of a Japanese craftsman—sometimes a 10th or 11th generation—making iron tea kettles, or soy sauce, or pottery, or furniture.&lt;/p&gt;
+&lt;p&gt;Their dedication to craft—and acknowledgment that perfection is unattainable—resonates with me deeply. Improving in their craft is an almost spiritual endeavour, and it inspires me to engage in my crafts with a similar passion and focus.&lt;/p&gt;
+&lt;p&gt;Slow, consistent investment over many years is how beautiful things are made, learnt, or grown. As a society we forget this truth—especially with the rise of social media and the proliferation of instant gratification. Good things take time.&lt;/p&gt;
+&lt;p&gt;Dedication to craft in this manner comes with incredible longevity (survivorship bias plays a role, but the density of long-lived businesses in Japan is an outlier). So many of these small businesses have been around for hundreds, and sometimes over a thousand years, passed from generation to generation. Modern companies have a hard time retaining employees for 2 years, let alone a lifetime.&lt;/p&gt;
+&lt;p&gt;This longevity stems from a counter-intuitive idea of growing slowly (or not at all) and choosing to stay small. In most modern economies if you were to start a bakery, the goal would be to set it up, hire and train a bunch of staff, and expand operations to a second location. Potentially, if you play your cards right, you could create a national (or international) chain or franchise. Corporatise the shit out of it, go public or sell, make bank.&lt;/p&gt;
+&lt;p&gt;While this is a potential path to becoming filthy rich, the odds of achieving this become vanishingly small. The organisation becomes brittle due to thinly-spread resources and care, hiring becomes risky, and leverage, whether in the form of loans or investors, imposes unwanted directionality.&lt;/p&gt;
+&lt;p&gt;There's a well known parable of the fisherman and the businessman that goes something like this:&lt;/p&gt;
+&lt;p&gt;A businessman meets a fisherman who is selling fish at his stall one morning. The businessman enquires of the fisherman what he does after he finishes selling his fish for the day. The fisherman responds that he spends time with his friends and family, cooks good food, and watches the sunset with his wife. Then in the morning he wakes up early, takes his boat out on the ocean, and catches some fish.&lt;/p&gt;
+&lt;p&gt;The businessman, shocked that the fisherman was wasting so much time encourages him fish for longer in the morning, increasing his yield and maximising the utility of his boat. Then he should sell those extra fish in the afternoon and save up until he has enough money to buy a second fishing boat and potentially employ some other fishermen. Focus on the selling side of the business, set up a permanent store, and possibly, if he does everything correctly, get a loan to expand the operation even further.&lt;/p&gt;
+&lt;p&gt;In 10 to 20 years he could own an entire fishing fleet, make a lot of money, and finally retire. The fisherman then asks the businessman what he would do with his days once retired, to which the businessman responds: "Well, you could spend more time with your friends and family, cook good food, watch the sunset with your wife, and wake up early in the morning and go fishing, if you want."&lt;/p&gt;
+&lt;p&gt;I love this parable, even if it is a bit of an oversimplification. There is something to be said about affording comforts and financial stability that a fisherman may not have access to. But I think it illustrates the point that when it comes to running a business, bigger is not always better. This is especially true for consultancies or agencies which suffer from bad horizontal scaling economics.&lt;/p&gt;
+&lt;p&gt;The trick is figuring out what is "enough". At what point are we chasing status instead of contentment?&lt;/p&gt;
+&lt;p&gt;A smaller, slower growing company is less risky, less fragile, less stressful, and still a rewarding endeavour.&lt;/p&gt;
+&lt;p&gt;This is how I run Bear. The project covers its own expenses and compensates me enough to have a decent quality of life. It grows slowly and sustainably. It isn't leveraged and I control its direction and fate. The most important factor, however, is that I don't need it to be something grander. It affords me a life that I love, and provides me with a craft to practise.&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/grow-slowly-stay-small/" rel="alternate"/>
+    <summary>A more sustainable way to do business</summary>
+    <published>2025-12-03T10:14:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/messing-with-bots/</id>
+    <title>Messing with bots</title>
+    <updated>2025-11-14T11:17:28.208510+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;As outlined in my previous &lt;a href='/agressive-bots/'&gt;two&lt;/a&gt; &lt;a href='/the-great-scrape/'&gt;posts&lt;/a&gt;: scrapers are, inadvertently, DDoSing public websites. I've received a number of emails from people running small web services and blogs seeking advice on how to protect themselves.&lt;/p&gt;
+&lt;p&gt;This post isn't about that. This post is about fighting back.&lt;/p&gt;
+&lt;p&gt;When I published my last post, there was an interesting write-up doing the rounds about &lt;a href='https://maurycyz.com/projects/trap_bots/' target='_blank'&gt;a guy who set up a Markov chain babbler&lt;/a&gt; to feed the scrapers endless streams of generated data. The idea here is that these crawlers are voracious, and if given a constant supply of junk data, they will continue consuming it forever, while (hopefully) not abusing your actual web server.&lt;/p&gt;
+&lt;p&gt;This is a pretty neat idea, so I dove down the rabbit hole and learnt about Markov chains, and even picked up Rust in the process. I ended up building my own babbler that could be trained on any text data, and would generate realistic looking content based on that data.&lt;/p&gt;
+&lt;p&gt;Now, the AI scrapers are actually not the worst of the bots. The real enemy, at least to me, are the bots that scrape with malicious intent. I get hundreds of thousands of requests for things like &lt;code&gt;.env&lt;/code&gt;, &lt;code&gt;.aws&lt;/code&gt;, and all the different &lt;code&gt;.php&lt;/code&gt; paths that could potentially signal a misconfigured Wordpress instance.&lt;/p&gt;
+&lt;p&gt;These people are the real baddies.&lt;/p&gt;
+&lt;p&gt;Generally I just block these requests with a &lt;code&gt;403&lt;/code&gt; response. But since they want &lt;code&gt;.php&lt;/code&gt; files, why don't I give them what they want?&lt;/p&gt;
+&lt;p&gt;I trained my Markov chain on a few hundred &lt;code&gt;.php&lt;/code&gt; files, and set it to generate. The responses certainly look like php at a glance, but on closer inspection they're obviously fake. I set it up to run on an isolated project of mine, while incrementally increasing the size of the generated php files from 2kb to 10mb just to test the waters.&lt;/p&gt;
+&lt;p&gt;Here's a sample 1kb output:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;?php wp_list_bookmarks () directly, use the Settings API. Use this method directly. Instead, use `unzip_file() {
+return substr($ delete, then click &amp;amp;#8220; %3 $ s object. &amp;#39; ), &amp;#39; $ image
+*
+*
+*
+* matches all IMG elements directly inside a settings error to the given context.
+* @return array Updated sidebars widgets.
+* @param string $ name = &amp;quot;rules&amp;quot; id = &amp;quot;wp-signup-generic-error&amp;quot; &amp;gt; &amp;#39; . $errmsg_generic . &amp;#39; &amp;lt;/p&amp;gt; &amp;#39;;
+	}
+	/**
+	 * Fires at the end of the new user account registration form.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param WP_Error $errors A WP_Error object containing &amp;#39; user_name &amp;#39; or &amp;#39; user_email &amp;#39; errors.
+	 */
+	do_action( &amp;#39; signup_extra_fields &amp;#39;, $errors );
+}
+
+/**
+ * Validates user sign-up name and email.
+ *
+ * @since MU (3.0.0)
+ *
+ * @return array Contains username, email, and error messages.
+ *               See wpmu_validate_user_signup() for details.
+ */
+function validate_user_form() {
+	return wpmu_validate_user_signup( $_POST[&amp;#39; user_name &amp;#39;], $_POST[&amp;#39; user_email &amp;#39;] );
+}
+
+/**
+ * Shows a form for returning users to sign up for another site.
+ *
+ * @since MU (3.0.0)
+ *
+ * @param string          $blogname   The new site name
+ * @param string          $blog_title The new site title.
+ * @param WP_Error|string $errors     A WP_Error object containing existing errors. Defaults to empty string.
+ */
+function signup_another_blog( $blogname = &amp;#39; &amp;#39;, $blog_title = &amp;#39; &amp;#39;, $errors = &amp;#39; &amp;#39; ) {
+	$current_user = wp_get_current_user();
+
+	if ( ! is_wp_error( $errors ) ) {
+		$errors = new WP_Error();
+	}
+
+	$signup_defaults = array(
+		&amp;#39; blogname &amp;#39;   =&amp;gt; $blogname,
+		&amp;#39; blog_title &amp;#39; =&amp;gt; $blog_title,
+		&amp;#39; errors &amp;#39;     =&amp;gt; $errors,
+	);
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I had two goals here. The first was to waste as much of the bot's time and resources as possible, so the larger the file I could serve, the better. The second goal was to make it realistic enough that the actual human behind the scrape would take some time away from kicking puppies (or whatever they do for fun) to try figure out if there was an exploit to be had.&lt;/p&gt;
+&lt;p&gt;Unfortunately, an arms race of this kind is a battle of efficiency. If someone can scrape more efficiently than I can serve, then I lose. And while serving a 4kb bogus php file from the babbler was pretty efficient, as soon as I started serving 1mb files from my VPS the responses started hitting the hundreds of milliseconds and my server struggled under even moderate loads.&lt;/p&gt;
+&lt;p&gt;This led to another idea: What is the most efficient way to serve data? It's as a static site (or something similar).&lt;/p&gt;
+&lt;p&gt;So down another rabbit hole I went, writing an efficient garbage server. I started by loading the full text of the classic Frankenstein novel into an array in RAM where each paragraph is a node. Then on each request it selects a random index and the subsequent 4 paragraphs to display.&lt;/p&gt;
+&lt;p&gt;Each post would then have a link to 5 other "posts" at the bottom that all technically call the same endpoint, so I don't need an index of links. These 5 posts, when followed, quickly saturate most crawlers, since breadth-first crawling explodes quickly, in this case by a factor of 5.&lt;/p&gt;
+&lt;p&gt;You can see it in action here: &lt;a href="https://herm.app/babbler/" rel="nofollow"&gt;https://herm.app/babbler/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This is very efficient, and can serve endless posts of spooky content. The reason for choosing this specific novel is fourfold:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I was working on this on Halloween.&lt;/li&gt;
+&lt;li&gt;I hope it will make future LLMs sound slightly old-school and spoooooky.&lt;/li&gt;
+&lt;li&gt;It's in the public domain, so no copyright issues.&lt;/li&gt;
+&lt;li&gt;I find there are many parallels to be drawn between Dr Frankenstein's monster and AI.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I made sure to add &lt;code&gt;noindex,nofollow&lt;/code&gt; attributes to all these pages, as well as in the links, since I only want to catch bots that break the rules. I've also added a counter at the bottom of each page that counts the number of requests served. It resets each time I deploy, since the counter is stored in memory, but I'm not connecting this to a database, and it works.&lt;/p&gt;
+&lt;p&gt;With this running, I did the same for php files, creating a static server that would serve a different (real) &lt;code&gt;.php&lt;/code&gt; file from memory on request. You can see this running here: &lt;a href='https://herm.app/babbler.php'&gt;https://herm.app/babbler.php&lt;/a&gt; (or any path with &lt;code&gt;.php&lt;/code&gt; in it).&lt;/p&gt;
+&lt;p&gt;There's a counter at the bottom of each of these pages as well.&lt;/p&gt;
+&lt;p&gt;As Maury said: "Garbage for the garbage king!"&lt;/p&gt;
+&lt;p&gt;Now with the fun out of the way, a word of caution. I don't have this running on any project I actually care about; &lt;a href='https://herm.app'&gt;https://herm.app&lt;/a&gt; is just a playground of mine where I experiment with small ideas. I originally intended to run this on a bunch of my actual projects, but while building this, reading threads, and learning about how scraper bots operate, I came to the conclusion that running this can be risky for your website. The main risk is that despite correctly using &lt;code&gt;robots.txt&lt;/code&gt;, &lt;code&gt;nofollow&lt;/code&gt;, and &lt;code&gt;noindex&lt;/code&gt; rules, there's still a chance that Googlebot or other search engines scrapers will scrape the wrong endpoint and determine you're spamming.&lt;/p&gt;
+&lt;p&gt;If you or your website depend on being indexed by Google, this may not be viable. It pains me to say it, but the gatekeepers of the internet are real, and you have to stay on their good side, &lt;em&gt;or else&lt;/em&gt;. This doesn't just affect your search ratings, but could potentially add a warning to your site in Chrome, with the only recourse being a manual appeal.&lt;/p&gt;
+&lt;p&gt;However, this applies only to the post babbler. The php babbler is still fair game since Googlebot ignores non-HTML pages, and the only bots looking for php files are malicious.&lt;/p&gt;
+&lt;p&gt;So if you have a little web-project that is being needlessly abused by scrapers, these projects are fun! For the rest of you, probably stick with 403s.&lt;/p&gt;
+&lt;p&gt;What I've done as a compromise is added the following hidden link on my blog, and another small project of mine, to tempt the bad scrapers:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;a href=&amp;quot;https://herm.app/babbler/&amp;quot; rel=&amp;quot;nofollow&amp;quot; style=&amp;quot;display:none&amp;quot;&amp;gt;Don&amp;#39;t follow this link&amp;lt;/a&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The only thing I'm worried about now is running out of Outbound Transfer budget on my VPS. If I get close I'll cache it with Cloudflare, at the expense of the counter.&lt;/p&gt;
+&lt;p&gt;This was a fun little project, even if there were a few dead ends. I know more about Markov chains and scraper bots, and had a great time learning, despite it being fuelled by righteous anger.&lt;/p&gt;
+&lt;p&gt;Not all threads need to lead somewhere pertinent. Sometimes we can just do things for fun.&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/messing-with-bots/" rel="alternate"/>
+    <summary>Markov chain babblers, bogus php files, and more!</summary>
+    <published>2025-11-13T08:56:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/agressive-bots/</id>
+    <title>Aggressive bots ruined my weekend</title>
+    <updated>2025-10-29T12:08:40.897084+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;On the 25th of October Bear had its first major outage. Specifically, the reverse proxy which handles custom domains went down, causing custom domains to time out.&lt;/p&gt;
+&lt;p&gt;Unfortunately my monitoring tool failed to notify me, and it being a Saturday, I didn't notice the outage for longer than is reasonable. I apologise to everyone who was affected by it.&lt;/p&gt;
+&lt;p&gt;First, I want to dissect the root cause, exactly what went wrong, and then provide the steps I've taken to mitigate this in the future.&lt;/p&gt;
+&lt;p&gt;I wrote about &lt;a href='/the-great-scrape/'&gt;The Great Scrape&lt;/a&gt; at the beginning of this year. The vast majority of web traffic is now bots, and it is becoming increasingly more hostile to have publicly available resources on the internet.&lt;/p&gt;
+&lt;p&gt;There are 3 major kinds of bots currently flooding the internet: AI scrapers, malicious scrapers, and unchecked automations/scrapers.&lt;/p&gt;
+&lt;p&gt;The first has been discussed at length. Data is &lt;em&gt;worth something&lt;/em&gt; now that it is used as fodder to train LLMs, and there is a financial incentive to scrape, so scrape they will. They've depleted all human-created writing on the internet, and are becoming increasingly ravenous for new wells of content. I've seen this compared to the search for &lt;a href='https://en.wikipedia.org/wiki/Low-background_steel' target='_blank'&gt;low-background-radiation steel&lt;/a&gt;, which is, itself, very interesting.&lt;/p&gt;
+&lt;p&gt;These scrapers, however, are the easiest to deal with since they tend to identify themselves as ChatGPT, Anthropic, XAI, et cetera. They also tend to specify whether they are from user-initiated searches (think all the sites that get scraped when you make a request with ChatGPT), or data mining (data used to train models). On Bear Blog I allow the first kinds, but block the second, since bloggers want discoverability, but usually don't want their writing used to train the next big model.&lt;/p&gt;
+&lt;p&gt;The next two kinds of scraper are more insidious. The malicious scrapers are bots that systematically scrape and re-scrape websites, sometimes every few minutes, looking for vulnerabilities such as misconfigured Wordpress instances, or &lt;code&gt;.env&lt;/code&gt; and &lt;code&gt;.aws&lt;/code&gt; files, among other things, accidentally left lying around.&lt;/p&gt;
+&lt;p&gt;It's more dangerous than ever to self-host, since simple mistakes in configurations will likely be found and exploited. In the last 24 hours I've blocked close to 2 million malicious requests across several hundred blogs.&lt;/p&gt;
+&lt;p&gt;What's wild is that these scrapers rotate through thousands of IP addresses during their scrapes, which leads me to suspect that the requests are being tunnelled through apps on mobile devices, since the ASNs tend to be cellular networks. I'm still speculating here, but I think app developers have found another way to monetise their apps by offering them for free, and selling tunnel access to scrapers.&lt;/p&gt;
+&lt;p&gt;Now, on to the unchecked automations. Vibe coding has made web-scraping easier than ever. Any script-kiddie can easily build a functional scraper in a single prompt and have it run all day from their home computer, and if the dramatic rise in scraping is anything to go by, many do. Tens of thousands of new scrapers have cropped up over the past few months, accidentally DDoSing website after website in their wake. The average consumer-grade computer is significantly more powerful than a VPS, so these machines can easily cause a lot of damage without noticing.&lt;/p&gt;
+&lt;p&gt;I've managed to keep all these scrapers at bay using a combination of web application firewall (WAF) rules and rate limiting provided by Cloudflare, as well as some custom code which finds and quarantines bad bots based on their activity.&lt;/p&gt;
+&lt;p&gt;I've played around with serving &lt;a href='https://en.wikipedia.org/wiki/Zip_bomb' target='_blank'&gt;Zip Bombs&lt;/a&gt;, which was quite satisfying, but I stopped for fear of accidentally bombing a legitimate user. Another thing I've played around with is Proof of Work validation, making it expensive for bots to scrape, as well as serving endless junk data to keep the bots busy. Both of these are &lt;em&gt;interesting&lt;/em&gt;, but ultimately are just as effective as simply blocking those requests, without the increased complexity.&lt;/p&gt;
+&lt;p&gt;With that context, here's exactly went wrong on Saturday.&lt;/p&gt;
+&lt;p&gt;Previously, the bottleneck for page requests was the web-server itself, since it does the heavy lifting. It automatically scales horizontally by up to a factor of 10, if necessary, but bot requests can scale by significantly more than that, so having strong bot detection and mitigation, as well as serving highly-requested endpoints via a CDN is necessary. This is a solved problem, as outlined in my Great Scrape post, but worth restating.&lt;/p&gt;
+&lt;p&gt;On Saturday morning a few hundred blogs were DDoSed, with tens of thousands of pages requested per minute (from the logs it's hard to say whether they were malicious, or just very aggressive scrapers). The above-mentioned mitigations worked as expected, however the reverse-proxy—which sits up-stream of most of these mitigations—became saturated with requests and decided it needed to take a little nap.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/herman/page-requests.webp" alt="page-requests" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;The big blue spike is what toppled the server. It's so big it makes the rest of the graph look flat.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;This server had been running with zero downtime for 5 years up until this point.&lt;/p&gt;
+&lt;p&gt;Unfortunately my uptime monitor failed to alert me via the push notifications I'd set up, even though it's the only app I have that not only has notifications enabled (see my &lt;a href='/notifications/'&gt;post on notifications&lt;/a&gt;), but even has critical alerts enabled, so it'll wake me up in the middle of the night if necessary. I still have no idea why this alert didn't come through, and I have ruled out misconfiguration through various tests.&lt;/p&gt;
+&lt;p&gt;This brings me to how I will prevent this from happening in the future.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Redundancy in monitoring. I now have a second monitoring service running alongside my uptime monitor which will give me a phone call, email, and text message in the event of any downtime.&lt;/li&gt;
+&lt;li&gt;More aggressive rate-limiting and bot mitigation on the reverse proxy. This already reduces the server load by about half.&lt;/li&gt;
+&lt;li&gt;I've bumped up the size of the reverse proxy, which can now handle about 5 times the load. This is overkill, but compute is cheap, and certainly worth the stress-mitigation. I'm already bald. I don't need to go balder.&lt;/li&gt;
+&lt;li&gt;Auto-restart the reverse-proxy if bandwidth usage drops to zero for more than 2 minutes.&lt;/li&gt;
+&lt;li&gt;Added a status page, available at &lt;a href='https://status.bearblog.dev'&gt;https://status.bearblog.dev&lt;/a&gt; for better visibility and transparency. Hopefully those bars stay solid green forever.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This should be enough to keep everything healthy. If you have any suggestions, or need help with your own bot issues, &lt;a href='/contact/'&gt;send me an email&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The public internet is mostly bots, many of whom are bad netizens. It's the most hostile it's ever been, and it is because of this that I feel it's more important than ever to take good care of the spaces that make the internet worth visiting.&lt;/p&gt;
+&lt;p&gt;The arms race continues...&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/agressive-bots/" rel="alternate"/>
+    <summary>The web-scraping arm race continues</summary>
+    <published>2025-10-29T09:43:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/microconf-europe/</id>
+    <title>Attending MicroConf Europe 2025</title>
+    <updated>2025-10-24T12:02:29.348048+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Now that I've been home for about a month and have all my ducks back in a row, it's time I wrote about my trip to Istanbul for &lt;a href='https://microconf.com/europe' target='_blank'&gt;MicroConf Europe&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;MicroConf is a conference for bootstrapped (non-VC-tracked) founders. And while I don't necessarily view Bear as a business, MicroConf is the closest there is to an &lt;em&gt;Industry Event&lt;/em&gt; for someone like me.&lt;/p&gt;
+&lt;p&gt;First a note on Istanbul:&lt;/p&gt;
+&lt;p&gt;I arrived a week early to explore the city and see the sights. I'm a bit of a history nerd, so being at the crossroads of &lt;em&gt;where it all happened&lt;/em&gt; in Europe—going back thousands of years—was quite spectacular. I get up early, and wandering the empty streets of the old city before the tour groups flooded in was quite special.&lt;/p&gt;
+&lt;p&gt;Also, the mosques dotting the skyline as viewed from the Bosporus are like nothing I've ever seen. It's amazing to see human effort geared towards creating beautiful buildings. I know it's not economically viable, but imagine if cities were built with beauty and a cohesive aesthetic in mind.&lt;/p&gt;
+&lt;p&gt;There were, however, a few negative characteristics of the city that grated at me, the main one being the hard separation of what is the &lt;em&gt;tourist area&lt;/em&gt; and what isn't. Inside the old city all of the restaurants were clones, serving the same &lt;em&gt;authentic Turkish food&lt;/em&gt; at 5x the reasonable price.&lt;/p&gt;
+&lt;p&gt;And scams were rife. I remember after a mediocre lunch at a mediocre restaurant, looking at the hand-written bill, the per-person cost came to about 2000TRY (roughly $50 at the time). The staff didn't speak English, and I wasn't going to throw all of my toys out of the cot via Google Translate, so I begrudgingly paid the bill and vowed never to eat there again. Similarly with taxis: it was impossible to take one as a foreigner without an attempted scam, to the extent the conference coordinator put out a PSA to use a specific transport company for rides instead of using the local taxis.&lt;/p&gt;
+&lt;p&gt;It's unfortunate when a city is unwelcoming in this manner, and it left a bad taste in my mouth.&lt;/p&gt;
+&lt;p&gt;Putting all of that aside, I still had a spectacular time. The main reason I came to this conference was to learn, get inspired, and soak up the vibes from other interesting people building interesting things. And I got exactly what I came for.&lt;/p&gt;
+&lt;p&gt;The talks and workshops were good, but what made the event shine was the &lt;em&gt;in-between times&lt;/em&gt; spent with other attendees. The meals and walks, the &lt;em&gt;hammam&lt;/em&gt; and sauna sessions. I found myself engaged from sunrise to sunset, notebook not far away, transcribing those notes during my downtime.&lt;/p&gt;
+&lt;p&gt;One of the attendees, &lt;a href='https://schoberg.net' target='_blank'&gt;Jesse Schoberg&lt;/a&gt;, runs a blogging platform as well, which focusses on embeddable blogs for organisations. It's called &lt;a href='https://dropinblog.com/' target='_blank'&gt;DropInBlog&lt;/a&gt; and is a really neat solution and platform. We chatted about what it's like running this kind of service, from bots to discoverability, and enjoyed the sunset on the terrace overlooking the Sea of Marmara. I can't think of a better place to talk shop.&lt;/p&gt;
+&lt;p&gt;I can't list all of the great conversations I had over those 3 days, but one standout to me was dinner with the &lt;a href='https://www.conversionfactory.co/' target='_blank'&gt;ConversionFactory&lt;/a&gt; lads: Zach, Nick, and Corey. Not only were they one of the event sponsors, but were just great people to hang out with—and obviously incredibly proficient at their craft. After dinner on the last evening of the conference we crowded into the steam room to take advantage of the hotel's amenities that I'd paid way too much for. I got too hot, and mistaking the basin in the middle of the room for cooling off, managed to splash strong, menthol-infused water on my face. I immediately regretted it. My face, eyes, and nose started burning intensely with the icy-cold blaze of menthol and I was temporarily blinded. I had one of them hose off my face since I couldn't do anything in that state.&lt;/p&gt;
+&lt;p&gt;Product idea: Mace, but menthol.&lt;/p&gt;
+&lt;p&gt;One of my friends, &lt;a href='https://robhope.com' target='_blank'&gt;Rob Hope&lt;/a&gt;, just arrived back from giving a talk at a conference in the US. When I met up with him for dumplings and dinner last week, it came up that, coincidentally, he had also just met the ConversionFactory lads on his most recent trip. I guess they get around.&lt;/p&gt;
+&lt;p&gt;Will I come back to MicroConf? Without a doubt. This has been inspiring, educational, and also quite validating. People were impressed with my projects, and surprised that I don't track visitors, conversions, and other &lt;em&gt;important metrics&lt;/em&gt;. Bear is healthy, paying me a good salary while being aligned with my values, ethos, and lifestyle.&lt;/p&gt;
+&lt;p&gt;I guess I'm running on vibes, and the vibes are good.&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/microconf-europe/" rel="alternate"/>
+    <summary>Being a solo founder needs company</summary>
+    <published>2025-10-22T11:23:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/being-present/</id>
+    <title>Smartphones and being present</title>
+    <updated>2025-10-13T13:29:05.448808+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I read an article yesterday, stating that on average, people spend 4 hours and 37 minutes on their phones per day&lt;sup&gt;&lt;a href='https://explodingtopics.com/blog/smartphone-usage-stats/#time-spent-using-smartphones-annually' target='_blank'&gt;1&lt;/a&gt;&lt;/sup&gt;, with South Africans coming in fourth highest in the world at a whopping 5 hours and 11 minutes&lt;sup&gt;&lt;a href='https://explodingtopics.com/blog/smartphone-usage-stats/#time-spent-using-smartphones-by-region' target='_blank'&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;This figure seems really high to me. If we assume people sleep roughly 8 hours per day, that means that one third of their day is spent on their phones. If we also assume people work 8 hours per day (ignoring the fact that they may be using their phones during work hours), that suggests that people spend over half of their free time (and up to 65% of it) glued to their screens.&lt;/p&gt;
+&lt;p&gt;I never wanted to carry the internet around in my pocket. It's too distracting and pulls me out of the present moment, fracturing my attention. I've tried switching to old-school black and white phones before, but always begrudgingly returned to using a smartphone due to the utility of it. The problem, however, is that it comes with too many attention sinks tucked in alongside the useful tools.&lt;/p&gt;
+&lt;p&gt;I care about living an intentional and meaningful life, nurturing relationships, having nuanced conversations, and enjoying the world around me. I don't want to spend this limited time I have on earth watching short form video and getting into arguments on Twitter.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/herman/img_1438.webp" alt="Scarborough" /&gt;
+&lt;small style="color:grey"&gt;This is what I enjoy. Picture taken yesterday in Scarborough, South Africa.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;I've written at length about how I manage my digital consumption, from &lt;a href='/notifications/'&gt;turning off notifications&lt;/a&gt; to &lt;a href='/slow-social-media/'&gt;forgoing social media entirely&lt;/a&gt;. The underlying premise here is that if you're trying to lose weight, you shouldn't carry cookies around in your pockets. And my phone is the bag of cookies in this metaphor.&lt;/p&gt;
+&lt;p&gt;We're wired to seek out distraction, novel information, and entertainment, and avoid boredom at all costs. But boredom is where creativity and self-reflection do their best work. It's why "all the best ideas come when you're in the shower"—we don't usually take our phones with us into the shower (yet).&lt;/p&gt;
+&lt;p&gt;According to Screen Time on my iPhone, on average I spend 30 minutes per day on it, which I think is reasonable, especially considering the most-used apps are by-and-large utility apps like banking and messages. This isn't because I have more self-control than other people. I don't think I do. It's because I know myself, and have set up my digital life to be a positive force, and not an uninspired time-sink.&lt;/p&gt;
+&lt;p&gt;There are many apps and systems to incentivise better relationships with our phones, mostly based around time limits. But these are flawed in three ways:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I'm an adult, I know how to circumvent these limits, and I will if motivation is low.&lt;/li&gt;
+&lt;li&gt;Time limits don't affect the underlying addiction. You don't quit smoking by only smoking certain hours of the day.&lt;/li&gt;
+&lt;li&gt;The companies that build these apps have tens of thousands of really smart people (and billions of dollars) trying to get me hooked and keep me engaged. The only way to win this game isn't by trying to beat them (I certainly can't), but by not playing.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The only way I've found to have a good relationship with my phone is to make it as uninteresting as possible. The first way is to not have recommendation media (think Instagram, TikTok, and all the rest). I'm pro deleting these accounts completely, because it's really easy to re-download the apps on a whim, or visit them in-browser. However some people have found that having them on a dedicated device works by isolating those activities. Something like a tablet at home that is "the only place you're allowed to use Instagram". I can't comment too much on this route, but it seems reasonable.&lt;/p&gt;
+&lt;p&gt;My biggest time sink over the past few years has been YouTube. The algorithm knew me too well and would recommend video after engaging, but ultimately useless video. I could easily burn an entire evening watching absolute junk—leaving me feeling like I'd just wasted what could have otherwise been a beautiful sunset or a tasty home-cooked lasagne. However, at the beginning of this year I learnt that you can turn off your YouTube watch history entirely, which means no recommendations. Here's what my YouTube home screen now looks like:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/herman/45-1.webp" alt="Screenshot 2025-10-11 at 08" /&gt;&lt;/p&gt;
+&lt;p&gt;Without the recommendations I very quickly run out of things to watch from the channels I'm subscribed to. It's completely changed my relationship with YouTube since I only watch the videos I actually want to watch, and none of the attention traps. You can turn off your YouTube watch history &lt;a href='https://www.youtube.com/feed/history'&gt;here&lt;/a&gt;, and auto delete your other Google history (like historic searches and navigation) &lt;a href='https://myactivity.google.com/activitycontrols/'&gt;here&lt;/a&gt;, which I think is just good practice.&lt;/p&gt;
+&lt;p&gt;I also used my adblocker, AdGuard on Safari which has a useful "block element" feature, to block the recommended videos on the right of YouTube videos. I use this feature to hide shorts as well, since I have no interest in watching them either, and YouTube intentionally makes them impossible to remove. If you're interested in a similar setup, here are the selectors I use to block those elements:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;youtube.com###items &amp;gt; ytd-item-section-renderer.style-scope.ytd-watch-next-secondary-results-renderer:last-child
+youtube.com###sections
+youtube.com##[is-shorts]
+youtube.com###secondary
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The only media that I do sometimes consume on my phone are my RSS feeds, but it's something I'm completely comfortable with since it's explicitly opt-in by design and low volume.&lt;/p&gt;
+&lt;p&gt;While I still have the twitch to check my phone when I'm waiting for a coffee, or in-between activities—because my brain's reward system has been trained to do this—I'm now rewarded with nothing. Over time, I find myself checking my phone less and less. Sometimes I notice the urge, and just let it go, instead focusing on the here and now.&lt;/p&gt;
+&lt;p&gt;I think that while the attention-span-degrading effects of recommendation media are getting most of the headlines, what isn't spoken about as much is the sheer number of hours lost globally to our phones (3.8 million years per day, according to my back-of-the-napkin-math). And while people may argue that this could involve productive work or enjoyable leisure, I suspect that the vast (vast!) majority of that time is short-form entertainment.&lt;/p&gt;
+&lt;p&gt;My solution may sound overkill to many people, but I can say with absolute certainty that it has turned me into a more present, less distracted, and more optimistic person. I have much more time to spend in nature, with friends, or on my hobbies and projects. I can't imagine trading it in for a tiny screen, ever.&lt;/p&gt;
+&lt;p&gt;Give it a try.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/herman/img_1439.webp" alt="Scarborough" /&gt;
+&lt;small style="color:grey"&gt;Happily on the beach for sunset.&lt;/small&gt;&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/being-present/" rel="alternate"/>
+    <summary>Living intentionally in a world of distraction.</summary>
+    <published>2025-10-13T13:04:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/piracy-kills/</id>
+    <title>PIRACYKILLS</title>
+    <updated>2025-10-03T07:49:08.074173+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Most people who read my blog and know me for the development of &lt;a href='https://bearblog.dev' target='_blank'&gt;Bear Blog&lt;/a&gt; are surprised to learn that I have another software project in the art and design space. It's called &lt;a href='https://justsketch.me' target='_blank'&gt;JustSketchMe&lt;/a&gt; and is a 3D modelling tool for artists to conceptualise their artwork before putting pencil to paper.&lt;/p&gt;
+&lt;p&gt;It's a very niche tool (and requires some serious explanation to some non-illustrators involving a wooden mannequin and me doing some dramatic poses), however when provided as a freemium tool to the global population of artists, it's quite well used.&lt;/p&gt;
+&lt;p&gt;Similar to Bear, I make it free to everyone, with the development being funded through a "pro" tier. Conversely, since it is a standalone app it has a bit of a weakness, which is what this post is about.&lt;/p&gt;
+&lt;p&gt;I noticed, back in 2021, that when Googling "justsketchme" the top 3 autocompletes were "justsketchme crack", "justsketchme pro cracked", and "justsketchme apk". On writing this post, I checked that this still holds true, and it's fairly similar 4 years later.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/herman/justsketchme-google.webp" alt="justsketchme-google" /&gt;&lt;/p&gt;
+&lt;p&gt;The meaning of this is obvious. A lot of people are trying to pirate JustSketchMe. However, instead of feeling frustrated (okay, I did feel a bit frustrated at first) I had a bright idea to turn this apparent negative into a positive.&lt;/p&gt;
+&lt;p&gt;I created two pages with the following titles and the appropriate subtitles to get indexed as a pirate-able version of JustSketchMe:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href='https://justsketch.me/justsketchme-crack-full-2021-skidrow/' target='_blank'&gt;JustSketchMe Crack Full 2021 22.0.1.73&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://justsketch.me/justsketchme-apk-mirror-free/' target='_blank'&gt;JustSketchMe APK Mirror FULL 2.2.2021&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/herman/justsketchme-1664202109.webp" alt="justsketchme-1664202109" /&gt;&lt;/p&gt;
+&lt;p&gt;These pages rank as the first result on Google for the relevant search terms. Then on the page itself I tongue-in-cheek call out the potential pirate. I then acknowledge that we're in financially trying times and give them a discount code.&lt;/p&gt;
+&lt;p&gt;And you know what?&lt;/p&gt;
+&lt;p&gt;That discount code is the most used discount code on JustSketchMe! By far! No YouTube sponsor, nor Black Friday special even comes close.&lt;/p&gt;
+&lt;p&gt;In some ways this is taking advantage of a good search term. In others it's showing empathy and adding delight, creating a positive incentive to purchase to someone who otherwise wouldn't have.&lt;/p&gt;
+&lt;p&gt;The discount code is &lt;strong&gt;PIRACYKILLS&lt;/strong&gt;. I'll leave it active for a while. 👮🏻‍♂️&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/piracy-kills/" rel="alternate"/>
+    <summary>How to use piracy to your advantage.</summary>
+    <published>2025-10-03T07:30:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/misc-updates/</id>
+    <title>Miscellaneous updates</title>
+    <updated>2025-09-22T07:40:37.607154+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;Hi everyone,&lt;/p&gt;
+&lt;p&gt;Just some updates about upcoming travel and events; responses to the recent post about social media platforms; and some thoughts about the Bear license update.&lt;/p&gt;
+&lt;h3 id=travel&gt;Travel&lt;/h3&gt;&lt;p&gt;I'll be heading to Istanbul next week for &lt;a href='https://microconf.com/europe'&gt;Microconf&lt;/a&gt;, which is a yearly conference where non-venture track founders get together, explore a new city, and learn from one another. I had meant to go to the one last year in Croatia, but had just gotten back from two months in Vietnam, and the thought of travelling again so soon felt daunting.&lt;/p&gt;
+&lt;p&gt;I've made two Bear t-shirts for the conference. One light and one dark mode—inspired by the default Bear theme. Let's see if anyone notices!&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/herman/bear-shirts.webp" alt="bear-shirts" /&gt;&lt;/p&gt;
+&lt;p&gt;If you live in Istanbul and want to grab coffee, I'm keen! If you've previously travelled to Istanbul and have recommendations for me, please pop me an email. I have a few days to explore the city.&lt;/p&gt;
+&lt;h3 id=slow-social-media&gt;Slow social media&lt;/h3&gt;&lt;p&gt;I received so many great emails from people about my post on &lt;a href='/slow-social-media/'&gt;slow social media&lt;/a&gt;. There are many great projects underway at the moment, and many great projects that unfortunately didn't make it. Some notable standouts to me:&lt;/p&gt;
+&lt;p&gt;Unfortunately no longer with us:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href='https://en.wikipedia.org/wiki/Cohost' target='_blank'&gt;Cohost&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://en.wikipedia.org/wiki/Path_%28social_network%29' target='_blank'&gt;Path&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://techcrunch.com/2020/10/11/hands-on-with-telepath-the-social-network-taking-aim-at-abuse-fake-news-and-to-some-extent-free-speech/' target='_blank'&gt;Telepath&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here are some projects that are up-and-running. These aren't necessarily all "social networks", nor necessarily viable at scale, but each of them has an element or two that makes them interesting.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href='https://havenweb.org' target='_blank'&gt;Haven&lt;/a&gt; - Private blogs for friends&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://www.letterloop.co' target='_blank'&gt;Letterloop&lt;/a&gt; - Private group newsletters&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://apps.apple.com/us/app/locket-widget/id1600525061' target='_blank'&gt;Locket Widget&lt;/a&gt; - Share photos to your friend's home screen&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://webxdc.org/apps/#arcanecircle-pixelsocial' target='_blank'&gt;Pixel social&lt;/a&gt; - A server-less private social network running on WebXDC&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://micro.one' target='_blank'&gt;Micro.one&lt;/a&gt; - A fediverse integrated blog by Manton of Micro.blog&lt;/li&gt;
+&lt;li&gt;&lt;a href='https://runyourown.social' target='_blank'&gt;runyourown.social&lt;/a&gt; - How to run a small social network site for your friends&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There were many other projects in various states of development that I haven't had the time to fully explore yet, but I'll get to them over the next week or so.&lt;/p&gt;
+&lt;h3 id=bear-licence-update&gt;Bear licence update&lt;/h3&gt;&lt;p&gt;Somehow &lt;a href='/license/'&gt;my post&lt;/a&gt; about the change in the Bear source code license exploded on Hacker News, Tildes, Lobsters, and Reddit, and has been read over 120,000 times.&lt;/p&gt;
+&lt;p&gt;The vast majority of the emails and responses I received were positive, but about 10% of the Hacker News crowd got really mean about it without taking the time to understand the context. I guess I can't expect empathy from 120,000 people.&lt;/p&gt;
+&lt;p&gt;Regardless, if you're interested in reading about the controversy &lt;a href='https://grizzlygazette.bearblog.dev/on-the-bear-blog-license-change/'&gt;The Grizzly Gazette&lt;/a&gt; covered it quite well.&lt;/p&gt;
+&lt;p&gt;While I don't feed the trolls on Hacker News (and find comments to be a pretty poor place to have nuanced discussions in general), I'd like to respond to a few of the main critiques here.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;"You built a community and then exploited it!" (I'm paraphrasing here)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;While Bear (the platform) has a community—and a very good one at that; the source-code part of Bear has never been community oriented. Bear &lt;a href='https://github.com/HermanMartinus/bearblog/blob/master/CONTRIBUTIONS.md' target='_blank'&gt;doesn't accept code contributions&lt;/a&gt; and the code has been written by me personally. I have not engaged in the exploitation of free developer labour, nor used it being open-source as marketing material.&lt;/p&gt;
+&lt;p&gt;I suspect that these kinds of comments arose from the (justified, but ultimately misguided) assumption that the Bear project had active contributors and a community surrounding the code itself.&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;"Get your license right the first time!" (also paraphrasing)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Yes, I shouldn't have released Bear on an MIT license in the beginning. I didn't even think about licenses when I launched Bear in 2020 and just used the default. I also didn't expect free-ride competition to be an issue in this space. So, this is a justifiable criticism, even if it feels like it was made in bad faith.&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;"Use a GPL instead of a source-available license" (yes, also paraphrasing)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This was a common criticism, but fails to resolve the main reason for this change: people forking and hosting a clone of Bear under a new name, social elements and all. The &lt;a href='https://www.gnu.org/licenses/agpl-3.0.en.html' target='_blank'&gt;AGPLv3&lt;/a&gt; license only specifies that they would need to release &lt;em&gt;their version&lt;/em&gt; of the code under the same license. This doesn't dissuade free-ride competition, at least not in this context.&lt;/p&gt;
+&lt;p&gt;Bear's source code was never meant to be used by people to set up competing services to Bear. It was there to ensure that people understand what's going on under the hood, and to make the platform auditable. I specify this in the &lt;a href='https://github.com/HermanMartinus/bearblog/blob/master/CONTRIBUTIONS.md' target='_blank'&gt;CONTRIBUTIONS.md&lt;/a&gt; that was last updated 2 years ago.&lt;/p&gt;
+&lt;p&gt;In summary, Bear is a platform, not a piece of self-hostable software. I think these criticisms are justified sans-context. With context, I don't think the same arguments would have been made. But Hacker News is well known for nasty comments based on the title of the post alone.&lt;/p&gt;
+&lt;h3 id=fin&gt;fin&lt;/h3&gt;&lt;p&gt;Aaand we're done! Lots of updates. Please feel free to email me your thoughts, recommendations, or anything else. If you haven't dug through my past posts, here're a few lesser-read posts that I enjoyed writing:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href='/years-of-journaling/'&gt;Observations on 6 years of journaling&lt;/a&gt; (I'm at 10 years now, I'll need to write a new post at some point)&lt;/li&gt;
+&lt;li&gt;&lt;a href='/a-case-for-toe-socks/'&gt;A case for toe socks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href='/the-creative-agency-of-small-projects/'&gt;The creative agency of small projects&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you haven't subscribed to my blog, you can do it via the &lt;a href='/feed/'&gt;RSS feed&lt;/a&gt; or &lt;a href='/subscribe/'&gt;email&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Have a goodie!&lt;/p&gt;
+</content>
+    <link href="https://herman.bearblog.dev/misc-updates/" rel="alternate"/>
+    <summary>Just some bits and pieces that don't justify a whole post.</summary>
+    <published>2025-09-19T09:45:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://herman.bearblog.dev/slow-social-media/</id>
+    <title>Slow social media</title>
+    <updated>2025-10-02T13:41:18.903926+00:00</updated>
+    <author>
+      <name>herman</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;People often assume that I hate social media. And they'd be forgiven for believing that, since I am overtly critical of current social media platforms and the effects they have on individuals and society; and &lt;a href='/quitting-social-media/'&gt;deleted all of my social media accounts back in 2019&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;However, the underlying concept of social media is something I resonate with: Stay connected with the people you care about.&lt;/p&gt;
+&lt;p&gt;It's just that the current form of social media is bastardised, and not social at all. Instead of improving relationships and fostering connection, they're advertisement-funded content mills which are explicitly designed and continually refined to keep you engaged, lonely, and unhappy. And once TikTok figured out that short-form video with a recommendation engine is digital crack, all other social media platforms quickly sprang into action to copy their secret sauce.&lt;/p&gt;
+&lt;p&gt;Meta basically turned Instagram and Facebook from 'connecting with friends' into 'doom-scrolling random content'. Even Pinterest is starting to look like TikTok! They followed user engagement, but not the underlying preferences of their users. I posit that any for-profit social media will eventually degrade into recommendation media over time.&lt;/p&gt;
+&lt;p&gt;I don't think most people using these platforms understand that they are the product. Instagram isn't built for you. It's built for marketers. It's built for celebrities to capitalise on their audiences. It's built for politicians and their cronies to sway sentiment. It's built to be as addictive as possible, and to capitalise on your insecurity and uncomfortability.&lt;/p&gt;
+&lt;p&gt;Imagine that, society and politics are on the rocks all so a fitness influencer can sell you their "Abs in 30 days" training program.&lt;/p&gt;
+&lt;p&gt;These platforms are the quintessential poster child for late-stage capitalism.&lt;/p&gt;
+&lt;p&gt;Okay, now that we've established what the problems with current platforms are—what would a non-evil social media platform look like?&lt;/p&gt;
+&lt;p&gt;I'd love to see everyone running a blog, and subscribing to the people they care about via RSS. But unfortunately this doesn't scale since it requires effort to put your thoughts down in writing longer than 255 characters. I have many friends who don't even know I have a blog, or what an RSS reader is.&lt;/p&gt;
+&lt;p&gt;So while everyone blogging may be the ideal we can aspire to, let's design a hypothetical social media platform that takes the good aspects of current social media, while creating pro-social incentives.&lt;/p&gt;
+&lt;p&gt;The platform should be about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Keeping up with friends, family, and other acquaintances&lt;/li&gt;
+&lt;li&gt;Connection (but, you know, real connection)&lt;/li&gt;
+&lt;li&gt;Improving relationships&lt;/li&gt;
+&lt;li&gt;Thoughtful engagement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The platform should NOT be about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collecting followers&lt;/li&gt;
+&lt;li&gt;Self-promotion&lt;/li&gt;
+&lt;li&gt;Advertising and marketing&lt;/li&gt;
+&lt;li&gt;Short-form video and media entertainment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In my opinion, as soon as there is the ability for commercial interests to take hold, they will. The "follow" mechanism is a key part of that. I propose that instead of followers we should regress back to the "friend" or "connection" system where there is a symmetric relationship where both people have to agree to the connection. There is no good reason to have "followers" on a platform that is trying to improve relationships. "Following" is purely for egotistical or financial gain and breeds parasocial relationships.&lt;/p&gt;
+&lt;p&gt;I think there should also be a reasonable cap on the number of connections that can be made. Something like 300 friends sounds right. Any more than that and you're a collector, and not using the platform to foster connection.&lt;/p&gt;
+&lt;p&gt;This feature alone already removes 90% of the marketing interests in the platform. Do you want to make a connection, but are maxed out? You'll need to unfriend someone first.&lt;/p&gt;
+&lt;p&gt;The second necessary element would be a chronological feed with posts from your connections. This turns the platform from an engagement engine into a way to keep up with what everyone else is doing, but importantly, gives you a natural "end" to the feed when you start seeing posts you've already viewed. This way when you start scrolling there's an explicit stopping point.&lt;/p&gt;
+&lt;p&gt;Relatedly, pagination is more humane than infinite-scroll since it gives users a natural breathing point where they can decide whether they want to keep going. Infinite-scroll is such an obvious user-trap, and I view any website doing it as not having its user's best interests at heart.&lt;/p&gt;
+&lt;p&gt;And finally, there should be a reasonable cap on the number of times a user can post per day. Roughly 5 times per day feels like the upper threshold of what you can post while being intentional about what it is you're posting. This will keep the feed reasonably populated without one or two people completely overwhelming it.&lt;/p&gt;
+&lt;p&gt;The rest of the platform can be optimised to be as easy-to-use as possible. Something like a mixture between the old Instagram and Twitter, with comments and reactions. No reels or any other recommendation system to keep people engaged to death. And no analytics, since that would be optimising for reach and engagement instead of the stated goal of connection.&lt;/p&gt;
+&lt;p&gt;Do I expect a platform like this to succeed? Not by the traditional metrics of success. In the real world it would exist alongside the content mills, which are exciting by design and competing for attention. Could it work in niche groups, or amongst intentional people who are sick of the current platforms? Maybe.&lt;/p&gt;
+&lt;p&gt;Naturally, a project like this would have to be funded somehow, and unfortunately very few people are willing to pay $5 per month for software services, even if they use it every day. However, I suspect that a social media platform like this would be manageable enough that a small team could run it fairly cheaply and profitably if they're creative. Perhaps with nothing but donations.&lt;/p&gt;
+&lt;p&gt;Who will create this egalitarian social media? Not me, that's for sure. I already have my fair share of work moderating the &lt;a href='https://bearblog.dev/discover/'&gt;Bear discovery feed&lt;/a&gt;, to the extent I've had to bring on a second moderator (hello Sheena!) to keep it clean of spam and other nasty things that free services on the internet attract.&lt;/p&gt;
+&lt;p&gt;That being said, I would love to see something like this. I'd love to be able to stay connected with friends and family abroad without having my attention sold to the highest bidder.&lt;/p&gt;
+&lt;p&gt;If anyone is working on something like this, I'd be happy to consult.&lt;/p&gt;
+&lt;small&gt;
+&lt;p&gt;--&lt;br /&gt;
+edit: I've collated a bunch of responses as well as some neat projects that were brought to my attention in &lt;a href='/misc-updates/'&gt;Miscellaneous updates&lt;/a&gt;.&lt;/p&gt;
+&lt;/small&gt;
+</content>
+    <link href="https://herman.bearblog.dev/slow-social-media/" rel="alternate"/>
+    <summary>How can we design better platforms?</summary>
+    <published>2025-09-16T09:44:00+00:00</published>
+  </entry>
+</feed>

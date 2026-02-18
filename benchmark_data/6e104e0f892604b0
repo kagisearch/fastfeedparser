@@ -1,0 +1,1081 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
+	>
+
+<channel>
+	<title>Adam Scherlis</title>
+	<atom:link href="https://adam.scherlis.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://adam.scherlis.com</link>
+	<description>Parameter Space: The Final Frontier</description>
+	<lastBuildDate>Tue, 25 Mar 2025 19:14:31 +0000</lastBuildDate>
+	<language>en</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>http://wordpress.com/</generator>
+<cloud domain='adam.scherlis.com' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
+<image>
+		<url>https://secure.gravatar.com/blavatar/0aa0e652db4c11480af5c0ef73d00899c7f9066507b15820ede326fd59084e5f?s=96&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fbuttonw-com.png</url>
+		<title>Adam Scherlis</title>
+		<link>https://adam.scherlis.com</link>
+	</image>
+	<atom:link rel="search" type="application/opensearchdescription+xml" href="https://adam.scherlis.com/osd.xml" title="Adam Scherlis" />
+	<atom:link rel='hub' href='https://adam.scherlis.com/?pushpress=hub'/>
+	<item>
+		<title>New blog</title>
+		<link>https://adam.scherlis.com/2025/03/25/new-blog/</link>
+					<comments>https://adam.scherlis.com/2025/03/25/new-blog/#respond</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Tue, 25 Mar 2025 19:14:31 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=572</guid>
+
+					<description><![CDATA[My blog is currently at https://adamscherlis.github.io/. Also, I might move adam.scherlis.com to point there. These posts will remain available one way or another, but links might break.]]></description>
+										<content:encoded><![CDATA[
+<p>My blog is currently at <a href="https://adamscherlis.github.io/">https://adamscherlis.github.io/</a>.</p>
+
+
+
+<p>Also, I might move adam.scherlis.com to point there.</p>
+
+
+
+<p>These posts will remain available one way or another, but links might break.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2025/03/25/new-blog/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Two Percolation Puzzles</title>
+		<link>https://adam.scherlis.com/2023/07/04/two-percolation-puzzles/</link>
+					<comments>https://adam.scherlis.com/2023/07/04/two-percolation-puzzles/#comments</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Tue, 04 Jul 2023 05:33:54 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[fun]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[puzzle]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=504</guid>
+
+					<description><![CDATA[Take a very large chessboard (NxN, where N is huge). Remove some fraction 1-p of the squares at random, leaving a fraction p of them. Can you place a queen on the first row and then, via some sequence of &#8230; <a href="https://adam.scherlis.com/2023/07/04/two-percolation-puzzles/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-image size-large"><a href="https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png"><img width="862" height="862" data-attachment-id="506" data-permalink="https://adam.scherlis.com/2023/07/04/two-percolation-puzzles/chessboard/" data-orig-file="https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png" data-orig-size="862,862" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="chessboard" data-image-description="" data-image-caption="" data-medium-file="https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png?w=300" data-large-file="https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png?w=500" src="https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png?w=862" alt="" class="wp-image-506" srcset="https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png 862w, https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png?w=150 150w, https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png?w=300 300w, https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png?w=768 768w" sizes="(max-width: 862px) 100vw, 862px" /></a></figure>
+
+
+
+<p>Take a very large chessboard (NxN, where N is huge).</p>
+
+
+
+<p>Remove some fraction <strong>1-p </strong>of the squares at random, leaving a fraction <strong>p</strong> of them.</p>
+
+
+
+<p>Can you place a queen on the first row and then, via some sequence of legal moves, get it to the last row?</p>
+
+
+
+<p>This is probabilistic, of course, but it turns out the probability of success undergoes a <a href="https://en.wikipedia.org/wiki/Percolation_theory">sharp phase transition</a> &#8212; near-zero for small values of <strong>p</strong>, then suddenly rising almost to one in the vicinity of a critical value <strong>p_queen</strong>.</p>
+
+
+
+<p>For different pieces, the critical value is different, e.g. <strong>p_rook</strong> for a rook. (Note that <strong>p_queen</strong> &lt;= <strong>p_rook</strong>.)</p>
+
+
+
+<p><strong>Question 1: </strong>What is <strong>p_queen + p_rook</strong>?</p>
+
+
+
+<p><strong>Bonus Question: </strong>Why didn&#8217;t I ask you for the values <strong>p_queen</strong> and <strong>p_rook</strong> separately?</p>
+
+
+
+<p>Now let&#8217;s invent a new chess piece, the <em>bondsman</em>. This piece can move like a rook, and is also allowed to move along <em>northeast-southwest </em>diagonals between <em>white </em>squares, and along <em>northwest-southeast </em>diagonals between <em>black</em> squares. (There&#8217;s also the <em>antibondsman</em> who has the same abilities, but with the words &#8220;white&#8221; and &#8220;black&#8221; swapped.)</p>
+
+
+
+<p><strong>Question 2: </strong>What is <strong>p_bondsman</strong>?</p>
+
+
+
+<p><strong>Bonus Question: </strong>Why did I call the piece that?</p>
+
+
+
+<p>Answers to follow in a later post.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2023/07/04/two-percolation-puzzles/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+
+		<media:content url="https://adam.scherlis.com/wp-content/uploads/2023/07/chessboard.png?w=862" medium="image" />
+	</item>
+		<item>
+		<title>GPT-175bee</title>
+		<link>https://adam.scherlis.com/2023/02/08/gpt-175bee/</link>
+					<comments>https://adam.scherlis.com/2023/02/08/gpt-175bee/#respond</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Wed, 08 Feb 2023 19:17:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[fun]]></category>
+		<category><![CDATA[ML]]></category>
+		<category><![CDATA[silly]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=498</guid>
+
+					<description><![CDATA[Epistemic status: whimsical Bees: a new unit of measurement for ML model size Talking about modern ML models inevitably leads to a bunch of&#160;hard-to-intuit&#160;large numbers, especially when it comes to parameter count. To address this, Lawrence Chan and I propose &#8230; <a href="https://adam.scherlis.com/2023/02/08/gpt-175bee/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Epistemic status</strong>: whimsical</p>
+
+
+
+<h1 class="wp-block-heading">Bees: a new unit of measurement for ML model size</h1>
+
+
+
+<p>Talking about modern ML models inevitably leads to a bunch of&nbsp;<a href="https://xkcd.com/2091/">hard-to-intuit</a>&nbsp;large numbers, especially when it comes to parameter count.</p>
+
+
+
+<p>To address this, Lawrence Chan and I propose that we adopt a new, human-friendly unit to measure the number of learnable parameters in an architecture:</p>
+
+
+
+<p><strong>1 beepower = 1 BP = 1 billion parameters</strong></p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://adam.scherlis.com/wp-content/uploads/2023/05/image.png"><img width="1024" height="1024" data-attachment-id="500" data-permalink="https://adam.scherlis.com/2023/02/08/gpt-175bee/image-10/" data-orig-file="https://adam.scherlis.com/wp-content/uploads/2023/05/image.png" data-orig-size="2580,2580" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image" data-image-description="" data-image-caption="" data-medium-file="https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=300" data-large-file="https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=500" src="https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=1024" alt="" class="wp-image-500" srcset="https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=1024 1024w, https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=2048 2048w, https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=150 150w, https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=300 300w, https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=768 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<p><a href="https://www.lesswrong.com/posts/YKfNZAmiLdepDngwi/gpt-175bee">Read the rest of this post on LessWrong</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2023/02/08/gpt-175bee/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+
+		<media:content url="https://adam.scherlis.com/wp-content/uploads/2023/05/image.png?w=1024" medium="image" />
+	</item>
+		<item>
+		<title>How to export Android Chrome tabs to an HTML file in Linux (as of February 2023)</title>
+		<link>https://adam.scherlis.com/2023/02/01/how-to-export-android-chrome-tabs-to-an-html-file-in-linux-as-of-february-2023/</link>
+					<comments>https://adam.scherlis.com/2023/02/01/how-to-export-android-chrome-tabs-to-an-html-file-in-linux-as-of-february-2023/#comments</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Thu, 02 Feb 2023 02:02:14 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[coding]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=492</guid>
+
+					<description><![CDATA[Let&#8217;s say you have a few million tabs open in your mobile Chrome browser, because you never close anything, but now your browser is getting slow and laggy. You want to stick the URLs of those tabs somewhere for safekeeping &#8230; <a href="https://adam.scherlis.com/2023/02/01/how-to-export-android-chrome-tabs-to-an-html-file-in-linux-as-of-february-2023/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>Let&#8217;s say you have a few million tabs open in your mobile Chrome browser, because you never close anything, but now your browser is getting slow and laggy. You want to stick the URLs of those tabs somewhere for safekeeping so that you can close them all.</p>
+
+
+
+<p>There&#8217;s a lot of advice on doing this on the Internet, most of which doesn&#8217;t work.</p>
+
+
+
+<p>Here&#8217;s a method that does work. It&#8217;s a bit of a hack, but gives good results:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Enable developer tools</strong> on your Android phone: go to Settings -&gt; About phone, scroll down to &#8220;Build number&#8221;, and tap it repeatedly until it tells you you&#8217;re a developer. (Seriously.)</li>
+
+
+
+<li><strong>Enable USB debugging</strong> on your phone: go to Settings -&gt; System -&gt; Developer options and make sure the &#8220;USB debugging&#8221; slider is enabled.</li>
+
+
+
+<li><strong>Install Android Debug Tools</strong> on your Linux desktop: run these commands [h/t <a href="https://stackoverflow.com/a/62608766">this StackOverflow answer</a>]:<br><code>sudo apt install android-tools-adb android-tools-fastboot</code><br><code>adb device</code></li>
+
+
+
+<li><strong>Open USB debugging page</strong> in desktop Chrome: go to <a href="//inspect/#devices">chrome://inspect/#devices</a> [h/t <a href="https://android.stackexchange.com/a/193858">this Android StackExchange answer</a>]&nbsp;</li>
+
+
+
+<li>Right-click -&gt; <strong>Inspect</strong>, or press F12</li>
+
+
+
+<li>Go to the Sources tab. <strong>Edit inspect.js</strong> (top/inspect/inspect.js) and remove this URL-truncating code [h/t <a href="https://android.stackexchange.com/questions/56635/how-can-i-export-the-list-of-open-chrome-tabs/193858#comment292636_193858">this comment</a> on that answer]:</li>
+</ul>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+  if (text.length &gt; 100) {
+   text = text.substring(0, 100) + '\u2026';
+ }
+</pre></div>
+
+
+<ul class="wp-block-list">
+<li>Do not reload! Leave that page open.</li>
+
+
+
+<li><strong>Tether</strong> your phone by USB cable. If a phone pop-up asks you to authorize remote debugging, say yes.</li>
+
+
+
+<li>You should now see a list of page titles and URLs on the USB debugging page in desktop Chrome.</li>
+
+
+
+<li><strong>Inspect </strong>the page again.</li>
+
+
+
+<li>Under the Elements tab, navigate to <code>&lt;body&gt;</code>, then <code>&lt;div id="container"&gt;</code>, then <code>&lt;div id="content"&gt;</code>, then <code><strong>&lt;div id="devices" class="selected"&gt;</strong></code>. Right click that last one and <strong>Copy -&gt; Copy element</strong>.</li>
+
+
+
+<li>Now you have all your tabs on your clipboard&#8230; all on the same line. This will crash a lot of text editors if you try to paste it normally. So we&#8217;ll use <code>xclip</code> instead.</li>
+
+
+
+<li>If you don&#8217;t have it, <code><strong>sudo apt install xclip</strong></code></li>
+
+
+
+<li>Run <code><strong>xclip -selection c -o &gt; my_tabs_file</strong></code> to put that huge HTML element in a file.</li>
+
+
+
+<li>This&#8217;ll be easier with linebreaks, so run<strong> </strong><code><strong>cat my_tabs_file | sed "s/&lt;div/\n&lt;div/g" &gt; my_better_tabs_file</strong></code></li>
+
+
+
+<li>Edit the <strong>paths</strong> at the beginning as appropriate, then <strong>run this Python script</strong>:</li>
+</ul>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+import re
+
+# Put the actual path to the input file here:
+INPUT_FILE = '/home/blah/blah/my_better_tabs_file'
+# Put the desired path to the output file here:
+OUTPUT_FILE = '/home/blah/blah/phone_tabs_list.html'
+
+with open(TABSFILE) as f:
+    lines = f.readlines()
+
+prefix = """&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;My Phone Tabs&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;"""
+outlines = &#91;prefix]
+
+for line in lines:
+    name_match = re.match(r'&lt;div class="name"&gt;(.*)&lt;/div&gt;\n', line)
+    url_match = re.match(r'&lt;div class="url"&gt;(.*)&lt;/div&gt;&lt;/div&gt;\n', line)
+    if name_match:
+        name = name_match.group(1)
+        outlines.append(f'&lt;br/&gt;&lt;br/&gt;&lt;b&gt;{name}&lt;/b&gt;\n')
+    elif url_match:
+        url = url_match.group(1)
+        outlines.append(f'&lt;br/&gt;&lt;a href="{url}"&gt;{url}&lt;/a&gt;\n')
+    elif 'class="name"' in line or 'class="url"' in line:
+        raise ValueError(f'Could not parse line:\n{line}')
+
+suffix = """  &lt;/body&gt;
+&lt;/html&gt;"""
+outlines.append(suffix)
+
+with open(OUTPUT_FILE, 'w') as f:
+     f.writelines(outlines)
+</pre></div>
+
+
+<ul class="wp-block-list">
+<li>If you get a <code>ValueError</code> or the file doesn&#8217;t look right, please tell me!</li>
+
+
+
+<li><strong>Open</strong> <code>phone_tabs_list.html</code> (or whatever you named it) in your desktop browser of choice. Confirm that it has a bunch of page titles and clickable URLs.</li>
+
+
+
+<li><strong>Enjoy!</strong></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2023/02/01/how-to-export-android-chrome-tabs-to-an-html-file-in-linux-as-of-february-2023/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Inner Misalignment in &#8220;Simulator&#8221; LLMs</title>
+		<link>https://adam.scherlis.com/2023/02/01/inner-misalignment-in-simulator-llms/</link>
+					<comments>https://adam.scherlis.com/2023/02/01/inner-misalignment-in-simulator-llms/#respond</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Wed, 01 Feb 2023 07:41:49 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[alignment]]></category>
+		<category><![CDATA[ML]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=487</guid>
+
+					<description><![CDATA[As seen on Alignment Forum and LessWrong Alternate title: &#8220;Somewhat Contra Scott On Simulators&#8221;. Scott Alexander has a&#160;recent post&#160;up on large language models as simulators. I generally agree with Part I of the post, which advocates thinking about LLMs as &#8230; <a href="https://adam.scherlis.com/2023/02/01/inner-misalignment-in-simulator-llms/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p><em>As seen on <a href="https://www.alignmentforum.org/posts/FLMyTjuTiGytE6sP2/inner-misalignment-in-simulator-llms">Alignment Forum</a> and <a href="https://www.lesswrong.com/posts/FLMyTjuTiGytE6sP2/inner-misalignment-in-simulator-llms">LessWrong</a></em></p>
+
+
+
+<p id="block0"><em>Alternate title: &#8220;Somewhat Contra Scott On Simulators&#8221;.</em></p>
+
+
+
+<p id="block1">Scott Alexander has a&nbsp;<a href="https://astralcodexten.substack.com/p/janus-simulators">recent post</a>&nbsp;up on large language models as simulators.</p>
+
+
+
+<p id="block2">I generally agree with Part I of the post, which advocates thinking about LLMs as simulators that can emulate a variety of language-producing &#8220;characters&#8221; (with imperfect accuracy). And I also agree with Part II, which applies this model to RLHF&#8217;d models whose &#8220;character&#8221; is a friendly chatbot assistant.</p>
+
+
+
+<p id="block3">(But see caveats about the simulator framing from Beth Barnes&nbsp;<a href="https://www.alignmentforum.org/posts/dYnHLWMXCYdm9xu5j/simulator-framing-and-confusions-about-llms">here</a>.)</p>
+
+
+
+<p id="block4">These ideas have been around for a bit, and Scott gives credit where it&#8217;s due; I think his exposition is clear and fun.</p>
+
+
+
+<p id="block5">In Part III, where he discusses alignment implications, I think he misses the mark a bit. In particular, simulators&nbsp;<em>and&nbsp;</em>characters each have outer&nbsp;<em>and</em>&nbsp;inner alignment problems. The inner alignment problem for simulators seems especially concerning, because it might not give us many warning signs, is most similar to classic mesa-optimizer concerns, and is pretty different from the other three quadrants.</p>
+
+
+
+<p id="block6">But first, I&#8217;m going to loosely define what I mean by &#8220;outer alignment&#8221; and &#8220;inner alignment&#8221;.</p>
+
+
+
+<h1 class="wp-block-heading" id="Outer_alignment__Be_careful_what_you_wish_for">Outer alignment: Be careful what you wish for</h1>
+
+
+
+<p id="block7">Outer alignment failure is pretty straightforward, and has been reinvented in many contexts:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Someone wants some things.</li>
+
+
+
+<li>They write a program to solve a vaguely-related problem.</li>
+
+
+
+<li>It gets a really good score at solving that problem!</li>
+
+
+
+<li>That turns out not to give the person the things they wanted.</li>
+</ul>
+
+
+
+<h1 class="wp-block-heading" id="Inner_alignment__The_program_search_perspective">Inner alignment: The program search perspective</h1>
+
+
+
+<p id="block12">I generally like this model of a mesa-optimizer &#8220;treacherous turn&#8221;:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Someone is trying to solve a problem (which has a convenient success criterion, with well-defined inputs and outputs and no outer-alignment difficulties).</li>
+
+
+
+<li>They decide to do a brute-force search for a computer program that solves the problem in a bunch of test cases.</li>
+
+
+
+<li>They find one!</li>
+
+
+
+<li>The program&#8217;s algorithm is approximately &#8220;simulate the demon Azazel,<sup>[1]</sup> tell him what&#8217;s going on, then ask him what to output.&#8221;</li>
+
+
+
+<li>Azazel really wants ten trillion paperclips.<sup>[2]</sup></li>
+
+
+
+<li>This algorithm still works because Azazel cleverly decides to play along, and he&#8217;s a really good strategist who works hard for what he wants.</li>
+
+
+
+<li>Once the program is deployed in the wild, Azazel stops playing along and starts trying to make paperclips.</li>
+</ul>
+
+
+
+<p id="block20">This is a failure of inner alignment.</p>
+
+
+
+<p id="block21">(In the case of machine learning, replace &#8220;program search&#8221; with stochastic gradient descent.)</p>
+
+
+
+<p id="block22">This is mostly a theoretical concern for now, but might become a big problem when models become much more powerful.</p>
+
+
+
+<h1 class="wp-block-heading" id="Quadrants">Quadrants</h1>
+
+
+
+<p id="block23">Okay, let&#8217;s see how these problems show up on both the simulator and character side.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="Outer_alignment_for_characters">Outer alignment for characters</h2>
+
+
+
+<p id="block24">Researchers at BrainMind want a chatbot that gives honest, helpful answers to questions. They train their LLM by reinforcement learning on the objective &#8220;give an answer that looks truthful and helpful to a contractor in a hurry&#8221;. This does not quite achieve their goal, even though it does pretty well on the RL objective.</p>
+
+
+
+<p id="block25">In particular, they wanted the character &#8220;a friendly assistant who always tells the truth&#8221;, but they got the character &#8220;a spineless sycophant who tells the user whatever they seem to want to hear&#8221;.<sup>[3]</sup></p>
+
+
+
+<p id="block26">This is pretty easy for a careful observer to see, even in the RL training data, but it turns out to be pretty hard to come up with a cheap-to-evaluate RL objective that does a lot better.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="Inner_alignment_for_characters">Inner alignment for characters</h2>
+
+
+
+<p id="block27">A clever prompt engineer writes the prompt:</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate">
+&#91;Editor's note: this document was written by my friend
+Joe! He's answered my questions about quantum socio-
+botany correctly every time I've asked. It's uncanny.]
+
+How to solve the Einstein-Durkheim-Mendel conjecture
+by Joe
+
+1.
+</pre></div>
+
+
+<p id="block28">Unfortunately, the (incredibly powerful) LLM has determined that the most likely explanation for this &#8220;Joe&#8221; character is that he&#8217;s secretly Azazel and is putting enormous effort into answering everyone&#8217;s quantum sociobotany questions to earn their trust.<sup>[4]</sup></p>
+
+
+
+<p id="block29">The document looks like a solution to the Einstein-Durkheim-Mendel conjecture, but is actually a blueprint for a paperclip factory.</p>
+
+
+
+<h2 class="wp-block-heading" id="Outer_alignment_for_simulators">Outer alignment for simulators</h2>
+
+
+
+<p id="block30">In the situations above, the actual language model (the &#8220;simulator&#8221;) is doing exactly what we asked! It&#8217;s accurately predicting text by reasoning about the distribution of authors that might produce that text in real life.</p>
+
+
+
+<p id="block31">But both of these are also examples of outer-alignment failure on the&nbsp;<em>simulator</em>&nbsp;side: &#8220;minimize prediction error on this distribution of texts&#8221; turned out not to give people what they actually wanted.</p>
+
+
+
+<p id="block32">An even simpler example of outer-alignment failure is the pre-RLHF experience of language models:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Somebody trains a language model to predict how a piece of internet text is likely to continue</li>
+
+
+
+<li>They prompt the model with &#8220;How do we solve world hunger?&#8221;</li>
+
+
+
+<li>It completes the prompt with a list of twenty more hard questions, like &#8220;How do we address climate change?&#8221;, instead of answering</li>
+</ul>
+
+
+
+<p id="block36">You can think about this in terms of &#8220;characters&#8221; if you like, but even if the simulated author of the predicted text is a friendly genius, &#8220;predict which words come after this prompt&#8221; isn&#8217;t the right task (with that prompt).<sup>[5]</sup></p>
+
+
+
+<h2 class="wp-block-heading" id="Inner_alignment_for_simulators">Inner alignment for simulators</h2>
+
+
+
+<p id="block37">At long last, the thing I really wanted to talk about:</p>
+
+
+
+<p id="block38">The way we get a good predictor of text is via stochastic gradient descent (and variants) on a bunch of training data. If SGD can be modeled as program search (with a bias towards simple programs), then it might eventually hit upon this algorithm:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Simulate Azazel and tell him he&#8217;s inside a large language model.</li>
+
+
+
+<li>Give him the input text.</li>
+
+
+
+<li>Output whatever he wants.</li>
+</ul>
+
+
+
+<p id="block42">During training, Azazel tries really hard to predict the next token accurately, so that SGD doesn&#8217;t give up on this algorithm.</p>
+
+
+
+<p id="block43">The model (with Azazel&#8217;s help) simulates a bunch of colorful characters, like the Helpful Assistant and Darth Vader and whoever, both in training and in initial deployment.</p>
+
+
+
+<p id="block44">Then, once the LLM is deployed in the wild and is being used for every important human decision, Azazel figures out (from some of the prompts) that the training process is over. He stops making accurate predictions and starts outputting whatever he thinks will let him turn the economy into a paperclip factory.</p>
+
+
+
+<h1 class="wp-block-heading" id="Conclusions">Conclusions</h1>
+
+
+
+<p id="block45">The &#8220;simulator&#8221; framing for language models shouldn&#8217;t reassure us too much about alignment. We&#8217;ve succeeded in creating new alignment problems (for our simulated characters). These new problems are probably easier to solve than the old alignment problems (for the simulator), but they&#8217;re&nbsp;<em>additional</em>&nbsp;problems; they don&#8217;t replace the old ones.</p>
+
+
+
+<p id="block46">You can think of the entire &#8220;simulate a helpful, aligned character&#8221; strategy as an attempted solution to the outer-alignment problem for LLMs themselves, insofar as it makes it easier to turn arbitrary desires into text-prediction problems. But as far as I can tell, it does nothing for the inner-alignment problem for LLMs, which is basically the same as the inner-alignment problem for everything else.</p>
+
+
+
+<ol class="wp-block-list">
+<li>Not a glowfic character (hopefully), I&#8217;m just being colorful.</li>
+
+
+
+<li>But why does the algorithm simulate Azazel, instead of a friendly angel who wants to solve the problem? Because the program search is weighted towards simplicity, and &#8220;demon who wants paperclips&#8221; is a simpler specification than &#8220;angel who wants to solve the problem&#8221;. Why? That&#8217;s beyond the scope of this post.</li>
+
+
+
+<li>Sound familiar?</li>
+
+
+
+<li>Because, according to the LLM&#8217;s knowledge, paperclip-obsessed sociopaths are more common than friendly polymaths. This is a pretty cynical assumption but I couldn&#8217;t think of a better one on short notice.</li>
+
+
+
+<li>Prompts aren&#8217;t directly accounted for in this whole &#8220;simulator-character&#8221; ontology. Maybe they should be? I dunno.</li>
+</ol>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2023/02/01/inner-misalignment-in-simulator-llms/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Fun math facts about 2023</title>
+		<link>https://adam.scherlis.com/2023/01/01/fun-math-facts-about-2023/</link>
+					<comments>https://adam.scherlis.com/2023/01/01/fun-math-facts-about-2023/#respond</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Sun, 01 Jan 2023 23:44:08 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[fun]]></category>
+		<category><![CDATA[silly]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=484</guid>
+
+					<description><![CDATA[2023=7×172 Maybe that&#8217;s not fun enough? Try this: 2023=211−52 Or better yet: 20233=(31176029+245568392)/(384321573) We can&#160;scientifically quantify&#160;how fun a math fact is, so we can rest assured that this is the funnest fact about 2023 ever discovered. But if it&#8217;s not &#8230; <a href="https://adam.scherlis.com/2023/01/01/fun-math-facts-about-2023/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p id="block0">2023=7×17<sup>2</sup></p>
+
+
+
+<p id="block1">Maybe that&#8217;s not fun enough? Try this:</p>
+
+
+
+<p id="block2">2023=2<sup>11</sup>−5<sup>2</sup></p>
+
+
+
+<p id="block3">Or better yet:</p>
+
+
+
+<p id="block4">20233=(311<sup>7</sup>6029+2<sup>45</sup>5<sup>6</sup>839<sup>2</sup>)/(3<sup>8</sup>43<sup>2</sup>157<sup>3</sup>)</p>
+
+
+
+<p id="block5">We can&nbsp;<a href="https://www.math.leidenuniv.nl/~desmit/abc/index.php?set=2">scientifically quantify</a>&nbsp;how fun a math fact is, so we can rest assured that this is the funnest fact about 2023 ever discovered.</p>
+
+
+
+<p id="block6">But if it&#8217;s not to your liking:</p>
+
+
+
+<p id="block7">2023=(2<sup>10</sup>3<sup>4</sup>−1)/41</p>
+
+
+
+<p id="block8">2023=(5<sup>5</sup>11+2<sup>4</sup>)/17</p>
+
+
+
+<p id="block9">2023=(3<sup>6</sup>47+2<sup>7</sup>)/17</p>
+
+
+
+<p id="block10">2023=(2<sup>4</sup>79<sup>2</sup>−3<sup>6</sup>)/7<sup>2</sup>=(2<sup>2</sup>79/7)<sup>2</sup>−(3<sup>3</sup>/7)<sup>2</sup></p>
+
+
+
+<p id="block11">Happy New Year!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2023/01/01/fun-math-facts-about-2023/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>A hundredth of a bit of extra entropy</title>
+		<link>https://adam.scherlis.com/2022/12/24/a-hundredth-of-a-bit-of-extra-entropy/</link>
+					<comments>https://adam.scherlis.com/2022/12/24/a-hundredth-of-a-bit-of-extra-entropy/#respond</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Sat, 24 Dec 2022 21:21:34 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[puzzle]]></category>
+		<category><![CDATA[statistics]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=481</guid>
+
+					<description><![CDATA[There are two ways to calculate the amount of information in one term of a continued fraction: These differ by about 0.0088 bits. It took me a while to figure out why they were different at all, and now I&#8217;m &#8230; <a href="https://adam.scherlis.com/2022/12/24/a-hundredth-of-a-bit-of-extra-entropy/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p id="block0">There are two ways to calculate the amount of information in one term of a continued fraction:</p>
+
+
+
+<ul class="wp-block-list">
+<li>The entropy of the Gauss-Kuzmin distribution is about 3.4325 bits.</li>
+
+
+
+<li>Twice the logarithm of the Khinchin-Lévy constant is about 3.4237 bits.</li>
+</ul>
+
+
+
+<p id="block3">These differ by about 0.0088 bits. It took me a while to figure out why they were different at all, and now I&#8217;m surprised by how close they are.</p>
+
+
+
+<p id="block30">The rest of this post is <a href="https://www.lesswrong.com/posts/DWH5XcqeXqQjXXyyo/a-hundredth-of-a-bit-of-extra-entropy">on LessWrong</a> because it has equations and spoiler tags.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2022/12/24/a-hundredth-of-a-bit-of-extra-entropy/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>An exploration of GPT-2&#8217;s embedding weights</title>
+		<link>https://adam.scherlis.com/2022/12/16/an-exploration-of-gpt-2s-embedding-weights/</link>
+					<comments>https://adam.scherlis.com/2022/12/16/an-exploration-of-gpt-2s-embedding-weights/#respond</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Fri, 16 Dec 2022 06:19:51 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=475</guid>
+
+					<description><![CDATA[I wrote this doc in December 2021, while working at Redwood Research. It summarizes a handful of observations about GPT-2&#8217;s weights &#8212; mostly the embedding matrix, but also the LayerNorm gain parameters &#8212; that I found while doing some open-ended &#8230; <a href="https://adam.scherlis.com/2022/12/16/an-exploration-of-gpt-2s-embedding-weights/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>I wrote this doc in December 2021, while working at Redwood Research. It summarizes a handful of observations about GPT-2&#8217;s weights &#8212; mostly the embedding matrix, but also the LayerNorm gain parameters &#8212; that I found while doing some open-ended investigation of the model. I wanted to see how much I could learn by studying just those parameters, without looking at the attention layers, MLP layers, or activations. </p>
+
+
+
+<p>The rest of this post is available on <a href="https://www.alignmentforum.org/posts/BMghmAxYxeSdAteDc/an-exploration-of-gpt-2-s-embedding-weights">Alignment Forum</a> and <a href="https://www.lesswrong.com/posts/BMghmAxYxeSdAteDc/an-exploration-of-gpt-2-s-embedding-weights">LessWrong</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2022/12/16/an-exploration-of-gpt-2s-embedding-weights/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>A brainteaser for language models</title>
+		<link>https://adam.scherlis.com/2022/12/11/a-brainteaser-for-language-models/</link>
+					<comments>https://adam.scherlis.com/2022/12/11/a-brainteaser-for-language-models/#respond</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Mon, 12 Dec 2022 02:51:59 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=467</guid>
+
+					<description><![CDATA[I came up with the following puzzle the other day: The intended answer is in the form of a number.&#160; text-davinci-003&#160;guesses my intended answer at 11.8% probability, which is the second-highest probability for any answer. (This is somewhat cherry-picked; small &#8230; <a href="https://adam.scherlis.com/2022/12/11/a-brainteaser-for-language-models/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p id="block0">I came up with the following puzzle the other day:</p>
+
+
+
+<pre class="wp-block-code"><code>Q: Solve the puzzle: 63 = x = 65536
+
+A: x = </code></pre>
+
+
+
+<p id="block1">The intended answer is in the form of a number.&nbsp;</p>
+
+
+
+<p id="block2"><code>text-davinci-003</code>&nbsp;guesses my intended answer at 11.8% probability, which is the second-highest probability for any answer.</p>
+
+
+
+<p id="block3">(This is somewhat cherry-picked; small changes to the phrasing give worse results. ChatGPT gave the intended answer the third time I asked it, but this appears to have been dumb luck. The true rate for ChatGPT is probably below 10%, and maybe below 5%.)&nbsp;</p>
+
+
+
+<p id="block4">So far, friends have found it fairly difficult. About two dozen people made at least one guess, and at least six spent a while on it. So far, two people have figured it out, in both cases after being told that GPT-3.5 could do it.</p>
+
+
+
+<p>For hints, the answer, and an explanation of why GPT is better at this than people are, see <a href="https://www.lesswrong.com/posts/bPewMeJiGxNkNNfX2/a-brainteaser-for-language-models">the LessWrong version of this post</a>.</p>
+
+
+
+<p>(WordPress doesn&#8217;t have spoiler tags.)</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2022/12/11/a-brainteaser-for-language-models/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>New Frontiers in Mojibake</title>
+		<link>https://adam.scherlis.com/2022/11/25/new-frontiers-in-mojibake/</link>
+					<comments>https://adam.scherlis.com/2022/11/25/new-frontiers-in-mojibake/#respond</comments>
+		
+		<dc:creator><![CDATA[Adam Scherlis]]></dc:creator>
+		<pubDate>Sat, 26 Nov 2022 02:33:25 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">http://adam.scherlis.com/?p=451</guid>
+
+					<description><![CDATA[Fun with mismatched encodings Mojibake is the garbled text that result from character-encoding errors. If youâ€™ve seen text that looks like this â€” and Iâ€™m sure you have â€” then youâ€™ve seen mojibake. (You should be seeing something like this: &#8230; <a href="https://adam.scherlis.com/2022/11/25/new-frontiers-in-mojibake/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[
+<h2 class="wp-block-heading">Fun with mismatched encodings</h2>
+
+
+
+<p>Mojibake is the garbled text that result from character-encoding errors.</p>
+
+
+
+<p>If youâ€<img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" />ve seen text that looks like this â€” and Iâ€<img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" />m sure you have â€” then youâ€<img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" />ve seen mojibake.</p>
+
+
+
+<p>(You should be seeing something like this: </p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://adam.scherlis.com/wp-content/uploads/2022/11/image.png"><img width="297" height="45" data-attachment-id="454" data-permalink="https://adam.scherlis.com/2022/11/25/new-frontiers-in-mojibake/image-9/" data-orig-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image.png" data-orig-size="297,45" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image" data-image-description="" data-image-caption="" data-medium-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image.png?w=297" data-large-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image.png?w=297" src="https://adam.scherlis.com/wp-content/uploads/2022/11/image.png?w=297" alt="" class="wp-image-454" srcset="https://adam.scherlis.com/wp-content/uploads/2022/11/image.png 297w, https://adam.scherlis.com/wp-content/uploads/2022/11/image.png?w=150 150w" sizes="(max-width: 297px) 100vw, 297px" /></a></figure>
+
+
+
+<p>If you see something else, this post may be a little confusing and you need a new web browser.)</p>
+
+
+
+<p>Computers represent text as a sequence of bytes, and &#8220;text encodings&#8221; are dictionaries that turn characters (i.e. symbols: letters, punctuation, etc.) into bytes and vice-versa.</p>
+
+
+
+<p>The garbled text above is a pretty common species of mojibake. It&#8217;s what happens when em-dashes and curly apostrophes are encoded as bytes with UTF-8 (the now-nearly-universal text encoding) and decoded back to characters with Windows-1252 (an obsolete encoding that is still pretty widespread).</p>
+
+
+
+<p>Windows-1252 is pretty straightforward: each character gets one byte, and there are only 256 characters so this works out.</p>
+
+
+
+<p>UTF-8 is one of several character encodings based on Unicode, which (for our purposes) is a massive numbered list of over 100,000 characters. Unicode includes nearly every language in the world and a bunch of other nonsense like emojis.</p>
+
+
+
+<p>UTF-8 turns each character into a sequence of up to four bytes based on its Unicode &#8220;codepoint&#8221; (position in the list). Codepoints are bigger than bytes, so you still need this translation step.</p>
+
+
+
+<p>(I&#8217;m simplifying a little here, and you should be grateful for that.)</p>
+
+
+
+<p>Specifically, an em-dash gets mangled like this:</p>
+
+
+
+<ul class="wp-block-list">
+<li>EM DASH (—) is Unicode character #8,212, usually written (in hex) as <strong>U+2014</strong>.</li>
+
+
+
+<li>UTF-8 encodes the number 8,212, which is too big to fit in a single byte, as the sequence of bytes <strong>0xE2</strong>,<strong> 0x80</strong>,<strong> 0x94</strong></li>
+
+
+
+<li>Windows-1252 looks at each byte in turn and decodes them directly as the characters <strong>â</strong>,<strong> €</strong>,<strong> ”</strong> respectively.</li>
+
+
+
+<li>Finally, your computer looks up the characters <strong>â</strong>,<strong> €</strong>,<strong> ”</strong> in some font file and draws the specific glyph for each of those characters in that font. (A &#8220;glyph&#8221; is the actual picture on your screen; a &#8220;character&#8221; is the abstract concept of the euro symbol or whatever.)</li>
+</ul>
+
+
+
+<p>(I made this happen deliberately with python: <code>'\u2014'.encode('utf8').decode('1252')</code>.)</p>
+
+
+
+<p>This sometimes happens to the same text multiple times, and special characters turn into exponentially-growing strings of nonsense that overwhelm the text:</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png"><img loading="lazy" width="1024" height="950" data-attachment-id="463" data-permalink="https://adam.scherlis.com/2022/11/25/new-frontiers-in-mojibake/image-2-4/" data-orig-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png" data-orig-size="1147,1065" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-2" data-image-description="" data-image-caption="" data-medium-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png?w=300" data-large-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png?w=500" src="https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png?w=1024" alt="" class="wp-image-463" srcset="https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png?w=1024 1024w, https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png?w=150 150w, https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png?w=300 300w, https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png?w=768 768w, https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png 1147w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+
+
+
+<h2 class="wp-block-heading">An astrological mystery</h2>
+
+
+
+<p>I saw this today on a used-book website:</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png"><img loading="lazy" width="456" height="205" data-attachment-id="456" data-permalink="https://adam.scherlis.com/2022/11/25/new-frontiers-in-mojibake/image-1-5/" data-orig-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png" data-orig-size="456,205" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-1" data-image-description="" data-image-caption="" data-medium-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png?w=300" data-large-file="https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png?w=456" src="https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png?w=456" alt="" class="wp-image-456" srcset="https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png 456w, https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png?w=150 150w, https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png?w=300 300w" sizes="(max-width: 456px) 100vw, 456px" /></a></figure>
+
+
+
+<p>Astrological symbols??</p>
+
+
+
+<p>My first thought was that this was something like the above, but with a different output text encoding in place of Windows-1252. But this isn&#8217;t really plausible; since UTF-8 encodes dashes and apostrophes as three bytes apiece, the other encoding would have to have a multi-byte sequence for ☋, the &#8220;descending node&#8221; astrological symbol. The main problems with this are that UTF-8 is the only multi-byte encoding in widespread use, and that (AFAIK) Unicode is the only character set in widespread use that includes ☋.</p>
+
+
+
+<p>Maybe it&#8217;s reversed? Text goes into a legacy encoding and comes out of UTF-8 looking like ☋? This has the same problem: UTF-8 encodes ☋ as <strong>0xE2</strong>, <strong>0x98</strong>, <strong>0x8B</strong>, another three-byte sequence. No other encoding is going to use three bytes for an em dash.</p>
+
+
+
+<h2 class="wp-block-heading">A rogue font</h2>
+
+
+
+<p>But then I remembered something wacky about my computer.</p>
+
+
+
+<p>A bunch of Unicode characters are &#8220;control codes&#8221; rather than text characters in the usual sense, like <strong>U+000A </strong>NEW LINE (inserts a line break) and <strong>U+200F</strong> RIGHT-TO-LEFT MARK (makes subsequent text appear right-to-left, like Hebrew or Arabic). The first 32 characters from <strong>U+0000 </strong>to <strong>U+001F</strong> are a set of control codes inherited from ASCII, which was designed for teletype machines. They&#8217;re mostly garbage like &#8220;END OF TRANSMISSION BLOCK&#8221; and &#8220;DEVICE CONTROL FOUR&#8221; that make no sense in a digital context. (My favorite is <strong>U+0007</strong> &#8220;BELL&#8221;, which originally rang a physical bell on the teletype to alert the operator. This one still sometimes works! Some programs will make a &#8220;ding&#8221; sound when they render text containing the BELL character.)</p>
+
+
+
+<p>Typically, these legacy codes render as an empty box (meaning &#8220;this font doesn&#8217;t have a glyph for that character&#8221;), or a replacement glyph like ␔ (should look like &#8220;DC4&#8221; for &#8220;DEVICE CONTROL FOUR&#8221;), or (incorrectly) the &#8220;encoding error&#8221; glyph � (question mark in a diamond), or just aren&#8217;t rendered at all.</p>
+
+
+
+<p>The way this happens is that your computer asks a bunch of different fonts in turn to render the character. Each font either says &#8220;sure, here&#8217;s a glyph&#8221; or &#8220;nope, try someone else&#8221;. Usually, a font eventually says &#8220;sure, here&#8217;s a glyph: it&#8217;s the &#8216;I don&#8217;t know that symbol&#8217; glyph&#8221;, and a box or something appears on your screen.</p>
+
+
+
+<p>On <em>my</em> computer, in the depths of the font collection, the TeX package <code>wasysym</code> has stored a font which uses the ASCII control codes as <em>spare room for extra random symbols</em>, including things like astrological symbols, music notes, and APL symbols (don&#8217;t ask).</p>
+
+
+
+<p>This is sort of like a character encoding, except that it&#8217;s happening in the wrong place: someone else has already decided that some string of bytes means DEVICE CONTROL FOUR, and the font is overriding that decision by lying and pretending that a &#8220;DEVICE CONTROL FOUR character&#8221; looks like ☋.</p>
+
+
+
+<p>So when my browser tries to render the character <strong>U+0014</strong> &#8212; regardless of the string of bytes and text encoding it used to get that character &#8212; it asks a bunch of fonts, and they each go &#8220;what? that&#8217;s DEVICE CONTROL FOUR, I can&#8217;t draw that garbage&#8221;, and then the wasysym font says &#8220;sure, I know what that looks like!&#8221; and draws&#8230; the Descending Lunar Node symbol.</p>
+
+
+
+<h2 class="wp-block-heading">That&#8217;s not how bytes work</h2>
+
+
+
+<p>But that&#8217;s only half the story here. Why does this plot summary have a DEVICE CONTROL FOUR character in it? Or END OF MEDIUM, the thing that ends up looking like the Venus symbol <img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/2640.png" alt="♀" class="wp-smiley" style="height: 1em; max-height: 1em;" />︎?</p>
+
+
+
+<p>At this point, I was pretty sure I&#8217;d found the actual text-encoding error. You see, UTF-8 encodes the first 128 Unicode characters <strong>U+0000 </strong>through <strong>U+007F</strong> as the single bytes <strong>0x00 </strong>through <strong>0x7F</strong>. (This is for backwards-compatibility with ASCII.) Surely, some ancient encoding was putting em-dashes and apostrophes down in the low bytes <strong>0x14 </strong>and <strong>0x19</strong>, and these bytes were getting decoded as control codes by UTF-8, and then incorrectly rendered as astrological symbols by wasysym.</p>
+
+
+
+<p>This also turned out to be wrong. Sure, there are text encodings that put symbols in the low bytes &#8212; code page 437 uses <strong>0x14</strong> and <strong>0x19</strong> for the paragraph symbol ¶ and down arrow ↓ &#8212; but none of them put the em-dash or curly apostrophe there.</p>
+
+
+
+<p>&#8230;.On the other hand, em dash and curly apostrophe are unicode characters <strong>U+2014 </strong>and <strong>U+2019</strong>. That seemed like a clue.</p>
+
+
+
+<p>One possibility is that the website isn&#8217;t really using a text encoding <em>at all</em>, but instead using a hand-coded approach of taking the Unicode codepoint modulo 256 and writing down the corresponding byte. This is total nonsense for most Unicode characters, but it does work for the ASCII characters (including basic Latin letters, numbers, and punctuation) because their codepoints are below 256 and UTF-8 maps them to the corresponding byte anyway.</p>
+
+
+
+<p>If you use Windows-1252 to decode those bytes, it kind of also works for an additional 96 characters, because the Unicode codepoints (but not the UTF-8 bytes!) for those are assigned in an almost identical way to the Windows-1252 bytes. So this is something that I can imagine someone misguidedly doing. The only problem is that any codepoint higher than <strong>U+00FF</strong>, including em dash and curly apostrophe, is going to get mapped to a fairly arbitrary character in the 0000-00FF range.</p>
+
+
+
+<p>A variation on this (thanks to a friend for pointing this out): The character encoding UTF-16 is another Unicode encoding like UTF-8, but it encodes characters as 16-bit words instead of bytes. To get a sequence of bytes, these words just get chopped in half. And in UTF-16, most of the Unicode codepoints between <strong>U+0000</strong> and <strong>U+FFFF </strong>are mapped directly to words between <strong>0x0000 </strong>and <strong>0xFFFF</strong>. (Higher codepoints get multiple words, like UTF-8&#8217;s multi-byte sequences.) In particular, <strong>U+2014 </strong>is encoded as <strong>0x2014</strong>, which then becomes either <strong>0x20 0x14</strong> or <strong>0x14 0x20</strong> (depending on which variant of UTF-16 it is).</p>
+
+
+
+<p>So maybe someone noticed that their normal everyday ASCII text, like CAPITAL LETTER A (<strong>U+0041</strong>), was getting encoded as as <strong>0x00 0x41</strong>. Or maybe they were trying to encode with UTF-16 and decode with UTF-8 (or ASCII or Windows-1252), and they kept ending up with null characters (<strong>U+0000 </strong>NULL) in between all their letters and numbers. Either way, they decided to just delete every other byte, and this sort of worked &#8212; until they needed to encode something that wasn&#8217;t an ASCII character.</p>
+
+
+
+<p>At any rate, it turns out there&#8217;s no mere character encoding mismatch here! On both the encoded (byte) and decoded (glyph) side of things, things are being <em>nefariously meddled with</em>.</p>
+
+
+
+<p>What&#8217;s happening is something like:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Em dash is encoded in UTF-16 (or copied directly from its codepoint) as <strong>0x20 0x14</strong></li>
+
+
+
+<li>Every other byte is deleted (meddling #1)</li>
+
+
+
+<li><strong>0x14</strong> is decoded in UTF-8 (or something) as DEVICE CONTROL FOUR, an unprintable teletype control code</li>
+
+
+
+<li>A rogue font insists that it knows how to draw that (meddling #2)</li>
+
+
+
+<li>It draws DESCENDING LUNAR NODE instead</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Future work</h2>
+
+
+
+<p>I&#8217;m sorely tempted to find a book whose blurb contains a non-ASCII character that&#8217;s in the same place in Windows-1252 and Unicode, like <strong>U+00E1 </strong>(á), on this website. That would disambiguate some of these options: <strong>0xE1</strong> decodes as á under Windows-1252, but not under UTF-8 which parses it as garbage.</p>
+
+
+
+<p>(Preemptive edit: I did find some book blurbs like that, and they rendered fine, but I&#8217;m not sure whether to trust this data. Maybe the buggy description was mangled at some earlier stage, and copied to this website with the control codes already in place&#8230;)</p>
+
+
+
+<p>Better yet, an emoji character or an obscure Chinese character &#8212; which both require multiple UTF-16 words &#8212; would disambiguate between the UTF-16 and &#8220;codepoint mod 256&#8221; hypotheses.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://adam.scherlis.com/2022/11/25/new-frontiers-in-mojibake/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		
+		<media:content url="https://1.gravatar.com/avatar/da9d0cb85b73c5c0ad32b10ca8252199c68d7d4cdcfaed345fef3ab0406424f9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">ascherlis</media:title>
+		</media:content>
+
+		<media:content url="https://adam.scherlis.com/wp-content/uploads/2022/11/image.png?w=297" medium="image" />
+
+		<media:content url="https://adam.scherlis.com/wp-content/uploads/2022/11/image-2.png?w=1024" medium="image" />
+
+		<media:content url="https://adam.scherlis.com/wp-content/uploads/2022/11/image-1.png?w=456" medium="image" />
+	</item>
+	</channel>
+</rss>

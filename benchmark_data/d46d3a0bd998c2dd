@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>rants.org</title>
+	<atom:link href="https://rants.org/feed/" rel="self" type="application/rss+xml" />
+	<link>https://rants.org</link>
+	<description>Karl Fogel&#039;s blog</description>
+	<lastBuildDate>Sun, 08 Oct 2023 04:36:06 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.2</generator>
+
+<image>
+	<url>https://rants.org/wp-content/uploads/2018/04/abstract.png</url>
+	<title>rants.org</title>
+	<link>https://rants.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>The Right to Lie: Google&#8217;s &#8220;Web Environment Integrity&#8221; Proposal is a Geyser of Badness Threatening to Swamp the Open Web.</title>
+		<link>https://rants.org/2023/07/the-right-to-lie-and-google-wei/</link>
+					<comments>https://rants.org/2023/07/the-right-to-lie-and-google-wei/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Sat, 29 Jul 2023 22:05:39 +0000</pubDate>
+				<category><![CDATA[Miscellaneous]]></category>
+		<guid isPermaLink="false">https://rants.org/?p=3187</guid>
+
+					<description><![CDATA[If your computer can&#8217;t lie to other computers, then it&#8217;s not yours. This is a fundamental principle of free and]]></description>
+										<content:encoded><![CDATA[<div class="wp-block-image">
+<figure class="alignright size-full"><a href="https://rants.org/wp-content/uploads/2023/07/truth-270x270-1.png"><img fetchpriority="high" decoding="async" width="270" height="270" src="https://rants.org/wp-content/uploads/2023/07/truth-270x270-1.png" alt="" class="wp-image-3190" srcset="https://rants.org/wp-content/uploads/2023/07/truth-270x270-1.png 270w, https://rants.org/wp-content/uploads/2023/07/truth-270x270-1-150x150.png 150w" sizes="(max-width: 270px) 100vw, 270px" /></a></figure></div>
+
+
+<p>If your computer can&#8217;t lie to other computers, then it&#8217;s not yours.</p>
+
+
+
+<p>This is a fundamental principle of free and open source software. The World Wide Web abides by this principle, although we don&#8217;t often think of it that way. The Web is just an agreed-on set of programmatic interfaces: if you send me this, I&#8217;ll send you that. Your computer can construct the &#8220;this&#8221; by whatever means it wants; it&#8217;s none of the other side&#8217;s business, because your computer is not their computer.</p>
+
+
+
+<p>Google&#8217;s so-called &#8220;Web Environment Integrity&#8221; <a href="https://en.wikipedia.org/wiki/Web_Environment_Integrity">plan</a> would destroy this independence. &#8220;Integrity&#8221; is exactly the wrong word for it &#8212; a better name would be the &#8220;Browser Environment Control&#8221; plan.</p>
+
+
+
+<p>In the normal world, you show up at the store with a five dollar bill, pick up a newspaper, and the store sells you the newspaper (and maybe some change) in exchange for the bill. In Google&#8217;s proposed world, five dollar bills aren&#8217;t fungible anymore: the store can ask you about the provenance of that bill, and if they don&#8217;t like the answer, they don&#8217;t sell you the newspaper. No, they&#8217;re not worried about the bill being fake or counterfeit or anything like that. It&#8217;s a real five dollar bill, they agree, but you can&#8217;t prove that you got it from the right bank. Please feel free to come back with the <em>right sort</em> of five dollar bill.</p>
+
+
+
+<p>This is not the Open Web that made what&#8217;s best about the Internet accessible to the whole world. On that Web, if you send a valid request with the right data, you get a valid response. How you produced the request is <em>your business</em> and your business alone. That&#8217;s what software freedom is all about: you decide how your machinery works, just as other people decide how their machinery works. If your machine and their machine want to talk to each other, they just need an agreed-on language (in the case of the Web, that&#8217;s HTTP) in which to do so.</p>
+
+
+
+<p>Google&#8217;s plan, though, steps behind this standard language to demand something no free and open source software can ever deliver: a magical guarantee that the user has not privately configured their own computer in any way that Google disapproves of.</p>
+
+
+
+<p>The effrontery is shocking, to those with enough technical background to understand what is being proposed. It&#8217;s as though Google were demanding that when you&#8217;re talking to them you must somehow guarantee, in a provable way, that you&#8217;re not also thinking impure thoughts.</p>
+
+
+
+<p>How could anyone ever agree to this nonsense? Must all our computers become North Korea?</p>
+
+
+
+<p>The details of your own system&#8217;s configuration are irrelevant to &#8212; and unnecessary to accurately represent in &#8212; your communications with a server, just as your private thoughts are not required to be included, in some side-band channel, along with everything you say in regular language.</p>
+
+
+
+<p>If a web site wants to require that you have a username and password, that&#8217;s fine. Those are just a standard part of the HTTP request your browser sends. But if a web site wants your browser to promise that it stores that username and password locally in a file named &#8220;google-seekritz.txt&#8221;, that&#8217;s not only weird and creepy, it&#8217;s also something that a free software (as in libre) browser can never reliably attest to. Any browser maintenance team worth its salt will just ship the browser with a default configuration in which the software reports that to Google when asked while, behind the scenes, storing usernames and passwords however it damn well pleases.</p>
+
+
+
+<p>Indeed, the fundamental issue here is the freedom to <em>have</em> a &#8220;behind the scenes&#8221; at all. Environments in which people aren&#8217;t allowed to have a &#8220;behind the scenes&#8221; are totalitarian environments. That&#8217;s not an exaggeration; it&#8217;s simply the definition of the term. Whatever bad connotations the concept of totalitarianism may have for you, they come not from the fancy-sounding multi-syllabic word but from the actual, human-level badness of the scenario itself. That scenario is what Google is asking for.</p>
+
+
+
+<p>My web browser (currently <a href="https://www.mozilla.org/firefox">Mozilla Firefox</a> running on <a href="https://www.debian.org/">Debian GNU/Linux</a>, thank you very much) will never cooperate with this bizarre and misguided proposal. And along with the rest of the free software community, I will continue working to ensure we all live in a world where your web browser doesn&#8217;t have to either.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p><em>After I <a href="https://kfogel.org/notice/AYCSZYFEXBkLjDLvkm">cross-posted the above in the Fediverse</a>, a friend of mine there asked how Google&#8217;s proposal was different from CORS: &#8220;i’m sure that i don’t understand the google proposal, but all the browsers enforce CORS, and don’t let you load data in many contexts.&#8221;  Since Google&#8217;s proposal is very different from CORS and similar browser-side protections, I <a href="https://kfogel.org/notice/AYE8S8sMqZd6Folbhw">replied</a> to explain why:</em></p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p>This is not about the browser enforcing something by default for the purpose of being able to make security guarantees to its user. After all, if you wanted to modify and recompile your browser to not enforce same-origin policies, you could do so. (It would a bad idea, of course, but that’s not a software freedom issue <img src="https://s.w.org/images/core/emoji/16.0.1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> .)</p>
+
+
+
+<p>Rather, this is about the browser being able to pass back a partially-hardware-based, cryptographically secure token that attests, to a central service, that you (the owner of the computer) have not made certain system modifications <em>that would otherwise be invisible to and undetectable by</em> another computer that you’re interacting with over the network. The central service can then pass that attestation along to relying parties. Those relying parties would then use it for all the expected purposes. For example, if they’re considering sending you a stream of video, they’d only do so if they see a promise from your computer that it has no side-band ability to save the video stream to a file (from which you could view it again later without their knowledge). And this promise would be dependable! Under this proposal, your computer would only be able to say it if it were true.</p>
+
+
+
+<p>Of course, by definition the only way such a system can work is if it does not have software freedom on the client side. It requires a cooperative relationship between the hardware manufacturer and the supplier of the software – cross-signed blobs and such – whereby your computer loses the physical ability to make the requested attestation to a third party unless your computer is in fact fully cooperating.</p>
+
+
+
+<p>By analogy: right now, you can tell your browser to change its <code>User-Agent</code> string to anything you want. You might get weird effects from doing that, depending on what value you set it to (and it’s unfortunate that web developers let sites get so sensitized to <code>User-Agent</code>, but that’s another story, to be told along with a similar complaint about <code>HTTP Referer</code> – but I digress).</p>
+
+
+
+<p>Now imagine a world in which, if you change your <code>User-Agent</code> string, your browser suddenly starts always sending out an extra header: “<code>User-Agent-String-Modified-By-User: True</code>” – and you have <em>no</em> choice about this. You can’t stop your browser from doing it, because your computer won’t let you.</p>
+
+
+
+<p>Does this help clarify what the problem is?</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2023/07/the-right-to-lie-and-google-wei/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>count-fold-lines: Emacs hack to fold duplicate lines and count them.</title>
+		<link>https://rants.org/2023/01/count-fold-lines/</link>
+					<comments>https://rants.org/2023/01/count-fold-lines/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Thu, 19 Jan 2023 05:40:57 +0000</pubDate>
+				<category><![CDATA[SOLVED as a Service]]></category>
+		<category><![CDATA[emacs]]></category>
+		<guid isPermaLink="false">https://rants.org/?p=3172</guid>
+
+					<description><![CDATA[I just wrote a thing in Emacs that others might find useful: Although the code&#8217;s documentation gives a short example,]]></description>
+										<content:encoded><![CDATA[
+<p>I just wrote a thing in Emacs that others might find useful:</p>
+
+
+
+<pre class="wp-block-code"><code>(defun count-fold-lines (start end)
+  "Replace lines from START to END with descending counts of unique lines.
+It's easiest to just give an example to explain this.  These lines...
+
+  foo
+  foo
+  bar
+  foo
+  baz
+  bar
+  foo
+
+...would become this:
+
+   4   foo
+   2   bar
+   1   baz
+
+(modulo some left-padding differences that we don't care about)."
+  (interactive "r")
+  (sort-lines nil start end)
+  (save-mark-and-excursion
+    ;; Hah!  You thought I was going to implement this in Elisp, didn't you?
+    (shell-command-on-region start end "uniq --count" nil t)
+    (sort-lines t (point) (mark))))
+</code></pre>
+
+
+
+<p>Although the code&#8217;s documentation gives a short example, it might be clearer if I give a long example here.</p>
+
+
+
+<p>Imagine that you&#8217;ve marked a region like this in an Emacs buffer:</p>
+
+
+
+<pre class="wp-block-code"><code>This is one of the lines we might see; there are twelve of them.
+Meanwhile, other lines look like this (there are five of them).
+This is one of the lines we might see; there are twelve of them.
+And still others are like this -- there are ten of these.
+This is one of the lines we might see; there are twelve of them.
+And still others are like this -- there are ten of these.
+And still others are like this -- there are ten of these.
+Some lines only appear once, so why did I even use the plural?
+This is one of the lines we might see; there are twelve of them.
+And still others are like this -- there are ten of these.
+And still others are like this -- there are ten of these.
+Meanwhile, other lines look like this (there are five of them).
+There's one line that appears twice.
+And still others are like this -- there are ten of these.
+And still others are like this -- there are ten of these.
+And still others are like this -- there are ten of these.
+This is one of the lines we might see; there are twelve of them.
+Meanwhile, other lines look like this (there are five of them).
+Meanwhile, other lines look like this (there are five of them).
+This is one of the lines we might see; there are twelve of them.
+This is one of the lines we might see; there are twelve of them.
+This is one of the lines we might see; there are twelve of them.
+And still others are like this -- there are ten of these.
+There's one line that appears twice.
+This is one of the lines we might see; there are twelve of them.
+Meanwhile, other lines look like this (there are five of them).
+This is one of the lines we might see; there are twelve of them.
+And still others are like this -- there are ten of these.
+This is one of the lines we might see; there are twelve of them.
+This is one of the lines we might see; there are twelve of them.</code></pre>
+
+
+
+<p>Running <code><strong>`M-x count-fold-lines'</strong></code> will transform the region into this:</p>
+
+
+
+<pre class="wp-block-code"><code>     12 This is one of the lines we might see; there are twelve of them.
+     10 And still others are like this -- there are ten of these.
+      5 Meanwhile, other lines look like this (there are five of them).
+      2 There's one line that appears twice.
+      1 Some lines only appear once, so why did I even use the plural?</code></pre>
+
+
+
+<p>Now you can see that there were five unique lines, and how many times each line appeared in the original region.</p>
+
+
+
+<p>This code depends on the availability of the standard Unix utility <code>uniq</code> &#8212; I just took the shortest path because I needed this command on the fly for some research I was doing.  But it could easily be rewritten in pure Elisp, with no dependency on external <code>uniq</code>; if someone really wants to use this on a system where <code>uniq</code> is unavailable, please let me know.</p>
+
+
+
+<p>(And if you&#8217;re looking for this in my <a href="https://svn.red-bean.com/repos/kfogel/trunk/.emacs">.emacs</a>, it&#8217;s under the name <code>kf-count-fold-lines</code>, because I use that namespace prefix to avoid clobbering symbols from Emacs and from third-party packages.)</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2023/01/count-fold-lines/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Twelve Pieces of Classical Music, for Jim</title>
+		<link>https://rants.org/2022/11/music-for-jim/</link>
+					<comments>https://rants.org/2022/11/music-for-jim/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Tue, 22 Nov 2022 01:26:19 +0000</pubDate>
+				<category><![CDATA[Miscellaneous]]></category>
+		<guid isPermaLink="false">https://www.rants.org/?p=3007</guid>
+
+					<description><![CDATA[The number twelve is a lie; I just wanted to hook you. More than a year ago, my friend Jim]]></description>
+										<content:encoded><![CDATA[
+<p>The number twelve is a lie; I just wanted to hook you.</p>
+
+<p>More than a year ago, my friend Jim asked what pieces I would recommend to someone who&#8217;s just starting to listen to classical music.  I didn&#8217;t want to rely solely on my own opinions, so one night I discussed it with Leslie, Fran, and <a href="https://henrysrecords.org/">Henry</a> over dinner (you don&#8217;t have to know who all these people are to follow the story&nbsp;—&nbsp;the point is, they like classical music too and I knew the list would be better with their input).</p>
+
+<p>While Jim had suggested ten pieces as a round number, I think he knew that we wouldn&#8217;t be able to keep it to ten, and we didn&#8217;t.  We came up with twelve, or fourteen, or fifteen, depending on how you count.</p>
+
+<ul>
+
+<li><p><i>Mozart: <strong>Flute and Harp Concerto in C major</strong></i></p>
+
+    <p>Ernst Märzendorfer (conductor), Nicanor Zabaleta (harp), Karlheinz Zöller (flute), and the Berlin Philharmonic Orchestra.  (Record label: Deutsche Grammophon.)</p></li>
+
+<li><p><i>Dvo&#345;ák: <strong>Symphony No. 7</strong></i></p>
+
+    <p>István Kertész (conductor), London Symphony Orchestra.  (Record label: Decca)</p></li>
+
+<li><p><i>Beethoven: <strong>5th, 6th, and 7th Symphonies</strong></i></p>
+
+    <p>5 &amp; 7 with Carlos Kleiber (conductor) and the Vienna Philharmonic.</p></li>
+
+<li><p><i>Tchaikovsky: <strong>Piano Concerto No. 1</strong></i></p>
+
+    <p>Van Cliburn (pianist), Kirill Kondrashin (conductor).  Or: Lang Lang (pianist) and Daniel Barenboim (conductor).</p></li>
+
+<li><p><i>Bach: <strong>Chorale &#8220;Sheep May Safely Graze&#8221;</strong></i></p>
+
+    <p>Karl Richter (conductor), Munich Bach Choir.</p></li>
+
+<li><p><i>Chopin: <strong>Préludes, opus 28</strong></i></p>
+
+    <p>Ivan Moravec (pianist).</p></li>
+
+<li><p><i>Stravinsky: <strong>The Firebird</strong></i></p>
+
+    <p>Leonard Bernstein (conductor), New York Philharmonic.</p></li>
+
+<li><p><i>Shostakovich: <strong>Symphony No. 5</strong></i></p>
+
+    <p>Mstislav Rostropovich (conductor), National Symphony Orchestra.  (Record label: Deutsche Grammophon)</p>
+
+    <p>However, an alternate here was <i>Prokofiev&#8217;s <strong>&#8220;Romeo &amp; Juliet&#8221;</strong></i> with either Rostropovich and the National Symphony Orchestra (1982) again, or Osmo Vänskä (conductor) and the Lahti Symphony Orchestra.</p></li>
+
+<li><p><i>Mussorgsky (orchestral arrangement by Ravel): <strong>Pictures at an Exhibition</strong></i></p>
+
+    <p>Gustavo Dudamel (conductor), Vienna Philharmonic Orchestra.</p>
+
+    <p>(But maybe add Sviatoslav Richter&#8217;s towering 1958 live performance of the original piano version of the piece in Sofia, Bulgaria.)</p></li>
+
+<li><p><i>Vaughan-Williams: <strong>Serenade to Music</strong></i></p>
+
+    <p>Adrian Boult (conductor), London Philharmonic Orchestra.</p></li>
+
+<li><p><i>Brahms: <strong>Symphony No. 1</strong></i></p>
+
+    <p>Wilhelm Furtwängler (conductor), North German Radio Symphony Orchestra (sometimes abbreviated as &#8220;NDR&#8221; because in German their name is &#8220;Norddeutscher Rundfunk Sinfonieorchester&#8221;).</p>
+
+    <p>An alternate here was <i>Mahler</i> Symphony No. 1, with Klaus Tennstedt (conductor) and the Chicago Symphony Orchestra.</p></li>
+
+<li><p><i>Rimsky-Korsakov: <strong>Scheherazade</strong></i></p>
+
+    <p>Daniel Barenboim (conductor), Samuel Magad (violin), Chicago Symphony Orchestra.</p></li>
+
+</ul>
+
+<p>And I had listed <span style="font-style: bold;">Puccini</span>&#8216;s opera &#8220;La Bohème&#8221; off in a corner of the paper where I was taking notes, though I&#8217;m not sure the group ever considered it.  Well, hey: editorial privilege for the win!  I&#8217;m mentioning it here.  There&#8217;s a wonderful recording with Georg Solti (conductor), Placido Domingo (tenor), Montserrat Caballé (soprano), and many other wonderful singers.  However, I haven&#8217;t listened to many recordings of that opera, so I don&#8217;t know what else is out there.</p>
+
+<p>Enjoy, Jim!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2022/11/music-for-jim/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Why not to sign the anti-Stallman petition on GitHub.</title>
+		<link>https://rants.org/2021/04/why-not-to-sign-the-anti-stallman-petition/</link>
+					<comments>https://rants.org/2021/04/why-not-to-sign-the-anti-stallman-petition/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Thu, 08 Apr 2021 20:25:27 +0000</pubDate>
+				<category><![CDATA[Miscellaneous]]></category>
+		<guid isPermaLink="false">https://www.rants.org/?p=2934</guid>
+
+					<description><![CDATA[There&#8217;s a petition circulating that is essentially a public indictment of Richard Stallman. More than half of the initial signers]]></description>
+										<content:encoded><![CDATA[<p style="float: left; margin-right: 1em; margin-bottom: 1em;"><a href="/wp-content/uploads/2021/04/free-software-free-society.png"><img decoding="async" src="/wp-content/uploads/2021/04/free-software-free-society-500x259.png" alt="Free Software, Free society)" width="500" height="259"></a></p>
+<p>There&#8217;s a <a href="https://rms-open-letter.github.io/">petition</a> circulating that is essentially a public indictment of Richard Stallman.</p>
+<p>More than half of the initial signers are people I know and respect, and have for a long time.  They care a lot about ethical behavior in general and about free software in particular.  Normally, I expect to be able to sign most petitions they would sign, but this one I&#8217;m not on board with.</p>
+<p>One reason is that it simply doesn&#8217;t make a good case for a lot of its charges.  In the sources the petition cites, I searched for anything that would support the claims of &#8220;bigotry&#8221;, &#8220;hate&#8221;, and &#8220;intolerance&#8221;, and didn&#8217;t see it.  The primary sources are there&nbsp;—&nbsp;you can read them yourself and make up your own mind, of course.</p>
+<p>It&#8217;s true that Stallman has expressed opinions and positions that are widely condemned, and that people feel hurt by them; some of those people are my friends.  Had the charges been insensitivity and absence of any serious attempt at empathy, who could deny it?  Cherry-picking certain distinctions that are important to him but not to others while ignoring ones that are important to others?  Absolutely.  But what petition says is different, and it&#8217;s a difference of kind, not of degree.  Bigotry, hate, and intolerance are not what Stallman exhibits&nbsp;—&nbsp;and yes, I do think <em>that</em> distinction should be important to all of us.  (I was talking about this with some friends yesterday, and paraphrased something one of them said this way: &#8220;There&#8217;s no necessary correlation between being hurt and being right.&#8221;)</p>
+<p>The second reason is the explicit call for blanket ostracism.  Having portrayed Stallman as some kind of monster (which he is not), the petition says:</p>
+<blockquote><p>These sorts of beliefs have no place in the free software, digital rights, and tech communities. &#8230;</p>
+<p>There has been enough tolerance of RMS’s repugnant ideas and behavior.  We cannot continue to let one person ruin the meaning of our work.  Our communities have no space for people like Richard M. Stallman, and we will not continue suffering his behavior, giving him a leadership role, or otherwise holding him and his hurtful and dangerous ideology as acceptable.</p></blockquote>
+<p>Free software is a big place.  It includes Trump voters and Warren voters; it includes people who believe that women shouldn&#8217;t control their own bodies; whoever you are, it includes people you strongly disagree with on multiple important things.  Empirically, it&#8217;s a kind of <a href="https://en.wikipedia.org/wiki/No_true_Scotsman">fallacy</a> to say that Stallman doesn&#8217;t belong anywhere in the movement that he is more responsible than anyone else for creating.</p>
+<p>I realize that for the petition&#8217;s authors and signers this is a question of their fundamental values, in which case they may find that empirical point irrelevant.  But the call for ostracism from free software is still unjustified by what the petition itself presents.  Indeed, although the very first sentence calls him a &#8220;dangerous force&#8221;, and the above-quoted excerpt says he must not &#8220;ruin the meaning of our work&#8221; (how is he doing that?), the striking thing is that the ideas of his that the petition focuses so intently on have gotten little uptake.</p>
+<p>Stallman&#8217;s vision of free software succeeded because it was a good idea.  His persistent articulation and demonstration of it helped, especially at the beginning, but in the long run it succeeded because others saw it was a good thing and made the cause theirs.  Stallman does not own it.  Where his other ideas&nbsp;—&nbsp;the ones cited by the petition&nbsp;—&nbsp;have not succeeded, it&#8217;s because people have not liked them.  (The majority of his ideas are fairly standard progressive positions, by the way; <em>those</em> are starting to get some uptake now, and of course that&#8217;s because many people, not just Stallman, favor them.)</p>
+<p>I noticed that many long-active people in free software have not signed the petition, and I&#8217;ve talked to several of them about it.  One common reaction I heard is that it &#8220;goes too far&#8221;.  While that&#8217;s true, that&#8217;s not the point I&#8217;m making here.  Rather, the problem is that the petition has category errors of real significance, both about Stallman and about what to do when someone expresses opinions one disagrees with and even feels hurt by.</p>
+<p>This petition does not display the values it claims to represent.</p>
+<p style="font-size: 80%;">Disclaimers and disclosures: This post reflects my personal views only.  It does not reflect the position of any company or organization I am affiliated with.  I&#8217;ve been a member of the Free Software Foundation for a long time, remained one throughout the period following Stallman&#8217;s abrupt resignation in late 2019, and have had both personal informal contact and professional contact with the FSF.  I have made a few light edits to this post since first publishing it; the edits merely clarify and do not change the substance.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2021/04/why-not-to-sign-the-anti-stallman-petition/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Actual comment from a LaTeX document that I am writing now.</title>
+		<link>https://rants.org/2021/02/actual-latex-comment/</link>
+					<comments>https://rants.org/2021/02/actual-latex-comment/#comments</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Fri, 05 Feb 2021 05:40:20 +0000</pubDate>
+				<category><![CDATA[Miscellaneous]]></category>
+		<guid isPermaLink="false">https://www.rants.org/?p=2919</guid>
+
+					<description><![CDATA[% So, why are we not using \appdxsection here? % % Sit down, my child, and you shall hear a]]></description>
+										<content:encoded><![CDATA[<pre>% So, why are we not using \appdxsection here?
+%
+% Sit down, my child, and you shall hear a tale.  A tale of terrible
+% danger and of great deeds by heroes who fought that danger but were
+% ultimately defeated.  This is not a story with a happy ending.  Your
+% father and I debated for a long time about whether you were old
+% enough to hear it.  We eventually decided you were still too young,
+% but you sneaked into my computer and are now reading it anyway, you
+% little rascal!  Fine.  If you're old enough to break into the liquor
+% cabinet, you're old enough to get drunk, as the saying goes.  (No
+% one ever actually said this.  I just made it up.  But I'll bet that
+% by this time next year it's trending on Twitter.)
+% 
+% Anyway, here's the deal:
+%
+% If we just use "\appdxsection{Foo}\label{appdx:foo}" here, then the
+% first appendix's name will be something like "Appendix G".  In other
+% words, the section numbering that we've been using so far will
+% continue right on in to the appendix letters.  If the last
+% non-appendix section was Section 6, then the first appendix will get
+% named for the 7th letter of the alphabet.
+%
+% That sucks, but we all know what the solution is, right?  Just do:
+%
+%   \setcounter{section}{0}
+%
+%   (And actually, you can even combine that with another command,
+%   "\renewcommand{\thesection}{\Alph{section}}", so that subsections
+%   within the appendix get lovely appendix-y names like "A.1", "A.2",
+%   "A.2.1", etc.)
+%
+% Ah, but there's a problem:
+% 
+% Now if you say "Section \ref{appdx:foo}" anywhere in the document,
+% the ref's *link* will actually point to the page where -- you
+% guessed it -- Section 1 is!  So while the reference's text would
+% look correct (saying "Appendix A" or whatever), if you click on it
+% it mysteriously jumps to Section 1, and if you hover over it, in
+% Evince or in any other PDF reader that supports preview popups, you
+% see a popup showing Section 1's header.
+%
+% I don't have a solution for this.  Or rather, I finally decided to
+% stop shaving the LaTeX yak and just do it manually, with a regular
+% unnumbered section that has "Appendix A:" in its title explicitly.
+%
+% Sometimes the dragon wins.
+</pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2021/02/actual-latex-comment/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>So this happened.</title>
+		<link>https://rants.org/2020/06/so-this-happened/</link>
+					<comments>https://rants.org/2020/06/so-this-happened/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Wed, 24 Jun 2020 20:14:09 +0000</pubDate>
+				<category><![CDATA[Miscellaneous]]></category>
+		<guid isPermaLink="false">https://www.rants.org/?p=2896</guid>
+
+					<description><![CDATA[I decided to try out this lossless text-compression demonstration site by Fabrice Bellard. It uses GPT-2 natural language generation and]]></description>
+										<content:encoded><![CDATA[<p>I decided to try out this <a href="http://textsynth.org/sms.html">lossless text-compression demonstration site</a> by <a href="https://en.wikipedia.org/wiki/Fabrice_Bellard">Fabrice Bellard</a>.  It uses <a href="https://openai.com/blog/better-language-models/">GPT-2</a> natural language generation and prediction to achieve compression.  As sample text, I used the first paragraph of Donald Trump&#8217;s <a href="https://github.com/kfogel/presidential-speeches/blob/master/data/2020-06-20-campaign-rally-tulsa-oklahoma.txt">recent rally speech</a> in Tulsa, Oklahoma.  (I figured if anything can compress well using predictive machine learning, surely Trump&#8217;s speech patterns can.)</p>
+<p>Here&#8217;s the compressor site, with most of the input and all of the output showing:</p>
+<p><center><a href="/wp-content/uploads/2020/06/textsynth-compression-full-2020-06-23.png"><img decoding="async" src="/wp-content/uploads/2020/06/textsynth-compression-cropped-2020-06-23.png" alt="compression page with both input and output displayed"></a></center></p>
+<p>The output looks like a short string mixing Chinese and Korean because the compressed text is represented as a series of Unicode characters (encoding 15 bits of information per character&nbsp;—&nbsp;which makes the compression ratio displayed, 804/49, a bit misleading, since the characters on the bottom are twice as large as the characters on the top: 402/49 would be more more accurate, and still quite impressive).</p>
+<p>Anyway, I naturally thought &#8220;Hmm!  What would happen if I were to paste this presumably random Chinese/Korean output into Google Translate?&#8221;</p>
+<p><center><a href="/wp-content/uploads/2020/06/google-translate-from-textsynth-full-2020-06-23.png"><img decoding="async" src="/wp-content/uploads/2020/06/google-translate-from-textsynth-cropped-2020-06-23.png" alt="I am a prisoner, and I am in a state of mind."></a></center></p>
+<p><em>&#8220;I am a prisoner, and I am in a state of mind.&#8221;</em></p>
+<p>Aren&#8217;t we all, Internet?  Aren&#8217;t we all?</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2020/06/so-this-happened/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Don&#8217;t Cover For, Just Cover: How to Report on Trump</title>
+		<link>https://rants.org/2020/05/dont-cover-for-just-cover/</link>
+					<comments>https://rants.org/2020/05/dont-cover-for-just-cover/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Fri, 08 May 2020 07:05:37 +0000</pubDate>
+				<category><![CDATA[Miscellaneous]]></category>
+		<guid isPermaLink="false">https://www.rants.org/?p=2849</guid>
+
+					<description><![CDATA[Have you noticed how Trump consistently says that &#8220;we can&#8217;t let the cure be worse than the problem&#8220;? (emphasis mine)]]></description>
+										<content:encoded><![CDATA[<p>Have you noticed how Trump consistently says that &#8220;we can&#8217;t let the cure be worse than the <em>problem</em>&#8220;? (emphasis mine)</p>
+<p>The usual stock phrase ends with the word &#8220;disease&#8221;.  But Trump avoids the stock phrase, probably because he doesn&#8217;t want someone quoting it back at him sarcastically at the peak of the COVID-19 death toll.  So in order to avoid reminding his listeners that it is, in fact, <em>literally a disease</em> we&#8217;re dealing with here, he twists a common saying.</p>
+<p>Since Trump&#8217;s use of language is so frequently odd anyway, journalists rarely call out his misdirections or try to explain them.  But even worse, they often cover for him.  There was a particularly dramatic example of this recently:</p>
+<p>On <a href="https://www.nytimes.com/2020/03/25/podcasts/the-daily/trump-coronavirus.html">The Daily</a> podcast with <a href="https://twitter.com/mikiebarb">Michael Barbaro</a>, New York Times journalist <a href="https://twitter.com/maggieNYT">Maggie Haberman</a> played audio of Trump saying &#8220;I don’t want the cure to be worse than the problem itself&#8221; (he <em>always</em> phrases it this way&nbsp;—&nbsp;he never says &#8220;disease&#8221; in that phrase) and then she did a really interesting thing.  She repeated it back for the audience, but with the phrase corrected to its standard form:</p>
+<blockquote><p>&#8220;—&nbsp;in his words, the cure can’t be worse than the disease.&#8221;</p></blockquote>
+<p>(Here&#8217;s a <a href="https://www.nytimes.com/2020/03/25/podcasts/the-daily/trump-coronavirus.html?showTranscript=1">transcript</a>.)</p>
+<p>Haberman wasn&#8217;t adding any information by rephrasing the President.  She wasn&#8217;t summarizing a longer or more complex thing Trump said.  She wasn&#8217;t providing needed context that the listener might not have.  She just repeated Trump, with one important fix&nbsp;—&nbsp;and called her fixed version &#8220;his words&#8221;.</p>
+<p>What is going on?  It&#8217;s not a simple accident.  The day before, Michael Barbaro himself did the <em>same thing</em>.  He played audio of Trump using the same odd phrasing on a different occasion, and then Barbaro followed it up by similarly fixing the President&#8217;s words, albeit with &#8220;illness&#8221; instead of &#8220;disease&#8221;.  (<a href="https://www.nytimes.com/2020/03/24/podcasts/the-daily/coronavirus.html?showTranscript=1">transcript&nbsp;here</a>)</p>
+<p>It&#8217;s as though the journalists <em>know</em> something is wrong, and instinctively want to fix it, so they generously clean up after the President, instead of simply pointing out how the President consistently mis-phrases a traditional saying.  (Foreign journalists have <a href="https://www.theguardian.com/commentisfree/2019/sep/20/as-a-foreign-reporter-visiting-the-us-i-was-stunned-by-trumps-press-conference">noticed</a> this tendency of American reporters to edit the President and thus mask what he&#8217;s actually saying.)</p>
+<p>I&#8217;m not suggesting that reporters should indulge in speculation about the President&#8217;s motivations in behaving like this, even when those motivations are pretty clear.  Instead, I&#8217;m suggesting that journalists should point out when something odd is going on&nbsp;—&nbsp;help the audience see patterns.  As reporters, they&#8217;ve heard Trump use this strange phrasing multiple times; they know full well what is going on.  But any given audience member might not have heard all those instances, and thus might not spot the pattern.</p>
+<p>Instead of unconsciously correcting Trump, and thus normalizing him, just report on him and help people be aware of patterns.  Listeners can come to their own conclusions about what the patterns mean, but no one is in a better position than journalists who cover Trump professionally to <em>point out</em> the patterns in the first place.</p>
+<p>Don&#8217;t <em>cover for</em>.</p>
+<p>Just <em>cover</em>.</p>
+<p><span style="font-size: 85%; font-style: italic; margin-left: 7%;">(Note: See related Twitter threads <a href="https://twitter.com/rickperlstein/status/1258782697050251267">here</a> and <a href="https://twitter.com/kfogel/status/1244399743196966912">here</a>.)</span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2020/05/dont-cover-for-just-cover/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Why the Internet Archive&#8217;s National Emergency Library is a Good Idea.</title>
+		<link>https://rants.org/2020/05/support-the-national-emergency-library-is-a-good-idea/</link>
+					<comments>https://rants.org/2020/05/support-the-national-emergency-library-is-a-good-idea/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Sun, 03 May 2020 21:41:57 +0000</pubDate>
+				<category><![CDATA[Miscellaneous]]></category>
+		<guid isPermaLink="false">https://www.rants.org/?p=2847</guid>
+
+					<description><![CDATA[I wrote a semi-personal post over at QuestionCopyright.org on why the National Emergency Library is a good thing. (Instead of]]></description>
+										<content:encoded><![CDATA[<p>I wrote a <a href="https://questioncopyright.org/support-the-national-emergency-library">semi-personal post over at QuestionCopyright.org</a> on why the <a href="https://archive.org/NEL/">National Emergency Library</a> is a good thing.</p>
+<p>(Instead of cross-posting it here, I&#8217;d rather just refer you there, so that there&#8217;s one canonical URL.)</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2020/05/support-the-national-emergency-library-is-a-good-idea/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Ethics Enforcement Via Software Licenses Considered Harmful.</title>
+		<link>https://rants.org/2019/09/ethics-based-licensing-considered-harmful/</link>
+					<comments>https://rants.org/2019/09/ethics-based-licensing-considered-harmful/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Thu, 26 Sep 2019 05:08:51 +0000</pubDate>
+				<category><![CDATA[Miscellaneous]]></category>
+		<guid isPermaLink="false">https://www.rants.org/?p=2792</guid>
+
+					<description><![CDATA[Update (2019-11-25): Audrey Eschright has made a link roundup of &#8220;pieces I&#8217;ve been reading on the topic of modern free]]></description>
+										<content:encoded><![CDATA[<p style="font-style: italic; margin-right: 7%; margin-left: 7%;"><strong>Update (2019-11-25):</strong> Audrey Eschright has made a link roundup of &#8220;<a href="https://lifeofaudrey.com/2019/11/24/links-floss-ethics.html">pieces I&#8217;ve been reading on the topic of modern free and open source software practices, licensing, and ethical concerns.</a>&#8221;  Thanks, Audrey!  (Thanks also to Sumana Harihareswara, whose <a href="https://twitter.com/brainwane/status/1199077533741912064">tweet</a> alerted me to this fine development.)</p>
+<p style="font-style: italic; margin-right: 7%; margin-left: 7%;"><strong>Update (2019-10-23):</strong> Christie Koehler has written a great piece on this same topic: <a href="https://subfictional.com/open-source-licenses-and-the-ethical-use-of-software/">Open Source Licenses and the Ethical Use of Software</a>.  It&#8217;s much more in-depth than my treatment below; I highly recommend Christie&#8217;s post if you&#8217;re looking for a thorough examination of this trend.</p>
+<p>I just wrote this in an email, and then realized it was basically already a blog post, so here it is.  (Disclaimer: in this post, as on this blog generally, I&#8217;m speaking only for myself and not for my company or our clients.)</p>
+<p>There&#8217;s been a lot of talk recently about creating software licenses that include an ethical-use-only clause.  Here&#8217;s <a href="https://twitter.com/CoralineAda/status/1175847915522334727">one example</a> among many.  There has even been talk about modifying some existing free software / open source software licenses to include such clauses.  If I stopped to dig up source links for everything I&#8217;d never get this post done, but if you&#8217;re active in this field you&#8217;ve probably been seeing these conversations too.  Feel free to supply links in the comments.</p>
+<p>According to the current definition of free and open source software, such licenses would no longer be FOSS.  Some people react to that by saying that maybe we need to update the definition of FOSS then, but that&#8217;s backwards&nbsp;—&nbsp;you can&#8217;t change a thing by changing what labels you call it by.  The current definition of FOSS would still exist, and would still mean exactly what it means, whether one calls it &#8220;FOSS&#8221; or &#8220;broccoli&#8221; or &#8220;gezornenplatz&#8221;.</p>
+<p>But even ignoring the nominalist arguments, I think these ethics-scoped licenses are, sadly, an unworkable idea on substantive grounds.</p>
+<p><a href="https://adityamukerjee.net/">Aditya Mukerjee</a> explained why very eloquently in <a href="https://twitter.com/chimeracoder/status/1175896685505056769"> this tweet thread</a>, and you might want to read that first.  I would add:</p>
+<p>In practice, these kinds of clauses are time bombs that people either don&#8217;t hear ticking, in which case they get an unpleasant surprise later, or do hear ticking, in which case they avoid using any software under that license.</p>
+<p>The conversations I&#8217;ve seen around these licenses seem to start from the position that all (ahem) reasonable people agree about what is ethical.  But in fact there are serious and deep disagreements about what is ethical&nbsp;—&nbsp;even among people who would never have expected that they might disagree with each other, there are usually latent disagreements lurking.  Here are a couple of examples, just to show how easy it is for this to happen:</p>
+<p>1) Some people believe that copyright infringement is immoral.  They think that copying without authorization, or at least doing so at scale, harms artists and other creators, and is thus unethical.  Other people believe that putting restrictions on copying is inherently immoral&nbsp;—&nbsp;that no one should have a monopoly on the distribution of culture and information.  (Note that this is wholly independent of <em>attribution</em>, of course&nbsp;—&nbsp;that&#8217;s a separate concern, and both sides here generally agree that misattribution is unethical because it is simply a type of fraud.)</p>
+<p>So what happens when someone puts out a license with a clause saying that one may not use this software as part of a system that performs unauthorized copying?  Sure, the license will mean it means and will be variably enforceable depending on the jurisdiction.  But what I&#8217;m getting at is that there is no consensus at all, <em>especially</em> among the kinds of people likely to be pondering these questions in the first place, about whether the restriction would be ethical.</p>
+<p>This example, far from being contrived, actually touches the <a href="https://firstdonoharm.dev/version/1/1/license.html">proposed license</a> referred to earlier.  That license bases its &#8220;do no harm&#8221; clause on the <a href="https://www.un.org/en/universal-declaration-human-rights/">Universal Declaration of Human Rights</a>, in which see clause 27(2)&nbsp;—&nbsp;a clause that I do not agree is ethical and that, depending on how it is interpreted, may be in fundamental contradiction with free software licensing.</p>
+<p>Next example&#8230;</p>
+<p>2) Many vegetarians and vegans feel that killing animals for meat&nbsp;—&nbsp;and doing medical testing on animals, etc&nbsp;—&nbsp;is immoral.  Most of those people live surrounded by meat-eaters, so they often don&#8217;t bring this up in conversation unless asked about it.  But it&#8217;s only a matter of time before someone releases a license that prohibits the software from being used for any purpose that harms animals.</p>
+<p>Oh wait, that <a href="https://www.theregister.co.uk/2008/01/26/exttld_license/">already happened</a>.</p>
+<p>(To be fair, it looks like maybe that was really a click-through download EULA rather than the underlying software license, at least based on <a href="https://web.archive.org/web/20081223040739/http://www.exttld.com/index.php?content=terms">this archived page</a>.  It&#8217;s a little hard to tell&nbsp;—&nbsp;this was all around 2008, and the license is no longer easy to find on the Net.  Which I think is likely to be the fate of most ethics-scoped licenses in the long run.)</p>
+<p>Formally speaking, these kinds of ethical-use-only clauses violate both the <a href="https://www.gnu.org/philosophy/free-sw.en.html">Free Software Definition</a> and the <a href="https://opensource.org/definition">Open Source Definition</a>.  In the FSD, they prevent the software from being used &#8220;for any purpose&#8221;.  In the OSD, they constitute a &#8220;field of use&#8221; restriction.</p>
+<p>Now, you can make any license you want, and if you hire a good lawyer to do the drafting it may even be enforceable in some circumstances.  But there is much less consensus around the world about what is &#8220;ethical&#8221; than many people wish.  If this practice were normalized, we would quickly have software licenses that prohibit the software from being used in a system that encourages people to change or abandon their religion, or from being used to educate women, etc.</p>
+<p>&#8220;Fine&#8221;, I hear you say.  &#8220;I don&#8217;t have to use their software, then.  But people who agree with my ethics will be free to use the software I release under licenses that enforce those ethics.&#8221;  Except that no one will: the software won&#8217;t be adopted, except maybe by your friends.  Anyone seriously thinking of using that software in production will run away as fast as they can from a license clause that opens them up to liability based on some judge&#8217;s interpretation of what constitutes a violation of someone else&#8217;s ethical guidelines.  These licenses may look great on the runway, but they&#8217;ll never fly.</p>
+<p>I think the FSD and the OSD (which are essentially the same idea expressed in different words) got it right the first time.  Free software licenses accomplish some wonderful things, both for individual freedom and for non-monopolistic collaboration built around free-to-fork code.  However, FOSS licenses can never provide a generally enforceable framework for ethical behavior.  Attempts to make them do the latter not only fail (because the software won&#8217;t be widely adopted with non-FOSS license terms anyway) but also reduce the licenses&#8217; effectiveness at doing what they were originally designed to do.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2019/09/ethics-based-licensing-considered-harmful/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>SOLVED: &#8216;apt-get dist-upgrade&#8217; error when going from Debian 9.x (&#8220;stretch&#8221;) to 10.0 (&#8220;buster&#8221;).</title>
+		<link>https://rants.org/2019/07/solved-apt-get-dist-upgrade-error-when-going-from-debian-9-x-stretch-to-10-0-buster/</link>
+					<comments>https://rants.org/2019/07/solved-apt-get-dist-upgrade-error-when-going-from-debian-9-x-stretch-to-10-0-buster/#respond</comments>
+		
+		<dc:creator><![CDATA[Karl Fogel]]></dc:creator>
+		<pubDate>Thu, 11 Jul 2019 22:12:08 +0000</pubDate>
+				<category><![CDATA[SOLVED as a Service]]></category>
+		<guid isPermaLink="false">https://www.rants.org/?p=2774</guid>
+
+					<description><![CDATA[Thanks to user lamayonnaise in this Reddit, I was able to solve the problem described below, which I encountered when]]></description>
+										<content:encoded><![CDATA[<p>Thanks to user lamayonnaise in <a href="https://www.reddit.com/r/debian/comments/c9stpa/tried_to_upgrade_to_buster_but_i_got_an_error_and/">this Reddit</a>, I was able to solve the problem described below, which I encountered when upgrading a Debian GNU/Linux box from old stable (9.x, a.k.a. &#8220;stretch&#8221;) to new stable (10.0, a.k.a. &#8220;buster&#8221;).  I&#8217;ve also seen this when upgrading from &#8216;stable&#8217; to &#8216;testing&#8217;&nbsp;—&nbsp;presumably the solution below would work there too.</p>
+<p>Here&#8217;s what the problem looks like&nbsp;—&nbsp;full transcript, out of consideration for search engine indexes:</p>
+<pre>root# apt-get dist-upgrade
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+You might want to run 'apt --fix-broken install' to correct these.
+The following packages have unmet dependencies:
+ guile-2.2-libs : Depends: libtinfo6 (&gt;= 6) but it is not installed
+ libedit2 : Depends: libtinfo6 (&gt;= 6) but it is not installed
+ libllvm7 : Depends: libtinfo6 (&gt;= 6) but it is not installed
+ libncurses6 : Depends: libtinfo6 (= 6.1+20181013-2) but it is not installed
+ libreadline7 : Depends: libtinfo6 (&gt;= 6) but it is not installed
+E: Unmet dependencies. Try 'apt --fix-broken install' with no packages (or specify a solution).
+root# 
+</pre>
+<p>Hmmm, that doesn&#8217;t look good.  I tried following the advice given there, but it didn&#8217;t work:</p>
+<pre>root# apt --fix-broken install
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Correcting dependencies... Done
+The following packages were automatically installed and are no longer required:
+  guile-2.2-libs libncurses6 libpython3.7-minimal libsasl2-modules libzstd1
+  mariadb-common python3.7-minimal
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libtinfo6
+The following NEW packages will be installed:
+  libtinfo6
+0 upgraded, 1 newly installed, 0 to remove and 1326 not upgraded.
+47 not fully installed or removed.
+Need to get 0 B/325 kB of archives.
+After this operation, 534 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+apt-listchanges: Can't set locale; make sure $LC_* and $LANG are correct!
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Setting up libpam0g:amd64 (1.3.1-5) ...
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Checking for services that may need to be restarted...awk: error while loading shared libraries: libtinfo.so.6: cannot open shared object file: No such file or directory
+Checking init scripts...
+awk: error while loading shared libraries: libtinfo.so.6: cannot open shared object file: No such file or directory
+dpkg: error processing package libpam0g:amd64 (--configure):
+ subprocess installed post-installation script returned error exit status 127
+Errors were encountered while processing:
+ libpam0g:amd64
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+root# 
+</pre>
+<p>Okay, hmmm, what about trying the same but with <tt>apt-get</tt> instead of <tt>apt</tt>?  Let&#8217;s see:</p>
+<pre>root# apt-get --fix-broken install
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Correcting dependencies... Done
+The following packages were automatically installed and are no longer required:
+  guile-2.2-libs libncurses6 libpython3.7-minimal libsasl2-modules libzstd1
+  mariadb-common python3.7-minimal
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libtinfo6
+The following NEW packages will be installed:
+  libtinfo6
+0 upgraded, 1 newly installed, 0 to remove and 1326 not upgraded.
+47 not fully installed or removed.
+Need to get 0 B/325 kB of archives.
+After this operation, 534 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+apt-listchanges: Can't set locale; make sure $LC_* and $LANG are correct!
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Setting up libpam0g:amd64 (1.3.1-5) ...
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Checking for services that may need to be restarted...awk: error while loading shared libraries: libtinfo.so.6: cannot open shared object file: No such file or directory
+Checking init scripts...
+awk: error while loading shared libraries: libtinfo.so.6: cannot open shared object file: No such file or directory
+dpkg: error processing package libpam0g:amd64 (--configure):
+ subprocess installed post-installation script returned error exit status 127
+Errors were encountered while processing:
+ libpam0g:amd64
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+</pre>
+<p>Nope.</p>
+<p>All right, then.  Let&#8217;s do it manually:</p>
+<p>I&#8217;m not sure it was necessary, but at this point I ensured the locale by checking that the uncommented line &#8220;en_US.UTF-8&nbsp;UTF-8&#8221; was present in <tt>/etc/locale.gen</tt>, running the command <tt>locale-gen</tt> as root, logging out and logging back in, and confirming the locale with <tt>locale&nbsp;-a</tt>.</p>
+<p>Again, that locale dance may not have been necessary.  What <em>was</em> necessary were the next steps:</p>
+<p>Visit the Debian package pages for <a href="https://packages.debian.org/buster/libtinfo6">libtinfo6</a> and <a href="https://packages.debian.org/buster/libpam0g">libpam0g</a>, download the <tt>amd64</tt> versions (using the <tt>sha256sum</tt> command to check the downloaded files against the SHA256 fingerprint listed at the bottoms of the Debian package pages), then install them manually:</p>
+<pre>root# dpkg -i libtinfo6_6.1+20181013-2_amd64.deb
+root# dpkg -i libpam0g_1.3.1-5_amd64.deb
+</pre>
+<p>Those commands succeeded, and I confirmed that the packages were now installed:</p>
+<pre>root# apt-get install libtinfo6
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+libtinfo6 is already the newest version (6.1+20181013-2).
+libtinfo6 set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 1325 not upgraded.
+root# apt-get install libpam0g
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+libpam0g is already the newest version (1.3.1-5).
+0 upgraded, 0 newly installed, 0 to remove and 1325 not upgraded.
+root# 
+</pre>
+<p>Now the box was in working order again, and I could finish the dist-upgrade:</p>
+<pre>root# apt-get dist-upgrade
+[...zillions of lines of package names omitted...]
+1325 upgraded, 390 newly installed, 19 to remove and 0 not upgraded.
+Need to get 41.7 MB/1,155 MB of archives.
+After this operation, 1,054 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+[...zillions of lines of success omitted...]
+</pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://rants.org/2019/07/solved-apt-get-dist-upgrade-error-when-going-from-debian-9-x-stretch-to-10-0-buster/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

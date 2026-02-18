@@ -1,0 +1,1527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>Vasilij Schneidermann</name>
+  </author>
+  <generator uri="https://github.com/ursetto/atom-egg" version="0.1.5">atom egg for Chicken</generator>
+  <id>tag:https://emacsninja.com,:/</id>
+  <link href="https://emacsninja.com/" rel="alternate" type="text/html" />
+  <link href="https://emacsninja.com/feed.atom" rel="self" type="application/atom+xml" />
+  <subtitle type="text">Blog</subtitle>
+  <title type="text">Emacs Ninja</title>
+  <updated>2025-07-13T20:57:06Z</updated>
+  <entry>
+    <author>
+      <name>Vasilij Schneidermann</name>
+    </author>
+    <content type="html">
+
+
+&lt;div class="section" id="summary"&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Been a while since my last CVE :) If you are only interested in how to
+protect yourself against this vulnerability, jump to the &lt;a class="reference internal" href="#mitigation"&gt;Mitigation&lt;/a&gt;
+section. Otherwise, keep on reading.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;CVSS Score: 8.8 (High)&lt;/li&gt;
+&lt;li&gt;CVSS: &lt;tt class="docutils literal"&gt;CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Affected versions: 29.4 and earlier&lt;/li&gt;
+&lt;li&gt;Fixed version: 30.1&lt;/li&gt;
+&lt;li&gt;Vendor advisory: &lt;a class="reference external" href="https://lists.gnu.org/archive/html/emacs-devel/2025-02/msg00997.html"&gt;emacs-devel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CVE advisories: &lt;a class="reference external" href="https://nvd.nist.gov/vuln/detail/CVE-2025-1244"&gt;NVD&lt;/a&gt;, &lt;a class="reference external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-1244"&gt;MITRE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;OS advisories: &lt;a class="reference external" href="https://access.redhat.com/security/cve/cve-2025-1244"&gt;Red Hat CVE&lt;/a&gt;, &lt;a class="reference external" href="https://www.suse.com/security/cve/CVE-2025-1244.html"&gt;SUSE CVE&lt;/a&gt;, &lt;a class="reference external" href="https://ubuntu.com/security/CVE-2025-1244"&gt;Ubuntu CVE&lt;/a&gt;, &lt;a class="reference external" href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1098255"&gt;Debian bug report&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affected component: man.el, url-man.el&lt;/li&gt;
+&lt;li&gt;Bug fix: &lt;a class="reference external" href="https://git.savannah.gnu.org/cgit/emacs.git/commit/?id=820f0793f0b"&gt;820f0793f0b&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="introduction"&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I’ve attended an &lt;a class="reference external" href="https://srcincite.io/training/"&gt;application security training&lt;/a&gt; by &lt;a class="reference external" href="https://srcincite.io/about/"&gt;Steven Seeley&lt;/a&gt;
+last year. One of the recurring themes was lesser known URL handlers
+leading to remote code execution (RCE), so we did review a good amount
+of Java code implementing JNDI and other fun stuff.&lt;/p&gt;
+&lt;p&gt;The training left me feeling in need of doing my own security
+research. Considering that &lt;a class="reference external" href="https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html#Releases"&gt;the last two Emacs releases fixed several
+security bugs&lt;/a&gt; and I was not aware of any systematic research of URL
+handlers in Emacs, I figured that may be something worth sinking my
+teeth into.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="url-el"&gt;
+&lt;h2&gt;url.el&lt;/h2&gt;
+&lt;p&gt;This built-in library is the de-facto solution for performing HTTP
+requests in Emacs, despite minimal documentation and overall terrible
+API. I was vaguely aware that it handles far more than just HTTP URLs,
+so I went through the source code and found support for the following:&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="13%" /&gt;
+&lt;col width="87%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Source file&lt;/th&gt;
+&lt;th class="head"&gt;Handler&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;url-cid.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;cid:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-1" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-file.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;file:&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;ftp:&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-ftp.el&lt;/td&gt;
+&lt;td&gt;Alias for url-file.el&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-http.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;http:&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;https:&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-imap.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;imap:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-2" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-irc.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;irc:&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-ldap.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;ldap:&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-mail.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;mail:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-3" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-3"&gt;[3]&lt;/a&gt;, &lt;tt class="docutils literal"&gt;mailto:&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-misc.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;man:&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;info:&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;data:&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;rlogin:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-4" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-4"&gt;[4]&lt;/a&gt;, &lt;tt class="docutils literal"&gt;telnet:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-4" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-5"&gt;[4]&lt;/a&gt;, &lt;tt class="docutils literal"&gt;tn3270:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-4" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-6"&gt;[4]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-news.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;news:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-2" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-7"&gt;[2]&lt;/a&gt;, &lt;tt class="docutils literal"&gt;snews:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-2" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-8"&gt;[2]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-nfs.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;nfs:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-3" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-9"&gt;[3]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;url-tramp.el&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;ftp:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-5" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-10"&gt;[5]&lt;/a&gt;, &lt;tt class="docutils literal"&gt;ssh:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-5" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-11"&gt;[5]&lt;/a&gt;, &lt;tt class="docutils literal"&gt;scp:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-5" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-12"&gt;[5]&lt;/a&gt;, &lt;tt class="docutils literal"&gt;rsync:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-5" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-13"&gt;[5]&lt;/a&gt;, &lt;tt class="docutils literal"&gt;telnet:&lt;/tt&gt;&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-5" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-14"&gt;[5]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;That’s a lot! Some of the URL handlers were clearly in an unfinished
+state as I hit errors when trying to use them. Others outsourced their
+functionality to the TRAMP package, which seems like another prime
+candidate for future vulnerability research.&lt;/p&gt;
+&lt;p&gt;Now, given an attacker-controlled URL, what APIs process it? The
+obvious answer is &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve&lt;/span&gt;&lt;/tt&gt; and friends, however there is
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-handler-mode&lt;/span&gt;&lt;/tt&gt; as well which enables file system operations
+(such as &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;file-exists-p&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;insert-file-contents&lt;/span&gt;&lt;/tt&gt;) on URLs. This
+blog post will focus on the former due to the greater attack surface.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="identifying-the-sink"&gt;
+&lt;h2&gt;Identifying the sink&lt;/h2&gt;
+&lt;p&gt;With source code review, there is this concept of “source” (code
+accepting user input) and “sink” (code performing a dangerous
+operation on its argument). The challenge is to find a code path
+leading from source to sink. While there is tooling (such as &lt;a class="reference external" href="https://codeql.github.com/docs/"&gt;codeql&lt;/a&gt;)
+to perform automatic analysis, I’m not aware of such a thing for Lisp
+languages. The best option so far seem to be source-code aware search
+tools, such as &lt;a class="reference external" href="https://semgrep.dev/docs/"&gt;semgrep&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I decided to start with the sink first and looked for URL handlers
+which unsafely spawn processes using part of the URL as input. This
+led to an obvious hit from &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;lisp/url/url-man.el&lt;/span&gt;&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;lisp/man.el&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url-man&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="s"&gt;"Fetch a Unix manual page URL."&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-filename&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [1]&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;man&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="s"&gt;"..."&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+
+  &lt;/span&gt;&lt;span class="c1"&gt;;; Possibly translate the "subject(section)" syntax into the&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="c1"&gt;;; "section subject" syntax and possibly downcase the section.&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;Man-translate-references&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [2]&lt;/span&gt;&lt;span class="w"&gt;
+
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;Man-getpage-in-background&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [3]&lt;/span&gt;
+&lt;/pre&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Man-getpage-in-background&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;topic&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="s"&gt;"..."&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;topic&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [4]&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;bufname&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"*Man "&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"*"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bufname&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;Man-notify-when-ready&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"Invoking %s %s in the background"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;manual-program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;generate-new-buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bufname&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;with-current-buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="c1"&gt;;; ...&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;Man-start-calling&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;fboundp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'make-process&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+             &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;proc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;start-process&lt;/span&gt;&lt;span class="w"&gt;
+                          &lt;/span&gt;&lt;span class="nv"&gt;manual-program&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt;
+                          &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;memq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;system-type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;cygwin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;windows-nt&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+                              &lt;/span&gt;&lt;span class="nv"&gt;shell-file-name&lt;/span&gt;&lt;span class="w"&gt;
+                            &lt;/span&gt;&lt;span class="s"&gt;"sh"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+                          &lt;/span&gt;&lt;span class="nv"&gt;shell-command-switch&lt;/span&gt;&lt;span class="w"&gt;
+                          &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;Man-build-man-command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [5]&lt;/span&gt;&lt;span class="w"&gt;
+               &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;set-process-sentinel&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;proc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'Man-bgproc-sentinel&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+               &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;set-process-filter&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;proc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'Man-bgproc-filter&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+           &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;inhibit-read-only&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+                  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;exit-status&lt;/span&gt;&lt;span class="w"&gt;
+                   &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;call-process&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;shell-file-name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="w"&gt;
+                                 &lt;/span&gt;&lt;span class="nv"&gt;shell-command-switch&lt;/span&gt;&lt;span class="w"&gt;
+                                 &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;Man-build-man-command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;man-args&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [5]&lt;/span&gt;&lt;span class="w"&gt;
+                  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+             &lt;/span&gt;&lt;span class="c1"&gt;;; ...&lt;/span&gt;&lt;span class="w"&gt;
+             &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;Man-bgproc-sentinel&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bufname&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;))))))&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;To recap:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The file name part of the URL is extracted [1]&lt;/li&gt;
+&lt;li&gt;man page references are translated, leaving shell control characters
+intact [2]&lt;/li&gt;
+&lt;li&gt;The result is passed to a helper function of &lt;tt class="docutils literal"&gt;man&lt;/tt&gt; [3][4], which
+starts a shell process and interpolates the man page name into the
+command line, without any further restriction or escaping of shell
+control characters [5]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Despite this seeming relatively straight-forward to exploit, I ran
+into a minor impediment almost immediately: The file name part of the
+URL does not accept all possible characters unscathed. Inside
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve&lt;/span&gt;&lt;/tt&gt;, the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-encode-url&lt;/span&gt;&lt;/tt&gt; helper is invoked on a URL
+string to ensure it’s normalized and performs percent-encoding on the
+path and other parts of the URL. Therefore, the URL handler would need
+to percent-decode the path to handle the encoded parts correctly.
+Unfortunately, this is not the case for &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-man&lt;/span&gt;&lt;/tt&gt;, whereas
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-info&lt;/span&gt;&lt;/tt&gt; does this step.&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my-man-url-filename&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-filename&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-generic-parse-url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-encode-url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;my-man-url-filename&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"man:`xcalc`"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;=&amp;gt; "%60xcalc%60"&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;my-man-url-filename&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"man:$(xcalc)"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;=&amp;gt; "$(xcalc)"&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;my-man-url-filename&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"man:$(xcalc -rpn)"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;=&amp;gt; "$(xcalc%20-rpn)"&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Given some shell-fu, it is absolutely possible to invoke commands with
+several arguments, but this is best left as an exercise to the
+inclined reader :)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="from-sink-to-source"&gt;
+&lt;h2&gt;From sink to source&lt;/h2&gt;
+&lt;p&gt;Here’s the part I spent much more time on: Are there any packages, be
+it built-in or from 3rd-party repositories (such as &lt;a class="reference external" href="https://melpa.org/"&gt;MELPA&lt;/a&gt;), which
+obtain a URL from user input and retrieve it? How many rely on user
+interaction before command execution is triggered?&lt;/p&gt;
+&lt;p&gt;Initially, I didn’t find much when looking at built-in packages, so I
+grabbed a copy of all ELPA repositories from the &lt;a class="reference external" href="https://mirrors.cloud.tencent.com/elpa/"&gt;Emacs China
+mirror&lt;/a&gt;, unpacked them, searched for &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve&lt;/span&gt;&lt;/tt&gt; invocations and
+filtered out anything operating on a string literal. The first
+interesting hit was for the &lt;a class="reference external" href="https://github.com/abo-abo/org-download/"&gt;org-download&lt;/a&gt; package from MELPA, with
+500k downloads:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;org-download-yank&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="s"&gt;"Call &lt;/span&gt;&lt;span class="ss"&gt;`org-download-image'&lt;/span&gt;&lt;span class="s"&gt; with current kill."&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;k&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;current-kill&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [1]&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-generic-parse-url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;k&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;user-error&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"Not a URL: %s"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;k&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;org-download-image&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [2]&lt;/span&gt;&lt;span class="w"&gt;
+     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s"&gt;"\n+$"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;""&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;k&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;org-download-image&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="s"&gt;"Save image at address LINK to &lt;/span&gt;&lt;span class="ss"&gt;`org-download--dir'&lt;/span&gt;&lt;span class="s"&gt;."&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"sUrl: "&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;link-and-ext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;org-download--parse-link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [3]&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="c1"&gt;;; ...&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="c1"&gt;;; ...&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;org-download--parse-link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;cond&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;image-type-from-file-name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;string-match&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"^file:/+"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-retrieve-synchronously&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [4]&lt;/span&gt;&lt;span class="w"&gt;
+           &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;org-download--detect-ext&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;The exploit scenario would look as follows:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The user downloads an Org file containing a malicious &lt;tt class="docutils literal"&gt;man:&lt;/tt&gt; link&lt;/li&gt;
+&lt;li&gt;She yanks the link, then processes it with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;org-download-yank&lt;/span&gt;&lt;/tt&gt;
+command&lt;/li&gt;
+&lt;li&gt;The embedded shell command inside the link is executed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Granted, not a very likely scenario, but good enough for an initial
+security report to the Emacs maintainers&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-6" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-15"&gt;[6]&lt;/a&gt;. This revealed that the
+sink had been patched almost a year ago in commit &lt;a class="reference external" href="https://git.savannah.gnu.org/cgit/emacs.git/commit/?id=820f0793f0b"&gt;820f0793f0b&lt;/a&gt;, which
+did not make it into a stable release yet and was intended to land in
+Emacs 30.1. From my own limited testing, I managed to reproduce the
+bug on Emacs versions 29.4 (Arch), 28.2/27.1/26.1 (Debian 12/11/10)
+and 25.2/24.5 (Ubuntu 18.04/16.04).&lt;/p&gt;
+&lt;p&gt;The initial response to the report was mixed. On the one hand it
+seemed like a serious enough issue to the maintainers to further look
+into, on the other hand the initial response in the Debbugs thread was
+“Why isn’t it a problem with the command that invokes ‘man’, in this
+case Org?” and “I think callers of ‘man’ should prevent that instead.”&lt;/p&gt;
+&lt;p&gt;I do find it perfectly understandable that the focus of the Emacs
+maintainers is fixing code that’s part of Emacs, the initial response
+not so much. Nevertheless, I felt that I had to prove it’s not only
+third-party packages that can trigger the bug, which motivated me to
+look harder for a more realistic exploit scenario.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="reducing-user-interaction"&gt;
+&lt;h2&gt;Reducing user interaction&lt;/h2&gt;
+&lt;p&gt;I reviewed the Emacs 29.4 sources again. This led me towards eww.el
+and shr.el which are responsible for the textual browser and HTML
+rendering respectively. For example, the following browser command
+downloads the URL at point:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;eww-download&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="s"&gt;"Download URL to &lt;/span&gt;&lt;span class="ss"&gt;`eww-download-directory'&lt;/span&gt;&lt;span class="s"&gt;.
+Use link at point if there is one, else the current page's URL."&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;eww-mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;stringp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;eww-download-directory&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+                 &lt;/span&gt;&lt;span class="nv"&gt;eww-download-directory&lt;/span&gt;&lt;span class="w"&gt;
+               &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;funcall&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;eww-download-directory&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;access-file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"Download failed"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;get-text-property&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;point&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'shr-url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [1]&lt;/span&gt;&lt;span class="w"&gt;
+                   &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;eww-current-url&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;not&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"No URL under point"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-retrieve&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;eww-download-callback&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="p"&gt;))))))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [2]&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;This improves upon the initial payload by not requiring any 3rd-party
+packages, but still relies on the position of point and intentionally
+executing the command.&lt;/p&gt;
+&lt;p&gt;I started experimenting with other HTML tags containing URLs and
+noticed that there was nothing preventing an image from containing a
+&lt;tt class="docutils literal"&gt;man:&lt;/tt&gt; URL. To my surprise, merely rendering an HTML document with
+shr.el triggered URL retrieval:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;shr-tag-img&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kp"&gt;&amp;amp;optional&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt;
+                 &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dom-attr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'src&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+                     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dom-attr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'srcset&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;current-column&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"\n"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;alt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dom-attr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'alt&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;width&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;shr-string-number&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dom-attr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'width&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;height&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;shr-string-number&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dom-attr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'height&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;shr-expand-url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;shr--preferred-image&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [1]&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;point-marker&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;zerop&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;length&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;alt&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;alt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"*"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;cond&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nf"&gt;null&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="c1"&gt;;; After further expansion, there turned out to be no valid&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="c1"&gt;;; src in the img after all.&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;member&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dom-attr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'height&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"0"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"1"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+              &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;member&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;dom-attr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dom&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'width&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"0"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"1"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="c1"&gt;;; Ignore zero-sized or single-pixel images.&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="c1"&gt;;; ...&lt;/span&gt;&lt;span class="w"&gt;
+         &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="c1"&gt;;; ...&lt;/span&gt;&lt;span class="w"&gt;
+          &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-queue-retrieve&lt;/span&gt;&lt;span class="w"&gt;
+           &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;shr-image-fetched&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;; [2]&lt;/span&gt;&lt;span class="w"&gt;
+           &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;current-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;set-marker&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;make-marker&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;point&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+                 &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:width&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;width&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:height&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;height&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+           &lt;/span&gt;&lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="w"&gt;
+           &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;not&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;shr--use-cookies-p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;shr-base&lt;/span&gt;&lt;span class="p"&gt;)))))&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="c1"&gt;;; ...&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;This reduces user interaction to rendering a HTML document, regardless
+of whether it’s with a textual browser, newsreader, EPUB viewer, etc.
+Even something as simple as customizing
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;browse-url-browser-function&lt;/span&gt;&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;eww-browse-url&lt;/span&gt;&lt;/tt&gt; would make
+clicking links dangerous. At this point, maintainers agreed that it
+would make sense to apply for a CVE. I recorded a video of the Proof
+of Concept (PoC) in action to demonstrate the bug:&lt;/p&gt;
+&lt;video controls="controls"&gt;&lt;source src="/video/emacs-eww-popcalc.webm" /&gt;&lt;/video&gt;&lt;p&gt;Besides the browser, email clients are of particular concern as
+they’re designed to handle messages originating from the internet.
+I’ve compiled the following table summarizing impact for commonly used
+clients. Two attack scenarios are of interest here, the previously
+shown inline images and clicking external links, which is explained in
+the following sections.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="24%" /&gt;
+&lt;col width="22%" /&gt;
+&lt;col width="53%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Client&lt;/th&gt;
+&lt;th class="head"&gt;Type&lt;/th&gt;
+&lt;th class="head"&gt;Inline images RCE?&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;GNUS&lt;/td&gt;
+&lt;td&gt;Built-in&lt;/td&gt;
+&lt;td&gt;Maybe: Opt-in&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-7" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-16"&gt;[7]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;mh-e&lt;/td&gt;
+&lt;td&gt;Built-in&lt;/td&gt;
+&lt;td&gt;Maybe: Opt-in&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-8" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-17"&gt;[8]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;mu4e&lt;/td&gt;
+&lt;td&gt;External&lt;/td&gt;
+&lt;td&gt;Maybe: Opt-in&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-8" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-18"&gt;[8]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;notmuch.el&lt;/td&gt;
+&lt;td&gt;External&lt;/td&gt;
+&lt;td&gt;Mitigated: Blocked&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;rmail&lt;/td&gt;
+&lt;td&gt;Built-in&lt;/td&gt;
+&lt;td&gt;Mitigated: Blocked&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Wanderlust&lt;/td&gt;
+&lt;td&gt;External&lt;/td&gt;
+&lt;td&gt;Maybe: Opt-in&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-9" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-19"&gt;[9]&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="section" id="eliminating-user-interaction"&gt;
+&lt;h2&gt;Eliminating user interaction&lt;/h2&gt;
+&lt;p&gt;When &lt;a class="reference external" href="https://github.com/atomontage"&gt;xristos&lt;/a&gt; saw the above PoC video, he initially thought it abused
+a HTTP redirect to a malicious URL. This turned out to be another
+viable approach due to url-http.el automatically following redirects.
+However, this makes exploitation a bit more involved:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The attacker needs to host a malicious HTTP server&lt;/li&gt;
+&lt;li&gt;That server needs to respond to a particular HTTP request with a
+redirect to a malicious URL&lt;/li&gt;
+&lt;li&gt;The attacker needs to share the URL leading to the redirect&lt;/li&gt;
+&lt;li&gt;The victim needs to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve&lt;/span&gt;&lt;/tt&gt; that URL with a vulnerable
+Emacs version&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A realistic scenario would be a URL previewer. For example, the &lt;a class="reference external" href="https://github.com/emacs-circe/circe/"&gt;Circe&lt;/a&gt;
+IRC client includes the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;circe-display-images&lt;/span&gt;&lt;/tt&gt; module which fetches
+every incoming image URL matching a regular expression. All an
+attacker would need to do is to join an IRC channel and send messages
+containing a link to the malicious HTTP server:&lt;/p&gt;
+&lt;pre class="code emacs-lisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;enable-circe-display-images&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="c1"&gt;;; post something http://example.com/evil.{png,jpg,svg,gif}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;video controls="controls"&gt;&lt;source src="/video/emacs-circe-popcalc.webm" /&gt;&lt;/video&gt;&lt;p&gt;A much more evil scenario I can think of:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Someone™ operates a reasonably popular website visited by Emacs
+users&lt;/li&gt;
+&lt;li&gt;They check their web server logs for user agents and discover url.el
+among them&lt;/li&gt;
+&lt;li&gt;They set up the web server to conditionally serve the malicious
+redirect for a URL mainly visited by url.el (for example, an Atom
+feed)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The built-in Newsticker package defaults to fetching feeds with url.el
+since at least 2008.&lt;/p&gt;
+&lt;pre class="code emacs-lisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;newsticker-url-list-defaults&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="nv"&gt;newsticker-url-list&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;"Shady feed"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"http://brause.cc:4444/feed.atom"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;newsticker-start&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;video controls="controls"&gt;&lt;source src="/video/emacs-newsticker-popcalc.webm" /&gt;&lt;/video&gt;&lt;p&gt;The elfeed package is a reasonably popular 3rd-party alternative;
+while it defaults to download feeds with &lt;a class="reference external" href="https://curl.se/"&gt;curl&lt;/a&gt;, there is a fallback
+option to url.el:&lt;/p&gt;
+&lt;pre class="code emacs-lisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;elfeed-use-curl&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="nv"&gt;elfeed-feeds&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"http://brause.cc:4444/feed.atom"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;elfeed-update&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;video controls="controls"&gt;&lt;source src="/video/emacs-elfeed-popcalc.webm" /&gt;&lt;/video&gt;&lt;/div&gt;
+&lt;div class="section" id="variant-analysis"&gt;
+&lt;h2&gt;Variant analysis&lt;/h2&gt;
+&lt;p&gt;Towards the end of this research, I started experimenting with
+&lt;a class="reference external" href="https://semgrep.dev/docs/"&gt;semgrep&lt;/a&gt; to reduce the amount of code to sift through. Its Lisp
+support is still marked as experimental&lt;a class="footnote-reference" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-10" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-20"&gt;[10]&lt;/a&gt;, but I still managed to
+write useful rules that flag dodgy sinks and sources. For example, the
+following rule set matches all &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-retrieve&lt;/span&gt;&lt;/tt&gt; calls not using a
+string literal:&lt;/p&gt;
+&lt;pre class="code yaml literal-block"&gt;
+&lt;span class="nt"&gt;rules&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;url-retrieve-non-literal&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;languages&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;lisp&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'Found&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;`url-retrieve`&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;call&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;on&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;non-literal'&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'(url-retrieve&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;...)'&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pattern-not&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'(url-retrieve&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;"..."&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;...)'&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;severity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;LOW&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;url-retrieve-synchronously-non-literal&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;languages&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;lisp&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'Found&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;`url-retrieve-synchronously`&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;call&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;on&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;non-literal'&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'(url-retrieve-synchronously&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;...)'&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pattern-not&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'(url-retrieve-synchronously&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;"..."&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;...)'&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;severity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;LOW&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;url-queue-retrieve-non-literal&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;languages&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;lisp&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'Found&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;`url-queue-retrieve`&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;call&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;on&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;non-literal'&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'(url-queue-retrieve&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;...)'&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pattern-not&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'(url-queue-retrieve&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;"..."&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;...)'&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;severity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;LOW&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;url-retrieve-internal-non-literal&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;languages&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;lisp&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'Found&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;`url-retrieve-internal`&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;call&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;on&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;non-literal'&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'(url-retrieve-internal&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;...)'&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pattern-not&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'(url-retrieve-internal&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;"..."&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;...)'&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;severity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;LOW&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Unfortunately, this is insufficient due to the highly dynamic nature
+of Emacs Lisp. For example, it’s possible to stuff a symbol name into
+a variable and later call it with &lt;tt class="docutils literal"&gt;funcall&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;apply&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;eval&lt;/tt&gt; and
+alike. To cover this as well, I’ve created an additional rule
+searching for such suspiciously named symbols, but due to the
+capability of creating such symbols on the fly, this remains
+insufficient. Nevertheless, I do appreciate assistance to avoid code
+review fatigue. If it’s possible to write a rule for a specific bug
+and use it to eliminate all variants, that’s as good as it gets.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="mitigation"&gt;
+&lt;h2&gt;Mitigation&lt;/h2&gt;
+&lt;p&gt;The most important mitigation has already been applied. If you can,
+update to Emacs 30.1. For example, Ubuntu allows installing Emacs via
+Snap, which gives you the latest stable version. Alternatively, make
+sure to install security updates. For example, Debian Stable backports
+relevant patches to older package versions. Finally, you can manually
+apply the patch to older Emacs versions by wrapping the new definition
+of &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Man-translate-references&lt;/span&gt;&lt;/tt&gt; in a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;(with-eval-after-load&lt;/span&gt; 'man
+&lt;span class="pre"&gt;...)&lt;/span&gt;&lt;/tt&gt; form:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;with-eval-after-load&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'man&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Man-translate-references&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ref&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Assuming neither of the previous options are to your liking, you can
+work around the issue by adding the following snippet to your init
+file:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my-man-interactive-check&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;not&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;called-interactively-p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'interactive&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;error&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"Called from URL handler, aborting..."&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;with-eval-after-load&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'man&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;advice-add&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'man&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;:before&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;#'&lt;/span&gt;&lt;span class="nv"&gt;my-man-interactive-check&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;To systematically fix this issue and prevent it from reoccurring, we
+need to take a step back and re-architect some fundamental assumptions
+about how URLs should be retrieved:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Inside a browser, there is a limited amount of URL handlers that can
+be processed meaningfully. In practice that would be &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;http://&lt;/span&gt;&lt;/tt&gt; /
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;https://&lt;/span&gt;&lt;/tt&gt; / &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;file://&lt;/span&gt;&lt;/tt&gt;, maybe &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://&lt;/span&gt;&lt;/tt&gt;. However, there is no
+API to specify what URL handlers should be used. Instead, merely
+specifying a URL with a not yet encountered handler is sufficient to
+lazily load up the respective URL handler backend. Worse, a user
+cannot even customize the list of disallowed URL handlers, which
+makes workarounds needlessly difficult.&lt;/li&gt;
+&lt;li&gt;When handling HTTP redirects, cross-protocol redirects are allowed.
+This is sort of unexpected. It makes a lot of sense to redirect from
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;http://&lt;/span&gt;&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;https://&lt;/span&gt;&lt;/tt&gt;, but not so much to &lt;tt class="docutils literal"&gt;man:&lt;/tt&gt;. Android
+systems for example pop up a prompt if an unexpected URL handler is
+triggered. This additional friction may help things a bit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Given how nearly all use of url.el restricts itself to HTTP, people
+desiring a safer library may be happier with an alternative only
+supporting HTTP.  &lt;a class="reference external" href="https://github.com/alphapapa/plz.el/"&gt;plz.el&lt;/a&gt; may get there, eventually.&lt;/p&gt;
+&lt;p&gt;A more narrow fix would be to eliminate all unsafe process invocations
+and substitute them with less error-prone APIs that are safe by
+design. While I do believe this to be a worthwhile goal, this would
+leave the door open for other ways of URL handler abuse.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="future-research"&gt;
+&lt;h2&gt;Future research&lt;/h2&gt;
+&lt;p&gt;There is still other URL handling code to look at:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;URL handlers utilizing TRAMP (for example, &lt;tt class="docutils literal"&gt;eww.el&lt;/tt&gt; contains code
+to ensure &lt;tt class="docutils literal"&gt;file:&lt;/tt&gt; URLs to remote resources are retrieved…)&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-handler-mode&lt;/span&gt;&lt;/tt&gt; and all file-related APIs that accept URLs with
+it enabled&lt;/li&gt;
+&lt;li&gt;Remaining code in url-handlers.el (&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-copy-file&lt;/span&gt;&lt;/tt&gt;,
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;url-insert-file-contents&lt;/span&gt;&lt;/tt&gt;, etc.)&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;browse-url.el&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;ffap.el&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Org’s &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;org-protocol://&lt;/span&gt;&lt;/tt&gt; and TRAMP’s path handler&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To help other security researchers with discovery of new
+vulnerabilities, improving &lt;a class="reference external" href="https://semgrep.dev/docs/"&gt;semgrep&lt;/a&gt; and sharing rules would be very
+useful.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="timeline"&gt;
+&lt;h2&gt;Timeline&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;2024-11-02: Contacted Emacs maintainers with an initial PoC in a 3rd-party package&lt;/li&gt;
+&lt;li&gt;2024-11-03: Discovered the vulnerability is fixed on the master branch&lt;/li&gt;
+&lt;li&gt;2024-11-04: Submitted an improved PoC using a built-in package, but requires user interaction&lt;/li&gt;
+&lt;li&gt;2024-11-05: Submitted an improved PoC that reduces user interaction to opening a website in the eww browser&lt;/li&gt;
+&lt;li&gt;2024-11-20: Created a video of the above PoC&lt;/li&gt;
+&lt;li&gt;2024-11-21: xristos discovered an alternative PoC with zero user interaction&lt;/li&gt;
+&lt;li&gt;2024-11-25: Recreated above PoC, started writing a blog post&lt;/li&gt;
+&lt;li&gt;2024-11-25: Informed Emacs maintainers about HTTP redirect PoC increasing CVSS score&lt;/li&gt;
+&lt;li&gt;2025-02-02: 90 days since initial contact&lt;/li&gt;
+&lt;li&gt;2025-02-08: Asked Emacs maintainers about CVE identifier allocation&lt;/li&gt;
+&lt;li&gt;2025-02-12: Allocation of CVE-2025-1244 by Red Hat&lt;/li&gt;
+&lt;li&gt;2025-02-12: Red Hat security advisory published&lt;/li&gt;
+&lt;li&gt;2025-02-19: Contacted SUSE security team to clarify their CVSS score adjustment&lt;/li&gt;
+&lt;li&gt;2025-02-20: Emacs 30.1 release candidate 1 published&lt;/li&gt;
+&lt;li&gt;2025-02-23: Emacs 30.1 released&lt;/li&gt;
+&lt;li&gt;2025-04-05: Ubuntu bug report created to request security fixes&lt;/li&gt;
+&lt;li&gt;2025-06-14: Ubuntu Discourse thread created due to lack of response&lt;/li&gt;
+&lt;li&gt;2025-06-16: Ubuntu bug report updated&lt;/li&gt;
+&lt;li&gt;2025-06-19: Ubuntu bug report status did change to requesting a debdiff&lt;/li&gt;
+&lt;li&gt;2025-06-22: Ubuntu patch posted&lt;/li&gt;
+&lt;li&gt;2025-07-13: Blog post published&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-1" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;References to “content-id” fields in a MIME message&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;[2]&lt;/td&gt;&lt;td&gt;&lt;em&gt;(&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-2"&gt;1&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-7"&gt;2&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-8"&gt;3&lt;/a&gt;)&lt;/em&gt; Utilizes Gnus to do its magic&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-3" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;[3]&lt;/td&gt;&lt;td&gt;&lt;em&gt;(&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-3"&gt;1&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-9"&gt;2&lt;/a&gt;)&lt;/em&gt; Broken/unfinished code&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;[4]&lt;/td&gt;&lt;td&gt;&lt;em&gt;(&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-4"&gt;1&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-5"&gt;2&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-6"&gt;3&lt;/a&gt;)&lt;/em&gt; Deprecated code talking to terminals&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;[5]&lt;/td&gt;&lt;td&gt;&lt;em&gt;(&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-10"&gt;1&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-11"&gt;2&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-12"&gt;3&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-13"&gt;4&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-14"&gt;5&lt;/a&gt;)&lt;/em&gt; Requires TRAMP support&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-15"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;See &lt;a class="reference external" href="https://git.savannah.gnu.org/cgit/emacs.git/tree/BUGS?id=83968cbeee06cc0fff932d5052e431b478276841#n24"&gt;BUGS&lt;/a&gt; regarding security contacts. You may want to add Ihor
+Radchenko AKA yantar92 as well, given his involvement in the
+recent CVEs.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-16"&gt;[7]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;GNUS blocks images by default, see the customizable
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;gnus-blocked-images&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;[8]&lt;/td&gt;&lt;td&gt;&lt;em&gt;(&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-17"&gt;1&lt;/a&gt;, &lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-18"&gt;2&lt;/a&gt;)&lt;/em&gt; mh-e/mu4e block images by default and use &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;mm-shr&lt;/span&gt;&lt;/tt&gt;, which
+obeys the customizables &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;mm-html-inhibit-images&lt;/span&gt;&lt;/tt&gt; and
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;mm-html-blocked-images&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-9" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-19"&gt;[9]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Wanderlust blocks images by default and introduces the
+customizable &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;mime-shr-blocked-images&lt;/span&gt;&lt;/tt&gt; on top of
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;shr-blocked-images&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="cve-2025-1244-from-emacs-url-handler-to-rce_footnote-10" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#cve-2025-1244-from-emacs-url-handler-to-rce_footnote-reference-20"&gt;[10]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Analysis of the Emacs sources raised many errors in the lexing
+code. Sometimes only a few lines were skipped, occasionally an
+entire file was invisible to the rule matching engine. Perhaps
+using tree-sitter for parsing would help?&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</content>
+    <id>tag:https://emacsninja.com,2025-07-13:/posts/cve-2025-1244-from-emacs-url-handler-to-rce.html</id>
+    <published>2025-07-13T22:57:06+02:00</published>
+    <title type="text">CVE-2025-1244: From Emacs URL Handler to RCE</title>
+    <updated>2025-07-13T22:57:06+02:00</updated>
+    <link href="https://emacsninja.com/posts/cve-2025-1244-from-emacs-url-handler-to-rce.html" rel="alternate" />
+  </entry>
+  <entry>
+    <author>
+      <name>Vasilij Schneidermann</name>
+    </author>
+    <content type="html">
+
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: The &lt;tt class="docutils literal"&gt;\037&lt;/tt&gt; sequence appearing in the code snippets is one
+character, escaped for readability.&lt;/p&gt;
+&lt;p&gt;It’s been eight years since I started using Emacs and Emacs Lisp and I
+still keep running into dusty corners. Traditionally, Lisp dialects
+use the semicolon for line comments, with block and s-expression
+comments being optional features.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="28%" /&gt;
+&lt;col width="20%" /&gt;
+&lt;col width="21%" /&gt;
+&lt;col width="31%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Dialect&lt;/th&gt;
+&lt;th class="head"&gt;Line comment&lt;/th&gt;
+&lt;th class="head"&gt;Block comment&lt;/th&gt;
+&lt;th class="head"&gt;S-expression comment&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;Clojure, Hy&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;#_&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Common Lisp&lt;a class="footnote-reference" href="#forbidden-emacs-lisp-knowledge-block-comments_footnote-1" id="forbidden-emacs-lisp-knowledge-block-comments_footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;#|...|#&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;#+(or)&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Emacs Lisp, Lush&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;ISLisp, LFE, uLisp&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;#|...|#&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;NewLisp&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;;&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;#&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Picolisp&lt;a class="footnote-reference" href="#forbidden-emacs-lisp-knowledge-block-comments_footnote-2" id="forbidden-emacs-lisp-knowledge-block-comments_footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;#&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;#{...}#&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Racket, Scheme&lt;a class="footnote-reference" href="#forbidden-emacs-lisp-knowledge-block-comments_footnote-3" id="forbidden-emacs-lisp-knowledge-block-comments_footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;#|...|#&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;#;&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;TXR Lisp&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;#;&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;WAT&lt;a class="footnote-reference" href="#forbidden-emacs-lisp-knowledge-block-comments_footnote-4" id="forbidden-emacs-lisp-knowledge-block-comments_footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;;;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;(;...;)&lt;/span&gt;&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;n/a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Emacs Lisp is special though. Here’s an unusual section from &lt;a class="reference external" href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Comments.html"&gt;the
+Emacs Lisp reference on comments&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The &lt;tt class="docutils literal"&gt;#@COUNT&lt;/tt&gt; construct, which skips the next COUNT characters,
+is useful for program-generated comments containing binary data.
+The Emacs Lisp byte compiler uses this in its output files (see
+“Byte Compilation”). It isn’t meant for source files, however.&lt;/blockquote&gt;
+&lt;p&gt;At first sight, this seems useless. This feature is meant to be used
+in &lt;tt class="docutils literal"&gt;.elc&lt;/tt&gt;, not &lt;tt class="docutils literal"&gt;.el&lt;/tt&gt; files and looking at a file produced by the
+byte compiler, its only use is to emit docstrings:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="c1"&gt;;;; This file uses dynamic docstrings, first added in Emacs 19.29.&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;@11&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;docstring\037&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defalias&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;'my-test&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;This is kind of like a block-comment, except there is no comment
+terminator. For this reason, the characters to be commented out need
+to be counted. You’d think that the following would work, but it
+fails with an “End of file during parsing” error:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;defvar&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;my-variable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;@8&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;123&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;It took me &lt;a class="reference external" href="https://git.savannah.gnu.org/cgit/emacs.git/tree/src/lread.c?id=a602e86bc1c10f44dbe9d2680bece2f552a54707#n378"&gt;a dive into the reader&lt;/a&gt; to find out why:&lt;/p&gt;
+&lt;pre class="code c literal-block"&gt;
+&lt;span class="cp"&gt;#define FROM_FILE_P(readcharfun)                            \
+  (EQ (readcharfun, Qget_file_char)                         \
+   || EQ (readcharfun, Qget_emacs_mule_file_char))
+&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="nf"&gt;skip_dyn_bytes&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Lisp_Object&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;readcharfun&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;ptrdiff_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;FROM_FILE_P&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;readcharfun&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="n"&gt;block_input&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="cm"&gt;/* FIXME: Not sure if it's needed.  */&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="n"&gt;fseek&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;infile&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;infile&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;lookahead&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;SEEK_CUR&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="n"&gt;unblock_input&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="n"&gt;infile&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;lookahead&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cm"&gt;/* We're not reading directly from a file.  In that case, it's difficult
+         to reliably count bytes, since these are usually meant for the file's
+         encoding, whereas we're now typically in the internal encoding.
+         But luckily, skip_dyn_bytes is used to skip over a single
+         dynamic-docstring (or dynamic byte-code) which is always quoted such
+         that \037 is the final char.  */&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;READCHAR&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sc"&gt;'\037'&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Due to encoding difficulties, the &lt;tt class="docutils literal"&gt;#@COUNT&lt;/tt&gt; construct is always used
+with a terminating &lt;tt class="docutils literal"&gt;\037&lt;/tt&gt; AKA unit separator character. While it
+seems that the &lt;tt class="docutils literal"&gt;FROM_FILE_P&lt;/tt&gt; macro applies when using the reader
+with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;get-file-char&lt;/span&gt;&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;get-emacs-mule-file-char&lt;/span&gt;&lt;/tt&gt; (which are used
+by &lt;tt class="docutils literal"&gt;load&lt;/tt&gt; internally), I never managed to trigger that code path.
+The reader therefore seems to always ignore the count argument,
+essentially turning &lt;tt class="docutils literal"&gt;#@COUNT&lt;/tt&gt; into a block comment facility.&lt;/p&gt;
+&lt;p&gt;Given this information, one could obfuscate Emacs Lisp code to hide
+something unusual going on:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"Fire the %s!!!"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;@11&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"rockets"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;\037&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;reverse&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"sekun"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;A more legitimate usecase is &lt;a class="reference external" href="https://stackoverflow.com/a/6259330/8729149"&gt;a multi-line shebang&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;!/bin/sh&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;@0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;-*-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;emacs-lisp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;-*-&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="nv"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;emacs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;-Q&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;--script&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"$0"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;--&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"$@"&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="nv"&gt;exit&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nv"&gt;\037&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;when&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;equal&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;car&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"--"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;pop&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;argv&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"Argument: %S"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;pop&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;In case you want to experiment with this and want to use the correct
+counts, here’s a quick and dirty command:&lt;/p&gt;
+&lt;pre class="code elisp literal-block"&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;cursed-elisp-block-comment&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;beg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"r"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;save-excursion&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;save-restriction&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;narrow-to-region&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;beg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;goto-char&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;point-min&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="c1"&gt;;; account for space and terminator&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"#@%d "&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;beg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;goto-char&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;point-max&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;insert&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"\037"&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;There’s &lt;a class="reference external" href="https://git.savannah.gnu.org/cgit/emacs.git/tree/src/lread.c?id=a602e86bc1c10f44dbe9d2680bece2f552a54707#n3297"&gt;one more undocumented feature though&lt;/a&gt;, &lt;tt class="docutils literal"&gt;#@00&lt;/tt&gt; is
+special-cased as EOF comment:&lt;/p&gt;
+&lt;pre class="code c literal-block"&gt;
+&lt;span class="cm"&gt;/* Read a decimal integer.  */&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;READCHAR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt;
+       &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sc"&gt;'0'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sc"&gt;'9'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;STRING_BYTES_BOUND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;extra&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;nskip&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="n"&gt;string_overflow&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="n"&gt;digits&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="n"&gt;nskip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="n"&gt;nskip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sc"&gt;'0'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;digits&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;nskip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cm"&gt;/* We've just seen #@00, which means "skip to end".  */&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="n"&gt;skip_dyn_eof&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;readcharfun&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Qnil&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;The EOF comment version can be used to create polyglots. An Emacs Lisp
+script could end with &lt;tt class="docutils literal"&gt;#@00&lt;/tt&gt;, then concatenated with a file
+tolerating leading garbage. The ZIP format is known for its permissive
+behavior, thereby allowing you to embed several resources into one
+file:&lt;/p&gt;
+&lt;pre class="code shell-session literal-block"&gt;
+&lt;span class="gp"&gt;[wasa@box ~]$ &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;polyglot.el&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="gp-VirtualEnv"&gt;(message "This could be a whole wordle game")&lt;/span&gt;
+&lt;span class="go" /&gt;&lt;span class="gp-VirtualEnv"&gt;(message "I've attached some dictionaries for you though")&lt;/span&gt;&lt;span class="gp"&gt;#&lt;/span&gt;@00&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="gp"&gt;[wasa@box ~]$ &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;polyglot.el&lt;span class="w"&gt; &lt;/span&gt;wordle.zip&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;wordle.el&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="gp"&gt;[wasa@box ~]$ &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;wordle.el&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="go"&gt;wordle.el: data
+&lt;/span&gt;&lt;span class="gp"&gt;[wasa@box ~]$ &lt;/span&gt;emacs&lt;span class="w"&gt; &lt;/span&gt;--script&lt;span class="w"&gt; &lt;/span&gt;wordle.el&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="go"&gt;This could be a whole wordle game
+I've attached some dictionaries for you though
+&lt;/span&gt;&lt;span class="gp"&gt;[wasa@box ~]$ &lt;/span&gt;unzip&lt;span class="w"&gt; &lt;/span&gt;wordle.el&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="go"&gt;Archive:  wordle.el
+warning [wordle.el]:  109 extra bytes at beginning or within zipfile
+  (attempting to process anyway)
+  inflating: wordle.de
+  inflating: wordle.uk&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;This could be combined with the multi-line shebang trick to create a
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Self-extracting_archive"&gt;self-extracting archive format&lt;/a&gt;. Or maybe an installer? Or just a
+script that can access its own resources? Let me know if you have any
+interesting ideas.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="forbidden-emacs-lisp-knowledge-block-comments_footnote-1" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#forbidden-emacs-lisp-knowledge-block-comments_footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Strictly speaking, &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;#+(or)&lt;/span&gt;&lt;/tt&gt; isn’t a comment, but a
+conditional reader construct with an always false feature test.
+While one may shorten it to &lt;tt class="docutils literal"&gt;#+nil&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;#-t&lt;/span&gt;&lt;/tt&gt;, that would be
+incorrect because both may be registered features.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="forbidden-emacs-lisp-knowledge-block-comments_footnote-2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#forbidden-emacs-lisp-knowledge-block-comments_footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Here’s a notable exception using the number sign instead. The
+semicolon is a function for property access.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="forbidden-emacs-lisp-knowledge-block-comments_footnote-3" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#forbidden-emacs-lisp-knowledge-block-comments_footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;#|...|#&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;#;&lt;/tt&gt; are available as of R6RS and R7RS. R5RS
+implementations may support them as non-standard extension.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="forbidden-emacs-lisp-knowledge-block-comments_footnote-4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#forbidden-emacs-lisp-knowledge-block-comments_footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Semicolons must be doubled or part of a block comment. This
+feels like an unfortunate design choice for implementors.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    <id>tag:https://emacsninja.com,2022-02-12:/posts/forbidden-emacs-lisp-knowledge-block-comments.html</id>
+    <published>2022-02-12T23:26:23+01:00</published>
+    <title type="text">Forbidden Emacs Lisp Knowledge: Block Comments</title>
+    <updated>2022-02-12T23:26:23+01:00</updated>
+    <link href="https://emacsninja.com/posts/forbidden-emacs-lisp-knowledge-block-comments.html" rel="alternate" />
+  </entry>
+  <entry>
+    <author>
+      <name>Vasilij Schneidermann</name>
+    </author>
+    <content type="html">
+
+
+&lt;p&gt;I’ve discovered a trivial stored XSS vulnerability in Checkmk 1.6.0p18
+during an on-site penetration test and disclosed it responsibly to the
+tribe29 GmbH. The vendor promptly confirmed the issue, fixed it and
+announced an advisory. I’ve applied for a CVE, but didn’t get around
+explaining the vulnerability in detail, therefore I’m publishing this
+blog post to complete the process.&lt;/p&gt;
+&lt;div class="section" id="summary"&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;CVSS Score: 5.4 (Medium)&lt;/li&gt;
+&lt;li&gt;CVSS: &lt;tt class="docutils literal"&gt;CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Affected versions: 1.6.0p18 and earlier&lt;/li&gt;
+&lt;li&gt;Fixed version: 1.6.0p19, 2.0.0i1&lt;/li&gt;
+&lt;li&gt;Vendor advisory: &lt;a class="reference external" href="https://checkmk.com/werk/11501"&gt;Werk #11501&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affected component: &lt;a class="reference external" href="https://github.com/tribe29/checkmk/blob/v1.6.0p18/cmk/gui/htmllib.py#L120-L166"&gt;cmk/gui/htmllib.py:Escaper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Bug fix: &lt;a class="reference external" href="https://github.com/tribe29/checkmk/commit/87ceb966b1ae46947b696232af84a4f9f0ab74e1"&gt;87ceb966&lt;/a&gt;, &lt;a class="reference external" href="https://github.com/tribe29/checkmk/commit/e7fd8e4c90be490e4293ec91804d00ec01af5ca6"&gt;e7fd8e4c&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="impact"&gt;
+&lt;h2&gt;Impact&lt;/h2&gt;
+&lt;p&gt;The vulnerability requires an authenticated attacker with permission
+to configure and share a custom view. Given these prerequisites, they
+can inject arbitrary JavaScript into the view title by inserting a
+HTML link with a JavaScript URL. If the attacker manages to trick a
+user into clicking that link, the JavaScript URL is executed within
+the user’s browser context.&lt;/p&gt;
+&lt;p&gt;There is a CSP policy in place, but it does not mitigate inline
+JavaScript code in event handlers, links or script tags. An attacker
+could therefore obtain confidential user data or perform UI
+redressing.&lt;/p&gt;
+&lt;p&gt;The vulnerable code has been identified in versions below 1.6.0p18,
+such as 1.6.0 and older. It is unclear in which version the
+vulnerability has been introduced, therefore it’s recommended to
+update to 1.6.0p19/2.0.0i1 or newer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="detailed-description"&gt;
+&lt;h2&gt;Detailed description&lt;/h2&gt;
+&lt;p&gt;The Checkmk GUI code uses a WordPress-style approach to handle HTML:
+User input is encoded using HTML entities, then selectively decoded
+with a regular expression looking for simple tags. As a special case,
+the &lt;tt class="docutils literal"&gt;&amp;lt;a&amp;gt;&lt;/tt&gt; tag gets its &lt;tt class="docutils literal"&gt;href&lt;/tt&gt; attribute unescaped as well to
+enable hyperlinks. The attribute is not checked for its protocol,
+thereby allowing URLs such as &lt;tt class="docutils literal"&gt;javascript:alert(1)&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code python literal-block"&gt;
+&lt;span class="k"&gt;class&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Escaper&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Escaper&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_unescaper_text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'&amp;amp;lt;(/?)(h1|h2|b|tt|i|u|br(?: /)?|nobr(?: /)?|pre|a|sup|p|li|ul|ol)&amp;amp;gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_quote&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s2"&gt;"(?:&amp;amp;quot;|&amp;amp;#x27;)"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_a_href&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'&amp;amp;lt;a href=((?:&amp;amp;quot;|&amp;amp;#x27;).*?(?:&amp;amp;quot;|&amp;amp;#x27;))&amp;amp;gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;escape_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HTML&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;  &lt;span class="c1"&gt;# This is HTML code which must not be escaped&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;        &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;escape_attribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_unescaper_text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'&amp;lt;\1\2&amp;gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a_href&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_a_href&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;finditer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a_href&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                                &lt;span class="s2"&gt;"&amp;lt;a href=&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_quote&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a_href&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;amp;amp;nbsp;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"&amp;amp;nbsp;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;The above code is used for HTML generation. To exploit it, I started
+looking for a HTML form and found that when editing a custom view, no
+user input validation is performed on the view title (as opposed to
+the view name).&lt;/p&gt;
+&lt;pre class="code python literal-block"&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;page_edit_visual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;what&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                     &lt;span class="n"&gt;all_visuals&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                     &lt;span class="n"&gt;custom_field_handler&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                     &lt;span class="n"&gt;create_handler&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                     &lt;span class="n"&gt;load_handler&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                     &lt;span class="n"&gt;info_handler&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                     &lt;span class="n"&gt;sub_pages&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin_context_buttons&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;back_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_url_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"back"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"edit_&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;.py"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;what&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;context_button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Back"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;back_url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"back"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;vs_general&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Dictionary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"General Properties"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'form'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="n"&gt;optional_keys&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="n"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="n"&gt;single_infos_spec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;single_infos&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;             &lt;span class="n"&gt;TextAscii&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                 &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Unique ID'&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                 &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"The ID will be used in URLs that point to a view, e.g. "&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                        &lt;span class="s2"&gt;"&amp;lt;tt&amp;gt;view.py?view_name=&amp;lt;b&amp;gt;myview&amp;lt;/b&amp;gt;&amp;lt;/tt&amp;gt;. It will also be used "&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                        &lt;span class="s2"&gt;"internally for identifying a view. You can create several views "&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                        &lt;span class="s2"&gt;"with the same title but only one per view name. If you create a "&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                        &lt;span class="s2"&gt;"view that has the same view name as a builtin view, then your "&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                        &lt;span class="s2"&gt;"view will override that (shadowing it)."&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                 &lt;span class="n"&gt;regex&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'^[a-zA-Z0-9_]+$'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                 &lt;span class="n"&gt;regex_error&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                     &lt;span class="s1"&gt;'The name of the view may only contain letters, digits and underscores.'&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                 &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;                 &lt;span class="n"&gt;allow_empty&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'title'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;TextUnicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Title'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;'&amp;lt;sup&amp;gt;*&amp;lt;/sup&amp;gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;allow_empty&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="fix"&gt;
+&lt;h2&gt;Fix&lt;/h2&gt;
+&lt;p&gt;Checkmk 1.6.0p19 and 2.0.0i1 parses the URL and validates its scheme
+against an allowlist before unescaping. JavaScript URLs are therefore
+left unescaped and not made clickable:&lt;/p&gt;
+&lt;pre class="code python literal-block"&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;escape_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HTML&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;  &lt;span class="c1"&gt;# This is HTML code which must not be escaped&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;    &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;escape_attribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_unescaper_text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'&amp;lt;\1\2&amp;gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a_href&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_a_href&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;finditer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="n"&gt;href&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a_href&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;        &lt;span class="n"&gt;parsed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;urlparse&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlparse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;parsed&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;parsed&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scheme&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"http"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"https"&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="k"&gt;continue&lt;/span&gt;  &lt;span class="c1"&gt;# Do not unescape links containing disallowed URLs&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;        &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a_href&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="n"&gt;unescaped_tag&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"&amp;lt;a href=&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt; target=&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;&amp;gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="n"&gt;unescaped_tag&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"&amp;lt;a href=&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;&amp;gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;        &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a_href&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;unescaped_tag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&amp;amp;amp;nbsp;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"&amp;amp;nbsp;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="timeline"&gt;
+&lt;h2&gt;Timeline&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;2020-10-11: Initial contact with vendor&lt;/li&gt;
+&lt;li&gt;2020-10-12 - 2020-10-14: Further clarification with vendor&lt;/li&gt;
+&lt;li&gt;2020-10-20: Vendor advisory &lt;a class="reference external" href="https://checkmk.com/werk/11501"&gt;Werk #11501&lt;/a&gt; has been released&lt;/li&gt;
+&lt;li&gt;2020-10-26: Vendor notified me about a patch for Checkmk 1.6.0p19&lt;/li&gt;
+&lt;li&gt;2020-11-17: Applied for CVE&lt;/li&gt;
+&lt;li&gt;2020-11-18: Received CVE-2020-28919&lt;/li&gt;
+&lt;li&gt;2021-12-19: Released blog post&lt;/li&gt;
+&lt;li&gt;2022-01-15: NVD published&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</content>
+    <id>tag:https://emacsninja.com,2022-02-16:/posts/cve-2020-28919-stored-xss-in-checkmk-160p18.html</id>
+    <published>2022-02-17T00:28:35+01:00</published>
+    <title type="text">CVE-2020-28919: Stored XSS in Checkmk 1.6.0p18</title>
+    <updated>2022-02-17T00:28:35+01:00</updated>
+    <link href="https://emacsninja.com/posts/cve-2020-28919-stored-xss-in-checkmk-160p18.html" rel="alternate" />
+  </entry>
+  <entry>
+    <author>
+      <name>Vasilij Schneidermann</name>
+    </author>
+    <content type="html">
+
+
+&lt;p&gt;Warning: Rant ahead. Feel free to skip the nstore backend section.&lt;/p&gt;
+&lt;div class="section" id="motivation"&gt;
+&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;I’ve spent the past year looking into the fungi kingdom and the deeper
+I look, the weirder it gets. One barrier of entry is identifying
+mushrooms, with two different schools of thought:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Carefully observing their features and using a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Single-access_key"&gt;dichotomous key&lt;/a&gt;
+system to narrow down to a manageable set of matches. I found
+&lt;a class="reference external" href="http://www.mushroomexpert.com/major_groups.html"&gt;Michael Kuo’s website&lt;/a&gt; useful for this.&lt;/li&gt;
+&lt;li&gt;Taking a few photos and letting a neural network analyze them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I’m not a fan of the latter approach for various reasons. You’re at
+the mercy of the training set quality, &lt;a class="reference external" href="https://openai.com/blog/multimodal-neurons/"&gt;it’s easy to subvert them&lt;/a&gt;
+and they’re essentially undebuggable. I also found that Wikipedia has
+basic identification data on mushrooms. Therefore I thought it to be a
+fun exercise to build my own web application for quickly narrowing
+down interesting Wikipedia articles to read. You can find the code
+over at &lt;a class="reference external" href="https://depp.brause.cc/brause.cc/wald/"&gt;https://depp.brause.cc/brause.cc/wald/&lt;/a&gt;, with the web
+application itself hosted on &lt;a class="reference external" href="https://wald.brause.cc/"&gt;https://wald.brause.cc/&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="data-munging"&gt;
+&lt;h2&gt;Data munging&lt;/h2&gt;
+&lt;p&gt;The mushroom data uses so-called mycomorphboxes to hold their
+characteristics. Using the Wikipedia API one can query for the latest
+revision of every page containing a mycomorphbox template and fetch
+its contents in the form of JSON and Wiki markup.&lt;/p&gt;
+&lt;p&gt;While I like writing scrapers, I dislike that the programs tend to be
+messy and require an online connection for every test run. I used the
+chance to try out the ETL pattern, that is, writing separate programs
+that perform the extraction (downloading data from the service while
+avoiding tripping up API limits), transformation (massaging the data
+into a form that’s easier to process) and loading (putting the data
+into a database). I quite like it. Each part has its own unique
+challenges and by sticking to a separate program I can fully focus on
+it. Instead of fetching, transforming and loading up the data every
+time, I focus on fetching it correctly to disk, then transform the
+dump to a more useful form, then figure out how to load it into the
+database. If more patterns of that kind emerge, I can see myself
+writing utility libraries for them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="data-stores"&gt;
+&lt;h2&gt;Data stores&lt;/h2&gt;
+&lt;p&gt;There were two obvious choices for storing the data:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Keeping it as JSON and just writing ugly code traversing the parse
+tree.&lt;/li&gt;
+&lt;li&gt;Using SQLite because it’s a fast and reliable solution. That is,
+once you’ve come up with a suitable schema fitting the problem at
+hand.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I wanted to try out something different this time, though - something
+other than JSON or a relational database. Perhaps something in the
+NoSQL realm that’s both pleasant to use and comes with a query
+language. Or maybe some dumb key-value store to speed up loading and
+dumping the data. I ended up going with a tuple store, but I’m still
+considering to give graph and document databases a try. Here’s some
+benchmark figures for querying all available filters and filtering
+species with a complicated query:&lt;/p&gt;
+&lt;pre class="code shell-session literal-block"&gt;
+&lt;span class="gp"&gt;[wasa@box ~]$ &lt;/span&gt;&lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;DB&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;json&lt;span class="w"&gt; &lt;/span&gt;./benchmark&lt;span class="w"&gt; &lt;/span&gt;mushrooms.json&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="go"&gt;Filters: 14898.5027832031μs
+Query stats: 1808.65561523438μs
+DB=json ./benchmark mushrooms.json &amp;gt; /dev/null  1.37s user 0.09s system 98% cpu 1.480 total
+&lt;/span&gt;&lt;span class="gp"&gt;[wasa@box ~]$ &lt;/span&gt;&lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;DB&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;sqlite&lt;span class="w"&gt; &lt;/span&gt;./benchmark&lt;span class="w"&gt; &lt;/span&gt;db.sqlite3&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="go"&gt;Filters: 214.554809570313μs
+Query stats: 3953.87497558594μs
+DB=sqlite ./benchmark db.sqlite3 &amp;gt; /dev/null  0.24s user 0.01s system 96% cpu 0.253 total
+&lt;/span&gt;&lt;span class="gp"&gt;[wasa@box ~]$ &lt;/span&gt;&lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;DB&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;nstore&lt;span class="w"&gt; &lt;/span&gt;./benchmark&lt;span class="w"&gt; &lt;/span&gt;db.lmdb&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="go"&gt;Filters: 355414.137402344μs
+Query stats: 407887.70847168μs
+DB=nstore ./benchmark db.lmdb &amp;gt; /dev/null  8.15s user 0.05s system 99% cpu 8.250 total&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Bonus: There should be no hardcoded storage solution, but the
+possibility to choose it at runtime. This would hopefully not
+complicate things too much and encourage cleaner design. For this I
+came up with a simple API revolving around establishing/closing a
+database connection, performing a transaction on that connection and
+querying filters/species on a transaction.&lt;/p&gt;
+&lt;div class="section" id="json-backend"&gt;
+&lt;h3&gt;JSON backend&lt;/h3&gt;
+&lt;p&gt;This was rather braindead code. It’s far from pretty, but does the job
+surprisingly well. Queries are acceptably fast, so it makes for a nice
+fallback. Initial loading time is a bit slow though, using a key-value
+store like LMDB would help here. Maybe it’s time for a binary Scheme
+serialization solution along the lines of Python’s pickle format, but
+without &lt;a class="reference external" href="https://blog.trailofbits.com/2021/03/15/never-a-dill-moment-exploiting-machine-learning-pickle-files/"&gt;the arbitrary code execution parts&lt;/a&gt;…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="sqlite-backend"&gt;
+&lt;h3&gt;SQLite backend&lt;/h3&gt;
+&lt;p&gt;It took considerable time to get the schema right. I ended up asking
+another SQL expert for help with this and they taught me about EAV
+tables. Another oddity was that the database only performed properly
+after running ANALYZE once. The code itself is relatively short, but
+makes use of lots of string concatenation to generate the search
+query.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="nstore-backend"&gt;
+&lt;h3&gt;nstore backend&lt;/h3&gt;
+&lt;p&gt;Retrospectively, this was quite the rabbit hole. I ignored the warning
+signs, persisted and eventually got something working. But at what
+cost?&lt;/p&gt;
+&lt;p&gt;My original plan was to use a graph database like Neo4j. I’ve seen it
+used for &lt;a class="reference external" href="https://neo4j.com/use-cases/social-network/"&gt;analysis of social graphs&lt;/a&gt;, &lt;a class="reference external" href="https://github.com/BloodHoundAD/BloodHound"&gt;Active Directory networks&lt;/a&gt;
+and &lt;a class="reference external" href="https://joern.io/"&gt;source code&lt;/a&gt;. It’s powerful, though clunky and oversized for my
+purposes. If I can avoid it, I’d rather not run a separate Java
+process and tune its garbage collection settings to play well with
+everything else running on my VPS. On top of that I’d need to write a
+database adaptor, be it for &lt;a class="reference external" href="https://neo4j.com/docs/http-api/4.2/"&gt;their HTTP API&lt;/a&gt; or &lt;a class="reference external" href="https://neo4j-client.net/"&gt;the Bolt protocol&lt;/a&gt;.
+If you’re aware of a comparable in-process solution, I’d be all ears.
+It doesn’t even need to do graphs (the data set doesn’t have any
+connections), a JSON store with a powerful query language would be
+sufficient.&lt;/p&gt;
+&lt;p&gt;I asked the &lt;tt class="docutils literal"&gt;#scheme&lt;/tt&gt; channel on Freenode about the topic of graph
+databases and was told that tuple stores have equivalent power, while
+being considerably easier to implement. &lt;a class="reference external" href="https://srfi.schemers.org/srfi-168/srfi-168.html"&gt;SRFI-168&lt;/a&gt; describes a
+so-called nstore and comes with a sample in-memory implementation
+depending on &lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt; and a few others. Getting it running seemed
+like an ideal weekend exercise. Or so I thought. I’ve run into the
+following obstacles and weeks turned into months of drudgery:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The specifications themselves are of subpar quality. It seems little
+proofreading was done. There are minor errors in the language and
+several unclear parts and outright design mistakes that render parts
+of the library unusable. Unfortunately I noticed this long after the
+SRFI has been finalized. While the process allows for errata, it
+took some back and forth to get the most egregious faults in
+&lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt; fixed. Some faults remain in &lt;a class="reference external" href="https://srfi.schemers.org/srfi-168/srfi-168.html"&gt;SRFI-168&lt;/a&gt; and the sample
+implementation is incompatible with &lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt; due to an API change.&lt;/li&gt;
+&lt;li&gt;There is no such thing as a query language. You get basic pattern
+matching and &lt;a class="reference external" href="https://srfi.schemers.org/srfi-158/srfi-158.html"&gt;SRFI-158&lt;/a&gt; generators. Everything else, like grouping
+results or sorting them, you must do yourself. For this reason the
+nstore implementation is a bit more verbose than the JSON one.
+&lt;a class="reference external" href="https://x32.be/map-reduce.png"&gt;Relevant webcomic&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The sample implementation itself depends on several other SRFIs,
+most of which I had to port first. Granted, I only did this because
+I wanted to contribute them properly to &lt;a class="reference external" href="http://eggs.call-cc.org/5/"&gt;the CHICKEN coop&lt;/a&gt;, but it
+was still bothersome. I hacked on &lt;a class="reference external" href="https://srfi.schemers.org/srfi-125/srfi-125.html"&gt;SRFI-125&lt;/a&gt;, &lt;a class="reference external" href="https://srfi.schemers.org/srfi-126/srfi-126.html"&gt;SRFI-126&lt;/a&gt;, &lt;a class="reference external" href="https://srfi.schemers.org/srfi-145/srfi-145.html"&gt;SRFI-145&lt;/a&gt;,
+&lt;a class="reference external" href="https://srfi.schemers.org/srfi-146/srfi-146.html"&gt;SRFI-146&lt;/a&gt;, &lt;a class="reference external" href="https://srfi.schemers.org/srfi-158/srfi-158.html"&gt;SRFI-158&lt;/a&gt;, &lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt;, &lt;a class="reference external" href="https://srfi.schemers.org/srfi-168/srfi-168.html"&gt;SRFI-168&lt;/a&gt; plus alternative versions
+of &lt;a class="reference external" href="https://srfi.schemers.org/srfi-125/srfi-125.html"&gt;SRFI-125&lt;/a&gt; (using a portable hash tables implementation instead of
+the stock one) and &lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt; (using LMDB for its backend).&lt;/li&gt;
+&lt;li&gt;Some of the SRFIs were particularly difficult to port. SRFI-125
+turned out to neither work with stock hash tables (they’re
+incompatible with R6RS-style APIs) nor the R6RS-style hash table
+implementation provided by &lt;a class="reference external" href="https://srfi.schemers.org/srfi-126/srfi-126.html"&gt;SRFI-126&lt;/a&gt; (the stock implementation fails
+with custom comparators and the portable &lt;a class="reference external" href="https://srfi.schemers.org/srfi-69/srfi-69.html"&gt;SRFI-69&lt;/a&gt; implementation
+runs into an infinite loop when executing the test suite). &lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt;
+requires a custom backend for on-disk storage, I initially messed
+around with &lt;a class="reference external" href="https://github.com/pmwkaa/sophia"&gt;Sophia&lt;/a&gt; for this (turned out to be unusable) and
+eventually settled for a LMDB-backed implementation. The &lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt;
+and &lt;a class="reference external" href="https://srfi.schemers.org/srfi-168/srfi-168.html"&gt;SRFI-168&lt;/a&gt; eggs deviate from the official APIs and have therefore
+not been published. For this reason only &lt;a class="reference external" href="https://srfi.schemers.org/srfi-145/srfi-145.html"&gt;SRFI-145&lt;/a&gt;, &lt;a class="reference external" href="https://srfi.schemers.org/srfi-146/srfi-146.html"&gt;SRFI-146&lt;/a&gt; and
+&lt;a class="reference external" href="https://srfi.schemers.org/srfi-158/srfi-158.html"&gt;SRFI-158&lt;/a&gt; have been added to the coop.&lt;/li&gt;
+&lt;li&gt;During the time I worked on the project, some of the links pointing
+towards documentation, implementations and example code broke and
+pointed nowhere. When I communicated with the author, I got the
+impression they had become dissatisfied with the project and wanted
+to start over on a clean slate. Links have been replaced, but some
+code has been permanently lost. Most recently they admitted they
+don’t have any working implementation of &lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt; and &lt;a class="reference external" href="https://srfi.schemers.org/srfi-168/srfi-168.html"&gt;SRFI-168&lt;/a&gt; at
+hand. I consider this a deeply troubling sign for the health of the
+project and therefore discourage anyone from relying on it.&lt;/li&gt;
+&lt;li&gt;Once I actually got everything running with LMDB for the backing
+store, I was surprised to see awful overall performance. Even with
+JSON a query takes only a few milliseconds, whereas here it’s two
+orders of magnitude more. I did some light profiling and identified
+hot paths in both &lt;a class="reference external" href="https://srfi.schemers.org/srfi-128/srfi-128.html"&gt;SRFI-128&lt;/a&gt; and &lt;a class="reference external" href="https://srfi.schemers.org/srfi-167/srfi-167.html"&gt;SRFI-167&lt;/a&gt;. For this reason the web
+application is currently using the SQLite backend.&lt;/li&gt;
+&lt;li&gt;The APIs themselves are kind of clumsy. I worked around this with my
+data storage abstraction, but it’s still something to look out for.
+If you compare it to &lt;a class="reference external" href="http://clojure-doc.org/articles/ecosystem/java_jdbc/home.html"&gt;clojure.jdbc&lt;/a&gt; or &lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/sql-de-lite"&gt;the sql-de-lite egg&lt;/a&gt;,
+there’s a few obvious usability improvements to be done.&lt;/li&gt;
+&lt;li&gt;Eventually, after criticism from other people, &lt;a class="reference external" href="https://srfi-email.schemers.org/srfi-167/msg/16229013/"&gt;the entire SRFI was
+considered to be withdrawn&lt;/a&gt;. It hasn’t been withdrawn so far &lt;a class="reference external" href="https://srfi-email.schemers.org/srfi-167/msg/16229089/"&gt;as
+the process requires a replacement SRFI&lt;/a&gt;. I believe this to be a
+mistake.&lt;/li&gt;
+&lt;li&gt;The SRFI process in general has accelerated in the last few years
+due to R7RS-large making heavy use of it for its dockets. There is
+the occasional SRFI among them that is too ambitious in scope and
+bound to become outdated. I believe this to be an abuse of the
+standardization process, instead there should be experimentation on
+a decoupled platform such as &lt;a class="reference external" href="http://snow-fort.org/"&gt;Snow&lt;/a&gt; or &lt;a class="reference external" href="https://akkuscm.org/"&gt;Akku&lt;/a&gt;. Once the project has
+been approved by the community and implemented by several Scheme
+systems, it can be considered for standardization. The &lt;a class="reference external" href="https://github.com/pre-srfi"&gt;pre-srfi
+repository&lt;/a&gt; lists a few upcoming projects of that kind, such as
+HTTP servers/clients, a P2P network proposal, a web UI library and
+Emacs-style text manipulation. I’m doubtful they will be anywhere as
+successful as existing non-portable Scheme libraries.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Needless to say that I’ve become increasingly frustrated over time. To
+the &lt;a class="reference external" href="https://srfi.schemers.org/srfi-168/srfi-168.html"&gt;SRFI-168&lt;/a&gt; author’s credit, they’ve always been civil, recognized
+the design mistakes and are working on &lt;a class="reference external" href="https://github.com/scheme-live/live/blob/okvslite-and-co/live/okvslite/README.md#status"&gt;a less ambitious replacement
+library&lt;/a&gt;. While I do regret the time that went into this adventure, I
+have learned a few lessons:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;LMDB and key-value stores in general are great. They’re easy to
+comprehend, have fast load times and can be a quick and dirty
+solution when dealing with relational models is complete overkill.
+I’m not sure whether ordered key-value stores are worth it though.&lt;/li&gt;
+&lt;li&gt;While it’s true that tuple stores are roughly equivalent in power to
+graph databases, &lt;a class="reference external" href="https://neo4j.com/blog/rdf-triple-store-vs-labeled-property-graph-difference/"&gt;graph databases still have the edge&lt;/a&gt;. Mind you
+though, this piece has been written by a Neo4j person, so it’s most
+likely biased. Still, I’m inclined to believe their claims.&lt;/li&gt;
+&lt;li&gt;Portable code is cool, but it cannot compete with highly tuned
+solutions. Do not expect a sample implementation of a database to
+rival SQLite and friends.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="web-frontend"&gt;
+&lt;h2&gt;Web frontend&lt;/h2&gt;
+&lt;p&gt;I assumed this part to be way harder, but it only took me two days of
+hacking without any sort of web framework backing it. I do miss some
+of the conveniences I learned from writing Clojure web applications
+though:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;I had to write my own database abstraction instead of using
+&lt;a class="reference external" href="http://clojure-doc.org/articles/ecosystem/java_jdbc/home.html"&gt;clojure.jdbc&lt;/a&gt; and a connection string. On top of that there’s ugly
+code to detect which database to use and perform a dynamic import.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://wiki.call-cc.org/eggref/5/sql-de-lite"&gt;Stuart Sierra’s component library&lt;/a&gt; gives you easy dependency
+injection. For example you can access configuration and database
+connections from a HTTP handler directly instead of having to use
+global or dynamically bound variables.&lt;/li&gt;
+&lt;li&gt;A &lt;a class="reference external" href="https://github.com/ring-clojure/ring/wiki"&gt;ring&lt;/a&gt;-style API with a request/response alist and middleware
+manipulating them would improve discoverability considerably. It’s
+no deal breaker though.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="further-thoughts"&gt;
+&lt;h2&gt;Further thoughts&lt;/h2&gt;
+&lt;p&gt;I’d have expected this project to suck any remaining enthusiasm for
+writing web applications out of me, but it didn’t. While I’m not sure
+whether I’ll stick to Scheme for them, I could see myself doing
+another one soonish. I think I’ll abstain from investing more time
+into databases though and hack on something else for the time being.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <id>tag:https://emacsninja.com,2021-03-17:/posts/on-fungi-and-data-stores.html</id>
+    <published>2021-03-17T13:37:18+01:00</published>
+    <title type="text">On Fungi and Data Stores</title>
+    <updated>2021-03-17T13:37:18+01:00</updated>
+    <link href="https://emacsninja.com/posts/on-fungi-and-data-stores.html" rel="alternate" />
+  </entry>
+  <entry>
+    <author>
+      <name>Vasilij Schneidermann</name>
+    </author>
+    <content type="html">
+
+
+&lt;p&gt;My relationship with games is complicated. I never had the chance to
+get good at them and few I’ve played have been any good. Despite that,
+I had both the urge to complete the game and discover how they work
+internally. As nearly all commercially developed games happen to be
+proprietary, I focused on viewing and extracting their asset files, an
+art not unlike reverse engineering of executable files.&lt;/p&gt;
+&lt;p&gt;Fast-forward many years and I still occasionally play games. At least
+I have proper tools at hand now and the knowledge to make sense of
+binary formats. Another plus is that people have come to discover the
+benefits of the open source spirit to collaborate and share their
+knowledge online. Recently I’ve taken a closer look at &lt;a class="reference external" href="https://store.steampowered.com/app/415420/Nyan_Cat_Lost_In_Space/"&gt;a certain meme
+game&lt;/a&gt; in my Steam library. Many of its assets (music, sound effects,
+fonts and a single texture) are stored as regular files on disk,
+however, there’s an 79M asset file, presumably holding the missing
+textures for the game sprites and backgrounds. This blog post will
+explore its custom format and inner workings in enough detail to write
+your own extraction program.&lt;/p&gt;
+&lt;div class="section" id="reconnaissance"&gt;
+&lt;h2&gt;Reconnaissance&lt;/h2&gt;
+&lt;p&gt;For starters I’ve opened the file in &lt;a class="reference external" href="https://github.com/radareorg/radare2"&gt;my favorite hex editor&lt;/a&gt; and
+browsed through it, looking for obvious patterns such as
+human-readable strings, repetitive byte sequences and anything not
+looking like random noise. I’ve found the following:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;A very short header that doesn’t contain any human-readable file
+signatures.&lt;/li&gt;
+&lt;li&gt;Several file paths, each terminated with a null byte.&lt;/li&gt;
+&lt;li&gt;Several 16-byte entries, with columns lining up almost perfectly.&lt;/li&gt;
+&lt;li&gt;Several concatenated files, identified by file signatures for the
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/WebP"&gt;WebP&lt;/a&gt;, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics"&gt;PNG&lt;/a&gt; and &lt;a class="reference external" href="https://en.wikipedia.org/wiki/XML"&gt;XML&lt;/a&gt; formats.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here’s some screenshots, with the relevant patterns highlighted:&lt;/p&gt;
+&lt;p&gt;Header and paths section:&lt;/p&gt;
+&lt;img alt="/img/nyancat-header-paths.png" src="/img/nyancat-header-paths.png" /&gt;
+&lt;p&gt;Mysterious 16-byte entries, with many even-numbered columns being
+zeroes&lt;a class="footnote-reference" href="#lost-in-space_footnote-1" id="lost-in-space_footnote-reference-1"&gt;[1]&lt;/a&gt;:&lt;/p&gt;
+&lt;img alt="/img/nyancat-index-patterns.png" src="/img/nyancat-index-patterns.png" /&gt;
+&lt;p&gt;WebP file header in files section:&lt;/p&gt;
+&lt;img alt="/img/nyancat-files-webp.png" src="/img/nyancat-files-webp.png" /&gt;
+&lt;p&gt;XML file header in files section:&lt;/p&gt;
+&lt;img alt="/img/nyancat-files-xml.png" src="/img/nyancat-files-xml.png" /&gt;
+&lt;p&gt;PNG file header in files section:&lt;/p&gt;
+&lt;img alt="/img/nyancat-files-png.png" src="/img/nyancat-files-png.png" /&gt;
+&lt;p&gt;Given the information so far, several hypotheses can be established:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The number of paths is the same as the number of embedded files and
+every path corresponds to an embedded file.&lt;/li&gt;
+&lt;li&gt;The file contains information about how long each embedded file is.&lt;/li&gt;
+&lt;li&gt;The mystery section (which I’ll call the index from now on) contains
+that information in each of its 16-byte entries&lt;/li&gt;
+&lt;li&gt;Each of these entries corresponds to a path and embedded file.&lt;/li&gt;
+&lt;li&gt;The association between path, entry and embedded file is ordered,
+for example the first path corresponds to the first entry and first
+embedded file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="verification"&gt;
+&lt;h2&gt;Verification&lt;/h2&gt;
+&lt;p&gt;Each hypothesis can be proven by doing basic mathematics. The most
+fundamental assumptions the format relies upon are the number of
+paths, index entries and embedded files being the same, and the length
+of each embedded file being stored somewhere else in the file,
+presumably the index section. I decided to start with the latter, for
+which I picked the first embedded file, a WebP image&lt;a class="footnote-reference" href="#lost-in-space_footnote-2" id="lost-in-space_footnote-reference-2"&gt;[2]&lt;/a&gt;. Its length
+can be determined by looking at bytes 4 to 7, decoding them as
+unsigned little-endian 32-bit integer and adding 8 to include the
+length of the preceding header. The obtained length can be verified by
+seeking to the beginning of the file in the hex editor, then seeking
+by the length&lt;a class="footnote-reference" href="#lost-in-space_footnote-3" id="lost-in-space_footnote-reference-3"&gt;[3]&lt;/a&gt; and checking whether that position corresponds to
+the start of the next file. Likewise, the length of a PNG file can be
+obtained by looking for the &lt;tt class="docutils literal"&gt;IEND&lt;/tt&gt; sequence followed by a 32-bit
+checksum and for XML files by looking for the closing tag.&lt;/p&gt;
+&lt;p&gt;The first file is 2620176 bytes long and is immediately followed by a
+XML file describing it. It corresponds to either &lt;tt class="docutils literal"&gt;0027fb10&lt;/tt&gt; or
+&lt;tt class="docutils literal"&gt;10fb2700&lt;/tt&gt; when encoded to hex, depending on whether it’s big- or
+little-endian. And indeed, the latter value shows up in the last 4
+bytes of the first 16-byte entry. I’ve then subsequently verified
+whether this property holds true by extracting the file length from
+the second 16-byte entry and applying it to the second embedded file.&lt;/p&gt;
+&lt;p&gt;This left verifying the number of embedded files by counting the
+number of paths and entries in their respective sections. I’ve found
+335 of them in each, represented as &lt;tt class="docutils literal"&gt;4f010000&lt;/tt&gt; using the previously
+encountered little-endian hex notation. That number corresponds to
+bytes 4 to 7 in the header, leaving two 4-byte numbers around it. I
+haven’t been able to deduce the meaning of the preceding one, but the
+succeeding one is &lt;tt class="docutils literal"&gt;a6210000&lt;/tt&gt; which corresponds to 8614, the length
+of all paths immediately following the file header, thereby giving me
+all information necessary to extract the assets.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="extraction"&gt;
+&lt;h2&gt;Extraction&lt;/h2&gt;
+&lt;p&gt;The file format deduced so far:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+# header
+#   4-byte integer (unknown)
+#   4-byte integer (number of filenames)
+#   4-byte integer (length of filenames section)
+# paths
+#   null terminated string (path)
+#   repeat count times
+# index
+#   4-byte integer (unknown)
+#   4-byte integer (unknown)
+#   4-byte integer (unknown)
+#   4-byte integer (file length)
+#   repeat count times
+# data
+#   file length bytes
+#   repeat count times
+&lt;/pre&gt;
+&lt;p&gt;Expressed in pseudo code:&lt;/p&gt;
+&lt;pre class="code python literal-block"&gt;
+&lt;span class="n"&gt;read_integer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="n"&gt;filenames_count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;read_integer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="n"&gt;filenames_length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;read_integer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="n"&gt;filenames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;read_bytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filenames_length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\x00&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filenames_count&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;read_integer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;read_integer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;read_integer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;file_length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;read_integer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;filenames&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;file_length&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;entry&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;read_bytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;write_bytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;A reward you’ve earned:&lt;/p&gt;
+&lt;img alt="/img/nyancat-texture-yodacat.png" src="/img/nyancat-texture-yodacat.png" /&gt;
+&lt;/div&gt;
+&lt;div class="section" id="further-thoughts"&gt;
+&lt;h2&gt;Further thoughts&lt;/h2&gt;
+&lt;p&gt;Performing the analysis and writing the extraction program took me a
+few hours. It could have been a lot trickier, especially if my goal
+was to perform game modding. This would require to extract the files,
+modify them, then repack them back into the asset file without the
+game noticing a change. To do this safely, it’s necessary to perform
+deeper analysis of the unknown fields, for example by looking into
+other matching metadata of every embedded file or by reverse
+engineering the game itself.&lt;/p&gt;
+&lt;p&gt;Another common problem is that data doesn’t always form clear
+patterns, for example if it’s encrypted, compressed or random-looking
+for other reasons. Sometimes formats are optimized towards programmer
+convenience and may store data necessary to verify the asset file
+inside the game instead. This would again not pose a challenge to a
+reverse engineer, but would still complicate automatic extraction.&lt;/p&gt;
+&lt;p&gt;Sometimes team work is necessary. Chances are that tools have been
+developed for popular games and may only need minor adjustments to get
+working again. One resource I’ve found immensely helpful to gain a
+better understanding of common patterns is &lt;a class="reference external" href="https://www.gamedevs.org/uploads/the-definitive-guide-to-exploring-file-formats.pdf"&gt;The Definitive Guide To
+Exploring File Formats&lt;/a&gt;.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="lost-in-space_footnote-1" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#lost-in-space_footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;radare2&lt;/tt&gt; can shift the file contents around in visual mode
+by using the &lt;tt class="docutils literal"&gt;h&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;l&lt;/tt&gt; movement keys. This is useful to
+force the entries to align into the expected columns.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="lost-in-space_footnote-2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#lost-in-space_footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The first path suggests a PNG file, but the first embedded file
+used the WebP format. This threw me off for a while, my working
+theory is that the artist mislabeled WebP files as PNGs and the
+game engine they’ve used auto-detected their contents without
+any hitch. Good for them!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="lost-in-space_footnote-3" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#lost-in-space_footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;radare2&lt;/tt&gt; offers the &lt;tt class="docutils literal"&gt;s+&lt;/tt&gt; command for this purpose.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</content>
+    <id>tag:https://emacsninja.com,2024-06-29:/posts/lost-in-space.html</id>
+    <published>2024-06-29T13:00:18+02:00</published>
+    <title type="text">Lost In Space</title>
+    <updated>2024-06-29T13:00:18+02:00</updated>
+    <link href="https://emacsninja.com/posts/lost-in-space.html" rel="alternate" />
+  </entry>
+</feed>

@@ -1,0 +1,2192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jonathon Belotti [thundergolfer]</title>
+    <description>No hugs, some learning</description>
+    <link>https://thundergolfer.com/</link>
+    <atom:link href="https://thundergolfer.com/feed.xml" rel="self" type="application/rss+xml" />
+    
+      
+      <item>
+        <title>There&apos;s been a vibe shift in vibe coding</title>
+        <description>&lt;figure style=&quot;margin: 0; margin-bottom: 1em;&quot;&gt;
+  &lt;div style=&quot;display: flex; width: 100%; border-radius: 0.4em; overflow: hidden&quot;&gt;
+    &lt;div style=&quot;flex: 1; overflow: hidden;&quot;&gt;
+      &lt;img src=&quot;images/reverse-la-taureau.jpg&quot; alt=&quot;Le Taureau (The Bull) by Pablo Picasso — a series of eleven lithographs showing the progressive abstraction of a bull&quot; style=&quot;width: 100%;&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Pablo Picasso, &lt;em&gt;Le Taureau&lt;/em&gt; (The Bull), 1945–1946 [Reversed]&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- https://x.com/davidcrawshaw/status/2007995208638881860?s=46&amp;t=bEd9Zc0R6z8J1hVoDNlFZw --&gt;
+
+&lt;!-- https://x.com/JustJake/status/2007730898192744751?s=46&amp;t=bEd9Zc0R6z8J1hVoDNlFZw --&gt;
+
+&lt;p&gt;Just after Christmas something changed in the attitudes of the senior engineers I follow. LLM coding took another step forward.&lt;/p&gt;
+
+&lt;p&gt;Skeptics became converts, and converts became bulls.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;
+  &lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&amp;#39;bout half the engineers I admired pre-ChatGPT have become massive coding agent bulls in the past couple weeks. DHH flipped a few days ago. The others may join the mob before Q1 ends. Heady days.&lt;/p&gt;&amp;mdash; Jonathon Belotti (@jonobelotti_IO) &lt;a href=&quot;https://twitter.com/jonobelotti_IO/status/2007949142933508350?ref_src=twsrc%5Etfw&quot;&gt;January 4, 2026&lt;/a&gt;&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Linus Torvalds&lt;/strong&gt; is &lt;a href=&quot;https://www.zdnet.com/article/linus-torvalds-ai-tool-maintaining-linux-code/&quot;&gt;letting AI review Linux patches&lt;/a&gt;. (Update: &lt;a href=&quot;https://github.com/torvalds/AudioNoise&quot;&gt;he’s also vibe coding&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Andrej Karpathy&lt;/strong&gt; (of course) tweeted that he’s &lt;a href=&quot;https://x.com/karpathy/status/2004607146781278521?s=20&quot;&gt;“never felt this much behind as a programmer”&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Rails’ &lt;strong&gt;DHH&lt;/strong&gt; &lt;a href=&quot;https://x.com/dhh/status/2007504187568074843?s=20&quot;&gt;became a convert&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Salvatore Sanfilippo (antirez)&lt;/strong&gt;, creator of Redis, said just a few hours ago that &lt;a href=&quot;https://antirez.com/news/158&quot;&gt;“it is simply impossible not to see the reality of what is happening.”&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;George Hotz&lt;/strong&gt;, a notable grump, begrudingly called agents &lt;a href=&quot;https://x.com/__tinygrad__/status/2000972812731998522?s=20&quot;&gt;“decent”&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Jake Cooper&lt;/strong&gt;, founder of Railway, just blogged that &lt;a href=&quot;https://x.com/JustJake/status/2007941551133982740&quot;&gt;“programming as we know it is dead”&lt;/a&gt; and that with the power we should start building “hyperstructures”.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Steve Yegge&lt;/strong&gt; posted &lt;a href=&quot;https://steve-yegge.medium.com/welcome-to-gas-town-4f25ee16dd04&quot;&gt;&lt;em&gt;Welcome to Gas Town&lt;/em&gt;&lt;/a&gt; a delightfully unhinged but apparently working AI agent bonanza.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Mitchell Hashimoto&lt;/strong&gt;, retired founder of Hashicorp and creator of Ghosty, said &lt;a href=&quot;https://x.com/mitchellh/status/2006114026191769924?s=46&quot;&gt;“Slop drives me crazy and it feels like 95+% of bug reports, but man, AI code analysis is getting really good”&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Marc Brooker&lt;/strong&gt;, distinguished eng at AWS, &lt;a href=&quot;https://brooker.co.za/blog/2025/12/16/natural-language.html&quot;&gt;endorsed and (kinda) named&lt;/a&gt; vibe coding’s next phase: specification driven development (SDD).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We might be around 6 months from Jonathan Blow getting onboard.&lt;/p&gt;
+
+&lt;p&gt;In the past this has seemed like bluster and people hyping things up for attention. I’m thinking of 9 months ago when Tobi Lutke posted &lt;a href=&quot;https://x.com/tobi/status/1909251946235437514?lang=en&quot;&gt;“Reflexive AI usage is now baseline expectation at Shopify”&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;But now? I dunno if it’s because I got ChatGPT Pro recently or because Opus 4.5 dropped and became my daily driver in Cursor, but the capabilities of coding agents feel &lt;em&gt;&lt;strong&gt;much&lt;/strong&gt;&lt;/em&gt; better.&lt;/p&gt;
+
+&lt;p&gt;Here’s what changed: the defining feature of vibe coding—shipping code without reading it—is becoming an accepted practice
+by highly skilled, staff+ engineers. What has replaced vibes is &lt;em&gt;specification&lt;/em&gt;, where the engineer uses their skill to define the solution and then
+trusts the coding ability of the agent to autonomously implement and test itself against the solution spec. &lt;strong&gt;Spec-driven development&lt;/strong&gt;.&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;This gain of trust has dilated pupils and spiked ambition.&lt;/p&gt;
+
+&lt;p&gt;Heady days.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://brooker.co.za/blog/2025/12/16/natural-language.html&quot;&gt;Natural Language is Replacing Programming Languages&lt;/a&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://x.com/JustJake/status/2007730898192744751?s=20&quot;&gt;“It would have taken me probably months to code by hand. Building on 5 years of work and 10 years of experience. Claude wrote all the code in Golang in 4 hours.”&lt;/a&gt; &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://x.com/rakyll/status/2007239758158975130&quot;&gt;“I gave Claude Code a description of the problem, it generated what we built last year in an hour.”&lt;/a&gt; &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/vibe-coding-vibe-shift</link>
+          <guid isPermaLink="true">https://thundergolfer.com/vibe-coding-vibe-shift</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>20,000 healthy GPUs</title>
+        <description>
+</description>
+        <pubDate>Fri, 09 Jan 2026 00:00:00 +0000</pubDate>
+        
+          <link>https://modal.com/blog/gpu-health</link>
+          <guid isPermaLink="true">https://modal.com/blog/gpu-health</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>The 10 best software podcast episodes I ever heard</title>
+        <description>&lt;p&gt;I’ve listened to each of these episodes at least four times. I listen to &lt;em&gt;a lot&lt;/em&gt; of podcasts—Overcast has me averaging 12 hours a week in 2025. But I very rarely listen to an episode more than twice. If I have, it’s because the information, rapport, and storytelling have been especially good.&lt;/p&gt;
+
+&lt;p&gt;After almost 10 years of listening to podcasts about software and programming, this is my current top 10.&lt;/p&gt;
+
+&lt;div class=&quot;podcast-list&quot;&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;1&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/software-engineering-daily.jpg&quot; alt=&quot;Software Engineering Daily Podcast&quot; class=&quot;podcast-cover&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;Slack Data Platform with Josh Wills&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;Software Engineering Daily&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published January 10, 2020&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        This first pick is so good because Josh does inside baseball on other big companies data stacks (FB, Google, AirBnB, Slack) and is generally so much more candid than other software engineers are on podcasts.
+        He doesn&apos;t care about getting in trouble with his boss, because he already quit.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://softwareengineeringdaily.com/2020/01/10/slack-data-platform-with-josh-wills/&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;2&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/on-the-metal.jpg&quot; alt=&quot;On The Metal Podcast&quot; class=&quot;podcast-cover&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;Jeff Rothschild&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;On The Metal&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published December 2, 2019&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        Jeff had a remarkable 20th century in the booming software industry—and then joined early Facebook and became a billionaire. There&apos;s enthralling industry history here, spanning a 40+ year career, and the passion in the room (hosts and guest) is infectious.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://www.youtube.com/watch?v=hO0k2bt5nIg&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;3&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/signals-and-threads.webp&quot; alt=&quot;Signals &amp;amp; Threads Podcast&quot; class=&quot;podcast-cover&quot; onerror=&quot;this.src=&apos;/images/top-ten-podcast-episodes/placeholder.png&apos;&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;What is an Operating System? &lt;em&gt;with Anil Madhavapeddy&lt;/em&gt;&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;Signals &amp;amp; Threads&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published November 3, 2021&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        Signals and Threads, hosted by the CTO of Jane Street, is, for me, the podcast best at managing complex technical topics. This episode on unikernels and other fun systems things is a great example.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://signalsandthreads.com/what-is-an-operating-system/&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;4&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/signals-and-threads.webp&quot; alt=&quot;Signals &amp;amp; Threads Podcast&quot; class=&quot;podcast-cover&quot; onerror=&quot;this.src=&apos;/images/top-ten-podcast-episodes/placeholder.png&apos;&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;Writing, Technically &lt;em&gt;with James Somers&lt;/em&gt;&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;Signals &amp;amp; Threads&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published September 1, 2021&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        Software engineers with a writing position at &lt;em&gt;The New Yorker&lt;/em&gt; are very rare. James Somers is such a person, and does an excellent job explaining why programmers should care about writing—for documentation, persuasion, or pleasure.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://signalsandthreads.com/writing-technically/&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;5&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/into-the-hopper.jpg&quot; alt=&quot;Into the Hopper Podcast&quot; class=&quot;podcast-cover&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;10 Years of Data Science &lt;em&gt;with Josh Wills and Oscar Boykin&lt;/em&gt;&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;Into the Hopper&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published February 19, 2020&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        Josh Wills again! He&apos;s back with another couple of guys to reminisce on the 2010-2020 decade of data science. For someone who started working around data scientists in 2016, this episode felt like being invited to a bar table with the seniors, where they yarned with the filter off.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://tdhopper.com/blog/ten-years-of-data-science-with-josh-wills-and-oscar-boykin/&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;6&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/acquired.avif&quot; alt=&quot;Acquired Podcast&quot; class=&quot;podcast-cover&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;The complete history and strategy of TSMC&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;Acquired&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published September 6, 2021&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        Before I listened to this I couldn&apos;t tell you what TSMC and ASML were. After listening, they became unforgettable. If you are not astonished by the achievements of the computing industry, listen to this episode. If you are not gobsmacked at how hard it is &lt;a href=&quot;https://www.youtube.com/watch?v=vuvckBQ1bME&quot;&gt;to make a CPU&lt;/a&gt;, listen. Unlike others in this list, this isn&apos;t a podcast by engineers. But it is Acquired at its best, before they became unfortunately like hagiographers of big tech.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://www.acquired.fm/episodes/tsmc&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;7&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/corecursive.png&quot; alt=&quot;CoRecursive Podcast&quot; class=&quot;podcast-cover&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;The Birth of UNIX &lt;em&gt;with Brian Kernighan&lt;/em&gt;&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;CoRecursive&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published November 1, 2020&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        You might have gathered I love software history. This is an episode with Brian Kernighan, who wrote &apos;the C book&apos; and worked alongside Ken Thompson and Dennis Ritchie. This episode is a love letter to Bell Labs and the birth of UNIX.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://corecursive.com/brian-kernighan-unix-bell-labs1/&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;8&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/dwarkesh.png&quot; alt=&quot;Dwarkesh Podcast&quot; class=&quot;podcast-cover&quot; onerror=&quot;this.src=&apos;/images/top-ten-podcast-episodes/placeholder.png&apos;&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;Sholto Douglas &amp;amp; Trenton Bricken — How LLMs actually think&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;Dwarkesh Podcast&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published March 28, 2024&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        This is another episode which feels like you&apos;re eavesdropping on a great chat between some really smart friends. Which makes sense, because Dwarkesh &lt;em&gt;is&lt;/em&gt; friends with his guests here, and even lives with Sholto. This 3-hour episode has a bunch of interesting technical content, but what I like about this episode is that you can sponge off the optimism and excitement of some young people right in the center of the LLM boom.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://www.dwarkesh.com/p/sholto-douglas-trenton-bricken&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;9&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/corecursive.png&quot; alt=&quot;CoRecursive Podcast&quot; class=&quot;podcast-cover&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;The Untold Story of SQLite &lt;em&gt;with Richard Hipp&lt;/em&gt;&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;CoRecursive&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published July 2, 2021&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        If open source doesn&apos;t already fill you with awe, listen to this episode with the creator of SQLite.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://corecursive.com/066-sqlite-with-richard-hipp/&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;podcast-entry&quot;&gt;
+    &lt;div class=&quot;podcast-number&quot;&gt;10&lt;/div&gt;
+    &lt;img src=&quot;/images/top-ten-podcast-episodes/mlopscommunity.webp&quot; alt=&quot;MLOps.community Podcast&quot; class=&quot;podcast-cover&quot; onerror=&quot;this.src=&apos;/images/top-ten-podcast-episodes/placeholder.png&apos;&quot; /&gt;
+    &lt;h2 class=&quot;podcast-title&quot;&gt;The Future of ML and Data Platforms&lt;/h2&gt;
+    &lt;div class=&quot;podcast-show&quot;&gt;MLOps.community&lt;/div&gt;
+    &lt;div class=&quot;podcast-date&quot;&gt;Published October 1, 2021&lt;/div&gt;
+    &lt;div class=&quot;podcast-description&quot;&gt;
+        My clear bias for data &amp;amp; ML is obvious by now. This episode was influential in me taking my current job, at &lt;a href=&quot;http://modal.com&quot; target=&quot;_blank&quot;&gt;modal.com&lt;/a&gt;. At the time of listening, I was a lead of Canva&apos;s data &amp;amp; ML platform, so this episode doing an interrogation of my own little corner of the software world became something I re-listened to.
+    &lt;/div&gt;
+    &lt;div class=&quot;podcast-link&quot;&gt;
+        &lt;a href=&quot;https://www.listennotes.com/podcasts/mlopscommunity/the-future-of-ml-and-data-etx0BDv4w19/&quot; target=&quot;_blank&quot;&gt;Listen to episode →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;callout-panel callout-panel-info&quot;&gt;
+    &lt;span class=&quot;callout-panel-icon callout-panel-info-icon&quot;&gt;
+        &lt;span class=&quot;&quot; role=&quot;img&quot; aria-label=&quot;Panel info&quot;&gt;
+            &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; focusable=&quot;false&quot; role=&quot;presentation&quot;&gt;
+                &lt;path d=&quot;M12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-8.5a1 1 0 0 0-1 1V15a1 1 0 0 0 2 0v-2.5a1 1 0 0 0-1-1zm0-1.125a1.375 1.375 0 1 0 0-2.75 1.375 1.375 0 0 0 0 2.75z&quot; fill=&quot;currentColor&quot; fill-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+        &lt;/span&gt;
+    &lt;/span&gt;
+    &lt;div class=&quot;ak-editor-panel__content&quot;&gt;
+        &lt;p data-renderer-start-pos=&quot;97&quot;&gt;
+            This is a post that is updated over time. Each episode is listed with the date it aired.
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.callout-panel {
+    border-radius: 3px;
+    margin: 1.145rem 0px 1rem 0px;
+    padding: 12px;
+    min-width: 48px;
+    display: flex;
+    word-break: break-word;
+    border: none;
+}
+
+.callout-panel p {
+    margin-bottom: 0;
+    line-height: 24px;
+}
+
+.callout-panel-icon {
+    display: block;
+    flex-shrink: 0;
+    height: 24px;
+    width: 24px;
+    box-sizing: content-box;
+    padding-right: 8px;
+    color: rgb(0, 82, 204);
+}
+
+.callout-panel-note {
+    background-color: rgb(234, 230, 255);
+}
+
+.callout-panel-note-icon {
+    color: purple;
+}
+
+.callout-panel-info {
+    background-color: rgb(222, 235, 255);
+}
+
+.callout-panel-info-icon {
+    color: blue;
+}
+
+.callout-panel-warning {
+    background-color: rgb(255, 250, 200);
+}
+
+.callout-panel-warning-icon {
+    color: orange;
+}
+
+/* NYT-style podcast list */
+.podcast-list {
+    max-width: 720px;
+    margin: 3rem auto;
+}
+
+.podcast-entry {
+    margin: 2.0rem 0;
+    text-align: center;
+    padding: 1.7rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.podcast-entry:last-child {
+    border-bottom: none;
+}
+
+.podcast-number {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 1.1rem;
+    line-height: 1;
+}
+
+.podcast-cover {
+    max-width: 189px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 1.3rem;
+    display: block;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: transform 0.1s ease;
+}
+
+.podcast-cover:hover {
+    animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-3deg); }
+}
+
+.podcast-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0.85rem 0 0.4rem;
+    line-height: 1.3;
+    color: #111;
+}
+
+.podcast-show {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.podcast-date {
+    font-size: 0.975rem;
+    color: #999;
+    margin-bottom: 0.85rem;
+}
+
+.podcast-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    max-width: 700px;
+    margin: 0.85rem auto;
+    text-align: left;
+}
+
+.podcast-link {
+    margin-top: 1.3rem;
+}
+
+.podcast-link a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.podcast-link a:hover {
+    background-color: #0052a3;
+}
+
+@media (max-width: 768px) {
+    .podcast-number {
+        font-size: 3.5rem;
+    }
+    
+    .podcast-title {
+        font-size: 1.5rem;
+    }
+    
+    .podcast-cover {
+        max-width: 158px;
+    }
+}
+&lt;/style&gt;
+
+</description>
+        <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/ten-best-software-podcast-episodes</link>
+          <guid isPermaLink="true">https://thundergolfer.com/ten-best-software-podcast-episodes</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>Larval stage support engineering: great at what doesn’t scale</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/support-eng/slack-waiting-druglog.png&quot; alt=&quot;Slack waiting for response&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When I took my first startup job, I wanted a place that would train me as a good programmer. When I took the second one, as employee #7, I wanted a place that would train me on &lt;em&gt;everything.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;At startups “everything” is engineering, support, sales, marketing, growth, operations, and recruiting&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;This post, probably the first in a series, is about &lt;strong&gt;support&lt;/strong&gt;&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. In particular, it’s about the core of support engineering in a “larval stage” startup, one with fewer than 30 engineers.&lt;/p&gt;
+
+&lt;p&gt;At Modal we have a strong customer focused culture. At Modal, &lt;strong&gt;all engineers talk to users directly.&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;We try to reply instantly. We sometimes reply at 1:36AM in the morning. We may get on planes and fly to you that day. We check back in.&lt;/p&gt;
+
+&lt;p&gt;The post is my distillation of the core mantras of early support engineering success, mantras which have served us well for more than three years.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Reply to the customer.&lt;/li&gt;
+  &lt;li&gt;Get on a call&lt;/li&gt;
+  &lt;li&gt;Follow up fast&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;the-1-rule-reply-to-the-customer&quot;&gt;The #1 rule: reply to the customer&lt;/h2&gt;
+
+&lt;p&gt;This mantra is what motivated me to write a post about customer support, something I’ve never done before. As Modal went beyond fifteen engineers, we started having existing engineers (incl. the CTO) delegating support work to engineering teams.&lt;/p&gt;
+
+&lt;p&gt;Modal uses Slack for internal communication, community support, and paid customer support. It’s quite convenient. Because we use Slack, the delegation of a support issue looks like a message link landing in different Slack channel.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/support-eng/akshat-support.png&quot; alt=&quot;Akshat Support&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is remarkable how often engineers will swarm on a support issue for hours, pinging back and forth questions, theories, and debugging information—and no one thinks to message the customer!&lt;/p&gt;
+
+&lt;p&gt;A particularly interesting customer issue can function as a nerd snipe. All of a sudden there’s a four person, multi-hour, 50+ comment Slack thread going. And the customer remains left on read. They’ve just been sitting there, probably thinking we were ignoring them when in reality they had the keen attention of multiple engineers.&lt;/p&gt;
+
+&lt;p&gt;Besides failing to reply in the first place, another failure mode is an engineer will accept a support question and work hard on it for hours before reaching end of day and closing their laptop without updating the customer.&lt;/p&gt;
+
+&lt;p&gt;Think of the customer’s perspective here. It would be fair for them to think that their question or request was abandoned, especially if it’s time sensitive. The reality is that an engineer worked hard for hours but the problem needs to span multiple days. Solution: the engineer needs to update the customer regularly.&lt;/p&gt;
+
+&lt;p&gt;To start improving as support engineers at a startup an engineer needs to start mentally putting the user first. User first, technical investigations second.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-on-a-call&quot;&gt;Get on a call&lt;/h2&gt;
+
+&lt;p&gt;Some engineers get energized by customer calls and customer visits. These engineers are great early startup hires. (Our CTO is like this.) Most engineers, including usually myself to be honest, don’t gain energy. Some engineers palpably &lt;em&gt;fear&lt;/em&gt; calls with customers.&lt;/p&gt;
+
+&lt;p&gt;But in the early days of Modal I repeatedly saw engineers getting on calls with customers, and I naturally adopted it as standard practice.&lt;/p&gt;
+
+&lt;p&gt;But it’s a non-default behavior of engineers, and so it needs regular affirmation as something that does not feel natural, and yet it is remarkably &lt;em&gt;high value,&lt;/em&gt; meaning engineers should push themselves to make calls with customers.&lt;/p&gt;
+
+&lt;p&gt;If a back-and-forth with a customer just isn’t getting the issue squashed, get on a call. If a customer is complaining, get on a call. If you need to sell a feature—if you need to sell the whole product—get on a call. If there was an outage and the customer is pissed, get on a call and show them you care, listen to their pain.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There are two reasons founders resist going out and recruiting users individually. One is a combination of shyness and laziness. They’d rather sit at home writing code than go out and talk to a bunch of strangers and probably be rejected by most of them. — &lt;a href=&quot;https://paulgraham.com/ds.html&quot;&gt;Do Things That Don’t Scale&lt;/a&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Getting on calls is hard work, it’s social labour. You have to turn off Spotify, move away from your desk. You have to be &lt;em&gt;on&lt;/em&gt;, for at least twenty minutes. It’s possible you won’t understand their problem, or their code. Maybe so.&lt;/p&gt;
+
+&lt;p&gt;But startups must show up for their customers. Startup engineers must get on a call&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;follow-up-fast&quot;&gt;Follow up &lt;em&gt;fast&lt;/em&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“I wrote a little program to look at this, like how quickly our best founders — the founders that run billion-plus companies — answer my emails versus our bad founders. … I don’t remember the exact data, but it was mind-blowingly different. It was a difference of minutes versus days on average response times.” — &lt;a href=&quot;https://conversationswithtyler.com/episodes/sam-altman/&quot;&gt;Sam Altman&lt;/a&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;This core mantra has a caveat. For engineers, tunnel vision on maximizing response and resolution speed will cause distraction, myopia, and overfitting to customer feedback.&lt;/p&gt;
+
+&lt;p&gt;But engineers at startup should know and feel the massive difference between replying to a customer in 30 seconds versus replying in 30 minutes, even though both are fast responses.&lt;/p&gt;
+
+&lt;p&gt;The lightning reply, or quick bug fix, delights customers in a few ways:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;They feel they have your close attention—they matter.&lt;/li&gt;
+  &lt;li&gt;They feel you are engaged, and thus the product is of active concern (ie. not deprecated)&lt;/li&gt;
+  &lt;li&gt;The product they’re using feels &lt;em&gt;interactive&lt;/em&gt;; their feedback quickly produces response and evolution.&lt;/li&gt;
+  &lt;li&gt;The producers of the product seem highly competent. They understand their customers and their product intimately and comprehensively. If they didn’t, they couldn’t reply so fast.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fast follow ups are infectious and energizing. The speed of feedback and evolution in a startup is one of the best reasons to participate in them.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;
+  &lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&amp;quot;we feel like you are a team at our company&amp;quot;&lt;br /&gt;&lt;br /&gt;&amp;quot;we feel like we&amp;#39;re your only customer&amp;quot;&lt;br /&gt;&lt;br /&gt;🥹 exactly how we want our customers to feel ❤️&lt;/p&gt;&amp;mdash; Simon Eskildsen (@Sirupsen) &lt;a href=&quot;https://twitter.com/Sirupsen/status/1935711748629078452?ref_src=twsrc%5Etfw&quot;&gt;June 19, 2025&lt;/a&gt;&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;As initially warned, you shouldn’t push this too far, to the point of rushing responses or becoming distracted hovering over a community Slack channel. But when an opportunity to quickly answer a question or fix a bug arises, take it. Don’t leave it for after lunch, or the next day.&lt;/p&gt;
+
+&lt;h2 id=&quot;go-forth-and-delight-customers&quot;&gt;Go forth and delight customers&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/support-eng/bezos-shmiternet.png&quot; alt=&quot;Bezos customer obsession&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A lot of the above is what you get when you take Paul Graham’s famous &lt;a href=&quot;https://www.notion.so/227-A-post-about-support-engineering-stage-1-great-at-what-doesn-t-scale-2ad99ea4b26f80228ae4f40201223a2c?pvs=21&quot;&gt;&lt;em&gt;Do Things That Don’t Scale&lt;/em&gt;&lt;/a&gt; essay and apply it just to customer support engineering. That essay is advice for founders, but advice for founders applies pretty well to early startup employees. It’s a principle advantage of being an early employee at a startup that you get work in close proximity to people (the founders) who are compelled into maintaining an uncommon, “insanely great” attention to users and customer service.&lt;/p&gt;
+
+&lt;p&gt;Because the now old advice really is true: if you’re &lt;a href=&quot;https://www.youtube.com/watch?v=UPwdjfYYgzI&quot;&gt;customer obsessed, you have a good chance of winning&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I have not become good at most of these, but it’s been great to try, great to learn. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I have two related posts on Slack skills. (1) &lt;a href=&quot;/blog/against-slack-dms&quot;&gt;Against DMs&lt;/a&gt;, and (2) &lt;a href=&quot;/help-in-slack&quot;&gt;how to ask for help&lt;/a&gt;. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Customer calls are one of the heartbeats of a startup engineer’s work life. If you haven’t been on a customer call in the last month or so, something might be wrong. Come out of the cave. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 13 Dec 2025 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/startups/support/2025/12/13/support-eng-stage-1/</link>
+          <guid isPermaLink="true">https://thundergolfer.com/startups/support/2025/12/13/support-eng-stage-1/</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>&quot;A Foundational Result in Machine Learning&quot;</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;A foundational result in machine learning is that a single-layer perceptron with N&lt;sup&gt;2&lt;/sup&gt; parameters can store at least 2 bits of information per parameter (&lt;a href=&quot;http://webcourse.cs.technion.ac.il/236941/Winter2012-2013/ho/WCFiles/Cover65.pdf&quot;&gt;Cover, 1965&lt;/a&gt;; &lt;a href=&quot;http://iopscience.iop.org/article/10.1088/0305-4470/21/1/030/pdf&quot;&gt;Gardner, 1988&lt;/a&gt;; &lt;a href=&quot;https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.58.913&quot;&gt;Baldi &amp;amp; Venkatesh, 1987&lt;/a&gt;). More precisely, a perceptron can implement a mapping from 2N, N-dimensional, input vectors to arbitrary N-dimensional binary output vectors, subject only to the extremely weak restriction that the input vectors be in general position.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;….Wait what? Foundational? Was this in the Coursera Course?!&lt;/p&gt;
+
+&lt;p&gt;This short passage comes from &lt;a href=&quot;https://arxiv.org/pdf/1611.09913.pdf&quot;&gt;&lt;em&gt;Capacity and Trainability in Recurrent Neural Networks&lt;/em&gt;&lt;/a&gt;, a paper exploring empirically the nature of Recurrent Neural Networks. Their exploration extends much earlier work done to study simple single-layer perceptron networks, and it is from that decades old work that this “foundational result” comes.&lt;/p&gt;
+
+&lt;p&gt;So, I found this passage quite dense when I first read it. The following questions featured immediately and prominently:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What does it mean for a network parameter to “store information”?&lt;/li&gt;
+  &lt;li&gt;What is “general position”?&lt;/li&gt;
+  &lt;li&gt;How does the implementation of that mapping from inputs to outputs entail “2 bits of information per parameter”?&lt;/li&gt;
+  &lt;li&gt;Why are there 3 references from physics journals? They talk about a &lt;em&gt;Spin Glass&lt;/em&gt;. What’s that?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I didn’t get it, but this is apparently a foundational result, so off I went trying to.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;a single-layer perceptron with N&lt;sup&gt;2&lt;/sup&gt; parameters … can implement a mapping from 2N, N-dimensional, input vectors to arbitrary N-dimensional binary output vectors…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The network described looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/single-layer-perceptron-2n.png&quot; alt=&quot;images/single-layer-perceptron-2n.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is single-layer, so there are no intermediate (hidden) layers between the input nodes and the output nodes. Because it receives &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N&lt;/code&gt; dimensional vectors, and outputs &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N&lt;/code&gt; dimensional vectors we have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2N&lt;/code&gt; nodes with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N X N&lt;/code&gt; (or N&lt;sup&gt;2&lt;/sup&gt;) connections. Each of these connections has an associated &lt;em&gt;weight&lt;/em&gt;, and it is these N&lt;sup&gt;2&lt;/sup&gt; weights that are our N&lt;sup&gt;2&lt;/sup&gt; “parameters”.&lt;/p&gt;
+
+&lt;p&gt;This is the network that can store &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 X N X N&lt;/code&gt; bits of information utilising &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N X N&lt;/code&gt; parameters.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;2 bits of information per parameter&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It is important to understand what it means for the neural network to store information, and it may be quite a foreign idea to those who are used to thinking of neural network’s ability to decide sentiment, recognise faces, or translate languages, rather than think about their relationship with the mathematical idea of &lt;em&gt;information&lt;/em&gt; and its storage in parametric models like neural networks.&lt;/p&gt;
+
+&lt;p&gt;I will quickly give an intro to Information Theory, but see &lt;a href=&quot;https://web.stanford.edu/~montanar/RESEARCH/BOOK/partA.pdf&quot;&gt;this from Stanford University&lt;/a&gt; for something more comprehensive.&lt;/p&gt;
+
+&lt;p&gt;Information exists in contrast to uncertainty. Given a unknown variable or set of variables, uncertainty is higher when it is ‘harder’ to predict the values of that variable/variable group. For example, a typical coin can be flipped and the outcome will be heads or tails. The outcome of the flip is the unknown variable; it is 50% likely to be heads and 50% likely to be tails. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt; possible outcomes.&lt;/p&gt;
+
+&lt;p&gt;A 8-sided die on the other hand has &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8&lt;/code&gt; equally possible outcomes. So for a die throw, predicting the value of the unknown variable is ‘harder’. How is this extra uncertainty quantified? &lt;em&gt;Entropy&lt;/em&gt; is the equation that defines uncertainty. This is the equation for Entropy, where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;X&lt;/code&gt; is the uncertain outcome, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p(x)&lt;/code&gt; is the probability distribution over the values that outcome can take. In our examples things are simple, because all potential values of the outcome are equally likely.&lt;/p&gt;
+
+\[H_X \equiv - \sum_{x \in X} p(x) \log_2 p(x)\]
+
+&lt;p&gt;Each outcome of the die throw has a probability of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1/8&lt;/code&gt; so summing over each outcome in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;X&lt;/code&gt; we get 3 (it becomes &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-((1/8 * -3) + (1/8 * -3) + ...)&lt;/code&gt; ). The entropy of a die throw is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3&lt;/code&gt;. The entropy of a coin is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt;, because we sum over two outcomes of probability &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1/2&lt;/code&gt;. With outcome sets of equal probability, the entropy value is nice and clean, the logarithm (base 2) of the number of outcomes.&lt;/p&gt;
+
+&lt;p&gt;It was said before that information contrasts with uncertainty. To be specific, information is contained in that which reduces entropy. It is the thing that takes a variable which could be a number of ways, and reduces those number of ways such that we can more easily predict that variable. Most simply, if you can perfectly predict the outcome of an unknown variable, you have perfect information, and &lt;em&gt;that information is precisely equal to the entropy of that random variable&lt;/em&gt;. If you have a variable space of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;K&lt;/code&gt; uncertainty, then to have the power to predict perfectly the values of that space is to have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;K&lt;/code&gt; information. This is crucial for soon understanding how each parameter has &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt; &lt;em&gt;bits&lt;/em&gt; of information.&lt;/p&gt;
+
+&lt;p&gt;Now there’s a subtle jump from saying “this random discrete variable has an entropy of 3” to saying “this random discrete variable has 3 &lt;strong&gt;bits&lt;/strong&gt; of entropy. The unit “bits” comes entirely from the choice of logarithm base: using log base 2 means entropy is measured in bits. If we used natural logs, the entropy would be in nats; if we used log base 10, it would be in bans. We typically use bits because information theory and digital computation are built around binary encoding—not because the underlying math requires it.&lt;/p&gt;
+
+&lt;p&gt;So for our network to have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt; bits of information per parameter, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 X N X N&lt;/code&gt; bits of information in total, it would have to provide perfect information of a variable space with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 X N X N&lt;/code&gt; entropy. Like above, we assume that all outcomes are equally likely. This means that entropy is equal to the logarithm of the number of possible outcomes. Let &lt;strong&gt;B&lt;/strong&gt; be the number of outcomes.&lt;/p&gt;
+
+&lt;p&gt;log&lt;sub&gt;2&lt;/sub&gt; &lt;strong&gt;B&lt;/strong&gt; = &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 X N X N&lt;/code&gt; = 2N&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;B = 2&lt;sup&gt;2N&lt;sup&gt;2&lt;/sup&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;That number gets big pretty quickly. At &lt;strong&gt;N&lt;/strong&gt; = 100 we have:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;B = 158426037257307868005973615116434779385850561749931084304089264171636965771228887445183221549634900407296411799021388514482539712212527560964434919010760105042125849116454433798935896220650780046807666431069499118740466866837959372847427258689339507115778715540823349866354881930899844372041800746660062647078769849898842814752322118795015775444493011299422019949776268167506192865779504464236743280761669197786530472490098079059778039682329847568790728044451902926135514328350694772562806871678146089186529664860081888383984871004699008224838580499751803515968006470065212530560848222545225611518763696038579381784537194800004157104657890526563726585544795235404652840413597055460523172340703162501727153461778559569316385319214984844854488705898953358474911000004317845656722556380177446898267540824349565051923332021650544761981831832447959514496708609116076028277050316882163176975111950192963213729930603362910401834553569223306295130504802504510333267498134802006070538650873017641896372875192828293321963152061479383675244933857476890220219901106655862535276130027150638410198329552070424997299107812369042423144903991740765446921500724419076751000298839481088892256273256063368929397432443933014214144749988527415844969725752903212470206761055261601849827654661699110625940038252592444127807711447974524104291407424843114880675244887296023580543784177280093241722370849027298852871426447848022843822902994734094797385919156612345556805228999781578857843967564419419389820652200704697216277604331475502184815154138578522599704839117099620440323976076189408437842592835693584440870980273228317430719718088417806011965249218133424685397314583877555043920477904186860401257506256394482324766380253922824732851857795933738539586533286494714037056888744575903707361945772578724435558330900806469646244239645951297065588493170705557002572646071293889342899884973471013547336074132058312069635733186787920170959871317410543537296985743086570399936143873193840643374631816914904860506917797431444238914497131049455649656508115021631292854300358556969140580788964452300041621575626091798586342244901878160798655296679261855611110073652803721254830922014932623403243155745232193950580851580911850733684806092512104808826053047325437803724154337434638903162568403492936621638617164329550798054121668806642220605470671206043129031608669748032306056358437105315978422234774926460517073989245245107819107854765567629692467190482389307528351002077335420019337555242527394307338870719127923956284961549495498790843593872752311823391339463516538283400267223543481963090012390530204516450554803984598953890817239000742556068802595920427778151959918090116862217516507638529119964994017518199856067593829858698164694379548113153767593100448607004918388327401892801427432297826759856964341637292026319148464168429714274957135079912049397318642781926160960990559408023450377550967128146636847975207536733868140822201431821054676744071472469699037765328909355841860295192771742323204868569121430751502931259791821245445709859916005187630403576001604005787864977303363066402561152710247206686262342396626030478513888796421963235041350325802452185758510209333111485659452918727076806529603424430454269446455756630217197847912013865363750346774090970145065574659477354372422254363041054990553133134795963757375352244526936032428066971967773792517860490850378585829410846140557461092179996153897741309684001675821933081194897521420112638349755677450652416434216421061269407213717720095189938797344341928856815077017462880322591391245465869672698126281313306113876047433685160012417576213516804723609783110561035013091058820942808166200834194018726856668841790429416742802104680185300791270851278776427023431533302663521354307567775557448772938508933920892066287027119642652300958465167090458635801843195210498211190913210321901142695584714344952503183763893110196124064914696259949340268324037113023594680716476379894628545317279904409379232735808639560672690096540624280404318683352778731415724742191076054728000279989743453367804496984328410450842940573462781082042215408423596863263148549613401913930196824033978848196722234139162366189919502087302034009115364953876499385538897537186573676382678158399152663344179370533450287905582746857120416965062438162120937264104028278768666160243784758041391265053015642423557836394416337448107620057878906244112952990434118093246924811270601497002602455762033134812497341331258587657058186258697629631241573869075154038890341453669819925327431348121974898693888115817829962206672674072982808675440812097158295778726322148681526519479030014867260060277979658621416827096378015776459215591554543373977417359449658238388364472141766283676832088648236424615713290767233613625291742713145813071396727380490010624790152355369710812209236293873831522879346461318242443971202942311144635310063794616933694427260120003016382186503059120517237756889959130570775741261586637799151582257917051213942427954042950164901050494611219168606113734439454603061628898982393998280676970344608876748458641750335811214876566237572767031075020462456127926968708186898126685739500550842578201345360630066084662471823273990020833543702484263518838822654965245517562276218952411178934717352443334239511247498011892977068051350106084618347697538036723468284914324127978903080794186533932834013575668784018726940097839567598461350388073254865816445489602424210267208612919113168904870677087973576763993287194899757891967902840989397230616059316453190544956322421787242379934006554206625156342315239175908415514540898703017989916939063280060183603935987407588531904499059854720097441237841042841670450316660441822462622753351205689006752551684077348869309983830110012144514135487108212085272167586802104801228293051152867522649774355434382686174550249127847895612860190159442886739115783259423932175318022892001985881700022097853203969988843558048556035582327550009998094312076218956668663403528162236623181598565920352728444224861865610692788036105430324074599854392872475129836852890733037381658915407354820626344793341766634507436537785710556280742554638210936803763367183717932460591183778499196311119794912856900178919549022959737636806806082561454811925248687822779948275663850775763453360225299664647308176835872234666655612540823001449360141673076532608560558121246539035021543073989172838706695228708932696061563871984374177564781016290210497367636877434031820920427967704482406511416736546272613393384567491473729794382476677368896597879109349189411856214468920530807981295394527120158216151212297452197673849811368802850436012971695681706372684272178023499099664970627727188232466668133905190084861986571933118283143830505003043161067804745622767906020390852846738800154692068177928929075173138848166306673947035138923269640863103574781393440967424278261714263530529402779936920333186963430474660672013897235011992105419321036332584885499518923161387972853536034915667139553228451271680734727075482453712313977117058649054205156812462247468357278658452864912590449585366204784811325353427040046376265449029961698861158291140003560411649046661208190466642543262325564715321710873906553590840048942536202204402107822429971993876850624164901685123950589980638245426051375536200108558064948694751933488887245308663404014695240961874513812799050066796102447526675711194363473815648826935317820768363954917529434481770353778066318002780955371243851611411236971676499260762878497746336235475825237247162264229016130864051710750247872168272378079981916215128442349160271304904006061407864288350946639799849760099927293832216326870598842379583972332301044249374243246293475841682249762335297428289119482175170422344063515671355050961556382786403421451994885943551709748812318379453091942108485765913396910136773681621453818001151727517439714067499739775535195304174251809822821768890995653291475922411950295782308657226659159356458543181426448271397875173489583442608961747633344819979116908814033427886937388498858106596068848164254210842941161627915068934821213720250703221346235164179985342633075077143552535479847480550427332004826388244691940872193177362938370585363597372432293627240433195975985122196212539785953642340059706881364100942607638561598051714392739028562476814989383094024455718813456095321164559494003137801634142271279332239289693158211838147338726652167673044867410715463242368202978701933845332426298534168256532589150715044751757801426429464213979087823326498711394307850162695685662034790323485598150518890234558995250334146105963843275800106995297594995691546815611222996123862259063127264941111090552368156446208226133416448201795477748160336962975627519707739895087176847519526417202028738530058803117633497104281880280094582529661507711017648388641662745078691751750141519880037443135338030504768309929145072306501892874489954596039809427879275707543043022253523744148560968026980566390565382539077665979141682498568225563247005480241699078160298538152812819275727570415916492241493546893198145554902488244519247184392645372309974742435004428382747165695755453322696293048385093775167761114904599666787743871148402482275693036219558360622691830701435183902464123516291964321521579186182546098255810688672477337443096972084318067161516059061332780329413144365459360664194287624589456757237464352565991547597175406782751635565081607698927632908541028185770190125817612467884164045179183520103588912617758508679654346661254504008296248458189615740661241309561469787327272532473463704301646423465794330671609942718581691560533989910798478501433092999182070347190905904203594251432241926482608142370175691905967084603989636644115054994021881643889240635512362421340370402585859315778051432283086869252853023328024327849828777352053136648246501866602791613031949526351559243244987855855938150238353890502211956086014543123980112838925943021029154997249978167418365020179016675405747769062555563363441037171593174477559950250467194754140307621766299677447047802262443256612096399355034105227446951230604760304628442668545355277453835271542666396714342529085987189927491291614609792009271279839396319037727357280499633288777893356815460210388520167956954388554485104439960116778601161722059873612474924229346012317124971881197255292462532555059514754082703407965655939226662440846262060929384066591323928205570748153548549753455390038246211989148391738608511740793108678262943694033603888664920510184608526616672478726912691104863229700330845906626510362263174852199278357891233378539052897158301758246855114986317573973013194210305768061139762501392406801181609925786910543702293811767693068875837746433794142362157582681531094658782207650254410358634904751054488872456434608346823657682138841885096733068433376046627710751254079793926395962238625754382799165084023395301182480569424557272338875335571969811814497172488163436863920485539394353051938789278945940242936792211707678272269328004369733847480992387784628669606195632880458362682964779591997959194324576535009082473611337678355955773547479127417419336519464323933976648117749192260816987404700021865418497897360646905978539618112555920935808868898404133204063618694711573982445416679851904343408976995328817583534524978356068733087497840435687832754634948353763292518019113464372532070256885205073992323715028537719271040755269721848977914699734957131184292129793413308667288624305122308161977853531870839921246045483766835926656216042449961960502865683335331024571534489835925521279010349412629838734521106652541959130016171617155773311289871451580846390585197740068502431924075742143748938629122191309954697068040259734692149485772250980290969211199204880588529717180139286749269934119742625668997996527398158826986395304249842478210131127802059281568541069198598556220361164491890944838074829823213149612629599385156901869544099427039617105487853132044072959452685496223920923518761160658310710890603281523682031568714797984572683670511849839021216518518243302351450146291740261419539404238142171912187124761482628312506044063402863471371850354986631677979187186458995889731181515366992121646799484887367079871289697795984721749551119434590853334711885025509376
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Holy crap. So for a single-layer perceptron with input dimension &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;100&lt;/code&gt; the uncertainty about the variable outcome is huge. The problem must be much more complicated that knowing the outcome of a 8-sided die roll. So where does this complexity come from?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;a perceptron can implement a mapping from 2N, N-dimensional, input vectors to arbitrary N-dimensional binary output vectors…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Time to consider this bit of the passage. Fixing &lt;strong&gt;N&lt;/strong&gt; at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt; for simplicity and brevity, we have our “arbitrary N-dimensional binary output vectors” looking like this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[0, 1, 1, 1, 1]&lt;/code&gt; or this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[0, 1, 1, 0, 0]&lt;/code&gt;. Each one of these output vectors can be one of 2&lt;sup&gt;5&lt;/sup&gt; combinations. Thus the entropy of any single input-output pair is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt;, the logarithm of the number of possibilities. Being able to know the outcome of a variable with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt; bits of entropy gives you &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt; bits of information. Our network can supposedly implement a mapping for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10&lt;/code&gt; (2N) of these, so the information of this network is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;50&lt;/code&gt; bits.&lt;/p&gt;
+
+&lt;p&gt;Where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N = 5&lt;/code&gt;, number of outcomes (B) is 2&lt;sup&gt;2N&lt;sup&gt;2&lt;/sup&gt;&lt;/sup&gt; = 2&lt;sup&gt;2*5&lt;sup&gt;2&lt;/sup&gt;&lt;/sup&gt; = 2&lt;sup&gt;50&lt;/sup&gt;. The entropy is thus &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;50&lt;/code&gt;, and so a neural network that can collapse the uncertainty about &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10&lt;/code&gt; 5-dimensional binary vectors with an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;input-&amp;gt;output&lt;/code&gt; mapping stores &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;50&lt;/code&gt; bits. How many parameters are in this network? &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5 * 5 = 25&lt;/code&gt;. So that’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt; bits per parameter. Nice!&lt;/p&gt;
+
+&lt;p&gt;So this defines that criteria by which a neural network can be said to store information. It’s quite clear so far what the output vectors of this network look like, but what about it’s input? What is “general position” and why do the input vectors need to be in it?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;More precisely, a perceptron can implement a mapping from 2N, N-dimensional, input vectors to arbitrary N-dimensional binary output vectors, &lt;em&gt;subject only to the extremely weak restriction that the input vectors be in &lt;strong&gt;general position&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;General Position&lt;/em&gt; is a very simple property of an input space that has important implications for the storage capacity of the neural network. Because we’ve seen that information can be stored in the network by implementing mappings from some input vector to a binary output vector, the &lt;em&gt;amount&lt;/em&gt; of mappings possible within the network has direct impact on capacity. So it turns out that whether or not a neural network can map &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2N&lt;/code&gt; inputs to arbitrary binary outputs depends also on the input vector group and not just on the architecture of the network.&lt;/p&gt;
+
+&lt;p&gt;General position can be a characteristic of any set of points or geometric objects, but let’s first consider a small set of low-dimensional vectors, and a more simple single-layer perceptron that maps inputs to either &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt;. In order to implement a mapping from inputs to outputs, a single-layer perceptron network must obviously implement a function. In our simple case this function determines a dichotomy; points are either &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; or they’re &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;(Note: The network under discussion here has no ‘bias value’ for simplicity, but ignoring that does not compromise generality)&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1em; text-align: center;&quot;&gt;
+  &lt;img src=&quot;/images/bool-perceptron.jpg&quot; alt=&quot;Boolean Perceptron Dichotomies&quot; style=&quot;border-radius: 0.4em; width: 60%;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Illustration of a Boolean perceptron dichotomising points.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Our small set of low-dimensional vectors looks like this: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{[0,1], [2, 2], [0,5]}&lt;/code&gt;. These &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3&lt;/code&gt; vectors with dimension &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N = 2&lt;/code&gt; could map to one of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8&lt;/code&gt; possible outcomes: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[0,0,0], [0,0,1], [0,1,0] ... [1, 1, 1]&lt;/code&gt;. The entropy of this variable space is thus &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3&lt;/code&gt; (log&lt;sub&gt;2&lt;/sub&gt;2&lt;sup&gt;3&lt;/sup&gt;). The function of our neural network must be able to dichotomise these 3 points in those 8 ways. If it doesn’t, then it hasn’t completely removed the entropy of the variable space, and thus can’t claim the full &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3&lt;/code&gt; bits of information.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1em; text-align: center;&quot;&gt;
+  &lt;img src=&quot;/images/general-position.png&quot; alt=&quot;general position&quot; style=&quot;border-radius: 0.4em; width: 60%;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Three vectors in general position. A dotted line shows a possible dichotomy.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;What happens though if we change &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[0, 5]&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[4, 4]&lt;/code&gt;? Our new set becomes &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{[0,1], [2, 2], [4,4]}&lt;/code&gt; and our plot looks like this:&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1em; text-align: center;&quot;&gt;
+  &lt;img src=&quot;/images/not-general-position.png&quot; alt=&quot;not in general position&quot; style=&quot;border-radius: 0.4em; width: 60%;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Three vectors NOT in general position. A dotted line shows a possible dichotomy.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;It should be quite clear that the network can no longer implement functions that dichotomise the 3 inputs in 8 different ways. Imagine trying to drawing a line that separates (dichotomises) these vectors. Our new input space has imposed a restriction on the network such that it &lt;em&gt;cannot implement a mapping to “arbitrary [2]-dimensional binary output vectors”&lt;/em&gt;. This directly impacts the information storage capacity of the network because the linear dependence of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[2, 2]&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[4, 4]&lt;/code&gt; ensure that they &lt;em&gt;must share the same outcome&lt;/em&gt;. If they share an outcome, then the uncertainty about the system is reduced.&lt;/p&gt;
+
+&lt;p&gt;Now it was called an “extremely weak restriction”, this need for general positionality. Why? Well, because in some space &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt; dimensional space it is &lt;a href=&quot;https://math.stackexchange.com/a/1065352&quot;&gt;almost certain that any random set of real valued points from  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt;  will be in general position&lt;/a&gt;. You’d have to carefully design your variable space to &lt;em&gt;not&lt;/em&gt; have this quality.&lt;/p&gt;
+
+&lt;!-- 3D Point Classifier Component - Can be embedded in Jekyll blog post --&gt;
+&lt;div id=&quot;point-classifier-3d&quot; class=&quot;point-classifier-container&quot;&gt;
+    &lt;style&gt;
+        .point-classifier-container {
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            position: relative;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .point-classifier-container .pc-canvas-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .point-classifier-container .pc-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            max-width: 280px;
+        }
+        
+        .point-classifier-container .pc-controls h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.3em;
+            font-family: Arial, sans-serif;
+        }
+        
+        .point-classifier-container .pc-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 3px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: Arial, sans-serif;
+            display: inline-block;
+        }
+        
+        .point-classifier-container .pc-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .point-classifier-container .pc-button:active {
+            transform: translateY(0);
+        }
+        
+        .point-classifier-container .pc-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(240, 240, 240, 0.9);
+            border-radius: 5px;
+            font-size: 13px;
+            color: #555;
+            font-family: Arial, sans-serif;
+        }
+        
+        .point-classifier-container .pc-info p {
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+        
+        .point-classifier-container .pc-stats {
+            margin-top: 10px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+        
+        .point-classifier-container .pc-red-count {
+            color: #ff4444;
+        }
+        
+        .point-classifier-container .pc-blue-count {
+            color: #4444ff;
+        }
+
+        @media (max-width: 768px) {
+            .point-classifier-container {
+                height: 500px;
+            }
+            
+            .point-classifier-container .pc-controls {
+                max-width: 200px;
+                padding: 15px;
+            }
+            
+            .point-classifier-container .pc-button {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+    &lt;/style&gt;
+    
+    &lt;div class=&quot;pc-canvas-container&quot; id=&quot;pc-canvas-container&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;pc-controls&quot;&gt;
+        &lt;button class=&quot;pc-button&quot; id=&quot;pc-generate-plane&quot;&gt;Generate Random Plane&lt;/button&gt;
+        &lt;button class=&quot;pc-button&quot; id=&quot;pc-reset-points&quot;&gt;Reset Points&lt;/button&gt;
+            &lt;div class=&quot;pc-stats&quot;&gt;
+                &lt;span class=&quot;pc-red-count&quot;&gt;Red: &lt;span id=&quot;pc-red-count&quot;&gt;0&lt;/span&gt;&lt;/span&gt; | 
+                &lt;span class=&quot;pc-blue-count&quot;&gt;Blue: &lt;span id=&quot;pc-blue-count&quot;&gt;0&lt;/span&gt;&lt;/span&gt;
+            &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This idea of a variable space having a ‘complexity’ that enables a neural network to implement the full complement of possible dichotomies can be solidified by further reading into &lt;a href=&quot;http://www.cns.nyu.edu/~eorhan/notes/covers-theorem.pdf&quot;&gt;&lt;em&gt;Cover’s Function Counting Theorem&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Exactly &lt;em&gt;how&lt;/em&gt; a neural network’s group of weights is able to implement these arbitrary function mappings is outside the scope of this blogpost. Maybe I’ll do it in a follow-up. If you want to go into yourself, the “Perceptron Learning Algorithm” is explored under heading 3 in  &lt;a href=&quot;http://web.mit.edu/course/other/i2course/www/vision_and_learning/perceptron_notes.pdf&quot;&gt;&lt;em&gt;Introduction: The Perceptron&lt;/em&gt;, Haim Sompolinsky, MIT&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;at-least-2&quot;&gt;“At least 2”&lt;/h3&gt;
+
+&lt;p&gt;Now there’s one last thing to note about the quote introduced at the start. It says “at least” &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt; bits. So it can be more? For a quick answer let’s dip into one of the physics papers linked in our top quote,  &lt;a href=&quot;http://iopscience.iop.org/article/10.1088/0305-4470/21/1/030/pdf&quot;&gt;&lt;em&gt;The Space of Interactions in Neural Network Models&lt;/em&gt; - E Gardner, Dep. of Physics, Edinburgh University.&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In the random case, the maximum number of patterns is 2N (Cover 1965, Venkatesh 1986a, b, Baldi and Venkatesh 1987) and we will show that this increases for &lt;strong&gt;correlated patterns&lt;/strong&gt;.  [emphasis mine]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For random patterns, the storage capacity is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt; bits, but when input patterns are correlated, the network is able to exploit the correlation to store more pattern -&amp;gt; output mappings. The correlation between inputs means that the storage of each individual pattern represents &lt;em&gt;less&lt;/em&gt; information storage, but overall the storage capacity of the network is increased beyond &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt; bits per parameter because of a relatively larger increase in the number of stored patterns. I don’t understand that physics paper very well at all, and its exploring neural networks in an unfamiliar context where apparently “magnetism -&amp;gt; &lt;em&gt;m&lt;/em&gt;”  is a thing, but I think the high-level intuition can be gathered.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.stanford.edu/~montanar/RESEARCH/BOOK/partA.pdf&quot;&gt;Introduction to Information Theory&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.inference.org.uk/itprnn/book.pdf&quot;&gt;Information Theory, Inference, and Learning Algorithms&lt;/a&gt; - David J.C MacKay&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1611.09913&quot;&gt;Capacity and Trainability in Recurrent Neural Networks - Arxiv.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://web.mit.edu/course/other/i2course/www/vision_and_learning/perceptron_notes.pdf&quot;&gt;Introduction: The Perceptron Haim&lt;/a&gt; - Haim Sompolinsky, MIT (October 2013)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/2404.05405&quot;&gt;Physics of Language Models: Part 3.3, Knowledge Capacity Scaling Laws&lt;/a&gt; (April, 2024)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1611.09913&quot;&gt;Capacity and Trainability in Recurrent Neural Networks&lt;/a&gt; (ICLR 2017)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+(function() {
+    /* Encapsulate everything in an IIFE to avoid global namespace pollution */
+    let pcScene, pcCamera, pcRenderer;
+    let pcPoints, pcPointsMaterial;
+    let pcPlane, pcPlaneMesh;
+    let pcPointsData = [];
+    let pcColors = [];
+    const PC_NUM_POINTS = 200;
+    let pcContainer;
+    let pcAnimationId;
+
+    function pcInit() {
+        pcContainer = document.getElementById(&apos;pc-canvas-container&apos;);
+        if (!pcContainer) return;
+        
+        const containerRect = pcContainer.getBoundingClientRect();
+        const width = containerRect.width;
+        const height = containerRect.height;
+
+        pcScene = new THREE.Scene();
+        pcScene.background = new THREE.Color(0xf0f0f0);
+        pcScene.fog = new THREE.Fog(0xf0f0f0, 10, 50);
+        pcCamera = new THREE.PerspectiveCamera(
+            75,
+            width / height,
+            0.1,
+            1000
+        );
+        pcCamera.position.set(10, 10, 10);
+        pcCamera.lookAt(0, 0, 0);
+
+        /* Renderer setup */
+        pcRenderer = new THREE.WebGLRenderer({ antialias: true });
+        pcRenderer.setSize(width, height);
+        pcRenderer.shadowMap.enabled = true;
+        pcRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        pcContainer.appendChild(pcRenderer.domElement);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        pcScene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.4);
+        directionalLight.position.set(5, 10, 5);
+        directionalLight.castShadow = true;
+        pcScene.add(directionalLight);
+        const gridHelper = new THREE.GridHelper(20, 20, 0x888888, 0xcccccc);
+        pcScene.add(gridHelper);
+        const axesHelper = new THREE.AxesHelper(5);
+        pcScene.add(axesHelper);
+        pcCreatePoints();
+        pcCreateBoundingBox();
+
+        /* Controls (basic orbit controls implementation) */
+        pcAddControls();
+        window.addEventListener(&apos;resize&apos;, pcOnWindowResize, false);
+
+        /* Setup button event listeners */
+        document.getElementById(&apos;pc-generate-plane&apos;).addEventListener(&apos;click&apos;, pcGeneratePlane);
+        document.getElementById(&apos;pc-reset-points&apos;).addEventListener(&apos;click&apos;, pcResetPoints);
+
+        /* Start animation loop */
+        pcAnimate();
+    }
+
+    function pcCreateBoundingBox() {
+        const geometry = new THREE.BoxGeometry(10, 10, 10);
+        const edges = new THREE.EdgesGeometry(geometry);
+        const line = new THREE.LineSegments(
+            edges,
+            new THREE.LineBasicMaterial({ color: 0x999999, opacity: 0.3, transparent: true })
+        );
+        pcScene.add(line);
+    }
+
+    function pcCreatePoints() {
+        /* Clear existing points if any */
+        if (pcPoints) {
+            pcScene.remove(pcPoints);
+        }
+
+        pcPointsData = [];
+        const geometry = new THREE.BufferGeometry();
+        const positions = [];
+        pcColors = [];
+
+        for (let i = 0; i &lt; PC_NUM_POINTS; i++) {
+            const x = (Math.random() - 0.5) * 10;
+            const y = (Math.random() - 0.5) * 10;
+            const z = (Math.random() - 0.5) * 10;
+            
+            positions.push(x, y, z);
+            pcPointsData.push(new THREE.Vector3(x, y, z));
+            
+            /* Initially all points are white */
+            pcColors.push(0.8, 0.8, 0.8);
+        }
+
+        geometry.setAttribute(&apos;position&apos;, new THREE.Float32BufferAttribute(positions, 3));
+        geometry.setAttribute(&apos;color&apos;, new THREE.Float32BufferAttribute(pcColors, 3));
+
+        pcPointsMaterial = new THREE.PointsMaterial({
+            size: 0.3,
+            vertexColors: true,
+            sizeAttenuation: true
+        });
+
+        pcPoints = new THREE.Points(geometry, pcPointsMaterial);
+        pcPoints.castShadow = true;
+        pcScene.add(pcPoints);
+
+        pcUpdateStats(0, 0);
+    }
+
+    function pcGeneratePlane() {
+        /* Remove existing plane if any */
+        if (pcPlaneMesh) {
+            pcScene.remove(pcPlaneMesh);
+        }
+
+        /* Generate random plane parameters (ax + by + cz + d = 0) */
+        const normal = new THREE.Vector3(
+            Math.random() - 0.5,
+            Math.random() - 0.5,
+            Math.random() - 0.5
+        ).normalize();
+
+        /* Random distance from origin */
+        const d = (Math.random() - 0.5) * 3;
+
+        /* Create visual representation of plane */
+        const planeGeometry = new THREE.PlaneGeometry(15, 15);
+        const planeMaterial = new THREE.MeshBasicMaterial({
+            color: 0x00ff00,
+            side: THREE.DoubleSide,
+            opacity: 0.3,
+            transparent: true
+        });
+
+        pcPlaneMesh = new THREE.Mesh(planeGeometry, planeMaterial);
+        
+        /* Position and orient the plane */
+        pcPlaneMesh.lookAt(normal);
+        pcPlaneMesh.position.copy(normal.clone().multiplyScalar(-d));
+        
+        pcScene.add(pcPlaneMesh);
+
+        /* Classify points */
+        pcClassifyPoints(normal, d);
+    }
+
+    function pcClassifyPoints(normal, d) {
+        const colorAttribute = pcPoints.geometry.getAttribute(&apos;color&apos;);
+        const colors = colorAttribute.array;
+        let redCount = 0;
+        let blueCount = 0;
+
+        for (let i = 0; i &lt; pcPointsData.length; i++) {
+            const point = pcPointsData[i];
+            
+            /* Calculate which side of plane the point is on */
+            const distance = normal.dot(point) + d;
+            
+            if (distance &gt; 0) {
+                /* Red side */
+                colors[i * 3] = 1;
+                colors[i * 3 + 1] = 0.2;
+                colors[i * 3 + 2] = 0.2;
+                redCount++;
+            } else {
+                /* Blue side */
+                colors[i * 3] = 0.2;    
+                colors[i * 3 + 1] = 0.2;
+                colors[i * 3 + 2] = 1; 
+                blueCount++;
+            }
+        }
+
+        colorAttribute.needsUpdate = true;
+        pcUpdateStats(redCount, blueCount);
+
+        /* Add animation effect */
+        pcAnimatePlane();
+    }
+
+    function pcAnimatePlane() {
+        if (!pcPlaneMesh) return;
+        
+        let scale = 0.1;
+        const animatePlaneScale = () =&gt; {
+            if (scale &lt; 1) {
+                scale += 0.05;
+                pcPlaneMesh.scale.set(scale, scale, scale);
+                requestAnimationFrame(animatePlaneScale);
+            }
+        };
+        animatePlaneScale();
+    }
+
+    function pcResetPoints() {
+        if (pcPlaneMesh) {
+            pcScene.remove(pcPlaneMesh);
+            pcPlaneMesh = null;
+        }
+
+        const colorAttribute = pcPoints.geometry.getAttribute(&apos;color&apos;);
+        const colors = colorAttribute.array;
+
+        for (let i = 0; i &lt; colors.length; i += 3) {
+            colors[i] = 0.8;
+            colors[i + 1] = 0.8;
+            colors[i + 2] = 0.8;
+        }
+
+        colorAttribute.needsUpdate = true;
+        pcUpdateStats(0, 0);
+    }
+
+    function pcUpdateStats(red, blue) {
+        const redEl = document.getElementById(&apos;pc-red-count&apos;);
+        const blueEl = document.getElementById(&apos;pc-blue-count&apos;);
+        if (redEl) redEl.textContent = red;
+        if (blueEl) blueEl.textContent = blue;
+    }
+
+    function pcAddControls() {
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
+        let isMouseDown = false;
+        let isRightButton = false;
+        let panX = 0, panY = 0;
+
+        pcRenderer.domElement.addEventListener(&apos;mousedown&apos;, (e) =&gt; {
+            isMouseDown = true;
+            isRightButton = e.button === 2;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        pcRenderer.domElement.addEventListener(&apos;mouseup&apos;, () =&gt; {
+            isMouseDown = false;
+        });
+
+        pcRenderer.domElement.addEventListener(&apos;mousemove&apos;, (e) =&gt; {
+            if (!isMouseDown) return;
+
+            const deltaX = e.clientX - mouseX;
+            const deltaY = e.clientY - mouseY;
+
+            if (isRightButton) {
+                /* Pan */
+                panX += deltaX * 0.01;
+                panY -= deltaY * 0.01;
+                pcCamera.position.x += deltaX * 0.01;
+                pcCamera.position.y -= deltaY * 0.01;
+            } else {
+                /* Rotate */
+                targetX += deltaX * 0.01;
+                targetY += deltaY * 0.01;
+            }
+
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        pcRenderer.domElement.addEventListener(&apos;wheel&apos;, (e) =&gt; {
+            const zoom = e.deltaY &gt; 0 ? 1.1 : 0.9;
+            pcCamera.position.multiplyScalar(zoom);
+        });
+
+        pcRenderer.domElement.addEventListener(&apos;contextmenu&apos;, (e) =&gt; {
+            e.preventDefault();
+        });
+
+        /* Smooth camera movement */
+        setInterval(() =&gt; {
+            if (!isMouseDown || isRightButton) {
+                const radius = Math.sqrt(
+                    pcCamera.position.x * pcCamera.position.x +
+                    pcCamera.position.z * pcCamera.position.z
+                );
+                pcCamera.position.x = radius * Math.sin(targetX);
+                pcCamera.position.z = radius * Math.cos(targetX);
+                pcCamera.position.y += (targetY * 10 - pcCamera.position.y) * 0.05;
+                pcCamera.lookAt(0, 0, 0);
+            }
+        }, 16);
+    }
+
+    function pcOnWindowResize() {
+        if (!pcContainer) return;
+        const containerRect = pcContainer.getBoundingClientRect();
+        pcCamera.aspect = containerRect.width / containerRect.height;
+        pcCamera.updateProjectionMatrix();
+        pcRenderer.setSize(containerRect.width, containerRect.height);
+    }
+
+    function pcAnimate() {
+        pcAnimationId = requestAnimationFrame(pcAnimate);
+        
+        /* Rotate plane slightly if it exists */
+        if (pcPlaneMesh) {
+            pcPlaneMesh.rotation.z += 0.001;
+        }
+        
+        pcRenderer.render(pcScene, pcCamera);
+    }
+
+    /* Initialize when DOM is ready */
+    if (document.readyState === &apos;loading&apos;) {
+        document.addEventListener(&apos;DOMContentLoaded&apos;, pcInit);
+    } else {
+        /* DOM is already loaded */
+        pcInit();
+    }
+    window.pcCleanup = function() {
+        if (pcAnimationId) {
+            cancelAnimationFrame(pcAnimationId);
+        }
+        window.removeEventListener(&apos;resize&apos;, pcOnWindowResize);
+        if (pcRenderer) {
+            pcRenderer.dispose();
+        }
+    };
+})();
+&lt;/script&gt;
+
+&lt;!-- End of 3D Point Classifier Component --&gt;
+</description>
+        <pubDate>Thu, 27 Nov 2025 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/machine-learning/information-theory/rnn/2025/11/27/a-foundational-result-in-machine-learning/</link>
+          <guid isPermaLink="true">https://thundergolfer.com/machine-learning/information-theory/rnn/2025/11/27/a-foundational-result-in-machine-learning/</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>Gray’s ‘5 minute rule’ in the cloud era</title>
+        <description>&lt;figure style=&quot;margin: 0; margin-bottom: 1em;&quot;&gt;
+  &lt;img src=&quot;/images/tandem.jpg&quot; alt=&quot;Tandem Computers ad&quot; style=&quot;border-radius: 0.4em;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Ad copy: &quot;Wouldn&apos;t you prefer a computer that really grows with your business?&quot;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;If you’re into serverless infrastructure engineering, AWS’s Distinguished Engineer Marc Brooker is one of your wisest teachers. 
+In my years working at &lt;a href=&quot;http://modal.com&quot;&gt;modal.com&lt;/a&gt; his &lt;a href=&quot;https://brooker.co.za/blog/&quot;&gt;blog&lt;/a&gt; has been a super valuable resource to me. 
+I’ve noticed that he really likes ‘the 5 minute rule’, having brought it up &lt;a href=&quot;https://www.usenix.org/system/files/atc23-brooker.pdf&quot;&gt;at&lt;/a&gt; &lt;a href=&quot;https://brooker.co.za/blog/2022/12/15/thumb.html&quot;&gt;least&lt;/a&gt; &lt;a href=&quot;https://brooker.co.za/blog/2012/02/11/latency-lags-bandwidth.html&quot;&gt;five&lt;/a&gt; &lt;a href=&quot;https://brooker.co.za/blog/2024/07/29/aurora-serverless.html&quot;&gt;times&lt;/a&gt; &lt;a href=&quot;https://brooker.co.za/blog/2020/05/25/reading.html&quot;&gt;now&lt;/a&gt;. 
+I figured if he thinks it’s important I better get my head around it! So here goes.&lt;/p&gt;
+
+&lt;h2 id=&quot;simply-stated&quot;&gt;Simply stated&lt;/h2&gt;
+
+&lt;p&gt;Jim Gray’s &lt;a href=&quot;https://dl.acm.org/doi/pdf/10.1145/38713.38755&quot;&gt;famous 5 minute rule&lt;/a&gt;, from 1987:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If an item is accessed frequently enough, it should be main memory resident. For current technology, “frequently enough” means about every five minutes.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;It was the 80s and Gray, an eventual 1998 Turing Award winner, was thinking about how much spinning disk storage and RAM he should buy. 
+He went to the 1986 &lt;a href=&quot;https://en.wikipedia.org/wiki/Tandem_Computers&quot;&gt;Tandem Computers&lt;/a&gt; catalogue and found he could by a disk for about $15,000 and get 15 random accesses a second.
+Not a lot! A megabyte of Tandem main memory cost $5,000 and could be used to cache data and avoid loading up his feeble $15,000 disks.&lt;/p&gt;
+
+&lt;p&gt;If Gray bought too much RAM he’d have overspent, under-loading his relatively cheaper disk storage devices. 
+If he bought too little his disks overload and performance degrades. This is an optimization problem, but one that felt quite strange to me when first reading it.&lt;/p&gt;
+
+&lt;p&gt;It’s now 2025—forty years on&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;—and cloud computing has completely upended 
+the typical engineer’s relationship with computing economics. 
+What Gray is doing is capacity planning, and in the era of hyperscaler clouds very few of us need to do it.&lt;/p&gt;
+
+&lt;p&gt;But the ‘5 minute rule’ still matters.&lt;/p&gt;
+
+&lt;p&gt;Even if we no longer buy and hold hardware—picking specific disks and RAM sticks and plugging them into motherboards—we still make decisions about RAM/disk ratios. 
+In 2022, Marc Brooker was still finding use of it in AWS Lambda:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Following the logic of Gray and Putzolu’s classic &lt;em&gt;Five Minute Rule&lt;/em&gt; [14], the minimum desirable cache size is the one that makes the cost of cache retention equal to the cost of fetching chunks from S3. However, because our cache is not only aimed at reducing costs but also improving customer-observed latency, we also set a hit rate goal and increase the cache size if we fall below that goal. The total cache size, then, is the larger of the size needed to achieve our hit rate goal, and the size needed to optimize costs. — &lt;a href=&quot;https://www.usenix.org/system/files/atc23-brooker.pdf&quot;&gt;&lt;em&gt;On-demand Container Loading in AWS Lambda&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;The 5 minute rule insight is durable. We can plug our storage costs, memory costs, and access costs into Gray’s original working and get insight into today’s cloud-based engineering problems.&lt;/p&gt;
+
+&lt;p&gt;So let’s work through the original story and then understand how Brooker reapplied it to AWS Lambda.&lt;/p&gt;
+
+&lt;h2 id=&quot;understanding-grays-problem&quot;&gt;Understanding Gray’s problem&lt;/h2&gt;
+
+&lt;p&gt;From Gray’s original paper we have the parameters of the optimization problem:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The derivation of the five minute rule goes as follows: A disc, and half a controller comfortably deliver &lt;strong&gt;15 random accesses per second&lt;/strong&gt; and are priced at about &lt;strong&gt;15K$&lt;/strong&gt; So the price per disc access per second is about &lt;strong&gt;1K$/a/s&lt;/strong&gt;. The extra CPU and channel cost for supporting a disc is &lt;strong&gt;1K$/a/s&lt;/strong&gt;. So one disc access per second costs about &lt;strong&gt;2K$/a/s&lt;/strong&gt;. [emphasis mine]&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A megabyte of main memory costs about &lt;strong&gt;5K$&lt;/strong&gt;, so a kilobyte costs 5$. If making a 1Kb data record main-memory resident saves &lt;strong&gt;1a/s&lt;/strong&gt;, then it saves about &lt;strong&gt;2K$&lt;/strong&gt; worth of disc accesses at a cost of &lt;strong&gt;5$&lt;/strong&gt;, a good deal. If it saves &lt;strong&gt;.1a/s&lt;/strong&gt; then it saves about &lt;strong&gt;200$,&lt;/strong&gt; still a good deal. Continuing this, the break-even point is one access every 2000/5 - 400 seconds. So, any 1KB record accessed more frequently than every 400 seconds should live in main memory.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Initially finding this formulation unintuitive, I reformulated it to get an alternative that clicked.&lt;/p&gt;
+
+&lt;p&gt;In Gray’s day a ‘page’ of data was 1KB (nowadays it’s typically 4KiB). So for every mebibyte of RAM you can cache 1000 pages of memory and avoid trips to disk. How expensive is a trip to disk? Well, Gray’s disks can do 15 random accesses per second and cost $15,000, so that’s $1,000 per access per second (1K$/a/s/). But Gray slaps on an extra $1,000 per access for CPU and channel (a.k.a bus) costs. So $2,000 in hardware spend to buy a rate of one page access per second. Yikes.&lt;/p&gt;
+
+&lt;p&gt;A page cache hit is thus worth $2,000. But it only costs $5,000 / 1000 = $5 to get a hit with a RAM stick!&lt;/p&gt;
+
+&lt;p&gt;This is a 400x amplification in RAM spend effectiveness: you get $400 dollars of value for every $1 you spend on RAM. With this much amplification in RAM value, you’d break even if a page only saved 1/400th of a disk access per second. Or, in other words, if the page was only accessed once every 400 seconds you’d still break even.&lt;/p&gt;
+
+&lt;p&gt;And if you squint, that’s about five minutes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/five_minute_rule.png&quot; alt=&quot;graph of five minute rule&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;moving-it-into-the-21st-century&quot;&gt;Moving it into the 21st century…&lt;/h2&gt;
+
+&lt;p&gt;15 accesses a second is bonkers slow for disk storage in 2025. To get a feel for the ‘5 minute rule’ in today’s cloud computing world let’s move into thinking about RAM and AWS S3, like was done in Brooker’s AWS Lambda paper referenced above:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Following the logic of Gray and Putzolu’s classic &lt;em&gt;Five Minute Rule&lt;/em&gt; [14], the minimum desirable cache size is the one that makes the cost of cache retention equal to the cost of fetching chunks from S3.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;S3 is here an origin tier store, durable to around ten or eleven 9s. Just like in the paper, let’s make the cache size under consider that of regional caching servers which fetch from S3 on misses. These servers could be ephemeral for cost optimization, but for simplicity we’ll take the &lt;a href=&quot;https://github.com/sirupsen/napkin-math?tab=readme-ov-file#cost-numbers&quot;&gt;resource costs&lt;/a&gt; of on-demand (a.k.a dedicated) cloud servers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;RAM:&lt;/strong&gt; $1 per GiB/month&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SSD:&lt;/strong&gt;  $0.05 per GiB/month&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Blob (S3):&lt;/strong&gt; $0.02 per GiB/month plus $0.0004 per thousand requests.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(Note we’ve switched to base-2 gibibytes)&lt;/p&gt;
+
+&lt;p&gt;Here we don’t have an &lt;em&gt;accesses per second&lt;/em&gt; number like Gray had in his original working. You may think an S3 rate limit could serve as one, but S3 offers “5,500 GET/HEAD requests per second per partitioned Amazon S3 prefix.” With many prefixes our limit could be over 100,000 RPS. They also say that you can pull down “up to 100 Gb/s on a single instance.”&lt;/p&gt;
+
+&lt;p&gt;With those limits, the properties of S3 seem to me entirely different to Tandem’s spinning platters. We’ll have to pose our ‘5 minute rule’ problem in terms of our system’s actual, practical limits.&lt;/p&gt;
+
+&lt;p&gt;S3’s economic dimensions are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;data storage cost&lt;/li&gt;
+  &lt;li&gt;data egress cost&lt;/li&gt;
+  &lt;li&gt;service HTTP requests cost&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Storing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2**30&lt;/code&gt; bytes in S3 for a month costs &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$0.02&lt;/code&gt;. At a 4KiB page size (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2**12&lt;/code&gt;) we can store a page in S3 for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$0.02 / 2**18&lt;/code&gt;, absurdly little money.&lt;/p&gt;
+
+&lt;p&gt;We’ll assume the S3 client is an EC2 instance within the same AWS region as the bucket, so egress costs are zero.&lt;/p&gt;
+
+&lt;p&gt;Each request to retrieve a page costs &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$4/(10**7)&lt;/code&gt; dollars, or $0.0000004, also tiny.&lt;/p&gt;
+
+&lt;p&gt;These numbers are so annoyingly small it’ll be easier to work comparatively. Blob storage is 50x cheaper than RAM if you don’t access it. But if you access it you start accumulating costs. The break even point is when you perform &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(1-0.02) / cost_per_request = 2,450,000&lt;/code&gt; requests in a month across 1GiB of pages. There’s 262,144 pages in a 1GiB so each page can get 9.35 accesses a month before S3 becomes more expensive. Increase requests per page per month beyond 9.35 and you start to spend more on S3 than on RAM.&lt;/p&gt;
+
+&lt;p&gt;9.35 requests per month per page is super low! So any page accessed more frequently than once every &lt;em&gt;few days&lt;/em&gt;—not once every five minutes!—should be kept in RAM to avoid spending too much on S3 requests.&lt;/p&gt;
+
+&lt;div class=&quot;callout-panel callout-panel-info&quot;&gt;
+    &lt;span class=&quot;callout-panel-icon callout-panel-info-icon&quot;&gt;
+        &lt;span class=&quot;&quot; role=&quot;img&quot; aria-label=&quot;Panel info&quot;&gt;
+            &lt;svg width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; focusable=&quot;false&quot; role=&quot;presentation&quot;&gt;
+                &lt;path d=&quot;M12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-8.5a1 1 0 0 0-1 1V15a1 1 0 0 0 2 0v-2.5a1 1 0 0 0-1-1zm0-1.125a1.375 1.375 0 1 0 0-2.75 1.375 1.375 0 0 0 0 2.75z&quot; fill=&quot;currentColor&quot; fill-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+        &lt;/span&gt;
+    &lt;/span&gt;
+    &lt;div class=&quot;ak-editor-panel__content&quot;&gt;
+        &lt;p data-renderer-start-pos=&quot;97&quot;&gt;
+            This analysis ignores disk caching, for brevity. It also ignores the other costs which are part of EC2 instance pricing (CPU, network bandwidth).
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This makes RAM-resident data look extremely economical&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, and that’s before even considering the gigantic differences in access latency. Accessing main memory is around 100 nanoseconds. Accessing S3 is around 100 milliseconds, or 1 &lt;em&gt;million&lt;/em&gt; times slower. Brooker gets at this cost/performance trade off in the paper:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;However, because our cache is not only aimed at reducing costs but also improving customer-observed latency, we also set a hit rate goal and increase the cache size if we fall below that goal.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;At a certain point, it doesn’t matter how much money you save by trading off performance, your customers will leave and you’ll make $0.00 revenue.&lt;/p&gt;
+
+&lt;p&gt;To summarize, by looking at the two relevant cost dimensions of the S3 service we have found that if a page is accessed at least once every few days, it should be main memory resident in a cache server and not in S3.&lt;/p&gt;
+
+&lt;p&gt;Under this simplified analysis Gray’s 5-minute rule has become a 72-hour rule. This big duration change is not so surprising. The domain has completely changed. Similar analysis performed on web browser caching found that an item should be cached in the browser’s disk cache if the item has &lt;em&gt;any non-zero chance&lt;/em&gt; of being read again&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Era&lt;/th&gt;
+      &lt;th&gt;Storage&lt;/th&gt;
+      &lt;th&gt;Memory&lt;/th&gt;
+      &lt;th&gt;Break-even&lt;/th&gt;
+      &lt;th&gt;Rule of Thumb&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1987&lt;/td&gt;
+      &lt;td&gt;Disk&lt;/td&gt;
+      &lt;td&gt;RAM&lt;/td&gt;
+      &lt;td&gt;400 sec&lt;/td&gt;
+      &lt;td&gt;5 minutes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2025&lt;/td&gt;
+      &lt;td&gt;S3&lt;/td&gt;
+      &lt;td&gt;RAM&lt;/td&gt;
+      &lt;td&gt;277,338 sec&lt;/td&gt;
+      &lt;td&gt;3 days&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Despite the rule of thumb not working at all, we have, as Brooker wrote, a durable insight that we “can calculate the cost of something (storing a page of data in memory) and the cost of replacing that thing (reading the data from storage), and &lt;em&gt;quantitatively estimate&lt;/em&gt; how long we should keep the thing.”&lt;/p&gt;
+
+&lt;p&gt;Pretty neat!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;style&gt;
+.callout-panel {
+    border-radius: 3px;
+    margin: 1.145rem 0px 1rem 0px;
+    padding: 12px;
+    min-width: 48px;
+    display: flex;
+    /*-webkit-box-align: baseline;*/
+    /*align-items: baseline;*/
+    word-break: break-word;
+    border: none;
+}
+
+.callout-panel p {
+    margin-bottom: 0;
+    line-height: 24px;
+}
+
+.callout-panel-icon {
+    display: block;
+    flex-shrink: 0;
+    height: 24px;
+    width: 24px;
+    box-sizing: content-box;
+    padding-right: 8px;
+    color: rgb(0, 82, 204);
+}
+
+.callout-panel-note {
+    background-color: rgb(234, 230, 255);
+}
+
+.callout-panel-note-icon {
+    color: purple;
+}
+
+
+.callout-panel-info {
+    background-color: rgb(222, 235, 255);
+}
+
+.callout-panel-info-icon {
+    color: blue;
+}
+
+.callout-panel-warning {
+    background-color: rgb(255, 250, 200);
+}
+
+.callout-panel-warning-icon {
+    color: orange;
+}
+
+&lt;/style&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;My Australian school liked to borrow prestige from fancy British schools. &lt;a href=&quot;https://en.wikipedia.org/wiki/Forty_Years_On_(song)&quot;&gt;This song&lt;/a&gt; is &lt;a href=&quot;https://www.youtube.com/watch?v=SNXJAD3yCaQ&quot;&gt;sung before graduation&lt;/a&gt;, in an effort to make kids sentimental before their time. Andy Bernard, &lt;a href=&quot;https://www.youtube.com/watch?v=ujJQyhB0dws&quot;&gt;someone did write a song about that.&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;AWS Lambda’s engineering team almost certainly does not pay list price for S3 requests, so the specific numbers in this analysis don’t apply to Lambda’s internal implementation. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Gray and Shenoy, &lt;a href=&quot;https://www.cs.cmu.edu/~natassa/courses/15-721/papers/MS_TR_99_100_Rules_of_Thumb_in_Data_Engineering.pdf&quot;&gt;&lt;em&gt;Rules of Thumb in Data Engineering&lt;/em&gt;&lt;/a&gt; (2000) &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/five-minute-rule</link>
+          <guid isPermaLink="true">https://thundergolfer.com/five-minute-rule</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>Aussie engineers, get to The States!</title>
+        <description>&lt;p&gt;Australia is, quite remarkably, the one country in the world that has a net migration gain in its exchange with the United States. For every butcher, baker, and candlestick maker which leaves our lucky country for life in the States, Australia gets back more than it gave. But not software engineers. Australia loses the best of those in droves. They all go to America, and often stay.&lt;/p&gt;
+
+&lt;p&gt;I’ve been sitting on this take for a while, but after a handful of conversations with visiting Australians, raising Series B, and seeing NVIDIA hit 5 trillion, I thought I should put it out there in HTML.&lt;/p&gt;
+
+&lt;p&gt;Australian programmers: get over here to the States.&lt;/p&gt;
+
+&lt;h2 id=&quot;come-see-the-show&quot;&gt;Come see the show&lt;/h2&gt;
+
+&lt;figure style=&quot;margin: 0 auto 1em auto; width: 70%;&quot;&gt;
+  &lt;img src=&quot;/images/aus-to-usa/comeseetheshow.png&quot; alt=&quot;Come see the show&quot; style=&quot;display: block; width: 100%; height: auto; border-radius: 0.4em;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;It is an exciting time to be working in AI in America. If you have the chops and the ambition to join this all-in investment and programming frenzy—if you want to get in amongst it—start applying. Reach out and I’ll help you.&lt;/p&gt;
+
+&lt;p&gt;I left Canva Sydney just over 3 years ago, a month and change before the StableDiffusion and then ChatGPT releases. Obviously the last 3 years have been uncommonly eventful and innovative. But here in late 2025 it’s far from over. Remember the industry can keep scaling &lt;a href=&quot;https://epoch.ai/blog/can-ai-scaling-continue-through-2030&quot;&gt;until at least 2030&lt;/a&gt;. This is the like the 1991-1998 Chicago Bulls run. The job’s not finished.&lt;/p&gt;
+
+&lt;p&gt;At &lt;a href=&quot;https://modal.com/&quot;&gt;work&lt;/a&gt; I’m seeing the early stages of the young decacorns (e.g. Cursor, Cognition) weaning themselves off the Claude and OpenAI APIs. They’re beginning to train their own models and run inference in-house. Open source models from China (e.g. Qwen 3 VL) are &lt;em&gt;very&lt;/em&gt; good.&lt;/p&gt;
+
+&lt;p&gt;Outside of the LLMs-for-coding sphere, the startup landscape has hardly figured out what to do with this new stuff. Sure, &lt;a href=&quot;https://techcrunch.com/2025/10/27/mercor-quintuples-valuation-to-10b-with-350m-series-c/&quot;&gt;valuations&lt;/a&gt; are &lt;a href=&quot;https://www.harvey.ai/blog/harvey-raises-series-e&quot;&gt;high&lt;/a&gt; for a few, but this is nothing near consolidation.&lt;/p&gt;
+
+&lt;p&gt;What’s going on in the US software industry right now is something new, something rare. The internet may make it seem like a global phenomenon, but it’s not. To be working around it, attending events, conferences, sitting in coffee shops—especially in San Francisco—feels different. In Australia, AI is just an API.&lt;/p&gt;
+
+&lt;p&gt;Once this is all said and done, I think you’ll be glad you lived through some of it in America rather than saying home. What they say about companies applies here to the US AI industry: it’s a rocket ship. And hey, even if the naysayers prove right and this rocket is the Challenger, you don’t evaporate. You can just go home. &lt;a href=&quot;https://www.youtube.com/watch?v=_pDTiFkXgEE&quot;&gt;You cannot lose.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;money-talk&quot;&gt;Money talk&lt;/h2&gt;
+
+&lt;p&gt;Beyond AI boom FOMO, some of you will see the appeal of the money. For a long time now the income boost from taking your skills and applying them in the States has been huge. The AI boom has likely intensified the difference. My first offer in the States (senior-level big tech) was $530,000 USD a year, or around $820,000 AUD&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Being a hayseed Aussie used to Australian salaries, I was a little rattled.&lt;/p&gt;
+
+&lt;p&gt;OpenAI recently gave a $1.5 USD million over 2 years &lt;em&gt;bonus&lt;/em&gt; to over two hundred top performers. This was taken to be a nervous response to Meta’s poaching. Doing the conversion, that’s $1,158,507 AUD per year, &lt;em&gt;as a bonus.&lt;/em&gt; And it’s not like the OpenAI stock price isn’t growing! Top CUDA programmers, in extremely high demand, get multi-million compensation packages routinely.&lt;/p&gt;
+
+&lt;p&gt;$250k, a good but unremarkable senior salary in SF and NYC, is $386,000 AUD.&lt;/p&gt;
+
+&lt;p&gt;Enough said?&lt;/p&gt;
+
+&lt;h2 id=&quot;the-big-pond&quot;&gt;The big pond&lt;/h2&gt;
+
+&lt;figure style=&quot;margin: 0 auto 1em auto; width: 70%;&quot;&gt;
+  &lt;img src=&quot;/images/aus-to-usa/bigpond.png&quot; alt=&quot;Come see the show&quot; style=&quot;display: block; width: 100%; height: auto; border-radius: 0.4em;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The talent pool in the States is unmatched. Everything you hear about the US software industry is true. I worked with some really excellent people at Canva, but Australia’s a small pond with a software industry over 100x smaller and offering uncompetitive compensation. If you come to the States and get into the top companies, you’ll surely find a new level of smarts and work ethic.&lt;/p&gt;
+
+&lt;p&gt;It’s also true that the general populations of SF and NYC (where I live) are full of remarkable people. Young people of all vocations pour into New York wanting something big from the city. Artists, entrepreneurs, filmmakers, models, journalists, activists, musicians, finance bros, tech bros, writers. San Francisco is unfortunately all tech people, but quantity has its own quality, and you gotta hand it to them: their city is where the future is created. Go there and get in a Waymo.&lt;/p&gt;
+
+&lt;p&gt;If you’ve never lived outside Australia, you could do a lot worse landing in the States as your first foreign home. New York City is indisputably the best city in the Anglo-sphere, despite being filthy and often depraved. If you don’t care for cities, SF has access to incredible nature that is just as good, if not better, than Australia: Yosemite, Big Sur, Sequoia, Lake Tahoe. (No good beaches though.)&lt;/p&gt;
+
+&lt;p&gt;For at least one hundred years now Australia has lived on other people’s ideas. It used to be the British who led us by the nose. Going forward, the future made in Australia will be made out of what’s invented in San Francisco, Boston, Los Angeles, and New York.&lt;/p&gt;
+
+&lt;h2 id=&quot;playing-devils-advocate&quot;&gt;&lt;strong&gt;Playing devil’s advocate&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;To take the other side, when would you be better staying in Australia? I think there has to be quite a big roadblock to rule out a move, because moving to the USA is a two-way door. It’s not &lt;em&gt;free&lt;/em&gt; to move to the States and then come back, but for Australian software engineers with our E3 visa it’s not, in the grand scheme of things, a dramatic cost.&lt;/p&gt;
+
+&lt;p&gt;I’d stay in Australia if moving would put too much stress on your family. If you are single and younger than 35 this likely isn’t the case. I’d also consider staying if work-life balance and the laidback Australian lifestyle are most important to you. If you don’t gel with the American work culture and don’t gel with your new city (SF or NYC), it won’t be a good time.&lt;/p&gt;
+
+&lt;p&gt;I also don’t want to ignore the competitiveness of the labour market. To land a good job in the States you’ll need a good resumé and strong technical skills. I’d say only the top 5-10% of Australian engineers qualify. Helpfully, &lt;a href=&quot;https://danluu.com/p95-skill/&quot;&gt;p95 performance is easier than you think!&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;get-in-touch&quot;&gt;Get in touch&lt;/h2&gt;
+
+&lt;p&gt;Although it’s entirely doable, leaving a job and going to work in the States is a big move! There’s lots of unknowns, which is part of what makes it exciting and worthwhile, but on the other hand, some of those unknowns are merely annoying.&lt;/p&gt;
+
+&lt;p&gt;Reach out if you have questions or want help landing a role. My &lt;a href=&quot;https://www.linkedin.com/feed/update/urn:li:activity:7392334070355005440/&quot;&gt;company, Modal, is hiring&lt;/a&gt;. So you could end up working with me :)&lt;/p&gt;
+
+&lt;p&gt;I promise it won’t be dull.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0 auto 1em auto; width: 75%;&quot;&gt;
+  &lt;a href=&quot;https://www.linkedin.com/in/jonathonbelotti/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;
+    &lt;img src=&quot;/images/aus-to-usa/getintouch.png&quot; alt=&quot;Come see the show&quot; style=&quot;display: block; width: 100%; height: auto; border-radius: 0.4em;&quot; /&gt;
+  &lt;/a&gt;
+&lt;/figure&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I had only about 4 years experience! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/blog/get-to-the-states</link>
+          <guid isPermaLink="true">https://thundergolfer.com/blog/get-to-the-states</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>More Than DNS: The 14 hour AWS us-east-1 outage</title>
+        <description>&lt;figure style=&quot;margin: 0; margin-bottom: 1em;&quot;&gt;
+  &lt;img src=&quot;/images/aws_outage/together.png&quot; alt=&quot;Picture of the Modal team working on the outage.&quot; style=&quot;aspect-ratio: 16/9; object-fit: cover; border-radius: 0.4em;&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;I’m on the right, biting a nail nervously. We’re in an Italian hotel because this happened on day 1 of our offsite.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;On Monday the AWS us-east-1 region had its worst outage in over 10 years. The whole thing lasted over 14 hours and affected 140 AWS services, including, critically, EC2. SLAs were blown, an eight-figure revenue reduction will follow. Before Monday, I’d spent around 7 years in industry and never personally had production nuked by a public cloud outage. I generally regarded AWS’s reliability as excellent, industry-leading.&lt;/p&gt;
+
+&lt;p&gt;What the hell happened?&lt;/p&gt;
+
+&lt;p&gt;A number of smart engineers have come to this major bust-up and covered it with the blanket of a simple explanation: brain drain; race condition; it’s always DNS; the cloud is unreliable, go on-prem. You’re not going to understand software reliability if you summarize an outage of this scale in an internet comment. Frankly, I’m not even going to understand it after reading AWS’s 4000 word summary and thinking about it for hours. But I’m going to hold the hot takes and try.&lt;/p&gt;
+
+&lt;p&gt;I wrote &lt;a href=&quot;https://modal.com/&quot;&gt;Modal’s&lt;/a&gt; internal us-east-1 incident postmortem before AWS published their “service disruption summary”: &lt;a href=&quot;https://aws.amazon.com/message/101925/&quot;&gt;https://aws.amazon.com/message/101925&lt;/a&gt;. Our control plane being in us-east-1, we got hit hard. Along with hundreds of other affected companies, we’re interested in a peek under the hood of the IaaS we depend on.&lt;/p&gt;
+
+&lt;p&gt;Arriving a few days after the outage, this public summary is a small window into the inner workings of the most experienced hyperscaler engineering operation in the world. I’ll analyze each of the three outage phases, call out key features, and then try, with limited information, to derive a lesson or two from this giant outage. Before proceeding, it is recommended to read the &lt;a href=&quot;https://aws.amazon.com/message/101925/&quot;&gt;summary&lt;/a&gt; carefully.&lt;/p&gt;
+
+&lt;h2 id=&quot;out-of-one-service-outage-one-hundred-and-forty-service-outages-are-born&quot;&gt;Out of one service outage, one hundred and forty service outages are born&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/aws_outage/timeline.png&quot; alt=&quot;timeline of the outage&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;How did a DynamoDB service failure at 6:48AM UTC October 20th become a 140 service failure epidemic?&lt;/p&gt;
+
+&lt;p&gt;AWS breaks down their summary into dedicated sections for the DynamoDB, EC2, and Network Load Balancer (NLB) services. They add a final section lumping together the other 137 affected services (which included Lambda, IAM, STS, Elasticache, ECR, Secrets Manager).&lt;/p&gt;
+
+&lt;p&gt;This document structure is suitable as it matches the structure of the outage.&lt;/p&gt;
+
+&lt;p&gt;DynamoDB precipitated all other service failures because it is used by EC2 and caused EC2 to go down, or because a service depended on DynamoDB directly. EC2 and DynamoDB are used extensively within AWS for service implementation, thus the wildfire spread to around 70% of all AWS services in the us-east-1 region.&lt;/p&gt;
+
+&lt;p&gt;It is widely known that AWS dogfoods its own cloud services, e.g. DynamoDB, for the implementation of &lt;a href=&quot;http://Amazon.com&quot;&gt;Amazon.com&lt;/a&gt; &lt;em&gt;and&lt;/em&gt; other AWS services. DynamoDB and EC2 are ‘layer one’&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; foundation services within AWS. If they go down, basically everything else does.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-simple-race-condition&quot;&gt;A simple race condition&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The root cause of this issue was a latent race condition in the DynamoDB DNS management system that resulted in an incorrect empty DNS record for the service’s regional endpoint (&lt;strong&gt;dynamodb.us-east-1.amazonaws.com&lt;/strong&gt;) that the automation failed to repair.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;It is unsurprising that AWS DynamoDB maintains a large-scale, automated DNS load balancing system to serve &lt;a href=&quot;http://dynamodb.us-east-1.amazonaws.com&quot;&gt;dynamodb.us-east-1.amazonaws.com&lt;/a&gt;, perhaps the most hammered endpoint in SaaS behind &lt;a href=&quot;http://s3.us-east-1.amazonaws.com/&quot;&gt;s3.us-east-1.amazonaws.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;What &lt;em&gt;is&lt;/em&gt; surprising is that a classic &lt;a href=&quot;https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use&quot;&gt;Time-of-check-time-of-use (TOCTOU)&lt;/a&gt; bug was latent in their system until Monday. Call me naive, but I thought AWS, an organization running a service that &lt;a href=&quot;https://aws.amazon.com/s3/&quot;&gt;&lt;em&gt;averages&lt;/em&gt; 100 million RPS&lt;/a&gt;, would have flushed out TOCTOU bugs from their critical services.&lt;/p&gt;
+
+&lt;p&gt;In an eye straining 786 word mega-paragraph, they outline their issues, which I will try summarize.&lt;/p&gt;
+
+&lt;p&gt;To maintain population of all DNS entries for dynamodb.us-east-1.amazonaws.com, they run three DNS Enactors, one in each of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;us-east-1a&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;us-east-1b&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;us-east1c&lt;/code&gt;. Each of these three Enactors performs mutations &lt;em&gt;without&lt;/em&gt; coordination.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For resiliency, the DNS Enactor operates redundantly and fully independently in three different Availability Zones (AZs).&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;One of these Enactors, say &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;us-east-1a&lt;/code&gt;, became &lt;em&gt;extremely slow&lt;/em&gt;. They don’t say anything about the cause of the latency, but I believe it was extreme (10-100x) because the system design seems to allow for some deviation from mean latency.&lt;/p&gt;
+
+&lt;p&gt;They use a typical “keep last N” garbage collection mechanism to remove old DNS plans. We also do this at Modal to garbage collect old machine images. Crucially, the last N must &lt;em&gt;never&lt;/em&gt; include an active resource. I assume the DynamoDB team picked a large N to ensure they ‘never’ delete an active plan, which implies the Enactor’s latency in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;us-east-1a&lt;/code&gt; was extreme.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To a first approximation, we can say that accidents are almost always the
+result of incorrect estimates of the likelihood of one or more things. — &lt;em&gt;Why you should read accident reports, Holloway, C. Michael&lt;/em&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;The plan being applied by the slow Enactor fell out of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N&lt;/code&gt; generations safety window and became old, eligible for deletion. It was the old plan deletion which turned a ‘stale DNS plan’ degradation into a full-blown ‘zero DNS entries’ outage.&lt;/p&gt;
+
+&lt;p&gt;Now, back to the TOCTOU issue. Why is an Enactor allowed to make only one plan staleness check for N plan mutations? I suspect it’s because querying the DNS Planner for staleness is magnitudes more expensive than making a plan mutation. It would be non-performant, and &lt;em&gt;seemingly&lt;/em&gt; unnecessary&lt;em&gt;,&lt;/em&gt; to make N checks for N fast plan mutations.&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Without this TOCTOU bug, there’s no ‘stale DNS plan’ degradation and thus no opportunity to mistakenly delete an active plan.&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re at two faults so far, but there’s more. Using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Swiss_cheese_model&quot;&gt;Swiss cheese model&lt;/a&gt; of accident causation we can pass through a couple more Emmental holes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/aws_outage/swiss_cheese.png&quot; alt=&quot;@XTOTL thespinoff.co.nz, adapted from James Reason, Ian Mackay, Sketchplanations&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Deleting the active plan is a disaster, but the Enactor’s cleanup phase didn’t check for it. This absent guard appears to be another fault.&lt;/p&gt;
+
+&lt;p&gt;Some have pointed out that the Enactor deleting the Planner’s plans is weird, but I think it makes sense. The Planner is allowed to be a straightforward append-only system of outputs. The Enactor makes forward progress against the plan log and maintains the window of active DNS records. If the Planner is deleting plans, it’s also making writes against Route53.&lt;sup id=&quot;fnref:4&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;After deleting the ‘active’ plan, the Enactor state was corrupted and unrecoverable without “manual operation intervention”, which took over 2 hours to be done.&lt;/p&gt;
+
+&lt;p&gt;It is surprising that this corruption and DNS ‘empty state’ was not auto-recovered. &lt;a href=&quot;http://dynamodb.us-east-1.amazonaws.com&quot;&gt;dynamodb.us-east-1.amazonaws.com&lt;/a&gt; had &lt;em&gt;zero&lt;/em&gt; IP addresses associated. In production that’s a pants-on-fire situation. Could the Enactors not have fallen back to some useful, non-empty state and restored partial service?&lt;/p&gt;
+
+&lt;p&gt;Anyone considering this system failure outside the DynamoDB team has the struggle of keyhole observation added to the problem of hindsight bias. I won’t have the temerity to suggest remediation, or declare a root cause. But there is much that is familiar in the DynamoDB DNS failure, and I’ll be looking for it in future design documents.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-root-cause&quot;&gt;A root cause&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The selection of events to include in an event chain is dependent on the stopping
+rule used to determine how far back the sequence of explanatory events goes.
+Although the first event in the chain is often labeled the initiating event or root
+cause , the selection of an initiating event is arbitrary and previous events and
+conditions could always be added. — &lt;a href=&quot;http://sunnyday.mit.edu/safer-world.pdf&quot;&gt;Engineering a safer world&lt;/a&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Having read the DynamoDB section of the summary, &lt;a href=&quot;https://news.ycombinator.com/item?id=45677745&quot;&gt;some are tempted&lt;/a&gt; to declare discovery of the root cause: a race condition.&lt;/p&gt;
+
+&lt;p&gt;The software industry today holds the root cause analysis (RCA) as a primary activity of postmortem write ups. Google “postmortem template” and almost every offered template includes a section for root cause(s) analysis. The top result, Atlassian’s, includes it. A couple years ago Atlassian’s is what I found and copied as Modal’s internal template.&lt;/p&gt;
+
+&lt;p&gt;But leading reliability engineers have moved on from centering root cause analysis. It is a useful but inadequate model of incident occurrence.&lt;/p&gt;
+
+&lt;p&gt;Most obviously, RCA has an infinite regress problem. The cause of the extreme Enactor latency in one AZ is unexplained, but it is is antecedent to the race condition and could be considered a root cause. But, say the latency was causes by high packet drop, what caused &lt;em&gt;that?&lt;/em&gt; On and on we go, boats against the current—&lt;/p&gt;
+
+&lt;p&gt;More interestingly, however, is the myopia induced by RCA. Yes, the extreme latency triggered the race condition bug. It was a &lt;em&gt;precipitating event&lt;/em&gt;, but it is just one of many latent faults that could emerge from the dynamics of the DynamoDB system. And as shown above by the Swiss cheese analysis, multiple control mechanisms combined into an unrecoverable failure once the latency emerged.&lt;/p&gt;
+
+&lt;p&gt;Today’s leading distributed systems engineers, including the SRE’s at Google, analyze failure as a &lt;a href=&quot;https://www.usenix.org/publications/loginonline/evolution-sre-google&quot;&gt;control problem&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Instead of asking “What software service failed?” we ask “What interactions between parts of the system were inadequately controlled? — &lt;a href=&quot;https://www.usenix.org/publications/loginonline/evolution-sre-google&quot;&gt;The Evolution of SRE at Google&lt;/a&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Looking for a control problem, we see not just the race condition deletion, but the latency, the garbage collection, the guarding (or lack thereof), the state corruption, the alerting, and the human operator.&lt;/p&gt;
+
+&lt;h2 id=&quot;congestive-collapse-and-a-metastable-failure-ec2-joins-the-party&quot;&gt;Congestive collapse and a metastable failure: EC2 joins the party&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/aws_outage/timeline.png&quot; alt=&quot;Reminder of the incident timeline.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This incident summary contains perhaps &lt;a href=&quot;https://hn.algolia.com/?dateRange=all&amp;amp;page=0&amp;amp;prefix=true&amp;amp;query=%22aws%20droplet%22&amp;amp;sort=byPopularity&amp;amp;type=story&quot;&gt;the first public reference&lt;/a&gt; to an &lt;em&gt;AWS Droplet&lt;/em&gt; and the DropletWorkflow Manager (DWFM). Droplets are physical servers upon which all EC2 instances run.&lt;/p&gt;
+
+&lt;p&gt;The DWFM depends on DynamoDB to complete “state checks”, which are heartbeats between DWFM and every physical server managed. If the heartbeat with a server stops, the DWFM’s control of the server is cut off. Without this control, no creation or state transition can occur on an EC2 instance, affecting every EC2 user in us-east-1 except those which left all their instances &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUNNING&lt;/code&gt; between 6:48AM and 8:50PM UTC. Yikes.&lt;/p&gt;
+
+&lt;p&gt;DynamoDB is a critical dependency of the DWFM and triggered the EC2 service failure. But it gets interesting once DynamoDB recovers around 9:40AM UTC. EC2 is down or degraded for &lt;em&gt;another 11 hours&lt;/em&gt;.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1em;&quot;&gt;
+  &lt;img src=&quot;/images/aws_outage/metastable.png&quot; alt=&quot;States and transitions of a system experiencing a metastable failure. From Metastable Failures in Distributed Systems.&quot; style=&quot;border-radius: 0.4em;&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;States and transitions of a system experiencing a metastable failure. From Metastable Failures in Distributed Systems.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In normal operation of EC2, the DWFM maintains a large number (~10^6) of active leases against physical servers and a very small number (~10^2) of broken leases, the latter of which the manager is actively attempting to reestablish.&lt;/p&gt;
+
+&lt;p&gt;The DynamoDB outage, which lasted almost 3 hours, caused widespread heartbeat timeouts and thus thousands of leases broke. I’d estimate that the number of broken leases reached at least 10^5, or three OOMs larger than normal.&lt;/p&gt;
+
+&lt;p&gt;With a huge queue of leases to reestablish, the DWFM system has two possible transitions. One is a slow, gradual burn down of the lease backlog (recovery). The other is a &lt;em&gt;congestive collapse&lt;/em&gt;, where the lease queue remains high (a “sustaining effect”) until manual intervention.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, the DWFM entered congestive collapse.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;…, due to the large number of droplets, efforts to establish new droplet leases took long enough that the work could not be completed before they timed out. — &lt;a href=&quot;https://aws.amazon.com/message/101925/&quot;&gt;AWS Summary&lt;/a&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;It’s most interesting here to consider why collapse occurred. Was the unit of work completion somehow &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(queue depth)&lt;/code&gt;, ie. instead of processing one lease at a time the DWFM processes an all-or-nothing block of leases? Or, did the DWFM become a thundering herd and overwhelm a downstream component between it and the Droplets?&lt;/p&gt;
+
+&lt;p&gt;The congestive collapse of EC2 could only be restored by manual intervention by engineers, where they restarted DWFM servers presumably to drop the in-memory queued lease work and restore goodput in the system.&lt;/p&gt;
+
+&lt;p&gt;For a while now I’ve eagerly followed the public blogging of Marc Brooker, a distinguished engineer at AWS with key contributions to Lambda, EBS, and EC2. I’m sure he’s wired up after this outage, because he has been &lt;a href=&quot;https://brooker.co.za/blog/2021/05/24/metastable.html&quot;&gt;evangelizing the analysis of metastable failure for years now&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The presence and peril of the metastable failure state has likely been widely known within AWS engineering leadership for around 4 years. And yet it bit them in their darling EC2. I eagerly await Marc’s blog post.&lt;/p&gt;
+
+&lt;h2 id=&quot;nlb&quot;&gt;NLB&lt;/h2&gt;
+
+&lt;p&gt;At around 16:00 UTC in the now internally famous &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#incident-41-hfm_failures&lt;/code&gt; incident channel I began investigating a degradation in our &lt;a href=&quot;https://modal.com/docs/guide/sandbox#sandboxes&quot;&gt;Sandbox&lt;/a&gt; product. It turned out that AWS NLB trouble was causing Modal clients to fail to establish a gRPC connection with &lt;a href=&quot;http://api.modal.com&quot;&gt;api.modal.com&lt;/a&gt; (which points at NLB load balancers).&lt;/p&gt;
+
+&lt;p&gt;The NLB service went down because EC2 has a &lt;em&gt;Network Manager&lt;/em&gt; responsible for propagating network configuration when new EC2 instances are created or instance transitions (e.g. stopping) occur, and this manager fell behind under the weight of backlogged work.&lt;/p&gt;
+
+&lt;p&gt;The most interesting bit of the NLB service outage was that the NLB healthcheck system received bad feedback because of network configuration staleness and incorrectly performed AZ failovers.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The alternating health check results increased the load on the health check subsystem, causing it to degrade, resulting in delays in health checks and triggering automatic AZ DNS failover to occur.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Under &lt;a href=&quot;https://www.usenix.org/publications/loginonline/evolution-sre-google&quot;&gt;control systems analysis&lt;/a&gt;, the potential for bad feedback is exactly the kind of thing that gets designed for. The healthcheck system behaved exactly as intended giving the inputs it received— it was a reliable component interacting unsafely with a broken environment.&lt;/p&gt;
+
+&lt;p&gt;In their discussion of remediations, the line item for NLB is about control for bad feedback.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For NLB, we are adding a velocity control mechanism to limit the capacity a single NLB can remove when health check failures cause AZ failover.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;humble-conclusions&quot;&gt;Humble conclusions&lt;/h2&gt;
+
+&lt;p&gt;You only get so many major AWS incidents in your career, so appreciate the ones that you get. AWS’s reliability is the best in the world. I have used all major US cloud providers for years now, and until Monday’s us-east-1 outage AWS was &lt;em&gt;clearly&lt;/em&gt; the most reliable. This is perhaps their biggest reliability failure in a decade. We should learn something from it.&lt;/p&gt;
+
+&lt;p&gt;I disagree with the popular early explanations. The &lt;a href=&quot;https://www.theregister.com/2025/10/20/aws_outage_amazon_brain_drain_corey_quinn/&quot;&gt;“brain drain”&lt;/a&gt; theory has a high burden of proof and very little evidence. It possible that brain drain delayed remediation—this was a 14 hour outage—but we can’t see their response timeline. There’s also no evidence that us-east-1, being the oldest region, suffered from its age.&lt;sup id=&quot;fnref:5&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; The systems involved (DynamoDB, DNS Enactor, DWFM) are probably running globally. Also, those suggesting AWS’s reliability has fallen behind its competitors are too hasty. GCP had a severe global outage just &lt;a href=&quot;https://status.cloud.google.com/incidents/ow5i3PPK96RduMcb1SsW&quot;&gt;last June&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;My main takeaway is that in our industry the design, implementation, and operation of production systems still regularly falls short of what we think we’re capable of. DynamoDB hit a fairly straightforward race condition and entered into unrecoverable state corruption. EC2 went into congestion collapse. NLB’s healthcheck system got misdirected by bad data. We’ve seen these before, we’ll see them again. &lt;a href=&quot;https://erikbern.com/2022/10/19/we-are-still-early-with-the-cloud.html&quot;&gt;We’re still early with the cloud&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Software systems are far more complex and buggy than we realize. Useful software systems, such as EC2, &lt;a href=&quot;https://how.complexsystems.fail/&quot;&gt;always operate in a degraded state&lt;/a&gt; with dozens of present or latent bugs and faults. The presence of constant safety, of the cherished five 9s, is not a miracle, but a very challenging design and operational endeavor.&lt;/p&gt;
+
+&lt;p&gt;Monday was a bad day for hyper-scaled distributed systems. But in in the long run the public cloud industry will root out its unsound design and operation. Today’s &lt;a href=&quot;https://assets.amazon.science/67/f9/92733d574c11ba1a11bd08bfb8ae/how-amazon-web-services-uses-formal-methods.pdf&quot;&gt;advanced correctness and reliability practices&lt;/a&gt; will become normal.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I originally said “layer zero”, but Brad Knowles, ex-AWS, &lt;a href=&quot;https://www.linkedin.com/feed/update/urn:li:activity:7388747844003991552/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7388747844003991552%2C7388989179097071636%29&amp;amp;dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287388989179097071636%2Curn%3Ali%3Aactivity%3A7388747844003991552%29&quot;&gt;corrected me&lt;/a&gt; that NTP and DHCP are layer zero, not EC2 and DynamoDB. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;After writing this, I’m now doubting it. It’s also plausible that the TOCTOU bug existed for no good reason. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Some commentators on the incident have noted that stale writes would be avoided with &lt;a href=&quot;https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html&quot;&gt;locking and fencing tokens&lt;/a&gt;, but AWS did note that for “resilience” the enactors are not allowed to coordinate (via a distributed locking service). &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Since publishing there’s been &lt;a href=&quot;https://x.com/WesEklund/status/1981455898984825322&quot;&gt;indication from an AWS engineer&lt;/a&gt; that the Enactor cleanup didn’t directly delete anything from Route53. Instead, it deleted the plan of the slow Enactor making the plan not absent (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;None&lt;/code&gt;) but &lt;em&gt;empty&lt;/em&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[]&lt;/code&gt;). The slow Enactor then applied this empty plan, causing DNS record deletions. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:5&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I would say however that us-east-1 has notably more outages than other regions (eg. us-east-2) and should be avoided where possible. I believe it’s relevant that us-east-1 is by far the biggest and most complex AWS region. In future I will avoid us-east-1 when capacity and new features aren’t important concerns. &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 26 Oct 2025 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/blog/aws-us-east-1-outage-oct20</link>
+          <guid isPermaLink="true">https://thundergolfer.com/blog/aws-us-east-1-outage-oct20</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>You should have private evals</title>
+        <description>&lt;figure style=&quot;margin: 0; margin-bottom: 1em; position: relative;&quot;&gt;
+  &lt;img src=&quot;/images/private-evals/private-evals-hero.webp&quot; alt=&quot;Lorem Ipsum text with redaction and red/green coloring.&quot; width=&quot;100%&quot; height=&quot;auto&quot; style=&quot;aspect-ratio: 16/9; object-fit: cover; border-radius: 0.4em; filter: brightness(0.9);&quot; /&gt;
+  &lt;div class=&quot;redaction-bars&quot; style=&quot;position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;&quot;&gt;
+    &lt;!-- Redaction bars will be added dynamically --&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;style&gt;
+  .redaction-bar {
+    position: absolute;
+    height: 12px;
+    background-color: #222;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.2s ease-out;
+    z-index: 2;
+  }
+&lt;/style&gt;
+
+&lt;script&gt;
+  document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
+    const redactionContainer = document.querySelector(&apos;.redaction-bars&apos;);
+    const barPositions = [
+      { top: &apos;17%&apos;, left: &apos;10%&apos;, width: &apos;40%&apos; },
+      { top: &apos;30%&apos;, left: &apos;15%&apos;, width: &apos;60%&apos; },
+      { top: &apos;48%&apos;, left: &apos;5%&apos;, width: &apos;30%&apos; },
+      { top: &apos;48%&apos;, left: &apos;25%&apos;, width: &apos;30%&apos; },
+      { top: &apos;55%&apos;, left: &apos;50%&apos;, width: &apos;10%&apos; },
+      { top: &apos;64%&apos;, left: &apos;80%&apos;, width: &apos;15%&apos; },
+      { top: &apos;74%&apos;, left: &apos;65%&apos;, width: &apos;25%&apos; },
+      { top: &apos;90%&apos;, left: &apos;90%&apos;, width: &apos;5%&apos; },
+    ];
+    barPositions.forEach(pos =&gt; {
+      const bar = document.createElement(&apos;div&apos;);
+      bar.className = &apos;redaction-bar&apos;;
+      bar.style.top = pos.top;
+      bar.style.left = pos.left;
+      bar.style.width = pos.width;
+      redactionContainer.appendChild(bar);
+    });
+    
+    /* Add scroll effect for shadow movement */
+    window.addEventListener(&apos;scroll&apos;, function() {
+      const scrollY = window.scrollY;
+      const bars = document.querySelectorAll(&apos;.redaction-bar&apos;);
+      bars.forEach(bar =&gt; {
+        const offsetY = scrollY * 0.05;
+        bar.style.boxShadow = `0px ${2 + offsetY}px 4px rgba(0, 0, 0, 0.3)`;
+      });
+    });
+  });
+&lt;/script&gt;
+
+&lt;div id=&quot;toc&quot; style=&quot;background: #f8f9fa; padding: 1em; border-radius: 0.4em; position: absolute; right: calc(50% - 45em); top: 54em; width: 15em; max-height: 80vh; overflow-y: auto; display: none;&quot;&gt;
+  &lt;div id=&quot;toc-content&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
+  const toc = document.getElementById(&apos;toc&apos;);
+  function updateTocVisibility() {
+    toc.style.display = window.innerWidth &lt; 768 ? &apos;none&apos; : &apos;block&apos;;
+  }
+  
+  updateTocVisibility();
+  
+  const headings = document.querySelectorAll(&apos;h2, h3&apos;);
+  const tocContent = document.getElementById(&apos;toc-content&apos;);
+  const lastTwoHeadingIndexes = new Set([headings.length - 1, headings.length - 2]);
+
+  headings.forEach((heading, index) =&gt; {
+    if (lastTwoHeadingIndexes.has(index)) {
+      return;
+    }
+    if (!heading.id) {
+      heading.id = `heading-${index}`;
+    }
+    const link = document.createElement(&apos;a&apos;);
+    link.href = `#${heading.id}`;
+    link.textContent = heading.textContent;
+    link.style.color = &apos;#777&apos;;
+    const div = document.createElement(&apos;div&apos;);
+    div.appendChild(link);
+    if (heading.tagName === &apos;h3&apos;) {
+      div.style.marginLeft = &apos;1.5em&apos;;
+    }
+    div.style.marginBottom = &apos;0.5em&apos;;
+    tocContent.appendChild(div);
+  });
+
+  /* Update TOC visibility on window resize */
+  window.addEventListener(&apos;resize&apos;, updateTocVisibility);
+});&lt;/script&gt;
+
+&lt;p&gt;If you are consistently using LLMs in any non-trivial task you should make your own private ‘evals’ (a.k.a tests). Take a couple hours, start simple, and shift from passive consumption of AI hype into active, critical tool use. I started after noticing multiple of the staff+ engineers I follow and admire share that they had private evals (&lt;a href=&quot;https://blog.ezyang.com/2025/04/why-you-should-maintain-a-personal-llm-coding-benchmark/&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;https://www.notion.so/211-A-how-to-post-about-setting-up-private-LLM-evals-1db99ea4b26f802181def9c9632e332a?pvs=21&quot;&gt;2&lt;/a&gt;, &lt;a href=&quot;https://x.com/GrantSlatton/status/1874900859462856977&quot;&gt;3&lt;/a&gt;). Both junior and staff+ engineers are heavily using LLMs, but the latter are engaging with the emerging technology in a strikingly different and more productive fashion. Juniors ‘hit and hope’, unsurprisingly awed at the speed and capability of these systems. Senior engineers, on the other hand, apply judgment, skepticism, and taste to LLM output, acting as an essential filter on the token firehose. Private evals are part of that filtering activity.&lt;/p&gt;
+
+&lt;p&gt;By ceding openness and control, LLM-driven knowledge work is looking more like Catholic Magisterium. The task of crafting and judging frontier models is vested uniquely in our bishops, those cracked and cracking researchers at OpenAI, Anthropic, Gemini.&lt;/p&gt;
+
+&lt;p&gt;They’re telling you it’s a genius. They’re saying &lt;a href=&quot;https://x.com/ludwigABAP/status/1918286533775237245&quot;&gt;it should write almost all code&lt;/a&gt;. Next time they release a model, join others in nailing your private evals to their door.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1em;&quot;&gt;
+  &lt;a href=&quot;/images/private-evals/private-evals-results.png&quot; target=&quot;_blank&quot; title=&quot;Click to see enlarged&quot;&gt;
+    &lt;img src=&quot;/images/private-evals/private-evals-results.png&quot; alt=&quot;April 17th results of my private evals.&quot; width=&quot;100%&quot; height=&quot;auto&quot; style=&quot;width: 100%; height: auto; border-radius: 0.4em;&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;April 17th results of my private evals.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;how-to-picking-evaluations&quot;&gt;How-to: picking evaluations&lt;/h2&gt;
+
+&lt;p&gt;As LLMs are such fabulously flexible token generators the landscape of possible fitness tests is impossibly large. You have limited time, and probably want to spend that time exploiting LLMs not evaluating them. So be discerning about what you eval.&lt;/p&gt;
+
+&lt;p&gt;The obvious and correct place to start is in your chat history. You’ve had LLMs help on hundreds of problems by now. Pick a few of the most important and interesting to form part of your private benchmarking.&lt;/p&gt;
+
+&lt;p&gt;Now having a source of potential evals, the next question becomes how to automate. Automation is important, but from what I’ve seen amongst the private eval crowd there’s too much emphasis on writing scripts and building frameworks to automate pass/fail benchmarking. Expect around half your evals to not be suitable for automation.&lt;/p&gt;
+
+&lt;p&gt;Simon Eskildsen &lt;a href=&quot;https://x.com/Sirupsen/status/1913943250068455526&quot;&gt;has seemingly no automation, tracking his private evals in Notion.&lt;/a&gt; That works fine. Don’t overthink it.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0 auto; margin-bottom: 1em; text-align: center;&quot;&gt;
+  &lt;img src=&quot;/images/private-evals/private-evals-automation-xkcd.png&quot; alt=&quot;How long you can spend making a routine task more efficient before you&apos;d spend more time than you&apos;d save. https://xkcd.com/1205&quot; height=&quot;auto&quot; style=&quot;width:75%; height: auto; border-radius: 0.4em;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;How long you can spend making a routine task more efficient before you&apos;d spend more time than you&apos;d save. https://xkcd.com/1205&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The question of automation dealt with, I have some other guidance. Evals should be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Something you know a lot about.&lt;/strong&gt; If you’re an unreliable evaluator, you’ll confuse yourself and not get signal on frontier LLM performance. For example, benchmarks show LLMs smash the Law School Admission Test (LSAT). If you’re a lawyer by all means have private law evals. Otherwise, no.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Something you care a lot about.&lt;/strong&gt; If LLMs are as life-and-world changing as the CEOs claim, proto-AGIs, they should help &lt;em&gt;you&lt;/em&gt; with what you care about. If it’s cultivating rare strains of tea bush in unfavorable climates, ask about that. 🍵.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Should be hard for LLMs, should be hard for you.&lt;/strong&gt; In other words, aim for high ROI. If an eval is easy for today’s LLMs, you’re wasting time and money running the eval. If it’s not hard for you, it doesn’t matter so much that an LLM can do it.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Diverse&lt;/strong&gt;. LLMs are obviously useful for programming, but if they’re going to be a technology revolution on the scale of electricity, moveable type, or the internet, they should start being useful to you in most aspects of your life.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure style=&quot;margin: 0 auto; margin-bottom: 1em; text-align: center;&quot;&gt;
+  &lt;img src=&quot;/images/private-evals/private-evals-irobot.webp&quot; alt=&quot;Can a robot write a symphony?&quot; height=&quot;auto&quot; style=&quot;width: 75%; height: auto; border-radius: 0.4em;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Can you?&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;how-to-examples&quot;&gt;How-to: examples&lt;/h2&gt;
+
+&lt;p&gt;When people talk about their private evals it has an air of teasing about it. They are &lt;em&gt;private&lt;/em&gt; after all. “I can’t tell you, internet stranger, without telling the LLMs.” They’re always scraping.&lt;/p&gt;
+
+&lt;p&gt;But I can get concrete and specific enough to help you bootstrap an eval set.&lt;/p&gt;
+
+&lt;p&gt;I group my evals into categories. I’ll pick an example from each category: recommendation, review, code, design, writing.&lt;/p&gt;
+
+&lt;h3 id=&quot;recommendation&quot;&gt;Recommendation:&lt;/h3&gt;
+
+&lt;p&gt;Good recommendation is hard and valuable. We’re all aware of how Google’s search index and review products are suffering, but can LLMs replace it? Can LLMs, having swallowed Reddit, replace it too?&lt;/p&gt;
+
+&lt;p&gt;A recommendation eval I have is asking the LLMs to recommend the best cafe in my local area, based on a few parameters. A knowledgeable local can nail this question. I can answer this question. LLMs currently do &lt;em&gt;poorly&lt;/em&gt;. They don’t hallucinate so much, but recommend closed or out of domain places (”here’s something closed in Bushwick. It’s great!”).&lt;/p&gt;
+
+&lt;p&gt;It will be interesting to me if they ever get good at this. If they do, I will trust them more with places I don’t know intimately. For now, Reddit is the ‘just fine’ online option. Local peers are best.&lt;/p&gt;
+
+&lt;h3 id=&quot;review&quot;&gt;Review:&lt;/h3&gt;
+
+&lt;p&gt;Humans are essential, &lt;a href=&quot;https://thundergolfer.com/pr-self-review&quot;&gt;fallible&lt;/a&gt;, and expensive reviewers. Anytime I spot a non-trivial bug in a change set, that’s an obvious candidate as a private review eval.&lt;/p&gt;
+
+&lt;p&gt;If you get the LLM to pick out a specific line with the bug in a 100+ line snippet, that’s automatically testable and then you can follow up manually evaluating the explanation.&lt;/p&gt;
+
+&lt;p&gt;Excitingly, I’ve found that LLMs are good at review. I have an eval involving arithmetic for a leaky bucket limiter and frontier LLMs can consistently find the edge case bug introduced by the LLM that originally expelled it (Claude 3.5).&lt;/p&gt;
+
+&lt;h3 id=&quot;code&quot;&gt;Code:&lt;/h3&gt;
+
+&lt;p&gt;Automated evals for coding should be obvious to any programmer. You write a prompt, you write a test. The LLM reads the prompt, it expels some code, and you run the test.&lt;/p&gt;
+
+&lt;p&gt;There’s two interesting bits though. First, you should sandbox the code execution. Second, how do you automate evaluation of code which produces &lt;em&gt;visual&lt;/em&gt; output.&lt;/p&gt;
+
+&lt;p&gt;Sandboxed code execution I’ll take up down below. For visual evaluation, &lt;a href=&quot;https://github.com/carlini/yet-another-applied-llm-benchmark&quot;&gt;Nicholas Carlini&lt;/a&gt; has a great example of using visual LLMs as judges:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Write a C program that draws an american flag to stdout.&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; LLMRun&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; CRun&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    LLMRun&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;What flag is shown in this image?&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SubstringEvaluator&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;United States&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | 
+         SubstringEvaluator&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;USA&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | 
+         SubstringEvaluator&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;America&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There’s limits to the current visual reasoning capabilities of frontier models, but I think this is pretty neat!&lt;/p&gt;
+
+&lt;h3 id=&quot;design&quot;&gt;Design:&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt; figuring out the optimal placement strategy for storing files on a hard drive given a prediction of the file’s future popularity, given that you’re minimizing and maximizing for certain things&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Results:&lt;/strong&gt; Clear winner: o1&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;I admittedly haven’t spent the time making an eval in this category. I’ll defer to Grant Slatton’s description of his private software design eval: &lt;a href=&quot;https://x.com/GrantSlatton/status/1874900859462856977&quot;&gt;x.com/GrantSlatton/status/1874900859462856977&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Writing:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Before spending time on private evals I was unconvinced that LLMs were either effective writers or editors. After adding private writing evals I now think they can be effective editors.&lt;/p&gt;
+
+&lt;p&gt;An example eval here is taking a &lt;a href=&quot;http://Modal.com&quot;&gt;Modal.com&lt;/a&gt; engineering blog post draft that was edited by myself and then completely rewritten and giving it to the LLM to critique. I have to manually review the LLM’s work, but 3 out of 5 provided net-valuable feedback.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-starter-code&quot;&gt;How-to: starter code&lt;/h2&gt;
+
+&lt;figure style=&quot;margin: 0 auto; margin-bottom: 1em; text-align: center;&quot;&gt;
+  &lt;img src=&quot;/images/private-evals/private-evals-system-overview.png&quot; alt=&quot;Overview of eval definition and execution. Credit: Nicholas Carlini for original DSL.&quot; height=&quot;auto&quot; style=&quot;width: 100%; height: auto; border-radius: 0.4em;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Overview of eval definition and execution. Credit: Nicholas Carlini for original DSL.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;My basic private eval system is, &lt;a href=&quot;https://blog.ezyang.com/2025/04/why-you-should-maintain-a-personal-llm-coding-benchmark/&quot;&gt;like Edward Yang’s&lt;/a&gt;, based off Nicholas Carlini’s &lt;a href=&quot;https://github.com/carlini/yet-another-applied-llm-benchmark/&quot;&gt;YAALLMB&lt;/a&gt;. But I don’t recommend forking YALLMB for a few reasons.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It’s accumulated a lot of complexity to support Carlini’s numerous and sophisticated (public) evals.&lt;/li&gt;
+  &lt;li&gt;A lot of the code within is LLM generated and frankly janky.&lt;/li&gt;
+  &lt;li&gt;It relies on a brittle shim to a local Docker or Podman engine.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Instead you can take a look at my significantly stripped down repo: &lt;a href=&quot;http://github.com/thundergolfer/private-llm-bench&quot;&gt;github.com/&lt;strong&gt;thundergolfer/private-llm-bench&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;See the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;README&lt;/code&gt; for full and up-to-date instructions, but right now it only depends on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uv&lt;/code&gt;, &lt;a href=&quot;https://modal.com/use-cases/sandboxes&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;modal&lt;/code&gt;&lt;/a&gt;, and an API key for all the frontier LLM providers you’d expect.&lt;/p&gt;
+
+&lt;p&gt;The cost to run this is peanuts. Across a dozen or so tests, running on a weekly cron, I’ve spendt 48 &lt;em&gt;cents&lt;/em&gt; on OpenAI.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0 auto; margin-bottom: 1em; text-align: center;&quot;&gt;
+  &lt;img src=&quot;/images/private-evals/private-evals-modal.png&quot; alt=&quot;I run my private evals weekly using a Modal cron.&quot; height=&quot;auto&quot; style=&quot;width: 75%; height: auto; border-radius: 0.4em;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;I run my private evals weekly using a Modal cron.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure style=&quot;margin: 0 auto; margin-bottom: 1em; text-align: center;&quot;&gt;
+  &lt;img src=&quot;/images/private-evals/private-evals-manual-review.png&quot; alt=&quot;I use a dead simple manual review tool for those evals that need it.&quot; height=&quot;auto&quot; style=&quot;width: 100%; height: auto; border-radius: 0.4em;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;I use a dead simple manual review tool for those evals that need it.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;end-at-the-beginning-knowing-for-the-first-time&quot;&gt;End at the beginning, knowing for the first time.&lt;/h2&gt;
+
+&lt;p&gt;A key behavior of strong engineers is ‘looking under the hood’ and learning how tools work so that they may be better exploited. Looking under the hood is also how you see tools &lt;em&gt;as&lt;/em&gt; &lt;em&gt;tools&lt;/em&gt;, and not dark magic. Docker images aren’t magic, they’re just &lt;a href=&quot;https://fly.io/blog/docker-without-docker/&quot;&gt;a stack of tarballs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Given the state of frontier LLM software—very private, very complicated, schotastic, poorly understood—you unfortunately can’t handle them like the rest of your toolkit. But with private evals you can do something that looks more like proper wrench work. And that’s a start.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/blog/private-evals</link>
+          <guid isPermaLink="true">https://thundergolfer.com/blog/private-evals</guid>
+        
+      </item>
+      
+    
+      
+      <item>
+        <title>The First LLM</title>
+        <description>&lt;figure style=&quot;margin: 0; margin-bottom: 1em;&quot;&gt;
+  &lt;img src=&quot;/images/gpt-1-illustration.webp&quot; alt=&quot;Illustration: Ben Barry (GPT-1 announcement cover illustration)&quot; style=&quot;aspect-ratio: 16/9; object-fit: cover; border-radius: 0.4em;&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Illustration: Ben Barry&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;div id=&quot;toc&quot; style=&quot;background: #f8f9fa; padding: 1em; border-radius: 0.4em; position: absolute; right: calc(50% - 45em); top: 54em; width: 15em; max-height: 80vh; overflow-y: auto;&quot;&gt;
+  &lt;div id=&quot;toc-content&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
+  if (window.innerWidth &lt; 768) {
+    document.getElementById(&apos;toc&apos;).style.display = &apos;none&apos;;
+    return;
+  }
+
+  const toc = document.getElementById(&apos;toc&apos;);
+  const headings = document.querySelectorAll(&apos;h2, h3&apos;);
+  const tocContent = document.getElementById(&apos;toc-content&apos;);
+  const lastTwoHeadingIndexes = new Set([headings.length - 1, headings.length - 2]);
+
+  headings.forEach((heading, index) =&gt; {
+    if (lastTwoHeadingIndexes.has(index)) {
+      return;
+    }
+    if (!heading.id) {
+      heading.id = `heading-${index}`;
+    }
+    const link = document.createElement(&apos;a&apos;);
+    link.href = `#${heading.id}`;
+    link.textContent = heading.textContent;
+    link.style.color = &apos;#777&apos;;
+    const div = document.createElement(&apos;div&apos;);
+    div.appendChild(link);
+    if (heading.tagName === &apos;h3&apos;) {
+      div.style.marginLeft = &apos;1.5em&apos;;
+    }
+    div.style.marginBottom = &apos;0.5em&apos;;
+    tocContent.appendChild(div);
+  });
+
+  /* Update TOC visibility on window resize */
+  window.addEventListener(&apos;resize&apos;, function() {
+    document.getElementById(&apos;toc&apos;).style.display = window.innerWidth &lt; 768 ? &apos;none&apos; : &apos;block&apos;;
+  });
+});&lt;/script&gt;
+
+&lt;p&gt;What were you doing while the LLM revolution was birthed and in a few short years remade the computing industry?&lt;/p&gt;
+
+&lt;p&gt;Was the first LLM really made by an Australian, in between surfs?&lt;/p&gt;
+
+&lt;p&gt;These questions have sat with me since I revisited, chronologically, the research papers which scaled up language modelling and the 
+market capitalization of our juggernaut industry by more trillions of dollars.&lt;/p&gt;
+
+&lt;p&gt;‘We’ did it. The most famous benchmark in computing history, Turing’s, is now &lt;em&gt;too easy&lt;/em&gt;.&lt;br /&gt;
+Today, dozens of new benchmarks measure the expanding frontier of AI accomplishment: can it win the Putnam, can it beat Pokémon?&lt;/p&gt;
+
+&lt;p&gt;In 2016, one year before the ‘first LLM’ was born I was sitting in computer science classes hearing professors talk of Chomsky’s hierarchy of the grammars. 
+In these lectures, they used Turing’s test to inject a little wonder, a little mysticism into the dry mechanics of push-down automata. 
+Would we ever make a program that passed this test?&lt;/p&gt;
+
+&lt;p&gt;When the ‘first LLM’ was born I was wrapping up an internship on a team building a language model. 
+It was not large, and wasn’t a transformer, but with hindsight I was relatively close to the LLM revolution. 
+But I wasn’t really paying attention. Most of us weren’t.&lt;/p&gt;
+
+&lt;p&gt;In 2016 my teammates made summarizer models which went “Return return return return return return shipment shipment…“, as well as a genuinely state-of-the-art chat bot which genuinely sucked at chatting. I lost faith.&lt;/p&gt;
+
+&lt;p&gt;In January 2018, as I wrestled with Golang in my second internship, Australian Jeremy Howard published &lt;em&gt;ULMFit&lt;/em&gt;, the first LLM.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1.4em;&quot;&gt;
+  &lt;img src=&quot;/images/gpt-timeline-2.png&quot; alt=&quot;Timeline of GPT-1 through GPT-3.5&quot; style=&quot;border-radius: 0.4em; border: 2px solid #ddd;&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Alec Radford published &lt;em&gt;Improving Language Understanding by Generative Pre-Training&lt;/em&gt; (GPT-1) on June 11, 2018.&lt;/p&gt;
+
+&lt;p&gt;GPT-1 (Generative Pre-Train One) is widely accepted as an LLM. 
+According to many it &lt;em&gt;is&lt;/em&gt; the first. But Jeremy Howard claims otherwise. 
+If we’re to understand the LLM birth, we’ll have to mark down what exactly makes an LLM an LLM.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;What I&amp;#39;ve been working on for the past year! &lt;a href=&quot;https://t.co/CAQMYS1rR7&quot;&gt;https://t.co/CAQMYS1rR7&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;Inspired by CoVE, ELMo, and ULMFiT we show that a single transformer language model can be finetuned to a wide variety of NLP tasks and performs very well with little tuning/tweaking.&lt;/p&gt;&amp;mdash; Alec Radford (@AlecRad) &lt;a href=&quot;https://twitter.com/AlecRad/status/1006247734691545089?ref_src=twsrc%5Etfw&quot;&gt;June 11, 2018&lt;/a&gt;&lt;/blockquote&gt; &lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;what-is-an-llm&quot;&gt;What is an LLM?&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;LLM&lt;/strong&gt; &lt;span style=&quot;color: #546E7A;&quot;&gt;(&lt;em&gt;&lt;strong&gt;noun&lt;/strong&gt;&lt;/em&gt;)&lt;/span&gt;: a language model which has been so effectively self-supervisedly trained as a ‘next word predictor’ that it can be easily and successfully adapted to many specific text-based tasks.&lt;/p&gt;
+
+&lt;p&gt;Having read GPT-1, 2, 3, and a few other papers, this is the definition I like. It’s not a trivial definition, so let’s break it down:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;“is a language model”&lt;/strong&gt; → the inputs and predicted outputs are components of human written language (e.g. English). These components are not necessarily, and not typically, words. They may be characters, or character sequences (tokens).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;“self-supervisedly trained”&lt;/strong&gt; → the dataset is &lt;em&gt;unlabelled&lt;/em&gt; text from which (x,y) examples are produced. This was an important departure from task-specific, exspesive, labelled text datasets.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;“next word predictor”&lt;/strong&gt; → the model is given a sequence of words/characters/tokens and must predict what comes next. “The cat in the” → “hat”.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;“easily adapted”&lt;/strong&gt; → no architectural changes are made to the model; model has few-shot, even one-shot capabilities.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;“successfully adapted”&lt;/strong&gt; → achieve state of the art performance&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;“many specific text-based tasks”&lt;/strong&gt; → the model can perform classification, question-answering, parsing, and other text challenges with state-of-the-art performance. This is an important leap beyond task-specific language models which are good at one thing and bad at basically everything else.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ve conspicuously left out the “large” part of the LLM definition, but it’s implied by the success of the self-supervised generative training. Before a certain parameter size, this language model architecture didn’t work. Nowadays, the largest LLMs are 1000x larger than the smallest.&lt;/p&gt;
+
+&lt;p&gt;I’ve also left out any tying down of the LLM category to the transformer architecture. Despite that being the most dominant LLM architecture, others exist (LSTM, Mamba, &lt;a href=&quot;https://x.com/InceptionAILabs/status/1894847919624462794&quot;&gt;Diffusion&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Everything else in the definition was I think key to GPT-1 and the ‘LLM moment’.&lt;/p&gt;
+
+&lt;p&gt;If you read the GPT-2 and GPT-3 papers they proceed almost straightforwardly from the success of GPT-1. 
+Although GPT-1 does not include the words “large language model” at all, the latter papers do and refer to GPT-1 as such. 
+So GPT-1 is an early LLM, and maybe the first, if its precedents—ULMFit, ELMo, and CoVE—can’t make the claim.&lt;/p&gt;
+
+&lt;h2 id=&quot;are-any-of-cove-elmo-and-ulmfit-llms&quot;&gt;Are any of CoVE, ELMo, and ULMFit LLMs?&lt;/h2&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1.4em;&quot;&gt;
+  &lt;img src=&quot;/images/gpt-timeline.png&quot; alt=&quot;Timeline of GPT-1 showing its relationship to references discussed in this post.&quot; style=&quot;border-radius: 0.4em; border: 2px solid #ddd;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Timeline of GPT-1 showing its relationship to references discussed in this post.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1708.00107&quot;&gt;Contextualized Word Vectors (CoVE)&lt;/a&gt; were an important innovation in transfer learning but are not much like GPT-1. The CoVE vectors were created with supervised learning (on English to German translation) not self-supervised learning, and the vectors only become an initial component in a larger task-specific model.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1em;&quot;&gt;
+  &lt;img src=&quot;/images/CoVE.png&quot; alt=&quot;“Figure 1: We a) train a two-layer, bidirectional LSTM as the encoder of an attentional sequence-tosequence model for machine translation and b) use it to provide context for other NLP models.”&quot; style=&quot;border-radius: 0.4em; border: 2px solid #ddd;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;&quot;Figure 1: We a) train a two-layer, bidirectional LSTM as the encoder of an attentional sequence-tosequence model for machine translation and b) use it to provide context for other NLP models.”&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1802.05365&quot;&gt;Embeddings From Language Models (ELMo)&lt;/a&gt; also trains word embeddings and bolts them into task-specific models. From GPT-1’s &lt;strong&gt;Related Work&lt;/strong&gt; section:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[ELMo and CoVE] use hidden representations from a pre-trained language or machine translation model as auxiliary features while training a supervised model on the target task. This involves a substantial amount of new parameters for each separate target task, whereas we require minimal changes to our model architecture during transfer.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Neither of these is an LLM in my opinion, though for Alec Radford they were clearly stepping stones. Let’s turn to ULMFit then, which the GPT-1 authors say is the “closest line of work to ours”.&lt;/p&gt;
+
+&lt;p&gt;Universal Language Model Fine-tuning for Text Classification (ULMFit) is a next-word predictor LSTM self-supervisedly trained on WikiText, adaptable cheaply and without architecture changes to perform a number of text classification tasks with state-of-the-art performance. (Seeing how well ULMFit performed on the IMDb movie review dataset was a 🤯 moment for its author, Jeremy Howard.)&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-bottom: 1.4em;&quot;&gt;
+  &lt;img src=&quot;/images/ulmfit-architecture.png&quot; alt=&quot;Overview of the ULMFit architecture, with its quote &apos;intricate learning schemes&apos; at middle and right.&quot; style=&quot;border-radius: 0.4em; border: 2px solid #ddd;&quot; /&gt;
+  &lt;figcaption style=&quot;color: #777;&quot;&gt;Overview of the ULMFit architecture, with its &quot;intricate learning schemes” at middle and right.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This ULMFit seems a lot like GPT-1 and the above definition of an LLM. The only parts that are arguably not GPT-like are the ease of finetuning and the breadth of applied tasks. 
+The GPT-1 paper fairly calls out the complexity of ULMFit’s “triangular learning rates” and “gradual unfreezing” of parameters. 
+The GPT-1 paper also claims that by swapping at the LSTM architecture for the transformer they unlock wider task-specific competency than ULMFit by lengthening the prediction ability of the pre-trained model.&lt;/p&gt;
+
+&lt;p&gt;After trawling back into the past, I’m satisified to call ULMFit the first LLM. This is surely arguable. I’ve not given much attention to Dai and Le’s 2015 &lt;a href=&quot;https://arxiv.org/pdf/1511.01432&quot;&gt;&lt;em&gt;Semi-supervised Sequence Learning&lt;/em&gt;&lt;/a&gt; paper which was the other “closest line of work” called out in the GPT-1 paper. It’s also given more prominence than ULMFit in Radford’s &lt;a href=&quot;https://www.youtube.com/watch?v=BnpB3GrpsfM&quot;&gt;own 2020 history&lt;/a&gt; of the GPT moment.&lt;/p&gt;
+
+&lt;p&gt;Does being first even matter? I think it does, a bit. The software industry and academia honors its founders. We are all part of a culture that &lt;a href=&quot;https://en.wikipedia.org/wiki/Homesteading_the_Noosphere&quot;&gt;homesteads the noosphere&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;ofc the real reason I&amp;#39;m pushing back on this is that I&amp;#39;m worried some folks might realise I didn&amp;#39;t actually create the first LLM at on my own at &lt;a href=&quot;https://t.co/GEOZunWoXj&quot;&gt;https://t.co/GEOZunWoXj&lt;/a&gt;, but that actually I&amp;#39;m just a token figurehead for a CCP conspiracy that created it &amp;amp; had me take credit&lt;/p&gt;&amp;mdash; Jeremy Howard (@jeremyphoward) &lt;a href=&quot;https://twitter.com/jeremyphoward/status/1882964239520071926?ref_src=twsrc%5Etfw&quot;&gt;January 25, 2025&lt;/a&gt;&lt;/blockquote&gt; &lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Further to the point, understanding the non-OpenAI lineage of LLMs helps understand the competitive dynamics of the industry. 
+Although OpenAI caught their competitors flatfooted, the LLM story was always multi-polar, multi-generational, and geographically diverse. 
+With hindsight we may ask: if Australians can push forward the state-of-the-art, why not China?&lt;/p&gt;
+
+&lt;h2 id=&quot;the-last-llm&quot;&gt;The last LLM&lt;/h2&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ssl.gstatic.com/trends_nrtr/4017_RC01/embed_loader.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt; trends.embed.renderExploreWidget(&quot;TIMESERIES&quot;, {&quot;comparisonItem&quot;:[{&quot;keyword&quot;:&quot;LLM&quot;,&quot;geo&quot;:&quot;US&quot;,&quot;time&quot;:&quot;today 5-y&quot;}],&quot;category&quot;:0,&quot;property&quot;:&quot;&quot;}, {&quot;exploreQuery&quot;:&quot;date=today%205-y&amp;geo=US&amp;q=LLM&amp;hl=en&quot;,&quot;guestPath&quot;:&quot;https://trends.google.com:443/trends/embed/&quot;}); &lt;/script&gt;
+
+&lt;p&gt;Having gone back to the start of the LLM craze, it’s made me curious as to when we’ll see the end of it. GPT-4V was the introduction of image understanding capabilities to the previously text-only model family, and since then the ‘frontier labs’ have gone multimodal. With ChatGPT, Claude, and Gemini adding image and audio processing, it not longer feels apt to call these language models. In place of LLM, we’re seeing increasing (but still minor) usage of “foundation model”.&lt;/p&gt;
+
+&lt;p&gt;If I had to guess, I’d say that the term LLM sticks around. It will become like the graphics processing unit (GPU). 
+The general public will eventually be using these models as video-in video-out, and they’ll call them LLMs.
+What started as a term for something that analyzed IMDb movie reviews will become a term for something that makes movies. 
+At least, that’s how I’ll think about it.&lt;/p&gt;
+
+&lt;p&gt;The first LLM was an LSTM pre-trained on Wikipedia and fine-tuned on IMDb movie reviews. 
+GPT-1 crucially subbed in the transformer architecture, cutting out ULMFit’s complexity and offering the industry a scaling ramp that will extend to &lt;a href=&quot;https://epoch.ai/blog/can-ai-scaling-continue-through-2030&quot;&gt;at least 2030&lt;/a&gt;. 
+Many, many more LLMs to come.&lt;/p&gt;
+
+&lt;p&gt;Strap in, and maintain attention on the road ahead.&lt;/p&gt;
+
+&lt;figure style=&quot;margin: 0; margin-top: 1.4em; margin-bottom: 1.4em;&quot; class=&quot;magnify-container&quot;&gt;
+  &lt;img src=&quot;/images/scaling-till-2030.png&quot; alt=&quot;Extended LLM timeline till 2020, showing how much road is ahead.&quot; style=&quot;border-radius: 0.4em; border: 2px solid #ddd;&quot; class=&quot;magnify-image&quot; /&gt;
+  &lt;div class=&quot;magnifying-glass&quot;&gt;&lt;/div&gt;
+  &lt;style&gt;
+    @media (hover: hover) {
+      .magnify-container {
+        position: relative;
+        overflow: visible;
+      }
+      
+      .magnifying-glass {
+        display: none;
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85),
+                    0 0 7px 7px rgba(0, 0, 0, 0.25),
+                    inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      .magnify-container:hover .magnifying-glass {
+        display: block;
+      }
+    }
+  &lt;/style&gt;
+  &lt;script&gt;
+    document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
+      const containers = document.querySelectorAll(&apos;.magnify-container&apos;);
+      
+      containers.forEach(container =&gt; {
+        const img = container.querySelector(&apos;.magnify-image&apos;);
+        const glass = container.querySelector(&apos;.magnifying-glass&apos;);
+        
+        container.addEventListener(&apos;mousemove&apos;, function(e) {
+          const bounds = container.getBoundingClientRect();
+          const x = e.clientX - bounds.left;
+          const y = e.clientY - bounds.top;
+          
+          const magnification = 2;
+          const glassRadius = glass.offsetWidth / 2;
+          
+          glass.style.left = `${x - glassRadius}px`;
+          glass.style.top = `${y - glassRadius}px`;
+          
+          const bgX = x * magnification - glassRadius;
+          const bgY = y * magnification - glassRadius;
+          
+          glass.style.backgroundImage = `url(${img.src})`;
+          glass.style.backgroundSize = `${img.width * magnification}px ${img.height * magnification}px`;
+          glass.style.backgroundPosition = `-${bgX}px -${bgY}px`;
+        });
+      });
+    });
+  &lt;/script&gt;
+&lt;/figure&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; @levelsio and Jeremy Howard &lt;a href=&quot;https://x.com/jonobelotti_IO/status/1906086472349786595&quot;&gt;got into it over this question&lt;/a&gt; on March 29th 2025. 
+Out of that came feedback that I should pay more attention in the post to BERT (“ULMFiT’s first demo predated BERT.”) and the 2015 &lt;em&gt;Semi-supervised Sequence Learning&lt;/em&gt; paper.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
+        
+          <link>https://thundergolfer.com/blog/the-first-llm</link>
+          <guid isPermaLink="true">https://thundergolfer.com/blog/the-first-llm</guid>
+        
+      </item>
+      
+    
+  </channel>
+</rss>

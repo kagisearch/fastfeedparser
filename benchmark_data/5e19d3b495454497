@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://logits.bearblog.dev</id>
+  <title>Logits and Coffee</title>
+  <updated>2026-02-18T02:17:36.670610+00:00</updated>
+  <author>
+    <name>logits</name>
+    <email>hidden</email>
+  </author>
+  <link href="https://logits.bearblog.dev/" rel="alternate"/>
+  <link href="https://logits.bearblog.dev/feed/" rel="self"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+  <subtitle>Hello 👋&#13;
+&#13;
+in this blog I hope to share my experience while trying to understand some cool deep learning concepts.&#13;
+&#13;
+You can find more about me here:&#13;
+Perso...</subtitle>
+  <entry>
+    <id>https://logits.bearblog.dev/implementing-dino-from-scratch/</id>
+    <title>Implementing DINO from scratch</title>
+    <updated>2026-01-21T05:47:43.907898+00:00</updated>
+    <author>
+      <name>logits</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href="https://arxiv.org/abs/2104.14294"&gt;&lt;img src="https://img.shields.io/badge/Paper-Link-green" /&gt;&lt;/a&gt;
+&lt;a href="https://github.com/aldipiroli/dino_from_scratch"&gt;&lt;img src="https://img.shields.io/badge/GitHub-Repo-blue" /&gt;&lt;/a&gt;
+&lt;a href="https://aldipiroli.github.io/projects/index.html"&gt;&lt;img src="https://img.shields.io/badge/Similar-Projects-red" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://aldipiroli.github.io/projects/dino_from_scratch/img/teaser.webp"/&gt;&lt;/p&gt;
+&lt;h3 id=infos&gt;Infos&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Paper:  &lt;a href='https://arxiv.org/abs/2104.14294'&gt;Emerging Properties in Self-Supervised Vision Transformers&lt;/a&gt; ICCV 2021&lt;/li&gt;
+&lt;li&gt;My GitHub implementation: &lt;a href='https://github.com/aldipiroli/dino_from_scratch'&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Overall Score: 3/5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=paper&gt;Paper&lt;/h1&gt;&lt;h3 id=what-is-the-paper-about&gt;What is the paper about? &lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;DINO is a form of self supervised learning used for vision transformers (ViT). &lt;/li&gt;
+&lt;li&gt;The goal is to train a model which, given an image, returns features that are relevant and descriptive of the input. &lt;/li&gt;
+&lt;li&gt;These features can then be used as a starting point to perform different vision tasks (like object detection or semantic segmentation). &lt;/li&gt;
+&lt;li&gt;The key here is that no labels are required (making it cheap and scalable) and that using these learned features is better than starting the learning from scratch. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=what-is-the-core-idea&gt;What is the core idea? &lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;The core idea is to take two instances of the same model (student and teacher) and make sure that the output that they return is the same. &lt;/li&gt;
+&lt;li&gt;The two models are fed different views of the same image, and they are trained to return the same output.&lt;/li&gt;
+&lt;li&gt;To make sure that a trivial solution is not learned two things are used:
+- a centering and sharpening of the model's outputs
+- updating the teacher model using an exponential-moving-average&lt;/li&gt;
+&lt;li&gt;Surprisingly, the features that these models learn are a good description of the overall image.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=implementation-journal&gt;Implementation Journal&lt;/h1&gt;&lt;h3 id=getting-things-started&gt;Getting things started&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;In order to reproduce this paper I needed two main things: 
+- a dataset that I could train on.
+- a working implementation of a ViT.&lt;/li&gt;
+&lt;li&gt;For the dataset I went with my trusted &lt;a href='https://public.roboflow.com/object-detection/pascal-voc-2012'&gt;Pascal-VOC&lt;/a&gt;. It's pretty small (~17k images and 636M in disk size) which makes its ideal for my low hardware budget.  &lt;/li&gt;
+&lt;li&gt;For the model, I first decided to just use the &lt;a href='https://docs.pytorch.org/vision/main/models/generated/torchvision.models.vit_b_16.html#torchvision.models.vit_b_16'&gt;pytorch implementation&lt;/a&gt; of ViT. This makes sense, since it's efficient and I know it's correct. I implemented a wrapper class around the one from pytorch and I was good to go. &lt;/li&gt;
+&lt;li&gt;But.. I then kept reading the paper and saw that the data augmentation that is used (multi-crop) requires different image sizes. This means that my positional embedding for the standard image size will not work for smaller crops. I then had two choices:  
+- scale up the small crops to the same size as the other images (which is not what the paper does)
+- or change the implementation of the ViT forward pass to handle this. &lt;/li&gt;
+&lt;li&gt;Reluctantly, I went for the second approach. But I decided that if I had to rewrite this part of the code, I could use &lt;a href='https://github.com/aldipiroli/vit_from_scratch'&gt;my old implementation of ViT&lt;/a&gt; since I was already familiar with it. &lt;/li&gt;
+&lt;li&gt;After implementing the multi-crop view in the dataloader and testing that things actually worked with my hacked ViT I started with the loss. &lt;/li&gt;
+&lt;li&gt;The loss should make sure that the output for the teacher and student for different views are the same. The teacher consumes global views (big crops) of the image, whereas the student both global and local views (small crops). So 3 forward passes are needed to get all outputs.&lt;/li&gt;
+&lt;li&gt;After finishing all of this, I launched my first training. Of course It did not work.. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=debugging&gt;Debugging&lt;/h3&gt;&lt;p&gt;Here is a list of things that I got wrong in the first implementation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Teacher and model initialized with different weights:
+- I guess this is not technically wrong but it definitely helped stabilize training at the beginning. &lt;/li&gt;
+&lt;li&gt;Setting a small number of output classes:
+- Having taken my own implementation of ViT, I didn't even think of changing the number of classes (20) that I had in my code. 
+- But after reading the paper more I found that the official implementation uses &lt;math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"&gt;&lt;mrow&gt;&lt;mi&gt;K&lt;/mi&gt;&lt;mo&gt;&amp;#x0003D;&lt;/mo&gt;&lt;mn&gt;65536&lt;/mn&gt;&lt;/mrow&gt;&lt;/math&gt;. Since my dataset and model were much much smaller than the official one, I used &lt;math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"&gt;&lt;mrow&gt;&lt;mi&gt;K&lt;/mi&gt;&lt;mo&gt;&amp;#x0003D;&lt;/mo&gt;&lt;mn&gt;1024&lt;/mn&gt;&lt;/mrow&gt;&lt;/math&gt;. &lt;/li&gt;
+&lt;li&gt;Buggy outputs
+- This one was difficult to spot. I wrote &lt;a href='https://github.com/aldipiroli/dino_from_scratch/blob/43102204877826bfa9545cd3807c7f0513a16103/dino/utils/trainer.py#L83'&gt;two post processing functions&lt;/a&gt; for the student and teacher outputs. I applied sharpening for the student and softmax and for the teacher centering, sharpening and softmax. 
+- In my loss function I somehow re-applied softmax to my student outputs which lead to negative and NaN losses.&lt;/li&gt;
+&lt;li&gt;Wrong matching in the loss:
+- In the loss you need to match the outputs of the teacher with the outputs of the student (except for the same global view).
+- In my first implementation I handled batching in a wrong way leading to a mixing of teacher/student outputs. &lt;/li&gt;
+&lt;li&gt;Overfitting a single image
+- I usually try to overfit immediately to a single image to see if there is anything wrong with my code. 
+- Here, I lost a bit of time trying to define a good overfitting strategy. Since augmentations are used, if I removed everything, I would get 0 losses which is good but not really helpful. Adding cropping back did help debug but not quickly. It actually takes a good while before the loss starts going to 0. I could have saved myself some time by understanding that this was an expected behavior and not a bug.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=conclusion&gt;Conclusion&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;The paper is well written. You get the idea quite quickly and there are only a few cryptic chapters in it.&lt;/li&gt;
+&lt;li&gt;Implementation wise I would say it's low-medium difficulty. If you are familiar with ViT then the positional embedding interpolation is fairly easy.&lt;/li&gt;
+&lt;li&gt;Result wise, I of course just wanted to see if it worked and if I could reproduce qualitatively the results from the papers. I was quite surprised that after 1 night of training on my MacBook Pro M1 with 8GB the small ViT was already showing first sings of relevant attention masks.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    <link href="https://logits.bearblog.dev/implementing-dino-from-scratch/" rel="alternate"/>
+    <published>2026-01-21T05:47:43.907553+00:00</published>
+  </entry>
+</feed>

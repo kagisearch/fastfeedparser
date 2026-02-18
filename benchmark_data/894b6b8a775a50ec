@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Yuxi on the Wired</title>
+<link>https://yuxi.ml/feeds.html</link>
+<atom:link href="https://yuxi.ml/feeds.xml" rel="self" type="application/rss+xml"/>
+<description>Personal website of Yuxi Liu</description>
+<language>en</language>
+<image>
+<url>https://yuxi.ml/img/blog icon.jpg</url>
+<title>Yuxi on the Wired</title>
+<link>https://yuxi.ml/feeds.html</link>
+</image>
+<generator>quarto-1.7.32</generator>
+<lastBuildDate>Mon, 11 Aug 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Gwern visits BAIR</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/logs/posts/2025-gwern-bair/</link>
+  <description><![CDATA[ Gwern’s lunchtime visit to the Berkeley AI Research (BAIR). ]]></description>
+  <category>fun</category>
+  <category>slice-of-life</category>
+  <guid>https://yuxi.ml/logs/posts/2025-gwern-bair/</guid>
+  <pubDate>Mon, 11 Aug 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/logs/posts/2025-gwern-bair/figure/banner.avif" medium="image" type="image/avif"/>
+</item>
+<item>
+  <title>Dream: Ingress Answer</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/logs/posts/2025-dream-ingress-answer/</link>
+  <description><![CDATA[ Dream about a new feature in Chrome which helped me understand LLMs a bit better. ]]></description>
+  <category>fun</category>
+  <category>art</category>
+  <category>slice-of-other-life</category>
+  <guid>https://yuxi.ml/logs/posts/2025-dream-ingress-answer/</guid>
+  <pubDate>Sun, 29 Jun 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/logs/posts/2025-dream-ingress-answer/figure/6.png" medium="image" type="image/png" height="42" width="144"/>
+</item>
+<item>
+  <title>ReproFro 2025 party</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/logs/posts/2025-reprofro-party/</link>
+  <description><![CDATA[ Random recollections from the hectic conversations at the afterparty of the Reproductive Frontiers Summit of 2025. ]]></description>
+  <category>slice-of-life</category>
+  <category>AI</category>
+  <category>biology</category>
+  <category>politics</category>
+  <guid>https://yuxi.ml/logs/posts/2025-reprofro-party/</guid>
+  <pubDate>Sat, 14 Jun 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Structure and Interpretation of the Chinese Economy</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/essays/posts/structure-interpretation-chinese-economy/</link>
+  <description><![CDATA[ My basic framework for understanding the modern Chinese economy and its growth. Includes brief histories of Chinese, Soviet, and Japanese economy. Framework applied to two case studies on the stock market and the housing market. ]]></description>
+  <category>China</category>
+  <category>economics</category>
+  <category>politics</category>
+  <category>history</category>
+  <guid>https://yuxi.ml/essays/posts/structure-interpretation-chinese-economy/</guid>
+  <pubDate>Tue, 03 Jun 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/essays/posts/structure-interpretation-chinese-economy/figure/banner/banner_3.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
+<item>
+  <title>Dwarkesh Patel dinner party</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/logs/posts/2025-patel-dinner/</link>
+  <description><![CDATA[ Random recollections from the hectic conversations at a dinner party organized by Dwarkesh Patel. ]]></description>
+  <category>slice-of-life</category>
+  <category>AI</category>
+  <category>economics</category>
+  <guid>https://yuxi.ml/logs/posts/2025-patel-dinner/</guid>
+  <pubDate>Fri, 30 May 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>That Survivorship Bias Plane</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/logs/posts/2025-survivorship-bias/</link>
+  <description><![CDATA[ The exact backstory to that picture of an airplane with red dots on top of it. ]]></description>
+  <category>history</category>
+  <category>war</category>
+  <guid>https://yuxi.ml/logs/posts/2025-survivorship-bias/</guid>
+  <pubDate>Fri, 02 May 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/logs/posts/2025-survivorship-bias/figure/B-24_poster.png" medium="image" type="image/png" height="95" width="144"/>
+</item>
+<item>
+  <title>Characteristic time in finance</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/logs/posts/2025-char-time/</link>
+  <description><![CDATA[ Application of a simple concept from physics to personal finance. ]]></description>
+  <category>finance</category>
+  <category>physics</category>
+  <guid>https://yuxi.ml/logs/posts/2025-char-time/</guid>
+  <pubDate>Thu, 01 May 2025 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>The cost of O’Neil habitation</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/logs/posts/2025-oneil-cylinder/</link>
+  <description><![CDATA[ To win (?) a twitter argument, we calculated the energetic cost of O’Neil habitat per person. Oddly, it is just affordable by modern standards, ~0.72 million USD per person. Let it be known that the SF housing crisis is cheaper to solve by building O’Neil cylinders. ]]></description>
+  <category>fun</category>
+  <category>scifi</category>
+  <category>economics</category>
+  <guid>https://yuxi.ml/logs/posts/2025-oneil-cylinder/</guid>
+  <pubDate>Fri, 18 Apr 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/logs/posts/2025-oneil-cylinder/figure/O&#39;Neil%20cylinder.png" medium="image" type="image/png"/>
+</item>
+<item>
+  <title>Perfect diffusion is TC0 – Bad diffusion is Turing-complete</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/essays/posts/perfect-diffusion-tc0-bad-diffusion-tc/</link>
+  <description><![CDATA[ An application of computational complexity theory to diffusion language models. Unlikely to be useful for anything, but it is cute! ]]></description>
+  <category>math</category>
+  <category>fun</category>
+  <guid>https://yuxi.ml/essays/posts/perfect-diffusion-tc0-bad-diffusion-tc/</guid>
+  <pubDate>Thu, 17 Apr 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/essays/posts/perfect-diffusion-tc0-bad-diffusion-tc/figure/banner.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
+<item>
+  <title>Cyc</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/essays/posts/cyc/</link>
+  <description><![CDATA[ After 40 years, 30 million rules, 200 million dollars, 2000 person-years, and many promises, Cyc has failed to reach intellectual maturity, and may never will. Exacerbated by the secrecy and insularity of Cycorp, there remains no evidence of its general intelligence. ]]></description>
+  <category>AI</category>
+  <category>scaling</category>
+  <category>history</category>
+  <guid>https://yuxi.ml/essays/posts/cyc/</guid>
+  <pubDate>Tue, 01 Apr 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/essays/posts/cyc/figure/banner/banner_3.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
+<item>
+  <title>Whalefall</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/logs/posts/2025-whalefall/</link>
+  <description><![CDATA[ Thoughts on the recent ‘DeepSeek shock’ of the stock market. The market is being even less efficient than usual, and much of the ‘professional’ commentators are idiots or bullshitters. I wrote this post to prevent my Gell-Mann amnesia. ]]></description>
+  <category>AI</category>
+  <category>economics</category>
+  <guid>https://yuxi.ml/logs/posts/2025-whalefall/</guid>
+  <pubDate>Wed, 29 Jan 2025 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Phase-space quantum mechanics</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/sketches/posts/phase-space-quantum-mechanics/</link>
+  <description><![CDATA[ Notes on phase-space quantum mechanics. ]]></description>
+  <category>math</category>
+  <category>physics</category>
+  <guid>https://yuxi.ml/sketches/posts/phase-space-quantum-mechanics/</guid>
+  <pubDate>Sun, 01 Sep 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Notes for a talk on the history of neural networks</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/sketches/posts/history-neural-networks-talk-notes/</link>
+  <description><![CDATA[ Notes for a talk on the history of neural networks. ]]></description>
+  <category>history</category>
+  <category>AI</category>
+  <category>cybernetics</category>
+  <guid>https://yuxi.ml/sketches/posts/history-neural-networks-talk-notes/</guid>
+  <pubDate>Thu, 01 Aug 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Statistical Mechanics</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/essays/posts/statistical-mechanics/</link>
+  <description><![CDATA[ How to think like a classical statistical-mechanic, with many examples from gas theory, biology, probability, and information theory. Prerequisites: thermodynamics, calculus, probability, and mathematical maturity. ]]></description>
+  <category>math</category>
+  <category>physics</category>
+  <category>probability</category>
+  <category>statistics</category>
+  <category>biology</category>
+  <guid>https://yuxi.ml/essays/posts/statistical-mechanics/</guid>
+  <pubDate>Thu, 04 Jul 2024 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/essays/posts/statistical-mechanics/figure/banner/banner.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>Hole Argument and Inverted Qualia</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/essays/posts/hole-argument-inverted-qualia/</link>
+  <description><![CDATA[ The hole argument in general relativity is formally analogous to the inverted qualia problem in philosophy. Like how spacetime points have no existence beyond gauge freedom, qualias have no existence beyond their geometric-functional roles, thus dissolving the hard problem of consciousness. ]]></description>
+  <category>fun</category>
+  <category>philosophy</category>
+  <category>math</category>
+  <category>physics</category>
+  <category>biology</category>
+  <guid>https://yuxi.ml/essays/posts/hole-argument-inverted-qualia/</guid>
+  <pubDate>Tue, 18 Jun 2024 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/essays/posts/hole-argument-inverted-qualia/figure/banner/banner.png" medium="image" type="image/png" height="115" width="144"/>
+</item>
+<item>
+  <title>Philosophical Sketches</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/sketches/posts/philosophical-sketches/</link>
+  <description><![CDATA[ Short philosophical writings, often poking fun at philosophers. ]]></description>
+  <category>fun</category>
+  <category>philosophy</category>
+  <guid>https://yuxi.ml/sketches/posts/philosophical-sketches/</guid>
+  <pubDate>Sun, 16 Jun 2024 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/sketches/posts/philosophical-sketches/figure/banner.png" medium="image" type="image/png"/>
+</item>
+<item>
+  <title>Fictional ideas</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/sketches/posts/fictional-ideas/</link>
+  <description><![CDATA[ Ideas for stories, fictions, etc. ]]></description>
+  <category>fun</category>
+  <category>fiction</category>
+  <guid>https://yuxi.ml/sketches/posts/fictional-ideas/</guid>
+  <pubDate>Tue, 11 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Research ideas</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/sketches/posts/research-ideas/</link>
+  <description><![CDATA[ Ideas for research. Free for a good home. ]]></description>
+  <category>fun</category>
+  <guid>https://yuxi.ml/sketches/posts/research-ideas/</guid>
+  <pubDate>Tue, 11 Jun 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Classical Thermodynamics and Economics</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/essays/posts/equilibrium-thermoeconomics/</link>
+  <description><![CDATA[ How to think like a classical thermodynamic-economist, delivered with many illustrations and some sci-fi metaphors. Particular emphasis on what traditional pedagogy gets wrong. Prerequisites: multivariate calculus and mathematical maturity. ]]></description>
+  <category>math</category>
+  <category>physics</category>
+  <category>philosophy</category>
+  <category>economics</category>
+  <guid>https://yuxi.ml/essays/posts/equilibrium-thermoeconomics/</guid>
+  <pubDate>Thu, 09 May 2024 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/essays/posts/equilibrium-thermoeconomics/figure/banner/banner_1.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>Analytical Mechanics</title>
+  <dc:creator>Yuxi Liu</dc:creator>
+  <link>https://yuxi.ml/essays/posts/analytical-mechanics/</link>
+  <description><![CDATA[ What every graduate student should know about analytical mechanics, delivered with economic style and many illustrations. Particular focus on particle-wave duality and old quantum theory. Prerequisites: multivariate calculus and mathematical maturity. ]]></description>
+  <category>math</category>
+  <category>physics</category>
+  <category>philosophy</category>
+  <guid>https://yuxi.ml/essays/posts/analytical-mechanics/</guid>
+  <pubDate>Sat, 04 May 2024 07:00:00 GMT</pubDate>
+  <media:content url="https://yuxi.ml/essays/posts/analytical-mechanics/figure/banner/banner_1.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,164 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>oscard0m Blog</title>
+      <link>https://web-oscard0m.vercel.app/blog</link>
+      <description>A blog created with 🤖 and ☕</description>
+      <language>en-us</language>
+      <managingEditor>dominguez.celada@gmail.com (Oscar Dominguez)</managingEditor>
+      <webMaster>dominguez.celada@gmail.com (Oscar Dominguez)</webMaster>
+      <lastBuildDate>Sat, 12 Aug 2023 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://web-oscard0m.vercel.app/index.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/remix/nested-layouts-without-nested-urls</guid>
+    <title>How to use 'Nested Layouts' without 'Nested URLs' in Remix</title>
+    <link>https://web-oscard0m.vercel.app/blog/remix/nested-layouts-without-nested-urls</link>
+    <description>During my recent experiments with Remix, I delved into "Pathless Routes". This approach not only reshaped layout sharing but also elegantly decoupled the parent route from root.ts, streamlining my code structure.</description>
+    <pubDate>Sat, 12 Aug 2023 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>remix</category><category>react</category><category>routing</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/tooling/command-line-tools</guid>
+    <title>Faster and colorful Command-Line tools 🌈⚡</title>
+    <link>https://web-oscard0m.vercel.app/blog/tooling/command-line-tools</link>
+    <description>Tired of boring plain outputs when running commands in your Command-Line? And want to get better performance numbers?</description>
+    <pubDate>Sun, 25 Sep 2022 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>rust</category><category>cli</category><category>command-line</category><category>bash</category><category>unix</category><category>terminal</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/mar-2022/using-value-prop-in-react-forms</guid>
+    <title>TMIL: Using the "value" attribute in forms with React</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/mar-2022/using-value-prop-in-react-forms</link>
+    <description>Consolidated this concept while working on a website made in React</description>
+    <pubDate>Wed, 02 Mar 2022 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/feb-2022/google-chrome-record-replay-measure</guid>
+    <title>TMIL: Google Chrome: Record, replay & measure user flows</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/feb-2022/google-chrome-record-replay-measure</link>
+    <description>null</description>
+    <pubDate>Sun, 27 Feb 2022 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>chrome</category><category>devtools</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/rendering-arrays-in-react</guid>
+    <title>TMIL: rendering Arrays in React</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/rendering-arrays-in-react</link>
+    <description>Notes taken, resources collected and blog post ideas obtained from EpicReact lesson</description>
+    <pubDate>Thu, 16 Dec 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/forms-in-react</guid>
+    <title>TMIL: forms in React</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/forms-in-react</link>
+    <description>Notes taken, resources collected and blog post ideas obtained from EpicReact lesson</description>
+    <pubDate>Wed, 15 Dec 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/styling-in-react</guid>
+    <title>TMIL: styling in React</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/styling-in-react</link>
+    <description>Notes taken, resources collected and blog post ideas obtained from EpicReact lesson</description>
+    <pubDate>Tue, 14 Dec 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/creating-custom-components</guid>
+    <title>TMIL: creating Custom Components</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/creating-custom-components</link>
+    <description>Notes taken, resources collected and blog post ideas obtained from EpicReact lesson</description>
+    <pubDate>Mon, 13 Dec 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/using-jsx</guid>
+    <title>TMIL: using JSX</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/using-jsx</link>
+    <description>Notes taken, resources collected and blog post ideas obtained from EpicReact lesson</description>
+    <pubDate>Sun, 12 Dec 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/intro-to-raw-react-apis</guid>
+    <title>TMIL: Into to raw React APIs</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/intro-to-raw-react-apis</link>
+    <description>Notes taken, resources collected and blog post ideas obtained from EpicReact lesson</description>
+    <pubDate>Sat, 11 Dec 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/basic-js-hello-world</guid>
+    <title>TMIL: Basic JS "Hello World"</title>
+    <link>https://web-oscard0m.vercel.app/blog/this-month/dec-2021/basic-js-hello-world</link>
+    <description>Notes taken, resources collected and blog post ideas obtained from EpicReact lesson</description>
+    <pubDate>Fri, 10 Dec 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>react</category><category>this-month-i-have-learned</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/small-pills/npm-personal-card</guid>
+    <title>Creating my personal npm card</title>
+    <link>https://web-oscard0m.vercel.app/blog/small-pills/npm-personal-card</link>
+    <description>Created a personal npm card inspired by [bitandbang](https://github.com/bnb/bitandbang)</description>
+    <pubDate>Sun, 20 Jun 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>npm</category><category>node</category><category>github-actions</category><category>semantic-release</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/small-pills/event-stop-propagation</guid>
+    <title>Event.preventDefault() vs. Event.stopPropagation()</title>
+    <link>https://web-oscard0m.vercel.app/blog/small-pills/event-stop-propagation</link>
+    <description>What is the difference between using `preventDefault` and `stopPropagation`?</description>
+    <pubDate>Wed, 26 May 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>event-propagation</category><category>browser</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/small-pills/event-prevent-default</guid>
+    <title>What is Event.preventDefault() for?</title>
+    <link>https://web-oscard0m.vercel.app/blog/small-pills/event-prevent-default</link>
+    <description>What is the difference between using preventDefault or not using it when creating an eventHandler</description>
+    <pubDate>Tue, 25 May 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    <category>javascript</category><category>event-propagation</category><category>browser</category>
+  </item>
+
+  <item>
+    <guid>https://web-oscard0m.vercel.app/blog/hello-dev-community</guid>
+    <title>Hello dev community!</title>
+    <link>https://web-oscard0m.vercel.app/blog/hello-dev-community</link>
+    <description></description>
+    <pubDate>Sun, 23 May 2021 00:00:00 GMT</pubDate>
+    <author>dominguez.celada@gmail.com (Oscar Dominguez)</author>
+    
+  </item>
+
+    </channel>
+  </rss>

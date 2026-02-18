@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://higher-order-logic.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://higher-order-logic.github.io/" rel="alternate" type="text/html" /><updated>2023-11-01T14:44:01+00:00</updated><id>https://higher-order-logic.github.io/feed.xml</id><title type="html">Higher Order Logic</title><subtitle>Concerning software development and other topics.</subtitle><entry><title type="html">Bad code isn’t Technical Debt, it’s an unhedged Call Option</title><link href="https://higher-order-logic.github.io/programming/2023/10/06/bad-code-isnt-technical-debt-its-an-unhedged-call-option.html" rel="alternate" type="text/html" title="Bad code isn’t Technical Debt, it’s an unhedged Call Option" /><published>2023-10-06T00:00:00+00:00</published><updated>2023-10-06T00:00:00+00:00</updated><id>https://higher-order-logic.github.io/programming/2023/10/06/bad-code-isnt-technical-debt-its-an-unhedged-call-option</id><content type="html" xml:base="https://higher-order-logic.github.io/programming/2023/10/06/bad-code-isnt-technical-debt-its-an-unhedged-call-option.html">&lt;p&gt;This is all &lt;a href=&quot;https://papachrismatts.uk&quot;&gt;Chris Matts&lt;/a&gt; idea. He realised that the problem with the “Technical Debt” metaphor is that for managers debt can be a good thing. Executives can be required to take on more debt because it makes the finances work better, it might even be encouraged by tax breaks. This is not the same debt as your personal credit card. Chris came up with a better metaphor, the &lt;em&gt;Call Option&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Short_call_option.svg/200px-Short_call_option.svg.png&quot; alt=&quot;&amp;quot;Payoff from writing a call.&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I “write” a &lt;a href=&quot;&amp;quot;http://en.wikipedia.org/wiki/Call_option&quot;&gt;Call Option&lt;/a&gt; when I sell someone the right, but not the obligation, to buy in the future an agreed quantity of something at an price that is fixed now. So, for a payment now, I agree to sell you 10,000 chocolate santas&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; at 56 pence each, at any time up to 10th December. You’re prepared to pay the premium because you want to know that you’ll have santas in your stores at a price you can sell.&lt;/p&gt;
+
+&lt;p&gt;From my side, if the price of the santas stays low, I get to keep your payment and I’m ahead. But, I also run the risk of having to provide these santas when the price has rocketed to 72 pence. I can protect myself by making arrangements with another party to acquire them at 56 pence or less, or by actually having them in stock. &lt;em&gt;Or&lt;/em&gt; I can take a chance and just collect the premium. This is called an unhedged, or &lt;a href=&quot;http://en.wikipedia.org/wiki/Naked_call&quot;&gt;“Naked” Call&lt;/a&gt;. In the financial world this is risky because it has unlimited downside, I have to supply the santas &lt;em&gt;whatever&lt;/em&gt; they cost me to provide.&lt;/p&gt;
+
+&lt;p&gt;Call options are a better model than debt for cruddy code (without tests) because they capture the unpredictability of what we do. If I pop in an a feature without cleaning up then I get the benefit immediately, I collect the premium. If I never see that code again, then I’m ahead and, in retrospect, it would have been foolish to have spent time cleaning it up.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, if a radical new feature comes in that I have to do, all those quick fixes suddenly become very expensive to work with. Examples I’ve seen are a big new client that requires a port to a different platform, or a new regulatory requirement that needs a new report. I get equivalent problems if there’s a failure I have to interpret and fix just before a deadline, or the team members turn over completely and no-one remembers the tacit knowledge that helps the code make sense. The market has moved away from where I thought it was going to be and my option has been called.&lt;/p&gt;
+
+&lt;p&gt;Even if it is more expensive to do things cleanly (and I’m not convinced of that beyond a two-week horizon), it’s also less risky. A messy system is full of unhedged calls, each of which can cost an unpredictable amount should they ever be exercised. We’ve all seen what this can do in the financial markets, and the scary thing is that failure, if it comes, can be sudden—everything is fine until it isn’t. I’ve seen a few systems which are just too hard to change to keep up with the competition and the owners are in real trouble.&lt;/p&gt;
+
+&lt;p&gt;To me, that makes refactoring like buying an option too. I pay a premium now so that I have more choices about where I might take the code later. This is a mundane and obvious activity in many aspects of business—although not, it seems, software development. I don’t need to spend this money if I know exactly what will happen, if I have perfect knowledge of the relevant parts of the future, but I don’t recall when I last saw this happen.&lt;/p&gt;
+
+&lt;p&gt;So, the next time you have to deal with implausible delivery dates, don’t talk about Technical Debt. Debt is predictable and can be managed, it’s just another tool. Try talking about an Unhedged Call. Now all we need is a way to price Code Smells.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;There is an apocryphal story about a trader buying chocolate santa futures and forgetting to sell them on. Eventually a truckload of santas turned up at the Wall Street headquarters of the bank. There’s also &lt;a href=&quot;https://thedailywtf.com/articles/Special-Delivery&quot;&gt;this story&lt;/a&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name></name></author><category term="programming" /><category term="Programming" /><category term="Code" /><category term="Quality" /><category term="Metaphors" /><summary type="html">This is all Chris Matts idea. He realised that the problem with the “Technical Debt” metaphor is that for managers debt can be a good thing. Executives can be required to take on more debt because it makes the finances work better, it might even be encouraged by tax breaks. This is not the same debt as your personal credit card. Chris came up with a better metaphor, the Call Option.</summary></entry><entry><title type="html">A response to James Shore’s Nullable pattern</title><link href="https://higher-order-logic.github.io/programming/2023/01/06/response-to-james-shore.html" rel="alternate" type="text/html" title="A response to James Shore’s Nullable pattern" /><published>2023-01-06T00:00:00+00:00</published><updated>2023-01-06T00:00:00+00:00</updated><id>https://higher-order-logic.github.io/programming/2023/01/06/response-to-james-shore</id><content type="html" xml:base="https://higher-order-logic.github.io/programming/2023/01/06/response-to-james-shore.html">&lt;p&gt;I’ve been reading James Shore’s pattern language, 
+&lt;a href=&quot;https://www.jamesshore.com/v2/projects/testing-without-mocks/testing-without-mocks&quot;&gt;Testing without Mocks&lt;/a&gt; with interest.
+It has some interesting ideas and, for me, some points of disagreement.&lt;/p&gt;
+
+&lt;p&gt;My first objection is to the “clickbaity” title, as if mocks were 
+some catastrophic evil, rather than one tool amongst many. An interesting
+pattern language has to be more than an opposition to a minor technique.&lt;/p&gt;
+
+&lt;p&gt;I also see some confusion between concept and tooling. James has since written 
+another post that clarifies his wariness about 
+&lt;a href=&quot;https://www.jamesshore.com/v2/blog/2023/the-problem-with-dependency-injection-frameworks&quot;&gt;Dependency Injection frameworks&lt;/a&gt;
+but has not yet made the same point about mocking frameworks.
+And many of the popular frameworks are not ones I would chose. Unfortunately, almost our 
+entire modern stack is based on widely-adopted but flawed implementations–
+the Unix API being a fine example–so we have to exercise our design skills.&lt;/p&gt;
+
+&lt;p&gt;Once again, I have to take on the argument that testing interactions 
+means testing implementation. There’s a fundamental disagreement here. 
+To me, for some objects, the calls they make to their surrounding environment, 
+in response to calls they receive, &lt;em&gt;is&lt;/em&gt; the interesting behaviour I want to test 
+not a detail of implementation.&lt;/p&gt;
+
+&lt;p&gt;This is not the only alternative, but there &lt;em&gt;is&lt;/em&gt; an established 
+approach to object design that focusses on the messages they send to each other, 
+dating back to Smalltalk and Erlang. Ralph Johnson called this the “mystical” school
+of objects. There are other schools of object design where this is less interesting.&lt;/p&gt;
+
+&lt;p&gt;It is perfectly possible to write tests that express these interactions clearly, 
+just as it is possible to make a complete mess of them. Most of the bad testing
+I see comes from not understanding the concept and, in particular, 
+testing at too fine a grain.&lt;/p&gt;
+
+&lt;p&gt;The most confusing part to me is that the proposed techniques, 
+combining Nullable objects with Configurable Responses and Output Tracking
+sounds exactly like what I do with mocks, except perhaps with the substitutions
+plugged into different places.&lt;/p&gt;
+
+&lt;p&gt;So, working through the post, these are my reactions to most of his patterns:&lt;/p&gt;
+
+&lt;h3 id=&quot;state-based-tests&quot;&gt;State-Based Tests&lt;/h3&gt;
+
+&lt;p&gt;The state vs interaction example that James uses is not one I would recommend. First, 
+the calls that it overwrites are static, rather than methods on an object that is 
+passed in, so it’s not forcing the dependency. Second, we have a heuristic of 
+“Stub queries, expect actions”, so I would not set expectations on simple queries;
+by about the third test, I would have factored these out into common setup. Third, 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moon&lt;/code&gt; looks like the sort of object that I would be using in the test directly, 
+not stubbing out. Given the amount of &lt;em&gt;Reflectomagic&lt;/em&gt; involved, I’m not surprised
+that these tests run so slowly.&lt;/p&gt;
+
+&lt;p&gt;And, by the way, did anyone notice the Feature Envy?&lt;/p&gt;
+
+&lt;p&gt;James’ point about localising tests is important. I see one way of coping with scale
+it that each level of code tests its own paths, assuming that detail will be 
+tested further down the line.&lt;/p&gt;
+
+&lt;h3 id=&quot;zero-impact-instantiation&quot;&gt;Zero-Impact Instantiation&lt;/h3&gt;
+
+&lt;p&gt;I absolutely agree that constructors should be simple. My approach is that the
+only thing a constructor should do is to &lt;em&gt;construct&lt;/em&gt; the object, that is assign
+its fields. If I have more work to do to get there, then I write a factory
+method or function. I find that this ensures that objects are easy to create
+in situations I hadn’t planned for, like new tests. This is a technique I learned
+years ago from Modula-3 (which I still miss).&lt;/p&gt;
+
+&lt;p&gt;If I can, I avoid &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;connect()&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;start()&lt;/code&gt; methods on an object, 
+preferring to do that work outside the object and only constructing 
+it if I already have a working connection. Of course, that depends on 
+the runtime lifecycle.&lt;/p&gt;
+
+&lt;h3 id=&quot;parameterless-instantiation&quot;&gt;Parameterless Instantiation&lt;/h3&gt;
+&lt;p&gt;For code of any size, I often end up building common infrastructure for creating
+test objects, using helper methods with descriptive names, so that the tests code
+describes just what is immediately relevant. Sometimes I can default out all the 
+parameters, sometimes I need to make a choice first. The pushback from the 
+constructor interface is valuable, it shows me in the code how objects are connected.&lt;/p&gt;
+
+&lt;h3 id=&quot;signature-shielding&quot;&gt;Signature Shielding&lt;/h3&gt;
+
+&lt;p&gt;Very much agree with this. Test code needs to be treated with the same care and attention
+as production code, possible even more because it bridges the domain and testing. I see
+many codebases where the reason the tests are brittle is because they’ve never been 
+refactored. One caveat is that sometimes I allow a bit more duplication in tests to 
+keep them more readable.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-frame-architecture-logic-sandwich-traffic-cop&quot;&gt;A-Frame Architecture, Logic Sandwich, Traffic Cop&lt;/h3&gt;
+&lt;p&gt;All good points. Quite often I end up with a higher-level directory that contains 
+the core concepts of the code, as interfaces and values, with lower-level directories
+for various aspects of the implementation.&lt;/p&gt;
+
+&lt;h3 id=&quot;grow-evolutionary-seeds&quot;&gt;Grow Evolutionary Seeds&lt;/h3&gt;
+&lt;p&gt;I think we’re less far apart than James presents. The flow he describes is similar to
+how an outside-in approach would start, especially the hard-coding of values. One 
+advantage for me of outside-in is that it helps me to think about and discuss what 
+we want to achieve next &lt;em&gt;in domain terms&lt;/em&gt;. Much of the rest of this process is familiar.&lt;/p&gt;
+
+&lt;h3 id=&quot;early-visible-behaviour&quot;&gt;Early-Visible Behaviour&lt;/h3&gt;
+
+&lt;p&gt;Agree on most of this, except for providing a getter just for testing, to me that’s 
+exposing implementation because it locks in some aspect of the object’s internal 
+representation. The alternative, exposing an event to be listened for, sounds like 
+a Mock expectation.&lt;/p&gt;
+
+&lt;h3 id=&quot;testable-libraries&quot;&gt;Testable libraries&lt;/h3&gt;
+
+&lt;p&gt;Largely agree here. This is why Ports-and-Adapters is not just for services as a whole
+but is a useful mid-level pattern within a codebase.&lt;/p&gt;
+
+&lt;h3 id=&quot;collaborator-based-isolation&quot;&gt;Collaborator-Based Isolation&lt;/h3&gt;
+
+&lt;p&gt;This is an interesting idea. I tend to build up a collection of representative constants
+that I use as markers in tests and their setup, so it would be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INVENTORY_ADDRESS&lt;/code&gt; rather than
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;123 Main Street&lt;/code&gt;. In our approach to the builder pattern, we provide defaults for
+common values so that the didn’t need to be specified repeatedly.&lt;/p&gt;
+
+&lt;h3 id=&quot;infrastructure-wrappers&quot;&gt;Infrastructure Wrappers&lt;/h3&gt;
+
+&lt;p&gt;Again agree. What’s not made explicit is that I use Interface Discovery to pull in just the features
+my code needs from its environment, rather than providing a generic clean veneer over the external 
+service. Quite often, after a bit of refactoring, I end up with an external service translator that
+implements a small set of interfaces driven by the needs of various bits of the main code.&lt;/p&gt;
+
+&lt;h3 id=&quot;narrow-integration-tests-paranoic-telemetry&quot;&gt;Narrow Integration Tests, Paranoic Telemetry&lt;/h3&gt;
+&lt;p&gt;Yes and yes&lt;/p&gt;
+
+&lt;h3 id=&quot;nullables&quot;&gt;Nullables&lt;/h3&gt;
+&lt;p&gt;This is an interesting idea. My first question is whether, if one has a version of an object which
+behaves partially differently depending on circumstances, is whether this is actually more than one object
+and that the nullable part should be factored out.&lt;/p&gt;
+
+&lt;h3 id=&quot;embedded-stub&quot;&gt;Embedded Stub&lt;/h3&gt;
+&lt;p&gt;While I absolutely agree with keeping things minimal, I struggle with this one.&lt;/p&gt;
+
+&lt;p&gt;First, if I need to put it close to the production code to remind me to keep up to date,
+then surely I’m missing some tests somewhere? Second, a constant complaint about mocking third-party code is the
+difficulty of ensuring that it’s compliant, which is why we recommend against doing that. How does one keep
+third-party code stubs compliant in this approach?&lt;/p&gt;
+
+&lt;h3 id=&quot;configurable-responses&quot;&gt;Configurable Responses&lt;/h3&gt;
+&lt;p&gt;Yes. This is exactly how we started with our fist mock testing, then we got bored of the duplication
+and wrote some supporting libraries. We kept it as simple as we could. I struggle to understand why 
+basic libraries are overkill for stubbing but not for, say, string operations or, even, unit testing.&lt;/p&gt;
+
+&lt;h3 id=&quot;output-tracking&quot;&gt;Output Tracking&lt;/h3&gt;
+&lt;p&gt;As mentioned above, this sounds remarkably like mock expectations, with the disadvantage that one
+can’t trip the debugger with all the state in place when something goes wrong.&lt;/p&gt;
+
+&lt;p&gt;I wrote a chapter about using the need for event listening to guide collaborator discovery in 
+the GOOS book. There was a time when introducing a listener for event reporting to
+make testing easier, as against using the log, was a radical concept.&lt;/p&gt;
+
+&lt;h3 id=&quot;fake-it-once-you-make-it&quot;&gt;Fake It Once You Make It&lt;/h3&gt;
+&lt;p&gt;Again good stuff here. I have a question around the embedded use of Nullables. I like to use the back
+pressure of seeing too many parameters being passed in as a hint for missing constructs. If those 
+instances are created as default nullables, rather than being declared as an explicit dependency, then 
+I can’t see that.&lt;/p&gt;
+
+&lt;h3 id=&quot;replace-mocks-with-nullables&quot;&gt;Replace Mocks with Nullables&lt;/h3&gt;
+&lt;p&gt;I’m seeing most of this as a shift in terminology, rather than a meaningful redesign. Maybe that’s 
+useful enough. One thing I can guarantee is that if this pattern really takes off, then it will be 
+abused, and then trashed for that abuse, in ways that James never thought possible.&lt;/p&gt;</content><author><name></name></author><category term="programming" /><category term="Testing" /><category term="Refactoring" /><category term="Test" /><category term="Driven" /><category term="Development" /><summary type="html">I’ve been reading James Shore’s pattern language, Testing without Mocks with interest. It has some interesting ideas and, for me, some points of disagreement.</summary></entry><entry><title type="html">An unreasonable dislike of mutable variables</title><link href="https://higher-order-logic.github.io/programming/2023/01/04/mutable-variables.html" rel="alternate" type="text/html" title="An unreasonable dislike of mutable variables" /><published>2023-01-04T00:00:00+00:00</published><updated>2023-01-04T00:00:00+00:00</updated><id>https://higher-order-logic.github.io/programming/2023/01/04/mutable-variables</id><content type="html" xml:base="https://higher-order-logic.github.io/programming/2023/01/04/mutable-variables.html">&lt;p&gt;I’ve had an adverse reaction to mutable variables for some time. 
+Recently I found another justification for this paranoia.&lt;/p&gt;
+
+&lt;p&gt;I was working on a codebase that included a snippet that looked like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;all_the_stuff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one_thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;all_the_stuff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;search_for_one_thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;another_thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;all_the_stuff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;search_for_another_thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;do_something_with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all_the_stuff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The build also included a test coverage check, and this section showed as fully covered.&lt;/p&gt;
+
+&lt;p&gt;While experimenting with some refactoring, I replaced the variable with a function. 
+My motivation for this is to simplify the “narrative” at the top level of the code,
+pushing the detail into a supporting level, and I use mutable variables as a hint 
+for where I might do that.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;do_something_with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all_the_stuff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;all_the_stuff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one_thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;search_for_one_thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;another_thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;search_for_another_thing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This passed the tests but failed the build because I had regressed the level of test coverage. 
+It turned out that the line:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;was not covered.&lt;/p&gt;
+
+&lt;p&gt;This showed that there was no test for the case when 
+neither &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;one_thing&lt;/code&gt; nor &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;another_thing&lt;/code&gt; was true. This was impossible to see 
+in the coverage trace for the previous version.&lt;/p&gt;
+
+&lt;p&gt;This gap is a strong hint to take a closer look at the code
+to check whether that path is possible and to either write a test, 
+if it is, or rework the code to make it clear that it’s not.&lt;/p&gt;</content><author><name></name></author><category term="programming" /><category term="Testing" /><category term="Refactoring" /><category term="Immutability" /><summary type="html">I’ve had an adverse reaction to mutable variables for some time. Recently I found another justification for this paranoia.</summary></entry></feed>

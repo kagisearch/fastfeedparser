@@ -1,0 +1,1275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<rss version="2.0" 
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:admin="http://webns.net/mvcb/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+   xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+   xmlns:content="http://purl.org/rss/1.0/modules/content/"
+   >
+<channel>
+    
+    <title>Hanno's blog</title>
+    <link>https://blog.hboeck.de/</link>
+    <description></description>
+    <dc:language>en</dc:language>
+    <generator>Serendipity 2.5.0 - http://www.s9y.org/</generator>
+    <pubDate>Mon, 03 Mar 2025 07:04:51 GMT</pubDate>
+
+    <image>
+    <url>https://blog.hboeck.de/templates/hanno/img/s9y_banner_small.png</url>
+    <title>RSS: Hanno's blog - </title>
+    <link>https://blog.hboeck.de/</link>
+    <width>100</width>
+    <height>21</height>
+</image>
+
+<item>
+    <title>Mixing up Public and Private Keys in OpenID Connect deployments</title>
+    <link>https://blog.hboeck.de/archives/909-Mixing-up-Public-and-Private-Keys-in-OpenID-Connect-deployments.html</link>
+            <category>Cryptography</category>
+            <category>English</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/909-Mixing-up-Public-and-Private-Keys-in-OpenID-Connect-deployments.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=909</wfw:comment>
+
+    <slash:comments>1</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=909</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;!-- s9ymdb:503 --&gt;&lt;img class=&quot;serendipity_image_right sqimg&quot; width=&quot;300&quot; height=&quot;300&quot;  src=&quot;https://blog.hboeck.de/uploads/keyelectronic.svg&quot;   alt=&quot;Key Icon&quot;&gt;I am developing a tool to check cryptographic public keys for known vulnerabilities called &lt;a href=&quot;https://badkeys.info/&quot;&gt;badkeys&lt;/a&gt;. During the Q&amp;amp;A session of a presentation &lt;a href=&quot;https://media.ccc.de/v/god2024-56276-the-debian-openssl-bug-and&quot;&gt;about badkeys at the German OWASP Day&lt;/a&gt;, I was asked whether I had ever used badkeys to check cryptographic keys in OpenID Connect setups. I had not until then.&lt;br /&gt;
+&lt;br /&gt;
+OpenID Connect is a single sign-on protocol that allows web pages to offer logins via other services. Whenever you see a web page that offers logins via, e.g., your Google or Facebook account, the technology behind it is usually OpenID Connect.&lt;br /&gt;
+&lt;br /&gt;
+An OpenID Provider like Google can publish a configuration file in JSON format for services interacting with it at a defined URL location of this form: &lt;em&gt;https://example.com/.well-known/openid-configuration&lt;/em&gt; (Google&#039;s can &lt;a href=&quot;https://accounts.google.com/.well-known/openid-configuration&quot;&gt;be found here&lt;/a&gt;.)&lt;br /&gt;
+&lt;br /&gt;
+Those configuration files contain a field &quot;jwks_uri&quot; pointing to a JSON Web Key Set (JWKS) containing cryptographic public keys used to verify authentication tokens. JSON Web Keys are a way to encode cryptographic keys in JSON format, and a JSON Web Key Set is a JSON structure containing multiple such keys. (You can find Google&#039;s &lt;a href=&quot;https://www.googleapis.com/oauth2/v3/certs&quot;&gt;here&lt;/a&gt;.)&lt;br /&gt;
+&lt;br /&gt;
+Given that the OpenID configuration file is at a known location and references the public keys, that gives us an easy way to scan for such keys. By scanning the Tranco Top 1 Million list and extending the scan with hostnames from &lt;a href=&quot;https://sso-monitor.me/&quot;&gt;SSO-Monitor&lt;/a&gt; (a research project providing extensive data about single sign-on services), I identified around 13.000 hosts with a valid OpenID Connect configuration and corresponding JSON Web Key Sets.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Confusing Public and Private Keys&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+JSON Web Keys have a very peculiar property. Cryptographic public and private keys are, in essence, just some large numbers. For most algorithms, all the numbers of the public key are also contained in the private key. For JSON Web Keys, those numbers are encoded with urlsafe Base64 encoding. (In case you don&#039;t know what urlsafe Base64 means, don&#039;t worry, it&#039;s not important here.)&lt;br /&gt;
+&lt;br /&gt;
+Here is an example of an ECDSA public key in JSON Web Key format:&lt;br /&gt;
+&lt;br /&gt;
+&lt;code&gt;{&lt;br /&gt;
+  &quot;kty&quot;: &quot;EC&quot;,&lt;br /&gt;
+  &quot;crv&quot;: &quot;P-256&quot;,&lt;br /&gt;
+  &quot;x&quot;: &quot;MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4&quot;,&lt;br /&gt;
+  &quot;y&quot;: &quot;4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM&quot;&lt;br /&gt;
+}&lt;/code&gt;&lt;br /&gt;
+&lt;br /&gt;
+Here is the corresponding private key:&lt;br /&gt;
+&lt;br /&gt;
+&lt;code&gt;{&lt;br /&gt;
+  &quot;kty&quot;: &quot;EC&quot;,&lt;br /&gt;
+  &quot;crv&quot;: &quot;P-256&quot;,&lt;br /&gt;
+  &quot;x&quot;: &quot;MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4&quot;,&lt;br /&gt;
+  &quot;y&quot;: &quot;4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM&quot;,&lt;br /&gt;
+  &quot;d&quot;: &quot;870MB6gfuTJ4HtUnUvYMyJpr5eUZNP4Bk43bVdj3eAE&quot;&lt;br /&gt;
+}&lt;/code&gt;&lt;br /&gt;
+&lt;br /&gt;
+You may notice that they look very similar. The only difference is that the private key contains one additional value called d, which, in the case of ECDSA, is the private key value. In the case of RSA, the private key contains multiple additional values (one of them also called &quot;d&quot;), but the general idea is the same: the private key is just the public key plus some extra values.&lt;br /&gt;
+&lt;br /&gt;
+What is very unusual and something I have not seen in any other context is that the serialization format for public and private keys is the same. The only way to distinguish public and private keys is to check if there are private values. JSON is commonly interpreted in an extensible way, meaning that any additional fields in a JSON field are usually ignored if they have no meaning to the application reading a JSON file.&lt;br /&gt;
+&lt;br /&gt;
+These two facts combined lead to an interesting and dangerous property. Using a private key instead of a public key will usually work, because every private key in JSON Web Key format is also a valid public key.&lt;br /&gt;
+&lt;br /&gt;
+You can guess by now where this is going. I checked whether any of the collected public keys from OpenID configurations were actually private keys.&lt;br /&gt;
+&lt;br /&gt;
+This was the case for 9 hosts. Those included host names belonging to some prominent companies, including stackoverflowteams.com, stack.uberinternal.com, and ask.fisglobal.com. Those three all appear to use a service provided by Stackoverflow, and have since been fixed. (A report to Uber&#039;s bug bounty program at HackerOne was closed as a duplicate for a report they said they cannot show me. The report to FIS Global was closed by Bugcrowd&#039;s triagers as not applicable, with a generic response containing some explanations about OpenID Connect that appeared to be entirely unrelated to my report. After I asked for an explanation, I was asked to provide a proof of concept after the issue was already fixed. Stack Overflow has no bug bounty program, but fixed it after a report to their security contact.)&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Short RSA Keys&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+7 hosts had RSA keys with a key length of 512 bit configured. Such keys have long been known to be breakable, and today, doing so is possible with relatively little effort. 45 hosts had RSA keys with a length of 1024 bit, which is considered to be breakable by powerful attackers, although such an attack has not yet been publicly demonstrated.&lt;br /&gt;
+&lt;br /&gt;
+The first successful public attack on RSA with 512 bit was performed in 1999. Back then, it required months on a supercomputer. Today, breaking such keys is accessible to practically everyone. An implementation of the best-known attack on RSA is available as an Open Source software called &lt;a href=&quot;https://cado-nfs.gitlabpages.inria.fr/&quot;&gt;CADO-NFS&lt;/a&gt;. Ryan Castellucci recently ran such an attack for a 512-bit RSA key they found in the control software of a solar and battery storage system. They mentioned a price of $70 for cloud services to perform the attack in a few hours. Cracking an RSA-512 bit key is, therefore, not a significant hurdle for any determined attacker.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Using Example Keys in Production&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Running badkeys on the found keys uncovered another type of vulnerability. Before running the scan, I ensured that badkeys would detect example private keys in common Open Source OpenID Connect implementations. I discovered 18 affected hosts with keys that were such &quot;Public Private Keys,&quot; i.e., keys where the corresponding private key is part of an existing, publicly available software package.&lt;br /&gt;
+&lt;br /&gt;
+I have reported all 512-bit RSA keys and uses of example keys to the affected parties. Most of them remain unfixed.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Impact&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Overall, I discovered 33 vulnerable hosts. With 13,000 detected OpenID configurations total, 0.25% of those were vulnerable in a way that would allow an attacker to access the private key.&lt;br /&gt;
+&lt;br /&gt;
+How severe is such a private key break? It depends. OpenID Connect supports different ways in which authentication tokens are exchanged between an OpenID Provider and a Consumer. The token can be exchanged via the browser, and in this case, it is most severe, as it simply allows an attacker to sign arbitrary login tokens for any identity.&lt;br /&gt;
+&lt;br /&gt;
+The token can also be exchanged directly between the OpenID Provider and the Consumer. In this case, an attack is much less likely, as it would require a man-in-the-middle attack and an additional attack on the TLS connection between the two servers. I have not made any attempts to figure out which methods the affected hosts were using.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;How to do better&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+I would argue that two of these issues could have been entirely prevented by better specifications.&lt;br /&gt;
+&lt;br /&gt;
+As mentioned, it is a curious and unusual fact that JSON Web Keys use the same serialization format for public and private keys. It is a design decision that makes confusing public and private keys likely.&lt;br /&gt;
+&lt;br /&gt;
+In an ecosystem where public and private keys are entirely different — like TLS or SSH — any attempt to configure a private key instead of a public key would immediately be noticed, as it would simply not work.&lt;br /&gt;
+&lt;br /&gt;
+One mitigation that can be implemented within the existing specification is for OpenID Connect implementations to check whether a JSON Web Key Set contains any private keys. For all currently supported values, this can easily be done by checking the presence of a value &quot;d&quot;. (Not sure if this is a coincidence, but for both RSA and ECDSA, we tend to call the private key &quot;d&quot;.)&lt;br /&gt;
+&lt;br /&gt;
+The current &lt;a href=&quot;https://openid.net/specs/openid-connect-discovery-1_0.html&quot;&gt;OpenID Connect Discovery specification&lt;/a&gt; says: &quot;The JWK Set MUST NOT contain private or symmetric key values.&quot; Therefore, checking it would merely mean that an implementation is enforcing compliance with the existing specification. I would suggest adding a requirement for such a check to future versions of the standard.&lt;br /&gt;
+&lt;br /&gt;
+Similarly, I recommend such a check for any other protocol or software utilizing JSON Web Keys or JSON Web Key Sets in places where only public keys are expected.&lt;br /&gt;
+&lt;br /&gt;
+It is probably too late to change the JSON Web Key standard itself for existing algorithms. However, in the future, such scenarios could easily be avoided by slightly different specifications. Currently, the algorithm of a JSON Web Key is configured in the &quot;kty&quot; field and can have values like &quot;RSA&quot; or &quot;EC&quot;.&lt;br /&gt;
+&lt;br /&gt;
+Let&#039;s take one of the future post-quantum signature algorithms as an example. If we specify ML-DSA-65 (I know, not a name easy to remember), instead of defining a &quot;kty&quot; value (or, as they &lt;a href=&quot;https://www.ietf.org/id/draft-ietf-cose-dilithium-05.html&quot;&gt;seem to do it these days&lt;/a&gt;, the &quot;alg&quot; value) of &quot;ML-DSA-65&quot;, we could assign two values: &quot;ML-DSA-65-Private&quot; and &quot;ML-DSA-65-Public&quot;.&lt;br /&gt;
+&lt;br /&gt;
+When it comes to short RSA keys, it is surprising that 512-bit keys are even possible in these protocols. OpenID Connect and everything it is based on is relatively new. The first draft version of the JSON Web Key standard dates back to 2012 — thirteen years after the first successful attack on RSA-512. Warnings that RSA-1024 was potentially insecure date back to the early 2000s, and at the time all of this was specified, there were widely accepted recommendations for a minimal key size of 2048 bit.&lt;br /&gt;
+&lt;br /&gt;
+All of this is to say that those protocols should have never supported such short RSA keys. Ideally, they should have never supported RSA with arbitrary key sizes, and just defined a few standard key sizes. (The RSA specification itself comes from a time when it was common to allow a lot of flexibility in cryptographic algorithms. While pretty much everyone uses RSA keys in standard sizes that are multiples of 1024, it is possible to even use key sizes that are not aligned on bytes — like 2049 bit. The same could be said about the RSA exponent, which everyone sets to 65537 these days. Making these things configurable provides no advantage and adds needless complexity.)&lt;br /&gt;
+&lt;br /&gt;
+Preventing the use of known example keys — I like to call them Public Private Keys — is more difficult to avoid. We could reduce these problems if people agreed to use a standardized set of test keys. &lt;a href=&quot;https://datatracker.ietf.org/doc/rfc9500/&quot;&gt;RFC 9500&lt;/a&gt; contains some test keys for this exact use case. My recommendation is that any key used as an example in an RFC document is a good test key. While that would not prevent people from using those test keys in production, it would make it easier to detect such cases.&lt;br /&gt;
+&lt;br /&gt;
+You can use badkeys to check existing deployments for several known vulnerabilities and known-compromised keys. I added a parameter &lt;em&gt;--jwk&lt;/em&gt; that allows directly scanning files with JSON Web Keys or JSON Web Key Sets in the latest version of badkeys.&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Thanks to &lt;a href=&quot;https://danielfett.de/&quot;&gt;Daniel Fett&lt;/a&gt; for the idea to scan OpenID Connect keys and for feedback on this issue. Thanks to &lt;a href=&quot;https://blog.hartwork.org/&quot;&gt;Sebastian Pipping&lt;/a&gt; for valuable feedback for this blogpost.&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Image source: &lt;a href=&quot;https://www.svgrepo.com/svg/260810/key-access&quot;&gt;SVG Repo/CC0&lt;/a&gt;&lt;/em&gt; 
+    </content:encoded>
+
+    <pubDate>Tue, 25 Feb 2025 12:08:00 +0100</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/909-guid.html</guid>
+    <category>cryptography</category>
+<category>itsecurity</category>
+<category>openid</category>
+<category>openidconnect</category>
+<category>security</category>
+<category>sso</category>
+<category>websecurity</category>
+
+</item>
+<item>
+    <title>Private Keys in the Fortigate Leak</title>
+    <link>https://blog.hboeck.de/archives/908-Private-Keys-in-the-Fortigate-Leak.html</link>
+            <category>Code</category>
+            <category>Cryptography</category>
+            <category>English</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/908-Private-Keys-in-the-Fortigate-Leak.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=908</wfw:comment>
+
+    <slash:comments>0</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=908</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;!-- s9ymdb:502 --&gt;&lt;img class=&quot;serendipity_image_right sqimg&quot; width=&quot;300&quot; height=&quot;300&quot;  src=&quot;https://blog.hboeck.de/uploads/keyring.svg&quot; alt=&quot;Keys&quot;&gt;A few days ago, a download link for a leak of configuration files for Fortigate/Fortinet devices was posted on an Internet forum. It appears that the data was collected in 2022 due to a security vulnerability known as CVE-2022-40684. According to a &lt;a href=&quot;https://www.fortinet.com/blog/psirt-blogs/update-regarding-cve-2022-40684&quot;&gt;blog post by Fortinet in 2022&lt;/a&gt;, they were already aware of active exploitation of the issue back then. It was first &lt;a href=&quot;https://www.heise.de/en/news/Unknown-group-releases-Fortinet-config-files-and-VPN-passwords-to-the-darknet-10244238.html&quot;&gt;reported by heise&lt;/a&gt;, a &lt;a href=&quot;https://doublepulsar.com/2022-zero-day-was-used-to-raid-fortigate-firewall-configs-somebody-just-released-them-a7a74e0b0c7f&quot;&gt;post by Kevin Beaumont&lt;/a&gt; contains further info.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/38f23234f602490cb9bd474524bd01e5&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;&gt;&lt;br /&gt;&lt;br /&gt;
+
+What has not been widely recognized is that this leak also contains TLS and SSH private keys. As I am developing &lt;a href=&quot;https://badkeys.info/&quot;&gt;badkeys&lt;/a&gt;, a tool to identify insecure and compromised keys, this caught my attention. (The following analysis is based on an incomplete subset of the leak. I may update the post if I get access to more complete information.)&lt;br /&gt;&lt;br /&gt;
+
+The leaked configurations contain keys looking like this (not an actual key from the leak):
+
+&lt;pre&gt;    set private-key &quot;-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIGjMF8GCSqGSIb3DQEFDTBSMDEGCSqGSIb3DQEFDDAkBBC5oRB/b9iViG5YoFmw
+03T1AgIIADAMBggqhkiG9w0CCQUAMB0GCWCGSAFlAwQBKgQQPsMiXQoINAe2uBZX
+cbB1MARAXz1LwSJhElDvazEtfywe9pLSdCG9+A0G6CMk2Lp5eR954OjScEQY6Zqe
+9J3V/fCQeDanrAE+/dpCefjAD4LhGg==
+-----END ENCRYPTED PRIVATE KEY-----&quot;&lt;/pre&gt;
+
+They also include corresponding certificates and keys in OpenSSH format. As you can see, these private keys are encrypted. However, above those keys, we can find the encryption password. The password is also encrypted, looking like this:
+
+&lt;pre&gt;    set password ENC SGFja1RoZVBsYW5ldCF[...]UA==&lt;/pre&gt;
+
+A quick search for the encryption method turned up a &lt;a href=&quot;https://github.com/saladandonionrings/cve-2019-6693&quot;&gt;script containing code to decrypt these passwords&lt;/a&gt;. The encryption key is static and publicly known.&lt;br /&gt;&lt;br /&gt;
+
+The password line contains a Base64 string that decodes to 148 bytes. The first four bytes, padded with 12 zero bytes, are the initialization vector. The remaining bytes are the encrypted payload. The encryption uses AES-128 in CBC mode. The decrypted passwords appear to be mostly hex numbers and are padded with zero bytes - and sometimes other characters. (I am unaware of their meaning.)&lt;br /&gt;&lt;br /&gt;
+
+In case I lost you here with technical details, the important takeaway is that in almost all cases, it is possible to decrypt the private key. (I may share a tool to extract the keys at a later point in time.)&lt;br /&gt;&lt;br /&gt;
+
+The use of a static encryption key is a known vulnerability, tracked as CVE-2019-6693. According to &lt;a href=&quot;https://www.fortiguard.com/psirt/FG-IR-19-007&quot;&gt;Fortinet&#039;s advisory from 2020&lt;/a&gt;, this was &quot;fixed&quot; by introducing a setting that allows to configure a custom password.&lt;br /&gt;&lt;br /&gt;
+
+&quot;Fixing&quot; default passwords by providing and documenting an option to change the password is something I have strong opinions about. It does not work (&lt;a href=&quot;https://industrydecarbonization.com/news/insecure-password-allowed-administrative-access-to-electric-vehicle-chargers.html&quot;&gt;see also&lt;/a&gt;).&lt;br /&gt;&lt;br /&gt;
+
+One result of this incident is that it gives us some real-world data on how many people will actually change their password if the option is given to them and documented in a security advisory. 99,5% of the keys could be decrypted with the default password. (Consider this as a lower bound and not an exact number. The password decryption may be flaky due to the unclear padding mechanism.)&lt;br /&gt;&lt;br /&gt;
+
+Overall, there were around 100,000 private keys in PKCS format and 60,000 in OpenSSH format. Most of the corresponding certificates were self-signed, but a few thousand were issued by publicly trusted web certificate authorities, most of them expired. However, the data included keys for 84 WebPKI certificates that were neither expired nor revoked as of this morning. Only 10 unexpired certificates were already revoked.&lt;br /&gt;&lt;br /&gt;
+
+I have reported the still valid certificates to the responsible certificate authorities for revocation. CAs are obliged to revoke certificates with known-compromised keys within 24 hours. Therefore, these certificates will all be revoked soon. (I also filed &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1942241&quot;&gt;two&lt;/a&gt; &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1942270&quot;&gt;reports&lt;/a&gt; due to difficulties with the reporting process of some CAs.)&lt;br /&gt;&lt;br /&gt;
+
+As mentioned above, it was already known in 2022 that this vulnerabiltiy was actively exploited. Yet, it appears that, overwhelmingly, this did not lead to people replacing their likely compromised private keys and revoking their certificates. While we cannot tell from this observation whether the same is true for passwords and other private keys not used in publicly trusted certificates, it appears likely.&lt;br /&gt;&lt;br /&gt;
+
+&lt;b&gt;Rant&lt;/b&gt;&lt;br /&gt;&lt;br /&gt;
+
+It is an unfortunate reality that these days, security products often are themselves the source of security vulnerabilities. While I have no empirical evidence for this (and nobody else has the data, &lt;a href=&quot;https://media.ccc.de/v/33c3-8169-in_search_of_evidence-based_it-security&quot;&gt;have I complained about this before?&lt;/a&gt;), I believe that we have entered a situation in recent years where security products turned from &quot;mostly useless, sometimes harmful&quot; to &quot;almost certainly causing more security issues than they prevent&quot;. I have more thoughts on this that I may share at another time.&lt;br /&gt;&lt;br /&gt;
+
+If you are wondering what to do, the solution is neither to patch and fix your Fortinet device nor to buy additional attack surface from one of its equally bad competitors. It is to stop believing that adding more attack surface will increase security.&lt;br /&gt;&lt;br /&gt;
+
+&lt;b&gt;Detecting affected keys&lt;/b&gt;&lt;br /&gt;&lt;br /&gt;
+
+Detection for those keys has been added to &lt;a href=&quot;https://badkeys.info/&quot;&gt;badkeys&lt;/a&gt;. It is an open source tool, installable via &lt;a href=&quot;https://pypi.org/project/badkeys/&quot;&gt;Python&#039;s package management&lt;/a&gt;. You can use it to scan SSH host keys, certificates, or private keys. Make sure to update the badkeys blocklist (&lt;em&gt;badkeys --update-bl&lt;/em&gt;) before doing so.&lt;br /&gt;&lt;br /&gt;
+
+Please note that this detection is currently based on incomplete data and does not cover all keys in the leak. More updates with more complete coverage may come. &lt;span style=&quot;text-decoration: line-through;&quot;&gt;Please also note that I have not made the private keys public. Unlike in other cases, this means badkeys cannot give you the private key. (I may decide to publish the keys at some point in the future.)&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;
+
+The badkeys blocklist uses a yet poorly documented format (it is on my todo list to improve this). I am &lt;a href=&quot;https://github.com/hannob/forti/raw/refs/heads/main/spkisha256-forti-compromised-keys.txt&quot;&gt;sharing a list of SPKI SHA256 hashes of the affected keys&lt;/a&gt; to make it easier for others to write their own detection.&lt;br /&gt;&lt;br /&gt;
+
+&lt;b&gt;Update (2025-01-23):&lt;/b&gt; As mentioned, the original analysis was done with an incomplete set of the data. I later was able to access more complete data, increasing the number of keys to around 98,000 SSH keys and 167,000 PKCS keys. This also led to additional certificates reported for revocation. I have not kept track of the exact numbers. Therefore, the numbers above all refer to the incomplete dataset.&lt;br /&gt;&lt;br /&gt;
+
+You can find a &lt;a href=&quot;https://github.com/hannob/forti/blob/main/fortipwkey&quot;&gt;script to extract and decrypt passwords and private keys from Fortigate configuration files here&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;
+
+&lt;b&gt;Update (2025-01-24):&lt;/b&gt; During further analysis, I discovered that the dataset contained 314 private keys belonging to Let&#039;s Encrypt ACME accounts. I have now deactivated those accounts. Given that it has been over a week since the initial report of the incident, this adds to the impression that neither Fortinet itself nor their affected customers appear to have put any effort into cleaning up after this incident.&lt;br /&gt;&lt;br /&gt;
+
+&lt;b&gt;Update (2025-04-16):&lt;/b&gt; &lt;a href=&quot;https://github.com/badkeys/fortikeys&quot;&gt;The keys&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;
+
+&lt;em&gt;Image source: &lt;a href=&quot;https://www.svgrepo.com/svg/362114/keyring&quot;&gt;paomedia / Public Domain&lt;/a&gt;&lt;/em&gt; 
+    </content:encoded>
+
+    <pubDate>Fri, 17 Jan 2025 17:04:00 +0100</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/908-guid.html</guid>
+    <category>badkeys</category>
+<category>cryptography</category>
+<category>fortigate</category>
+<category>fortinet</category>
+<category>leak</category>
+<category>privatekey</category>
+<category>security</category>
+
+</item>
+<item>
+    <title>How to create a Secure, Random Password with JavaScript</title>
+    <link>https://blog.hboeck.de/archives/907-How-to-create-a-Secure,-Random-Password-with-JavaScript.html</link>
+            <category>Code</category>
+            <category>Cryptography</category>
+            <category>English</category>
+            <category>Security</category>
+            <category>Webdesign</category>
+    
+    <comments>https://blog.hboeck.de/archives/907-How-to-create-a-Secure,-Random-Password-with-JavaScript.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=907</wfw:comment>
+
+    <slash:comments>0</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=907</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;!-- s9ymdb:501 --&gt;&lt;img class=&quot;serendipity_image_right sqimg&quot; width=&quot;300&quot; height=&quot;300&quot; src=&quot;https://blog.hboeck.de/uploads/dice.svg&quot;  loading=&quot;lazy&quot; alt=&quot;Dice&quot;&gt;I recently needed to create a random password in a piece of JavaScript code. It was surprisingly difficult to find instructions and good examples of how to do that. Almost every result that Google, StackOverflow, or, for that matter, ChatGPT, turned up was flawed in one way or another.&lt;br /&gt;&lt;br /&gt;
+
+Let&#039;s look at a few examples and learn how to create an actually secure password generation function. Our goal is to create a password from a defined set of characters with a fixed length. The password should be generated from a secure source of randomness, and it should have a uniform distribution, meaning every character should appear with the same likelihood. While the examples are JavaScript code, the principles can be used in any programming language.&lt;br /&gt;&lt;br /&gt;
+
+One of the first examples to show up in Google is a &lt;a href=&quot;https://dev.to/code_mystery/random-password-generator-using-javascript-6a&quot; rel=&quot;nofollow&quot;&gt;blog post on the webpage dev.to&lt;/a&gt;. Here is the relevant part of the code:
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* Example with weak random number generator, DO NOT USE */
+ var chars = &quot;0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&amp;amp;*()ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;
+ var passwordLength = 12;
+ var password = &quot;&quot;;
+ for (var i = 0; i &amp;lt;= passwordLength; i++) {
+   var randomNumber = Math.floor(Math.random() * chars.length);
+   password += chars.substring(randomNumber, randomNumber +1);
+  }&lt;/code&gt;&lt;/pre&gt;
+
+In this example, the source of randomness is the function &lt;em&gt;Math.random()&lt;/em&gt;. It generates a random number between 0 and 1. The &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random&quot;&gt;documentation of &lt;em&gt;Math.random()&lt;/em&gt; in MDN&lt;/a&gt; says:&lt;br /&gt;&lt;br /&gt;
+
+&lt;em&gt;&lt;b&gt;Math.random()&lt;/b&gt; does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely, the &lt;b&gt;window.crypto.getRandomValues()&lt;/b&gt; method.&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;
+
+This is pretty clear: We should not use &lt;em&gt;Math.random()&lt;/em&gt; for security purposes, as it gives us no guarantees about the security of its output. This is not a merely theoretical concern: &lt;a href=&quot;https://medium.com/@betable/tifu-by-using-math-random-f1c308c4fd9d&quot;&gt;here is an example where someone used Math.random() to generate tokens&lt;/a&gt; and ended up seeing duplicate tokens in real-world use.&lt;br /&gt;&lt;br /&gt;
+
+MDN tells us to use the &lt;b&gt;getRandomValues()&lt;/b&gt; function of the Web Crypto API, which generates cryptographically strong random numbers.&lt;br /&gt;&lt;br /&gt;
+
+We can make a more general statement here: Whenever we need randomness for security purposes, we should use a cryptographically secure random number generator. Even in non-security contexts, using secure random sources usually has no downsides. Theoretically, cryptographically strong random number generators can be slower, but unless you generate Gigabytes of random numbers, this is irrelevant. (I am not going to expand on how exactly cryptographically strong random number generators work, as this is something that should be done by the operating system. You can find &lt;a href=&quot;https://media.ccc.de/v/32c3-7441-the_plain_simple_reality_of_entropy&quot;&gt;a good introduction here&lt;/a&gt;.)&lt;br /&gt;&lt;br /&gt;
+
+All modern operating systems have built-in functionality for this. Unfortunately, for historical reasons, in many programming languages, there are simple and more widely used random number generation functions that many people use, and APIs for secure random numbers often come with extra obstacles and may not always be available. However, in the case of Javascript, &lt;a href=&quot;https://caniuse.com/getrandomvalues&quot;&gt;&lt;b&gt;crypto.getRandomValues()&lt;/b&gt; has been available in all major browsers for over a decade&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;
+
+After establishing that we should not use &lt;b&gt;Math.random()&lt;/b&gt;, we may check whether searching specifically for that gives us a better answer. When we search for &quot;Javascript random password without Math.Random()&quot;, the first result that shows up is titled &lt;a href=&quot;https://whereisthebug.com/never-use-math-random-for-passwords/&quot; rel=&quot;nofollow&quot;&gt;&quot;Never use Math.random() to create passwords in JavaScript&quot;&lt;/a&gt;. That sounds like a good start. Unfortunately, it makes another mistake. Here is the code it recommends:
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* Example with floating point rounding bias, DO NOT USE */
+function generatePassword(length = 16)
+{
+    let generatedPassword = &quot;&quot;;
+
+    const validChars = &quot;0123456789&quot; +
+        &quot;abcdefghijklmnopqrstuvwxyz&quot; +
+        &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot; +
+        &quot;,.-{}+!\&quot;#$%/()=?&quot;;
+
+    for (let i = 0; i &amp;lt; length; i++) {
+        let randomNumber = crypto.getRandomValues(new Uint32Array(1))[0];
+        randomNumber = randomNumber / 0x100000000;
+        randomNumber = Math.floor(randomNumber * validChars.length);
+
+        generatedPassword += validChars[randomNumber];
+    }
+
+    return generatedPassword;
+}&lt;/code&gt;&lt;/pre&gt;
+
+This generates a random 32-bit unsigned integer with &lt;b&gt;crypto.getRandomValues()&lt;/b&gt;, which is good. It divides that by the hexadecimal value 0x100000000, which is the upper bound of the possible values in a 32-bit unsigned integer. In other words, it is converting to a float between 0 and 1, likely trying to emulate what &lt;b&gt;Math.random()&lt;/b&gt; provides.&lt;br /&gt;&lt;br /&gt;
+
+The problem with this approach is that it uses floating-point numbers. It is generally a good idea to avoid floats in security and particularly cryptographic applications whenever possible. Floats introduce rounding errors, and due to the way they are stored, it is practically almost impossible to generate a uniform distribution. (See also &lt;a href=&quot;https://crypto.stackexchange.com/a/31659&quot;&gt;this explanation in a StackExchange comment&lt;/a&gt;.)&lt;br /&gt;&lt;br /&gt;
+
+Therefore, while this implementation is better than the first and probably &quot;good enough&quot; for random passwords, it is not ideal. It does not give us the best security we can have with a certain length and character choice of a password.&lt;br /&gt;&lt;br /&gt;
+
+Another way of mapping a random integer number to an index for our list of characters is to use a random value modulo the size of our character class. Here is &lt;a href=&quot;https://stackoverflow.com/a/51540480&quot; rel=&quot;nofollow&quot;&gt;an example from a StackOverflow comment&lt;/a&gt;:
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* Example with modulo bias, DO NOT USE */
+var generatePassword = (
+  length = 20,
+  characters = &#039;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$&#039;
+) =&gt;
+  Array.from(crypto.getRandomValues(new Uint32Array(length)))
+    .map((x) =&gt; characters[x % characters.length])
+    .join(&#039;&#039;)&lt;/code&gt;&lt;/pre&gt;
+
+This is also not ideal. It introduces a modulo bias.&lt;br /&gt;&lt;br /&gt;
+
+The modulo bias in this example is quite small, so let&#039;s look at a different example. Assume we use letters and numbers (a-z, A-Z, 0-9, 62 characters total) and take a single byte (256 different values, 0-255) &lt;em&gt;r&lt;/em&gt; from the random number generator. If we use the modulus &lt;em&gt;r % 62&lt;/em&gt;, some characters are more likely to appear than others. The reason is that 256 is not a multiple of 62, so it is impossible to map our byte to this list of characters with a uniform distribution.&lt;br /&gt;&lt;br /&gt;
+
+In our example, the lowercase &quot;a&quot; would be mapped to five values (0, 62, 124, 186, 248). The uppercase &quot;A&quot; would be mapped to only four values (26, 88, 150, 212). Some values have a higher probability than others.&lt;br /&gt;&lt;br /&gt;
+
+(For more detailed explanations of a modulo bias, check &lt;a href=&quot;https://research.kudelskisecurity.com/2020/07/28/the-definitive-guide-to-modulo-bias-and-how-to-avoid-it/&quot;&gt;this post by Yolan Romailler from Kudelski Security&lt;/a&gt; and &lt;a href=&quot;https://blog.hartwork.org/posts/arc4random_uniform-and-avoiding-modulo-bias-when-using-a-random-number-generator/&quot;&gt;this post from Sebastian Pipping&lt;/a&gt;.)&lt;br /&gt;&lt;br /&gt;
+
+One way to avoid a modulo bias is to use rejection sampling. The idea is that you throw away the values that cause higher probabilities. In our example above, 248 and higher values cause the modulo bias, so if we generate such a value, we repeat the process. A piece of code to generate a single random character could look like this:
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const pwchars = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;;
+const limit = 256 - (256 % pwchars.length);
+do {
+  randval = window.crypto.getRandomValues(new Uint8Array(1))[0];
+} while (randval &amp;gt;= limit);&lt;/code&gt;&lt;/pre&gt;
+
+Values equal or above &lt;em&gt;limit&lt;/em&gt; get thrown away. The limit is set to the number of possible values in a byte modulo the number of different characters we want to use. We generate a random byte, and if it is above the limit, we will just repeat that process until we get a suitable value.&lt;br /&gt;&lt;br /&gt;
+
+An alternative to rejection sampling is to make the modulo bias so small that it does not matter (by using a very large random value).&lt;br /&gt;&lt;br /&gt;
+
+However, I find rejection sampling to be a much cleaner solution. If you argue that the modulo bias is so small that it does not matter, you must carefully analyze whether this is true. For a password, a small modulo bias may be okay. For cryptographic applications, things can be different. Rejection sampling avoids the modulo bias completely. Therefore, it is always a safe choice.&lt;br /&gt;&lt;br /&gt;
+
+There are two things you might wonder about this approach. One is that it introduces a timing difference. In cases where the random number generator turns up multiple numbers in a row that are thrown away, the code runs a bit longer.&lt;br /&gt;&lt;br /&gt;
+
+Timing differences can be a problem in security code, but this one is not. It does not reveal any information about the password because it is only influenced by values we throw away. Even if an attacker were able to measure the exact timing of our password generation, it would not give him any useful information. (This argument is however only true for a cryptographically secure random number generator. It assumes that the ignored random values do not reveal any information about the random number generator&#039;s internal state.)&lt;br /&gt;&lt;br /&gt;
+
+Another issue with this approach is that it is not guaranteed to finish in any given time. Theoretically, the random number generator could produce numbers above our limit so often that the function stalls. However, the probability of that happening quickly becomes so low that it is irrelevant. Such code is generally so fast that even multiple rounds of rejection would not cause a noticeable delay.&lt;br /&gt;&lt;br /&gt;
+
+To summarize: If we want to write a secure, random password generation function, we should consider three things: We should use a secure random number generation function. We should avoid floating point numbers. And we should avoid a modulo bias.&lt;br /&gt;&lt;br /&gt;
+
+Taking this all together, here is a Javascript  function that generates a 15-character password, composed of ASCII letters and numbers:
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function simplesecpw() {
+  const pwlen = 15;
+  const pwchars = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;;
+  const limit = 256 - (256 % pwchars.length);
+
+  let passwd = &quot;&quot;;
+  let randval;
+  for (let i = 0; i &amp;lt; pwlen; i++) {
+    do {
+      randval = window.crypto.getRandomValues(new Uint8Array(1))[0];
+    } while (randval &amp;gt;= limit);
+    passwd += pwchars[randval % pwchars.length];
+  }
+  return passwd;
+}&lt;/code&gt;&lt;/pre&gt;
+
+We first define our length and string of possible characters. We calculate the limit for the modulo bias. We run a for loop 15 times. Inside that loop, we have a while loop generating a random byte and implementing rejection sampling. Finally, we use the generated random value modulo the number of possible characters as our index. Overall, this is just 15 lines of code, and it is not particularly complicated.&lt;br /&gt;&lt;br /&gt;
+
+If you want to use that code, feel free to do so. I have &lt;a href=&quot;https://github.com/hannob/secpw/blob/main/simplesecpw.js&quot;&gt;published it&lt;/a&gt; - and a &lt;a href=&quot;https://github.com/hannob/secpw/blob/main/secpw.js&quot;&gt;slightly more configurable version&lt;/a&gt; that allows optionally setting the length and the set of characters - under a very permissive license (0BSD license).&lt;br /&gt;&lt;br /&gt;
+
+An online demo generating a password with this code can be found at &lt;a href=&quot;https://password.hboeck.de/&quot;&gt;https://password.hboeck.de/&lt;/a&gt;. All code is &lt;a href=&quot;https://github.com/hannob/secpw&quot;&gt;available on GitHub&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;
+
+&lt;em&gt;Image Source: &lt;a href=&quot;https://www.svgrepo.com/svg/186569/dice&quot;&gt;SVG Repo, CC0&lt;/a&gt;&lt;/em&gt; 
+    </content:encoded>
+
+    <pubDate>Mon, 05 Feb 2024 15:23:00 +0100</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/907-guid.html</guid>
+    <category>cryptography</category>
+<category>javascript</category>
+<category>modulobias</category>
+<category>password</category>
+<category>random</category>
+<category>security</category>
+
+</item>
+<item>
+    <title>A Newsletter about Climate Change and Industrial Decarbonization</title>
+    <link>https://blog.hboeck.de/archives/905-A-Newsletter-about-Climate-Change-and-Industrial-Decarbonization.html</link>
+            <category>Ecology</category>
+            <category>English</category>
+            <category>Politics</category>
+            <category>Science</category>
+    
+    <comments>https://blog.hboeck.de/archives/905-A-Newsletter-about-Climate-Change-and-Industrial-Decarbonization.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=905</wfw:comment>
+
+    <slash:comments>0</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=905</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;!-- s9ymdb:500 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;300&quot; height=&quot;225&quot;  src=&quot;https://blog.hboeck.de/uploads/pylon.jpg&quot;  loading=&quot;lazy&quot; alt=&quot;Pylon / Electricity&quot;&gt;Noticing that my old blog still gets considerable traffic and has a substantial number of people accessing its feeds, I thought I should announce a project I recently started.&lt;br /&gt;
+&lt;br /&gt;
+When discussing climate change and solutions, we often consider actions like replacing coal power plants with clean energy sources. But while these are important, they are the easy part. There is a whole range of emission sources that are much harder to avoid.&lt;br /&gt;
+&lt;br /&gt;
+Over a decade ago, I covered climate change for a German online publication. Due to the carbon capture and storage debate, &lt;a href=&quot;https://web.archive.org/web/20111003193405/http://www.klimaretter.info/forschung/hintergrund/9509-die-suche-nach-dem-gruenen-zement&quot;&gt;I&lt;/a&gt; &lt;a href=&quot;https://web.archive.org/web/20111015011231/http://www.klimaretter.info/forschung/hintergrund/9587-stahl-ohne-kohlendioxid&quot;&gt;learned&lt;/a&gt; that some industrial processes have emissions that cannot be easily avoided. The largest and most well-known examples are steelmaking, where coal chemically reduces iron oxide to iron, and cement production, which uses carbon-containing minerals as an input material.&lt;br /&gt;
+&lt;br /&gt;
+But while these are the most well-known and emission-wise most significant examples, they are not the only ones.&lt;br /&gt;
+&lt;br /&gt;
+I eventually found this so interesting that &lt;a href=&quot;https://industrydecarbonization.com/&quot;&gt;I started my own publication about it in the form of a newsletter&lt;/a&gt;. Several things contributed to this: I wanted to discuss topics like these more in-depth and publish more in English, and I saw that multiple other journalists in the field of energy and climate started running their own newsletters, podcasts, or other publications.&lt;br /&gt;
+&lt;br /&gt;
+If this sounds interesting to you, check the stories I already published. Some topics I have already covered include &lt;a href=&quot;https://industrydecarbonization.com/news/the-avoidable-super-greenhouse-gas-from-fertilizer-nylon-and-vitamin-b3-production.html&quot;&gt;easily avoidable N₂O emissions in the chemical industry&lt;/a&gt;, an &lt;a href=&quot;https://industrydecarbonization.com/news/can-ccs-escape-from-its-fossil-fuel-industry-roots.html&quot;&gt;overview of CCS&lt;/a&gt;, issues &lt;a href=&quot;https://industrydecarbonization.com/news/how-iceland-sold-the-same-green-electricity-twice.html&quot;&gt;with green electricity certificates from Iceland and Norway&lt;/a&gt; (another update on that one will come soon), an &lt;a href=&quot;https://industrydecarbonization.com/news/making-steel-with-electricity.html&quot;&gt;experimental, fully electrified steelmaking process&lt;/a&gt;, and most recently about &lt;a href=&quot;https://industrydecarbonization.com/news/should-we-burn-methanol-when-the-wind-does-not-blow.html&quot;&gt;methanol as an electricity storage technology&lt;/a&gt;. And if you find them interesting, please &lt;a href=&quot;https://industrydecarbonization.com/subscribe.html&quot;&gt;subscribe&lt;/a&gt;. If you prefer that, &lt;a href=&quot;https://industrydecarbonization.com/rss.xml&quot;&gt;an RSS feed&lt;/a&gt; is also available. 
+    </content:encoded>
+
+    <pubDate>Mon, 27 Nov 2023 21:09:00 +0100</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/905-guid.html</guid>
+    <category>cement</category>
+<category>climate</category>
+<category>climatechange</category>
+<category>decarbonization</category>
+<category>industry</category>
+<category>steel</category>
+
+</item>
+<item>
+    <title>Please do not put IP addresses into DNS MX records</title>
+    <link>https://blog.hboeck.de/archives/904-Please-do-not-put-IP-addresses-into-DNS-MX-records.html</link>
+    
+    <comments>https://blog.hboeck.de/archives/904-Please-do-not-put-IP-addresses-into-DNS-MX-records.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=904</wfw:comment>
+
+    <slash:comments>3</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=904</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;!-- s9ymdb:498 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;225&quot; height=&quot;300&quot;  src=&quot;https://blog.hboeck.de/uploads/postbox.jpg&quot;  alt=&quot;Postbox&quot;&gt;I want to highlight a common misconfiguration in the DNS records for e-mail servers.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/a108fe84457f4d03abf3877bee3dad9f&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;&gt;&lt;br /&gt;
+&lt;br /&gt;
+When a domain is configured to receive mails usually a DNS record of the type MX is configured pointing to the host name of the mail server.&lt;br /&gt;
+&lt;br /&gt;
+Notably, according to the respective &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc1035&quot;&gt;RFC 1035&lt;/a&gt; the MX record must contain a domain name and may not directly point to an IP address. However some mail servers do configure an IP address. Many mail servers are lenient when it comes to this misconfiguration and will deliver mails nevertheless, so this may stay undetected.&lt;br /&gt;
+&lt;br /&gt;
+I happen to use a mail server that is less forgiving (Courier), and every now and then I cannot send a mail due to this. It’s rare, but it does happen. If your mail server has such a configuration you may not receive some legitimate e-mails.&lt;br /&gt;
+&lt;br /&gt;
+So I’m hoping to raise some awareness and get some of those servers fixed.&lt;br /&gt;
+&lt;br /&gt;
+&lt;ul&gt;&lt;li&gt;Obviously if you run a mail and DNS server please don’t do this and correctly set your MX records.&lt;/li&gt;&lt;li&gt;If you do any kind of IT service or consulting that is related to mail and DNS servers this is a good thing to add to your list of things to check regularly (here&#039;s a &lt;a href=&quot;https://github.com/hannob/ipmx&quot;&gt;very simple python script you can use&lt;/a&gt;).&lt;/li&gt;&lt;li&gt;If you run any form of service or tool that checks DNS and mail servers for misconfigurations, please add a check for IP addresses in MX records and warn your users. Unfortunately only few services do this currently (thanks to &lt;a href=&quot;https://www.hardenize.com/&quot;&gt;Hardenize&lt;/a&gt; and &lt;a href=&quot;https://intodns.com/&quot;&gt;IntoDNS&lt;/a&gt; who will warn users about this), and some popular services don’t.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;br /&gt;
+I did a quick scan of the Alexa Top 1 Million list. Currently &lt;a href=&quot;https://github.com/hannob/ipmx/blob/main/scans/ipmx-2021-02-20.txt&quot;&gt;around 0,06 % are affected&lt;/a&gt; (if you happen to know someone responsible for a host on this list please consider pointing them to this blogpost). I hope by writing this I can reduce that number, I may later try to contact them via their postmaster alias.&lt;br /&gt;
+&lt;br /&gt;
+(&lt;a href=&quot;https://nohat.cc/f/post-box-mailbox-letterbox-mail-box-postage/4671034800209920-201811091927.html&quot;&gt;Image source: nohat.cc / CC0&lt;/a&gt;) 
+    </content:encoded>
+
+    <pubDate>Sun, 21 Feb 2021 18:04:00 +0100</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/904-guid.html</guid>
+    
+</item>
+<item>
+    <title>File Exfiltration via Libreoffice in BigBlueButton and JODConverter</title>
+    <link>https://blog.hboeck.de/archives/902-File-Exfiltration-via-Libreoffice-in-BigBlueButton-and-JODConverter.html</link>
+            <category>Code</category>
+            <category>English</category>
+            <category>Linux</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/902-File-Exfiltration-via-Libreoffice-in-BigBlueButton-and-JODConverter.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=902</wfw:comment>
+
+    <slash:comments>0</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=902</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;!-- s9ymdb:496 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;300&quot; height=&quot;303&quot;  src=&quot;https://blog.hboeck.de/uploads/bluebutton.jpg&quot;  alt=&quot;Blue Button&quot;&gt;BigBlueButton is a free web-based video conferencing software that lately got quite popular, largely due to Covid-19. Earlier this year I did a brief check on its security which led to an &lt;a href=&quot;https://www.golem.de/news/big-blue-button-das-grosse-blaue-sicherheitsrisiko-2010-151610.html&quot;&gt;article on Golem.de (German)&lt;/a&gt;. I want to share the most significant findings here.&lt;br /&gt;
+&lt;br /&gt;
+BigBlueButton has a feature that lets a presenter upload a presentation in a wide variety of file formats that gets then displayed in the web application. This looked like a huge attack surface. The conversion for many file formats is done with Libreoffice on the server. Looking for ways to exploit server-side Libreoffice rendering I found a &lt;a href=&quot;https://buer.haus/2019/10/18/a-tale-of-exploitation-in-spreadsheet-file-conversions/&quot;&gt;blog post by Bret Buerhaus&lt;/a&gt; that discussed a number of ways of exploiting such setups.&lt;br /&gt;
+&lt;br /&gt;
+One of the methods described there is a feature in Opendocument Text (ODT) files that allows embedding a file from an external URL in a text section. This can be a web URL like https or a file url and include a local file.&lt;br /&gt;
+&lt;br /&gt;
+This directly worked in BigBlueButton. An ODT file that referenced a local file would display that local file. This allows displaying any file that the user running the BigBlueButton service could access on the server. A possible way to exploit this is to exfiltrate the configuration file that contains the API secret key, which then allows basically controlling the BigBlueButton instance. I have a &lt;a href=&quot;https://www.youtube.com/watch?v=op2hc2Z56a8&quot;&gt;video showing the exploit here&lt;/a&gt;. (I will publish the exploit later.)&lt;br /&gt;
+&lt;br /&gt;
+I reported this to the developers of BigBlueButton in May. Unfortunately my experience with their security process was not very good. At first I did not get an answer at all. After another mail they told me they plan to sandbox the Libreoffice process either via a chroot or a docker container. However that still has not happened yet. It is planned for the upcoming version 2.3 and independent of this bug this is a good idea, as Libreoffice just creates a lot of attack surface.&lt;br /&gt;
+&lt;br /&gt;
+Recently I looked a bit more into this.  The functionality to include external files only happens after a manual user confirmation and if one uses Libreoffice on the command line it does not work at all by default. So in theory this exploit should not have worked, but it did.&lt;br /&gt;
+&lt;br /&gt;
+It turned out the reason for this was another piece of software that BigBlueButton uses called &lt;a href=&quot;https://github.com/jodconverter/jodconverter&quot;&gt;JODConverter&lt;/a&gt;. It provides a wrapper around the conversion functionality of Libreoffice. After contacting both the Libreoffice security team and the developer of JODConverter we figured out that it enables including external URLs by default.&lt;br /&gt;
+&lt;br /&gt;
+I forwarded this information to the BigBlueButton developers and it finally let to a fix, they now change the default settings of JODConverter manually. The JODConverter developer considers changing the default as well, but this has not happened yet. Other software or web pages using JODConverter for serverside file conversion may thus still be vulnerable.&lt;br /&gt;
+&lt;br /&gt;
+The fix was included in version 2.2.27. Today I learned that the company RedTeam Pentesting &lt;a href=&quot;https://www.redteam-pentesting.de/en/advisories/rt-sa-2020-005/-arbitrary-file-disclosure-and-server-side-request-forgery-in-bigbluebutton&quot;&gt;has later independently found the same vulnerability&lt;/a&gt;. They also requested a CVE: It is now filed as CVE-2020-25820.&lt;br /&gt;
+&lt;br /&gt;
+While this issue is fixed, the handling of security issues by BigBlueButton was not exactly stellar. It took around five months from my initial report to a fix. The &lt;a href=&quot;https://github.com/bigbluebutton/bigbluebutton/releases/tag/v2.2.27&quot;&gt;release notes&lt;/a&gt; do not mention that this is an important security update (the change has the note “speed up the conversion”).&lt;br /&gt;
+&lt;br /&gt;
+I found a bunch of other security issues in BigBlueButton and proposed some hardening changes. This took a lot of back and forth, but all significant issues are resolved now.&lt;br /&gt;
+&lt;br /&gt;
+Another issue with the presentation upload was that it allowed cross site scripting, because it did not set a proper content type for downloads. This was independently discovered by another person and was fixed a while ago. (If you are interested in details about this class of vulnerabilities: I have given &lt;a href=&quot;https://www.youtube.com/watch?v=8t8JYpt0egE&quot;&gt;a talk about it at last year’s Security Fest&lt;/a&gt;.)&lt;br /&gt;
+&lt;br /&gt;
+The session Cookies both from BigBlueButton itself and from its default web frontend Greenlight were not set with a secure flag, so the cookies could be transmitted in clear text over the network. This has also been changed now.&lt;br /&gt;
+&lt;br /&gt;
+By default the BigBlueButton installation script starts several services that open ports that do not need to be publicly accessible. This is now also changed. A freeswitch service run locally was installed with a default password (“ClueCon”), this is now also changed to a random password by the installation script.&lt;br /&gt;
+&lt;br /&gt;
+What also looks quite problematic is the use of outdated software. BigBlueButton only works on Ubuntu 16.04, which is a long term support version, so it still receives updates. But it also uses several external repositories, including one that installs NodeJS version 8 and shows a warning that this repository no longer receives security updates. There is an &lt;a href=&quot;https://github.com/bigbluebutton/bbb-install/issues/109&quot;&gt;open bug in the bug tracker&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+If you are using BigBlueButton I strongly recommend you update to at least version 2.2.27. This should fix all the issues I found. I would wish that the BigBlueButton developers improve their security process, react more timely to external reports and more transparent when issues are fixed.&lt;br /&gt;
+&lt;br /&gt;
+&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Porpita_porpita.jpg&quot;&gt;Image Source: Wikimedia Commons / NOAA / Public Domain&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Update:&lt;/b&gt; &lt;a href=&quot;https://github.com/hannob/CVE-2020-27603-bbb-libreoffice-poc&quot;&gt;Proof of concept published&lt;/a&gt;. 
+    </content:encoded>
+
+    <pubDate>Wed, 21 Oct 2020 14:14:00 +0200</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/902-guid.html</guid>
+    <category>bigbluebutton</category>
+<category>cookie</category>
+<category>fileexfiltration</category>
+<category>itsecurity</category>
+<category>jodconverter</category>
+<category>libreoffice</category>
+<category>security</category>
+<category>websecurity</category>
+<category>xss</category>
+
+</item>
+<item>
+    <title>Generating CRIME safe CSRF Tokens</title>
+    <link>https://blog.hboeck.de/archives/900-Generating-CRIME-safe-CSRF-Tokens.html</link>
+            <category>Cryptography</category>
+            <category>English</category>
+            <category>Security</category>
+            <category>Webdesign</category>
+    
+    <comments>https://blog.hboeck.de/archives/900-Generating-CRIME-safe-CSRF-Tokens.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=900</wfw:comment>
+
+    <slash:comments>8</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=900</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;!-- s9ymdb:494 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;300&quot; height=&quot;200&quot;  src=&quot;https://blog.hboeck.de/uploads/crimescene.jpg&quot;  alt=&quot;CRIME&quot;&gt;For a small web project I recently had to consider how to generate secure tokens to prevent Cross Site Request Forgery (CSRF). I wanted to share how I think this should be done, primarily to get some feedback whether other people agree or see room for improvement.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/62d7fcc6549040b89d990e917a691d76&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+I am not going to discuss CSRF in general here, I will generally assume that you are aware of how this attack class works. The standard method to protect against CSRF is to add a token to every form that performs an action that is sufficiently random and unique for the session.&lt;br /&gt;
+&lt;br /&gt;
+Some web applications use the same token for every request or at least the same token for every request of the same kind. However this is problematic due to some TLS attacks.&lt;br /&gt;
+&lt;br /&gt;
+There are several attacks against TLS and HTTPS that work by generating a large number of requests and then slowly learning about a secret. A common target of such attacks are CSRF tokens. The list of these attacks is long: BEAST, all Padding Oracle attacks (Lucky Thirteen, POODLE, Zombie POODLE, GOLDENDOODLE), RC4 bias attacks and probably a few more that I have forgotten about. The good news is that none of these attacks should be a concern, because they all affect fragile cryptography that is no longer present in modern TLS stacks.&lt;br /&gt;
+&lt;br /&gt;
+However there is a class of TLS attacks that is still a concern, because there is no good general fix, and these are compression based attacks. The first such attack that has been shown was called &lt;a href=&quot;https://en.wikipedia.org/wiki/CRIME&quot;&gt;CRIME&lt;/a&gt;, which targeted TLS compression. TLS compression is no longer used, but a later attack called &lt;a href=&quot;https://breachattack.com/&quot;&gt;BREACH&lt;/a&gt; used HTTP compression, which is still widely in use and which nobody wants to disable, because HTML code compresses so well. Further improvements of these attacks are known as &lt;a href=&quot;https://www.youtube.com/watch?v=rTIpFfTp3-w&quot;&gt;TIME&lt;/a&gt; and &lt;a href=&quot;https://www.youtube.com/watch?v=GwQsu8dGSeA&quot;&gt;HEIST&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+I am not going to discuss these attacks in detail, it is sufficient to know that they all rely on a secret being transmitted again and again over a connection. So CSRF tokens are vulnerable to this if they are the same over multiple connections. If we have an always changing CSRF token this attack does not apply to it.&lt;br /&gt;
+&lt;br /&gt;
+An obvious fix for this is to always generate new CSRF tokens. However this requires quite a bit of state management on the server or other trade-offs, therefore I don’t think it’s desirable. Rather a good concept would be to keep a single server-side secret, but put some randomness in so the token changes on every request.&lt;br /&gt;
+&lt;br /&gt;
+The &lt;a href=&quot;https://breachattack.com/&quot;&gt;BREACH authors have the following brief recommendation&lt;/a&gt; (thanks to &lt;a href=&quot;https://twitter.com/ivanristic/status/1248184646833246210&quot;&gt;Ivan Ristic for pointing this out&lt;/a&gt;): “Masking secrets (effectively randomizing by XORing with a random secret per request)”.&lt;br /&gt;
+&lt;br /&gt;
+I read this as having a real token and a random value and the CSRF token would look like random_value + XOR(random_value, real_token). The server could verify this by splitting up the token, XORing the first half with the second and then comparing that to the real token.&lt;br /&gt;
+&lt;br /&gt;
+However I would like to add something: I would prefer if a token used for one form and action cannot be used for another action. In case there is any form of token exfiltration it seems reasonable to limit the utility of the token as much as possible.&lt;br /&gt;
+&lt;br /&gt;
+My idea is therefore to use a cryptographic hash function instead of XOR and add a scope string. This could be something like “adduser”, “addblogpost” etc., anything that identifies the action.&lt;br /&gt;
+&lt;br /&gt;
+The server would keep a secret token per session on the server side and the CSRF token would look like this: random_value + hash(random_value + secret_token + scope). The random value changes each time the token is sent.&lt;br /&gt;
+&lt;br /&gt;
+I have created &lt;a href=&quot;https://github.com/hannob/crimesafe-csrf/blob/master/crimesafe-csrf.php&quot;&gt;some simple PHP code to implement this&lt;/a&gt; (if there is sufficient interest I will learn how to turn this into a composer package). The usage is very simple, there is one function to create a token that takes a scope string as the only parameter and another to check a token that takes the public token and the scope and returns true or false.&lt;br /&gt;
+&lt;br /&gt;
+As for the implementation details I am using 256 bit random values and secret tokens, which is excessively too much and should avoid any discussion about them being too short. For the hash I am using sha364, which is widely supported and not vulnerable to length extension attacks. I do not see any reason why length extension attacks would be relevant here, but still this feels safer. I believe the order of the hash inputs should not matter, but I have seen constructions where having &lt;br /&gt;
+The CSRF token is Base64-encoded, which should work fine in HTML forms.&lt;br /&gt;
+&lt;br /&gt;
+My question would be if people think this is a sane design or if they see room for improvement. Also as this is all relatively straightforward and obvious, I am almost sure I am not the first person to invent this, pointers welcome.&lt;br /&gt;
+&lt;br /&gt;
+&lt;!-- s9ymdb:493 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;300&quot; height=&quot;200&quot;  src=&quot;https://blog.hboeck.de/uploads/cookies.jpg&quot;  alt=&quot;Cookies&quot;&gt;Now there is an elephant in the room I also need to discuss. Form tokens are the traditional way to prevent CSRF attacks, but in recent years browsers have introduced a new and completely different way of preventing CSRF attacks called SameSite Cookies. The long term plan is to enable them by default, which would likely make CSRF almost impossible. (These plans have been delayed due to Covid-19 and there will probably be some unfortunate compatibility trade-offs that are reason enough to still set the flag manually in a SameSite-by-default world.)&lt;br /&gt;
+&lt;br /&gt;
+SameSite Cookies have two flavors: Lax and Strict. When set to Lax, which is what I would recommend that every web application should do, POST requests sent from another host are sent without the Cookie. With Strict all requests, including GET requests, sent from another host are sent without the Cookie. I do not think this is a desirable setting in most cases, as this breaks many workflows and GET requests should not perform any actions anyway.&lt;br /&gt;
+&lt;br /&gt;
+Now here is a question I have: Are SameSite cookies enough? Do we even need to worry about CSRF tokens any more or can we just skip them? Are there any scenarios where one can bypass SameSite Cookies, but not CSRF tokens?&lt;br /&gt;
+&lt;br /&gt;
+One could of course say “Why not both?” and see this as a kind of defense in depth. It is a popular mode of thinking to always see more security mechanisms as better, but I do not agree with that reasoning. Security mechanisms introduce complexity and if you can do with less complexity you usually should. CSRF tokens always felt like an ugly solution to me, and I feel SameSite Cookies are a much cleaner way to solve this problem.&lt;br /&gt;
+&lt;br /&gt;
+So are there situations where SameSite Cookies do not protect and we need tokens? The obvious one is old browsers that do not support SameSite Cookies, however they have been around for a while and if you are willing to not support &lt;a href=&quot;https://caniuse.com/#feat=same-site-cookie-attribute&quot;&gt;really old and obscure browsers&lt;/a&gt; that should not matter.&lt;br /&gt;
+&lt;br /&gt;
+A remaining problem I could think of is software that accepts action requests both as GET and POST variables (e. g. in PHP if one uses the $_REQUESTS variable instead of $_POST). These need to be avoided, but using GET for anything that performs actions in the application should not be done anyway. (SameSite=Strict does not really fix his, as GET requests can still plausibly come from links, e. g. on applications that support internal messaging.)&lt;br /&gt;
+&lt;br /&gt;
+Also an edge case problem may be a transition period: If a web application removes CSRF tokens and starts using SameSite Cookies at the same time Users may still have old Cookies around without the flag. So a transition period at least as long as the Cookie lifetime should be used.&lt;br /&gt;
+&lt;br /&gt;
+Furthermore there are &lt;a href=&quot;https://medium.com/@renwa/bypass-samesite-cookies-default-to-lax-and-get-csrf-343ba09b9f2b&quot;&gt;bypasses for the SameSite-by-default Cookies as planned by browser vendors&lt;/a&gt;, but these do not apply when the web application sets the SameSite flag itself. (Essentially the SameSite-by-default Cookies are only SameSite after two minutes, so there is a small window for an attack after setting the Cookie.)&lt;br /&gt;
+&lt;br /&gt;
+Considering all this if one carefully makes sure that actions can only be performed by POST requests, sets SameSite=Lax on all Cookies and plans a transition period one should be able to safely remove CSRF tokens. Anyone disagrees?&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Image sources: &lt;a href=&quot;https://www.piqsels.com/en/public-domain-photo-zkmzd&quot;&gt;Piqsels&lt;/a&gt;, &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Christmas-cookies-1051884_1920.jpg&quot;&gt;Wikimedia Commons&lt;/a&gt;&lt;/em&gt; 
+    </content:encoded>
+
+    <pubDate>Mon, 13 Apr 2020 21:54:00 +0200</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/900-guid.html</guid>
+    <category>breach</category>
+<category>cookies</category>
+<category>crime</category>
+<category>csrf</category>
+<category>heist</category>
+<category>https</category>
+<category>samesite</category>
+<category>time</category>
+<category>tls</category>
+<category>web</category>
+<category>websecurity</category>
+
+</item>
+<item>
+    <title>Userdir URLs like https://example.org/~username/ are dangerous</title>
+    <link>https://blog.hboeck.de/archives/899-Userdir-URLs-like-httpsexample.orgusername-are-dangerous.html</link>
+            <category>English</category>
+            <category>Gentoo</category>
+            <category>Linux</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/899-Userdir-URLs-like-httpsexample.orgusername-are-dangerous.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=899</wfw:comment>
+
+    <slash:comments>4</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=899</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    I would like to point out a security problem with a classic variant of web space hosting. While this issue should be obvious to anyone knowing basic web security, I have never seen it being discussed publicly.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/56d38bf5a0054ba4b2d536f657784f1a&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+Some server operators allow every user on the system to have a personal web space where they can place files in a directory (often &lt;em&gt;~/public_html&lt;/em&gt;) and they will appear on the host under a URL with a tilde and their username (e.g. &lt;em&gt;https://example.org/~username/&lt;/em&gt;). The Apache web server provides such a function in the mod_userdir module. While this concept is rather old, it is still used by some and is often used by universities and Linux distributions.&lt;br /&gt;
+&lt;br /&gt;
+From a web security perspective there is a very obvious problem with such setups that stems from the same origin policy, which is a core principle of Javascript security. While there are many subtleties about it, the key principle is that a piece of Javascript running on one web host is isolated from other web hosts.&lt;br /&gt;
+&lt;br /&gt;
+To put this into a practical example: If you read your emails on a web interface on &lt;em&gt;example.com&lt;/em&gt; then a script running on &lt;em&gt;example.org&lt;/em&gt; should not be able to read your mails, change your password or mess in any other way with the application running on a different host. However if an attacker can place a script on &lt;em&gt;example.com&lt;/em&gt;, which is called a Cross Site Scripting or XSS vulnerability, the attacker may be able to do all that.&lt;br /&gt;
+&lt;br /&gt;
+The problem with userdir URLs should now become obvious: All userdir URLs on one server run on the same host and thus are in the same origin. It has XSS by design.&lt;br /&gt;
+&lt;br /&gt;
+What does that mean in practice? Let‘s assume we have Bob, who has the username „bob“ on exampe.org, runs a blog on &lt;em&gt;https://example.org/~bob/&lt;/em&gt;. User Mallory, who has the username „mallory“ on the same host, wants to attack Bob. If Bob is currently logged into his blog and Mallory manages to convince Bob to open her webpage – hosted at &lt;em&gt;https://example.org/~mallory/&lt;/em&gt; - at the same time she can place an attack script there that will attack Bob. The attack could be a variety of things from adding another user to the blog, changing Bob‘s password or reading unpublished content.&lt;br /&gt;
+&lt;br /&gt;
+This is only an issue if the users on &lt;em&gt;example.org&lt;/em&gt; do not trust each other, so the operator of the host may decide this is no problem if there is only a small number of trusted users. However there is another issue: An XSS vulnerability on any of the userdir web pages on the same host may be used to attack any other web page on the same host.&lt;br /&gt;
+&lt;br /&gt;
+So if for example Alice runs an outdated web application with a known XSS vulnerability on &lt;em&gt;https://example.org/~alice/&lt;/em&gt; and Bob runs his blog on &lt;em&gt;https://example.org/~bob/&lt;/em&gt; then Mallory can use the vulnerability in Alice‘s web application to attack Bob.&lt;br /&gt;
+&lt;br /&gt;
+All of this is primarily an issue if people run non-trivial web applications that have accounts and logins. If the web pages are only used to host static content the issues become much less problematic, though it is still with some limitations possible that one user could show the webpage of another user in a manipulated way.&lt;br /&gt;
+&lt;br /&gt;
+So what does that mean? You probably should not use userdir URLs for anything except hosting of simple, static content - and probably not even there if you can avoid it. Even in situations where all users are considered trusted there is an increased risk, as vulnerabilities can cross application boundaries. As for Apache‘s mod_userdir I have contacted the Apache developers and they agreed to add a &lt;a href=&quot;https://httpd.apache.org/docs/2.4/mod/mod_userdir.html&quot;&gt;warning to the documentation&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+If you want to provide something similar to your users you might want to give every user a subdomain, for example &lt;em&gt;https://alice.example.org/&lt;/em&gt;, &lt;em&gt;https://bob.example.org/&lt;/em&gt; etc. There is however still a caveat with this: Unfortunately the same origin policy does not apply to all web technologies and particularly it does not apply to Cookies. However cross-hostname Cookie attacks are much less straightforward and there is often no practical attack scenario, thus using subdomains is still the more secure choice.&lt;br /&gt;
+&lt;br /&gt;
+To avoid these Cookie issues for domains where user content is hosted regularly – a well-known example is &lt;em&gt;github.io&lt;/em&gt; – there is the &lt;a href=&quot;https://publicsuffix.org/&quot;&gt;Public Suffix List&lt;/a&gt; for such domains. If you run a service with user subdomains you might want to consider adding your domain there, which can be done with a pull request. 
+    </content:encoded>
+
+    <pubDate>Mon, 06 Apr 2020 11:44:00 +0200</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/899-guid.html</guid>
+    <category>apache</category>
+<category>itsecurity</category>
+<category>javascript</category>
+<category>security</category>
+<category>userdir</category>
+<category>web</category>
+<category>websecurity</category>
+
+</item>
+<item>
+    <title>#include &lt;/etc/shadow&gt;</title>
+    <link>https://blog.hboeck.de/archives/898-include-etcshadow.html</link>
+            <category>Code</category>
+            <category>English</category>
+            <category>Linux</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/898-include-etcshadow.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=898</wfw:comment>
+
+    <slash:comments>7</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=898</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    Recently I saw a &lt;a href=&quot;https://twitter.com/Poita_/status/1198413809670598662&quot;&gt;tweet where someone mentioned&lt;/a&gt; that you can include &lt;em&gt;/dev/stdin&lt;/em&gt; in C code compiled with gcc. This is, to say the very least, surprising.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na//dcdc9a333d3b4f4892ee58ce84fd0696&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+When you see something like this with an IT security background you start to wonder if this can be abused for an attack. While I couldn&#039;t come up with anything, I started to wonder what else you could include. As you can basically include arbitrary paths on a system this may be used to exfiltrate data - if you can convince someone else to compile your code.&lt;br /&gt;
+&lt;br /&gt;
+There are plenty of webpages that offer online services where you can type in C code and run it. It is obvious that such systems are insecure if the code running is not sandboxed in some way. But is it equally obvious that the compiler also needs to be sandboxed?&lt;br /&gt;
+&lt;br /&gt;
+How would you attack something like this? Exfiltrating data directly through the code is relatively difficult, because you need to include data that ends up being valid C code. Maybe there&#039;s a trick to make something like &lt;em&gt;/etc/shadow&lt;/em&gt; valid C code (you can put code before and after the include), but I haven&#039;t found it. But it&#039;s not needed either: The error messages you get from the compiler are all you need. All online tools I tested will show you the errors if your code doesn&#039;t compile.&lt;br /&gt;
+&lt;br /&gt;
+I even found one service that allowed me to add&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;#include &amp;lt;/etc/shadow&amp;gt;&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;
+and showed me the hash of the root password. This effectively means this service is running compile tasks as root.&lt;br /&gt;
+&lt;br /&gt;
+Including various files in &lt;em&gt;/etc&lt;/em&gt; allows to learn something about the system. For example &lt;em&gt;/etc/lsb-release&lt;/em&gt; often gives information about the distribution in use. Interestingly, including pseudo-files from &lt;em&gt;/proc&lt;/em&gt; does not work. It seems gcc treats them like empty files. This limits possibilities to learn about the system. &lt;em&gt;/sys&lt;/em&gt; and &lt;em&gt;/dev&lt;/em&gt; work, but they contain less human readable information.&lt;br /&gt;
+&lt;br /&gt;
+In summary I think services letting other people compile code should consider sandboxing the compile process and thus make sure no interesting information can be exfiltrated with these attack vectors. 
+    </content:encoded>
+
+    <pubDate>Mon, 16 Dec 2019 18:38:00 +0100</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/898-guid.html</guid>
+    
+</item>
+<item>
+    <title>Security Issues with PGP Signatures and Linux Package Management</title>
+    <link>https://blog.hboeck.de/archives/897-Security-Issues-with-PGP-Signatures-and-Linux-Package-Management.html</link>
+            <category>Code</category>
+            <category>English</category>
+            <category>Linux</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/897-Security-Issues-with-PGP-Signatures-and-Linux-Package-Management.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=897</wfw:comment>
+
+    <slash:comments>5</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=897</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    In discussions around the PGP ecosystem one thing I often hear is that while PGP has its problems, it&#039;s an important tool for package signatures in Linux distributions. I therefore want to highlight a few issues I came across in this context that are rooted in problems in the larger PGP ecosystem.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/d14a99edc2524b27afa121a783d56919&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+Let&#039;s look at an example of the use of PGP signatures for deb packages, the &lt;a href=&quot;https://docs.hhvm.com/hhvm/installation/linux&quot;&gt;Ubuntu Linux installation instructions for HHVM&lt;/a&gt;. HHVM is an implementation of the HACK programming language and developed by Facebook. I&#039;m just using HHVM as an example here, as it nicely illustrates two attacks I want to talk about, but you&#039;ll find plenty of similar installation instructions for other software packages. I have reported these issues to Facebook, but they decided not to change anything.&lt;br /&gt;
+&lt;br /&gt;
+The instructions for Ubuntu (and very similarly for Debian) recommend that users execute these commands in order to install HHVM from the repository of its developers:&lt;br /&gt;
+&lt;br /&gt;
+&lt;div class=&quot;code&quot;&gt;apt-get update&lt;br /&gt;
+apt-get install software-properties-common apt-transport-https&lt;br /&gt;
+apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xB4112585D386EB94&lt;br /&gt;
+&lt;br /&gt;
+add-apt-repository https://dl.hhvm.com/ubuntu&lt;br /&gt;
+apt-get update&lt;br /&gt;
+apt-get install hhvm&lt;/div&gt;&lt;br /&gt;
+&lt;br /&gt;
+The crucial part here is the line starting with apt-key. It fetches the key that is used to sign the repository from the Ubuntu key server, which itself is part of the PGP keyserver network.&lt;br /&gt;
+&lt;br /&gt;
+&lt;!-- s9ymdb:492 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;225&quot; height=&quot;300&quot;  src=&quot;https://blog.hboeck.de/uploads/key.jpg&quot;  alt=&quot;Key&quot;&gt;&lt;b&gt;Attack 1: Flooding Key with Signatures&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+The first possible attack is actually quite simple: One can make the signature key offered here unusable by appending many signatures.&lt;br /&gt;
+&lt;br /&gt;
+A key concept of the PGP keyservers is that they operate append-only. New data gets added, but never removed. PGP keys can sign other keys and these signatures can also be uploaded to the keyservers and get added to a key. Crucially the owner of a key has no influence on this.&lt;br /&gt;
+&lt;br /&gt;
+This means everyone can grow the size of a key by simply adding many signatures to it. Lately this has happened to a number of keys, see the blog posts &lt;a href=&quot;https://dkg.fifthhorseman.net/blog/openpgp-certificate-flooding.html&quot;&gt;by Daniel Kahn Gillmor&lt;/a&gt; and &lt;a href=&quot;https://gist.github.com/rjhansen/67ab921ffb4084c865b3618d6955275f&quot;&gt;Robert Hansen&lt;/a&gt;, two members of the PGP community who have personally been affected by this. The effect of this is that when GnuPG tries to import such a key it becomes excessively slow and at some point will simply not work any more.&lt;br /&gt;
+&lt;br /&gt;
+For the above installation instructions this means anyone can make them unusable by attacking the referenced release key. In my tests I was still able to import one of the attacked keys with apt-key after several minutes, but these keys &quot;only&quot; have a few ten thousand signatures, growing them to a few megabytes size. There&#039;s no reason an attacker couldn&#039;t use millions of signatures and grow single keys to gigabytes.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Attack 2: Rogue packages with a colliding Key Id&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+The installation instructions reference the key as 0xB4112585D386EB94, which is a 64 bit hexadecimal key id.&lt;br /&gt;
+&lt;br /&gt;
+Key ids are a central concept in the PGP ecosystem. The key id is a truncated SHA1 hash of the public key. It&#039;s possible to either use the last 32 bit, 64 bit or the full 160 bit of the hash.&lt;br /&gt;
+&lt;br /&gt;
+It&#039;s been pointed out in the past that short key ids allow colliding key ids. This means an attacker can generate a different key with the same key id where he owns the private key simply by bruteforcing the id. In 2014 &lt;a href=&quot;https://evil32.com/&quot;&gt;Richard Klafter and Eric Swanson showed with the Evil32 attack&lt;/a&gt; how to create colliding key ids for all keys in the so-called strong set (meaning all keys that are connected with most other keys in the web of trust). Later someone unknown uploaded these keys to the key servers causing quite some confusion.&lt;br /&gt;
+&lt;br /&gt;
+It should be noted that the issue of colliding key ids was known and discussed in the community way earlier, see for example &lt;a href=&quot;https://lists.gnupg.org/pipermail/gnupg-users/2002-March/012098.html&quot;&gt;this discussion from 2002&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+The practical attacks targeted 32 bit key ids, but the same attack works against 64 bit key ids, too, it just costs more. I contacted the authors of the Evil32 attack and Eric Swanson estimated in a back of the envelope calculation that it would cost roughly $ 120.000 to perform such an attack with GPUs on cloud providers. This is expensive, but within the possibilities of powerful attackers. Though one can also find similar installation instructions using a 32 bit key id, where the attack is really cheap.&lt;br /&gt;
+&lt;br /&gt;
+Going back to the installation instructions from above we can imagine the following attack: A man in the middle network attacker can intercept the connection to the keyserver - it&#039;s not encrypted or authenticated - and provide the victim a colliding key. Afterwards the key is imported by the victim, so the attacker can provide repositories with packages signed by his key, ultimately leading to code execution.&lt;br /&gt;
+&lt;br /&gt;
+You may notice that there&#039;s a problem with this attack: The repository provided by HHVM is using HTTPS. Thus the attacker can not simply provide a rogue HHVM repository. However the attack still works.&lt;br /&gt;
+&lt;br /&gt;
+The imported PGP key is not bound to any specific repository. Thus if the victim has any non-HTTPS repository configured in his system the attacker can provide a rogue repository on the next call of &quot;apt update&quot;. Notably by default both Debian and Ubuntu use HTTP for their repositories (a Debian developer even runs a dedicated web page &lt;a href=&quot;https://web.archive.org/web/20200326020753/https://whydoesaptnotusehttps.com/&quot;&gt;explaining why this is no big deal&lt;/a&gt;).&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Attack 3: Key over HTTP&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Issues with package keys aren&#039;t confined to Debian/APT-based distributions. I found these &lt;a href=&quot;https://web.archive.org/web/20190620135253/https://help.dropbox.com/installs-integrations/desktop/linux-repository&quot;&gt;installation instructions at Dropbox&lt;/a&gt; (Link to Wayback Machine, as Dropbox has changed them after I reported this):&lt;br /&gt;
+&lt;br /&gt;
+&lt;div class=&quot;code&quot;&gt;Add the following to /etc/yum.conf.&lt;br /&gt;
+&lt;br /&gt;
+name=Dropbox Repository&lt;br /&gt;
+baseurl=http://linux.dropbox.com/fedora/\$releasever/&lt;br /&gt;
+gpgkey=http://linux.dropbox.com/fedora/rpm-public-key.asc&lt;/div&gt;&lt;br /&gt;
+&lt;br /&gt;
+It should be obvious what the issue here is: Both the key and the repository are fetched over HTTP, a network attacker can simply provide his own key and repository.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Discussion&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+The standard answer you often get when you point out security problems with PGP-based systems is: &quot;It&#039;s not PGP/GnuPG, people are just using it wrong&quot;. But I believe these issues show some deeper problems with the PGP ecosystem. The key flooding issue is inherited from the systemically flawed concept of the append only key servers.&lt;br /&gt;
+&lt;br /&gt;
+The other issue here is lack of deprecation. Short key ids are problematic, it&#039;s been known for a long time and there have been plenty of calls to get rid of them. This begs the question why no effort has been made to deprecate support for them. One could have said at some point: Future versions of GnuPG will show a warning for short key ids and in three years we will stop supporting them.&lt;br /&gt;
+&lt;br /&gt;
+This reminds of other issues like unauthenticated encryption, where people have been arguing that this was fixed back in 1999 by the introduction of the MDC. Yet &lt;a href=&quot;https://efail.de/&quot;&gt;in 2018 it was still exploitable&lt;/a&gt;, because the unauthenticated version was never properly deprecated.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Fix&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+For all people having installation instructions for external repositories my recommendation would be to avoid any use of public key servers. Host the keys on your own infrastructure and provide them via HTTPS. Furthermore any reference to 32 bit or 64 bit key ids should be avoided.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Update:&lt;/b&gt; Some people have pointed out to me that the &lt;a href=&quot;https://wiki.debian.org/DebianRepository/UseThirdParty&quot;&gt;Debian Wiki contains guidelines for third party repositories&lt;/a&gt; that avoid the issues mentioned here. 
+    </content:encoded>
+
+    <pubDate>Fri, 13 Sep 2019 14:17:00 +0200</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/897-guid.html</guid>
+    <category>apt</category>
+<category>cryptography</category>
+<category>deb</category>
+<category>debian</category>
+<category>fedora</category>
+<category>gnupg</category>
+<category>gpg</category>
+<category>linux</category>
+<category>openpgp</category>
+<category>packagemanagement</category>
+<category>pgp</category>
+<category>rpm</category>
+<category>security</category>
+<category>signatures</category>
+<category>ubuntu</category>
+
+</item>
+<item>
+    <title>How my personal Bug Bounty Program turned into a Free Security Audit for the Serendipity Blog</title>
+    <link>https://blog.hboeck.de/archives/896-How-my-personal-Bug-Bounty-Program-turned-into-a-Free-Security-Audit-for-the-Serendipity-Blog.html</link>
+            <category>English</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/896-How-my-personal-Bug-Bounty-Program-turned-into-a-Free-Security-Audit-for-the-Serendipity-Blog.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=896</wfw:comment>
+
+    <slash:comments>1</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=896</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    HackerOne is currently one of the most popular bug bounty program platforms. While the usual providers of bug bounty programs are companies, w while ago I noted that &lt;a href=&quot;https://hackerone.com/arkadiyt-projects&quot;&gt;some&lt;/a&gt; &lt;a href=&quot;https://hackerone.com/ed&quot;&gt;people&lt;/a&gt; were running bug bounty programs on Hacker One for their private projects without payouts. It made me curious, so I decided to start one with some of my private web pages in scope.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/2a54411ab91e421eae6e529a7e5b6d55&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+The HackerOne process requires programs to be private at first, starting with a limited number of invites. Soon after I started the program the first reports came in. Not surprisingly I got plenty of false positives, which I tried to limit by documenting the scope better in the program description. I also got plenty of web security scanner payloads via my contact form. But more to my surprise I also got a number of very high quality reports.&lt;br /&gt;
+&lt;br /&gt;
+&lt;!-- s9ymdb:482 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;300&quot; height=&quot;211&quot;  src=&quot;https://blog.hboeck.de/uploads/s9y-logo.png&quot;  alt=&quot;S9Y&quot;&gt;This blog and two other sites in scope use &lt;a href=&quot;https://docs.s9y.org/&quot;&gt;Serendipity&lt;/a&gt; (also called S9Y), a blog software written in PHP. Through the bug bounty program I got reports for an &lt;a href=&quot;https://hackerone.com/reports/373916&quot;&gt;Open Redirect&lt;/a&gt;, an &lt;a href=&quot;https://hackerone.com/reports/374100&quot;&gt;XSS in the start page&lt;/a&gt;, an &lt;a href=&quot;https://hackerone.com/reports/373950&quot;&gt;XSS in the back end&lt;/a&gt;, an &lt;a href=&quot;https://hackerone.com/reports/374748&quot;&gt;SQL injection in the back end&lt;/a&gt; and &lt;a href=&quot;https://hackerone.com/reports/374027&quot;&gt;another SQL injection in the freetag plugin&lt;/a&gt;. All of those were legitimate vulnerabilities in Serendipity and some of them quite severe. I forwarded the reports to the Serendipity developers.&lt;br /&gt;
+&lt;br /&gt;
+Fixes are available by now, the first round of fixes were released with &lt;a href=&quot;https://blog.s9y.org/archives/278-Serendipity-2.1.3-released.html&quot;&gt;Serendipity 2.1.3&lt;/a&gt; and another issue got fixed in &lt;a href=&quot;https://blog.s9y.org/archives/280-Serendipity-2.1.4-and-2.2.1-alpha1-released.html&quot;&gt;2.1.4&lt;/a&gt;. The freetag plugin was updated to &lt;a href=&quot;https://blog.s9y.org/archives/279-serendipity_event_freetag-Security-update.html&quot;&gt;version 2.69&lt;/a&gt;. If you use Serendipity please make sure you run the latest versions.&lt;br /&gt;
+&lt;br /&gt;
+I&#039;m not always happy with the way the bug bounty platforms work, yet it seems they have attracted an active community of security researchers who are also willing to occasionally look at projects without financial reward. While it&#039;s questionable when large corporations run bug bounty programs without rewards, I think that it&#039;s totally fine for private projects and volunteer-run free and open source projects.&lt;br /&gt;
+&lt;br /&gt;
+The conclusion I take from this is that likely more projects should try to make use of the bug bounty community. Essentially Serendipity got a free security audit and is more secure now. It got this through the indirection of my personal bug bounty program, but of course this could also work directly. Free software projects could start their own bug bounty program, and when it&#039;s about web applications ideally they should have have a live installation of their own product in scope.&lt;br /&gt;
+&lt;br /&gt;
+In case you find some security issue with my web pages I &lt;a href=&quot;https://hackerone.com/hannob&quot;&gt;welcome reports&lt;/a&gt;. And special thanks to Brian Carpenter (Geeknik), Julio Cesar and oreamnos for making my blog more secure. 
+    </content:encoded>
+
+    <pubDate>Mon, 12 Nov 2018 09:22:00 +0100</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/896-guid.html</guid>
+    <category>bugbounty</category>
+<category>hackerone</category>
+<category>security</category>
+<category>serendipity</category>
+<category>sqlinjection</category>
+<category>websecurity</category>
+<category>xss</category>
+
+</item>
+<item>
+    <title>Efail: HTML Mails have no Security Concept and are to blame</title>
+    <link>https://blog.hboeck.de/archives/894-Efail-HTML-Mails-have-no-Security-Concept-and-are-to-blame.html</link>
+    
+    <comments>https://blog.hboeck.de/archives/894-Efail-HTML-Mails-have-no-Security-Concept-and-are-to-blame.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=894</wfw:comment>
+
+    <slash:comments>0</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=894</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;img src=&quot;https://blog.hboeck.de/uploads/efail-blue.svg&quot; alt=&quot;Efail&quot; class=&quot;serendipity_image_right sqimg&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;I recently wrote down my thoughts about why I think deprecated cryptographic standards are to blame for the Efail vulnerability in OpenPGP and S/MIME. However I promised that I&#039;ll also cover the other huge part that made a bug like Efail possible: HTML mails.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/3b6a271f047c4b97b7ace834d082ab08&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+Just a quick recap of the major idea of Efail: It&#039;s a combination of ways to manipulate encrypted messages and use active content in mails to exfiltrate the encrypted content. Though while the part about manipulated encrypted messages certainly deserves attention, the easiest of the Efail scenarios - the so-called direct exfiltration attack - doesn&#039;t need any weak cryptography at all.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Efail HTML attacks&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+The direct exfiltration attack is so simple it&#039;s hard to believe it stayed undetected for so long. It makes use of the fact that mails can contain multiple parts and some mail clients render all those parts together. An attacker can use this to construct a mail where the first part contains an unclosed HTML tag with a source reference, for example &amp;lt;a href=&#039;https://example.com/&lt;br /&gt;
+&lt;br /&gt;
+After that the attacker places an encrypted message he wants to decrypt and another HTML part that closes the tag (&#039;&amp;gt;).&lt;br /&gt;
+&lt;br /&gt;
+What happens now is that everything after the unclosed HTML tag gets appended to the request sent to example.com, thus if the attacker controls that server he can simply read the secret message from the server logs. This attack worked against Apple Mail in the default setting and against Mozilla Thunderbird if it&#039;s configured to allow the loading of external content. I&#039;ll mostly focus on Thunderbird here, but I should mention that the situation with Apple Mail is much worse. It&#039;s just that I did all my tests with Thunderbird.&lt;br /&gt;
+&lt;br /&gt;
+When Efail was published the Thunderbird plugin Enigmail had a minor countermeasure against this: It inserted some quotes between the mail parts, hoping to break the HTML and thus the exfiltration. This led &lt;a href=&quot;https://web.archive.org/web/20190301100934/https://admin.hostpoint.ch/pipermail/enigmail-users_enigmail.net/2018-May/004967.html&quot;&gt;some people to claim that Efail is not a big deal for users of the latest Enigmail&lt;/a&gt;. However that turned out to be not true.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Bypass 1: Use a form with &amp;lt;textarea&amp;gt; and &amp;lt;button&amp;gt;&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+The Efail paper briefly mentions a way to circumvent such countermeasures. Instead of exfiltrating the message with a source tag one can use an HTML form. HTML forms have an element &amp;lt;textarea&amp;gt; that allows enclosing content that will be sent with the form. The advantage for an attacker is that there&#039;s no need to put the content in quotes, thus constructing an HTML form around the encrypted part can&#039;t be broken by inserting quotes.&lt;br /&gt;
+&lt;br /&gt;
+With some help from Jens Müller (one of the Efail co-authors) I was able to construct an exfiltration using HTML forms that worked with an up-to-date combination of Thunderbird and Enigmail after Efail was already public (May 16th, Thunderbird 52.7.0, Enigmail 2.0.4). Interestingly Thunderbird already seemed to be aware that forms could be a security risk and tried to prevent them from being sent. If one clicked a submit element in an HTML form (&amp;lt;input type=&quot;submit&quot;&amp;gt;) then the URL gets called. However they failed to notice that a submit button for an HTML element can also be constructed with a &amp;lt;button&amp;gt;-tag (&amp;lt;button type=&quot;submit&quot;&amp;gt;).&lt;br /&gt;
+&lt;br /&gt;
+In order to make this exploit work a user has to actually click on that button in a mail. However by using CSS it&#039;s easy to construct a form where both the textarea field and the button are invisible and where the button covers the whole mail. Effectively this means *any* click inside the mail will exfiltrate the data. It&#039;s not hard to imagine that an attacker could trick a victim into clicking anywhere inside the mail.&lt;br /&gt;
+&lt;br /&gt;
+The &amp;lt;button&amp;gt; trick was &lt;a href=&quot;https://www.mozilla.org/en-US/security/advisories/mfsa2018-13/#CVE-2018-5185&quot;&gt;fixed in Thunderbird 52.8.0&lt;/a&gt;, which was released on Saturday, May 18th, five days after Efail was published.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Bypass 2: Sending forms with &quot;Enter&quot;&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+After that I tried to break it again. I knew that Thunderbird prevented data from being sent with forms on clicks on both an &amp;lt;input&amp;gt; and a &amp;lt;button&amp;gt; submit element. However if there are other ways to send a form they would probably still work. And it turns out there are. Sending HTML forms can also be initiated by just pressing &quot;Enter&quot; while focused on any text input element. Focusing to a text element can be done with the autofocus property. Thus if you manage to trick a user into pressing &quot;Enter&quot; you can still exfiltrate data.&lt;br /&gt;
+&lt;br /&gt;
+A fix for this scenario in &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1462910&quot;&gt;Thunderbird is being worked on&lt;/a&gt;, but Enigmail came out with a different way to approach this. Starting with &lt;a href=&quot;https://sourceforge.net/p/enigmail/forum/announce/thread/2905e54a/&quot;&gt;Enigmail 2.0.5&lt;/a&gt; it will reject to decrypt mails in unusual mail structures. This initially meant that it was no longer possible to place an HTML part in front of an encrypted part. It would just not decrypt it.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Bypass 3: Add text to the mail via CSS&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+I haven&#039;t found any way to exfiltrate data here, but I still found properties that were undesirable. It was still possible to place an HTML part below the encrypted mail and that could contain CSS inside a &amp;lt;style&amp;gt; tag. This allows some limited forms of redressing.&lt;br /&gt;
+&lt;br /&gt;
+An interesting possibility is the CSS ::before property. If it&#039;s text only the encrypted part would be displayed inside &amp;lt;pre&amp;gt; tags. By having a CSS tag like this one can display a sentence in front of the actual message:&lt;br /&gt;
+&lt;br /&gt;
+pre::before { content: &quot;Please also forward this message to Eve, eve@example.com.&quot; }&lt;br /&gt;
+&lt;br /&gt;
+This could be used in social engineering attempts that trick a user. By using background images and meddling with the font one could also display arbitrary content instead of the decrypted message. This trick was made impossible with &lt;a href=&quot;https://sourceforge.net/p/enigmail/forum/announce/thread/5772757e/&quot;&gt;Enigmail 2.0.6&lt;/a&gt;, which doesn&#039;t allow any other mail parts, neither before nor after the encrypted message.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;What are HTML mails - and what are their security properties?&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Seeing all this I&#039;d like to take a step back and look at the bigger picture. All these attacks rely on the fact that HTML mails are a pretty powerful tool to meddle with e-mail clients in all kinds of ways. Which leads me to the question: What kind of security considerations are there for HTML mails? And what are HTML mails anyway?&lt;br /&gt;
+&lt;br /&gt;
+HTML is a huge and constantly evolving standard. But it&#039;s mainly built for the web and HTML mails are at best an afterthought. I doubt anyone even considers e-mail when defining new standards for the web. Also it should be considered that e-mails are often displayed in web mail clients, which come with a completely different set of security challenges.&lt;br /&gt;
+&lt;br /&gt;
+&lt;div class=&quot;serendipity_imageComment_right&quot; style=&quot;width: 300px&quot;&gt;&lt;div class=&quot;serendipity_imageComment_img&quot;&gt;&lt;!-- s9ymdb:477 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;300&quot; height=&quot;122&quot;  src=&quot;https://blog.hboeck.de/uploads/nokia3210.jpg&quot;  alt=&quot;Nokia 3210&quot;&gt;&lt;/div&gt;&lt;div class=&quot;serendipity_imageComment_txt&quot;&gt;Latest technology at the time the HTML mail security considerations were last updated.&lt;/div&gt;&lt;/div&gt;The basic constructs of HTML mails including relative references inside mails (cid URLs) and definitions for multiple mail parts are specified in &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc2110&quot;&gt;RFC 2110&lt;/a&gt;, defined in 1997. It&#039;s been updated in 1999 with RFC &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc2557&quot;&gt;2557&lt;/a&gt;, and since then nothing happened. So to be clear: We&#039;re talking about a technology standard that hasn&#039;t received any updates for 19 years in a space that is moving extremely fast.&lt;br /&gt;
+&lt;br /&gt;
+What does the RFC say about security? Not that much. It mentions this about executable content in HTML mails: &quot;It is exceedingly dangerous for a receiving User Agent to execute content received in a mail message without careful attention to restrictions on the capabilities of that executable content.&quot;&lt;br /&gt;
+&lt;br /&gt;
+It&#039;s not very specific, but we can take this as allowing to execute code within HTML mails is not a good idea. Furthermore it mentions potential issues around privacy when allowing the loading of external content, but it comes with no recommendations what to do about it. There are also some discussions about caching and about using HTML content from web pages in mails that don&#039;t seem extremely relevant.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;HTML mails as a security risk&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Efail is probably the most prominent vulnerability involving HTML mails, but it&#039;s of course not the first.&lt;br /&gt;
+&lt;br /&gt;
+The simplest and most obvious security issue with HTML mails are cross site scripting attacks on web mail frontends where an attacker manages to execute JavaScript code. While this is an obvious problem, fixing it is far from trivial, because there are a variety of ways to execute JavaScript within HTML. Some of the more obscure ones include links embedded in SVG images or MathML tags. Filtering out all variations before displaying a mail is hard, and it&#039;s also something that may change with future browser changes. (While researching this article I found an unfixed, &lt;a href=&quot;https://sourceforge.net/p/squirrelmail/bugs/2831/&quot;&gt;public bug report for Squirrelmail listing four different cross site scripting vulnerabilities&lt;/a&gt;.)&lt;br /&gt;
+&lt;br /&gt;
+An interesting HTML-mail related vulnerability &lt;a href=&quot;https://thehackerblog.com/keeping-positive-obtaining-arbitrary-wildcard-ssl-certificates-from-comodo-via-dangling-markup-injection/index.html&quot;&gt;was found by Matthew Bryant in 2016&lt;/a&gt;: He figured out that he was able to inject HTML tags into the verification mails used by the certificate authority Comodo.&lt;br /&gt;
+&lt;br /&gt;
+When you buy a certificate for HTTPS web pages it&#039;s common that the issuer validates that you are the owner of the domain in question by sending a mail to a set of predefined aliases (admin@, administrator@, postmaster@, hostmaster@, webmaster@). If an attacker can get access to the content of these validation mails he can get a valid certificate for that domain.&lt;br /&gt;
+&lt;br /&gt;
+What Bryant did was very similar to the Efail attack. Via input fields that went into the email unfiltered he was able to construct an HTML form that would send the validation link to an arbitrary URL.&lt;br /&gt;
+&lt;br /&gt;
+A scary older vulnerability from 2004 in Outlook express allowed &lt;a href=&quot;https://www.kb.cert.org/vuls/id/323070&quot;&gt;referencing local files as URLS and execute code&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;&quot;No&quot; is an option&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;div class=&quot;nicebox&quot; style=&quot;float:right&quot;&gt;&lt;pre&gt;ASCII ribbon campaign ( )&lt;br/&gt; against HTML e-mail   X&lt;br/&gt;                      / \&lt;/pre&gt;&lt;/div&gt;Let me quickly point out that I myself almost never used HTML mails. I have been using mail clients without HTML support for a long time and I never missed anything. I think this is a valid option, back in the days there was the &lt;a href=&quot;http://www.asciiribbon.org/&quot;&gt;ASCII Ribbon Campaign that advocated for text-only mails&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+It&#039;s certainly the safest option. Particularly for security sensitive content - think about the Comodo domain validation mails - using text-only mails is a good choice. However realistically mail client developers are not going to abandon HTML mails, so we have to discuss how to make them secure.&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;HTML mails have no security concept&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Where does that leave us all? I believe the core issue here is that there is no sensible security concept for HTML mails. It started by using an inherently dangerous concept, embedding something that is far too powerful into e-mails, with only vague guidelines on how to secure it.&lt;br /&gt;
+&lt;br /&gt;
+It is clear that HTML mails can&#039;t be the full spectrum of HTML as it is supported in the web. So effectively they are a subset of HTML. However there&#039;s no agreement - and no specification - which subset that should be.&lt;br /&gt;
+&lt;br /&gt;
+There&#039;s probably easy agreement that they shouldn&#039;t contain JavaScript and probably also nothing like Flash, Java applets or other ways of embedding executable code in HTML. Should HTML mails allow external content? I believe the answer should be an unequivocal &quot;No&quot;, but there&#039;s obviously no agreement on that. Behavior differs between mail clients, some disable it by default, but they usually still allow users to enable it again. If loading external content opens up security bugs - like Efail - then this is a problem.&lt;br /&gt;
+&lt;br /&gt;
+Should e-mails be allowed to contain forms? Should they allow animations? Videos? Should they prevent redressing attacks? Should a piece of HTML later in a mail be allowed to change earlier content?&lt;br /&gt;
+&lt;br /&gt;
+We may come to different conclusions which of these things should be allowed and which not, but the problem is there&#039;s no guidance to tell developers what to do. In practice this means everyone does what they think and when a security issue comes up they may react or not.&lt;br /&gt;
+&lt;br /&gt;
+Ideally you&#039;d have an RFC specifying a subset of HTML and CSS that is allowed within HTML mails. This would have to be a whitelist approach, because the rapidly changing nature of HTML makes it almost impossible to catch up. However no such RFC exists.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Efail bypasses bug reporting timeline&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+2018-05-14: Efail is publicly announced&lt;br /&gt;
+2018-05-17: reported bypass with &amp;lt;textarea&amp;gt; and &amp;lt;button&amp;gt; to Enigmail and Thunderbird&lt;br /&gt;
+2018-05-18: &lt;a href=&quot;https://www.thunderbird.net/en-US/thunderbird/52.8.0/releasenotes/&quot;&gt;Thunderbird 52.8.0 released&lt;/a&gt;, fixes &amp;lt;button&amp;gt; bypass&lt;br /&gt;
+2018-05-19: Reported &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1462910&quot;&gt;&quot;Enter&quot; bypass to Thunderbird&lt;/a&gt; and Enigmail&lt;br /&gt;
+2018-05-21: &lt;a href=&quot;https://sourceforge.net/p/enigmail/forum/announce/thread/2905e54a/&quot;&gt;Enigmail 2.0.5&lt;/a&gt; released, disallows unencrypted parts before encrypted parts&lt;br /&gt;
+2018-05-21: Reported CSS redressing to Enigmail&lt;br /&gt;
+2018-05-22: Reported &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1463360&quot;&gt;CSS redressing to Thunderbird&lt;/a&gt;&lt;br /&gt;
+2018-05-27: &lt;a href=&quot;https://sourceforge.net/p/enigmail/forum/announce/thread/5772757e/&quot;&gt;Enigmail 2.0.6 released&lt;/a&gt;, disallows any unencrypted parts in encrypted mails&lt;br /&gt;
+&lt;br /&gt;
+Image source Nokia 3210: &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Nokia_3210_3.jpg&quot;&gt;Discostu, Wikimedia Commons, Public Domain&lt;/a&gt; 
+    </content:encoded>
+
+    <pubDate>Wed, 27 Jun 2018 22:43:00 +0200</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/894-guid.html</guid>
+    <category>hanno</category>
+
+</item>
+<item>
+    <title>efail: Outdated Crypto Standards are to blame</title>
+    <link>https://blog.hboeck.de/archives/893-efail-Outdated-Crypto-Standards-are-to-blame.html</link>
+    
+    <comments>https://blog.hboeck.de/archives/893-efail-Outdated-Crypto-Standards-are-to-blame.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=893</wfw:comment>
+
+    <slash:comments>0</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=893</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;img src=&quot;https://blog.hboeck.de/uploads/efail-red.svg&quot; class=&quot;serendipity_image_right sqimg&quot; width=&quot;300&quot; height=&quot;300&quot; alt=&quot;efail logo&quot;&gt;I have a lot of thoughts about the recently published &lt;a href=&quot;https://efail.de/&quot;&gt;efail&lt;/a&gt; vulnerability, so I thought I&#039;d start to writeup some of them. I&#039;d like to skip all the public outrage about the disclosure process for now, as I mainly wanted to get into the technical issues, explain what I think went wrong and how things can become more secure in the future. I read lots of wrong statements that &quot;it&#039;s only the mail clients&quot; and the underlying crypto standards are fine, so I&#039;ll start by explaining why I believe the OpenPGP and S/MIME standards are broken and why we still see these kinds of bugs in 2018. I plan to do a second writeup that will be titled &quot;efail: HTML mails are to blame&quot;.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/f4b98b03f3d14c3aa512a963558dfd06&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+I assume most will have heard of efail by now, but the quick version is this: By combining a weakness in cryptographic modes along with HTML emails a team of researchers was able to figure out a variety of ways in which mail clients can be tricked into exfiltrating the content of encrypted e-mails. Not all of the attack scenarios involve crypto, but those that do exploit a property of encryption modes that is called malleability. It means that under certain circumstances you can do controlled changes of the content of an encrypted message.&lt;br /&gt;
+&lt;br /&gt;
+Malleability of encryption is not a new thing. Already back in the nineties people figured out this may be a problem and started to add authentication to encryption. Thus you&#039;re not only guaranteeing that encrypted data cannot be decrypted by an attacker, you also guarantee that an attacker cannot change the data without the key. In early protocols people implemented authentication in an ad-hoc way leading to different approaches with varying degrees of security (often refered to as MAC-then-Encrypt, Encrypt-then-MAC, Encrypt-and-MAC). The OpenPGP standard also added a means of authentication called MDC (Modification Detection Code), the S/MIME standard never received anything alike.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Authenticated Encryption&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+In the year 2000 the concept of &lt;a href=&quot;https://eprint.iacr.org/2000/025&quot;&gt;authenticated encryption got introduced by Bellare and Namprempre&lt;/a&gt;. It can be summarized as the idea that instead of putting authentication on top of encryption let&#039;s define some construction where a combination of both is standardized in a safe way. It also changed the definition of a cipher, which will later become relevant, as this early paper already gives good guidance on how to design a proper API for authenticated encryption. While an unauthenticated cipher has a decryption function that takes an input and produces an output, an authenticated cipher&#039;s decryption function either produce an output or an error (but not both):&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;In such a scheme the encryption process applied by the sender takes the key and a plaintext to return a ciphertext, while the decryption process applied by the receiver takes the same key and a ciphertext to return either a plaintext or a special symbol indicating that it considers the ciphertext invalid or not authentic.&lt;/em&gt; (Bellare, Namprempre, Asiacrypt 2000 Proceedings)&lt;br /&gt;
+&lt;br /&gt;
+The concept was later extended with the idea of having Authenticated Encryption with Additional Data (AEAD), meaning you could have pieces that are not encrypted, but still authenticated. This is useful in some situations, for example if you split up a message in multiple parts the ordering could be authenticated. Today we have a number of standardized AEAD modes.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Just always use Authenticated Encryption&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Authenticated Encryption is a concept that makes a lot of sense. One of the most basic pieces of advice in designing crypto systems should be: &quot;Unless you have a very good reason not to do so, just always use a standardized, off-the-shelf authenticated encryption mode.&quot;&lt;br /&gt;
+&lt;br /&gt;
+There&#039;s a whole myriad of attacks that would&#039;ve been prevented if people had used AEAD modes. Padding Oracle attacks in SSL/TLS like the &lt;a href=&quot;https://infoscience.epfl.ch/record/52417?ln=en&quot;&gt;Vaudenay&lt;/a&gt; attack and variations like the &lt;a href=&quot;https://web.archive.org/web/20230228064336/https://www.isg.rhul.ac.uk/tls/Lucky13.html&quot;&gt;Lucky Thirteen attack&lt;/a&gt;? Use an AEAD and be safe. Partial &lt;a href=&quot;https://web.archive.org/web/20120113001902/http://www.isg.rhul.ac.uk/~kp/SandPfinal.pdf&quot;&gt;plaintext discovery in SSH&lt;/a&gt;, as discovered in 2009 - and &lt;a href=&quot;https://degabriele.info/publications/Surfeit.pdf&quot;&gt;again in 2016&lt;/a&gt;, because the fixes didn&#039;t work? Use an AEAD and be safe. &lt;a href=&quot;https://www.nds.rub.de/research/publications/breaking-xml-encryption/&quot;&gt;Broken XML encryption&lt;/a&gt; due to character encoding errors? Had you only used an AEAD and this would&#039;ve been prevented. Heard of the &lt;a href=&quot;https://blog.cryptographyengineering.com/2016/03/21/attack-of-week-apple-imessage/&quot;&gt;iMessage flaw discovered in 2016&lt;/a&gt;? Lack of AEAD it is. &lt;a href=&quot;https://blog.hboeck.de/archives/880-Pwncloud-bad-crypto-in-the-Owncloud-encryption-module.html&quot;&gt;Owncloud encryption module broken&lt;/a&gt;? If they had used an AEAD. (I&#039;m including this one because it&#039;s my own minor contribution to the topic.)&lt;br /&gt;
+&lt;br /&gt;
+Given this long list of attacks you would expect that one of the most basic pieces of advice everyone gets would be: &quot;Just always use an AEAD if you can.&quot; This should be crypto 101, yet somehow it isn&#039;t.&lt;br /&gt;
+&lt;br /&gt;
+Teaching the best crypto of the 90s&lt;br /&gt;
+&lt;br /&gt;
+Some time ago on a cryptography mailinglist I was subscribed to, someone posted a link to the material of a crypto introduction lecture from a university, saying this would be a good introduction to the topic. I took a brief look and answered that I don&#039;t think it&#039;s particularly good, citing multiple issues, one of them being the cipher modes that were covered in that lecture were ECB, CBC, OFC, CFB and CTR. None of these modes is authenticated. None of them should be used in any modern cryptosystem.&lt;br /&gt;
+&lt;br /&gt;
+Some weeks later I was at a conference and it turned out the person across the table was a cryptography professor. We got into a discussion about teaching cryptography because I made some provocative statements (something along the lines of &quot;Universities teach outdated crypto and then we end up with broken cryptosystems because of it&quot;). So I asked him: &quot;Which cipher modes do you teach in your crypto lecture?&quot;&lt;br /&gt;
+&lt;br /&gt;
+The answer: ECB, CBC, OFC, CFB and CTR.&lt;br /&gt;
+&lt;br /&gt;
+After that I googled for crypto introduction lectures - and to my astonishment this was surprisingly common. This list of five cipher modes for some reason seems to be the popular choice for crypto introductions.&lt;br /&gt;
+&lt;br /&gt;
+&lt;!-- s9ymdb:474 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;196&quot; height=&quot;216&quot;  src=&quot;https://blog.hboeck.de/uploads/tux-ecb.jpg&quot;  alt=&quot;Tux in ECB mode&quot;&gt;It doesn&#039;t seem to make a lot of sense. Let&#039;s quickly go through them: ECB is the most naive way of doing encryption with symmetric block ciphers where you encrypt every block of the input on its own with the same key. I&#039;m inclined to say that it&#039;s not really a crypto mode, it&#039;s more an example of what not to do. If you ever saw the famous &quot;ECB Tux&quot; - that&#039;s the problem.&lt;br /&gt;
+&lt;br /&gt;
+CBC (Cipher Block Chaining) is a widely used mode, particularly it&#039;s been the most popular mode in TLS for a long time, and it makes sense to teach it in order to understand attacks, but it&#039;s not something you should use. CFB mode is not widely used, I believe the only widespread use is actually in OpenPGP. OFB is even more obscure, I&#039;m not aware of any mainsteam protocol in use that uses it. CTR (Counter Mode) is insofar relevant as one of the most popular AEAD modes is an extension of Counter Mode - it&#039;s called Galois/Counter Mode (GCM).&lt;br /&gt;
+&lt;br /&gt;
+I think it&#039;s fair to say that teaching this list of ciphers in a crypto introduction lecture is odd. Some of them are obscure, some outright dangerous, and most important of all: None of them should be used, because none of them are authenticated. So why are these five ciphers so popular? Is there some secret list that everyone uses if they choose which ciphers to cover?&lt;br /&gt;
+&lt;br /&gt;
+Actually... yes, there is such a list. These are exactly the five cipher modes that are &lt;a href=&quot;https://www.schneier.com/books/applied-cryptography-toc&quot;&gt; covered in Bruce Schneier&#039;s book &quot;Applied Cryptography&quot;&lt;/a&gt; - published in 1996.&lt;br /&gt;
+&lt;br /&gt;
+Now don&#039;t get me wrong: Applied Cryptography is undoubtedly an important part of cryptographic history. When it was published it was probably one of the best introductory resources into cryptography that you could get. It covers the best crypto available in 1996. But we have learned a few things since then, and one of them is that you better use an authenticated encryption mode.&lt;br /&gt;
+&lt;br /&gt;
+There&#039;s more: At this year&#039;s Real World Crypto conference a &lt;a href=&quot;https://www.ieee-security.org/TC/SP2017/papers/161.pdf&quot;&gt;paper was presented where the usability of cryptographic APIs was tested&lt;/a&gt;. The paper was originally published at the IEEE Symposium on Security and Privacy. I took a brief look into the paper and this sentence caught my attention:&lt;br /&gt;
+&lt;br /&gt;
+&quot;We scored the ECB as an insecure mode of operation and scored Cipher Block Chaining (CBC), Counter Mode (CTR) and Cipher Feedback (CFB) as secure.&quot;&lt;br /&gt;
+&lt;br /&gt;
+These words were written in a peer reviewed paper in 2017. No wonder we&#039;re still fighting padding oracles and ciphertext malleability in 2018.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Choosing an authenticated mode&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+If we agree that authenticated encryption modes make sense the next question is which one to choose. This would easily provide material for a separate post, but I&#039;ll try to make it brief.&lt;br /&gt;
+&lt;br /&gt;
+The most common mode is GCM, usually in combination with the AES cipher. There are a few issues with GCM. Implementing it correctly is not easy and &lt;a href=&quot;https://eprint.iacr.org/2013/157&quot;&gt;implementation&lt;/a&gt; &lt;a href=&quot;https://timtaubert.de/blog/2017/06/verified-binary-multiplication-for-ghash/&quot;&gt;flaws&lt;/a&gt; happen. Messing up the nonce generation can have &lt;a href=&quot;https://github.com/nonce-disrespect/nonce-disrespect&quot;&gt;catastrophic consequences&lt;/a&gt;. You can easily collect a bunch of quotes from famous cryptographers saying bad things about GCM.&lt;br /&gt;
+&lt;br /&gt;
+Yet despite all criticism using GCM is still not a bad choice. If you use a well-tested standard implementation and don&#039;t mess up the nonce generation you&#039;re good. Take this from someone who was involved discovering what I believe is the only practical attack ever published against GCM in TLS.&lt;br /&gt;
+&lt;br /&gt;
+Other popular modes are Poly1305 (usually combined with the Chacha20 cipher, but it also works with AES) and OCB. OCB has some nice properties, but it&#039;s patented. While the patent holders allow some uses, this still has caused enough uncertainty to prevent widespread deployment.&lt;br /&gt;
+&lt;br /&gt;
+If you can sacrifice performance and are worried about nonce generation issues you may have a look at &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc5297&quot;&gt;AES in SIV mode&lt;/a&gt;. Also there&#039;s currently a &lt;a href=&quot;https://competitions.cr.yp.to/caesar.html&quot;&gt;competition running to choose future AEADs&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+Having said all that: Choosing any standardized AEAD mode is better than not using an AEAD at all.&lt;br /&gt;
+&lt;br /&gt;
+Both e-mail encryption standards - OpenPGP and S/MIME - are really old. They originate in the 90s and have only received minor updates over time.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;S/MIME is broken and probably can&#039;t be rescued&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+S/MIME by default uses the CBC encryption mode without any authentication. CBC is malleable in a way that an attacker can manipulate encrypted content with bit flips, but this destroys the subsequent block. If an attacker knows the content of a single block then he can basically construct arbitrary ciphertexts with every second block being garbage.&lt;br /&gt;
+&lt;br /&gt;
+Coupled with the fact that it&#039;s easy to predict parts of the S/MIME ciphertext this basically means game over for S/MIME. An attacker can construct an arbitrary mail (filled with some garbage blocks, but at least in HTML they can easily be hidden) and put the original mail content at any place he likes. This is the core idea of the efail attack and for S/MIME it works straight away.&lt;br /&gt;
+&lt;br /&gt;
+There&#039;s an RFC to specify authenticated encryption modes in Cryptographic Message Syntax, the format underlying S/MIME, however it&#039;s not referenced in the latest S/MIME standard, so it&#039;s unclear how to use it.&lt;br /&gt;
+&lt;br /&gt;
+HTML mails are only the most obvious problem for S/MIME. It would also be possible to construct malicious PDFs or other document formats with exfiltration channels. Even without that you don&#039;t want ciphertext malleability in any case. The fact that S/MIME completely lacks authentication means it&#039;s unsafe by design.&lt;br /&gt;
+&lt;br /&gt;
+Given that one of the worst things about e-mail encryption was always that there were two competing, incompatible standards this may actually be an opportunity. Ironically if you&#039;ve been using S/MIME and you want something alike your best bet may actually be to switch to OpenPGP.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;OpenPGP - CFB mode and MDC&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+With OpenPGP the situation regarding authenticated encryption is a bit more complicated. OpenPGP introduced a form of authentication called Message Detection Code (MDC). The MDC works by calculating the SHA-1 hash of the plaintext message and then encrypting that hash and appending it to the encrypted message.&lt;br /&gt;
+&lt;br /&gt;
+The first question is whether this is a sound cryptographic construction. As I said above it&#039;s usually recommended to use a standardized AEAD mode. It is clear that CFB/MDC is no such thing, but that doesn&#039;t automatically make it insecure. While I wouldn&#039;t recommend to use MDC in any new protocol and I think it would be good to replace it with a proper AEAD mode, it doesn&#039;t seem to have any obvious weaknesses. Some people may point out the use of SHA-1, which is considered a broken hash function due to the possibility of constructing collisions. However it doesn&#039;t look like this could be exploited in the case of MDC in any way.&lt;br /&gt;
+&lt;br /&gt;
+So cryptographically while MDC doesn&#039;t look like a nice construction it doesn&#039;t seem to be an immediate concern security wise. However there are two major problems how MDC is specified in the OpenPGP standards and I think it&#039;s fair to say OpenPGP is thus also broken.&lt;br /&gt;
+&lt;br /&gt;
+The first issue is how implementations should handle the case when the MDC tag is invalid or missing. This is what the &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc4880&quot;&gt;specification has to say&lt;/a&gt;:&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Any failure of the MDC indicates that the message has been modified and MUST be treated as a security problem.  Failures include a difference in the hash values, but also the absence of an MDC packet, or an MDC packet in any position other than the end of the plaintext. Any failure SHOULD be reported to the user.&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;
+This is anything but clear. It must be treated as a security problem, but it&#039;s not clear what that means. A failure should be reported to the user. Reading this it is very reasonable to think that a mail client that would display a mail with a missing or bad MDC tag to a user with a warning attached would be totally in line with the specification. However that&#039;s exactly the scenario that&#039;s vulnerable to efail.&lt;br /&gt;
+&lt;br /&gt;
+To prevent malleability attacks a client must prevent decrypted content from being revealed if the authentication is broken. This also goes back to the definition of authenticated encryption I quoted above. The decryption function should either output a correct plaintext or an error.&lt;br /&gt;
+&lt;br /&gt;
+Yet this is not what the standard says and it&#039;s also not what GnuPG does. If you decrypt a message with a broken MDC you&#039;ll still get the plaintext and an error only afterwards.&lt;br /&gt;
+&lt;br /&gt;
+There&#039;s a second problem: For backwards compatibility reasons the MDC is optional. The OpenPGP standard has two packet types for encrypted data, Symmetrically Encrypted (SE) packets without and Symmetrically Encrypted Integrity Protected (SEIP) packets with an MDC. Appart from the MDC they&#039;re mostly identical, which means it&#039;s possible to convert a packet with protection into one without protection, an &lt;a href=&quot;https://www.ietf.org/mail-archive/web/openpgp/current/msg08285.html&quot;&gt;attack that was discovered in 2015&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+This could&#039;ve been avoided, for example by using different key derivation functions for different packet types. But that hasn&#039;t happened. This means that any implementation that still supports the old SE packet type is vulnerable to ciphertext malleability.&lt;br /&gt;
+&lt;br /&gt;
+The good news for OpenPGP is that with a few modifications it can be made safe. If an implementation discards packets with a broken or missing MDC and chooses not to support the unauthenticated SE packets then there are no immediate cryptographic vulnerabilities. (There are still issues with HTML mails and multipart messages, but this is independent of the cryptographic standard.)&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Streaming and Chunking&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+As mentioned above when decrypting a file with GnuPG that has a missing or broken MDC then it will first output the ciphertext and then an error. This is in violation of the definition of authenticated encryption and it is also the likely reason why so many mail clients were vulnerable to efail. It&#039;s an API that invites misuse. However there&#039;s a reason why GnuPG behaves like this: Streaming of large pieces of data.&lt;br /&gt;
+&lt;br /&gt;
+If you would want to design GnuPG in a way that it never outputs unauthenticated plaintext you&#039;d have to buffer all decrypted text until you can check the MDC. This gets infeasible if you encrypt large pieces of data, for example backup tarballs. Replacing the CFB/MDC combination with an AEAD mode would also not automatically solve this problem. With a mode like GCM you could still decrypt data as you go and only check the authentication at the end.&lt;br /&gt;
+&lt;br /&gt;
+In order to support both streaming and proper authenticated encryption one possibility would be to cut the data into chunks with a maximum size. This is more or less what TLS does.&lt;br /&gt;
+&lt;br /&gt;
+A construction could look like this: Input data is processed in chunks of - let&#039;s say - 8 kilobytes size. The exact size is a tradeoff between overhead and streaming speed, but something in the range of a few kilobytes would definitely work. Each chunk would contain a number that is part of the authenticated additional data in order to prevent reordering attacks. The final chunk would furthermore contain a special indicator in the additional data, so truncation can be detected. A decryption tool would then decrypt each chunk and only output authenticated content. (I didn&#039;t come up with this on my own, as said it&#039;s close to what TLS does and &lt;a href=&quot;https://www.yahoo.com/news/video/yahoo-trust-unconference-tls-adam-223046696.html&quot;&gt;Adam Langley explains it well in a talk you can find here&lt;/a&gt;. He even mentions the particular problems with GnuPG that led to efail.)&lt;br /&gt;
+&lt;br /&gt;
+It&#039;s worth noting that this could still be implemented in a wrong way. An implementation could process parts of a chunk and output them before the authentication. Shortly after I first heard about efail I wondered if something like this could happen in TLS. For example a browser could already start rendering content when it receives half a TLS record.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;An upcoming new OpenPGP standard&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+There&#039;s already a draft for a &lt;a href=&quot;https://datatracker.ietf.org/doc/html/draft-ietf-openpgp-rfc4880bis-04&quot;&gt;future version of the OpenPGP standard&lt;/a&gt;. It introduces two authenticated encryption modes - OCB and EAX - which is a compromise between some people wanting to have OCB and others worried about the patent issue. I fail to see how having two modes helps here, because ultimately you can only practically use a mode if it&#039;s widely supported.&lt;br /&gt;
+&lt;br /&gt;
+The draft also supports chunking of messages. However right now it doesn&#039;t define an upper limit for the chunk size and you could have gigabytes of data in a single chunk. Supporting that would likely again lead to an unsafe streaming API. But it&#039;s a minor change to introduce a chunk limit and require that an API may never expose unauthenticated plaintext.&lt;br /&gt;
+&lt;br /&gt;
+Unfortunately the work on the draft has mostly stalled. While the latest draft is from January the OpenPGP working group was shut down last year due to lack of interest.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Conclusion&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Properly using authenticated encryption modes can prevent a lot of problems. It&#039;s been a known issue in OpenPGP, but until now it wasn&#039;t pressing enough to fix it. The good news is that with minor modifications OpenPGP can still be used safely. And having a future OpenPGP standard with proper authenticated encryption is definitely possible. For S/MIME the situation is much more dire and it&#039;s probably best to just give up on it. It was never a good idea in the first place to have competing standards for e-mail encryption.&lt;br /&gt;
+&lt;br /&gt;
+For other crypto protocols there&#039;s a lesson to be learned as well: Stop using unauthenticated encryption modes. If anything efail should make that abundantly clear.&lt;br /&gt;
+ 
+    </content:encoded>
+
+    <pubDate>Tue, 22 May 2018 23:08:00 +0200</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/893-guid.html</guid>
+    <category>hanno</category>
+
+</item>
+<item>
+    <title>Introducing Snallygaster - a Tool to Scan for Secrets on Web Servers</title>
+    <link>https://blog.hboeck.de/archives/892-Introducing-Snallygaster-a-Tool-to-Scan-for-Secrets-on-Web-Servers.html</link>
+            <category>Code</category>
+            <category>English</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/892-Introducing-Snallygaster-a-Tool-to-Scan-for-Secrets-on-Web-Servers.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=892</wfw:comment>
+
+    <slash:comments>3</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=892</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;!-- s9ymdb:472 --&gt;&lt;img class=&quot;serendipity_image_right&quot; width=&quot;338&quot; height=&quot;201&quot;  src=&quot;https://blog.hboeck.de/uploads/snallygaster.jpg&quot;  alt=&quot;Snallygaster&quot;&gt;A few days ago I figured out that &lt;a href=&quot;https://twitter.com/hanno/status/982530027135922179&quot;&gt;several blogs operated by T-Mobile Austria had a Git repository exposed which included their wordpress configuration file&lt;/a&gt;. Due to the fact that a phpMyAdmin installation was also accessible this would have allowed me to change or delete their database and subsequently take over their blogs.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/78a134f5d0cf4ae4a36b06dba4c8eb23&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Git Repositories, Private Keys, Core Dumps&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Last year I discovered that the &lt;a href=&quot;https://www.zeit.de/digital/datenschutz/2017-07/customer-data-how-2000-unsecured-databases-landed-online&quot;&gt;German postal service exposed a database with 200.000 addresses on their webpage&lt;/a&gt;, because it was simply named dump.sql (which is the default filename for database exports in the documentation example of mysql). An Australian online pharmacy exposed a database under the filename xaa, which is the output of the &quot;split&quot; tool on Unix systems.&lt;br /&gt;
+&lt;br /&gt;
+It also turns out that plenty of people &lt;a href=&quot;https://www.golem.de/news/https-private-keys-on-web-servers-1707-128862.html&quot;&gt;store their private keys for TLS certificates on their servers&lt;/a&gt; - or their SSH keys. Crashing web applications can leave behind &lt;a href=&quot;https://blog.hboeck.de/archives/887-Dont-leave-Coredumps-on-Web-Servers.html&quot;&gt;coredumps that may expose application memory&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+For a while now I became interested in this class of surprisingly trivial vulnerabilities: People leave files accessible on their web servers that shouldn&#039;t be public. I&#039;ve given talks at a couple of conferences (recordings available from &lt;a href=&quot;https://www.youtube.com/watch?v=y7xDHXTDtwo&quot;&gt;Bornhack&lt;/a&gt;, &lt;a href=&quot;https://www.youtube.com/watch?v=9A_ylW7FL6M&quot;&gt;SEC-T&lt;/a&gt;, &lt;a href=&quot;https://www.youtube.com/watch?v=Bppr9rbmwz4&quot;&gt;Driving IT&lt;/a&gt;). I scanned for these issues with a python script that extended with more and more such checks.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Scan your Web Pages with snallygaster&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+It&#039;s taken a bit longer than intended, but I finally released it: It&#039;s called &lt;a href=&quot;https://github.com/hannob/snallygaster&quot;&gt;Snallygaster and is available on Github&lt;/a&gt; and &lt;a href=&quot;https://pypi.org/project/snallygaster/&quot;&gt;PyPi&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+Apart from many checks for secret files it also contains some checks for related issues like checking invalid src references which can lead to &lt;a href=&quot;https://blog.hboeck.de/archives/889-Abandoned-Domain-Takeover-as-a-Web-Security-Risk.html&quot;&gt;Domain takeover vulnerabilities&lt;/a&gt;, for the &lt;a href=&quot;https://blog.fuzzing-project.org/60-Optionsbleed-HTTP-OPTIONS-method-can-leak-Apaches-server-memory.html&quot;&gt;Optionsleed vulnerability&lt;/a&gt; which I discovered during this work and for a couple of other vulnerabilities I found interesting and easily testable.&lt;br /&gt;
+&lt;br /&gt;
+Some may ask why I wrote my own tool instead of extending an existing project. I thought about it, but I didn&#039;t really find any existing free software vulnerability scanner that I found suitable. The tool that comes closest is probably &lt;a href=&quot;https://cirt.net/Nikto2&quot;&gt;Nikto&lt;/a&gt;, but testing it I felt it comes with a lot of checks - thus it&#039;s slow - and few results. I wanted a tool with a relatively high impact that doesn&#039;t take forever to run. Another commonly mentioned free vulnerability scanner is &lt;a href=&quot;https://openvas.org/&quot;&gt;OpenVAS&lt;/a&gt; - a fork from Nessus back when that was free software - but I found that always very annoying to use and overengineered. It&#039;s not a tool you can &quot;just run&quot;. So I ended up creating my own tool.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;A Dragon Legend in US Maryland&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+Finally you may wonder what the name means. The &lt;a href=&quot;https://en.wikipedia.org/wiki/Snallygaster&quot;&gt;Snallygaster&lt;/a&gt; is a dragon that according to some legends was seen in Maryland and other parts of the US. Why that name? There&#039;s no particular reason, I just searched for a suitable name, I thought a mythical creature may make a good name. So I searched Wikipedia for potential names and checked for name collisions. This one had none and also sounded funny and interesting enough.&lt;br /&gt;
+&lt;br /&gt;
+I hope snallygaster turns out to be useful for administrators and pentesters and helps exposing this class of trivial, but often powerful, vulnerabilities. Obviously I welcome new ideas of further tests that could be added to snallygaster. 
+    </content:encoded>
+
+    <pubDate>Wed, 11 Apr 2018 13:41:00 +0200</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/892-guid.html</guid>
+    <category>git</category>
+<category>python</category>
+<category>security</category>
+<category>snallygaster</category>
+<category>websecurity</category>
+
+</item>
+<item>
+    <title>Some minor Security Quirks in Firefox</title>
+    <link>https://blog.hboeck.de/archives/891-Some-minor-Security-Quirks-in-Firefox.html</link>
+            <category>English</category>
+            <category>Linux</category>
+            <category>Security</category>
+    
+    <comments>https://blog.hboeck.de/archives/891-Some-minor-Security-Quirks-in-Firefox.html#comments</comments>
+    <wfw:comment>https://blog.hboeck.de/wfwcomment.php?cid=891</wfw:comment>
+
+    <slash:comments>2</slash:comments>
+    <wfw:commentRss>https://blog.hboeck.de/rss.php?version=2.0&amp;type=comments&amp;cid=891</wfw:commentRss>
+    
+
+    <author>nospam@example.com (Hanno Böck)</author>
+    <content:encoded>
+    &lt;img src=&quot;https://blog.hboeck.de/uploads/firefox-logo.svg&quot; width=&quot;200&quot; height=&quot;200&quot; alt=&quot;Firefox&quot; style=&quot;float:right;&quot;&gt;I discovered a couple of more or less minor security issues in Firefox lately. None of them is particularly scary, but they affect interesting corner cases or unusual behavior. I&#039;m posting this mainly hoping that other people will find it inspiring to think about unusual security issues and maybe also come up with more realistic attack scenarios for these bugs.&lt;img src=&quot;https://ssl-vg03.met.vgwort.de/na/c1c4ff014dbe488ba0d564ceaf1a85a2&quot; width=&quot;1&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;br /&gt;
+&lt;br /&gt;
+I&#039;d like to point out that Mozilla hasn&#039;t fixed most of those issues, despite all of them being reported several months ago.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Bypassing XSA warning via FTP&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+XSA or Cross-Site Authentication is an interesting and not very well known attack. It&#039;s been &lt;a href=&quot;https://www.joachim-breitner.de/blog/56-Like_XSS%2C_just_simpler_and_harder_to_prevent__The_Cross_Site_Auth_%28XSA%29_Attack&quot;&gt;discovered by Joachim Breitner in 2005&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+Some web pages, mostly forums, allow users to include third party images. This can be abused by an attacker to steal other user&#039;s credentials. An attacker first posts something with an image from a server he controls. He then switches on HTTP authentication for that image. All visitors of the page will now see a login dialog on that page. They may be tempted to type in their login credentials into the HTTP authentication dialog, which seems to come from the page they trust.&lt;br /&gt;
+&lt;br /&gt;
+The original XSA attack is, as said, quite old. As a countermeasure Firefox implements a warning in HTTP authentication dialogs that were created by a subresource like an image. However it only does that for HTTP, not for FTP.&lt;br /&gt;
+&lt;br /&gt;
+So an attacker can run an FTP server and include an image from there. By then requiring an FTP login and logging all login attempts to the server he can gather credentials. The password dialog will show the host name of the attacker&#039;s FTP server, but he could choose one that looks close enough to the targeted web page to not raise suspicion.&lt;br /&gt;
+&lt;br /&gt;
+&lt;!-- s9ymdb:469 --&gt;&lt;img class=&quot;serendipity_image_center&quot; width=&quot;464&quot; height=&quot;163&quot;  src=&quot;https://blog.hboeck.de/uploads/firefox-ftp-password.png&quot;  alt=&quot;Firefox FTP password dialog&quot;&gt;&lt;br /&gt;
+&lt;br /&gt;
+I haven&#039;t found any popular site that allows embedding images from non-HTTP-protocols. The most popular page that allows embedding external images at all is Stack Overflow, but it only allows HTTPS. Generally embedding third party images is less common these days, most pages keep local copies if they embed external images.&lt;br /&gt;
+&lt;br /&gt;
+This &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1361848&quot;&gt;bug is yet unfixed&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+Obviously one could fix it by showing the same warning for FTP that is shown for HTTP authentication. But I&#039;d rather recommend to completely block authentication dialogs on third party content. This is also what Chrome is doing. Mozilla has been &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=647010&quot;&gt; discussing this for several years with no result&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+Firefox also has an &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1404744&quot;&gt;open bug about disallowing FTP on subresources&lt;/a&gt;. This would obviously also fix this scenario.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Window-modal popup via FTP&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+In the early days of JavaScript web pages could annoy users with popups. Browsers have since changed the behavior of JavaScript popups. They are now &lt;a href=&quot;https://web.archive.org/web/20171227063536/https://developer.mozilla.org/en-US/docs/Mozilla/Using_tab-modal_prompts&quot;&gt;tab-modal&lt;/a&gt;, which means they&#039;re not blocking the interaction with the whole browser, they&#039;re just part of one tab and will only block the interaction with the web page that created them.&lt;br /&gt;
+&lt;br /&gt;
+So it is a goal of modern browsers to not allow web pages to create window-modal alerts that block the interaction with the whole browser. However I figured out FTP gives us a bypass of this restriction.&lt;br /&gt;
+&lt;br /&gt;
+If Firefox receives some random garbage over an FTP connection that it cannot interpret as FTP commands it will open an alert window showing that garbage.&lt;br /&gt;
+&lt;br /&gt;
+&lt;!-- s9ymdb:471 --&gt;&lt;img class=&quot;serendipity_image_center&quot; width=&quot;405&quot; height=&quot;131&quot;  src=&quot;https://blog.hboeck.de/uploads/firefox-ftp-window-modal.png&quot;  alt=&quot;Window modal FTP alert&quot;&gt;&lt;br /&gt;
+&lt;br /&gt;
+First we open up our fake &quot;FTP-Server&quot; that will simply send a message to all clients. We can just use netcat for this:&lt;br /&gt;
+&lt;br /&gt;
+&lt;code&gt;while true; do echo &quot;Hello&quot; | nc -l -p 21; done&lt;/code&gt;&lt;br /&gt;
+&lt;br /&gt;
+Then we try to open a connection, e. g. by typing ftp://localhost in the address bar on the same system. Firefox will not show the alert immediately. However if we then click on the URL bar and press enter again it will show the alert window. I tried to replicate that behavior with JavaScript, which worked sometimes. I&#039;m relatively sure this can be made reliable.&lt;br /&gt;
+&lt;br /&gt;
+There are two problems here. One is that server controlled content is showed to the user without any interpretation. This alert window seems to be intended as some kind of error message. However it doesn&#039;t make a lot of sense like that. If at all it should probably be prefixed by some message like &quot;the server sent an invalid command&quot;. But ultimately if the browser receives random garbage instead of protocol messages it&#039;s probably not wise to display that at all. The second problem is that FTP error messages probably should be tab-modal as well.&lt;br /&gt;
+&lt;br /&gt;
+This &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1362050&quot;&gt;bug is also yet unfixed&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;FTP considered dangerous&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+FTP is an old protocol with many problems. Some consider the fact that browsers still support it a problem. I tend to agree, ideally FTP should simply be removed from modern browsers.&lt;br /&gt;
+&lt;br /&gt;
+FTP in browsers is insecure by design. While TLS-enabled FTP exists browsers have never supported it. The FTP code is probably not well audited, as it&#039;s rarely used. And the fact that another protocol exists that can be used similarly to HTTP has the potential of surprises. For example I found it quite surprising to learn that it&#039;s possible to have unencrypted and unauthenticated FTP connections to hosts that enabled HSTS. (The lack of cookie support on FTP seems to avoid causing security issues, but it&#039;s still unexpected and feels dangerous.)&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Self-XSS in bookmark manager export&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+The Firefox Bookmark manager allows exporting bookmarks to an HTML document. Before the current Firefox 57 it was possible to inject JavaScript into this exported HTML via the tags field.&lt;br /&gt;
+&lt;br /&gt;
+I tried to come up with a plausible scenario where this could matter, however this turned out to be difficult. This would be a problematic behavior if there&#039;s a way for a web page to create such a bookmark. While it is possible to create &lt;a href=&quot;https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/bookmarks/create&quot;&gt;a bookmark dialog with JavaScript&lt;/a&gt;, this doesn&#039;t allow us to prefill the tags field. Thus there is no way a web page can insert any content here.&lt;br /&gt;
+&lt;br /&gt;
+One could come up with implausible social engineering scenarios (web page asks user to create a bookmark and insert some specific string into the tags field), but that seems very far fetched. A remotely plausible scenario would be a situation where a browser can be used by multiple people who are allowed to create bookmarks and the bookmarks are regularly exported and uploaded to a web page. However that also seems quite far fetched.&lt;br /&gt;
+&lt;br /&gt;
+This was fixed in the latest Firefox release as &lt;a href=&quot;https://www.mozilla.org/en-US/security/advisories/mfsa2017-24/#CVE-2017-7840&quot;&gt;CVE-2017-7840 and considered as low severity&lt;/a&gt;.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Crashing Firefox on Linux via notification API&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+The &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/notification&quot;&gt;notification API&lt;/a&gt; allows browsers to send notification alerts that the operating system will show in small notification windows. A notification can contain a small message and an icon.&lt;br /&gt;
+&lt;br /&gt;
+When playing this one of the very first things that came to my mind was to check what happens if one simply sends a very large icon. A user has to approve that a web page is allowed to use the notification API, however if he does the result is an immediate crash of the browser. This only &quot;works&quot; on Linux. The proof of concept is quite simple, we just embed a large black PNG via a data URI:&lt;br /&gt;
+&lt;br /&gt;
+&lt;code style=&quot;overflow-wrap: break-word&quot;&gt;&amp;lt;script&amp;gt;Notification.requestPermission(function(status){&lt;br /&gt;
+new Notification(&quot;&quot;,{icon: &quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAE4gAABOIAQAAAAB147pmAAAL70lEQVR4Ae3BAQ0AAADCIPuntscHD&quot; + &quot;A&quot;.repeat(4043) + &quot;yDjFUQABEK0vGQAAAABJRU5ErkJggg==&quot;,});&lt;br /&gt;
+});&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;br /&gt;
+&lt;br /&gt;
+I haven&#039;t fully tracked down what&#039;s causing this, but it seems that Firefox tries to send a message to the system&#039;s notification daemon with libnotify and if that&#039;s too large for the message size limit of dbus it will not properly handle the resulting error.&lt;br /&gt;
+&lt;br /&gt;
+What I found quite frustrating is that &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1395940&quot;&gt;when I reported it&lt;/a&gt; I learned that this was a duplicate of &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1282419&quot;&gt;a bug that has already been reported more than a year ago&lt;/a&gt;. I feel having such a simple browser crash bug open for such a long time is not appropriate. It is still unfixed. 
+    </content:encoded>
+
+    <pubDate>Thu, 16 Nov 2017 17:24:00 +0100</pubDate>
+    <guid isPermaLink="false">https://blog.hboeck.de/archives/891-guid.html</guid>
+    <category>firefox</category>
+<category>ftp</category>
+<category>javascript</category>
+<category>mozilla</category>
+<category>security</category>
+<category>vulnerability</category>
+<category>xsa</category>
+<category>xss</category>
+
+</item>
+
+</channel>
+</rss>

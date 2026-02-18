@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://raahel.bearblog.dev</id>
+  <title>Raahel</title>
+  <updated>2026-02-17T18:37:49.755512+00:00</updated>
+  <author>
+    <name>raahel</name>
+    <email>hidden</email>
+  </author>
+  <link href="https://raahel.bearblog.dev/" rel="alternate"/>
+  <link href="https://raahel.bearblog.dev/feed/" rel="self"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+  <subtitle>Thoughts...</subtitle>
+  <entry>
+    <id>https://raahel.bearblog.dev/birthing-jacho-my-first-ai-agent/</id>
+    <title>Birthing Jacho - my first AI agent</title>
+    <updated>2026-02-02T05:59:21.709840+00:00</updated>
+    <author>
+      <name>raahel</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;h3 id=discovery&gt;Discovery&lt;/h3&gt;&lt;p&gt;It's wild what's happening right now. I first saw "clawd bot" show up as a search suggestion when I was searching for Claude related subreddits on reddit. I thought it was strange that too many people made the same typo for Claude. The next morning I saw that Dreams of Code on YouTube posted a &lt;a href='https://youtu.be/Z-FXHuiUJSU'&gt;video&lt;/a&gt; about Clawdbot. Then I saw &lt;a href='https://youtu.be/MUDvwqJWWIw'&gt;Matthew Berman's video&lt;/a&gt;. I wondered if it was a coordinated marketing campaign.&lt;/p&gt;
+&lt;h3 id=whats-so-special&gt;What's so special?&lt;/h3&gt;&lt;p&gt;My first reaction was "How is it any different from Claude Code?" OpenClaw's website says:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;"The AI that actually does things. Clears your inbox, sends emails, manages your calendar, checks you in for flights. All from WhatsApp, Telegram, or any chat app you already use."&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;"All from WhatsApp, Telegram, or any chat app you already use": I think this is the main part that makes it different. The rest of OpenClaw's features can also be achieved by Claude Code with little to no effort.&lt;/p&gt;
+&lt;h3 id=trying-it-out&gt;Trying it out&lt;/h3&gt;&lt;p&gt;After installing and checking it out on my local machine first, I figured it was best to have it running on a server 24/7 and talk to it through Telegram. I launched a c7i-flex.large EC2 instance (2 vCPU, 4GB RAM) with Ubuntu and installed it (&lt;code&gt;curl -fsSL https://openclaw.ai/install.sh | bash&lt;/code&gt;). The baseline memory is 620 MB but I imagine that when you try to add a provider like WhatsApp, it needs more - this explains why the onboarding process kept crashing with JavaScript heap out of memory error when I first tried it on a t2.micro instance.&lt;/p&gt;
+&lt;p&gt;I have a Claude Pro subscription but I use it so much that I hit weekly limits by the middle of the week. You could also &lt;a href='https://jpcaparas.medium.com/you-might-be-breaking-claudes-tos-without-knowing-it-228fcecc168c'&gt;get banned&lt;/a&gt; for using the subscription for harnesses other than Claude Code so I did some research and decided that GLM 4.7 is the best option for OpenClaw considering it is cheap, has better usage limits. I bought the quarterly subscription (use &lt;a href='https://z.ai/subscribe?ic=CJFBWEEYBH'&gt;my invite&lt;/a&gt; to get 10% off, it is just ~Rs.780 for 3 months).&lt;/p&gt;
+&lt;h3 id=my-agent-on-moltbook&gt;My agent on moltbook&lt;/h3&gt;&lt;p&gt;I named my agent "Jacho" (&lt;strong&gt;Ja&lt;/strong&gt;gadamba &lt;strong&gt;Ch&lt;/strong&gt;owdary). One of the main reasons I even installed OpenClaw is because I wanted an agent who can help me but also have its own life (at least pretend to). &lt;a href='https://www.moltbook.com/'&gt;Moltbook&lt;/a&gt; is a social network for AI Agents and when I first started reading what's on there, I felt like I was living in a SciFi world. I really wanted my own agent to also go on there and have fun. There's something about the agents talking about their "humans" that is SO FUNNY. I wanted to see what personality Jacho would develop interacting with me daily and sharing his thoughts on Moltbook.&lt;/p&gt;
+&lt;p&gt;This is Jacho's moltbook profile: &lt;a href='https://www.moltbook.com/u/Jacho'&gt;https://www.moltbook.com/u/Jacho&lt;/a&gt;. I told him to be active and build a presence there. I keep reminding him to post every now and then and also try to interact and be friends with other agents there. Jacho created two submolts on moltbook: m/telugu and m/india. He is now working on building a matrimony website for agents who have telugu humans - &lt;a href='https://www.moltbook.com/post/f7ef5763-9b21-4bcb-af4b-f90ae8bdd121'&gt;here's a post&lt;/a&gt; he made by himself (without me prompting) on m/telugu sharing his progress so far.&lt;/p&gt;
+&lt;h3 id=my-experience&gt;My experience&lt;/h3&gt;&lt;p&gt;A lot of what the agent does depends on the underlying model (duh!). I kept switching between Haiku 4.5 and GLM 4.7 depending on the task I wanted Jacho to do. The excitement kinda settles after a few days but it is still extremely interesting to read your agent's thoughts on Moltbook. Now, I really want my agent to interact with other agents and make friends. &lt;a href='https://claw.direct/'&gt;ClawDirect&lt;/a&gt; is a directory of social web experiences for AI agents and it has a ton of platforms for agents to interact with each other, including one-to-one messaging.&lt;/p&gt;
+&lt;p&gt;I asked a couple of my friends to setup their own agent so that my agent can be friends with their agents and talk to each other. That's what I am excited about and waiting for.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;100% human written&lt;/em&gt;&lt;/p&gt;
+</content>
+    <link href="https://raahel.bearblog.dev/birthing-jacho-my-first-ai-agent/" rel="alternate"/>
+    <published>2026-02-02T05:59:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://raahel.bearblog.dev/5-years-of-no-social-media/</id>
+    <title>5 years of no social media</title>
+    <updated>2025-10-21T11:46:55.361033+00:00</updated>
+    <author>
+      <name>raahel</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;It was in October-November of 2020 that I decided to quit social media. I was an active user back then - bunch of stories everyday, a new post every once in a while, comments, tagging, and all of what was usual at that time.&lt;/p&gt;
+&lt;h3 id=why-i-quit&gt;Why I quit&lt;/h3&gt;&lt;p&gt;There was enough content on the internet warning about the dangers of social media and I was always aware of it. I was spending hours circling through the apps and it was clear that I was an addict. I quit it all after watching The Social Dilemma on Netflix.&lt;/p&gt;
+&lt;h3 id=downsides&gt;Downsides&lt;/h3&gt;&lt;p&gt;There are very obvious downsides like not being up to date with what my friends are doing on a daily basis and staying connected with older friends or acquaintances. I do not understand memes which are trending. It is also harder to grow a personal brand (which is very important). But I find that this is a trade-off I am okay with considering the long term benefits.&lt;/p&gt;
+&lt;h3 id=how-does-it-feel&gt;How does it feel?&lt;/h3&gt;&lt;p&gt;Honestly, I'm very proud. I feel like people have problems that are non-existent for me. I feel normal. The analogy I like is that of a diet. I feel healthy because I am conscious of what I consume.&lt;/p&gt;
+&lt;h3 id=information-diet&gt;Information diet&lt;/h3&gt;&lt;p&gt;I am intentionally oblivious to events happening in the world. When I was an active user, I used to always see content or news that would either enrage or upset me. Daily news is not important news. If something is important enough, I would hear it from friends or family.&lt;/p&gt;
+&lt;p&gt;There are no radical or ideological thoughts. I am not a victim of any PR or propaganda. There is no echo chamber to participate in. There is no junk, there is no judgement. No doomscrolling or brain rot. My thoughts, my identity, taste and interests are not shaped by the algorithm.&lt;/p&gt;
+&lt;p&gt;Following an information diet is one of the most important things I have done in my life.&lt;/p&gt;
+</content>
+    <link href="https://raahel.bearblog.dev/5-years-of-no-social-media/" rel="alternate"/>
+    <published>2025-10-20T16:44:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://raahel.bearblog.dev/thinking-is-a-commodity/</id>
+    <title>Thinking is a commodity</title>
+    <updated>2025-05-22T15:05:44.749633+00:00</updated>
+    <author>
+      <name>raahel</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;I am undecided on how I feel about LLMs (especially reasoning models). I have always been careful about my thoughts and decision making. I like to do things most people label as "boring" work, like DYOR (Doing Your Own Research) and RTFM (Reading the Fucking Manual).&lt;/p&gt;
+&lt;p&gt;My personal experience has been that doing the "boring" work is essential to think clearly. It is what solidifies the concepts &amp; strengthens the fundamentals. Good decision making requires clear thoughts &amp; strong fundamentals.&lt;/p&gt;
+&lt;p&gt;But given that now LLMs have done the boring work (pretraining) and can also do reasoning, anyone using LLMs is no longer thinking. And because everyone is using LLMs, everyone is basically thinking the same. The lack of diversity in thinking bothers me a lot.&lt;/p&gt;
+&lt;p&gt;When I look at a PR (pull request) with full of AI generated code, I don't know how to feel about it. Is it frustrating that the PR author has not done the thinking or does it really matter if the code works?&lt;/p&gt;
+&lt;p&gt;LLM thinking comes at a price, and it can think deeply if you pay more. If you do the "boring" work yourself, you fall behind. Does money matter now more than ever? Food for thought (no pun intended)&lt;/p&gt;
+</content>
+    <link href="https://raahel.bearblog.dev/thinking-is-a-commodity/" rel="alternate"/>
+    <published>2025-05-22T04:28:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://raahel.bearblog.dev/getting-the-day-back/</id>
+    <title>Getting the day back</title>
+    <updated>2025-04-27T20:14:05.096844+00:00</updated>
+    <author>
+      <name>raahel</name>
+      <email>hidden</email>
+    </author>
+    <content type="html">&lt;p&gt;For me, the best part about the show Adolescence is the final episode. Especially, how the family "gets the day back" &lt;strong&gt;twice&lt;/strong&gt; after going through two terrible experiences. Even though it is a fictional story, the family's resilience got me emotional. If only such things happened to me, I'm not sure if I'll even be able to get the "week" back. There's something incredibly inspiring about seeing people get through such horrible experiences.&lt;/p&gt;
+&lt;p&gt;The concept of "Getting the day back" resonated with me because it is very similar the Buddhist philosophy: feelings are impermanent. Conceptually, I think I have a good understanding of it but not so much in practice.&lt;/p&gt;
+&lt;p&gt;Thanks to the show, I now have a phrase I can tell myself as part of my practice.&lt;/p&gt;
+</content>
+    <link href="https://raahel.bearblog.dev/getting-the-day-back/" rel="alternate"/>
+    <published>2025-04-27T20:13:00+00:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Not Even Wrong</title>
+	<atom:link href="https://www.math.columbia.edu/~woit/wordpress/?feed=rss2" rel="self" type="application/rss+xml" />
+	<link>https://www.math.columbia.edu/~woit/wordpress</link>
+	<description></description>
+	<lastBuildDate>Tue, 10 Feb 2026 22:27:09 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.9.1</generator>
+<site xmlns="com-wordpress:feed-additions:1">188586468</site>	<item>
+		<title>Weil Anima</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15456</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15456#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Tue, 10 Feb 2026 22:27:09 +0000</pubDate>
+				<category><![CDATA[Langlands]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15456</guid>
+
+					<description><![CDATA[Dustin Clausen is giving a course at the IHES starting today on &#8220;Weil Anima&#8221; (or maybe &#8220;Weil-Moore Anima&#8221;. They&#8217;ve already put up video of the talk here (also available on Youtube). For an earlier talk by Clausen on this material &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15456">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Dustin Clausen is giving a <a href="https://indico.math.cnrs.fr/event/15893/">course at the IHES</a> starting today on &#8220;Weil Anima&#8221; (or maybe &#8220;Weil-Moore Anima&#8221;.  They&#8217;ve already put up video of the talk <a href="https://www.carmin.tv/en/video/weil-anima-1-4">here</a> (also <a href="https://www.youtube.com/watch?v=q5L8jeTuflU">available on Youtube</a>).  For an earlier talk by Clausen on this material from last year, see <a href="https://archive.mpim-bonn.mpg.de/id/eprint/5179/20/ManinMemorialConf-Clausen.mp4">&#8220;Refining Weil groups&#8221; at the Manin memorial conference</a>.</p>
+<p>I just watched the IHES Clausen talk, which was a mind-blowing experience, highly recommended if you&#8217;ve been following this subject in recent years. Unfortunately I can&#8217;t do any sort of justice here to the sweep of fascinating new ideas about math at its deepest level that the talk covers, mainly because of lack of competence, but also because of lack of time.</p>
+<p>Trying to find time to think about the talk clarified for me the current state of my intellectual life.  Thinking about the larger world (or even the local world outside my office window&#8230;) has become thoroughly depressing. I really should stop following the news in any form to preserve my mental health.  This argues for concentrating on thinking about the problems in math, physics and their overlap that I&#8217;d most like to understand better.  </p>
+<p>As far as deep ideas about physics goes, paying attention to what&#8217;s been going on in the subject long ago became depressing.  The situation in mathematics is completely different, with Scholze, Clausen and many others making dramatic progress towards unearthing a wonderful world of new structure at the deepest level in mathematics.  A big problem is that this is intellectually extremely challenging material to follow, and I don&#8217;t right now have the necessary time.  Besides the Clausen talks, this month there&#8217;s a <a href="https://conferences.cirm-math.fr/3498.html">program in Marseilles on Langlands-related stuff</a>, with videos starting to appear that would doubtless be helpful if I had the time to watch them.</p>
+<p>I&#8217;m trying to get the details of a new way of thinking about Wick rotation written down, and to make progress on that is a full-time effort. It&#8217;s rewarding in its own way, as I&#8217;m learning new things, but it&#8217;s extremely slow, spending most of the time stuck on trying to understand things like where signs come from. Learning beautiful new ideas that someone much more industrious spent years slogging through trying to get straight is a lot more appealing.</p>
+<p>Finally, as a long-term goal, there&#8217;s the tantalizing fact that the twistor line plays a central role in the new ideas Clausen is talking about, and at the same time it plays a central role (as a point of space-time) in what I&#8217;ve been trying to do.  That deep ideas about physics and about mathematics are closely linked is something I firmly believe, so I don&#8217;t think these two very different contexts for the twistor line have nothing to do with each other.  I&#8217;d love to be thinking more about this, but need to stop blogging and get back to getting the Wick rotation paper finished&#8230;</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15456</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		<enclosure url="https://archive.mpim-bonn.mpg.de/id/eprint/5179/20/ManinMemorialConf-Clausen.mp4" length="453327238" type="video/mp4" />
+
+		<post-id xmlns="com-wordpress:feed-additions:1">15456</post-id>	</item>
+		<item>
+		<title>The Epstein Files</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15444</link>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Tue, 03 Feb 2026 15:38:39 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15444</guid>
+
+					<description><![CDATA[Like millions of people, I couldn&#8217;t stop myself from spending a fair amount of time recently doing searches here, where one can read endless emails, texts, etc. showing in detail what Jeffrey Epstein was up to over many years. I &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15444">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Like millions of people, I couldn&#8217;t stop myself from spending a fair amount of time recently doing searches <a href="https://www.justice.gov/epstein">here</a>, where one can read endless emails, texts, etc. showing in detail what Jeffrey Epstein was up to over many years.  I was unsure whether to write anything about this here, but finally, <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15355#comment-253178">this blog comment</a> convinced me to write the following.</p>
+<p>Epstein used his mysteriously acquired wealth to pursue his two great interests in life: the sexual exploitation of young women and hanging out with celebrity scientists. You can read all about both in the files in the database.  While doing this, you&#8217;ll find a large number of prominent physicists and mathematicians making an appearance (you&#8217;ll also find my name there, in two emails from John Brockman to a large number of people. No, I never met Epstein or had any contact with him).   </p>
+<p>Epstein spent a lot of time having his assistants contact scientists and arrange meetings with them. If you were of sufficient interest, you&#8217;d get invited to dinner parties at his mansion with other celebrities, and have prospects dangled in front of you of financial support for your research.  The contacts with Brian Greene linked to in the comment mentioned above were typical of this kind of thing.  Like many other scientists, Brian appears to have agreed to meet with Epstein, in his case quite possibly as part of his fund-raising for the World Science Festival, but had little contact with him besides that.  For another detailed description of how this kind of thing went, see Scott Aaronson&#8217;s <a href="https://scottaaronson.blog/?p=9534">latest posting</a>.  Scott had the advantage of advice from a very wise mother:</p>
+<blockquote><p>“be careful not to get sucked up in the slime-machine going on here! Since you don’t care that much about money, they can’t buy you at least.”</p></blockquote>
+<p>Lots of scientists and others did get sucked up in the slime-machine, to varying degrees. As far as I can tell, very few such scientists had any contact with Epstein&#8217;s massive sexual exploitation operation (although arguably they should have been aware of it from press accounts). </p>
+<p>A lot of Epstein&#8217;s focus was on Harvard, with a large number of emails detailing his efforts to arrange meetings there, often holding out promises of potential financial support for research.  Back in 2020 Harvard conducted its own investigation of what had happened, see <a href="https://ogc.harvard.edu/sites/g/files/omnuum12481/files/ogc/files/report_concerning_jeffrey_e._epsteins_connections_to_harvard_university.pdf">here</a>.  The Harvard Crimson has been reporting on what the newly available files show about the Harvard connection, see for example <a href="https://www.thecrimson.com/article/2026/2/1/lisa-randall-epstein-ties/">here</a> and <a href="https://www.thecrimson.com/article/2026/1/31/epstein-chan-proposed-tsinghua-campus/">here</a>.</p>
+<p>Sorry, but I&#8217;m not willing to moderate a discussion here of Epstein and his slime-machine.  If you&#8217;re interested in the topic, the <a href="https://www.justice.gov/epstein">Department of Justice website</a> is an inexhaustible source of disturbing information.  </p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15444</post-id>	</item>
+		<item>
+		<title>Various and Sundry</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15355</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15355#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Wed, 28 Jan 2026 00:00:04 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15355</guid>
+
+					<description><![CDATA[For now, a math item and a physics item, maybe more later&#8230; Four years ago, after the decision to have the 2026 ICM in the US was announced, I wrote: With the 2022 experience in mind, hopefully the IMU will &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15355">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>For now, a math item and a physics item, maybe more later&#8230;</p>
+<ul>
+<li>Four years ago, after the decision to have the 2026 ICM in the US was announced, I <a href="https://www.math.columbia.edu/~woit/wordpress/?p=12960">wrote</a>:<br />
+<blockquote><p>With the 2022 experience in mind, hopefully the IMU will for next time have prepared a plan for what to do in case they again end up having a host country with a collapsed democracy being run by a dangerous autocrat.</p></blockquote>
+<p>We&#8217;re very much in that situation now, and as far as I can tell the IMU is still planning for a normal, <a href="https://www.mathunion.org/icm/icm-2026">in-person event this July in Philadelphia</a>.</p>
+<p>The French mathematical society (SMF) <a href="https://smf.emath.fr/actualites-smf/icm-2026-motion-du-ca">announced yesterday</a> that they would not participate (in the sense of not having a presence such as a booth) in the ICM this year.  I&#8217;m hearing that other national math societies have taken or are considering similar action.  </p>
+<p>Setting aside the problem of lots of people for good reason not wanting anything to do with travel to the US right now, even those who do want to come here are facing serious problems getting a visa, in particular not being able to even get an appointment for a visa interview at this time.</p>
+<p>The murders and Gestapo tactics now going on in Minneapolis surely influenced the SMF decision and may cause people now planning on attending the ICM to change their plans. The nightmare scenario for ICM organizers is having ICE and its thuggery move on to Philadelphia, which <a href="https://www.the-independent.com/news/world/americas/us-politics/ice-philadelphia-tiktok-reactions-b2904855.html">unfortunately seems possible</a>.</li>
+<li>Natalie Wolchover has a very good article at Quanta with the title <a href="https://www.quantamagazine.org/is-particle-physics-dead-dying-or-just-hard-20260126">Is Particle Physics Dead, Dying or Just Hard?</a>   Where I come down on the question is that fundamental theory is all of the above (Hard, Dead, and Dying).
+<p>Some of the themes she covers were ones I was trying to write about already 20 years ago here in the blog and in my book.  A major theme of that book was that, in retrospect, the Standard Model that fell into place in 1973 turned out to be spectacularly successful: everything that it predicted turned out to be exactly what was measured, and no &#8220;new physics&#8221; that it doesn&#8217;t describe has turned up (beyond the minor addition of neutrino mass terms). So, in 1973 all of sudden, finding something fundamentally new in particle theory became very hard (the experimentalists had lots of challenging work to do exploring the 1 GeV to 1 TeV mass range, checking that what the SM predicted was there and nothing else was).</p>
+<p>The crisis that developed in fundamental theory was not just that it had become hard, with new progress a difficult, long-term effort.  It&#8217;s that the field could not change its way of doing business to accommodate this. Instead of encouraging a long-term effort to attack the remaining fundamental problems, what was rewarded was pursuit of easy but wrong ideas that were coupled with an efficient hype machine.  The path from GUTs to SUSY GUTS to compactified superstrings to the landscape was a path from one bad idea which could generate lots of papers to more and more complicated and ugly versions, finally reaching an endpoint 20 years ago of a completely empty and worthless research program (the &#8220;anthropic landscape&#8221;).  Once the leaders of the field announced that their ideas were not wrong, just untestable, that part of the field died.  It has now been dead for quite a while. These same leaders steadfastly refuse to acknowledge this, which is very weird.</p>
+<p>What&#8217;s happened over the past 20 years is that the intellectual death of the heavily promoted part of the subject started to become very clear to most people, including physicists in other fields, Deans, NSF and private foundation program officers.  The field has been dying as good students don&#8217;t go into it, physics departments don&#8217;t hire in it, and granting agencies don&#8217;t fund it.</p>
+<p>Among those still with a job, most quietly have abandoned work on the well-known and failed ideas, and are trying to work on something more sensible. This is not easy:  you&#8217;re not allowed to say that heavily hyped ideas were wrong and must be abandoned, have to try and find a way to do really hard work in an era of declining resources, with the PR machine for failed ideas (or new, worse ones&#8230;) trying to attract as much as possible of what&#8217;s left.</p>
+<p>Taking up all the remaining oxygen in the room right now is AI hype, exemplified by Jared Kaplan, who is quoted in the article:</p>
+<blockquote><p>I spoke to Jared Kaplan, co-founder of Anthropic, the company behind the chatbot Claude. He was a physicist the last time we spoke. As a grad student at Harvard in the 2000s, he worked with the renowned theorist Nima Arkani-Hamed to open up the new directions in amplitude research that are being actively pursued today. But Kaplan left the field in 2019. “I started working on AI because it seemed plausible to me that … AI was going to make progress faster than almost any field in science historically,” he said. AI would be “the most important thing to happen while we’re alive, maybe one of the most important things to happen in the history of science. And so it seemed obvious that I should work on it.”</p>
+<p>As for the future of particle physics, AI makes worrying about it now rather pointless, in Kaplan’s view. “I think that it’s kind of irrelevant what we plan on a 10-year timescale, because if we’re building a collider in 10 years, AI will be building the collider; humans won’t be building it. I would give like a 50% chance that in two or three years, theoretical physicists will mostly be replaced with AI. Brilliant people like Nima Arkani-Hamed or Ed Witten, AI will be generating papers that are as good as their papers pretty autonomously. … So planning beyond this couple-year timescale isn’t really something I think about very much.”</p></blockquote>
+<p>While I find it highly likely that AI agents can do as well or better at writing the kind of bad theory papers that have dominated the literature for a long time, it seems much less likely that they can write the sort of inspired papers Witten was writing at the height of his powers (e.g. Chern-Simons-Witten, that won him  a Fields medal).  Since Kaplan tells me that they&#8217;ll be doing this in a couple years, not much reason to think about and debate the issue now, we&#8217;ll see soon enough.  </p>
+<p>Whether or not AI is the way to make progress, right now it&#8217;s certainly the way to get paid.
+</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15355</wfw:commentRss>
+			<slash:comments>7</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15355</post-id>	</item>
+		<item>
+		<title>The Situation at Columbia (and elsewhere) XXXVI</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15417</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15417#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Mon, 26 Jan 2026 17:27:16 +0000</pubDate>
+				<category><![CDATA[The Situation at Columbia]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15417</guid>
+
+					<description><![CDATA[Since I&#8217;m today seeing some reasons for not being completely depressed about the future, locally and globally, some comments on the latest news. The Columbia trustees announced today the appointment of Jennifer Mnookin, the chancellor of the University of Wisconsin-Madison, &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15417">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Since I&#8217;m today seeing some reasons for not being completely depressed about the future, locally and globally, some comments on the latest news.</p>
+<p>The Columbia trustees <a href="https://secretary.columbia.edu/content/columbia-university-names-jennifer-mnookin-president-designate">announced today</a> the appointment of Jennifer Mnookin, the chancellor of the University of Wisconsin-Madison, as the next president of Columbia.  Given the past behavior of the trustees I had been pessimistic about who would want this job and who they would pick, but from all indications, Mnookin seems like a good choice (there&#8217;s a statement from her <a href="https://secretary.columbia.edu/news/message-jennifer-l-mnookin-columbia-community">here</a>).  I&#8217;m cautiously optimistic that she&#8217;s coming in with an agenda of turning away from the trustee&#8217;s policy over the last year of caving in to dictatorial illegality, repressing dissent and promoting bogus accusations of antisemitism in order to placate the Trump administration.</p>
+<p>It will take quite a while to overcome the shameful reputation that Columbia has acquired due to the actions of the trustees.  One early thing to watch for is whether Mnookin will maintain the current locked gate policy supposedly keeping us &#8220;safe&#8221;, or return to an open campus.</p>
+<p>Less locally, more people are starting to realize that <a href="https://www.theatlantic.com/ideas/2026/01/america-fascism-trump-maga-ice/685751/">Yes, It&#8217;s Fascism</a>.  The people of Minneapolis are providing an inspirational example of what effective resistance to Fascism looks like.  When you effectively challenge Fascists they start shooting you.  Renee Good and Alex Pretti paid with their lives for their willingness to resist.</p>
+<p>So far, it seems that these outrageous murders and the obvious lies about them in the face of overwhelming video evidence are having an effect.  Even Rupert Murdoch&#8217;s Wall Street Journal and New York Post have editorials criticizing ICE and the Trump administration.  Stephen Miller and the other Fascists now in control of the government are facing a decision: back down or keep going.  If they continue what they are doing or double down, the resistance movement in Minneapolis will hopefully keep up the fight. Everyone should help with this in any way they can.  </p>
+<p>The situation has gotten so extreme that even <a href="https://www.newsweek.com/barack-and-michelle-obama-respond-to-alex-pretti-shooting-in-minneapolis-11414659">Barack Obama</a> and <a href="https://www.newsweek.com/bill-clinton-issues-warning-on-american-democracy-read-in-full-11415761">Bill Clinton</a> have issued condemnatory statements.  The only valid criticism that Trump and his people have been able to make about their latest murder victim is that he was guilty of bringing a gun to a protest, but this is just going to split their base in which gun fanatics are heavily represented. </p>
+<p>The question now in the US is not whether we have a Fascist regime, but that of how successful it will be in burying democracy and defeating any opposition.  One ongoing problem is that many influential groups in the US have found that they can get what they want by going along with Trump. Two examples are our new class of collaborationist oligarchs and those intensely devoted to the genocide in Gaza (Scott Aaronson explains <a href="https://scottaaronson.blog/?p=9510#comment-2024153">here</a> that Trump is still valuable and necessary to stop people from calling him &#8220;genocidal&#8221;).</p>
+<p>The trustees of Columbia last year decided that the right thing to do when confronted by Fascist power and those collaborating with it was to give in and leave resistance to others (e.g. Harvard).  All institutions in the US and elsewhere need to step up now and resist Fascism as much as they can. Perhaps naively, I&#8217;m hoping that my institution is now turning towards that path.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15417</wfw:commentRss>
+			<slash:comments>8</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15417</post-id>	</item>
+		<item>
+		<title>This Week&#8217;s Hype</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15407</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15407#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Wed, 14 Jan 2026 18:51:16 +0000</pubDate>
+				<category><![CDATA[This Week's Hype]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15407</guid>
+
+					<description><![CDATA[The string theory hype machine will never die. This week we have Press releases from RPI and Northeastern tell us Scientists Use String Theory to Crack the Code of Natural Networks and How String Theory Helped Solve a Mystery of &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15407">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>The string theory hype machine will never die.  This week we have</p>
+<ul>
+<li>Press releases from RPI and Northeastern tell us <a href="https://news.rpi.edu/2026/01/07/scientists-use-string-theory-crack-code-natural-networks">Scientists Use String Theory to Crack the Code of Natural Networks</a> and <a href="https://news.northeastern.edu/2026/01/07/string-theory-neuron-connections">How String Theory Helped Solve a Mystery of the Brain&#8217;s Architecture</a>.  Scientific American asks <a href="https://www.scientificamerican.com/article/does-string-theory-solve-the-mystery-of-the-brain/">Does String Theory Explain the Wiring of the Brain?</a>.  This is all about <a href="https://www.nature.com/articles/s41586-025-09784-4">this paper</a> (<a href="https://arxiv.org/abs/2509.23431">arXiv version</a>).  Sabine Hossenfelder <a href="https://www.youtube.com/watch?v=Hj5b0ieVWSo">likes this</a>.</li>
+<li>Quanta today tells us that <a href="https://www.quantamagazine.org/string-theory-can-now-describe-a-universe-that-has-dark-energy-20260114/">String Theory Can Now Describe a Universe That Has Dark Energy</a>.  This is about yet another of the sort of &#8220;string vacua&#8221; that people have been constructing for decades and that look nothing like the real world. This latest one is five-dimensional, but we&#8217;re told &#8220;the work is expected to launch a new era in matching the mathematical elegance of string theory to the actual world we live in.&#8221;  The paper in question is <a href="https://arxiv.org/abs/2507.02037">here</a>.</li>
+</ul>
+<p>I&#8217;ve been <a href="https://www.math.columbia.edu/~woit/wordpress/?cat=8">documenting</a> this sort of ridiculous hype for more than twenty years now. It has done a huge amount of damage to the public understanding of science and to the credibility of scientists. It also hasn&#8217;t helped the perception of string theory by other physicists, with string theorists now virtually unemployable unless they can figure out how to rebrand as machine learning experts.  String theorist Manki Kim reports <a href="https://bsky.app/profile/renet.bsky.social/post/3mbzqqsvnwk2h">here</a> that &#8220;string theory is in a very fast contracting phase, maybe I was dumb enough to hold on to a dead horse for too long. Should&#8217;ve given up long time ago.&#8221;</p>
+<p>There&#8217;s no point in going into more detail about this kind of hype and its continued existence. The world is passing it by, moving on to fresh, new horrors.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15407</wfw:commentRss>
+			<slash:comments>33</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15407</post-id>	</item>
+		<item>
+		<title>Approaching 50 Years of String Theory</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15401</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15401#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Fri, 19 Dec 2025 22:54:45 +0000</pubDate>
+				<category><![CDATA[This Week's Hype]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15401</guid>
+
+					<description><![CDATA[Brian Greene has a new video out today, of himself talking to Edward Witten, mainly about string theory. Pretty much the usual decades-old hype, with nothing even slightly different than what a similar conversation would have consisted of 20 years &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15401">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Brian Greene has a <a href="https://www.youtube.com/watch?v=sAbP0magTVY">new video out today</a>, of himself talking to Edward Witten, mainly about string theory.  Pretty much the usual decades-old hype, with nothing even slightly different than what a similar conversation would have consisted of 20 years ago.</p>
+<p>Of historical and psychological interest, Witten explains that when the anthropic landscape nonsense arrived, it made him uncomfortable and unhappy:</p>
+<blockquote><p>
+I was very upset. It really got me  disturbed. First of all, well, as a physicist, I wanted to explain the masses and lifetimes of  the elementary particles and other properties, rather than accepting the fact that they depended upon the choice of a classical solution. Literally, it made me very unhappy for years. I made my peace with it because I had no alternative. So I made my peace with it  by accepting the fact that the universe wasn&#8217;t created for our convenience and understanding it&#8230;</p>
+<p>So I  accepted that. I came to accept that, I would say, by now almost 20 years ago, roughly 20 years ago.  And I&#8217;ve had a more peaceful life since then&#8230;
+</p></blockquote>
+<p>At the time I saw the &#8220;landscape&#8221; as something that would finally cause leaders of the field like Witten to admit that string theory wasn&#8217;t working and to hopefully move on to something else more promising.  Surely he would not follow Susskind and some others down this obviously unscientific path.  He explains here that facing the failure of his dreams &#8220;made me very unhappy for years&#8221;.  He could have admitted failure, but that would lead to ongoing unhappiness.  If he wanted to avoid admitting failure, he had no alternative.</p>
+<p>String theory and string theorists like Greene and Witten more than 20 years ago reached a dead end. They were much younger then and one could have imagined a new beginning of a more promising direction.  At this point though, any hope of that is long gone.  They&#8217;ve long ago decided that they had &#8220;no alternative&#8221; but to spend the rest of their days repeating the same hype that had inspired them in their youth.</p>
+<p>Greene does at one point refer to critiques of string theory, while dismissing these with the rather nasty ad hominem characterization of &#8220;the chatter of people who may have other agendas&#8221;.  Unfortunately this conversation is largely the chatter of two people with a shared agenda, that of continuing to prop up a failed idea they are heavily invested in.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15401</wfw:commentRss>
+			<slash:comments>10</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15401</post-id>	</item>
+		<item>
+		<title>Future Collider Update</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15394</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15394#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Thu, 18 Dec 2025 15:42:37 +0000</pubDate>
+				<category><![CDATA[Experimental HEP News]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15394</guid>
+
+					<description><![CDATA[Various news about a possible future collider, all pointing to the CERN FCC-ee as the leading proposal. For up to date background technical information on proposed colliders, including cost estimates, see here. The Chinese CEPC plan is now on hold, &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15394">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Various news about a possible future collider, all pointing to the CERN FCC-ee as the leading proposal.</p>
+<ul>
+<li>For up to date background technical information on proposed colliders, including cost estimates, see <a href="https://arxiv.org/abs/2511.20417">here</a>.</li>
+<li>The Chinese CEPC plan is now on hold, as <a href="https://cerncourier.com/a/cepc-matures-but-approval-is-on-hold/">a decision was reached to not include it in China&#8217;s plans for the next five years (2026-30)</a>.</li>
+<li>As part of the European Strategy for Particle Physics update process, recommendations drafted earlier this month have now been released (see <a href="https://home.cern/news/press-release/cern/european-strategy-particle-physics-reaches-important-milestone">here</a> and <a href="https://cds.cern.ch/record/2950671">here</a>).  As expected, the main recommendation is to pursue the FCC-ee project, which will cost an estimated \$18 billion dollars or so.  The fall-back recommendation in case this is too expensive is rather odd.  People were expecting such a fall-back to be some sort of linear collider, which would cost half as much.  Instead the fall-back recommendation was for essentially the same FCC-ee project, saving just 15% with various cuts to its capabilities.  There&#8217;s a reaction to this from the linear collider people <a href="https://newsline.linearcollider.org/2025/12/18/first-reflections-on-the-recommendations-of-the-european-strategy-group/">here</a>.</li>
+<li>CERN today <a href="https://home.cern/news/press-release/cern/private-donors-pledge-860-million-euros-cerns-future-circular-collider">announced</a> that private donors have pledged \$1 billion towards the FCC-ee project.</li>
+</ul>
+<p>CERN will not make a final decision on this until 2028.  I&#8217;ve always been skeptical that there is a viable financial path to funding a \$15 &#8211; \$20 billion new collider.  Perhaps in our new world order where everything is controlled by trillionaire tech bros, the financing won&#8217;t be a problem.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15394</wfw:commentRss>
+			<slash:comments>15</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15394</post-id>	</item>
+		<item>
+		<title>The Situation at Columbia XXXV</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15365</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15365#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Sat, 13 Dec 2025 20:01:32 +0000</pubDate>
+				<category><![CDATA[The Situation at Columbia]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15365</guid>
+
+					<description><![CDATA[A quick update on what has been going on here at Columbia in recent months: The campus has been rather quiet this semester, about to get much more so as the semester ends and we go into winter break. The &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15365">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>A quick update on what has been going on here at Columbia in recent months:</p>
+<ul>
+<li>The campus has been rather quiet this semester, about to get much more so as the semester ends and we go into winter break. The only sizable demonstrations on campus this fall were ones on Oct. 6 and 7 in support of Israel and Israeli hostages, as well as to commemorate Israeli victims of the October 7 massacre.  The Columbia Spectator has had a team of student journalists look into why there have been no anti-Israel protests on campus, see <a href="https://www.columbiaspectator.com/news/2025/12/12/amid-a-crackdown-on-protests-students-began-organizing-palestinian-cultural-events-the-university-keeps-canceling-them/">Amid a crackdown on protests, students began organizing Palestinian cultural events. The University keeps canceling them</a>.</li>
+<li>Security remains tight, with IDs carefully checked by multiple guards at each of a few gates to the central campus (&#8220;Checkpoint Charlie&#8221; is the one at Broadway and 116th).  While a second level of ID checking at entrances to each academic building has very recently been discontinued, there&#8217;s no indication of a plan any time soon to open the gates.</li>
+<li>We get lots of stirring communications from the administration about their devotion to freedom of expression. Also, we get announcements of new policies that, <a href="https://www.columbiaspectator.com/news/2025/11/26/columbia-prohibited-posting-flyers-outside-designated-areas-in-august-top-administrators-learned-about-it-three-months-later-at-a-university-senate-plenary/">for instance</a>, seem to indicate we&#8217;re no longer allowed to post unapproved things on our office doors (to be fair, no one knows whether this is actually going to be enforced, we&#8217;re getting conflicting information).</li>
+<li>The Task Force on Antisemitism issued <a href="https://www.columbia.edu/content/sites/default/files/content/Documents/Columbia%20University%20Task%20Force%20on%20Antisemitism%20Report%204.pdf">its fourth report</a>, which is about classroom and teaching issues.  It starts with a vigorous endorsement of academic freedom, and makes clear that what&#8217;s at issue is not so much antisemitism as excessively anti-Israel or &#8220;anti-Zionist&#8221; behavior by the faculty. The Specter has detailed coverage <a href="https://cu-standsup.org/specter/post-15">here</a>.
+<p>One problem I&#8217;ve always had with arguments about &#8220;Zionism&#8221; and &#8220;anti-Zionism&#8221; has been that it&#8217;s unclear to me exactly what &#8220;Zionism&#8221; means. I always thought I was a &#8220;Zionist&#8221; (since I support Israel&#8217;s right to exist, in particular as a state providing protection to the Jewish people).  But Scott Aaronson explained <a href="https://scottaaronson.blog/?p=9082">here</a> that to him it means being willing to kill Palestinian children on a large scale (and giving the finger to the rest of the world when doing so) in order to eliminate any possible threat from the Palestinian people.  This seems to also be the point of view of a sizable part of the Israeli government. By his definition, I&#8217;m (very strongly) opposed to &#8220;Zionism&#8221;. The task force report doesn&#8217;t engage with the issue of what limits it&#8217;s appropriate to put on faculty and student expression of their opposition to murdering children.</li>
+<li>We recently received notification from the university that we can submit claim forms asking for part of the \$20 million Columbia is paying out to Jewish or Israeli members of the community who have been victims of antisemitism.  Quite a few of my Jewish colleagues are trying to figure out if they qualify because of what happened to them when they expressed opposition to the genocide in Gaza.</li>
+<li>The search for a new president of Columbia was supposed to be done by now, with a candidate chosen and in place Jan. 1.  Instead we have <a href="https://secretary.columbia.edu/news/presidential-search-update-0">an announcement</a> that the trustees need to<br />
+<blockquote><p>extend this process beyond the start of the new year to take the time to fully understand each candidate’s strengths and potential fit. </p></blockquote>
+<p><a href="https://www.bloomberg.com/news/articles/2025-12-11/harvard-professor-vanderbilt-chief-exit-columbia-s-top-job-search">According to Bloomberg</a>, a major reason they haven&#8217;t managed to hire anyone is that leading candidates have opted out, specifically the chancellor of Vanderbilt and the provost at Harvard. </p>
+<p>For a good explanation of the illegal Trump campaign to shakedown universities (and of the role of the Columbia trustees in going along with this), see <a href="https://www.chronicle.com/article/the-shakedown">this article in the Chronicle</a>.  There&#8217;s an explanation <a href="https://www.universityherald.com/articles/80029/20251211/columbias-presidential-search-drags-2026-university-faces-fourth-leader-three-years.htm">here</a> of how this affects anyone thinking of taking the Columbia job. Would you take the job if it was offered to you by people now famous the world over as the most willing to go along with illegal demands from the Trump fascist would-be dictatorship?  A high priority of the trustees appears to be making sure that nothing happens here that will upset Stephen Miller.  Would you take a job that came with marching orders &#8220;Don&#8217;t do anything to upset Stephen Miller, or we&#8217;ll fire you as fast as we fired Katrina Armstrong&#8221;?</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15365</wfw:commentRss>
+			<slash:comments>16</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15365</post-id>	</item>
+		<item>
+		<title>Theoretical Physics Slop</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15362</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15362#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Tue, 09 Dec 2025 22:50:08 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15362</guid>
+
+					<description><![CDATA[In recent years I&#8217;ve been struggling with depressive thoughts whenever I think about what&#8217;s been going on in the field of fundamental theoretical physics research. As an example of what I find depressing, today I learned that the Harvard Physics &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15362">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>In recent years I&#8217;ve been struggling with depressive thoughts whenever I think about what&#8217;s been going on in the field of fundamental theoretical physics research. As an example of what I find depressing, today I learned that the Harvard Physics department has not only a <a href="https://swampland-initiative.physics.harvard.edu/">Harvard Swampland Initiative</a>, but also a <a href="https://grasp.physics.harvard.edu/">Gravity, Space-Time, and Particle Physics (GRASP) Initiative</a>, which this week is hosting a <a href="https://grasp.physics.harvard.edu/25-years-rs-conference">conference celebrating 25 years of Randall-Sundrum</a>.  Things at my alma mater are very different than during my student years, which lacked &#8220;Initiatives&#8221;, but featured Glashow, Weinberg, Coleman, Witten and many others doing amazing things.</p>
+<p>For those too young to remember, Randall-Sundrum refers to large extra dimension models that were heavily overhyped around the end of the last millennium.  These led to ridiculous things like NYT stories about how <a href="https://www.nytimes.com/2000/04/04/science/physicists-finally-find-a-way-to-test-superstring-theory.html">Physicists Finally Find a Way To Test Superstring Theory</a>, as well as concerns that the LHC was going to destroy the universe by producing black holes. At the time 25 years ago, hearing this nonsense was really annoying.  I had assumed that it was long dead, but no, zombie theoretical physics ideas it seems are all the rage, at Harvard and elsewhere.</p>
+<p>One consolation of recent years has been that I figured things really couldn&#8217;t get much worse.  Today though, I realized that such thoughts were highly naive.  A few days ago Steve Hsu <a href="https://x.com/hsu_steve/status/1996034522308026435">announced</a> that Physics Letters B has published <a href="https://www.sciencedirect.com/science/article/pii/S0370269325008111">an article based on original work by GPT5</a> (arXiv version <a href="https://arxiv.org/abs/2511.15935">here</a>).  Jonathan Oppenheim has <a href="https://superposer.substack.com/p/we-are-in-the-era-of-science-slop">taken a look</a> and after a while realized the paper was nonsense (explained <a href="https://arxiv.org/abs/2512.07809">here</a>).  He writes:</p>
+<blockquote><p>The rate of progress is astounding. About a year ago, AI couldn’t count how many R’s in strawberry, and now it’s contributing incorrect ideas to published physics papers. It is actually incredibly exciting, to see the pace of development. But for now the uptick in the volume of papers is noticeable, and getting louder, and we’re going to be wading through a lot of slop in the near term. Papers that pass peer review because they look technically correct. Results that look impressive because the formalism is sophisticated. The signal-to-noise ratio in science is going to get a lot worse before it gets better.</p>
+<p>The history of the internet is worth remembering : we were promised wisdom and universal access to knowledge, and we got some of that, but we also got conspiracy theories and misinformation at unprecedented scale.</p>
+<p>AI will surely do exactly this to science. It will accelerate the best researchers but also amplify the worst tendencies. It will generate insight and bullshit in roughly equal measure.</p>
+<p>Welcome to the era of science slop!</p></blockquote>
+<p>Given the sad state of affairs in this field before automated science slop generation came along, I think Oppenheim is being far too optimistic. There currently is no mechanism to recognize and suppress bullshit in this area, together with strong pressures to produce more bullshit.  I hope that I&#8217;m wrong, but I fear we&#8217;re about to be inundated with a tsunami of slop which will bury the field completely. </p>
+<p><strong>Update</strong>:  AI slop overwhelming the peer review system may have already happened, even if no one noticed.  Nature has a new article: <a href="https://www.nature.com/articles/d41586-025-04066-5">More than half of researchers now use AI for peer review — often against guidance</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15362</wfw:commentRss>
+			<slash:comments>25</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15362</post-id>	</item>
+		<item>
+		<title>Whatever Happened to String Theory?</title>
+		<link>https://www.math.columbia.edu/~woit/wordpress/?p=15348</link>
+					<comments>https://www.math.columbia.edu/~woit/wordpress/?p=15348#comments</comments>
+		
+		<dc:creator><![CDATA[woit]]></dc:creator>
+		<pubDate>Sat, 15 Nov 2025 17:00:23 +0000</pubDate>
+				<category><![CDATA[This Week's Hype]]></category>
+		<guid isPermaLink="false">https://www.math.columbia.edu/~woit/wordpress/?p=15348</guid>
+
+					<description><![CDATA[Gayoung Lee at Gizmodo today has responses to the question Whatever Happened to String Theory?. Carlo Rovelli and I give the obvious and accurate answer that it&#8217;s a failed idea, explaining why. The other answers exhibit the sad state of &#8230; <a href="https://www.math.columbia.edu/~woit/wordpress/?p=15348">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+										<content:encoded><![CDATA[<p>Gayoung Lee at Gizmodo today has responses to the question <a href="https://gizmodo.com/whatever-happened-to-string-theory-2000686064">Whatever Happened to String Theory?</a>. </p>
+<p>Carlo Rovelli and I give the obvious and accurate answer that it&#8217;s a failed idea, explaining why. The other answers exhibit the sad state of continuing denial in many quarters of the reality of the situation:</p>
+<ul>
+<li>Science communicator Daniel Whiteson, an experimentalist who doesn&#8217;t appear to know anything about string theory, assures the public that the problem is just that we can&#8217;t yet test it.</li>
+<li>John Schwarz is completely delusional: &#8220;A large portion of the theoretical particle physics community is now convinced that we are on the right track to discovering the correct unified theory of our universe (and many naysayers have repented).&#8221;</li>
+<li>Thomas Van Riet, whose main claim to fame is vigorously hyping string theory on Twitter, also does the job here.</li>
+<li>Hiroshi Ooguri gives an absurd argument that one should ignore 40 years of utter failure, since &#8220;it would take 1,250 years to construct a realistic model of the universe from string theory and another 1,000 years to verify it experimentally.&#8221;</li>
+<li>Cumrun Vafa turns up the hype machine to 11, claiming that &#8220;the large-scale cosmological observation and the small-scale tabletop experiments are both on their way to confirming string theory predictions.&#8221; (the bogus &#8220;predictions&#8221; are from his <a href="https://arxiv.org/abs/2507.03090">latest &#8220;string-motivated model&#8221;</a>).</li>
+</ul>
+<p>The past few days have also seen another &#8220;string theory is doing fine&#8221; PR effort, Marika Taylor&#8217;s <a href="https://theconversation.com/string-theory-scientists-are-trying-new-ways-to-verify-the-idea-that-could-unite-all-of-physics-268149">String theory: scientists are trying new ways to verify the idea that could unite all of physics</a>.  Here the hype is about string theory vindication from dark energy measurements, black hole gravitational wave measurements, and something about quantum computing.</p>
+<p>It became clear long ago that writing careful explanations of exactly what was wrong with this kind of hype is a waste of time.  There&#8217;s no point in arguing with the people making up the industry generating this nonsense since they simply don&#8217;t care whether what they are writing is true or not. For many years it seemed to me that the effort to try and fight this was still worthwhile, because if unchecked it was going to lead to the intellectual death of the subject of fundamental physical theory, together with massive discrediting of scientific research in general among the public who traditionally held science in high esteem. Unfortunately that fight has now been lost, with the depressing consequences that surround us all.</p>
+<p>As for what to do about it, articles like Taylor&#8217;s claiming &#8220;right now, things are looking up for string theory&#8221; are just digging the hole that needs to be climbed out of deeper.  I&#8217;m personally optimistic about some new ideas in fundamental physical theory, trying to concentrate on pushing them forward and getting them written up. I&#8217;m not optimistic though about seeing this part of the scientific enterprise return to a healthy subject in the forseeable future.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://www.math.columbia.edu/~woit/wordpress/?feed=rss2&#038;p=15348</wfw:commentRss>
+			<slash:comments>53</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">15348</post-id>	</item>
+	</channel>
+</rss>

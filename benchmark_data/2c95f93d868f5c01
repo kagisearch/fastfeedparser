@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Sebastien Lovergne</title><description>A humble tinkerer website about his interests</description><link>https://lovergne.dev/</link><language>en-US</language><item><title>8086 Virtual Machine</title><link>https://lovergne.dev/awesome#8086-vm</link><guid isPermaLink="true">https://lovergne.dev/awesome#8086-vm</guid><pubDate>Wed, 10 Jul 2024 00:00:00 GMT</pubDate><content:encoded>This is a learning project built for the [Performance-Aware Programming course](/archive/computed-enhanced/) by Casey Muratori. A major focus of the course is understanding how your code is actually executed at the hardware level and how that impacts performance. Consequently, one of the first steps in the course is to build an 8086 emulator to better understand the structure behind assembly instructions and how they are processed.
+
+The [8086 microprocessor](https://en.m.wikipedia.org/wiki/Intel_8086), introduced in 1978, is the foundation of the x86 instruction set, making it an excellent candidate for learning microcode from first principles. While its instruction set is fairly limited compared to modern versions (being only 16-bit, after all), it is actually quite complex compared to modern instruction sets like RISC-V as many clever hacks were used to maximize byte compactness, which was essential given the hardware limitations of the time.
+
+This project was a great learning experience and made me realize that while microcode seems like a difficult and highly specialized topic, it&apos;s actually quite approachable. Since then, I&apos;ve found low-level topics much more accessible and have developed a deeper curiosity about them.&lt;br&gt;&lt;a href=&quot;https://github.com/TheBigRoomXXL/8086-virtual-machine&quot;&gt;https://github.com/TheBigRoomXXL/8086-virtual-machine&lt;/a&gt;</content:encoded></item><item><title>Glory is only 11MB/sec away</title><link>https://lovergne.dev/awesome#11mbsec-away</link><guid isPermaLink="true">https://lovergne.dev/awesome#11mbsec-away</guid><pubDate>Wed, 17 Apr 2024 00:00:00 GMT</pubDate><content:encoded>A good article against the necessity of horizontal scaling and deploying on the edges. 
+
+Indeed, I think that for most applications you might want horizontal scaling but you don&apos;t
+actually need it, worst than that, it can actually hurt your application by adding 
+unnecessary complexity and remember what [Grug](https://lovergne.dev/archive/grub-brain)
+told use: complexity is the enemy.&lt;br&gt;&lt;a href=&quot;https://thmsmlr.com/cheap-infra&quot;&gt;https://thmsmlr.com/cheap-infra&lt;/a&gt;</content:encoded></item><item><title>Alpines.js</title><link>https://lovergne.dev/awesome#alpine-js</link><guid isPermaLink="true">https://lovergne.dev/awesome#alpine-js</guid><pubDate>Sun, 20 Aug 2023 00:00:00 GMT</pubDate><content:encoded>Make the web simple again! Alpine.js provide DOM reactivity and
+two-way data binding thought a lightweight framework. It&apos;s build on top of
+the `@vue/reactivity` package, which is it&apos;s only dependency, and the whole
+framework is ~16KB minified and compressed. Alpine.js work very well on it&apos;s
+owm but I think it would be very interesting to see if it synergize well with
+HTMX for the place where client site reactivity is absolutly needed.&lt;br&gt;&lt;a href=&quot;https://alpinejs.dev/&quot;&gt;https://alpinejs.dev/&lt;/a&gt;</content:encoded></item><item><title>Cofessions Of A Code Addict</title><link>https://lovergne.dev/awesome#coding-confessions</link><guid isPermaLink="true">https://lovergne.dev/awesome#coding-confessions</guid><pubDate>Wed, 19 Mar 2025 00:00:00 GMT</pubDate><content:encoded>A great resource for a deep dive into systems programming. As a Python developer, I especially liked the [CPython internals articles](https://blog.codingconfessions.com/t/cpython-internals) that explain in detail the inner workings of the main Python interpreter.&lt;br&gt;&lt;a href=&quot;https://blog.codingconfessions.com/&quot;&gt;https://blog.codingconfessions.com/&lt;/a&gt;</content:encoded></item><item><title>Adminer</title><link>https://lovergne.dev/awesome#adminer</link><guid isPermaLink="true">https://lovergne.dev/awesome#adminer</guid><pubDate>Sun, 20 Aug 2023 00:00:00 GMT</pubDate><content:encoded>Minimalist, fast, single-file, UI for RDBMS. **phpmyadmin but way
+better**. I love their interface, it is very clear and readable. Adminer is
+simple but also fully featured. It is customizable and extendable throught
+themes and plugins. It also integrate very well with docker and help access
+the database for debugging. Overall a very practical tool to have in the
+toolbox.&lt;br&gt;&lt;a href=&quot;https://www.adminer.org&quot;&gt;https://www.adminer.org&lt;/a&gt;</content:encoded></item><item><title>Computer, Enhance!</title><link>https://lovergne.dev/awesome#computed-enhanced</link><guid isPermaLink="true">https://lovergne.dev/awesome#computed-enhanced</guid><pubDate>Sun, 09 Mar 2025 00:00:00 GMT</pubDate><content:encoded>An excellent **performance-Aware programming** course by Casey Muratori. If you&apos;re not
+familiar with him, Casey Muratori is a programmer who specializes in game engine research
+and development. He has extensive knowledge of CPU and GPU micro-architecture and how they
+interact with software performance.
+
+This course is designed for programmers who already know how to code but want to learn how
+to maximize hardware performance. The course is language-agnostic, focusing on five
+optimizations applicable to any program: waste reduction, instructions per clock, single
+operation, multiple data (SIMD), caching, and multi-threading.
+
+The course is updated weekly with a Q&amp;A for the previous week, a new lesson, and homework
+assignments for the upcoming week. It is not free; it costs $9 per month. I recommend
+checking out some of the free episodes available on his [YouTube channel](https://youtube.com/@mollyrocket?si=HEWDx_HjvBjrD3uK)
+or one of his [interviews](https://youtu.be/Zr09I5OlOjs?si=oM1tmYGWNE6EGaxX) first to see
+if the course is right for you.&lt;br&gt;&lt;a href=&quot;https://www.computerenhance.com/p/table-of-contents&quot;&gt;https://www.computerenhance.com/p/table-of-contents&lt;/a&gt;</content:encoded></item><item><title>What makes concurrency so hard?</title><link>https://lovergne.dev/awesome#concurency-so-hard</link><guid isPermaLink="true">https://lovergne.dev/awesome#concurency-so-hard</guid><pubDate>Sun, 09 Mar 2025 00:00:00 GMT</pubDate><content:encoded>The short version: Concurrency is difficult due to the **state space explosion** that occurs
+very quickly when you distribute a system, which exceeds our ability to model. 
+
+The author provides a neat demonstration of this hypothesis, and it really resonates with
+my own experience. 
+
+Recently, I’ve been thinking about this idea a lot since I discovered 
+[Residual Theory](https://youtu.be/_MPUoiG6w_U?si=-G54W3aPhlvWTiQd). In
+this theory, we begin with too many possible states to create an accurate model, but
+progressively reduce the complexity by focusing on [attractors](https://en.m.wikipedia.org/wiki/Attractor),
+solutions that cover large areas of the state space, so that unforeseen states already
+have a solution.&lt;br&gt;&lt;a href=&quot;https://buttondown.com/hillelwayne/archive/what-makes-concurrency-so-hard/&quot;&gt;https://buttondown.com/hillelwayne/archive/what-makes-concurrency-so-hard/&lt;/a&gt;</content:encoded></item><item><title>Clifffle</title><link>https://lovergne.dev/awesome#cliffle</link><guid isPermaLink="true">https://lovergne.dev/awesome#cliffle</guid><pubDate>Mon, 15 Apr 2024 00:00:00 GMT</pubDate><content:encoded>A great blog about low-level and embedded programming. The author works at 
+[0xyde](https://oxide.computer/) and is one of the creators of 
+[Hubris](https://cliffle.com/blog/on-hubris-and-humility/), 
+an OS designed for *&quot;32-bit microcontrollers with region-based memory protection 
+and kiB to MiB of RAM and Flash&quot;*. I really like the detailed blog posts about Hubris
+and it always makes me want to try my hand at an embedded system, it&apos;s not on my
+roadmap yet, but one day it will be!&lt;br&gt;&lt;a href=&quot;https://cliffle.com/&quot;&gt;https://cliffle.com/&lt;/a&gt;</content:encoded></item><item><title>Why is CSS so Weird?</title><link>https://lovergne.dev/awesome#css-is-weird</link><guid isPermaLink="true">https://lovergne.dev/awesome#css-is-weird</guid><pubDate>Wed, 23 Aug 2023 00:00:00 GMT</pubDate><content:encoded>Because the web has been build with a set of value at it&apos;s core
+: **the web is open, it&apos;s for everyone and everything**. By
+accepting those value we must, at the same time, accept that we loose some 
+degree of control, we don&apos;t choose who will look at our website and on what
+devices. That lake of control means we must build websites for an infinite
+canvas with unknown constraints and capabilities. But designing for the
+unknown is hard, for that, we need flexibility, and this is where CSS come in.
+
+The **Cascade** in Cascading Style Sheets is the process of assembling
+styles from different inputs. You gain from that process the capability
+to merge **intent** from different sources: the Author, the Browser and
+remarkably, the User.
+
+![Author, browser, and user styles consolidate into one style throught cascade](/cascade.svg)
+
+It also allows us to fail gracefully by cascading upward which is good for
+resilence and backward compatibility.
+But the tradeoff is that your instructions can be overridden, they became
+suggestions. This is one of the pitfalls of CCS and why we sometime have to use
+the infamous `!important`. The other consequence is that
+everything is hierarchically linked. This is great, as one style can be reused
+in many similar places to achieve consistency, but this is also another big
+pitfall of CSS as a style might impact elements it was never meant to.
+
+Overall some might think that we made a bad tradeoff with CSS by loosing too
+much control, but I don&apos;t think so. As John Allsopp said, &lt;cite&gt;&quot;Control[...]
+is a limitation of the printed page&quot;&lt;/cite&gt;,  when a book is produce and sold
+only the editor can make it accessible, and he fails to do it most of the time
+whether it&apos;s diagrams with bad contrast or the absence of braille editions
+or other things. But with the browser and CSS  the user has the last word,
+he can make it feet it&apos;s need, whatever it is.&apos;&lt;br&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=aHUtMbJw8iA&amp;t=906s&quot;&gt;https://www.youtube.com/watch?v=aHUtMbJw8iA&amp;t=906s&lt;/a&gt;</content:encoded></item><item><title>CSS Bed</title><link>https://lovergne.dev/awesome#cssbed</link><guid isPermaLink="true">https://lovergne.dev/awesome#cssbed</guid><pubDate>Sun, 20 Aug 2023 00:00:00 GMT</pubDate><content:encoded>CSS Bed is a collection of classless CSS theme, it let you test
+each of them by effortlessly changing the stylesheet of the site. I am a big
+fan of classless CSS for small and static website (like this one), it reduce
+unnecessary complexity by not having to think about class at all and only
+concentrate on semantic HTML. Also modern framework provide CSS isolation which
+mean class are not as much of a necessity to avoid colision between components.&lt;br&gt;&lt;a href=&quot;https://www.cssbed.com/&quot;&gt;https://www.cssbed.com/&lt;/a&gt;</content:encoded></item><item><title>Excalidraw</title><link>https://lovergne.dev/awesome#excalidraw</link><guid isPermaLink="true">https://lovergne.dev/awesome#excalidraw</guid><pubDate>Sat, 30 Mar 2024 00:00:00 GMT</pubDate><content:encoded>Excalidraw is amazing. It&apos;s very simple, it doesn&apos;t have all the features of other big diagramming tools, it doesn&apos;t even have a grid, and yet you&apos;ll make better diagrams faster with it. It&apos;s like using a real whiteboard, expecting that it&apos;s infinite and you don&apos;t have to rewrite everything if you&apos;ve misplaced something. 
+
+Excalidraw is such a good example of UX: you open it and you are ready to go, no need to register, no need for a tutorial. It&apos;s low fidelity style will make all your diagrams beautiful without effort and without the need for precision. All the tools are intuitive and immediately usable, yet when you start using exclidraw more you will discover a lot of shortcuts to work faster (see the help in the bottom right corner for a full list of keyboard shortcuts). 
+
+Excalidraw is also fully collaborative with it&apos;s Live Session: just share the link and you can instantly see other people working in your workspace. Then there is the fantastic library functionality that allows you to share and reuse components with ease.
+
+Finally, there is the mermaid support, which will turn your text-based, simple-version, easy-to-maintain **but ugly** diagram into something nice and pleasing.
+
+It&apos;s lovely.&lt;br&gt;&lt;a href=&quot;https://excalidraw.com/&quot;&gt;https://excalidraw.com/&lt;/a&gt;</content:encoded></item><item><title>Dreamberd: the perfect programing language</title><link>https://lovergne.dev/awesome#dreamberd</link><guid isPermaLink="true">https://lovergne.dev/awesome#dreamberd</guid><pubDate>Tue, 15 Aug 2023 00:00:00 GMT</pubDate><content:encoded>It&apos;s perfect, what else is there to say?&lt;br&gt;&lt;a href=&quot;https://github.com/TodePond/DreamBerd&quot;&gt;https://github.com/TodePond/DreamBerd&lt;/a&gt;</content:encoded></item><item><title>Every Layout: relearn CSS</title><link>https://lovergne.dev/awesome#every-layout</link><guid isPermaLink="true">https://lovergne.dev/awesome#every-layout</guid><pubDate>Tue, 22 Aug 2023 00:00:00 GMT</pubDate><content:encoded>One of the best resource I could find on modern CSS practice. It
+goes deep on how css properties function and interact, provide some general
+design rules and propose solution to a lot of common layout problem in a
+flexible and reusable way.&lt;br&gt;&lt;a href=&quot;https://every-layout.dev/rudiments/boxes/&quot;&gt;https://every-layout.dev/rudiments/boxes/&lt;/a&gt;</content:encoded></item><item><title>A Distributed Systems Reading List</title><link>https://lovergne.dev/awesome#didsys-read-list</link><guid isPermaLink="true">https://lovergne.dev/awesome#didsys-read-list</guid><pubDate>Tue, 02 Apr 2024 00:00:00 GMT</pubDate><content:encoded>Distributed systems are everywhere now, if you are working on a web application now, chances are it is distributed or someone will ask you to make it distributed at some point. Probably most systems should not be distributed, as it adds an incredible amount of complexity, but the promises of fault tolerance and scalability are hard to ignore, we are only human after all, and we have a hard time not imagining the grass is greener elsewhere. Also, sometimes systems actually **need** to be distributed to meet some constraints. 
+
+
+But distributed systems are hard and often counterintuitive. So I&apos;m currently trying to learn more about distributed systems theory so that I don&apos;t shoot myself in the foot when I try to design and build them. This reading list is a good place to start, as it references a lot of foundational papers. But more than the references, what I really like about this page are the definitions. On this page, the author defines most of the vocabulary commonly used to talk about distributed systems. These definitions are concise, understandable, and often accompanied by insights into what a concept actually means for real-world applications. I highly recommend reading the whole page before you start reading papers, it will give you the basics.&lt;br&gt;&lt;a href=&quot;https://ferd.ca/a-distributed-systems-reading-list.html&quot;&gt;https://ferd.ca/a-distributed-systems-reading-list.html&lt;/a&gt;</content:encoded></item><item><title>Filipo Valsorda</title><link>https://lovergne.dev/awesome#filippo-valsorda</link><guid isPermaLink="true">https://lovergne.dev/awesome#filippo-valsorda</guid><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>A great reference to learn more about cybersecurity and more specifically 
+cryptography.&lt;br&gt;&lt;a href=&quot;https://words.filippo.io/&quot;&gt;https://words.filippo.io/&lt;/a&gt;</content:encoded></item><item><title>The Grug Brained Developer</title><link>https://lovergne.dev/awesome#grub-brain</link><guid isPermaLink="true">https://lovergne.dev/awesome#grub-brain</guid><pubDate>Mon, 21 Aug 2023 00:00:00 GMT</pubDate><content:encoded>A fun guide on managing complexity in software for all of us small brained developers. **Remember: complexity is the enemy; complexity is very, 
+very bad**.&lt;br&gt;&lt;a href=&quot;https://grugbrain.dev/&quot;&gt;https://grugbrain.dev/&lt;/a&gt;</content:encoded></item><item><title>Games I Made</title><link>https://lovergne.dev/awesome#game-dev</link><guid isPermaLink="true">https://lovergne.dev/awesome#game-dev</guid><pubDate>Sun, 09 Jul 2023 00:00:00 GMT</pubDate><content:encoded>*HARPOON!!!: [itch.io/harpoon](https://tehbigroomxxl.itch.io/harpoon)*  
+*Flappy Fuchs: [itch.io/flappy-fuchs](https://tehbigroomxxl.itch.io/flappy-fuchs)*  
+*Defend Your Pink Planet: [itch.io/defend-your-pink-planet](https://tehbigroomxxl.itch.io/defend-your-pink-planet)*  
+*Gravity²: [itch.io/gravity](https://tehbigroomxxl.itch.io/gravity)*  
+
+I discovered programming when I first tried to make games using RPG Maker XP. I was 12 or 13 years old and was amazed by the possibility of creating my own world and story. I quickly moved on to Game Maker and then Godot. Along the way, I started many projects and even finished and published four of them!
+
+Two of these games, Harpoon and Defend Your Pink Planet, were created in just 48 hours during game jams. It&apos;s liberating to know that everything must be done  in 48h and that you can cut corners and make a lot of mistakes. It&apos;s a great way to learn and to have fun.
+
+I’m especially proud of Harpoon because players experienced it exactly as I had envisioned. I’m also proud of Gravity²—it was my first game, and my friends and I had an amazing time playing it.&lt;br&gt;&lt;a href=&quot;https://tehbigroomxxl.itch.io/&quot;&gt;https://tehbigroomxxl.itch.io/&lt;/a&gt;</content:encoded></item><item><title>Ham Vock</title><link>https://lovergne.dev/awesome#hamvock</link><guid isPermaLink="true">https://lovergne.dev/awesome#hamvock</guid><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>Found this wonderful blog while searching for a 
+[tmux config guide](https://hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)
+guide and immediately fell in love with its amazing header design. 
+Actually, I liked it so much that I decided to [replicate it myself](https://github.com/TheBigRoomXXL/headers-like-hamvocke).&lt;br&gt;&lt;a href=&quot;https://hamvocke.com&quot;&gt;https://hamvocke.com&lt;/a&gt;</content:encoded></item><item><title>Hey: tiny program that sends some load to a web application</title><link>https://lovergne.dev/awesome#hey</link><guid isPermaLink="true">https://lovergne.dev/awesome#hey</guid><pubDate>Wed, 13 Dec 2023 00:00:00 GMT</pubDate><content:encoded>When I deploy a new app in production, I like to do a quick load test to have
+an idea of how much traffic I can support while staying under my latency target. 
+
+Hey is an excellent CLI tool for that. You give it the URL of the page you want
+to test and it will generate some load for it. You can easily configure the load
+(number of requests, headers, rate limit...) with flags. Once the loading is
+finished, you received a very readable report with the latency distribution and
+other key indicators.
+
+Another practical tool to have in the toolbox!&lt;br&gt;&lt;a href=&quot;https://github.com/rakyll/hey&quot;&gt;https://github.com/rakyll/hey&lt;/a&gt;</content:encoded></item><item><title>FoundationDB: Distributed Unbundled Transactional Key Value Store</title><link>https://lovergne.dev/awesome#foundationdb</link><guid isPermaLink="true">https://lovergne.dev/awesome#foundationdb</guid><pubDate>Tue, 29 Aug 2023 00:00:00 GMT</pubDate><content:encoded>FoundationDB is a distributed transactional key value store created in 2009 which 
+guarantee ACID transactions at scale.
+
+This is paper published by the FoundationDB team summarising there
+approach to building a distributed database 10 years after building it.
+There is a lot of interesting things inside it but here are my main takeaway:
+
+- They built the simulation and testing framework **before** starting to build
+the actual database. This really highlights the importance of extensive testing
+capabilities if you want to achieve consistency and robustness in complex
+systems. I find the idea of a simulation to continuously test and find bug in 
+a system trully amazing and I hope I will have the chance to do something similar
+one day. 
+-  FoundationDB offers a minimal and carefully chosen feature set and instead
+realy on a layered architecture to enable other developer to implement there
+own feature and data-model. This approch has seen a lot of success as
+FoundationDB has been used as a literal foundation for other paradigm of
+distributed databases: semi-relational databases, document and object stores,
+graph databases and more.
+- I am way over my head with the internals of the transaction system.&lt;br&gt;&lt;a href=&quot;https://www.foundationdb.org/files/fdb-paper.pdf&quot;&gt;https://www.foundationdb.org/files/fdb-paper.pdf&lt;/a&gt;</content:encoded></item><item><title>HTMX</title><link>https://lovergne.dev/awesome#htmx</link><guid isPermaLink="true">https://lovergne.dev/awesome#htmx</guid><pubDate>Wed, 16 Aug 2023 00:00:00 GMT</pubDate><content:encoded>Make the web simple again! HTMX is a framework for building frontend with the
+hypermedia design philosophy. It&apos;s dependency free and weight only ~14k
+minified and compressed which is really nice. It&apos;s not for every project, for
+example if you want offline support it&apos;s not what you should use, but it can
+be used in way more applications than people realize, especially CRUDish apps
+or data exploration apps.&lt;br&gt;&lt;a href=&quot;https://htmx.org/docs/&quot;&gt;https://htmx.org/docs/&lt;/a&gt;</content:encoded></item><item><title>HTMHell: collection of bad (and good) practices in HTML</title><link>https://lovergne.dev/awesome#htmlhell</link><guid isPermaLink="true">https://lovergne.dev/awesome#htmlhell</guid><pubDate>Fri, 03 Nov 2023 00:00:00 GMT</pubDate><content:encoded>I considered myself pretty up to date with the functionality offered by HTML 
+but HTMLHell show me I was wrong. Notably I discovered the existence of 
+[download links](https://www.htmhell.dev/tips/download-links/) (how did I miss 
+that all this time?!) and [how to use \&lt;picture\&gt; for progressive enhancement](https://www.htmhell.dev/tips/the-avif-image-format/).
+
+
+The site has two main section:
+
+1. **Hell:** where you find bad, but not obviously bad, examples of HTML code
+2. **Heaven:** where you discover little-known but very useful features of HTML
+
+
+There is also an advent calendar with tips and tricks in December. I highly 
+recommend exploring this site if you want to deepen your understanding of what 
+HTML has to offer.&lt;br&gt;&lt;a href=&quot;https://www.htmhell.dev/&quot;&gt;https://www.htmhell.dev/&lt;/a&gt;</content:encoded></item><item><title>Models All the Way Down</title><link>https://lovergne.dev/awesome#model-all-way-down</link><guid isPermaLink="true">https://lovergne.dev/awesome#model-all-way-down</guid><pubDate>Sun, 09 Mar 2025 00:00:00 GMT</pubDate><content:encoded>&quot;Models All the Way Down&quot; by [Knowing Machines](https://knowingmachines.org/about) is a detailed investigation
+into the datasets behind our current foundational AI models, the methods used to create
+them, and the inevitable biases they produce. The results of this investigation are
+presented through a stunning visual display based on the collected data. The storytelling
+is excellent, allowing readers to understand the subject progressively, even if they are
+novices. 
+
+All the data from their investigation has been published on [GitHub](https://github.com/NYUEngelberg/models-all-the-way).&lt;br&gt;&lt;a href=&quot;https://knowingmachines.org/models-all-the-way&quot;&gt;https://knowingmachines.org/models-all-the-way&lt;/a&gt;</content:encoded></item><item><title>Josh Collinsworth</title><link>https://lovergne.dev/awesome#j-collinsworth</link><guid isPermaLink="true">https://lovergne.dev/awesome#j-collinsworth</guid><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>This site is just a fantastic example of web design: it&apos;s fast, aesthetically 
+pleasing, and fully accessible. It features a lot of charming CSS animations 
+while not moving the page too much. It has a real personal touch, especially 
+with its procedural &apos;pixel banner&apos; at the top and bottom of the page while not 
+being gimmicky.
+
+On this blog, you will find a lot of good guides for CSS and Svelte, as well 
+as various things about frontend and development in general.&lt;br&gt;&lt;a href=&quot;https://joshcollinsworth.com/&quot;&gt;https://joshcollinsworth.com/&lt;/a&gt;</content:encoded></item><item><title>My Personal Site</title><link>https://lovergne.dev/awesome#lovergne-dev</link><guid isPermaLink="true">https://lovergne.dev/awesome#lovergne-dev</guid><pubDate>Sat, 08 Jul 2023 00:00:00 GMT</pubDate><content:encoded>*Repository: [github.com/theBigRoomXXL/lovergne.dev](https://github.com/theBigRoomXXL/lovergne.dev)*
+
+I started this project in the summer of 2023 as a way to experiment with a more minimalistic stack and design for the web. This site is organized like a [zettelkasten](https://en.wikipedia.org/wiki/Zettelkasten): everything that I write is a self-contained note that links to other resources. A tag system is used to categorize the notes into different pages of the site (awesome, blogroll, projects), and each note has its own page with a unique URL.
+
+I use Astro for static site generation, and there are no other dependencies (well, technically, there is [normalize.css](https://csstools.github.io/normalize.css/11.0.0/normalize.css) for CSS reset, but it&apos;s so small it doesn&apos;t really count!). The site was originally hosted on my homelab, but I moved it to GitHub Pages so that I could close all public-facing services on my homelab.
+
+There are a lot of little things I like about this site:
+
+- **Light and Fast:** The landing page is currently only 32KB (fonts and logo included!), which means it&apos;s *blazingly fast™*.
+- **Fully Accessible:** Built with semantic HTML and accessibility in mind.
+- **It&apos;s Beautiful:** Well, at least I think so. And I really love my little isometric logo.
+- **Dark/Light Theme:** Based on `prefers-color-scheme`.
+- **Print Support:** With a minimal secondary stylesheet (see [print.css](https://github.com/TheBigRoomXXL/lovergne.dev/blob/main/public/print.css)). I don&apos;t think anyone else cares about that, but I like it.
+- **RSS Feed Support.**
+
+And finally, the thing I like the most is that **every page is also rendered as a plain text file!** Just click on the little [Want Some ASCII?](/archive/lovergne-dev.txt) button at the bottom of the page, and you&apos;ll get the plain text version. This is a useless but lovely feature. It started when I was playing with [ASCII diagram characters](https://gist.github.com/dsample/79a97f38bf956f37a0f99ace9df367b9) to render tables and then read the [OpenSSH regreSSHion report](https://www.qualys.com/2024/07/01/cve-2024-6387/regresshion.txt) and though &quot; what if I used the same plain text formatting but using more advanced unicode characters?&quot;. After that it turned into a deep-dive into Unicode and hacks like [bold and italic formatting using mathematical characters](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols). This was also an opportunity to work with [Abstract Syntax Trees](https://en.wikipedia.org/wiki/Abstract_syntax_tree) to parse the markdow, which was something that piqued my curiosity for a long time.&lt;br&gt;&lt;a href=&quot;https://lovergne.dev/&quot;&gt;https://lovergne.dev/&lt;/a&gt;</content:encoded></item><item><title>Pete Millspaugh</title><link>https://lovergne.dev/awesome#p-millspaugh</link><guid isPermaLink="true">https://lovergne.dev/awesome#p-millspaugh</guid><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>Another example of great website design, what a beautiful landscape! Just try 
+to click on the little light bulb, it&apos;s so cool! 
+
+Not a blog exactly and more of a [digital garden](https://maggieappleton.com/garden-history)
+but heck i still put in the blogroll.&lt;br&gt;&lt;a href=&quot;https://www.petemillspaugh.com/&quot;&gt;https://www.petemillspaugh.com/&lt;/a&gt;</content:encoded></item><item><title>Putting the “You” in CPU</title><link>https://lovergne.dev/awesome#putting-you-in-cpu</link><guid isPermaLink="true">https://lovergne.dev/awesome#putting-you-in-cpu</guid><pubDate>Sat, 30 Mar 2024 00:00:00 GMT</pubDate><content:encoded>A deep dive into how exactly your program can &quot;run&quot;on a machine. It&apos;s simple question but it will lead you to explore a lot of interesting things: what&apos;s is an instruction? How can we multitask on a CPU if its execution is sequential? How do memory isolation between kernal and different process work? What is a dawn syscall actually? And how to become an Elf-lord?
+
+It&apos;s well written and beautifully presented which make it approachable despite being very detailed ( if you wonder how detailed, there is a function by function analysis of how linux implement system call in chapter 3). If you&apos;re anything like me and want to understand how your programs run all the ways down from your code to the hardware level then, this is for you. This has actually improved my understanding of how computers work and what the role of an kernel is. **I cannot recommend reading it enough!**
+
+PS: I realised after reading the entire thing the the research and the writing was done by a 17 year old with the help of hackclub.  This person probably has  a bright future ahead of her, I wish I could have been so dedicated when i was 16 year old!
+
+PPS : there is another one by same person about networking called [how did I get here?](https://how-did-i-get-here.net/). ~~It&apos;s on my reading list!~~. It&apos;s also very cool.&lt;br&gt;&lt;a href=&quot;https://cpu.land/&quot;&gt;https://cpu.land/&lt;/a&gt;</content:encoded></item><item><title>The Moral Character of Cryptographic Work</title><link>https://lovergne.dev/awesome#moral-of-crypto</link><guid isPermaLink="true">https://lovergne.dev/awesome#moral-of-crypto</guid><pubDate>Sat, 19 Aug 2023 00:00:00 GMT</pubDate><content:encoded>In reaction to the Snowden&apos;s revelation in 2013, Phillip Rogaway
+started to reconsider his role and social responsibility as a cryptographer.
+This paper focus on the discipline of  cryptography but the first part does an
+excellent job at explaining why **any** technician has a social impact,
+whether that&apos;s on purpose or not, and therefore should be conscious of his
+political responsibility.&lt;br&gt;&lt;a href=&quot;https://web.cs.ucdavis.edu/~rogaway/papers/moral-fn.pdf&quot;&gt;https://web.cs.ucdavis.edu/~rogaway/papers/moral-fn.pdf&lt;/a&gt;</content:encoded></item><item><title>Len Falken&apos;s Writing</title><link>https://lovergne.dev/awesome#len-falke</link><guid isPermaLink="true">https://lovergne.dev/awesome#len-falke</guid><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>The only blog I know about that is based on actual plain text files, no styling
+at all. Don&apos;t be suprise if the links don&apos;t work and need to be copy-pasted, it&apos;s
+actual text files, not html.&lt;br&gt;&lt;a href=&quot;http://len.falken.directory/feed.xml&quot;&gt;http://len.falken.directory/feed.xml&lt;/a&gt;</content:encoded></item><item><title>Restic</title><link>https://lovergne.dev/awesome#restic</link><guid isPermaLink="true">https://lovergne.dev/awesome#restic</guid><pubDate>Sat, 30 Mar 2024 00:00:00 GMT</pubDate><content:encoded>Restic is the tool you **should** be using for your backups: 
+1. You can always find what you need in a restic backup because it uses incremental snapshots (like git).
+2. It&apos;s safe, because your data is always encrypted.
+3. It&apos;s painless, because it always checks your files for integrity and consistency.
+4. It&apos;s efficient, because it not only uses incremental snapshots, but also compresses them. 
+5. It&apos;s flexible, because it can integrate with virtually any remote storage backend (I personally use Backblaze B2).
+6. It&apos;s long-lastings, because the Restic repository format has its own open specification and other multiple implementations.
+7. It&apos;s easy to set up and maintain, because it has a good CLI interface and good documentation. 
+8. It&apos;s fast and CPU efficient, because it&apos;s in Golang.
+
+Restic, what else?&lt;br&gt;&lt;a href=&quot;https://github.com/restic/restic&quot;&gt;https://github.com/restic/restic&lt;/a&gt;</content:encoded></item><item><title>Schemathesis</title><link>https://lovergne.dev/awesome#schemathesis</link><guid isPermaLink="true">https://lovergne.dev/awesome#schemathesis</guid><pubDate>Thu, 17 Aug 2023 00:00:00 GMT</pubDate><content:encoded>Schemathesis is an incredible fuzzer for REST and GraphQL API. It
+can be used through   CLI or integrate directly with your unit test in python.
+Thanks to it&apos;s property-based testing, I have found numerous bug, including
+inside my dependencies, . It also help me catch bad documentation with it&apos;s
+response schema validation. I definitely integrate it inside my CI/CD pipeline
+whenever I can.
+
+If you have been impressed by schemathesis capability like me and you want to
+know more about it&apos;s conception I would recommend reading the paper published
+by its creators &lt;cite&gt;&quot;Deriving Semantics-Aware Fuzzers from Web API Schemas&quot;
+&lt;/cite&gt; by Zac Hatfield-Dodds and Dmitry Dygalo.&lt;br&gt;&lt;a href=&quot;https://github.com/schemathesis/schemathesis&quot;&gt;https://github.com/schemathesis/schemathesis&lt;/a&gt;</content:encoded></item><item><title>Shields.io: concise, consistent, and legible badges</title><link>https://lovergne.dev/awesome#shield-io</link><guid isPermaLink="true">https://lovergne.dev/awesome#shield-io</guid><pubDate>Thu, 17 Aug 2023 00:00:00 GMT</pubDate><content:encoded>Most practical badge generator I have used yet.&lt;br&gt;&lt;a href=&quot;https://shields.io/&quot;&gt;https://shields.io/&lt;/a&gt;</content:encoded></item><item><title>RFC9457: problem details for HTTP APIs</title><link>https://lovergne.dev/awesome#rfc9457</link><guid isPermaLink="true">https://lovergne.dev/awesome#rfc9457</guid><pubDate>Mon, 21 Aug 2023 00:00:00 GMT</pubDate><content:encoded>There are currently no standard ways for API to communicate there
+domain specific error where HTTP status is not enough. This RFC hopes to remedy
+that with a proposed schema for error response. I think it&apos;s a good proposal,
+it give enough feedback and it is flexible enough to work in most API. The
+one thing I really like is that it forces you to document your API&apos;s specific
+errors because a link to documentation about the error is included in the
+schema.&lt;br&gt;&lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc9457.html&quot;&gt;https://www.rfc-editor.org/rfc/rfc9457.html&lt;/a&gt;</content:encoded></item><item><title>Simon Hørup Eskildsen</title><link>https://lovergne.dev/awesome#sirupsen</link><guid isPermaLink="true">https://lovergne.dev/awesome#sirupsen</guid><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>A lot of very advance discucions on scaling relational database. Most of it I will
+probably never need to apply but none the less interesting. I recommand reading
+[Careful Trading Complexity for &apos;Improvements&apos;](https://sirupsen.com/trading-complexity)
+about the *perceived* trade-off of complexity for scalability and reliability.
+I also realy liked [When To Write a Simulator](https://sirupsen.com/napkin/problem-16-simulation)
+which made me realise that I was building a load balancer based on probably false
+assumption because instincts suck when it come to statistics.&lt;br&gt;&lt;a href=&quot;https://sirupsen.com/&quot;&gt;https://sirupsen.com/&lt;/a&gt;</content:encoded></item><item><title>Tinystatus: a lovingly simple monitoring tool.</title><link>https://lovergne.dev/awesome#tinystatus</link><guid isPermaLink="true">https://lovergne.dev/awesome#tinystatus</guid><pubDate>Fri, 08 Sep 2023 00:00:00 GMT</pubDate><content:encoded>Sometimes, you have a basic website or a small application, and all you need is a way to receive alerts if it goes down. In such cases, you probably don&apos;t want to deploy the entire OpenTelemetry stack with all the required infrastructure and integration. **Sometimes, all you want is something simple.** This is where &quot;tinystatus&quot; comes into play; it couldn&apos;t be simpler.
+
+Tinystatus is a compact 130-line Bash script that queries a list of URLs and generates an HTML report. You can effortlessly set it up in cron or systemd and direct your HTTP server to the generated `index.html`. Voilà, you&apos;ve got yourself a status service. Moreover, by redirecting its `stderr` output to a mail service, you can receive real-time alerts if your website or app experiences any downtime.
+
+Because it&apos;s so concise, you can easily customize it to your preferences by adding extra checks or tweaking the styling. And if you don&apos;t want to deal with setting up cron, systemd or the web server, it&apos;s also available as a Docker container or as a Go implementation, aptly named &quot;go-tinystatus&quot;, which embeds the HTTP server for your convenience.&lt;br&gt;&lt;a href=&quot;https://github.com/bderenzo/tinystatus/&quot;&gt;https://github.com/bderenzo/tinystatus/&lt;/a&gt;</content:encoded></item><item><title>TinyFeed</title><link>https://lovergne.dev/awesome#tinyfeed</link><guid isPermaLink="true">https://lovergne.dev/awesome#tinyfeed</guid><pubDate>Wed, 01 Jan 2025 00:00:00 GMT</pubDate><content:encoded>*Repository: [github.com/TheBigRoomXXL/tinyfeed](https://github.com/TheBigRoomXXL/tinyfeed)*
+
+This project began out of my frustration with the current options for feed readers. I often visit message boards like [Lobsters](https://lobste.rs/) and [Hacker News](https://news.ycombinator.com/) to find good technical blogs. Over time, I accumulated a list of RSS feeds that I follow regularly and wanted to consume them in a way similar to message boards: a simple, time-ordered list of links. 
+
+However, most feed readers are full-fledged applications that require logins, track your reading, and have a lot of features I don’t want, such as reading inside the application instead of on the feed&apos;s website.
+
+I also wanted something lightweight and easy to self-host. I found myself particularly frustrated with many so-called &quot;minimalist&quot; feed readers that don’t even support SQLite as a database option (looking at you, [Miniflux](https://miniflux.app/docs/database.html#configuration) with your need for `SUPERUSER` privileges on PostgreSQL).
+
+My solution is TinyFeed: a CLI tool that generates a static HTML page from a collection of feeds. It&apos;s incredibly simple: no database, no configuration files, just a CLI and some HTML. Provide it with a list of RSS, Atom, or JSON feed URLs, and it will generate a single HTML page for them. Then, you can effortlessly set it up with `cron`, `systemd`, or even GitHub Pages, and voilà, you’ve got yourself an webpage that aggregate your favorite feeds.
+
+I’ve been using it since August 2023, and I’m very pleased with it. Due to its simplicity, it integrates easily into various workflows. For example, it started as a cron job on my server, then moved to OpenRC, then I dockerized it and added it to my docker-compose based homelab. Finally, as I removed all public-facing services from my homelab, I moved it to GitHub Pages. It’s a versatile tool that can be used in many different ways. The project has now been stable for some time and I have released the offical 1.0.0 version.
+
+The project has also gained some traction in the self-hosted community, with just over 200 stars on GitHub and a few mentions in articles and podcasts.&lt;br&gt;&lt;a href=&quot;https://feed.lovergne.dev/&quot;&gt;https://feed.lovergne.dev/&lt;/a&gt;</content:encoded></item><item><title>Troy Hunt</title><link>https://lovergne.dev/awesome#troy-hunt</link><guid isPermaLink="true">https://lovergne.dev/awesome#troy-hunt</guid><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>Troy Hunt, if you don&apos;t know him, is the guy that run 
+[have i been pwned?](https://haveibeenpwned.com/). His blog is a good place to 
+follow the cybersecurity news and learn about latest breaches.&lt;br&gt;&lt;a href=&quot;https://www.troyhunt.com/&quot;&gt;https://www.troyhunt.com/&lt;/a&gt;</content:encoded></item><item><title>Voronoi generator</title><link>https://lovergne.dev/awesome#voronoi</link><guid isPermaLink="true">https://lovergne.dev/awesome#voronoi</guid><pubDate>Thu, 17 Aug 2023 00:00:00 GMT</pubDate><content:encoded>This is an online and open-source tool for parametric voronoi
+generation. Voronoi is a diagram derived from a mathematical equasion that
+look like cells, there is a lot of applications for it, but I mostly use it
+for visual design. With the real time editing and SVG export it&apos;s really
+handy for that use case.&lt;br&gt;&lt;a href=&quot;https://github.com/WebSVG/voronoi&quot;&gt;https://github.com/WebSVG/voronoi&lt;/a&gt;</content:encoded></item><item><title>Tronsky</title><link>https://lovergne.dev/awesome#tronsky</link><guid isPermaLink="true">https://lovergne.dev/awesome#tronsky</guid><pubDate>Thu, 18 Apr 2024 00:00:00 GMT</pubDate><content:encoded>What I like about this blog are the &quot;down the rabbit hole&quot; and &quot;neet peaky&quot; articles, like
+[Hardest Problem in Computer Science: Centering Things](https://tonsky.me/blog/centering/)
+and  [The Absolute Minimum Every Software Developer Must Know About Unicode in 2023 (Still No Excuses!)](https://tonsky.me/blog/unicode/).&lt;br&gt;&lt;a href=&quot;https://tonsky.me/&quot;&gt;https://tonsky.me/&lt;/a&gt;</content:encoded></item><item><title>WAVE: Web Accessibility Evaluation Tools</title><link>https://lovergne.dev/awesome#wave</link><guid isPermaLink="true">https://lovergne.dev/awesome#wave</guid><pubDate>Tue, 22 Aug 2023 00:00:00 GMT</pubDate><content:encoded>A collection of tools to test website accessibility. There
+browser extension is great and give an instanious and detailed
+feeback on accessibity isssues on a web page. (Try it here and you wont find
+any error!)&lt;br&gt;&lt;a href=&quot;https://wave.webaim.org/extension/&quot;&gt;https://wave.webaim.org/extension/&lt;/a&gt;</content:encoded></item><item><title>Wizard Zines</title><link>https://lovergne.dev/awesome#wizardines</link><guid isPermaLink="true">https://lovergne.dev/awesome#wizardines</guid><pubDate>Fri, 29 Mar 2024 00:00:00 GMT</pubDate><content:encoded>A series of vulgarisation comics on all sorts of topics related to programming. 
+I think it&apos;s an excellent ressource for beginner programmers, it lets you ask 
+some questions about basic things that you usually don&apos;t have time for or, maybe too
+afraid to ask, like: [what is http?](https://wizardzines.com/zines/http/)
+or [what is memory allocation?](https://wizardzines.com/comics/memory-allocation/)&lt;br&gt;&lt;a href=&quot;https://wizardzines.com/comics/&quot;&gt;https://wizardzines.com/comics/&lt;/a&gt;</content:encoded></item><item><title>The Rise of Worse is Better</title><link>https://lovergne.dev/awesome#worse-is-better</link><guid isPermaLink="true">https://lovergne.dev/awesome#worse-is-better</guid><pubDate>Thu, 17 Aug 2023 00:00:00 GMT</pubDate><content:encoded>This article discusses the trade-off between implementation
+simplicity and interface simplicity and argues in favor of implementation
+simplicity. Despite being published more than 30 years ago it is still
+interesting and relevant. If you find it interesting you can also read the
+counter argument &lt;cite&gt;&quot;Worse is Better is Worse&quot;&lt;/cite&gt; by Nickieben Bourbaki
+(it&apos;s the same author under a pseudonym).&lt;br&gt;&lt;a href=&quot;https://www.dreamsongs.com/WorseIsBetter.html&quot;&gt;https://www.dreamsongs.com/WorseIsBetter.html&lt;/a&gt;</content:encoded></item><item><title>VSCode workspace shortcuts with .desktop files on Linux</title><link>https://lovergne.dev/awesome#workspace-shortcut</link><guid isPermaLink="true">https://lovergne.dev/awesome#workspace-shortcut</guid><pubDate>Mon, 28 Apr 2025 00:00:00 GMT</pubDate><content:encoded>One big frustration I have with my workflow currently is that I open all my apps with the app launcher (the menu that appears when you press the command key `⌘`) except one: VSCode[^clarification]. And that&apos;s a big &quot;but&quot; because this is probably the app I use the most after my browser. Instead, I open a terminal and type `code-oss repos/name-of-my-repo`; if I don’t, it just opens VSCode with the last workspace instead of the one I specifically want. But today, no more! Today I fixed my workflow with a simple hack: generating `.desktop` files.
+
+
+## But what is a `.desktop` file?
+
+A `.desktop` file, or rather a desktop entry file, is a very simple config that applications can use to register themselves with &lt;dfn title=&quot;GNOME is a free and open-source desktop environment for Unix-like operating systems. Many major Linux distributions, including Debian, Fedora Linux, Ubuntu, Red Hat Enterprise Linux, and SUSE Linux Enterprise distribute GNOME as their default desktop environment&quot;&gt;GNOME&lt;/dfn&gt; or &lt;dfn title=&quot;KDE is a free and open-source desktop environment for Unix-like operating systems. In its default configuration it resembles Microsoft Windows XP; however, extensive configurability allows radical departures from the default layout.&quot;&gt;KDE&lt;/dfn&gt;&apos;s application system. For example, the reason you can find VSCode in the app launcher is because when you installed it, it created a file called `code.desktop` in one of the following locations:
+
+- System package: `/usr/share/applications/code-oss.desktop`
+- Manual install: `~/.local/share/applications/code-oss.desktop`
+- Snap: `/var/lib/snapd/desktop/applications/code-oss_code-oss.desktop`
+- Flatpak: `~/.local/share/flatpak/exports/share/applications/com.visualstudio.code_oss.desktop`
+
+The content of `/usr/share/applications/code-oss.desktop` on Alpine Linux is:
+```
+[Desktop Entry]
+Name=Code - OSS
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=/usr/bin/code-oss %F
+Icon=com.visualstudio.code.oss
+Type=Application
+StartupNotify=false
+StartupWMClass=Code - OSS
+Categories=TextEditor;Development;IDE;
+MimeType=application/x-code-oss-workspace;
+Actions=new-empty-window;
+Keywords=vscode;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Name[de]=Neues leeres Fenster
+Name[es]=Nueva ventana vacía
+Name[fr]=Nouvelle fenêtre vide
+Name[it]=Nuova finestra vuota
+Name[ja]=新しい空のウィンドウ
+Name[ko]=새 빈 창
+Name[ru]=Новое пустое окно
+Name[zh_CN]=新建空窗口
+Name[zh_TW]=開新空視窗
+Exec=/usr/bin/code-oss --new-window %F
+Icon=com.visualstudio.code.oss
+``` 
+
+As you can see, it contains a lot of metadata to help your desktop environment present and launch the app correctly. Here is a quick presentation of each field:  
+- **Name**: the label of the application  
+- **Comment**: a short description for tooltips  
+- **GenericName**: what category of application it belongs to  
+- **Exec**: how the application is launched. Note here that `%F` tells the system that VSCode can open one or multiple files at once. This is why when you select some files, right-click, and then click on &quot;Open With,&quot; VSCode appears as an option  
+- **Icon**: the icon of the app; can be an absolute path or, as in this case, a URI compatible with the [icon-themes specification](https://specifications.freedesktop.org/icon-theme-spec/latest/)  
+- **Type**: whether it&apos;s an application, a directory, or a link  
+- **StartupNotify**: this one is a little bit complicated and is linked to the [startup-specification standard](https://cgit.freedesktop.org/startup-notification/tree/doc/startup-notification.xml). What you need to know is that `false` only means that it is up to the application to manage its own startup notification, not that it won’t notify you on start. I really wish it would just stop startup notifications  
+- **StartupWMClass**: an ID used to know which windows belong to the same application  
+- **Categories**: like GenericName, it&apos;s a categorization, but it follows the [desktop-menu specification](https://specifications.freedesktop.org/menu-spec/latest/) instead of being free text  
+- **MimeType**: a list of MIME types that the application can open. In this case, VSCode registers its own custom MIME type for workspaces, because listing everything VSCode can open would be too long—as it can basically open anything  
+- **Actions**: a list of custom actions the application can perform. You can see the `new-empty-window` in your app launcher by right-clicking on the VSCode icon  
+- **Keywords**: a list of strings that can be used to match the application when searching. In this case, while the app is named &quot;Code,&quot; I can still type &quot;VSCode&quot; and find it in the app launcher  
+- **[Desktop Action new-empty-window]**: this section describes the custom action with internationalization details  
+
+
+If you are interested, there are other options for more advanced functionality described in the [desktop-entry specification](https://specifications.freedesktop.org/desktop-entry-spec/latest-single/#recognized-keys). Most of those options won&apos;t be very useful to us, but it&apos;s always good to know what we are working with.
+
+
+## How does that help me open a workspace quickly?
+
+We could add a custom action to VSCode to open a specific folder, but the downside of that is that the action is hidden behind a right-click and is not directly searchable.
+
+Instead, whatwe&apos;re going to do is create a `.desktop` file for our workspace with a custom `Exec` to open this specific folder. Here is an example:
+
+```txt
+# ~/.local/share/applications/code-tinyfeed.desktop
+[Desktop Entry]
+Name=tinyfeed workspace
+Comment=Open the repository directly with code
+GenericName=Text Editor
+Exec=code-oss &quot;/home/sebastien/repos/tinyfeed&quot;
+Icon=com.visualstudio.code.oss
+Type=Application
+StartupNotify=false
+StartupWMClass=Code - OSS
+Categories=TextEditor;Development;IDE;
+Keywords=vscode;
+```
+
+Let&apos;s analyze it step by step:  
+- The file is located in `~/.local/share/applications/`. Most `.desktop` files are located in `/usr/share/applications/`, but using `~/.local` allows us to scope the application to only the current user, which I think is preferable for workspace shortcuts. Also, it does not require root access.  
+- The icon is simply the VSCode icon reused.  
+- The label is the name of the workspace, making it easy to distinguish from the actual VSCode app as they have the same icon. &quot;workspace&quot; is at the end because the name is often truncated.  
+- An absolute path to our workspace replaces the `%F` argument. It&apos;s important that the path is absolute, as `~` would not be expanded.  
+- The rest of the metadata is kept from the base file.  
+
+This gives us the following search result in the app launcher when I search for &quot;tinyfeed[^self-promotion]&quot;:
+
+![workspace-shortcut-1](/workspace-shortcut-1.avif)
+
+And when we press `Enter ⏎` it will open the tinyfeed workspace successfully
+
+## Okay but now I need to manually maintain a file for each repos?
+
+Indeed, maintaining that by hand would be annoying but you can trivially write a bash script to automate the generation of `.desktop` files: 
+
+```bash
+#!/bin/sh
+
+# Ensure the script exit on error or unbound variables
+set -eu
+
+# Configuration
+REPOSITORIES_DIRECTORY=&quot;$HOME/repos&quot;
+APPLICATIONS_DIR=&quot;$HOME/.local/share/applications&quot;
+
+# Ensure the applications directory exists
+mkdir -p &quot;$APPLICATIONS_DIR&quot;
+
+for repo_path in &quot;$REPOSITORIES_DIRECTORY&quot;/*/; do
+    REPOSITORY=$(basename &quot;$repo_path&quot;)
+    DESKTOP_FILE=&quot;$APPLICATIONS_DIR/code-$REPOSITORY.desktop&quot;
+
+    cat &gt; &quot;$DESKTOP_FILE&quot; &lt;&lt;EOF
+[Desktop Entry]
+Name=$REPOSITORY workspace
+Comment=Open the repository directly with code
+GenericName=Text Editor
+Exec=code-oss &quot;$REPOSITORIES_DIRECTORY/$REPOSITORY&quot;
+Icon=com.visualstudio.code.oss
+Type=Application
+StartupNotify=false
+StartupWMClass=Code - OSS
+Categories=TextEditor;Development;IDE;
+MimeType=application/x-code-oss-workspace;
+Keywords=vscode;
+EOF
+
+done
+```
+This script will create a templated `.desktop` file for each folder in the `~/repos` directory. This means you need to have all of your workspaces inside a single directory in a flat manner for it to work, but you can probably adapt it with a more advanced directory listing algorithm if you need.  
+
+Then you only have to call it in your `.bashrc`, and your workspace shortcuts will be updated every time you open a terminal. You could also just do it in a cron job if you prefer.  
+
+This is the final result, all my workspaces are searchable in the app launcher:
+
+![workspace-shortcut-2](/workspace-shortcut-2.avif)
+
+Just for completeness: another solution could have been to use a customizable app launcher like [Ulauncher](https://ulauncher.io/) with a [VSCode extension](https://ext.ulauncher.io/-/github-brpaz-ulauncher-vscode-projects), but I like to keep my setup as standard as possible for portability.
+
+[^clarification]: *VSCode vs Code-OSS vs Codium*: In this article, when I refer to VSCode I actually refer to [code-oss](https://github.com/microsoft/vscode), the open-source version of VSCode—not the proprietary version, and also not [Codium](https://github.com/VSCodium/vscodium), the open-source and slightly modified version of VSCode. It matters because I launch it with the command `code-oss`, not `code`. You might need to adapt my scripts accordingly. Same goes for file paths.
+
+[^self-promotion]: Check out [tinyfeed](https://github.com/TheBigRoomXXL/tinyfeed), a minimalist self-hosted RSS reader that generates static HTML pages for your consumption.&lt;br&gt;&lt;a href=&quot;null&quot;&gt;null&lt;/a&gt;</content:encoded></item></channel></rss>

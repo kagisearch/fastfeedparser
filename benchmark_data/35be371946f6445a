@@ -1,0 +1,1763 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://staysaasy.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://staysaasy.com/" rel="alternate" type="text/html" /><updated>2026-01-16T04:21:06+00:00</updated><id>https://staysaasy.com/feed.xml</id><title type="html">Stay SaaSy</title><subtitle>A guide to scaling product &amp; engineering teams from $0 to past $100M ARR.</subtitle><entry><title type="html">The Most Important Teams in Tech</title><link href="https://staysaasy.com/management/2026/01/15/the-most-important-teams-in-tech.html" rel="alternate" type="text/html" title="The Most Important Teams in Tech" /><published>2026-01-15T12:59:22+00:00</published><updated>2026-01-15T12:59:22+00:00</updated><id>https://staysaasy.com/management/2026/01/15/the-most-important-teams-in-tech</id><content type="html" xml:base="https://staysaasy.com/management/2026/01/15/the-most-important-teams-in-tech.html"><![CDATA[<p>The most important teams in a B2B software company are engineering and sales. Full stop, no exceptions, no further questions. You’re either building the product or selling the product, and everything else is secondary at most.</p>
+
+<p>The intuition is simple:</p>
+
+<ul>
+  <li>Great engineering (fast, reliable) is irreplaceable. Very-good to great design can be rented or borrowed; great product-market fit can ultimately be accomplished via luck or trial and error.</li>
+  <li>Great engineering accelerates PM / design much faster than great PM / design accelerates engineering.</li>
+  <li>At an even deeper level – the very best engineers are often great at product or design. The very best sales leaders often have great marketing instincts. But your best PM is worthless without an engineering team (unless they start coding themselves). Your best marketer is useless without a sales team (unless they start selling).</li>
+  <li>Great sales is necessary to solidify product-market fit (PMF) by building a brand – sell to better customers, make them happy, build your brand – and brand is one of the most powerful compounding forces in business.</li>
+  <li>Sales execution is the engine that makes SaaS scale. In some cases, product-led growth (PLG) can succeed without a real sales motion, but those cases are a rare and distinct minority.</li>
+  <li>All other functions, while important, don’t move the needle on your company’s core axis of value delivery.</li>
+</ul>
+
+<p>This truth is so clear that it can be used as a litmus test for whether you have any idea about what the hell you’re doing in SaaS. If you find someone who doesn’t intuitively understand why these two teams make the world go ‘round, then you clearly haven’t been in the business for real.</p>
+
+<p>The prominence of engineering and sales may seem like a trivial observation, but it actually comes with a number of very important operational takeaways.</p>
+
+<h3 id="know-your-place">Know Your Place</h3>
+
+<p>A lot of people struggle with this, so I’ll just say it plainly – if you’re not in sales or engineering, you need to know your place. As a product manager myself, I’ll describe this in terms of how I want my teams to (ideally) work with our engineering counterparts:</p>
+
+<ul>
+  <li>We ultimately only deliver value via engineering. Without customer insight, good designs, or PRDs, engineering could eventually muddle through. Without working code we deliver no value.</li>
+  <li>As specialized partners to engineering (and to a lesser extent sales), it’s essential that we stay focused on areas that will maximize what those teams deliver – whether that means identifying the most efficient path to customer value for engineering, figuring out how to make sales cycles go faster, or identifying exactly how we can make a big marketing splash with our product. We need to propel those teams to do more.</li>
+  <li>We need to move especially fast when working with engineering and there is value in saving their time. For example, if we can test a hypothesis with a week of manual PM time that would take a week to verify with engineering effort, we would probably accept that trade.</li>
+  <li>If our team isn’t adding value on a project (for example, a PM simply isn’t working out and we verify that), and engineering doesn’t want them involved, we should find someone else to work with them <em>or</em> just pull PM off of that project. Engineering is the customer.</li>
+  <li>Our job is to get the highest value code to our customers, and monetize it. We share a bucket of resources with engineering (the company R\&amp;D budget). We need to carefully scrutinize whether we’re using the right amount, rather than taking whatever we can get away with politically, since there’s a direct tradeoff between our team and engineering.</li>
+</ul>
+
+<p>This doesn’t mean that you should just do whatever engineering (or sales) wants. If sales or engineering are incompetent you need to deal with it.</p>
+
+<p>But you need to assume that all else being equal, their immediate priorities – writing and launching code; closing deals; renewing customers – are at or among the very highest priorities for the business as a whole. For example:</p>
+
+<ul>
+  <li>If the sales team is focused on closing the quarter, it’s not the time to run performance reviews</li>
+  <li>If the engineering team is working on a production incident, review of your next Figma mock is delayed until the incident is resolved</li>
+  <li>If we’re down to our last $200k, our default is to spend it on the next engineer unless we desperately need a PM</li>
+</ul>
+
+<h3 id="sales--engineering-execution">Sales &amp; Engineering Execution</h3>
+
+<p>If you’re actually leading a sales or engineering function, there’s a lot of pressure on you to perform.</p>
+
+<p>As a company matures and grows your job will evolve, becoming more complex, with higher standards. You need to constantly improve at your job as well. This might be an academic exercise if you are, say, an HR team. But if you’re one of the two most important teams at a company you can literally be solely responsible for killing an otherwise thriving business if you don’t evolve fast enough.</p>
+
+<p>The criticality of sales and engineering leads to a paradoxical situation:</p>
+
+<ul>
+  <li>In the short run, these teams often have very high job security. Nobody wants to rock the boat even if it has a few holes in it.</li>
+  <li>In the long run, these teams have very poor job security if you aren’t excelling<em>.</em> The CEO, board, and investors are constantly assessing the strength of sales and engineering and overhauling these teams can be the answer if things really get off track.</li>
+</ul>
+
+<p>Since sales and engineering are the pace-setters of an organization, there is no such thing as “good enough.” You will always be compared to the best team that the company believes it could theoretically build. Nobody wakes up in a cold sweat wondering how they could have a 1.5x better HR team; every CEO in the world would move heaven and earth for a 1.5x better sales or engineering organization.</p>
+
+<p>As a result, it’s on you to constantly self-improve, because nobody is generally going to mess with their money-making teams… at least until they decide that you’re not cutting it, at which point you’ll be replaced.</p>
+
+<h3 id="building-sales--engineering-expertise">Building Sales &amp; Engineering Expertise</h3>
+
+<p>If you are in an adjacent field to sales or engineering, you should strongly consider how you can build more experience in these critical fields.</p>
+
+<p>In many situations, the priorities of your sales and engineering teams are going to take precedence over your own. The biggest deal of the quarter is more important than your marketing deck review; launching the rebuild of the product is more important than your PRD. This is fine and actually often the sign of a healthy business. As a result, learning about what makes both sales and engineering tick <em>and why</em> will help you do your job better. You cannot swim against this tide, so you need to learn how to swim with it.</p>
+
+<p>The main way that I see leaders getting into bad situations is by assuming that sales and engineering are simpler than they really are. It’s fine for me to be a non-technical PM, I know the customers. It’s fine for me to do marketing without being a sales expert, I know how to build an audience. No. You need to understand sales and engineering as well as you possibly can – otherwise, you’re going to be like a quarterback who’s watched hours of Sportscenter but has never thrown a football.</p>
+
+<h3 id="sales--engineering-risks">Sales &amp; Engineering Risks</h3>
+
+<p>The fact that sales and engineering are the most important teams means that sales and engineering failures are the largest risks to your business. If you’re at a company where these teams are weak, you should strongly consider leaving. You are highly unlikely to save the ship.</p>
+
+<p>Once you see this truth, many other fact patterns start to make more sense.</p>
+
+<ul>
+  <li>Tech CEOs are disproportionately drawn from the ranks of sales leaders and PMs <em>who used to be engineers</em>. There is enormous value in literally knowing how to build a product.</li>
+  <li>PLG companies targeting smaller customers often do well despite poor economics relative to enterprise customers, because they take one of the biggest risks (incompetent sales team) off the table. Additionally, not needing to field a large sales team allows companies to overinvest in engineering, which often brings massive advantages – many of the most successful SaaS companies have a PLG motion. Unfortunately, PLG business models only work for certain industries.</li>
+  <li>Y Combinator, probably the greatest early stage investors of all time, have an extremely strong preference for funding companies that have engineering expertise on their founding team. De-risking engineering is that important.</li>
+</ul>]]></content><author><name></name></author><category term="management" /><category term="saas" /><category term="management" /><category term="business" /><category term="leadership" /><category term="startups" /><summary type="html"><![CDATA[The most important teams in a B2B software company are engineering and sales. Full stop, no exceptions, no further questions. You're either building the product or selling the product, and everything else is secondary at most.]]></summary></entry><entry><title type="html">2025: Another SaaSy Year In Review</title><link href="https://staysaasy.com/saas/2025/12/30/2025-year-in-review.html" rel="alternate" type="text/html" title="2025: Another SaaSy Year In Review" /><published>2025-12-30T12:59:22+00:00</published><updated>2025-12-30T12:59:22+00:00</updated><id>https://staysaasy.com/saas/2025/12/30/2025-year-in-review</id><content type="html" xml:base="https://staysaasy.com/saas/2025/12/30/2025-year-in-review.html"><![CDATA[<h2 id="it-was-a-very-weird-year">It Was A Very Weird Year</h2>
+
+<p>It was an interesting year in the Stay SaaSy universe. We grew our community significantly on Substack and X and via email. We met some amazing people through this blog and we feel increasingly plugged into a truly special group of builders, managers, and leaders.</p>
+
+<p>AI was the story this year and it often left little air in the room for other topics. At different parts of this year: management was declared dead, SaaS was declared dead, blogging was declared dead.</p>
+
+<p>And yet here we are. All of these things are not dead, just changing.</p>
+
+<p>We look forward to another exciting year of writing, tweeting, and engaging with the great Stay SaaSy community. We’re confident that blogging, management, and SaaS will still be here this time next year. But we believe they’ll likely be meaningfully different, and that things are only speeding up from here.</p>
+
+<p>We’re excited to go on the next part of this ride with you.</p>
+
+<h2 id="top-posts">Top Posts</h2>
+
+<ul>
+  <li><a href="https://blog.staysaasy.com/p/advice-for-individual-contributors">Advice For Individual Contributors</a></li>
+  <li><a href="https://blog.staysaasy.com/p/own-a-graph">Own A Graph</a></li>
+  <li><a href="https://blog.staysaasy.com/p/leveling-up-teams-fast-and-slow">Leveling Up Teams Fast And Slow</a></li>
+  <li><a href="https://blog.staysaasy.com/p/the-trauma-you-need-to-learn">No Pain, No Gain</a></li>
+  <li><a href="https://blog.staysaasy.com/p/your-manager-is-not-your-best-friend">Your Manager Is Not Your Best Friend</a></li>
+  <li><a href="https://blog.staysaasy.com/p/tips-for-better-interactions">Tips For Better Interactions</a></li>
+  <li><a href="https://blog.staysaasy.com/p/delegating-complex-tasks">Delegating Complex Tasks</a></li>
+  <li><a href="https://blog.staysaasy.com/p/this-is-how-youre-eroding-accountability">This Is How You’re Eroding Your Accountability</a></li>
+</ul>
+
+<h2 id="top-tweets">Top Tweets</h2>
+
+<blockquote class="twitter-tweet">
+  <a href="https://twitter.com/staysaasy/status/1975724407399067840"></a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet">
+  <a href="https://twitter.com/staysaasy/status/1984979146867462231"></a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet">
+  <a href="https://twitter.com/staysaasy/status/1941317406158377225"></a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet">
+  <a href="https://twitter.com/staysaasy/status/1956732978903585257"></a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet">
+  <a href="https://twitter.com/staysaasy/status/1992246680981565780"></a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h2 id="podcast">Podcast</h2>
+
+<p>We did several episodes of a <a href="https://blog.staysaasy.com/podcast">podcast</a> this year!</p>
+
+<p>Podcasting was a new format for us and certainly something we haven’t learned to be consistent at. We also used voice modulators to stay anonymous and we got feedback that for some people it was a bit too much.</p>
+
+<p>If you enjoyed the podcast or have feedback - let us know! We’re going to try it a bit more this year, ideally with some software that gives us cooler voices.</p>]]></content><author><name></name></author><category term="saas" /><category term="saas" /><category term="business" /><category term="technology" /><summary type="html"><![CDATA[It was another a very good year.]]></summary></entry><entry><title type="html">Advice For Individual Contributors</title><link href="https://staysaasy.com/management/2025/12/21/ic-advice.html" rel="alternate" type="text/html" title="Advice For Individual Contributors" /><published>2025-12-21T06:59:22+00:00</published><updated>2025-12-21T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/12/21/ic-advice</id><content type="html" xml:base="https://staysaasy.com/management/2025/12/21/ic-advice.html"><![CDATA[<p>This is a guide on how individual contributors (ICs) can achieve outsized impact within a software organization.</p>
+
+<h2 id="make-breakthroughs"><a href="https://x.com/staysaasy/status/2000900897694507113">Make Breakthroughs</a></h2>
+
+<p>Individual contributors have the special property that they can get real work done. Managers are often constrained because their leverage is through people, which often means slower and steadier change.</p>
+
+<p>ICs can bypass this. You can work a weekend to deliver a working prototype. You can spend nights finding an insane performance optimization. You can Proof-of-Concept a feature scheduled for next year.</p>
+
+<p>So much of a company is bound by risk assessment, expected timing, and prioritization minutiae. Finding a genuine breakthrough cuts through the bureaucracy and fundamentally shifts the timeline.</p>
+
+<p>If this work is so important, why isn’t it prioritized? It’s not prioritized because if you make it part of the day-to-day, it gets bogged down and dragged out like everything else, often resulting in sunk time with nothing to show for it.</p>
+
+<p>By taking a calculated risk on yourself—the risk that you might fail—you can deliver a breakthrough that dramatically increases your value and the company’s.
+Occasionally, ICs should go all-in, work intensely, and find a breakthrough.</p>
+
+<h2 id="act-like-a-leader"><a href="https://x.com/staysaasy/status/1999944304702230746">Act Like A Leader</a></h2>
+
+<p>If you want to be a leader, you have to act like one.</p>
+
+<p>That begins with being optimistic, not starting or encouraging big commiseration sessions with more junior people, not trying to set up an us-vs-them dynamic against “management” or treat other company structures like the bad guy.</p>
+
+<p>Many senior ICs think it’s their job to be the union rep for ICs. The only thing that actually accomplishes is undermining your own credibility. It doesn’t deliver the value that would make people’s bonuses go up, and it doesn’t change hearts and minds.</p>
+
+<p>But you also shouldn’t be a shill for management.</p>
+
+<p>Like it or not, your job is to be an unaffiliated, unbiased leader, and doing what’s right in individual situations.</p>
+
+<h2 id="take-specific-ownership">Take Specific Ownership</h2>
+
+<p>Another critical part of being an IC leader is owning things.</p>
+
+<p>One of the specific virtues of the manager position is that it provides radical clarity on ownership - you own the team. With that ownership comes risk, reward, and accountability. The team wins, you win. The team fails, you fail.</p>
+
+<p>Too often ICs get slotted into being 1 of n engineers on a team, becoming a non-unique, non-owner of outcomes. In fact, agile development processes often specifically encourage interchangeable resourcing.</p>
+
+<p>But ICs should avoid taking this too far. Ownership and accountability are critical forcing functions for growth. You should ask yourself - what specifically could fail that would cause me to get less rewards? What specifically could do well that I should uniquely get credit for?</p>
+
+<p>If you don’t have a good answer, you don’t have enough specific, named ownership. While ownership can come in many forms (services, features..etc), the core unit of ownership is a goal. If you don’t uniquely own any specific goal, you are shortchanging yourself.</p>
+
+<h2 id="send-regular-updates"><a href="https://x.com/staysaasy/status/1998360567556256040">Send Regular Updates</a></h2>
+
+<p>Send regular updates.</p>
+
+<p>Bi-weekly is usually a good cadence.</p>
+
+<p>Send your boss a doc that says what you’re doing, what you need help with, and cc their boss.</p>
+
+<p>This serves multiple functions</p>
+<ul>
+  <li>Builds awareness of your work</li>
+  <li>Builds awareness (and record) of your needs</li>
+  <li>Forces you to reflect on the above</li>
+  <li>Forces you to make sure you’re making meaningful progress on things every two weeks</li>
+  <li>Forces you to write regularly</li>
+  <li>Gives you more time in 1:1s to do important discussions (context already set on status)</li>
+  <li>If your update is thoughtful, it also makes your own boss look good, which is strictly positive for your career</li>
+</ul>
+
+<p>The benefits of this ritual are truly massive.</p>
+
+<p>You’ll be shocked at how much better you get at self-management when forced to do it.</p>
+
+<p>You’ll be shocked at how often your boss/boss’s boss can solve your problems faster when presented this way, and how grateful they will be for the clear updates.</p>
+
+<p>PS if you use AI to write these updates you’ve destroyed their purpose entirely and are subtracting value.</p>
+
+<h2 id="talk-to-senior-leaders"><a href="https://x.com/staysaasy/status/1998223873490256093">Talk To Senior Leaders</a></h2>
+
+<p>Talk to people more senior than you in the org chart.</p>
+
+<p>Seriously - book time with senior people, or ask them for 30 minutes to discuss what they think is valuable and worth doing. Senior leaders absolutely love this, because it lets them get more important work done through their team, and it often doubles as a therapy session.</p>
+
+<p>Talk to five people from different parts of the business.</p>
+
+<p>Then go solve one of those problems.</p>
+
+<p>This is an extremely underrated activity because:</p>
+<ul>
+  <li>It helps you get both perspective and ideas on ways to help the business</li>
+  <li>People don’t do this nearly enough. Too many people do recurring skip levels that are boring and useless; too few do meetings with senior leaders they haven’t talked to.</li>
+  <li>It’s good for your brand</li>
+  <li>If you solve a leader’s problem, they’ll be in your corner for a very long time. If you can solve a leader’s big problem five different times, in my experience they’ll  literally be an ally or direct sponsor of your career for life</li>
+</ul>]]></content><author><name></name></author><category term="management" /><category term="strategy" /><category term="management" /><category term="compensation" /><summary type="html"><![CDATA[A concise set of reccomendations.]]></summary></entry><entry><title type="html">The Compensation Commandments</title><link href="https://staysaasy.com/management/2025/12/15/compensation-commandments.html" rel="alternate" type="text/html" title="The Compensation Commandments" /><published>2025-12-15T06:59:22+00:00</published><updated>2025-12-15T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/12/15/compensation-commandments</id><content type="html" xml:base="https://staysaasy.com/management/2025/12/15/compensation-commandments.html"><![CDATA[<p>Compensation is difficult. Even more than that, it is sensitive, business critical, and often has almost nothing to do with the rest of your job as a leader. Here are some rules for making compensation decisions effectively and efficiently.</p>
+
+<h2 id="the-goal-of-compensation-is-to-create-the-most-talented-enthusiastic-team-that-your-budget-allows">The Goal of Compensation is to Create the Most Talented, Enthusiastic Team That Your Budget Allows</h2>
+
+<p>It might seem obvious… but your foremost goal when running a compensation cycle is to maximize the talent and enthusiasm of your team. Full stop.</p>
+
+<ul>
+  <li>Your goal is not to make people happy</li>
+  <li>Your goal is not to retain your team <em>at any cost</em> (although retention is part of the equation)</li>
+  <li>Your goal is not to get a “deal” on what you’re paying employees</li>
+  <li>Your goal is not to match the market</li>
+  <li>Your goal is not to match what &lt;other company&gt; is paying</li>
+  <li>Your goal is not to match employee expectations</li>
+  <li>Your goal is not to pay equally (although part of your goal is to establish <em>fairness</em>)</li>
+</ul>
+
+<p>Creating a talented team means that you can get great people to accept your hiring offers. Creating an enthusiastic team means that these great people are motivated to work for you, engaged in their work, and (in the upside case), will work much harder than otherwise due to their compensation structure. And you need to fit this into a budget that allows your business to function.</p>
+
+<h2 id="you-cant-buy-happiness">You Can’t Buy Happiness</h2>
+
+<p>If you spend enough time as a manager, you start to realize that:</p>
+
+<ul>
+  <li>You can never make someone happy with compensation alone. People who dislike working on your team will quit even if they’re paid well above market</li>
+  <li>There is no amount you can pay that will permanently increase job satisfaction; eventually everyone’s expectations will adjust</li>
+  <li>But there <em>is</em> an amount you can pay where compensation alone will cause 0 marginal unhappiness on your team</li>
+</ul>
+
+<p>To hit that final metric, you roughly want to target paying at least the amount where team members can’t easily find another job that will pay them more. (And on top of that, of course you need to try to make your work environment as otherwise appealing as possible)</p>
+
+<p>The intuition here is that many jobs basically kind of suck, so if you don’t mind your current job, switching jobs is risky – and most people know that. What you want in your team’s head is some version of “perhaps I could theoretically get paid more elsewhere, but it would probably take a lot of effort <em>and</em> maybe the new job would suck in other ways.” This will retain most otherwise happy employees, which is ultimately what you deserve and the best you can hope for in any case.</p>
+
+<p>Of course, this is easier said than done! You need to track the market, both via surveys and seeing what new candidate offers are accepted / heavily negotiated / rejected. You need to watch for attrition on your team, observing where departing folks go and why. And when you get new signal you need to react – don’t allow your compensation to get out of line with your target market percentile. But all of that is tractable as long as you put in the work.</p>
+
+<h2 id="unfairness-creates-unhappiness">Unfairness Creates Unhappiness</h2>
+
+<p>But while you can’t make an unhappy team member happy with compensation alone, the converse is not true: how you compensate can absolutely make an otherwise happy team member <em>unhappy</em>.</p>
+
+<p>What makes people absolutely furious about compensation is finding out that they’re paid the same, or less, than someone they think is less deserving. There are some people who will literally quit a company on the same day if this happens.</p>
+
+<p>The best way to prevent a sense of injustice is simply to have clear compensation bands, and essentially never allow employees’ compensation to drift outside of them. Compensation bands are excellent at preventing some of the most common sources of unfairness – managers using their discretion to play favorites, and new hires making more than existing team members at the same or higher seniority (salary compression). The latter occurs regularly when market compensation shifts, hiring managers are captivated by a shiny new hire, and they allow their team to fall behind the market. Rigorous compensation bands prevent this from occurring (if you move your bands to accommodate a new hire, you need to move your existing team’s comp as well).</p>
+
+<p>The most common cause of unjust compensation is simply laziness. Keeping track of everyone’s compensation to prevent unfairness or setting up a system that enforces standards takes effort, and many teams fail to do it. This is a huge mistake, as perceptions of unjust compensation are one of the ugliest and most acute sources of employee dissatisfaction. Additionally…</p>
+
+<h2 id="people-talk">People Talk</h2>
+
+<p>Many people talk about their compensation with others. As a result, you should be willing to explain exactly why any team member’s compensation is set where it is, in front of the whole company. You won’t have to do this often, but it’s the standard to hold yourself to. The reasons that comp is uneven between employees can actually even be random or somewhat weak, but there needs to be some justification. Some common, defensible examples:</p>
+
+<ul>
+  <li>“Alex makes more than you because they’re a distributed systems engineer and you’re a marketing associate”</li>
+  <li>“Alex makes more than you because they’re higher in the compensation band; you were just promoted and they already have industry experience at this level”</li>
+  <li>“Alex makes more than you because you were just hired and they have built trust over many years on the team”</li>
+  <li>“We granted Alex their stock when our company valuation was low, so they’re making 2x market because they’re lucky”</li>
+  <li>“Alex makes more than you because they’re better at their job”</li>
+</ul>
+
+<p>Some of these reasons aren’t necessarily emotionally satisfying, but they’re all completely intelligible without any whiff of injustice. And injustice is the critical factor that drives people crazy.</p>
+
+<h2 id="maximizing-upside">Maximizing Upside</h2>
+
+<p>Since the goal of compensation is creating an enthusiastic team, there are additional ways that you need to think about pay in order to maximize return on your dollars.</p>
+
+<p>The most immediate levers are performance-based compensation such as bonuses and sales commissions. The main heuristic to keep in mind for any performance-based comp is that:</p>
+
+<ul>
+  <li>The further an action is from concrete compensation, the less it will motivate any change in behavior. Contrast the motivational impact of “Here’s a big bonus because you did a great job over the entirety of the last year” vs. “Here’s $25,000 because you closed that large enterprise contract.”</li>
+  <li>Any action that is directly compensated will lead people to heavily optimize their behavior towards it. For example, the salesperson telling white lies to a customer in order to close a deal.</li>
+</ul>
+
+<p>But equity is a much more powerful lever – specifically, a lot of equity.</p>
+
+<p>If someone has 10% of their annual compensation in company equity, they will act like an “owner” the way that you act like an owner of your rental car. They’ll take care of things, generally be responsible, and won’t badmouth your company (much).</p>
+
+<p>But if someone feels like their equity will change their life, most will act like a completely different kind of owner. They’ll start to treat your company like their child – they’ll stay up all night caring for it if there are issues, they’ll think about its well-being all the time. For your top performers it’s really worth getting them to that point via equity compensation if you can. If you want a quick heuristic, the most common amount of money that most people consider to be life-changing is roughly the price of a good-condition 3 bedroom home in their nearest metro area.</p>
+
+<h2 id="takeaways">Takeaways</h2>
+
+<p>In summary:</p>
+
+<ul>
+  <li>The goal of compensation is to create the most talented, enthusiastic team that your budget allows</li>
+  <li>Minimally, aim to pay your most valuable team members at a level that it would be difficult for them to match in the market</li>
+  <li>Don’t allow there to be injustice in your compensation system, and use compensation bands to enforce fairness</li>
+  <li>You should be willing to explain any compensation decision on your team</li>
+  <li>Maximize the value that you get from compensation via equity and well-crafted performance-based compensation</li>
+</ul>]]></content><author><name></name></author><category term="management" /><category term="strategy" /><category term="management" /><category term="compensation" /><summary type="html"><![CDATA[Compensation is difficult. Even more than that, it is sensitive, business critical, and often has almost nothing to do with the rest of your job as a leader. Here are some rules for making compensation decisions effectively and efficiently.]]></summary></entry><entry><title type="html">Own A Graph</title><link href="https://staysaasy.com/strategy/2025/11/26/own-a-graph.html" rel="alternate" type="text/html" title="Own A Graph" /><published>2025-11-26T06:59:22+00:00</published><updated>2025-11-26T06:59:22+00:00</updated><id>https://staysaasy.com/strategy/2025/11/26/own-a-graph</id><content type="html" xml:base="https://staysaasy.com/strategy/2025/11/26/own-a-graph.html"><![CDATA[<h1 id="own-a-graph">Own a Graph</h1>
+
+<p><a href="https://x.com/staysaasy/status/1993669959420157987">If you are a senior engineer or PM or designer, you should own a graph.</a></p>
+
+<p>One of the quickest ways to get better at your job is to own a graph.</p>
+
+<p>There are many ways to do work that don’t matter and there are many ways to do work that matters but fail to articulate that value well. Owning a graph solves both of these problems.</p>
+
+<h2 id="solving-problems-that-matter">Solving Problems That Matter</h2>
+
+<p>At a senior level, you must own big problems. Basically every problem worth owning can be shown on a graph. On a multi-quarter timeframe, the things you’re doing should be visible in graph format. Things like:</p>
+<ul>
+  <li>Reducing pages</li>
+  <li>Improving performance</li>
+  <li>Saving money</li>
+  <li>Driving revenue</li>
+  <li>Reducing churn</li>
+</ul>
+
+<p>Not every bit of work you do has to be part of a graph, but if you don’t have at least one graph you’re owning, you’re not operating at a senior level.</p>
+
+<h2 id="concise-communication">Concise Communication</h2>
+
+<p>One of the most common frustrations of senior people is that their impact isn’t understood. One of the hardest truths for people to learn is that that’s a them problem - they’re not communicating well enough.</p>
+
+<p>Graphs are the most powerful tool you have to communicate your impact.</p>
+
+<p>People often try to explain their impact in words. They might say something like “I reduced pages by 15%.” If you send that to your leadership, good leaders will immediately have 20 followup questions. 15% from what to what? Over what time period? Did it happen all at once or steadily? Was it already declining or did your actions clearly impact it?</p>
+
+<p>Graphs show all of this information right away. You see scale, history, volatility. One graph can replace paragraphs of language. You also often get a free link to the data, so the recipient can spot-check the graph to gain confidence in it’s integrity.</p>
+
+<p>Further, this ability to concisely communicate impact and effort is a critical tool for getting feedback. Sometimes you’re not working on the right thing. Sometimes the scale of your impact isn’t worth the time you’re putting in. If you represent your work in ambiguous prose, you’re not going to get direct feedback on it.</p>
+
+<p>Representing your work as a graph gives you an ultra-concise way to both get credit but also get feedback.</p>
+
+<h2 id="tying-it-all-together">Tying It All Together</h2>
+
+<p>In <a href="https://staysaasy.com/management/2023/07/02/Achieving-Goals.html">On Achieving Goals</a> we talked about the radical simplicity of getting things done - set a goal and check in on it.</p>
+
+<p>This is an addendum to that concept - you should do that process, with a graph.</p>
+
+<p>This combination is so effective that it can be the difference between high performance and unemployment.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Graphs are a critical unit of ownership for senior people to track their progress, communicate outcomes, and get feedback. If you don’t own one, fix that ASAP.</p>
+
+<h2 id="appendix-tips--tricks">Appendix: Tips &amp; Tricks</h2>
+
+<p>Assorted tips and ticks:</p>
+<ul>
+  <li>You’ll know that you’re on the right track when other people reference your graph. People are lazy and if your graph is helpful and accurate you will boost your career with it.</li>
+  <li>Your graph doesn’t have to be perfect on day 1. You’ll get feedback on it and iterate over time, and that’s fine (that’s actual ownership).</li>
+  <li>There is an anti-pattern to avoid which is “owning too many graphs.” Some people have a thousand graphs that they “own” by showing in a meeting when it fits their narrative. You should own a few really important graphs. <a href="https://staysaasy.com/management/2025/08/01/metrics.html">You have too many metrics</a>, so the graphs you own should be few and extremely valuable.</li>
+  <li>If you’re an engineer trying to find a graph to own, quality issues are a great place to start. Pages, incidents, bugs, performance all have graphs that are begging to be owned. If you’re a PM/designer: support tickets, revenue, competitive win rates, attach rates for retention are all great things to own.</li>
+  <li>You don’t always need to have the ability to move the metric solo (although it’s great if you can). Just monitoring something important and following up tenaciously to move it in the right direction is enough to get your career going.</li>
+</ul>]]></content><author><name></name></author><category term="strategy" /><category term="startups" /><category term="business" /><category term="management" /><category term="strategy" /><summary type="html"><![CDATA[Show me the graph!]]></summary></entry><entry><title type="html">The Two Jobs of a CPO</title><link href="https://staysaasy.com/product/2025/11/12/two-jobs-of-a-cpo.html" rel="alternate" type="text/html" title="The Two Jobs of a CPO" /><published>2025-11-12T06:59:22+00:00</published><updated>2025-11-12T06:59:22+00:00</updated><id>https://staysaasy.com/product/2025/11/12/two-jobs-of-a-cpo</id><content type="html" xml:base="https://staysaasy.com/product/2025/11/12/two-jobs-of-a-cpo.html"><![CDATA[<p>One of the hardest things I’ve found about being a Head of Product / Chief Product Officer is that you really have two jobs:</p>
+
+<p>The first is setting up a strong product culture, establishing strong design/roadmapping practices, mapping out product processes, managing cross-functional partners, etc. Basically, being an executive that runs a strategic cross-functional team. I’m aware that “cross-functional” is one of those buzzwords that might seem to mean nothing, but I think it’s important to emphasize that PM teams tend to touch almost every project that an organization takes on, in at least some form. As a result they need to run efficient, high-quality organizations.</p>
+
+<p>The second job of a CPO is <a href="https://staysaasy.com/product/2021/12/28/your-head-of-product-and-your-ceo.html">aligning tightly with your CEO</a> to set the right product strategy. Every CEO-CPO pairing falls in a different place on the continuous spectrum from “CEO sets all product vision” to “CPO sets effectively the entire product vision.” Regardless of where you fall, it’s essential that you and your CEO are on the same page. This is basically an Individual Contributor job, and is only barely delegate-able. It’s like raising your kids – you can delegate a few aspects of it but you are solely accountable and the spirit of the job must be done completely by you.</p>
+
+<p>Job #1, setting the right product culture, is essential for your team to work well. Without this you won’t have enough impact. But if you don’t do job #2 well and align with company strategy <strong>immediately and forever</strong>, you will not remain head of product for long. And the two jobs are surprisingly different.</p>
+
+<h2 id="balancing-culture-and-strategy">Balancing Culture and Strategy</h2>
+
+<p>There’s no perfect way to balance setting up the <em>systems that build the product</em> and <em>setting the direction of the product itself</em>. But you can dramatically increase the odds of success by looking for efficient ways to balance both jobs.</p>
+
+<p>First off – realize that the job of setting direction is the more important of the two roles. If you aren’t perfect at setting product culture, but you’re pointing your imperfect ship in the right direction, then you’ll have time to iterate and continuously improve. But if you are great at setting product culture and point your well-oiled product building machine in the wrong direction, you’re going to get replaced. CEOs and boards of directors are rightfully uncompromising about alignment between your product strategy and the company’s direction. You can sometimes be a bit early or a bit late to pivot towards a strategy that aligns to your CEO, but going in a different direction is unacceptable.</p>
+
+<p>Worth defining: Strategic alignment doesn’t mean that you just do whatever your CEO says, and that all of their ideas are your ideas. It just means that you 1. Incorporate their ideas into your product strategy appropriately, and 2. That you elevate and support your team’s best ideas. Unwillingness to admit that others have good ideas and inability to inspire others are non-starters for a head of product.</p>
+
+<p>Second, it’s valuable to efficiently set up a strong, stage-appropriate operational muscle on your product team. Get the right templates in place; set up the right rituals; set the right expectations; establish the right interview plans. Because of how product teams operate (typically 1 PM per team), a team of PMs has a huge amount of room for drift; much more than other vocations. 10 engineers might all be on the same team. 10 designers will work on different products, but they’ll need to establish shared design systems and protocols for customers’ sanity (and their own). But 10 PMs can legitimately end up running 10 different products, some of which have different pricing, technology stacks, business models, and even customer profiles.</p>
+
+<h2 id="scaling-product-culture">Scaling Product Culture</h2>
+
+<p>One of the best ways to find balance is by delegating or establishing key product operational tasks once it’s clear that your team will be scaling up significantly. Be warned, however, that it can be very counterproductive to delegate product culture or process-setting to someone who hasn’t spent a lot of time building products themselves. Shipping product is really nuanced and you can’t just slap some generic template on a lot of it – the systems you set up need to be configured for your business and for a high-quality culture of builders.</p>
+
+<p>For a tiny example, on my product team we spend a lot of effort curating and managing early access periods for new products due to types of workloads that we run (medium-high business criticality, very high scale). We’ve also had to devote meaningful effort alongside engineering to making sure that there are firm limits on the product due to cost/scale concerns. This is something that a prosumer note-taking app simply wouldn’t care as much about; but I bet that they care more about interaction design than we need to. You need product experts to make these sorts of calls, and can’t just hire a generic ops person.</p>
+
+<h2 id="scaling-strategic-alignment">Scaling Strategic Alignment</h2>
+
+<p>Scaling strategy is much harder, especially for a complex product. But luckily it can be steered individually much more easily - think about how one person can turn a cruise ship but it takes dozens to operate the engines.</p>
+
+<p>One of the most important ways to run strategy is to just be a dictator. How to run your team can be a debate and active discussion; the direction that you’re going should not be.</p>
+
+<p>Hiring or training people who get “the plan” of how your product is going to win is one of the best ways to get strategic alignment. Businesses are complicated; having someone who can support the company’s strategic direction without being hand-held is invaluable. The litmus test – they should jump on new key opportunities in their area of responsibility before you realized that they exist. Training enough of these people will allow your department to maintain strategic alignment without the CPO having to audit every single decision.</p>
+
+<h2 id="takeaways">Takeaways</h2>
+
+<p>The two jobs of a head of product are hard but tractable.</p>
+
+<p>It’s not that the two different jobs are inherently incompatible. It’s simply that they are each distinct jobs, requiring large amounts of effort and expertise, and it’s hard to accomplish two hard tasks at the same time. The danger comes from the fact that many people don’t realize that their job is to set both product culture and strategy, and that one of them can be worked on iteratively (product culture), while strategy is a do-or-die requirement from day 1. Keep in mind that your manager will feel an asymmetry in these jobs as well; they are the god-emperor of your company’s strategy, but you are likely more of an expert at the tactical details of building a great product team.</p>
+
+<p>I suspect that the dichotomy between these two roles is also why Chief Product Officers are one of the harder positions to fill once a company gets to scale. The skills that get you hired as a CPO are all about product culture and process setting. But the skills that keep you from getting fired are all about strategic alignment, and finding that alignment with a high-octane, highly confident CEO is an entirely different skill. A lot of companies hire product culture builders because the skillset is portable, and these hires then fail to lock-in on where the company should go.</p>
+
+<p>If you’re a head of product, it’s critical to realize that you have two major directives that won’t directly reinforce one another. Communication with your CEO / manager is key – help <em>them</em> understand what you need to do, and how far along you are at accomplishing it. That way you can keep everyone on the same page and actually do the job you were hired for.</p>]]></content><author><name></name></author><category term="product" /><category term="product" /><category term="leadership" /><category term="cpo" /><category term="strategy" /><summary type="html"><![CDATA[One of the hardest things I've found about being a Head of Product / Chief Product Officer is that you really have two jobs: Setting product culture, and setting product strategy.]]></summary></entry><entry><title type="html">Leveling Up Teams Fast and Slow</title><link href="https://staysaasy.com/management/2025/10/22/leveling-up-fast-and-slow.html" rel="alternate" type="text/html" title="Leveling Up Teams Fast and Slow" /><published>2025-10-22T06:59:22+00:00</published><updated>2025-10-22T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/10/22/leveling-up-fast-and-slow</id><content type="html" xml:base="https://staysaasy.com/management/2025/10/22/leveling-up-fast-and-slow.html"><![CDATA[<p>The best way to win as a business is to move fast. And the best way to move fast is with a smoothly functioning team.</p>
+
+<p>There are many ingredients that go into an effective team – hiring, performance management, incentive structures, clear goal setting, streamlined processes, and more. But in the broadest sense I believe that there are two fundamental activities, one fast and one slow, that are essential to a well-functioning team and that anyone can put into place immediately.</p>
+
+<h2 id="leveling-up-slowly-teams-never-go-backwards">Leveling up slowly: Teams never go backwards</h2>
+
+<p>The best way to ensure that your team gets better over time is to ensure that you’re constantly leveling them up, and that teams never degrade in effectiveness and performance culture.</p>
+
+<p>Organizations have a natural gravity that will pull them towards the lowest common denominator that they observe around them. Let’s say that you have 5 teams, and one of them works at a slower pace, has worse outputs, or takes on a less strategic role. All of these weaknesses will provide air cover for lower performers on the other 4 teams, and ultimately bring down the quality of your organization.</p>
+
+<p>The key, replicable activity to keep in mind: You should always spend some amount of time debugging your weakest team, and bringing them back up to <em>at least</em> the median of the rest of your teams. Over time, this will gradually improve your organization – and more importantly, it will do it in a way that is highly stable, as this evolution doesn’t require massive changes or sudden changes to multiple teams at once. At any given point in time as a manager, you have a weakest team: Some percentage of your efforts should simply go towards fixing them.</p>
+
+<p>The simple fact is that it’s pretty hard to debug multiple teams at once. It is very rare to have a team that sucks for reasons that are purely their own fault. 95% of the time, once you begin debugging, you’ll find that the situation is due to some combination of poor incentives, weak partners, or misunderstandings – in addition to any raw competence gaps. And if you want to be fair (which you should!), that will require investigation and follow-up with some degree of nuance.</p>
+
+<p>The solution is to focus on one team at a time, and make sure that you are <em>always</em> working on the most challenged team. That way, even when things seem fine in general, you’re building up a buffer of higher performance that you can bank on when times are rough.</p>
+
+<h2 id="leveling-up-fast-put-the-best-in-charge">Leveling up fast: Put the best in charge</h2>
+
+<p>But this inexorable shift towards higher performance moves slowly. If you can debug one team per quarter (which is not a bad rate at a scaled up business), that’s a positive trajectory but a gradual slope across an organization of dozens, hundreds, or thousands. So you need a faster lever.</p>
+
+<p>My favorite quick lever for performance upleveling is simply to put the most competent people in charge, regardless of their vocation or title or the shape of the org chart:</p>
+
+<ul>
+  <li>If there’s a complicated project, put a star performer on it.</li>
+  <li>Tell everybody else that they’re in charge (implied – until they screw it up). Let one person hold the steering wheel so the car doesn’t crash.</li>
+  <li>If they do well, their leadership will feel natural, as if you couldn’t have imagined any other way.</li>
+</ul>
+
+<p>Companies that are &gt;50 people <em>hate</em> doing this – it disrupts the chain of command, can create the perception of playing favorites, and doesn’t follow the MBA playbook. More significantly, it requires a degree of leadership resolve that is rare among career executives – it’s politically destabilizing to your organization, and the way that you tend to get ahead as a career exec is by making your team extremely politically stable.</p>
+
+<p>But it works – because one thing that you find if you operate in fast-moving businesses for long enough is that the best members of your organization are often <a href="https://staysaasy.com/strategy/2025/10/15/specialization.html">far more competent</a> than the baseline team member (<em>even on really strong teams!</em>). You can ignore this, causing top performers to become more frustrated – or you can empower them and use them like battering rams that smash your worst problems into little splinters. The latter obviously works much better, and it works shockingly fast. Like, the project was screwed up this morning, but it’s 4pm and now the entire team has a skip in their step and confidence that they never had before.</p>
+
+<p>The other reason that this works is that most organizations default to having a lot of hands on the steering wheel. This is a strictly worse situation – while some cars can be driven with 3 people holding the wheel simultaneously, it tends to require extreme competence, trust, and experience working together from <em>every single person involved</em>. I’ve seen this rapport get established between startup founders, siblings, or a combination of startup founders and extremely early employees (first 50), but never with any other group of human beings. For your situation you’re almost certainly better off just putting Jennie the Genius or Bob the Badass in charge and telling everybody else to shut up and fall in line.</p>
+
+<p>People want to know that there’s a plan and that it’s going to be okay – and very competent singular leaders provide that drive and direction.</p>
+
+<p>And I’ve also found that once you’ve established that leadership, the politics disappear. By constantly leveling up your teams (see part 1), you’ve hired good people. Good people love winning, and they love following a single great leader because that helps you win. And that’s all that anyone was looking for anyway.</p>]]></content><author><name></name></author><category term="management" /><category term="startups" /><category term="business" /><category term="management" /><category term="strategy" /><summary type="html"><![CDATA[There are many ingredients that go into a smoothly functioning team – hiring, performance management, incentive structures, clear goal setting, streamlined processes, and more. But in the broadest sense I believe that there are two fundamental activities, one fast and one slow, that are essential to a well-functioning team and that anyone can put into place immediately.]]></summary></entry><entry><title type="html">Specialization Is For Insects</title><link href="https://staysaasy.com/strategy/2025/10/16/specialization.html" rel="alternate" type="text/html" title="Specialization Is For Insects" /><published>2025-10-16T06:59:22+00:00</published><updated>2025-10-16T06:59:22+00:00</updated><id>https://staysaasy.com/strategy/2025/10/16/specialization</id><content type="html" xml:base="https://staysaasy.com/strategy/2025/10/16/specialization.html"><![CDATA[<p>As companies grow, there is a stark shift from having a team of generalists to a team of specialists.</p>
+
+<p>A young startup might ask an engineer to play roles ranging from engineer to PM to interim manager to solution consultant and more. A young startup might ask a PM to be a PM and pricing expert and a product marketing expert and a documentation writer and an ersatz designer and an interim engineering manager.</p>
+
+<p>In bigger companies, all of these roles are done by specialists.</p>
+
+<p>The upside of this transition is that, most of the time, you get higher quality output for each of these vocational tasks as you specialize. A dedicated pricing specialist is way better than a pinch-hitting PM. A PM is way better than the average engineer doing PM stuff.</p>
+
+<p>There are major downsides though.</p>
+
+<p>The number one downside is that all of these specialists must coordinate to get anything done. Coordination effort skyrockets. This can lead to dramatically increased times to deliver projects. And, sometimes, the coordination effort is so significant that the project slows to a crawl and lacks time for iteration, leading to lower quality.</p>
+
+<p>In a world where slowness kills companies, this can be existential.</p>
+
+<p>Another major issue is that as the number of required specialists goes up, the probability of an underperforming member of a project team goes to 100%. Most companies have 0 ability to react in realtime to an underperforming member of a project (perf management is too slow; embedded roles lack visibility). This can lead to serious deficiencies, slow delivery, and morale issues.</p>
+
+<p>Finally, an amazing engineer is actually better than an average PM at product management. An amazing PM is actually better than an average pricing expert on pricing. As a result, deference to specialists can be deadly. If a great PM says that the design sucks, I don’t care if a middling designer has more experience, the design probably sucks.</p>
+
+<p>Headcount growth is part of any successful company trajectory. But, to avoid these pitfalls, ensure that:</p>
+<ul>
+  <li>You stay as lean as possible as long as possible (with great people in seat). Don’t let yourself go beyond 2 org chart layers until you’re absolutely forced to do it.</li>
+  <li>You have strong oversight over projects as specialists increase in number. You should be able to make sure that projects don’t go slow, and you should also have a process to detect and correct performance issues.</li>
+</ul>]]></content><author><name></name></author><category term="strategy" /><category term="startups" /><category term="business" /><category term="management" /><category term="strategy" /><summary type="html"><![CDATA[Specialization requires coordinaton. Coordination costs can kill.]]></summary></entry><entry><title type="html">How to Compete in SaaS</title><link href="https://staysaasy.com/strategy/2025/10/10/how-to-compete-in-saas.html" rel="alternate" type="text/html" title="How to Compete in SaaS" /><published>2025-10-10T06:59:22+00:00</published><updated>2025-10-10T06:59:22+00:00</updated><id>https://staysaasy.com/strategy/2025/10/10/how-to-compete-in-saas</id><content type="html" xml:base="https://staysaasy.com/strategy/2025/10/10/how-to-compete-in-saas.html"><![CDATA[<p>The traditional advice for tech companies is that you should ignore your competitors. Just talk to customers and put your energy towards making yourself as great as you can be. Hit the gym, practice gratitude, focus on yourself king.</p>
+
+<p>At least in SaaS, I believe that this is wrong. If you ignore your competition, you’ll get to experience capitalism in its rawest form: competitors who are more aggressive, more vicious, or more desperate than you will pillage your customers and put you out of business. This is bad for your startup and your wallet.</p>
+
+<p>Don’t let this happen to you. Having seen many, many rounds of direct SaaS competition, here are a few of the main lessons to keep in mind.</p>
+
+<h2 id="play-to-win">Play To Win</h2>
+
+<p>Competition is everywhere. If you <em>don’t</em> see competitors for your product it’s often a sign that you’ve picked a fundamentally unviable or impractical market to attack. All good markets are warzones.</p>
+
+<p>Most markets settle into a long-term stable system where 1-3 players gain effectively all of the market share. The ultimate goal of competing is to be one of the top players in your space who are going to get all of the value.</p>
+
+<p>In order to be one of the top players in your space, you typically need to either be the #1 player in a reliable subset of the market, or you must be the overall category leader. Examples of a defensible niche include: The low-cost player. The very premium player. A player in a very specific industry (“<a href="https://www.veeva.com/">We’re Salesforce, but for life sciences</a>”). The only local player in a market (“<a href="https://shopee.com/">We’re Shopify for Asia</a>”). But regardless, you must be considered the best in some discrete market at a <em>minimum</em>.</p>
+
+<h2 id="look-for-knockdown-blows">Look For Knockdown Blows</h2>
+
+<p>The way that you become the best in a discrete market is by dealing knockdown blows to your competitors, causing them to eventually retreat.</p>
+
+<p>You do this by incentivizing them to change their product-market fit such that it doesn’t overlap with yours: typically by beating them in deals (or winning over their customers), thereby forcing them to change product, marketing, or sales strategy to avoid you. This is how you carve out your niche; eventually if the niche gets big enough, you become the leader of the category – the Microsoft, Salesforce, Intuit, or Palantir of your industry.</p>
+
+<p>Note that the goal of competition is <em>not</em> to put your competitors out of business. Generally speaking, you should assume that any competitor with &gt;$25m ARR is essentially unkillable – expect to compete against them effectively forever. SaaS margins are too high and SaaS products are too sticky (which is why it’s such a great business).</p>
+
+<p>Knockdown blows come in a few forms, such as:</p>
+
+<ul>
+  <li>Layoffs</li>
+  <li>Founder exits or transitions to less critical roles, especially founding CEOs</li>
+  <li>Business model pivots</li>
+  <li>Forced sales, or acceptance of weaker M\&amp;A options</li>
+</ul>
+
+<p>Essentially, you’re looking to force competitors to take painful steps that make them open to resetting their strategy, with the new strategy being something that is further from your areas of overlap. Knockdown blows can take many forms but they are all downstream of the same cause: a competitor losing the will to fight you for market share.</p>
+
+<h2 id="to-deliver-a-knockdown-blow-target-their-revenue-operations">To Deliver a Knockdown Blow, Target Their Revenue Operations</h2>
+
+<p>Knockdown blows are solidified by a very concrete first step: a company’s revenue operations team (who handles sales quotas, territory mapping, and general Go-To-Market (GTM) investment) raises the flag that they view a particular business area as unviable. When this happens, their next step is to either invest more to win, or divest to cut their losses – reallocate resources, spin down investment, stop the bleeding. Your role is to make them reach the conclusion that divesting is necessary as quickly and confidently as possible.</p>
+
+<p><strong>Your only point of leverage against a SaaS competitor is your ability to negatively impact their top sales representatives’ quota attainment</strong>. This is the point where your business directly contacts theirs; it is your only point of leverage. Everything else – the LinkedIn influencer posts, the Magic Quadrants, the billboards on 101 – are all just noise compared to the direct grappling of head-to-head sales.</p>
+
+<p>You want all of the best sales reps who compete against you to be nervous and force internal change: this is how you need to break their will. The general way that this works is:</p>
+
+<ul>
+  <li>Reps who compete against you can’t hit their quota. Many of the strong sales reps quit for greener pastures while the weaker reps stay and are managed out due to underperformance.</li>
+  <li>The strong reps who remain complain about how they need more support from marketing and product</li>
+  <li>Some combination of the marketing, product, and finance teams eventually trigger the discussion of asking why the company keeps throwing good money after bad. You have achieved a milestone – competing against you has become a <strong>career liability</strong>. This means that you will no longer compete against the best &amp; brightest armed with the lion’s share of their organization’s resources, and your winning streak can continue.</li>
+  <li>Shortly after this point, most companies will capitulate and stop sending more resources against you.</li>
+</ul>
+
+<p>Every company’s timetable varies, but generally speaking you should expect that startups will only allow you to pummel them for 2-3 months, scaleups for 2-3 quarters, and enterprise companies (say, &gt;1000 employees) for 2-3 years before they’re forced to react. Mega-cap companies (Salesforce, Intuit, Adobe, ServiceNow) will hold out the longest – you may need to compete for a decade.</p>
+
+<p>Morale and momentum matters tremendously in enterprise sales. At the end of the day, SaaS is a luxury good – nobody starves tonight if they don’t buy Workday. Sales teams thrive on the confidence to make sales in the absence of urgency and shaking their confidence can break a team.</p>
+
+<p>As a result, knockdown blows will be visible on Glassdoor and Blind 2-6 months before their effects are public. A key metric that you can iterate your competitive strategy towards is Glassdoor reviews that are well-written, well-reasoned, typically quite long (5+ paragraphs), and highly negative. These reviews should call out competitive pressures or flagging product-market fit as the cause of dissatisfaction, as well as strategic gaps (“we don’t have a plan” or “we’re completely reactive”). In some cases they will literally call your company out by name.</p>
+
+<h2 id="be-persistent">Be Persistent</h2>
+
+<p>The key trait for competing effectively is not cleverness, but persistence. You need to apply competitive pressure with very little positive feedback for many quarters (or years) to get any sort of return. This is why founder-led companies, or companies with founder DNA, are the best at competition in the long run.</p>
+
+<p>But many leaders do not have the stomach for real competition. Competing means admitting that your competitors are strong; it means admitting that you aren’t infallible. You must be willing to show vulnerability, if only internally, in order to take the required competitive steps with the required intensity.</p>
+
+<p>Most steps that are necessary to compete are <strong>obvious</strong>. Some startups psyche themselves out, looking for that one “differentiated product” (read: magic trick) that will flip the market in their favor. You should just assume that this trick does not exist, and not overthink things. If you just lost 3 deals because you didn’t have feature X, you should just build X rather than wondering whether you’d be better off digging in your magician’s cap for a rabbit one more time.</p>
+
+<h2 id="beware-of-strong-builders">Beware of Strong Builders</h2>
+
+<p>There’s an order to how you compete:</p>
+
+<ul>
+  <li>If you’re much stronger, you compete with marketing: we have the best brand, we are the default choice. This is by far the easiest, and only requires that your product and post-sales motion are strong enough to keep customers happy.</li>
+  <li>If you’re moderately stronger, you compete with sales: we can outsell you because we have a better reputation and more resources (= stronger sales reps). This is harder, as it requires an excellent GTM motion. Note that most top SaaS companies have excellent GTM even if they tout their product teams.</li>
+  <li>If you’re close to equal in strength, or weaker, you compete with product: we’ll build a better product than you, and fight tooth &amp; nail in every sales cycle to gain any product edge. This is very hard, and requires a full wartime mobilization of your company from product and engineering all the way to sales and marketing.</li>
+</ul>
+
+<p>The scariest competitors will always be companies that can <strong>build</strong> quickly, because even if your GTM is stronger, they can threaten your product-market fit by leapfrogging your technology. Companies that build fast are disproportionately startups, and the best competitive strategists are very alert to startup competitors.</p>
+
+<p>In some cases, a knockdown blow isn’t enough to make a competitor leave you alone. In some cases the only path to success for a competitor is to beat you in the markets where you compete – they can’t be discouraged from going right after you, because it’s existential for them. These companies will fight you to the bitter end. These desperate competitors can be the most dangerous, because they’ll often use sketchy tactics (negative gross margin deals; unlimited liability; lying about you) to try to win. If they’re product-oriented and founder-led, this is also when they will build the fastest and potentially leapfrog you.</p>]]></content><author><name></name></author><category term="strategy" /><category term="startups" /><category term="business" /><category term="management" /><category term="strategy" /><summary type="html"><![CDATA[If you ignore your competition, you'll get to experience capitalism in its rawest form: competitors who are more aggressive, more vicious, or more desperate than you will pillage your customers and put you out of business. Having seen many, many rounds of direct SaaS competition, here are a few of the main lessons to keep in mind.]]></summary></entry><entry><title type="html">No Pain, No Gain</title><link href="https://staysaasy.com/management/2025/09/14/educational-trauma.html" rel="alternate" type="text/html" title="No Pain, No Gain" /><published>2025-09-14T06:59:22+00:00</published><updated>2025-09-14T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/09/14/educational-trauma</id><content type="html" xml:base="https://staysaasy.com/management/2025/09/14/educational-trauma.html"><![CDATA[<p>One of the biggest mistakes is shielding people from the pain they need to learn.</p>
+
+<h2 id="firing-people">Firing People</h2>
+
+<p>I first became a manager when I was 26. I first had to fire someone when I was 26.</p>
+
+<p>I spent the whole week anxious. The night before I couldn’t sleep. On the day of the firing I was all nerves. On the way to the conference room I felt sick to my stomach. While telling him that he no longer had a job, my hands were shaking under the table. When he reacted to the news, I felt emotional.</p>
+
+<p>I walked him to the elevator and said goodbye. Then I went back to my desk where my team was. I asked everyone to gather and let them know that he was no longer with the team. Everyone sat down and I looked at my screen for an hour without doing anything, mindlessly clicking around, pretending to work. I took off early and got several drinks. I kept thinking for days what he was doing and how he was doing.</p>
+
+<p>It was traumatic.</p>
+
+<p>But, it was supposed to be. When I saw how terrible it was to fire someone, I deeply understood how important it was to hire great people and performance manage well. Every subsequent firing had the same effect - I will hire better, I will performance manage better.</p>
+
+<p>These convictions were not held lighty. In rooms of 10 people all pushing to hire someone because they were “good enough,” I would say absolutely not. Good enough isn’t good enough. Underneath that conviction was a deep knowledge of the experience of firing. I will not be lazy here if it risks that happening again.</p>
+
+<p>The agony of firing was part of what made me much better at management. The problem with may big company environments is that managers are shielded from pain:</p>
+<ul>
+  <li>A seasoned HR person is with you the whole way, and will answer anything that that needs a response</li>
+  <li>They often do 90% of the talking, or even all of it</li>
+  <li>What you say is very limited and constrained</li>
+</ul>
+
+<p>And the kicker? The real crazy thing - it’s often remote. Talking into a screen is a joke. It removes the humanity from an interaction like nothing else can. You’re essentially playing a video game.</p>
+
+<p>So what happens? You remove the suffering and people don’t learn. They don’t learn to hire better. They don’t learn to performance manage better. The worst case isn’t a real life horror show of an experience - it’s a 15 minute make believe session and then you’re back to sitting in your home office eating bon bons.</p>
+
+<h2 id="shipping-bugs">Shipping Bugs</h2>
+
+<p>Shipping bugs is another place that you are supposed to learn from pain. As companies get big and cultures get blameless, engineers are often very, very isolated from the impact of their bugs. You write a bug, it causes issues for some amorphous customers you keep hearing about, and you have to scramble in an incident to fix it up. No muss no fuss. Sprint planning happens on Tuesday just like always.</p>
+
+<p>That’s nonsense. That’s hiding from the pain.</p>
+
+<p>Engineers would do better to engage with customers, see their reactions, explain the bug. When you see one of your users distraught over the time and effort they’ve spent managing the fallout of a bug you wrote, when you see how they’re worried about how they vouched for your software, when you hear that their team was doing data fixes all weekend, that hot feeling of shame and apology should sink into your bloodstream.</p>
+
+<p>Those visceral feelings from seeing customer impact of bugs are what can help engineering teams radicalize on quality. It’s what can help teams overcome the discomfort of upholding standards and going the extra mile.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>People should be exposed to the right trauma. There are certain transformational experiences that are created by the outcomes of your failures. Ignoring them, hiding from them, or otherwise letting anything deflect them from you blocks a critical signal in your reward/accountability function.</p>
+
+<p>Find ways to lean into the experiences that help you learn about your failures. That means doing more of the firing yourself, not offloading to another. It means engaging with the customers you let down.</p>
+
+<p>These experiences are not meant to make you desensitized. This is a common misconception. Good managers can fire people without having as much anguish, not because they’re used to it, but because they learned from their previous experiences and know they did everything they could to hire well and manage fairly.</p>
+
+<p>Finally, if you ever have a cultural issue of people simply not acting up to your values or standards, find them the people that the failure impacts. Make a result of future failures a required interaction with those people. Things then often fix themselves quickly.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[No paun to gain.]]></summary></entry><entry><title type="html">You Know What To Do</title><link href="https://staysaasy.com/management/2025/08/21/you-know-what-to-do.html" rel="alternate" type="text/html" title="You Know What To Do" /><published>2025-08-21T06:59:22+00:00</published><updated>2025-08-21T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/08/21/you-know-what-to-do</id><content type="html" xml:base="https://staysaasy.com/management/2025/08/21/you-know-what-to-do.html"><![CDATA[<p>One of the most consistent observations I’ve had in my time in startups, scale-ups, and public companies is that smart people with context on a tricky situation almost always know exactly what they need to do.</p>
+
+<p>Teams obsess about company strategy, about data, and about frameworks for decision-making. But I’ve found that for most operational decisions the right course of action is actually pretty obvious to people with a lot of business context.</p>
+
+<h2 id="its-hard-to-be-a-hard-ass">It’s Hard to Be a Hard Ass</h2>
+
+<p>The simple fact is that people hate confronting difficult decisions. And instead, most come up with increasingly painful coping mechanisms to avoid conflict. Eventually they wind up incurring much more aggregate pain than if they had simply bitten the bullet as soon as they recognized the realities of their situation.</p>
+
+<p>Some of the more notable instances where this plays out:</p>
+
+<ul>
+  <li>Should we fire &lt;some exec&gt;? You almost always already know whether they’re good or not (if you’re asking, the answer is no)</li>
+  <li>Should we do a layoff? The answer is less definitive, but you almost always know in your heart whether or not a layoff needs to happen</li>
+  <li>Should we cut this product? In today’s cutthroat markets, a middling product tends to be a dying product and the potential of great products is immediate and extreme</li>
+  <li>Is it time to sell the business? If you’re out of gas or slowly dying the decision to sell is obvious. On the positive side, a truly amazing acquisition opportunity will typically be very obviously excellent (e.g. several times higher than prevailing public multiples for growth startups, or selling for a 200x revenue as a startup)</li>
+  <li>Is it time to shut down the business? Again, in every case where I’ve seen someone grappling with this question, the look in their eyes told me everything that I needed to know</li>
+</ul>
+
+<h2 id="do-the-right-thing">Do The Right Thing</h2>
+
+<p>The fact that the right business decision is <em>so often obvious</em> leads to a few actionable operational steps.</p>
+
+<h4 id="lean-into-discomfort">Lean Into Discomfort</h4>
+
+<p>If you’re torn between multiple choices, the path that makes you most uncomfortable is unfortunately almost always the right one. There’s a very strong human tendency to avoid hard decisions, so the errors you make will only go in one direction. Pay attention when you hear any of the tells below – in particular watch out for the word “just” which is a calling card for an argument that’s really an excuse:</p>
+
+<ul>
+  <li>I know we shouldn’t make them a manager, but they really want it and it should be fine if we <strong>just</strong> do it once</li>
+  <li>We <strong>just</strong> need to give the team another shot at this one</li>
+  <li>The team will be really upset if we kill that project, let’s <strong>just</strong> give it a few more weeks</li>
+  <li>We’ll be fine if we <strong>just</strong> close this next quarter strong</li>
+</ul>
+
+<h4 id="gather-on-the-ground-feedback">Gather On-the-ground Feedback</h4>
+
+<p>Since people close to a problem almost always know what to do, teams must be open to difficult feedback from inconvenient sources. Especially as organizations grow, the difference in comprehension between an expert who is close to a situation vs. someone who’s further away or not an expert can be night and day. Favor proximity (and expertise) over title.</p>
+
+<p>A common type of error that one sees is a friendly, charismatic, highly-visible executive who is very popular with more junior members of other teams but seen as incompetent by his peers and senior staff. The senior veterans who are closest to the situation know what to do, but they avoid providing the harsh feedback because it’s awkward and seen as not worth the effort.</p>
+
+<h4 id="data-driven-dangers">Data-Driven Dangers</h4>
+
+<p>The cult of being data-driven, particularly at huge consumer companies with non-intuitive user behavior patterns, has led many people to believe that there are non-obvious nuances to every situation. In reality, most business and management situations do <em>not</em> have a lot of nuance.</p>
+
+<ul>
+  <li>The business line sucks: It isn’t showing signs of life, it’s obviously non-viable.</li>
+  <li>An executive is screwing up: They’re probably screwing up many dimensions of their job all at once - missing numbers, weak team, cost overruns.</li>
+</ul>
+
+<p>Being data-driven has many merits, but its most debilitating flaws are that it favors certainty over speed and trains teams to look for subtle nuances that don’t exist 99% of the time. If you know what to do, you should just do it as soon as possible rather than waiting for more information. If you’re a smart and experienced executive, don’t let the siren call of more data gaslight you into re-running the analysis on a situation where you have certainty.</p>
+
+<p>Having worked with teams as an advisor/investor in the past, I’ve also found that external advisors can be very helpful to simply confirm what teams already know. Importantly, these external forces can also help informed teams to assess severity. In a pinch, one of the easier ways to get a gut check is to ask a trusted friend to <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">rubber duck</a> a difficult management decision with you. Just explain the challenging call to them, and have them ask occasional questions until it’s clear what to do. Some of the most useful discussions that I’ve had with companies begin with someone simply asking “is this normal?”</p>
+
+<h2 id="you-owe-your-team-decisiveness">You Owe Your Team Decisiveness</h2>
+
+<p>Finally, you actually owe it to your team to make the hard calls that you know to be correct. Many leaders fall into a state of paralysis because they don’t want their team to blame them for making the wrong decision. They would do better to respect their team’s macro analysis more: everyone who joins your team is ultimately doing so because they trust your judgment on some level. Well run companies are benevolent dictatorships not democracies, and your team will respect you more for decisive action than they will for a theoretically higher hit-rate on your decisions.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[One of the most consistent observations I've had in my time in startups, scale-ups, and public companies is that smart people with context on a tricky situation almost always know exactly what they need to do.]]></summary></entry><entry><title type="html">You Have Too Many Metrics</title><link href="https://staysaasy.com/management/2025/08/02/metrics.html" rel="alternate" type="text/html" title="You Have Too Many Metrics" /><published>2025-08-02T06:59:22+00:00</published><updated>2025-08-02T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/08/02/metrics</id><content type="html" xml:base="https://staysaasy.com/management/2025/08/02/metrics.html"><![CDATA[<p>Metrics can be incredibly powerful. But you have too many of them.</p>
+
+<p>Let’s talk about how and when to use metrics.</p>
+
+<h2 id="the-golden-rule">The Golden Rule</h2>
+
+<p>The golden rule of metrics is this: any metric you maintain should directly drive action if outside expected bounds.</p>
+
+<p>The reason this is an important rule is:</p>
+<ul>
+  <li>Metrics are expensive to set up, so if you don’t use them, you’re wasting effort</li>
+  <li>Metrics are expensive to maintain, so if you don’t use them, you’re wasting effort</li>
+  <li>A metric that doesn’t drive action is a waste of time</li>
+</ul>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The longer I&#39;m an exec the more confident I become that 80% of metrics dashboards are adult pacifiers for managers with poor strategic sense and anxiety disorders</p>&mdash; staysaasy (@staysaasy) <a href="https://twitter.com/staysaasy/status/1904267129718792492?ref_src=twsrc%5Etfw">March 24, 2025</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>A direct corollary - because the cost of setting up, maintaining, and actioning on metrics is high, you shouldn’t have that many metrics.</p>
+
+<p>Let’s talk about setting up metrics and how to use them, as well as how to not use them.</p>
+
+<h2 id="using-metrics">Using Metrics</h2>
+
+<h3 id="setup">Setup</h3>
+
+<p>Setting up a metric takes time. You have to:</p>
+<ul>
+  <li>Get the data</li>
+  <li>Hook it up to a UI</li>
+  <li>Monitor it to make sure it’s right and doesn’t fluctuate</li>
+</ul>
+
+<p>Depending on your company and the metric, this could be a couple hours of work or a couple months of work via multiple tickets. Some tools give certain metrics by default, but that’s also not free (you’re paying for it).</p>
+
+<p>The takeaway is that setting up metrics cost time and money.</p>
+
+<h3 id="using-metrics-1">Using Metrics</h3>
+
+<p>Good metrics:</p>
+<ul>
+  <li>Have a regular review</li>
+  <li>Have an expectation on the behavior of the metric</li>
+  <li>Prioritize action if the metric isn’t what’s expected</li>
+</ul>
+
+<h4 id="regular-review">Regular review</h4>
+
+<p>Regular review of metrics is critical, because <em>any metric you don’t regularly review will eventually become inaccurate</em>.</p>
+
+<p>Many people come back to a metric a year after setting it up and realize it doesn’t look quite right. Upon investigation they realize a week ago someone changed the definition in middleware and it started double counting. This kind of thing happens all the time. The most pernicious version of this happens when the metric looks like things are working well, while actually it’s overreporting and things are having issues.</p>
+
+<p>Regular review scrutinizes the metric value as well as matches it against other information to ensure it seems right. As a general milepost, expect to find something broken in a metric about once a year, needing repair.</p>
+
+<h4 id="expectations">Expectations</h4>
+
+<p>Metrics without expectations are just gossip prompts.</p>
+
+<p>Some metrics only matter if they move &gt; 10%. Some matter if they’re .1% off target.</p>
+
+<p>State explicitly what your expectation is for a metric and the conditions of action in either direction. Otherwise, metric review will become an exercise in taking a really long time to realize people don’t know what matters.</p>
+
+<h4 id="prioritization-of-action">Prioritization of action</h4>
+
+<p>If a metric is outside the bounds of certain expectations, you must take action. This is the biggest cost to maintaining metrics - you actually have to do something if the metrics indicate something you’ve said you don’t want to happen.</p>
+
+<p>Too many people have 25 metrics in their dashboard and don’t do a damn thing about anything. They just go back to the same backlog they were working on and put away the shiny metrics for powerpoints when they need to convince someone of something.</p>
+
+<p>Metrics should have expectations. If those expectations are not being met, action must be taken.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>Let’s talk through a couple examples.</p>
+
+<h3 id="the-ambitious-pm">The Ambitious PM</h3>
+
+<p>An ambitious PM has a bunch of metrics in a dashboard. The PM uses them for things like: showing how well their team is doing, and asking for a raise, and asking for more resources.</p>
+
+<p>The problem is that they only review those metrics in preparation for those activities. They actually have no regular review, and no owner, and no clear expectation of what it should or shouldn’t be.</p>
+
+<p>Then one day the PM’s boss wakes up and says wait, this isn’t quite right. And that’s when you find out not only is the usage data wrong, but even if it was right, the whole concept of appropriate growth was not aligned upon. So in fact, all of these metrics were, for their entire lifetime, worse than useless.</p>
+
+<p>Instead of showing the micro-cohort CSAT for 7 different customer profiles across 3 products, their manager should have asked to see one or two metrics, and should have scrutinized them regularly, with clear expectations on growth (not just that up and to the right is good).</p>
+
+<h3 id="the-cost-review">The Cost Review</h3>
+
+<p>It’s common practice to regularly review infrastructure cost at companies with the finance team. Oftentimes these processes have two things correct: they review metrics and each piece of infrastructure has an owner. The common failure, however, is to not discuss what good and bad actually looks like.</p>
+
+<p>When do we actually have to do something about a cost changing in a certain way?</p>
+
+<p>This question is often never asked, and so people debate minor cost fluctuations and lack clarity on if any changes are needed. The simple answer is to set up a working agreement: we’ll review the cost to make sure it all makes sense, but we’re only actioning if it’s more than 2% above the quarterly forecast or 5% over the yearly forecast. And, if it’s above that, you must take effort to reduce it.</p>
+
+<p>With this agreement, you gain efficiency when things don’t require action, and direct clarity when things do.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Having a few great metrics is much better than having a bunch of trash metrics. Metrics require intense focus to keep accurate and to have high integrity. Metrics require expectations and action to be worth spending all of the time it takes to make them accurate and have high integrity.</p>
+
+<p>If someone says “I got metrics” ask them the last time they did something because of a metric. If they don’t immediately know, they don’t have metrics, they have a dashboard of graphs that they use to persuade people and sooth themself.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[What's in a measurement?]]></summary></entry><entry><title type="html">Naming Software Teams</title><link href="https://staysaasy.com/management/2025/07/06/team-names.html" rel="alternate" type="text/html" title="Naming Software Teams" /><published>2025-07-06T06:59:22+00:00</published><updated>2025-07-06T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/07/06/team-names</id><content type="html" xml:base="https://staysaasy.com/management/2025/07/06/team-names.html"><![CDATA[<p>Forming a new software team is easy to get wrong in many ways, including:</p>
+<ul>
+  <li>Making a <a href="https://staysaasy.com/leadership/2023/10/12/Opportunities.html">B team</a></li>
+  <li>Making a <a href="https://staysaasy.com/software/2022/07/06/Context.html">low context team</a></li>
+</ul>
+
+<p>Here, however, we’ll focus on one of the most important and often bungled aspects of team formation - the team name.</p>
+
+<p>Let’s review how to avoid the common trap of naming teams poorly.</p>
+
+<h2 id="whats-in-a-name">What’s In A Name?</h2>
+
+<p>Let’s assume that you have a team with a good mission (this <a href="https://www.youtube.com/watch?v=I4vvBidQcck">talk</a> is good inspiration for crafting high-quality team missions).</p>
+
+<p>Now you’re ready to name the new team, which is when things commonly go awry. Even if you have a great team mission, you can shoot yourself in the foot with the name.A strong name:</p>
+<ul>
+  <li>Blocks mission creep</li>
+  <li>Lets 80% of the org route 95% of questions the right way, instantly</li>
+</ul>
+
+<h2 id="names-imply-mission">Names Imply Mission</h2>
+
+<p>Names are sticky. Missions live in docs nobody reads; names live in brains.</p>
+
+<p>It is incredibly easy for a broad team name to lead to mission expansion down the line. When asked if it is appropriate to upscope a team’s mission, people always say “well we are the _____ team after all!”</p>
+
+<p>People often mildly upscope their name to be more ambitious than their mission. Then, over time two teams who have upscoped their mission end up believing they both own some hot new area of technology.</p>
+
+<p>Then people fight viciously.</p>
+
+<p>A good team name doesn’t overlap with any other team and doesn’t allow for major upscoping of ownership.</p>
+
+<h2 id="team-names-are-routers">Team Names Are Routers</h2>
+
+<p>People in large organizations burn thousands of hours just finding the right Slack channel to get answers they need. Asking questions to the proper team, finding the right people for projects and incidents, and all other routing activities are a massively expensive set of endeavors when compounded over hundreds or thousands of people. If a team is named properly, you can create major efficiency every time someone needs to figure out who owns what.</p>
+
+<p>There are a couple big failures in team naming as it pertains to routing:</p>
+<ul>
+  <li>Ambiguous names leave everyone unsure. This leads to inefficiency, hot-potatoing of questions, and the team often being left out of conversations. e.g. The Blue Team gets mad when people don’t bring them into the Redis conversations. They own redis gosh darnett! Well, they’re named the Blue Team so who the heck would know.</li>
+  <li>Overly broad names make people throw everything at you. If you name yourself something like “The Platform Team”, don’t be surprised when literally every possible question and everything that other people don’t want to do gets sent your way.</li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+
+<p>Let’s make these ideas real with an example. Let’s create a fake team that has the following properties:</p>
+<ul>
+  <li>Its core mission is to own a vertical slice of functionality of Widget A</li>
+  <li>It owns areas B and C that are tiny frontend infrastructure libraries and have nothing to do with its core mission.</li>
+</ul>
+
+<p>Here are good and bad team names.</p>
+
+<p>Bad</p>
+<ul>
+  <li>“Widgets” — another team owns a widget. Turf war in 3…2…</li>
+  <li>“Frontend Experience” — congrats, you now own every pixel that nobody else wants.</li>
+</ul>
+
+<p>Good</p>
+<ul>
+  <li>“Widget A” — crystal clear. B and C routing is a rounding error.</li>
+  <li>“ABC” — if you must, but brevity beats cleverness.</li>
+</ul>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Teams often want to avoid tightly scoped team names so they can expand in the future. They’ll also claim that it allows them to think more broadly about a problem space. However, in general:</p>
+<ul>
+  <li>You can always expand a team name in the future. Having a name change as a requirement for team mission expansion prevents unintentional scope creep.</li>
+  <li>Many teams regret making their scope too broad from the start, because they find they can’t accomplish that scope but they get all the accompanying support and questions.</li>
+  <li>People that are going to think broadly are mostly going to do it anyway.</li>
+</ul>
+
+<p>Team names are contracts that define who does what. Getting them right up front is an incredibly important piece of scaling software organizations.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[What's in a name?]]></summary></entry><entry><title type="html">We Tried That</title><link href="https://staysaasy.com/management/2025/06/26/we-tried.html" rel="alternate" type="text/html" title="We Tried That" /><published>2025-06-26T06:59:22+00:00</published><updated>2025-06-26T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/06/26/we-tried</id><content type="html" xml:base="https://staysaasy.com/management/2025/06/26/we-tried.html"><![CDATA[<p>A common logical fallacy is claiming something won’t work because a previous attempt failed.</p>
+
+<h2 id="why-its-a-crutch">Why It’s A Crutch</h2>
+
+<p>People often look to previous failures to set their future course for several reasons, including:</p>
+<ul>
+  <li>Ego. If I couldn’t do it, nobody can.</li>
+  <li>Negativity bias. Failure hurts, and people often want to avoid risking it again, to a fault.</li>
+  <li>Ignorance. People just don’t know how things could be different.</li>
+</ul>
+
+<p>Let’s talk about why trying again often works.</p>
+
+<h2 id="things-have-changed">Things Have Changed</h2>
+
+<p>Especially if there has been a long time between attempts, people often underestimate how much has changed.</p>
+
+<p>Maybe five years ago the company tried a product rebrand, but the number of things to update in the UI ended up causing them to abandon it for other priorities. You might nix the idea of a rebrand if it came up again today, but  you’d fail to realize that a whole design system was implemented in the interim, and the level of effort is an order of magnitude less.</p>
+
+<p>New leaders, people, processes, teams, and architecture all contribute to a changing environment that can make very similar attempts yield wildly better results.</p>
+
+<h2 id="different-people-get-different-results">Different People Get Different Results</h2>
+
+<p>People often undercount their personal contribution to previous failures. Oftentimes they say something can’t be done because they tried it, but the main problem was their leadership, skills, or often their own personal interest level.</p>
+
+<p>New ownership over a project can make all the difference. Just because I missed a three pointer doesn’t mean it can’t be done. If you hire Steph Curry, you should start shooting.</p>
+
+<h2 id="bad-pattern-matching">Bad Pattern Matching</h2>
+
+<p>Sometimes people claim to have tried a related initiative and failed and then say the new initiative can’t work.</p>
+
+<p>Maybe your team tried to sell an AI product and customers didn’t like it. So someone proposes a new one and a leader says “our customer base isn’t ready for AI products.”</p>
+
+<p>Upon discovery, you find that the original product was a high complexity, high integration product, and the new proposal is a simple LLM tool to check customers’ work. These are absolutely not the same product. If you’re claiming a previous failure is prior art, you need to be sure the past failure and new attempt are almost exactly the same.</p>
+
+<h2 id="success-is-multifaceted">Success Is Multifaceted</h2>
+
+<p>Often it actually requires all of the above things to change for the opportunity to now be available.</p>
+
+<p>Think of a key opening a lock - many people say “we tried pushing several pins up and it didn’t work”. Well, to open a lock you need to push all the pins up in the exact right way at the same time.</p>
+
+<p>People often seriously struggle to see interconnected problems in this way. Take the example of revamping a component of your compensation philosophy. To change your whole equity program, you might need:</p>
+<ul>
+  <li>A lack of stock dilution pressure on your public company, or a very high private valuation, to provide the budget to bridge the transition between systems with strategic grants</li>
+  <li>A compensation leader who can do a person-by-person analysis of how to transition</li>
+  <li>Heads-of-functions are are invested enough to partner on communication and enablement</li>
+  <li>20 other things related, necessary conditions to be in place.</li>
+</ul>
+
+<p>If you tried before and half of those ingredients weren’t there, it doesn’t mean it’s impossible.</p>
+
+<h2 id="when-previous-failure-informs-future-efforts">When Previous Failure Informs Future Efforts</h2>
+
+<p>When you are going to not do something new because of previous results, you should try to distill down your learnings to the most concise and granular statements possible.</p>
+
+<p>“We tried to sell a product like this before” is not a concise statement. There’s about 10,000 variables from pricing and packaging to feature set and more that could impact a product selling or not.</p>
+
+<p>Examples of precise learnings:</p>
+<ul>
+  <li>Cross-team changes without direct leadership sponsorship and involvement often fail.</li>
+  <li>The probability of project failure increases, sometimes extra-linearly, as the duration goes over 1 year.</li>
+  <li>Most US customers are unwilling to spend more than about $10k on our product unless they have metrics they can report to their bosses on the impact to their business.</li>
+  <li>X technology is not a good fit for our Y workload.</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+
+<p>People bias towards avoiding the scene of prior failures. But you must analyze where the failure was and think specifically about its implications.</p>
+
+<p>A good heuristic for if you’re over-biasing on previous failures is is that if you’re deciding a high volume of new initiatives based on old failures, you’re being too general and don’t really understand why it didn’t work.</p>
+
+<p>It’s also always good to remember what must be done as a business. Sometimes you find people with failure-bias saying things like “we’ll never reduce support” or “we’ll never make this cost effective.” But those are things that you absolutely must do as a business, and realizing that highlights the inadequacy of their failure bias.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[Past results are not indicative of future performance.]]></summary></entry><entry><title type="html">Your Manager Is Not Your Best Friend</title><link href="https://staysaasy.com/management/2025/06/02/your-manager-is-not-your-best-friend.html" rel="alternate" type="text/html" title="Your Manager Is Not Your Best Friend" /><published>2025-06-02T06:59:22+00:00</published><updated>2025-06-02T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/06/02/your-manager-is-not-your-best-friend</id><content type="html" xml:base="https://staysaasy.com/management/2025/06/02/your-manager-is-not-your-best-friend.html"><![CDATA[<p>As people become managers, it’s quite common for their team members to want to commiserate with them. This is especially true for friendly, competent, reasonable-seeming managers – people want to commiserate with <em>winners</em>. This makes commiseration extra dangerous, as it comes with a hint of flattery (“I respect your opinion and trust your discretion”).</p>
+
+<p>But commiseration, especially with your direct reports, is organizational poison. It erodes the fabric of an organization and builds factions. It leads to feelings of superiority and creates a low-trust environment – <em>even if what you’re complaining about is made up!</em> Worst of all, it doesn’t give other teams an opportunity to improve. If I think that HR sucks, and I commiserate with my directs about it, my team is going to treat them poorly. HR will never know why, will never fix the problem, and will just think that my team are jerks (and they’ll arguably be right). Commiseration is self-fulfilling because it’s a form of victimhood: The world is conspiring against us, the only truly virtuous team.</p>
+
+<p>Commiseration comes naturally to most people, because it happens all the time in real life. As your best friend, if you come to me saying that you were just dumped by your girlfriend, you will get unconditional sympathy beyond words. You’re the best, she didn’t deserve you, you can do so much better, everyone knows you’re the man, I have no idea why you ever spent time with her. There will be no questions, there will be no need for you to explain anything about the situation, even if all you did for the last 2 years was sit on your couch smoking weed and playing Warzone, <em>Greg</em>. Unless you did something totally crazy or illegal, my loyalty will be immediate and unconditional, because – let’s be real – none of it matters. You’re going your way, she’s going hers, and it’s over.</p>
+
+<p>As a manager, your empathy needs to be highly conditional. Your job is to get to the truth of a matter in a respectful way, not make your team feel good. You are largely stuck with your coworkers, and you need to get stuff done together or everyone suffers. If you break up with your girlfriend you get unconditional sympathy. But if you break up with your girlfriend, and the 3 of us were trying to climb Mt. Everest together, I’m going to be a lot more measured in how I communicate and balance your relationship so that we can all survive the next few days.</p>
+
+<p>Commiseration is generally a sensitive topic, so I’ve tried to boil down how to handle situations when a direct comes to you with grievances via some heuristics:</p>
+
+<ul>
+  <li>You don’t really want to debate your team in every situation, but your job is to essentially be a scientist and get to the bottom of what’s going on. If someone wants to commiserate about some other team, your first job is to ask a bunch of questions about what’s going on. In my experience, 90% of the time the situation is a grey area, and probably 30% of the time the person who wants to commiserate is actually in the wrong, on balance.</li>
+  <li>Your role as a manager is also to be a perspective-creator. Sure, that salesperson was overly optimistic on how impactful this custom feature was for a prospect. And sure, the deal wasn’t as large and didn’t close as quickly as they said it would. But sales incentives are a law of the universe, and sales directors need to manage around them just as much as product teams do, because <em>not</em> having sales incentives is even worse. And by the way, we’re not so great at estimating development timelines either. Everyone’s blood pressure should always be lower after they’ve spoken to you.</li>
+  <li>Bad therapists just let you rant. Good therapists let you vent, but they ask clarifying questions, and they sometimes push back. The phrase “is that actually true?” or “Can you explain that more?” are your friends. Good therapists validate feelings but they don’t necessarily validate <em>facts</em>. “I know you feel like you’re being a good daughter” is not the same as “you are the best daughter.” You want to be a good therapist.</li>
+  <li>Remove the phrase “I don’t know why they…” from your lexicon. No matter how you end this sentence, the subtext will be clear: “I don’t know why they’re so incompetent.” Instead, it’s often better to give the most optimistic view for why another team is behaving the way that they are. It might not be <em>right</em>, but it builds empathy which is the bedrock on which productive collaboration is built.</li>
+  <li>If someone is trying to get you to commiserate with them, try to speak in terms of reiterating a decision framework. Rather than “marketing doesn’t know what they’re doing,” you want to say something like “our role is to build the product and have a strong POV for marketing, and their role is to make sure that our launch generates enough pipeline. If you don’t think that’s going to happen then let’s talk to them.” The goal is to focus on objective truths rather than disparaging opinions.</li>
+  <li>When it comes to commiseration, people are highly attuned to nuanced communication – especially from their boss. “Well guys, we’ve got this” plus that little head nod and eyeroll is functionally the equivalent of saying “it’s all on us, the protagonists, because everyone else is a fucking idiot <strong>again</strong>.” Those words didn’t literally leave your mouth, but you effectively said it, and as a manager that’s 100% on you. As a manager your implicit communication is just as important as your explicit communication – this is not a courtroom, this is real life, and non-verbal actions can still have consequences.</li>
+  <li>One of the most common people to commiserate about is your own boss, or the company’s CEO. This can get highly toxic fast, and is rarely actually productive – cases of teams changing their CEO’s behavior through commiseration are vanishingly rare. The right way to pivot this conversation (or at least, the only way I’ve ever seen this play out positively) is to discuss how you can most effectively work with your boss. This is significantly more productive, and even if you still think they’re being dumb, at least you’re tackling that problem constructively.</li>
+</ul>
+
+<p>Of course sometimes people really are AAA grade idiots. When this happens, your communication should typically address the issue, not the other team. For most situations, it’s best to say “let me follow up,” rather than “I agree that they’re dumb.” In particularly egregious cases, you can go with “I know this is a problem and I’ll get on it” or “I hear you, I’m working on it, but I can’t give you every detail on how and don’t expect ongoing updates” – this avoids gaslighting them that everything is fine, but it also stops the vent session. When the door opens to commiseration with your team, you must slam it shut.</p>
+
+<p>Either way, following up is the ideal next step because it commits you to respond but separates the emotion from the action. Accumulated strong emotions leave a strong impression, especially when they’re negative emotions like bitterness, so it’s best to suck the emotion out of the conversation as fast as possible. For evidence of this, light autists often make very effective managers.</p>
+
+<p>Finally – we’re all human here, and sometimes you need to commiserate with <em>someone</em> before your head explodes. If you must commiserate, it’s almost always best if they’re a peer / near peer, and they’re not on your direct team (you don’t share a boss). This at least dodges the situation where a manager complains alongside their team, and thereby implicitly blesses their most negative views.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[As people become managers, it's quite common for their team members to want to commiserate with them. This is especially true for friendly, competent, reasonable-seeming managers – people want to commiserate with winners. But commiseration, especially with your direct reports, is organizational poison.]]></summary></entry><entry><title type="html">AI Makes Bad Managers</title><link href="https://staysaasy.com/management/2025/05/26/AI-management.html" rel="alternate" type="text/html" title="AI Makes Bad Managers" /><published>2025-05-26T06:59:22+00:00</published><updated>2025-05-26T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/05/26/AI-management</id><content type="html" xml:base="https://staysaasy.com/management/2025/05/26/AI-management.html"><![CDATA[<p>It’s performance-review season and I’m watching managers kneecap their careers. Gleefully they share the best prompts to have ChatGPT write their performance assessments - exactly the sort of shortcut that guarantees they’ll never get better at the job.</p>
+
+<p>Below, we’ll break down why AI’s leaky interface is a crutch, not an abstraction layer, and how leaning on it is already stunting growth.</p>
+
+<h2 id="performance-assessments">Performance Assessments</h2>
+
+<p>Performance write-ups feel brutal because you’re not great at management. Great managers improvise on feedback the way a jazz soloist riffs on a theme - always on, always smooth. That fluency only comes from thousands of hours of uncomfortable reps: hard conversations, careful wordsmithing, and the stress of getting it right.</p>
+
+<p>A performance assessment is management boiled down to a page. It demands precision, empathy, and strategic thinking. Offloading that to AI means skipping the workout; your team might hear something that sounds okay, but you’ve gained zero coaching muscle.</p>
+
+<p>Experienced managers know that the performance assessment is just as much about growing management skills as it is growing the skills of your reports.</p>
+
+<h2 id="ai-is-a-helper-not-an-abstraction">AI Is a Helper, Not an Abstraction</h2>
+
+<p>“But wait—aren’t tools supposed to make us better?” Sometimes. The key difference is reliability. True abstractions (think memory-safe languages, spell-check, or a calculator) behave the same way every time, so you can build skill on top of them.</p>
+
+<p>Management AI isn’t that. If every managerial moment were forever mediated through an AI - 1:1s, presentations, promotions - then perhaps it could serve as a real abstraction. That world is nowhere close. As a result, using AI for critical deliverables is fundamentally restricting your ability to gain managerial skills.</p>
+
+<h2 id="dos-and-donts">Dos and Don’ts</h2>
+
+<p>Some work is meant to hurt - that strain is the rewiring session your brain needs to level up. Letting AI sand off the edges is test-day cheating: great for today’s quiz, fatal for tomorrow’s mastery.</p>
+
+<p>How to use AI for management:</p>
+<ul>
+  <li>Resume screening - Use AI. Codify your rules and let it sift the pile.</li>
+  <li>Selling candidates — All you. Closing talent is a core managerial muscle; don’t skip the reps.</li>
+  <li>Designing process — Use AI (probably). Most workflows are commodities; let AI draft the scaffolding.</li>
+  <li>Running process - It depends. Automated nudges and compliance checks can use AI. You should not use AI for running meetings like stand-ups or backlog grooming - those teach you how the team breathes and are critical tools for you to manage through.</li>
+  <li>Performance management — Keep it human. Feedback is a craft; practice it.</li>
+  <li>Career growth — Use AI as a sparring partner. Let it surface ideas, but you own the plan.</li>
+</ul>
+
+<p>Rule of thumb: use AI on repetitive tasks or where the answer is absolute. If you’re thinking hard in the realm of ambiguity and human behavior, that’s learning how to manage, and you can’t afford to offload it.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[Know where AI is a crutch and where it's an abstraction.]]></summary></entry><entry><title type="html">Setting Startup Policies</title><link href="https://staysaasy.com/management/2025/05/05/setting-startup-policies.html" rel="alternate" type="text/html" title="Setting Startup Policies" /><published>2025-05-05T06:59:22+00:00</published><updated>2025-05-05T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/05/05/setting-startup-policies</id><content type="html" xml:base="https://staysaasy.com/management/2025/05/05/setting-startup-policies.html"><![CDATA[<p>One of your most important activities as an executive, especially at a startup, is to set policies: Sets of guardrails or rules for how company systems work, such as vacation policies, expense policies, WFH policies, or rules for how to get promoted.</p>
+
+<p>Companies are just groups of people with money on the line, and they need rules to avoid descending into chaos. Startups are born without any rules, so as you scale <strong>someone</strong> ultimately needs to set up everything from scratch. As a result, setting policies is one of the most important roles that one plays as an executive.</p>
+
+<p>But as common as policy setting is, there are few guides that actually describe how to do it effectively. So here are some rules and heuristics to keep in mind. We’ll use something really simple as an example – how to set a travel expense policy for your growing startup.</p>
+
+<h3 id="policies-need-to-make-sense">Policies Need to Make Sense</h3>
+
+<p>This may seem trite, but policies that will impact many people simply must be high-quality. Even the simplest policy can get surprisingly complex, and you want to catch second-order and third-order consequences to make sure that they make sense in all circumstances.</p>
+
+<p>For an example of how this can get complicated, let’s take the case of your startup’s travel expense policy:</p>
+
+<ul>
+  <li>If you set your policy to be too generous, people will max out their travel allotment and waste money</li>
+  <li>If you set your policy to be too stingy, people will make excuses to avoid unpleasant travel</li>
+  <li>If your policy is too complicated, people will forget details and cause rework, or you’ll waste tons of time answering questions about different edge-cases</li>
+  <li>If your policy is too inflexible, you’ll have all sorts of problems when people need to book last minute flights or hotels</li>
+</ul>
+
+<p>The best way to ensure that your policies make sense from top to bottom is to treat them like products. When you release a new product, you:</p>
+
+<ul>
+  <li>Use off-the-shelf open source solutions to solve tricky problems. If your policy can be copied from a more successful company in your situation, use that as a starting point.</li>
+  <li>Review the implementation to ensure that it makes sense. Make sure that you get many eyes on a draft policy before you roll it out. Your job as a leader is to set the <em>right</em> policy, not to be some Moses-like figure that presents definitive Commandments to your rapturous audience all at once.</li>
+  <li>Release it to progressively wider audiences to ensure that you don’t accidentally break something on the way. Treat policy rollouts like the launch of a major infrastructure change, and be prepared to roll back if you break something badly.</li>
+</ul>
+
+<p>Does this take time? Yes. Do you know what else takes a lot of time? Negotiating with angry people who are rightfully pointing out that your policy sucks, and then revising it with your tail between your legs.</p>
+
+<p>As a completely unrelated side-benefit, reviewing policies is a really good way to identify talent on your team. People who have good feedback on policies that they didn’t generate are often good at creating new ones themselves. Using your team as a sounding board is a free and easy way to identify strong managers.</p>
+
+<h3 id="policies-must-be-transparent">Policies Must Be Transparent</h3>
+
+<p>The worst way that policies generate distrust is via secret exceptions. Secret exceptions occur when there’s some loophole that is allowed to remain for a long period of time – typically in a fashion where enough people know about it that it gets utilized <strong>regularly</strong>.</p>
+
+<p>For example, let’s say that:</p>
+<ul>
+  <li>Your travel policy doesn’t allow mid-level employees to book business class.</li>
+  <li>But if you’re on a particularly heinous red-eye (say, London to Mumbai before a big meeting), and you double check with your department’s finance representative, we’ll let you book it within 2 weeks of end-of-quarter if we have the cash.</li>
+  <li>This policy is not documented anywhere – you need to know to ask.</li>
+</ul>
+
+<p>This sort of exception can dramatically erode trust. Not just because of the secrecy of the exception, but because knowledge of the secret trick will inevitably get distributed unevenly. Worse yet, loopholes are typically exploited most by the teams that are most aware of them: i.e., the policy setting team themselves. Suddenly, you realize that Finance is constantly booking offsites during the last two weeks of the quarter and flying business class, and nobody else is, and it feels like the system was an inside job.</p>
+
+<p>Consider whether your policy passes the all hands test: If you were asked to explain this policy – the whole policy, including loopholes and past examples – would you be nonchalant or nervous? If the latter, you need to rethink how you’re operating.</p>
+
+<h3 id="you-cant-punish-adherence">You Can’t Punish Adherence</h3>
+
+<p>The absolute worst form of policy exception occurs when you have a policy that breaks down in ways that punish you for being a good team player.</p>
+
+<p>For example, perhaps every team is given a hiring budget at the start of the year. However, if the hiring budget needs to be shrunk (maybe sales are slow, or there’s a global pandemic), then the company goes into an immediate hiring freeze. As a result, maintaining a high hiring bar is punished, and you’ve rewarded burning through your budget as fast as possible to “win” the game of Budget Musical Chairs.</p>
+
+<p>Or imagine that you follow a use-it-or-lose-it budget process. In these situations, you can be actively punished for responsible policy adherence if you cut costs and subsequently have your budget shrunk. This is very common at large organizations.</p>
+
+<p>If you want your policies to work, it needs to be as easy as possible to conform to them. You never want to be in a situation where process adherence is punished, because this causes cascading distrust and erosion of every policy going forward.</p>
+
+<h3 id="policies-need-to-evolve-for-the-most-impacted">Policies Need to Evolve For The Most Impacted</h3>
+
+<p>One of the worst situations is a policy that benefits one group but harms another, which the first group refuses to re-evaluate. For example:</p>
+
+<ul>
+  <li>Inflation is making your travel expense policy increasingly out of date, but Finance doesn’t care because that’s helping you to hit your budget.</li>
+  <li>Your engineering teams are fielding more and more support escalations over time, but the support team isn’t incentivized to change their escalation criteria – the engineers are providing “free” help!</li>
+</ul>
+
+<p>It’s crucial that the people who are the most impacted by a given policy have the ability to push back and drive change; without this, inertia can cause significant damage over time. This is largely a cultural issue, and your culture needs to celebrate people revisiting their assumptions, rather than misconstruing an unwillingness to compromise as confidence or strength.</p>
+
+<p>A heuristic – for every concrete dimension of your policy that people grumble about, you need to be able to articulate at least one very strong reason that your policy <em>must</em> be the way that it is. Extra sacrifice requires extra benefit.</p>
+
+<h3 id="policies-need-to-be-used-sparingly">Policies Need to be Used Sparingly</h3>
+
+<p>The final rule of setting policies is that the more rules you set up, the less any one rule will be followed. If you’re at a successful company, people are extremely busy and won’t have much time to follow your processes. If you’re at a less successful company, people are frankly probably not as sharp, and likely don’t have the capacity to handle a lot of policies. Either way, it behooves you to dictate less.</p>
+
+<p>Many teams confuse creating policies with adding value – one of the most toxic mistakes that an organization can allow. Creating a new rule is something concrete that you can put on your performance review. It <em>feels</em> like building, but in reality it tends to add friction and slow down all of your real builders. As a leader you must constrain the urge to indulge the false productivity of setting non-essential new policies. A new policy itself should never be a win unless it comes with metrics on what it’s helped you to solve, and consideration of whether it’s wasting time.</p>
+
+<p>Our industry encourages this sense of false productivity. People go on podcasts and get asked what they do for, say, OKRs at a high-growth company (I have fielded this exact line of questioning). Everyone wants to have an answer showing that they have a thorough framework for world domination; nobody wants to respond “well we just kinda set a bookings target and a few check-ins for big projects, and make sure everyone is working real hard.”</p>
+
+<p>Healthy organizations should seek to prune or automate policies that are no longer needed. We had a laborious check-in on every release after a number of incidents, but our testing expectations and launch process has reduced the risk of release-related issues. We used to have strict central budgeting rules for team events, but now every team just gets a budget and we trust that you’ll spend it like an adult. These are signs of a healthy organizational dynamic, and will allow you to stay nimble even after you’ve left your startup days behind.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[Companies are just groups of people with money on the line, and they need rules to avoid descending into chaos. Startups are born without any rules, so as you scale someone ultimately needs to set up everything from scratch. As a result, setting policies is one of the most important roles that one plays as an executive.]]></summary></entry><entry><title type="html">Leading From The Front</title><link href="https://staysaasy.com/management/2025/04/20/leading-from-the-front.html" rel="alternate" type="text/html" title="Leading From The Front" /><published>2025-04-20T06:59:22+00:00</published><updated>2025-04-20T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/04/20/leading-from-the-front</id><content type="html" xml:base="https://staysaasy.com/management/2025/04/20/leading-from-the-front.html"><![CDATA[<p>Leading from the front means leading where the action is happening.</p>
+
+<p>Here we’ll talk about three critical aspects of leading from the front:</p>
+<ul>
+  <li>Why you should do it</li>
+  <li>Finding the front</li>
+  <li>Leading when you’re there</li>
+</ul>
+
+<h2 id="why-you-should-do-it">Why you should do it</h2>
+
+<p>Leading from the front is important for two main reasons:</p>
+<ul>
+  <li>It makes you a more effective leader</li>
+  <li>It motivates your team</li>
+</ul>
+
+<h3 id="learning-from-the-front">Learning from the front</h3>
+
+<p>First, leading from the front makes you a more effective leader because you learn from the front.</p>
+
+<p>Being on the front lines - in the incidents, in the customer calls, in the meltdowns - gets you critical information with first-hand knowledge. There’s a major difference between “an engineer made a Jira ticket that I saw that said this was an important incident followup” and “I saw this happen and if we don’t do this followup we deserve to fail. It’s not a question - we’re doing it.”</p>
+
+<p>But it not only gives you the information, it also gives you the motivation. Being woken up at 3am, or having a $1M customer scream at you, catalyzes action like few other things can. Leading from the front gives you the literal incentive and neurological shock to overcome the forces of inertia, politeness, and busy-ness that normally hinder action.</p>
+
+<h3 id="motivating-from-the-front">Motivating from the front</h3>
+
+<p>Second, effort is contagious.</p>
+
+<p>Most people will try really hard as long as they know there’s at least one person who will storm the hill, who will go into oncoming fire and spit bullets back at the enemy.</p>
+
+<p>The problem with large organizations is that those people often get promoted and then stuck in meetings all day. They’re no longer on the frontlines. They might swoop in to help, but that’s not the same as being in the foxhole.</p>
+
+<p>This is why leading from the front is so important. You literally just need one single leader with general stripes who is in the foxhole with the team saying I ain’t going nowhere. I have nothing more important than fighting with you.</p>
+
+<p>That’s the difference between a motivated org and a disengaged org. Somebody who has authority and power is in the stuff with you.</p>
+
+<p>You might say - but everyone is incentivized to try hard, why do we need this? Incentives are necessary but only go so far. In fact, they don’t cover two critical cases.</p>
+
+<p>The first case is collective action. I might be incentivized to try hard, but if my whole team is phoning it in, I don’t believe my efforts are worth it. But if a leader comes in and gets these bozos to rise to the occasion, I’m ready to charge the hill. Nobody wants to be the hardest worker on the last place team.</p>
+
+<p>The second is that you can only unlock the higher order gears like professional pride, duty, and honor with the moral authority of putting yourself on the line. Yeah, I’ll try  hard enough if I’m incentivized. But if there’s a leader out here who looks just as intense at 5 hours into this incident as they were 5 minutes in, with no inkling of quit in them, if there’s someone who is just hardwired to never give up, I can sprint.</p>
+
+<p>This is why coaches matter.</p>
+
+<h2 id="finding-the-front">Finding The Front</h2>
+
+<p>To be that contagion, to lead from the front, the most important thing is that your leadership is predictable and consistent, and that you know where the front is.</p>
+
+<p>Most leaders think that the most important thing is that they are reachable if things get bad enough. While this is a worthy goal, it regularly and quickly falls apart.</p>
+
+<p>A leader says “if things get bad enough, call me, page me, I’ll come running”. And when the leader says that, they mean it. But then that leader:</p>
+<ul>
+  <li>Goes to a dinner with new investors that absolutely must go well</li>
+  <li>Has an all week onsite with a partner company where they absolutely must finish the integration while they’re in San Jose</li>
+  <li>Goes to a conference to speak and will be out of pocket for at least 8 hours</li>
+</ul>
+
+<p>Quickly you find that even though that leader genuinely wants to help when things get bad, they’re simply too busy.</p>
+
+<p>The right away to lead from the front is to be predictable and consistent. There’s a lot of ways to do this, but this can look like:</p>
+<ul>
+  <li>I have an operational standup every other day. I never miss it twice in a row. Ever.</li>
+  <li>I will not do big blocking events more than one or two weeks per quarter.</li>
+</ul>
+
+<p>This is what committing to leading from the front looks like. It means a commitment to being present.</p>
+
+<p>Note that not every role can be on the front with these time requirements. That’s ok. It’s important to be clear if you can actually commit to leading from the front. It doesn’t make you less good at your job to admit this.</p>
+
+<p>Some leaders might also say - hey traveling and being out of pocket is the front lines, isn’t it? Well yes, it is, but it’s often just a different front line than the one your team is on. Some generals need to go to Washington to secure funding. They’re just as important - if not more - than the frontline generals. The problem arises if the general in Washington believes they’re both (and doesn’t find someone to man the front).</p>
+
+<p>Beyond just being available, you must also know where the front is. In some leadership positions, without intentionality you can be boxed out of any of the real action (which happens in teams you’re not part of). To solve for this, you must ensure you have checkpoints to coordinate with your teams’ goings-on.</p>
+
+<h2 id="leading-at-the-front">Leading At the Front</h2>
+
+<p>Ok, you’ve decided to lead from the front, you’ve actually set yourself up to be able to do it and be there. Here’s how to lead when you’re there.</p>
+
+<p>First, you have to know what you’re doing. Most leaders avoid leading from the front by never investing enough to actually know what to do when they’re there. To lead from the front you must be ready when the battle starts with skills that matter. These include:</p>
+<ul>
+  <li>Coordinating resources to drive outcomes. Most proverbial battles involve multiple-stakeholders and a specific outcome - a sale, an incident, a decision. Organizing stakeholders to decide and deliver outcomes is the core of almost every activity on the front.</li>
+  <li>Basic debugging skills. Whether it’s technical debugging, or product behavior, or the intricacies of pricing and packaging - knowing enough to drive an outcome is essential.</li>
+</ul>
+
+<p>This is why it’s so important for engineering managers to go on-call - to learn the basics of how to debug in a system. It’s why it’s important for, for example, design leaders to use and test the products under their remit.</p>
+
+<p>To learn to coordinate resources you must simply do it. Shirking away from hard product decisions, or arbitrating disagreements, or late night incidents will only entrench your lack of ability. Confidence in how to wrangle people, how to organize thought and action, and how to drive next steps is only learned from experience.</p>
+
+<p>Second, your demeanor must be poised and determined and urgent. If you enter an incident hysterical or say “how the hell did this happen”, you are a distraction. Go fly a kite. Instead, your presence must imbue the team with a sense of “it does not matter how we got here. We will fix this and I will be here until we do.”</p>
+
+<p>You must also, critically, have the energy. One of the most common things to fail at in frontline leadership is giving up too early. We’ve already been at this for 8 hours, do we really need to dot this i and cross this t. In incidents small and large, if you leave an ember burning you will be woken up by another fire. As a leader, you likely won’t be in the deep deep weeds. Your job is to make sure that people don’t give up before the fire is out. Your job is to be measured and calm, while being urgent and intense. You will not quit and you will not yell. Inhabiting this duality is one of the most powerful skills of leadership.</p>
+
+<p>Finally, you must follow through. You must make sure the things that caused this fire drill will never happen again. Lots of people can help out when things fail, but to have the grit to follow up on the root causes and drive the change to prevent recurrence in a super-power.</p>
+
+<p>If you can put all of these together, you will be a great leader.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Most people will not lead from the front. They won’t learn what’s needed to be useful when they get there. They won’t block the time to be able to show up. Or when they get there they’ll be a distraction. Or after being woken up twice at 3am in a month they’ll say “this really just isn’t for me.”</p>
+
+<p>But those that do will earn the respect of their team. They’ll motivate their team to be better than the sum of their parts. And they’ll deliver outcomes that are outsized to their resourcing.</p>
+
+<p>In summary:</p>
+<ul>
+  <li>Leading from the front is important because it gives you the information and motivation to impact change. It also is incredibly motivating for your team</li>
+  <li>To be on the front you must be available. Blocking time to deal with operational issues and being available for issues is key.</li>
+  <li>To lead once you’re on the front lines, you must be capable, poised, and able to manage follow-ups with intense focus.</li>
+</ul>
+
+<h2 id="the-anti-patterns">The Anti-patterns</h2>
+
+<p>For those who learn better from anti-patterns, reminder that great ways to not lead from the front are:</p>
+<ul>
+  <li>Being on the road and unavailable all the time</li>
+  <li>Being hysterical and blameful</li>
+  <li>Being forgetful and unable to track follow-ups</li>
+  <li>Being afraid to work hard off hours</li>
+</ul>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[Don't look back.]]></summary></entry><entry><title type="html">The Precise Language Of Good Management</title><link href="https://staysaasy.com/management/2025/04/06/precise-language.html" rel="alternate" type="text/html" title="The Precise Language Of Good Management" /><published>2025-04-06T06:59:22+00:00</published><updated>2025-04-06T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/04/06/precise-language</id><content type="html" xml:base="https://staysaasy.com/management/2025/04/06/precise-language.html"><![CDATA[<p>As a manager, your words are your bond</p>
+
+<p>In the squishy realm of managing humans, the specific things you say have specific outcomes.</p>
+
+<p>Unfortunately, most managers are very bad at speaking precisely. Speaking precisely, especially about long-term, uncertain things, is not something many people do by nature.</p>
+
+<p>To compound issues, there are a variety of factors that drive managers to speak non-specifically and say the wrong thing. These include things like:</p>
+
+<ul>
+  <li>Nervousness or laziness</li>
+  <li>Lack of experience</li>
+  <li>Not wanting to disappoint people</li>
+  <li>Not wanting to seem like you don’t have the answer</li>
+</ul>
+
+<p>Let’s explore some common examples of imprecise language and how to fix them.</p>
+
+<hr />
+
+<h2 id="common-examples">Common Examples</h2>
+
+<h3 id="how-am-i-doing">How Am I Doing?</h3>
+
+<p>The most common example of imprecise language is when someone asks you in a 1:1 “how am I doing?” Very few managers are ready to answer this question well on the spot. But managers answer the question anyway and often say things like:</p>
+
+<blockquote>
+  <p>“Oh you’re doing well, communication could improve a bit but overall you’re doing well.”</p>
+</blockquote>
+
+<p>Well, what often happens is that the performance round happens and the person gets below expectations.</p>
+
+<blockquote>
+  <p>“I thought I was doing well?”</p>
+</blockquote>
+
+<p>Yes, you did say that. You didn’t say that the communication piece is actually a major factor in their performance that is causing regular friction in the team.</p>
+
+<p>The right answer in this situation is almost always to say that you need some time to gather your thoughts and will come to the next 1:1 with a more considered answer. By default this should be your answer any time anyone asks you how they’re doing, because unless you hold a ton of information in your head at all times and have regularly reviewed it for an accurate synthesis of their performance, there’s no way you can answer that question specifically, or well.</p>
+
+<hr />
+
+<h3 id="performance-assessments">Performance Assessments</h3>
+
+<p>I mentioned this topic in our article on writing performance reviews. It’s extremely common for managers to use vague and overly flowery language in performance reviews.</p>
+
+<p>Imagine you’re a junior engineer and you get a review that says:</p>
+
+<blockquote>
+  <p>“Angela is a great engineer and always up for a challenge.”</p>
+</blockquote>
+
+<p>Problems:</p>
+
+<ul>
+  <li>If Angela is a junior engineer and is already “great”, what does growth look like? Have they already peaked?</li>
+  <li>Feedback is to either tell someone what to change or what to keep doing. “Great engineer” does none of that.</li>
+  <li>People change. You’re describing them as having invariant properties vs. describing things they’ve done. This makes it harder for people to process feedback that’s counter to these claims in the future.</li>
+</ul>
+
+<p>So, be very specific in what you’re calling out, and give feedback around actions, not attributes. Good examples:</p>
+
+<ul>
+  <li>“Angela showed impressive persistence in delivering her feature through several requirements changes”</li>
+  <li>“Angela is a detail-oriented code reviewer, much to the benefit of our team”</li>
+</ul>
+
+<hr />
+
+<h3 id="can-you-do-this">Can You Do This?</h3>
+
+<p>Another common example of unspecific language happens when your boss asks you if your team can do something. There’s two common, bad answers that people habitually use:</p>
+
+<ul>
+  <li>Yes, we can (The refrain of yes men everywhere)</li>
+  <li>No we can’t, we have too much to do, we’d have to make tradeoffs that would collapse the company (The refrain of people who are afraid of their team)</li>
+</ul>
+
+<p>The problem is that neither of these answers are specific or true. The right answer here is to gather more information and circle back. But if there are meaningful tradeoffs, the right answer is always:</p>
+
+<blockquote>
+  <p>“We probably can but let me draw out the implications of taking on this work so we can align on priorities.”</p>
+</blockquote>
+
+<hr />
+
+<h2 id="summary">Summary</h2>
+
+<p>The point here is that specific language really matters. “Good” is not the same as “persistent”. “Soon” is not the same thing as “6 months.”</p>
+
+<p>One of the reasons why writing things down all the time is so useful is that it forces people into more measured, specific language. If you’re a manager, using measured and specific language needs to be a skill you learn ASAP.</p>
+
+<hr />
+
+<h2 id="appendix-more-examples">Appendix: More Examples</h2>
+
+<p>Here’s a bunch of examples where people often use vague language when they shouldn’t:</p>
+
+<h3 id="promotions">Promotions</h3>
+
+<ul>
+  <li>Don’t: “I think a promotion soon is looking good.”</li>
+  <li>Do: “We have two promotion cycles in the next 12 months. I think the one in 3 months is less likely and the one in 9 months is about 80% there. Let’s discuss why I’m thinking about those probabilities and we can make sure you feel that’s fair.”</li>
+</ul>
+
+<hr />
+
+<h3 id="pips">PIPs</h3>
+
+<ul>
+  <li>Don’t: “Hey these last two weeks have been great.”</li>
+  <li>Do: “These last two weeks have been at the level of output we determined was necessary for you to succeed in this PIP. You’ll have to keep this up for the remainder to pass.”</li>
+</ul>
+
+<hr />
+
+<h3 id="hiring">Hiring</h3>
+
+<ul>
+  <li>Don’t: “Yeah you can basically choose your team once you’re in.”</li>
+  <li>Do: “We have three teams that have open roles right now. One of them you aren’t a fit for based on your background, so realistically that leaves two and of those two the X team seems like a better fit, so if you wouldn’t want to join that team, let’s talk”</li>
+</ul>
+
+<hr />
+
+<h3 id="goals">Goals</h3>
+
+<ul>
+  <li>Don’t: “That’ll get done next quarter.”</li>
+  <li>Do: “Our target date for that is March 1st.”</li>
+</ul>
+
+<hr />
+
+<h3 id="performance-assessments-1">Performance assessments</h3>
+
+<ul>
+  <li>Don’t: “always”, “great”, “unbelievable”</li>
+  <li>Do: “consistently”, “outstanding”, “leader amongst their cohort.”</li>
+</ul>
+
+<hr />
+
+<h3 id="growth-paths">Growth paths</h3>
+
+<ul>
+  <li>Don’t: “You should focus on more leadership opportunities this half.”</li>
+  <li>Do: “Your goal this half should be to lead project Y. Starting tomorrow I will name you the project lead and we’ll have checkins monthly.”</li>
+</ul>
+
+<hr />
+
+<h3 id="upward-feedback">Upward feedback</h3>
+
+<ul>
+  <li>Don’t: “This new bonus structure is stupid and punitive. Everyone hates it.”</li>
+  <li>Do: “4/9 of my team have expressed severe concerns about this new bonus structure and I personally agree. I believe the schedule of money is non-standard and creates a feeling that our comp is always in flux.”</li>
+</ul>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[Words matter.]]></summary></entry><entry><title type="html">First Principles Problems, Secondhand Solutions</title><link href="https://staysaasy.com/management/2025/04/02/first-principles-problems-secondhand-solutions.html" rel="alternate" type="text/html" title="First Principles Problems, Secondhand Solutions" /><published>2025-04-02T06:59:22+00:00</published><updated>2025-04-02T06:59:22+00:00</updated><id>https://staysaasy.com/management/2025/04/02/first-principles-problems-secondhand-solutions</id><content type="html" xml:base="https://staysaasy.com/management/2025/04/02/first-principles-problems-secondhand-solutions.html"><![CDATA[<p>If you spend a lot of time in tech, you’ll inevitably hear people extolling the virtues of being a First Principles Thinker – that is, someone who analyzes situations in terms of foundational axioms and then uses their impeccable reasoning to determine a bold and original course of action.</p>
+
+<p>But if you’ve spent significant time operating a business, it’s obvious that the solutions to your problems are rarely unique. In business the optimal move is often just to reason by analogy quickly and decisively.</p>
+
+<p>So I’m going to propose a somewhat different way to break down the debate on whether reasoning from first principles or reasoning by analogy is better. In most situations that I’ve seen, you’ll get better results if you:</p>
+
+<ul>
+  <li>Reason from first principles to establish what your <em>problems</em> actually are.</li>
+  <li>Reason from analogy to figure out what <em>solutions</em> you should actually deploy.</li>
+</ul>
+
+<h2 id="a-first-principles-example-retention">A First Principles Example: Retention</h2>
+
+<p>Let’s take a conceptually simple problem – why is retention low? This seemingly straightforward problem could have many possible root causes:</p>
+
+<ul>
+  <li>Is the product weak? This could be due to poor product management, design, or engineering. Weakness in any of the three, or a combination, could lead to similarly bad metrics.</li>
+  <li>Is something about our support process failing? Is the support team’s leadership bad? (A weak product and a weak support team can manifest in similar symptoms, such as poor response times and broken integrations)</li>
+  <li>Is the customer success team failing? Are they under-resourced, incorrectly incentivized, or just not operating well?</li>
+  <li>Have we oversold customers because we were forced to stretch out of our Ideal Customer Profile (ICP)? Did sales oversell, or sell to bad-fit customers?</li>
+  <li>If sales oversold some customers, was it an execution issue on their side, or were they effectively <em>forced</em> to oversell because they didn’t have enough pipeline? (And keep in mind that a marketing problem might go all the way back to the top – it’s often a product issue!)</li>
+</ul>
+
+<p>With this many possibilities, you can’t just draw from your past experiences to identify the core problem. Unfortunately, it’s all too common for experienced leaders to jump to the conclusion that whatever was most broken at their last team or company is broken again. Poor retention? Seen it before, fire the Head of Support. Seen it before, the product is broken – fire the Head of Product. Seen it before, you need to replatform to remove tech debt. Seen it before, you need to hire more customer success.</p>
+
+<p>This incurious approach consistently leads to poor outcomes. In about 75% of cases that I’ve seen, identifying root cause problems by analogy ends with blaming the nearest leader who’s a weak communicator, somewhat abrasive, overly passive, or all 3. This bystander is usually a problem, but he’s often not <em>the</em> problem.</p>
+
+<p>Using first principles to identify problems is like solving a math proof: Start from your ground truths, use them to generate hypotheses, and check whether those hypotheses would logically lead to the visible symptoms. A good litmus test is whether you can articulate your root problem using the word “therefore.” For example, retention is low because:</p>
+
+<ul>
+  <li>We can see that adoption of our features is low, especially in customers who churn. We also know that our engineering team has high velocity and support response times / CSAT have been improving – they’re likely not the problem. Therefore, we’re probably building the wrong things which is leading to failing product-market fit.</li>
+  <li>We can see that our Security team buyers are churning at disproportionately high rates, but our Engineering buyers seem pretty happy. Our growth rate is only barely acceptable as-is. Therefore, we’re likely overselling a Security offering that is not actually competitive in the market, causing customers to churn.</li>
+</ul>
+
+<p>Closely observing the problem also helps. In the retention example, if you actually talk to 5 customers who are churning your learnings should align with your first principles analysis.</p>
+
+<h2 id="there-are-many-solutions-but-not-infinite-solutions">There Are Many Solutions, But Not Infinite Solutions</h2>
+
+<p>But once you correctly identify your problems, there’s a relatively short list of common solution archetypes in startups and business writ large. Your problem might be unique but the optimal solution is probably not.</p>
+
+<p>As a result, you should pull solutions from a library of similar scenarios wherever possible – this not only improves the odds that you’ll get to a good outcome, but also critically lets you move much faster. <em>The faster you implement fixes the less accurate you need to be, because you can take more shots on goal</em>.</p>
+
+<p>A list of some of the most common solutions to have in your repertoire:</p>
+
+<ul>
+  <li>You have a bad leader at some level of the organization – change them out.</li>
+  <li>You are not following best practices in an important function and must re-establish high-quality execution, typically via a time-consuming but conceptually simple back-to-basics approach. This is most common on teams like sales, engineering, and support that have a large number of people doing the same fundamental job.</li>
+  <li>You are in the wrong market, and should be shifting the markets where you focus in a dramatic way, e.g. by going up-market or refocusing your geographic footprint.</li>
+  <li>You are misallocating financial resources and need to rebaseline. For example, marketing is underfunded vs. sales. Engineering is underfunded vs. customer support.</li>
+  <li>You are doing too much and must re-establish focus by cutting projects.</li>
+  <li>Your pricing and packaging are unworkable in some regard and need to be changed.</li>
+  <li>You must fix broken incentives – for example, compensating sales based upon their deals renewing, not just deals closed.</li>
+  <li>(In startups) You do not have product-market fit and need to reset the company.</li>
+</ul>
+
+<p>Using first principles to determine solutions can have equally bad outcomes.</p>
+
+<p>The first pattern is a tendency to over-complicate simple situations. A classic example is a startup that crafts an entirely unique pricing structure, because they have some logical first principles argument that their custom pricing scheme makes more sense than all known industry standards. Enterprise buyers show up, get confused, and run in horror until the startup picks a standard, boring pricing scheme.</p>
+
+<p>Another common failure mode is moving too slowly because teams don’t realize that they’re in a known scenario. For example, maybe our startup is losing competitiveness because we’re building too slowly. The answer is not to get advisors or run a huge analysis on your unique velocity challenges; the answer is almost certainly that you need more senior engineers, better PMs and designers, a culture that pushes everyone to ship with urgency, and basic processes to improve quality of products produced.</p>
+
+<h2 id="you-need-both">You Need Both</h2>
+
+<p>It’s worth mentioning that in many circles first principles thinking is viewed as some sort of inherently superior activity – first principles thinking is treated like some kind of lightsaber that only the most worthy can wield to invent new secrets of the universe.</p>
+
+<p>Maybe that’s true in theoretical physics, but in 99.5% of situations it’s just a tool. Few B2B SaaS startups that I’ve seen are busy discovering new laws of the universe. To be effective you need to have the skillset and <em>willingness</em> to both think from first principles <em>and</em> reason by analogy as the situation demands.</p>
+
+<p>This is a really powerful combination, and some of the very strongest leaders that I’ve worked with are older, more experienced people who have a strong ability to reason from first principles about their problems and then draw from a huge array of potential solutions. Because really, the key is to have a bit of humility: To admit that maybe your experience doesn’t mean that you know best, or that maybe the sheer force of your intellect isn’t the only solution.</p>]]></content><author><name></name></author><category term="management" /><category term="leadership" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[Reason from first principles to establish what your problems actually are, but reason from analogy to figure out what to do]]></summary></entry><entry><title type="html">Managing People You Can’t Fire</title><link href="https://staysaasy.com/saas/2025/03/26/owning-firind.html" rel="alternate" type="text/html" title="Managing People You Can’t Fire" /><published>2025-03-26T06:59:22+00:00</published><updated>2025-03-26T06:59:22+00:00</updated><id>https://staysaasy.com/saas/2025/03/26/owning-firind</id><content type="html" xml:base="https://staysaasy.com/saas/2025/03/26/owning-firind.html"><![CDATA[<p>One of the worst situations in management is needing to fire someone and getting blocked. This happens somewhat regularly and is one of the most trust-breaking experiences between a manager and their boss. Let’s talk about why it happens and how to right-size the situation</p>
+
+<h2 id="the-ingredients">The Ingredients</h2>
+
+<p>Managers end up needing to fire someone for many reasons, the most common being:</p>
+<ul>
+  <li>Behavioral issues</li>
+  <li>Significant underperformance</li>
+</ul>
+
+<p>Almost all managers loathe the idea of firing someone, so when they advocate for it, it’s almost certainly needed. Think about that again - the point is important. Much, much more often managers are late to fire someone. Because firing is such a traumatic experience on both sides, managers do not come to the conclusion lightly.</p>
+
+<p>So if you’re a manager’s manager and they come to you asking for a termination, the chances that it’s the right thing to do are very high.</p>
+
+<p>Despite this reality, many managers of managers often block the termination, or say not now. The reasons they do this vary, but include:</p>
+<ul>
+  <li>They have a personal relationship with the person being fired and intervene.</li>
+  <li>They think the manager is being too harsh. Note - this happens, but again, it’s really not common.</li>
+  <li>They don’t trust their hire to get it done without that person.</li>
+  <li>They’re being risk averse.</li>
+</ul>
+
+<p>From the perspective of the manager in this situation, this was the formative moment where your boss could show that they trust you. You regularly take on work for them, make them look good, accept their critical feedback. All of that is worth it for their respect and trust (and the money). And at this moment, the time where they could really prove they trust you - they do the opposite. They do something that shows that you are in fact just on training wheels.</p>
+
+<p>Then it’s not like HR can write down “manager was probably right, overridden by their boss.” So in cases of behavioral issues, including with the manager, there is often some documented feedback that the manager was wrong, and themselves needs to improve.</p>
+
+<p>Finally, the manager then has to keep on living with that underperformer and dealing with all of the chaos they cause.</p>
+
+<p>The result of this triple whammy is often a deep-seated frustration on the part of the manager and often leads to them quitting. And it’s an issue that doesn’t go away because if that person needs to be fired in the future, the manager’s boss is now invested in that not happening to not be proven wrong.</p>
+
+<h2 id="a-better-way">A Better Way</h2>
+
+<p>There should only two versions of firing decisions.</p>
+
+<p>The first is learning mode. The boss is clear to their new manager that for the first 6 months they’ll be the final decision on any performance or firing decisions, because the new manager needs to understand the culture and calibrate to organizational standards. Set the expectation clearly, and it’s fine.</p>
+
+<p>The only other mode is trust. Again, extremely few managers are not going to offer up a termination proposal without cause. If you’re sure it’s a mistake - intervene. If you’re unsure - the tie goes to the manager. They’re living the reality, they deserve that trust.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In summary:</p>
+<ul>
+  <li>If a manager is proposing a termination, it’s almost always needed</li>
+  <li>That moment in time is an opportunity for their boss to show if they trust them or not</li>
+  <li>So, they deserve to be trusted</li>
+</ul>
+
+<p>Note: there are grizzled VP/C-level psychopaths who fire people like eating Tic Tacs, but this post is not about them. The managers in question are managing ICs, probably have been managing for under 7 years…etc.</p>]]></content><author><name></name></author><category term="saas" /><category term="saas" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[A receipt for disaster.]]></summary></entry><entry><title type="html">Tips For Better Interactions</title><link href="https://staysaasy.com/saas/2025/03/17/interactions.html" rel="alternate" type="text/html" title="Tips For Better Interactions" /><published>2025-03-17T06:59:22+00:00</published><updated>2025-03-17T06:59:22+00:00</updated><id>https://staysaasy.com/saas/2025/03/17/interactions</id><content type="html" xml:base="https://staysaasy.com/saas/2025/03/17/interactions.html"><![CDATA[<p>The following are an assortment of tips for having better interactions and better meetings.</p>
+
+<h2 id="dont-be-frustrated">Don’t Be Frustrated</h2>
+
+<p>Don’t ever agree to the premise that you’re “frustrated” or “upset” at work.</p>
+
+<p>People will often consciously or subconsciously say things like “I know you’re frustrated, but…”</p>
+
+<p>If you’re in a meeting and this happens, cut them off. Say “to be clear I’m not frustrated I’m…”</p>
+<ul>
+  <li>Just escalating an issue</li>
+  <li>Just getting more information,</li>
+  <li>Just making sure that X is accounted for</li>
+</ul>
+
+<p>… or whatever</p>
+
+<p>Once you allow the premise that you’re frustrated, everything that happens after is someone dealing with a frustrated person, which is never to your benefit.</p>
+
+<p>Another benefit of this technique is that if you are frustrated, it acts as a mantra to remind yourself to stop acting that way ASAP.</p>
+
+<h2 id="taking-notes">Taking Notes</h2>
+
+<p>One of the simplest ways to be a better leader is to be the note taker in meetings.</p>
+
+<p>Taking notes:</p>
+<ul>
+  <li>Is important. You codify the discussion.</li>
+  <li>Is humble. It shows everyone an act of service.</li>
+  <li>Helps you shape the conversation. If you can’t write the logic, the logic isn’t happening.</li>
+  <li>Gives people something to look at (present the notes).</li>
+  <li>Gives you a chance to slow the meeting if things get emotional, and lets you create natural pauses to get things back on track.</li>
+  <li>Shows people that their opinion is both heard but also is being recorded, by way of visibly creating a record. This acknowledges contributions and dissuades people from saying wildly stupid stuff (e.g. not wanting to be codified as the person that won’t let the new company-wide process happen because their it’ll harsh their vibe when they work from their Tahoe house).</li>
+</ul>
+
+<p>Of all the ways I’ve tried to get people to run meetings better, having them take notes while facilitating is the only one that works reliably and well. I’ve seen people go from rambling rabbit hole-ing messes to focused meeting facilitators with just this one change.</p>
+
+<h2 id="avoid-boundary-objections">Avoid Boundary Objections</h2>
+
+<p>So much of bad meeting feedback is “if you take this idea too far we’ll have problems.” This is one of the most useless pieces of feedback.</p>
+
+<p>If someone says “we should let people choose lunch once a week,” and you respond with “if we let people choose everything around here the inmates will run the asylum!” - you’re being actively counter-productive.</p>
+
+<p>Boundary objections are almost never realistic and are often disrespectful - they imply that the presenter is dumb, foolish, or would act with low integrity. No Alan, I’m not proposing we let employees choose executive comp just because I said once a week they should be able to choose pizza or burgers.</p>
+
+<p>Boundary thinking has a place, namely in thinking about the behavior of engineered systems. Beyond that, it’s almost always a negative distraction.</p>
+
+<h2 id="let-people-be-wrong">Let People Be Wrong</h2>
+
+<p>Another way people often waste time in meetings is chasing the accuracy of details that don’t matter. The meeting is about whether we should code freeze on the 10th or the 11th, and your department head is debating a detail on slide 5 about how many customers we have in Italy. It doesn’t matter.</p>
+
+<p>People do this all the time, because:</p>
+<ul>
+  <li>Some people see it as their job to correct every mistake they see. ATTN: it’s not.</li>
+  <li>Some people get itchy if they think something is wrong. Instead of living with the tension of an unimportant thing they don’t agree with, they need to resolve it.</li>
+  <li>Some people are well intentioned but don’t realize they’re wasting time.</li>
+  <li>Some people believe that not calling out something they think is false is implicit agreement with it.</li>
+</ul>
+
+<p>Let unimportant things go even if you think they might be wrong. If you really need to do something about them, you can:</p>
+<ul>
+  <li>Say “I don’t agree with all the details here, but it doesn’t matter, I think <em>__</em>”</li>
+  <li>Send a follow up to a meeting or discussion with a note on the thing you think is false</li>
+</ul>
+
+<h2 id="time-your-interactions">Time Your Interactions</h2>
+
+<p>Important meetings shouldn’t be on Monday or Friday, and should never be the last meeting of the day, and shouldn’t be during lunch hour, and shouldn’t be changed by calendaring software, and nobody should be off camera (if remote).</p>
+
+<p>Narrowly, avoid all of these in particular for 1:1s. Dynamic calendaring software that often moves 1:1s around to “optimize” your calendar does more harm than good.  There’s value in having meetings at the same time every week. It allows for a rhythm of preparation and a consistency in environment (e.g. morning vs afternoon).</p>
+
+<h2 id="prioritize-your-meeting-agenda-and-dont-force-yourself-to-get-to-everything">Prioritize Your Meeting Agenda and Don’t Force Yourself to Get To Everything</h2>
+
+<p>“We have to move on to get to the rest of the agenda” is a sign of a bad meeting.</p>
+
+<p>Your meeting should have an agenda with topics in priority order. You move on from things when you’re done with them.</p>
+
+<p>Bad meetings focus on moving on to the next item even when the current item is unresolved.</p>
+
+<p>This is dumb.</p>
+
+<p>Stop having meetings with 5 topics that get cut off and produce no value. Discuss 2 points well and find time for the rest or punt them.</p>
+
+<p>Companies that can’t run good meetings almost always can’t prioritize well. An overbooked, under-prioritized meeting is a symptom of an overbooked and under-prioritized company.</p>
+
+<p>Relatedly, don’t try to rush the end of a meeting to finish something. It’s always better to find a separate time. One of the most common unforced errors is rushing things. A great way to be wrong is to be right in a rush.</p>]]></content><author><name></name></author><category term="saas" /><category term="saas" /><category term="business" /><category term="management" /><summary type="html"><![CDATA[A collection of practical advice.]]></summary></entry><entry><title type="html">Blameful Post-Mortems</title><link href="https://staysaasy.com/saas/2025/03/12/blameful.html" rel="alternate" type="text/html" title="Blameful Post-Mortems" /><published>2025-03-12T06:59:22+00:00</published><updated>2025-03-12T06:59:22+00:00</updated><id>https://staysaasy.com/saas/2025/03/12/blameful</id><content type="html" xml:base="https://staysaasy.com/saas/2025/03/12/blameful.html"><![CDATA[<p>Over the last decade, the concept of a “blameless” post-mortem has become a software industry standard. According to ChatGPT, blameless was introduced to the software world by a 2012 blog <a href="https://www.etsy.com/codeascraft/blameless-postmortems">post</a>:</p>
+
+<p><code class="highlighter-rouge">Having a “blameless” Post-Mortem process means that engineers whose actions have contributed to an accident can give a detailed account of [what happened[...and that they can give this detailed account without fear of punishment or retribution.</code></p>
+
+<p><code class="highlighter-rouge">Why shouldn’t they be punished or reprimanded? Because an engineer who thinks they’re going to be reprimanded are disincentivized to give the details necessary to get an understanding of the mechanism, pathology, and operation of the failure. This lack of understanding of how the accident occurred all but guarantees that it will repeat. If not with the original engineer, another one in the future.</code></p>
+
+<p>The intent of this philosophy is good - let’s avoid fear of unfair punishment so we can learn from incidents.</p>
+
+<p>The problem is that there is a metric ton of nuance in these statements. Instead of finding a middle ground of accountability and empathy, many companies ran with these principles into a no-man’s land of non-accountability.</p>
+
+<p>Let’s talk about why. But first, some background.</p>
+
+<h2 id="the-history-of-blameless">The History Of Blameless</h2>
+
+<p>The idea of blameless post-mortems came from aviation and healthcare. I’m not an expert, but I think that the situations that prompted these industries to conduct blameless post-mortems had the following qualities:</p>
+<ul>
+  <li>Severity: Something really really bad happened. A plane crashed. A person died in the operating room.</li>
+  <li>Frequency: Incidents are generally infrequent. Most people are rarely involved in a post-mortem.</li>
+  <li>Punishment: The punishment for negligence can be extraordinarily high, e.g. murder charges. You need to assuage people that they aren’t at risk of criminal punishment for well-intentioned mistakes.</li>
+  <li>Recurrence: Given the severity of these incidents, you need to be absolutely sure you are doing every possible thing to prevent recurrence.</li>
+  <li>Follow-through: Following an incident, official governing bodies change official rules or laws.</li>
+</ul>
+
+<p>This all makes sense. A plane crashes once in the Toledo airport in 50 years, we gotta make sure the person who screwed in the lug nuts isn’t afraid to tell us that their wrench did seem a little loose that day.</p>
+
+<h2 id="blameless-in-software">Blameless in Software</h2>
+
+<p>Post-mortems in many software companies happen regularly. Many companies do weekly incident reviews. The properties of software post-mortems look like:</p>
+<ul>
+  <li>Severity: Comparatively, most software incidents aren’t that bad. Your average incident might be something like an API going down for 5 minutes. You gotta fix it, but they’re not hauling bodies out of the bay.</li>
+  <li>Frequency: Frequent. Often weekly.</li>
+  <li>Punishment: Listen, if you cause a 5 minute API outage and we’re holding you accountable, you’re probably not even getting rated Below Expectations at most companies. Do it twice and you probably are. Do it three times and you have to go find another job that might pay you 10% more. You’re not going to jail.</li>
+  <li>Recurrence: We do want to avoid recurrences of software incidents. It’s very important.</li>
+  <li>Follow-through: Follow-ups are typically owned by teams, often with medium-level priority, sometimes forgotten.</li>
+</ul>
+
+<h2 id="software-vs-aviationhealth">Software vs Aviation/Health</h2>
+
+<p>In summary, software post-mortems are much lower severity and much more frequent than aviation or healthcare post-mortems. In fact, they’re so common that they’re a critical part of regular accountability and learning in software organizations.</p>
+
+<p>As a result, software culture becoming too blameless is just as bad as being too blameful:</p>
+<ul>
+  <li>Individuals and teams miss the opportunity to learn. Without actually saying whose fault something is, people can end up living in a world where they never hear the thing that they need to hear most - this one was on you and you must change what you’re doing.</li>
+  <li>Because follow-ups are not as fanatically and centrally implemented, the key driver of quality is accountability, not new rules. When you obscure accountability in software incidents, you create sustained mediocrity.</li>
+</ul>
+
+<p>Said another way, the severity of an average software incident is not so bad that it’s worth the non-accountability of a blameless approach. As a result, it’s critical that software post-mortems tweak these practices to more effectively serve their needs.</p>
+
+<h2 id="blameful-postmortems---a-goldilocks-solution">Blameful Postmortems - A Goldilocks Solution</h2>
+
+<p>There must be a middle ground where we can achieve all of our goals. Blameful Postmortems should have the following properties:</p>
+
+<h3 id="its-somebodys-fault">It’s Somebody’s Fault</h3>
+
+<p>An absolutely critical part of every post-mortem is that it’s somebody’s fault. Every issue is either:</p>
+<ul>
+  <li>Someone’s job and thus their fault when it fails</li>
+  <li>Nobody’s job and the fault of the leader who has an ambiguous organizational design</li>
+</ul>
+
+<p>Note: it  must be primarily one person or one team’s fault. If it’s multiple teams that are allegedly at fault, it’s the same as no teams at fault. Driving to the core of who should have prevented an incident is often one of the most fruitful exercises in refining and clarifying responsibilities.</p>
+
+<p>There are no exceptions. Common examples are:</p>
+<ul>
+  <li>It’s a third party provider, how can that be my fault? You picked the third party provider, you need to own their outcomes.</li>
+  <li>I inherited this thing and never worked on it, how can that be my fault? You might not be in a ton of trouble for this failure, but it’s still your responsibility.</li>
+</ul>
+
+<p>Note: the word fault here is knowingly a bit harsh sounding, but it’s used intentionally. Other words start you on the slippery slope to blameless avoidance. Every incident should have had someone whose job it was to own the prevention or risk mitigation.</p>
+
+<h3 id="accountability-is-fair">Accountability Is Fair</h3>
+
+<p>A key failure with most blameless cultures is that people believe it means you don’t have consequences when things break. That’s a non-accountable culture. That’s nonsense. A good post-mortem and engineering culture promises that people will be held accountable in a fair and balanced way.</p>
+
+<p>For example, if there was really no way that you could have been expected to prevent an incident, it might still be your fault, but you might have 0 repercussions. We might walk away agreeing that next time is the one you’re expected to prevent.</p>
+
+<p>On the flip side, if you really messed up, you might get fired. If we said we’re in a code freeze and you YOLOed a release to try to push out a project to game the performance assessment round and you took out prod for 2 days, you will be blamed and you will be fired.</p>
+
+<p>Most repercussions are a middle ground. Good culture doesn’t mean people face all-or-nothing repercussions - it means they face the appropriate accountability.</p>
+
+<h3 id="the-right-incentives">The Right Incentives</h3>
+
+<p>As a quick aside - I absolutely hate how most people treat incentives. So many leaders act like incentives are the only thing you can expect people to follow.</p>
+
+<p>Hey, my top sales guy sold a $1M deal but did it at -90% margin, but there was no rule against it, so what do you expect?</p>
+
+<p>Hey, you created this process of always holding people accountable to incidents, don’t be surprised when people hide stuff, right?</p>
+
+<p>Horse apples. Nonsense.</p>
+
+<p>There is one main incentive that all employees have - act with high integrity or get fired. Stop excusing people for bad behavior because your little point systems don’t cover every case of common sense.</p>
+
+<p>So, as it applies to post-mortems - be clear with your team:</p>
+<ul>
+  <li>Everything is someone’s fault</li>
+  <li>Something being your fault doesn’t mean it’s a huge deal. Most things are not.</li>
+  <li>If you game the system, hide information, or otherwise prioritize your own rewards over the health of our company, you will be subject to disciplinary action up to and including termination</li>
+</ul>
+
+<h2 id="blameful-postmortems---final-thoughts">Blameful Postmortems - Final Thoughts</h2>
+
+<p>Software isn’t aviation or healthcare, so let’s stop acting like it. Post-mortems are good. Focus on non-recurrence of incidents is good. Let’s keep doing those.</p>
+
+<p>But not having accountability for failures is bad. Let’s stop doing that.</p>
+
+<p>Finally, leaders make or break processes like this. The worst leaders are overly blameful and punish people unfairly, often this is to cover their own tracks. As we make it back to a more healthy culture of appropriate blame, let’s make sure that leaders are held accountable as well.</p>]]></content><author><name></name></author><category term="saas" /><category term="saas" /><category term="business" /><category term="technology" /><summary type="html"><![CDATA[Ownership when lives aren't on the line.]]></summary></entry><entry><title type="html">Delegating Complex Tasks</title><link href="https://staysaasy.com/saas/2025/03/10/delegating.html" rel="alternate" type="text/html" title="Delegating Complex Tasks" /><published>2025-03-10T00:59:22+00:00</published><updated>2025-03-10T00:59:22+00:00</updated><id>https://staysaasy.com/saas/2025/03/10/delegating</id><content type="html" xml:base="https://staysaasy.com/saas/2025/03/10/delegating.html"><![CDATA[<p>Many leaders struggle with complex delegation.</p>
+
+<p>Failure to delegate often makes you a bottleneck. There are few things more demoralizing for a team than spending days trying to get a leader to do something that takes them minutes,</p>
+
+<p>Failure to delegate also creates key person risk, leaving you as the only person with critical knowledge, and, as a result, the only person to call when that knowledge is needed. Getting repeatedly paged at 3am because you didn’t delegate is a literal wakeup call.</p>
+
+<p>Most leaders can delegate simple things - e.g. teams, metrics - pretty well. Most leaders struggle with delegating complex skills or responsibilities.</p>
+
+<p>Herein we’ll discuss two proven methods for delegating complex tasks that you can use right away.</p>
+
+<h2 id="exponential-training">Exponential training</h2>
+
+<p>The types of problems that are especially prone to growing key person risk tend to have the following traits:</p>
+<ul>
+  <li>The problem requires deep knowledge</li>
+  <li>That deep knowledge can only be gained through lots of at-bats</li>
+  <li>There aren’t a lot of at-bats available</li>
+</ul>
+
+<p>A great example here is the plight of The Database Guy. The Database Guy at your company is often someone who was there early and had to wrangle all the database issues. Then they realize that to scale they need to get other people to understand the databases too. Often this realization comes when the failure to delegate means they’re getting paged constantly.</p>
+
+<p>So The Database Guy does a training on indexes and sharding and networking and query optimization and throttling operations and restarting tiers of hardware and how to get ahold of someone at your third party provider who can fix your problem. They then nod contentedly and figure they’ll get some much earned sleep. That night the Database Guy gets paged again.</p>
+
+<p>The problem is that you don’t learn deep skills by watching a PowerPoint. You learn them by doing. But complex, high-risk problems (like database failures) don’t happen often enough for passive learning to work.</p>
+
+<p>The way to solve this is via Exponential Training. Exponential Training works like this:</p>
+<ul>
+  <li>Train one person deeply. Instead of running a big seminar, work one-on-one with a single person for a quarter.</li>
+  <li>Give them real at-bats. Have them handle database issues for all teams, not just their own. Make them the primary responder.</li>
+  <li>Use historical incidents as practice. E.g. set up real-world drills in a dev environment.</li>
+  <li>Repeat. Each trained person teaches someone new the next quarter. After a year, you have a whole bench of experts.</li>
+</ul>
+
+<p>When done right, it only takes 12-24 months to get a sizable set of people really knowledgeable on a deep skill.</p>
+
+<p>Most people do not do this because:</p>
+<ul>
+  <li>It’s perceived as slow. This is a classic rabbit and hare issue.</li>
+  <li>Leaders don’t know how to get people the at-bats. Often a leader has access to much more data or opportunities than other people and this encumbers other’s ability to get experience. The answer is to give people more access.</li>
+</ul>
+
+<p>Especially if you have deep key person risk at your company, consider exponential training as a slow-to-start, fast-to-finish process for actually solving your problem.</p>
+
+<h2 id="suboptimal-standardization">Suboptimal Standardization</h2>
+
+<p>Suboptimal Standardization is the idea that you should be quick to delegate complex problems as long as they have checkpoints for quality control.</p>
+
+<p>The problems that require Suboptimal Standardization have similar conditions as ones that require Exponential Training - low opportunities for hands-on training and deep knowledge required. The difference is that Suboptimal Standardization problems can have quality control checkpoints.</p>
+
+<p>Two good examples here are making offers to candidates and budgeting processes. Leaders often own these processes beyond the point at which they have become a bottleneck. Leaders delay delegating them because:</p>
+<ul>
+  <li>They think it’s too complex to delegate. One of the biggest hurdles to delegating a responsibility is that some leaders don’t know or want to admit that their decisions actually aren’t that complicated. Decisions are almost never that complicated and failure to articulate how decisions are made should speak more to the weakness of a leader than further the mystique of their ability.</li>
+  <li>They claim it’s important to be able to optimize. In reality, the benefits of delegating almost always far outweigh any optimization you’ll ever do. This is especially true once you’ve become a bottleneck - when you don’t have the time to do any real optimization anymore.</li>
+</ul>
+
+<p>Let’s explore the example of making offers to candidates.</p>
+
+<p>When you decide how to make an offer to a candidate, you have to consider interview performance, market changes, equity, bonuses, competing offers and more. There are many things to consider, but there aren’t that many things. The complexity is enough though that many leaders decide to treat it more like an art than a process.</p>
+
+<p>When I was at a company at the size where department heads created all offers, I personally held onto making offers for a long time because it seemed impossible to get others to consider all of the factors involved. I needed to get it right, so I held onto it.</p>
+
+<p>Eventually I became a bottleneck and it caused problems. Once that pressure forced me to reconsider, I realized two things:</p>
+<ul>
+  <li>What I was doing was actually not that complicated.</li>
+  <li>I was prioritizing little micro-optimizations vs speed of execution and federated ownership</li>
+</ul>
+
+<p>So I challenged myself to really write out what it was I was doing, and I made a system that looked like:</p>
+<ul>
+  <li>Step 1: If interview performance is X for role Y, the offer is Z.</li>
+  <li>Step 2: If they negotiate, here are the standard counter-offers.</li>
+  <li>Step 3: If there’s an exception, escalate to me.</li>
+</ul>
+
+<p>Everything got better once I delegated making offers. This is because:</p>
+<ul>
+  <li>Giving my team the ability to run this process gave them the ability to think about the rules and optimize them.</li>
+  <li>Candidates got fairer, more predictable outcomes.</li>
+  <li>Recruiters could avoid mis-representing compensation ranges due to clearer expectations.</li>
+</ul>
+
+<p>When you find yourself as a bottleneck on a complex decision, create a Suboptimal Standardization. To do this:</p>
+<ul>
+  <li>Force yourself to write down a decision tree of how you actually make decisions</li>
+  <li>If the factors you consider include information your team doesn’t have access to, give them that information. Similar to Exponential Training, this is often a major blocker to delegation and you need to rip the bandaid.</li>
+  <li>Set up an approval process. When you make approvals, tweak the process as you notice things you hadn’t coached people on.</li>
+</ul>
+
+<p>If you do it right, Suboptimal Standardization quickly becomes more optimal standardization.</p>
+
+<h2 id="an-afterthought">An Afterthought</h2>
+
+<p>It was only through writing this post that I realized how often access to information is a throughline in delegation failure. Per the examples above and more, this often happens because:</p>
+<ul>
+  <li>Giving people access to messy information can be stressful or risky. For example, giving people access to all recruiting offers being made across all teams (beyond their own), creates risk. In many cases it’s a form of showing your work that leaders prefer not to be judged by, or exposing harsh realities you’re afraid of making people aware of (like some teams getting paid more than others).</li>
+  <li>Leaders can have egos around information access.</li>
+</ul>
+
+<p>If you’re bottleneck at anything as a leader, challenge yourself to consider if information asymmetry is a problem you’re creating. Amongst the other benefits, I’ve found that trusting my team with sensitive information has often deepened trust (in both directions), grown leader maturity, and increased fairness faster than almost any other thing I’ve done.</p>]]></content><author><name></name></author><category term="saas" /><category term="saas" /><category term="business" /><category term="technology" /><summary type="html"><![CDATA[I need halp.]]></summary></entry><entry><title type="html">Mutually Assured Mediocrity</title><link href="https://staysaasy.com/saas/2025/02/17/judge.html" rel="alternate" type="text/html" title="Mutually Assured Mediocrity" /><published>2025-02-17T12:59:22+00:00</published><updated>2025-02-17T12:59:22+00:00</updated><id>https://staysaasy.com/saas/2025/02/17/judge</id><content type="html" xml:base="https://staysaasy.com/saas/2025/02/17/judge.html"><![CDATA[<p>Maybe the worst state for a company to get in is what I call Mutually Assured Mediocrity.</p>
+
+<p>This is where people are so holistically mid that they agree not to criticize each other for fear of their own mediocrity being found out.</p>
+
+<p>And what’s worse is that leaders on top of MAM organizations are by default mediocre, and most of their signal on performance comes from peers complaining about each other (which doesn’t happen), so they think bad results are just acts of god instead of the obvious outcomes from mediocre teams.</p>
+
+<p>Herein we’ll talk about how to encourage a healthy judgement of one’s coworkers and how to avoid Mutually Assured Mediocrity.</p>
+
+<h2 id="a-sad-story">A Sad Story</h2>
+
+<p>In the early days of a startup, teams are in survival mode - if you’re not pulling your weight, we’re not sharing food with you. Startups that became successful rarely stifled peer feedback in the early days.</p>
+
+<p>Then you hire more vocations. As you add PM and Design and Product Marketing, you eventually hit your first conflict between these groups. It’s usually an engineer alleging that another vocation is not doing their job because, amongst other reasons, engineers are usually hired first (more tenured).  And then the big lie begins - you don’t understand what we do, stay in your lane.</p>
+
+<p>Your company dies a bit on that day.</p>
+
+<p>Eventually someone again alleges someone is not doing their job, and the leader of the target employee agrees with the assessment, but they’re not gonna let someone who’s never been in their shoes tell them how to run their team. So they drag their feet and nobody does anything about it.</p>
+
+<p>Your company dies a bit more on that day.</p>
+
+<p>Meanwhile, the leaders you’ve hired are trying not to get into fights while ramping up, and your CEO is trying to avoid criticism that they don’t know how to hire executives or manage different kinds of employees. Everyone is trying to avoid being accused of being a fraud; they don’t cast judgement on others to avoid getting judged themselves.</p>
+
+<p>Finally, you get to a place where there’s enough mediocrity that the few truth tellers left start to get punished because they’re the only ones who won’t pretend that standards have fallen.</p>
+
+<p>As then your company is officially dead.</p>
+
+<p>You’ll make it until the last of the good tenured leaders stick around to keep the boats afloat. Eventually the whole company will be mediocre and you achieve a full state of Mutually Assured Mediocrity.</p>
+
+<h2 id="a-different-way">A Different Way</h2>
+
+<p>It doesn’t have to be this way. In fact, with the right guidance you can encourage your team to judge their coworkers’ abilities, learn from it, and have it be part of a healthy ecosystem of accountability and growth.</p>
+
+<p>Here’s how to do it.</p>
+
+<h3 id="ground-rules">Ground Rules</h3>
+
+<p>First, things fail when people start attacking others directly and publicly. People can disagree in meetings, but people should not be making judgements on their teammates in public. Performance is public, performance management is private. Make it clear to your team that any and all feedback shared on a coworker’s ability is shared either in a private conversation between a person and their own manager, or in the peer feedback section of a performance review.</p>
+
+<p>Second, follow-ups are done privately. There is never the expectation that people are privy to the details of some else’s performance management. That said, if a peer’s performance is causing significant issues for an individual, team, or the business, it may be appropriate to talk about how to work around those issues while performance management is happening.</p>
+
+<p>Finally, you must make clear that nobody is promised a perfect coworker. All teammates are imperfect, and the average action is not termination but coaching. One of the teachable moments in a discussion about peer performance is making clear that people are expected to succeed despite imperfect coworkers; imperfect coworker performance is a reality, not an excuse.</p>
+
+<h3 id="how-to-do-it">How To Do It</h3>
+
+<p>OK, here’s how to productively encourage your team to think about evaluating their coworkers’ performance.</p>
+
+<p>First of all, you should set an expectation that your reports actually have an opinion on their peers’ performance. Sometime in the first few months you should say out loud something like: <code class="highlighter-rouge">We strongly value peer feedback and the ability to understand and evaluate peer performance. As we work together, I’ll periodically ask you how your peers are doing and I’d like you to be able to have thoughtful conversations about it.</code></p>
+
+<p>Furthermore, if they’re in a leadership position, you might add something like: <code class="highlighter-rouge">It’s quite important that you have a mature opinion on how your cross-functional partners are doing. Please make sure that you’re thinking about the different roles and responsibilities you share, how they are performing, and where you see opportunities for improvement.</code></p>
+
+<p>Next, you should periodically ask your report (e.g. once every 6-12 months) how they think their peers are doing. This is now when the productive conversation starts.</p>
+
+<p>If they think someone is doing well, why? This is a teachable moment - what do you think good performance looks like? Through this exercise you can help people understand:</p>
+<ul>
+  <li>The difference between superhuman performance and expectations (people often glamourize or mythify people just doing a really good job)</li>
+  <li>The ingredients of certain people’s success. Sometimes it’s as simple as highlighting that a strong performer works really hard.</li>
+  <li>The differences in leveling and experience. That person is doing a solid job, but they’re three levels above you and a lot of what they do is quite expected in role.</li>
+</ul>
+
+<p>If they think someone is doing poorly, why? Again, this is a very teachable moment. It’s a critical opportunity for you to be aware of underperformance, the perception of underperformance, or a misunderstanding. This is often a great opportunity to help people understand:</p>
+<ul>
+  <li>What the role of a person actually is. Many times critical perceptions are driven by a misunderstanding of what someone is actually supposed to do. No, actually, your PM is not your project manager.</li>
+  <li>The differences in leveling and experience. Sometimes people think someone isn’t good at their job, but they forget that they are 4 levels beneath them in the ladder.</li>
+</ul>
+
+<p>These conversations are also a very important way to get real time updates on the performance of teammates. Getting significant critical feedback from many people about a specific person is almost always a signal of underperformance. Getting this feedback in a continuous fashion is quite valuable, as many companies leave it to very infrequent performance review cycles to solicit that signal.</p>
+
+<p>Finally, an awareness of the strengths and weaknesses of a peer lets people supplement their work more effectively. OK, Bob isn’t great at meeting follow-ups. His manager can work on that for him, but can you, as someone who is great at it, help the team not fail when something is missed?</p>
+
+<h2 id="closing-thoughts">Closing Thoughts</h2>
+
+<p>All of this boils down to not letting tension relief run your company.</p>
+
+<p>When people work together and things fail, it’s somebody’s fault. One of the most evil things a company can do to people is not hold people accountable. I’ve felt bad for people who have had mean bosses, but I feel terrible for people with overly protective bosses. I’ve seen people literally ruin their career because they spent years under a manager who didn’t have the guts to give them feedback, even when other teams were complaining.</p>
+
+<p>Especially for leaders, not knowing how to evaluate the performance of your peer leaders is a major miss. If you don’t know what they’re supposed to do, how can you make sure you’re working together to create a business outcome? How can you improve processes across your vocational boundaries if you don’t even know what their job is? This is why it’s important that all leaders have some sense of how the business fundamentally works. This is why telling people to stay in their lane is so messed up - the minute you tell someone they couldn’t possibly know what they’re talking about when it comes to other vocations, they can never be held accountable to end to end business value again.</p>
+
+<p>And for junior hires, how can they learn without knowing what good looks like? How can you learn what good looks like without ever having the ability to point to someone and talk about their performance?</p>
+
+<p>Judge your coworkers, lest you not be judged, because to not be judged is to never learn.</p>
+
+<h2 id="assorted-notes">Assorted Notes</h2>
+<ul>
+  <li>Holding people accountable doesn’t always mean severe punishment. In fact it almost never means severe punishment. At a small scale, it simply means having clarity on who actually owned a thing that didn’t go well. At a large enough scale, it should mean some action is taken, and that action should be referenced in performance reviews. A lot of the industry moved too far into blameless culture in the last decade. A lot of stuff is someone’s fault, and it’s ok to say it.</li>
+  <li>It really is inexcusable for a senior leader to not have a point of view on a peer’s performance. Senior leaders should be knowledgeable enough to evaluate and heavily incentivized to care how their peers are doing. Apathy from a leader about peer performance is smoke that one or both of those is not true of the leader you’re evaluating.</li>
+  <li>One of the biggest opportunities of letting people judge their peers is coaching them when they’re wrong in that assessment because they don’t understand the person’s role. Very few people have intuition about other roles and responsibilities, and almost no companies are going to make explicit time to teach you about them. These conversations can be one of the only places to learn what other people are supposed to be doing.</li>
+</ul>]]></content><author><name></name></author><category term="saas" /><category term="saas" /><category term="business" /><category term="technology" /><summary type="html"><![CDATA[Lest ye not be judged.]]></summary></entry></feed>

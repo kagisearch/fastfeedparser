@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>John Coghlan</title>
+    <description>Varying parts family, community, and surfing.
+</description>
+    <link>coghlan.me/</link>
+    <atom:link href="coghlan.me/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 03 Dec 2025 15:28:06 +0000</pubDate>
+    <lastBuildDate>Wed, 03 Dec 2025 15:28:06 +0000</lastBuildDate>
+    <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>12 Days of Agents</title>
+        <description>&lt;h1 id=&quot;-introducing-12-days-of-agents&quot;&gt;🎄 Introducing: 12 Days of Agents&lt;/h1&gt;
+
+&lt;h2 id=&quot;learn-how-to-use-ai-agents-to-automate-real-work--not-just-chat&quot;&gt;Learn how to use AI agents to automate real work — not just chat.&lt;/h2&gt;
+
+&lt;p&gt;I’m running a fun (and practical!) series this December called &lt;strong&gt;12 Days of Agents&lt;/strong&gt; — a daily guide to understanding and using AI agents to save time and get real things done.&lt;/p&gt;
+
+&lt;p&gt;For 12 weekdays in December, I am sending a short lesson that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Teaches a useful concept about AI agents&lt;/li&gt;
+  &lt;li&gt;Shows you exactly when and how to use them&lt;/li&gt;
+  &lt;li&gt;Includes a quick hands-on activity&lt;/li&gt;
+  &lt;li&gt;Stays light, seasonal, and &lt;em&gt;actually helpful&lt;/em&gt; 🎁&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This isn’t academic. It’s &lt;strong&gt;real-world guidance&lt;/strong&gt; you can start using this month.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-what-youll-learn&quot;&gt;✨ What you’ll learn&lt;/h2&gt;
+&lt;p&gt;Over the 12 days, we’ll cover:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;What AI agents are&lt;/li&gt;
+  &lt;li&gt;Agents vs. Chatbots vs. Automations&lt;/li&gt;
+  &lt;li&gt;How agents plan and take action using tools&lt;/li&gt;
+  &lt;li&gt;Everyday use cases (work + personal life)&lt;/li&gt;
+  &lt;li&gt;Safety &amp;amp; permissions&lt;/li&gt;
+  &lt;li&gt;How to build your first agent&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And more — without the hype, the jargon, or the 200-page whitepaper.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-want-to-join-the-series&quot;&gt;📬 Want to join the series?&lt;/h2&gt;
+
+&lt;p&gt;👉 &lt;strong&gt;Sign up here:&lt;/strong&gt; &lt;a href=&quot;https://12daysofagents.com&quot;&gt;12DaysofAgents.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You’ll get every new edition delivered right to your inbox.&lt;/p&gt;
+
+&lt;p&gt;🕒 Already behind a day or two?&lt;/p&gt;
+
+&lt;p&gt;You can catch up anytime at &lt;a href=&quot;https://buttondown.com/johncoghlan/archive/&quot;&gt;the archives&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;why-im-doing-this&quot;&gt;Why I’m doing this&lt;/h2&gt;
+
+&lt;p&gt;AI agents are everywhere. But most people still think of AI as “that chatbot I ask questions.”&lt;/p&gt;
+
+&lt;p&gt;We’re at a moment where understanding how to &lt;strong&gt;direct AI to take action&lt;/strong&gt; can give you:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Hours back in your week&lt;/li&gt;
+  &lt;li&gt;Better focus on what matters&lt;/li&gt;
+  &lt;li&gt;A real career advantage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I want to help as many people as possible make that leap.&lt;/p&gt;
+
+&lt;p&gt;See you tomorrow for Day 2!&lt;br /&gt;
+— John&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate>
+        <link>coghlan.me/12-days-of-agents/</link>
+        <guid isPermaLink="true">coghlan.me/12-days-of-agents/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Four tips for people looking for jobs in DevRel</title>
+        <description>&lt;p&gt;My team just wrapped hiring for two Developer Advocate roles. I know the market is tough so wanted to share a few things I’ve noticed that could help you stand out if you’re looking.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lead with customer impact, not just activity. “I spoke at 5 events” is cool but “I helped solve a critical issue for our customers, then shared the solution at 5 industry events, resulting in 40+ follow-up conversations” is cooler.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make your recent work easy to find. If your best example is from more than 12 months ago, that’s a concern given how fast things are moving these days. Include direct links from your resume to blog posts, demos, or talks from the last 6-9 months.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Feel free to DM hiring managers but don’t take a lack of response personally, I was drowning in messages. I also didn’t want to sidestep my amazing recruiting partner by showing preference to folks who were engaging outside our application process.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Do your homework. Candidates who had read our handbook, understood our values, and could articulate how their experience aligned with our team’s mission really stood out. You can separate yourself from the pack by showing interest and understanding of the team you’re looking to join.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Hope this helps. Good luck to all those looking and thank you to everyone who expressed interest or applied for the roles.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Copied from my &lt;a href=&quot;https://www.linkedin.com/feed/update/urn:li:activity:7367198949327179776/&quot;&gt;LinkedIn post&lt;/a&gt; since it was quite popular over there.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Sep 2025 00:00:00 +0000</pubDate>
+        <link>coghlan.me/devrel-candidate-advice/</link>
+        <guid isPermaLink="true">coghlan.me/devrel-candidate-advice/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Things to remember</title>
+        <description>&lt;p&gt;This posts keeps track of some things I see that I don’t want to forget. The published date of this file will reflect whenever the most screenshot was added.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tweet1.png&quot; alt=&quot;Tweet screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tweet2.jpg&quot; alt=&quot;Tweet screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Quote:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Don’t confuse movement with progress.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;More to come.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+        <link>coghlan.me/things-to-remember/</link>
+        <guid isPermaLink="true">coghlan.me/things-to-remember/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Some thoughts on measuring DevRel</title>
+        <description>&lt;p&gt;Developer Relations, community, and marketing folks often grapple with understanding the impact of the content they create.&lt;/p&gt;
+
+&lt;p&gt;Metrics like page views and unique page views tell one story. But it’s hard to grok whether the eyeballs are the right eyeballs.&lt;/p&gt;
+
+&lt;p&gt;More telling metrics - like trials or other conversion-oriented metrics - can be hard to attribute to a specific piece of content or method of delivery.&lt;/p&gt;
+
+&lt;p&gt;Overall, DevRel and community teams should focus not on the piece by piece results of their content creation efforts but on the cumulative results of those efforts. This helps filter out the noise and makes attribution a bit easier.&lt;/p&gt;
+
+&lt;p&gt;For blog posts that might look like this:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;if we know that our marketing site generates X leads and the DevRel team is driving Y% of the traffic to the site, then we can estimate that X x Y% of the leads generated by the site can be attributed to the DevRel team.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This can also work for events:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;if Pipe to Spend for events with a GitLab speaker at the event is X and the Pipe to Spend for events without a GitLab speaker is Y, then we can estimate speakers can boost ROI on events by (X / Y)%.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Would love to hear if you agree/disagree and how you measure DevRel in your orgs. Hit me up on &lt;a href=&quot;https://www.linkedin.com/in/johnwcoghlan/&quot;&gt;LinkedIn&lt;/a&gt; if you want to chat about it.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate>
+        <link>coghlan.me/measuring-devrel/</link>
+        <guid isPermaLink="true">coghlan.me/measuring-devrel/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Video: How to write a winning CFP</title>
+        <description>&lt;p&gt;I recently presented at a GitLab meetup on how to write a winning CFP for our upcoming &lt;a href=&quot;https://about.gitlab.com/events/commit/&quot;&gt;GitLab Commit&lt;/a&gt; conference. I figured I would share as some of the insights are helpful regardless of the conference.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/mFVuKjN1tlc?start=960&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;em&gt;Note: the video will start at the 16:00 minute mark as the first part of the recording is specific to our Commit event.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You can find the slides from the presentation here: &lt;a href=&quot;https://docs.google.com/presentation/d/16A1sPq9H5_8nsoAckUUcmgaFBaP1ex9Ci2dO8SNFNM0/edit?usp=sharing&quot;&gt;GitLab Commit 2021 - CFP Worskhop&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate>
+        <link>coghlan.me/how-to-write-a-winning-cfp/</link>
+        <guid isPermaLink="true">coghlan.me/how-to-write-a-winning-cfp/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Community Metrics</title>
+        <description>&lt;p&gt;&lt;em&gt;Disclaimer: I am a community practictioner. I follow the practice of community management closely and apply what I learn to the work I do and the communities I build. I do not take credit for the creation of these ideas. I have tried to give the credit to the original sources as much as possible.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;As luck would have it, I had the chance to follow last week’s &lt;a href=&quot;https://twitter.com/flyless_dev&quot;&gt;FlylessWeekly&lt;/a&gt; with DevRel legend &lt;a href=&quot;https://twitter.com/leggetter&quot;&gt;Phil Legetter&lt;/a&gt; who covered one of the most popular topics in DevRel, &lt;code class=&quot;highlighter-rouge&quot;&gt;Defining DevRel roles&lt;/code&gt;, by tackling another widely-discussed topic in DevRel, &lt;code class=&quot;highlighter-rouge&quot;&gt;How to measure the impact of community&lt;/code&gt;. Here are my notes from that conversation.&lt;/p&gt;
+
+&lt;p&gt;Community metrics are a popular topic in DevRel because they’re hard. They’re hard to define, hard to measure, and hard to get right. A dollar of revenue is roughly equal in value across companies, the value of a user (LTV) to a company is fairly easy to quantify for most businesses, but the value of an interaction with a community member can vary pretty widely across communities and even within a community. How does the impact of a person attending a meetup to hear you speak compare to the value of a merge request that quickly fixes a bug impacting your users?&lt;/p&gt;
+
+&lt;h2 id=&quot;community-metrics-101&quot;&gt;Community metrics 101&lt;/h2&gt;
+
+&lt;p&gt;The difficulty with defining community metrics sometimes, many times?, leads to a set of metrics that fail to capture the true impact of a community. For example, maybe you have evaluated the value of or event tracked GitHub stars for your project, Twitter followers, Meetup attendees, or blog posts published. All of those metrics are directionally helpful. If those numbers are growing, you are probably doing something right.&lt;/p&gt;
+
+&lt;p&gt;But these metrics don’t tell the whole story and as your community grows so does the need to invest in it.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Tell me your favorite community metric. Wrong answers only.&lt;/p&gt;&amp;mdash; John Coghlan (@john_cogs) &lt;a href=&quot;https://twitter.com/john_cogs/status/1366823640101253126?ref_src=twsrc%5Etfw&quot;&gt;March 2, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;If I missed any of your (least) favorite metrics, make sure to reply to the tweet above and let me know.&lt;/p&gt;
+
+&lt;h2 id=&quot;emerging-community-metrics-for-tech-communities&quot;&gt;Emerging community metrics for tech communities&lt;/h2&gt;
+
+&lt;p&gt;In 2016 as a newcomer to community management and developer relations, the so-called “vanity metrics” (note: I don’t love this term as these metrics are often quite important for new communities) seemed to be the best we could do. In the last year, however, I’ve seen the tooling and availability of community metrics shift in an exciting new direction.&lt;/p&gt;
+
+&lt;p&gt;One cool new trend is the emergence of new ways to track community impact through a more wholistic lense. Tools like &lt;a href=&quot;https://orbit.love/&quot;&gt;Orbit&lt;/a&gt; and &lt;a href=&quot;https://bitergia.com/&quot;&gt;Bitergia&lt;/a&gt; allow businesses and project maintainers to view “atomic” level activity (Kudos to Sean Goggin from CHAOSS who introduced me to this term) to build out a more complete view of the contributions from a developer or a community at large. &lt;a href=&quot;https://twitter.com/mary_grace&quot;&gt;Mary Thengvall&lt;/a&gt;’s &lt;a href=&quot;https://www.marythengvall.com/blog/2019/12/14/devrel-qualified-leads-repurposing-a-common-business-metrics-to-prove-value&quot;&gt;DevRel Qualified leads&lt;/a&gt; is a new metric that looks to take an established business metric (XQLs) and adapt it to measure the impact of community and DevRel activities. I would be remiss not to mention &lt;a href=&quot;https://chaoss.community/&quot;&gt;CHAOSS&lt;/a&gt;, a Linux Foundation project that focuses on metrics to track community health.&lt;/p&gt;
+
+&lt;p&gt;While presenting at Flyless, I also learned about how some other teams are tracking their metrics. My notes include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/ryan_maclean&quot;&gt;Ryan MacLean&lt;/a&gt; tracks engagement with the content (how many people are raising their hand to ask me a question?) as a KPI&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/lornajane&quot;&gt;Lorna Mitchell&lt;/a&gt; pointed to Phil Legetter’s &lt;a href=&quot;https://www.leggetter.co.uk/aaarrrp/&quot;&gt;AAARRRP framework&lt;/a&gt; as model of more advanced metrics&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/CarolineLewko&quot;&gt;Caroline Lewko&lt;/a&gt; and others pointed to Airtable, Marketo, Mixpanel, and Hubspot as tools to help track community impact&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Each of these  tools and metrics aim to quantify the impact of interactions with a community member, rather than count the number of interactions. We have taken similar steps at GitLab, including the creation of a new metric that we are using to track the impact of our community.&lt;/p&gt;
+
+&lt;h2 id=&quot;community-at-gitlab&quot;&gt;Community at GitLab&lt;/h2&gt;
+
+&lt;p&gt;Before jumping into the metrics, I want to offer some background on GitLab and why we take community so seriously. Gitlab &lt;a href=&quot;https://about.gitlab.com/company/history/&quot;&gt;started in 2011&lt;/a&gt; as an open source project and the company launched as a &lt;a href=&quot;https://news.ycombinator.com/item?id=4428278&quot;&gt;Show HN&lt;/a&gt; post from our CEO the following year. Our CEO remains an active member of the community on Hacker News. Our well-known transparency, &lt;a href=&quot;https://about.gitlab.com/company/strategy/#mission&quot;&gt;“everyone can contribute” mission&lt;/a&gt;, and open source stewardship create many opportunities for our community to contribute to GitLab.&lt;/p&gt;
+
+&lt;h3 id=&quot;our-long-standing-community-kpi-wider-community-mrs-per-release&quot;&gt;Our long standing community KPI: Wider community MRs per release&lt;/h3&gt;
+
+&lt;p&gt;Our first and longest standing company-level community metric is &lt;a href=&quot;https://about.gitlab.com/handbook/marketing/performance-indicators/#wider-community-merged-mrs-per-release&quot;&gt;Wider Community merged MRs per release&lt;/a&gt;. Essentially, this tracks the number of new contributions to our product from the community on a monthly cadence. These contributions are essential to GitLab’s &lt;a href=&quot;https://about.gitlab.com/company/strategy/#dual-flywheels&quot;&gt;dual flywheels&lt;/a&gt; strategy. This strategy defines the virtuous cycle of community contributions creating more features leading to more users and revenue which enbables us to invest in new features which attract more users and contributors extending the cycle.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-new-kid-on-the-block-mrarr&quot;&gt;The new kid on the block: MRARR&lt;/h3&gt;
+
+&lt;p&gt;Our latest community-focused metric, though it is owned by our Engineering org, is &lt;a href=&quot;https://about.gitlab.com/handbook/engineering/performance-indicators/#mrarr&quot;&gt;MRARR&lt;/a&gt;. At GitLab, we affectionately call this the pirate metric. If that doesn’t make sense to you, try pronouncing it as a single word. :)&lt;/p&gt;
+
+&lt;p&gt;When thinking about next level community metrics, this is a favorite for me. MRARR tracks how frequently customers are contributing to GitLab by measuring the number of merge requests from customers multiplied by their Annual Run Rate. By contributing to GitLab, these customers are making the product better suited to their needs (increasing stickiness/retention) and likely better for other enterprises (improving product market fit). I love it and would love for other OS companies to consider adopting this metric.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-thoughts&quot;&gt;Final thoughts&lt;/h2&gt;
+
+&lt;p&gt;As DevRel evolves as a practice and new tools and metrics emerge, I hope that we’ll see increasing standardization of metrics across communities. When I posed this idea to today’s FlylessWeekly attendees, the response was mixed. Some felt that the variability of communities necessitates a wide variety of metrics. While I trust their judgement, I remain optimistic that better metrics will lead to increased invest in community. If you’ve got ideas, please drop me a line on &lt;a href=&quot;https://twitter.com/john_cogs&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;ps&quot;&gt;PS&lt;/h2&gt;
+
+&lt;p&gt;The other “top 3” topic is &lt;code class=&quot;highlighter-rouge&quot;&gt;Where does DevRel belong in an organization?&lt;/code&gt; and I’m excited to see who will volunteer to tackle that one.&lt;/p&gt;
+
+&lt;p&gt;I’d like to thank everyone mentioned for their inspiration. I’d also like to thank &lt;a href=&quot;https://twitter.com/katiereese317/&quot;&gt;Katie Reese&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/monkchips&quot;&gt;James Governor&lt;/a&gt; at Flyless the invitation to talk about this topic which lead to this post.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+        <link>coghlan.me/community-metrics/</link>
+        <guid isPermaLink="true">coghlan.me/community-metrics/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Community Leadership Summit 2020 Recap</title>
+        <description>&lt;p&gt;This year is my first time participating in the Community Leadership Summit. Things are a bit different this year (which can be said about pretty much everything in 2020), most notablythe event is completely virtual and it’s now co-located with All Things Open (rather than OSCON). What hasn’t changed is that the event features a number of sessions intended to be conversations rather than presentations.&lt;/p&gt;
+
+&lt;p&gt;All Things Open’s site has the &lt;a href=&quot;https://2020.allthingsopen.org/events/community-leadership-summit-2020/&quot;&gt;full list of sessions and moderators&lt;/a&gt; for Community Leadership 2020. I participated in / plan to participate in these sessions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://2020.allthingsopen.org/sessions/connecting-community-devrel-teams-to-other-teams/&quot;&gt;Connecting Community/DevRel Teams to Other Teams lead by Mary Thengvall&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://2020.allthingsopen.org/sessions/measuring-community-health/&quot;&gt;Measuring Community Health by Samantha Logan&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://2020.allthingsopen.org/sessions/how-to-build-amazing-incentives-and-rewards-panel-and-group-discussion/&quot;&gt;How to Build Amazing Incentives and Rewards (panel and group discussion) lead by Jono Bacon&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Due to soccer practice, I’ll miss the last sessions and the event wrap up but I’m hoping to consume more of the sessions asychronously via notes and recordings.&lt;/p&gt;
+
+&lt;h2 id=&quot;connecting-communitydevrel-teams-to-other-teams&quot;&gt;Connecting Community/DevRel teams to other teams&lt;/h2&gt;
+
+&lt;p&gt;This session was moderated by one of the leading voices in DevRel, &lt;a href=&quot;https://twitter.com/mary_grace&quot;&gt;Mary Thengvall&lt;/a&gt;. If you’re in the DevRel or community field, I highly recommend following Mary and subscribing to her newsletter, &lt;a href=&quot;https://devrelweekly.com/&quot;&gt;DevRel Weekly&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This session focused mainly on how to avoid and eliminate the friction that sometimes exists between DevRel and other teams due to the multi-faceted nature of DevRel teams. The key takeaways include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Work in &lt;em&gt;partnership&lt;/em&gt; with other teams rather than doing work &lt;em&gt;for&lt;/em&gt; them&lt;/li&gt;
+  &lt;li&gt;Team them how to fish&lt;/li&gt;
+  &lt;li&gt;Prioritize the work and show the &lt;em&gt;value&lt;/em&gt; of the work that you’re doing internally.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Throughout the discussion, the importance of effective communication between teams was a common thread.&lt;/p&gt;
+
+&lt;p&gt;During the discussion, I shared some of the work we’re doing at GitLab. Specifically, I referenced an &lt;a href=&quot;https://gitlab.com/gitlab-com/www-gitlab-com/-/merge_requests/65127&quot;&gt;open merge request&lt;/a&gt; that outlines the creation of our new DE budgeting process.The idea is to create budgets for our internal stakeholders to limit the number of requests for our team. The hope is that these limits will force our internal stakeholders to prioritize requests for our team so that&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;We’re handling the highest priority / highest impact requests&lt;/li&gt;
+  &lt;li&gt;We’re allowing the folks closest to the request to ensure it is of sufficient priority to request support from our team&lt;/li&gt;
+  &lt;li&gt;We’re have the ability and time to deliver great results for each requestor&lt;/li&gt;
+  &lt;li&gt;We’re capping the amount of work our team is doing to avoid burnout&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;measuring-community-health&quot;&gt;Measuring community health&lt;/h2&gt;
+
+&lt;p&gt;Thanks to Samantha Venia Logan for moderating. This was a really great session with lots of participation in the Zoom call and chat. Some highlights:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What should communities measure?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Communicate with your stakeholders and make sure you’re tracking what matters to them.&lt;/li&gt;
+  &lt;li&gt;Avoid vanity metrics.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;How can you measure what is coming from the community?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;At GitLab, we use labels to track community contributions but I recognize this doesn’t work for all organizations.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://chaoss.github.io/grimoirelab/&quot;&gt;Grimoire Labs&lt;/a&gt;, &lt;a href=&quot;https://cauldron.io/&quot;&gt;Cauldron&lt;/a&gt;, and &lt;a href=&quot;https://www.openhub.net/&quot;&gt;OpenHub&lt;/a&gt; were referenced as tools used for tracking community activity for open source projects.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;How can you measure the impact of what you are tracking?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Suggested that tracking the number of emoji-reactions on the issues becoming closed by community contributions. This was quickly captured by Georg Link as an &lt;a href=&quot;https://github.com/chaoss/wg-evolution/pull/378&quot;&gt;issue&lt;/a&gt; in the CHAOSS project.&lt;/li&gt;
+  &lt;li&gt;How to handle a high volume of requests:
+    &lt;ul&gt;
+      &lt;li&gt;Dawn Foster used the Kubernetes community as an example when suggesting communities create programs around the types of requests you’re seeing in large volume.&lt;/li&gt;
+      &lt;li&gt;Andrea Middleton reminded us of the important of having a clear scope for what your community can and cannot support (ex: “we’re not able to provide career counseling”).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-build-amazing-incentives-and-rewards&quot;&gt;How to build amazing incentives and rewards&lt;/h2&gt;
+
+&lt;p&gt;This one was moderated by &lt;a href=&quot;https://twitter.com/jonobacon&quot;&gt;Jono Bacon&lt;/a&gt;, who also happens to be the leader of the Community Leadership Summit. The talk covered a lot of familiar ground. Notably the issues with swag and instrinsic vs extrinsic motivation.&lt;/p&gt;
+
+&lt;p&gt;Some concepts or ideas that were new to me included:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;submarine (vs stated) incentives, which are rewarded to folks as a surprise for participation.&lt;/li&gt;
+  &lt;li&gt;providing rewards to folks who have their contributions rejected.&lt;/li&gt;
+  &lt;li&gt;the risk of over-rewarding your community (a risk when using extrinsic motivaion)&lt;/li&gt;
+  &lt;li&gt;ensuring your incentives are inclusive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The inclusivity piece was particularly interesting. Ensuring that your incentives and rewards are inclusive is hugely important to making folks from diverse backgrounds and experience feel welcomed in your community. This starts with the types of swag you offer but extends to the events you plan for community members and other types of rewards.&lt;/p&gt;
+
+&lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing thoughts&lt;/h2&gt;
+
+&lt;p&gt;Today was great. This was my first time blocking off an entire day for a virtual conference, with the exception of GitLab Commit, and it really allowed me to dig in to the event and participate in a much more meaningful way than other virtual events. The format of this event certainly contributed to that, too. Each CLS session encouraged participation which resulted in interactive and interesting discussions. I think that participation was boosted even by because the audience being largely community folks who are comfortable participating in events and know that their participation is key to the event’s success.&lt;/p&gt;
+
+&lt;p&gt;Due to soccer practice, I’ll miss the last sessions and the event wrap up but I’m hoping to consume more of the sessions asychronously via notes and recordings. Hopefully next year, we’ll be able to participate in this great community event in-person.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
+        <link>coghlan.me/community-leadership-summit-recap/</link>
+        <guid isPermaLink="true">coghlan.me/community-leadership-summit-recap/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Why I love virtual meetups</title>
+        <description>&lt;p&gt;Since March, GitLab’s meetups (which I manage) have been entirely virtual. This shift to virtual events is not unique - most industries from education to healthcare to media have similarly shifted to virtual events and remote work in an effort to slow the spread of COVID-19. I suspect our virtual events experience has been shared by thousands, maybe millions, of others. So while our experience has been shared by many, we’ve still learned some important lessons from the dozens of virtual community events we have organized. These lessons will impact our community and others in the coming months and years.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-we-know-about-virtual-meetups&quot;&gt;What we know about virtual meetups&lt;/h2&gt;
+
+&lt;p&gt;Here are some of the things we’ve learned:&lt;/p&gt;
+
+&lt;h3 id=&quot;interaction-is-key&quot;&gt;Interaction is key&lt;/h3&gt;
+
+&lt;p&gt;Many tech community meetup groups tend to measure success in the size of their groups and events. While there is certainly value in generating awareness for your community through large groups and well-attended events, much of the value for your meetup members and event attendees comes in the informal 1:1 or small group interactions they have at your events. With virtual events, you must be much more intentional in how you foster interactions as folks won’t have a chance to strike up a conversation while grabbing a drink or finding a seat.&lt;/p&gt;
+
+&lt;p&gt;Because of the challenges around facilitating informal interactions with virtual events, there can actually be more value in bringing together folks in small groups. Within the GitLab community, we encourage folks to allocate time for group discussions during their events. We typically use breakout groups at the end of our events to foster discussion. &lt;a href=&quot;https://twitter.com/BethanVincent&quot;&gt;Bethan Vincent&lt;/a&gt;, a &lt;a href=&quot;https://about.gitlab.com/community/heroes&quot;&gt;GitLab Hero&lt;/a&gt;, suggests ice breakers and introductions to help folks understand who else is in attendance and provide networking opportunities. She notes that may not work in groups with more than 20 attendees, so breakout groups again, would be an option to facilitate intros and icebreakers.&lt;/p&gt;
+
+&lt;p&gt;You can hear more about what Bethan has to say about virtual meetups in this YouTube video from June 2020.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/lvWxMfiL_T8&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;It’s also important to shift your mindset when thinking about the success of virtual events. In many cases, smaller groups are actually more productive and enjoyable to be a part of in a virtual setting than  a large group. So don’t allow yourself to get caught up in the number of RSVPs. Remind yourself that everyone who is supposed to be there will be there.&lt;/p&gt;
+
+&lt;p&gt;This quote from another GitLab Hero and organizer of the GitLab Meetup Hamburg, Philipp Westphalen, shows that a small event can have a big impact:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;“It went great, we had some deep discussions in a small group (we were 3 or 4 people). Turned out that these sessions are really great for helping other in the community with their interest.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You can see the context in this &lt;a href=&quot;https://gitlab.com/gitlab-com/marketing/community-relations/evangelist-program/general/-/issues/996#note_352464182&quot;&gt;GitLab issue&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And just for fun, here is a tweet from Phil from one of the first GitLab virtual meetups we did in March.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;My first &lt;a href=&quot;https://twitter.com/hashtag/remote?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#remote&lt;/a&gt; meetup by &lt;a href=&quot;https://twitter.com/gitlab?ref_src=twsrc%5Etfw&quot;&gt;@gitlab&lt;/a&gt; with &lt;a href=&quot;https://twitter.com/dnsmichi?ref_src=twsrc%5Etfw&quot;&gt;@dnsmichi&lt;/a&gt; &lt;a href=&quot;https://twitter.com/john_cogs?ref_src=twsrc%5Etfw&quot;&gt;@john_cogs&lt;/a&gt; and many others 🥳 &lt;a href=&quot;https://t.co/jC5qsvnKxH&quot;&gt;pic.twitter.com/jC5qsvnKxH&lt;/a&gt;&lt;/p&gt;&amp;mdash; Philipp (@Koala_Phil) &lt;a href=&quot;https://twitter.com/Koala_Phil/status/1242486989087051776?ref_src=twsrc%5Etfw&quot;&gt;March 24, 2020&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;diversity-and-inclusion&quot;&gt;Diversity and inclusion&lt;/h3&gt;
+
+&lt;p&gt;Diversity and inclusion is critical to the success of communities, organzations, and society.&lt;/p&gt;
+
+&lt;p&gt;Here are a few ways virtual events are more diverse and inclusive:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The nature of virtual events means they can be open to anyone with an internet connection.&lt;/li&gt;
+  &lt;li&gt;Geographic restrictions are no longer a limit.&lt;/li&gt;
+  &lt;li&gt;Given the plethora of virtual events happening each day, folks can likely find an event to join most days of the week no matter how busy their schedule.&lt;/li&gt;
+  &lt;li&gt;Folks dealing with physical issues that make attending in-person events difficult are now more likely to be able to participate in the events of their choosing.&lt;/li&gt;
+  &lt;li&gt;The ease of recording virtual events has increased the availability of recordings which are accessible at any time. These recordings can be captioned, annotated, and converted to text making them easier to comprehend for folks with different abilities and learning styles.&lt;/li&gt;
+  &lt;li&gt;Many virtual events are free to attend opening them up to folks who could previously not afford them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;virtual-community-events-are-here-to-stay&quot;&gt;Virtual community events are here to stay&lt;/h3&gt;
+
+&lt;p&gt;In addition to the diversity and inclusion benefits described above, groups are realizing many other advantages to virtual events. Two of the greatest benefits are the efficiency and scalability of these events.&lt;/p&gt;
+
+&lt;p&gt;Virtual events allow you to reach a global audience, growing your community without any geographic restrictions. You can also pull from a global network of speakers which makes your events more diverse, inclusive, and interesting. It makes finding speakers a bit easier, too. Travel - for speakers and attendees - is completely eliminated. In cities like NY or London, this might save people an hour or two of their day. Venues and other costs are gone, too.&lt;/p&gt;
+
+&lt;p&gt;There is still a steep learning curve as folks learn new platforms and adjust to virtual. But soon, the time spent looking for sponsors to provide a venue or buy pizza for your meetup will be spent on communication and content or maybe just spending less time planning meetups.&lt;/p&gt;
+
+&lt;h2 id=&quot;looking-into-the-future&quot;&gt;Looking into the future&lt;/h2&gt;
+
+&lt;p&gt;The future of virtual community events will be a hybrid model of both virtual and in-person events. Larger communities will emphasize virtual events at the global and local-level while folks in those groups self-organize into smaller groups that meet in-person on their own schedules to work together on side projects and coding exercises. You see some of &lt;a href=&quot;https://everyonecancontribute.com/&quot;&gt;this happening now&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To foster this model, community leaders at the global level will need to organize events at the global level, encourage organizers to lead events at the local level, and foster the formation of these smaller groups. The group formation can be supported through breakout sessions during virtual events, events designed &lt;em&gt;specifically&lt;/em&gt; for this cause, or via online forums and chat platforms. I suspect, new tools will emerge to help foster these connections, as well.&lt;/p&gt;
+
+&lt;p&gt;If you’d like to follow along as we go through this journey at GitLab, make sure to join our &lt;a href=&quot;https://www.meetup.com/gitlab-virtual-meetups/&quot;&gt;global virtual meetup group&lt;/a&gt;. If you have feedback or thoughts, feel free to tweet me: &lt;a href=&quot;https://twitter.com/john_cogs&quot;&gt;@john_cogs&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
+        <link>coghlan.me/why-i-love-virtual-meetups/</link>
+        <guid isPermaLink="true">coghlan.me/why-i-love-virtual-meetups/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Shop local (safely) during the pandemic</title>
+        <description>&lt;p&gt;Just like you, I love my hometown. One reason we love our neighborhoods are the small businesses nearby. Owned and staffed by our neighbors, friends, and classmates, these businesses are uniquely ours. They sponsor our sports teams and support our local causes. They know your order and are the places we go to connect with each other. The reality of the current situation is that right now - these businesses are in trouble.&lt;/p&gt;
+
+&lt;p&gt;We’re all feeling the impact of coronavirus - and the concerns about our families’ health, our jobs, and the future are &lt;em&gt;very&lt;/em&gt; real.  I can’t predict what will happen but I know one thing that will make you feel better: supporting your favorite small businesses during their time of need.&lt;/p&gt;
+
+&lt;p&gt;Here’s how to do it while practicing responsible social distancing which is critical to slowing the spread of the virus:&lt;/p&gt;
+
+&lt;h3 id=&quot;take-advantage-of-curbside-pickup-and-delivery&quot;&gt;Take advantage of curbside pickup and delivery&lt;/h3&gt;
+
+&lt;p&gt;Many businesses, especially restaurants and cafes, offer delivery and takeout. In some states, cities, and municipalities this is the only thing these businesses can do right now. Call your favorite local spots and place an order (if not, encourage them do so!). If you prefer to avoid handing over cash or your credit card, ask them if they take Venmo.&lt;/p&gt;
+
+&lt;h3 id=&quot;buy-a-giftcard-via-venmo&quot;&gt;Buy a giftcard via Venmo&lt;/h3&gt;
+
+&lt;p&gt;For some businesses, such as boutiques or surf shops, you may not have an immediate need for their services. You can still support them by purchasing gift cards, ask if you can do this via Venmo so you don’t need to go to the store, to provide them with cash flow now which can help them weather the slow down.&lt;/p&gt;
+
+&lt;h3 id=&quot;book-a-virtual-class-or-appointment&quot;&gt;Book a virtual class or appointment&lt;/h3&gt;
+
+&lt;p&gt;Facetime and Zoom are amazing communication tools. Take advantage of them. Call your therapist, yoga instructor, personal trainer, or guitar teacher and book virtual appointments.  The human connection and semblance of your normal routine will be benefit your mental health and provide your favorite service providers with much needed support.&lt;/p&gt;
+
+&lt;h3 id=&quot;support-on-patreon&quot;&gt;Support on Patreon&lt;/h3&gt;
+
+&lt;p&gt;Tell your favorite business owners to get on Patreon. Patreon allows folks to contribute fixed amounts monthly in exchange for access, content, etc. The ways this can be leveraged are countless and unique to each business. I’m happy to brainstorm with small business owners who are interested in learning more on how they can connect with and provide value to their communities in exchange for contributions.&lt;/p&gt;
+
+&lt;h3 id=&quot;call-your-local-politician&quot;&gt;Call your local politician&lt;/h3&gt;
+
+&lt;p&gt;Despite the steps outlined above, the reality is that many businesses will require support from local, state, and federal government to overcome the impacts of coronavirus. Call and email your local officials and make sure they understand that support for small business during this crisis is a priority for your community.&lt;/p&gt;
+
+&lt;h3 id=&quot;spread-the-word&quot;&gt;Spread the word&lt;/h3&gt;
+
+&lt;p&gt;Share this post. Share how you’re helping on social media and group chats. Encourage your favorite businesses to rethink how they are conducting their businesses. And if you have other ideas, please send them my way so I can update this post.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
+        <link>coghlan.me/shop-local/</link>
+        <guid isPermaLink="true">coghlan.me/shop-local/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>The Evangelist's Reading List</title>
+        <description>&lt;p&gt;Tech evangelism or developer advocacy or whatever you choose to call it is booming. A quick search on LinkedIn for three of the most popular titles for what we do (technical evangelist, developer advocate, developer relations) returned more than 12,000 people and around 300 job openings. Because this profession is still new and evolving the education process remains largely self-driven.&amp;lt;/p&amp;gt;
+Luckily, we have the Evangelism Collective - a group of technical evangelists, developer advocates, and other community builders. The core of the community is a Slack channel that is a mix of equal parts camaraderie, mentorship, and shared suffering. It is a vibrant community and a great place to learn about what is happening in the field.&lt;/p&gt;
+&lt;p&gt;I recently posted a request for book recomemendations. Not surprisingly, the community was quick to respond. Because it is a free community, at some point, the older parts of our history will be replaced by a recent message. So in order to preserve the knowledge of the group, I wanted to quickly jot down this community-sourced evangelism reading list (along with a few of my own picks).&lt;/p&gt;
+&lt;p&gt;If you are not a tech evangelist, you may still find some interesting recommendations in this list of titles. I was certainly surprised by the range of responses. Take a look:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Freakonomics: A Rogue Economist Explores the Hidden Side of Everything by Steven Levitt, Stephen Dubner&lt;/li&gt;
+&lt;li&gt;Think Like a Freak: The Authors of Freakonomics Offer to Retrain Your Brain by Steven D. Levitt, Stephen J. Dubner&lt;/li&gt;
+&lt;li&gt;SuperFreakonomics: Global Cooling, Patriotic Prostitutes, and Why Suicide Bombers Should Buy Life Insurance by Steven D. Levitt, Stephen J. Dubner&lt;/li&gt;
+&lt;li&gt;The Challenger Sale: Taking Control of the Customer Conversation by Matthew Dixon, Brent Adamson&lt;/li&gt;
+&lt;li&gt;The Trusted Advisor by David H. Maister, Charles H. Green&lt;/li&gt;
+&lt;li&gt;TED Talks: The Official TED Guide to Public Speaking by Chris Anderson&lt;/li&gt;
+&lt;li&gt;The Power Presenter: Technique, Style, and Strategy from America's Top Speaking Coach by Jerry Weissman&lt;/li&gt;
+&lt;li&gt;Made to Stick: Why Some Ideas Take Hold and Others Come Unstuck by Chip Heath&lt;/li&gt;
+&lt;li&gt;Switch: How to Change Things When Change Is Hard by Chip Heath&lt;/li&gt;
+&lt;li&gt;The Cluetrain Manifesto: 10th Anniversary Edition by Rick Levine, Christopher Locke&lt;/li&gt;
+&lt;li&gt;Never Eat Alone: And Other Secrets to Success, One Relationship at a Time by Keith Ferrazzi, Tahl Raz&lt;/li&gt;
+&lt;li&gt;Resonate: Present Visual Stories that Transform Audiences by Nancy Duarte&lt;/li&gt;
+&lt;li&gt;Thinking in Systems: A Primer by Donella H. Meadows, Diana Wright&lt;/li&gt;
+&lt;li&gt;Principles: Life and Work by Ray Dalio&lt;/li&gt;
+&lt;li&gt;Powerful: Building a Culture of Freedom and Responsibility by Patty McCord&lt;/li&gt;
+&lt;li&gt;Give and Take: Why Helping Others Drives Our Success by Adam Grant&lt;/li&gt;
+&lt;li&gt;Deep Work: Rules for Focused Success in a Distracted World by Cal Newport&lt;/li&gt;
+&lt;li&gt;Essentialism: The Disciplined Pursuit of Less by Greg McKeown&lt;/li&gt;
+&lt;li&gt;Tools of Titans: The Tactics, Routines, and Habits of Billionaires, Icons, and World*Class Performers by Timothy Ferriss&lt;/li&gt;
+&lt;li&gt;Joel on Software: And on Diverse and Occasionally Related Matters That Will Prove of Interest to Software Developers, Designers, and Managers, and to Those Who, Whether by Good Fortune or Ill Luck, Work with Them in Some Capacity by Joel Spolsky&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Note: I opted not to include links to an online bookseller in hopes that you'll support your local indie bookstore or library.)&lt;/p&gt;
+&lt;p&gt;Special thanks to all who chimed in with a response:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/harrisja&quot; rel=&quot;nofollow&quot;&gt;Jason Harris&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/mattstratton&quot; rel=&quot;nofollow&quot;&gt;Matt Stratton&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/emckean&quot; rel=&quot;nofollow&quot;&gt;Erin McKean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/crayzeigh&quot; rel=&quot;nofollow&quot;&gt;Aaron Aldrich&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/mary_grace&quot; rel=&quot;nofollow&quot;&gt;Mary Grace&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/thomasj&quot; rel=&quot;nofollow&quot;&gt;James Thomas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/PreciselyAlyss&quot; rel=&quot;nofollow&quot;&gt;Alyss&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+        <link>coghlan.me/the-evangelists-reading-list/</link>
+        <guid isPermaLink="true">coghlan.me/the-evangelists-reading-list/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>
+    <![CDATA[Chris Toomey]]>
+  </title>
+  <link href="https://ctoomey.com/"/>
+  <link href="https://ctoomey.com/atom.xml" rel="self"/>
+  <updated>2023-09-24T19:14:57+00:00</updated>
+  <id>http://ctoomey.com/</id>
+  <author>
+    <name>
+      <![CDATA[Chris Toomey]]>
+    </name>
+  </author>
+  <entry>
+    <title type="html">
+      <![CDATA[which + vim = wvim]]>
+    </title>
+    <link href="https://ctoomey.com/writing/which-plus-vim-wvim"/>
+    <updated>2021-02-03</updated>
+    <id>https://ctoomey.com/writing/which-plus-vim-wvim</id>
+    <content type="html">
+      <![CDATA[<p>Over the years I’ve collected an array of one-off scripts, shell aliases, git
+subcommands, etc., and I often find myself wanting to reference or edit of one
+of them. Sometimes I know where to look, but not always, and when in doubt I
+rely on the <code>which</code> command to point me in the right direction.</p>
+
+<p><code>wvim</code> is a script that I’ve built to streamline these sort of edits. It started
+as a simple wrapper around <code>which</code> — <code>function wvim() { vim "$(which $1)" }</code> —
+but over time I’ve added support for shell functions &amp; aliases, as well as git
+aliases and scripts. The thing that tipped this into the “oh wow, that’s pretty
+cool” space for me was the addition of tab completion by leveraging the existing
+tab completion for <code>which</code> via <code>compdef wvim=which</code>.</p>
+
+<p>Using it looks something like this:</p>
+
+<video autoplay="" loop="" muted="" playsinline="" controls="" src="/assets/videos/wvim.mp4" class="rounded w-full">
+</video>
+
+<h2 id="show-me-the-code">Show Me The Code!</h2>
+
+<p>You can check out <a href="https://github.com/christoomey/dotfiles/blob/master/zsh/configs/wvim.zsh">my current version of this script in my dotfiles
+repo</a>,
+but for completeness, I’ve included the contents of the file below. You can use
+it by including the code in your <code>~/.zshrc</code> file (or by splitting it out into
+its own file for organization purposes if you share my penchant for clean config
+files).</p>
+
+<p><em>Note</em> - the <code>compdef</code> completion line is zsh-specific, but I believe the rest
+should be reasonably portable to bash or other similar shells.</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="c"># top-level command. Determines the type of the requested command and then</span>
+<span class="c"># attempts to open it in vim</span>
+wvim<span class="o">()</span> <span class="o">{</span>
+  <span class="nv">command_name</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+  <span class="k">case</span> <span class="s2">"</span><span class="si">$(</span>_definition_type <span class="s2">"</span><span class="nv">$command_name</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span> <span class="k">in</span>
+    <span class="s2">"alias"</span><span class="p">)</span> _edit_shell_alias <span class="s2">"</span><span class="nv">$command_name</span><span class="s2">"</span><span class="p">;;</span>
+    <span class="s2">"function"</span><span class="p">)</span> _edit_shell_function <span class="s2">"</span><span class="nv">$command_name</span><span class="s2">"</span><span class="p">;;</span>
+    <span class="s2">"script"</span><span class="p">)</span> _edit_script <span class="s2">"</span><span class="nv">$command_name</span><span class="s2">"</span><span class="p">;;</span>
+    <span class="s2">"git-alias"</span><span class="p">)</span> _edit_git_alias <span class="s2">"</span><span class="nv">$command_name</span><span class="s2">"</span><span class="p">;;</span>
+    <span class="s2">"not found"</span><span class="p">)</span> _handle_unknown_command <span class="s2">"</span><span class="nv">$command_name</span><span class="s2">"</span>
+  <span class="k">esac</span>
+<span class="o">}</span>
+
+<span class="c"># This line configures zsh tab completion for `wvim` by reusing the tab completion</span>
+<span class="c"># for `which`</span>
+compdef <span class="nv">wvim</span><span class="o">=</span>which
+
+<span class="c"># Use the `type` command to determine the type of the provided command</span>
+_definition_type<span class="o">()</span> <span class="o">{</span>
+  <span class="nv">arg_type_string</span><span class="o">=</span><span class="si">$(</span><span class="nb">type</span> <span class="nt">-a</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="si">)</span>
+  <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$arg_type_string</span><span class="s2">"</span> <span class="o">==</span> <span class="k">*</span><span class="s2">"is an alias"</span><span class="k">*</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"alias"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$arg_type_string</span><span class="s2">"</span> <span class="o">==</span> <span class="k">*</span><span class="s2">"is a shell function"</span><span class="k">*</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"function"</span>
+  <span class="k">elif </span>which <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">&gt;</span> /dev/null 2&gt;&amp;1<span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"script"</span>
+  <span class="k">elif </span>_is_git_alias <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"git-alias"</span>
+  <span class="k">else
+    </span><span class="nb">echo</span> <span class="s2">"not found"</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="c"># Special handling for git aliases since `type` doesn't know about them</span>
+_is_git_alias<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> | <span class="nb">grep</span> <span class="nt">-q</span> <span class="s1">'git-.*'</span> <span class="o">&amp;&amp;</span> _git_aliases | <span class="nb">grep</span> <span class="nt">-qF</span> <span class="si">$(</span>_git_alias_name <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="si">)</span>
+<span class="o">}</span>
+
+_handle_unknown_command<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="se">\"</span><span class="nv">$1</span><span class="se">\"</span><span class="s2"> is not recognized as a script, function, or alias"</span> <span class="o">&gt;</span>&amp;2
+  <span class="k">return </span>1
+<span class="o">}</span>
+
+_git_alias_name<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> | <span class="nb">sed</span> <span class="s1">'s/^git-//'</span>
+<span class="o">}</span>
+
+_git_aliases<span class="o">()</span> <span class="o">{</span>
+  git config <span class="nt">--get-regexp</span> ^alias<span class="se">\.</span> |<span class="se">\</span>
+    <span class="nb">sed</span> <span class="nt">-e</span> s/^alias<span class="se">\.</span>// <span class="nt">-e</span> s/<span class="se">\ </span>/<span class="se">\ </span><span class="o">=</span><span class="se">\ </span>/ |<span class="se">\</span>
+    <span class="nb">awk</span> <span class="s1">'{print $1}'</span>
+<span class="o">}</span>
+
+_edit_git_alias<span class="o">()</span> <span class="o">{</span>
+  <span class="nv">line</span><span class="o">=</span><span class="si">$(</span><span class="nb">grep</span> <span class="nt">-En</span> <span class="s2">"^</span><span class="se">\s</span><span class="s2">+</span><span class="si">$(</span>_git_alias_name <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="si">)</span><span class="s2"> ="</span> ~/.gitconfig | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s2">":"</span> <span class="nt">-f</span> 1<span class="si">)</span>
+  vim ~/.gitconfig <span class="s2">"+</span><span class="nv">$line</span><span class="s2">"</span>
+<span class="o">}</span>
+
+_edit_script<span class="o">()</span> <span class="o">{</span>
+  vim <span class="s2">"</span><span class="si">$(</span>which <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span>
+<span class="o">}</span>
+
+_definition_field_for_pattern<span class="o">()</span> <span class="o">{</span>
+  <span class="nv">definition</span><span class="o">=</span><span class="si">$(</span><span class="nb">grep</span> <span class="nt">-En</span> <span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span> ~/.zshrc ~/.zshenv ~/.zsh/<span class="k">**</span>/<span class="k">*</span>.zsh 2&gt;/dev/null<span class="si">)</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$definition</span><span class="s2">"</span> | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s2">":"</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<span class="o">}</span>
+
+_edit_based_on_pattern<span class="o">()</span> <span class="o">{</span>
+  <span class="nv">file</span><span class="o">=</span><span class="si">$(</span>_definition_field_for_pattern 1 <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="si">)</span>
+  <span class="nv">line</span><span class="o">=</span><span class="si">$(</span>_definition_field_for_pattern 2 <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="si">)</span>
+  vim <span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span> <span class="s2">"+</span><span class="nv">$line</span><span class="s2">"</span>
+<span class="o">}</span>
+
+_edit_shell_function<span class="o">()</span> <span class="o">{</span>
+  _edit_based_on_pattern <span class="s2">"(^function </span><span class="nv">$1</span><span class="s2">)|(^</span><span class="nv">$1</span><span class="se">\(\)</span><span class="s2">)"</span>
+<span class="o">}</span>
+
+_edit_shell_alias<span class="o">()</span> <span class="o">{</span>
+  _edit_based_on_pattern <span class="s2">"alias </span><span class="nv">$1</span><span class="s2">="</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="caveats-and-limitations">Caveats and Limitations</h2>
+
+<p>Given that <code>wvim</code> is built out of various regex checks and heuristic searching
+logic, I’ve been impressed by how well <code>wvim</code> has worked for me.</p>
+
+<p>That said, there are a few assumptions baked into this script, most notably that
+I have it configured to look in both <code>~/.zshenv</code> and <code>~/.zshrc</code>. If you don’t
+have both those files, you’ll want to update that to only reference the file you
+have.</p>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Read-Only Mode For Better Rails Downtime]]>
+    </title>
+    <link href="https://ctoomey.com/writing/read-only-mode-for-better-rails-downtime"/>
+    <updated>2020-10-12</updated>
+    <id>https://ctoomey.com/writing/read-only-mode-for-better-rails-downtime</id>
+    <content type="html">
+      <![CDATA[<p>Recently I was looking to upgrade the Postgres version on an application I’ve
+been working on. This would require a small amount of downtime, likely about 10
+minutes.</p>
+
+<p>The default solution I’d reach for in these cases would be to go into Heroku’s
+maintenance mode, which serves an HTML maintenance page with a <code>503 Service
+Unavailable</code> status code. This works but makes the application entirely
+unusable during the upgrade, and I was hoping to find a better solution. In this
+particular case, I also wanted to be able to provide JSON responses as the
+application mainly provides an API for a mobile app.</p>
+
+<p>After <a href="https://www.bikeshed.fm/262">exploring a handful of half-baked options</a>, I settled on using a
+read-only connection to the database to still allow reads but prevent any
+writes from occurring. While using the read-only connection, the Postgres adapter
+will raise an error any time we attempt to change data in the database, but we
+can easily rescue this specific error and convert it to a user-facing notice. I
+felt a bit odd using exceptions as the core of this workflow, but in the end, it
+worked out really well, so I wanted to share the specifics.</p>
+
+<p>It’s worth noting that this solution is particularly well suited to this
+specific application, which only provides an API and has very read-heavy usage,
+but I imagine it could be extended to work with other styles of app as well.</p>
+
+<h2 id="configuring-rails-to-use-the-read-only-connection">Configuring Rails to Use the Read-Only Connection</h2>
+
+<p>If present, Rails will use the connection string in a <code>DATABASE_URL</code> env var to
+connect to the database. Following the <a href="https://guides.rubyonrails.org/configuring.html#connection-preference">Connection Preference</a> notes in the
+Rails guides, I realized that I could make this <code>DATABASE_URL</code> usage explicit
+and allow for a temporary override. To do this, I added an explicit <code>url</code>
+property for the production environment with desired connection preference:</p>
+
+<div class="highlight"><pre class="highlight yaml"><code><span class="c1"># config/database.yml</span>
+
+<span class="na">production</span><span class="pi">:</span>
+  <span class="na">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*default</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">&lt;%= ENV["DATABASE_URL_READ_ONLY"] || ENV["DATABASE_URL"] %&gt;</span>
+</code></pre></div>
+<p>With this in place, I can enable the read-only mode simply by setting the
+<code>DATABASE_URL_READ_ONLY</code> env var:</p>
+
+<div class="highlight"><pre class="highlight shell"><code>heroku config:set <span class="se">\</span>
+  <span class="nv">DATABASE_URL_READ_ONLY</span><span class="o">=</span><span class="s1">'postgres://read_only_user:abc123...'</span> <span class="se">\</span>
+  <span class="nt">--remote</span> production
+</code></pre></div>
+<p>Likewise, to disable the read-only mode, I can use:</p>
+
+<div class="highlight"><pre class="highlight shell"><code>heroku config:unset DATABASE_URL_READ_ONLY <span class="nt">--remote</span> production
+</code></pre></div>
+<p><em>Note</em>: I was able to use <a href="https://devcenter.heroku.com/articles/heroku-postgresql-credentials#managing-permissions">Heroku’s Postgres Credentials</a> interface to create
+the read-only user, but if you’re not working with Heroku you should be able to
+use <a href="https://dba.stackexchange.com/a/160817">these instructions</a> to create your read-only user.</p>
+
+<h2 id="error-handling">Error Handling</h2>
+
+<p>With other approaches I considered I found that I had to close off multiple
+different potential ways to issue writes to the database, but the read-only
+connection worked well to cut everything off in one change. That said, it
+was only half the solution, as I certainly didn’t want the errors making it to
+users.</p>
+
+<p>Thankfully it was relatively straightforward to provide a centralized <code>rescue</code>
+that would allow me to handle all the errors. First, I created a module using
+Rails’s <code>ActiveSupport::Concern</code> functionality:</p>
+
+<div class="highlight"><pre class="highlight ruby"><code><span class="c1"># app/controllers/concerns/read_only_controller_support.rb</span>
+<span class="k">module</span> <span class="nn">ReadOnlyControllerSupport</span>
+  <span class="kp">extend</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Concern</span>
+
+  <span class="n">included</span> <span class="k">do</span>
+    <span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s2">"DATABASE_URL_READ_ONLY"</span><span class="p">].</span><span class="nf">present?</span>
+      <span class="n">rescue_from</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">StatementInvalid</span> <span class="k">do</span> <span class="o">|</span><span class="n">error</span><span class="o">|</span>
+        <span class="k">if</span> <span class="n">error</span><span class="p">.</span><span class="nf">message</span><span class="p">.</span><span class="nf">match?</span><span class="p">(</span><span class="sr">/PG::InsufficientPrivilege/i</span><span class="p">)</span>
+          <span class="n">render</span><span class="p">(</span>
+            <span class="ss">status: :service_unavailable</span><span class="p">,</span>
+            <span class="ss">json: </span><span class="p">{</span>
+              <span class="ss">info: </span><span class="s2">"The app is currently in read-only maintenance mode. Please try again later."</span><span class="p">,</span>
+            <span class="p">},</span>
+          <span class="p">)</span>
+        <span class="k">else</span>
+          <span class="k">raise</span> <span class="n">error</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>When included, this module will use Rails’s <a href="https://api.rubyonrails.org/classes/ActiveSupport/Rescuable/ClassMethods.html#method-i-rescue_from"><code>rescue_from</code></a> method to capture
+potentially relevant errors, and then we do a quick check within that block
+to make sure we’re only capturing the relevant errors.</p>
+
+<p>Note, the <code>rescue_from</code> logic is only enabled when the <code>DATABASE_URL_READ_ONLY</code>
+is set, so we’re able to reuse the existence of that variable as a way to scope
+this behavior.</p>
+
+<p>I was then able to include that module in any relevant base controller:</p>
+
+<div class="highlight"><pre class="highlight ruby"><code><span class="c1"># app/controllers/application_controller.rb</span>
+<span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="kp">include</span> <span class="no">ReadOnlyControllerSupport</span>
+<span class="k">end</span>
+
+<span class="c1"># app/controllers/api/base_controller.rb</span>
+<span class="k">class</span> <span class="nc">Api::BaseController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="kp">include</span> <span class="no">ReadOnlyControllerSupport</span>
+<span class="k">end</span>
+</code></pre></div>
+<h2 id="non-api-error-handling">Non-API Error Handling</h2>
+
+<p>My initial use case for this read-only mode only needed to support API requests,
+but I could imagine extending it to HTML and form-based interfaces.</p>
+
+<p>The first thing I would consider would be adding a sitewide banner that stated
+that we were in a read-only maintenance mode to alert users to the current
+status.</p>
+
+<p>With that in place, I think we could extend the error handling in the
+<code>ReadOnlyControllerSupport</code> module to redirect the user back and display a
+relevant message:</p>
+
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">rescue_from</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">StatementInvalid</span> <span class="k">do</span> <span class="o">|</span><span class="n">error</span><span class="o">|</span>
+  <span class="k">if</span> <span class="n">error</span><span class="p">.</span><span class="nf">message</span><span class="p">.</span><span class="nf">match?</span><span class="p">(</span><span class="sr">/PG::InsufficientPrivilege/i</span><span class="p">)</span>
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="k">do</span>
+        <span class="c1"># JSON erorr message as shown above</span>
+      <span class="k">end</span>
+
+      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="k">do</span>
+        <span class="n">redirect_back</span><span class="p">(</span>
+          <span class="ss">fallback_location: </span><span class="n">root_path</span><span class="p">,</span>
+          <span class="ss">alert: </span><span class="s2">"The app is currently in read-only maintenance mode. Please try again later."</span><span class="p">,</span>
+        <span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">else</span>
+    <span class="k">raise</span> <span class="n">error</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<h2 id="scheduler-and-background-jobs">Scheduler and Background Jobs</h2>
+
+<p>One additional consideration here would be around background jobs and scheduler
+processes. For background jobs things are relatively straightforward – we just
+need to scale our worker pool down to zero for the read-only period.</p>
+
+<p>Scheduler processes are a little trickier as I didn’t have a mechanism for
+globally enabling or disabling them. With that in mind, I think the ideal
+solution would be to only ever have scheduler processes enqueue jobs but not
+actually do any work beyond that.</p>
+
+<h2 id="migrations">Migrations</h2>
+
+<p>The final sticking point we ran into was migrations. We have a <code>release</code> command
+defined in our <code>Procfile</code> that was configured to run <code>rake db:migrate</code>.
+Unfortunately, it turns out that even if no migrations run, Rails will still
+attempt to write to the <code>ar_internal_metadata</code> table as part of the <code>db:migrate</code>
+command, and Heroku will run the release command any time we change an env. In
+my initial attempt, Heroku failed when I attempted to set the
+<code>DATABASE_URL_READ_ONLY</code> as the associated release command hit the read-only
+error when running <code>rake db:migrate</code>.</p>
+
+<p>To work around this I wrote a small script that first checks if there
+are any migrations that need to be run, and only if there are, then runs <code>rake
+db:migrate</code>:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">set</span> <span class="nt">-e</span>
+
+<span class="k">if </span>bin/rails db:migrate:status | <span class="nb">grep</span> <span class="s1">'^\s\+down\s'</span><span class="p">;</span> <span class="k">then
+  </span>bin/rails db:migrate
+<span class="k">fi</span>
+</code></pre></div>
+<p>This script was added to the repo as <code>bin/migrate-if-needed</code>, and then we
+replaced our call to <code>rake db:migrate</code> with <code>bin/migrate-if-needed</code></p>
+
+<h2 id="update-oct-14-2020">Update (Oct 14, 2020)</h2>
+
+<p>After sharing this post, <a href="https://news.ycombinator.com/item?id=24780033">a commenter on Hacker News</a> pointed out <a href="https://github.com/discourse/rails_failover">the
+rails_failover gem</a> that their team at Discourse maintains. It seems to offer
+similar functionality, but in a more robust and fully thought out way. Looks
+like a great option to implement this sort of system.</p>
+
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Downsampling Data with Postgres Window Functions]]>
+    </title>
+    <link href="https://ctoomey.com/writing/downsampling-data-with-postgres-window-functions"/>
+    <updated>2020-09-15</updated>
+    <id>http://ctoomey.com/posts/downsampling-data-with-postgres-window-functions</id>
+    <content type="html">
+      <![CDATA[<p><a href="https://www.postgresql.org/docs/current/tutorial-window.html">SQL window functions</a> are one of those topics that never quite clicked for me
+in the abstract, but I’ve been able to take advantage of them on a few recent
+projects and wanted to share some of what I’ve learned.</p>
+
+<p>As context for this particular example, I’ve been in the habit of weighing
+myself daily for the past ~11 years. Aside from providing a <em>very</em> interesting
+data set, it just ends up being a lot of data to query, serialize, transmit, and
+then render on the client. I’ve got just over 4000 records currently, and I
+recently wanted to add an overview chart that would show the full history
+below the normal chart that shows a smaller subset of the data.</p>
+
+<p><img src="/assets/images/downsample-example-1276cbb8.png" class="screenshot rounded border" alt="" /></p>
+
+<p>This image shows the overview graph (the one on the bottom) as it exists now, downsampled to
+include every 10th record, but I initially implemented the overview using the
+full weigh-in history. I found that including them all added around 250kB of
+data and a few seconds downloading the page content (on a “fast 3G” network
+setting). I liked the functionality but realized I could likely get by with only
+a subset of the records. So I looked into how I could downsample the data, and a
+window function turned out to be the perfect tool.</p>
+
+<h2 id="basic-downsampling-example">Basic Downsampling Example</h2>
+
+<p>If I just wanted to grab all the weigh-in records, ordered by date, I could
+use:</p>
+
+<div class="highlight"><pre class="highlight sql"><code><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="n">weight</span> <span class="k">FROM</span> <span class="n">weighins</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">date</span><span class="p">;</span>
+</code></pre></div>
+<p>In order to downsample this data, I can use a window function to add a
+<code>ROW_NUMBER</code> value for the records ordered by date:</p>
+
+<div class="highlight"><pre class="highlight sql"><code><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">date</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">weighins</span><span class="p">;</span>
+</code></pre></div>
+<p>Now I had the computed row number but in order to use it to filter the records
+I had to include it as a sub-query and then filter in the outer query:</p>
+
+<div class="highlight"><pre class="highlight sql"><code><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="n">weight</span> <span class="k">FROM</span> <span class="p">(</span>
+  <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">date</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">weighins</span><span class="p">;</span>
+<span class="p">)</span> <span class="n">x</span> <span class="k">WHERE</span> <span class="k">mod</span><span class="p">(</span><span class="n">ROW_NUMBER</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<p>I only want to return the <code>id</code>, <code>date</code>, and <code>weight</code> fields, but I’m able to
+use the <code>ROW_NUMBER</code> in our <code>WHERE</code> clause to grab every 10th record using
+<code>mod(ROW_NUMBER, 10) = 0</code> filter.</p>
+
+<p><em>Note</em> - the <code>x</code> here is a name I’m giving to the sub-query. Postgres requires a
+name, but I’m not actually using it in the rest of the query.</p>
+
+<p><em>Other Note</em> - you’ll likely want to have an <a href="https://www.postgresql.org/docs/8.3/indexes-ordering.html">index on the <code>date</code>
+column</a> to make that
+<code>ORDER BY</code> clause efficient.</p>
+
+<h2 id="make-it-user-specific">Make It User Specific</h2>
+
+<p>Let’s say I have the same setup as above, but the records in the
+table I want to downsample are user-specific and I want to provide a similar
+overview graph for each user. Some users will have long histories with
+thousands of records, but others will only have a handful, and I’d like to
+return a consistent number of records for the overview graph for all users.</p>
+
+<p>In this case I can use another sub-query to determine the relevant downsample
+rate on a per-user basis. Let’s say I want to show a maximum of 300 data points
+in the overview graph; I can use a query like the following to get the
+downsample rate:</p>
+
+<div class="highlight"><pre class="highlight sql"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">/</span> <span class="mi">300</span> <span class="k">FROM</span> <span class="n">weighins</span> <span class="k">WHERE</span> <span class="n">user_id</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+</code></pre></div>
+<p>Now, rather than using the fixed value <code>10</code> as in the first query (aka, grab
+every 10th record), we’ll have a value that will vary for each user to ensure
+we get ~300 records in the returned data set.</p>
+
+<p>I can then combine that with the original query to efficiently grab the
+downsampled overview with the desired ~300 records:</p>
+
+<div class="highlight"><pre class="highlight sql"><code><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="n">weight</span> <span class="k">FROM</span> <span class="p">(</span>
+  <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">date</span><span class="p">)</span>
+    <span class="k">FROM</span> <span class="n">weighins</span>
+    <span class="k">WHERE</span> <span class="n">user_id</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="p">)</span> <span class="n">x</span> <span class="k">WHERE</span> <span class="k">mod</span><span class="p">(</span><span class="n">ROW_NUMBER</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">/</span> <span class="mi">300</span> <span class="k">FROM</span> <span class="n">weighins</span> <span class="k">WHERE</span> <span class="n">user_id</span> <span class="o">=</span> <span class="mi">7</span><span class="p">))</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<p><em>Note</em> - you’ll likely already have this, but just as a reminder, you’ll want to
+have an index on <code>user_id</code> for the relevant table to make sure the sub-query
+won’t slow things down too much.</p>
+
+<h2 id="a-final-tweak-for-very-large-tables">A Final Tweak for Very Large Tables</h2>
+
+<p>There’s one last trick that has helped in the
+case of a very large table where <code>COUNT(*)</code> is slow enough to be noticed. In
+this case I don’t actually care about getting an <em>exact</em> count, so I can take
+advantage of postgres metadata to get an approximate count:</p>
+
+<div class="highlight"><pre class="highlight sql"><code><span class="p">(</span><span class="k">SELECT</span> <span class="n">reltuples</span> <span class="k">FROM</span> <span class="n">pg_class</span> <span class="k">WHERE</span> <span class="n">relname</span> <span class="o">=</span> <span class="s1">'weighins'</span><span class="p">)::</span><span class="nb">int</span><span class="p">;</span>
+</code></pre></div>
+<p>A bit cryptic, but this query gets the approximate record count for the table.
+It lags a bit behind the actual value as it’s only updated when postgres runs
+<code>VACUUM</code> or <code>ANALYZE</code> or similar housekeeping operations, but it’s more than
+sufficient for our needs. I’ve tacked <code>::int</code> to explicitly typecast the
+result to allow us to use this in our <code>WHERE mod(ROW_NUMBER, ...)</code> filter.</p>
+
+<p>I can combine this as a sub-query to get a reasonably performant downsampled
+version of our data, even for very large tables:</p>
+
+<div class="highlight"><pre class="highlight sql"><code><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="n">weight</span> <span class="k">FROM</span> <span class="p">(</span>
+  <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">date</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">weighins</span>
+<span class="p">)</span> <span class="n">x</span> <span class="k">WHERE</span> <span class="k">mod</span><span class="p">(</span><span class="n">ROW_NUMBER</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">reltuples</span> <span class="o">/</span> <span class="mi">300</span> <span class="k">FROM</span> <span class="n">pg_class</span> <span class="k">WHERE</span> <span class="n">relname</span> <span class="o">=</span> <span class="s1">'weighins'</span><span class="p">)::</span><span class="nb">int</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="further-reading">Further Reading</h2>
+
+<p>The <a href="https://www.postgresql.org/docs/current/functions-window.html">Postgres Documentation on Window Functions</a> is, unsurprisingly, very
+solid. The <a href="https://sqlite.org/windowfunctions.html">SQLite Introduction to Window Functions</a> is also quite good, and
+<a href="https://thoughtbot.com/blog/postgres-window-functions">thoughtbot has a great article on using window functions</a>.</p>
+
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Vim's Arglist as a File-Centric Todo List]]>
+    </title>
+    <link href="https://ctoomey.com/writing/using-vims-arglist-as-a-todo-list"/>
+    <updated>2020-07-13</updated>
+    <id>http://ctoomey.com/posts/using-vims-arglist-as-a-todo-list</id>
+    <content type="html">
+      <![CDATA[<p>I often find myself wanting to make similar edits to a set of files within a
+project. More than I can do with <code>sed</code>, but simple enough that <code>ag</code> + <code>vim</code> are
+the perfect tools for the job. In the age-old tradition of using blog posts as
+notes to one’s future self (and any other kind soul who happens to need the same
+pile of hacks I stumbled upon), here we are.</p>
+
+<p>Further below is an explanation of the different tools at play, but in short,
+this is the workflow:</p>
+
+<ol>
+  <li>Open Vim with the desired files, e.g., <code>vim $(ag -l "from 'react'")</code></li>
+  <li>Edit the current file as needed using all the flexibility of Vim (macros,
+plugins, brute force edits all welcome here)</li>
+  <li>When the edits for the current file are done, run the <code>:ThankYouNext</code> command
+(see below for <a href="#working-through-the-list">the bit of Vimscript that makes that work</a>) to move on to
+the next file.</li>
+  <li>Repeat from step 2 until all files are edited and you’re left with an empty Vim
+session.</li>
+</ol>
+
+<h2 id="populating-the-arglist">Populating the Arglist</h2>
+
+<p>This workflow uses Vim’s <code>arglist</code> feature, which allows us to manage a subset
+of the open buffers as a distinct group. In our case, we can use it as a
+file-centric todo list.</p>
+
+<p>Starting from the command line, we can use any and all of our favorite tools
+like <code>find</code>, <code>grep</code>, <code>sed</code>, <code>awk</code>, <a href="https://github.com/ggreer/the_silver_searcher"><code>ag</code></a> (or <a href="https://github.com/BurntSushi/ripgrep"><code>ripgrep</code></a> or <a href="https://beyondgrep.com/"><code>ack</code></a> or
+whichever you search with), <a href="https://github.com/sharkdp/fd"><code>fd</code></a>, <a href="https://github.com/junegunn/fzf"><code>fzf</code></a>, etc. Here’s a handful of examples:</p>
+
+<div class="highlight"><pre class="highlight shell"><code><span class="c"># Files matching a search</span>
+❯ vim <span class="si">$(</span>ag <span class="nt">-l</span> <span class="s2">"from 'react-dom'"</span><span class="si">)</span>
+
+<span class="c"># Files w/ names matching a pattern</span>
+❯ vim <span class="si">$(</span>fd <span class="s1">'_spec.rb$'</span> spec/<span class="si">)</span>
+
+<span class="c"># Files selected from fuzzy finding w/ fzf</span>
+❯ vim <span class="si">$(</span>fzf <span class="nt">--multi</span><span class="si">)</span>
+
+<span class="c"># Files with uncommitted changes</span>
+❯ vim <span class="si">$(</span>git diff <span class="nt">--name-only</span><span class="si">)</span>
+
+<span class="c"># Files modified on this branch</span>
+❯ vim <span class="si">$(</span>git diff master <span class="nt">--name-only</span><span class="si">)</span>
+
+<span class="c"># Files w/ failing specs (using RSpec's persisted failure file)</span>
+❯ vim <span class="si">$(</span><span class="nb">grep</span> <span class="s1">'failed'</span> spec/examples.txt | <span class="nb">awk</span> <span class="s1">'{print $1}'</span> | <span class="nb">sed</span> <span class="s1">'s/\[.*$//'</span> | <span class="nb">sort</span> | <span class="nb">uniq</span><span class="si">)</span>
+
+<span class="c"># Conflicted files in git</span>
+❯ vim <span class="si">$(</span>git ls-files <span class="nt">-u</span> | <span class="nb">awk</span> <span class="s1">'{print $4}'</span> | <span class="nb">sort</span> <span class="nt">-u</span><span class="si">)</span>
+
+<span class="c"># A list of files copied to our clipboard</span>
+❯ vim <span class="si">$(</span>pbpaste<span class="si">)</span>
+</code></pre></div>
+<p>When we open Vim by providing an initial set of files, Vim will load them into
+the arglist and open the first file for editing. You can check the current state
+of the arglist at any time by running <code>:args</code>, with the output looking something
+like the following:</p>
+
+<div class="highlight"><pre class="highlight plaintext"><code>[dir/file_a.txt] dir/file_b.txt dir/nested/file_last.txt
+</code></pre></div>
+<p>Many thanks to Drew Neil for the amazing Vimcasts series, in particular <a href="http://vimcasts.org/episodes/populating-the-arglist/">this
+video on the arglist</a> which got me started down this path.</p>
+
+<p><em>Note</em>: While it’s possible to populate the arglist from within Vim, I found
+that approach to have a number of edge cases and instead I’ve had the best luck
+starting from the command line.</p>
+
+<p><em>Other Note</em>: All of the above examples use <code>vim $(...)</code> style command
+substitution as I think it looks a little more obvious, but thanks to <a href="https://twitter.com/relausen/status/1282762389964967936">a tip
+from Rune Lausen</a> I’ve learned that you can use <code>... | xargs -o vim</code> (where
+<code>...</code> is any of the above commands above like <code>git diff --name-only</code>). This is
+likely what I’ll end up using in my day to day as it makes it easier to iterate
+on the file-finding commands, and then just tack on the <code>| xargs -o vim</code> to pipe
+the files to Vim.</p>
+
+<h2 id="working-through-the-list">Working Through the List</h2>
+
+<p>This is the novel part that I always find myself forgetting, which brings us to
+this very blog post. Once we’re done with the edits for a given file, we want to
+write the current file, remove it from the list and progress to the next one.</p>
+
+<p>To wrap up the handful of Vimscript functions needed to do this, you can add the
+following to your <code>~/.vimrc</code>:</p>
+
+<div class="highlight"><pre class="highlight viml"><code><span class="k">function</span><span class="p">!</span> <span class="nv">s:ThankYouNext</span><span class="p">()</span> abort
+  <span class="k">update</span>
+  <span class="k">argdelete</span> %
+  <span class="k">bdelete</span>
+  <span class="k">if</span> <span class="p">!</span><span class="nb">empty</span><span class="p">(</span><span class="nb">argv</span><span class="p">())</span>
+    <span class="k">argument</span>
+  <span class="k">endif</span>
+<span class="k">endfunction</span>
+
+command<span class="p">!</span> ThankYouNext <span class="k">call</span> <span class="p">&lt;</span>sid<span class="p">&gt;</span>ThankYouNext<span class="p">()</span>
+</code></pre></div>
+<p>With this in place we can now use the new command, <code>:ThankYouNext</code>, and we’ll be
+taken to the next file or an empty Vim session to let us know we’re done.</p>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Sharing Query Logic Within ActiveRecord Models]]>
+    </title>
+    <link href="https://thoughtbot.com/blog/sharing-query-logic-within-activerecord-mdoels"/>
+    <updated>2019-10-02</updated>
+    <id>https://thoughtbot.com/blog/sharing-query-logic-within-activerecord-mdoels</id>
+    <content type="html">
+      <![CDATA[Re-use collection query logic within model instances to avoid duplication and get the best performance.]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Announcing: Our Online Learning Platform Upcase is Now Free!]]>
+    </title>
+    <link href="https://robots.thoughtbot.com/announcing-upcase-is-free"/>
+    <updated>2018-10-18</updated>
+    <id>https://robots.thoughtbot.com/announcing-upcase-is-free</id>
+    <content type="html">
+      <![CDATA[We’ve got some big news about our online learning platform Upcase, and we think you’re gonna love it!]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Tell Me When It Closes — Improved!]]>
+    </title>
+    <link href="https://robots.thoughtbot.com/tell-me-when-it-closes-mailer-improvements"/>
+    <updated>2018-03-26</updated>
+    <id>https://robots.thoughtbot.com/tell-me-when-it-closes-mailer-improvements</id>
+    <content type="html">
+      <![CDATA[Tell Me When It Closes just got a massive email makeover. Both in looks and in content, the new notification emails are a huge improvement.]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Tell Me When It Closes]]>
+    </title>
+    <link href="https://robots.thoughtbot.com/announcing-tell-me-when-it-closes"/>
+    <updated>2017-03-28</updated>
+    <id>https://robots.thoughtbot.com/announcing-tell-me-when-it-closes</id>
+    <content type="html">
+      <![CDATA[Announcement post for my recent thoughtbot investment time project - Tell Me When It Closes. Get notified when something closes on GitHub without getting lost in noisy discussions.]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Fundamentals of Test-Driven Development, Now on Upcase]]>
+    </title>
+    <link href="https://robots.thoughtbot.com/fundamentals-of-tdd-now-on-upcase"/>
+    <updated>2016-07-19</updated>
+    <id>https://robots.thoughtbot.com/fundamentals-of-tdd-now-on-upcase</id>
+    <content type="html">
+      <![CDATA[While I'm not in the recordings, this one is still close to my heart. Announcement for the Fundamentals of Test-Driven Development course on Upcase.]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Advanced ActiveRecord Querying, Now on Upcase]]>
+    </title>
+    <link href="https://robots.thoughtbot.com/advanced-activerecord-querying"/>
+    <updated>2016-03-10</updated>
+    <id>https://robots.thoughtbot.com/advanced-activerecord-querying</id>
+    <content type="html">
+      <![CDATA[Join me as thoughtbot CTO Joe Ferris drops some serious knowledge about ActiveRecord and database querying in general. I learned a ton recording this one.]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Announcing the tmux Course on Upcase]]>
+    </title>
+    <link href="https://robots.thoughtbot.com/announcing-the-tmux-course-on-upcase"/>
+    <updated>2015-02-06</updated>
+    <id>https://robots.thoughtbot.com/announcing-the-tmux-course-on-upcase</id>
+    <content type="html">
+      <![CDATA[Announcement for my tmux course on Upcase. A deep dive into the configurations, workflows, and thinking that I and my fellow 'bots use to get the most out of tmux.]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[tmux Copy & Paste on OS X: A Better Future]]>
+    </title>
+    <link href="https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future"/>
+    <updated>2013-07-19</updated>
+    <id>https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future</id>
+    <content type="html">
+      <![CDATA[A summary of the workflow and configuration needed to make copy & paste in tmux a breeze.]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Rails Deployment on the Cheap]]>
+    </title>
+    <link href="https://ctoomey.com/writing/rails-deployment-on-the-cheap"/>
+    <updated>2012-09-19</updated>
+    <id>http://ctoomey.com/posts/rails-deployment-on-the-cheap</id>
+    <content type="html">
+      <![CDATA[<p>Recently I have been working on increasingly complex Rails apps and have been
+looking for a way to better handle deploying them. That being said, these are
+apps that only a handful of people are using and are all hosted on Heroku.</p>
+
+<p>The following is the recipe I have pulled together to take the deployment of
+these apps a bit more seriously while not making it too complilcated. Think
+<code>$ git push heroku</code> meets <code>$ cap deploy</code>.</p>
+
+<!--more-->
+
+<p><strong>NOTE:</strong> This post is a work in progress and currently just acting as a
+placeholder. Check back soon for more.</p>
+
+<p>The following are the slides I used to present this talk at the September 2012
+BostonRB lightning talks meeup. After the slides is a bit more detail.</p>
+
+<script class="speakerdeck-embed" data-id="505a820c5c046b00020217c7" data-ratio="1.2945638432364097" src="//speakerdeck.com/assets/embed.js">
+</script>
+
+<p>The main focus I had was on increased testing and more so actually ensuring that
+my test suite ran before I deployed. With the ruby end of my apps, this was
+easy. Unfortunately (fortunately?) I find myself writing more and more
+javascript of late and I wanted to get this included.</p>
+
+<h2 id="jasmine">Jasmine</h2>
+
+<h3 id="jasminerice">Jasminerice</h3>
+
+<p>Jasminerice integrates the asset pipeline into the jasmine testing flow.</p>
+
+<p><img src="/assets/images/rails-deployment/jasmine-engine-829c028f.png" class="screenshot" alt="" /></p>
+
+<h3 id="guard-jasmine">Guard-jasmine</h3>
+
+<p><img src="/assets/images/rails-deployment/guard-jasmine-751945a9.png" class="screenshot" alt="" /></p>
+
+<h3 id="important-fix">Important Fix</h3>
+
+<p>By default, the test environment is set to swallow up parsing errors encountered
+while working through an asset file. This can cause the <code>guard-jasmine</code> task to
+incorrectly report a pass with 0 test, 0 failures. In order to avoid this, set
+<code>config.assets.debug = true</code> in test.rb environment file. The details of this
+issue can be found <a href="https://github.com/netzpirat/guard-jasmine/issues/58">here</a>.</p>
+
+<h2 id="full-stacking-it">Full Stacking It</h2>
+
+<ol>
+  <li>
+    <p><strong>Heroku</strong> use this rake task</p>
+  </li>
+  <li>
+    <p><strong>Travis</strong> drop the following in as your travis test task</p>
+  </li>
+</ol>
+
+<div class="highlight"><pre class="highlight yaml"><code><span class="c1"># .travis.yml file in project root</span>
+<span class="na">language</span><span class="pi">:</span> <span class="s">ruby</span>
+<span class="na">rvm</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">1.9.3</span>
+<span class="na">script</span><span class="pi">:</span> <span class="s">bundle exec rake travis</span>
+</code></pre></div>
+<div class="highlight"><pre class="highlight ruby"><code><span class="c1"># Project Rakefile, or "travis" file in lib/tasks</span>
+<span class="n">task</span> <span class="ss">:travis</span> <span class="k">do</span>
+  <span class="p">[</span><span class="s2">"rspec spec"</span><span class="p">,</span> <span class="s2">"guard-jasmine"</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">cmd</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="s2">"Running </span><span class="si">#{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">..."</span>
+    <span class="nb">system</span><span class="p">(</span><span class="s2">"export DISPLAY=:99.0 &amp;&amp; bundle exec </span><span class="si">#{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="s2">"</span><span class="si">#{</span><span class="n">cmd</span><span class="si">}</span><span class="s2"> failed!"</span> <span class="k">unless</span> <span class="vg">$?</span><span class="p">.</span><span class="nf">exitstatus</span> <span class="o">==</span> <span class="mi">0</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[An Incremental Approach to Vim]]>
+    </title>
+    <link href="https://ctoomey.com/writing/an-incremental-approach-to-vim"/>
+    <updated>2012-03-19</updated>
+    <id>http://ctoomey.com/posts/an-incremental-approach-to-vim</id>
+    <content type="html">
+      <![CDATA[<p>This post is a collection of the notes for a talk I gave on March 19th for the
+<a href="http://www.meetup.com/The-Boston-Vim-Meetup/">Boston Vim meetup</a>. The talk
+covered my approach to learning Vim over the long haul, and some tactics for
+learning Vim in a more continuous way.</p>
+
+<!--more-->
+
+<ul id="markdown-toc">
+  <li><a href="#experimenting" id="markdown-toc-experimenting">Experimenting</a>    <ul>
+      <li><a href="#vim-config" id="markdown-toc-vim-config">Vim Config</a></li>
+      <li><a href="#know-your-leader" id="markdown-toc-know-your-leader">Know Your Leader</a></li>
+      <li><a href="#plugin-management" id="markdown-toc-plugin-management">Plugin Management</a></li>
+      <li><a href="#using-git" id="markdown-toc-using-git">Using Git</a></li>
+    </ul>
+  </li>
+  <li><a href="#learning" id="markdown-toc-learning">Learning</a>    <ul>
+      <li><a href="#the-help-system" id="markdown-toc-the-help-system">The Help System</a></li>
+      <li><a href="#inspiration" id="markdown-toc-inspiration">Inspiration</a></li>
+      <li><a href="#bit-by-bit" id="markdown-toc-bit-by-bit">Bit by Bit</a></li>
+    </ul>
+  </li>
+  <li><a href="#incremental-features" id="markdown-toc-incremental-features">Incremental Features</a>    <ul>
+      <li><a href="#search" id="markdown-toc-search">Search</a></li>
+      <li><a href="#registers" id="markdown-toc-registers">Registers</a></li>
+      <li><a href="#macros" id="markdown-toc-macros">Macros</a></li>
+      <li><a href="#global" id="markdown-toc-global">Global</a></li>
+      <li><a href="#functions" id="markdown-toc-functions">Functions</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+<p><strong>Note</strong>: this talk was aimed at intermediate Vim users who are familiar with
+functions, macros, substitute, etc, but may not feel comfortable using
+them as part of their day to day editing. If you’re new to Vim, I highly
+starting starting with more of a general introduction to Vim, such as the
+<a href="http://vimdoc.sourceforge.net/htmldoc/usr_01.html#tutor">Vim tutor</a> or
+<a href="http://www.swaroopch.com/notes/Vim">A Byte of Vim</a>.</p>
+
+<p>My view is that learning Vim is better approached as an ongoing process, rather
+than a task to be completed. There is of course an initial learning curve to
+get past that requires a focused effort, but with that behind me, I can’t
+imagine ever being “done” learning Vim.</p>
+
+<p>Instead, my approach is to invest in the process of learning and experimenting
+with Vim.  If I can get to a point where I’m regularly learning new features,
+adapting my configuration to the languages and projects at hand, and generally
+feeling free to experiment with Vim, then I will be well poised to use Vim
+to its fullest in my editing.</p>
+
+<p>There are two aspects of Vim that make it lend so well to this style of
+incremental learning:</p>
+
+<ul>
+  <li>
+    <p><strong>Composition</strong> - Vim commands tend to build on each other very well. Search
+leads into substitute, functions can be launched by keymaps, macros drive from
+registers, etc. In the end, I see Vim very much as a “whole is greater than the sum of the parts” situation.</p>
+  </li>
+  <li>
+    <p><strong>Iteration</strong> - Vim has a crazy awesome undo system that will let me unwind
+changes all the way back to when I first opened the file. Armed with this
+knowledge I feel free to try out a command, fail, rewind, try again, fail…
+until I finally get the behavior I’m looking for.</p>
+  </li>
+</ul>
+
+<h2 id="experimenting">Experimenting</h2>
+
+<p>One of the most critical aspects of this approach to Vim is a comfort with and
+ease of experimentation. If I’m worried about breaking my Vim setup or
+don’t know how to implement configuration changes, then I won’t be able to
+get far.</p>
+
+<h3 id="vim-config">Vim Config</h3>
+
+<p>The heart of all of this is my Vim configuration (vimrc and .vim directory),
+which is stored on github in <a href="http://github.com/christoomey/dotfiles">my dotfiles</a>. Two key aspects of my configuration that facilitate my incremental approach are:</p>
+
+<ul>
+  <li>
+    <p><strong>Allows Repeated Sourcing</strong> - At any time, I should be able to <code>:source
+$MYVIMRC</code> and activate any new functionality I’ve added to my vimrc since
+startup. In the past I’ve had lines in my vimrc that caused errors when
+resourcing, or settings that should only be run once. I’ve since made it a
+priority to ensure I can safely and repeatedly source my vimrc without anything
+breaking. Unfortunately this can take some effort if you have a lot of snippets
+in your vimrc that you have pulled in from outside sources, but it is well
+worth the effort. At least twice now I’ve declared “Vim config bankruptcy”
+and started with a fresh, empty, vimrc. I then added code back in bit by bit,
+checking along the way that the configuration was clean and would allow me to
+re-source as needed.</p>
+  </li>
+  <li>
+    <p><strong>Short feedback loop</strong> - In order to make it easier to make changes on the
+fly, I use the two keymaps listed below. The first opens my vimrc for
+editing, the second sources it to update my settings and functions with
+anything new I’ve added.</p>
+  </li>
+</ul>
+
+<div class="highlight"><pre class="highlight viml"><code><span class="nb">map</span> <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="nb">re</span> <span class="p">:</span><span class="nb">execute</span> <span class="s2">"edit "</span> <span class="p">.</span> $MYVIMRC<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+<span class="nb">map</span> <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="nb">rs</span> <span class="p">:</span><span class="nb">execute</span> <span class="s2">"source "</span> <span class="p">.</span> $MYVIMRC<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="know-your-leader">Know Your Leader</h3>
+
+<p>The “leader” key in Vim is a key reserved for user (or often plugin) defined
+mappings. I tend to map a ton of things under the leader key (60 as of this
+writing), and while I definitely think this is a good thing, I’ve run into
+issues with conflicting <code>&lt;leader&gt;</code> mappings from time to time.</p>
+
+<p>By default the leader is mapped to <code>\</code> which is pretty far from the cozy home
+row. Thankfully you can move the leader key to wherever you like. If you don’t
+have any other leader key allegiance, I highly suggest using <code>,</code> which can be
+set with the following line added to your vimrc: <code>let mapleader = ","</code>. With
+that in place, a keymap such as <code>:nmap &lt;leader&gt;sa :s//</code> will actually be run
+as <code>,sa</code>.</p>
+
+<p>In hopes of better tracking my usage of the <code>&lt;leader&gt;</code> namespace for my key
+mappings, I wrote the following function:</p>
+
+<div class="highlight"><pre class="highlight viml"><code><span class="k">function</span><span class="p">!</span> ListLeaders<span class="p">()</span>
+     <span class="k">silent</span><span class="p">!</span> <span class="k">redir</span> @<span class="k">a</span>
+     <span class="k">silent</span><span class="p">!</span> nmap <span class="p">&lt;</span>LEADER<span class="p">&gt;</span>
+     <span class="k">silent</span><span class="p">!</span> <span class="k">redir</span> END
+     <span class="k">silent</span><span class="p">!</span> <span class="k">new</span>
+     <span class="k">silent</span><span class="p">!</span> <span class="k">put</span><span class="p">!</span> <span class="k">a</span>
+     <span class="k">silent</span><span class="p">!</span> <span class="k">g</span><span class="sr">/^s*$/</span><span class="k">d</span>
+     <span class="k">silent</span><span class="p">!</span> %s<span class="sr">/^.*,/</span>/
+     <span class="k">silent</span><span class="p">!</span> normal ggVg
+     <span class="k">silent</span><span class="p">!</span> <span class="k">sort</span>
+     <span class="k">silent</span><span class="p">!</span> <span class="k">let</span> <span class="nb">lines</span> <span class="p">=</span> <span class="nb">getline</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="s2">"$"</span><span class="p">)</span>
+<span class="k">endfunction</span>
+</code></pre></div>
+<p>It queries Vim for all <code>&lt;leader&gt;</code> prefixed mappings currently in place,
+reformats and sorts the list, and dumps it into a new buffer for review. It is
+pretty simple, but it lets me see my <code>&lt;leader&gt;</code> maps all in one place which I
+find useful.</p>
+
+<h3 id="plugin-management">Plugin Management</h3>
+
+<p>I’ve recently transitioned to using <a href="https://github.com/gmarik/vundle">Vundle</a>
+for managing my plugins. The OCD micro manager within me really appreciates
+that plugins are configured by lines in my vimrc which means that I can track
+the history of my plugins alongside the rest of my Vim configuration and
+settings. Likewise, the minimalist in me likes that all I need is a github
+user/repo string to identify a plugin, ie “tpope/vim-fugitive”, and then I can
+treat the actual plugin files as build output and ignore them. In addition, it
+allows me to update my plugins at runtime by adding a new bundle directive to
+my vimrc, sourcing it, then running <code>:BundleInstall</code>. The new plugin is then
+pulled down from github, cloned into my bundle directory, and added to the
+runtime path so it is ready for use immediately. Again, I prefer the shortest
+feedback loop possible and Vundle certainly delivers.</p>
+
+<h3 id="using-git">Using Git</h3>
+
+<p>In general, using version control provides a freedom to experiment that is
+extremely valuable. Git is especially accomodating to the approach I use as a
+result of the “index” which acts as a middle layer between my changes in the
+working directory, and my repository history. This allows me to draw a sharp
+line between the concerns of coding and version control. The two
+applications of the index that I include within my Vim configuration workflow
+are:</p>
+
+<ul>
+  <li>
+    <p><strong>Deferred commits</strong> - When working with other projects, I tend to work on a
+discrete feature until I’ve succesfully implimented it and then immediately
+commit the new code in git. With my Vim configuration, I find it preferable to
+implement a new bit of configuration and then defer commiting it for a few days
+to allow for testing new features. With Vim configuration I find this testing
+to be much more qualitative (does this feel right? does it mesh well with my
+other configurations? do I remember / use it?) than with my other repositories.
+Every few days, I will review the changes in my repo and either reset them (git
+checkout) or commit them.</p>
+  </li>
+  <li>
+    <p><strong>Selective Commits</strong> - One of the main things I love about git is that it
+provides a clear distinction between coding and version control concerns. I
+am free to make any changes I want, related or not, and leave the version
+control bits until later. I can use <code>git add &lt;file&gt;</code> to select specific files
+from a group of changed files, or even use <code>git add -p</code> to select specific
+changed lines from within a file. This allows me to tease apart the unrelated
+changes I tend to make over the course of a day or two.</p>
+  </li>
+</ul>
+
+<h2 id="learning">Learning</h2>
+
+<p>Vim is big. I’ve been working with it for around two and a half years now,
+and I am still learning new things on a regular basis. I find it useful to
+approach the learning aspect from two different angles simultaneously. The
+first is a more formal / reference type approach typically using Vim’s built in
+help system, and the second is a more exploratory approach with a focus on blogs
+and the like.</p>
+
+<h3 id="the-help-system">The Help System</h3>
+
+<p>Vim has a pretty solid help system that is always at my finger tips. The
+following set of mappings make it that much easier to get to the answer I
+want, facilitating the kind of iteration discussed in the rest of this post.</p>
+
+<div class="highlight"><pre class="highlight viml"><code><span class="c">" Help File speedups, &lt;enter&gt; to follow tag, delete for back</span>
+<span class="k">au</span> <span class="k">filetype</span> <span class="k">help</span> nnoremap <span class="p">&lt;</span><span class="k">buffer</span><span class="p">&gt;&lt;</span><span class="k">cr</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="k">c</span><span class="p">-]&gt;</span>
+<span class="k">au</span> <span class="k">filetype</span> <span class="k">help</span> nnoremap <span class="p">&lt;</span><span class="k">buffer</span><span class="p">&gt;&lt;</span><span class="nb">bs</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="k">c</span><span class="p">-</span>T<span class="p">&gt;</span>
+<span class="k">au</span> <span class="k">filetype</span> <span class="k">help</span> nnoremap <span class="p">&lt;</span><span class="k">buffer</span><span class="p">&gt;</span><span class="k">q</span> <span class="p">:</span><span class="k">q</span><span class="p">&lt;</span>CR<span class="p">&gt;</span>
+<span class="k">au</span> <span class="k">filetype</span> <span class="k">help</span> <span class="k">set</span> <span class="nb">nonumber</span>
+<span class="k">set</span> <span class="nb">splitbelow</span> " Split windows<span class="p">,</span> ie Help<span class="p">,</span> <span class="k">make</span> <span class="nb">more</span> sense <span class="k">to</span> me below
+<span class="k">au</span> <span class="k">filetype</span> <span class="k">help</span> <span class="k">wincmd</span> _ " Maximze the <span class="k">help</span> <span class="k">on</span> <span class="k">open</span>
+</code></pre></div>
+<p>With these settings in place, I can quickly search for a command or mapping in
+the help documentation, then follow tags using <code>&lt;enter&gt;</code> building up a stack of
+help buffers, then dropping back down in the stack using <code>&lt;bs&gt;</code> (delete). This
+makes browsing help buffers very much like browsing the web and lets me shift
+the level of detail up and down very quickly as I read through a help file.</p>
+
+<h3 id="inspiration">Inspiration</h3>
+
+<p>Although my general approach is to learn Vim by doing and tackling problems
+while I work on actual code, I do see a need to expose myself to more of what
+Vim has to offer. There is plenty of Vim functionality that I would’ve never
+encountered without having someone else explain it first.  I’ve found the
+following sites to be great sources of ongoing exposure and inspiration for all
+that Vim can do:</p>
+
+<ul>
+  <li>
+    <p><a href="http://vim.wikia.com/">Vim wiki</a> - The Vim wiki contains an impressive
+collection of tips for using Vim. They vary in quality, but the total
+collection is the best I’ve seen. For the adventurous among you, try starting
+at <a href="http://vim.wikia.com/wiki/VimTip1">the first tip</a> and going through them
+all.</p>
+  </li>
+  <li>
+    <p><a href="http://vim-scripts.org/">Vim Scripts</a> - The Vim scripts site is the home page
+for a project working to make all Vim.org scripts available as repos on
+github. This makes using any script with plugin managers, ala pathogen or vundle,
+a breeze.</p>
+  </li>
+  <li>
+    <p><a href="http://vimcasts.org/episodes/archive">Vimcasts</a> - A great collection of
+screencasts on Vim. The author hasn’t updated in a while, but solid content
+none the less.</p>
+  </li>
+  <li>
+    <p><a href="http://derekwyatt.org/vim/tutorials/">Derek Wyatt’s Videos</a> -
+Some of the best video content I’ve seen for Vim. <strong>Highly</strong> recommended.
+Covers both introductory stuff, as well as more advanced content.</p>
+  </li>
+  <li>
+    <p><a href="http://learnvimscriptthehardway.stevelosh.com">Steve Losh - Learn Vimscript the Hard Way</a> I can’t officially speak
+to the quality of the this particular content, but I’m such a fan of the
+author’s <a href="http://stevelosh.com/blog/2010/09/coming-home-to-vim/">Coming home to Vim</a> blog post, that I am more than happy to recommend this longer form content sight unseen.</p>
+  </li>
+  <li>
+    <p><a href="http://rayninfo.co.uk/vimtips.html">Vimtips list</a> - A crazy long list of
+tips and commands for bending Vim to your will.</p>
+  </li>
+  <li>
+    <p><a href="http://www.destroyallsoftware.com">Destroy All Software</a> - This is Gary
+Bernhardt’s weekly screencast site that covers unix, rails, Vim, etc. It
+isn’t free ($9 monthly), and it isn’t purely focused on Vim, but I’ve pulled
+out a bunch of Vim tips from it and would highly recommend checking it out.</p>
+  </li>
+  <li>
+    <p><a href="http://reddit.com/r/vim">Vim subreddit</a> - This subreddit contains
+continuously updating list of links to new web content about Vim.</p>
+  </li>
+</ul>
+
+<h3 id="bit-by-bit">Bit by Bit</h3>
+
+<p>The following list are some of the associated habits I’ve developed as part
+of my Vim workflow:</p>
+
+<ul>
+  <li>
+    <p><strong>Document Successes</strong> - Whenever I write up an interesting function, search,
+command, etc I will try to document it in my vimrc. At a minimum I will add a
+comment with it, but often I will wrap it in a function to name the piece of
+functionality.</p>
+  </li>
+  <li>
+    <p><strong>Capture Annoyances</strong> - I use the github issues tracker tied to my
+dotfiles repo as a place to unload a summary of things that I wish worked
+differently in Vim and my configuration. I can then forget about it and get
+back to work, knowing that I can always come back to it. This helps keep my
+focus on the code I am actually working on rather than constantly fiddling
+with my editor. Likewise, the github issues interface allows me to collect
+links and details so I can update the issues over time as I get more clarity on
+possible solutions.</p>
+  </li>
+  <li>
+    <p><strong>Avoid Yak Shaving</strong> - I have a very informal measure that I use to keep
+myself from getting distracted. At a minimum, I have to have the same thought
+three times before I will let myself pursue the topic. This can be writing a
+new function, investigating a bug / error, or anything else that is not related
+to the actual code I am working on. This goes hand in hand with having the
+github issues tracker to dump these kind of things into.</p>
+  </li>
+</ul>
+
+<h2 id="incremental-features">Incremental Features</h2>
+
+<p>The following is a collection of some of the core features in Vim with a
+suggestion of how to approach each of them in an incremental way. Each section
+is intended to present a highly simplified approach that can help you to learn
+the topic by experimenting a little bit at a time.</p>
+
+<h3 id="search">Search</h3>
+
+<p>Vim has extremely powerful regex based searching functionality build into it,
+but it is definitely not something you can learn in a few minutes. The
+following are three features associated with searching that have enabled me to
+experiment and get more comfortable with Vim search syntax each time I use it:</p>
+
+<ul>
+  <li>
+    <p><strong>Hlsearch</strong> - The hlsearch setting in Vim (enabled with <code>:set hlsearch</code>)
+causes Vim to progressively highlight the closest text that matches the
+pattern, as you enter the pattern. This sort of immediate feedback is critical
+to me when I’m working with features that I’m less familiar with. <strong>Note</strong> you
+can remap <code>&lt;Esc&gt;</code> in normal mode to also clear hlsearch highlighting with the
+following map definition <code>nmap &lt;Esc&gt; &lt;Esc&gt;:nohlsearch&lt;CR&gt;</code>.</p>
+  </li>
+  <li>
+    <p><strong>q/</strong> - Vim stores the last hundred or so search patterns, and you can view
+and modify them using <code>q/</code>. This will open a buffer containing the search
+history, one pattern per line, and let you modify or rerun any previous search.
+This is a standard Vim buffer so you have all the normal editing power (and
+searching power) of Vim available to help you refine searches. Once you have
+the new search ready, press <code>enter</code> to execute the search on the current (non
+search) buffer.</p>
+  </li>
+  <li>
+    <p><strong>Reusing Searches</strong> - After using <code>q/</code> to refine your search pattern down,
+ you can then reuse it in other more complicated commands. For a start, <code>//</code>
+will rerun the last search. Likewise, if you omit a pattern in a substitute
+command <code>:s//&lt;replacement&gt;/</code> or global (see below) <code>:g//&lt;cmd&gt;</code>, Vim will reuse
+the last search. This means that you can iterate on a search pattern
+independent of the command (substitute, global, etc) that uses it.</p>
+  </li>
+</ul>
+
+<h3 id="registers">Registers</h3>
+
+<p>Rather than having a single clipboard that only stores what you explicitly put
+into it, Vim has multiple “registers” that each act as a temporary storage
+location for commands, deletions, etc. This is another aspect of Vim that I was
+uncomfortable with at first, but there is a simple command that makes registers
+a whole lot more approachable. While in insert or command mode press <code>&lt;C-r&gt;</code>,
+followed by the register you wish to view, ie <code>q</code>, <code>/</code>, <code>*</code>. The contents of
+that register will then be dumped into the buffer or command line for you to
+examine. Here are some interesting ones to try out:</p>
+
+<ul>
+  <li><code>0</code> - the last yank</li>
+  <li><code>"</code> - the last delete</li>
+  <li><code>/</code> - the last search</li>
+  <li><code>*</code> - the system clipboard (most of the time)</li>
+</ul>
+
+<p>In addition, if you run the command <code>:registers</code>, you can see the contents of
+all the registers at the same. <code>:h registers</code> for a more thorough listing.</p>
+
+<h3 id="macros">Macros</h3>
+
+<p>Macros let you record edit operations and then replay them making it much
+easier to handle repetitive tasks. This can be a life saver. Recording a macro
+can be a bit confusing at first, so to simplify, here is what you do:</p>
+
+<ol>
+  <li><code>qq</code> - to start the recording (into the “q” register specifically)</li>
+  <li>perform your edits as if it’s any other day</li>
+  <li><code>q</code> - stop recording</li>
+  <li><code>@q</code> - to execute the macro (profit!)</li>
+</ol>
+
+<p>If you’ve never tried it, give it a shot. What’s more, since macros simply
+record keystrokes into a register (a simplification, but it works), then we can
+examine a macro by dumping it out using <code>&lt;c-r&gt;q</code> as descirbed above in the
+registers section. You can then modify the contents of the register using your
+Vim editing powers, then suck it back into the “q” register by visually
+selecting it and entering <code>"qd</code>.</p>
+
+<h3 id="global">Global</h3>
+
+<p>The <code>:g</code> or “global” command allows you to execute any command on all the lines
+that match a search pattern. This sounds more complicated than it is.
+Thankfully a global command can be composed a bit at a time in a very iterative
+way building on the steps laid out in the “search” and “macro” sections above.
+The rough steps are:</p>
+
+<ol>
+  <li>Define the search (and review it via hlsearch). Iterate as needed with <code>q/</code></li>
+  <li>Record a macro to define the edit. Iterate as needed with <code>&lt;c-r&gt;q</code> and <code>"qd</code></li>
+  <li>Launch the global with <code>:g//normal &lt;C-r&gt;q</code> (dump the “q” macro register into
+the command)</li>
+</ol>
+
+<h3 id="functions">Functions</h3>
+
+<p>I personally stayed away from functions for a long time before trying them out,
+and I really regret this. I was under the impression that I would need to know
+all of Vim before I could even approach using functions. Eventually I realized
+that functions are actually pretty straightforward in Vim. I use following code
+to allow me to experiment with functions very easily:</p>
+
+<div class="highlight"><pre class="highlight viml"><code><span class="k">function</span><span class="p">!</span> DoAThing<span class="p">()</span>
+    echo <span class="s1">'Hello World!'</span>
+<span class="k">endfunction</span>
+
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>rn <span class="p">:</span><span class="k">source</span> %<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;:</span><span class="k">call</span> DoAThing<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>This foundation is all you need to get up and running with functions. Drop this
+into a new buffer (the actual file can be anywhere in your filesystem since the
+source mapping uses <code>%</code> which provides the absolute path to the file), then run
+<code>:source %</code> and hit enter. This will source in the function and map definition
+and set you up for rapid fire iteration.  From there you simply fill in the
+function body with the code you want to run, type <code>,rn</code> to “run now”, observe
+the outcome, and repeat as needed. Each time you press <code>,rn</code> the file will be
+re-sourced and update the function definition, then the function will be
+called. This may sound like a lot of work, but in practice it allows for
+extermely efficient experimentation. The short version is:</p>
+
+<ol>
+  <li>Edit function body</li>
+  <li>Press <code>,rn</code></li>
+  <li>Watch the function do its thing</li>
+  <li>Lather, rinse, repeat</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In the end my approach is characterized by a desire to experiment, a focus on
+short iterations with rapid feedback, use of version control to create a sense
+of freedom with regard to changes, and a desire to take what I learn and wrap
+it in named abstractions. I find it interesting that this approach seems to
+parallel my general approach to development. I didn’t start this talk with that
+in mind, but I am pleased to see that it ended there none the less.</p>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Lazy Vim Completion]]>
+    </title>
+    <link href="https://ctoomey.com/writing/lazy-vim-completion"/>
+    <updated>2012-01-22</updated>
+    <id>http://ctoomey.com/posts/lazy-vim-completion</id>
+    <content type="html">
+      <![CDATA[<p>Vim has a great completion system, capable of intelligently supporting a whole
+range of filetypes, and overall is a great piece of the vim picture. The key
+feature that I was hoping to find was the ability to trigger completion and
+move through the list of completion options using a single key combo,
+preferably on the home row. What follows is my current method for doing this.</p>
+
+<!--more-->
+
+<h2 id="what-you-get">What You Get</h2>
+
+<ul>
+  <li>Ctrl-j triggers <code>C-x C-i</code> keyword completion, great for long variables &amp;
+method names</li>
+  <li>Ctrl-k triggers <code>C-x C-o</code> omni completion, mostly used in css files</li>
+  <li>After triggering completion, subsequent Ctrl-j/k will cycle up and down the
+menu of potential completions</li>
+</ul>
+
+<p>Note, these will override the default insert mode Ctrl-j/k key mappings, but
+these provide “Begin a new line” and “Enter a digraph” respectively, so I don’t
+mind losing them.</p>
+
+<h2 id="how-to-get-it">How to Get It</h2>
+
+<p>The code for each of the keymaps is a single ternary expression that checks to
+see if the completion menu is visible, then either opens it or cycles within
+it.</p>
+
+<div class="highlight"><pre class="highlight viml"><code><span class="c">" Use j/k to start, then scroll through autocomplete options</span>
+inoremap <span class="p">&lt;</span>expr<span class="p">&gt;</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">j</span><span class="p">&gt;</span> <span class="p">((</span><span class="nb">pumvisible</span><span class="p">())</span>?<span class="p">(</span><span class="s2">"\&lt;C-n&gt;"</span><span class="p">):(</span><span class="s2">"\&lt;C-x&gt;&lt;c-i&gt;"</span><span class="p">))</span>
+inoremap <span class="p">&lt;</span>expr<span class="p">&gt;</span> <span class="p">&lt;</span>C<span class="p">-</span><span class="k">k</span><span class="p">&gt;</span> <span class="p">((</span><span class="nb">pumvisible</span><span class="p">())</span>?<span class="p">(</span><span class="s2">"\&lt;C-p&gt;"</span><span class="p">):(</span><span class="s2">"\&lt;C-x&gt;&lt;c-o&gt;"</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="room-for-improvement">Room for Improvement</h2>
+
+<p>My main gripe with how I currently have this working is that the completion
+menu often presents completion options in the reverse order to what I would
+want. It looks as though vim searches down through the current file to provide
+the list of potential completions, but most often I am looking for a variable
+from a few lines above. I am guessing I can get vim to search upward but have
+yet to feel a strong need to do this.</p>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Offline Docs the Easy Way]]>
+    </title>
+    <link href="https://ctoomey.com/writing/offline-docs-the-easy-way"/>
+    <updated>2011-11-13</updated>
+    <id>http://ctoomey.com/posts/offline-docs-the-easy-way</id>
+    <content type="html">
+      <![CDATA[<p>I will be taking a few flights in the coming weeks and I wanted to arrange to
+have access to the documentation for some of the tools and frameworks I have
+been using.</p>
+
+<p>I searched around a bit and found a suggestion at the bottom of <a href="http://stackoverflow.com/questions/2439170/ruby-and-ruby-on-rails-offline-api-documentation/7781091#7781091">this thread</a>
+that explained how to do this with a single shell command. Big win!</p>
+
+<!--more-->
+
+<p>The relevant command was:</p>
+
+<div class="highlight"><pre class="highlight shell"><code>wget <span class="nt">-rkp</span> http://api.rubyonrails.org/
+</code></pre></div>
+<p>This command uses wget to recursively pull down the target site into a local
+directory. The options are:</p>
+
+<ul>
+  <li><code>-r</code> =&gt; Download recursively</li>
+  <li><code>-k</code> =&gt; Convert links to point to local versions</li>
+  <li><code>-p</code> =&gt; Get all images, stylesheets, etc</li>
+</ul>
+
+<p>For mac users, you can install <code>wget</code> using
+<a href="http://mxcl.github.com/homebrew/">homebrew</a>.</p>
+
+<p>I used this to grab the following:</p>
+
+<ul>
+  <li><a href="http://api.jquery.com">jQuery API</a></li>
+  <li><a href="http://coffeescript.org/">CoffeeScript docs</a></li>
+  <li><a href="http://underscorejs.org/">Underscore.js docs</a></li>
+  <li><a href="http://api.rubyonrails.org/">Rails API</a></li>
+</ul>
+
+<p>In the case of jQuery (and prior Rails versions) there have been efforts to
+create this sort of resource and make it publicly available. For jQuery, you
+can download a pretty snazy single page app version of the docs at
+<a href="http://jqapi.com/">jQAPI</a>, although it will not work in Chrome due to Chrome’s
+rules regarding XHR requests over the file:// protocol.</p>
+
+<p>In the end, I am happy to have a simple method to manage this on my own.</p>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Command-T Optimized]]>
+    </title>
+    <link href="https://ctoomey.com/writing/command-t-optimized"/>
+    <updated>2011-10-31</updated>
+    <id>http://ctoomey.com/posts/command-t-optimized</id>
+    <content type="html">
+      <![CDATA[<p><a href="https://wincent.com/products/command-t">Command-T</a> is a
+<a href="http://www.vim.org">vim</a> plugin for rapid file navigation using fuzzy path
+matching. It is one of the few plugins I find truly essential. Although
+profoundly useful, I find that there are a few customizations that make it
+unbeatable.</p>
+
+<p>In order to make Command-T a little more friendly, I do the following:</p>
+
+<ul>
+  <li>Make all Command-T actions relative the current git repo root</li>
+  <li>Use the <code>.gitignore</code> to filter the file list</li>
+  <li>Setup a collection of maps for starting Command-T in subfolders</li>
+</ul>
+
+<!--more-->
+
+<h2 id="command-t-relative-the-git-root">Command-T Relative the Git Root</h2>
+
+<p>The first thing I do in order to make working with Command-T more friendly is
+to make it work from the root of the current git repo. Reaching for Commend-T
+implies that I am in a project of some non trivial size, ie anything with one
+or more subfolders, then I can pretty safely assume I will have it in a git
+repo.</p>
+
+<p>The following functions allow me to move the current working directory to the
+root of the git repo before starting up Command-T.</p>
+
+<div class="highlight"><pre class="highlight viml"><code><span class="k">function</span><span class="p">!</span> Git_Repo_Cdup<span class="p">()</span> " Get the relative <span class="nb">path</span> <span class="k">to</span> repo root
+    <span class="c">"Ask git for the root of the git repo (as a relative '../../' path)</span>
+    <span class="k">let</span> git_top <span class="p">=</span> <span class="nb">system</span><span class="p">(</span><span class="s1">'git rev-parse --show-cdup'</span><span class="p">)</span>
+    <span class="k">let</span> git_fail <span class="p">=</span> <span class="s1">'fatal: Not a git repository'</span>
+    <span class="k">if</span> <span class="nb">strpart</span><span class="p">(</span>git_top<span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="nb">strlen</span><span class="p">(</span>git_fail<span class="p">))</span> <span class="p">==</span> git_fail
+        <span class="c">" Above line says we are not in git repo. Ugly. Better version?</span>
+        <span class="k">return</span> <span class="s1">''</span>
+    <span class="k">else</span>
+        <span class="c">" Return the cdup path to the root. If already in root,</span>
+        <span class="c">" path will be empty, so add './'</span>
+        <span class="k">return</span> <span class="s1">'./'</span> <span class="p">.</span> git_top
+    <span class="k">endif</span>
+<span class="k">endfunction</span>
+
+<span class="k">function</span><span class="p">!</span> CD_Git_Root<span class="p">()</span>
+    <span class="nb">execute</span> <span class="s1">'cd '</span><span class="p">.</span>Git_Repo_Cdup<span class="p">()</span>
+    <span class="k">let</span> curdir <span class="p">=</span> <span class="nb">getcwd</span><span class="p">()</span>
+    echo <span class="s1">'CWD now set to: '</span><span class="p">.</span>curdir
+<span class="k">endfunction</span>
+nnoremap <span class="p">&lt;</span>LEADER<span class="p">&gt;</span><span class="k">gr</span> <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="using-the-gitignore">Using the .gitignore</h2>
+
+<p>By default, Command-T will use the vim <code>wildignore</code> setting to filter files
+from the Command-T list. This means that there will only be one global filter
+used in every vim session to filter things out. This can be an issue when
+working with things like an Octopress blog (like this one), a Rails 3.1 app, or
+anything else that has build output or other numerous files that will be in the
+gitignore.</p>
+
+<p>I was able to track down a vim plugin create by Adam Bellaire that can parse a
+gitignore and use it to define the vim <code>wildignore</code> setting. His original
+script can be found
+<a href="http://www.vim.org/scripts/script.php?script_id=2557">here</a>, but since it only
+included a single function I just included that directly in my vimrc. What
+follows is my version of Adam’s original script, wrapped up as a vim function:</p>
+
+<div class="highlight"><pre class="highlight viml"><code><span class="c">" Define the wildignore from gitignore. Primarily for CommandT</span>
+<span class="k">function</span><span class="p">!</span> WildignoreFromGitignore<span class="p">()</span>
+    <span class="k">silent</span> <span class="k">call</span> CD_Git_Root<span class="p">()</span>
+    <span class="k">let</span> gitignore <span class="p">=</span> <span class="s1">'.gitignore'</span>
+    <span class="k">if</span> <span class="nb">filereadable</span><span class="p">(</span>gitignore<span class="p">)</span>
+        <span class="k">let</span> igstring <span class="p">=</span> <span class="s1">''</span>
+        <span class="k">for</span> oline <span class="k">in</span> <span class="nb">readfile</span><span class="p">(</span>gitignore<span class="p">)</span>
+            <span class="k">let</span> <span class="nb">line</span> <span class="p">=</span> <span class="nb">substitute</span><span class="p">(</span>oline<span class="p">,</span> <span class="s1">'\s|\n|\r'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s2">"g"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">line</span> <span class="p">=~</span> <span class="s1">'^#'</span> <span class="p">|</span> <span class="k">con</span> <span class="p">|</span> <span class="k">endif</span>
+            <span class="k">if</span> <span class="nb">line</span> <span class="p">==</span> <span class="s1">''</span> <span class="p">|</span> <span class="k">con</span>  <span class="p">|</span> <span class="k">endif</span>
+            <span class="k">if</span> <span class="nb">line</span> <span class="p">=~</span> <span class="s1">'^!'</span> <span class="p">|</span> <span class="k">con</span>  <span class="p">|</span> <span class="k">endif</span>
+            <span class="k">if</span> <span class="nb">line</span> <span class="p">=~</span> <span class="s1">'/$'</span> <span class="p">|</span> <span class="k">let</span> igstring <span class="p">.=</span> <span class="s2">","</span> <span class="p">.</span> <span class="nb">line</span> <span class="p">.</span> <span class="s2">"*"</span> <span class="p">|</span> <span class="k">con</span> <span class="p">|</span> <span class="k">endif</span>
+            <span class="k">let</span> igstring <span class="p">.=</span> <span class="s2">","</span> <span class="p">.</span> <span class="nb">line</span>
+        <span class="k">endfor</span>
+        <span class="k">let</span> execstring <span class="p">=</span> <span class="s2">"set wildignore="</span><span class="p">.</span><span class="nb">substitute</span><span class="p">(</span>igstring<span class="p">,</span><span class="s1">'^,'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s2">"g"</span><span class="p">)</span>
+        <span class="nb">execute</span> execstring
+        echo <span class="s1">'Wildignore defined from gitignore in: '</span><span class="p">.</span><span class="nb">getcwd</span><span class="p">()</span>
+    <span class="k">else</span>
+        echo <span class="s1">'Unable to find gitignore'</span>
+    <span class="k">endif</span>
+<span class="k">endfunction</span>
+nnoremap <span class="p">&lt;</span>LEADER<span class="p">&gt;</span>cti <span class="p">:</span><span class="k">call</span> WildignoreFromGitignore<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+nnoremap <span class="p">&lt;</span>LEADER<span class="p">&gt;</span>cwi <span class="p">:</span><span class="k">set</span> <span class="nb">wildignore</span><span class="p">=</span><span class="s1">''</span><span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;:</span>echo <span class="s1">'Wildignore cleared'</span><span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="subfolder-focused-command-t-mappings">Subfolder Focused Command-T Mappings</h2>
+
+<p>This last piece was inspired by a
+<a href="https://www.destroyallsoftware.com/">Destroy All Software</a> screencast by Gary
+Bernhardt. I highly recommend anything by Gary Bernhardt.</p>
+
+<p>This configuration involves setting up a series of normal mode mappings
+in my vimrc to start Command-T in the context of a subfolder. Most of the work
+I have been doing lately has been on Rails apps with heavy javascript. As a
+result of the consistent directory structure of Rails, this works great, but
+YMMV if you tend to work on different types of projects.</p>
+
+<div class="highlight"><pre class="highlight viml"><code>nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>gv <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>\<span class="p">|:</span>CommandT app/views<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>gc <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>\<span class="p">|:</span>CommandT app/controllers<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>gm <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>\<span class="p">|:</span>CommandT app/models<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>gj <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>\<span class="p">|:</span>CommandT app<span class="sr">/assets/</span>javascripts<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>gy <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>\<span class="p">|:</span>CommandT app<span class="sr">/assets/</span>stylesheets<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>gs <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>\<span class="p">|:</span>CommandT spec<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>gt <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>\<span class="p">|:</span>CommandT app<span class="sr">/assets/</span>templates<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span>gl <span class="p">:</span><span class="k">call</span> CD_Git_Root<span class="p">()&lt;</span><span class="k">cr</span><span class="p">&gt;</span>\<span class="p">|:</span>CommandT app/lib<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>All in all I am very happy with where I am at with file navigation. I barely
+have to think at this point to get to a file, and that’s the way I like it.
+You can checkout the full details of this and my other vim configs in my
+<a href="https://github.com/christoomey/dotfiles/blob/master/vim/vimrc">vimrc</a>.</p>
+
+<h2 id="room-for-improvement">Room for Improvement</h2>
+
+<p>The one major issue I have with my current Command-t usage outlined above is
+the need to explicitly fire the Command-t from gitignore function. I would like
+to set this to fire based on an autocommand or by hooking into vims <code>cd</code> and
+trigger it automatically. I would imagine it would be necessary to cache the
+current project in order to avoid doing this all the time. As of now I haven’t
+felt a strong enough pull to figure this out, but I expect I will revisit it
+someday.</p>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <title type="html">
+      <![CDATA[Hello World]]>
+    </title>
+    <link href="https://ctoomey.com/writing/hello-world"/>
+    <updated>2011-10-30</updated>
+    <id>http://ctoomey.com/posts/hello-world</id>
+    <content type="html">
+      <![CDATA[<p>Please pardon the cliché title, but I had to start somewhere.</p>
+
+<p>This is my new personal site and blog. I expect it to mostly track my coding
+work, but I am open to seeing where it goes. In general I find that explaining
+or teaching seems to be a good way for me to sort out what I think about
+various topics, so most posts will most likely be me explaining something to
+a slightly younger version of me.</p>
+
+<p>Some of the topics I expect my turn up are vim, zsh, ruby, rails, coffescript, backbone.js, and other coding related topics along with some post related to productivity, GTD, and other similarly hip topics.</p>
+
+<p>Wish me luck!</p>
+]]>
+    </content>
+  </entry>
+</feed>

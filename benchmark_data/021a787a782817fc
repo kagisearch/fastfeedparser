@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UCotwjyJnb-4KW7bmsOoLfkg"/>
+ <id>yt:channel:otwjyJnb-4KW7bmsOoLfkg</id>
+ <yt:channelId>otwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+ <title>Art of the Problem</title>
+ <link rel="alternate" href="https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg"/>
+ <author>
+  <name>Art of the Problem</name>
+  <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+ </author>
+ <published>2011-06-12T01:30:22+00:00</published>
+ <entry>
+  <id>yt:video:z35j2WC1uLI</id>
+  <yt:videoId>z35j2WC1uLI</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>A Rock Is Trapped Light</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/z35j2WC1uLI"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2026-02-12T21:09:23+00:00</published>
+  <updated>2026-02-13T07:15:21+00:00</updated>
+  <media:group>
+   <media:title>A Rock Is Trapped Light</media:title>
+   <media:content url="https://www.youtube.com/v/z35j2WC1uLI?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/z35j2WC1uLI/hqdefault.jpg" width="480" height="360"/>
+   <media:description>FULL VIDEO: https://www.youtube.com/watch?v=f8O3XMrC8hg
+
+For 2,600 years we've been asking: what is stuff actually made of? Every time we looked closer at atoms, nuclei, quarks we found not smaller stuff, but energy looping back on itself. This video traces the history of that discovery through the analogies physicists actually used, from magic rocks to invisible fluids to vortex atoms. We will find one shape kept appearing at every scale (a Toroid shaped Soliton)</media:description>
+   <media:community>
+    <media:starRating count="498" average="5.00" min="1" max="5"/>
+    <media:statistics views="9819"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:f8O3XMrC8hg</id>
+  <yt:videoId>f8O3XMrC8hg</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>A Rock Is Trapped Light</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=f8O3XMrC8hg"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2026-02-11T20:42:40+00:00</published>
+  <updated>2026-02-17T14:05:23+00:00</updated>
+  <media:group>
+   <media:title>A Rock Is Trapped Light</media:title>
+   <media:content url="https://www.youtube.com/v/f8O3XMrC8hg?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/f8O3XMrC8hg/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Is a rock trapped light? 🌏 Get exclusive NordVPN deal here ➵ https://NordVPN.com/aotp It's risk free with Nord's 30 day money-back guarantee!✌ 
+For 2,600 years we've been asking: what is stuff actually made of? Every time we looked closer at atoms, nuclei, quarks we found not smaller stuff, but energy looping back on itself. This video traces the history of that discovery through the analogies physicists actually used, from magic rocks to invisible fluids to vortex atoms. We will find one shape kept appearing at every scale (a Toroid shaped Soliton). I follow the development quantum field theory starting with electricity and magnetism. 
+
+Thanks for watching, consider supporting this independent production!
+Get my Album: https://artoftheproblem.com/products/music-to-think-to
+Youtube Membership: https://www.youtube.com/@ArtOfTheProblem/join
+Patreon: https://www.patreon.com/c/artoftheproblem
+
+---
+REFERENCES
+
+Ancient Analogies — Thales (~600 BCE) on lodestone/amber; Lucretius, *De Rerum Natura* (effluvia theory); Needham, *Science and Civilisation in China* Vol. 4 (Qi/compass)
+
+Gilbert — *De Magnete* (1600), full text: https://archive.org/details/williamgilbertof00gilb
+
+Stephen Gray — &quot;Experiments concerning Electricity,&quot; *Phil. Trans. Royal Society*, Vol. 37 (1731–32). First demonstration of electrical conduction.
+
+Ørsted — &quot;Experiments on the Effect of a Current of Electricity on the Magnetic Needle,&quot; *Annals of Philosophy* Vol. 16 (1820)
+
+Faraday — &quot;Experimental Researches in Electricity,&quot; *Phil. Trans. Royal Society* (1832–52); &quot;Thoughts on Ray Vibrations,&quot; *Phil. Mag.* (1846)
+
+Maxwell — &quot;On Physical Lines of Force,&quot; *Phil. Mag.* (1861–62); &quot;A Dynamical Theory of the Electromagnetic Field,&quot; *Phil. Trans.* Vol. 155 (1865)
+
+Hertz — First experimental proof of EM waves (1887)
+
+Helmholtz — &quot;On integrals of the hydrodynamic equations which express vortex-motion,&quot; *J. reine angew. Math.* 55 (1858)
+
+Lord Kelvin — &quot;On Vortex Atoms,&quot; *Proc. Royal Society of Edinburgh* Vol. 6 (1867)
+
+Stern-Gerlach — *Zeitschrift für Physik* 9, 349 (1922). Electron spin quantization.
+
+Pair Production — Anderson, &quot;The Positive Electron,&quot; *Phys. Rev.* 43, 491 (1933); Blackett &amp; Occhialini, *Proc. Royal Society A* 139, 699 (1933)
+
+Quark Confinement — Gross &amp; Wilczek, *Phys. Rev. Lett.* 30, 1343 (1973); Wilson, *Phys. Rev. D* 10, 2445 (1974)
+
+99% of mass = field energy — Dürr et al., &quot;Ab Initio Determination of Light Hadron Masses,&quot; *Science* 322, 1224 (2008)
+
+Williamson &amp; van der Mark — &quot;Is the electron a photon with toroidal topology?&quot; *Annales Fondation Louis de Broglie* 22(2), 133 (1997). PDF: https://fondationlouisdebroglie.org/AFLB-222/MARK.TEX2.pdf
+
+Hydrogen orbital photo — Stodolna et al., *Phys. Rev. Lett.* 110, 213001 (2013)
+
+Further viewing — HuygensOptics, &quot;Are Electrons made of Light?&quot; (YouTube, 2025); https://quicycle.com
+
+---
+0:00 How does movement become a rock?
+0:33 The Greeks' magic rocks
+1:02 The smell analogy
+1:36 The suction &amp; wind analogy
+2:09 Gilbert's experiments (1600s)
+3:04 Electricity discovered
+4:14 Two forces, completely different
+4:26 Sponsor
+5:23 Ørsted connects them (1820)
+5:48 Faraday's lines of force
+6:27 Does force travel instantly?
+6:40 Maxwell's vortex mechanism
+7:34 The speed of light falls out
+9:17 Hertz proves it
+10:11 How does vibration become stuff?
+10:20 Smoke rings &amp; vortices
+11:20 Kelvin's vortex atom
+11:45 Light looped into a toroid
+12:30 The photon bent into a loop
+13:08 Zooming into matter
+13:31 The electron is a tiny magnet
+14:00 Quarks and the 99% problem
+14:20 Matter from light
+15:13 Pulling quarks apart
+15:40 A rock is trapped light
+16:08 My music album</media:description>
+   <media:community>
+    <media:starRating count="24617" average="5.00" min="1" max="5"/>
+    <media:statistics views="369910"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:DlhUFKwbEhQ</id>
+  <yt:videoId>DlhUFKwbEhQ</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>Why Polymarket Beats Experts</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/DlhUFKwbEhQ"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2026-01-24T17:09:52+00:00</published>
+  <updated>2026-01-27T20:50:53+00:00</updated>
+  <media:group>
+   <media:title>Why Polymarket Beats Experts</media:title>
+   <media:content url="https://www.youtube.com/v/DlhUFKwbEhQ?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/DlhUFKwbEhQ/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Polymarket predicted Trump's win on Election Night 2024 while major news networks were still calling it too close to call #predictionmarkets #electionforecasting #bettingmarkets #polymarket #wisdomofcrowds</media:description>
+   <media:community>
+    <media:starRating count="201" average="5.00" min="1" max="5"/>
+    <media:statistics views="16887"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:GcEreDGevm4</id>
+  <yt:videoId>GcEreDGevm4</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>Warren Buffett's Genius Bet Against Wall Street</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/GcEreDGevm4"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2026-01-19T23:05:23+00:00</published>
+  <updated>2026-01-25T06:01:36+00:00</updated>
+  <media:group>
+   <media:title>Warren Buffett's Genius Bet Against Wall Street</media:title>
+   <media:content url="https://www.youtube.com/v/GcEreDGevm4?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/GcEreDGevm4/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Buffett proved that doing absolutely nothing beats sophisticated Wall Street trading through one brilliant wager. Here's the revolutionary insight that changed investing forever. #shorts #warrenbuffett #investing #stockmarket #wallstreet #financialeducation #marketportfolio #passiveinvestment</media:description>
+   <media:community>
+    <media:starRating count="252" average="5.00" min="1" max="5"/>
+    <media:statistics views="7124"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:sBgS8MX_TRo</id>
+  <yt:videoId>sBgS8MX_TRo</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>The AI Paradox</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/sBgS8MX_TRo"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2026-01-18T23:42:56+00:00</published>
+  <updated>2026-01-23T07:32:08+00:00</updated>
+  <media:group>
+   <media:title>The AI Paradox</media:title>
+   <media:content url="https://www.youtube.com/v/sBgS8MX_TRo?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/sBgS8MX_TRo/hqdefault.jpg" width="480" height="360"/>
+   <media:description>FULL VIDEO: https://www.youtube.com/watch?v=dcolM6W5Odc</media:description>
+   <media:community>
+    <media:starRating count="285" average="5.00" min="1" max="5"/>
+    <media:statistics views="15956"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:ZuW699fHOKQ</id>
+  <yt:videoId>ZuW699fHOKQ</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>Why AI Can't Think Like You #ai</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/ZuW699fHOKQ"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-12-19T17:18:41+00:00</published>
+  <updated>2026-02-04T16:11:50+00:00</updated>
+  <media:group>
+   <media:title>Why AI Can't Think Like You #ai</media:title>
+   <media:content url="https://www.youtube.com/v/ZuW699fHOKQ?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/ZuW699fHOKQ/hqdefault.jpg" width="480" height="360"/>
+   <media:description>WATCH FULL VIDEO: youtube.com/watch?v=dcolM6W5Odc
+
+We can model thoughts as similar to rolling dice at each branch to select the next word. 
+True random paths are maximally diverse but meaningless nonsense…
+
+AI’s dice are weighted, biased towards what’s been said before in its training data…that’s why these paths will “make sense”...but they will also cluster and echo each other…you can’t escape the weighted dice.
+But human thought is... like rolling weighted dice by your unique life experience and what matters to you. This is creates diverse exploration within the space that has meaning ….you wanter into territory nobody else has been, and the AI couldn’t reach ..
+Ai is optimized to continue thought, not generate new thought.</media:description>
+   <media:community>
+    <media:starRating count="772" average="5.00" min="1" max="5"/>
+    <media:statistics views="11393"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:dcolM6W5Odc</id>
+  <yt:videoId>dcolM6W5Odc</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>The AI Paradox</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=dcolM6W5Odc"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-12-16T21:58:15+00:00</published>
+  <updated>2026-02-16T02:02:21+00:00</updated>
+  <media:group>
+   <media:title>The AI Paradox</media:title>
+   <media:content url="https://www.youtube.com/v/dcolM6W5Odc?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/dcolM6W5Odc/hqdefault.jpg" width="480" height="360"/>
+   <media:description>In a world, where to cost of answers is dropping to zero, the value of the question becomes everything...
+
+Learn the hard way, click  https://boot.dev/?promo=ART and use my code ART to get 25% off your first payment for boot.dev.
+
+Recently I was offered to be replaced by AI. Like a &quot;magic gumball machine&quot; they said. That led to a question: what do you need me for? This forced me back to something ancient: what human thought actually is for...This video explores the generation effect and AI's impact on our mind (for better and worse).
+
+JOIN MY SECRET CLUB/EMAIL LIST: https://forms.gle/TGgmnqXcP4KUFBRY6
+Consider supporing via Patreon: https://www.patreon.com/c/artoftheproblem
+Or via YouTube Member: https://www.youtube.com/@ArtOfTheProblem/join
+
+SOURCES &amp; RESEARCH:
+Cognitive Effects &amp; Memory:
+
+MIT Media Lab Study (2025) - &quot;Your Brain on ChatGPT&quot; - Nataliya Kosmyna et al. (EEG study on brain connectivity and digital amnesia)
+Generation Effect research (psychology/cognitive science, 1970s+)
+The Lancet (2024/2025) - Study on doctors losing diagnostic ability after 4 months of LLM use
+
+AI &amp; Creative Homogenization:
+
+&quot;Generative AI enhances individual creativity but reduces the collective diversity of novel content&quot; - Science Advances (2024) - Doshi &amp; Hauser, UCL/Exeter study
+&quot;Echoes in AI: Quantifying lack of plot diversity in LLM outputs&quot; - PNAS (2025) - Xu et al.
+&quot;Using Generative AI Personas Increases Collective Diversity in Human Ideation&quot; - Wan &amp; Kalman (2025)
+
+Cognitive Friction &amp; Decision-Making:
+
+&quot;Biased AI improves human decision-making but reduces trust&quot; - Lai et al. (August 2025)
+&quot;From humans to AI: understanding why AI is perceived as the preferred co-creation partner&quot; - Min Tang &quot;Fork Study&quot; (Journal of Creative Behavior, 2024)
+
+Inner Speech &amp; Cognition:
+
+Charles Fernyhough research on inner speech and self-talk
+Andy Murray tennis final case study (self-regulation through inner dialogue)
+Descriptive Experience Sampling research
+
+Business Applications:
+
+&quot;Can AI Boards Outperform Human Ones?&quot; - Harvard Business Review (November 2025) - CEO AI decision-making study
+
+Methodology:
+
+Ines Lee Protocol for human-AI collaboration
+Anthropic research on Claude model features (Trenton Bricken et al.)
+Andrej Karpathy on LLMs as &quot;humanity's first contact with non-animal intelligence&quot;
+
+
+0:30 Socrates and the Fear of Writing
+1:29 Ancient Wisdom: Talmud and Buddhist Koans
+1:58 Vygotsky: Thinking is Talking
+3:28 The Generation Effect
+4:34 Why Tracing Isn't Drawing
+5:21 The Paradox of Technology
+6:23 Brain Atrophy: Taxi Drivers and GPS
+7:32 The Irony: We Taught Machines to Learn Like Us
+8:22 MIT Study: AI and Brain Activity
+9:56 Thought Space as an Infinite Tree
+10:40 The AI Personas Experiment
+11:43 The Weighted Dice of AI Thought
+13:07 Divergent vs Convergent Thinking
+13:27 Human First vs AI First
+15:44 The Value of the Question</media:description>
+   <media:community>
+    <media:starRating count="36476" average="5.00" min="1" max="5"/>
+    <media:statistics views="765110"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:U9CHcA5lKFY</id>
+  <yt:videoId>U9CHcA5lKFY</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>The Rich Should Decide</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/U9CHcA5lKFY"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-12-04T16:53:02+00:00</published>
+  <updated>2026-02-13T15:28:25+00:00</updated>
+  <media:group>
+   <media:title>The Rich Should Decide</media:title>
+   <media:content url="https://www.youtube.com/v/U9CHcA5lKFY?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/U9CHcA5lKFY/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Prediction markets can predict better than polls. So why not use them to DECIDE policy? FULL VIDEO: https://www.youtube.com/watch?v=ekt6rYtOY94
+
+Everyone says democracy is a mess. What if that mess is the point? Markets are incredible at measuring what IS. But when you try to use them to decide what OUGHT to be, something breaks. This video explores why the chaos of democracy might be the immune system that keeps money from directly buying outcomes. From prediction markets and futarchy to Prussia's doomed forests and the GameStop rebellion, we trace the line between systems that observe reality and systems that create it. I hope it makes you think more about how Markets and Democracies are two different systems which &quot;compute&quot; differently.</media:description>
+   <media:community>
+    <media:starRating count="204" average="5.00" min="1" max="5"/>
+    <media:statistics views="8017"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:fKf6Kl5TMc0</id>
+  <yt:videoId>fKf6Kl5TMc0</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>AI Needs to Feel Pain</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=fKf6Kl5TMc0"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-11-26T18:29:27+00:00</published>
+  <updated>2026-02-12T06:44:32+00:00</updated>
+  <media:group>
+   <media:title>AI Needs to Feel Pain</media:title>
+   <media:content url="https://www.youtube.com/v/fKf6Kl5TMc0?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/fKf6Kl5TMc0/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Without feeling, our decision making is paralyzed. This is the full history of how we taught machines to feel using synthetic pain (reinforcement learning).
+- Take control of your digital identify for free at https://ace.me
+- Get access to all top AI models https://higgsfield.ai/nano-banana-2-intro use promo code: AOTP-10-OFF
+
+ I explore the history from 1961 through the humanoid robots of today. I cover Value Functions (which we can think of as primitive emotions), Q learning and Policy Functions. This video features insights from Ilya Sutskever on why emotion is essential for intelligence (in order to care about outcomes). This is a full history of reinforcement learning: from games to physical control, from simulation to reality. I show how AI develops human-like behaviors, the relationship between actions and language, and cutting-edge embodied AI from Figure, Boston Dynamics, and Physical Intelligence.
+
+Let me know what you think in comments!
+JOIN my email list for occasional updates: https://forms.gle/TGgmnqXcP4KUFBRY6
+Consider supporting this original work: https://www.patreon.com/artoftheproblem
+
+00:00 - Introduction
+00:32 - Learning Tic Tac Toe
+02:00 - Learning Cart and pole
+04:20 - Shannon &amp; Chess
+06:50 - Samuel's Checkers
+09:25 - TD Gammon (Gerald Tesaruo)
+11:00 - TD Learning
+14:30 - Learning Atari (DQN)
+17:28 - DIrect Policy Gradiant
+19:40 - Domain Randomization
+
+Featuring insights from:
+Claude Shannon
+Arthur Samuel
+Gerald Tesauro
+Richard Sutton
+David Silver
+Deep Mind/Open AI etc.</media:description>
+   <media:community>
+    <media:starRating count="13529" average="5.00" min="1" max="5"/>
+    <media:statistics views="306428"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:ekt6rYtOY94</id>
+  <yt:videoId>ekt6rYtOY94</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>Why The Rich Should Decide</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=ekt6rYtOY94"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-11-21T15:51:08+00:00</published>
+  <updated>2025-12-11T10:55:47+00:00</updated>
+  <media:group>
+   <media:title>Why The Rich Should Decide</media:title>
+   <media:content url="https://www.youtube.com/v/ekt6rYtOY94?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/ekt6rYtOY94/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Prediction markets can predict better than polls. So why not use them to DECIDE policy? Go to http://www.groundnews.com/aotp for a better way to stay informed. Subscribe for 40% off unlimited access to world-wide coverage through my link. 
+
+Everyone says democracy is a mess. What if that mess is the point? Markets are incredible at measuring what IS. But when you try to use them to decide what OUGHT to be, something breaks. This video explores why the chaos of democracy might be the immune system that keeps money from directly buying outcomes. From prediction markets and futarchy to Prussia's doomed forests and the GameStop rebellion, we trace the line between systems that observe reality and systems that create it. I hope it makes you think more about how Markets and Democracies are two different systems which &quot;compute&quot; differently. 
+
+Some references:
+Robin Hanson - &quot;Shall We Vote on Values, But Bet on Beliefs?&quot; 
+James C. Scott - &quot;Seeing Like a State&quot; (1998) 
+George Soros - &quot;The Alchemy of Finance&quot; (reflexivity theory)
+Yarvin Hanson Debate - https://www.youtube.com/watch?v=yIkrfdSQk4w
+The War Room (1993) ((amazing film!!)
+David Graeber
+
+Please join my email list to get updates about new stuff:
+https://forms.gle/TGgmnqXcP4KUFBRY6
+
+Consider supporting via Patreon:
+https://www.patreon.com/c/artoftheproblem
+
+0:00 - The Democratic Mess
+1:15 - How Markets Discover Truth
+2:50 - Prediction Markets &amp; Google's Prophit
+4:15 - The Tempting Question
+5:14 - Robin Hanson's Clever Fix
+7:30 - The Metrics Trap: Prussia's Forests
+10:15 - Goodhart's Law
+11:50 - Democracy's Immune System
+15:34 - The Jury Existence Proof
+17:30 - Two Different Systems</media:description>
+   <media:community>
+    <media:starRating count="7501" average="5.00" min="1" max="5"/>
+    <media:statistics views="180210"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:c1zssAsg9ZY</id>
+  <yt:videoId>c1zssAsg9ZY</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>The Profit Paradox</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=c1zssAsg9ZY"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-10-15T14:07:33+00:00</published>
+  <updated>2026-02-08T06:33:47+00:00</updated>
+  <media:group>
+   <media:title>The Profit Paradox</media:title>
+   <media:content url="https://www.youtube.com/v/c1zssAsg9ZY?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/c1zssAsg9ZY/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Are the rich heroes or villains? The answer lies in following energy, not money. Get 20% off Brilliant's annual Premium: https://brilliant.org/ArtOfTheProblem. End your software chaos and try Odoo for free on me: https://www.odoo.com/r/uW5.
+
+Long before dollars, euros, or even gold coins existed, there was only one currency that mattered: energy. Every living thing on Earth, from the first single cell to modern civilization, has faced the same challenge: capture more energy than you spend getting it, or die. That difference between energy gained and energy spent is where profit begins.This video traces profit from its origins in cellular metabolism through photosynthesis, animal life, human agriculture, fossil fuels, and the industrial revolution, to our modern economy.
+
+A key idea in this video is THE BOUNDARY TEST:
+This is a new idea I had while working on this video. Draw a boundary around what you're analyzing. If the activity increases total usable energy at every scale you examine: from individual to ecosystem then society, it's creating value. If it only looks profitable when you keep the boundary narrow, it's extracting value. This simple test reveals which forms of profit build the future and which ones consume it.
+
+We examine how rising energy costs, renewable transitions, and thermodynamics constrain economic growth. By understanding profit as a physical phenomenon rooted in energy rather than just finance, we can see what's really happening…
+
+JOIN MY EMAIL LIST: https://forms.gle/YWGRrV6BvqBKY6Sz9
+SUPPORT THIS CHANNEL: https://www.patreon.com/c/artoftheproblem
+
+REFERENCES:
+Tim Morgan - Surplus Energy Economics: https://surplusenergyeconomics.wordpress.com/
+Garrett Relation on energy and GDP: https://en.everybodywiki.com/Garrett_relation
+Jevons Paradox and the rebound effect: https://en.wikipedia.org/wiki/Jevons_paradox
+Social evolution as computation: https://arxiv.org/pdf/2408.08861
+Metabolic scaling across evolution: https://www.pnas.org/doi/10.1073/pnas.1007783107
+
+0:00 Introduction: The Wealth Debate
+0:45 Energy: The Currency of Life
+2:33 Photosynthesis: Life's Greatest Innovation
+4:19 Animals &amp; Storing Energy
+6:20 The Boundary Test: Creating vs Transferring Energy
+10:42 Human Intelligence &amp; Energy Breakthroughs
+12:02 Money: A Portable Claim on Energy
+13:31 Good Profit vs Bad Profit
+15:21 The Mismatch: Infinite Claims, Finite Energy
+17:09 Can We Ever Have Enough?</media:description>
+   <media:community>
+    <media:starRating count="21737" average="5.00" min="1" max="5"/>
+    <media:statistics views="366512"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:pP1x6scsGi4</id>
+  <yt:videoId>pP1x6scsGi4</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>Did Amazon Create The Soviet Dream?  #history  #politics #ai</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/pP1x6scsGi4"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-09-03T14:59:18+00:00</published>
+  <updated>2025-11-07T14:03:22+00:00</updated>
+  <media:group>
+   <media:title>Did Amazon Create The Soviet Dream?  #history  #politics #ai</media:title>
+   <media:content url="https://www.youtube.com/v/pP1x6scsGi4?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/pP1x6scsGi4/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Watch full video: https://youtu.be/mayoL3XbKwA
+
+Capitalism and socialism fought for 50 years and ended up in the same place: AI controlling your life....
+
+This video traces how military command structures shaped both corporate hierarchies and socialist planning, leading both paths to algorithmic control at global scale. The Soviets tried centralized computer planning. America bet on free markets. Fifty years later, both ended up with AI algorithms making decisions for billions of people. Your phone became the &quot;dial in every home&quot; that Stafford Beer dreamed of for Chile in 1971.The question isn't capitalism vs socialism anymore. It's who controls the objective function—profit signals from millions of choices, or goals set by a small group of humans?
+Either way, we're facing what Beer warned about: &quot;we may find that the computer has invented a strategy beyond our own ability to understand.&quot;
+
+Support this program: https://www.patreon.com/c/artoftheproblem
+
+key references:
+Eden Medina - Cybernetic Revolutionaries (2011)
+Stafford Beer - Brain of the Firm (1981)
+Stafford Beer - Designing Freedom (1974)
+Norbert Wiener - Cybernetics (1948)
+W. Ross Ashby - Introduction to Cybernetics (1956)
+The Battle of Chile - Patricio Guzmán (1979)
+Salvador Allende documentary - Patricio Guzmán (2004)
+U.S. Senate - Covert Action in Chile 1964-1973 (1975)
+Peter Kornbluh - The Pinochet File (2003)
+Ronald Coase - The Nature of the Firm (1937)
+Santiago Boys Podcast</media:description>
+   <media:community>
+    <media:starRating count="197" average="5.00" min="1" max="5"/>
+    <media:statistics views="4934"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:C1aQMC3Bfww</id>
+  <yt:videoId>C1aQMC3Bfww</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>The Most Incredible Moment in Documentary History #documentary #politics</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/C1aQMC3Bfww"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-08-26T15:32:59+00:00</published>
+  <updated>2025-09-26T16:08:08+00:00</updated>
+  <media:group>
+   <media:title>The Most Incredible Moment in Documentary History #documentary #politics</media:title>
+   <media:content url="https://www.youtube.com/v/C1aQMC3Bfww?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/C1aQMC3Bfww/hqdefault.jpg" width="480" height="360"/>
+   <media:description>This video traces how military command structures shaped both corporate hierarchies and socialist planning, leading both paths to algorithmic control at global scale. The Soviets tried centralized computer planning. America bet on free markets. Fifty years later, both ended up with AI algorithms making decisions for billions of people. Your phone became the &quot;dial in every home&quot; that Stafford Beer dreamed of for Chile in 1971.The question isn't capitalism vs socialism anymore. It's who controls the objective function—profit signals from millions of choices, or goals set by a small group of humans?
+Either way, we're facing what Beer warned about: &quot;we may find that the computer has invented a strategy beyond our own ability to understand.&quot;</media:description>
+   <media:community>
+    <media:starRating count="73" average="5.00" min="1" max="5"/>
+    <media:statistics views="4855"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:mayoL3XbKwA</id>
+  <yt:videoId>mayoL3XbKwA</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>Amazon Created The Socialist Dream</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=mayoL3XbKwA"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-08-22T13:35:56+00:00</published>
+  <updated>2025-10-15T23:10:13+00:00</updated>
+  <media:group>
+   <media:title>Amazon Created The Socialist Dream</media:title>
+   <media:content url="https://www.youtube.com/v/mayoL3XbKwA?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/mayoL3XbKwA/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Capitalism and socialism took different paths for 50 years, but both led to the same destination: algorithmic coordination at global scale.....End your software chaos and try Odoo for free on me: http://www.odoo.com/artoftheproblem. Contact your lawmakers about AI extinction risk in 60s: http://www.controlai.com/art
+
+This video traces how cybernetic thinking: the science of control and communication in complex systems—shaped both corporate hierarchies and socialist planning experiments. The Soviets tried centralized computer planning through Project OGAS. Chile's Salvador Allende tested real-time economic coordination through Cybersyn. America bet on market mechanisms and competition.
+Today, all paths converge on AI algorithms making decisions for billions of people. your smartphone became the &quot;dial in every home&quot; that Stafford Beer envisioned for Chile in 1971, constantly feeding preferences into systems that decide what you see, buy, and think about.
+The question isn't capitalism vs socialism anymore. It's about cybernetic coordination itself: who controls the objective function that guides these systems? Market signals emerging from millions of individual choices, or goals designed by small groups of humans? Both approaches now rely on the same underlying infrastructure of algorithmic decision-making.
+Beer warned decades ago: &quot;we may find that the computer has invented a strategy beyond our own ability to understand.&quot; Whether guided by profit or by planning, we've built coordination systems that increasingly coordinate us.
+
+Support this program: https://www.patreon.com/c/artoftheproblem
+
+key references:
+Eden Medina - Cybernetic Revolutionaries (2011)
+Stafford Beer - Brain of the Firm (1981)
+Stafford Beer - Designing Freedom (1974)
+Norbert Wiener - Cybernetics (1948)
+W. Ross Ashby - Introduction to Cybernetics (1956)
+The Battle of Chile - Patricio Guzmán (1979)
+Salvador Allende documentary - Patricio Guzmán (2004)
+U.S. Senate - Covert Action in Chile 1964-1973 (1975)
+Peter Kornbluh - The Pinochet File (2003)
+Ronald Coase - The Nature of the Firm (1937)
+Santiago Boys Podcast
+
+0:00 Introduction: The False Choice
+2:00 Military Origins: How Both Sides Copied War Strategy
+10:30 Cybernetics
+12:10 Project Cybersyn
+15:40 ARPANET 
+17:30 Birth of Amazon
+22:35 Strange Convergence of Capitalism &amp; Socialism</media:description>
+   <media:community>
+    <media:starRating count="12604" average="5.00" min="1" max="5"/>
+    <media:statistics views="254931"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:MQha_OF5jmE</id>
+  <yt:videoId>MQha_OF5jmE</yt:videoId>
+  <yt:channelId>UCotwjyJnb-4KW7bmsOoLfkg</yt:channelId>
+  <title>The Stock Market Always Wins #stockmarket</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/MQha_OF5jmE"/>
+  <author>
+   <name>Art of the Problem</name>
+   <uri>https://www.youtube.com/channel/UCotwjyJnb-4KW7bmsOoLfkg</uri>
+  </author>
+  <published>2025-07-03T13:21:23+00:00</published>
+  <updated>2025-09-07T13:43:30+00:00</updated>
+  <media:group>
+   <media:title>The Stock Market Always Wins #stockmarket</media:title>
+   <media:content url="https://www.youtube.com/v/MQha_OF5jmE?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/MQha_OF5jmE/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Warren Buffett spent his entire life beating the stock market... then bet a million dollars that it was impossible to do. FULL VIDEO: https://www.youtube.com/watch?v=TQuxVz52w2w
+
+Through my own experience as a crypto arbitrage trader during the 2017 bubble, we'll discover how traders actually function as unpaid researchers who make markets more efficient for everyone else. From simple spatial arbitrage to complex algorithmic trading, each attempt to beat the market ultimately strengthens it.
+
+Key topics covered:
+The geometry of arbitrage opportunities and market efficiency
+How market makers provide liquidity and reduce price slippage
+Warren Buffett's Coca-Cola investment and long-term value discovery
+Statistical arbitrage and pairs trading evolution
+Renaissance Technologies and Jim Simons' mathematical approach
+William Sharpe's &quot;Arithmetic of Active Management&quot;
+Why index funds capture collective market wisdom for free</media:description>
+   <media:community>
+    <media:starRating count="424" average="5.00" min="1" max="5"/>
+    <media:statistics views="16539"/>
+   </media:community>
+  </media:group>
+ </entry>
+</feed>

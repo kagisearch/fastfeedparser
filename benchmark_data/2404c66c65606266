@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jamie Simon</title>
+    <description></description>
+    <link>http://james-simon.github.io/</link>
+    <atom:link href="http://james-simon.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 16 Feb 2026 21:54:16 +0000</pubDate>
+    <lastBuildDate>Mon, 16 Feb 2026 21:54:16 +0000</lastBuildDate>
+    <generator>Jekyll v3.10.0</generator>
+    
+      <item>
+        <title>Goo</title>
+        <description>&lt;p&gt;I love classic folk and country songs. I listened to so many at camp growing up, songs like “Rocky Top” or “Country Roads” or John Prine’s “Paradise” that tug at the heartstrings and make you yearn for the simple things. A really good folk song gives you the feeling that it’s been around forever. It’s like a pebble in a creek, worn smooth from the tumbling of being sung again and again.&lt;/p&gt;
+
+&lt;p&gt;In 2018, I wanted to see if I could write one. I thought, well, &lt;em&gt;somebody&lt;/em&gt; wrote these songs, and trying to fake the timeless feel sounded fun. My songwriting process started in Albania, of all places, when I was finally bored enough for inspiration to strike. A few weeks later I had a finished song. It was my first song with lyrics. I’ll show it to you at the end.&lt;/p&gt;
+
+&lt;p&gt;I started out writing a slow, soulful ballad about a mother’s love for a child about to venture out on his own. I tried to establish a sense of place (“This river, my child, is winding and wild…”), and make plain the mother’s fondness for her son, and her regret but acceptance of his leaving her because that’s the way of the world. I wrote a verse like that. Then I got stuck.&lt;/p&gt;
+
+&lt;p&gt;Truth is, I found it kind of painful to be that sincere. I wasn’t really able to show my feelings back then, and it felt so, so uncool to be that simple and direct without twisting into irony or flexing my intellect. The result was that I wrote one verse of a sincere ballad about a mother’s love, and then two verses and three choruses where the mother goes on to tell the child that the one thing they should &lt;em&gt;really&lt;/em&gt; remember is that, if they ever get in trouble, they should eat a big blob of whatever goo they find lying around.&lt;/p&gt;
+
+&lt;p&gt;I told myself I was making fun of folk superstition and old wives’ tales, of motherly chidings to not walk past black cats or under ladders. I don’t think that really shines through. It’s a fun song and one I still listen to fondly, but I cringe a bit. I wasn’t much of a storyteller yet, and there are some things I know now that I didn’t back then. I wanted to write a song poking fun at how true motherly love is blended together with the most ridiculous advice (@Mom). Instead of switching from real wisdom all the way over to goo-mode, I’d interleave the two: a few lines of good advice, then wait, hold the phone, yes, it’s back to goo. It takes genuine love to hold both things and balance them in writing.&lt;/p&gt;
+
+&lt;p&gt;Well, you can’t change the past. As promised, all the way from 2018, here’s &lt;em&gt;Goo.&lt;/em&gt;&lt;/p&gt;
+
+&lt;audio controls=&quot;&quot; style=&quot;width: 100%; margin: 1.5em 0;&quot;&gt;
+  &lt;source src=&quot;/audio/goo.mp3&quot; type=&quot;audio/mpeg&quot; /&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Credit to my brother Sam for the guitar backing. The other instruments are actually the same harmonica, played way low for the bass and high for the solo. Thanks also to Bennett Witcher, who’s sent this recording back to me multiple times after I’ve lost it. For your services, I hereby confer upon you the title of Eternal Steward of the Goo.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 06 Feb 2026 08:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/goo/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/goo/</guid>
+        
+        
+        <category>music</category>
+        
+      </item>
+    
+      <item>
+        <title>Predicting kernel spectra powerlaw exponents from raw data statistics</title>
+        <description>&lt;p&gt;&lt;em&gt;This is a technical note on kernel theory. Venture in at your own risk!&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;My collaborators and I recently put out a paper called &lt;a href=&quot;https://arxiv.org/abs/2510.14878&quot;&gt;Predicting kernel regression learning curves from raw data statistics&lt;/a&gt; in which, among other things, we show how to map from the data PCA stats to the eigenfunctions and eigenvalues of a broad swath of rotation-invariant kernels. It’s a surprising result, both mathematically and empirically: the formulas we find are very simple, and they predict very well for both synthetic Gaussian datasets &lt;em&gt;and image datasets like CIFAR-10.&lt;/em&gt; This has given me real hope that we can deal with the problem of data in the fundamental science of deep learning.&lt;/p&gt;
+
+&lt;p&gt;At about the same time, Arie Wortsman and Bruno Loureiro &lt;a href=&quot;https://arxiv.org/abs/2510.04780&quot;&gt;published a paper&lt;/a&gt; that takes up a very similar topic! They also ask about the mapping from data covariance stats to kernel eigenvalues, and where we discuss the same questions, we find agreeing answers. They’re particularly interested in powerlaws (while we’re more spectrum-agnostic), and they’d like to know: if the data covariance eigenvalues decay as a powerlaw with exponent $\alpha$, with what exponent do the &lt;em&gt;kernel&lt;/em&gt; eigenvalues decay?&lt;/p&gt;
+
+&lt;p&gt;This is a great question, well-motivated by recent developments in practical machine learning and attempts to explain them. The data decay exponent is a more fundamental object, but the kernel eigenvalue decay exponent is the more practically important one. It’s a good question to ask how they’re linked. In this blogpost, I’ll review their answer, propose an alternative perspective with some experiments to back it up, and discuss what I see as important open questions.&lt;/p&gt;
+
+&lt;h3 id=&quot;review-the-answer-of-wortsman-and-loureiro-2025&quot;&gt;Review: the answer of Wortsman and Loureiro (2025)&lt;/h3&gt;
+
+&lt;p&gt;Let the data be sampled $\mathbf{x} \sim \mathcal{N}(\mathbf{0}, \boldsymbol{\Gamma})$ with $\boldsymbol{\Gamma} = \mathrm{diag}(\gamma_1, \ldots, \gamma_d)$. Let the data covariance eigenvalues be $\gamma_i = i^{-a}$ with exponent $a &amp;gt; 1$. (We could add a constant of proportionality — that is, $\gamma_i = \gamma_0 i^{-\alpha}$ — but this only changes the results trivially, so I’ll assume $\gamma_0 = 1$ to keep things simple.) The data dimension $d$ will be very large; for the purposes of this blogpost, we will let it be infinite.&lt;/p&gt;
+
+&lt;p&gt;Wortsman and Loureiro find that the kernel eigenvalues asymptotically decay as $\lambda_j \sim j^{-a}$ — that is, the kernel spectral decay exponent is the same as the data covariance decay exponent. They give nice formal bounds that imply this, and they also give a beautiful characterization of the spectrum when $d$ is finite and $a &amp;lt; 1$, which is very mathematically satisfying (if less practically relevant, since in with real data one almost always finds that $a&amp;gt; 1$).&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;turning-to-experiment-can-we-see-this&quot;&gt;Turning to experiment: can we see this?&lt;/h3&gt;
+
+&lt;p&gt;I find that, when studying machine learning, it’s always a good idea to go check your results against experiment. So what happens if we try this prediction with a real kernel function? To try this, I drew $n = 10^4$ samples of Gaussian data with eigenvalues $\gamma_i \propto i^{-a}$ with exponent $a= 1.5$ and unit trace $\sum_i \gamma_i = 1$, with data dimension $d = 10^4$. I then computed the spectrum of a Gaussian kernel $K_\sigma(\mathbf{x}, \mathbf{x}’) = e^{-\frac{1}{2 \sigma^2} |\mathbf{x} - \mathbf{x}’|^2}$ with different kernel widths $\sigma$ over this dataset and plotted the spectrum. Here’s what I found:&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;img src=&quot;/img/raw_eigenvalue_plots.png&quot; alt=&quot;Kernel eigenvalue spectra for different sigma values&quot; style=&quot;width: 90%;&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A few observations. First, the spectrum is… kind of a nice powerlaw in the middle? But the transient effects at the head and finite-size effects at the tail make it annoying to tell; we’ll have to deal with these. Second, even if you squint, it’s hard to argue that the decays all look like powerlaws with $a = 1.5$. Third, the decay rates actually seem to &lt;em&gt;change:&lt;/em&gt; the plots with larger $\sigma$ seem to have a faster decay and a larger exponent. This wasn’t in the prediction of Wortsman and Loureiro (2025). What gives, and can we predict the decay rates we actually see here?&lt;/p&gt;
+
+&lt;h3 id=&quot;the-hea-an-alternative-approach&quot;&gt;The HEA: an alternative approach&lt;/h3&gt;
+
+&lt;p&gt;I’m going to argue that, yeah, their answer that “the spectral decay rate is always $a$” is probably right &lt;em&gt;asymptotically&lt;/em&gt; as you look very deep into the spectrum, but you’ll often have to look prohobitively far into the spectrum before you approach that decay rate. To do so, I’ll introduce a mathematical tool for getting the precise shape of the decay curve, even at small values of the index $j$.&lt;/p&gt;
+
+&lt;p&gt;The main technology we’ll use to do this is the &lt;em&gt;Hermite eigenstructure ansatz (HEA)&lt;/em&gt; from &lt;a href=&quot;https://arxiv.org/abs/2510.14878&quot;&gt;our paper&lt;/a&gt;. I won’t go through it in detail here; see the paper or &lt;a href=&quot;https://joeyturn.github.io/projects/hea/&quot;&gt;Joey’s blogpost&lt;/a&gt;. The main point we’ll use here is that the HEA gives nice, explicit formulae for the kernel eigenvalues in terms of some kernel-derived coefficients (which are basically Taylor series coefficients). For the Gaussian kernel with width $\sigma$, we have $c_\ell = e^{-\frac{1}{\sigma^2}} \cdot \sigma^{-2 \ell}$. Then&lt;/p&gt;
+
+\[\left\{
+\lambda_j
+\quad
+\text{for all }
+\quad
+j \in \mathbb{N}
+\right\}
+=
+\left\{
+c_{|\boldsymbol{\alpha}|}
+\cdot
+\prod_i \gamma_i^{\alpha_i}
+\quad
+\text{for all }
+\quad
+\boldsymbol{\alpha} \in \mathbb{N}_0^d \right\}.
+\tag{HEA}\]
+
+&lt;p&gt;In words: the set of all kernel eigenvalues (the left-hand side) equals the set enumerated on the right, where the enumeration runs over all multi-index vectors $\boldsymbol{\alpha} \in \mathbb{N}_0^d$ and each choice of $\boldsymbol{\alpha}$ gives a certain monomial of the data covariance eigenvalues $\gamma_i$. This is the deep idea from our paper, and it unifies a lot of other cases with known kernel spectra. I won’t explain why it’s true here, but there is a pretty satisfying derivation we give in our paper.&lt;sup id=&quot;fnref:a&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:a&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;The HEA isn’t exact, and it isn’t perfect, but in our paper, we show that it’s empirically very accurate in basically every case we hoped it would be, including Gaussian-data cases like the one we’re studying here. Let’s check: I’ll add the theoretical spectrum predicted by simple enumeration of the HEA eigenvalues to the plots.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;img src=&quot;/img/eigenvalue_plots_with_hea_vals.png&quot; alt=&quot;Comparison of experimental vs HEA-predicted spectra&quot; style=&quot;width: 90%;&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Pretty good! It’s not perfect, but it’s pretty close, and the discrepancy in the tails is probably due to finite-size effects in the experiment. I trust the HEA more there, and the HEA seems to show a fairly nice powerlaw that spans several decades! It looks reasonably like the eigenvalues actually follow a powerlaw with a &lt;em&gt;different&lt;/em&gt; slope $a’ \neq a$. I didn’t draw those lines because I wasn’t totally sold, but I’m close to buying it.&lt;/p&gt;
+
+&lt;p&gt;To proceed, let’s just assume the HEA gives us the exact spectrum and ask what that implies.&lt;/p&gt;
+
+&lt;h3 id=&quot;from-the-hea-to-spectral-decay&quot;&gt;From the HEA to spectral decay?&lt;/h3&gt;
+
+&lt;p&gt;Now that we just have a closed-form construction for the kernel spectrum, all that remains is to look at its decay w.r.t. index. The right-hand side of the HEA is a sum over multi-indices —- it naturally takes the shape of a $d$-dimensional array —- so the challenge is just flattening this set down to a one-dimensional sorted list.&lt;/p&gt;
+
+&lt;p&gt;Treated as a discrete math problem, this is difficult. I’m a physicist, though, so when I see a problem like this, I’ll first try a continuum approximation to the sum and see if that works.&lt;/p&gt;
+
+&lt;p&gt;We want a function for $\lambda(j)$, the eigenvalue at index $j$. It turns out it’s easier to go after $j(\lambda) = \#[\textrm{eigenvalues } \ge \lambda]$ and then invert it. To get $j(\lambda)$, a decent idea is to do a Laplace’s method “saddle point” analysis: most of the total number of eigenvalues less than $\lambda$ will occur at or near a particular eigenvalue order $\ell_*$, and Taylor-expanding the multiplicity locally around $\ell_*$ turns out to be a useful idea.&lt;/p&gt;
+
+&lt;p&gt;It turns out that ChatGPT can just do this whole calculation if you throw it the problem setup. After some minutes of thinking, it reports that:&lt;/p&gt;
+
+\[\lambda(j)\ \propto \ f(j; \sigma, a) \equiv j^{-a}\;\exp\!\Big(2a\,\sqrt{r\,\log j}\Big)\;(\log j)^{-\,\frac{3a}{4}},\]
+
+&lt;p&gt;where $r = \Big(\sigma^{-2}\gamma_1\Big)^{1/a}$. So does this work? Let’s add it to the plot:&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;img src=&quot;/img/eigenvalue_plots_with_hea_and_saddle_pt_theory.png&quot; alt=&quot;Adding ChatGPT&apos;s prediction to the plots&quot; style=&quot;width: 90%;&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Not really. I’m not sure why. Even after adding more terms (i.e. considering a higher-order expansion around the saddle point), it doesn’t work. It’s possible that GPT’s calculation was just wrong; I haven’t checked in detail (and that’s a first thing to do were I to take up this problem seriously). It’s better than just assuming a powerlaw with exponent $a$, though.&lt;/p&gt;
+
+&lt;p&gt;Let’s ignore the discrepancy and study the function $f(j; \sigma, a)$ anyways. A first observation is that it actually &lt;em&gt;does&lt;/em&gt; asymptotically decay like $j^{-a}$. A second observation, though, is that it can take a &lt;em&gt;really, really long time to get there.&lt;/em&gt; Here’s a plot of the slope on a log-log plot:&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;img src=&quot;/img/log_log_slope_plot.png&quot; alt=&quot;Slope on a log-log plot&quot; style=&quot;width: 40%;&quot; /&gt;
+&lt;p style=&quot;font-size: 0.9em; margin-top: 0.5em;&quot;&gt;Slope on a log-log plot of $\lambda(j) = f(j; \sigma, a)$ with $a = 1.5$. Note that it takes an extremely long time to converge to the asymptotic slope of $-a = -1.5$!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;When $\sigma$ isn’t particularly big, sometimes it takes up to $j \sim 10^{100}$ to actually get close to a decay rate of exponent $a$. Perils of asymptotic analysis! Really makes me suspect that all the power laws we see in machine learning are actually just locally powerlaws, and over enough orders of magnitude, they’ll change.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-now&quot;&gt;What now?&lt;/h3&gt;
+
+&lt;p&gt;I’d say the big open question here is: given that the HEA eigenvalues look pretty good, what analysis can you do on top of them? It’s probably not the right idea to jump all the way to the asymptotic decay rate. Instead, it’ll probably turn out that the decay rate is roughly constant for the first several decades (say, from $10^1$ to $10^6$), and &lt;em&gt;that’s&lt;/em&gt; the more interesting value to predict, since it’s the one we’ll see in experiments.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;The second half of Arie and Bruno’s paper is a treatment of how the data spectrum drives generalization in KRR, which is one step beyond the kernel spectrum! I’m just not discussing it because I’m focused on the powerlaw spectrum question here. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:a&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;For an alternative approach, you can actually see Arie and Bruno’s Proposition 1 — they find essentially the HEA’s eigenvalue prescription in almost the same language! Their result involves constant-factor bounds on the eigenvalues (while we give the eigenvalues including constant factors), but this price is paid in exchange for their actually proving their result rigorously, where we do not except in two limiting cases. Which of these you’ll want to use probably depends on your style! If you just want a formula to try in experiments, our presentation is probably preferable. If you want to prove theorems or build rigorous mathematical foundations, our results should be a good guide for the intuition, but their analysis is probably a better place to build from. &lt;a href=&quot;#fnref:a&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 29 Jan 2026 07:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/kernel-spectral-decay-powerlaw/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/kernel-spectral-decay-powerlaw/</guid>
+        
+        
+        <category>kernels</category>
+        
+      </item>
+    
+      <item>
+        <title>Why I am not an experimentalist; or, making faces with photolithography</title>
+        <description>&lt;p&gt;In 2019, I spent six months in Gothenburg, Sweden at the Chalmers Institute of Technology.
+I was working in the lab of Per Delsing doing nanofabrication in my gap year before grad school, and it was not going well.&lt;/p&gt;
+
+&lt;p&gt;Have you ever wondered how computer chips are made? A chip is basically a block of silicon covered in an immense tangle of thin wires and pieces of doped silicon. These wires are absolutely tiny, just nanometers wide, which is way smaller than the spatial resolution of any machine we could use to mechanically lay down the wires.&lt;/p&gt;
+
+&lt;p&gt;To get around that and get all those wires down, you use a bewildering combination of chemistry and particle physics. First you cover the slab of silicon with a thin layer of a substance called “resist.” The resist is sensitive to either photons or electrons, so you shine either a laser or an electron beam over the slab where you want wires to go. You can then wash away the irradiated resist, exposing the bare silicon underneath, and just cover the whole thing with a thin layer of metal shot in from above. The resist blocks the metal everywhere but in the wire tracks, so when you wash away the rest of the resist, you’re left with nice, beautiful wires. Here’s a cartoon I drew:&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center; margin: 2em 0;&quot;&gt;
+  &lt;img src=&quot;/img/lithographocartoon.png&quot; alt=&quot;Lithography process cartoon&quot; style=&quot;width: 70%;&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With this technique and variations on it, all modern computer chips are manufactured. My job that fateful summer was to use this technique to design &lt;a href=&quot;https://en.wikipedia.org/wiki/Josephson_effect&quot;&gt;quantum inductors&lt;/a&gt;, and I was rapidly learning that I was not cut out for labwork. Every step in the cartoon above is actually ten different steps involving mixing toxic chemicals, heating things, putting things into big scary machines, and using inscrutable computer interfaces with a hundred settings. Oh, and to make matters worse, you have to do all this while sweating inside a head-to-toe cleanroom lab suit. My mentor, Anita, would demonstrate something with practiced care and deliberation, she’d walk away, and I would promptly forget everything except maybe what colors were supposed to be created. I cannot overstate the extent of my incompetence: on several occasions, I left a piece of support plastic called a “spider” on a hot plate and literally melted it to the piece of silicon I was working with. This continued until Anita told me to stop using spiders.&lt;/p&gt;
+
+&lt;p&gt;Even though I was close to useless in the lab, it turned out I was pretty good at coming up with things for other people to try. At the start of my time there, I learned that quantum inductors are usually made with three shoot-down-a-layer-of-metal steps to make three different parts of the circuit. You can do the first two in one machine cycle, but for annoying geometric reasons, everyone did the third step in its own cycle, which could take an extra day or two. I found a way to do them all in one machine cycle by shooting the metal down from three different angles. Thanks to the hard work of my collaborators to show this idea actually worked — figuring out how to fabricate the design, characterize it, and test it in quantum circuits — &lt;a href=&quot;https://pubs.aip.org/aip/apl/article/118/6/064002/40060&quot;&gt;this is now among my most-cited publications&lt;/a&gt;. The finished quantum inductors looked like this:&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center; margin: 2em 0;&quot;&gt;
+  &lt;img src=&quot;/img/josephson_junction.png&quot; alt=&quot;Josephson junction&quot; style=&quot;width: 30%;&quot; /&gt;
+  &lt;p style=&quot;margin-top: 0.5em;&quot;&gt;A Josephson junction made with our speedy fab process.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And now we get to my favorite part of this story. Our silicon wafers were about two inches wide. They’re pretty expensive, so you don’t want to waste them, but you only ever end up using about two thirds of the surface area since you want to leave the borders clear so you can grab the thing with tweezers. This leaves a lot of room for you to print tests or calibration marks, and this fact was not lost on me. Do you see where I’m going with this?&lt;/p&gt;
+
+&lt;p&gt;It was not too long until I realized that the time it took to pattern something onto the silicon was proportional to its &lt;em&gt;size,&lt;/em&gt; not its &lt;em&gt;complexity,&lt;/em&gt; so I could print really complicated stuff, and whatever I wanted, onto the edges of these wafers, so long as it was small.
+So I figured out how scripting worked in the design software, and I wrote some Python to break images down into a format suitable for this software, and then I could print whatever I wanted in a nanometers-thick layer of aluminum. Naturally, the first thing I printed was my professor’s head:&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center; margin: 2em 0;&quot;&gt;
+  &lt;img src=&quot;/img/per_pair.png&quot; alt=&quot;Professor Per Delsing comparison&quot; style=&quot;width: 50%;&quot; /&gt;
+  &lt;p style=&quot;margin-top: 0.5em;&quot;&gt;Left: Professor Per Delsing. Right: Professor Per Delsing &lt;em&gt;on silico&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I left this image up on his door. I’m pretty sure he knew it was me, but we never talked about it. I also printed my own head and a picture with some of my friends:&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center; margin: 2em 0;&quot;&gt;
+  &lt;img src=&quot;/img/me_and_emmet_soc_on_silico.png&quot; alt=&quot;Me and the Emmet Society on silicon&quot; style=&quot;width: 70%;&quot; /&gt;
+  &lt;p style=&quot;margin-top: 0.5em;&quot;&gt;Top: me. Bottom: me and friends.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- I also made this puzzle for the [VT Hunt team](https://www.notion.so/vthunt.com). The answer is an English word. I&apos;ll give it at the bottom.
+
+&lt;div style=&quot;text-align: center; margin: 2em 0;&quot;&gt;
+  &lt;img src=&quot;/img/lithography_puzzle_fixed.png&quot; alt=&quot;Lithography puzzle&quot; style=&quot;width: 40%;&quot;&gt;
+&lt;/div&gt; --&gt;
+
+&lt;p&gt;It’s pretty fun to be able to fabricate things at such a small scale. Each of these images has a total size of about 1mm. I still have the picture of myself, and I own a little microscope I can use to look at it. I used it on my dating profile for a while until I conceded nobody knew what the hell they were looking at and gave up.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;In August 2019, I left Sweden and started my PhD at Berkeley. I switched gears away from experiment, and then away from quantum physics altogether, and joined a lab studying, among other things, the fundamental theory of deep learning, and that got me to where I am today. But now, as I use a computer, and run things with GPUs, and stand by as tech giants fill warehouses with upwards of millions of GPUs and $10^{17}$ transistors total, it’s illuminating and remarkable and a deeply privileged feeling to have gotten to see how computer chips are made.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 22 Jan 2026 07:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/why-i-am-not-an-experimentalist/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/why-i-am-not-an-experimentalist/</guid>
+        
+        
+        <category>physics</category>
+        
+      </item>
+    
+      <item>
+        <title>The Ballad of the Crane Breeder</title>
+        <description>&lt;p&gt;My brother’s girlfriend’s dad, Tom Zimmer, had the craziest job out of high school I’ve ever heard of.
+He shipped up to a wildlife preserve in Wisconsin run by the International Crane Foundation and there found his job was, among other things, to &lt;em&gt;artificially inseminate cranes.&lt;/em&gt;
+They wouldn’t breed in captivity, so he had to go to their pens — the male first, then the female — to collect and deposit the necessary genetic material.
+One hitch: they’re such violent birds (especially the males) that they’ll peck the hell out of you before you can get the goods, so he’d cover the backs of his calves with cardboard for armor, catch them between his legs when they ran at him, and do what he came to do.
+This is apparently a legitimate technique in crane husbandry.&lt;/p&gt;
+
+&lt;p&gt;Of course, a man with a story like that is in desperate need of a songwriter, and I decided I fit the bill.
+Please enjoy my rendition of the teenage occupation of one Tom Zimmer.&lt;/p&gt;
+
+&lt;audio controls=&quot;&quot; style=&quot;width: 100%; margin: 1.5em 0;&quot;&gt;
+  &lt;source src=&quot;/audio/crane_luv.mp3&quot; type=&quot;audio/mpeg&quot; /&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Credit to Isaac Harris for the guitar accompaniament, my uncle Kevin Simon for help with the “bugle” solo, and of course Tom Zimmer, to whom I have promised royalties.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 18 Jan 2026 12:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/ballad-of-the-crane-breeder/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/ballad-of-the-crane-breeder/</guid>
+        
+        
+        <category>music</category>
+        
+      </item>
+    
+      <item>
+        <title>Reharmonizing Ode to Joy</title>
+        <description>&lt;p&gt;I find it beautiful and fascinating how a melody can be changed or enhanced by an artistic choice of the underlying chords. As a study in chord choice, I spent an afternoon reharmonizing Ode to Joy. Here’s my finished product.&lt;/p&gt;
+
+&lt;audio controls=&quot;&quot; style=&quot;width: 100%; margin: 1.5em 0;&quot;&gt;
+  &lt;source src=&quot;/audio/ode_to_joy.m4a&quot; type=&quot;audio/mp4&quot; /&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;p&gt;Even though it’s really short, this was a lot of fun to work on. It was really satisfying to see how adding sevenths to chords made the progression feel jazzier, and how throwing in unusual chords like major thirds and sixths made it feel more tangy and colorful, and how bringing it back to the tonic at the end makes it feel like you’ve wandered afield and come back home. I really had no feel for chord progressions before starting to teach myself music theory some two years ago, but playing around with different ideas and listening very closely to the results in this and known songs and a lot of improvisation has really helped. It’s wonderful to see that there are deeper ideas in music besides the notes, behind the notes, and the structure there is really magical to see and feel.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Jan 2026 10:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/reharmonizing-ode-to-joy/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/reharmonizing-ode-to-joy/</guid>
+        
+        
+        <category>music</category>
+        
+      </item>
+    
+      <item>
+        <title>The Wedding March (Muppets version)</title>
+        <description>&lt;p&gt;Two friends asked me to play Mendelssohn’s Wedding March from &lt;em&gt;A Midsummer Night’s Dream&lt;/em&gt; at their ceremony. After a day learning the piece and a few hours in GarageBand, I sent them this and told them they’d be getting the Muppets version.&lt;/p&gt;
+
+&lt;audio controls=&quot;&quot; style=&quot;width: 100%; margin: 1.5em 0;&quot;&gt;
+  &lt;source src=&quot;/audio/wedding_march_muppets.mp3&quot; type=&quot;audio/mpeg&quot; /&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Congratulations to Isaac Harris and Sophia Mock, thanks to Bennett Witcher for some good Muppet noises, and apologies to Jim Henson. Bonus points if you noticed that the voices are singing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;do&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;re&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mi&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fa&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sol&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;la&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ti&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Jan 2026 09:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/wedding-march-muppets/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/wedding-march-muppets/</guid>
+        
+        
+        <category>music</category>
+        
+      </item>
+    
+      <item>
+        <title>On novelty</title>
+        <description>&lt;p&gt;sometimes I feel there is aaaaccddggklnnnnnooprrttuuvwyy&lt;br /&gt;
+never anything truly new aaaccddeeefgiiklmmnoooprsssttu&lt;br /&gt;
+only old things taken apart accdeeeeefgiimmnnorrsstuuvwy&lt;br /&gt;
+and the pieces rearranged acefgiikllmmnnnooosstttuuvwyy&lt;br /&gt;
+and put together in new configurations aacdeeekllmmrssvyy&lt;br /&gt;
+in an ever-changing dance of parts deeeikllmmoorsstttuuwyy&lt;/p&gt;
+</description>
+        <pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/on-novelty/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/on-novelty/</guid>
+        
+        
+        <category>poetry</category>
+        
+      </item>
+    
+      <item>
+        <title>On the scientific method and its application to the science of deep learning</title>
+        <description>&lt;p&gt;I have recently found myself involved in many discussions centered on the question of how we might develop a satisfactory science of modern machine learning. It certainly seems likely that such a science should be possible, as every important human feat of engineering has eventually admitted an explanatory science. Given such a science, engineering artifacts are revealed as points in a space of viable constructions: with an understanding of mechanics and materials science, we see the Taj Mahal and the Colosseum are two points in the space of stable freestanding structures made of stone, and we can describe the boundaries of this set. It is of course one of the great scientific questions of our time whether current foundation models and their inevitable successors may be located within such a scientific framework.&lt;/p&gt;
+
+&lt;p&gt;While there is widespread support for work developing the “science of deep learning,” there is little consensus as to what this science will look like or what constitutes meaningful progress. Much of this disarray is of course inevitable and healthy: deep learning is complex, complementary approaches will be necessary, and we do not know what, exactly, we are looking for. Much of the confusion, however, is evitable and unhelpful: even when searching for an unknown object, it helps to search methodically. This essay is a discussion of the method of search.&lt;/p&gt;
+
+&lt;p&gt;It appears to me that the present disorder lies mostly downstream from confusion about some basic questions: what is science, and how do you do it? Actually, we don’t care about science merely because it is Science, but rather because it is a technique we may use, so what we are really asking is: how do you make useful sense of something mysterious in the world, and when the mystery is great, how do you go about making progress anyways? While these questions are basic, they are by no means easy. I would like to share some thoughts on these questions informed by my experience and my own process of trial and error.&lt;/p&gt;
+
+&lt;p&gt;Many great thinkers of the last century have offered insightful discussions of the scientific mindset and process, and I strongly recommend sitting down with &lt;a href=&quot;https://en.wikipedia.org/wiki/Falsifiability&quot;&gt;Popper’s notion of falsifiability&lt;/a&gt;, &lt;a href=&quot;https://www.lri.fr/~mbl/Stanford/CS477/papers/Kuhn-SSR-2ndEd.pdf&quot;&gt;Kuhn’s depiction of the scientific process&lt;/a&gt;, &lt;a href=&quot;https://feynman.com/science/what-is-science/&quot;&gt;Feynman’s joyful empiricism&lt;/a&gt;, and &lt;a href=&quot;https://www.lesswrong.com/w/original-sequences&quot;&gt;Yudkowsky’s techniques for clear thinking&lt;/a&gt;. All have greatly shaped my own views, and I have little to say about the general process of science that one of them has not already said better. I would like to contribute just one idea concerning the so-called scientific method.&lt;/p&gt;
+
+&lt;p&gt;We learn in grade school that the process of science follows a defined sequence of steps: observation, hypothesis, experiment (with at least three trials), analysis of data, and acceptance or rejection of the hypothesis. However, any practicing scientist knows that this is not really how science works. The anatomy of a scientific project usually bears little resemblance to this tidy storybook picture.&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; Useful projects take such a great diversity of forms that it can seem like anything at all goes. One might then fairly wonder: are there, after all, any truly essential steps, or is one approach as good as another? This is an important question for any field that hopes to make material progress towards understanding a great mystery.&lt;/p&gt;
+
+&lt;p&gt;It seems to me that, yes, there are two essential steps to the scientific method. Step A is to figure something out. Step B is to check and make sure you’re not wrong. You can do these steps in any order, but you have to do them both.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;img src=&quot;/img/scientific_method/scientific_method.png&quot; width=&quot;60%&quot; /&gt;
+  &lt;div&gt;
+    &lt;small&gt;
+      &lt;i&gt;&lt;b&gt;Figure 1:&lt;/b&gt; The scientific method.&lt;/i&gt;
+    &lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;All the good science I know does both of these steps. If you only do the first step — figuring something out but not adequately checking that you’re right — you’re doing philosophy, or theology, or another speculative practice. Such speculation can be beautiful and useful, but at the end of the day, it can rarely be built upon. If you only do the second thing — performing an empirical check but not figuring anything out — you’re usually doing engineering.&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;There are no rules whatsoever as to how you do the first step. You are allowed to figure things out via educated guess, long experience, mathematical derivation, meditation, or divine inspiration. This is often where the ingenuity of the theorist enters into play. There is only one rule with the second step: you have to do a &lt;em&gt;good job&lt;/em&gt; checking you’re not wrong, ideally good enough to convince other people. This, too, can be done in many different ways — direct experiment, elimination of alternatives, checking new predictions — but it is absolutely essential that it is done adequately. It can be very difficult to do this well, or even to figure out how to do it! This is the nerve-wracking step where one makes sure that one isn’t fooling oneself. This is usually where the ingenuity of the experimentalist comes into play.&lt;sup id=&quot;fnref:a&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:a&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Most of the poor science of which I am aware fails in one of these two steps. It is, of course, very common for a study to fail to adequately demonstrate its central claims: this is understandable, as true, interesting facts are quite difficult to find! On the other side, uninteresting, hypertechnical experiments (which have unfortunately become the norm in certain crowded areas of physics) perform their empirical checks just fine, but when the lab equipment is back in its boxes, it is unclear what general fact has been figured out. (Yep, our Rube Goldberg machine of diffraction gratings, modulators, cavities, and heavy atoms works as predicted! Anyone remember what it was all for?) I also see studies that claim to figure something out about a system of interest (e.g., deep learning), but which fail to state a specific enough conjecture to go and test it, which is a partial failure in both steps. (More on that later.)&lt;/p&gt;
+
+&lt;p&gt;It is worth clarifying that a scientist does not have to do both steps of the scientific method in every scientific paper. An individual contribution may be entirely the proposal of a new idea, as in Darwin’s book or most of the &lt;a href=&quot;https://www.chemteam.info/Chem-History/Planck-1901/Planck-1901.html&quot;&gt;seminal&lt;/a&gt; &lt;a href=&quot;https://uni-tuebingen.de/fileadmin/Uni_Tuebingen/Fakultaeten/MathePhysik/Institute/IAP/Forschung/MOettel/Geburt_QM/bohr_PhilMag_26_1_1913.pdf&quot;&gt;theoretical&lt;/a&gt; &lt;a href=&quot;https://link.springer.com/article/10.1007/BF01397280&quot;&gt;physics&lt;/a&gt; &lt;a href=&quot;https://uni-tuebingen.de/fileadmin/Uni_Tuebingen/Fakultaeten/MathePhysik/Institute/IAP/Forschung/MOettel/Geburt_QM/schrodinger_AnnPhys_386_109_1926.pdf&quot;&gt;papers&lt;/a&gt; &lt;a href=&quot;https://onlinelibrary.wiley.com/doi/10.1002/andp.19053220806&quot;&gt;of the early 1900s&lt;/a&gt;, or it may consist entirely of measurements, as in Tycho Brahe’s meticulous observations of the planets or &lt;a href=&quot;https://www.nature.com/articles/s41586-020-2964-7&quot;&gt;careful modern measurements of fundamental physical constants&lt;/a&gt;. It is quite legitimate for a contribution to &lt;em&gt;dis&lt;/em&gt;prove an existing belief without offering a replacement. The important thing is that a scientist doing one or the other recognizes that they are part of a conversation with the other part: the person proposing the ideas expects other people to go and test them and so tries to make it easy for them to do so, and the people checking the ideas know what the implications are if the experiment comes out one way or the other. Every scientific contribution should understand itself as part of a project that &lt;em&gt;does&lt;/em&gt; do both steps of the scientific method.&lt;/p&gt;
+
+&lt;p&gt;Why are both of these steps necessary for the progress of science? If a line of research does not purport to have figured out any general fact, it is unclear what has been learned or how to build on it. On the other hand, if it does not adequately check its claims, then until it does, it will carry a shadow of fundamental doubt that prevents others from productively building on it. Furthermore, and often more significantly in practice, the act of checking usually contains within it the act of application, as the most convincing way to check a claim is often to operationalize it to do something of interest. Science is an edifice that builds on itself. It usually consists of so many layers that each piece of brickwork must be quite solid to support future building, and each brick must be crafted with future bricks in mind.&lt;/p&gt;
+
+&lt;p&gt;If you really believe me that the essential scientific method has only two steps, you might ask: what’s all this other mumbo jumbo about preregistered hypotheses, repeated trials, cognitive biases and what not? There are a few things going on. First off, while these two steps are simple, actually doing them is hard, so we have some established techniques that sometimes make them easier. Some of these help with the figuring out, but that’s mostly a dark art.&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; Most of these are techniques for the &lt;em&gt;checking&lt;/em&gt; of our knowledge: preregistered hypotheses, multiple trials, the inclusion of error bars, blind review, and most of the other rituals of science are &lt;em&gt;ways to do step B.&lt;/em&gt; None is essential, but they are useful techniques for checking our answer and avoiding fooling ourselves.&lt;/p&gt;
+
+&lt;p&gt;Secondly, some of these techniques are field-specific. For example, in psychology, social science, and nutrition, it’s notoriously tempting to choose one’s hypothesis after seeing the data. In these fields, the space of hypotheses is usually large and the resolving power of evidence is usually weak, so choosing the most-supported claim post-hoc often amounts to &lt;a href=&quot;https://en.wikipedia.org/wiki/Data_dredging&quot;&gt;p-hacking&lt;/a&gt;, and preregistering hypotheses makes it more likely to not be totally wrong. In (non-string-theory) physics, the situation is usually the opposite — hypotheses are few and evidence is abundant — so preregistration isn’t necessary.&lt;/p&gt;
+
+&lt;p&gt;These steps apply even in a nascent field that knows very little. While no method is sufficient to guarantee useful progress in the search, failure to do both steps all but guarantees no progress will be made. By way of analogy, when searching a large unfamiliar house for a desired object, one’s chances of success are greatly improved by a methodical search that progressively expands an explored volume. It is possible to learn that &lt;em&gt;it’s not in this cabinet,&lt;/em&gt; say, but only if one first identifies the cabinet as a useful unit of exploration, then does a sufficiently thorough search that the cabinet does not need to be revisited in the future. Failures &lt;em&gt;are&lt;/em&gt; progress, but &lt;em&gt;only&lt;/em&gt; when they are sufficiently clear and careful so as to reassure other searchers that the space of possible truths is meaningfully reduced.&lt;/p&gt;
+
+&lt;p&gt;In summary, the scientific method consists of two steps: you must figure something out, and you must adequately check that you are not mistaken. It seems to me that these are the two things we must demand of any useful scientific project.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-recognize-the-scientific-method-in-the-science-of-deep-learning&quot;&gt;How to recognize the scientific method in the science of deep learning&lt;/h3&gt;
+
+&lt;p&gt;Deep learning presents a large number of important mysteries. What exactly we believe these mysteries &lt;em&gt;are&lt;/em&gt; has evolved over time and will continue to do so, but all present agree that the mysteries are there. Certainly it seems that the practice of deep learning involves far more arbitrary choices and yields far more surprising results than it ought to if we knew better. There is thus probably much ground to gain. Because the success of deep learning is an empirical phenomenon and we wish to explain it, this is very much a scientific question, and we will be wise to consciously use the methods of science to structure our search.&lt;/p&gt;
+
+&lt;p&gt;We are gradually learning to do genuine science in the study of deep learning, and the rewards have been proportionate. However, a great deal of research effort ostensibly in service of our understanding of deep learning is expended in directions which are quite far from science and which consequently make little real progress. This is not a personal vendetta of mine: I have found this to be the consensus of virtually every researcher in the field with whom I have discussed the subject. In fact, this number includes many interviewees who have described their &lt;em&gt;own&lt;/em&gt; work to me as of this ineffectual type, usually with a palpable air of despondence! (By contrast, the deep learning researchers I know who have caught the “science bug” tend to be energized and optimistic.) We as a field are due for a serious discussion of our methods and search strategy, and we can be optimistic that effectual methods are quite achievable.&lt;/p&gt;
+
+&lt;p&gt;How can we recognize the scientific method in the study of deep learning? We should look for work which (a) purports to figure out something particular and clear about deep learning, and (b) reports simple, convincing experiments that compellingly support it. The things figured out can really take any form so long as they are clearly stated and seem useful. They may be empirical (”A causes B”; “C phenomenon reliably happens”), mathematical (equations, limits, new mathematical objects), or even metascientific (e.g., “D is a useful proxy model for deep learning”). Qualitative claims are fine, but quantitative claims are best, because they may be verified with great confidence and may usually be applied in a large number of cases. Qualitative claims are rarely verified reliably (and often fold under later scrutiny) because of the sheer number of possible causes in a system as complex as deep learning. In assessing the progress of deep learning, we should count the number of interesting, easily verifiable quantitative claims one can make about deep learning systems, and individual researchers should seek to add to this count. This is how we will mark our progress in our search.&lt;/p&gt;
+
+&lt;p&gt;So, how does most “science of deep learning” work do on this minimal rubric of scientific method? By way of illustration, let me run through some of the major research trends in the last five years of deep learning theory. I will start with some failings before ending with some victories.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;On formality and rigor to the detriment of insight.&lt;/strong&gt; It is an item of little controversy (at least when discussing off the record) that a great number of deep learning theory papers are impressively rigorous and mathematically complex, but ultimately shed little to no light on the mystery originally motivating the endeavor. Papers of this sort tend to share certain features: asymptotic notation obscures large hidden constants; theorem statements require significant parsing in order to extract the essence of the result; the problem setup introduces complexity for the sake of a more impressive result rather than simplifying the setup for clarity and insight; few or no experiments are reported, and certainly none with nonlinear networks. Any seasoned deep learning theorist has read numerous such papers.&lt;/p&gt;
+
+&lt;p&gt;It seems to me that this pattern is the result of mistaking the scientific study of deep learning for a discipline of mathematics, which then requires formality and rigor. It emphatically is not: we are faced here with great and glaring empirical mysteries, and experiments are cheap and easy.&lt;sup id=&quot;fnref:4&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; It seems virtually guaranteed that we will first understand deep learning through quick-and-dirty nonrigorous arguments which may later be formalized, as a path through the woods is first blazed and then only later paved over in asphalt. Formality and rigor are a hindrance if they make it harder to understand the real nature of what you have figured out. As the saying goes, all theorems are true, but only some are interesting, and taking stock of the present state of our knowledge, it is greatly preferable to have an interesting nonrigorous result than an uninteresting theorem.&lt;/p&gt;
+
+&lt;p&gt;Papers of this mathematical sort rarely include experiments: sometimes there are experiments tacked on at the end, but they are usually an afterthought. If the study of deep learning were mathematics, this would be understandable, as a proven theorem requires no empirical demonstration. Because the study of deep learning is a science, however, neglecting experiments is utter folly. Unless the proven theorem totally resolves an important question in a completely realistic setting, experiments can extend a result’s scope of applicability, show its limits, check assumptions, or simply make it easier to understand the stated claim. If our goal is to understand deep learning, it sure seems wise to check empirically whether whatever you suppose you have figured out &lt;em&gt;applies to deep learning!&lt;/em&gt; If it doesn’t, or the fit is worse than you expected, this merits explanation. If it does, then the contribution is all the greater.&lt;/p&gt;
+
+&lt;p&gt;The overly mathematical nature of much deep learning theory research is natural and understandable given the field’s history: most workers come from TCS, statistics, or mathematics. Nonetheless, the game has changed, and we should require less rigor, more insight, and more empirics from contributions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Progress in the study of the dynamics of neural network training.&lt;/strong&gt; It seems to me that much of the lasting progress of the last five years — the stuff that’s really stuck around and been built on — is essentially all of a particular type which marries theory and empirics. This strain of research is characterized by several trends:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It demands satisfying equations and quantitative predictions, and it is willing to study very simple cases and study dumb-seeming quantities in order to make this happen.&lt;/li&gt;
+  &lt;li&gt;While the equations do not usually come &lt;em&gt;from&lt;/em&gt; experiments, they are easily verified &lt;em&gt;by&lt;/em&gt; experiments.&lt;/li&gt;
+  &lt;li&gt;Assumptions are checked empirically. Assumptions that are both good and useful are celebrated and kept around.&lt;/li&gt;
+  &lt;li&gt;It is humble: it studies only what it can describe well, and does not make premature claims about downstream topics.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Almost all of the work in this vein describes the &lt;em&gt;dynamics&lt;/em&gt; of neural network learning rather than the &lt;em&gt;performance,&lt;/em&gt; which is what I mean by humility. Some touchstone topics in this vein include the theories of &lt;a href=&quot;https://arxiv.org/abs/1312.6120&quot;&gt;deep linear networks&lt;/a&gt;, the &lt;a href=&quot;https://arxiv.org/abs/1711.00165&quot;&gt;NNGP&lt;/a&gt; and &lt;a href=&quot;https://arxiv.org/abs/1806.07572&quot;&gt;neural tangent kernel&lt;/a&gt;, &lt;a href=&quot;https://proceedings.mlr.press/v139/yang21c.html&quot;&gt;the maximal update parameterization&lt;/a&gt;, the &lt;a href=&quot;https://arxiv.org/abs/2103.00065&quot;&gt;edge of stability&lt;/a&gt;, the &lt;a href=&quot;https://arxiv.org/abs/2110.03922&quot;&gt;generalization of kernel ridge regression&lt;/a&gt;, and the study of hyperparameter scaling relationships (see, e.g., &lt;a href=&quot;https://arxiv.org/abs/2309.16620&quot;&gt;here&lt;/a&gt;). All these ideas presented new mathematical quantities derived from model training which closely follow simple equations. All have proven solid enough to build further understanding on top of.&lt;/p&gt;
+
+&lt;p&gt;This variety of deep learning theory does not yet have an accepted name. We should give it one. Because of its similarities to the physical sciences, the “physics of deep learning” is a candidate term, though this carries historical baggage, has already used to describe many things including &lt;a href=&quot;https://arxiv.org/abs/2305.13673&quot;&gt;other research directions&lt;/a&gt;, and risks alientating the mathematicians and statisticians who have contributed to this productive type of work and will do so in the future. “Analytical interpretability” may be a good term for this, conveying both the high bar of analytical results with the promise of interpreting the training process of deep learning. Plus, it abbreviates to “AI.”&lt;sup id=&quot;fnref:b&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:b&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; Since this line of work includes virtually all extant examples of quantitatively predictive theories for deep learning, I like to think of it as “experiment-dots-on-theory-curves” or “dots-on-curves” theory.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What about empirical science?&lt;/strong&gt;
+The above discussion is centered largely on deep learning theory. The science of deep learning is a rather greater endeavor, and has had some successes. Mechanistic interpretability cannot do what the physics of deep learning could (and vice versa; both are necessary), but it has been quite admirable as a scientific endeavor: it has made good use of the scientific method to coordinate a large-scale search over a difficult space. Deep learning theory should learn from it.&lt;/p&gt;
+
+&lt;p&gt;On the even more empirical side, phenomena like adversarial examples and the lottery-ticket hypothesis were excellent empirical observations, though much of the followup work on these topics makes less use of the scientific method and has accreted into less lasting knowledge. The observation of scaling laws in neural network performance is perhaps the one extant example of a robust and important equation extracted purely from neural network empirics. This was an excellent observation, and it remains unexplained.&lt;/p&gt;
+
+&lt;p&gt;Most “observations” in deep learning are of the type that “X method works for Y task.” Much fruitful dialog could be had between deep learning scientists and practitioners if the practitioners were more proactive in aggregating interesting phenomena and handing them to the scientists, and likewise if the scientists were more proactive in asking for them. Of course, most practitioners are too laser-focused on building AGI to care about theory, so I am dubious this will happen.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;“Hail Maries.”&lt;/strong&gt;
+Lastly, there have been a few ideas proffered of a type that I’ll call “hail Maries” after the long-bomb football pass.
+These ideas try to take a big step forwards all in one step with a very good guess: they tend to be summarizable by statements of the form “hey, what if deep learning is actually just X?”
+A good example of this is the much-embattled &lt;a href=&quot;https://arxiv.org/abs/1503.02406&quot;&gt;“information bottleneck” theory&lt;/a&gt;.
+Even though the IB was conclusively disproven soon after its proposal, I strongly applaud the bold, testable hypothesis and honest attempt to figure something out.
+Attempts to jump ahead in the story like this are likely to be wrong, but they are very much permitted in science.
+Much of the development of quantum mechanics consisted of bold, unprecendent guesses!
+Remember that there are no rules as to how one must figure something out: intuition-guided guesswork is quite allowed.
+In our field, there are few ideas and much energy available to test them, so I would like to see more bold guesses of this type.
+We should expect to see more such leaps as time goes on, and some of them will turn out to be right.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h3&gt;
+
+&lt;p&gt;What now? We are making steady progress towards a theory of deep learning, a theory that we presumably hope to bend to the benefit of humankind. It has been over a decade since AlexNet, and we have tried much. Most of this has failed, but some of it has succeeded. It is a good time now to step back, notice the patterns in our successes, reassess our strategies, and seriously refocus our effort. Let’s get moving.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;To list some deviations I have seen firsthand: sometimes the hypothesis changes dramatically, or only becomes clear at the end, or is absent altogether. Sometimes a single trial suffices, and sometimes one needs millions. Sometimes the hypothesis and conclusions are obvious and the data gathering is the whole project. Sometimes the conclusion has little to do with the initial aims of the project. I have seen very few scientific projects follow the script of the “science fair scientific method,” and these few usually turned out poorly! For example, I’ve rarely seen an interesting hypothesis confirmed by experiment when the scientists weren’t already damn near sure it was going to be true. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Of course, the creator of any engineered artifact can rightly claim to have “figured out” that such an artifact is possible. Sometimes this is quite an interesting discovery! The boundaries between engineering and science are not clear, and we do not need them to be. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:a&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;If I were to add a third step, it would be convincing other people. The community is the ultimate judge of whether you have figured something out and whether your experiments show that it is not wrong. A colleague points out that this is similar to Dorothy Sayer’s &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Mind_of_the_Maker&quot;&gt;third step of the creative process&lt;/a&gt;: sharing your work with the world and thereby having an effect on other people. To me, peer review feels like an important part of the scientific process, but feels secondary to the scientific &lt;em&gt;method&lt;/em&gt; – even alone on a desert island, you could do science as I describe it here – and in any case, it’s not like anyone is making important scientific progress and &lt;em&gt;not&lt;/em&gt; sharing it, so I feel comfortable omitting it. &lt;a href=&quot;#fnref:a&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Yudkowsky attempts to make this mysterious process more mechanical in some of the Sequences, but it’s still quite difficult to come up with hypotheses. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;It is a very interesting question, perhaps worthy of discussion elsewhere, what the merits of rigor and formality are in an exploratory endeavor. Most obviously, a proven theorem is always correct and will not fail unexpectedly, so all else equal, a theorem is preferable to an equivalent nonrigorous claim. When, though, does the extra solidity justify the price in labor? It seems to me that rigor and formality are most useful when the class of objects one wishes to describe is very large and of unknown character, and bizarre or pathological cases are prevalent and important. For example, the space of groups is very large and diverse, and so without axioms to work from, we are lost. Similarly, real analysis requires formality because it turns out the set of all univariate functions on the reals is far stranger than expected, and we cannot rely on our intuitions. On the other hand, when one already has an intuitive feel for the set of objects one wishes to characterize, the guardrails of formality are not so necessary. It is for this reason that you need very little formal math to do physics. This is very much the case in which we find ourselves with deep learning. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:b&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Hat tip to Alex Atanasov for coining the term. &lt;a href=&quot;#fnref:b&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 20 Jul 2025 02:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/on-the-scientific-method/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/on-the-scientific-method/</guid>
+        
+        
+        <category>essays</category>
+        
+      </item>
+    
+      <item>
+        <title>Backsolving classical generalization bounds from the modern kernel regression eigenframework</title>
+        <description>&lt;p&gt;&lt;em&gt;This blogpost shows how to use the omniscient KRR eigenframework, which gives a closed-form expression for the test error of KRR in terms of task eigenstructure, to quickly recover a classical generalization bound. I’ve worked with the modern eigenframework a great deal, and this blogpost was the result of a calculation I thought was new but quickly resolved to a classical bound. Even though the old classical bounds have proven fairly useless in modern problems, I still found this interesting: the calculation here presented is a different (and fast) way to arrive at a classical result, and it was clarifying for me to see where the looseness of the classical result slips in in the course of various approximations.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;We will take as starting point the KRR eigenframework derived in many recent papers. We will use the notation of &lt;a href=&quot;https://arxiv.org/abs/2110.03922&quot;&gt;our KRR eigenpaper&lt;/a&gt; with little further explanation.&lt;/p&gt;
+
+&lt;h3 id=&quot;setup&quot;&gt;Setup&lt;/h3&gt;
+
+&lt;p&gt;We have a target function $f_*(\cdot)$ and a kernel function $K(\cdot,\cdot)$. We know the target function’s RKHS norm $\lvert \! \lvert f_\ast \rvert \! \rvert_K$. We will perform KRR with $n$ samples from an arbitrary measure $\mu$, and we would like to obtain a bound on the test error at optimal ridge&lt;/p&gt;
+
+\[\text{[test MSE]}|_{\delta = \delta_*} \equiv \mathbb{E}_{x \sim \mu}[(f_*(x) - \hat{f}(x))^2].\]
+
+&lt;p&gt;We know $\max_{x \sim \mu} K(x,x)$, where the max runs over the support of $\mu$, or at least we know an upper bound for this quantity.&lt;/p&gt;
+
+&lt;h3 id=&quot;rewriting-known-quantities-in-the-kernel-eigensystem&quot;&gt;Rewriting known quantities in the kernel eigensystem&lt;/h3&gt;
+
+&lt;p&gt;There exists a kernel eigendecomposition $K(x,x’) = \sum_i \lambda_i \phi_i(x) \phi_i(x’)$ which is orthonormal w.r.t. $\mu$, though we will not need to assume that we can find it. There also exists a decomposition $f_*(x) = \sum_i v_i \phi_i(x)$, though we again do not assume we can find it.&lt;/p&gt;
+
+&lt;p&gt;It holds that&lt;/p&gt;
+
+\[|\!| f_* |\!|_K^2 = \sum_i \frac{v_i^2}{\lambda_i}.\]
+
+&lt;p&gt;Note that this is true regardless of the measure $\mu$ — see my note on measure-independent properties of kernel eigensystems.&lt;/p&gt;
+
+&lt;h3 id=&quot;using-the-kernel-eigenframework&quot;&gt;Using the kernel eigenframework&lt;/h3&gt;
+
+&lt;p&gt;The effective ridge $\kappa &amp;gt; 0$ is the unique positive solution to&lt;/p&gt;
+
+\[n = \sum_i \mathcal{L}_i \ + \ \frac{\delta}{\kappa},\]
+
+&lt;p&gt;where $\mathcal{L}_i := \frac{\lambda_i}{\lambda_i + \kappa} \in [0,1]$ is the “learnability” of mode $i$. We will go head and choose $\delta$ such that $\sum_i \mathcal{L}_i = \frac{n}{2}$, which will later give us the best constant prefactor in our bound.&lt;/p&gt;
+
+&lt;p&gt;The eigenframework states that&lt;/p&gt;
+
+\[\text{[test MSE]} \approx \mathcal{E} := \frac{n}{n - \sum_i \mathcal{L}_i^2} \sum_i (1 - \mathcal{L}_i)^2 v_i^2.\]
+
+&lt;p&gt;We may now note three useful bounds. First, we may bound the prefactor above as&lt;/p&gt;
+
+\[\frac{n}{n - \sum_i \mathcal{L}_i^2} \le \frac{n}{n - \sum_i \mathcal{L}_i} = 2,\]
+
+&lt;p&gt;where in the last step we have applied our choice of $\delta$. Second, we may bound the sum as&lt;/p&gt;
+
+\[\sum_i (1 - \mathcal{L}_i)^2 v_i^2 
+\ \le \ \sum_i (1 - \mathcal{L}_i) v_i^2
+\ = \ \sum_i \frac{v_i^2}{\lambda_i} \frac{\kappa \lambda_i}{\lambda_i + \kappa}
+\ \le \ \kappa \cdot \sum_i \frac{v_i^2}{\lambda_i} \le \kappa \cdot |\!| f_* |\!|_K^2.\]
+
+&lt;p&gt;Finally, noting that $\sum_i \frac{\lambda_i}{\kappa} \ge \sum_i \mathcal{L}_i = \frac{n}{2}$, we may bound the constant $\kappa$ as&lt;/p&gt;
+
+\[\kappa &amp;lt; \frac{2}{n} \sum_i \lambda_i = \frac{2 \cdot \text{Tr}[K]}{n} = \frac{2 \cdot \mathbb{E}_{x \sim \mu}[K(x,x)]}{n} \le \frac{2 \cdot \max_{x \sim \mu}K(x,x)}{n}.\]
+
+&lt;p&gt;Putting the above four equations together (and also using the fact that the test MSE at optimal ridge will be less than or equal to the test MSE at our chosen ridge), we find that&lt;/p&gt;
+
+\[\boxed{\mathcal{E}|_{\delta = \delta_*} \le \frac{4 \cdot \max_{x \sim \mu} K(x,x)}{n} \cdot |\!| f_* |\!|_K^2.}\]
+
+&lt;p&gt;This looks like a classical generalization bound! It seems to me like this sort of classical bound often doesn’t have one canonical statement but instead gets written many different ways (which I suppose makes sense if your equation is a fairly loose bound that you could tighten up in some places and loosen in others), and I couldn’t find an exact statement of precisely this form anywhere, so I suppose I’m not actually sure this is equivalent to a classical result (though ChatGPT assures me it is), but it certainly looks like lots of classical bounds I’ve seen.&lt;/p&gt;
+
+&lt;p&gt;If we use the fact that $\lvert ! \lvert f_\ast \rvert ! \rvert_{L^2(\mu)}^2 = \sum_i v_i^2$, we can obtain the (to me more illuminating) result that&lt;/p&gt;
+
+\[\frac{\mathcal{E}|_{\delta = \delta_*}}{\mathcal{E}|_{\delta \rightarrow \infty}} \le \frac{4 \cdot \max_{x \sim \mu} K(x,x)}{n} \cdot \frac{|\!| f_* |\!|_K^2}{|\!| f_* |\!|_{L^2(\mu)}^2}.\]
+
+&lt;p&gt;That is, the ratio of test error with $n$ samples to the naive test error of the zero predictor is controlled by the ratio of the RKHS norm of the target function to the $L^2$ norm of the target function.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 09 Apr 2025 00:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/backsolving-classical-bounds/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/backsolving-classical-bounds/</guid>
+        
+        
+        <category>kernels</category>
+        
+      </item>
+    
+      <item>
+        <title>One kernel, many eigensystems</title>
+        <description>&lt;p&gt;&lt;em&gt;This is a technical note on a subtlety of kernel theory. Venture in at your own risk!&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Many problems in the theory of kernel methods begin with a positive semi-definite kernel function $K(\cdot, \cdot)$ and a probability measure $\mu$ and are solved by first finding the kernel eigenfunctions ${\phi_i}$ and nonnegative eigenvalues ${\lambda_i}$ such that&lt;/p&gt;
+
+\[\ \ \ \qquad\qquad \qquad\qquad K(x,x&apos;) = \sum_i \lambda_i \, \phi_i(x) \, \phi_i(x&apos;) \qquad\qquad \qquad\qquad (1)\]
+
+&lt;p&gt;and&lt;/p&gt;
+
+\[\qquad\qquad \qquad\qquad\quad \ \ \ \mathbb{E}_{x \sim \mu}[\phi_i(x) \, \phi_j(x&apos;)] = \delta_{ij}. \qquad\qquad \qquad\qquad\quad (2)\]
+
+&lt;p&gt;Equation 1 gives the spectral decomposition of the kernel, and Equation 2 states that the eigenfunctions are orthonormal with respect to the measure $\mu$.&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;By &lt;a href=&quot;https://en.wikipedia.org/wiki/Mercer%27s_theorem&quot;&gt;Mercer’s Theorem&lt;/a&gt;, there always exists such a decomposition, though it will generally be different for different measures $\mu$. In fact, there are infinitely many unique decompositions of the form $K(x,x’) = \sum_i \psi_i(x) \, \psi_i(x’)$, but only one of them (up to relabeling and some other symmetries) is “eigen” for a particular measure $\mu$. It is somewhat intriguing to note that each such decomposition is still equally &lt;em&gt;correct&lt;/em&gt; no matter the measure (the first equation having no dependence on $\mu$).&lt;/p&gt;
+
+&lt;p&gt;Given that every measure $\mu$ corresponds to a unique eigendecomposition, it is worth asking the inverse question: which kernel decompositions are “eigen” for some measure? That is, given a “candidate” eigensystem ${(\lambda_i, \phi_i)}$ such that $K(x,x’) = \sum_i \lambda_i \, \phi_i(x) \, \phi_i(x’)$, when does there exist a measure $\mu$ such that $\mathbb{E}_{x \sim \mu}[\phi_i(x) \, \phi_j(x’)] = \delta_{ij}$, and can we find the measure?&lt;/p&gt;
+
+&lt;h2 id=&quot;functional-rightarrow-vector-language&quot;&gt;Functional $\rightarrow$ vector language&lt;/h2&gt;
+
+&lt;p&gt;To answer this question, we will find it helpful to first move from a continuous setting to a discrete setting, as we may then forgo functional analysis for the simpler language of linear algebra. Let us suppose our measure has support only over $n$ discrete points ${x_i}_{i=1}^n$, and let us construct the kernel matrix $[\mathbf{K}]_{ij} = K(x_i, x_j)$, measure matrix $\mathbf{M} = \mathrm{diag}(\mu(x_1), \ldots, \mu(x_n))$, and candidate eigenvectors $\mathbf{v}_i = (\phi_i(x_1), \ldots, \phi_i(x_n))$. In this linear algebraic language, we begin with the assurance that&lt;/p&gt;
+
+\[\mathbf{K} = \sum_i \lambda_i \mathbf{v}_i \mathbf{v}_i^\top.\]
+
+&lt;p&gt;We would like to determine necessary and sufficient conditions on ${\lambda_i, \mathbf{v}_i}$ such that there exists a positive-definite&lt;sup id=&quot;fnref:4&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; diagonal $\mathbf{M}$ such that&lt;/p&gt;
+
+\[\mathbf{v}_i^{\top} \mathbf{M} \mathbf{v}_j = \delta_{ij}\]
+
+&lt;p&gt;and $\mathrm{Tr}[\mathbf{M}] = 1$.
+We begin by stacking our candidate vectors into a matrix $\mathbf{V} := (\mathbf{v}_1, \ldots, \mathbf{v}_n)$ and likewise defining $\boldsymbol{\Lambda} := \mathrm{diag}(\lambda_1, \ldots, \lambda_n)$. Note that all the matrices we have defined are invertible. We now have that&lt;/p&gt;
+
+\[\mathbf{K} = \mathbf{V \Lambda V^\top}, \qquad \mathbf{V^\top M V} = \mathbf{I}.\]
+
+&lt;p&gt;From the latter equation, we get that $\mathbf{M V V^\top} = \mathbf{I}$, and thus $\mathbf{K M V V^\top} = \mathbf{V \Lambda V^\top}$, and thus we obtain the eigenequation&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+\[\mathbf{K M V} = \mathbf{V \Lambda}.\]
+
+&lt;p&gt;We now find that $\mathbf{M V} = \mathbf{K}^{-1}\mathbf{V \Lambda}$, and thus that $\mathbf{M v}_i = \lambda_i \mathbf{K}^{-1} \mathbf{v}_i$ for each eigenindex $i$. We are now in a position to make several observations.&lt;/p&gt;
+
+&lt;p&gt;First, since $\mathbf{v}^\top_i \mathbf{M v}_j = \lambda_i \mathbf{v}^\top_i \mathbf{K}^{-1} \mathbf{v}_j = \delta_{ij}$, we find the requirement on our candidate eigensystem that $\lambda_i = \left( \mathbf{v}^\top_i \mathbf{K}^{-1} \mathbf{v}_i \right)^{-1}$. This is best viewed as a normalization condition on the eigenvector: it is required that&lt;/p&gt;
+
+\[\boxed{
+
+|\!| \mathbf{v}_i |\!| = \left( \lambda_i \hat{\mathbf{v}}_i^\top \mathbf{K}^{-1} \hat{\mathbf{v}}_i  \right)^{-1/2}
+
+}.\]
+
+&lt;p&gt;Second, since $\mathbf{M}$ is positive and diagonal, we find that&lt;/p&gt;
+
+\[\mathbf{M v}_i = \mathbf{\mu} \circ \mathbf{v}_i = \lambda_i \mathbf{K}^{-1} \mathbf{v}_i\]
+
+&lt;p&gt;where $\circ$ denotes elementwise multiplication of vectors. Therefore a single candidate eigenpair $(\lambda_1, \mathbf{v}_1)$ is potentially valid only if there exists a positive vector $\mathbf{\mu}$ verifying the above equation — that is, if&lt;/p&gt;
+
+\[\boxed{
+m_{ik} := \frac{\lambda_i (\mathbf{K}^{-1} \mathbf{v}_i)[k]}{\mathbf{v}_i[k]} &amp;gt; 0
+\qquad \text{if} \ \  \mathbf{v}_i[k] \neq 0,}\]
+
+&lt;p&gt;where we write $\mathbf{u}[k]$ denote the $k$-th element of a vector. We must additionally have that the different eigenvectors verify the same measure — that is,&lt;/p&gt;
+
+\[\boxed{
+m_{ik} = m_{ik&apos;} := \mu_i
+\qquad
+\forall
+\ \
+k, k&apos;
+}\]
+
+&lt;p&gt;except where one of the two is undefined. Finally, we must have that the measure we obtain is normalized:&lt;/p&gt;
+
+\[\boxed{
+\sum_i
+\mu_i = 1.
+}\]
+
+&lt;p&gt;Together, the boxed equations are necessary and sufficient conditions for the existence of a positive measure $\mathbf{\mu}$ such that ${(\lambda_i, \mathbf{v}_i)}$ indeed comprise an orthogonal eigenbasis with respect to $\mathbf{\mu}$. Interestingly, it follows from the above with no additional requirements that&lt;/p&gt;
+
+\[\mathbf{v}_i^\top \mathbf{K}^{-1} \mathbf{v}_j = 0 \qquad \mathrm{if} \ i \neq j.\]
+
+&lt;p&gt;That is, orthogonality with respect to the measure implies orthogonality with respect to $\mathbf{K}^{-1}$.&lt;/p&gt;
+
+&lt;h2 id=&quot;back-to-functional-language&quot;&gt;Back to functional language&lt;/h2&gt;
+
+&lt;p&gt;To phrase these results in functional language, we need to define the &lt;em&gt;inverse kernel operator.&lt;/em&gt; Define the kernel operator $T_K[g](\cdot) = \int K(\cdot, x) g(x) dx$. Let us assume this operator is invertible and construct the inverse $T^{-1}_K$.&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; In functional language, we require that&lt;/p&gt;
+
+\[\frac{\lambda_i \, T_K^{-1} [\phi_i](x)}{\phi_i(x)} = \frac{\lambda_j \, T_K^{-1} [\phi_j](x)}{\phi_j(x)} &amp;gt; 0
+\qquad \forall \ i, j, x,\]
+
+&lt;p&gt;except when either ratio is $\frac{0}{0}$. When this condition holds, the equated quantity is then equal to the measure $\mu(x)$ w.r.t. which ${\phi_i}$ are orthogonal.
+Again, a single candidate eigenfunction $\phi_i$ determines the whole measure $\mu$ except where $\phi_i(x) = 0$.
+We also of course require that the measure we find from the above is normalized when integrated over the full domain.&lt;/p&gt;
+
+&lt;p&gt;We also find the (somewhat more inscrutable to me) condition that&lt;/p&gt;
+
+\[\lambda_i = \left(\int \phi_i(x) \, T_K^{-1} [\phi_i](x) dx\right)^{-1},\]
+
+&lt;p&gt;which again may be treated as a normalization condition on the eigenfunctions \(\phi_i\).&lt;/p&gt;
+
+&lt;h2 id=&quot;connection-to-the-rkhs-inner-product&quot;&gt;Connection to the RKHS inner product&lt;/h2&gt;
+
+&lt;p&gt;The usual reproducing kernel Hilbert space (RKHS) inner product is given by&lt;/p&gt;
+
+\[\langle g, h \rangle_K := \int g(x) \, T_K^{-1}[h](x) dx.\]
+
+&lt;p&gt;In our vectorized setting we found that $\mathbf{v}_i^\top \mathbf{K}^{-1} \mathbf{v}_j = 0$ when $i \neq j$, and so we find in the functional setting that &lt;em&gt;for any kernel eigenfunctions w.r.t. any measure, it will hold that&lt;/em&gt; $\langle \phi_i, \phi_j \rangle_K = 0$ when $i \neq j$. That is, no matter which measure you choose, the eigenfunctions which diagonalize the kernel operator will be orthogonal w.r.t. the RKHS. This is remarkable because the RKHS norm does not depend at all on the measure which was chosen! I tend to avoid using RKHSs whenever possible, but this is a nice property.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;Thanks to Dhruva Karkada for raising the question that led to this blogpost.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Astute readers might wonder why we do not also need to take as input the ”eigenequation” that $\mathbb{E}_{x \sim \mu}[K(x, x’) \, \phi_j(x’)] = \lambda_i \, \phi_i(x).$ Somewhat surprisingly (to me), this can actually be deduced from Equations 1 and 2, as we will discuss after vectorizing. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Since we have assumed that all eigenvalues are nonnegative, we are assured that $\mathbf{M}$ will be positive &lt;em&gt;definite&lt;/em&gt; instead of merely PSD. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;This manipulation answers the question raised by Footnote 1: even with a nontrivial measure, the “right eigenequation” follows from the “kernel-compositional” and “measure-orthogonal” equations. We can in fact obtain any one of these equations from the other two. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;To gain some intuition for these operators, note that if $K(\cdot, \cdot)$ is a Gaussian kernel, then $T_K$ performs Gaussian smoothing, while $T_K^{-1}$ performs “unsmoothing.” &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+        <link>http://james-simon.github.io/blog/one-kernel-many-eigensystems/</link>
+        <guid isPermaLink="true">http://james-simon.github.io/blog/one-kernel-many-eigensystems/</guid>
+        
+        
+        <category>kernels</category>
+        
+      </item>
+    
+  </channel>
+</rss>

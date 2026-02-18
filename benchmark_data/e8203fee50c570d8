@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:blogChannel="http://backend.userland.com/blogChannelModule" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:pingback="http://madskills.com/public/xml/rss/module/pingback/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:betag="http://dotnetblogengine.net/schemas/tags">
+  <channel>
+    <title>Don't Code Tired</title>
+    <description>Jason Roberts on Software Development and .NET</description>
+    <link>http://dontcodetired.com/blog/</link>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>BlogEngine.NET 3.3.0.0</generator>
+    <language>en-US</language>
+    <blogChannel:blogRoll>http://dontcodetired.com/blog/opml.axd</blogChannel:blogRoll>
+    <blogChannel:blink>http://www.dotnetblogengine.net/syndication.axd</blogChannel:blink>
+    <dc:creator>Jason Roberts</dc:creator>
+    <dc:title>Don't Code Tired</dc:title>
+    <geo:lat>0.000000</geo:lat>
+    <geo:long>0.000000</geo:long>
+    <item>
+      <title>Work with SQL Data with Fewer Lines of Code Using Dynamic C#</title>
+      <description>&lt;p&gt;If you need to query a SQL database and work with the data quickly you can use dynamic C# to write less boilerplate code.&lt;/p&gt;&lt;p&gt;For example, if you wanted to query a Customer table (or a more complex joined query, etc.) you could start by writing a class to represent the fields in the Customer table and then use a library/ORM to connect to the SQL database, and perform the query, and get the results populated into Customer objects.&lt;/p&gt;&lt;p&gt;Sometimes you will want this more detailed approach if you dealing with more complex data, perhaps with joined tables/foreign keys, etc.&lt;/p&gt;&lt;p&gt;Sometimes however you just want to query some data and do something with it (display it, report it, etc.) – in this case you’ve got a lot of wasted effort creating classes to represent rows in tables. You can use dynamic C# in conjunction with a library such as &lt;a href="https://www.nuget.org/packages/Dapper/"&gt;Dapper&lt;/a&gt; to remove the need to create these “boilerplate” classes.&lt;/p&gt;&lt;p&gt;The following code shows how to do this in just a few lines of code:&lt;/p&gt;&lt;pre class="brush: csharp;"&gt;using var cn = new SqlConnection(connectionString);
+
+IEnumerable&amp;lt;dynamic&amp;gt; customers = cn.Query("SELECT TOP 10 * FROM CUSTOMER");
+
+foreach (dynamic customer in customers)
+{
+    WriteLine($"{customer.FirstName} {customer.SecondName} {customer.Height} {customer.Age}");
+}
+&lt;/pre&gt;&lt;p&gt;The &lt;strong&gt;cn.Query&lt;/strong&gt; method comes from Dapper and returns dynamic objects, each object is a row from the table/query.&lt;/p&gt;&lt;p&gt;To access a field from the database you simply reference it on the dynamic object such as &lt;strong&gt;customer.FirstName&lt;/strong&gt; – here &lt;strong&gt;FirstName&lt;/strong&gt; is a field in the CUSTOMER table.&lt;/p&gt;&lt;p&gt;Notice we didn’t need to go and spend the extra time to code a Customer class just to be able to query the database.&lt;/p&gt;&lt;p&gt;There’s a lot more to dynamic C# however and to learn more check out my &lt;a href="https://pluralsight.pxf.io/csharpdynamic"&gt;Dynamic Programming in C# 10 Pluralsight course&lt;/a&gt; and even start watching with a &lt;a href="https://pluralsight.pxf.io/c/1392775/1161404/7490"&gt;&lt;strong&gt;free&lt;/strong&gt; trial&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a id="1161409" href="https://pluralsight.pxf.io/c/1392775/1161409/7490" target="_top"&gt;&lt;img width="300" height="600" alt="" src="//a.impactradius-go.com/display-ad/7490-1161409" border="0"&gt;&lt;/a&gt;&lt;img width="0" height="0" style="visibility: hidden; position: absolute;" src="https://pluralsight.pxf.io/i/1392775/1161409/7490" border="0"&gt;&lt;/p&gt;</description>
+      <link>http://dontcodetired.com/blog/post/Work-with-SQL-Data-with-Fewer-Lines-of-Code-Using-Dynamic-C</link>
+      <comments>http://dontcodetired.com/blog/post/Work-with-SQL-Data-with-Fewer-Lines-of-Code-Using-Dynamic-C#comment</comments>
+      <guid>http://dontcodetired.com/blog/post.aspx?id=647245f4-6136-47f6-a992-95eebd149559</guid>
+      <pubDate>Tue, 26 Jul 2022 19:33:31 +0100</pubDate>
+      <betag:tag>C#</betag:tag>
+      <betag:tag>.net</betag:tag>
+      <dc:publisher>Jason</dc:publisher>
+      <pingback:server>http://dontcodetired.com/blog/pingback.axd</pingback:server>
+      <pingback:target>http://dontcodetired.com/blog/post.aspx?id=647245f4-6136-47f6-a992-95eebd149559</pingback:target>
+      <slash:comments>7</slash:comments>
+      <trackback:ping>http://dontcodetired.com/blog/trackback.axd?id=647245f4-6136-47f6-a992-95eebd149559</trackback:ping>
+      <wfw:comment>http://dontcodetired.com/blog/post/Work-with-SQL-Data-with-Fewer-Lines-of-Code-Using-Dynamic-C#comment</wfw:comment>
+      <wfw:commentRss>http://dontcodetired.com/blog/syndication.axd?post=647245f4-6136-47f6-a992-95eebd149559</wfw:commentRss>
+    </item>
+    <item>
+      <title>Support Multiple Versions of .NET From A Single Class Library (.NET multi-targeting)</title>
+      <description>&lt;p&gt;.NET implementations come in a few different versions or “flavors” including .NE Framework, .NET Core, and the evolution of .NET Core into .NET 5+. There’s also .NET Standard which is not an implementation but a specification of API that may (or may not) be implemented in the different “flavors”.&lt;/p&gt;&lt;p&gt;If you’re developing a library (whether this be a public/open source library on NuGet or a library for internal use in your company) you may need to support multiple versions of .NET to allow your library to be consumable by as many people as possible.&lt;/p&gt;&lt;p&gt;You could do this by creating multiple class library projects with each one targeting a different version of .NET. Each of these projects would compile to a DLL file that will support the version of .NET chosen for the class library project. You could use shared/linked source code files to have the same source code compiled in each of the different class library projects – this can become a bit messy and cumbersome.&lt;/p&gt;&lt;p&gt;An alternative is to have a single class library project and make use of &lt;strong&gt;multi-targeting&lt;/strong&gt;.&lt;/p&gt;&lt;h2&gt;What is Multi-Targeting in .NET?&lt;/h2&gt;&lt;p&gt;Multi-targeting is the ability to compile the same source code multiple times, each time compiling for a different version of .NET.&lt;/p&gt;&lt;p&gt;Each target will result in a separate DLL being produced for a class library project for example.&lt;/p&gt;&lt;p&gt;You can then take all the different DLLs and package them up in&amp;nbsp; a single NuGet package that can then be installed into projects with different .NET versions.&lt;/p&gt;&lt;h2&gt;How to Create a Multi-Targeted Class Library in .NET&lt;/h2&gt;&lt;p&gt;If you create a class library project in either Visual Studio or using the .NET CLI, the project XML file will contain the following element:&lt;strong&gt;&amp;lt;TargetFramework&amp;gt;net6.0&amp;lt;/TargetFramework&amp;gt; &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;This element describes what version of .NET the compiled DLL will support (or “target”) in the preceding example this is .NET 6.0.&lt;/p&gt;&lt;p&gt;The “net6.0” is a target framework moniker (TFM). There are many TFMs that describe the different version of .NET.&lt;/p&gt;&lt;p&gt;You can specify multiple TFMs to enable multi-targeting. To do this you also change to a TargetFramework&lt;strong&gt;s&lt;/strong&gt; element. For example to target both .NET 6 and .NET Standard 2.0 you would have: &lt;strong&gt;&amp;lt;TargetFrameworks&amp;gt;net6.0;netstandard2.0;&amp;lt;/TargetFrameworks&amp;gt;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Now when you build the project you will have 2 DLLs – one for .NET 6 and one for .NET standard.&lt;/p&gt;&lt;p&gt;Depending on the targets you add you may also need to add some conditional items to the project file if certain newer features are not supported in older versions such as nullable reference types. Once you have multi-targeting set up you can even compile different portions of code for the different platforms using condition compiler directives to take account of differences/features in the .NET APIs. You will also need to decide how to handle features that are not available in older versions of .NET and perhaps provide a way for consumers of your library to query whether a specific feature is available in a targeted version.To learn how to do all of these things and how to create/version/package your class libraries check out my &lt;a href="https://pluralsight.pxf.io/classlibs"&gt;Class Libraries in C# 10 Pluralsight course&lt;/a&gt;. You can &lt;a href="https://pluralsight.pxf.io/c/1392775/1161404/7490"&gt;start watching with a free trial&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="https://pluralsight.pxf.io/c/1392775/1161404/7490" target="_top" id="1161404"&gt;&lt;img src="//a.impactradius-go.com/display-ad/7490-1161404" border="0" alt="" width="336" height="280" /&gt;&lt;/a&gt;&lt;img height="0" width="0" src="https://pluralsight.pxf.io/i/1392775/1161404/7490" style="position:absolute;visibility:hidden;" border="0" /&gt;&lt;/p&gt;</description>
+      <link>http://dontcodetired.com/blog/post/Support-Multiple-Versions-of-NET-From-A-Single-Class-Library-(NET-multi-targeting)</link>
+      <comments>http://dontcodetired.com/blog/post/Support-Multiple-Versions-of-NET-From-A-Single-Class-Library-(NET-multi-targeting)#comment</comments>
+      <guid>http://dontcodetired.com/blog/post.aspx?id=3280208f-5dbf-4d33-8d9e-cd4d86ff4f19</guid>
+      <pubDate>Thu, 21 Jul 2022 19:00:10 +0100</pubDate>
+      <betag:tag>C#</betag:tag>
+      <betag:tag>.net</betag:tag>
+      <dc:publisher>Jason</dc:publisher>
+      <pingback:server>http://dontcodetired.com/blog/pingback.axd</pingback:server>
+      <pingback:target>http://dontcodetired.com/blog/post.aspx?id=3280208f-5dbf-4d33-8d9e-cd4d86ff4f19</pingback:target>
+      <slash:comments>1</slash:comments>
+      <trackback:ping>http://dontcodetired.com/blog/trackback.axd?id=3280208f-5dbf-4d33-8d9e-cd4d86ff4f19</trackback:ping>
+      <wfw:comment>http://dontcodetired.com/blog/post/Support-Multiple-Versions-of-NET-From-A-Single-Class-Library-(NET-multi-targeting)#comment</wfw:comment>
+      <wfw:commentRss>http://dontcodetired.com/blog/syndication.axd?post=3280208f-5dbf-4d33-8d9e-cd4d86ff4f19</wfw:commentRss>
+    </item>
+    <item>
+      <title>Working with Files in C# 10 Course</title>
+      <description>&lt;p&gt;My latest &lt;a href="https://www.pluralsight.com/courses/c-sharp-10-working-files"&gt;Pluralsight training course&lt;/a&gt; was just published and is an update from the previous version to now use .NET 6 and C# 10.&lt;/p&gt;&lt;p&gt;“Reading and writing data is central to many .NET applications, but it can be difficult to know which approach to take. In this course, Working with Files in C# 10, you’ll gain the ability to read and write data and manage files. First, you’ll explore how to manage files and directories stored on disk. Next, you’ll discover how to monitor and respond to changes in the file system. Finally, you’ll learn how to read, process, and write data in text, binary, and CSV formats. When you’re finished with this course, you’ll have the skills and knowledge of C# files and streams needed to read, write, and process data in your C# applications.”&lt;/p&gt;&lt;p&gt;You can start watching today &lt;a href="https://pluralsight.pxf.io/c/1392775/1161409/7490"&gt;with a free trial&lt;/a&gt;!&lt;/p&gt;&lt;p&gt; &lt;a id="1161409" href="https://pluralsight.pxf.io/c/1392775/1161409/7490" target="_top"&gt;&lt;img width="300" height="600" alt="" src="//a.impactradius-go.com/display-ad/7490-1161409" border="0"&gt;&lt;/a&gt;&lt;img width="0" height="0" style="visibility: hidden; position: absolute;" src="https://pluralsight.pxf.io/i/1392775/1161409/7490" border="0"&gt;&lt;/p&gt;</description>
+      <link>http://dontcodetired.com/blog/post/Working-with-Files-in-C-10-Course</link>
+      <comments>http://dontcodetired.com/blog/post/Working-with-Files-in-C-10-Course#comment</comments>
+      <guid>http://dontcodetired.com/blog/post.aspx?id=954f302a-7de2-410e-b8f3-277f73897205</guid>
+      <pubDate>Mon, 2 May 2022 18:58:22 +0100</pubDate>
+      <betag:tag>pluralsight courses</betag:tag>
+      <betag:tag>.net</betag:tag>
+      <betag:tag>C#</betag:tag>
+      <betag:tag>C#10</betag:tag>
+      <dc:publisher>Jason</dc:publisher>
+      <pingback:server>http://dontcodetired.com/blog/pingback.axd</pingback:server>
+      <pingback:target>http://dontcodetired.com/blog/post.aspx?id=954f302a-7de2-410e-b8f3-277f73897205</pingback:target>
+      <slash:comments>1</slash:comments>
+      <trackback:ping>http://dontcodetired.com/blog/trackback.axd?id=954f302a-7de2-410e-b8f3-277f73897205</trackback:ping>
+      <wfw:comment>http://dontcodetired.com/blog/post/Working-with-Files-in-C-10-Course#comment</wfw:comment>
+      <wfw:commentRss>http://dontcodetired.com/blog/syndication.axd?post=954f302a-7de2-410e-b8f3-277f73897205</wfw:commentRss>
+    </item>
+  </channel>
+</rss>

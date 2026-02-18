@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/wp-content/themes/orbis//feeds/rss-display.xsl" type="text/xsl"?>
+<rss version="2.0" 
+	xmlns:media="http://search.yahoo.com/mrss/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+<channel>
+	<title>Rest of World - </title>
+	<atom:link href="https://restofworld.org/feed/latest" rel="self" type="application/rss+xml" />
+	<link>https://restofworld.org</link>
+	<description>Reporting Global Tech Stories</description>
+	<lastBuildDate>Tue, 17 Feb 2026 19:18:07 +0000</lastBuildDate>
+	<copyright>Copyright 2026 Rest of World</copyright>
+	<sy:updatePeriod>daily</sy:updatePeriod>
+	<sy:updateFrequency>2</sy:updateFrequency>
+	<item>
+		<title>Polymarket courts Chinese users despite strict online gambling ban</title>
+		<link>https://restofworld.org/2026/polymarket-china-betting-ban/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Tue, 17 Feb 2026 11:00:00 +0000</pubDate>
+		<dc:creator>Viola Zhou</dc:creator>
+		<guid>https://restofworld.org/2026/polymarket-china-betting-ban/</guid>
+		<description><![CDATA[The crypto-based prediction platform is hiring Mandarin-speaking staff and adding Lunar New Year bets, even as it remains blocked in China.]]></description>
+		<content:encoded><![CDATA[Cryptocurrency prediction site Polymarket is trying to tap into the Chinese market by hiring Mandarin-speaking staff and listing bets related to the Lunar New Year, even though it has little...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/Polymarkets-Chinese-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/Polymarkets-Chinese-320x320.jpg" />
+	<media:credit>Rest of World/iStock</media:credit>
+		</item>
+	<item>
+		<title>I let Alibaba’s AI agent plan my holiday. I ended up doing more work</title>
+		<link>https://restofworld.org/2026/alibaba-qwen-ai-agent-trial/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Fri, 13 Feb 2026 17:00:00 +0000</pubDate>
+		<dc:creator>Kinling Lo</dc:creator>
+		<guid>https://restofworld.org/2026/alibaba-qwen-ai-agent-trial/</guid>
+		<description><![CDATA[For reassurance, experimentation, and low-pressure decisions, AI agents can feel helpful. For bigger choices, I still trust myself more.
+]]></description>
+		<content:encoded><![CDATA[Like most people, I first heard the term “AI agent” early last year, when a Chinese startup called Manus announced it had built the world’s first general-purpose one. Unlike chatbots...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/lunar_new_year-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/lunar_new_year-320x320.jpg" />
+	<media:credit>Rest of World</media:credit>
+		</item>
+	<item>
+		<title>Chinese boxing robots win fans in San Francisco</title>
+		<link>https://restofworld.org/2026/chinese-robot-boxing-unitree-rek/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Fri, 13 Feb 2026 11:00:00 +0000</pubDate>
+		<dc:creator>Rina Chandran</dc:creator>
+		<guid>https://restofworld.org/2026/chinese-robot-boxing-unitree-rek/</guid>
+		<description><![CDATA[American companies are staging boxing matches with VR-controlled Chinese humanoids to enthusiastic fans. A researcher says it is just robot theater.  ]]></description>
+		<content:encoded><![CDATA[The Super Bowl wasn’t the only sporting event that drew excited fans to the Bay Area last weekend. An event at a much smaller venue in San Francisco was hailed...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/GettyImages-2254510712-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/GettyImages-2254510712-320x320.jpg" />
+	<media:credit>Patrick T. Fallon / AFP via Getty Images</media:credit>
+	<media:description>Robots wear boxing gloves during the Ultimate Fighting Bots (UFB) competition at the annual Consumer Electronics Show (CES) in Las Vegas, Nevada </media:description>
+		</item>
+	<item>
+		<title>OpenAI accuses DeepSeek of “free-riding” on American R&#038;D</title>
+		<link>https://restofworld.org/2026/openai-deepseek-distillation-dispute-us-china/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Fri, 13 Feb 2026 10:13:43 +0000</pubDate>
+		<dc:creator>Kinling Lo</dc:creator>
+		<guid>https://restofworld.org/2026/openai-deepseek-distillation-dispute-us-china/</guid>
+		<description><![CDATA[The ChatGPT maker says the Chinese firm may be distilling its models, underscoring rising tech tensions between Washington and Beijing.]]></description>
+		<content:encoded><![CDATA[OpenAI has accused DeepSeek of malpractice in developing the next version of its artificial intelligence model — even before any official launch. “DeepSeek’s next model (whatever its form) should be...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/Deepseek-OpenAI-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/Deepseek-OpenAI-320x320.jpg" />
+	<media:credit>Rest of World/iStock</media:credit>
+		</item>
+	<item>
+		<title>How cheap Chinese phones catapulted Kenya into the global digital economy</title>
+		<link>https://restofworld.org/2026/china-kenya-silicon-elsewhere-book/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Thu, 12 Feb 2026 11:00:00 +0000</pubDate>
+		<dc:creator>Andrea Pollio</dc:creator>
+		<guid>https://restofworld.org/2026/china-kenya-silicon-elsewhere-book/</guid>
+		<description><![CDATA[In his new book “Silicon Elsewhere: Nairobi, Global China, and the Promise of Techno-Capital,” writer Andrea Pollio charts the growth of Chinese investment and companies in the Kenyan capital. ]]></description>
+		<content:encoded><![CDATA[When I first embarked on the project to write about the encounters between Chinese digital capital and Nairobi’s booming innovation scene, I imagined myself rubbing shoulders with software developers, venture...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/GettyImages-2147852875-1-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/GettyImages-2147852875-1-320x320.jpg" />
+	<media:description>Kenya medical training college students use their mobile phones to take pictures of doctors chanting as they make their way to the health ministry headquarters protesting with placards to demand better pay and working conditions in the capital, Nairobi on April 16, 2024.   (Photo by SIMON MAINA / AFP) (Photo by SIMON MAINA/AFP via Getty Images)</media:description>
+		</item>
+	<item>
+		<title>Can India be a “third way” AI alternative to the U.S. and China?</title>
+		<link>https://restofworld.org/2026/india-ai-summit-third-way-global-south-big-tech/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Wed, 11 Feb 2026 11:00:00 +0000</pubDate>
+		<dc:creator>Amba Kak and Astha Kapoor</dc:creator>
+		<guid>https://restofworld.org/2026/india-ai-summit-third-way-global-south-big-tech/</guid>
+		<description><![CDATA[The AI Impact Summit in India, the first in a developing country, proposes an option that focuses on public good and development. But can it deliver without capitulating to Big Tech? ]]></description>
+		<content:encoded><![CDATA[India is the first among developing countries to host the AI Impact Summit. Official messaging emphasizes the summit as an opportunity to “give voice to the Global South” and democratize...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/GettyImages-2258735783-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/GettyImages-2258735783-320x320.jpg" />
+	<media:credit>Samyukta Lakshmi/Bloomberg via Getty Images</media:credit>
+	<media:description>A developer event organized by Open AI in Bengaluru, India, Jan. 31, 2026. </media:description>
+		</item>
+	<item>
+		<title>Google backs African push to reclaim AI language data</title>
+		<link>https://restofworld.org/2026/google-waxal-african-languages-ai-sovereignty/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Wed, 11 Feb 2026 10:00:00 +0000</pubDate>
+		<dc:creator>Damilare Dosunmu</dc:creator>
+		<guid>https://restofworld.org/2026/google-waxal-african-languages-ai-sovereignty/</guid>
+		<description><![CDATA[A new 21-language data set gives African institutions ownership and control in a field long dominated by Big Tech.]]></description>
+		<content:encoded><![CDATA[If you speak to an artificial-intelligence bot in an African language, it will most likely not understand you. If it does manage to muster a response, it will be rife...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/AfricaLanguages-4-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/AfricaLanguages-4-320x320.jpg" />
+	<media:credit>Munira Mutaher/Rest of World</media:credit>
+		</item>
+	<item>
+		<title>Immigrant women founders face double hurdle in Silicon Valley</title>
+		<link>https://restofworld.org/2026/immigrant-women-founders-vc/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Tue, 10 Feb 2026 11:00:00 +0000</pubDate>
+		<dc:creator>Rina Chandran</dc:creator>
+		<guid>https://restofworld.org/2026/immigrant-women-founders-vc/</guid>
+		<description><![CDATA[Persistent racism and sexism in the venture capital industry are denying immigrant women founders an opportunity to participate in the AI boom.]]></description>
+		<content:encoded><![CDATA[Pitching her AI-powered insurance-claims product to venture capitalists in the Bay Area, Sri Ramaswamy expected questions about the technology, and her growth plan. Instead, she was asked: “Who else is...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/illo_female_founders-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/illo_female_founders-320x320.jpg" />
+	<media:credit>iStock/Rest of World</media:credit>
+		</item>
+	<item>
+		<title>Morocco wants to build AI that speaks for Africa</title>
+		<link>https://restofworld.org/2026/morocco-ai-minister/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Tue, 10 Feb 2026 10:11:57 +0000</pubDate>
+		<dc:creator>Indranil Ghosh</dc:creator>
+		<guid>https://restofworld.org/2026/morocco-ai-minister/</guid>
+		<description><![CDATA[Morocco’s Minister of Digital Transition on governing AI when the rules keep changing, building language models for Africa, and why regulation can coexist with innovation.]]></description>
+		<content:encoded><![CDATA[Amal El Fallah Seghrouchni has spent her career building artificial intelligence. Now she regulates it. Morocco appointed her Minister of Digital Transition and Administrative Reform in October 2024. With a...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/Web_Summit_Qatar_2026_04022026_01-e1770633047975-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/Web_Summit_Qatar_2026_04022026_01-e1770633047975-320x320.jpg" />
+	<media:credit>Morocco Ministry of Digital Transition and Administrative Reform</media:credit>
+		</item>
+	<item>
+		<title>AI is dominating the world’s memory chips. That could make phones more expensive</title>
+		<link>https://restofworld.org/2026/ai-memory-chip-explainer/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Mon, 09 Feb 2026 11:00:00 +0000</pubDate>
+		<dc:creator>Viola Zhou</dc:creator>
+		<guid>https://restofworld.org/2026/ai-memory-chip-explainer/</guid>
+		<description><![CDATA[As chipmakers rush to serve AI data centers, consumer electronics are left in short supply.]]></description>
+		<content:encoded><![CDATA[The rapid expansion of artificial-intelligence infrastructure is triggering a global memory chip shortage, as factories prioritize chips for hyperscalers over the kinds used in laptops and smartphones. The shortage is...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/illo_market_chip_sketch-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/illo_market_chip_sketch-320x320.jpg" />
+	<media:credit>iStock/Rest of World</media:credit>
+		</item>
+	<item>
+		<title>Silicon Valley can’t import talent like before. So it’s exporting jobs</title>
+		<link>https://restofworld.org/2026/h1b-visa-impact-india-tech-hiring-faamng/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Mon, 09 Feb 2026 09:09:28 +0000</pubDate>
+		<dc:creator>Ananya Bhattacharya</dc:creator>
+		<guid>https://restofworld.org/2026/h1b-visa-impact-india-tech-hiring-faamng/</guid>
+		<description><![CDATA[Google, Amazon, Microsoft, and other U.S. tech giants are ramping up India hiring.]]></description>
+		<content:encoded><![CDATA[If tech talent can’t come to the U.S., American companies will go where the talent is. Hiring by Meta, Amazon, Apple, Microsoft, Netflix, and Google has risen sharply in India...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/H1B-Jobs_3-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/H1B-Jobs_3-320x320.jpg" />
+	<media:credit>Rest of World/Shutterstock</media:credit>
+		</item>
+	<item>
+		<title>The great Chinese EV exodus</title>
+		<link>https://restofworld.org/2026/china-ev-exports-competition-price/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=feeds</link>
+		<pubDate>Mon, 09 Feb 2026 08:00:00 +0000</pubDate>
+		<dc:creator>Kinling Lo</dc:creator>
+		<guid>https://restofworld.org/2026/china-ev-exports-competition-price/</guid>
+		<description><![CDATA[A consolidation among Chinese carmakers is flooding markets from São Paulo to Dubai.]]></description>
+		<content:encoded><![CDATA[China’s electric-vehicle makers are going global to avoid going under. A price war at home and shrinking government support have thrown the industry into flux, with analysts predicting only 15...]]></content:encoded>
+		<media:content medium="image" url="https://restofworld.org/wp-content/uploads/2026/02/4-768x432.jpg" width="768" height="432" />
+	<media:thumbnail url="https://restofworld.org/wp-content/uploads/2026/02/4-320x320.jpg" />
+	<media:credit>Rest of World/iStock</media:credit>
+		</item>
+	</channel>
+</rss>

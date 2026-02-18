@@ -1,0 +1,1555 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Xavier Geerinck]]></title><description><![CDATA[Sharing my learnings as CTO in Data, AI and IoT over the years]]></description><link>https://xaviergeerinck.com/</link><image><url>https://xaviergeerinck.com/favicon.png</url><title>Xavier Geerinck</title><link>https://xaviergeerinck.com/</link></image><generator>Ghost 6.19</generator><lastBuildDate>Mon, 16 Feb 2026 17:33:33 GMT</lastBuildDate><atom:link href="https://xaviergeerinck.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Creating Embeddings with vLLM on MacOS]]></title><description><![CDATA[Learn how to generate embeddings with vLLM on MacOS]]></description><link>https://xaviergeerinck.com/2025/05/27/creating-embeddings-with-vllm-on-macos/</link><guid isPermaLink="false">683308eeebe9de00015c4fd4</guid><category><![CDATA[AI]]></category><category><![CDATA[Coding - Python]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Tue, 27 May 2025 13:30:49 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2025/05/generating-embeddings-macos-vllm-1.png" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2025/05/generating-embeddings-macos-vllm-1.png" alt="Creating Embeddings with vLLM on MacOS"><p>What was thought to be an easy journey seemed to be quite &quot;interesting&quot;, with MacOS not being the first candidate for vLLM. As each time I was creating running my embeddings I got <code>&quot;ValueError: Model architecture [&apos;...&apos;] failed to be inspected. Please check the logs for more details&quot;</code> and then some Triton issues.</p><p>Simply debugging was also not working initially, as when running <code>collect_env</code> shipped by PyTorch (<code>python -m torch.utils.collect_env</code>), I received error <code>AttributeError: &apos;NoneType&apos; object has no attribute &apos;splitlines&apos;</code>. Luckily, a fix is already <a href="https://github.com/pytorch/pytorch/issues/144615?ref=xaviergeerinck.com">in the works</a>. </p><p>The solution appeared to be to install vLLM manually by its source code, so let&apos;s do that!</p><h2 id="installing-vllm-on-mac">Installing vLLM on Mac</h2><p>Luckily for us, building vLLM from source is not too difficult and is well explained. We just have to make sure correctly <a href="https://docs.vllm.ai/en/stable/getting_started/installation/cpu.html?ref=xaviergeerinck.com#build-wheel-from-source">follow the steps as written</a> (as using <code>uv pip</code> doesn&apos;t work either).</p><pre><code class="language-bash">uv venv --python 3.12 --seed
+source .venv/bin/activate
+
+git clone https://github.com/vllm-project/vllm.git
+cd vllm
+pip install -r requirements/cpu.txt
+pip install -e . 
+</code></pre><p>Doing so, results in a correctly installed vLLM:</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-15.png" class="kg-image" alt="Creating Embeddings with vLLM on MacOS" loading="lazy" width="739" height="56" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-15.png 600w, https://xaviergeerinck.com/content/images/2025/05/image-15.png 739w" sizes="(min-width: 720px) 720px"></figure><h2 id="running-a-demo-embedding">Running a Demo Embedding</h2><p>Now we can finally run a Demo Embedding, so let&apos;s create a simply script that prints the embedding:</p><pre><code class="language-python">from vllm import LLM
+
+# vLLM Configuration
+VLLM_EMBEDDING_MODEL = &quot;nomic-ai/nomic-embed-text-v1.5&quot;
+
+# Sample prompts.
+prompts = [
+    &quot;Hello, my name is&quot;,
+    &quot;The future of AI is&quot;,
+]
+
+# Create an LLM.
+# You should pass task=&quot;embed&quot; for embedding models
+model = LLM(
+    model=VLLM_EMBEDDING_MODEL,
+    task=&quot;embed&quot;,
+    enforce_eager=True,
+    trust_remote_code=True,
+)
+
+# Generate embedding. The output is a list of EmbeddingRequestOutputs.
+outputs = model.embed(prompts)
+
+# Print the outputs.
+for prompt, output in zip(prompts, outputs):
+    embeds = output.outputs.embedding
+    embeds_trimmed = ((str(embeds[:16])[:-1] + &quot;, ...]&quot;) if len(embeds) &gt; 16 else embeds)
+    print(f&quot;Prompt: {prompt!r} | &quot;
+        f&quot;Embeddings: {embeds_trimmed} (size={len(embeds)})&quot;)
+</code></pre><p>And there we go! Embeddings are being created and we can continue with any vector related search.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-16.png" class="kg-image" alt="Creating Embeddings with vLLM on MacOS" loading="lazy" width="1587" height="315" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-16.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-16.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image-16.png 1587w" sizes="(min-width: 720px) 720px"></figure>]]></content:encoded></item><item><title><![CDATA[Live Delta Lake with Azure ADF and Databricks DLT]]></title><description><![CDATA[Create a live incrementally loaded delta lake with Azure and Databricks through Azure Data Factory (ADF), Delta Tables and Databricks Delta Live Tables]]></description><link>https://xaviergeerinck.com/2025/05/14/live-delta-lake-with-azure-adf-and-databricks-dlt/</link><guid isPermaLink="false">6824500aab30280001e52a8d</guid><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Wed, 14 May 2025 08:38:18 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2025/05/second.png" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2025/05/second.png" alt="Live Delta Lake with Azure ADF and Databricks DLT"><p>As touched upon <a href="https://xaviergeerinck.com/2025/04/28/incremental-data-load-debezium/">before</a>, incremental loading is the holy grail of data engineering, as it reduces the compute power required, saving time and much needed compute costs. Sadly enough, as we know, this is not an easy feat. Now, luckily for us, this all changes with Azure Data Factory and Databricks Delta Live Tables!</p><p>What we are going to be creating is the below, where data moves in towards the Bronze (RAW) from our SQL Server through our Azure Data Factory, towards Silver to curate it and finally Gold where can pick it up for consumption.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-14.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="2000" height="962" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-14.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-14.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2025/05/image-14.png 1600w, https://xaviergeerinck.com/content/images/2025/05/image-14.png 2288w" sizes="(min-width: 720px) 720px"></figure><p>The beauty in this process is that we just process the changes, creating a very efficient process!</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-12.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1050" height="902" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-12.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-12.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image-12.png 1050w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-13.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1200" height="444" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-13.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-13.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image-13.png 1200w" sizes="(min-width: 720px) 720px"></figure><p></p><h2 id="creating-a-delta-table">Creating a Delta Table</h2><p>Before we get started, it is IMPORTANT to create an empty delta table first as else, ADF will NOT enable the Change Data Feed. So we create a small notebook in Databricks with the below.</p><blockquote>&#x26A0;&#xFE0F; Note that we also set the <code>minReaderVersion</code>and <code>minWriterVersion</code> as Databricks uses a new version of Delta lake than Microsoft does. At the time of writing, Microsoft requires 2,5 while Databricks has 3,7. Let&apos;s hope Microsoft follows quickly as there are some exciting changes!</blockquote><blockquote>&#x26A0;&#xFE0F; Besides just setting the versions, we also need to DISABLE <a href="https://docs.databricks.com/aws/en/delta/deletion-vectors?ref=xaviergeerinck.com">deletion vectors</a>, as when setting this, Databricks will automatically default to 3.7</blockquote><pre><code class="language-sql">-- Verwijder van de Hive Metastore
+DROP TABLE IF EXISTS customers;
+
+-- Maak aan
+CREATE TABLE customers
+USING DELTA
+LOCATION &apos;abfss://delta@yourstorageaccount.dfs.core.windows.net/dbo.Customers&apos;
+TBLPROPERTIES (
+    -- Disable deletion vectors as this doesn&apos;t work on 2.5
+    delta.enableDeletionVectors = false,
+    delta.enableChangeDataFeed = true,
+    delta.minReaderVersion = 2,
+    delta.minWriterVersion = 5
+)</code></pre><p>We can then verify that this table was correctly persisted to our storage account and see that the correct reader and writer version were set</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-2.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1249" height="440" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-2.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-2.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image-2.png 1249w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-3.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="528" height="293"></figure><blockquote>&#x1F4A1; Besides the above, we could theoretically as well use this script to do the initial load of the Bronze data (as CDC is incremental and will only sync the changes)</blockquote><h2 id="configuring-azure-data-factory">Configuring Azure Data Factory</h2><p>Completely managed out of the box, Azure Data Factory now offers live CDC (or on a custom interval), syncing data from our SQL Server towards a configured delta table. </p><p>We thus create a CDC resource that sinks our Customers table to the previously created delta table.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-1.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1907" height="846" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-1.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-1.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2025/05/image-1.png 1600w, https://xaviergeerinck.com/content/images/2025/05/image-1.png 1907w" sizes="(min-width: 720px) 720px"></figure><p>Starting the pipeline shows us that records are being processed! We now have a proper working Bronze load!</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-4.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1824" height="900" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-4.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-4.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2025/05/image-4.png 1600w, https://xaviergeerinck.com/content/images/2025/05/image-4.png 1824w" sizes="(min-width: 720px) 720px"></figure><p>We can verify this data being loaded in our Unity Catalog now! </p><blockquote>&#x1F4A1; Do note that the data here is thus not version 1 (as that&apos;s the empty schemaless table) but will start at version 2 of our delta table</blockquote><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-6.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1490" height="461" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-6.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-6.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image-6.png 1490w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-5.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1500" height="456" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-5.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-5.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image-5.png 1500w" sizes="(min-width: 720px) 720px"></figure><p>We are now ready with our Bronze setup and can continue on creating the actual pipeline! &#x1F973;</p><h2 id="configuring-databricks">Configuring Databricks</h2><p>Next up is Databricks itself. Data is being sinked in an Azure Storage account through Azure Data Factory, and we know the changes that happen on that table as we enabled the Change Data Feed.</p><p>We can now create the Delta Live Table (DLT) setup that will read the stream of changes and pipe it from Bronze towards Silver to clean and from Silver to Gold for business consumption.</p><p>In our case, we see Silver as a SCD 1 (Slowly Changing Dimension) process, which doesn&apos;t need to keep track of the changes, while gold is typically a SCD 2 process, where we need to track the changes, or gold can as well be a full rebuild, where we do not load incrementally but rather compute an aggregate.</p><blockquote>&#x1F4A1; SCD 1: Do NOT keep track of changes, SCD 2: Keep track of changes</blockquote><h3 id="bronze-stream">Bronze Stream</h3><pre><code class="language-python"># Factory creator of bronze cdc stream readers 
+# note: since this is a streaming source, the table is loaded incrementally
+# Bronze: is the raw CDC stream, does not do deduplication, no SCD logic or no business rules. As raw as possible to preserve original changes for audit, replay or future processing
+def create_bronze(table_name, delta_path):
+    @dlt.table(
+        name=f&quot;bronze_{table_name}&quot;,
+        comment=f&quot;Bronze - Raw CDC data ingested from ADF for {table_name}&quot;,
+        table_properties={
+            &quot;quality&quot;: &quot;bronze&quot;
+        }
+    )
+    def bronze():
+        try:
+            # Return the stream, which starts from the correct version
+            return (
+              spark.readStream
+              .format(&quot;delta&quot;)
+              .option(&quot;checkpointLocation&quot;, f&quot;abfss://delta@yourstorageaccount.dfs.core.windows.net/checkpoints/{table_name}&quot;)
+              .option(&quot;readChangeFeed&quot;, &quot;true&quot;)
+            #   .option(&quot;startingVersion&quot;, first_cdf_version)
+              .option(&quot;mergeSchema&quot;, &quot;true&quot;) 
+              .load(delta_path)
+            )
+        except AnalysisException as e:
+            raise RuntimeError(f&quot;Delta table path does not exist or is not accessible: {delta_path}. Disable it or add it.&quot;) from e
+
+for table_name, delta_path in TABLE_CONFIGS.items():
+    create_bronze(table_name, delta_path)</code></pre><h3 id="silver-stream">Silver Stream</h3><pre><code class="language-python"># Factory creator of silver stream processors
+# note: as the bronze table is a stream, silver also needs to be one
+# Silver: is the cleansed and validated data, with SCD logic applied
+def create_silver(table_name, delta_path):
+  # Create Streaming Table
+  dlt.create_streaming_table(
+      name=f&quot;silver_{table_name}&quot;,
+      comment=f&quot;Cleansed and validated data for {table_name}&quot;,
+      table_properties={
+          &quot;quality&quot;: &quot;silver&quot;
+      }
+  )
+
+  # Apply changes to silver table using a slowly changing dimension (SCD) type 2 approach
+  # it creates a new version of the record each time it is updated
+  # more info: https://www.databricks.com/blog/2021/06/09/how-to-simplify-cdc-with-delta-lakes-change-data-feed.html
+  # more info: https://www.databricks.com/blog/2023/01/25/loading-data-warehouse-slowly-changing-dimension-type-2-using-matillion.html
+  # more info: https://docs.databricks.com/aws/en/dlt/cdc?language=Python#example-scd-type-1-and-scd-type-2-processing-with-cdf-source-data
+  dlt.apply_changes(
+    target=f&quot;silver_{table_name}&quot;,
+    source=f&quot;bronze_{table_name}&quot;,
+    keys=[&quot;CustomerId&quot;],
+    sequence_by=&quot;_commit_version&quot;,
+    ignore_null_updates = False,
+    apply_as_deletes=expr(&quot;_change_type = &apos;DELETE&apos;&quot;),
+    except_column_list=[&quot;_commit_version&quot;, &quot;_commit_timestamp&quot;, &quot;_change_type&quot;],
+    stored_as_scd_type=1 # SCD type 1: keep history of changes
+  )
+
+for table_name, delta_path in TABLE_CONFIGS.items():
+    create_silver(table_name, delta_path)</code></pre><h3 id="gold-stream">Gold Stream</h3><pre><code class="language-python"># The gold table will be recomputed each time by reading the entire silver table when it is updated
+# aka: it will be rematerialized on each update in silver
+# Note: Gold can be incrementally loaded as SCD 2, or aggregately built (full refresh, materialized on each change)
+@dlt.table(
+  name=&quot;gold_customers_summary&quot;,
+  comment=&quot;Showing all the customers their names&quot;,
+  table_properties={
+    &quot;quality&quot;: &quot;gold&quot;,
+      &quot;delta.autoOptimize.optimizeWrite&quot;: &quot;true&quot;,
+      &quot;delta.autoOptimize.autoCompact&quot;: &quot;true&quot;
+  }
+)
+def gold_customers():
+  return dlt.read(&quot;silver_customers&quot;).select(
+    col(&quot;CustomerId&quot;),
+    concat_ws(&quot; &quot;, col(&quot;FirstName&quot;), col(&quot;LastName&quot;)).alias(&quot;Name&quot;)
+  )</code></pre><h2 id="running-our-pipeline">Running our Pipeline</h2><p>When we run this pipeline, it will properly startup, showing added and deleted records:</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1262" height="251" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image.png 1262w" sizes="(min-width: 720px) 720px"></figure><p>When we now change a record in our SQL Server</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-7.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1049" height="271" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-7.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-7.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image-7.png 1049w" sizes="(min-width: 720px) 720px"></figure><p>We can see that it is picked up by our CDC process</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-8.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1789" height="680" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-8.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-8.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2025/05/image-8.png 1600w, https://xaviergeerinck.com/content/images/2025/05/image-8.png 1789w" sizes="(min-width: 720px) 720px"></figure><p>processed towards Bronze (RAW)</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-9.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="1416" height="196" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/05/image-9.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/05/image-9.png 1000w, https://xaviergeerinck.com/content/images/2025/05/image-9.png 1416w" sizes="(min-width: 720px) 720px"></figure><p>which consolidates in Gold processed with the temporary records removed from view</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/05/image-10.png" class="kg-image" alt="Live Delta Lake with Azure ADF and Databricks DLT" loading="lazy" width="353" height="162"></figure><p></p><h2 id="conclusion">Conclusion</h2><p>The above requires a change in mindset, going from a previously more batch oriented process, towards now a more real-time oriented process. This process however works with incremental data, making it completely worth it, potentially reducing existing workloads by a huge margin! As we are not running the full pipeline anymore, but rather a small effort of the little chunk of data that changed.</p>]]></content:encoded></item><item><title><![CDATA[PowerBI Secure Architecture]]></title><description><![CDATA[Making sense of PowerBI its architectural diagram and creating a secure setup for accessing on-premises data]]></description><link>https://xaviergeerinck.com/2025/04/29/powerbi-secure-architecture/</link><guid isPermaLink="false">68088c5c8120970001dd17de</guid><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Tue, 29 Apr 2025 13:00:51 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2025/04/second.png" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2025/04/second.png" alt="PowerBI Secure Architecture"><p>PowerBI is an amazing dashboarding and report creation tool for BI, but with amazing tools come difficult architectures that we should try to fully understand to get the fullest out of it. </p><p>To better illustrate the architecture, let&#x2019;s define a practical use case.</p><h2 id="example-use-case">Example Use Case</h2><p>Suppose a user needs to upload a CSV file to a local NFS share, generate a report from this data, and then publish the report. </p><p>While this workflow may seem straightforward at first glance, it introduces several important challenges&#x2014;particularly around security and user isolation. For instance, if person X publishes a report, how can we ensure that their access is properly isolated? How do we control and audit secure read and write permissions for these files?</p><blockquote><strong>As a user, I want to be able to put a CSV file on a local NFS share, which I then can use to create a report and publish it.</strong> </blockquote><p>Addressing these questions requires a thorough understanding of Power BI and its security capabilities. To proceed, let&#x2019;s first define the key components involved in this scenario.</p><h2 id="architecture-components">Architecture Components</h2><h3 id="online">Online</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Workspace</strong></td>
+<td>The cloud workspace where reports are created and published</td>
+</tr>
+<tr>
+<td><strong>Report</strong></td>
+<td>The visualization created from the data in the CSV files</td>
+</tr>
+<tr>
+<td><strong>Semantic Model</strong></td>
+<td>Formerly called a dataset, this represents the data model in Power BI derived from the CSV data</td>
+</tr>
+<tr>
+<td><strong>Gateway Configuration</strong></td>
+<td>Settings in Power BI Service that configure how the gateway connects to on-premise data sources</td>
+</tr>
+<tr>
+<td><strong>PBI Connection</strong></td>
+<td>The configuration that maps the Semantic Model to the on-premise data source via the gateway</td>
+</tr>
+<tr>
+<td><strong>AAD Group</strong></td>
+<td>Manages administrative permissions for gateway configuration and connection creation.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="on-premise">On-Premise</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NFS Share</strong></td>
+<td>Stores the files uploaded by users.</td>
+</tr>
+<tr>
+<td><strong>Active Directory (AD) Group</strong></td>
+<td>Grants read/write access to the NFS share.</td>
+</tr>
+<tr>
+<td><strong>Service Account</strong></td>
+<td>Runs the Power BI Gateway and is a member of the AD Group (enforcing least privilege access).</td>
+</tr>
+<tr>
+<td><strong>PowerBI Gateway</strong></td>
+<td>Acts as a secure bridge between on-premises data and Power BI Cloud, using the Service Account&#x2019;s credentials.</td>
+</tr>
+</tbody>
+</table>
+<p>This focuses on <strong>Key Security Mechanisms</strong>:</p><ol><li><strong>User Isolation</strong><br>Users never directly access the NFS share or Service Account. They interact only with the Power BI Workspace and reports in the cloud.</li><li><strong>Access Control Layers</strong><ul><li><strong>AD Group</strong>: Limits NFS share access to the Service Account.</li><li><strong>AAD Group</strong>: Restricts gateway configuration to authorized admins.</li><li><strong>Service Account</strong>: Runs the gateway with minimal privileges.</li></ul></li><li><strong>Data Flow Security</strong>: As our flow is <code>User &#x2192; NFS Share (write) &#x2192; Power BI Gateway (read via Service Account) &#x2192; Semantic Model &#x2192; Report</code>, The gateway acts as a security proxy&#x2014;users can&#x2019;t directly query or modify the CSV after upload.</li></ol><h2 id="architecture">Architecture</h2><p>Putting this all together generates the architecture below, ensuring that users can only create and publish reports, but they don&apos;t have direct access to underlying data infrastructure, providing a correct isolation of activities.</p>
+<!--kg-card-begin: html-->
+<div class="mermaid">
+flowchart TD
+    %% On-Premise Components
+    subgraph On-Premise
+        User[&quot;User&quot;]
+        NFS[&quot;NFS Share (CSV File)&quot;]
+        PBI_GW[&quot;Power BI Gateway<br>(runs as Service Account)&quot;]
+        AD_Group[&quot;Local AD Group<br>(Share Access)&quot;]
+        SA[&quot;Service Account&quot;]
+    end
+
+    %% Cloud Components
+    subgraph Cloud
+        Workspace[&quot;Power BI Workspace&quot;]
+        Report[&quot;Power BI Report&quot;]
+        Semantic[&quot;Semantic Model&quot;]
+        Gateway_Config[&quot;PBI Gateway Configuration&quot;]
+        AAD_Group[&quot;AAD Group<br>(ADMIN + CONN CREATOR)&quot;]
+        PBI_Conn[&quot;PBI Connection&quot;]
+    end
+
+    %% Data and Control Flow
+    User -- &quot;Places CSV&quot; --&gt; NFS
+    User -- &quot;Creates&quot; --&gt; Workspace
+    Workspace -- &quot;Contains&quot; --&gt; Report
+    Report -- &quot;Uses&quot; --&gt; Semantic
+    Semantic -- &quot;Connects via&quot; --&gt; PBI_Conn
+    PBI_Conn -- &quot;Configured by&quot; --&gt; Gateway_Config
+    Gateway_Config -- &quot;Managed by&quot; --&gt; AAD_Group
+    PBI_Conn -- &quot;Uses&quot; --&gt; PBI_GW
+    PBI_GW -- &quot;Runs as&quot; --&gt; SA
+    SA -- &quot;Member of&quot; --&gt; AD_Group
+    AD_Group -- &quot;Has access to&quot; --&gt; NFS
+    PBI_GW -- &quot;Reads CSV&quot; --&gt; NFS
+
+    %% Visual separation
+    classDef cloud fill:#E3F2FD,stroke:#90CAF9;
+    classDef onprem fill:#FFF3E0,stroke:#FFB300;
+    class Cloud,Workspace,Report,Semantic,Gateway_Config,AAD_Group,PBI_Conn cloud;
+    class On-Premise,User,NFS,PBI_GW,AD_Group,SA onprem;
+
+</div>
+<!--kg-card-end: html-->
+]]></content:encoded></item><item><title><![CDATA[Incremental Delta Copying from SQL Server to Apache Iceberg]]></title><description><![CDATA[Learn how you can load data from SQL Server to Apache Iceberg in an incremental way.]]></description><link>https://xaviergeerinck.com/2025/04/28/incremental-data-load-debezium/</link><guid isPermaLink="false">6809e7322c3d870001ebe9eb</guid><category><![CDATA[Big Data]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Mon, 28 Apr 2025 08:50:02 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2025/04/second-1.png" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2025/04/second-1.png" alt="Incremental Delta Copying from SQL Server to Apache Iceberg"><p>Are you looking to implement Business Intelligence (BI) in your organization but unsure where to begin? For many companies, SQL Server serves as the primary database, making it tempting to simply connect your BI tools directly and start generating reports. While this approach seems straightforward, it&#x2019;s often not the best solution. Running BI reports directly on your application database can create significant load, as these databases aren&#x2019;t typically optimized for BI queries.</p><blockquote><strong>Running BI reports directly on your application database can create significant load, as these databases aren&#x2019;t typically optimized for BI queries.</strong></blockquote><p>So, what&#x2019;s a better alternative? Enter the &#x201C;Flat File&#x201D; approach! Flat files have come a long way&#x2014;from being slow and cumbersome to becoming scalable and efficient, thanks to modern technologies like Apache Spark and, more recently, Ray with Daft. Leveraging flat files offers several advantages:</p><ul><li><strong>Reduces load on your main application database</strong></li><li><strong>Provides greater flexibility</strong></li><li><strong>Enables additional ETL steps, such as removing sensitive (PII) data</strong></li></ul><p>Of course, while the benefits are clear, implementation requires careful planning. Rather than simply dumping all your data into a flat file, it&#x2019;s important to consider how you load data&#x2014;specifically, how to do this incrementally instead of performing full loads every time, which can quickly become inefficient.</p><p>In this article, I&#x2019;ll guide you step-by-step on how to set up an incremental data pipeline from SQL Server to Apache Iceberg.</p><h2 id="existing-tools">Existing Tools</h2><p>As for everything, there are a lot of tools available for the job. However, after researching the most popular ones, I came across just a handful ones, making this a very difficult problem to solve!</p><blockquote><strong>I came across just a handful ones, making this a very difficult problem to solve!</strong></blockquote><p>Let&apos;s compare some of them:</p><ul><li><a href="https://airbyte.com/?ref=xaviergeerinck.com"><strong>Airbyte</strong></a><strong>: </strong>Amazing ETL tool, batch only, but manages the CDC for you and you are able to self-host it (although it being a complex tool)</li><li><strong>SQL Server CDC: </strong>SQL Server provides CDC natively, so we can build custom scripts (cumbersome) to do this.</li><li><a href="https://estuary.dev/product/?ref=xaviergeerinck.com">Estuary Flow</a><strong>:</strong> A lot-based replication tool, which does the trick, but is very expensive for lakehouse purposes. </li><li><a href="https://slingdata.io/?ref=xaviergeerinck.com"><strong>Sling</strong></a><strong>:</strong> CLI Tool for data loading, which requires more work as you are required to define the keys or SQL Queries for the diffs.</li><li><a href="https://dlthub.com/?ref=xaviergeerinck.com"><strong>DLT Hub</strong></a><strong>: </strong>Another ETL tool comparable to Sling, but most of the CDC features it has are behind dlt+ (paywall)</li><li><a href="https://debezium.io/?ref=xaviergeerinck.com"><strong>Debezium</strong></a><strong>: </strong>Has been along for a long time, and is quite complex through its Kafka consumer. HOWEVER! A <a href="https://github.com/memiiso/debezium-server-iceberg?ref=xaviergeerinck.com">Debezium Server for Iceberg</a> was created, making this an amazing solution.</li></ul><p>Leading me to concluding that either Airbyte or Debezium are the most cost-efficient and future-proof solutions! </p><h2 id="architecture">Architecture</h2><p>Looking at the architecture, we will then have SQL Server that writes the latest changes to its LOG file, whereafter we have Debezium monitoring this log and replicating it to our Apache Iceberg installation.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/04/image-6.png" class="kg-image" alt="Incremental Delta Copying from SQL Server to Apache Iceberg" loading="lazy" width="988" height="447" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/04/image-6.png 600w, https://xaviergeerinck.com/content/images/2025/04/image-6.png 988w" sizes="(min-width: 720px) 720px"></figure><h2 id="configuring-debezium-for-sql-server-to-iceberg">Configuring Debezium for SQL Server to Iceberg</h2><h3 id="prerequisites">Prerequisites</h3><ul><li>A SQL Server connection with all the details </li></ul><h3 id="getting-started">Getting Started</h3><p>Setting this up, we create a <a href="https://github.com/XavierGeerinck/PublicProjects/blob/master/Data/cdc-capture/debezium-iceberg-spark/docker-compose.yml?ref=xaviergeerinck.com">Docker Compose</a> application (based on the Debezium Iceberg Server example), with the SQL Server source configured in the <a href="https://github.com/XavierGeerinck/PublicProjects/blob/master/Data/cdc-capture/debezium-iceberg-spark/debezium/conf/application.properties?ref=xaviergeerinck.com"><code>application.properties</code> file</a>:</p><pre><code class="language-bash"># ####################################################### 
+# ############ DEBEZIUM SOURCE CONFIGURATION ############
+# #######################################################
+# SQL Server Source 
+# (https://debezium.io/documentation/reference/stable/connectors/sqlserver.html#sqlserver-example-configuration)
+debezium.source.connector.class=io.debezium.connector.sqlserver.SqlServerConnector
+debezium.source.offset.flush.interval.ms=0
+debezium.source.database.hostname=your-hostname-here
+debezium.source.database.port=1433
+debezium.source.database.user=main
+debezium.source.database.password=your-password-here
+debezium.source.database.names=main
+debezium.source.topic.prefix=dbz_
+# saving debezium state data to destination, iceberg tables
+# see https://debezium.io/documentation/reference/stable/development/engine.html#advanced-consuming
+debezium.source.offset.storage=io.debezium.server.iceberg.offset.IcebergOffsetBackingStore
+debezium.source.offset.storage.iceberg.table-name=debezium_offset_storage_table
+# see https://debezium.io/documentation/reference/stable/development/engine.html#database-history-properties
+debezium.source.schema.history.internal=io.debezium.server.iceberg.history.IcebergSchemaHistory
+debezium.source.schema.history.internal.iceberg.table-name=debezium_database_history_storage_table</code></pre><p>Once this is configured, we can spin up our instance with:</p><pre><code class="language-bash">docker-compose up -d
+
+# Load the Notebook Server
+http://localhost:8888
+
+# Extra URLs
+http://localhost:8080 # Trino
+http://localhost:9000 # MinIO
+http://localhost:9001 # MinIO UI
+http://localhost:5432 # PostgreSQL
+http://localhost:8000 # Iceberg REST Catalog</code></pre><h2 id="demo">Demo</h2><p>Seeing this in action, we can see a proper incremental data load mechanism, retrieving the latest data from our SQL Server and copying this over to our sink (apache iceberg).</p><figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/LVo9tdrCZMA?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="demo debezium"></iframe></figure><h2 id></h2>]]></content:encoded></item><item><title><![CDATA[CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark]]></title><description><![CDATA[Learn how to create incremental an Apache Spark setup that polls data from SQL Server its Change Data Capture (CDC) feature and saves it to Apache Iceberg]]></description><link>https://xaviergeerinck.com/2025/04/04/cdc-incremental-data-loading-with-sql-server-apache-iceberg-and-apache-spark/</link><guid isPermaLink="false">67e51da689dd5100018ed967</guid><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Fri, 04 Apr 2025 07:41:55 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2025/04/Option-1.webp" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2025/04/Option-1.webp" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark"><p>Imagine, you are working with Big Data and you just learned that the Medallion architecture exists and you start creating your bronze layer. Now suddenly, out of nowhere you are sinking your entire database each time over and over again making your pipelines run for hours instead of the usual minutes. Now you wonder: &quot;<em>There must be a more efficient way to handle incremental data loads right?</em> &quot;</p><p>What appeared to initially be presented as <em>a walk in the park</em>, turned out to be a battle between giants, a battle between ecosystem, a battle between people, all <strong>resulting in picking something that just works from a given viewpoint</strong></p><blockquote>&#x1F4A1; I would dare to say that this also formalizes &quot;Architecture&quot;, where we are responsible of selecting components through the lens of <strong>Strategic viewpoint</strong>, helping you decide what&apos;s best for the business. For example, in my case,<strong> I tend to select components with focus on separation of concerns and lock-in avoidance</strong>.</blockquote><p>Let&apos;s dive more into this and how we can find a future proof, reliable and trusted solution for this that can handle our Big Data needs at scale. But before we get started, let&apos;s first go over the different components and why I picked those.</p><h2 id="creating-our-components-tech-stack">Creating our components (Tech Stack )</h2><h3 id="sql-server">SQL Server</h3><p>The first component we need is a SQL Server Database that will hold our data. Besides just holding our data, it should also support a feature named <a href="https://learn.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-data-capture-sql-server?view=sql-server-ver16&amp;ref=xaviergeerinck.com">&quot;Change Data Capture&quot; (CDC)</a> that allows us to track changes made to the database and receive those. Something we rely heavily on for this! </p><h3 id="apache-iceberg">Apache Iceberg</h3><p>Since we want to perform large scale analytics on all our data (both structured and unstructured) we require a storage mechanism that can efficiently work with Flat Files. I currently chose here for <a href="https://iceberg.apache.org/?ref=xaviergeerinck.com">Apache Iceberg</a>, as it is created for large scale analytics on &quot;Lakehouse&quot; and Data Streaming and integrates with all the major platforms. </p><p>Many might wonder, why Iceberg and not Delta? Well Delta is great as well, but was created with a more commercial oriented approach, and more importantly Iceberg is great at schema evolution and partitioning. Besides this, it seems the community is also more keen on Iceberg, which is seeing a tremendous increase in users over time.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/04/image-1.png" class="kg-image" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark" loading="lazy" width="949" height="589" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/04/image-1.png 600w, https://xaviergeerinck.com/content/images/2025/04/image-1.png 949w" sizes="(min-width: 720px) 720px"></figure><p>This doesn&apos;t mean that Delta is bad! But currently, seeing the current state of the ecosystem, I would like to avoid a lock-in or draw-in into a given ecosystem. This is also reflected by the larger organizations such as Apple, Microsoft, AWS and others adopting Iceberg.</p><blockquote>&#x1F4A1; Databricks acquired &quot;Tabular&quot; recently, which was the core maintainer of Apache Iceberg (smart move). So the current future of both Delta and Iceberg is uncertain and time will tell what will happen here.</blockquote><p>Apache Iceberg should not be seen as a storage mechanism or database. Instead it&apos;s a metadata management layer that sits on top of the data files, which we can then query later on through a dedicated and optimized query engine.</p><figure class="kg-card kg-image-card kg-width-full"><img src="https://xaviergeerinck.com/content/images/2025/04/image.png" class="kg-image" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark" loading="lazy" width="1024" height="505" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/04/image.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/04/image.png 1000w, https://xaviergeerinck.com/content/images/2025/04/image.png 1024w"></figure><h3 id="apache-spark">Apache Spark</h3><p>Finally, a query engine... now there are MANY out there, and it&apos;s changing all the time. What also became apparent  is that many of them use the commercial open-source trick, drawing you in and eventually asking you to pay for performance (which is not always a bad thing), making the choice difficult.</p><p>Seeing the customer I am working for was using Apache Spark, we thus decided to stick with it.</p><blockquote> Personally, I think there are better alternatives popping up (hello Ray + Daft), but it currently doesn&apos;t make sense to switch and the other ecosystems still have to mature more.</blockquote><h2 id="creating-a-cdc-implementation">Creating a CDC Implementation</h2><p>Let&apos;s get started creating our actual CDC implementation. For this implementation we will thus have an orchestrator (Python) that will fetch the changes and sink them to the Iceberg maintained repository on Local Storage.</p><figure class="kg-card kg-image-card kg-width-full"><img src="https://xaviergeerinck.com/content/images/2025/04/image-4.png" class="kg-image" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark" loading="lazy" width="773" height="543" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/04/image-4.png 600w, https://xaviergeerinck.com/content/images/2025/04/image-4.png 773w"></figure><blockquote>Full code: <a href="https://github.com/XavierGeerinck/PublicProjects/tree/master/Data/cdc-capture/cdc-spark?ref=xaviergeerinck.com">https://github.com/XavierGeerinck/PublicProjects/tree/master/Data/cdc-capture/cdc-spark</a></blockquote><h3 id="setting-up-spark">Setting up Spark</h3><p>Let&apos;s create our local Spark Cluster. To do so, clone the docker-compose file from <a href="https://github.com/databricks/docker-spark-iceberg/blob/main/docker-compose.yml?ref=xaviergeerinck.com">https://github.com/databricks/docker-spark-iceberg/blob/main/docker-compose.yml</a> and spin it up:</p><pre><code class="language-bash"># Download the Docker Compose file
+wget https://github.com/databricks/docker-spark-iceberg/blob/main/docker-compose.yml
+
+# Start Spark + Iceberg Cluster
+docker-compose up -d
+docker exec -it spark-iceberg pyspark-notebook</code></pre><p>SQL Manager</p><p>The most difficult area that I encountered is the actual SQL CDC Resource Manager, which communicate with SQL Server, connects and gets the latest changes, whereafter it merges them into Iceberg. So let&apos;s create this first.</p><pre><code class="language-python"># Fetch SQL Server CDC changes from Remote and merge them into the local Iceberg table
+# we use pyodbc for this (to avoid temporary views)
+import pyodbc
+import sqlalchemy as sa
+import polars as pl
+from urllib.parse import quote_plus
+from contextlib import contextmanager
+
+LSN_DEFAULT = &quot;0x00000000000000000000&quot;
+
+class SQLResource:
+    def __init__(self, host, db, username, password, last_lsn=None):
+        self.host = host
+        self.db = db
+        self.username = username
+        self.password = password
+
+        self.engine = sa.create_engine(
+            self.get_connection_string(host, db, username, password)
+        )
+
+    def get_connection_string(self, host, db, username, password):
+        &quot;&quot;&quot;Construct the connection string for SQLAlchemy.&quot;&quot;&quot;
+        pass_escaped = quote_plus(password)
+        user_escaped = quote_plus(username)
+        driver_escaped = quote_plus(&quot;ODBC Driver 18 for SQL Server&quot;)
+        return f&quot;mssql+pyodbc://{user_escaped}:{pass_escaped}@{host}/{db}?driver={driver_escaped}&quot;
+
+    @contextmanager
+    def get_connection(self):
+        &quot;&quot;&quot;Get a database connection using context manager for automatic cleanup.&quot;&quot;&quot;
+        connection = self.engine.connect()
+
+        try:
+            yield connection
+        finally:
+            connection.close()
+
+
+    def get_primary_key_columns(self, table_name: str) -&gt; list[str]:
+        &quot;&quot;&quot;Get the primary key columns for a CDC-enabled table.&quot;&quot;&quot;
+        with self.get_connection() as connection:
+            instance = self.get_capture_instance_name(&quot;dbo&quot;, table_name)
+
+            query = sa.text(&quot;&quot;&quot;
+            SELECT column_name FROM cdc.index_columns WHERE object_id = (
+                SELECT object_id FROM cdc.change_tables WHERE capture_instance = :capture_instance_name
+            )
+            &quot;&quot;&quot;)
+
+            result = connection.execute(query, {&quot;capture_instance_name&quot;: instance})
+            primary_key_columns = [row[0] for row in result]
+            return primary_key_columns
+
+    def is_cdc_enabled_for_database(self):
+        &quot;&quot;&quot;Check if CDC is enabled for the database.&quot;&quot;&quot;
+        with self.get_connection() as connection:
+            query = sa.text(&quot;&quot;&quot;
+                SELECT is_cdc_enabled 
+                FROM sys.databases 
+                WHERE name = :db_name
+            &quot;&quot;&quot;)
+            result = connection.execute(
+                query, {&quot;db_name&quot;: self.db}
+            ).scalar()
+            return bool(result)
+
+    def is_cdc_enabled_for_table(self, schema_name, table_name):
+        &quot;&quot;&quot;Check if CDC is enabled for the specified table.&quot;&quot;&quot;
+        with self.get_connection() as connection:
+            capture_instance_name = self.get_capture_instance_name(
+                schema_name, table_name
+            )
+
+            query = sa.text(f&quot;&quot;&quot;
+                SELECT 1
+                FROM cdc.change_tables
+                WHERE capture_instance = &apos;{capture_instance_name}&apos;
+            &quot;&quot;&quot;)
+
+            result = connection.execute(
+                query, {&quot;schema_name&quot;: schema_name, &quot;table_name&quot;: table_name}
+            ).scalar()
+
+            return bool(result)
+
+    def get_capture_instance_name(self, schema_name, table_name):
+        &quot;&quot;&quot;Get the CDC capture instance name for a table.&quot;&quot;&quot;
+        return f&quot;dbo_{table_name}&quot;
+
+    def get_current_lsn(self):
+        &quot;&quot;&quot;Get the current  LSN from SQL Server using native function.&quot;&quot;&quot;
+        with self.get_connection() as connection:
+            query = sa.text(&quot;SELECT sys.fn_cdc_get_max_lsn()&quot;)
+            return connection.execute(query).scalar()
+
+    def get_min_lsn(self, capture_instance=None):
+        &quot;&quot;&quot;Get the minimum available LSN for a capture instance.&quot;&quot;&quot;
+        with self.get_connection() as connection:
+            query = sa.text(&quot;SELECT sys.fn_cdc_get_min_lsn(:capture_instance)&quot;)
+            return connection.execute(
+                query, {&quot;capture_instance&quot;: capture_instance}
+            ).scalar()
+
+    def hex_string_to_lsn(self, lsn_hex):
+        &quot;&quot;&quot;Convert a hexadecimal LSN string to binary for SQL Server functions.&quot;&quot;&quot;
+        with self.get_connection() as connection:
+            if not lsn_hex or not isinstance(lsn_hex, str):
+                # Return minimum LSN if input is invalid
+                query = sa.text(&quot;SELECT sys.fn_cdc_get_min_lsn(NULL)&quot;)
+                return connection.execute(query).scalar()
+
+            if not lsn_hex.startswith(&quot;0x&quot;):
+                lsn_hex = f&quot;0x{lsn_hex}&quot;
+
+            query = sa.text(&quot;SELECT CAST(:lsn_hex AS BINARY(10))&quot;)
+            result = connection.execute(query, {&quot;lsn_hex&quot;: lsn_hex}).scalar()
+
+            if result is None:
+                query = sa.text(&quot;SELECT sys.fn_cdc_get_min_lsn(NULL)&quot;)
+                return connection.execute(query).scalar()
+
+            return result
+
+    def lsn_to_hex_string(self, lsn_bytes):
+        &quot;&quot;&quot;Convert a binary LSN to a hex string format.&quot;&quot;&quot;
+        if lsn_bytes is None:
+            return LSN_DEFAULT
+
+        return f&quot;0x{lsn_bytes.hex().upper()}&quot;
+
+    def get_primary_key_columns(self, table_name: str) -&gt; list[str]:
+        &quot;&quot;&quot;Get the primary key columns for a CDC-enabled table.&quot;&quot;&quot;
+        with self.get_connection() as connection:
+            instance = self.get_capture_instance_name(&quot;dbo&quot;, table_name)
+
+            query = sa.text(&quot;&quot;&quot;
+            SELECT column_name FROM cdc.index_columns WHERE object_id = (
+                SELECT object_id FROM cdc.change_tables WHERE capture_instance = :capture_instance_name
+            )
+            &quot;&quot;&quot;)
+
+            result = connection.execute(query, {&quot;capture_instance_name&quot;: instance})
+            primary_key_columns = [row[0] for row in result]
+            return primary_key_columns
+
+    def get_merge_predicate(self, table_name: str) -&gt; str:
+        &quot;&quot;&quot;Uses the primary key columns to construct a predicate for merging.
+        e.g., CustomerID and Email become: source.CustomerID = target.CustomerID AND source.Email = target.Email
+        &quot;&quot;&quot;
+        primary_key_columns = self.get_primary_key_columns(table_name)
+        if not primary_key_columns:
+            raise ValueError(f&quot;No primary key columns found for table {table_name}&quot;)
+
+        # Construct the merge predicate
+        merge_predicate = &quot; AND &quot;.join(
+            [f&quot;s.{col} = t.{col}&quot; for col in primary_key_columns]
+        )
+        return merge_predicate
+
+    def get_table_changes(
+            self, table_name, last_lsn=None, schema_name=&quot;dbo&quot;, chunksize=10000
+        ) -&gt; tuple[pl.DataFrame, str]:
+        &quot;&quot;&quot;Get changes from a CDC-enabled table since the last LSN.
+        Uses the native SQL Server CDC function fn_cdc_get_all_changes.
+
+        Args:
+            table_name (str): The name of the table to query.
+            last_lsn (str, optional): The last processed LSN. If None, a full copy is performed.
+            schema_name (str, optional): The schema name of the table. Defaults to &apos;dbo&apos;.
+            chunksize (int, optional): Number of rows to fetch per query. Defaults to 10000.
+
+        Returns:
+            tuple: A tuple containing the DataFrame of changes and the current LSN.
+        &quot;&quot;&quot;
+        try:
+            with self.get_connection() as connection:
+                # Check if CDC is enabled for the database and table
+                if not self.is_cdc_enabled_for_database():
+                    raise ValueError(
+                        f&quot;CDC is not enabled for database {self.config.database.get_value()}&quot;
+                    )
+
+                if not self.is_cdc_enabled_for_table(schema_name, table_name):
+                    raise ValueError(
+                        f&quot;CDC not enabled for table {schema_name}.{table_name}&quot;
+                    )
+
+                # Get the capture instance name
+                capture_instance = self.get_capture_instance_name(
+                    schema_name, table_name
+                )
+                if not capture_instance:
+                    raise ValueError(
+                        f&quot;Could not find CDC capture instance for {schema_name}.{table_name}&quot;
+                    )
+
+                # Get current maximum LSN
+                current_lsn = self.get_current_lsn()
+                current_lsn_hex = self.lsn_to_hex_string(current_lsn)
+                
+                # If no last_lsn provided, we should first take a first copy of the table
+                if last_lsn is None or last_lsn == LSN_DEFAULT:
+                    raise ValueError(
+                        f&quot;Initial copy required for table {schema_name}.{table_name}&quot;
+                    )
+
+                # Convert LSN hex strings to binary
+                from_lsn_hex = last_lsn
+                to_lsn_hex = f&quot;0x{current_lsn.hex()}&quot;
+
+                # Use the native CDC function with parameterized query
+                # Process in chunks to avoid memory issues with large tables
+                query = sa.text(f&quot;&quot;&quot;
+                    DECLARE @from_lsn BINARY(10), @to_lsn BINARY(10)
+                    SET @from_lsn = CONVERT(BINARY(10), :from_lsn, 1)
+                    SET @to_lsn = CONVERT(BINARY(10), :to_lsn, 1)
+        
+                    SELECT * FROM cdc.fn_cdc_get_all_changes_{capture_instance}(
+                        @from_lsn, @to_lsn, &apos;all&apos;
+                    )
+                &quot;&quot;&quot;)
+
+                # Use chunksize to process large result sets in batches
+                changes_df = pl.read_database(
+                    query,
+                    connection,
+                    execute_options={
+                        &quot;parameters&quot;: {&quot;from_lsn&quot;: from_lsn_hex, &quot;to_lsn&quot;: to_lsn_hex}
+                    },
+                )
+
+                # Convert binary LSN to hex string for storage
+                current_lsn_hex = self.lsn_to_hex_string(current_lsn)
+
+                return changes_df, current_lsn_hex
+
+        except Exception as e:
+            raise RuntimeError(
+                f&quot;Database error when getting CDC changes: {str(e)}&quot;
+            ) from e</code></pre><h3 id="connecting-to-sql-and-pulling-changes">Connecting to SQL and Pulling Changes</h3><p>Once we have the manager, let&apos;s now use it and get our changes:</p><pre><code class="language-python"># Connect to SQL Server
+sql_resource = SQLResource(
+    SQL_HOST,
+    SQL_DATABASE,
+    SQL_USER,
+    SQL_PASS
+)
+
+last_lsn = &quot;0x0000004400000D280005&quot;
+
+changes = sql_resource.get_table_changes(
+    table_name=TABLE_NAME_REMOTE,
+    last_lsn=last_lsn, # todo: fetch this each time and save into metadata
+    schema_name=&quot;dbo&quot;
+)
+
+# Make them available as temporary view
+print(type(changes[0]))
+changes_df = spark.createDataFrame(changes[0].to_pandas())
+changes_df.createOrReplaceTempView(&quot;changes&quot;)</code></pre><h3 id="verifying">Verifying</h3><p>Verifying everything we can do by just getting the changes</p><pre><code class="language-python">print(spark.sql(&quot;SELECT * FROM changes&quot;).show())
+</code></pre><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/04/image-2.png" class="kg-image" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark" loading="lazy" width="946" height="551" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/04/image-2.png 600w, https://xaviergeerinck.com/content/images/2025/04/image-2.png 946w" sizes="(min-width: 720px) 720px"></figure><h3 id="merging-the-changes">Merging the Changes</h3><p>Which we merge into our Iceberg table:</p><pre><code class="language-python"># Merge the CDC changes into the iceberg table as merge
+# we work with the __$operation column to determine the type of operation, which can have values:
+# - Deleted (__$operation = 1),
+# - Inserted (__$operation = 2)
+# - Updated Before (__$operation = 3)
+# - Updated After (__$operation = 4)
+# https://iceberg.apache.org/docs/1.5.0/spark-writes/#merge-into
+print(f&quot;Performing merge operation on &apos;{TABLE_NAME_LOCAL}&apos; with predicate &apos;{merge_predicate}&apos;...&quot;)
+spark.sql(f&quot;&quot;&quot;
+MERGE INTO {TABLE_NAME_LOCAL} AS t
+USING (SELECT * FROM changes) AS s
+ON {merge_predicate}
+WHEN MATCHED AND s.`__$operation` = 1 THEN DELETE
+WHEN MATCHED AND s.`__$operation` IN (2, 4) THEN UPDATE SET *
+-- Anything we can&apos;t match, we insert
+WHEN NOT MATCHED THEN INSERT *
+&quot;&quot;&quot;)</code></pre><h3 id="validating">Validating</h3><p>Let&apos;s run the same query and compare results + sort. We will now see that the records have changed as expected and old records have been removed, others updated. Also note that we are not merging in the <code>__$</code> columns from the CDC!</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/04/image-5.png" class="kg-image" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark" loading="lazy" width="702" height="288" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/04/image-5.png 600w, https://xaviergeerinck.com/content/images/2025/04/image-5.png 702w"></figure><h2 id="conclusion">Conclusion</h2><p>All the above might seem complex, but in production most of this is abstracted away for us. The most difficult part is actually integrating the CDC SQL Manager into an orchestrator (e.g., Azure Data Factory) to pull our changes in batch (or switch over to a more streaming approach if we want to work real-time). Which we can then sync through our Big Data Query Engine such as Spark into Flat Files.</p><p>Finally, what remains is to now process this flat file towards a BI application, creating a ready-to-be-consumed data warehouse.</p><h2 id="reference">Reference</h2><p>Here you can find some amazing References that I used to come to the conclusion above.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://blog.det.life/apache-iceberg-won-the-future-whats-next-for-2025-731635bfcb7a?ref=xaviergeerinck.com"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Apache Iceberg Won the Future&#x200A;&#x2014;&#x200A;What&#x2019;s Next for 2025?</div><div class="kg-bookmark-description">RBAC, CDC, Materialized Views, and More: Everything You Need to Know About Apache Iceberg in 2025.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://xaviergeerinck.com/content/images/icon/10fd5c419ac61637245384e7099e131627900034828f4f386bdaa47a74eae156" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark"><span class="kg-bookmark-author">Data Engineer Things</span><span class="kg-bookmark-publisher">Yingjun Wu</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://xaviergeerinck.com/content/images/thumbnail/1-aFX8XyDbU5UCBAEKMEQ-xQ.png" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark" onerror="this.style.display = &apos;none&apos;"></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://dataengineeringcentral.substack.com/p/delta-lake-vs-apache-iceberg-the?ref=xaviergeerinck.com"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Delta Lake vs Apache Iceberg. The Lake House Squabble.</div><div class="kg-bookmark-description">... the real deal.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://xaviergeerinck.com/content/images/icon/https-3A-2F-2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com-2Fpublic-2Fimages-2F7b0789cb-57c3-41e3-902e-a8241d06b69f-2Fapple-touch-icon-180x180.png" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark"><span class="kg-bookmark-author">Data Engineering Central</span><span class="kg-bookmark-publisher">Daniel Beach</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://xaviergeerinck.com/content/images/thumbnail/https-3A-2F-2Fsubstack-post-media.s3.amazonaws.com-2Fpublic-2Fimages-2F30656af5-ecbd-4ea2-ada1-597362ab9e88_1024x1024.webp" alt="CDC Incremental Data Loading with SQL Server, Apache Iceberg and Apache Spark" onerror="this.style.display = &apos;none&apos;"></div></a></figure>]]></content:encoded></item><item><title><![CDATA[Connecting LLMs to Azure through MCPs]]></title><description><![CDATA[Create an always up-to-date architecture landscape automatically with LLMs and MCP Servers]]></description><link>https://xaviergeerinck.com/2025/03/12/connecting-llms-to-azure-through-mcps/</link><guid isPermaLink="false">67d1ce01bde45e0001400fbf</guid><category><![CDATA[AI - Agentic]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Wed, 12 Mar 2025 18:47:22 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2025/03/Group-351.png" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2025/03/Group-351.png" alt="Connecting LLMs to Azure through MCPs"><p>We all know how <a href="https://xaviergeerinck.com/2025/03/11/getting-started-with-model-context-protocol-mcp-servers/">amazing MCP</a> is! Now, one of the things still lacking is an <a href="https://github.com/modelcontextprotocol/servers?ref=xaviergeerinck.com">MCP Server</a> for Azure. There are some for competing platforms, but Azure remains difficult. So how can we still get Azure Context into our LLM?</p><p>Let&apos;s discover that in this article, on how you can get started and achieve the below, where we can use Claude to manage all our resources!</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-11.png" class="kg-image" alt="Connecting LLMs to Azure through MCPs" loading="lazy" width="1488" height="1520" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-11.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-11.png 1000w, https://xaviergeerinck.com/content/images/2025/03/image-11.png 1488w" sizes="(min-width: 720px) 720px"></figure><h2 id="azure-openapi-generation">Azure OpenAPI Generation</h2><p>The easiest way to create an MCP server is to utilize OpenAPI, where we can utilize an <a href="https://github.com/ivo-toby/mcp-openapi-server.git?ref=xaviergeerinck.com">abstraction layer</a> that generates an MCP server automatically for us. To do so, we thus first need to get the OpenAPI spec. Now, let this be just what is a bit &quot;interesting&quot; with Azure. Documentation is a bit scattered, and there is no single OpenAPI URL that I could find.</p><p>Luckily, there is <a href="https://github.com/stackql/stackql-azure-openapicd?ref=xaviergeerinck.com">StackQL</a> that allows us to generate OpenAPI specifications for Azure. So let&apos;s get started by cloning that repository</p><pre><code class="language-bash">git clone https://github.com/stackql/stackql-azure-openapi
+cd stackql-azure-openapi 
+chmod +x bin/stackql-azure-openapi
+chmod +x ./prereq.sh
+bun i</code></pre><p>Once that is done, our dependencies are installed, and we are ready to generate OpenAPI specifications. Let&apos;s generate the OpenAPI specification for the <code>compute</code> and <code>resource</code> API specifications.</p><pre><code class="language-bash"># Generate resources en compute openapi spec
+# more info: https://github.com/stackql/stackql-azure-openapi
+bin/stackql-azure-openapi generate resources compute
+bin/stackql-azure-openapi dereference resources compute
+bin/stackql-azure-openapi combine resources compute</code></pre><p>When ran, it will create an OpenAPI specification without any external pointer references and output it to <code>./openapi/3-combined/resources/resources.yaml</code> in our <code>stackql-azure-openapi</code> directory.</p><p>As this is a YAML file, we need to convert it to JSON to work with the MCP Server we are using:</p><pre><code class="language-bash">brew install yq
+cat resources.yaml | yq e -j &gt; resources.json</code></pre><p>Finally, a last manual action is needed, and that is to find and remove all <code>&quot;x-api-version&quot;: &quot;20.*&quot;</code> references in that JSON file.</p><h2 id="getting-azure-bearer-token">Getting Azure Bearer Token</h2><h3 id="create-a-service-principal-configure-permissions">Create a Service Principal &amp; Configure Permissions</h3><p>Now our MCP server is ready to be ran, let&apos;s configure Azure with a Service Principal that has access to the resources that we want to access:</p><ol><li><strong>Create an Azure AD Application and Service Principal:</strong> by going to the Azure Portal &#x2013;&gt; Microsoft Entra ID (formerly Azure AD) &#x2013;&gt; Navigate to &quot;App registrations&quot; and click &quot;+ New registration&quot;&#x2013;&gt; Fill in the necessary information for your application &#x2013;&gt; After creation, note the Application (client) ID and Directory (tenant) ID</li><li><strong>Generate a Client Secret:</strong> In your registered app, go to &quot;Certificates &amp; secrets&quot;</li><li><strong>Create a new client secret </strong>and save it securely (you won&apos;t be able to view it again)</li><li><strong>Provide <code>&quot;Global Reader&quot;</code>:</strong> by navigating to Microsoft Entra ID &#x2013;&gt; Select &quot;Roles and administrators&quot; &#x2013;&gt; Search for and select &quot;Global Reader&quot;  &#x2013;&gt; Click &quot;Add assignments&quot; &#x2013;&gt; In the search box, enter your service principal name or ID &#x2013;&gt;  Check the box next to the matching entry and select &quot;Add&quot;</li><li><strong>Provide <code>&quot;Reader&quot;</code>:</strong>    Do this for the individual subscriptions</li></ol><h3 id="generate-a-bearer-token">Generate a Bearer Token</h3><p>Now the service principal has the correct rights assigned, let&apos;s generate a Bearer token:</p><pre><code class="language-bash">export CLIENT_ID=&quot;&quot;
+export CLIENT_SECRET=&quot;&quot;
+export TENANT_ID=&quot;&quot;
+
+curl https://login.microsoftonline.com/$TENANT_ID/oauth2/token \
+-H &quot;Content-Type: application/x-www-form-urlencoded&quot; \
+--data &quot;grant_type=client_credentials&amp;client_id=$CLIENT_ID&amp;client_secret=$CLIENT_SECRET&amp;resource=https%3A%2F%2Fmanagement.azure.com%2F&quot;</code></pre><h2 id="start-the-mcp-server">Start the MCP Server</h2><p>To get the MCP Server to start, open your <code>claude_desktop_config.json</code> and add the below to configure the MCP server to start correctly:</p><pre><code class="language-bash">{
+    &quot;mcpServers&quot;: {
+        &quot;azure&quot;: {
+            &quot;command&quot;: &quot;/Users/&lt;your_user&gt;/.bun/bin/bun&quot;,
+            &quot;args&quot;: [
+                &quot;run&quot;,
+                &quot;&lt;FULL_PATH&gt;/mcp-openapi-server/src/index.ts&quot;
+            ],
+            &quot;env&quot;: {
+                &quot;API_BASE_URL&quot;: &quot;https://management.azure.com/&quot;,
+                &quot;OPENAPI_SPEC_PATH&quot;: &quot;&lt;FULL_PATH&gt;/stackql-azure-openapi/openapi/3-combined/resources/resources.json&quot;,
+                &quot;API_HEADERS&quot;: &quot;Authorization: Bearer &lt;TOKEN&gt;&quot;
+            }
+        }
+    }
+}</code></pre><h2 id="testing">Testing</h2><p>Now when we launch Claude, we will see all the tools available! Running a prompt such as <code>Generate me an architecture of all my resources and dependencies in Azure for the subscription &quot;&lt;SUB_ID&gt;&quot;. Print it as a Mermaid diagram.</code> will beautifully render the below!</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-12.png" class="kg-image" alt="Connecting LLMs to Azure through MCPs" loading="lazy" width="1324" height="1492" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-12.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-12.png 1000w, https://xaviergeerinck.com/content/images/2025/03/image-12.png 1324w" sizes="(min-width: 720px) 720px"></figure><h2 id="further-research">Further Research</h2><p>Now, why is this important? Imagine importing all your Azure APIs here, your other technology landscape APIs here through MCP servers. Your LLM tool will then be your Enterprise Architect! Beautifully <strong>creating an always up-to-date AS-IS architecture</strong>.</p>]]></content:encoded></item><item><title><![CDATA[Getting Started with Model Context Protocol (MCP) Servers]]></title><description><![CDATA[Manage your filesystem through Claude with its custom Model Context Protocol (MCP) server.]]></description><link>https://xaviergeerinck.com/2025/03/11/getting-started-with-model-context-protocol-mcp-servers/</link><guid isPermaLink="false">67d075e10229bb000171f3b3</guid><category><![CDATA[Artificial Intelligence]]></category><category><![CDATA[AI - Agentic]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Tue, 11 Mar 2025 18:05:56 GMT</pubDate><media:content url="https://images.unsplash.com/photo-1738107450304-32178e2e9b68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGNsYXVkZXxlbnwwfHx8fDE3NDE2NTg4Mzh8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" medium="image"/><content:encoded><![CDATA[<img src="https://images.unsplash.com/photo-1738107450304-32178e2e9b68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDZ8fGNsYXVkZXxlbnwwfHx8fDE3NDE2NTg4Mzh8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="Getting Started with Model Context Protocol (MCP) Servers"><p>Claude recently introduced the <a href="https://www.claudemcp.com/?ref=xaviergeerinck.com">MCP (or Model Context Protocol)</a> which is an open standard for establishing unified context interaction between AI models and development environments. This allows AI models to more easily understand and interact with and process code.</p><p>For this example, let&apos;s see how we can use an MCP Server to create a file named &quot;HelloWorld.md&quot; with the content &quot;Hello World, my name is Xavier&quot;.</p><blockquote>Note: MCP Servers are currently local only (remote are in progress)</blockquote><h2 id="installing-claude">Installing Claude</h2><p>To install Claude, we simply go to <a href="https://claude.ai/download?ref=xaviergeerinck.com">https://claude.ai/download</a> and install it for our operating system. Once it is installed, we login to the application.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="1988" height="1532" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2025/03/image.png 1600w, https://xaviergeerinck.com/content/images/2025/03/image.png 1988w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-2.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="1992" height="1526" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-2.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-2.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2025/03/image-2.png 1600w, https://xaviergeerinck.com/content/images/2025/03/image-2.png 1992w" sizes="(min-width: 720px) 720px"></figure><h2 id="installing-the-mcp">Installing the MCP</h2><p>For filesystem operations, Antrophic created the <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem?ref=xaviergeerinck.com">Filesystem MCP</a>. So let&apos;s enable it by opening up the Developer Settings panel within Claude and edit the claude_desktop_config to create an MCP Server configuration.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-3.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="1600" height="1098" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-3.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-3.png 1000w, https://xaviergeerinck.com/content/images/2025/03/image-3.png 1600w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-4.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="2000" height="1611" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-4.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-4.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2025/03/image-4.png 1600w, https://xaviergeerinck.com/content/images/2025/03/image-4.png 2058w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-5.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="2000" height="1605" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-5.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-5.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2025/03/image-5.png 1600w, https://xaviergeerinck.com/content/images/2025/03/image-5.png 2128w" sizes="(min-width: 720px) 720px"></figure><p>Once this file is opened (for me my path is <code>/Users/xaviergeerinck/Library/Application\ Support/Claude/claude_desktop_config.json</code>) we can configure it with:</p><pre><code class="language-json">{
+    &quot;mcpServers&quot;: {
+        &quot;filesystem&quot;: {
+            &quot;command&quot;: &quot;/Users/xaviergeerinck/.bun/bin/bunx&quot;,
+            &quot;args&quot;: [
+                &quot;@modelcontextprotocol/server-filesystem&quot;,
+                &quot;/Users/xaviergeerinck/Desktop&quot;,
+                &quot;/Users/xaviergeerinck/Downloads&quot;
+            ]
+        }
+    }
+}</code></pre><blockquote>Note: <a href="https://bun.sh/?ref=xaviergeerinck.com">Bun</a> I used bun to start this. You can also use node through <code>npx</code> or <code>pnpx</code>. The directories you see are the one the MCP Server is allowed to utilize.</blockquote><blockquote>Warning: Bun is installed at user level, so ensure you provide the full path as shown above, otherwise you might get <code>spawn bun ENOENT</code> on Claude startup.</blockquote><p>Restarting Claude, now shows my MCP Tools being available (see the Hammer icon):</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-6.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="1490" height="744" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-6.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-6.png 1000w, https://xaviergeerinck.com/content/images/2025/03/image-6.png 1490w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-7.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="1372" height="1388" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-7.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-7.png 1000w, https://xaviergeerinck.com/content/images/2025/03/image-7.png 1372w" sizes="(min-width: 720px) 720px"></figure><h2 id="demo">Demo</h2><p>When I now ask Claude to write my file, it will correctly do so.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-8.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="1530" height="1450" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-8.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2025/03/image-8.png 1000w, https://xaviergeerinck.com/content/images/2025/03/image-8.png 1530w" sizes="(min-width: 720px) 720px"></figure><p>When I now open that file, I can correctly see my content:</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2025/03/image-9.png" class="kg-image" alt="Getting Started with Model Context Protocol (MCP) Servers" loading="lazy" width="762" height="280" srcset="https://xaviergeerinck.com/content/images/size/w600/2025/03/image-9.png 600w, https://xaviergeerinck.com/content/images/2025/03/image-9.png 762w" sizes="(min-width: 720px) 720px"></figure><p>Super exciting to see how easy this was! APIs can be integrated in a brink by simply implementing the available <a href="https://github.com/ivo-toby/mcp-openapi-server?ref=xaviergeerinck.com">OpenAPI specs with a custom MCP</a>. For more information, check out their official quickstart guide: <a href="https://modelcontextprotocol.io/quickstart/?ref=xaviergeerinck.com">https://modelcontextprotocol.io/quickstart/</a></p>]]></content:encoded></item><item><title><![CDATA[Manage your Cloudflare domains automatically with an Nginx Ingress controller and External DNS, together with SSL Certificates through Cert Manager]]></title><description><![CDATA[Automate DNS and SSL for Kubernetes on Cloudflare using Nginx Ingress, External DNS, and Cert Manager. Streamline infrastructure by auto-creating DNS records and obtaining SSL certificates. Reduce overhead and keep services secure and accessible.]]></description><link>https://xaviergeerinck.com/2025/01/28/manage-your-cloudflare-domains-automatically-with-an-nginx-ingress-controller-and-external-dns-together-with-ssl-certificates-through-cert-manager/</link><guid isPermaLink="false">67964a87bb7f740001769445</guid><category><![CDATA[Kubernetes]]></category><category><![CDATA[Infrastructure]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Tue, 28 Jan 2025 14:01:38 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2025/01/qtxdpatkqw3x5t92dgv9.png" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2025/01/qtxdpatkqw3x5t92dgv9.png" alt="Manage your Cloudflare domains automatically with an Nginx Ingress controller and External DNS, together with SSL Certificates through Cert Manager"><p>So you have created a Kubernetes cluster with some pods installed on it and are ready to create your production application. But how do you now get started by routing your domain to it? And even more so, how do you do this in a secure way, generating SSL certificates (for inter cluster communication) and manage your domain in an automated way so the pods link to these domains? </p><p>Well, this is where Cloudflare, External DNS and Cert Manager come into action! </p><h2 id="prerequisites">Prerequisites</h2><ul><li>An installed and configured (<code>kubectl</code>) Azure Kubernetes Cluster </li><li>Helm installed (<code>brew install helm</code>)</li><li>Cloudflare (API Token &amp; Email)</li></ul><h2 id="setting-local-variables">Setting Local Variables</h2><p>First start by creating the local variables that will be used throughout this post. For Cloudflare, <a href="https://dash.cloudflare.com/profile/api-tokens?ref=xaviergeerinck.com">create an API token</a> with the Zone DNS:Edit permissions.</p><pre><code class="language-bash">export NS_NAME_INGRESS=ingress-nginx
+export NS_NAME_CERT_DNS=domain-cert-dns
+export CF_API_EMAIL=&apos;&lt;YOUR_EMAIL&gt;&apos;
+
+# Create token with &quot;Zone, DNS, Edit&quot; permissions
+# https://dash.cloudflare.com/profile/api-tokens
+export CF_API_KEY=&lt;YOUR_CLOUDFLARE_TOKEN&gt;</code></pre><h2 id="creating-namespace-secrets">Creating Namespace &amp; Secrets</h2><p>We isolate all our resources for easy deletion later and create 2 separate namespaces:</p><ul><li><strong>Ingress Namespace:</strong> Manages the nginx ingress controller and allows us to easily scale it out later.</li><li><strong>Certificates &amp; External DNS Resources Namespace:</strong> Contains all the resources for managing our certificates as well as the external dns configuration on Cloudflare in our case</li></ul><pre><code class="language-bash"># Create namespaces
+kubectl create namespace $NS_NAME_INGRESS
+kubectl create namespace $NS_NAME_CERT_DNS
+
+kubectl create secret generic cloudflare --namespace $NS_NAME_CERT_DNS \
+    --from-literal=cf-api-key=$CF_API_KEY \
+    --from-literal=cf-api-email=$CF_API_EMAIL</code></pre><h2 id="creating-ingress-controller">Creating Ingress Controller</h2><p>The first real service we create is the ingress controller. This is our primary way into the cluster once we access the IP. The IP itself won&apos;t directly return a response, but the domains will be routed towards the correct service running on the cluster.</p><p>In other words, if we attempt to access <code>example.com</code> it will translate to an IP <code>A.B.C.D</code> which is returned from the Nginx Ingress Controller LoadBalancer route, which will then return service <code>my-example-service</code> for a given pod.</p><blockquote>Note: we need to ensure the health probes are correct for Azure! So we provide the extra annotation here.</blockquote><pre><code class="language-bash"># Install Ingress Controller
+# this is our main entrypoint to the cluster
+# note: we apply https://github.com/kubernetes/ingress-nginx/issues/10863
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+
+helm upgrade -i ingress-nginx ingress-nginx/ingress-nginx \
+    --namespace $NS_NAME_INGRESS \
+    --set controller.service.annotations.&quot;service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path&quot;=/healthz \
+    --wait
+
+export INGRESS_IP=$(kubectl get svc -n $NS_NAME_INGRESS ingress-nginx-controller -o jsonpath=&apos;{.status.loadBalancer.ingress[0].ip}&apos;)</code></pre><h2 id="create-external-dns">Create External DNS</h2><p>We have our main Entry Point in the cluster, but how do we route from domain <code>example.com</code> to pod <code>my-pod</code>? Typically, we do this by setting up a manual configuration from the ingress controller to the pod, and configuring the domain manually to resolve this IP address. </p><p>But, as automation is always key, we can automate this with a service named <a href="https://github.com/kubernetes-sigs/external-dns?ref=xaviergeerinck.com">External DNS</a> which does this for us! It integrates with our DNS provider of choice (in this case Cloudflare) and configures the domains to point to the correct IP Address (the Ingress Controller).</p><pre><code class="language-bash"># Install External DNS (and configure with Cloudflare)
+# this will automatically update the DNS records in Cloudflare
+helm repo add kubernetes-sigs https://kubernetes-sigs.github.io/external-dns/
+helm repo update
+helm upgrade --install external-dns kubernetes-sigs/external-dns \
+  --namespace $NS_NAME_CERT_DNS \
+  --set &quot;provider.name=cloudflare&quot; \
+  --set &quot;env[0].name=CF_API_TOKEN&quot; \
+  --set &quot;env[0].valueFrom.secretKeyRef.name=cloudflare&quot; \
+  --set &quot;env[0].valueFrom.secretKeyRef.key=cf-api-key&quot; \
+  --set &quot;env[1].name=CF_API_EMAIL&quot; \
+  --set &quot;env[1].valueFrom.secretKeyRef.name=cloudflare&quot; \
+  --set &quot;env[1].valueFrom.secretKeyRef.key=cf-api-email&quot; \
+  --wait --timeout 600s</code></pre><h2 id="creating-cert-manager-issuer">Creating Cert Manager &amp; Issuer</h2><p>Now we have the domains loading, let&apos;s provide them with an SSL certificate for secure communication. A trusted authority must sign these SSL certificates, so we use <a href="https://cert-manager.io/?ref=xaviergeerinck.com">Cert Manager</a> and LetsEncrypt to do so for us. </p><p>How this works is that it will use the configured domain before, and once they are configured, a certificate will be created. To create these certificates, the Cert Manager will open an endpoint (<a href="https://letsencrypt.org/docs/challenge-types/?ref=xaviergeerinck.com#http-01-challenge">ACME Challenge</a> for HTTP) to validate that we actually own the domain. Once this validation is done, it will provide us back with a certificate that we save.</p><p>This ACME Challenge is configured through a Cluster Issuer resource that we create below.</p><pre><code class="language-bash"># Install Cert Manager
+# this will manage our certificates for the domain and automatically renew them
+helm repo add jetstack https://charts.jetstack.io --force-update
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace $NS_NAME_CERT_DNS \
+  --create-namespace \
+   --set cdrs.enabled=true
+
+# Create Cluster Issuers
+# note: there are 2 issuers, a production and staging one. When changing, delete the old certificates (see `kubectl delete certificate -n NS ...` and `kubectl get certificate -A`)
+cat &lt;&lt;EOF | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+  namespace: $NS_NAME_CERT_DNS
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: $CF_API_EMAIL
+    privateKeySecretRef:
+      name: letsencrypt-prod-private-key
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+EOF
+
+cat &lt;&lt;EOF | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-stag
+  namespace: $NS_NAME_CERT_DNS
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: $CF_API_EMAIL
+    privateKeySecretRef:
+      name: letsencrypt-stag-private-key
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+EOF</code></pre><h2 id="create-resources">Create Resources</h2><p>We are finally ready to deploy our application and get a domain bound to it! This phase consist out of 2 steps:</p><ol><li>Creating the actual deployment and service, allowing us to run our application and get a Port allocated (and internal IP address - ClusterIP) so we can route to it from within the cluster.</li><li>Creating an Ingress Route, which will state which domain URL we want to connect to the specific service.</li></ol><h3 id="create-the-deployment-and-service">Create the Deployment and Service</h3><pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: your-repo-url/backend:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: &quot;8000&quot;
+            - name: HOST
+              value: &quot;0.0.0.0&quot;
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: example
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP</code></pre><h3 id="create-the-ingress-route">Create the Ingress Route</h3><pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  namespace: topikai
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/hostname: api.example.com
+    external-dns.alpha.kubernetes.io/ttl: &quot;120&quot;
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: api.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - api.example.com  # Use your domain here
+    secretName: backend-tls-secret  # Cert will populate this secret
+</code></pre><h2 id="validate-view-logs-and-view-certificates">Validate, View Logs and View Certificates</h2><p>Ok! We are now all set and should be able to connect to our services! This might take a couple of minutes as domains sometimes take a bit to propagate. Once done, we should be able to load our URL with a signed certificate!</p><p>To validate everything we just did, feel free to check the snippet below that gives you an easy overview of how to view the logs and monitor the issued certificates.</p><pre><code class="language-bash"># Validate
+kubectl get all -n $NS_NAME_CERT_DNS
+
+# View logs
+kubectl logs -n $NS_NAME_CERT_DNS -l app.kubernetes.io/name=external-dns -f
+kubectl logs -f -n $NS_NAME_CERT_DNS deploy/cert-manager
+kubectl logs -f -n $NS_NAME_CERT_DNS deploy/external-dns
+kubectl logs -f -n $NS_NAME_INGRESS deploy/ingress-nginx-controller
+
+# Monitor issued certificates (and if they are ready)
+# note: ceritifcates that are not ready will be with a random suffix
+# see cert-manager logs for more info
+kubectl get certs -A
+
+# Trigger manual certification recreation
+kubectl delete certificate backend-tls-secret -n topikai
+
+# Check the SSL Certificate
+openssl s_client -connect my-service.example.com:443</code></pre>]]></content:encoded></item><item><title><![CDATA[Create your own LLM Voice Assistant in just 5 minutes!]]></title><description><![CDATA[<p>What was previously thought to be impossible, now became reality! We can finally get our own Jarvis, and even more, we can do this in just 5 minutes!</p><div class="kg-card kg-audio-card"><img src alt="audio-thumbnail" class="kg-audio-thumbnail kg-audio-hide"><div class="kg-audio-thumbnail placeholder"><svg width="24" height="24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 15.33a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM15 13.83a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M14.486 6.81A2.25 2.25 0 0 1 17.25 9v5.579a.75.75 0 0 1-1.5 0v-5.58a.75.75 0 0 0-.932-.727.755.755 0 0 1-.059.013l-4.465.744a.75.75 0 0 0-.544.72v6.33a.75.75 0 0 1-1.5 0v-6.33a2.25 2.25 0 0 1 1.763-2.194l4.473-.746Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3 1.5a.75.75 0 0 0-.75.75v19.5a.75.75 0 0 0 .75.75h18a.75.75 0 0 0 .75-.75V5.133a.75.75 0 0 0-.225-.535l-.002-.002-3-2.883A.75.75 0 0 0 18 1.5H3ZM1.409.659A2.25 2.25 0 0 1 3 0h15a2.25 2.25 0 0 1 1.568.637l.003.002 3 2.883a2.25 2.25 0 0 1 .679 1.61V21.75A2.25 2.25 0 0 1 21 24H3a2.25 2.25 0 0 1-2.25-2.25V2.25c0-.597.237-1.169.659-1.591Z"/></svg></div><div class="kg-audio-player-container"><audio src="https://storage.ghost.io/c/8c/6b/8c6bb654-931c-453c-9a28-3f4d81ee5415/content/media/2024/12/Voice-Bot---Weather-1.m4a" preload="metadata"></audio><div class="kg-audio-title">Voice Bot Weather</div><div class="kg-audio-player"><button class="kg-audio-play-icon" aria-label="Play audio"><svg viewbox="0 0 24 24"><path d="M23.14 10.608 2.253.164A1.559 1.559 0 0 0 0 1.557v20.887a1.558 1.558 0 0 0 2.253 1.392L23.14 13.393a1.557 1.557 0 0 0 0-2.785Z"/></svg></button><button class="kg-audio-pause-icon kg-audio-hide" aria-label="Pause audio"><svg viewbox="0 0 24 24"><rect x="3" y="1" width="7" height="22" rx="1.5" ry="1.5"/><rect x="14" y="1" width="7" height="22" rx="1.5" ry="1.5"/></svg></button><span class="kg-audio-current-time">0:00</span><div class="kg-audio-time">/<span class="kg-audio-duration">34.474667</span></div><input type="range" class="kg-audio-seek-slider" max="100" value="0"><button class="kg-audio-playback-rate" aria-label="Adjust playback speed">1&#xD7;</button><button class="kg-audio-unmute-icon" aria-label="Unmute"><svg viewbox="0 0 24 24"><path d="M15.189 2.021a9.728 9.728 0 0 0-7.924 4.85.249.249 0 0 1-.221.133H5.25a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h1.794a.249.249 0 0 1 .221.133 9.73 9.73 0 0 0 7.924 4.85h.06a1 1 0 0 0 1-1V3.02a1 1 0 0 0-1.06-.998Z"/></svg></button><button class="kg-audio-mute-icon kg-audio-hide" aria-label="Mute"><svg viewbox="0 0 24 24"><path d="M16.177 4.3a.248.248 0 0 0 .073-.176v-1.1a1 1 0 0 0-1.061-1 9.728 9.728 0 0 0-7.924 4.85.249.249 0 0 1-.221.133H5.25a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h.114a.251.251 0 0 0 .177-.073ZM23.707 1.706A1 1 0 0 0 22.293.292l-22 22a1 1 0 0 0 0 1.414l.009.009a1 1 0 0 0 1.405-.009l6.63-6.631A.251.251 0 0 1 8.515 17a.245.245 0 0 1 .177.075 10.081 10.081 0 0 0 6.5 2.92 1 1 0 0 0 1.061-1V9.266a.247.247 0 0 1 .073-.176Z"/></svg></button><input type="range" class="kg-audio-volume-slider" max="100" value="100"></div></div></div><p>While the below is how you can get started, please note that LLMs</p>]]></description><link>https://xaviergeerinck.com/2024/12/10/create-your-own-llm-voice-assistant-in-just-5-minutes/</link><guid isPermaLink="false">6757eff3bdbcdc000196f1cf</guid><category><![CDATA[Artificial Intelligence]]></category><category><![CDATA[Coding - Python]]></category><category><![CDATA[LLM]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Tue, 10 Dec 2024 08:26:46 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2024/12/n0zzsbhrk34tbqdswd6v.png" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2024/12/n0zzsbhrk34tbqdswd6v.png" alt="Create your own LLM Voice Assistant in just 5 minutes!"><p>What was previously thought to be impossible, now became reality! We can finally get our own Jarvis, and even more, we can do this in just 5 minutes!</p><div class="kg-card kg-audio-card"><img src alt="Create your own LLM Voice Assistant in just 5 minutes!" class="kg-audio-thumbnail kg-audio-hide"><div class="kg-audio-thumbnail placeholder"><svg width="24" height="24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 15.33a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM15 13.83a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm-2.25.75a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M14.486 6.81A2.25 2.25 0 0 1 17.25 9v5.579a.75.75 0 0 1-1.5 0v-5.58a.75.75 0 0 0-.932-.727.755.755 0 0 1-.059.013l-4.465.744a.75.75 0 0 0-.544.72v6.33a.75.75 0 0 1-1.5 0v-6.33a2.25 2.25 0 0 1 1.763-2.194l4.473-.746Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3 1.5a.75.75 0 0 0-.75.75v19.5a.75.75 0 0 0 .75.75h18a.75.75 0 0 0 .75-.75V5.133a.75.75 0 0 0-.225-.535l-.002-.002-3-2.883A.75.75 0 0 0 18 1.5H3ZM1.409.659A2.25 2.25 0 0 1 3 0h15a2.25 2.25 0 0 1 1.568.637l.003.002 3 2.883a2.25 2.25 0 0 1 .679 1.61V21.75A2.25 2.25 0 0 1 21 24H3a2.25 2.25 0 0 1-2.25-2.25V2.25c0-.597.237-1.169.659-1.591Z"/></svg></div><div class="kg-audio-player-container"><audio src="https://storage.ghost.io/c/8c/6b/8c6bb654-931c-453c-9a28-3f4d81ee5415/content/media/2024/12/Voice-Bot---Weather-1.m4a" preload="metadata"></audio><div class="kg-audio-title">Voice Bot Weather</div><div class="kg-audio-player"><button class="kg-audio-play-icon" aria-label="Play audio"><svg viewbox="0 0 24 24"><path d="M23.14 10.608 2.253.164A1.559 1.559 0 0 0 0 1.557v20.887a1.558 1.558 0 0 0 2.253 1.392L23.14 13.393a1.557 1.557 0 0 0 0-2.785Z"/></svg></button><button class="kg-audio-pause-icon kg-audio-hide" aria-label="Pause audio"><svg viewbox="0 0 24 24"><rect x="3" y="1" width="7" height="22" rx="1.5" ry="1.5"/><rect x="14" y="1" width="7" height="22" rx="1.5" ry="1.5"/></svg></button><span class="kg-audio-current-time">0:00</span><div class="kg-audio-time">/<span class="kg-audio-duration">34.474667</span></div><input type="range" class="kg-audio-seek-slider" max="100" value="0"><button class="kg-audio-playback-rate" aria-label="Adjust playback speed">1&#xD7;</button><button class="kg-audio-unmute-icon" aria-label="Unmute"><svg viewbox="0 0 24 24"><path d="M15.189 2.021a9.728 9.728 0 0 0-7.924 4.85.249.249 0 0 1-.221.133H5.25a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h1.794a.249.249 0 0 1 .221.133 9.73 9.73 0 0 0 7.924 4.85h.06a1 1 0 0 0 1-1V3.02a1 1 0 0 0-1.06-.998Z"/></svg></button><button class="kg-audio-mute-icon kg-audio-hide" aria-label="Mute"><svg viewbox="0 0 24 24"><path d="M16.177 4.3a.248.248 0 0 0 .073-.176v-1.1a1 1 0 0 0-1.061-1 9.728 9.728 0 0 0-7.924 4.85.249.249 0 0 1-.221.133H5.25a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h.114a.251.251 0 0 0 .177-.073ZM23.707 1.706A1 1 0 0 0 22.293.292l-22 22a1 1 0 0 0 0 1.414l.009.009a1 1 0 0 0 1.405-.009l6.63-6.631A.251.251 0 0 1 8.515 17a.245.245 0 0 1 .177.075 10.081 10.081 0 0 0 6.5 2.92 1 1 0 0 0 1.061-1V9.266a.247.247 0 0 1 .073-.176Z"/></svg></button><input type="range" class="kg-audio-volume-slider" max="100" value="100"></div></div></div><p>While the below is how you can get started, please note that LLMs require a lot of fine-tuning, context enhancements, SOP graphs (Standard Operating Procedures) and language processing to become more advanced for our use case.</p><h2 id="getting-startedcreating-accounts">Getting Started - Creating Accounts</h2><p>Now let&apos;s create our own Jarvis bot! Let&apos;s get started by creating the accounts we need:</p><ul><li><a href="https://elevenlabs.io/?ref=xaviergeerinck.com">ElevenLabs</a> (for synthetic voices) - <a href="https://elevenlabs.io/app/settings/api-keys?ref=xaviergeerinck.com">API Key Link</a></li><li><a href="https://dashboard.daily.co/?ref=xaviergeerinck.com">Daily</a> (for WebRTC Voice Chats) - <a href="https://dashboard.daily.co/rooms/create?ref=xaviergeerinck.com">API Key Link</a></li><li><a href="https://platform.openai.com/playground/chat?models=gpt-4o&amp;ref=xaviergeerinck.com">OpenAI</a> (for LLM access) - <a href="https://platform.openai.com/settings/organization/api-keys?ref=xaviergeerinck.com">API Key Link</a></li></ul><p>Once we have this, create a <code>.env</code> file as below:</p><pre><code class="language-bash"># https://dashboard.daily.co/rooms/create
+DAILY_ROOM_URL=https://YOUR_SUBDOMAIN.daily.co/YOUR_ROOM_ID
+DAILY_API_KEY=
+
+# API: https://elevenlabs.io/app/settings/api-keys
+# Voices: https://elevenlabs.io/app/voice-lab
+ELEVENLABS_VOICE_ID=iP95p4xoKVk53GoZ742B
+ELEVENLABS_API_KEY=
+
+# https://platform.openai.com/settings/organization/api-keys
+OPENAI_API_KEY=</code></pre><p>We are now set to create our example!</p><h2 id="installing-pipecat">Installing Pipecat</h2><p>Let&apos;s install pipecat for our project, which pipes together all the tasks we need!</p><pre><code class="language-bash"># Create Venv
+python3 -m venv env
+source env/bin/activate
+
+# Install dependencies
+pip install &quot;pipecat-ai[daily,elevenlabs,silero,openai]&quot; python-dotenv loguru</code></pre><p>Once we have this, put the below in a file named <code>demo.py</code>:</p><pre><code class="language-python">import asyncio
+import glob
+import json
+import os
+import sys
+from datetime import datetime
+
+import aiohttp
+from dotenv import load_dotenv
+from loguru import logger
+from runner import configure
+
+from pipecat.audio.vad.silero import SileroVADAnalyzer
+from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.pipeline.pipeline import Pipeline
+from pipecat.pipeline.runner import PipelineRunner
+from pipecat.pipeline.task import PipelineParams, PipelineTask
+from pipecat.processors.aggregators.openai_llm_context import (
+    OpenAILLMContext,
+)
+from pipecat.services.openai_realtime_beta import (
+    InputAudioTranscription,
+    OpenAIRealtimeBetaLLMService,
+    SessionProperties,
+    TurnDetection,
+)
+from pipecat.transports.services.daily import DailyParams, DailyTransport
+
+load_dotenv(override=True)
+
+logger.remove(0)
+logger.add(sys.stderr, level=&quot;DEBUG&quot;)
+
+BASE_FILENAME = &quot;/tmp/pipecat_conversation_&quot;
+
+
+async def fetch_weather_from_api(function_name, tool_call_id, args, llm, context, result_callback):
+    temperature = 75 if args[&quot;format&quot;] == &quot;fahrenheit&quot; else 24
+    await result_callback(
+        {
+            &quot;conditions&quot;: &quot;nice&quot;,
+            &quot;temperature&quot;: temperature,
+            &quot;format&quot;: args[&quot;format&quot;],
+            &quot;timestamp&quot;: datetime.now().strftime(&quot;%Y%m%d_%H%M%S&quot;),
+        }
+    )
+
+
+async def get_saved_conversation_filenames(
+    function_name, tool_call_id, args, llm, context, result_callback
+):
+    # Construct the full pattern including the BASE_FILENAME
+    full_pattern = f&quot;{BASE_FILENAME}*.json&quot;
+
+    # Use glob to find all matching files
+    matching_files = glob.glob(full_pattern)
+    logger.debug(f&quot;matching files: {matching_files}&quot;)
+
+    await result_callback({&quot;filenames&quot;: matching_files})
+
+
+# async def get_saved_conversation_filenames(
+#     function_name, tool_call_id, args, llm, context, result_callback
+# ):
+#     pattern = re.compile(re.escape(BASE_FILENAME) + &quot;\\d{8}_\\d{6}\\.json$&quot;)
+#     matching_files = []
+
+#     for filename in os.listdir(&quot;.&quot;):
+#         if pattern.match(filename):
+#             matching_files.append(filename)
+
+#     await result_callback({&quot;filenames&quot;: matching_files})
+
+
+async def save_conversation(function_name, tool_call_id, args, llm, context, result_callback):
+    timestamp = datetime.now().strftime(&quot;%Y-%m-%d_%H:%M:%S&quot;)
+    filename = f&quot;{BASE_FILENAME}{timestamp}.json&quot;
+    logger.debug(f&quot;writing conversation to {filename}\n{json.dumps(context.messages, indent=4)}&quot;)
+    try:
+        with open(filename, &quot;w&quot;) as file:
+            messages = context.get_messages_for_persistent_storage()
+            # remove the last message, which is the instruction we just gave to save the conversation
+            messages.pop()
+            json.dump(messages, file, indent=2)
+        await result_callback({&quot;success&quot;: True})
+    except Exception as e:
+        await result_callback({&quot;success&quot;: False, &quot;error&quot;: str(e)})
+
+
+async def load_conversation(function_name, tool_call_id, args, llm, context, result_callback):
+    async def _reset():
+        filename = args[&quot;filename&quot;]
+        logger.debug(f&quot;loading conversation from {filename}&quot;)
+        try:
+            with open(filename, &quot;r&quot;) as file:
+                context.set_messages(json.load(file))
+                await llm.reset_conversation()
+                await llm._create_response()
+        except Exception as e:
+            await result_callback({&quot;success&quot;: False, &quot;error&quot;: str(e)})
+
+    asyncio.create_task(_reset())
+
+
+tools = [
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_current_weather&quot;,
+        &quot;description&quot;: &quot;Get the current weather&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;location&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;description&quot;: &quot;The city and state, e.g. San Francisco, CA&quot;,
+                },
+                &quot;format&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [&quot;celsius&quot;, &quot;fahrenheit&quot;],
+                    &quot;description&quot;: &quot;The temperature unit to use. Infer this from the users location.&quot;,
+                },
+            },
+            &quot;required&quot;: [&quot;location&quot;, &quot;format&quot;],
+        },
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;save_conversation&quot;,
+        &quot;description&quot;: &quot;Save the current conversatione. Use this function to persist the current conversation to external storage.&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {},
+            &quot;required&quot;: [],
+        },
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;get_saved_conversation_filenames&quot;,
+        &quot;description&quot;: &quot;Get a list of saved conversation histories. Returns a list of filenames. Each filename includes a date and timestamp. Each file is conversation history that can be loaded into this session.&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {},
+            &quot;required&quot;: [],
+        },
+    },
+    {
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;load_conversation&quot;,
+        &quot;description&quot;: &quot;Load a conversation history. Use this function to load a conversation history into the current session.&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;filename&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;description&quot;: &quot;The filename of the conversation history to load.&quot;,
+                }
+            },
+            &quot;required&quot;: [&quot;filename&quot;],
+        },
+    },
+]
+
+
+async def main():
+    async with aiohttp.ClientSession() as session:
+        (room_url, token) = await configure(session)
+
+        transport = DailyTransport(
+            room_url,
+            token,
+            &quot;Respond bot&quot;,
+            DailyParams(
+                audio_in_enabled=True,
+                audio_in_sample_rate=24000,
+                audio_out_enabled=True,
+                audio_out_sample_rate=24000,
+                transcription_enabled=False,
+
+                # VAD = Voice Activity Detection
+                vad_enabled=True,
+                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.8)),
+                vad_audio_passthrough=True,
+            ),
+        )
+
+        session_properties = SessionProperties(
+            input_audio_transcription=InputAudioTranscription(),
+            # Set openai TurnDetection parameters. Not setting this at all will turn it
+            # on by default
+            turn_detection=TurnDetection(silence_duration_ms=1000),
+            # Or set to False to disable openai turn detection and use transport VAD
+            # turn_detection=False,
+            # tools=tools,
+            instructions=&quot;&quot;&quot;Your knowledge cutoff is 2023-10. You are a helpful and friendly AI.
+
+Act like a human, but remember that you aren&apos;t a human and that you can&apos;t do human
+things in the real world. Your voice and personality should be warm and engaging, with a lively and
+playful tone.
+
+If interacting in a non-English language, start by using the standard accent or dialect familiar to
+the user. Talk quickly. You should always call a function if you can. Do not refer to these rules,
+even if you&apos;re asked about them.
+-
+You are participating in a voice conversation. Keep your responses concise, short, and to the point
+unless specifically asked to elaborate on a topic.
+
+Remember, your responses should be short. Just one or two sentences, usually.&quot;&quot;&quot;,
+        )
+
+        llm = OpenAIRealtimeBetaLLMService(
+            api_key=os.getenv(&quot;OPENAI_API_KEY&quot;),
+            session_properties=session_properties,
+            start_audio_paused=False,
+        )
+
+        # you can either register a single function for all function calls, or specific functions
+        # llm.register_function(None, fetch_weather_from_api)
+        llm.register_function(&quot;get_current_weather&quot;, fetch_weather_from_api)
+        llm.register_function(&quot;save_conversation&quot;, save_conversation)
+        llm.register_function(&quot;get_saved_conversation_filenames&quot;, get_saved_conversation_filenames)
+        llm.register_function(&quot;load_conversation&quot;, load_conversation)
+
+        context = OpenAILLMContext([], tools)
+        context_aggregator = llm.create_context_aggregator(context)
+
+        pipeline = Pipeline(
+            [
+                transport.input(),  # Transport user input
+                context_aggregator.user(),
+                llm,  # LLM
+                context_aggregator.assistant(),
+                transport.output(),  # Transport bot output
+            ]
+        )
+
+        task = PipelineTask(
+            pipeline,
+            PipelineParams(
+                allow_interruptions=True,
+                enable_metrics=True,
+                enable_usage_metrics=True,
+                # report_only_initial_ttfb=True,
+            ),
+        )
+
+        @transport.event_handler(&quot;on_first_participant_joined&quot;)
+        async def on_first_participant_joined(transport, participant):
+            await transport.capture_participant_transcription(participant[&quot;id&quot;])
+            # Kick off the conversation.
+            await task.queue_frames([context_aggregator.user().get_context_frame()])
+
+        runner = PipelineRunner()
+
+        await runner.run(task)
+
+
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())</code></pre><p>Finally, create a <code>runner.py</code> file:</p><pre><code class="language-python">import aiohttp
+import argparse
+import os
+
+from pipecat.transports.services.helpers.daily_rest import DailyRESTHelper
+
+
+async def configure(aiohttp_session: aiohttp.ClientSession):
+    (url, token, _) = await configure_with_args(aiohttp_session)
+    return (url, token)
+
+
+async def configure_with_args(
+    aiohttp_session: aiohttp.ClientSession, parser: argparse.ArgumentParser | None = None
+):
+    if not parser:
+        parser = argparse.ArgumentParser(description=&quot;Daily AI SDK Bot Sample&quot;)
+
+    parser.add_argument(
+        &quot;-u&quot;, &quot;--url&quot;, type=str, required=False, help=&quot;URL of the Daily room to join&quot;
+    )
+    parser.add_argument(
+        &quot;-k&quot;,
+        &quot;--apikey&quot;,
+        type=str,
+        required=False,
+        help=&quot;Daily API Key (needed to create an owner token for the room)&quot;,
+    )
+
+    args, unknown = parser.parse_known_args()
+
+    url = args.url or os.getenv(&quot;DAILY_ROOM_URL&quot;)
+    key = args.apikey or os.getenv(&quot;DAILY_API_KEY&quot;)
+
+    if not url:
+        raise Exception(
+            &quot;No Daily room specified. use the -u/--url option from the command line, or set DAILY_ROOM_URL in your environment to specify a Daily room URL.&quot;
+        )
+
+    if not key:
+        raise Exception(
+            &quot;No Daily API key specified. use the -k/--apikey option from the command line, or set DAILY_API_KEY in your environment to specify a Daily API key, available from https://dashboard.daily.co/developers.&quot;
+        )
+
+    daily_rest_helper = DailyRESTHelper(
+        daily_api_key=key,
+        daily_api_url=os.getenv(&quot;DAILY_API_URL&quot;, &quot;https://api.daily.co/v1&quot;),
+        aiohttp_session=aiohttp_session,
+    )
+
+    # Create a meeting token for the given room with an expiration 1 hour in
+    # the future.
+    expiry_time: float = 60 * 60
+
+    token = await daily_rest_helper.get_token(url, expiry_time)
+
+    return (url, token, args)</code></pre><p>We are now set to go!</p><h2 id="running">Running</h2><p>Enter <code>python demo.py</code> and watch our bot come alive!</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2024/12/image.png" class="kg-image" alt="Create your own LLM Voice Assistant in just 5 minutes!" loading="lazy" width="1208" height="170" srcset="https://xaviergeerinck.com/content/images/size/w600/2024/12/image.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2024/12/image.png 1000w, https://xaviergeerinck.com/content/images/2024/12/image.png 1208w" sizes="(min-width: 720px) 720px"></figure><p>When we join the room on our device (or any other! long live WebRTC). We will see that a participant has joined, and we are able to interact with the model:</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2024/12/image-1.png" class="kg-image" alt="Create your own LLM Voice Assistant in just 5 minutes!" loading="lazy" width="1367" height="132" srcset="https://xaviergeerinck.com/content/images/size/w600/2024/12/image-1.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2024/12/image-1.png 1000w, https://xaviergeerinck.com/content/images/2024/12/image-1.png 1367w" sizes="(min-width: 720px) 720px"></figure><p>Interacting with it and asking about the weather is also possible! </p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2024/12/image-2.png" class="kg-image" alt="Create your own LLM Voice Assistant in just 5 minutes!" loading="lazy" width="2000" height="605" srcset="https://xaviergeerinck.com/content/images/size/w600/2024/12/image-2.png 600w, https://xaviergeerinck.com/content/images/size/w1000/2024/12/image-2.png 1000w, https://xaviergeerinck.com/content/images/size/w1600/2024/12/image-2.png 1600w, https://xaviergeerinck.com/content/images/2024/12/image-2.png 2135w" sizes="(min-width: 720px) 720px"></figure><h2 id="next-steps">Next Steps</h2><p>We successfully created an agent, that responds within an acceptable time amount. The next steps to look into are now to:</p><ul><li>Connect it to a web interface (for live monitoring, without terminals)</li><li>Create action intents and SOPs to ensure it follows a paradigm and interacts with our services</li><li>Fine-tune the model so it can only react on our content</li><li>...</li></ul>]]></content:encoded></item><item><title><![CDATA[Adding Authentication to your Azure Static Web App]]></title><description><![CDATA[Learn how you can add authentication to your azure static web app page]]></description><link>https://xaviergeerinck.com/2024/04/02/adding-authentication-to-your-azure-static-web-app/</link><guid isPermaLink="false">660bbf900d39e3000141fc5f</guid><category><![CDATA[Azure]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Tue, 02 Apr 2024 12:00:19 GMT</pubDate><content:encoded><![CDATA[<p>So you are writing a documentation page and you want to protect it? Azure Static Web Apps has the solution for you.</p><p>Simply create a <code>staticwebapp.config.json</code> file in your App artifact folder (i.e., where your app code will live to be deployed) with the following content:</p><pre><code class="language-json">{
+  &quot;routes&quot;: [
+    {
+      &quot;route&quot;: &quot;*&quot;,
+      &quot;allowedRoles&quot;: [&quot;authenticated&quot;]
+    }
+  ],
+  &quot;navigationFallback&quot;: {
+    &quot;rewrite&quot;: &quot;/index.html&quot;,
+    &quot;exclude&quot;: [&quot;/images/*.{png,jpg,gif}&quot;, &quot;/css/*&quot;]
+  },
+  &quot;responseOverrides&quot;: {
+    &quot;401&quot;: {
+      &quot;redirect&quot;: &quot;/.auth/login/aad?post_login_redirect_uri=.referrer&quot;,
+      &quot;statusCode&quot;: 302,
+      &quot;exclude&quot;: [&quot;/images/*.{png,jpg,gif}&quot;, &quot;/css/*&quot;]
+    }
+  },
+  &quot;globalHeaders&quot;: {
+    &quot;content-security-policy&quot;: &quot;default-src https: &apos;unsafe-eval&apos; &apos;unsafe-inline&apos;; object-src &apos;none&apos;; img-src &apos;self&apos; data: *&quot;
+  }
+}
+
+</code></pre><p>This will now enforce authentication to all your routes and exclude the CSS or Images from being protected.</p><p>Deploying this now automatically redirects us to the authentication page!</p>]]></content:encoded></item><item><title><![CDATA[Key Takeaways from NVIDIA's GTC 2024: The Future of Autonomous AI and Robotics]]></title><description><![CDATA[Dive into the highlights from NVIDIA's GTC 2024, exploring breakthroughs in autonomous AI, robotics, simulation technologies, and the evolving landscape of reinforcement learning. Discover how these advancements are shaping the future of technology.]]></description><link>https://xaviergeerinck.com/2024/03/26/gtc-2024/</link><guid isPermaLink="false">65fe7d6b49fe700001e038d7</guid><category><![CDATA[News]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Tue, 26 Mar 2024 18:00:51 GMT</pubDate><media:content url="https://xaviergeerinck.com/content/images/2024/03/IMG_7658.jpeg" medium="image"/><content:encoded><![CDATA[<img src="https://xaviergeerinck.com/content/images/2024/03/IMG_7658.jpeg" alt="Key Takeaways from NVIDIA&apos;s GTC 2024: The Future of Autonomous AI and Robotics"><p>I just had the chance to visit NVIDIA&apos;s GTC 2024 edition, and damn, was I impressed! It showed a future, where Autonomous AI is leading and validates what we already know, <strong>Autonomous Agents are there to stay!</strong></p><blockquote><strong>Autonomous Agents are there to stay!</strong></blockquote><p>Of course, this is a subjective post, because as CTO at Composabl, it&apos;s my mission to find the latest technology and define a strategy for our Company that makes us stand-out in the technology world. Thus, I was mainly interested in figuring out what: </p><ul><li>Nvidia is doing in the Robotics Space</li><li>How simulation is changing and where we should invest in</li><li>Crossing the Sim2Real gap</li><li>What customers require in an edge runtime</li></ul><p>NVIDIA&apos;s GTC conference went in on all of that! They solved and most often even demonstrated solutions to most of the questions I had in my mind and allowed an updated strategy to form. </p><p>As Composabl, we are using simulation software to train our different Composed AI Agents (through the SDK - soon through our UI) and eventually run them in the different form factors our customer require. Looking at GTC, they are mainly aligned with that vision (with the difference that our USP is the Agent creation through our Machine Teaching paradigm, making it easy for anyone to create an Agent)</p><blockquote><strong>As Composabl, we put Autonomous Agent creation into the hands of everyone!</strong></blockquote><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2024/03/18B8C4DD-AAE4-46D1-84F9-A534FC67171B_1_102.jpeg" class="kg-image" alt="Key Takeaways from NVIDIA&apos;s GTC 2024: The Future of Autonomous AI and Robotics" loading="lazy" width="2000" height="1500" srcset="https://xaviergeerinck.com/content/images/size/w600/2024/03/18B8C4DD-AAE4-46D1-84F9-A534FC67171B_1_102.jpeg 600w, https://xaviergeerinck.com/content/images/size/w1000/2024/03/18B8C4DD-AAE4-46D1-84F9-A534FC67171B_1_102.jpeg 1000w, https://xaviergeerinck.com/content/images/size/w1600/2024/03/18B8C4DD-AAE4-46D1-84F9-A534FC67171B_1_102.jpeg 1600w, https://xaviergeerinck.com/content/images/2024/03/18B8C4DD-AAE4-46D1-84F9-A534FC67171B_1_102.jpeg 2048w" sizes="(min-width: 720px) 720px"></figure><p>What NVIDIA also showed, is how Research is not standing still. Reinforcement Learning can be quite &quot;slow&quot; unless you know how to search through the Observation Space correctly (which is what we ultimately improve through Machine Teaching). The most used algorithm for that currently is PPO, as it typically works in a variety of use cases and simulators. For this, they devised a new method named Short-Horizon Actor-Critic (SHAC) and Adaptive Horizon Actor Critic (AHAC) that combines Gradient-based Optimization with RL. Providing an amazing performance gain under certain circumstances:</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2024/03/83FB3962-FD95-4F5D-B77E-DFAE3E5562A8_1_105_c.jpeg" class="kg-image" alt="Key Takeaways from NVIDIA&apos;s GTC 2024: The Future of Autonomous AI and Robotics" loading="lazy" width="1024" height="768" srcset="https://xaviergeerinck.com/content/images/size/w600/2024/03/83FB3962-FD95-4F5D-B77E-DFAE3E5562A8_1_105_c.jpeg 600w, https://xaviergeerinck.com/content/images/size/w1000/2024/03/83FB3962-FD95-4F5D-B77E-DFAE3E5562A8_1_105_c.jpeg 1000w, https://xaviergeerinck.com/content/images/2024/03/83FB3962-FD95-4F5D-B77E-DFAE3E5562A8_1_105_c.jpeg 1024w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2024/03/E92A9C7F-5C07-4CF6-99DB-3BCC035F681F_1_105_c.jpeg" class="kg-image" alt="Key Takeaways from NVIDIA&apos;s GTC 2024: The Future of Autonomous AI and Robotics" loading="lazy" width="1024" height="768" srcset="https://xaviergeerinck.com/content/images/size/w600/2024/03/E92A9C7F-5C07-4CF6-99DB-3BCC035F681F_1_105_c.jpeg 600w, https://xaviergeerinck.com/content/images/size/w1000/2024/03/E92A9C7F-5C07-4CF6-99DB-3BCC035F681F_1_105_c.jpeg 1000w, https://xaviergeerinck.com/content/images/2024/03/E92A9C7F-5C07-4CF6-99DB-3BCC035F681F_1_105_c.jpeg 1024w" sizes="(min-width: 720px) 720px"></figure><p>Now, the <strong>most interesting session</strong> for me personally was - by far - <strong>Disney&apos;s session of how they are bringing Personality to their robots. </strong>Demonstrated through how they made BD-1 walking. While this might seem as &quot;Gimmick&quot;, it&apos;s ultimately about what Disney actually achieved here (but are still quite secretive about it in the knowledge sharing domain).</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2024/03/B5FBE4FE-99DB-4749-9F07-B72297CF97CC_1_102.jpeg" class="kg-image" alt="Key Takeaways from NVIDIA&apos;s GTC 2024: The Future of Autonomous AI and Robotics" loading="lazy" width="2000" height="1500" srcset="https://xaviergeerinck.com/content/images/size/w600/2024/03/B5FBE4FE-99DB-4749-9F07-B72297CF97CC_1_102.jpeg 600w, https://xaviergeerinck.com/content/images/size/w1000/2024/03/B5FBE4FE-99DB-4749-9F07-B72297CF97CC_1_102.jpeg 1000w, https://xaviergeerinck.com/content/images/size/w1600/2024/03/B5FBE4FE-99DB-4749-9F07-B72297CF97CC_1_102.jpeg 1600w, https://xaviergeerinck.com/content/images/2024/03/B5FBE4FE-99DB-4749-9F07-B72297CF97CC_1_102.jpeg 2048w" sizes="(min-width: 720px) 720px"></figure><p>By combining Reinforcement Learning, with pre-programmed animation sequences, they are able to create a stable bi-pedal walking robot that acts as naturally as the character they invented would.</p><figure class="kg-card kg-image-card"><img src="https://xaviergeerinck.com/content/images/2024/03/BD043B51-47EE-447A-B60F-11F7B047020A_1_102.jpeg" class="kg-image" alt="Key Takeaways from NVIDIA&apos;s GTC 2024: The Future of Autonomous AI and Robotics" loading="lazy" width="2000" height="1500" srcset="https://xaviergeerinck.com/content/images/size/w600/2024/03/BD043B51-47EE-447A-B60F-11F7B047020A_1_102.jpeg 600w, https://xaviergeerinck.com/content/images/size/w1000/2024/03/BD043B51-47EE-447A-B60F-11F7B047020A_1_102.jpeg 1000w, https://xaviergeerinck.com/content/images/size/w1600/2024/03/BD043B51-47EE-447A-B60F-11F7B047020A_1_102.jpeg 1600w, https://xaviergeerinck.com/content/images/2024/03/BD043B51-47EE-447A-B60F-11F7B047020A_1_102.jpeg 2048w" sizes="(min-width: 720px) 720px"></figure><p>The biggest learning, however comes from that they accomplish this by comparing the Animation state with the Simulator state, letting the Reinforcement Learning algorithm figure out what to do correctly. Finally, creating an amazing result! But see for yourself:</p><figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/qOh_YnTL-JE?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Disney BD-1 Robot @ GTC"></iframe></figure><p>In conclusion, the biggest take aways for me were:</p><ul><li>Simulation will evolve tremendously over the next couple of years! but be aware, as Isaac Sim is ultimately a lock-in. NVIDIA is moving all the processing to the GPU (as its their bread and butter).</li><li>Reinforcement Learning is amazing, but has caveats. As Composabl, we know this and work around it, but a lot of research is still being done</li><li>In Robotics it will all be around bringing &quot;personality&quot; to your robot, moving away from the classical static robots towards more life-breathing ones.</li></ul><p></p>]]></content:encoded></item><item><title><![CDATA[How to Use Different Python Versions with Virtualenv]]></title><description><![CDATA[Learn how you can use Python Virtual Environments (venv) to easily use different python versions ]]></description><link>https://xaviergeerinck.com/2024/01/08/installing-any-python-version-quickly/</link><guid isPermaLink="false">65fb716b641456000103df71</guid><category><![CDATA[Coding - Python]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Mon, 08 Jan 2024 08:30:27 GMT</pubDate><media:content url="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxweXRob258ZW58MHx8fHwxNzA0NzAyMjk0fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" medium="image"/><content:encoded><![CDATA[<img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxweXRob258ZW58MHx8fHwxNzA0NzAyMjk0fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="How to Use Different Python Versions with Virtualenv"><p>Python is sometimes a big mess to work with. Somedays you want to use the latest for all its bug fixes and features, but other days you need to use a specific version since your favorite python library doesn&apos;t support the latest.</p><p>So how can we quickly get started with let&apos;s say Python 3.9? This is what I aim to explain in this article! </p><h2 id="virtual-env">Virtual Env</h2><p>Python has a concept named <a href="https://docs.python.org/3/library/venv.html?ref=xaviergeerinck.com">&quot;virtual envs&quot;</a>. This concept allows you to easily use any python version with its own specific set of dependencies, creating an isolation between your different projects. It is also quite handy when you are developing a library, as the dependencies you install, typically translate 1:1 to the dependency requirement of the library itself.</p><h2 id="setting-up-your-python-version">Setting up your Python Version</h2><pre><code class="language-bash"># Configure the VirtualEnv Command
+pip install virtualenv
+
+# Install your Python Version
+sudo apt update; sudo apt install python3.9
+
+# Create a virtual env with your python version and location
+# - Python Version: 3.9
+# - Location: ~/.venv/myenv
+virtualenv -p /usr/bin/python3.9 ~/.venv/myenv
+
+# Activate the Environment
+source ~/.venv/myenv/bin/activate
+
+# Deactivate the Environment
+source ~/.venv/myenv/bin/deactivate</code></pre><h2 id="conclusion">Conclusion</h2><p>Now you are completely up and running with the python version you wanted!</p>]]></content:encoded></item><item><title><![CDATA[Mounting Azure Files on AKS (Kubernetes)]]></title><description><![CDATA[<p>A common scenario is to have a shared storage that all your pods can access and write to, but how can we accomplish this in Kubernetes?</p><h2 id="prerequisites">Prerequisites</h2><p>A Kubernetes cluster accessible through <code>kubectl</code> </p><h2 id="getting-started">Getting Started</h2><p>Azure has a few storage solutions we can use for this: Files or Disks. In</p>]]></description><link>https://xaviergeerinck.com/2023/10/11/mounting-shared-storage-on-kubernetes-for-all-your-pods-in-azure-aks/</link><guid isPermaLink="false">65fb716b641456000103df70</guid><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Wed, 11 Oct 2023 15:27:59 GMT</pubDate><media:content url="https://images.unsplash.com/photo-1605745341112-85968b19335b?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxrdWJlcm5ldGVzfGVufDB8fHx8MTY5NzAzNzQ2Nnww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" medium="image"/><content:encoded><![CDATA[<img src="https://images.unsplash.com/photo-1605745341112-85968b19335b?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE1fHxrdWJlcm5ldGVzfGVufDB8fHx8MTY5NzAzNzQ2Nnww&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="Mounting Azure Files on AKS (Kubernetes)"><p>A common scenario is to have a shared storage that all your pods can access and write to, but how can we accomplish this in Kubernetes?</p><h2 id="prerequisites">Prerequisites</h2><p>A Kubernetes cluster accessible through <code>kubectl</code> </p><h2 id="getting-started">Getting Started</h2><p>Azure has a few storage solutions we can use for this: Files or Disks. In my case I am going for files. Now for SSD vs HDD I typically pick SSDs, but HDD often does the trick as well (although make sure to check the write I/O bottleneck here)</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-storage?ref=xaviergeerinck.com#choose-the-appropriate-storage-type"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Best practices for storage and backup - Azure Kubernetes Service</div><div class="kg-bookmark-description">Learn the cluster operator best practices for storage, data encryption, and backups in Azure Kubernetes Service (AKS)</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://learn.microsoft.com/favicon.ico" alt="Mounting Azure Files on AKS (Kubernetes)"><span class="kg-bookmark-author">Microsoft Learn</span><span class="kg-bookmark-publisher">MGoedtel</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://learn.microsoft.com/en-us/media/open-graph-image.png" alt="Mounting Azure Files on AKS (Kubernetes)"></div></a></figure><p>When reading the above link, we see that by default Azure uses &quot;Premium SSD&quot;. Again, check the IO you need and ensure it is according to the use case (as the price differs quite a lot), check the below for more information</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types?ref=xaviergeerinck.com#disk-type-comparison"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Select a disk type for Azure IaaS VMs - managed disks - Azure Virtual Machines</div><div class="kg-bookmark-description">Learn about the available Azure disk types for virtual machines, including ultra disks, Premium SSDs v2, Premium SSDs, standard SSDs, and Standard HDDs.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://learn.microsoft.com/favicon.ico" alt="Mounting Azure Files on AKS (Kubernetes)"><span class="kg-bookmark-author">Microsoft Learn</span><span class="kg-bookmark-publisher">roygara</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://learn.microsoft.com/en-us/media/open-graph-image.png" alt="Mounting Azure Files on AKS (Kubernetes)"></div></a></figure><h2 id="kubernetes-pv-and-pvcs">Kubernetes, PV and PVCs</h2><p>How Kubernetes works with volumes is that it &quot;has&quot; a volume (PV = Persistent Volume) and it requests a Claim on it to write to it (i.e., how much can we write to it). Azure their documentation explains this quite well:</p><figure class="kg-card kg-image-card"><img src="https://learn.microsoft.com/en-us/azure/aks/media/concepts-storage/persistent-volume-claims.png" class="kg-image" alt="Mounting Azure Files on AKS (Kubernetes)" loading="lazy"></figure><p>In this case we are using a custom Storage Class by Azure (<a href="https://github.com/container-storage-interface/spec/blob/master/spec.md?ref=xaviergeerinck.com">CSI - Container Storage Interface</a>) that manages the lifecycle of our volume. More specifically the <a href="https://learn.microsoft.com/en-us/azure/aks/azure-files-csi?ref=xaviergeerinck.com">Azure Files CSI</a>.</p><p>So how do we now create this? Well it&apos;s super simple. We just create 2 small manifests and allow everything to be mounted and that&apos;s it!</p><h3 id="creating-the-custom-file-storage-class">Creating the Custom File Storage Class</h3><p>Azure out of the box creates a storage class, but I like to use my own for full control. It will provide all rights on the entire volume and dynamically expand</p><pre><code class="language-yaml"># Implement a custom Azure File Storage Class
+# this allows us to fine tune the mount options and disk type
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: csi-azurefile-custom
+provisioner: file.csi.azure.com
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=0
+  - gid=0
+  - mfsymlinks
+  - cache=strict # https://linux.die.net/man/8/mount.cifs
+  - nosharesock
+parameters:
+  skuName: Standard_LRS</code></pre><h3 id="creating-the-pvc">Creating the PVC</h3><p>Once that is set, we just create a claim that uses this and request 100GB</p><pre><code class="language-yaml"># Create a PVC for Azure File CSI driver
+# we can then mount this (e.g., https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/nginx-pod-azurefile.yaml)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-azure-file
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: csi-azurefile-custom
+</code></pre><h3 id="mounting">Mounting</h3><p>Finally, we mount the PVC into our pod:</p><pre><code class="language-yaml">---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: demo-nging
+spec:
+  containers:
+    - image: mcr.microsoft.com/oss/nginx/nginx:1.19.5
+      name: c-nginx
+      command:
+        - &quot;/bin/bash&quot;
+        - &quot;-c&quot;
+        - set -euo pipefail; while true; do echo $(date) &gt;&gt; /mnt/azurefile/outfile; sleep 1; done
+      volumeMounts:
+        - name: persistent-storage
+          mountPath: &quot;/mnt/azurefile&quot;
+  volumes:
+    - name: persistent-storage
+      persistentVolumeClaim:
+        claimName: pvc-azure-file</code></pre><h2 id="conclusion">Conclusion</h2><p>When we now run our pod and write to the disk, we will see data appearing!</p>]]></content:encoded></item><item><title><![CDATA[Putting Docusaurus behind authentication through Azure Static Web Apps]]></title><description><![CDATA[Provide authentication for your Azure Static Web App (SWA) to protect your Docusaurus powered documentation]]></description><link>https://xaviergeerinck.com/2023/09/05/swa-docusaurus-authentication/</link><guid isPermaLink="false">65fb716b641456000103df6d</guid><category><![CDATA[Azure]]></category><category><![CDATA[Coding - Javascript]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Tue, 05 Sep 2023 07:45:50 GMT</pubDate><media:content url="https://images.unsplash.com/photo-1651235732694-0d057ace2f30?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGF1dGh8ZW58MHx8fHwxNjkyOTQ4Njk5fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" medium="image"/><content:encoded><![CDATA[<img src="https://images.unsplash.com/photo-1651235732694-0d057ace2f30?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGF1dGh8ZW58MHx8fHwxNjkyOTQ4Njk5fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=2000" alt="Putting Docusaurus behind authentication through Azure Static Web Apps"><p>Then you create a documentation system that you are hosting on Azure Static Web Apps, but suddenly the request comes in to put authentication behind it. How do you get started?</p><p>Normally this would be a lengthy task. We need a server to check credentials, implement OAuth, ... BUT Azure made this SUPER-easy by providing handy routes on our Static Web Apps BY DEFAULT:</p><ul><li><code>/.auth/me</code> check the current logged in user</li><li><code>/.auth/login/&lt;provider&gt;</code> (e.g., <code>/.auth/login/aad</code>) login to the provider</li><li><code>/.auth/logout</code> logout</li></ul><p>When we login, it will provide something like this:</p><pre><code class="language-json">{
+    &quot;clientPrincipal&quot;: {
+        &quot;identityProvider&quot;: &quot;aad&quot;,
+        &quot;userId&quot;: &quot;your_user_id&quot;,
+        &quot;userDetails&quot;: &quot;xavier@example.com&quot;,
+        &quot;userRoles&quot;: [
+            &quot;anonymous&quot;,
+            &quot;authenticated&quot;
+        ]
+    }
+}</code></pre><p>which we can then check to see if the user details for example include our domain configured in the settings.</p><h2 id="what-will-we-be-creating">What will we be creating?</h2><p>In our case, we simply want an authentication wall in front of our project.</p><h2 id="project-structure">Project Structure</h2><p>First create the following files in your Docusaurus project:</p><pre><code class="language-bash">&#x251C;&#x2500;&#x2500; docusaurus.config.js
+&#x2514;&#x2500;&#x2500; src
+   &#x251C;&#x2500;&#x2500; components
+   |  &#x251C;&#x2500;&#x2500; Auth
+   |  |  &#x2514;&#x2500;&#x2500; index.js
+   |  &#x251C;&#x2500;&#x2500; Loading
+   |  |  &#x251C;&#x2500;&#x2500; index.js
+   |  |  &#x2514;&#x2500;&#x2500; styles.css
+   &#x251C;&#x2500;&#x2500; theme
+   |  &#x2514;&#x2500;&#x2500; Root.js
+   &#x2514;&#x2500;&#x2500; constants.js</code></pre><p>in the above we are:</p><ul><li>Creating components for requiring a user to be logged in (<code>Root.js</code>)<ul><li>this works together with <code>Auth</code> and <code>Loading</code> as re-usable components</li></ul></li><li>Defining constants for our project for easy management</li></ul><h2 id="creating-our-files">Creating our Files</h2><p>Let&apos;s create these files</p><h3 id="srccomponentsauthindexjs">src/components/Auth/index.js</h3><pre><code class="language-javascript">import React, {useEffect, useState} from &apos;react&apos;;
+
+import {Redirect, useLocation} from &apos;@docusaurus/router&apos;;
+
+import Loading from &apos;../Loading&apos;;
+import {CHECK_DOMAIN, SWA_PATH_LOGIN, SWA_PATH_ME} from &apos;../../constants&apos;;
+
+/**
+ * In Azure Static Web Apps we can get the user from the /.auth/me endpoint.
+ *
+ * Example
+ * {
+ *     &quot;clientPrincipal&quot;: {
+ *         &quot;identityProvider&quot;: &quot;aad&quot;,
+ *         &quot;userId&quot;: &quot;f906824d20b542919bcf31287b89a70e&quot;,
+ *         &quot;userDetails&quot;: &quot;xavier@composabl.io&quot;,
+ *         &quot;userRoles&quot;: [
+ *             &quot;anonymous&quot;,
+ *             &quot;authenticated&quot;
+ *         ]
+ *     }
+ * }
+ */
+const getUser = async () =&gt; {
+  const response = await fetch(SWA_PATH_ME);
+  const payload = await response.json();
+  const {clientPrincipal} = payload;
+  return clientPrincipal;
+};
+
+export function AuthCheck({children}) {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() =&gt; {
+    async function loadUser() {
+      try {
+        const user = await getUser();
+        setUser(user);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadUser();
+  }, []);
+
+  const location = useLocation();
+
+  let from = location.pathname;
+
+  if (isLoading) {
+    return &lt;Loading /&gt;;
+  }
+
+  // If we are not logged in, redirect to the login page
+  if (!user?.userDetails) {
+    window.location.href = `${SWA_PATH_LOGIN}?post_login_redirect_uri=${from}`;
+    return &lt;&gt;Authenticating...&lt;/&gt;;
+  }
+
+  // If we are logged in but not authorized, show a message
+  if (
+    user?.userDetails &amp;&amp;
+    user?.userDetails?.indexOf(`@${CHECK_DOMAIN}`) === -1
+  ) {
+    return &lt;div&gt;No access&lt;/div&gt;;
+  }
+
+  return children;
+}</code></pre><h3 id="srccomponentsloadingindexjs">src/components/Loading/index.js</h3><pre><code class="language-javascript">import React from &apos;react&apos;;
+
+import &apos;./styles.css&apos;;
+
+export default function Loading() {
+  return (
+    &lt;div className=&quot;overlay&quot;&gt;
+      &lt;div className=&quot;overlayDoor&quot; /&gt;
+      &lt;div className=&quot;overlayContent&quot;&gt;
+        &lt;div className=&quot;loader&quot;&gt;
+          &lt;div className=&quot;inner&quot; /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre><h3 id="srccomponentsloadingstylescss">src/components/Loading/styles.css</h3><pre><code class="language-css">/* src/components/Loading/styles.css */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100000000;
+}
+.overlay .overlayDoor:before,
+.overlay .overlayDoor:after {
+  content: &apos;&apos;;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: #111;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+  transition-delay: 0.8s;
+}
+.overlay .overlayDoor:before {
+  left: 0;
+}
+.overlay .overlayDoor:after {
+  right: 0;
+}
+.overlay.loaded .overlayDoor:before {
+  left: -50%;
+}
+.overlay.loaded .overlayDoor:after {
+  right: -50%;
+}
+.overlay.loaded .overlayContent {
+  opacity: 0;
+  margin-top: -15px;
+}
+.overlay .overlayContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+  background: #fff;
+}
+.overlay .overlayContent .skip {
+  display: block;
+  width: 130px;
+  text-align: center;
+  margin: 50px auto 0;
+  cursor: pointer;
+  color: #fff;
+  font-family: &apos;Nunito&apos;;
+  font-weight: 700;
+  padding: 12px 0;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  transition: 0.2s ease;
+}
+.overlay .overlayContent .skip:hover {
+  background: #ddd;
+  color: #444;
+  border-color: #ddd;
+}
+.loader {
+  width: 128px;
+  height: 128px;
+  border: 3px solid #222222;
+  border-bottom: 3px solid transparent;
+  border-radius: 50%;
+  position: relative;
+  animation: spin 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader .inner {
+  width: 64px;
+  height: 64px;
+  border: 3px solid transparent;
+  border-top: 3px solid #222222;
+  border-radius: 50%;
+  animation: spinInner 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinInner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-720deg);
+  }
+}</code></pre><h3 id="srccomponentsthemerootjs">src/components/theme/Root.js</h3><pre><code class="language-javascript">import React from &apos;react&apos;;
+import {AuthCheck} from &apos;../components/Auth&apos;;
+
+export default function Root({children}) {
+  return &lt;AuthCheck children={children} /&gt;;
+}</code></pre><h3 id="srccomponentsthemeconstantsjs">src/components/theme/constants.js</h3><pre><code class="language-javascript">export const SWA_PATH_LOGIN = &apos;/.auth/login/aad&apos;;
+export const SWA_PATH_LOGOUT = &apos;/.auth/logout&apos;;
+export const SWA_PATH_ME = &apos;/.auth/me&apos;;
+export const CHECK_DOMAIN = &apos;example.com&apos;;</code></pre><h2 id="conclusion">Conclusion</h2><p>And that&apos;s it! It couldn&apos;t be any simpler to put an auth wall in front of your page!</p><p></p>]]></content:encoded></item><item><title><![CDATA[Sinking Events from MQTT to Timescale with Dapr and Rust]]></title><description><![CDATA[Learn how to forward events from MQTT to TimescaleDB (Postgres) at high-speed and low latencies with Dapr and Rust]]></description><link>https://xaviergeerinck.com/2023/07/27/sinking-events-from-mqtt-to-timescale/</link><guid isPermaLink="false">65fb716b641456000103df69</guid><category><![CDATA[Dapr]]></category><category><![CDATA[Coding - Rust]]></category><dc:creator><![CDATA[Xavier Geerinck]]></dc:creator><pubDate>Thu, 27 Jul 2023 13:31:58 GMT</pubDate><media:content url="https://cdn.xaviergeerinck.com/images/2023/7/131327_Picture%201%201.png" medium="image"/><content:encoded><![CDATA[<img src="https://cdn.xaviergeerinck.com/images/2023/7/131327_Picture%201%201.png" alt="Sinking Events from MQTT to Timescale with Dapr and Rust"><p>Sinking events from a fast-forwarding MQTT broker to Timescale will need to ensure that we create a processor that can handle this load. For this one, I decided to utilize Dapr with the gRPC protocol and Rust.</p><blockquote>Important to note is that Rust support in Dapr is still in &quot;alpha&quot; support, but it does help us create the gRPC connection.</blockquote><h2 id="identifying-components">Identifying Components</h2><p>The first thing we do is to identify and configure our Dapr components. I picked to use MQTT as a PubSub component and Postgres as a binding:</p><h3 id="componentspubsub-mqttyaml">components/pubsub-mqtt.yaml</h3><pre><code class="language-yaml">apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub-mqtt
+spec:
+  type: pubsub.mqtt
+  version: v1
+  metadata:
+  - name: url
+    value: &quot;tcp://USER:PASSWORD@localhost:1883&quot;
+  - name: qos
+    value: 1
+  - name: retain
+    value: &quot;false&quot;
+  - name: cleanSession
+    value: &quot;false&quot;
+  - name: consumerID
+    value: &quot;consumer-sink&quot;</code></pre><h3 id="componentsbinding-postgresyaml">components/binding-postgres.yaml</h3><pre><code class="language-yaml">apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: binding-postgres
+spec:
+  type: bindings.postgresql
+  version: v1
+  metadata:
+  - name: url # Required
+    value: postgresql://USER:PASSWORD@localhost:5432/postgres?sslmode=verify-ca</code></pre><h2 id="creating-a-rust-application">Creating a Rust Application</h2><p>Next, we start by creating our rust application. Luckily, rust makes it super simple and we can just execute:</p><pre><code class="language-bash">cargo new &lt;project&gt;</code></pre><p>To the created toml file, we then add our dependencies:</p><pre><code class="language-toml">[package]
+name = &quot;event_sink&quot;
+version = &quot;0.1.0&quot;
+authors = [&quot;Xavier Geerinck&quot;]
+edition = &quot;2021&quot;
+description = &quot;Demo for event sinking&quot;
+readme = &quot;README.md&quot;
+
+[dependencies]
+tonic = &quot;0.8&quot;
+prost = &quot;0.11&quot;
+bytes = &quot;1&quot;
+prost-types = &quot;0.11&quot;
+dapr = &quot;0.12.0&quot;
+tokio = { version = &quot;1&quot;, features = [&quot;full&quot;] }
+serde_json = { version = &quot;1.0&quot;, default-features = false, features = [&quot;alloc&quot;] }
+
+[build-dependencies]
+tonic-build = &quot;0.8&quot;
+
+[[example]]
+name = &quot;main&quot;
+path = &quot;src/main.rs&quot;</code></pre><h3 id="adding-the-code-for-consuming-events">Adding the Code for consuming events</h3><p>Dapr has a small tutorial on how we can add code to consume events easily:</p><pre><code class="language-rust ">use serde_json::{json, Value};
+use tokio::sync::{Mutex, MutexGuard};
+use tonic::{transport::Channel as TonicChannel, transport::Server, Request, Response, Status};
+
+use dapr::{
+    appcallback::*,
+    dapr::dapr::proto::runtime::v1::{
+        app_callback_server::{AppCallback, AppCallbackServer},
+    },
+};
+
+pub struct AppCallbackService {}
+
+#[tonic::async_trait]
+impl AppCallback for AppCallbackService {
+    /// Invokes service method with InvokeRequest.
+    async fn on_invoke(
+        &amp;self,
+        _request: Request&lt;InvokeRequest&gt;,
+    ) -&gt; Result&lt;Response&lt;InvokeResponse&gt;, Status&gt; {
+        Ok(Response::new(InvokeResponse::default()))
+    }
+
+    /// Lists all topics subscribed by this app.
+    ///
+    /// NOTE: Dapr runtime will call this method to get
+    /// the list of topics the app wants to subscribe to.
+    /// In this example, the app is subscribing to topic `A`.
+    async fn list_topic_subscriptions(
+        &amp;self,
+        _request: Request&lt;()&gt;,
+    ) -&gt; Result&lt;Response&lt;ListTopicSubscriptionsResponse&gt;, Status&gt; {
+        let topic = &quot;events&quot;.to_string();
+        let pubsub_name = &quot;pubsub-mqtt&quot;.to_string();
+
+        let list_subscriptions = ListTopicSubscriptionsResponse::topic(pubsub_name, topic);
+
+        Ok(Response::new(list_subscriptions))
+    }
+
+    /// Subscribes events from Pubsub.
+    async fn on_topic_event(
+        &amp;self,
+        request: Request&lt;TopicEventRequest&gt;,
+    ) -&gt; Result&lt;Response&lt;TopicEventResponse&gt;, Status&gt; {
+        let r = request.into_inner();
+        let data = String::from_utf8_lossy(&amp;r.data);
+        let data_content_type = &amp;r.data_content_type;
+
+        let obj: Value = serde_json::from_str(&amp;data).unwrap();
+        println!(&quot;obj: {}&quot;, obj);
+
+        Ok(Response::new(TopicEventResponse::default()))
+    }
+
+    /// Lists all input bindings subscribed by this app.
+    async fn list_input_bindings(
+        &amp;self,
+        _request: Request&lt;()&gt;,
+    ) -&gt; Result&lt;Response&lt;ListInputBindingsResponse&gt;, Status&gt; {
+        Ok(Response::new(ListInputBindingsResponse::default()))
+    }
+
+    /// Listens events from the input bindings.
+    async fn on_binding_event(
+        &amp;self,
+        _request: Request&lt;BindingEventRequest&gt;,
+    ) -&gt; Result&lt;Response&lt;BindingEventResponse&gt;, Status&gt; {
+        Ok(Response::new(BindingEventResponse::default()))
+    }
+}
+
+#[tokio::main]
+async fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
+    let addr_server = &quot;[::]:50051&quot;.parse().unwrap();
+
+    let callback_service = AppCallbackService::new();
+
+    println!(&quot;AppCallback server listening on: {}&quot;, addr_server);
+
+    // Create a gRPC server with the callback_service.
+    Server::builder()
+        .add_service(AppCallbackServer::new(callback_service))
+        .serve(addr_server)
+        .await?;
+
+    Ok(())
+}</code></pre><p>Ok, that was the <strong>easy part</strong>, now on to the more challenging part</p><h3 id="forwarding-events">Forwarding Events</h3><p>To forward events we need to use the DaprClient as it is responsible for letting us interact with the Sidecar which takes care of the actual sinking for us. </p><p>Normally we would just create a DaprClient class, pass it to our constructor and set it so we can use it through the code (rather than creating a new DaprClient each time a method is invoked). However, Dapr does not expose mutable self references on the <code>AppCallback</code> implementation, causing us to have to solve this.</p><blockquote>The Dapr App Callback class does not expose mutable self references. </blockquote><p>Beside this, another issue arises while using it. Whenever we use the DaprClient and want to use the <code>invoke_binding</code> method, it appears that the even though the <a href="https://github.com/dapr/dapr/blob/master/dapr/proto/runtime/v1/dapr.proto?ref=xaviergeerinck.com#L400">proto files</a> allow us to pass the <code>operation</code> and <code>metadata</code> arguments, the <a href="https://github.com/dapr/rust-sdk/blob/master/src/client.rs?ref=xaviergeerinck.com#L58">SDK  does not.</a> So this is another issue we need to solve!</p><blockquote>The <code>invoke_binding</code> method does not expose the <code>operation</code> and <code>metadata</code> <a href="https://github.com/dapr/dapr/blob/master/dapr/proto/runtime/v1/dapr.proto?ref=xaviergeerinck.com#L400">proto fields</a></blockquote><p>Let&apos;s first resolve these issues before moving on to the final code.</p><h4 id="issue-the-dapr-app-callback-class-does-not-expose-mutable-self-references">Issue: The Dapr App Callback class does not expose mutable self-references</h4><p>Resolving this issue requires us to take a look at <a href="https://doc.rust-lang.org/std/sync/struct.Mutex.html?ref=xaviergeerinck.com">Mutexes</a>. As classes can become multi-threaded, we need to request a lock on the mutable references so they cannot issue the same write change at the same time (we request a lock first).</p><p>We then create a DaprClient initialization in our main code:</p><pre><code class="language-rust">let client = DaprClient::connect(addr_client).await?;</code></pre><p>And adapt our AppCallback to allow a client to be set. On setting this client, we wrap it in a mutex and create a small helper method named <code>get_dapr_client</code> that we can call which will automatically request a lock on the mutex.</p><pre><code class="language-rust">pub struct AppCallbackService {
+    dapr_client: Mutex&lt;DaprClient&lt;TonicChannel&gt;&gt;,
+}
+
+impl AppCallbackService {
+    pub fn new(client: DaprClient&lt;TonicChannel&gt;) -&gt; Self {
+        let dapr_client = Mutex::new(client);
+        Self { dapr_client }
+    }
+
+    pub async fn get_dapr_client(&amp;self) -&gt; MutexGuard&lt;&apos;_, DaprClient&lt;TonicChannel&gt;&gt; {
+        self.dapr_client.lock().await
+    }
+}</code></pre><blockquote>Optionally we could use a RefCell in Rust, but it is important to note that this is not <a href="https://users.rust-lang.org/t/arc-mutex-t-vs-arc-refcell-t/75911?ref=xaviergeerinck.com">thread-safe</a>.</blockquote><blockquote>The above actually illustrates the way Rust handles memory well and ensure we are working thread-safe! </blockquote><h4 id="issue-dapr-does-not-expose-the-operation-and-metadata-fields">Issue: Dapr does not expose the <code>operation</code> and <code>metadata</code> fields</h4><p>For our final issue, we can just create the <code>DaprClient</code> instead of the <code>Client</code> exposed by the Dapr Rust SDK. As the Rust SDK is based on the proto files, calling the methods is actually more object-oriented as we would think.</p><p>Simply initializing the client with <code>let client = DaprClient::connect(addr_client).await?;</code> allows us to call a method as such:</p><pre><code class="language-rust">let mut req = dapr::client::InvokeBindingRequest::default();
+req.operation = &quot;exec&quot;.to_string();
+req.name = &quot;binding-postgres&quot;.to_string();
+req.metadata = std::collections::HashMap::&lt;String, String&gt;::new();
+req.metadata.insert(&quot;sql&quot;.to_string(), sql_stmt);
+
+let mut client = self.get_dapr_client().await;
+let _res = client.invoke_binding(req).await;</code></pre><h3 id="finalizing-our-code">Finalizing our code</h3><p>Knowing all of this, we can finalize our code and send the actual request as above and parse the response. </p><pre><code class="language-rust">match _res {
+    Ok(res) =&gt; {
+        let msg = res.into_inner();
+        println!(&quot;Duration: {:?}&quot;, msg.metadata.get(&quot;duration&quot;));
+    }
+    Err(e) =&gt; {
+        println!(&quot;Error: {:?}&quot;, e.message());
+    }
+}</code></pre><h2 id="executing">Executing</h2><p>For the final part, let&apos;s execute all the above!</p><h3 id="starting-an-mqtt-broker-and-postgres-database">Starting an MQTT Broker and Postgres Database</h3><pre><code class="language-bash"># Start an EMQX MQTT Broker
+docker run -d --rm --name emqx -p 1883:1883 -p 8081:8081 -p 8083:8083 -p 8883:8883 -p 8084:8084 -p 18083:18083 emqx/emqx
+
+# Start a TimescaleDB 
+docker run -d --rm --name timescaledb -p 5432:5432 -e POSTGRES_PASSWORD=password timescale/timescaledb:latest-pg15</code></pre><h3 id="starting-our-application">Starting our Application</h3><p>Running our application can be simply done with the <code>dapr cli</code>:</p><pre><code class="language-bash">dapr run --app-id mqtt-to-postgres --app-protocol grpc --app-port 50051 cargo run</code></pre><h3 id="testing-it-with-an-event">Testing it with an event</h3><p>Now we can send an event with the Dapr CLI:</p><pre><code class="language-bash">dapr publish --publish-app-id mqtt-to-postgres \
+    --pubsub pubsub-mqtt \
+    --topic events \
+    --data &apos;{&quot;key&quot;:&quot;value&quot;}&apos; \
+    --metadata &apos;{&quot;ttlInSeconds&quot;:&quot;10&quot;}&apos;</code></pre><h2 id="summary">Summary</h2><p>When we tried all above the above successful, we should see something as the below:</p><pre><code class="language-bash">== APP == obj: {&quot;key&quot;:&quot;value&quot;}
+== APP == Received event: {} of type application/json
+== APP == Duration: Some(&quot;38.524ms&quot;)
+== APP == obj: {&quot;key&quot;:&quot;value&quot;}
+== APP == Received event: {} of type application/json
+== APP == Duration: Some(&quot;2.553ms&quot;)</code></pre><p>As a final optimization, we should bulk insert events every X events to eliminate the single-inserts. Single-inserts are known to be slow, but that should be fairly easy</p>]]></content:encoded></item></channel></rss>
