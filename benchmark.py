@@ -396,12 +396,14 @@ def test_parsers(skip_feedparser=False, iterations=3):
         print(f"  Total entries: {total_ffp_entries}")
         print(f"  Total parsing time: {total_ffp_time:.2f}s")
         print(f"  Average per feed: {total_ffp_time/successful_feeds:.3f}s")
+        print(f"  Feeds/sec: {successful_feeds/total_ffp_time:.1f}")
 
         if not skip_feedparser:
             print(f"\nFeedparser:")
             print(f"  Total entries: {total_fp_entries}")
             print(f"  Total parsing time: {total_fp_time:.2f}s")
             print(f"  Average per feed: {total_fp_time/successful_feeds:.3f}s")
+            print(f"  Feeds/sec: {successful_feeds/total_fp_time:.1f}")
             print(
                 f"\nSpeedup: FastFeedParser is {(total_fp_time/total_ffp_time):.1f}x faster"
             )
