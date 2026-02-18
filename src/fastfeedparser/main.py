@@ -15,7 +15,7 @@ try:
     HAS_BROTLI = True
 except ImportError:
     HAS_BROTLI = False
-from typing import Any, Callable, Optional, TYPE_CHECKING, Literal
+from typing import Any, Callable, Optional, Protocol, TYPE_CHECKING, Literal
 from urllib.parse import urljoin
 from urllib.request import (
     HTTPErrorProcessor,
@@ -32,6 +32,11 @@ if TYPE_CHECKING:
 
 _FeedType = Literal["rss", "atom", "rdf"]
 
+
+class _ElementValueGetter(Protocol):
+    def __call__(self, path: str, attribute: Optional[str] = None) -> Optional[str]: ...
+
+
 _UTC = datetime.timezone.utc
 
 # Pre-compiled regex patterns for performance
@@ -39,16 +44,16 @@ _RE_XML_DECL_ENCODING = re.compile(
     r'(<\?xml[^>]*encoding=["\'])([^"\']+)(["\'][^>]*\?>)', re.IGNORECASE
 )
 _RE_XML_DECL_ENCODING_BYTES = re.compile(
-    br'(<\?xml[^>]*encoding=["\'])([^"\']+)(["\'][^>]*\?>)', re.IGNORECASE
+    rb'(<\?xml[^>]*encoding=["\'])([^"\']+)(["\'][^>]*\?>)', re.IGNORECASE
 )
-_RE_DOUBLE_XML_DECL_BYTES = re.compile(br"<\?xml\?xml\s+", re.IGNORECASE)
-_RE_DOUBLE_CLOSE_BYTES = re.compile(br"\?\?>\s*")
-_RE_UNQUOTED_ATTR_BYTES = re.compile(br'(\s+[\w:]+)=([^\s>"\']+)')
+_RE_DOUBLE_XML_DECL_BYTES = re.compile(rb"<\?xml\?xml\s+", re.IGNORECASE)
+_RE_DOUBLE_CLOSE_BYTES = re.compile(rb"\?\?>\s*")
+_RE_UNQUOTED_ATTR_BYTES = re.compile(rb'(\s+[\w:]+)=([^\s>"\']+)')
 _RE_UTF16_ENCODING_BYTES = re.compile(
-    br'(<\?xml[^>]*encoding=["\'])utf-16(-le|-be)?(["\'][^>]*\?>)', re.IGNORECASE
+    rb'(<\?xml[^>]*encoding=["\'])utf-16(-le|-be)?(["\'][^>]*\?>)', re.IGNORECASE
 )
 _RE_UNCLOSED_LINK_BYTES = re.compile(
-    br"<link([^>]*[^/])>\s*(?=\n\s*<(?!/link\s*>))", re.MULTILINE
+    rb"<link([^>]*[^/])>\s*(?=\n\s*<(?!/link\s*>))", re.MULTILINE
 )
 _RE_FEB29 = re.compile(r"(\d{4})-02-29")
 _RE_HTML_TAGS = re.compile(r"<[^>]+>")
@@ -60,13 +65,31 @@ _RE_RFC822 = re.compile(
     r"(?:\w{3},\s+)?(\d{1,2})\s+(\w{3})\s+(\d{4})\s+(\d{2}):(\d{2}):(\d{2})\s+([+-]\d{4}|[A-Z]{2,5})"
 )
 _MONTHS_RFC822: dict[str, int] = {
-    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
-    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+    "jan": 1,
+    "feb": 2,
+    "mar": 3,
+    "apr": 4,
+    "may": 5,
+    "jun": 6,
+    "jul": 7,
+    "aug": 8,
+    "sep": 9,
+    "oct": 10,
+    "nov": 11,
+    "dec": 12,
 }
 _TZ_OFFSETS_RFC822: dict[str, int] = {
-    "GMT": 0, "UTC": 0, "UT": 0,
-    "EST": -18000, "EDT": -14400, "CST": -21600, "CDT": -18000,
-    "MST": -25200, "MDT": -21600, "PST": -28800, "PDT": -25200,
+    "GMT": 0,
+    "UTC": 0,
+    "UT": 0,
+    "EST": -18000,
+    "EDT": -14400,
+    "CST": -21600,
+    "CDT": -18000,
+    "MST": -25200,
+    "MDT": -21600,
+    "PST": -28800,
+    "PDT": -25200,
 }
 
 
@@ -129,7 +152,9 @@ def _clean_feed_bytes(content: bytes) -> bytes:
     if preview_lower.startswith((b"<?xml", b"<rss", b"<feed", b"<rdf")):
         return stripped_content
 
-    if preview_lower.startswith(b"<!doctype html") or preview_lower.startswith(b"<html"):
+    if preview_lower.startswith(b"<!doctype html") or preview_lower.startswith(
+        b"<html"
+    ):
         raise ValueError("Content appears to be HTML, not a valid RSS/Atom feed")
 
     xml_start_patterns = (
@@ -160,15 +185,17 @@ def _fix_malformed_xml_bytes(content: bytes, actual_encoding: str = "utf-8") -> 
     content = _RE_DOUBLE_CLOSE_BYTES.sub(b"?>", content)
 
     # Fix malformed attribute syntax like rss:version=2.0 (missing quotes)
-    content = _RE_UNQUOTED_ATTR_BYTES.sub(br'\1="\2"', content)
+    content = _RE_UNQUOTED_ATTR_BYTES.sub(rb'\1="\2"', content)
 
     # Update encoding in XML declaration to match actual encoding when a feed was transcoded.
     if actual_encoding.lower() != "utf-16":
-        replacement = br"\1" + actual_encoding.encode("ascii", errors="replace") + br"\3"
+        replacement = (
+            rb"\1" + actual_encoding.encode("ascii", errors="replace") + rb"\3"
+        )
         content = _RE_UTF16_ENCODING_BYTES.sub(replacement, content)
 
     # Fix unclosed link tags - common in Atom feeds
-    content = _RE_UNCLOSED_LINK_BYTES.sub(br"<link\1/>", content)
+    content = _RE_UNCLOSED_LINK_BYTES.sub(rb"<link\1/>", content)
 
     return content
 
@@ -500,16 +527,16 @@ def _raise_for_non_feed_root(
     if base_msg is None:
         return
 
-    error_msg = _extract_error_message(root, raw_bytes).strip()[:300] or "No error message"
+    error_msg = (
+        _extract_error_message(root, raw_bytes).strip()[:300] or "No error message"
+    )
 
     if error_msg != "No error message" and len(error_msg) > 10:
         raise ValueError(f"{base_msg}: {error_msg[:150]}")
     raise ValueError(base_msg)
 
 
-_RE_META_REFRESH_URL = re.compile(
-    r'url\s*=\s*["\']?\s*([^"\'>\s]+)', re.IGNORECASE
-)
+_RE_META_REFRESH_URL = re.compile(r'url\s*=\s*["\']?\s*([^"\'>\s]+)', re.IGNORECASE)
 
 
 def _extract_meta_refresh_url(content: str | bytes, base_url: str) -> str | None:
@@ -558,7 +585,8 @@ def _detect_feed_structure(
         if channel is None:
             has_atom_elements = any(
                 isinstance(child.tag, str)
-                and child.tag in {"entry", "title", "subtitle", "updated", "id", "author", "link"}
+                and child.tag
+                in {"entry", "title", "subtitle", "updated", "id", "author", "link"}
                 for child in root
             )
             if has_atom_elements:
@@ -586,7 +614,9 @@ def _detect_feed_structure(
                         items = []
                     items.append(child)
             if not items:
-                items = channel.xpath(".//item") or channel.xpath(".//*[local-name()='item']")
+                items = channel.xpath(".//item") or channel.xpath(
+                    ".//*[local-name()='item']"
+                )
 
             if not items:
                 items = channel.findall("entry")
@@ -633,7 +663,9 @@ def _detect_feed_structure(
     if root.tag == "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF":
         feed_type = "rdf"
         channel = root
-        items = channel.findall(".//{http://purl.org/rss/1.0/}item") or channel.findall("item")
+        items = channel.findall(".//{http://purl.org/rss/1.0/}item") or channel.findall(
+            "item"
+        )
         return feed_type, channel, items, atom_namespace
 
     raise ValueError(f"Unknown feed type: {root.tag}")
@@ -657,7 +689,11 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
     feed = _parse_feed_info(channel, feed_type, atom_namespace)
 
     # Detect once whether media namespace is used anywhere in the document
-    has_media_ns = b"search.yahoo.com/mrss" in xml_content if isinstance(xml_content, bytes) else "search.yahoo.com/mrss" in xml_content
+    has_media_ns = (
+        b"search.yahoo.com/mrss" in xml_content
+        if isinstance(xml_content, bytes)
+        else "search.yahoo.com/mrss" in xml_content
+    )
 
     # Parse entries
     entries: list[FastFeedParserDict] = []
@@ -692,6 +728,7 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     """
     is_url = isinstance(source, str) and source.startswith(("http://", "https://"))
     if is_url:
+        assert isinstance(source, str)
         content = _fetch_url_content(source)
     else:
         content = source
@@ -701,6 +738,7 @@ def parse(source: str | bytes) -> FastFeedParserDict:
     except ValueError as e:
         if not is_url:
             raise
+        assert isinstance(source, str)
         err_msg = str(e)
         if "HTML" not in err_msg and "not a valid RSS/Atom feed" not in err_msg:
             raise
@@ -930,7 +968,9 @@ def _coerce_int_fields(mapping: dict[str, Any], fields: tuple[str, ...]) -> None
             mapping.pop(field, None)
 
 
-def _populate_entry_links(entry: FastFeedParserDict, item: _Element, atom_ns: str) -> None:
+def _populate_entry_links(
+    entry: FastFeedParserDict, item: _Element, atom_ns: str
+) -> None:
     entry_links: list[dict[str, Optional[str]]] = []
     alternate_link: Optional[dict[str, Optional[str]]] = None
     for link in item.findall(f"{{{atom_ns}}}link"):
@@ -951,7 +991,9 @@ def _populate_entry_links(entry: FastFeedParserDict, item: _Element, atom_ns: st
 
     guid = item.find("guid")
     guid_text = guid.text.strip() if guid is not None and guid.text else None
-    is_guid_url = guid_text is not None and guid_text.startswith(("http://", "https://"))
+    is_guid_url = guid_text is not None and guid_text.startswith(
+        ("http://", "https://")
+    )
 
     if is_guid_url and "link" not in entry:
         entry["link"] = guid_text
@@ -992,7 +1034,9 @@ def _populate_entry_content(
         entry["content"] = [
             {
                 "type": content_type,
-                "language": content_el.get("{http://www.w3.org/XML/1998/namespace}lang"),
+                "language": content_el.get(
+                    "{http://www.w3.org/XML/1998/namespace}lang"
+                ),
                 "base": content_el.get("{http://www.w3.org/XML/1998/namespace}base"),
                 "value": content_value,
             }
@@ -1016,7 +1060,12 @@ def _populate_entry_content(
             if "<" in content_value:
                 content_value = _RE_HTML_TAGS.sub(" ", content_value[:2048])
                 content_value = _html_mod.unescape(content_value)
-            if "  " in content_value or "\n" in content_value or "\t" in content_value or "\r" in content_value:
+            if (
+                "  " in content_value
+                or "\n" in content_value
+                or "\t" in content_value
+                or "\r" in content_value
+            ):
                 content_value = _RE_WHITESPACE.sub(" ", content_value).strip()
             else:
                 content_value = content_value.strip()
@@ -1110,7 +1159,9 @@ def _parse_enclosures(item: _Element) -> list[dict[str, Any]] | None:
     return enclosures or None
 
 
-def _build_rss_item_text_maps(item: _Element) -> tuple[dict[str, Optional[str]], dict[str, Optional[str]]]:
+def _build_rss_item_text_maps(
+    item: _Element,
+) -> tuple[dict[str, Optional[str]], dict[str, Optional[str]]]:
     by_local: dict[str, Optional[str]] = {}
     by_full: dict[str, Optional[str]] = {}
     for child in item:
@@ -1132,7 +1183,9 @@ def _build_rss_item_text_maps(item: _Element) -> tuple[dict[str, Optional[str]],
     return by_local, by_full
 
 
-def _first_non_empty(mapping: dict[str, Optional[str]], keys: tuple[str, ...]) -> Optional[str]:
+def _first_non_empty(
+    mapping: dict[str, Optional[str]], keys: tuple[str, ...]
+) -> Optional[str]:
     for key in keys:
         value = mapping.get(key)
         if value:
@@ -1167,19 +1220,27 @@ def _parse_rss_feed_entry_fast(
     if link:
         entry["link"] = link.strip()
 
-    published_source = _first_non_empty(text_by_local, ("pubdate", "published", "issued", "date"))
+    published_source = _first_non_empty(
+        text_by_local, ("pubdate", "published", "issued", "date")
+    )
     if published_source:
         published = _parse_date(published_source)
         if published:
             entry["published"] = published
 
-    updated_source = _first_non_empty(text_by_local, ("lastbuilddate", "updated", "modified"))
+    updated_source = _first_non_empty(
+        text_by_local, ("lastbuilddate", "updated", "modified")
+    )
     if updated_source:
         updated = _parse_date(updated_source)
         if updated:
             entry["updated"] = updated
 
-    if "published" not in entry and rss_guid and not rss_guid.startswith(("http://", "https://")):
+    if (
+        "published" not in entry
+        and rss_guid
+        and not rss_guid.startswith(("http://", "https://"))
+    ):
         guid_date = _parse_date(rss_guid)
         if guid_date:
             entry["published"] = guid_date
@@ -1195,7 +1256,11 @@ def _parse_rss_feed_entry_fast(
     else:
         # Common RSS case: no atom:link elements
         entry["links"] = []
-        if "link" not in entry and rss_guid and rss_guid.startswith(("http://", "https://")):
+        if (
+            "link" not in entry
+            and rss_guid
+            and rss_guid.startswith(("http://", "https://"))
+        ):
             entry["link"] = rss_guid
 
     if "id" not in entry and "link" in entry:
@@ -1215,7 +1280,11 @@ def _parse_rss_feed_entry_fast(
     author = _first_non_empty(text_by_local, ("author", "creator"))
     if not author:
         atom_author = item.find(f"{{{atom_ns}}}author/{{{atom_ns}}}name")
-        author = atom_author.text.strip() if atom_author is not None and atom_author.text else None
+        author = (
+            atom_author.text.strip()
+            if atom_author is not None and atom_author.text
+            else None
+        )
     if author:
         entry["author"] = author.strip()
 
@@ -1432,7 +1501,11 @@ def _parse_feed_entry(
             entry["updated"] = _parse_date(fallback_updated)
 
     # Try to extract date from GUID as final fallback
-    if "published" not in entry and rss_guid and not rss_guid.startswith(("http://", "https://")):
+    if (
+        "published" not in entry
+        and rss_guid
+        and not rss_guid.startswith(("http://", "https://"))
+    ):
         guid_date = _parse_date(rss_guid)
         if guid_date:
             entry["published"] = guid_date
@@ -1468,7 +1541,9 @@ def _parse_feed_entry(
         False,
     )
     if not author:
-        author = element_get("{http://purl.org/dc/elements/1.1/}creator") or element_get("author")
+        author = element_get(
+            "{http://purl.org/dc/elements/1.1/}creator"
+        ) or element_get("author")
     if author:
         entry["author"] = author
 
@@ -1483,9 +1558,9 @@ def _parse_feed_entry(
 def _field_value_getter(
     root: _Element,
     feed_type: _FeedType,
-    cached_get: Optional[Callable[[str, Optional[str]], Optional[str]]] = None,
+    cached_get: Optional[_ElementValueGetter] = None,
 ) -> Callable[[str, str, str, bool], str | None]:
-    get_value = cached_get or _cached_element_value_factory(root)
+    get_value: _ElementValueGetter = cached_get or _cached_element_value_factory(root)
 
     if feed_type == "rss":
 
@@ -1574,7 +1649,11 @@ def _get_element_value(
                     el = found
                     break
         else:
-            prefixed_paths = [f"rss:{path_lower}", f"atom:{path_lower}", f"dc:{path_lower}"]
+            prefixed_paths = [
+                f"rss:{path_lower}",
+                f"atom:{path_lower}",
+                f"dc:{path_lower}",
+            ]
             for child in root:
                 if not isinstance(child.tag, str):
                     continue
@@ -1594,7 +1673,7 @@ def _get_element_value(
 
 def _cached_element_value_factory(
     root: _Element,
-) -> Callable[[str, Optional[str]], Optional[str]]:
+) -> _ElementValueGetter:
     """Create a closure with a child tag index for fast namespace-prefix lookups."""
     # Build child tag index once: O(children) instead of O(children × misses)
     child_index: dict[str, _Element] = {}
@@ -1603,7 +1682,9 @@ def _cached_element_value_factory(
             child_index[child.tag.lower()] = child
 
     def getter(path: str, attribute: Optional[str] = None) -> Optional[str]:
-        return _get_element_value(root, path, attribute=attribute, child_index=child_index)
+        return _get_element_value(
+            root, path, attribute=attribute, child_index=child_index
+        )
 
     return getter
 
@@ -1632,7 +1713,13 @@ def _normalize_iso_datetime_string(value: str) -> str:
     if cleaned.endswith(("Z", "z")):
         cleaned = cleaned[:-1] + "+00:00"
 
-    if " " in cleaned and "T" not in cleaned[:11] and len(cleaned) >= 10 and cleaned[4] == "-" and cleaned[0:4].isdigit():
+    if (
+        " " in cleaned
+        and "T" not in cleaned[:11]
+        and len(cleaned) >= 10
+        and cleaned[4] == "-"
+        and cleaned[0:4].isdigit()
+    ):
         date_part, rest = cleaned.split(" ", 1)
         if rest and rest[0].isdigit():
             cleaned = f"{date_part}T{rest}"
@@ -1688,7 +1775,12 @@ def _fast_rfc822_to_iso(value: str) -> Optional[str]:
         if tz_offset_seconds == 0:
             return f"{base.year:04d}-{base.month:02d}-{base.day:02d}T{h:02d}:{mi:02d}:{s:02d}+00:00"
         dt = datetime.datetime(
-            base.year, base.month, base.day, h, mi, s,
+            base.year,
+            base.month,
+            base.day,
+            h,
+            mi,
+            s,
             tzinfo=datetime.timezone(datetime.timedelta(seconds=tz_offset_seconds)),
         )
         utc = dt.astimezone(_UTC)
@@ -1696,7 +1788,12 @@ def _fast_rfc822_to_iso(value: str) -> Optional[str]:
     if tz_offset_seconds == 0:
         return f"{year}-{month:02d}-{d:02d}T{hour}:{minute}:{second}+00:00"
     dt = datetime.datetime(
-        int(year), month, d, h, mi, s,
+        int(year),
+        month,
+        d,
+        h,
+        mi,
+        s,
         tzinfo=datetime.timezone(datetime.timedelta(seconds=tz_offset_seconds)),
     )
     utc = dt.astimezone(_UTC)
@@ -1777,7 +1874,9 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
     except ImportError:
         return None
     try:
-        return _dateparser.parse(value, languages=["en"], settings={**_DATEPARSER_SETTINGS})
+        return _dateparser.parse(
+            value, languages=["en"], settings={**_DATEPARSER_SETTINGS}
+        )
     except (ValueError, TypeError):
         return None
 
@@ -1839,11 +1938,17 @@ def _parse_date(date_str: str) -> Optional[str]:
             base = datetime.date.fromisoformat(m24.group(1))
             mins, secs = int(m24.group(2)), int(m24.group(3))
             next_day = base + datetime.timedelta(days=1)
-            candidate = candidate[:m24.start()] + f"{next_day}T00:{mins:02d}:{secs:02d}" + candidate[m24.end():]
+            candidate = (
+                candidate[: m24.start()]
+                + f"{next_day}T00:{mins:02d}:{secs:02d}"
+                + candidate[m24.end() :]
+            )
 
     dt: Optional[datetime.datetime] = None
 
-    is_iso_like = len(candidate) >= 10 and candidate[4] == "-" and candidate[0:4].isdigit()
+    is_iso_like = (
+        len(candidate) >= 10 and candidate[4] == "-" and candidate[0:4].isdigit()
+    )
     if is_iso_like:
         iso_candidate = _normalize_iso_datetime_string(candidate)
         try:

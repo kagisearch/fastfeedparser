@@ -34,12 +34,18 @@ def test_parse_bytes_with_non_utf8_encoding():
 
 def test_meta_refresh_extraction():
     html = '<!doctype html><html><head><meta http-equiv=refresh content="0; url=https://example.com/feed.xml"></head></html>'
-    assert _extract_meta_refresh_url(html, "https://example.com/feed/") == "https://example.com/feed.xml"
+    assert (
+        _extract_meta_refresh_url(html, "https://example.com/feed/")
+        == "https://example.com/feed.xml"
+    )
 
 
 def test_meta_refresh_relative_url():
     html = b'<html><head><meta http-equiv="refresh" content="0;url=/index.xml"></head></html>'
-    assert _extract_meta_refresh_url(html, "https://example.com/feed/") == "https://example.com/index.xml"
+    assert (
+        _extract_meta_refresh_url(html, "https://example.com/feed/")
+        == "https://example.com/index.xml"
+    )
 
 
 def test_meta_refresh_none_when_missing():
@@ -50,4 +56,3 @@ def test_meta_refresh_none_when_missing():
 def test_meta_refresh_none_when_same_url():
     html = '<html><head><meta http-equiv="refresh" content="0; url=https://example.com/"></head></html>'
     assert _extract_meta_refresh_url(html, "https://example.com/") is None
-

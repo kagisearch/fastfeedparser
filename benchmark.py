@@ -8,7 +8,9 @@ import fastfeedparser
 import feedparser
 import httpx
 
-BENCHMARK_DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "benchmark_data")
+BENCHMARK_DATA_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "benchmark_data"
+)
 
 FEEDS = [
     "https://feedpress.me/FIJ",
@@ -249,14 +251,18 @@ def fetch_feeds():
         print(f"All {len(FEEDS)} feeds already cached. Nothing to fetch.")
         return
 
-    print(f"Fetching {len(to_fetch)} new feeds (skipping {len(FEEDS) - len(to_fetch)} cached)...")
+    print(
+        f"Fetching {len(to_fetch)} new feeds (skipping {len(FEEDS) - len(to_fetch)} cached)..."
+    )
     fetched = 0
     failed = 0
     with httpx.Client(verify=False) as client:
         for url in to_fetch:
             path = _cache_path(url)
             try:
-                resp = client.get(url, timeout=20.0, follow_redirects=True, headers=HEADERS)
+                resp = client.get(
+                    url, timeout=20.0, follow_redirects=True, headers=HEADERS
+                )
                 with open(path, "wb") as f:
                     f.write(resp.content)
                 fetched += 1
@@ -320,7 +326,7 @@ def process_feed(url, skip_feedparser=False, iterations=3):
         else:
             if result["ffp_time"] > 0 and result["fp_time"] > 0:
                 result["success"] = True
-                print(f"[{url}] Speedup: {result['fp_time']/result['ffp_time']:.1f}x")
+                print(f"[{url}] Speedup: {result['fp_time'] / result['ffp_time']:.1f}x")
 
     except Exception as e:
         print(f"[{url}] Failed to load feed: {e}")
@@ -336,7 +342,9 @@ def test_parsers(skip_feedparser=False, iterations=3):
     if cached == len(FEEDS):
         print("Using cached feed data from benchmark_data/")
     elif cached > 0:
-        print(f"Using {cached} cached feeds, {len(FEEDS) - cached} will be fetched live")
+        print(
+            f"Using {cached} cached feeds, {len(FEEDS) - cached} will be fetched live"
+        )
     else:
         print("No cached data — fetching live (run with --fetch to pre-download)")
     print(f"Each feed parsed {iterations} times, using median for timing")
@@ -370,46 +378,52 @@ def test_parsers(skip_feedparser=False, iterations=3):
             continue
 
         if not skip_feedparser and r["ffp_entries"] != r["fp_entries"]:
-            entry_mismatches.append({
-                "url": r["url"],
-                "ffp_entries": r["ffp_entries"],
-                "fp_entries": r["fp_entries"],
-                "diff": r["ffp_entries"] - r["fp_entries"]
-            })
+            entry_mismatches.append(
+                {
+                    "url": r["url"],
+                    "ffp_entries": r["ffp_entries"],
+                    "fp_entries": r["fp_entries"],
+                    "diff": r["ffp_entries"] - r["fp_entries"],
+                }
+            )
 
         if not skip_feedparser and r["fp_time"] > 0 and r["ffp_time"] > 0:
             speedup = r["fp_time"] / r["ffp_time"]
             if speedup < 1.1:
-                slow_feeds.append({
-                    "url": r["url"],
-                    "speedup": speedup,
-                    "ffp_time": r["ffp_time"],
-                    "fp_time": r["fp_time"]
-                })
+                slow_feeds.append(
+                    {
+                        "url": r["url"],
+                        "speedup": speedup,
+                        "ffp_time": r["ffp_time"],
+                        "fp_time": r["fp_time"],
+                    }
+                )
 
     print("\nSummary:")
     print("-" * 50)
     print(f"Total wall-clock time: {overall_time:.2f}s")
     print(f"Successfully tested {successful_feeds}/{len(FEEDS)} feeds")
     if successful_feeds > 0:
-        print(f"\nFastFeedParser:")
+        print("\nFastFeedParser:")
         print(f"  Total entries: {total_ffp_entries}")
         print(f"  Total parsing time: {total_ffp_time:.2f}s")
-        print(f"  Average per feed: {total_ffp_time/successful_feeds:.3f}s")
-        print(f"  Feeds/sec: {successful_feeds/total_ffp_time:.1f}")
+        print(f"  Average per feed: {total_ffp_time / successful_feeds:.3f}s")
+        print(f"  Feeds/sec: {successful_feeds / total_ffp_time:.1f}")
 
         if not skip_feedparser:
-            print(f"\nFeedparser:")
+            print("\nFeedparser:")
             print(f"  Total entries: {total_fp_entries}")
             print(f"  Total parsing time: {total_fp_time:.2f}s")
-            print(f"  Average per feed: {total_fp_time/successful_feeds:.3f}s")
-            print(f"  Feeds/sec: {successful_feeds/total_fp_time:.1f}")
+            print(f"  Average per feed: {total_fp_time / successful_feeds:.3f}s")
+            print(f"  Feeds/sec: {successful_feeds / total_fp_time:.1f}")
             print(
-                f"\nSpeedup: FastFeedParser is {(total_fp_time/total_ffp_time):.1f}x faster"
+                f"\nSpeedup: FastFeedParser is {(total_fp_time / total_ffp_time):.1f}x faster"
             )
 
             if entry_mismatches:
-                print(f"\nOUTLIERS: Entry Count Mismatches ({len(entry_mismatches)} feeds)")
+                print(
+                    f"\nOUTLIERS: Entry Count Mismatches ({len(entry_mismatches)} feeds)"
+                )
                 print("-" * 50)
                 for m in entry_mismatches:
                     print(f"  {m['url']}")
@@ -418,14 +432,16 @@ def test_parsers(skip_feedparser=False, iterations=3):
                     print(f"    Difference: {m['diff']:+d}")
 
             if slow_feeds:
-                print(f"\nOUTLIERS: Slow Performance (<1.1x speedup, {len(slow_feeds)} feeds)")
+                print(
+                    f"\nOUTLIERS: Slow Performance (<1.1x speedup, {len(slow_feeds)} feeds)"
+                )
                 print("-" * 50)
                 slow_feeds.sort(key=lambda x: x["speedup"])
                 for s in slow_feeds:
                     print(f"  {s['url']}")
                     print(f"    Speedup: {s['speedup']:.2f}x")
-                    print(f"    FastFeedParser: {s['ffp_time']*1000:.2f}ms")
-                    print(f"    Feedparser: {s['fp_time']*1000:.2f}ms")
+                    print(f"    FastFeedParser: {s['ffp_time'] * 1000:.2f}ms")
+                    print(f"    Feedparser: {s['fp_time'] * 1000:.2f}ms")
 
 
 if __name__ == "__main__":

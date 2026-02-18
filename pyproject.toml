@@ -2,6 +2,22 @@
 requires = ["setuptools~=67.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.ruff]
+extend-exclude = [
+    "1.py",
+    "debug_*.py",
+    "test_*.py",
+    "benchmark.py",
+    "investigate_failures.py",
+    "show_error_messages.py",
+    "check_oh4_dates.py",
+    "comprehensive_debug.py",
+    "profile_dylanharris.py",
+]
+
+[tool.ty.rules]
+unresolved-import = "ignore"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
