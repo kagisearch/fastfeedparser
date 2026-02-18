@@ -1096,7 +1096,7 @@ def _build_rss_item_text_maps(item: _Element) -> tuple[dict[str, Optional[str]],
         tag = child.tag
         if not isinstance(tag, str):
             continue
-        text_value = child.text.strip() if child.text else None
+        text_value = child.text or None
         if tag not in by_full:
             by_full[tag] = text_value
         local = tag.rsplit("}", 1)[-1].lower()
@@ -1139,7 +1139,7 @@ def _parse_rss_feed_entry_fast(
 
     link = text_by_local.get("link")
     if link:
-        entry["link"] = link
+        entry["link"] = link.strip()
 
     published_source = _first_non_empty(text_by_local, ("pubdate", "published", "issued", "date"))
     if published_source:
@@ -1180,13 +1180,106 @@ def _parse_rss_feed_entry_fast(
         atom_author = item.find(f"{{{atom_ns}}}author/{{{atom_ns}}}name")
         author = atom_author.text.strip() if atom_author is not None and atom_author.text else None
     if author:
-        entry["author"] = author
+        entry["author"] = author.strip()
 
     comments = text_by_local.get("comments")
     if comments:
-        entry["comments"] = comments
+        entry["comments"] = comments.strip()
 
     tags = _parse_tags(item, "rss", atom_ns)
+    if tags:
+        entry["tags"] = tags
+
+    return entry
+
+
+def _parse_atom_feed_entry_fast(
+    item: _Element,
+    atom_ns: str,
+) -> FastFeedParserDict:
+    ns = f"{{{atom_ns}}}"
+    entry = FastFeedParserDict()
+
+    # ID
+    el = item.find(ns + "id")
+    if el is not None and el.text:
+        entry["id"] = el.text.strip()
+
+    # Title
+    el = item.find(ns + "title")
+    if el is not None and el.text:
+        entry["title"] = el.text.strip()
+
+    # Description (summary)
+    el = item.find(ns + "summary")
+    if el is not None and el.text:
+        entry["description"] = el.text.strip()
+
+    # Link (href attribute)
+    el = item.find(ns + "link")
+    if el is not None:
+        href = el.get("href")
+        if href:
+            entry["link"] = href.strip()
+
+    # Dates: Atom 1.0 uses published/updated, Atom 0.3 uses issued/modified
+    is_atom_03 = atom_ns == "http://purl.org/atom/ns#"
+    pub_tag = "issued" if is_atom_03 else "published"
+    upd_tag = "modified" if is_atom_03 else "updated"
+    pub_fallback_tag = "published" if is_atom_03 else "issued"
+    upd_fallback_tag = "updated" if is_atom_03 else "modified"
+
+    el = item.find(ns + pub_tag)
+    if el is not None and el.text:
+        published = _parse_date(el.text)
+        if published:
+            entry["published"] = published
+
+    el = item.find(ns + upd_tag)
+    if el is not None and el.text:
+        updated = _parse_date(el.text)
+        if updated:
+            entry["updated"] = updated
+
+    # Fallback date fields for mixed namespace scenarios
+    if "published" not in entry:
+        el = item.find(ns + pub_fallback_tag)
+        if el is not None and el.text:
+            published = _parse_date(el.text)
+            if published:
+                entry["published"] = published
+
+    if "updated" not in entry:
+        el = item.find(ns + upd_fallback_tag)
+        if el is not None and el.text:
+            updated = _parse_date(el.text)
+            if updated:
+                entry["updated"] = updated
+
+    if "updated" in entry and "published" not in entry:
+        entry["published"] = entry["updated"]
+
+    _populate_entry_links(entry, item, atom_ns)
+
+    if "id" not in entry and "link" in entry:
+        entry["id"] = entry["link"]
+
+    _populate_entry_content(entry, item, "atom", atom_ns)
+
+    media_contents = _parse_media_content(item)
+    if media_contents:
+        entry["media_content"] = media_contents
+
+    enclosures = _parse_enclosures(item)
+    if enclosures:
+        entry["enclosures"] = enclosures
+
+    # Author
+    el = item.find(ns + "author/" + ns + "name")
+    if el is not None and el.text:
+        entry["author"] = el.text.strip()
+
+    tags = _parse_tags(item, "atom", atom_ns)
     if tags:
         entry["tags"] = tags
 
@@ -1204,6 +1297,10 @@ def _parse_feed_entry(
     if feed_type == "rss":
         return _parse_rss_feed_entry_fast(item, atom_ns)
 
+    if feed_type == "atom":
+        return _parse_atom_feed_entry_fast(item, atom_ns)
+
+    # RDF path uses the generic field machinery
     # Check if this is Atom 0.3 to use different date field names
     is_atom_03 = atom_ns == "http://purl.org/atom/ns#"
 
@@ -1476,6 +1573,14 @@ def _normalize_iso_datetime_string(value: str) -> str:
     if not cleaned:
         return cleaned
 
+    # Fast path: 'Z' suffix (most common in Atom feeds)
+    if cleaned[-1] in ("Z", "z"):
+        return cleaned[:-1] + "+00:00"
+
+    # Fast path: already has proper +HH:MM or -HH:MM timezone
+    if len(cleaned) > 6 and cleaned[-6] in ("+", "-") and cleaned[-3] == ":":
+        return cleaned
+
     upper_cleaned = cleaned.upper()
     for suffix in (" UTC", " GMT", " Z"):
         if upper_cleaned.endswith(suffix):
@@ -1585,7 +1690,7 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
     except ImportError:
         return None
     try:
-        return _dateparser.parse(value, languages=["en"], settings=_DATEPARSER_SETTINGS)
+        return _dateparser.parse(value, languages=["en"], settings={**_DATEPARSER_SETTINGS})
     except (ValueError, TypeError):
         return None
 
@@ -1605,6 +1710,27 @@ def _parse_date(date_str: str) -> Optional[str]:
     candidate = date_str.strip()
     if not candidate:
         return None
+
+    # Fast path: clean ISO-8601 (covers >90% of Atom/modern RSS dates)
+    clen = len(candidate)
+    if clen >= 20 and candidate[4] == "-" and candidate[0:4].isdigit():
+        last = candidate[-1]
+        # Most common: ends with 'Z' (e.g., 2024-01-15T10:30:00Z)
+        if last in ("Z", "z"):
+            try:
+                dt = datetime.datetime.fromisoformat(candidate[:-1] + "+00:00")
+                return dt.isoformat()
+            except ValueError:
+                pass  # Fall through to full parsing
+        # Second most common: ends with +HH:MM (e.g., 2024-01-15T10:30:00+00:00)
+        elif clen > 6 and candidate[-6] in ("+", "-") and candidate[-3] == ":":
+            try:
+                dt = datetime.datetime.fromisoformat(candidate)
+                utc_dt = dt.replace(tzinfo=_UTC) if dt.tzinfo is None else dt.astimezone(_UTC)
+                return utc_dt.isoformat()
+            except (ValueError, OverflowError):
+                pass  # Fall through to full parsing
+
     if "\n" in candidate or "\r" in candidate or "\t" in candidate or "  " in candidate:
         candidate = _RE_WHITESPACE.sub(" ", candidate)
 
