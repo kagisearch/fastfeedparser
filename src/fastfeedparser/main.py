@@ -206,6 +206,13 @@ def _prepare_xml_bytes(xml_content: str | bytes) -> bytes:
         if not cleaned.strip():
             raise ValueError("Empty content")
 
+        # Replace Unicode LINE SEPARATOR (U+2028) and PARAGRAPH SEPARATOR (U+2029)
+        # with regular newlines — these are invalid in XML 1.0 and cause lxml to fail.
+        if b"\xe2\x80\xa8" in cleaned or b"\xe2\x80\xa9" in cleaned:
+            cleaned = cleaned.replace(b"\xe2\x80\xa8", b"\n").replace(
+                b"\xe2\x80\xa9", b"\n"
+            )
+
         detected_encoding = _detect_xml_encoding(cleaned)
         actual_encoding = detected_encoding
         if detected_encoding.startswith("utf-16") and b"\x00" not in cleaned[:200]:
