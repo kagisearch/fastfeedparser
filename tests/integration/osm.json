@@ -2,6 +2,14 @@
   "entries": [
     {
       "author": "Barroszt",
+      "author_detail": {
+        "name": "Barroszt"
+      },
+      "authors": [
+        {
+          "name": "Barroszt"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -10,7 +18,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Thu, 28 Nov 2024 22:55:15 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Thu, 28 Nov 2024 22:55:16 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Barroszt\">Barroszt</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 8080</td>\n                </tr>\n                <tr>\n                  <td>closed:note = 4380118;4430140;4470279;4493718;4493720;4493721;4493767;4493773;4493774;4493776;4496497;4496501;4496509;4496527;4496535;4500632;4500638;4500640;4507878;4507879;4509539;4509541;4509544;4509554;4511752;4532475;4532481;4532482;4532483;4532485;4532487;4532488</td>\n                </tr>\n                <tr>\n                  <td>comment = rozwiązanie uwag i aktualizacja sieci drogowej w Sęku</td>\n                </tr>\n                <tr>\n                  <td>created_by = iD 2.30.4</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS);Geoportal 2: Granice działek;Geoportal 2: Ewidencja budynków WMS</td>\n                </tr>\n                <tr>\n                  <td>locale = pl</td>\n                </tr>\n                <tr>\n                  <td>resolved:crossing_ways:highway-waterway = 1</td>\n                </tr>\n                <tr>\n                  <td>resolved:mismatched_geometry:point_as_vertex = 3</td>\n                </tr>\n                <tr>\n                  <td>resolved:outdated_tags:noncanonical_brand = 3</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 22:55:15 +0000 Closed Thu, 28 Nov 2024 22:55:16 +0000 Author Barroszt Tags changesets_count = 8080 closed:note = 4380118;4430140;4470279;4493718;4493720;4493721;4493767;4493773;4493774;4493776;4496497;4496",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 22:55:15 +0000 Closed Thu, 28 Nov 2024 22:55:16 +0000 Author Barroszt Tags changesets_count = 8080 closed:note = 4380118;4430140;4470279;4493718;4493720;4493721;4493767;4493773;4493774;4493776;4496497;4496501;4496509;4496527;4496535;4500632;4500638;4500640;4507878;4507879;4509539;4509541;4509544;4509554;4511752;4532475;4532481;4532482;4532483;4532485;4532487;4532488 comment = rozwiązanie uwag i aktualizacja sieci drogowej w Sęku cre",
       "id": "https://www.openstreetmap.org/changeset/159721895",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159721895/download",
       "links": [
@@ -27,6 +35,14 @@
     },
     {
       "author": "Big & Bad",
+      "author_detail": {
+        "name": "Big & Bad"
+      },
+      "authors": [
+        {
+          "name": "Big & Bad"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -35,7 +51,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Thu, 28 Nov 2024 00:45:26 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Thu, 28 Nov 2024 00:45:26 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Big%20&amp;%20Bad\">Big &amp; Bad</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 838</td>\n                </tr>\n                <tr>\n                  <td>comment = Added new objects, adjusted existing</td>\n                </tr>\n                <tr>\n                  <td>created_by = iD 2.30.4</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS)</td>\n                </tr>\n                <tr>\n                  <td>locale = nl</td>\n                </tr>\n                <tr>\n                  <td>resolved:crossing_ways:highway-highway = 1</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:45:26 +0000 Closed Thu, 28 Nov 2024 00:45:26 +0000 Author Big & Bad Tags changesets_count = 838 comment = Added new objects, adjusted existing <tr",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:45:26 +0000 Closed Thu, 28 Nov 2024 00:45:26 +0000 Author Big & Bad Tags changesets_count = 838 comment = Added new objects, adjusted existing created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS) locale = nl resolved:crossing_ways:highway-highway = 1",
       "id": "https://www.openstreetmap.org/changeset/159682247",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159682247/download",
       "links": [
@@ -52,6 +68,14 @@
     },
     {
       "author": "Big & Bad",
+      "author_detail": {
+        "name": "Big & Bad"
+      },
+      "authors": [
+        {
+          "name": "Big & Bad"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -60,7 +84,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Thu, 28 Nov 2024 00:33:01 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Thu, 28 Nov 2024 00:33:01 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Big%20&amp;%20Bad\">Big &amp; Bad</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Adjusted existing objects</td>\n                </tr>\n                <tr>\n                  <td>created_by = JOSM/1.5 (19096 nl)</td>\n                </tr>\n                <tr>\n                  <td>source = survey</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:33:01 +0000 Closed Thu, 28 Nov 2024 00:33:01 +0000 Author Big & Bad Tags comment = Adjusted existing objects created_by = JOSM/1.5 (19096 nl)",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:33:01 +0000 Closed Thu, 28 Nov 2024 00:33:01 +0000 Author Big & Bad Tags comment = Adjusted existing objects created_by = JOSM/1.5 (19096 nl) source = survey",
       "id": "https://www.openstreetmap.org/changeset/159682068",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159682068/download",
       "links": [
@@ -77,6 +101,14 @@
     },
     {
       "author": "Big & Bad",
+      "author_detail": {
+        "name": "Big & Bad"
+      },
+      "authors": [
+        {
+          "name": "Big & Bad"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -85,7 +117,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Thu, 28 Nov 2024 00:19:35 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Thu, 28 Nov 2024 00:19:35 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Big%20&amp;%20Bad\">Big &amp; Bad</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 836</td>\n                </tr>\n                <tr>\n                  <td>comment = Adjusted existing objects</td>\n                </tr>\n                <tr>\n                  <td>created_by = iD 2.30.4</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS);Geoportal 2: Ewidencja budynków WMS</td>\n                </tr>\n                <tr>\n                  <td>locale = nl</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:19:35 +0000 Closed Thu, 28 Nov 2024 00:19:35 +0000 Author Big & Bad Tags changesets_count = 836 comment = Adjusted existing objects",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Thu, 28 Nov 2024 00:19:35 +0000 Closed Thu, 28 Nov 2024 00:19:35 +0000 Author Big & Bad Tags changesets_count = 836 comment = Adjusted existing objects created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS);Geoportal 2: Ewidencja budynków WMS locale = nl",
       "id": "https://www.openstreetmap.org/changeset/159681868",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159681868/download",
       "links": [
@@ -102,6 +134,14 @@
     },
     {
       "author": "adas",
+      "author_detail": {
+        "name": "adas"
+      },
+      "authors": [
+        {
+          "name": "adas"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -110,7 +150,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Tue, 26 Nov 2024 22:14:21 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Tue, 26 Nov 2024 22:14:21 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/adas\">adas</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 13360</td>\n                </tr>\n                <tr>\n                  <td>comment = dwór</td>\n                </tr>\n                <tr>\n                  <td>created_by = iD 2.30.4</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS)</td>\n                </tr>\n                <tr>\n                  <td>locale = pl</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 22:14:21 +0000 Closed Tue, 26 Nov 2024 22:14:21 +0000 Author adas Tags changesets_count = 13360 comment = dwór created_by = iD 2.30.4",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 22:14:21 +0000 Closed Tue, 26 Nov 2024 22:14:21 +0000 Author adas Tags changesets_count = 13360 comment = dwór created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: Orthophotomap (latest aerial imagery) (WMTS) locale = pl",
       "id": "https://www.openstreetmap.org/changeset/159636514",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159636514/download",
       "links": [
@@ -127,6 +167,14 @@
     },
     {
       "author": "Barroszt",
+      "author_detail": {
+        "name": "Barroszt"
+      },
+      "authors": [
+        {
+          "name": "Barroszt"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -135,7 +183,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Tue, 26 Nov 2024 21:44:23 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Tue, 26 Nov 2024 21:44:24 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Barroszt\">Barroszt</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 8076</td>\n                </tr>\n                <tr>\n                  <td>comment = upiększanie Wrzosów</td>\n                </tr>\n                <tr>\n                  <td>created_by = iD 2.30.4</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>imagery_used = Geoportal 2: High Resolution Orthophotomap (archival imagery) (WMS);Geoportal 2: Ewidencja budynków WMS;Geoportal 2: Granice działek;Geoportal 2: Punkty adresowe</td>\n                </tr>\n                <tr>\n                  <td>locale = pl</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 21:44:23 +0000 Closed Tue, 26 Nov 2024 21:44:24 +0000 Author Barroszt Tags changesets_count = 8076 comment = upiększanie Wrzosów create",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 21:44:23 +0000 Closed Tue, 26 Nov 2024 21:44:24 +0000 Author Barroszt Tags changesets_count = 8076 comment = upiększanie Wrzosów created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: High Resolution Orthophotomap (archival imagery) (WMS);Geoportal 2: Ewidencja budynków WMS;Geoportal 2: Granice działek;Geoportal 2: Punkty adresowe l",
       "id": "https://www.openstreetmap.org/changeset/159635730",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159635730/download",
       "links": [
@@ -152,6 +200,14 @@
     },
     {
       "author": "Barroszt",
+      "author_detail": {
+        "name": "Barroszt"
+      },
+      "authors": [
+        {
+          "name": "Barroszt"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -160,7 +216,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Tue, 26 Nov 2024 20:52:26 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Tue, 26 Nov 2024 20:52:27 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Barroszt\">Barroszt</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 8075</td>\n                </tr>\n                <tr>\n                  <td>comment = upiększanie Wrzosów</td>\n                </tr>\n                <tr>\n                  <td>created_by = iD 2.30.4</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>imagery_used = Geoportal 2: High Resolution Orthophotomap (archival imagery) (WMS);Geoportal 2: Granice działek;Geoportal 2 Nazwy ulic;Geoportal 2: Ewidencja budynków WMS;Geoportal 2: Punkty adresowe</td>\n                </tr>\n                <tr>\n                  <td>locale = pl</td>\n                </tr>\n                <tr>\n                  <td>resolved:almost_junction:highway-highway = 1</td>\n                </tr>\n                <tr>\n                  <td>resolved:close_nodes:vertices = 17</td>\n                </tr>\n                <tr>\n                  <td>resolved:crossing_ways:building-building = 7</td>\n                </tr>\n                <tr>\n                  <td>resolved:crossing_ways:highway-highway = 1</td>\n                </tr>\n                <tr>\n                  <td>resolved:outdated_tags:incomplete_tags = 2</td>\n                </tr>\n                <tr>\n                  <td>resolved:outdated_tags:noncanonical_brand = 3</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 20:52:26 +0000 Closed Tue, 26 Nov 2024 20:52:27 +0000 Author Barroszt Tags changesets_count = 8075 comment = upiększanie Wrzosów create",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 20:52:26 +0000 Closed Tue, 26 Nov 2024 20:52:27 +0000 Author Barroszt Tags changesets_count = 8075 comment = upiększanie Wrzosów created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Geoportal 2: High Resolution Orthophotomap (archival imagery) (WMS);Geoportal 2: Granice działek;Geoportal 2 Nazwy ulic;Geoportal 2: Ewidencja budynków WMS;Geoport",
       "id": "https://www.openstreetmap.org/changeset/159634146",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159634146/download",
       "links": [
@@ -177,6 +233,14 @@
     },
     {
       "author": "abakus_uploader",
+      "author_detail": {
+        "name": "abakus_uploader"
+      },
+      "authors": [
+        {
+          "name": "abakus_uploader"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -185,7 +249,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Tue, 26 Nov 2024 14:30:02 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Tue, 26 Nov 2024 14:30:03 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/abakus_uploader\">abakus_uploader</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM</td>\n                </tr>\n                <tr>\n                  <td>created_by = Abakus StrazakOSM uploader</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 14:30:02 +0000 Closed Tue, 26 Nov 2024 14:30:03 +0000 Author abakus_uploader Tags comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM created_by = Abakus",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 14:30:02 +0000 Closed Tue, 26 Nov 2024 14:30:03 +0000 Author abakus_uploader Tags comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM created_by = Abakus StrazakOSM uploader",
       "id": "https://www.openstreetmap.org/changeset/159619389",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159619389/download",
       "links": [
@@ -202,6 +266,14 @@
     },
     {
       "author": "Marek-M",
+      "author_detail": {
+        "name": "Marek-M"
+      },
+      "authors": [
+        {
+          "name": "Marek-M"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -210,7 +282,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Tue, 26 Nov 2024 13:08:24 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Tue, 26 Nov 2024 13:08:25 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Marek-M\">Marek-M</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Korekta geometrii</td>\n                </tr>\n                <tr>\n                  <td>created_by = JOSM/1.5 (19253 pl)</td>\n                </tr>\n                <tr>\n                  <td>source = Geoportal 2: Ortofotomapa (zdjęcia lotnicze) WMTS; Geoportal 2: Budynki i działki</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 13:08:24 +0000 Closed Tue, 26 Nov 2024 13:08:25 +0000 Author Marek-M Tags comment = Korekta geometrii created_by = JOSM/1.5 (19253 pl) s",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 13:08:24 +0000 Closed Tue, 26 Nov 2024 13:08:25 +0000 Author Marek-M Tags comment = Korekta geometrii created_by = JOSM/1.5 (19253 pl) source = Geoportal 2: Ortofotomapa (zdjęcia lotnicze) WMTS; Geoportal 2: Budynki i działki",
       "id": "https://www.openstreetmap.org/changeset/159615516",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159615516/download",
       "links": [
@@ -227,6 +299,14 @@
     },
     {
       "author": "GBAB",
+      "author_detail": {
+        "name": "GBAB"
+      },
+      "authors": [
+        {
+          "name": "GBAB"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -235,7 +315,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Tue, 26 Nov 2024 11:28:02 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Tue, 26 Nov 2024 11:29:28 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/GBAB\">GBAB</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = boundary=police_district &amp;gt; boundary=police (címkék igazítása a globálisan meglévőkhöz)</td>\n                </tr>\n                <tr>\n                  <td>created_by = JOSM/1.5 (19017 hu)</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 11:28:02 +0000 Closed Tue, 26 Nov 2024 11:29:28 +0000 Author GBAB Tags comment = boundary=police_district &gt; boundary=police (címkék igazítása a globálisan meglévőkhöz) created_by = JOSM/1.5 (19017 hu)</",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Tue, 26 Nov 2024 11:28:02 +0000 Closed Tue, 26 Nov 2024 11:29:28 +0000 Author GBAB Tags comment = boundary=police_district &gt; boundary=police (címkék igazítása a globálisan meglévőkhöz) created_by = JOSM/1.5 (19017 hu)",
       "id": "https://www.openstreetmap.org/changeset/159611522",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159611522/download",
       "links": [
@@ -252,6 +332,14 @@
     },
     {
       "author": "Dawid2849",
+      "author_detail": {
+        "name": "Dawid2849"
+      },
+      "authors": [
+        {
+          "name": "Dawid2849"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -260,7 +348,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Mon, 25 Nov 2024 19:22:52 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Mon, 25 Nov 2024 19:23:09 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Dawid2849\">Dawid2849</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 17522</td>\n                </tr>\n                <tr>\n                  <td>comment = Wycofanie błędnego revertu</td>\n                </tr>\n                <tr>\n                  <td>created_by = osm-revert git#f090f4f</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://revert.monicz.dev\" rel=\"nofollow\"&gt;https://revert.monicz.dev&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>revert:id = &lt;a href=\"https://www.openstreetmap.org/changeset/159586710\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/changeset/159586710&lt;/a&gt;</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 19:22:52 +0000 Closed Mon, 25 Nov 2024 19:23:09 +0000 Author Dawid2849 Tags changesets_count = 17522 comment = Wycofanie błędnego revertu",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 19:22:52 +0000 Closed Mon, 25 Nov 2024 19:23:09 +0000 Author Dawid2849 Tags changesets_count = 17522 comment = Wycofanie błędnego revertu created_by = osm-revert git#f090f4f host = <a href=\"https://revert.monicz.dev\" rel=\"nofollow\">https://revert.monicz.dev</a> revert:id = <a href=\"https://www.openstreetmap.org/changeset/159586710\" rel=\"nofollow\">https://www.openstreetmap.org/changeset/159586710</a>",
       "id": "https://www.openstreetmap.org/changeset/159586827",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159586827/download",
       "links": [
@@ -277,6 +365,14 @@
     },
     {
       "author": "domeqasz",
+      "author_detail": {
+        "name": "domeqasz"
+      },
+      "authors": [
+        {
+          "name": "domeqasz"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -285,7 +381,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Mon, 25 Nov 2024 19:17:43 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Mon, 25 Nov 2024 19:18:07 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/domeqasz\">domeqasz</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 263</td>\n                </tr>\n                <tr>\n                  <td>comment = Niepoprawne oznakowanie.</td>\n                </tr>\n                <tr>\n                  <td>created_by = osm-revert git#f090f4f</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://revert.monicz.dev\" rel=\"nofollow\"&gt;https://revert.monicz.dev&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>revert:dmp:way = 1</td>\n                </tr>\n                <tr>\n                  <td>revert:dmp:way:id = 568574421</td>\n                </tr>\n                <tr>\n                  <td>revert:fix:way = 131</td>\n                </tr>\n                <tr>\n                  <td>revert:id = &lt;a href=\"https://www.openstreetmap.org/changeset/159552572\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/changeset/159552572&lt;/a&gt;</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 19:17:43 +0000 Closed Mon, 25 Nov 2024 19:18:07 +0000 Author domeqasz Tags changesets_count = 263 comment = Niepoprawne oznakowanie. cr",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 19:17:43 +0000 Closed Mon, 25 Nov 2024 19:18:07 +0000 Author domeqasz Tags changesets_count = 263 comment = Niepoprawne oznakowanie. created_by = osm-revert git#f090f4f host = <a href=\"https://revert.monicz.dev\" rel=\"nofollow\">https://revert.monicz.dev</a> revert:dmp:way = 1 revert:dmp:way:id = 568574421 revert:fix:way = 131 revert:id = <a href=\"https://www.openstreetmap.org/changeset/159552572\" rel=\"nofollow\">https://www.openstreet",
       "id": "https://www.openstreetmap.org/changeset/159586710",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159586710/download",
       "links": [
@@ -302,6 +398,14 @@
     },
     {
       "author": "IreuN",
+      "author_detail": {
+        "name": "IreuN"
+      },
+      "authors": [
+        {
+          "name": "IreuN"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -310,7 +414,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Mon, 25 Nov 2024 14:12:41 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Mon, 25 Nov 2024 14:12:42 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/IreuN\">IreuN</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Mapillary Missing Crossings + Inne/giveway/stop</td>\n                </tr>\n                <tr>\n                  <td>created_by = JOSM/1.5 (19253 pl)</td>\n                </tr>\n                <tr>\n                  <td>source = Geoportal 2: High Resolution Orthophotomap (aerial image) WMTS; Geoportal 2: Orthophotomap (aerial image) WMTS; Mapillary; Mapillary Traffic Signs; Geoportal 2: Ewidencja budynków WMS</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 14:12:41 +0000 Closed Mon, 25 Nov 2024 14:12:42 +0000 Author IreuN Tags comment = Mapillary Missing Crossings + Inne/giveway/stop created_by = JOSM/1.5 (19253 pl) <t",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 14:12:41 +0000 Closed Mon, 25 Nov 2024 14:12:42 +0000 Author IreuN Tags comment = Mapillary Missing Crossings + Inne/giveway/stop created_by = JOSM/1.5 (19253 pl) source = Geoportal 2: High Resolution Orthophotomap (aerial image) WMTS; Geoportal 2: Orthophotomap (aerial image) WMTS; Mapillary; Mapillary Traffic Signs; Geoportal 2: Ewidencja budynków WMS",
       "id": "https://www.openstreetmap.org/changeset/159575471",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159575471/download",
       "links": [
@@ -327,6 +431,14 @@
     },
     {
       "author": "DylaniaCat",
+      "author_detail": {
+        "name": "DylaniaCat"
+      },
+      "authors": [
+        {
+          "name": "DylaniaCat"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -335,7 +447,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Mon, 25 Nov 2024 11:01:01 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Mon, 25 Nov 2024 11:01:03 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/DylaniaCat\">DylaniaCat</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>changesets_count = 75</td>\n                </tr>\n                <tr>\n                  <td>comment = minor edit</td>\n                </tr>\n                <tr>\n                  <td>created_by = iD 2.30.4</td>\n                </tr>\n                <tr>\n                  <td>host = &lt;a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\"&gt;https://www.openstreetmap.org/edit&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>imagery_used = Esri World Imagery</td>\n                </tr>\n                <tr>\n                  <td>locale = en-AU</td>\n                </tr>\n                <tr>\n                  <td>resolved:crossing_ways:highway-waterway = 1</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 11:01:01 +0000 Closed Mon, 25 Nov 2024 11:01:03 +0000 Author DylaniaCat Tags changesets_count = 75 comment = minor edit created_by =",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 11:01:01 +0000 Closed Mon, 25 Nov 2024 11:01:03 +0000 Author DylaniaCat Tags changesets_count = 75 comment = minor edit created_by = iD 2.30.4 host = <a href=\"https://www.openstreetmap.org/edit\" rel=\"nofollow\">https://www.openstreetmap.org/edit</a> imagery_used = Esri World Imagery locale = en-AU resolved:crossing_ways:highway-waterway = 1",
       "id": "https://www.openstreetmap.org/changeset/159568063",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159568063/download",
       "links": [
@@ -352,6 +464,14 @@
     },
     {
       "author": "abakus_uploader",
+      "author_detail": {
+        "name": "abakus_uploader"
+      },
+      "authors": [
+        {
+          "name": "abakus_uploader"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -360,7 +480,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Mon, 25 Nov 2024 10:30:04 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Mon, 25 Nov 2024 10:30:09 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/abakus_uploader\">abakus_uploader</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM</td>\n                </tr>\n                <tr>\n                  <td>created_by = Abakus StrazakOSM uploader</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 10:30:04 +0000 Closed Mon, 25 Nov 2024 10:30:09 +0000 Author abakus_uploader Tags comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM created_by = Abakus",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 10:30:04 +0000 Closed Mon, 25 Nov 2024 10:30:09 +0000 Author abakus_uploader Tags comment = Autouploader - Hydranty i pikietaż przesłane przez użytkowników aplikacji Strazak OSM created_by = Abakus StrazakOSM uploader",
       "id": "https://www.openstreetmap.org/changeset/159566803",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159566803/download",
       "links": [
@@ -377,6 +497,14 @@
     },
     {
       "author": "adamos",
+      "author_detail": {
+        "name": "adamos"
+      },
+      "authors": [
+        {
+          "name": "adamos"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -385,7 +513,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Mon, 25 Nov 2024 08:36:22 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Mon, 25 Nov 2024 08:36:40 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/adamos\">adamos</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Flixbus daily maintenance routine, relations fix</td>\n                </tr>\n                <tr>\n                  <td>created_by = JOSM/1.5 (19253 en)</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 08:36:22 +0000 Closed Mon, 25 Nov 2024 08:36:40 +0000 Author adamos Tags comment = Flixbus daily maintenance routine, relations fix created_by = JOSM/1.5 (19253 en) <",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 08:36:22 +0000 Closed Mon, 25 Nov 2024 08:36:40 +0000 Author adamos Tags comment = Flixbus daily maintenance routine, relations fix created_by = JOSM/1.5 (19253 en)",
       "id": "https://www.openstreetmap.org/changeset/159562487",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159562487/download",
       "links": [
@@ -402,6 +530,14 @@
     },
     {
       "author": "Arkadiusz Oktabiński",
+      "author_detail": {
+        "name": "Arkadiusz Oktabiński"
+      },
+      "authors": [
+        {
+          "name": "Arkadiusz Oktabiński"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -410,7 +546,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Mon, 25 Nov 2024 06:53:59 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Mon, 25 Nov 2024 08:14:45 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/Arkadiusz%20Oktabi%C5%84ski\">Arkadiusz Oktabiński</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Defibrillator added via &lt;a href=\"https://openaedmap.org\" rel=\"nofollow\"&gt;https://openaedmap.org&lt;/a&gt; #aed</td>\n                </tr>\n                <tr>\n                  <td>created_by = &lt;a href=\"https://openaedmap.org\" rel=\"nofollow\"&gt;https://openaedmap.org&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>git_commit = cd7f612</td>\n                </tr>\n                <tr>\n                  <td>hashtags = #aed</td>\n                </tr>\n                <tr>\n                  <td>locale = pl</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 06:53:59 +0000 Closed Mon, 25 Nov 2024 08:14:45 +0000 Author Arkadiusz Oktabiński Tags comment = Defibrillator added via <a href=\"https://openaedmap.org\" rel=\"nofollow\">https://openaedmap.org</a> #aed",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 06:53:59 +0000 Closed Mon, 25 Nov 2024 08:14:45 +0000 Author Arkadiusz Oktabiński Tags comment = Defibrillator added via <a href=\"https://openaedmap.org\" rel=\"nofollow\">https://openaedmap.org</a> #aed created_by = <a href=\"https://openaedmap.org\" rel=\"nofollow\">https://openaedmap.org</a> git_commit = cd7f612 hashtags = #aed locale = pl",
       "id": "https://www.openstreetmap.org/changeset/159559357",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159559357/download",
       "links": [
@@ -427,6 +563,14 @@
     },
     {
       "author": "IreuN",
+      "author_detail": {
+        "name": "IreuN"
+      },
+      "authors": [
+        {
+          "name": "IreuN"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -435,7 +579,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Mon, 25 Nov 2024 00:40:47 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Mon, 25 Nov 2024 00:40:48 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/IreuN\">IreuN</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Mapillary Missing Crossings + Inne/giveway/stop</td>\n                </tr>\n                <tr>\n                  <td>created_by = JOSM/1.5 (19253 pl)</td>\n                </tr>\n                <tr>\n                  <td>source = Geoportal 2: Orthophotomap (aerial image) WMTS; Mapillary Traffic Signs; Mapillary</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 00:40:47 +0000 Closed Mon, 25 Nov 2024 00:40:48 +0000 Author IreuN Tags comment = Mapillary Missing Crossings + Inne/giveway/stop created_by = JOSM/1.5 (19253 pl) <t",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Mon, 25 Nov 2024 00:40:47 +0000 Closed Mon, 25 Nov 2024 00:40:48 +0000 Author IreuN Tags comment = Mapillary Missing Crossings + Inne/giveway/stop created_by = JOSM/1.5 (19253 pl) source = Geoportal 2: Orthophotomap (aerial image) WMTS; Mapillary Traffic Signs; Mapillary",
       "id": "https://www.openstreetmap.org/changeset/159553861",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159553861/download",
       "links": [
@@ -452,6 +596,14 @@
     },
     {
       "author": "pavvv",
+      "author_detail": {
+        "name": "pavvv"
+      },
+      "authors": [
+        {
+          "name": "pavvv"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -460,7 +612,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Sun, 24 Nov 2024 23:05:37 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Sun, 24 Nov 2024 23:05:43 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/pavvv\">pavvv</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników</td>\n                </tr>\n                <tr>\n                  <td>created_by = JOSM/1.5 (19253 pl)</td>\n                </tr>\n                <tr>\n                  <td>discussion = &lt;a href=\"https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192\" rel=\"nofollow\"&gt;https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>proposal = &lt;a href=\"https://wiki.openstreetmap.org/wiki/Pl:Oznaczanie_dr%c3%b3g_ekspresowych_jako_highway=motorway\" rel=\"nofollow\"&gt;https://wiki.openstreetmap.org/wiki/Pl:Oznaczanie_dr%c3%b3g_ekspresowych_jako_highway=motorway&lt;/a&gt;</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Sun, 24 Nov 2024 23:05:37 +0000 Closed Sun, 24 Nov 2024 23:05:43 +0000 Author pavvv Tags comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Sun, 24 Nov 2024 23:05:37 +0000 Closed Sun, 24 Nov 2024 23:05:43 +0000 Author pavvv Tags comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników created_by = JOSM/1.5 (19253 pl) discussion = <a href=\"https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192\" rel=\"nofollow\">https://",
       "id": "https://www.openstreetmap.org/changeset/159552580",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159552580/download",
       "links": [
@@ -477,6 +629,14 @@
     },
     {
       "author": "pavvv",
+      "author_detail": {
+        "name": "pavvv"
+      },
+      "authors": [
+        {
+          "name": "pavvv"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -485,7 +645,7 @@
           "value": "<content xmlns=\"http://www.w3.org/2005/Atom\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:georss=\"http://www.georss.org/georss\" type=\"xhtml\">\n      <div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <style>th { text-align: left } tr { vertical-align: top }</style>\n        <table>\n          <tr>\n            <th>Created</th>\n            <td>Sun, 24 Nov 2024 23:05:12 +0000</td>\n          </tr>\n          <tr>\n            <th>Closed</th>\n            <td>Sun, 24 Nov 2024 23:05:37 +0000</td>\n          </tr>\n          <tr>\n            <th>Author</th>\n            <td>\n              <a href=\"https://www.openstreetmap.org/user/pavvv\">pavvv</a>\n            </td>\n          </tr>\n          <tr>\n            <th>Tags</th>\n            <td>\n              <table cellpadding=\"0\">\n                <tr>\n                  <td>comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników</td>\n                </tr>\n                <tr>\n                  <td>created_by = JOSM/1.5 (19253 pl)</td>\n                </tr>\n                <tr>\n                  <td>discussion = &lt;a href=\"https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192\" rel=\"nofollow\"&gt;https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192&lt;/a&gt;</td>\n                </tr>\n                <tr>\n                  <td>proposal = &lt;a href=\"https://wiki.openstreetmap.org/wiki/Pl:Oznaczanie_dr%c3%b3g_ekspresowych_jako_highway=motorway\" rel=\"nofollow\"&gt;https://wiki.openstreetmap.org/wiki/Pl:Oznaczanie_dr%c3%b3g_ekspresowych_jako_highway=motorway&lt;/a&gt;</td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n        </table>\n      </div>\n    </content>\n    "
         }
       ],
-      "description": "th { text-align: left } tr { vertical-align: top } Created Sun, 24 Nov 2024 23:05:12 +0000 Closed Sun, 24 Nov 2024 23:05:37 +0000 Author pavvv Tags comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników",
+      "description": "th { text-align: left } tr { vertical-align: top } Created Sun, 24 Nov 2024 23:05:12 +0000 Closed Sun, 24 Nov 2024 23:05:37 +0000 Author pavvv Tags comment = Zmiana tagowania dróg ekspresowych o parametrach podobnych do autostrad na highway=motorway, ujednolicenie definicji motorroad=yes, usunięcie powielających się tagów, poprawa wielu znaczników created_by = JOSM/1.5 (19253 pl) discussion = <a href=\"https://community.openstreetmap.org/t/drogi-ekspresowe-jako-highway-motorway/95192\" rel=\"nofollow\">https://",
       "id": "https://www.openstreetmap.org/changeset/159552572",
       "link": "https://www.openstreetmap.org/api/0.6/changeset/159552572/download",
       "links": [

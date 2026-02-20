@@ -2,6 +2,14 @@
   "entries": [
     {
       "author": "Corbin",
+      "author_detail": {
+        "name": "Corbin"
+      },
+      "authors": [
+        {
+          "name": "Corbin"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -26,6 +34,14 @@
     },
     {
       "author": "CF Bolz-Tereick",
+      "author_detail": {
+        "name": "CF Bolz-Tereick"
+      },
+      "authors": [
+        {
+          "name": "CF Bolz-Tereick"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -55,6 +71,14 @@
     },
     {
       "author": "The PyPy Team",
+      "author_detail": {
+        "name": "The PyPy Team"
+      },
+      "authors": [
+        {
+          "name": "The PyPy Team"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -84,6 +108,14 @@
     },
     {
       "author": "mattip",
+      "author_detail": {
+        "name": "mattip"
+      },
+      "authors": [
+        {
+          "name": "mattip"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -108,6 +140,14 @@
     },
     {
       "author": "mattip",
+      "author_detail": {
+        "name": "mattip"
+      },
+      "authors": [
+        {
+          "name": "mattip"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -132,6 +172,14 @@
     },
     {
       "author": "CF Bolz-Tereick",
+      "author_detail": {
+        "name": "CF Bolz-Tereick"
+      },
+      "authors": [
+        {
+          "name": "CF Bolz-Tereick"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -161,6 +209,14 @@
     },
     {
       "author": "Max Bernstein",
+      "author_detail": {
+        "name": "Max Bernstein"
+      },
+      "authors": [
+        {
+          "name": "Max Bernstein"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -185,6 +241,14 @@
     },
     {
       "author": "CF Bolz-Tereick",
+      "author_detail": {
+        "name": "CF Bolz-Tereick"
+      },
+      "authors": [
+        {
+          "name": "CF Bolz-Tereick"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -214,6 +278,14 @@
     },
     {
       "author": "CF Bolz-Tereick",
+      "author_detail": {
+        "name": "CF Bolz-Tereick"
+      },
+      "authors": [
+        {
+          "name": "CF Bolz-Tereick"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -243,6 +315,14 @@
     },
     {
       "author": "Christoph Jung",
+      "author_detail": {
+        "name": "Christoph Jung"
+      },
+      "authors": [
+        {
+          "name": "Christoph Jung"
+        }
+      ],
       "content": [
         {
           "base": null,

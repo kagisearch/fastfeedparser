@@ -2,6 +2,14 @@
   "entries": [
     {
       "author": "Jane Smith",
+      "author_detail": {
+        "name": "Jane Smith"
+      },
+      "authors": [
+        {
+          "name": "Jane Smith"
+        }
+      ],
       "content": [
         {
           "type": "text/html",

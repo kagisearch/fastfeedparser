@@ -2,6 +2,14 @@
   "entries": [
     {
       "author": "Włodzimierz Bartczak",
+      "author_detail": {
+        "name": "Włodzimierz Bartczak"
+      },
+      "authors": [
+        {
+          "name": "Włodzimierz Bartczak"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -26,6 +34,14 @@
     },
     {
       "author": "jendrusk",
+      "author_detail": {
+        "name": "jendrusk"
+      },
+      "authors": [
+        {
+          "name": "jendrusk"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -50,6 +66,14 @@
     },
     {
       "author": "Włodzimierz Bartczak",
+      "author_detail": {
+        "name": "Włodzimierz Bartczak"
+      },
+      "authors": [
+        {
+          "name": "Włodzimierz Bartczak"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -74,6 +98,14 @@
     },
     {
       "author": "Tomek",
+      "author_detail": {
+        "name": "Tomek"
+      },
+      "authors": [
+        {
+          "name": "Tomek"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -98,6 +130,14 @@
     },
     {
       "author": "Tomek",
+      "author_detail": {
+        "name": "Tomek"
+      },
+      "authors": [
+        {
+          "name": "Tomek"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -122,6 +162,14 @@
     },
     {
       "author": "Dominik Danelski",
+      "author_detail": {
+        "name": "Dominik Danelski"
+      },
+      "authors": [
+        {
+          "name": "Dominik Danelski"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -146,6 +194,14 @@
     },
     {
       "author": "Dominik Danelski",
+      "author_detail": {
+        "name": "Dominik Danelski"
+      },
+      "authors": [
+        {
+          "name": "Dominik Danelski"
+        }
+      ],
       "content": [
         {
           "base": null,
@@ -175,12 +231,20 @@
     },
     {
       "author": "Asia",
+      "author_detail": {
+        "name": "Asia"
+      },
+      "authors": [
+        {
+          "name": "Asia"
+        }
+      ],
       "content": [
         {
           "base": null,
           "language": null,
           "type": "text/html",
-          "value": "<p>Dobra informacja dla mapowiczów korzystających z edytora Rapid i nie tylko! Zbiór danych ArcGIS dostępnych w edytorze Rapid został wzbogacony o dane dla Polski. W chwili obecnej, korzystając z tego narzędzia możemy w prosty sposób wyszukać i dodać warstwę danych ... <a class=\"more-link\" href=\"https://openstreetmap.org.pl/2024/dane-adresowe-i-budynki-dla-polski-dostepne-w-rapid/\">Read More &#187;</a></p>\n<p>Artykuł <a rel=\"nofollow\" href=\"https://openstreetmap.org.pl/2024/dane-adresowe-i-budynki-dla-polski-dostepne-w-rapid/\">Dane adresowe i budynki dla Polski dostępne w Rapid!</a> pochodzi z serwisu <a rel=\"nofollow\" href=\"https://openstreetmap.org.pl\">OpenStreetMap Polska</a>.</p>\n"
+          "value": ""
         }
       ],
       "description": "<p>Dobra informacja dla mapowiczów korzystających z edytora Rapid i nie tylko! Zbiór danych ArcGIS dostępnych w edytorze Rapid został wzbogacony o dane dla Polski. W chwili obecnej, korzystając z tego narzędzia możemy w prosty sposób wyszukać i dodać warstwę danych ... <a class=\"more-link\" href=\"https://openstreetmap.org.pl/2024/dane-adresowe-i-budynki-dla-polski-dostepne-w-rapid/\">Read More &#187;</a></p>\n<p>Artykuł <a rel=\"nofollow\" href=\"https://openstreetmap.org.pl/2024/dane-adresowe-i-budynki-dla-polski-dostepne-w-rapid/\">Dane adresowe i budynki dla Polski dostępne w Rapid!</a> pochodzi z serwisu <a rel=\"nofollow\" href=\"https://openstreetmap.org.pl\">OpenStreetMap Polska</a>.</p>",
