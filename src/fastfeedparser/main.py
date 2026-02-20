@@ -15,6 +15,13 @@ try:
     HAS_BROTLI = True
 except ImportError:
     HAS_BROTLI = False
+
+try:
+    import orjson
+
+    _json_loads = orjson.loads
+except ImportError:
+    _json_loads = json.loads
 from typing import Any, Callable, Optional, Protocol, TYPE_CHECKING, Literal
 from urllib.parse import urljoin
 from urllib.request import (
@@ -93,6 +100,31 @@ _TZ_OFFSETS_RFC822: dict[str, int] = {
 }
 
 
+@lru_cache(maxsize=4)
+def _atom_ns_tags(atom_ns: str) -> dict[str, str]:
+    """Pre-compute namespace-prefixed tag strings once per unique namespace.
+
+    Avoids thousands of redundant f-string / concatenation operations when
+    parsing feeds with many entries.
+    """
+    ns = f"{{{atom_ns}}}"
+    is_atom_03 = atom_ns == "http://purl.org/atom/ns#"
+    return {
+        "ns": ns,
+        "id": ns + "id",
+        "title": ns + "title",
+        "summary": ns + "summary",
+        "link": ns + "link",
+        "content": ns + "content",
+        "author_name": ns + "author/" + ns + "name",
+        "category": ns + "category",
+        "published": ns + ("issued" if is_atom_03 else "published"),
+        "updated": ns + ("modified" if is_atom_03 else "updated"),
+        "pub_fallback": ns + ("published" if is_atom_03 else "issued"),
+        "upd_fallback": ns + ("updated" if is_atom_03 else "modified"),
+    }
+
+
 class FastFeedParserDict(dict):
     """A dictionary that allows access to its keys as attributes."""
 
@@ -165,11 +197,18 @@ def _clean_feed_bytes(content: bytes) -> bytes:
         b"<?xml-stylesheet",
     )
 
-    lines = content.splitlines()
-    for i, line in enumerate(lines):
-        line_stripped = line.strip().lower()
-        if any(line_stripped.startswith(pattern) for pattern in xml_start_patterns):
-            return b"\n".join(lines[i:])
+    # Search for XML start patterns without splitting entire content into lines.
+    # For large feeds (multi-MB), splitlines() creates thousands of byte string
+    # objects; find() scans in-place with zero allocations.
+    search_limit = min(len(content), 8192)
+    search_chunk = content[:search_limit].lower()
+    earliest = -1
+    for pattern in xml_start_patterns:
+        idx = search_chunk.find(pattern)
+        if idx != -1 and (earliest == -1 or idx < earliest):
+            earliest = idx
+    if earliest != -1:
+        return content[earliest:]
 
     if b"<script>" in preview_lower or b"<body>" in preview_lower:
         raise ValueError("Content appears to be HTML, not a valid RSS/Atom feed")
@@ -178,21 +217,30 @@ def _clean_feed_bytes(content: bytes) -> bytes:
 
 
 def _fix_malformed_xml_bytes(content: bytes, actual_encoding: str = "utf-8") -> bytes:
+    # XML declarations and encoding definitions live at the top of the file.
+    # Run declaration-fixing regexes only on the first 2 KB to avoid scanning
+    # multi-megabyte payloads with patterns that can only match the header.
+    header = content[:2048]
+    tail = content[2048:]
+
     # Fix double XML declarations like "<?xml?xml version="1.0"?>"
-    content = _RE_DOUBLE_XML_DECL_BYTES.sub(b"<?xml ", content)
+    header = _RE_DOUBLE_XML_DECL_BYTES.sub(b"<?xml ", header)
 
     # Fix double closing ?> in XML declaration like "??>>"
-    content = _RE_DOUBLE_CLOSE_BYTES.sub(b"?>", content)
-
-    # Fix malformed attribute syntax like rss:version=2.0 (missing quotes)
-    content = _RE_UNQUOTED_ATTR_BYTES.sub(rb'\1="\2"', content)
+    header = _RE_DOUBLE_CLOSE_BYTES.sub(b"?>", header)
 
     # Update encoding in XML declaration to match actual encoding when a feed was transcoded.
     if actual_encoding.lower() != "utf-16":
         replacement = (
             rb"\1" + actual_encoding.encode("ascii", errors="replace") + rb"\3"
         )
-        content = _RE_UTF16_ENCODING_BYTES.sub(replacement, content)
+        header = _RE_UTF16_ENCODING_BYTES.sub(replacement, header)
+
+    # Reassemble before running body-wide fixes
+    content = header + tail
+
+    # Fix malformed attribute syntax like rss:version=2.0 (missing quotes)
+    content = _RE_UNQUOTED_ATTR_BYTES.sub(rb'\1="\2"', content)
 
     # Fix unclosed link tags - common in Atom feeds
     content = _RE_UNCLOSED_LINK_BYTES.sub(rb"<link\1/>", content)
@@ -397,15 +445,13 @@ def _maybe_parse_json_feed(content: str | bytes) -> FastFeedParserDict | None:
     if isinstance(content, bytes):
         if not content.lstrip().startswith(b"{"):
             return None
-        json_str = content.decode("utf-8", errors="replace")
     else:
         if not content.lstrip().startswith("{"):
             return None
-        json_str = content
 
     try:
-        json_data = json.loads(json_str)
-    except (json.JSONDecodeError, ValueError):
+        json_data = _json_loads(content)
+    except Exception:
         return None
 
     if not isinstance(json_data, dict):
@@ -920,7 +966,7 @@ def _parse_tags(
     elif feed_type == "atom":
         # Atom uses <category> elements with attributes
         atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
-        for cat in element.findall(f"{{{atom_ns}}}category"):
+        for cat in element.findall(_atom_ns_tags(atom_ns)["category"]):
             term = cat.get("term")
             if term:
                 tags_list.append(
@@ -971,9 +1017,10 @@ def _coerce_int_fields(mapping: dict[str, Any], fields: tuple[str, ...]) -> None
 def _populate_entry_links(
     entry: FastFeedParserDict, item: _Element, atom_ns: str
 ) -> None:
+    tags = _atom_ns_tags(atom_ns)
     entry_links: list[dict[str, Optional[str]]] = []
     alternate_link: Optional[dict[str, Optional[str]]] = None
-    for link in item.findall(f"{{{atom_ns}}}link"):
+    for link in item.findall(tags["link"]):
         rel = link.get("rel")
         href = link.get("href") or link.get("link")
         if not href:
@@ -1023,7 +1070,7 @@ def _populate_entry_content(
         if content_el is None:
             content_el = item.find("content")
     elif feed_type == "atom":
-        content_el = item.find(f"{{{atom_ns}}}content")
+        content_el = item.find(_atom_ns_tags(atom_ns)["content"])
 
     if content_el is not None:
         content_type = content_el.get("type", "text/html")
@@ -1198,10 +1245,11 @@ def _parse_rss_feed_entry_fast(
     atom_ns: str,
     has_media_ns: bool = True,
 ) -> FastFeedParserDict:
+    tags = _atom_ns_tags(atom_ns)
     text_by_local, text_by_full = _build_rss_item_text_maps(item)
 
     entry = FastFeedParserDict()
-    atom_id = text_by_full.get(f"{{{atom_ns}}}id")
+    atom_id = text_by_full.get(tags["id"])
     rss_guid = text_by_local.get("guid")
     rdf_about = item.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about")
     entry_id: Optional[str] = atom_id or rss_guid or rdf_about
@@ -1249,7 +1297,7 @@ def _parse_rss_feed_entry_fast(
         entry["published"] = entry["updated"]
 
     # Inline link population for RSS (avoids redundant findall/find for 98.8% of entries)
-    atom_links = item.findall(f"{{{atom_ns}}}link")
+    atom_links = item.findall(tags["link"])
     if atom_links:
         # Has atom:link elements - use full logic
         _populate_entry_links(entry, item, atom_ns)
@@ -1279,7 +1327,7 @@ def _parse_rss_feed_entry_fast(
 
     author = _first_non_empty(text_by_local, ("author", "creator"))
     if not author:
-        atom_author = item.find(f"{{{atom_ns}}}author/{{{atom_ns}}}name")
+        atom_author = item.find(tags["author_name"])
         author = (
             atom_author.text.strip()
             if atom_author is not None and atom_author.text
@@ -1304,45 +1352,39 @@ def _parse_atom_feed_entry_fast(
     atom_ns: str,
     has_media_ns: bool = True,
 ) -> FastFeedParserDict:
-    ns = f"{{{atom_ns}}}"
+    t = _atom_ns_tags(atom_ns)
     entry = FastFeedParserDict()
 
     # ID
-    el = item.find(ns + "id")
+    el = item.find(t["id"])
     if el is not None and el.text:
         entry["id"] = el.text.strip()
 
     # Title
-    el = item.find(ns + "title")
+    el = item.find(t["title"])
     if el is not None and el.text:
         entry["title"] = el.text.strip()
 
     # Description (summary)
-    el = item.find(ns + "summary")
+    el = item.find(t["summary"])
     if el is not None and el.text:
         entry["description"] = el.text.strip()
 
     # Link (href attribute)
-    el = item.find(ns + "link")
+    el = item.find(t["link"])
     if el is not None:
         href = el.get("href")
         if href:
             entry["link"] = href.strip()
 
-    # Dates: Atom 1.0 uses published/updated, Atom 0.3 uses issued/modified
-    is_atom_03 = atom_ns == "http://purl.org/atom/ns#"
-    pub_tag = "issued" if is_atom_03 else "published"
-    upd_tag = "modified" if is_atom_03 else "updated"
-    pub_fallback_tag = "published" if is_atom_03 else "issued"
-    upd_fallback_tag = "updated" if is_atom_03 else "modified"
-
-    el = item.find(ns + pub_tag)
+    # Dates
+    el = item.find(t["published"])
     if el is not None and el.text:
         published = _parse_date(el.text)
         if published:
             entry["published"] = published
 
-    el = item.find(ns + upd_tag)
+    el = item.find(t["updated"])
     if el is not None and el.text:
         updated = _parse_date(el.text)
         if updated:
@@ -1350,14 +1392,14 @@ def _parse_atom_feed_entry_fast(
 
     # Fallback date fields for mixed namespace scenarios
     if "published" not in entry:
-        el = item.find(ns + pub_fallback_tag)
+        el = item.find(t["pub_fallback"])
         if el is not None and el.text:
             published = _parse_date(el.text)
             if published:
                 entry["published"] = published
 
     if "updated" not in entry:
-        el = item.find(ns + upd_fallback_tag)
+        el = item.find(t["upd_fallback"])
         if el is not None and el.text:
             updated = _parse_date(el.text)
             if updated:
@@ -1383,7 +1425,7 @@ def _parse_atom_feed_entry_fast(
         entry["enclosures"] = enclosures
 
     # Author
-    el = item.find(ns + "author/" + ns + "name")
+    el = item.find(t["author_name"])
     if el is not None and el.text:
         entry["author"] = el.text.strip()
 
