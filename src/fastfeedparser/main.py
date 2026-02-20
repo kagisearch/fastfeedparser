@@ -15,7 +15,7 @@ try:
     HAS_BROTLI = True
 except ImportError:
     HAS_BROTLI = False
-from typing import Any, Callable, Optional, Protocol, TYPE_CHECKING, Literal
+from typing import Any, Callable, Optional, TYPE_CHECKING, Literal
 from urllib.parse import urljoin
 from urllib.request import (
     HTTPErrorProcessor,
@@ -28,13 +28,14 @@ from dateutil import parser as dateutil_parser
 from lxml import etree
 
 if TYPE_CHECKING:
+    from typing import Protocol
+
     from lxml.etree import _Element
 
+    class _ElementValueGetter(Protocol):
+        def __call__(self, path: str, attribute: Optional[str] = None) -> Optional[str]: ...
+
 _FeedType = Literal["rss", "atom", "rdf"]
-
-
-class _ElementValueGetter(Protocol):
-    def __call__(self, path: str, attribute: Optional[str] = None) -> Optional[str]: ...
 
 
 _UTC = datetime.timezone.utc
@@ -64,6 +65,7 @@ _RE_ISO_FRACTION = re.compile(r"\.(\d{7,})(?=(?:[+-]\d{2}:?\d{2}|Z|$))", re.IGNO
 _RE_RFC822 = re.compile(
     r"(?:\w{3},\s+)?(\d{1,2})\s+(\w{3})\s+(\d{4})\s+(\d{2}):(\d{2}):(\d{2})\s+([+-]\d{4}|[A-Z]{2,5})"
 )
+_RE_HOUR24 = re.compile(r"(\d{4}-\d{2}-\d{2})[T ]24:(\d{2}):(\d{2})")
 _MONTHS_RFC822: dict[str, int] = {
     "jan": 1,
     "feb": 2,
@@ -77,19 +79,6 @@ _MONTHS_RFC822: dict[str, int] = {
     "oct": 10,
     "nov": 11,
     "dec": 12,
-}
-_TZ_OFFSETS_RFC822: dict[str, int] = {
-    "GMT": 0,
-    "UTC": 0,
-    "UT": 0,
-    "EST": -18000,
-    "EDT": -14400,
-    "CST": -21600,
-    "CDT": -18000,
-    "MST": -25200,
-    "MDT": -21600,
-    "PST": -28800,
-    "PDT": -25200,
 }
 
 
@@ -702,20 +691,28 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
         else "search.yahoo.com/mrss" in xml_content
     )
 
-    # Parse entries
+    # Parse entries — resolve parser once per feed instead of per entry
     entries: list[FastFeedParserDict] = []
     feed["entries"] = entries
-    for item in items:
-        entry = _parse_feed_entry(
-            item,
-            feed_type,
-            atom_namespace,
-            has_media_ns,
-        )
-        # Ensure that titles and descriptions are always present
-        entry["title"] = entry.get("title", "").strip()
-        entry["description"] = entry.get("description", "").strip()
-        entries.append(entry)
+    atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
+    if feed_type == "rss":
+        for item in items:
+            entry = _parse_rss_feed_entry_fast(item, atom_ns, has_media_ns)
+            entry.setdefault("title", "")
+            entry.setdefault("description", "")
+            entries.append(entry)
+    elif feed_type == "atom":
+        for item in items:
+            entry = _parse_atom_feed_entry_fast(item, atom_ns, has_media_ns)
+            entry.setdefault("title", "")
+            entry.setdefault("description", "")
+            entries.append(entry)
+    else:
+        for item in items:
+            entry = _parse_feed_entry(item, feed_type, atom_namespace, has_media_ns)
+            entry["title"] = entry.get("title", "").strip()
+            entry["description"] = entry.get("description", "").strip()
+            entries.append(entry)
 
     return feed
 
@@ -1022,13 +1019,30 @@ def _populate_entry_links(
 
 
 def _populate_entry_content(
-    entry: FastFeedParserDict, item: _Element, feed_type: _FeedType, atom_ns: str
+    entry: FastFeedParserDict,
+    item: _Element,
+    feed_type: _FeedType,
+    atom_ns: str,
+    rss_text_by_full: Optional[dict[str, Optional[str]]] = None,
 ) -> None:
     content_el = None
     if feed_type == "rss":
-        content_el = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
-        if content_el is None:
-            content_el = item.find("content")
+        # Fast path: check pre-built text map before doing tree searches
+        if rss_text_by_full is not None:
+            content_encoded_text = rss_text_by_full.get(
+                "{http://purl.org/rss/1.0/modules/content/}encoded"
+            )
+            if content_encoded_text is not None:
+                # We have content:encoded text — still need the element for type/lang/base attrs
+                content_el = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
+            else:
+                content_text = rss_text_by_full.get("content")
+                if content_text is not None:
+                    content_el = item.find("content")
+        else:
+            content_el = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
+            if content_el is None:
+                content_el = item.find("content")
     elif feed_type == "atom":
         content_el = item.find(f"{{{atom_ns}}}content")
 
@@ -1065,7 +1079,7 @@ def _populate_entry_content(
         content_value = entry["content"][0]["value"]
         if content_value:
             if "<" in content_value:
-                content_value = _RE_HTML_TAGS.sub(" ", content_value[:2048])
+                content_value = _RE_HTML_TAGS.sub(" ", content_value[:1024])
                 content_value = _html_mod.unescape(content_value)
             if (
                 "  " in content_value
@@ -1217,11 +1231,11 @@ def _parse_rss_feed_entry_fast(
 
     title = text_by_local.get("title")
     if title:
-        entry["title"] = title
+        entry["title"] = title.strip()
 
     description = _first_non_empty(text_by_local, ("description", "summary"))
     if description:
-        entry["description"] = description
+        entry["description"] = description.strip()
 
     link = text_by_local.get("link")
     if link:
@@ -1273,7 +1287,7 @@ def _parse_rss_feed_entry_fast(
     if "id" not in entry and "link" in entry:
         entry["id"] = entry["link"]
 
-    _populate_entry_content(entry, item, "rss", atom_ns)
+    _populate_entry_content(entry, item, "rss", atom_ns, rss_text_by_full=text_by_full)
 
     if has_media_ns:
         media_contents = _parse_media_content(item)
@@ -1765,7 +1779,7 @@ def _fast_rfc822_to_iso(value: str) -> Optional[str]:
             1 if tz[0] == "+" else -1
         )
     else:
-        tz_offset_seconds = _TZ_OFFSETS_RFC822.get(tz)
+        tz_offset_seconds = _custom_tzinfos.get(tz)
         if tz_offset_seconds is None:
             return None  # Unknown tz name, fall through to full parser
     # Python requires offset strictly between -24h and +24h
@@ -1882,7 +1896,7 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
         return None
     try:
         return _dateparser.parse(
-            value, languages=["en"], settings={**_DATEPARSER_SETTINGS}
+            value, languages=["en"], settings=_DATEPARSER_SETTINGS
         )
     except (ValueError, TypeError):
         return None
@@ -1940,7 +1954,7 @@ def _parse_date(date_str: str) -> Optional[str]:
                 candidate = candidate.replace(f"{year}-02-29", f"{year}-02-28")
 
     if "T24:" in candidate or " 24:" in candidate:
-        m24 = re.search(r"(\d{4}-\d{2}-\d{2})[T ]24:(\d{2}):(\d{2})", candidate)
+        m24 = _RE_HOUR24.search(candidate)
         if m24:
             base = datetime.date.fromisoformat(m24.group(1))
             mins, secs = int(m24.group(2)), int(m24.group(3))
