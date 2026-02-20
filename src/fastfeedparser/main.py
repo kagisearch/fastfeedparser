@@ -99,6 +99,19 @@ _TZ_OFFSETS_RFC822: dict[str, int] = {
     "PDT": -25200,
 }
 
+_XML_NS = "{http://www.w3.org/XML/1998/namespace}"
+_XML_LANG_ATTR = _XML_NS + "lang"
+_XML_BASE_ATTR = _XML_NS + "base"
+_RDF_ABOUT_ATTR = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"
+_RSS_CONTENT_ENCODED_TAG = "{http://purl.org/rss/1.0/modules/content/}encoded"
+_DC_SUBJECT_TAG = "{http://purl.org/dc/elements/1.1/}subject"
+_MEDIA_CONTENT_TAG = "{http://search.yahoo.com/mrss/}content"
+_MEDIA_THUMBNAIL_TAG = "{http://search.yahoo.com/mrss/}thumbnail"
+_MEDIA_TITLE_TAG = "{http://search.yahoo.com/mrss/}title"
+_MEDIA_TEXT_TAG = "{http://search.yahoo.com/mrss/}text"
+_MEDIA_DESCRIPTION_TAG = "{http://search.yahoo.com/mrss/}description"
+_MEDIA_CREDIT_TAG = "{http://search.yahoo.com/mrss/}credit"
+
 
 @lru_cache(maxsize=4)
 def _atom_ns_tags(atom_ns: str) -> dict[str, str]:
@@ -277,7 +290,13 @@ def _prepare_xml_bytes(xml_content: str | bytes) -> bytes:
     return _prepare_xml_bytes(xml_content.encode("utf-8", errors="replace"))
 
 
-def _parse_json_feed(json_data: dict) -> FastFeedParserDict:
+def _parse_json_feed(
+    json_data: dict,
+    *,
+    include_content: bool = True,
+    include_tags: bool = True,
+    include_enclosures: bool = True,
+) -> FastFeedParserDict:
     """Parse a JSON Feed and convert to FastFeedParserDict format.
 
     JSON Feed spec: https://jsonfeed.org/
@@ -335,10 +354,12 @@ def _parse_json_feed(json_data: dict) -> FastFeedParserDict:
         summary = item.get("summary", "")
 
         if content_html:
-            entry["content"] = [{"type": "text/html", "value": content_html}]
+            if include_content:
+                entry["content"] = [{"type": "text/html", "value": content_html}]
             entry["description"] = summary
         elif content_text:
-            entry["content"] = [{"type": "text/plain", "value": content_text}]
+            if include_content:
+                entry["content"] = [{"type": "text/plain", "value": content_text}]
             entry["description"] = summary or content_text[:512]
         else:
             entry["description"] = summary
@@ -371,14 +392,14 @@ def _parse_json_feed(json_data: dict) -> FastFeedParserDict:
 
         # Add tags
         tags = item.get("tags")
-        if tags:
+        if include_tags and tags:
             entry["tags"] = [
                 {"term": tag, "scheme": None, "label": None} for tag in tags
             ]
 
         # Add attachments as enclosures
         attachments = item.get("attachments")
-        if attachments:
+        if include_enclosures and attachments:
             enclosures = []
             for attachment in attachments:
                 url = attachment.get("url", "")
@@ -441,7 +462,13 @@ def _fetch_url_content(url: str) -> str | bytes:
         return content.decode(content_charset) if content_charset else content
 
 
-def _maybe_parse_json_feed(content: str | bytes) -> FastFeedParserDict | None:
+def _maybe_parse_json_feed(
+    content: str | bytes,
+    *,
+    include_content: bool = True,
+    include_tags: bool = True,
+    include_enclosures: bool = True,
+) -> FastFeedParserDict | None:
     if isinstance(content, bytes):
         if not content.lstrip().startswith(b"{"):
             return None
@@ -459,10 +486,20 @@ def _maybe_parse_json_feed(content: str | bytes) -> FastFeedParserDict | None:
 
     version = json_data.get("version")
     if isinstance(version, str) and "jsonfeed.org" in version:
-        return _parse_json_feed(json_data)
+        return _parse_json_feed(
+            json_data,
+            include_content=include_content,
+            include_tags=include_tags,
+            include_enclosures=include_enclosures,
+        )
 
     if isinstance(json_data.get("items"), list):
-        return _parse_json_feed(json_data)
+        return _parse_json_feed(
+            json_data,
+            include_content=include_content,
+            include_tags=include_tags,
+            include_enclosures=include_enclosures,
+        )
 
     return None
 
@@ -717,9 +754,21 @@ def _detect_feed_structure(
     raise ValueError(f"Unknown feed type: {root.tag}")
 
 
-def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
+def _parse_content(
+    xml_content: str | bytes,
+    *,
+    include_content: bool = True,
+    include_tags: bool = True,
+    include_media: bool = True,
+    include_enclosures: bool = True,
+) -> FastFeedParserDict:
     """Parse feed content (XML or JSON) that has already been fetched."""
-    json_feed = _maybe_parse_json_feed(xml_content)
+    json_feed = _maybe_parse_json_feed(
+        xml_content,
+        include_content=include_content,
+        include_tags=include_tags,
+        include_enclosures=include_enclosures,
+    )
     if json_feed is not None:
         return json_feed
 
@@ -732,7 +781,9 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
         root, xml_content, root_tag_local
     )
 
-    feed = _parse_feed_info(channel, feed_type, atom_namespace)
+    feed = _parse_feed_info(
+        channel, feed_type, atom_namespace, include_tags=include_tags
+    )
 
     # Detect once whether media namespace is used anywhere in the document
     has_media_ns = (
@@ -750,6 +801,10 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
             feed_type,
             atom_namespace,
             has_media_ns,
+            include_content=include_content,
+            include_tags=include_tags,
+            include_media=include_media,
+            include_enclosures=include_enclosures,
         )
         # Ensure that titles and descriptions are always present
         entry["title"] = entry.get("title", "").strip()
@@ -759,11 +814,22 @@ def _parse_content(xml_content: str | bytes) -> FastFeedParserDict:
     return feed
 
 
-def parse(source: str | bytes) -> FastFeedParserDict:
+def parse(
+    source: str | bytes,
+    *,
+    include_content: bool = True,
+    include_tags: bool = True,
+    include_media: bool = True,
+    include_enclosures: bool = True,
+) -> FastFeedParserDict:
     """Parse a feed from a URL or XML content.
 
     Args:
         source: URL string or XML content string/bytes
+        include_content: Include per-entry content blobs and synthesized descriptions
+        include_tags: Include feed and entry tags/categories
+        include_media: Include media namespace content (media:content/media:thumbnail)
+        include_enclosures: Include RSS enclosures and JSON-feed attachments
 
     Returns:
         FastFeedParserDict containing parsed feed data
@@ -780,7 +846,13 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         content = source
 
     try:
-        return _parse_content(content)
+        return _parse_content(
+            content,
+            include_content=include_content,
+            include_tags=include_tags,
+            include_media=include_media,
+            include_enclosures=include_enclosures,
+        )
     except ValueError as e:
         if not is_url:
             raise
@@ -791,11 +863,21 @@ def parse(source: str | bytes) -> FastFeedParserDict:
         redirect_url = _extract_meta_refresh_url(content, source)
         if redirect_url is None:
             raise
-        return parse(redirect_url)
+        return parse(
+            redirect_url,
+            include_content=include_content,
+            include_tags=include_tags,
+            include_media=include_media,
+            include_enclosures=include_enclosures,
+        )
 
 
 def _parse_feed_info(
-    channel: _Element, feed_type: _FeedType, atom_namespace: Optional[str] = None
+    channel: _Element,
+    feed_type: _FeedType,
+    atom_namespace: Optional[str] = None,
+    *,
+    include_tags: bool = True,
 ) -> FastFeedParserDict:
     # Use dynamic atom namespace or fallback to default
     atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
@@ -866,8 +948,8 @@ def _parse_feed_info(
         if value:
             feed[field[0]] = value
 
-    feed_lang = channel.get("{http://www.w3.org/XML/1998/namespace}lang")
-    feed_base = channel.get("{http://www.w3.org/XML/1998/namespace}base")
+    feed_lang = channel.get(_XML_LANG_ATTR)
+    feed_base = channel.get(_XML_BASE_ATTR)
     feed["language"] = feed_lang
 
     # Add title_detail and subtitle_detail
@@ -938,9 +1020,10 @@ def _parse_feed_info(
             feed["author"] = managing_editor
 
     # Parse feed-level tags/categories
-    tags = _parse_tags(channel, feed_type, atom_ns)
-    if tags:
-        feed["tags"] = tags
+    if include_tags:
+        tags = _parse_tags(channel, feed_type, atom_ns)
+        if tags:
+            feed["tags"] = tags
 
     return FastFeedParserDict(feed=feed)
 
@@ -959,7 +1042,7 @@ def _parse_tags(
                     {"term": term, "scheme": cat.get("domain"), "label": None}
                 )
         # RSS might also use <dc:subject>
-        for subject in element.findall("{http://purl.org/dc/elements/1.1/}subject"):
+        for subject in element.findall(_DC_SUBJECT_TAG):
             term = subject.text.strip() if subject.text else None
             if term:
                 tags_list.append({"term": term, "scheme": None, "label": None})
@@ -978,7 +1061,7 @@ def _parse_tags(
                 )
     elif feed_type == "rdf":
         # RDF uses <dc:subject> or <taxo:topic>
-        for subject in element.findall("{http://purl.org/dc/elements/1.1/}subject"):
+        for subject in element.findall(_DC_SUBJECT_TAG):
             term = subject.text.strip() if subject.text else None
             if term:
                 tags_list.append({"term": term, "scheme": None, "label": None})
@@ -1014,13 +1097,16 @@ def _coerce_int_fields(mapping: dict[str, Any], fields: tuple[str, ...]) -> None
             mapping.pop(field, None)
 
 
-def _populate_entry_links(
-    entry: FastFeedParserDict, item: _Element, atom_ns: str
+def _populate_entry_links_from_elements(
+    entry: FastFeedParserDict,
+    atom_links: list[_Element],
+    *,
+    guid_text: Optional[str] = None,
+    guid_is_permalink: bool = False,
 ) -> None:
-    tags = _atom_ns_tags(atom_ns)
     entry_links: list[dict[str, Optional[str]]] = []
     alternate_link: Optional[dict[str, Optional[str]]] = None
-    for link in item.findall(tags["link"]):
+    for link in atom_links:
         rel = link.get("rel")
         href = link.get("href") or link.get("link")
         if not href:
@@ -1036,8 +1122,6 @@ def _populate_entry_links(
         elif rel not in {"edit", "self"}:
             entry_links.append(link_dict)
 
-    guid = item.find("guid")
-    guid_text = guid.text.strip() if guid is not None and guid.text else None
     is_guid_url = guid_text is not None and guid_text.startswith(
         ("http://", "https://")
     )
@@ -1051,27 +1135,55 @@ def _populate_entry_links(
     elif alternate_link:
         entry["link"] = alternate_link["href"]
         entry_links.insert(0, alternate_link)
-    elif (
-        ("link" not in entry)
-        and (guid is not None)
-        and guid.get("isPermaLink") == "true"
-    ):
+    elif ("link" not in entry) and guid_is_permalink:
         entry["link"] = guid_text
 
     entry["links"] = entry_links
 
 
-def _populate_entry_content(
-    entry: FastFeedParserDict, item: _Element, feed_type: _FeedType, atom_ns: str
+def _populate_entry_links(
+    entry: FastFeedParserDict, item: _Element, atom_ns: str
 ) -> None:
-    content_el = None
-    if feed_type == "rss":
-        content_el = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
-        if content_el is None:
-            content_el = item.find("content")
-    elif feed_type == "atom":
-        content_el = item.find(_atom_ns_tags(atom_ns)["content"])
+    tags = _atom_ns_tags(atom_ns)
+    guid = item.find("guid")
+    guid_text = guid.text.strip() if guid is not None and guid.text else None
+    _populate_entry_links_from_elements(
+        entry,
+        item.findall(tags["link"]),
+        guid_text=guid_text,
+        guid_is_permalink=guid is not None and guid.get("isPermaLink") == "true",
+    )
 
+
+def _synthesize_entry_description(entry: FastFeedParserDict) -> None:
+    if "description" in entry or "content" not in entry:
+        return
+
+    content_value = entry["content"][0]["value"]
+    if content_value:
+        if "<" in content_value and ">" in content_value:
+            content_value = _RE_HTML_TAGS.sub(" ", content_value[:2048])
+            if "&" in content_value:
+                content_value = _html_mod.unescape(content_value)
+        if (
+            "  " in content_value
+            or "\n" in content_value
+            or "\t" in content_value
+            or "\r" in content_value
+        ):
+            content_value = _RE_WHITESPACE.sub(" ", content_value).strip()
+        else:
+            content_value = content_value.strip()
+    entry["description"] = content_value[:512]
+
+
+def _populate_entry_content_preparsed(
+    entry: FastFeedParserDict,
+    item: _Element,
+    *,
+    content_el: Optional[_Element],
+    rss_description_text: Optional[str],
+) -> None:
     if content_el is not None:
         content_type = content_el.get("type", "text/html")
         if content_type in {"xhtml", "application/xhtml+xml"}:
@@ -1081,48 +1193,51 @@ def _populate_entry_content(
         entry["content"] = [
             {
                 "type": content_type,
-                "language": content_el.get(
-                    "{http://www.w3.org/XML/1998/namespace}lang"
-                ),
-                "base": content_el.get("{http://www.w3.org/XML/1998/namespace}base"),
+                "language": content_el.get(_XML_LANG_ATTR),
+                "base": content_el.get(_XML_BASE_ATTR),
                 "value": content_value,
             }
         ]
+    elif rss_description_text:
+        entry["content"] = [
+            {
+                "type": "text/html",
+                "language": item.get(_XML_LANG_ATTR),
+                "base": item.get(_XML_BASE_ATTR),
+                "value": rss_description_text,
+            }
+        ]
 
-    if "content" not in entry:
+    _synthesize_entry_description(entry)
+
+
+def _populate_entry_content(
+    entry: FastFeedParserDict, item: _Element, feed_type: _FeedType, atom_ns: str
+) -> None:
+    content_el: Optional[_Element] = None
+    rss_description_text: Optional[str] = None
+    if feed_type == "rss":
+        content_el = item.find(_RSS_CONTENT_ENCODED_TAG)
+        if content_el is None:
+            content_el = item.find("content")
         description = item.find("description")
-        if description is not None and description.text:
-            entry["content"] = [
-                {
-                    "type": "text/html",
-                    "language": item.get("{http://www.w3.org/XML/1998/namespace}lang"),
-                    "base": item.get("{http://www.w3.org/XML/1998/namespace}base"),
-                    "value": description.text,
-                }
-            ]
+        if description is not None:
+            rss_description_text = description.text
+    elif feed_type == "atom":
+        content_el = item.find(_atom_ns_tags(atom_ns)["content"])
 
-    if "description" not in entry and "content" in entry:
-        content_value = entry["content"][0]["value"]
-        if content_value:
-            if "<" in content_value:
-                content_value = _RE_HTML_TAGS.sub(" ", content_value[:2048])
-                content_value = _html_mod.unescape(content_value)
-            if (
-                "  " in content_value
-                or "\n" in content_value
-                or "\t" in content_value
-                or "\r" in content_value
-            ):
-                content_value = _RE_WHITESPACE.sub(" ", content_value).strip()
-            else:
-                content_value = content_value.strip()
-        entry["description"] = content_value[:512]
+    _populate_entry_content_preparsed(
+        entry,
+        item,
+        content_el=content_el,
+        rss_description_text=rss_description_text,
+    )
 
 
 def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
     media_contents: list[dict[str, Any]] = []
 
-    for media in item.findall(".//{http://search.yahoo.com/mrss/}content"):
+    for media in item.findall(f".//{_MEDIA_CONTENT_TAG}"):
         media_item: dict[str, str | int | None] = {
             "url": media.get("url"),
             "type": media.get("type"),
@@ -1132,32 +1247,32 @@ def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
         }
         _coerce_int_fields(media_item, ("width", "height"))
 
-        title = media.find("{http://search.yahoo.com/mrss/}title")
+        title = media.find(_MEDIA_TITLE_TAG)
         if title is not None and title.text:
             media_item["title"] = title.text.strip()
 
-        text = media.find("{http://search.yahoo.com/mrss/}text")
+        text = media.find(_MEDIA_TEXT_TAG)
         if text is not None and text.text:
             media_item["text"] = text.text.strip()
 
-        desc = media.find("{http://search.yahoo.com/mrss/}description")
+        desc = media.find(_MEDIA_DESCRIPTION_TAG)
         if desc is None:
             parent = media.getparent()
             if parent is not None:
-                desc = parent.find("{http://search.yahoo.com/mrss/}description")
+                desc = parent.find(_MEDIA_DESCRIPTION_TAG)
         if desc is not None and desc.text:
             media_item["description"] = desc.text.strip()
 
-        credit = media.find("{http://search.yahoo.com/mrss/}credit")
+        credit = media.find(_MEDIA_CREDIT_TAG)
         if credit is None:
             parent = media.getparent()
             if parent is not None:
-                credit = parent.find("{http://search.yahoo.com/mrss/}credit")
+                credit = parent.find(_MEDIA_CREDIT_TAG)
         if credit is not None and credit.text:
             media_item["credit"] = credit.text.strip()
             media_item["credit_scheme"] = credit.get("scheme")
 
-        thumbnail = media.find("{http://search.yahoo.com/mrss/}thumbnail")
+        thumbnail = media.find(_MEDIA_THUMBNAIL_TAG)
         if thumbnail is not None:
             media_item["thumbnail_url"] = thumbnail.get("url")
 
@@ -1166,9 +1281,9 @@ def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
             media_contents.append(cleaned)
 
     if not media_contents:
-        for thumbnail in item.findall(".//{http://search.yahoo.com/mrss/}thumbnail"):
+        for thumbnail in item.findall(f".//{_MEDIA_THUMBNAIL_TAG}"):
             parent = thumbnail.getparent()
-            if parent is None or parent.tag == "{http://search.yahoo.com/mrss/}content":
+            if parent is None or parent.tag == _MEDIA_CONTENT_TAG:
                 continue
             thumb_item: dict[str, str | int | None] = {
                 "url": thumbnail.get("url"),
@@ -1187,47 +1302,26 @@ def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
 def _parse_enclosures(item: _Element) -> list[dict[str, Any]] | None:
     enclosures: list[dict[str, Any]] = []
     for enclosure in item.findall("enclosure"):
-        enc_item: dict[str, str | int | None] = {
-            "url": enclosure.get("url"),
-            "type": enclosure.get("type"),
-            "length": enclosure.get("length"),
-        }
-        length = enc_item.get("length")
-        if length:
-            try:
-                enc_item["length"] = int(length)
-            except (ValueError, TypeError):
-                enc_item.pop("length", None)
-
-        cleaned = _drop_none_values(enc_item)
+        cleaned = _parse_enclosure_element(enclosure)
         if cleaned.get("url"):
             enclosures.append(cleaned)
 
     return enclosures or None
 
 
-def _build_rss_item_text_maps(
-    item: _Element,
-) -> tuple[dict[str, Optional[str]], dict[str, Optional[str]]]:
-    by_local: dict[str, Optional[str]] = {}
-    by_full: dict[str, Optional[str]] = {}
-    for child in item:
-        tag = child.tag
-        if not isinstance(tag, str):
-            continue
-        text_value = child.text or None
-        if tag not in by_full:
-            by_full[tag] = text_value
-        # Fast path: ~80% of RSS tags have no namespace or colon prefix
-        if "{" in tag:
-            local = tag.rsplit("}", 1)[1].lower()
-        elif ":" in tag:
-            local = tag.split(":", 1)[1].lower()
-        else:
-            local = tag.lower()
-        if local not in by_local:
-            by_local[local] = text_value
-    return by_local, by_full
+def _parse_enclosure_element(enclosure: _Element) -> dict[str, Any]:
+    enc_item: dict[str, str | int | None] = {
+        "url": enclosure.get("url"),
+        "type": enclosure.get("type"),
+        "length": enclosure.get("length"),
+    }
+    length = enc_item.get("length")
+    if length:
+        try:
+            enc_item["length"] = int(length)
+        except (ValueError, TypeError):
+            enc_item.pop("length", None)
+    return _drop_none_values(enc_item)
 
 
 def _first_non_empty(
@@ -1244,14 +1338,78 @@ def _parse_rss_feed_entry_fast(
     item: _Element,
     atom_ns: str,
     has_media_ns: bool = True,
+    *,
+    include_content: bool = True,
+    include_tags: bool = True,
+    include_media: bool = True,
+    include_enclosures: bool = True,
 ) -> FastFeedParserDict:
-    tags = _atom_ns_tags(atom_ns)
-    text_by_local, text_by_full = _build_rss_item_text_maps(item)
+    atom_tags = _atom_ns_tags(atom_ns)
+    text_by_local: dict[str, Optional[str]] = {}
+    text_by_full: dict[str, Optional[str]] = {}
+    atom_links: list[_Element] = []
+    guid_element: Optional[_Element] = None
+    encoded_content_el: Optional[_Element] = None
+    raw_content_el: Optional[_Element] = None
+    rss_description_text: Optional[str] = None
+    tag_categories: list[dict[str, str | None]] = []
+    tag_subjects: list[dict[str, str | None]] = []
+    enclosures: list[dict[str, Any]] = []
+
+    for child in item:
+        tag = child.tag
+        if not isinstance(tag, str):
+            continue
+
+        text_value = child.text or None
+        if tag not in text_by_full:
+            text_by_full[tag] = text_value
+
+        if "{" in tag:
+            local = tag.rsplit("}", 1)[1].lower()
+        elif ":" in tag:
+            local = tag.split(":", 1)[1].lower()
+        else:
+            local = tag.lower()
+        if local not in text_by_local:
+            text_by_local[local] = text_value
+
+        if tag == atom_tags["link"]:
+            atom_links.append(child)
+        elif tag == "guid":
+            if guid_element is None:
+                guid_element = child
+        elif tag == _RSS_CONTENT_ENCODED_TAG:
+            if encoded_content_el is None:
+                encoded_content_el = child
+        elif tag == "content":
+            if raw_content_el is None:
+                raw_content_el = child
+        elif tag == "description":
+            if rss_description_text is None:
+                rss_description_text = text_value
+
+        if include_enclosures and tag == "enclosure":
+            cleaned = _parse_enclosure_element(child)
+            if cleaned.get("url"):
+                enclosures.append(cleaned)
+
+        if include_tags:
+            if local == "category":
+                term = text_value.strip() if text_value else None
+                if term:
+                    tag_categories.append(
+                        {"term": term, "scheme": child.get("domain"), "label": None}
+                    )
+            elif tag == _DC_SUBJECT_TAG:
+                term = text_value.strip() if text_value else None
+                if term:
+                    tag_subjects.append({"term": term, "scheme": None, "label": None})
 
     entry = FastFeedParserDict()
-    atom_id = text_by_full.get(tags["id"])
+    atom_id = text_by_full.get(atom_tags["id"])
     rss_guid = text_by_local.get("guid")
-    rdf_about = item.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about")
+    rdf_about = item.get(_RDF_ABOUT_ATTR)
     entry_id: Optional[str] = atom_id or rss_guid or rdf_about
     if entry_id:
         entry["id"] = entry_id.strip()
@@ -1296,13 +1454,20 @@ def _parse_rss_feed_entry_fast(
     if "updated" in entry and "published" not in entry:
         entry["published"] = entry["updated"]
 
-    # Inline link population for RSS (avoids redundant findall/find for 98.8% of entries)
-    atom_links = item.findall(tags["link"])
     if atom_links:
-        # Has atom:link elements - use full logic
-        _populate_entry_links(entry, item, atom_ns)
+        guid_text = (
+            guid_element.text.strip()
+            if guid_element is not None and guid_element.text
+            else None
+        )
+        _populate_entry_links_from_elements(
+            entry,
+            atom_links,
+            guid_text=guid_text,
+            guid_is_permalink=guid_element is not None
+            and guid_element.get("isPermaLink") == "true",
+        )
     else:
-        # Common RSS case: no atom:link elements
         entry["links"] = []
         if (
             "link" not in entry
@@ -1314,20 +1479,27 @@ def _parse_rss_feed_entry_fast(
     if "id" not in entry and "link" in entry:
         entry["id"] = entry["link"]
 
-    _populate_entry_content(entry, item, "rss", atom_ns)
+    if include_content:
+        _populate_entry_content_preparsed(
+            entry,
+            item,
+            content_el=(
+                encoded_content_el if encoded_content_el is not None else raw_content_el
+            ),
+            rss_description_text=rss_description_text,
+        )
 
-    if has_media_ns:
+    if include_media and has_media_ns:
         media_contents = _parse_media_content(item)
         if media_contents:
             entry["media_content"] = media_contents
 
-    enclosures = _parse_enclosures(item)
-    if enclosures:
+    if include_enclosures and enclosures:
         entry["enclosures"] = enclosures
 
     author = _first_non_empty(text_by_local, ("author", "creator"))
     if not author:
-        atom_author = item.find(tags["author_name"])
+        atom_author = item.find(atom_tags["author_name"])
         author = (
             atom_author.text.strip()
             if atom_author is not None and atom_author.text
@@ -1340,9 +1512,8 @@ def _parse_rss_feed_entry_fast(
     if comments:
         entry["comments"] = comments.strip()
 
-    tags = _parse_tags(item, "rss", atom_ns)
-    if tags:
-        entry["tags"] = tags
+    if include_tags and (tag_categories or tag_subjects):
+        entry["tags"] = tag_categories + tag_subjects
 
     return entry
 
@@ -1351,87 +1522,134 @@ def _parse_atom_feed_entry_fast(
     item: _Element,
     atom_ns: str,
     has_media_ns: bool = True,
+    *,
+    include_content: bool = True,
+    include_tags: bool = True,
+    include_media: bool = True,
+    include_enclosures: bool = True,
 ) -> FastFeedParserDict:
     t = _atom_ns_tags(atom_ns)
+    atom_link_tag = t["link"]
+    atom_author_tag = t["ns"] + "author"
+    atom_name_tag = t["ns"] + "name"
+    atom_links: list[_Element] = []
+    atom_categories: list[dict[str, str | None]] = []
+    enclosures: list[dict[str, Any]] = []
+    content_el: Optional[_Element] = None
+    author_name: Optional[str] = None
+    first_link_href: Optional[str] = None
+    published_source: Optional[str] = None
+    updated_source: Optional[str] = None
+    published_fallback_source: Optional[str] = None
+    updated_fallback_source: Optional[str] = None
+
     entry = FastFeedParserDict()
+    for child in item:
+        tag = child.tag
+        if not isinstance(tag, str):
+            continue
 
-    # ID
-    el = item.find(t["id"])
-    if el is not None and el.text:
-        entry["id"] = el.text.strip()
+        text_value = child.text
+        if tag == t["id"] and "id" not in entry and text_value:
+            entry["id"] = text_value.strip()
+        elif tag == t["title"] and "title" not in entry and text_value:
+            entry["title"] = text_value.strip()
+        elif tag == t["summary"] and "description" not in entry and text_value:
+            entry["description"] = text_value.strip()
+        elif tag == t["published"] and published_source is None and text_value:
+            published_source = text_value
+        elif tag == t["updated"] and updated_source is None and text_value:
+            updated_source = text_value
+        elif (
+            tag == t["pub_fallback"]
+            and published_fallback_source is None
+            and text_value
+        ):
+            published_fallback_source = text_value
+        elif (
+            tag == t["upd_fallback"] and updated_fallback_source is None and text_value
+        ):
+            updated_fallback_source = text_value
+        elif tag == atom_link_tag:
+            atom_links.append(child)
+            href = child.get("href")
+            if href and first_link_href is None:
+                first_link_href = href.strip()
+        elif include_content and tag == t["content"] and content_el is None:
+            content_el = child
+        elif tag == atom_author_tag and author_name is None:
+            author_name_el = child.find(atom_name_tag)
+            if author_name_el is not None and author_name_el.text:
+                author_name = author_name_el.text.strip()
 
-    # Title
-    el = item.find(t["title"])
-    if el is not None and el.text:
-        entry["title"] = el.text.strip()
+        if include_tags and tag == t["category"]:
+            term = child.get("term")
+            if term:
+                atom_categories.append(
+                    {
+                        "term": term,
+                        "scheme": child.get("scheme"),
+                        "label": child.get("label"),
+                    }
+                )
 
-    # Description (summary)
-    el = item.find(t["summary"])
-    if el is not None and el.text:
-        entry["description"] = el.text.strip()
+        if include_enclosures and tag == "enclosure":
+            cleaned = _parse_enclosure_element(child)
+            if cleaned.get("url"):
+                enclosures.append(cleaned)
 
-    # Link (href attribute)
-    el = item.find(t["link"])
-    if el is not None:
-        href = el.get("href")
-        if href:
-            entry["link"] = href.strip()
+    if first_link_href:
+        entry["link"] = first_link_href
 
-    # Dates
-    el = item.find(t["published"])
-    if el is not None and el.text:
-        published = _parse_date(el.text)
+    if published_source:
+        published = _parse_date(published_source)
         if published:
             entry["published"] = published
 
-    el = item.find(t["updated"])
-    if el is not None and el.text:
-        updated = _parse_date(el.text)
+    if updated_source:
+        updated = _parse_date(updated_source)
         if updated:
             entry["updated"] = updated
 
-    # Fallback date fields for mixed namespace scenarios
-    if "published" not in entry:
-        el = item.find(t["pub_fallback"])
-        if el is not None and el.text:
-            published = _parse_date(el.text)
-            if published:
-                entry["published"] = published
+    if "published" not in entry and published_fallback_source:
+        published = _parse_date(published_fallback_source)
+        if published:
+            entry["published"] = published
 
-    if "updated" not in entry:
-        el = item.find(t["upd_fallback"])
-        if el is not None and el.text:
-            updated = _parse_date(el.text)
-            if updated:
-                entry["updated"] = updated
+    if "updated" not in entry and updated_fallback_source:
+        updated = _parse_date(updated_fallback_source)
+        if updated:
+            entry["updated"] = updated
 
     if "updated" in entry and "published" not in entry:
         entry["published"] = entry["updated"]
 
-    _populate_entry_links(entry, item, atom_ns)
+    _populate_entry_links_from_elements(entry, atom_links)
 
     if "id" not in entry and "link" in entry:
         entry["id"] = entry["link"]
 
-    _populate_entry_content(entry, item, "atom", atom_ns)
+    if include_content:
+        _populate_entry_content_preparsed(
+            entry,
+            item,
+            content_el=content_el,
+            rss_description_text=None,
+        )
 
-    if has_media_ns:
+    if include_media and has_media_ns:
         media_contents = _parse_media_content(item)
         if media_contents:
             entry["media_content"] = media_contents
 
-    enclosures = _parse_enclosures(item)
-    if enclosures:
+    if include_enclosures and enclosures:
         entry["enclosures"] = enclosures
 
-    # Author
-    el = item.find(t["author_name"])
-    if el is not None and el.text:
-        entry["author"] = el.text.strip()
+    if author_name:
+        entry["author"] = author_name
 
-    tags = _parse_tags(item, "atom", atom_ns)
-    if tags:
-        entry["tags"] = tags
+    if include_tags and atom_categories:
+        entry["tags"] = atom_categories
 
     return entry
 
@@ -1441,15 +1659,36 @@ def _parse_feed_entry(
     feed_type: _FeedType,
     atom_namespace: Optional[str] = None,
     has_media_ns: bool = True,
+    *,
+    include_content: bool = True,
+    include_tags: bool = True,
+    include_media: bool = True,
+    include_enclosures: bool = True,
 ) -> FastFeedParserDict:
     # Use dynamic atom namespace or fallback to default
     atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
 
     if feed_type == "rss":
-        return _parse_rss_feed_entry_fast(item, atom_ns, has_media_ns)
+        return _parse_rss_feed_entry_fast(
+            item,
+            atom_ns,
+            has_media_ns,
+            include_content=include_content,
+            include_tags=include_tags,
+            include_media=include_media,
+            include_enclosures=include_enclosures,
+        )
 
     if feed_type == "atom":
-        return _parse_atom_feed_entry_fast(item, atom_ns, has_media_ns)
+        return _parse_atom_feed_entry_fast(
+            item,
+            atom_ns,
+            has_media_ns,
+            include_content=include_content,
+            include_tags=include_tags,
+            include_media=include_media,
+            include_enclosures=include_enclosures,
+        )
 
     # RDF path uses the generic field machinery
     # Check if this is Atom 0.3 to use different date field names
@@ -1565,16 +1804,18 @@ def _parse_feed_entry(
     if "id" not in entry and "link" in entry:
         entry["id"] = entry["link"]
 
-    _populate_entry_content(entry, item, feed_type, atom_ns)
+    if include_content:
+        _populate_entry_content(entry, item, feed_type, atom_ns)
 
-    if has_media_ns:
+    if include_media and has_media_ns:
         media_contents = _parse_media_content(item)
         if media_contents:
             entry["media_content"] = media_contents
 
-    enclosures = _parse_enclosures(item)
-    if enclosures:
-        entry["enclosures"] = enclosures
+    if include_enclosures:
+        enclosures = _parse_enclosures(item)
+        if enclosures:
+            entry["enclosures"] = enclosures
 
     author = get_field_value(
         "author",
@@ -1590,9 +1831,10 @@ def _parse_feed_entry(
         entry["author"] = author
 
     # Parse entry-level tags/categories
-    tags = _parse_tags(item, feed_type, atom_ns)
-    if tags:
-        entry["tags"] = tags
+    if include_tags:
+        tags = _parse_tags(item, feed_type, atom_ns)
+        if tags:
+            entry["tags"] = tags
 
     return entry
 
@@ -1923,6 +2165,7 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
         return None
 
 
+@lru_cache(maxsize=8192)
 def _parse_date(date_str: str) -> Optional[str]:
     """Parse date string and return as an ISO 8601 formatted UTC string.
 

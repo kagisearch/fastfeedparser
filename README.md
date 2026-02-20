@@ -116,7 +116,7 @@ Speedup: 50.1x
 
 ### Main Functions
 
-- `parse(source)`: Parse feed from a source that can be URL or a string
+- `parse(source, *, include_content=True, include_tags=True, include_media=True, include_enclosures=True)`: Parse feed from a URL/XML/JSON source, with optional field extraction toggles for faster parsing.
 
 
 ### Feed Object Structure
