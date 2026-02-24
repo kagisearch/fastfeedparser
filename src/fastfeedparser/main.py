@@ -991,8 +991,19 @@ def _parse_feed_info(
     for link in channel.findall(f"{{{atom_ns}}}link"):
         rel = link.get("rel")
         href = link.get("href") or link.get("link")
-        if rel is None and href:
+        if rel == "alternate" and href and not feed_link:
             feed_link = href
+            feed_links.append(
+                {
+                    "rel": rel,
+                    "type": link.get("type"),
+                    "href": href,
+                    "title": link.get("title"),
+                }
+            )
+        elif rel is None and href:
+            if not feed_link:
+                feed_link = href
         elif rel not in {"hub", "self", "replies", "edit"}:
             feed_links.append(
                 {
@@ -1134,7 +1145,10 @@ def _populate_entry_links_from_elements(
             "title": link.get("title"),
         }
         if rel == "alternate":
-            alternate_link = link_dict
+            if alternate_link is None:
+                alternate_link = link_dict
+            else:
+                entry_links.append(link_dict)
         elif rel not in {"edit", "self"}:
             entry_links.append(link_dict)
 

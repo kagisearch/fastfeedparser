@@ -71,8 +71,13 @@
   "feed": {
     "id": "https://stackoverflow.com/feeds/question/28509965",
     "language": null,
-    "link": "https://stackoverflow.com/feeds/question/28509965",
+    "link": "https://stackoverflow.com/q/28509965",
     "links": [
+      {
+        "href": "https://stackoverflow.com/q/28509965",
+        "rel": "alternate",
+        "type": "text/html"
+      },
       {
         "href": "https://stackoverflow.com/q/28509965",
         "rel": "alternate",
