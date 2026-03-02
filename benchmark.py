@@ -214,6 +214,7 @@ FEEDS = [
     "https://frisk.space/index.xml",
     "https://www.youtube.com/feeds/videos.xml?channel_id=UCA7LqFpF_Zlty4Yg2iGJppw",
     "https://quartzlibrary.com/atom/",
+    "https://happel.ai/index.xml",
 ]
 
 HEADERS = {
