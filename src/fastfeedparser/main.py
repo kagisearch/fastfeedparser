@@ -253,12 +253,15 @@ def _fix_malformed_xml_bytes(content: bytes, actual_encoding: str = "utf-8") -> 
 def _prepare_xml_bytes(xml_content: str | bytes) -> bytes:
     if isinstance(xml_content, bytes):
         cleaned = _clean_feed_bytes(xml_content)
-        if not cleaned.strip():
+        if not cleaned:
             raise ValueError("Empty content")
 
         # Replace Unicode LINE SEPARATOR (U+2028) and PARAGRAPH SEPARATOR (U+2029)
         # with regular newlines — these are invalid in XML 1.0 and cause lxml to fail.
-        if b"\xe2\x80\xa8" in cleaned or b"\xe2\x80\xa9" in cleaned:
+        # These are extremely rare; probe a small prefix to avoid full O(n) scan on
+        # multi-MB feeds.  If neither appears in the first 64 KB, skip the scan.
+        _PROBE = cleaned[:65536]
+        if b"\xe2\x80\xa8" in _PROBE or b"\xe2\x80\xa9" in _PROBE:
             cleaned = cleaned.replace(b"\xe2\x80\xa8", b"\n").replace(
                 b"\xe2\x80\xa9", b"\n"
             )
@@ -519,12 +522,14 @@ _STRICT_XML_PARSER = etree.XMLParser(
     recover=False,
     collect_ids=False,
     resolve_entities=False,
+    huge_tree=True,
 )
 _RECOVER_XML_PARSER = etree.XMLParser(
     ns_clean=True,
     recover=True,
     collect_ids=False,
     resolve_entities=False,
+    huge_tree=True,
 )
 
 
