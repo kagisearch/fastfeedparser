@@ -95,6 +95,8 @@ _RSS_CONTENT_ENCODED_TAG = "{http://purl.org/rss/1.0/modules/content/}encoded"
 _DC_SUBJECT_TAG = "{http://purl.org/dc/elements/1.1/}subject"
 _MEDIA_CONTENT_TAG = "{http://search.yahoo.com/mrss/}content"
 _MEDIA_THUMBNAIL_TAG = "{http://search.yahoo.com/mrss/}thumbnail"
+_MEDIA_CONTENT_DESCENDANT = ".//" + _MEDIA_CONTENT_TAG
+_MEDIA_THUMBNAIL_DESCENDANT = ".//" + _MEDIA_THUMBNAIL_TAG
 _MEDIA_TITLE_TAG = "{http://search.yahoo.com/mrss/}title"
 _MEDIA_TEXT_TAG = "{http://search.yahoo.com/mrss/}text"
 _MEDIA_DESCRIPTION_TAG = "{http://search.yahoo.com/mrss/}description"
@@ -1337,7 +1339,10 @@ def _synthesize_entry_description(entry: FastFeedParserDict) -> None:
             or "\t" in content_value
             or "\r" in content_value
         ):
-            content_value = _RE_WHITESPACE.sub(" ", content_value).strip()
+            # " ".join(split()) collapses \s+ runs identically to the regex
+            # but ~4x faster (split/join are C-level); only on the runs the
+            # guard already confirmed need collapsing.
+            content_value = " ".join(content_value.split())
         else:
             content_value = content_value.strip()
     entry["description"] = content_value[:512]
@@ -1403,7 +1408,7 @@ def _populate_entry_content(
 def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
     media_contents: list[dict[str, Any]] = []
 
-    for media in item.findall(f".//{_MEDIA_CONTENT_TAG}"):
+    for media in item.findall(_MEDIA_CONTENT_DESCENDANT):
         media_item: dict[str, str | int | None] = {
             "url": media.get("url"),
             "type": media.get("type"),
@@ -1447,7 +1452,7 @@ def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
             media_contents.append(cleaned)
 
     if not media_contents:
-        for thumbnail in item.findall(f".//{_MEDIA_THUMBNAIL_TAG}"):
+        for thumbnail in item.findall(_MEDIA_THUMBNAIL_DESCENDANT):
             parent = thumbnail.getparent()
             if parent is None or parent.tag == _MEDIA_CONTENT_TAG:
                 continue
@@ -1511,8 +1516,10 @@ def _parse_rss_feed_entry_fast(
     include_enclosures: bool = True,
 ) -> FastFeedParserDict:
     atom_tags = _atom_ns_tags(atom_ns)
+    atom_link_tag = atom_tags["link"]
+    atom_id_tag = atom_tags["id"]
     text_by_local: dict[str, Optional[str]] = {}
-    text_by_full: dict[str, Optional[str]] = {}
+    atom_id_text: Optional[str] = None
     atom_links: list[_Element] = []
     guid_element: Optional[_Element] = None
     encoded_content_el: Optional[_Element] = None
@@ -1528,8 +1535,6 @@ def _parse_rss_feed_entry_fast(
             continue
 
         text_value = child.text or None
-        if tag not in text_by_full:
-            text_by_full[tag] = text_value
 
         if "{" in tag:
             local = tag.rsplit("}", 1)[1].lower()
@@ -1540,8 +1545,11 @@ def _parse_rss_feed_entry_fast(
         if local not in text_by_local:
             text_by_local[local] = text_value
 
-        if tag == atom_tags["link"]:
+        if tag == atom_link_tag:
             atom_links.append(child)
+        elif tag == atom_id_tag:
+            if atom_id_text is None:
+                atom_id_text = text_value
         elif tag == "guid":
             if guid_element is None:
                 guid_element = child
@@ -1573,7 +1581,7 @@ def _parse_rss_feed_entry_fast(
                     tag_subjects.append({"term": term, "scheme": None, "label": None})
 
     entry = FastFeedParserDict()
-    atom_id = text_by_full.get(atom_tags["id"])
+    atom_id = atom_id_text
     rss_guid = text_by_local.get("guid")
     rdf_about = item.get(_RDF_ABOUT_ATTR)
     entry_id: Optional[str] = atom_id or rss_guid or rdf_about
