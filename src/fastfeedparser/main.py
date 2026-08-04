@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import datetime
 from email.utils import parsedate_to_datetime
-import gzip
 import html as _html_mod
 import json
 import re
@@ -476,6 +475,61 @@ class _SchemeRestrictedRedirectHandler(HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
+# Cap on both the bytes read off the wire and the bytes a compressed response
+# is allowed to expand into. A ~1.7KB brotli body can otherwise inflate to 1GB.
+_MAX_CONTENT_BYTES = 32 * 1024 * 1024
+_BROTLI_INPUT_CHUNK = 64 * 1024
+
+
+def _inflate_bounded(data: bytes, wbits: int, limit: int) -> bytes:
+    """Inflate `data`, stopping once more than `limit` bytes are produced.
+
+    Returns up to limit + 1 bytes so the caller can detect the overflow.
+    `wbits` selects the container: 16 + MAX_WBITS for gzip, -MAX_WBITS for raw
+    deflate. gzip bodies may concatenate members, which gzip.decompress joined,
+    so a finished stream with trailing bytes is resumed rather than truncated.
+    """
+    parts: list[bytes] = []
+    produced = 0
+    while True:
+        # max_length of 0 means "unlimited" to zlib; the produced > limit break
+        # below keeps limit + 1 - produced at 1 or more.
+        decompressor = zlib.decompressobj(wbits)
+        parts.append(decompressor.decompress(data, limit + 1 - produced))
+        produced += len(parts[-1])
+        if produced > limit:
+            break
+        if not decompressor.eof:
+            # Under the limit with the stream unfinished means it ended early.
+            # The one-shot decompressors raised on truncated input (gzip with
+            # EOFError, zlib with zlib.error); keep failing rather than
+            # returning a partial body as if it were the whole feed.
+            raise zlib.error("incomplete or truncated stream")
+        data = decompressor.unused_data
+        if not data:
+            break
+    return b"".join(parts)
+
+
+def _brotli_decompress_bounded(data: bytes, limit: int) -> bytes:
+    """Brotli-decompress `data`, producing at most limit + 1 bytes."""
+    try:
+        return brotli.Decompressor().process(data, output_buffer_limit=limit + 1)
+    except TypeError:
+        # brotli < 1.2.0 has no output cap, so feed the input in slices and
+        # check the running total instead.
+        pass
+    decompressor = brotli.Decompressor()
+    parts: list[bytes] = []
+    produced = 0
+    for start in range(0, len(data), _BROTLI_INPUT_CHUNK):
+        parts.append(decompressor.process(data[start : start + _BROTLI_INPUT_CHUNK]))
+        produced += len(parts[-1])
+        if produced > limit:
+            break
+    return b"".join(parts)
+
+
 def _fetch_url_content(url: str) -> str | bytes:
     if not _is_http_url(url):
         raise ValueError(f"refusing to fetch non-http(s) URL: {url[:100]}")
@@ -490,18 +544,23 @@ def _fetch_url_content(url: str) -> str | bytes:
     )
     opener = build_opener(_SchemeRestrictedRedirectHandler(), HTTPErrorProcessor())
     with opener.open(request, timeout=30) as response:
-        content: bytes = response.read()
+        limit = _MAX_CONTENT_BYTES
+        content: bytes = response.read(limit + 1)
+        if len(content) > limit:
+            raise ValueError(f"response body exceeds {limit} bytes")
         content_encoding = response.headers.get("Content-Encoding")
         if content_encoding == "gzip":
-            content = gzip.decompress(content)
+            content = _inflate_bounded(content, 16 + zlib.MAX_WBITS, limit)
         elif content_encoding == "deflate":
-            content = zlib.decompress(content, -zlib.MAX_WBITS)
+            content = _inflate_bounded(content, -zlib.MAX_WBITS, limit)
         elif content_encoding == "br":
             if not HAS_BROTLI:
                 raise ValueError(
                     "Received brotli-compressed response but 'brotli' is not installed"
                 )
-            content = brotli.decompress(content)
+            content = _brotli_decompress_bounded(content, limit)
+        if len(content) > limit:
+            raise ValueError(f"decompressed response exceeds {limit} bytes")
         content_charset = response.headers.get_content_charset()
         if content_charset:
             try:
