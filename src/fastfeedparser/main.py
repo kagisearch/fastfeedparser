@@ -23,7 +23,7 @@ try:
 except ImportError:
     _json_loads = json.loads
 from typing import Any, Callable, Optional, Protocol, TYPE_CHECKING, Literal
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 from urllib.request import (
     HTTPErrorProcessor,
     HTTPRedirectHandler,
@@ -440,7 +440,45 @@ def _parse_json_feed(
     return feed
 
 
+_ALLOWED_URL_SCHEMES = frozenset(("http", "https"))
+
+
+def _is_http_url(url: str) -> bool:
+    """True only for http(s) URLs.
+
+    urlsplit lowercases the scheme and rejects one that is not
+    ``[a-zA-Z][a-zA-Z0-9+.-]*``, so "FILE://" and "+file://" both fail here.
+    urllib.request derives Request.type the same way (lowercased text before
+    the first colon), so a URL that passes this check cannot dispatch to
+    FileHandler, FTPHandler or DataHandler.
+    """
+    return urlsplit(url).scheme in _ALLOWED_URL_SCHEMES
+
+
+class _SchemeRestrictedRedirectHandler(HTTPRedirectHandler):
+    """Refuse 30x redirects that leave http(s).
+
+    urllib's default handler permits redirecting to ftp:// as well, which
+    would let a server reach a non-http scheme through the same fetch.
+    """
+
+    def redirect_request(
+        self,
+        req: Any,
+        fp: Any,
+        code: int,
+        msg: str,
+        headers: Any,
+        newurl: str,
+    ) -> Any:
+        if not _is_http_url(newurl):
+            raise ValueError(f"refusing redirect to non-http(s) URL: {newurl[:100]}")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def _fetch_url_content(url: str) -> str | bytes:
+    if not _is_http_url(url):
+        raise ValueError(f"refusing to fetch non-http(s) URL: {url[:100]}")
     accept_encoding = "gzip, deflate, br" if HAS_BROTLI else "gzip, deflate"
     request = Request(
         url,
@@ -450,7 +488,7 @@ def _fetch_url_content(url: str) -> str | bytes:
             "User-Agent": "fastfeedparser (+https://github.com/kagisearch/fastfeedparser)",
         },
     )
-    opener = build_opener(HTTPRedirectHandler(), HTTPErrorProcessor())
+    opener = build_opener(_SchemeRestrictedRedirectHandler(), HTTPErrorProcessor())
     with opener.open(request, timeout=30) as response:
         content: bytes = response.read()
         content_encoding = response.headers.get("Content-Encoding")
@@ -653,7 +691,10 @@ def _extract_meta_refresh_url(content: str | bytes, base_url: str) -> str | None
             match = _RE_META_REFRESH_URL.search(meta.get("content", ""))
             if match:
                 url = urljoin(base_url, match.group(1))
-                if url != base_url:
+                # urljoin keeps an absolute reference's own scheme, so an
+                # attacker page can name file:// or ftp:// here. Apply the
+                # same allow-list parse() applies to its source.
+                if url != base_url and _is_http_url(url):
                     return url
     return None
 
