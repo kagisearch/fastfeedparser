@@ -14,6 +14,12 @@ pytest                        # Run all tests
 pytest -k "test_name"         # Run tests matching pattern
 python benchmark.py           # Benchmark against feedparser
 python benchmark.py -s        # Benchmark fastfeedparser only
+
+# Optional native core (needs a Rust toolchain and a virtualenv)
+pip install maturin
+(cd rust && maturin develop --release)       # build fastfeedparser_core into the venv
+(cd rust && cargo test)                      # Rust unit tests
+FASTFEEDPARSER_DISABLE_CORE=1 pytest         # test the lxml path alone
 ```
 
 ## Architecture
@@ -31,6 +37,8 @@ Single-file parser: `src/fastfeedparser/main.py`
 - `_parse_json_feed()` - JSON Feed 1.0/1.1
 
 **Date parsing cascade:** ISO-8601 → RFC-822 → dateutil → dateparser (slowest, LRU-cached)
+
+**Native core (optional):** `rust/` is a separate distribution, `fastfeedparser-core` (PyO3 + quick-xml). When it is importable, `_parse_with_core()` uses it for well-formed UTF-8 RSS and Atom; it returns a reason string for anything else and the lxml path runs as before. The two paths must produce identical output: `tests/test_native_core.py` compares them on the fixtures and on generated feeds (`tests/feedgen.py`). Any change to entry extraction in `main.py` needs the matching change in `rust/src/rss.rs`, `atom.rs` or `media.rs`.
 
 **Performance patterns:**
 - lxml recover parser in one pass; a strict parse only decides whether a malformed-looking document needs body repair
