@@ -2653,6 +2653,10 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
         return None
 
 
+# Longer strings are not dates, and dateutil tokenizes in quadratic time.
+_MAX_DATE_CHARS = 256
+
+
 @lru_cache(maxsize=8192)
 def _parse_date(date_str: str) -> Optional[str]:
     """Parse date string and return as an ISO 8601 formatted UTC string.
@@ -2670,8 +2674,11 @@ def _parse_date(date_str: str) -> Optional[str]:
     if not candidate:
         return None
 
-    # Fast path: clean ISO-8601 (covers >90% of Atom/modern RSS dates)
     clen = len(candidate)
+    if clen > _MAX_DATE_CHARS:
+        return None
+
+    # Fast path: clean ISO-8601 (covers >90% of Atom/modern RSS dates)
     if clen >= 20 and candidate[4] == "-" and candidate[0:4].isdigit():
         last = candidate[-1]
         # Most common: ends with 'Z' (e.g., 2024-01-15T10:30:00Z)
