@@ -4,7 +4,7 @@ A high-performance feed parser for Python that handles RSS, Atom, and RDF. Built
 
 ### Why FastFeedParser?
 
-It's about 25x faster (check included `benchmark.py`) than popular feedparser
+It's about 35x faster (check included `benchmark.py`) than popular feedparser
 library while keeping a familiar API. This speed comes from:
 
 - lxml for efficient XML parsing
@@ -95,22 +95,22 @@ And publish a full report looking like this
 ```
 Summary:
 --------------------------------------------------
-Total wall-clock time: 38.70s
+Total wall-clock time: 40.90s
 Successfully tested 200/200 feeds
 
 FastFeedParser:
   Total entries: 6600
-  Total parsing time: 0.46s
+  Total parsing time: 0.35s
   Average per feed: 0.002s
-  Feeds/sec: 439.0
+  Feeds/sec: 571.3
 
 Feedparser:
   Total entries: 6555
-  Total parsing time: 12.31s
-  Average per feed: 0.062s
-  Feeds/sec: 16.2
+  Total parsing time: 13.19s
+  Average per feed: 0.066s
+  Feeds/sec: 15.2
 
-Speedup: FastFeedParser is 27.0x faster
+Speedup: FastFeedParser is 37.7x faster
 
 OUTLIERS: Entry Count Mismatches (2 feeds)
 --------------------------------------------------
