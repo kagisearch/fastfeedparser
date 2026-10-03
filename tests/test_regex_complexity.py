@@ -11,12 +11,13 @@ import time
 import pytest
 
 from fastfeedparser import parse
-from fastfeedparser.main import _extract_meta_refresh_url, _fix_malformed_xml_bytes
+from fastfeedparser.main import _extract_meta_refresh_url, _repair_xml_body_bytes
 
 _BUDGET_SECONDS = 1.0
 
-# A utf-16 declaration on bytes that are not utf-16 routes the whole document
-# through _fix_malformed_xml_bytes.
+# A utf-16 declaration on bytes that are not utf-16 marks the document as
+# malformed-looking; if it then fails to parse, the whole body goes through
+# _repair_xml_body_bytes. The hostile feeds below are all left unparseable.
 _UTF16_DECL = b'<?xml version="1.0" encoding="utf-16"?>'
 
 
@@ -37,10 +38,7 @@ def _parse_ignoring_invalid(source):
 _HOSTILE_INPUTS = [
     pytest.param(
         _parse_ignoring_invalid,
-        _UTF16_DECL
-        + b'<rss version="2.0"><channel><title>t</title>'
-        + b" " * 40_000
-        + b"</channel></rss>",
+        _UTF16_DECL + b'<rss version="2.0"><channel><title>t</title>' + b" " * 40_000,
         id="whitespace-run-bytes",
     ),
     pytest.param(
@@ -80,6 +78,25 @@ def test_hostile_input_is_handled_in_linear_time(run, hostile_input):
     assert time.perf_counter() - start < _BUDGET_SECONDS
 
 
+# The same shapes straight into the repair step, so these keep guarding the
+# regexes even if parse() stops routing a document through it.
+@pytest.mark.parametrize(
+    "hostile_body",
+    [
+        pytest.param(b"<rss>" + b" " * 40_000, id="whitespace-run"),
+        pytest.param(
+            b'<feed><link href="x">' + b"\n" * 40_000 + b"x</feed>",
+            id="newline-run-after-unclosed-link",
+        ),
+        pytest.param(b"<rss>" + b"<link" * 20_000, id="link-starts-without-close"),
+    ],
+)
+def test_body_repair_is_linear(hostile_body):
+    start = time.perf_counter()
+    _repair_xml_body_bytes(hostile_body)
+    assert time.perf_counter() - start < _BUDGET_SECONDS
+
+
 @pytest.mark.parametrize(
     "broken, repaired",
     [
@@ -90,7 +107,7 @@ def test_hostile_input_is_handled_in_linear_time(run, hostile_input):
     ],
 )
 def test_malformed_xml_is_still_repaired(broken, repaired):
-    assert _fix_malformed_xml_bytes(broken) == repaired
+    assert _repair_xml_body_bytes(broken) == repaired
 
 
 @pytest.mark.parametrize(
@@ -104,7 +121,7 @@ def test_malformed_xml_is_still_repaired(broken, repaired):
     ],
 )
 def test_well_formed_links_are_left_alone(content):
-    assert _fix_malformed_xml_bytes(content) == content
+    assert _repair_xml_body_bytes(content) == content
 
 
 def test_unclosed_links_are_repaired_end_to_end():

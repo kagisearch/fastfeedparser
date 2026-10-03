@@ -234,7 +234,7 @@ def _clean_feed_bytes(content: bytes) -> bytes:
     return content
 
 
-def _fix_malformed_xml_bytes(content: bytes, actual_encoding: str = "utf-8") -> bytes:
+def _fix_xml_header_bytes(content: bytes, actual_encoding: str = "utf-8") -> bytes:
     # XML declarations and encoding definitions live at the top of the file.
     # Run declaration-fixing regexes only on the first 2 KB to avoid scanning
     # multi-megabyte payloads with patterns that can only match the header.
@@ -254,19 +254,20 @@ def _fix_malformed_xml_bytes(content: bytes, actual_encoding: str = "utf-8") -> 
         )
         header = _RE_UTF16_ENCODING_BYTES.sub(replacement, header)
 
-    # Reassemble before running body-wide fixes
-    content = header + tail
+    return header + tail
 
+
+def _repair_xml_body_bytes(content: bytes) -> bytes:
+    """Rewrite body-wide syntax errors. These patterns also match article text."""
     # Fix malformed attribute syntax like rss:version=2.0 (missing quotes)
     content = _RE_UNQUOTED_ATTR_BYTES.sub(rb'\1="\2"', content)
 
     # Fix unclosed link tags - common in Atom feeds
-    content = _RE_UNCLOSED_LINK_BYTES.sub(rb"<link\1/>", content)
-
-    return content
+    return _RE_UNCLOSED_LINK_BYTES.sub(rb"<link\1/>", content)
 
 
-def _prepare_xml_bytes(xml_content: str | bytes) -> bytes:
+def _prepare_xml_bytes(xml_content: str | bytes) -> tuple[bytes, bool]:
+    """Return the cleaned document and whether its header looked malformed."""
     if isinstance(xml_content, bytes):
         cleaned = _clean_feed_bytes(xml_content)
         if not cleaned:
@@ -287,7 +288,7 @@ def _prepare_xml_bytes(xml_content: str | bytes) -> bytes:
         if detected_encoding.startswith("utf-16") and b"\x00" not in cleaned[:200]:
             actual_encoding = "utf-8"
 
-        needs_fixing = (
+        looks_malformed = (
             b"?xml?xml" in cleaned[:200].lower()
             or b"??>" in cleaned[:200]
             or (
@@ -296,9 +297,9 @@ def _prepare_xml_bytes(xml_content: str | bytes) -> bytes:
             )
             or (b"utf-16" in cleaned[:200].lower() and actual_encoding != "utf-16")
         )
-        if needs_fixing:
-            cleaned = _fix_malformed_xml_bytes(cleaned, actual_encoding=actual_encoding)
-        return cleaned
+        if looks_malformed:
+            cleaned = _fix_xml_header_bytes(cleaned, actual_encoding=actual_encoding)
+        return cleaned, looks_malformed
 
     # Str input: fix encoding declaration, encode to bytes, then use bytes path.
     xml_content = _ensure_utf8_xml_declaration(xml_content)
@@ -668,6 +669,20 @@ def _parse_xml_root(xml_content: bytes) -> _Element:
     return root
 
 
+def _parse_repairable_xml_root(xml_content: bytes) -> tuple[_Element, bytes]:
+    """Parse a document whose header looked malformed.
+
+    Returns the root and the bytes it was parsed from. The body is only
+    repaired when the document does not parse as it is, because the repair
+    patterns also rewrite matching article text.
+    """
+    try:
+        return etree.fromstring(xml_content, parser=_STRICT_XML_PARSER), xml_content
+    except etree.XMLSyntaxError:
+        xml_content = _repair_xml_body_bytes(xml_content)
+        return _parse_xml_root(xml_content), xml_content
+
+
 def _root_tag_local(root: _Element) -> str:
     return root.tag.split("}")[-1].lower() if "}" in root.tag else root.tag.lower()
 
@@ -907,8 +922,11 @@ def _parse_content(
     if json_feed is not None:
         return json_feed
 
-    xml_content = _prepare_xml_bytes(xml_content)
-    root = _parse_xml_root(xml_content)
+    xml_content, looks_malformed = _prepare_xml_bytes(xml_content)
+    if looks_malformed:
+        root, xml_content = _parse_repairable_xml_root(xml_content)
+    else:
+        root = _parse_xml_root(xml_content)
     root_tag_local = _root_tag_local(root)
     _raise_for_non_feed_root(root, root_tag_local, xml_content)
 
