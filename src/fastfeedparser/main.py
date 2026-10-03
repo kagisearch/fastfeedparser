@@ -2449,13 +2449,17 @@ def _path_tag_steps(path: str) -> Optional[tuple[str, ...]]:
 
     Returns None for anything else (wildcards, predicates, prefixes, "." or
     "//"), which callers hand to find(). The "/" inside a "{uri}" is not a
-    step separator.
+    step separator. "{*}tag" and "{}tag" are not plain either: find() matches
+    them against any namespace and no namespace, not against a literal tag.
     """
     steps = tuple(_RE_PATH_TAG_STEP.findall(path))
     if not steps or "/".join(steps) != path:
         return None
-    if any(_RE_PATH_SPECIAL.search(step.rpartition("}")[2]) for step in steps):
-        return None
+    for step in steps:
+        if step.startswith(("{*}", "{}")):
+            return None
+        if _RE_PATH_SPECIAL.search(step.rpartition("}")[2]):
+            return None
     return steps
 
 
