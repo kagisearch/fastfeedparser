@@ -6,7 +6,7 @@ import html as _html_mod
 import json
 import re
 import zlib
-from functools import lru_cache
+from functools import lru_cache, partial
 
 try:
     import brotli
@@ -117,6 +117,7 @@ def _atom_ns_tags(atom_ns: str) -> dict[str, str]:
         "summary": ns + "summary",
         "link": ns + "link",
         "content": ns + "content",
+        "author": ns + "author",
         "author_name": ns + "author/" + ns + "name",
         "category": ns + "category",
         "published": ns + ("issued" if is_atom_03 else "published"),
@@ -909,19 +910,41 @@ def _parse_content(
     )
 
     # Parse entries — resolve parser once per feed instead of per entry
+    entry_options = dict(
+        include_content=include_content,
+        include_tags=include_tags,
+        include_media=include_media,
+        include_enclosures=include_enclosures,
+    )
+    atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
+    parse_entry: Callable[[_Element], FastFeedParserDict]
+    if feed_type == "rss":
+        parse_entry = partial(
+            _parse_rss_feed_entry_fast,
+            atom_ns=atom_ns,
+            has_media_ns=has_media_ns,
+            **entry_options,
+        )
+    elif feed_type == "atom":
+        parse_entry = partial(
+            _parse_atom_feed_entry_fast,
+            atom_ns=atom_ns,
+            has_media_ns=has_media_ns,
+            **entry_options,
+        )
+    else:
+        parse_entry = partial(
+            _parse_feed_entry,
+            feed_type=feed_type,
+            atom_namespace=atom_namespace,
+            has_media_ns=has_media_ns,
+            **entry_options,
+        )
+
     entries: list[FastFeedParserDict] = []
     feed["entries"] = entries
     for item in items:
-        entry = _parse_feed_entry(
-            item,
-            feed_type,
-            atom_namespace,
-            has_media_ns,
-            include_content=include_content,
-            include_tags=include_tags,
-            include_media=include_media,
-            include_enclosures=include_enclosures,
-        )
+        entry = parse_entry(item)
         # Ensure that titles and descriptions are always present
         entry["title"] = entry.get("title", "").strip()
         entry["description"] = entry.get("description", "").strip()
@@ -1322,14 +1345,22 @@ def _populate_entry_links(
 
 
 _SYNTH_DESCRIPTION_LEN = 512
-# Plain-text content is normalized on this many leading chars first; only a
+# Normalized text is first computed on this many leading chars; only a
 # whitespace-heavy prefix that yields < _SYNTH_DESCRIPTION_LEN chars falls
 # back to normalizing the whole string.
-_SYNTH_DESCRIPTION_SCAN = 4096
+_SYNTH_DESCRIPTION_SCAN = 640
+# HTML content is only stripped of tags up to 2048 chars. The fast path first
+# tries a prefix ending at the first ">" at or after this offset.
+_SYNTH_HTML_LIMIT = 2048
+_SYNTH_HTML_CUT = 800
 
 
 def _collapse_whitespace(value: str) -> str:
     return " ".join(value.split())
+
+
+def _needs_whitespace_collapse(value: str) -> bool:
+    return "  " in value or "\n" in value or "\t" in value or "\r" in value
 
 
 def _normalize_description_prefix(value: str, normalize: Callable[[str], str]) -> str:
@@ -1346,6 +1377,34 @@ def _normalize_description_prefix(value: str, normalize: Callable[[str], str]) -
     return normalize(value)[:_SYNTH_DESCRIPTION_LEN]
 
 
+def _html_description_from_prefix(html: str) -> Optional[str]:
+    """Synthesize the description from a prefix of `html`, or None if the
+    prefix cannot be shown to give the same result as the full pipeline.
+
+    The prefix ends just after a ">", so no _RE_HTML_TAGS match spans the cut
+    (a match ends at the first ">" after its "<"). If that ">" closed a tag,
+    the stripped prefix ends with the " " it was replaced by, and no entity
+    reference spans a space, so unescaping the prefix equals the prefix of the
+    unescaped text. A whitespace run found in the prefix exists in the full
+    text too, which selects the collapse branch, and collapsing is
+    prefix-preserving.
+    """
+    cut = html.find(">", _SYNTH_HTML_CUT, _SYNTH_HTML_LIMIT - 1)
+    if cut == -1:
+        return None
+    head = _RE_HTML_TAGS.sub(" ", html[: cut + 1])
+    if not head.endswith(" "):
+        return None
+    if "&" in head:
+        head = _html_mod.unescape(head)
+    if not _needs_whitespace_collapse(head):
+        return None
+    collapsed = _collapse_whitespace(head)
+    if len(collapsed) < _SYNTH_DESCRIPTION_LEN:
+        return None
+    return collapsed[:_SYNTH_DESCRIPTION_LEN]
+
+
 def _synthesize_entry_description(entry: FastFeedParserDict) -> None:
     if "description" in entry or "content" not in entry:
         return
@@ -1353,15 +1412,14 @@ def _synthesize_entry_description(entry: FastFeedParserDict) -> None:
     content_value = entry["content"][0]["value"]
     if content_value:
         if "<" in content_value and ">" in content_value:
-            content_value = _RE_HTML_TAGS.sub(" ", content_value[:2048])
+            description = _html_description_from_prefix(content_value)
+            if description is not None:
+                entry["description"] = description
+                return
+            content_value = _RE_HTML_TAGS.sub(" ", content_value[:_SYNTH_HTML_LIMIT])
             if "&" in content_value:
                 content_value = _html_mod.unescape(content_value)
-        if (
-            "  " in content_value
-            or "\n" in content_value
-            or "\t" in content_value
-            or "\r" in content_value
-        ):
+        if _needs_whitespace_collapse(content_value):
             # " ".join(split()) collapses \s+ runs identically to the regex
             # but ~4x faster (split/join are C-level); only on the runs the
             # guard already confirmed need collapsing.
@@ -1584,6 +1642,7 @@ _RSS_KIND_DESCRIPTION = 6
 _RSS_KIND_ENCLOSURE = 7
 _RSS_KIND_CATEGORY = 8
 _RSS_KIND_SUBJECT = 9
+_RSS_KIND_ATOM_AUTHOR = 10
 
 # Bound on per-namespace tag classification caches. Feeds are untrusted and
 # can carry arbitrary tag names, so stop memoizing past this many.
@@ -1591,8 +1650,13 @@ _TAG_CACHE_MAX = 4096
 
 
 @lru_cache(maxsize=4)
-def _rss_tag_info_cache(atom_ns: str) -> dict[str, tuple[Optional[str], int]]:
-    return {}
+def _rss_tag_info_cache(atom_ns: str) -> dict[Any, tuple[Optional[str], int]]:
+    # Comments, PIs and entities carry these factories as their .tag.
+    return {
+        etree.Comment: (None, _RSS_KIND_OTHER),
+        etree.ProcessingInstruction: (None, _RSS_KIND_OTHER),
+        etree.Entity: (None, _RSS_KIND_OTHER),
+    }
 
 
 # Local names whose first-occurrence text _parse_rss_feed_entry_fast reads.
@@ -1649,6 +1713,8 @@ def _classify_rss_tag(tag: str, atom_tags: dict[str, str]) -> tuple[Optional[str
         kind = _RSS_KIND_CATEGORY
     elif tag == _DC_SUBJECT_TAG:
         kind = _RSS_KIND_SUBJECT
+    elif tag == atom_tags["author"]:
+        kind = _RSS_KIND_ATOM_AUTHOR
     else:
         kind = _RSS_KIND_OTHER
     return (local if local in _RSS_TEXT_LOCALS else None), kind
@@ -1678,14 +1744,14 @@ def _parse_rss_feed_entry_fast(
     tag_categories: list[dict[str, str | None]] = []
     tag_subjects: list[dict[str, str | None]] = []
     enclosures: list[dict[str, Any]] = []
+    has_atom_author = False
 
     for child in item:
         tag = child.tag
-        if not isinstance(tag, str):
-            continue
-
         info = tag_info.get(tag)
         if info is None:
+            if not isinstance(tag, str):
+                continue
             info = _classify_rss_tag(tag, atom_tags)
             if len(tag_info) < _TAG_CACHE_MAX:
                 tag_info[tag] = info
@@ -1732,6 +1798,8 @@ def _parse_rss_feed_entry_fast(
                 cleaned = _parse_enclosure_element(child)
                 if cleaned.get("url"):
                     enclosures.append(cleaned)
+        elif kind == _RSS_KIND_ATOM_AUTHOR:
+            has_atom_author = True
         elif kind == _RSS_KIND_SUBJECT:
             if include_tags:
                 term = text_value.strip() if text_value else None
@@ -1838,7 +1906,7 @@ def _parse_rss_feed_entry_fast(
         entry["enclosures"] = enclosures
 
     author = text_by_local.get("author") or text_by_local.get("creator")
-    if not author:
+    if not author and has_atom_author:
         atom_author = item.find(atom_tags["author_name"])
         author = (
             atom_author.text.strip()
@@ -2296,6 +2364,26 @@ def _field_value_getter(
     return wrapper
 
 
+_RE_PATH_TAG_STEP = re.compile(r"(?:\{[^}]*\})?[^/{}]+")
+_RE_PATH_SPECIAL = re.compile(r"[.*\[\]@():]")
+
+
+@lru_cache(maxsize=256)
+def _path_tag_steps(path: str) -> Optional[tuple[str, ...]]:
+    """Split an ElementPath of plain "{ns}tag" steps joined by "/".
+
+    Returns None for anything else (wildcards, predicates, prefixes, "." or
+    "//"), which callers hand to find(). The "/" inside a "{uri}" is not a
+    step separator.
+    """
+    steps = tuple(_RE_PATH_TAG_STEP.findall(path))
+    if not steps or "/".join(steps) != path:
+        return None
+    if any(_RE_PATH_SPECIAL.search(step.rpartition("}")[2]) for step in steps):
+        return None
+    return steps
+
+
 def _cached_element_value_factory(
     root: _Element,
 ) -> _ElementValueGetter:
@@ -2322,8 +2410,12 @@ def _cached_element_value_factory(
             prefixed_index[tag.lower()] = child
 
     def getter(path: str, attribute: Optional[str] = None) -> Optional[str]:
-        if "/" in path:
+        steps = _path_tag_steps(path)
+        if steps is None:
             el = root.find(path)
+        elif len(steps) > 1:
+            # "a/b" can only match below a child tagged "a".
+            el = root.find(path) if steps[0] in first_by_tag else None
         else:
             el = first_by_tag.get(path)
             if el is None and prefixed_index and "{" not in path:
