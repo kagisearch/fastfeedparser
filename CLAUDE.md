@@ -33,7 +33,7 @@ Single-file parser: `src/fastfeedparser/main.py`
 **Date parsing cascade:** ISO-8601 → RFC-822 → dateutil → dateparser (slowest, LRU-cached)
 
 **Performance patterns:**
-- lxml with strict parser first, recover parser as fallback
+- lxml recover parser in one pass; a strict parse only decides whether a malformed-looking document needs body repair
 - Pre-compiled regex (`_RE_*` constants)
 - LRU-cached slow parsers (`_slow_dateutil_parse`, `_slow_dateparser`)
 

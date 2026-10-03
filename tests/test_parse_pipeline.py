@@ -72,3 +72,96 @@ def test_unclosed_links_are_still_repaired():
     parsed = parse(feed)
     assert parsed.feed.link == "http://e.com/"
     assert [entry.link for entry in parsed.entries] == ["http://e.com/1"]
+
+
+@pytest.mark.parametrize("separator", ["\u2028", "\u2029"])
+def test_unicode_line_separators_become_newlines(separator):
+    feed = (
+        f'<rss version="2.0"><channel><title>a{separator}b</title>'
+        f"<item><title>x{separator}y</title></item></channel></rss>"
+    ).encode()
+    parsed = parse(feed)
+    assert parsed.feed.title == "a\nb"
+    assert parsed.entries[0].title == "x\ny"
+
+
+def test_line_separator_at_end_of_probe_window_is_found():
+    head = b'<rss version="2.0"><channel><title>t</title><item><title>'
+    # The separator's three bytes are the last three of the first 64 KB.
+    padding = b"x" * (65536 - len(head) - 3)
+    feed = head + padding + "\u2028".encode() + b"end</title></item></channel></rss>"
+    assert parse(feed).entries[0].title.endswith("x\nend")
+
+
+_MEDIA_NS = b'xmlns:media="http://search.yahoo.com/mrss/"'
+
+
+def test_media_in_a_later_item_only_is_parsed():
+    feed = (
+        b'<rss version="2.0" ' + _MEDIA_NS + b"><channel><title>t</title>"
+        b"<item><title>a</title></item>"
+        b'<item><title>b</title><media:content url="http://e.com/i.jpg"/></item>'
+        b"</channel></rss>"
+    )
+    media = [entry.get("media_content") for entry in parse(feed).entries]
+    assert media == [None, [{"url": "http://e.com/i.jpg"}]]
+
+
+def test_media_namespace_declared_on_the_element_is_parsed():
+    feed = _rss(b"<media:thumbnail " + _MEDIA_NS + b' url="http://e.com/t.jpg"/>')
+    assert parse(feed).entries[0].media_content == [
+        {"url": "http://e.com/t.jpg", "type": "image/jpeg"}
+    ]
+
+
+@pytest.mark.parametrize("codec", ["utf-16", "utf-16-le", "utf-16-be"])
+def test_media_is_parsed_in_utf16_feeds(codec):
+    feed = (
+        '<?xml version="1.0" encoding="utf-16"?>'
+        '<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">'
+        "<channel><title>t</title><item><title>a</title>"
+        '<media:content url="http://e.com/i.jpg" medium="image"/>'
+        "</item></channel></rss>"
+    ).encode(codec)
+    assert parse(feed).entries[0].media_content == [
+        {"url": "http://e.com/i.jpg", "medium": "image"}
+    ]
+
+
+def test_media_namespace_without_media_elements_adds_nothing():
+    feed = (
+        b'<rss version="2.0" ' + _MEDIA_NS + b"><channel><title>t</title>"
+        b"<item><title>a</title><media:rating>nonadult</media:rating></item>"
+        b"</channel></rss>"
+    )
+    assert "media_content" not in parse(feed).entries[0]
+
+
+def test_media_is_omitted_when_not_requested():
+    feed = (
+        b'<rss version="2.0" ' + _MEDIA_NS + b"><channel><title>t</title>"
+        b'<item><title>a</title><media:content url="http://e.com/i.jpg"/></item>'
+        b"</channel></rss>"
+    )
+    assert "media_content" not in parse(feed, include_media=False).entries[0]
+
+
+def test_truncated_feed_is_recovered():
+    feed = (
+        b'<rss version="2.0"><channel><title>t</title>'
+        b"<item><title>a</title></item><item><title>b</title>"
+    )
+    assert [entry.title for entry in parse(feed).entries] == ["a", "b"]
+
+
+@pytest.mark.parametrize(
+    "content, message",
+    [
+        (b"not xml at all", "couldn't be parsed as XML"),
+        (b"<rss", "missing channel element"),
+        (b"", "Empty content"),
+    ],
+)
+def test_unparseable_content_raises_value_error(content, message):
+    with pytest.raises(ValueError, match=message):
+        parse(content)
