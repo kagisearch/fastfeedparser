@@ -851,10 +851,21 @@ def _parse_xml_root(xml_content: bytes) -> _Element:
     return root
 
 
+# Threads with a parse in flight, keyed by thread id.
+_PARSING_THREADS: dict[int, bool] = {}
+if hasattr(os, "register_at_fork"):
+    # A forked child starts with the forking thread only.
+    os.register_at_fork(after_in_child=_PARSING_THREADS.clear)
+
+
 def _parse_xml_root_lifting_cdata(
     xml_content: bytes,
 ) -> tuple[_Element, dict[str, str]]:
     """Parse a document with its large CDATA sections lifted out.
+
+    Nothing is lifted while another thread is parsing: the scan and decode
+    hold the GIL where libxml2 releases it, which costs more throughput than
+    it saves once parses run side by side.
 
     Returns the root and the lifted sections. The scan in _lift_large_cdata
     follows the XML grammar, so it only matches what libxml2 does while the
@@ -862,6 +873,8 @@ def _parse_xml_root_lifting_cdata(
     reports any error on the bytes left after lifting, or read them in another
     encoding, the document is parsed again whole and nothing is lifted.
     """
+    if len(_PARSING_THREADS) > 1:
+        return _parse_xml_root(xml_content), {}
     parse_bytes, lifted = _lift_large_cdata(xml_content)
     if lifted:
         parser = _XML_PARSERS.recover
@@ -1243,6 +1256,18 @@ def _parse_content(
     return feed
 
 
+def _parse_content_in_flight(
+    content: str | bytes, **options: bool
+) -> FastFeedParserDict:
+    """Run _parse_content with this thread listed in _PARSING_THREADS."""
+    thread_id = threading.get_ident()
+    _PARSING_THREADS[thread_id] = True
+    try:
+        return _parse_content(content, **options)
+    finally:
+        _PARSING_THREADS.pop(thread_id, None)
+
+
 def parse(
     source: str | bytes,
     *,
@@ -1284,7 +1309,7 @@ def parse(
     redirects_left = _MAX_META_REDIRECTS
     while True:
         try:
-            return _parse_content(content, **parse_kwargs)
+            return _parse_content_in_flight(content, **parse_kwargs)
         except ValueError as e:
             if not is_url:
                 raise

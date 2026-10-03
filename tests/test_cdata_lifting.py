@@ -5,6 +5,7 @@ and a section that cannot be shown to be an element's whole text must be left
 for libxml2.
 """
 
+import threading
 import time
 
 import pytest
@@ -439,3 +440,68 @@ def test_the_misread_document_would_lose_an_entry_if_parsed_lifted():
     parse_bytes, _ = main._lift_large_cdata(_MISREAD_BY_THE_SCAN)
     titles = [entry.title for entry in parse(parse_bytes).entries]
     assert titles != ["one", "two"]
+
+
+_LIFTABLE_FEED = _rss(f"<content:encoded>{_cdata()}</content:encoded>")
+
+
+def _is_parsed_lifted(parsed_inputs) -> bool:
+    del parsed_inputs[:]
+    assert parse(_LIFTABLE_FEED).entries[0].content[0]["value"] == _BODY
+    assert len(parsed_inputs) == 1
+    return parsed_inputs[0] is not _LIFTABLE_FEED
+
+
+@pytest.mark.parametrize(
+    "other_feed, other_fails",
+    [
+        pytest.param(_LIFTABLE_FEED, False, id="other-parse-succeeds"),
+        pytest.param(b"<rss", True, id="other-parse-fails"),
+    ],
+)
+def test_nothing_is_lifted_while_another_thread_is_parsing(
+    other_feed, other_fails, monkeypatch
+):
+    # Lifting holds the GIL where libxml2 releases it, so it only pays when
+    # this is the only parse in flight.
+    inputs = []
+    inside_parse = threading.Event()
+    let_go = threading.Event()
+    outcome = []
+    real_fromstring = main.etree.fromstring
+
+    def fromstring(text, parser=None):
+        if threading.current_thread().name == "other":
+            inside_parse.set()
+            assert let_go.wait(timeout=10)
+        else:
+            inputs.append(text)
+        return real_fromstring(text, parser=parser)
+
+    def other_parse():
+        try:
+            parse(other_feed)
+            outcome.append("parsed")
+        except ValueError:
+            outcome.append("failed")
+
+    monkeypatch.setattr(main.etree, "fromstring", fromstring)
+    other = threading.Thread(target=other_parse, name="other")
+    other.start()
+    try:
+        assert inside_parse.wait(timeout=10)
+        assert not _is_parsed_lifted(inputs)
+    finally:
+        let_go.set()
+        other.join(timeout=10)
+    assert outcome == ["failed" if other_fails else "parsed"]
+    # Once the other parse is over, whether it returned or raised, lifting is back.
+    assert _is_parsed_lifted(inputs)
+
+
+def test_a_parse_that_raises_does_not_stay_in_flight(parsed_inputs):
+    with pytest.raises(ValueError):
+        parse(b"<rss")
+    with pytest.raises(ValueError):
+        parse(b"")
+    assert _is_parsed_lifted(parsed_inputs)
