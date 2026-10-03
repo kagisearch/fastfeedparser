@@ -322,10 +322,16 @@ _CDATA_LIFT_MIN_BYTES = 1024
 # A document with no CDATA this early is not scanned at all.
 _CDATA_PROBE_BYTES = 16384
 # The scan visits every comment, instruction and section in Python. It stops
-# once it has passed this many without lifting, so markup made only of tiny
-# ones costs a bounded amount.
-_CDATA_SCAN_SKIP_BASE = 1024
+# once it has passed this many without lifting, so a feed whose sections are
+# all small pays for a few dozen visits at most. Every feed in the benchmark
+# corpus that has a large section reaches its first one within 22 visits and
+# the next one within 42.
+_CDATA_SCAN_SKIP_BASE = 32
 _CDATA_SCAN_SKIP_PER_LIFT = 64
+# The scan also gives up when nothing liftable starts this early, so a large
+# feed with a few scattered small sections is not walked to its end. The first
+# lift in every corpus feed starts within 8 KB.
+_CDATA_FIRST_LIFT_BYTES = 65536
 # How far before a section its parent's start tag may begin.
 _CDATA_PARENT_WINDOW = 256
 # A lifted section leaves a placeholder between these two private-use
@@ -371,15 +377,15 @@ def _liftable_section_text(
     section = content[start + 9 : end]
     if len(section.translate(None, _XML_INVALID_CONTROL_BYTES)) != len(section):
         return None
+    # An XML parser reads every line ending as "\n".
+    if b"\r" in section:
+        section = section.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
     try:
         text = section.decode("utf-8")
     except UnicodeDecodeError:
         return None
     if "\ufffe" in text or "\uffff" in text:
         return None
-    # An XML parser reads every line ending as "\n".
-    if "\r" in text:
-        text = text.replace("\r\n", "\n").replace("\r", "\n")
     return text
 
 
@@ -409,7 +415,8 @@ def _lift_large_cdata(content: bytes) -> tuple[bytes, dict[str, str]]:
     pos = 0  # end of the last comment, instruction or section
     skipped = 0
     while skipped <= _CDATA_SCAN_SKIP_BASE + _CDATA_SCAN_SKIP_PER_LIFT * len(lifted):
-        token = _RE_SCAN_TOKEN_START.search(content, pos)
+        limit = len(content) if lifted else _CDATA_FIRST_LIFT_BYTES
+        token = _RE_SCAN_TOKEN_START.search(content, pos, limit)
         if token is None:
             break
         start = token.start()
@@ -3002,12 +3009,11 @@ _MONTH_DIGITS_RFC822 = {
 def _fixed_rfc822_utc_to_iso(value: str) -> Optional[str]:
     """Convert "Mon, 02 Jan 2006 15:04:05 GMT" to ISO by character position.
 
-    Returns None for any other layout, a zone that is not UTC, or hour 24;
+    The caller has checked that the zone, value[26:], is one of
+    _RFC822_UTC_ZONES. Returns None for any other layout or hour 24;
     _fast_rfc822_to_iso handles those. For the strings it accepts, it returns
     what _fast_rfc822_to_iso returns.
     """
-    if value[26:] not in _RFC822_UTC_ZONES:
-        return None
     month = _MONTH_DIGITS_RFC822.get(value[8:11])
     if month is None:
         return None
@@ -3058,7 +3064,11 @@ def _parse_date(date_str: str) -> Optional[str]:
         return None
 
     # Fast path: the layout most RSS feeds use, with a 3-char or 5-char zone
-    if (clen == 29 or clen == 31) and candidate[3] == ",":
+    if (
+        (clen == 29 or clen == 31)
+        and candidate[3] == ","
+        and candidate[26:] in _RFC822_UTC_ZONES
+    ):
         rfc822_utc = _fixed_rfc822_utc_to_iso(candidate)
         if rfc822_utc is not None:
             return rfc822_utc

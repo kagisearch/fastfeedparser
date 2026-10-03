@@ -273,6 +273,18 @@ def test_other_sections_are_left_for_the_xml_parser(feed):
     assert parse_bytes is feed
 
 
+def test_scan_gives_up_when_nothing_liftable_starts_early():
+    liftable = f"<description>{_cdata()}</description>"
+    early_small_section = "<x><![CDATA[c]]></x>"
+    padding = "<y>pad</y>" * (main._CDATA_FIRST_LIFT_BYTES // 10 + 1)
+    late = _rss(liftable, early_small_section + padding)
+    assert late.find(b"<![CDATA[") < main._CDATA_PROBE_BYTES
+    assert _lifted(late) == []
+    # After a first lift the rest of the document is scanned.
+    early_and_late = _rss(liftable, liftable + padding)
+    assert _lifted(early_and_late) == [_BODY, _BODY]
+
+
 def test_only_the_section_that_is_an_elements_whole_text_is_lifted(monkeypatch):
     feed = _rss(
         f"<description>intro {_cdata(_BODY + 'd')}</description>"
