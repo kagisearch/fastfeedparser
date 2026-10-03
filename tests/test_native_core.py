@@ -119,8 +119,8 @@ _NOT_HANDLED = {
     "invalid utf-8": _rss("<title>X</title>").replace(b"X", b"caf\xe9"),
     "internal dtd subset": b"<!DOCTYPE rss [<!ENTITY e 'v'>]>"
     + _rss("<title>&e;</title>"),
-    "text after root": _rss("<title>a</title>") + b"junk",
-    "second root": _rss("<title>a</title>") + b"<rss/>",
+    "malformed-looking header": b'<?xml version="1.0" encoding="utf-16"?>'
+    + _rss("<title>a</title>"),
     "rdf root": (
         b'<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"'
         b' xmlns="http://purl.org/rss/1.0/"><item><title>a</title></item></rdf:RDF>'
@@ -136,10 +136,30 @@ _NOT_HANDLED = {
 
 @pytest.mark.parametrize("document", _NOT_HANDLED.values(), ids=_NOT_HANDLED.keys())
 def test_unsupported_documents_fall_back_to_lxml(document, monkeypatch):
-    reason = _extract(document)
-    assert isinstance(reason, str) and reason
+    results = []
+    parse_with_core = main._parse_with_core
+
+    def recording(*args, **kwargs):
+        results.append(parse_with_core(*args, **kwargs))
+        return results[-1]
+
+    monkeypatch.setattr(main, "_parse_with_core", recording)
     with_lxml = _parse(document, False, monkeypatch)
     assert _parse(document, True, monkeypatch) == with_lxml
+    # Either the core was never asked, or it handed the document back.
+    assert all(result is None for result in results)
+
+
+@pytest.mark.parametrize(
+    "trailing", [b"junk", b"\n<script>x</script>", b"<rss/>", b"<a><b></a>&"]
+)
+def test_content_after_the_root_is_ignored_on_both_paths(trailing, monkeypatch):
+    document = _rss("<title>a</title><link>http://e.com/a</link>") + trailing
+    result = _extract(document)
+    assert not isinstance(result, str)
+    with_lxml = _parse(document, False, monkeypatch)
+    assert _parse(document, True, monkeypatch) == with_lxml
+    assert '"title": "a"' in with_lxml
 
 
 def test_date_callback_errors_propagate():

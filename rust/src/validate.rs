@@ -7,7 +7,7 @@ use quick_xml::name::ResolveResult;
 use quick_xml::reader::NsReader;
 
 use crate::model::Unhandled;
-use crate::text::{attr_value, check_text};
+use crate::text::{attr_value, check_references};
 
 pub fn document(data: &[u8]) -> Result<(), Unhandled> {
     simdutf8::basic::from_utf8(data).map_err(|_| Unhandled("invalid utf-8"))?;
@@ -138,14 +138,6 @@ pub fn processing_instruction(raw: &[u8]) -> Result<(), Unhandled> {
     }
 }
 
-/// "]]>" may not appear in character data.
-pub fn text(raw: &[u8]) -> Result<(), Unhandled> {
-    match memmem::find(raw, b"]]>") {
-        Some(_) => Err(Unhandled("]]> in text")),
-        None => Ok(()),
-    }
-}
-
 /// "--" may not appear inside a comment, and it may not end with "-".
 pub fn comment(raw: &[u8]) -> Result<(), Unhandled> {
     if memmem::find(raw, b"--").is_some() || raw.last() == Some(&b'-') {
@@ -156,7 +148,7 @@ pub fn comment(raw: &[u8]) -> Result<(), Unhandled> {
 
 /// Checks for an attribute whose value is not otherwise read.
 fn attribute(reader: &NsReader<&[u8]>, attr: &Attribute) -> Result<(), Unhandled> {
-    check_text(&attr.value)?;
+    check_references(&attr.value)?;
     attribute_name(reader, attr)
 }
 
@@ -328,9 +320,7 @@ mod tests {
     }
 
     #[test]
-    fn text_and_comment_rules() {
-        assert!(text(b"a ]] > b").is_ok());
-        assert!(text(b"a ]]> b").is_err());
+    fn comment_rules() {
         assert!(comment(b" fine - really ").is_ok());
         assert!(comment(b" a -- b ").is_err());
         assert!(comment(b" a -").is_err());

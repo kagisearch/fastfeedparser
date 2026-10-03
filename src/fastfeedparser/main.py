@@ -954,8 +954,9 @@ def _parse_with_core(
 ) -> Optional[FastFeedParserDict]:
     """Parse with the native extractor, or return None to use the lxml path.
 
-    The extractor accepts well-formed UTF-8 RSS and Atom only and hands back
-    anything else. Feed-level fields still come from _parse_feed_info, run on
+    The extractor accepts well-formed UTF-8 RSS and Atom and hands back
+    anything else. Like the recover parser, it ignores content after the
+    root element. Feed-level fields still come from _parse_feed_info, run on
     the document with its items cut out; it never looks inside items.
     """
     result = _core.parse_entries(
@@ -1014,6 +1015,8 @@ def _parse_content(
 
     xml_content, looks_malformed = _prepare_xml_bytes(xml_content)
     if looks_malformed:
+        # Whether to repair the body is decided by libxml2's strict parser,
+        # which the extractor does not reproduce exactly.
         root, xml_content = _parse_repairable_xml_root(xml_content)
     else:
         if _core is not None:

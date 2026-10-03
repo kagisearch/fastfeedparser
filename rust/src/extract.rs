@@ -126,16 +126,8 @@ impl State<'_> {
     }
 
     fn text(&mut self, raw: &[u8], is_cdata: bool) -> Result<(), Unhandled> {
-        if self.depth == 0 {
-            let blank = raw
-                .iter()
-                .all(|b| matches!(b, b' ' | b'\t' | b'\r' | b'\n'));
-            if is_cdata || !blank {
-                return Err(Unhandled("text outside the root element"));
-            }
-        }
-        if !is_cdata {
-            validate::text(raw)?;
+        if self.depth == 0 && (is_cdata || !is_blank(raw)) {
+            return Err(Unhandled("text outside the root element"));
         }
         match self.frames.last_mut() {
             Some(top) if self.item_depth != 0 && top.wants_text && top.text_open => {
@@ -207,6 +199,20 @@ impl State<'_> {
     }
 }
 
+fn is_blank(raw: &[u8]) -> bool {
+    raw.iter()
+        .all(|b| matches!(b, b' ' | b'\t' | b'\r' | b'\n'))
+}
+
+/// An element, CDATA section or non-blank text: not allowed after the root.
+fn is_trailing_content(event: &Event) -> bool {
+    match event {
+        Event::Start(_) | Event::CData(_) => true,
+        Event::Text(text) => !is_blank(text),
+        _ => false,
+    }
+}
+
 /// Extract every entry of a well-formed UTF-8 RSS or Atom document.
 pub fn parse<E>(data: &[u8], opts: &Options, date_fn: &mut DateFn<E>) -> Result<Document, Stop<E>> {
     validate::document(data)?;
@@ -236,6 +242,10 @@ pub fn parse<E>(data: &[u8], opts: &Options, date_fn: &mut DateFn<E>) -> Result<
             .read_resolved_event()
             .map_err(|_| Unhandled("xml syntax"))?;
         let ns = Ns::from_resolved(&resolved);
+        if state.root_closed && is_trailing_content(&event) {
+            // libxml2 stops at content after the root element and keeps the tree.
+            break;
+        }
         match event {
             Event::Start(e) => state.start(ns, &e, pos, &reader)?,
             Event::End(_) => state.end(reader.buffer_position() as usize, date_fn)?,

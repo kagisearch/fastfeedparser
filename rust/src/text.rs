@@ -1,5 +1,5 @@
 //! Text decoding that matches what libxml2 hands to Python.
-use memchr::{memchr, memchr2};
+use memchr::{memchr, memchr3};
 
 use crate::Unhandled;
 
@@ -71,14 +71,22 @@ fn char_reference(digits: &[u8], radix: u32) -> Result<char, Unhandled> {
 
 /// Append the content of a text node to `out`: "\r\n" and a lone "\r" become
 /// "\n", then references are resolved (so "&#13;" stays a carriage return).
+/// "]]>" is not allowed in text.
 pub fn push_text(out: &mut String, raw: &[u8]) -> Result<(), Unhandled> {
     let s = utf8(raw)?;
     let bytes = s.as_bytes();
     // Decoded text is never longer than the raw text.
     out.reserve(bytes.len());
-    let mut start = 0;
-    while let Some(offset) = memchr2(b'&', b'\r', &bytes[start..]) {
-        let at = start + offset;
+    let (mut start, mut from) = (0, 0);
+    while let Some(offset) = memchr3(b'&', b'\r', b']', &bytes[from..]) {
+        let at = from + offset;
+        if bytes[at] == b']' {
+            if bytes[at..].starts_with(b"]]>") {
+                return Err(Unhandled("]]> in text"));
+            }
+            from = at + 1;
+            continue;
+        }
         out.push_str(&s[start..at]);
         if bytes[at] == b'\r' {
             out.push('\n');
@@ -88,13 +96,23 @@ pub fn push_text(out: &mut String, raw: &[u8]) -> Result<(), Unhandled> {
             out.push(ch);
             start = at + len;
         }
+        from = start;
     }
     out.push_str(&s[start..]);
     Ok(())
 }
 
-/// Check the references of a text node that is not being captured.
+/// Check a text node that is not being captured: its references, and that
+/// it has no "]]>".
 pub fn check_text(raw: &[u8]) -> Result<(), Unhandled> {
+    if memchr::memmem::find(raw, b"]]>").is_some() {
+        return Err(Unhandled("]]> in text"));
+    }
+    check_references(raw)
+}
+
+/// Check every reference in `raw`.
+pub fn check_references(raw: &[u8]) -> Result<(), Unhandled> {
     let mut start = 0;
     while let Some(offset) = memchr(b'&', &raw[start..]) {
         let at = start + offset;
@@ -204,8 +222,11 @@ mod tests {
         assert!(push_text(&mut out, b"a&nbsp;b").is_err());
         assert!(push_text(&mut out, b"AT&T").is_err());
         assert!(push_text(&mut out, b"a&#31;b").is_err());
+        assert!(push_text(&mut out, b"a ]]> b").is_err());
         assert!(check_text(b"a&nbsp;b").is_err());
-        assert!(check_text(b"plain").is_ok());
+        assert!(check_text(b"a ]]> b").is_err());
+        assert!(check_text(b"plain ]] > &amp;").is_ok());
+        assert!(check_references(b"]]> is fine in an attribute &lt;").is_ok());
     }
 
     #[test]

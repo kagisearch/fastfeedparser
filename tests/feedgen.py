@@ -124,6 +124,8 @@ class FeedGenerator:
         r = rnd.random()
         count = rnd.choice([0, 1, 1, 3, 8, 60, 400])
         words = " ".join(rnd.choice(_WORDS) for _ in range(count))
+        if r < 0.04:
+            return self._undefined_entity(words)
         if r < 0.08:
             return ""
         if r < 0.14:
@@ -145,6 +147,12 @@ class FeedGenerator:
             lead = rnd.choice(["  ", "\n", "\u00a0", ""])
             return lead + _esc(words) + rnd.choice(["  ", "\n", "\u3000", ""])
         return _esc(words)
+
+    def _undefined_entity(self, words):
+        """Text holding an entity no DTD defines; the recover parser accepts it."""
+        entity = self.rnd.choice(["&nbsp;", "&rsquo;", "&colon;", "&LT;"])
+        tail = self.rnd.choice(["", "<![CDATA[x]]>", "&amp;"])
+        return _esc(words[:12]) + entity + _esc(words[:12]) + tail
 
     def _attr(self, name, values):
         value = self.rnd.choice(values)
@@ -350,6 +358,9 @@ class FeedGenerator:
                 '<?xml version="1.0" encoding="UTF-8"?>',
                 "<?xml version='1.0'?>\n",
                 '<?xml version="1.0" encoding="utf-8" standalone="yes"?>',
+                # These two make the header look malformed.
+                '<?xml version="1.0" encoding="utf-16"?>',
+                '<?xml version="1.0" encoding="UTF-8"??>',
             ]
         )
         lang = self._attr("xml:lang", [None, "en-US"])
@@ -442,9 +453,14 @@ class FeedGenerator:
         return f'{decl}<feed xmlns="{ns}"{_NSDECL}>{head}{entries}</feed>'
 
     def document(self):
-        """A well-formed RSS or Atom document as UTF-8 bytes."""
+        """An RSS or Atom document as UTF-8 bytes, now and then with content
+        after the root element."""
         text = self.rss() if self.rnd.random() < 0.6 else self.atom()
-        return text.encode()
+        doc = text.encode()
+        if self.rnd.random() < 0.04:
+            trailing = [b"\n<script>x</script>", b"junk", b"<!-- c -->", b"<a><b></a>&"]
+            doc += self.rnd.choice(trailing)
+        return doc
 
     def mutate(self, doc):
         """Break `doc` in one place: a splice, a deletion, or a truncation."""
