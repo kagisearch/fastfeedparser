@@ -81,6 +81,11 @@ _RE_RFC822 = re.compile(
     r"(?:\w{3},\s+)?(\d{1,2})\s+(\w{3})\s+(\d{4})\s+(\d{2}):(\d{2}):(\d{2})\s+([+-]\d{4}|[A-Z]{2,5})"
 )
 _RE_HOUR24 = re.compile(r"(\d{4}-\d{2}-\d{2})[T ]24:(\d{2}):(\d{2})")
+# A UTC timestamp already in the form datetime.isoformat() gives it. Hour 24
+# is excluded because fromisoformat() reads it as 00 on the next day.
+_RE_ISO_UTC_SECONDS = re.compile(
+    r"\d{4}-\d\d-\d\dT(?!24)\d\d:\d\d:\d\d\+00:00", re.ASCII
+)
 _MONTHS_RFC822: dict[str, int] = {
     "jan": 1,
     "feb": 2,
@@ -2716,6 +2721,49 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
         return None
 
 
+# Zone spellings that _fast_rfc822_to_iso reads as a zero offset.
+_RFC822_UTC_ZONES = frozenset(
+    [name for name, offset in _custom_tzinfos.items() if offset == 0]
+    + ["+0000", "-0000"]
+)
+_MONTH_DIGITS_RFC822 = {
+    name.capitalize(): f"{number:02d}" for name, number in _MONTHS_RFC822.items()
+}
+
+
+def _fixed_rfc822_utc_to_iso(value: str) -> Optional[str]:
+    """Convert "Mon, 02 Jan 2006 15:04:05 GMT" to ISO by character position.
+
+    Returns None for any other layout, a zone that is not UTC, or hour 24;
+    _fast_rfc822_to_iso handles those. For the strings it accepts, it returns
+    what _fast_rfc822_to_iso returns.
+    """
+    if value[26:] not in _RFC822_UTC_ZONES:
+        return None
+    month = _MONTH_DIGITS_RFC822.get(value[8:11])
+    if month is None:
+        return None
+    day = value[5:7]
+    year = value[12:16]
+    hour = value[17:19]
+    minute = value[20:22]
+    second = value[23:25]
+    if not (
+        value.isascii()
+        and value[:3].isalpha()
+        and value[4] == value[7] == value[11] == value[16] == value[25] == " "
+        and value[19] == value[22] == ":"
+        and day.isdigit()
+        and year.isdigit()
+        and hour.isdigit()
+        and minute.isdigit()
+        and second.isdigit()
+        and hour != "24"
+    ):
+        return None
+    return f"{year}-{month}-{day}T{hour}:{minute}:{second}+00:00"
+
+
 # Longer strings are not dates, and dateutil tokenizes in quadratic time.
 _MAX_DATE_CHARS = 256
 
@@ -2741,6 +2789,12 @@ def _parse_date(date_str: str) -> Optional[str]:
     if clen > _MAX_DATE_CHARS:
         return None
 
+    # Fast path: the layout most RSS feeds use, with a 3-char or 5-char zone
+    if (clen == 29 or clen == 31) and candidate[3] == ",":
+        rfc822_utc = _fixed_rfc822_utc_to_iso(candidate)
+        if rfc822_utc is not None:
+            return rfc822_utc
+
     # Fast path: clean ISO-8601 (covers >90% of Atom/modern RSS dates)
     if clen >= 20 and candidate[4] == "-" and candidate[0:4].isdigit():
         last = candidate[-1]
@@ -2749,6 +2803,8 @@ def _parse_date(date_str: str) -> Optional[str]:
             iso = candidate[:-1] + "+00:00"
             try:
                 dt = datetime.datetime.fromisoformat(iso)
+                if clen == 20 and _RE_ISO_UTC_SECONDS.fullmatch(iso):
+                    return iso
                 return dt.isoformat()
             except ValueError:
                 pass  # Fall through to full parsing
@@ -2756,6 +2812,8 @@ def _parse_date(date_str: str) -> Optional[str]:
         elif clen > 6 and candidate[-6] in ("+", "-") and candidate[-3] == ":":
             try:
                 dt = datetime.datetime.fromisoformat(candidate)
+                if clen == 25 and _RE_ISO_UTC_SECONDS.fullmatch(candidate):
+                    return candidate
                 if dt.tzinfo is _UTC:
                     return dt.isoformat()
                 utc_dt = dt.astimezone(_UTC)

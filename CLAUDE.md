@@ -30,7 +30,7 @@ Single-file parser: `src/fastfeedparser/main.py`
 - `_parse_rdf()` - RDF/RSS 1.0
 - `_parse_json_feed()` - JSON Feed 1.0/1.1
 
-**Date parsing cascade:** ISO-8601 → RFC-822 → dateutil → dateparser (slowest, LRU-cached)
+**Date parsing cascade:** ISO-8601 → RFC-822 → dateutil → dateparser (slowest, LRU-cached). The two most common layouts skip the cascade: `Mon, 02 Jan 2006 15:04:05 GMT` is converted by character position, and a canonical UTC ISO timestamp is returned as it is.
 
 **Performance patterns:**
 - lxml recover parser in one pass; a strict parse only decides whether a malformed-looking document needs body repair
