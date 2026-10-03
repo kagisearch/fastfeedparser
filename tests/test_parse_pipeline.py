@@ -2,7 +2,8 @@
 
 import pytest
 
-from fastfeedparser import parse
+from fastfeedparser import main, parse
+from fastfeedparser.main import _html_reparse_may_find_more_items
 
 # Either header makes the document look malformed and eligible for repair.
 _UTF16_DECL = b'<?xml version="1.0" encoding="utf-16"?>'
@@ -165,3 +166,96 @@ def test_truncated_feed_is_recovered():
 def test_unparseable_content_raises_value_error(content, message):
     with pytest.raises(ValueError, match=message):
         parse(content)
+
+
+def _long_item(title: bytes) -> bytes:
+    return (
+        b"<item><title>" + title + b"</title>"
+        b"<description>" + b"x" * 8000 + b"</description></item>"
+    )
+
+
+def _rss_items(items: list[bytes]) -> bytes:
+    return (
+        b'<rss version="2.0"><channel><title>t</title>'
+        + b"".join(items)
+        + b"</channel></rss>"
+    )
+
+
+def test_items_lost_to_an_unterminated_cdata_are_rescued():
+    # The XML parser keeps two of these items; the HTML re-parse finds all.
+    titles = [b"t%d" % i for i in range(8)]
+    titles[1] = b"<![CDATA[t1"
+    parsed = parse(_rss_items([_long_item(title) for title in titles]))
+    assert len(parsed.entries) == 8
+
+
+@pytest.fixture
+def html_parser_uses(monkeypatch):
+    """Count how often parse() builds an HTML parser for the re-parse."""
+    uses = []
+    real_html_parser = main.etree.HTMLParser
+
+    def counting_html_parser(*args, **kwargs):
+        uses.append(1)
+        return real_html_parser(*args, **kwargs)
+
+    monkeypatch.setattr(main.etree, "HTMLParser", counting_html_parser)
+    return uses
+
+
+def test_healthy_few_item_feed_is_not_reparsed(html_parser_uses):
+    feed = _rss_items([_long_item(b"t%d" % i) for i in range(3)])
+    assert len(feed) > 20000
+    assert [entry.title for entry in parse(feed).entries] == ["t0", "t1", "t2"]
+    assert not html_parser_uses
+
+
+@pytest.mark.parametrize(
+    "marker",
+    [
+        b'<meta charset="utf-8">',
+        b"http-equiv content charset=utf-8",
+        b"HTTP-EQUIV CONTENT CHARSET=utf-8",
+    ],
+)
+def test_few_item_feed_that_may_switch_encoding_is_reparsed(html_parser_uses, marker):
+    items = [_long_item(b"t%d" % i) for i in range(3)]
+    feed = _rss_items([b"<!-- " + marker + b" -->"] + items)
+    assert [entry.title for entry in parse(feed).entries] == ["t0", "t1", "t2"]
+    assert html_parser_uses
+
+
+def test_damaged_feed_with_more_item_tags_is_reparsed(html_parser_uses):
+    titles = [b"t%d" % i for i in range(8)]
+    titles[1] = b"<![CDATA[t1"
+    parse(_rss_items([_long_item(title) for title in titles]))
+    assert html_parser_uses
+
+
+@pytest.mark.parametrize(
+    "content, found",
+    [
+        pytest.param(_rss_items([_long_item(b"t")] * 8), 2, id="more-item-tags"),
+        pytest.param(b"<rss>" + b"<ITEM>a</ITEM><Item>b</Item>" * 4, 3, id="any-case"),
+        pytest.param(b"<rss><item>a</item></rss>", 0, id="none-found-yet"),
+        pytest.param(
+            b'<rss><meta charset="utf-7"><item>a</item></rss>', 3, id="meta-tag"
+        ),
+        pytest.param(
+            b"<rss>caf\xc3\xa9 Http-Equiv content charset=utf-16le<item>a</item></rss>",
+            3,
+            id="raw-text-charset-sniff",
+        ),
+        pytest.param(
+            "<rss><item>a</item></rss>".encode("utf-16"), 3, id="utf-16-with-bom"
+        ),
+        pytest.param(
+            "<rss><item>a</item></rss>".encode("utf-16-le"), 3, id="utf-16-no-bom"
+        ),
+        pytest.param(b"junk <rss><item>a</item></rss>", 3, id="leading-junk"),
+    ],
+)
+def test_reparse_is_kept_when_it_could_find_more_items(content, found):
+    assert _html_reparse_may_find_more_items(content, found)

@@ -793,6 +793,31 @@ def _extract_meta_refresh_url(content: str | bytes, base_url: str) -> str | None
     return None
 
 
+_RE_ITEM_OR_META_START_BYTES = re.compile(rb"<(item|meta)", re.IGNORECASE)
+# "http-equiv" in any letter case; the literal "-" keeps the scan fast.
+_RE_HTTP_EQUIV_BYTES = re.compile(rb"-[eE][qQ][uU][iI][vV]")
+
+
+def _html_reparse_may_find_more_items(xml_content: bytes, found: int) -> bool:
+    """Whether an HTML re-parse could yield more than twice ``found`` items.
+
+    The HTML parser builds an item element from a "<item" in the bytes, in
+    any letter case, so their count bounds what it can find. The bound needs
+    the parser to read the bytes as ASCII-compatible throughout. libxml2 can
+    switch encoding on a <meta> tag, or on an "http-equiv ... charset=" run
+    in raw text at the first non-ASCII byte, so a document with either, or
+    one that does not start as ASCII-compatible, is always re-parsed.
+    """
+    if not xml_content.startswith(b"<") or b"\x00" in xml_content[:4]:
+        return True
+    limit = found * 2
+    matches = _RE_ITEM_OR_META_START_BYTES.finditer(xml_content)
+    for count, match in enumerate(matches, 1):
+        if match.group(1)[:1] in b"mM" or count > limit:
+            return True
+    return _RE_HTTP_EQUIV_BYTES.search(xml_content) is not None
+
+
 def _detect_feed_structure(
     root: _Element, xml_content: bytes, root_tag_local: str
 ) -> tuple[_FeedType, _Element, list[_Element], Optional[str]]:
@@ -863,7 +888,11 @@ def _detect_feed_structure(
                                 items = []
                             items.append(child)
 
-        if len(items) < 5 and len(xml_content) > 20000:
+        if (
+            len(items) < 5
+            and len(xml_content) > 20000
+            and _html_reparse_may_find_more_items(xml_content, len(items))
+        ):
             try:
                 html_parser = etree.HTMLParser(recover=True, collect_ids=False)
                 html_root = etree.fromstring(xml_content, parser=html_parser)
