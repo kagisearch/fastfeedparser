@@ -55,12 +55,19 @@ _RE_XML_DECL_ENCODING_BYTES = re.compile(
 )
 _RE_DOUBLE_XML_DECL_BYTES = re.compile(rb"<\?xml\?xml\s+", re.IGNORECASE)
 _RE_DOUBLE_CLOSE_BYTES = re.compile(rb"\?\?>\s*")
-_RE_UNQUOTED_ATTR_BYTES = re.compile(rb'(\s+[\w:]+)=([^\s>"\']+)')
+# The patterns below run over whole, untrusted documents and must stay linear
+# (GHSA-3r75-qcwc-78f2). The lookbehind limits attempts to the start of each
+# whitespace run; a match can only begin there.
+_RE_UNQUOTED_ATTR_BYTES = re.compile(rb'(?<!\s)(\s+[\w:]+)=([^\s>"\']+)')
 _RE_UTF16_ENCODING_BYTES = re.compile(
     rb'(<\?xml[^>]*encoding=["\'])utf-16(-le|-be)?(["\'][^>]*\?>)', re.IGNORECASE
 )
+# The tag body excludes "<" so a scan from one "<link" stops at the next tag
+# instead of running to a distant ">". The "next tag is not </link>" check
+# runs once per tag, then the match ends before the last newline of the
+# whitespace run that follows.
 _RE_UNCLOSED_LINK_BYTES = re.compile(
-    rb"<link([^>]*[^/])>\s*(?=\n\s*<(?!/link\s*>))", re.MULTILINE
+    rb"<link([^<>]*[^/<>])>(?=\s*<(?!/link\s*>))\s*(?=\n)", re.MULTILINE
 )
 _RE_FEB29 = re.compile(r"(\d{4})-02-29")
 _RE_HTML_TAGS = re.compile(r"<[^>]+>")
@@ -165,11 +172,20 @@ def _detect_xml_encoding(content: bytes) -> str:
     return "utf-8"
 
 
+_XML_DECL_SCAN_CHARS = 2048
+
+
 def _ensure_utf8_xml_declaration(content: str) -> str:
     """Ensure the XML declaration's encoding matches the UTF-8 bytes we emit."""
-    if not content.lstrip().startswith("<?xml"):
+    stripped = content.lstrip()
+    if not stripped.startswith("<?xml"):
         return content
-    return _RE_XML_DECL_ENCODING.sub(r"\1utf-8\3", content, count=1)
+    # Only rewrite within the head of the document: the declaration is the
+    # first thing in it, and the pattern is quadratic on a whole document.
+    start = len(content) - len(stripped)
+    end = start + _XML_DECL_SCAN_CHARS
+    head = _RE_XML_DECL_ENCODING.sub(r"\1utf-8\3", content[start:end], count=1)
+    return content[:start] + head + content[end:]
 
 
 def _clean_feed_bytes(content: bytes) -> bytes:
@@ -732,7 +748,9 @@ def _raise_for_non_feed_root(
     raise ValueError(base_msg)
 
 
-_RE_META_REFRESH_URL = re.compile(r'url\s*=\s*["\']?\s*([^"\'>\s]+)', re.IGNORECASE)
+# The optional quote owns the whitespace after it, so a whitespace run is only
+# ever consumed one way (GHSA-3r75-qcwc-78f2).
+_RE_META_REFRESH_URL = re.compile(r'url\s*=\s*(?:["\']\s*)?([^"\'>\s]+)', re.IGNORECASE)
 _MAX_META_REDIRECTS = 3
 
 
