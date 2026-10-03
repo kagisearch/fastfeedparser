@@ -5,6 +5,7 @@ from email.utils import parsedate_to_datetime
 import html as _html_mod
 import json
 import re
+import threading
 import zlib
 from functools import lru_cache, partial
 
@@ -633,20 +634,31 @@ def _maybe_parse_json_feed(
     return None
 
 
-_STRICT_XML_PARSER = etree.XMLParser(
-    ns_clean=True,
-    recover=False,
-    collect_ids=False,
-    resolve_entities=False,
-    huge_tree=True,
-)
-_RECOVER_XML_PARSER = etree.XMLParser(
-    ns_clean=True,
-    recover=True,
-    collect_ids=False,
-    resolve_entities=False,
-    huge_tree=True,
-)
+class _ThreadXMLParsers(threading.local):
+    """A strict and a recover parser for each thread.
+
+    lxml holds a parser's lock for a whole parse, so threads sharing one
+    parser object parse one at a time.
+    """
+
+    def __init__(self) -> None:
+        self.strict = etree.XMLParser(
+            ns_clean=True,
+            recover=False,
+            collect_ids=False,
+            resolve_entities=False,
+            huge_tree=True,
+        )
+        self.recover = etree.XMLParser(
+            ns_clean=True,
+            recover=True,
+            collect_ids=False,
+            resolve_entities=False,
+            huge_tree=True,
+        )
+
+
+_XML_PARSERS = _ThreadXMLParsers()
 
 
 def _parse_xml_root(xml_content: bytes) -> _Element:
@@ -654,7 +666,7 @@ def _parse_xml_root(xml_content: bytes) -> _Element:
     # well-formed input, so trying strict first would only add a wasted parse
     # for malformed documents.
     try:
-        root = etree.fromstring(xml_content, parser=_RECOVER_XML_PARSER)
+        root = etree.fromstring(xml_content, parser=_XML_PARSERS.recover)
     except etree.XMLSyntaxError as e:
         raise ValueError(f"Failed to parse XML content: {str(e)}")
 
@@ -678,7 +690,7 @@ def _parse_repairable_xml_root(xml_content: bytes) -> tuple[_Element, bytes]:
     patterns also rewrite matching article text.
     """
     try:
-        return etree.fromstring(xml_content, parser=_STRICT_XML_PARSER), xml_content
+        return etree.fromstring(xml_content, parser=_XML_PARSERS.strict), xml_content
     except etree.XMLSyntaxError:
         xml_content = _repair_xml_body_bytes(xml_content)
         return _parse_xml_root(xml_content), xml_content

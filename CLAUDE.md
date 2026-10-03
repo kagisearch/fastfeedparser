@@ -34,6 +34,7 @@ Single-file parser: `src/fastfeedparser/main.py`
 
 **Performance patterns:**
 - lxml recover parser in one pass; a strict parse only decides whether a malformed-looking document needs body repair
+- One pair of lxml parsers per thread (`_XML_PARSERS`); lxml locks a parser for a whole parse, so a shared one serializes threads
 - Pre-compiled regex (`_RE_*` constants)
 - LRU-cached slow parsers (`_slow_dateutil_parse`, `_slow_dateparser`)
 
