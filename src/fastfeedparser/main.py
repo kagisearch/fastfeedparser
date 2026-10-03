@@ -1647,6 +1647,9 @@ _RSS_KIND_ATOM_AUTHOR = 10
 # Bound on per-namespace tag classification caches. Feeds are untrusted and
 # can carry arbitrary tag names, so stop memoizing past this many.
 _TAG_CACHE_MAX = 4096
+# Tags longer than this are classified on every use instead of memoized. A tag
+# is "{namespace-uri}local", so one long URI would be copied into every key.
+_TAG_CACHE_MAX_TAG_LEN = 128
 
 
 @lru_cache(maxsize=4)
@@ -1753,7 +1756,10 @@ def _parse_rss_feed_entry_fast(
             if not isinstance(tag, str):
                 continue
             info = _classify_rss_tag(tag, atom_tags)
-            if len(tag_info) < _TAG_CACHE_MAX:
+            if (
+                len(tag_info) < _TAG_CACHE_MAX
+                and len(tag) <= _TAG_CACHE_MAX_TAG_LEN
+            ):
                 tag_info[tag] = info
         local, kind = info
 
