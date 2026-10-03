@@ -95,8 +95,6 @@ _RSS_CONTENT_ENCODED_TAG = "{http://purl.org/rss/1.0/modules/content/}encoded"
 _DC_SUBJECT_TAG = "{http://purl.org/dc/elements/1.1/}subject"
 _MEDIA_CONTENT_TAG = "{http://search.yahoo.com/mrss/}content"
 _MEDIA_THUMBNAIL_TAG = "{http://search.yahoo.com/mrss/}thumbnail"
-_MEDIA_CONTENT_DESCENDANT = ".//" + _MEDIA_CONTENT_TAG
-_MEDIA_THUMBNAIL_DESCENDANT = ".//" + _MEDIA_THUMBNAIL_TAG
 _MEDIA_TITLE_TAG = "{http://search.yahoo.com/mrss/}title"
 _MEDIA_TEXT_TAG = "{http://search.yahoo.com/mrss/}text"
 _MEDIA_DESCRIPTION_TAG = "{http://search.yahoo.com/mrss/}description"
@@ -1323,6 +1321,31 @@ def _populate_entry_links(
     )
 
 
+_SYNTH_DESCRIPTION_LEN = 512
+# Plain-text content is normalized on this many leading chars first; only a
+# whitespace-heavy prefix that yields < _SYNTH_DESCRIPTION_LEN chars falls
+# back to normalizing the whole string.
+_SYNTH_DESCRIPTION_SCAN = 4096
+
+
+def _collapse_whitespace(value: str) -> str:
+    return " ".join(value.split())
+
+
+def _normalize_description_prefix(value: str, normalize: Callable[[str], str]) -> str:
+    """Return normalize(value)[:_SYNTH_DESCRIPTION_LEN] without touching the
+    whole string when a prefix suffices.
+
+    Both normalizers (strip, collapse) map a prefix of `value` to a prefix of
+    normalize(value), so a long-enough result from the prefix is exact.
+    """
+    if len(value) > _SYNTH_DESCRIPTION_SCAN:
+        head = normalize(value[:_SYNTH_DESCRIPTION_SCAN])
+        if len(head) >= _SYNTH_DESCRIPTION_LEN:
+            return head[:_SYNTH_DESCRIPTION_LEN]
+    return normalize(value)[:_SYNTH_DESCRIPTION_LEN]
+
+
 def _synthesize_entry_description(entry: FastFeedParserDict) -> None:
     if "description" in entry or "content" not in entry:
         return
@@ -1342,10 +1365,11 @@ def _synthesize_entry_description(entry: FastFeedParserDict) -> None:
             # " ".join(split()) collapses \s+ runs identically to the regex
             # but ~4x faster (split/join are C-level); only on the runs the
             # guard already confirmed need collapsing.
-            content_value = " ".join(content_value.split())
+            normalize = _collapse_whitespace
         else:
-            content_value = content_value.strip()
-    entry["description"] = content_value[:512]
+            normalize = str.strip
+        content_value = _normalize_description_prefix(content_value, normalize)
+    entry["description"] = content_value[:_SYNTH_DESCRIPTION_LEN]
 
 
 def _populate_entry_content_preparsed(
@@ -1354,11 +1378,19 @@ def _populate_entry_content_preparsed(
     *,
     content_el: Optional[_Element],
     rss_description_text: Optional[str],
+    content_text: Optional[str] = None,
 ) -> None:
+    """Fill entry["content"] from a pre-located content element.
+
+    ``content_text`` is ``content_el.text`` when the caller already read it;
+    passing it avoids decoding a large content blob a second time.
+    """
     if content_el is not None:
         content_type = content_el.get("type", "text/html")
         if content_type in {"xhtml", "application/xhtml+xml"}:
             content_value = etree.tostring(content_el, encoding="unicode", method="xml")
+        elif content_text is not None:
+            content_value = content_text
         else:
             content_value = content_el.text or ""
         entry["content"] = [
@@ -1405,54 +1437,101 @@ def _populate_entry_content(
     )
 
 
+def _first_media_desc_credit(
+    parent: _Element,
+) -> tuple[Optional[_Element], Optional[_Element]]:
+    """First media:description and media:credit children of `parent`."""
+    desc: Optional[_Element] = None
+    credit: Optional[_Element] = None
+    for child in parent.iterchildren(_MEDIA_DESCRIPTION_TAG, _MEDIA_CREDIT_TAG):
+        if child.tag == _MEDIA_DESCRIPTION_TAG:
+            if desc is None:
+                desc = child
+        elif credit is None:
+            credit = child
+        if desc is not None and credit is not None:
+            break
+    return desc, credit
+
+
 def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
     media_contents: list[dict[str, Any]] = []
+    # Siblings under one item or media:group share a parent; look its
+    # description/credit up once. lxml keeps one proxy per node while it is
+    # referenced, so identity comparison is reliable here.
+    last_parent: Optional[_Element] = None
+    parent_desc: Optional[_Element] = None
+    parent_credit: Optional[_Element] = None
 
-    for media in item.findall(_MEDIA_CONTENT_DESCENDANT):
-        media_item: dict[str, str | int | None] = {
-            "url": media.get("url"),
-            "type": media.get("type"),
-            "medium": media.get("medium"),
-            "width": media.get("width"),
-            "height": media.get("height"),
-        }
-        _coerce_int_fields(media_item, ("width", "height"))
+    # iter() walks descendants in C; it also yields `item` itself, but an item
+    # is never a media:content element.
+    for media in item.iter(_MEDIA_CONTENT_TAG):
+        # Same keys, order and int coercion as building the full dict and
+        # then dropping None values.
+        media_item: dict[str, Any] = {}
+        for attr in ("url", "type", "medium"):
+            value = media.get(attr)
+            if value is not None:
+                media_item[attr] = value
+        for attr in ("width", "height"):
+            value = media.get(attr)
+            if value is not None:
+                try:
+                    media_item[attr] = int(value)
+                except ValueError:
+                    pass
 
-        title = media.find(_MEDIA_TITLE_TAG)
+        title = text = desc = credit = thumbnail = None
+        for child in media:
+            tag = child.tag
+            if tag == _MEDIA_TITLE_TAG:
+                if title is None:
+                    title = child
+            elif tag == _MEDIA_TEXT_TAG:
+                if text is None:
+                    text = child
+            elif tag == _MEDIA_DESCRIPTION_TAG:
+                if desc is None:
+                    desc = child
+            elif tag == _MEDIA_CREDIT_TAG:
+                if credit is None:
+                    credit = child
+            elif tag == _MEDIA_THUMBNAIL_TAG:
+                if thumbnail is None:
+                    thumbnail = child
+
+        if desc is None or credit is None:
+            parent = media.getparent()
+            if parent is not None:
+                if parent is not last_parent:
+                    last_parent = parent
+                    parent_desc, parent_credit = _first_media_desc_credit(parent)
+                if desc is None:
+                    desc = parent_desc
+                if credit is None:
+                    credit = parent_credit
+
         if title is not None and title.text:
             media_item["title"] = title.text.strip()
-
-        text = media.find(_MEDIA_TEXT_TAG)
         if text is not None and text.text:
             media_item["text"] = text.text.strip()
-
-        desc = media.find(_MEDIA_DESCRIPTION_TAG)
-        if desc is None:
-            parent = media.getparent()
-            if parent is not None:
-                desc = parent.find(_MEDIA_DESCRIPTION_TAG)
         if desc is not None and desc.text:
             media_item["description"] = desc.text.strip()
-
-        credit = media.find(_MEDIA_CREDIT_TAG)
-        if credit is None:
-            parent = media.getparent()
-            if parent is not None:
-                credit = parent.find(_MEDIA_CREDIT_TAG)
         if credit is not None and credit.text:
             media_item["credit"] = credit.text.strip()
-            media_item["credit_scheme"] = credit.get("scheme")
-
-        thumbnail = media.find(_MEDIA_THUMBNAIL_TAG)
+            credit_scheme = credit.get("scheme")
+            if credit_scheme is not None:
+                media_item["credit_scheme"] = credit_scheme
         if thumbnail is not None:
-            media_item["thumbnail_url"] = thumbnail.get("url")
+            thumbnail_url = thumbnail.get("url")
+            if thumbnail_url is not None:
+                media_item["thumbnail_url"] = thumbnail_url
 
-        cleaned = _drop_none_values(media_item)
-        if cleaned:
-            media_contents.append(cleaned)
+        if media_item:
+            media_contents.append(media_item)
 
     if not media_contents:
-        for thumbnail in item.findall(_MEDIA_THUMBNAIL_DESCENDANT):
+        for thumbnail in item.iter(_MEDIA_THUMBNAIL_TAG):
             parent = thumbnail.getparent()
             if parent is None or parent.tag == _MEDIA_CONTENT_TAG:
                 continue
@@ -1495,14 +1574,84 @@ def _parse_enclosure_element(enclosure: _Element) -> dict[str, Any]:
     return _drop_none_values(enc_item)
 
 
-def _first_non_empty(
-    mapping: dict[str, Optional[str]], keys: tuple[str, ...]
-) -> Optional[str]:
-    for key in keys:
-        value = mapping.get(key)
-        if value:
-            return value
-    return None
+_RSS_KIND_OTHER = 0
+_RSS_KIND_ATOM_LINK = 1
+_RSS_KIND_ATOM_ID = 2
+_RSS_KIND_GUID = 3
+_RSS_KIND_ENCODED = 4
+_RSS_KIND_CONTENT = 5
+_RSS_KIND_DESCRIPTION = 6
+_RSS_KIND_ENCLOSURE = 7
+_RSS_KIND_CATEGORY = 8
+_RSS_KIND_SUBJECT = 9
+
+# Bound on per-namespace tag classification caches. Feeds are untrusted and
+# can carry arbitrary tag names, so stop memoizing past this many.
+_TAG_CACHE_MAX = 4096
+
+
+@lru_cache(maxsize=4)
+def _rss_tag_info_cache(atom_ns: str) -> dict[str, tuple[Optional[str], int]]:
+    return {}
+
+
+# Local names whose first-occurrence text _parse_rss_feed_entry_fast reads.
+# Other children's text is never fetched unless their kind needs it.
+_RSS_TEXT_LOCALS = frozenset(
+    (
+        "guid",
+        "title",
+        "description",
+        "summary",
+        "link",
+        "pubdate",
+        "published",
+        "issued",
+        "date",
+        "lastbuilddate",
+        "updated",
+        "modified",
+        "author",
+        "creator",
+        "comments",
+    )
+)
+
+
+def _classify_rss_tag(tag: str, atom_tags: dict[str, str]) -> tuple[Optional[str], int]:
+    """Return (tracked local name or None, _RSS_KIND_*) for an RSS item child.
+
+    The local name is lowercased and only returned when it is in
+    _RSS_TEXT_LOCALS.
+    """
+    if "{" in tag:
+        local = tag.rsplit("}", 1)[1].lower()
+    elif ":" in tag:
+        local = tag.split(":", 1)[1].lower()
+    else:
+        local = tag.lower()
+
+    if tag == atom_tags["link"]:
+        kind = _RSS_KIND_ATOM_LINK
+    elif tag == atom_tags["id"]:
+        kind = _RSS_KIND_ATOM_ID
+    elif tag == "guid":
+        kind = _RSS_KIND_GUID
+    elif tag == _RSS_CONTENT_ENCODED_TAG:
+        kind = _RSS_KIND_ENCODED
+    elif tag == "content":
+        kind = _RSS_KIND_CONTENT
+    elif tag == "description":
+        kind = _RSS_KIND_DESCRIPTION
+    elif tag == "enclosure":
+        kind = _RSS_KIND_ENCLOSURE
+    elif local == "category":
+        kind = _RSS_KIND_CATEGORY
+    elif tag == _DC_SUBJECT_TAG:
+        kind = _RSS_KIND_SUBJECT
+    else:
+        kind = _RSS_KIND_OTHER
+    return (local if local in _RSS_TEXT_LOCALS else None), kind
 
 
 def _parse_rss_feed_entry_fast(
@@ -1516,14 +1665,15 @@ def _parse_rss_feed_entry_fast(
     include_enclosures: bool = True,
 ) -> FastFeedParserDict:
     atom_tags = _atom_ns_tags(atom_ns)
-    atom_link_tag = atom_tags["link"]
-    atom_id_tag = atom_tags["id"]
+    tag_info = _rss_tag_info_cache(atom_ns)
     text_by_local: dict[str, Optional[str]] = {}
     atom_id_text: Optional[str] = None
     atom_links: list[_Element] = []
     guid_element: Optional[_Element] = None
     encoded_content_el: Optional[_Element] = None
+    encoded_content_text: Optional[str] = None
     raw_content_el: Optional[_Element] = None
+    raw_content_text: Optional[str] = None
     rss_description_text: Optional[str] = None
     tag_categories: list[dict[str, str | None]] = []
     tag_subjects: list[dict[str, str | None]] = []
@@ -1534,48 +1684,56 @@ def _parse_rss_feed_entry_fast(
         if not isinstance(tag, str):
             continue
 
-        text_value = child.text or None
+        info = tag_info.get(tag)
+        if info is None:
+            info = _classify_rss_tag(tag, atom_tags)
+            if len(tag_info) < _TAG_CACHE_MAX:
+                tag_info[tag] = info
+        local, kind = info
 
-        if "{" in tag:
-            local = tag.rsplit("}", 1)[1].lower()
-        elif ":" in tag:
-            local = tag.split(":", 1)[1].lower()
-        else:
-            local = tag.lower()
-        if local not in text_by_local:
+        if local is not None and local not in text_by_local:
+            text_value = child.text or None
             text_by_local[local] = text_value
+        elif kind == _RSS_KIND_OTHER:
+            continue
+        else:
+            text_value = child.text or None
 
-        if tag == atom_link_tag:
-            atom_links.append(child)
-        elif tag == atom_id_tag:
-            if atom_id_text is None:
-                atom_id_text = text_value
-        elif tag == "guid":
-            if guid_element is None:
-                guid_element = child
-        elif tag == _RSS_CONTENT_ENCODED_TAG:
-            if encoded_content_el is None:
-                encoded_content_el = child
-        elif tag == "content":
-            if raw_content_el is None:
-                raw_content_el = child
-        elif tag == "description":
-            if rss_description_text is None:
-                rss_description_text = text_value
-
-        if include_enclosures and tag == "enclosure":
-            cleaned = _parse_enclosure_element(child)
-            if cleaned.get("url"):
-                enclosures.append(cleaned)
-
-        if include_tags:
-            if local == "category":
+        if kind == _RSS_KIND_OTHER:
+            continue
+        if kind == _RSS_KIND_CATEGORY:
+            if include_tags:
                 term = text_value.strip() if text_value else None
                 if term:
                     tag_categories.append(
                         {"term": term, "scheme": child.get("domain"), "label": None}
                     )
-            elif tag == _DC_SUBJECT_TAG:
+        elif kind == _RSS_KIND_ATOM_LINK:
+            atom_links.append(child)
+        elif kind == _RSS_KIND_ATOM_ID:
+            if atom_id_text is None:
+                atom_id_text = text_value
+        elif kind == _RSS_KIND_GUID:
+            if guid_element is None:
+                guid_element = child
+        elif kind == _RSS_KIND_ENCODED:
+            if encoded_content_el is None:
+                encoded_content_el = child
+                encoded_content_text = text_value
+        elif kind == _RSS_KIND_CONTENT:
+            if raw_content_el is None:
+                raw_content_el = child
+                raw_content_text = text_value
+        elif kind == _RSS_KIND_DESCRIPTION:
+            if rss_description_text is None:
+                rss_description_text = text_value
+        elif kind == _RSS_KIND_ENCLOSURE:
+            if include_enclosures:
+                cleaned = _parse_enclosure_element(child)
+                if cleaned.get("url"):
+                    enclosures.append(cleaned)
+        elif kind == _RSS_KIND_SUBJECT:
+            if include_tags:
                 term = text_value.strip() if text_value else None
                 if term:
                     tag_subjects.append({"term": term, "scheme": None, "label": None})
@@ -1592,7 +1750,7 @@ def _parse_rss_feed_entry_fast(
     if title:
         entry["title"] = title.strip()
 
-    description = _first_non_empty(text_by_local, ("description", "summary"))
+    description = text_by_local.get("description") or text_by_local.get("summary")
     if description:
         entry["description"] = description.strip()
 
@@ -1600,16 +1758,21 @@ def _parse_rss_feed_entry_fast(
     if link:
         entry["link"] = link.strip()
 
-    published_source = _first_non_empty(
-        text_by_local, ("pubdate", "published", "issued", "date")
+    published_source = (
+        text_by_local.get("pubdate")
+        or text_by_local.get("published")
+        or text_by_local.get("issued")
+        or text_by_local.get("date")
     )
     if published_source:
         published = _parse_date(published_source)
         if published:
             entry["published"] = published
 
-    updated_source = _first_non_empty(
-        text_by_local, ("lastbuilddate", "updated", "modified")
+    updated_source = (
+        text_by_local.get("lastbuilddate")
+        or text_by_local.get("updated")
+        or text_by_local.get("modified")
     )
     if updated_source:
         updated = _parse_date(updated_source)
@@ -1654,13 +1817,16 @@ def _parse_rss_feed_entry_fast(
         entry["id"] = entry["link"]
 
     if include_content:
+        if encoded_content_el is not None:
+            content_el, content_text = encoded_content_el, encoded_content_text
+        else:
+            content_el, content_text = raw_content_el, raw_content_text
         _populate_entry_content_preparsed(
             entry,
             item,
-            content_el=(
-                encoded_content_el if encoded_content_el is not None else raw_content_el
-            ),
+            content_el=content_el,
             rss_description_text=rss_description_text,
+            content_text=content_text,
         )
 
     if include_media and has_media_ns:
@@ -1671,7 +1837,7 @@ def _parse_rss_feed_entry_fast(
     if include_enclosures and enclosures:
         entry["enclosures"] = enclosures
 
-    author = _first_non_empty(text_by_local, ("author", "creator"))
+    author = text_by_local.get("author") or text_by_local.get("creator")
     if not author:
         atom_author = item.find(atom_tags["author_name"])
         author = (
@@ -1692,6 +1858,42 @@ def _parse_rss_feed_entry_fast(
     return entry
 
 
+(
+    _ATOM_KIND_ID,
+    _ATOM_KIND_TITLE,
+    _ATOM_KIND_SUMMARY,
+    _ATOM_KIND_PUBLISHED,
+    _ATOM_KIND_UPDATED,
+    _ATOM_KIND_PUB_FALLBACK,
+    _ATOM_KIND_UPD_FALLBACK,
+    _ATOM_KIND_LINK,
+    _ATOM_KIND_CONTENT,
+    _ATOM_KIND_AUTHOR,
+    _ATOM_KIND_CATEGORY,
+    _ATOM_KIND_ENCLOSURE,
+) = range(12)
+
+
+@lru_cache(maxsize=4)
+def _atom_entry_tag_kinds(atom_ns: str) -> dict[str, int]:
+    """Map the Atom entry child tags we extract to an _ATOM_KIND_* code."""
+    t = _atom_ns_tags(atom_ns)
+    return {
+        t["id"]: _ATOM_KIND_ID,
+        t["title"]: _ATOM_KIND_TITLE,
+        t["summary"]: _ATOM_KIND_SUMMARY,
+        t["published"]: _ATOM_KIND_PUBLISHED,
+        t["updated"]: _ATOM_KIND_UPDATED,
+        t["pub_fallback"]: _ATOM_KIND_PUB_FALLBACK,
+        t["upd_fallback"]: _ATOM_KIND_UPD_FALLBACK,
+        t["link"]: _ATOM_KIND_LINK,
+        t["content"]: _ATOM_KIND_CONTENT,
+        t["ns"] + "author": _ATOM_KIND_AUTHOR,
+        t["category"]: _ATOM_KIND_CATEGORY,
+        "enclosure": _ATOM_KIND_ENCLOSURE,
+    }
+
+
 def _parse_atom_feed_entry_fast(
     item: _Element,
     atom_ns: str,
@@ -1702,10 +1904,7 @@ def _parse_atom_feed_entry_fast(
     include_media: bool = True,
     include_enclosures: bool = True,
 ) -> FastFeedParserDict:
-    t = _atom_ns_tags(atom_ns)
-    atom_link_tag = t["link"]
-    atom_author_tag = t["ns"] + "author"
-    atom_name_tag = t["ns"] + "name"
+    atom_name_tag = _atom_ns_tags(atom_ns)["ns"] + "name"
     atom_links: list[_Element] = []
     atom_categories: list[dict[str, str | None]] = []
     enclosures: list[dict[str, Any]] = []
@@ -1717,60 +1916,71 @@ def _parse_atom_feed_entry_fast(
     published_fallback_source: Optional[str] = None
     updated_fallback_source: Optional[str] = None
 
+    kinds = _atom_entry_tag_kinds(atom_ns)
+    content_text: Optional[str] = None
+
     entry = FastFeedParserDict()
     for child in item:
-        tag = child.tag
-        if not isinstance(tag, str):
+        # Comments/PIs have a non-str tag and never match a kind.
+        kind = kinds.get(child.tag)
+        if kind is None:
             continue
 
-        text_value = child.text
-        if tag == t["id"] and "id" not in entry and text_value:
-            entry["id"] = text_value.strip()
-        elif tag == t["title"] and "title" not in entry and text_value:
-            entry["title"] = text_value.strip()
-        elif tag == t["summary"] and "description" not in entry and text_value:
-            entry["description"] = text_value.strip()
-        elif tag == t["published"] and published_source is None and text_value:
-            published_source = text_value
-        elif tag == t["updated"] and updated_source is None and text_value:
-            updated_source = text_value
-        elif (
-            tag == t["pub_fallback"]
-            and published_fallback_source is None
-            and text_value
-        ):
-            published_fallback_source = text_value
-        elif (
-            tag == t["upd_fallback"] and updated_fallback_source is None and text_value
-        ):
-            updated_fallback_source = text_value
-        elif tag == atom_link_tag:
+        if kind == _ATOM_KIND_LINK:
             atom_links.append(child)
             href = child.get("href")
             if href and first_link_href is None:
                 first_link_href = href.strip()
-        elif include_content and tag == t["content"] and content_el is None:
-            content_el = child
-        elif tag == atom_author_tag and author_name is None:
-            author_name_el = child.find(atom_name_tag)
-            if author_name_el is not None and author_name_el.text:
-                author_name = author_name_el.text.strip()
-
-        if include_tags and tag == t["category"]:
-            term = child.get("term")
-            if term:
-                atom_categories.append(
-                    {
-                        "term": term,
-                        "scheme": child.get("scheme"),
-                        "label": child.get("label"),
-                    }
-                )
-
-        if include_enclosures and tag == "enclosure":
-            cleaned = _parse_enclosure_element(child)
-            if cleaned.get("url"):
-                enclosures.append(cleaned)
+        elif kind == _ATOM_KIND_CATEGORY:
+            if include_tags:
+                term = child.get("term")
+                if term:
+                    atom_categories.append(
+                        {
+                            "term": term,
+                            "scheme": child.get("scheme"),
+                            "label": child.get("label"),
+                        }
+                    )
+        elif kind == _ATOM_KIND_AUTHOR:
+            if author_name is None:
+                author_name_el = child.find(atom_name_tag)
+                if author_name_el is not None and author_name_el.text:
+                    author_name = author_name_el.text.strip()
+        elif kind == _ATOM_KIND_ENCLOSURE:
+            if include_enclosures:
+                cleaned = _parse_enclosure_element(child)
+                if cleaned.get("url"):
+                    enclosures.append(cleaned)
+        elif kind == _ATOM_KIND_CONTENT:
+            if include_content and content_el is None:
+                content_el = child
+                content_text = child.text
+        else:
+            text_value = child.text
+            if not text_value:
+                continue
+            if kind == _ATOM_KIND_ID:
+                if "id" not in entry:
+                    entry["id"] = text_value.strip()
+            elif kind == _ATOM_KIND_TITLE:
+                if "title" not in entry:
+                    entry["title"] = text_value.strip()
+            elif kind == _ATOM_KIND_SUMMARY:
+                if "description" not in entry:
+                    entry["description"] = text_value.strip()
+            elif kind == _ATOM_KIND_PUBLISHED:
+                if published_source is None:
+                    published_source = text_value
+            elif kind == _ATOM_KIND_UPDATED:
+                if updated_source is None:
+                    updated_source = text_value
+            elif kind == _ATOM_KIND_PUB_FALLBACK:
+                if published_fallback_source is None:
+                    published_fallback_source = text_value
+            elif kind == _ATOM_KIND_UPD_FALLBACK:
+                if updated_fallback_source is None:
+                    updated_fallback_source = text_value
 
     if first_link_href:
         entry["link"] = first_link_href
@@ -1809,6 +2019,7 @@ def _parse_atom_feed_entry_fast(
             item,
             content_el=content_el,
             rss_description_text=None,
+            content_text=content_text,
         )
 
     if include_media and has_media_ns:
@@ -2085,64 +2296,51 @@ def _field_value_getter(
     return wrapper
 
 
-def _get_element_value(
-    root: _Element,
-    path: str,
-    attribute: Optional[str] = None,
-    child_index: Optional[dict[str, _Element]] = None,
-) -> Optional[str]:
-    """Get text content or attribute value of an element.
-
-    Also tries common namespace prefixes (rss:, atom:) for malformed feeds.
-    """
-    el = root.find(path)
-
-    # If not found and path is a simple element name, try with common prefixes
-    if el is None and "/" not in path and "{" not in path:
-        path_lower = path.lower()
-        if child_index is not None:
-            for prefix in ("rss:", "atom:", "dc:"):
-                found = child_index.get(f"{prefix}{path_lower}")
-                if found is not None:
-                    el = found
-                    break
-        else:
-            prefixed_paths = [
-                f"rss:{path_lower}",
-                f"atom:{path_lower}",
-                f"dc:{path_lower}",
-            ]
-            for child in root:
-                if not isinstance(child.tag, str):
-                    continue
-                if child.tag.lower() in prefixed_paths:
-                    el = child
-                    break
-
-    if el is None:
-        return None
-
-    if attribute is not None:
-        attr_value = el.get(attribute)
-        return attr_value.strip() if attr_value else None
-    text_value = el.text
-    return text_value.strip() if text_value else None
-
-
 def _cached_element_value_factory(
     root: _Element,
 ) -> _ElementValueGetter:
-    """Create a closure with a child tag index for fast namespace-prefix lookups."""
-    # Build child tag index once: O(children) instead of O(children × misses)
-    child_index: dict[str, _Element] = {}
+    """Create a getter for the text or attribute of a child of `root`.
+
+    Simple paths resolve through a one-pass child index instead of
+    root.find(), which rescans every child (all items, for an RSS channel) on
+    each miss. A miss on a plain name also tries the rss:/atom:/dc: prefixed
+    names that malformed feeds leave unresolved.
+    """
+    # First child per exact tag, matching root.find(tag).
+    first_by_tag: dict[str, _Element] = {}
+    # Last child per lowercased tag, for the case-insensitive prefixed
+    # fallback. Only an unnamespaced tag containing ":" can equal "rss:x"
+    # and the like ("{uri}x" contains ":" too, but starts with "{").
+    prefixed_index: dict[str, _Element] = {}
     for child in root:
-        if isinstance(child.tag, str):
-            child_index[child.tag.lower()] = child
+        tag = child.tag
+        if not isinstance(tag, str):
+            continue
+        if tag not in first_by_tag:
+            first_by_tag[tag] = child
+        if ":" in tag and tag[0] != "{":
+            prefixed_index[tag.lower()] = child
 
     def getter(path: str, attribute: Optional[str] = None) -> Optional[str]:
-        return _get_element_value(
-            root, path, attribute=attribute, child_index=child_index
-        )
+        if "/" in path:
+            el = root.find(path)
+        else:
+            el = first_by_tag.get(path)
+            if el is None and prefixed_index and "{" not in path:
+                path_lower = path.lower()
+                for prefix in ("rss:", "atom:", "dc:"):
+                    el = prefixed_index.get(prefix + path_lower)
+                    if el is not None:
+                        break
+
+        if el is None:
+            return None
+
+        if attribute is not None:
+            attr_value = el.get(attribute)
+            return attr_value.strip() if attr_value else None
+        text_value = el.text
+        return text_value.strip() if text_value else None
 
     return getter
 
