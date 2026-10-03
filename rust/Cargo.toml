@@ -1,0 +1,25 @@
+[package]
+name = "fastfeedparser-core"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Native RSS/Atom entry extractor for fastfeedparser"
+publish = false
+
+[lib]
+name = "fastfeedparser_core"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+memchr = "2"
+pyo3 = { version = "0.26", features = ["abi3-py39"] }
+quick-xml = "0.36"
+simdutf8 = "0.1"
+
+[features]
+extension-module = ["pyo3/extension-module"]
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
