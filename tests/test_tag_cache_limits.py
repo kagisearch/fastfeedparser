@@ -5,11 +5,19 @@ namespace URI and uses many distinct child names in it would otherwise pin a
 copy of the URI per cached tag for the life of the process.
 """
 
+import pytest
+
 import fastfeedparser.main as main
 from fastfeedparser import parse
 
 _ATOM_NS = "http://www.w3.org/2005/Atom"
 _LONG_URI = "urn:" + "a" * 10_000
+
+
+@pytest.fixture(autouse=True)
+def lxml_path_only(monkeypatch):
+    """The tag cache belongs to the lxml path; the native core never fills it."""
+    monkeypatch.setattr(main, "_core", None)
 
 
 def _rss_with_long_namespace(item_children: str) -> str:

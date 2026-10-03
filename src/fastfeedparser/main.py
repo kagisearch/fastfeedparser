@@ -4,6 +4,7 @@ import datetime
 from email.utils import parsedate_to_datetime
 import html as _html_mod
 import json
+import os
 import re
 import zlib
 from functools import lru_cache, partial
@@ -32,6 +33,15 @@ from urllib.request import (
 
 from dateutil import parser as dateutil_parser
 from lxml import etree
+
+# Optional native extractor. Without it, or with FASTFEEDPARSER_DISABLE_CORE
+# set, every document takes the lxml path.
+_core: Any = None
+if not os.environ.get("FASTFEEDPARSER_DISABLE_CORE"):
+    try:
+        import fastfeedparser_core as _core
+    except ImportError:
+        pass
 
 if TYPE_CHECKING:
     from typing import Protocol
@@ -934,6 +944,56 @@ def _detect_feed_structure(
     raise ValueError(f"Unknown feed type: {root.tag}")
 
 
+def _parse_with_core(
+    xml_content: bytes,
+    *,
+    include_content: bool,
+    include_tags: bool,
+    include_media: bool,
+    include_enclosures: bool,
+) -> Optional[FastFeedParserDict]:
+    """Parse with the native extractor, or return None to use the lxml path.
+
+    The extractor accepts well-formed UTF-8 RSS and Atom only and hands back
+    anything else. Feed-level fields still come from _parse_feed_info, run on
+    the document with its items cut out; it never looks inside items.
+    """
+    result = _core.parse_entries(
+        xml_content,
+        FastFeedParserDict,
+        _parse_date,
+        include_content,
+        include_tags,
+        include_media,
+        include_enclosures,
+    )
+    if isinstance(result, str):
+        return None
+    feed_type, atom_namespace, header, entries = result
+    if (
+        feed_type == "rss"
+        and len(entries) < 5
+        and len(xml_content) > 20000
+        and _html_reparse_may_find_more_items(xml_content, len(entries))
+    ):
+        return None
+    root = _parse_xml_root(header)
+    channel = root.find("channel") if feed_type == "rss" else root
+    if channel is None:
+        return None
+
+    feed = _parse_feed_info(
+        channel, feed_type, atom_namespace, include_tags=include_tags
+    )
+    for entry in entries:
+        if "description" not in entry:
+            if include_content:
+                _synthesize_entry_description(entry)
+            entry["description"] = entry.get("description", "").strip()
+    feed["entries"] = entries
+    return feed
+
+
 def _parse_content(
     xml_content: str | bytes,
     *,
@@ -956,6 +1016,16 @@ def _parse_content(
     if looks_malformed:
         root, xml_content = _parse_repairable_xml_root(xml_content)
     else:
+        if _core is not None:
+            core_feed = _parse_with_core(
+                xml_content,
+                include_content=include_content,
+                include_tags=include_tags,
+                include_media=include_media,
+                include_enclosures=include_enclosures,
+            )
+            if core_feed is not None:
+                return core_feed
         root = _parse_xml_root(xml_content)
     root_tag_local = _root_tag_local(root)
     _raise_for_non_feed_root(root, root_tag_local, xml_content)
