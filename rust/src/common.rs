@@ -3,8 +3,10 @@ use std::rc::Rc;
 
 use crate::dates::{fast_parse, Fast};
 use crate::model::{
-    ContentEl, ContentOut, DateFn, EnclosureOut, Length, LinkAttrs, LinkOut, Stop, Text, Unhandled,
+    ContentEl, ContentOut, DateFn, EnclosureOut, Entry, Length, LinkAttrs, LinkOut, Stop, Text,
+    UnescapeFn, Unhandled,
 };
+use crate::synth::synthesize;
 use crate::text::{py_int, py_strip};
 
 pub fn is_http_url(s: &str) -> bool {
@@ -24,6 +26,16 @@ pub fn strip_shared(text: &Text) -> Text {
     } else {
         Rc::new(stripped.to_owned())
     }
+}
+
+/// Give an entry that has content but no description a synthesized one, as
+/// `_populate_entry_content_preparsed` does.
+pub fn fill_description<E>(entry: &mut Entry, unescape: &mut UnescapeFn<E>) -> Result<(), Stop<E>> {
+    if let (None, Some(content)) = (&entry.description, &entry.content) {
+        let text = synthesize(&content.value, unescape).map_err(Stop::Callback)?;
+        entry.description = Some(Rc::new(py_strip(&text).to_owned()));
+    }
+    Ok(())
 }
 
 pub fn parse_date<E>(raw: &str, fallback: &mut DateFn<E>) -> Result<Option<String>, Stop<E>> {

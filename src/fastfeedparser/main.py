@@ -956,13 +956,15 @@ def _parse_with_core(
 
     The extractor accepts well-formed UTF-8 RSS and Atom and hands back
     anything else. Like the recover parser, it ignores content after the
-    root element. Feed-level fields still come from _parse_feed_info, run on
-    the document with its items cut out; it never looks inside items.
+    root element. Entries come back complete. Feed-level fields still come
+    from _parse_feed_info, run on the document with its items cut out; it
+    never looks inside items.
     """
     result = _core.parse_entries(
         xml_content,
         FastFeedParserDict,
         _parse_date,
+        _html_mod.unescape,
         include_content,
         include_tags,
         include_media,
@@ -986,11 +988,6 @@ def _parse_with_core(
     feed = _parse_feed_info(
         channel, feed_type, atom_namespace, include_tags=include_tags
     )
-    for entry in entries:
-        if "description" not in entry:
-            if include_content:
-                _synthesize_entry_description(entry)
-            entry["description"] = entry.get("description", "").strip()
     feed["entries"] = entries
     return feed
 

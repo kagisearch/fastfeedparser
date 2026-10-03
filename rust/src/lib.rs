@@ -12,6 +12,7 @@ mod media;
 mod model;
 mod ns;
 mod rss;
+mod synth;
 mod text;
 mod validate;
 
@@ -127,8 +128,9 @@ fn entry_to_py<'py>(
         .description
         .as_ref()
         .map(|text| PyString::new(py, text));
-    if let Some(description) = &description {
-        d.set_item(intern!(py, "description"), description)?;
+    match &description {
+        Some(description) => d.set_item(intern!(py, "description"), description)?,
+        None => d.set_item(intern!(py, "description"), "")?,
     }
     if let Some(link) = &entry.link {
         d.set_item(intern!(py, "link"), link)?;
@@ -184,15 +186,17 @@ fn entry_to_py<'py>(
 /// `header_bytes` is the document with its items removed, or a string naming
 /// why the document must go to the lxml path. `entry_cls` is called with no
 /// arguments to create each entry mapping; `parse_date` is called for dates
-/// the built-in fast paths cannot decide.
+/// the built-in fast paths cannot decide; `unescape` is `html.unescape`, used
+/// when a description is synthesized from content that holds references.
 #[pyfunction]
-#[pyo3(signature = (data, entry_cls, parse_date, include_content=true, include_tags=true, include_media=true, include_enclosures=true))]
+#[pyo3(signature = (data, entry_cls, parse_date, unescape, include_content=true, include_tags=true, include_media=true, include_enclosures=true))]
 #[allow(clippy::too_many_arguments)]
 fn parse_entries<'py>(
     py: Python<'py>,
     data: &[u8],
     entry_cls: &Bound<'py, PyAny>,
     parse_date: &Bound<'py, PyAny>,
+    unescape: &Bound<'py, PyAny>,
     include_content: bool,
     include_tags: bool,
     include_media: bool,
@@ -206,7 +210,8 @@ fn parse_entries<'py>(
     };
     let mut date_fn =
         |raw: &str| -> PyResult<Option<String>> { parse_date.call1((raw,))?.extract() };
-    let doc = match extract::parse(data, &opts, &mut date_fn) {
+    let mut unescape_fn = |text: &str| -> PyResult<String> { unescape.call1((text,))?.extract() };
+    let doc = match extract::parse(data, &opts, &mut date_fn, &mut unescape_fn) {
         Ok(doc) => doc,
         Err(Stop::Unhandled(Unhandled(reason))) => return Ok(PyString::new(py, reason).into_any()),
         Err(Stop::Callback(err)) => return Err(err),
@@ -254,16 +259,26 @@ pub mod bench_api {
             include_enclosures: true,
         };
         let mut no_fallback = |_: &str| -> Result<Option<String>, ()> { Ok(None) };
-        match crate::extract::parse(data, &opts, &mut no_fallback) {
+        let mut identity = |text: &str| -> Result<String, ()> { Ok(text.to_owned()) };
+        match crate::extract::parse(data, &opts, &mut no_fallback, &mut identity) {
             Ok(doc) => Some(doc.entries.len()),
             Err(Stop::Unhandled(_) | Stop::Callback(())) => None,
         }
     }
 }
 
+/// The description synthesized from an entry's content, exposed for parity
+/// tests. `unescape` is `html.unescape`.
+#[pyfunction]
+fn synthesize_description(content: &str, unescape: &Bound<'_, PyAny>) -> PyResult<String> {
+    let mut unescape_fn = |text: &str| -> PyResult<String> { unescape.call1((text,))?.extract() };
+    synth::synthesize(content, &mut unescape_fn)
+}
+
 #[pymodule]
 fn fastfeedparser_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(parse_entries, m)?)?;
     m.add_function(wrap_pyfunction!(fast_date, m)?)?;
+    m.add_function(wrap_pyfunction!(synthesize_description, m)?)?;
     Ok(())
 }

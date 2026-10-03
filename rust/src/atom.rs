@@ -1,9 +1,10 @@
 //! Port of `_parse_atom_feed_entry_fast`.
 use std::rc::Rc;
 
-use crate::common::{content_from_element, parse_date, populate_links};
+use crate::common::{content_from_element, fill_description, parse_date, populate_links};
 use crate::model::{
     ContentEl, DateFn, EnclosureOut, Entry, LinkAttrs, MediaOut, Options, Stop, TagOut, Text,
+    UnescapeFn,
 };
 use crate::ns::Ns;
 use crate::text::py_strip;
@@ -149,6 +150,7 @@ impl AtomAcc {
         self,
         media: Vec<MediaOut>,
         date_fn: &mut DateFn<E>,
+        unescape: &mut UnescapeFn<E>,
     ) -> Result<Entry, Stop<E>> {
         let mut entry = Entry {
             id: self.id,
@@ -179,6 +181,7 @@ impl AtomAcc {
         }
         if let Some(el) = self.content {
             entry.content = Some(content_from_element(el)?);
+            fill_description(&mut entry, unescape)?;
         }
         entry.media = media;
         entry.enclosures = self.enclosures;

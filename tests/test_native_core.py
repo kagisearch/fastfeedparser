@@ -4,8 +4,10 @@ Skipped when the optional fastfeedparser_core extension is not installed.
 """
 
 import glob
+import html
 import json
 import os
+import random
 
 import pytest
 
@@ -47,7 +49,9 @@ def _parse(source, use_core, monkeypatch, **options):
 
 
 def _extract(document):
-    return core.parse_entries(document, main.FastFeedParserDict, main._parse_date)
+    return core.parse_entries(
+        document, main.FastFeedParserDict, main._parse_date, html.unescape
+    )
 
 
 def _rss(item_children, root_attrs=""):
@@ -168,7 +172,7 @@ def test_date_callback_errors_propagate():
 
     document = _rss("<title>a</title><pubDate>next tuesday</pubDate>")
     with pytest.raises(RuntimeError, match="boom next tuesday"):
-        core.parse_entries(document, dict, failing_parse_date)
+        core.parse_entries(document, dict, failing_parse_date, html.unescape)
 
 
 def _date_candidates():
@@ -233,3 +237,76 @@ def test_fast_date_decides_the_common_shapes():
         "2024-01-15T10:30:00+02:00",
     ):
         assert core.fast_date(raw)[0] == 0
+
+
+def test_unescape_callback_errors_propagate():
+    def failing_unescape(text):
+        raise RuntimeError("no unescape")
+
+    document = _rss("<content>&lt;p&gt;a &amp;amp; b&lt;/p&gt;</content>")
+    with pytest.raises(RuntimeError, match="no unescape"):
+        core.parse_entries(document, dict, main._parse_date, failing_unescape)
+
+
+_CONTENT_PIECES = [
+    "<p>",
+    "</p>",
+    "<br/>",
+    "<",
+    ">",
+    "<>",
+    "<a href='x>y'>",
+    "&amp;",
+    "&lt;",
+    "&nbsp;",
+    "&#10;",
+    "&#32",
+    "&amp",
+    "&notit;",
+    "&",
+    ";",
+    " ",
+    "  ",
+    "\n",
+    "\t",
+    "\r",
+    "\xa0",
+    "\u2003",
+    "\x0b",
+    "\x1c",
+    "word",
+    "lorem ipsum",
+    "x" * 40,
+    "caf\u00e9",
+    "\u65e5\u672c",
+    "\U0001f600",
+]
+
+
+def _random_content(rnd):
+    target = rnd.choice([0, 5, 300, 512, 640, 700, 900, 2040, 2100, 3000])
+    pieces = []
+    size = 0
+    while size < target:
+        piece = rnd.choice(_CONTENT_PIECES)
+        pieces.append(piece)
+        size += len(piece)
+    content = "".join(pieces)
+    # Put a ">" next to the offsets the prefix shortcut cuts at.
+    position = rnd.choice([799, 800, 801, 2046, 2047, 2048, 511, 512, 640])
+    if rnd.random() < 0.3 and len(content) > position:
+        content = (
+            content[:position] + rnd.choice([">", "<i>", " >"]) + content[position:]
+        )
+    return content
+
+
+@pytest.mark.parametrize("seed", range(4))
+def test_synthesized_description_matches_python(seed):
+    rnd = random.Random(seed)
+    for _ in range(2500):
+        content = _random_content(rnd)
+        entry = main.FastFeedParserDict(content=[{"value": content}])
+        main._synthesize_entry_description(entry)
+        native = core.synthesize_description(content, html.unescape)
+        assert native == entry["description"], content

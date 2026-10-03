@@ -8,7 +8,7 @@ use crate::common::enclosure;
 use crate::extract::{Reader, State};
 use crate::media::{FirstCredit, FirstDesc, Thumb};
 use crate::model::{
-    ContentEl, DateFn, FeedKind, LinkAttrs, MediaOut, Stop, TagOut, Text, Unhandled,
+    ContentEl, DateFn, FeedKind, LinkAttrs, MediaOut, Stop, TagOut, Text, UnescapeFn, Unhandled,
 };
 use crate::ns::Ns;
 use crate::rss::{self, Extra, RssAcc, RssKind};
@@ -381,6 +381,7 @@ impl State<'_> {
         &mut self,
         pos: usize,
         date_fn: &mut DateFn<E>,
+        unescape: &mut UnescapeFn<E>,
     ) -> Result<(), Stop<E>> {
         let mut frame = self.frames.pop().expect("item frame");
         for idx in frame.pending_media.drain(..) {
@@ -393,8 +394,9 @@ impl State<'_> {
                 media,
                 self.opts,
                 date_fn,
+                unescape,
             )?,
-            ItemAcc::Atom(acc) => acc.finish(media, date_fn)?,
+            ItemAcc::Atom(acc) => acc.finish(media, date_fn, unescape)?,
         };
         self.entries.push(entry);
         self.ranges.push((self.item_start, pos));

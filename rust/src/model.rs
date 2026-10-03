@@ -25,6 +25,9 @@ impl<E> From<Unhandled> for Stop<E> {
 /// Parses a date the fast paths could not decide.
 pub type DateFn<'a, E> = dyn FnMut(&str) -> Result<Option<String>, E> + 'a;
 
+/// Python's `html.unescape`.
+pub type UnescapeFn<'a, E> = dyn FnMut(&str) -> Result<String, E> + 'a;
+
 #[derive(Clone, Copy)]
 pub struct Options {
     pub include_content: bool,

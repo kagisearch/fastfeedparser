@@ -1,10 +1,11 @@
 //! Port of `_parse_rss_feed_entry_fast`.
 use crate::common::{
-    content_from_element, is_http_url, parse_date, populate_links, strip_shared, stripped,
+    content_from_element, fill_description, is_http_url, parse_date, populate_links, strip_shared,
+    stripped,
 };
 use crate::model::{
     ContentEl, ContentOut, DateFn, EnclosureOut, Entry, ItemAttrs, LinkAttrs, MediaOut, Options,
-    Stop, TagOut, Text,
+    Stop, TagOut, Text, UnescapeFn,
 };
 use crate::ns::Ns;
 use crate::text::py_strip;
@@ -225,6 +226,7 @@ impl RssAcc {
         media: Vec<MediaOut>,
         opts: &Options,
         date_fn: &mut DateFn<E>,
+        unescape: &mut UnescapeFn<E>,
     ) -> Result<Entry, Stop<E>> {
         let mut entry = Entry::default();
         let rss_guid = self.text(GUID).cloned();
@@ -277,6 +279,7 @@ impl RssAcc {
 
         if opts.include_content {
             entry.content = self.content(&item)?;
+            fill_description(&mut entry, unescape)?;
         }
         entry.media = media;
         entry.enclosures = std::mem::take(&mut self.enclosures);

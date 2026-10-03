@@ -6,7 +6,9 @@ use quick_xml::reader::NsReader;
 use crate::atom::AtomAcc;
 use crate::item::{Frame, ItemAcc, Role};
 use crate::media::MediaAcc;
-use crate::model::{DateFn, Document, Entry, FeedKind, ItemAttrs, Options, Stop, Unhandled};
+use crate::model::{
+    DateFn, Document, Entry, FeedKind, ItemAttrs, Options, Stop, UnescapeFn, Unhandled,
+};
 use crate::ns::{Ns, RDF};
 use crate::rss::RssAcc;
 use crate::text::{attr_value, check_text, push_cdata, push_text};
@@ -159,13 +161,18 @@ impl State<'_> {
         }
     }
 
-    fn end<E>(&mut self, pos: usize, date_fn: &mut DateFn<E>) -> Result<(), Stop<E>> {
+    fn end<E>(
+        &mut self,
+        pos: usize,
+        date_fn: &mut DateFn<E>,
+        unescape: &mut UnescapeFn<E>,
+    ) -> Result<(), Stop<E>> {
         if self.item_depth == 0 {
             if self.depth == 2 {
                 self.in_channel = false;
             }
         } else if self.depth == self.item_depth {
-            self.end_item(pos, date_fn)?;
+            self.end_item(pos, date_fn, unescape)?;
         } else {
             self.end_in_item();
         }
@@ -214,7 +221,12 @@ fn is_trailing_content(event: &Event) -> bool {
 }
 
 /// Extract every entry of a well-formed UTF-8 RSS or Atom document.
-pub fn parse<E>(data: &[u8], opts: &Options, date_fn: &mut DateFn<E>) -> Result<Document, Stop<E>> {
+pub fn parse<E>(
+    data: &[u8],
+    opts: &Options,
+    date_fn: &mut DateFn<E>,
+    unescape: &mut UnescapeFn<E>,
+) -> Result<Document, Stop<E>> {
     validate::document(data)?;
     let mut reader = NsReader::from_reader(data);
     reader.config_mut().expand_empty_elements = true;
@@ -248,7 +260,7 @@ pub fn parse<E>(data: &[u8], opts: &Options, date_fn: &mut DateFn<E>) -> Result<
         }
         match event {
             Event::Start(e) => state.start(ns, &e, pos, &reader)?,
-            Event::End(_) => state.end(reader.buffer_position() as usize, date_fn)?,
+            Event::End(_) => state.end(reader.buffer_position() as usize, date_fn, unescape)?,
             Event::Text(t) => state.text(&t, false)?,
             Event::CData(t) => state.text(&t, true)?,
             Event::Comment(c) => {
