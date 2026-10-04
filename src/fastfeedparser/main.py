@@ -1108,6 +1108,17 @@ def _html_reparse_may_find_more_items(xml_content: bytes, found: int) -> bool:
     return _RE_HTTP_EQUIV_BYTES.search(xml_content) is not None
 
 
+def _items_at_any_depth(channel: _Element) -> list[_Element]:
+    """Unprefixed elements named item, in any letter case, anywhere below `channel`."""
+    return [
+        element
+        for element in channel.iter()
+        if isinstance(element.tag, str)
+        and element.prefix is None
+        and element.tag.rpartition("}")[2].lower() == "item"
+    ]
+
+
 def _is_well_formed_xml(xml_content: bytes) -> bool:
     try:
         etree.fromstring(xml_content, parser=_xml_parsers(xml_content).strict)
@@ -1186,27 +1197,34 @@ def _detect_feed_structure(
                                 items = []
                             items.append(child)
 
-        # The HTML re-parse rescues items a damaged document hides from the
-        # XML parser. It does not know CDATA, so it would also read item
-        # markup quoted inside an article as entries; a well-formed document
-        # has nothing to rescue and is never given to it.
+        # Few items in a large document that names many more: look further.
         if (
             len(items) < 5
             and len(xml_content) > 20000
             and _html_reparse_may_find_more_items(xml_content, len(items))
-            and not _is_well_formed_xml(xml_content)
         ):
-            try:
-                html_parser = etree.HTMLParser(recover=True, collect_ids=False)
-                html_root = etree.fromstring(xml_content, parser=html_parser)
-                html_channel = html_root.find(".//channel")
-                if html_channel is not None:
-                    html_items = html_channel.findall(".//item")
-                    if len(html_items) > len(items) * 2:
-                        channel = html_channel
-                        items = html_items
-            except Exception:
-                pass
+            if _is_well_formed_xml(xml_content):
+                # Every item is in the tree; the search above only missed the
+                # ones nested deeper or spelled in another letter case. The
+                # HTML parser is kept away from a well-formed document: it
+                # does not know CDATA and would turn item markup quoted in an
+                # article into entries.
+                deeper_items = _items_at_any_depth(channel)
+                if len(deeper_items) > len(items) * 2:
+                    items = deeper_items
+            else:
+                # A damaged document can hide items from the XML parser.
+                try:
+                    html_parser = etree.HTMLParser(recover=True, collect_ids=False)
+                    html_root = etree.fromstring(xml_content, parser=html_parser)
+                    html_channel = html_root.find(".//channel")
+                    if html_channel is not None:
+                        html_items = html_channel.findall(".//item")
+                        if len(html_items) > len(items) * 2:
+                            channel = html_channel
+                            items = html_items
+                except Exception:
+                    pass
 
         return feed_type, channel, items, atom_namespace
 

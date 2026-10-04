@@ -291,3 +291,53 @@ def test_damaged_feed_with_more_item_tags_is_reparsed(html_parser_uses):
 )
 def test_reparse_is_kept_when_it_could_find_more_items(content, found):
     assert _html_reparse_may_find_more_items(content, found)
+
+
+def _linked_item(i: int, tag: bytes = b"item") -> bytes:
+    return (
+        b"<" + tag + b"><title>t%d</title><link>http://e.com/%d</link>" % (i, i)
+        + b"<description>" + b"x" * 3000 + b"</description></" + tag + b">"
+    )
+
+
+@pytest.mark.parametrize(
+    "items",
+    [
+        pytest.param(
+            b"".join(_linked_item(i, b"Item") for i in range(10)), id="mixed-case-tags"
+        ),
+        pytest.param(
+            b"".join(_linked_item(i, b"ITEM") for i in range(10)), id="upper-case-tags"
+        ),
+        pytest.param(
+            _linked_item(0)
+            + b"<section>"
+            + b"".join(_linked_item(i) for i in range(1, 10))
+            + b"</section>",
+            id="inside-a-wrapper",
+        ),
+        pytest.param(
+            b"<item><title>t0</title><link>http://e.com/0</link>"
+            + b"".join(_linked_item(i) for i in range(1, 10))
+            + b"</item>",
+            id="nested-in-the-first-item",
+        ),
+    ],
+)
+def test_well_formed_feed_gets_its_deeper_items_from_the_xml_tree(
+    items, html_parser_uses
+):
+    parsed = parse(_rss_items([items]))
+    assert [entry.title for entry in parsed.entries] == ["t%d" % i for i in range(10)]
+    # The HTML parser reads <link> as an empty element and loses its text.
+    assert [entry.link for entry in parsed.entries] == [
+        "http://e.com/%d" % i for i in range(10)
+    ]
+    assert not html_parser_uses
+
+
+def test_items_inside_a_comment_are_not_entries(html_parser_uses):
+    commented = b"<!--" + b"".join(_linked_item(i) for i in range(2, 10)) + b"-->"
+    parsed = parse(_rss_items([_linked_item(0), _linked_item(1), commented]))
+    assert [entry.title for entry in parsed.entries] == ["t0", "t1"]
+    assert not html_parser_uses
