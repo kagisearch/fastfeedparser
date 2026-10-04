@@ -275,7 +275,7 @@ fn synthesize_description(content: &str, unescape: &Bound<'_, PyAny>) -> PyResul
     synth::synthesize(content, &mut unescape_fn)
 }
 
-#[pymodule]
+#[pymodule(name = "_core")]
 fn fastfeedparser_core(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(parse_entries, m)?)?;
     m.add_function(wrap_pyfunction!(fast_date, m)?)?;

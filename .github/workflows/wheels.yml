@@ -1,0 +1,91 @@
+# Builds every file a fastfeedparser release needs:
+#   - one wheel per platform with the native extension (fastfeedparser._core)
+#   - a pure-Python wheel that pip picks wherever no platform wheel fits
+#   - the sdist
+# and collects them in a single "dist" artifact to upload with twine.
+#
+# NOT YET RUN: written without access to GitHub Actions. Expect to adjust it
+# on its first run.
+name: wheels
+
+on:
+  push:
+    tags:
+      - "v*"
+  pull_request:
+    paths:
+      - "rust/**"
+      - "src/**"
+      - "setup.py"
+      - "setup.cfg"
+      - "pyproject.toml"
+      - ".github/workflows/wheels.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  platform-wheels:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-15-intel, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pypa/cibuildwheel@v2.23.3
+        env:
+          # The extension uses the stable ABI, so the CPython 3.9 build of each
+          # platform is tagged cp39-abi3 and serves every later CPython.
+          CIBW_BUILD: "cp39-*"
+          CIBW_SKIP: "*-win32 *_i686"
+          # Linux builds run in containers that have no Rust toolchain.
+          CIBW_BEFORE_ALL_LINUX: "curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal"
+          CIBW_ENVIRONMENT_LINUX: 'PATH="$HOME/.cargo/bin:$PATH"'
+          CIBW_ENVIRONMENT_MACOS: "MACOSX_DEPLOYMENT_TARGET=11.0"
+          # setup.py treats the extension as optional, so prove it was built,
+          # then run the suite (it compares the native path with the lxml one).
+          CIBW_TEST_REQUIRES: pytest
+          CIBW_TEST_COMMAND: 'python -c "import fastfeedparser._core" && pytest {project}/tests'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-${{ matrix.os }}
+          path: wheelhouse/*.whl
+
+  pure-wheel-and-sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build
+        run: |
+          pip install build
+          FASTFEEDPARSER_PURE=1 python -m build
+          ls dist/*-py3-none-any.whl dist/*.tar.gz
+      - name: Test the lxml path alone
+        run: |
+          pip install pytest dist/*-py3-none-any.whl
+          pytest tests
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-pure-and-sdist
+          path: dist/*
+
+  dist:
+    needs: [platform-wheels, pure-wheel-and-sdist]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: wheels-*
+          merge-multiple: true
+          path: dist
+      - run: ls -l dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/*

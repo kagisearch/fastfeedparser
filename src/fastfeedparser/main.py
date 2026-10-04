@@ -34,12 +34,13 @@ from urllib.request import (
 from dateutil import parser as dateutil_parser
 from lxml import etree
 
-# Optional native extractor. Without it, or with FASTFEEDPARSER_DISABLE_CORE
-# set, every document takes the lxml path.
+# Native extractor, present in platform wheels and absent from the pure-Python
+# one. Without it, or with FASTFEEDPARSER_DISABLE_CORE set, every document
+# takes the lxml path.
 _core: Any = None
 if not os.environ.get("FASTFEEDPARSER_DISABLE_CORE"):
     try:
-        import fastfeedparser_core as _core
+        from . import _core
     except ImportError:
         pass
 

@@ -32,20 +32,20 @@ Powers feed processing for [Kagi Small Web](https://github.com/kagisearch/smallw
 pip install fastfeedparser
 ```
 
-### Optional native core
+### Native core
 
-`rust/` holds `fastfeedparser-core`, a Rust extension that extracts entries
-from well-formed UTF-8 RSS and Atom feeds. When it is installed, `parse()`
-uses it automatically and falls back to lxml for everything else; the output
-is the same either way. It is not on PyPI yet, so for now it has to be built
-from source (needs a Rust toolchain):
+The package includes a Rust extension (`fastfeedparser._core`, source in
+`rust/`) that extracts entries from well-formed UTF-8 RSS and Atom feeds.
+`parse()` uses it automatically and falls back to lxml for everything else;
+the output is the same either way.
 
-```bash
-pip install maturin
-cd rust && maturin develop --release
-```
+You do not need Rust to install. Wheels for CPython 3.9+ on Linux, macOS and
+Windows carry the compiled extension. Anywhere else pip installs the
+pure-Python wheel, which parses with lxml. Installing from source builds the
+extension if a Rust toolchain is present and skips it if not.
 
-Set `FASTFEEDPARSER_DISABLE_CORE=1` to ignore it. See `rust/README.md`.
+Set `FASTFEEDPARSER_DISABLE_CORE=1` to ignore the extension. See
+`rust/README.md`.
 
 ## Quick Start
 

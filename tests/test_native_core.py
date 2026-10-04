@@ -1,6 +1,6 @@
 """The native core must return what the lxml path returns, or step aside.
 
-Skipped when the optional fastfeedparser_core extension is not installed.
+Skipped when the package was built without its native extension.
 """
 
 import glob
@@ -11,7 +11,7 @@ import random
 
 import pytest
 
-core = pytest.importorskip("fastfeedparser_core")
+core = pytest.importorskip("fastfeedparser._core")
 
 from feedgen import DATES, FeedGenerator
 

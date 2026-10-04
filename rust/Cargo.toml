@@ -3,7 +3,7 @@ name = "fastfeedparser-core"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-description = "Native RSS/Atom entry extractor for fastfeedparser"
+description = "Native RSS/Atom entry extractor, built into fastfeedparser as fastfeedparser._core"
 publish = false
 
 [lib]
