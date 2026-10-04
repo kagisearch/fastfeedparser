@@ -8,6 +8,7 @@ import os
 import re
 import threading
 import zlib
+from collections import deque
 from functools import lru_cache, partial
 from xml.sax.saxutils import escape as _xml_escape
 
@@ -858,11 +859,76 @@ def _parse_xml_root(xml_content: bytes) -> _Element:
     return root
 
 
-# Threads with a parse in flight, keyed by thread id.
-_PARSING_THREADS: dict[int, bool] = {}
+# The total size of the documents being parsed at once, across threads. A
+# parse holds about four times its document's size in memory while it runs
+# (34 MB for an 8 MB feed), so this bounds what parsing in several threads
+# adds over parsing in one.
+_MAX_BYTES_IN_FLIGHT = 16 * 1024 * 1024
+
+
+class _InFlightParses:
+    """The parses running now, admitted in arrival order within a byte budget.
+
+    A parse waits while the documents in flight plus its own would exceed
+    _MAX_BYTES_IN_FLIGHT. A document larger than the whole budget is admitted
+    once nothing else is in flight, so it is parsed alone. Arrival order keeps
+    a large document from waiting forever behind small ones that would fit.
+    """
+
+    def __init__(self) -> None:
+        self.reset()
+
+    def reset(self) -> None:
+        self.lock = threading.Lock()
+        self.sizes: dict[int, int] = {}  # thread id -> size, for admitted parses
+        self.total = 0
+        # (thread id, size, event set on admission), in arrival order
+        self.waiting: deque[tuple[int, int, threading.Event]] = deque()
+
+    def _fits(self, size: int) -> bool:
+        return not self.total or self.total + size <= _MAX_BYTES_IN_FLIGHT
+
+    def _admit_waiting(self) -> None:
+        """Admit from the front of the line while it fits. Caller holds the lock."""
+        while self.waiting and self._fits(self.waiting[0][1]):
+            thread_id, size, admitted = self.waiting.popleft()
+            self.sizes[thread_id] = size
+            self.total += size
+            admitted.set()
+
+    def enter(self, size: int) -> None:
+        thread_id = threading.get_ident()
+        with self.lock:
+            if not self.waiting and self._fits(size):
+                self.sizes[thread_id] = size
+                self.total += size
+                return
+            admitted = threading.Event()
+            self.waiting.append((thread_id, size, admitted))
+        try:
+            admitted.wait()
+        except BaseException:
+            # Interrupted while waiting. Another thread may have admitted this
+            # one in the meantime; either way it must not stay counted.
+            with self.lock:
+                if thread_id in self.sizes:
+                    self.total -= self.sizes.pop(thread_id)
+                else:
+                    self.waiting.remove((thread_id, size, admitted))
+                self._admit_waiting()
+            raise
+
+    def leave(self) -> None:
+        with self.lock:
+            self.total -= self.sizes.pop(threading.get_ident(), 0)
+            self._admit_waiting()
+
+
+_IN_FLIGHT = _InFlightParses()
 if hasattr(os, "register_at_fork"):
-    # A forked child starts with the forking thread only.
-    os.register_at_fork(after_in_child=_PARSING_THREADS.clear)
+    # A forked child starts with the forking thread only, and the lock may
+    # have been held by a thread that does not exist there.
+    os.register_at_fork(after_in_child=_IN_FLIGHT.reset)
 
 
 def _parse_xml_root_lifting_cdata(
@@ -880,7 +946,7 @@ def _parse_xml_root_lifting_cdata(
     reports any error on the bytes left after lifting, or read them in another
     encoding, the document is parsed again whole and nothing is lifted.
     """
-    if len(_PARSING_THREADS) > 1:
+    if len(_IN_FLIGHT.sizes) > 1:
         return _parse_xml_root(xml_content), {}
     parse_bytes, lifted = _lift_large_cdata(xml_content)
     if lifted:
@@ -1266,13 +1332,12 @@ def _parse_content(
 def _parse_content_in_flight(
     content: str | bytes, **options: bool
 ) -> FastFeedParserDict:
-    """Run _parse_content with this thread listed in _PARSING_THREADS."""
-    thread_id = threading.get_ident()
-    _PARSING_THREADS[thread_id] = True
+    """Run _parse_content as one of the parses in _IN_FLIGHT."""
+    _IN_FLIGHT.enter(len(content))
     try:
         return _parse_content(content, **options)
     finally:
-        _PARSING_THREADS.pop(thread_id, None)
+        _IN_FLIGHT.leave()
 
 
 def parse(

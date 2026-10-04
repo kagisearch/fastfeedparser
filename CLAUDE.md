@@ -35,7 +35,8 @@ Single-file parser: `src/fastfeedparser/main.py`
 **Performance patterns:**
 - lxml recover parser in one pass; a strict parse only decides whether a malformed-looking document needs body repair
 - One pair of lxml parsers per thread (`_XML_PARSERS`); lxml locks a parser for a whole parse, so a shared one serializes threads
-- Large CDATA sections are lifted out of the bytes lxml parses and decoded in Python (`_lift_large_cdata`); every reader of description/content/summary text restores them. If libxml2 reports any error or reads another encoding, the document is parsed again whole. Skipped while another thread is parsing (`_PARSING_THREADS`), because the scan holds the GIL
+- Parses in different threads run side by side only while their documents total at most `_MAX_BYTES_IN_FLIGHT` (16 MB); a parse holds about 4x its document's size, so this caps what a thread pool adds to memory. Admission is in arrival order (`_IN_FLIGHT`)
+- Large CDATA sections are lifted out of the bytes lxml parses and decoded in Python (`_lift_large_cdata`); every reader of description/content/summary text restores them. If libxml2 reports any error or reads another encoding, the document is parsed again whole. Skipped while another thread is parsing, because the scan holds the GIL
 - Pre-compiled regex (`_RE_*` constants)
 - LRU-cached slow parsers (`_slow_dateutil_parse`, `_slow_dateparser`)
 
