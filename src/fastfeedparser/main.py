@@ -2925,7 +2925,7 @@ def _ensure_utc(dt: datetime.datetime) -> Optional[datetime.datetime]:
 
 
 def _fast_rfc822_to_iso(value: str) -> Optional[str]:
-    """Fast RFC-822 date to ISO string, bypassing datetime objects for UTC dates."""
+    """RFC-822 date to a UTC ISO string, or None if it is not one or cannot exist."""
     m = _RE_RFC822.match(value)
     if not m:
         return None
@@ -2944,47 +2944,26 @@ def _fast_rfc822_to_iso(value: str) -> Optional[str]:
     # Python requires offset strictly between -24h and +24h
     if not (-86400 < tz_offset_seconds < 86400):
         return None
-    d = int(day)
     h = int(hour)
-    mi = int(minute)
-    s = int(second)
-    # Hour 24 is invalid (even ISO only allows 24:00:00); roll to next day at 00:mm:ss
-    if h == 24:
-        base = datetime.date(int(year), month, d) + datetime.timedelta(days=1)
-        h = 0
-        if tz_offset_seconds == 0:
-            return f"{base.year:04d}-{base.month:02d}-{base.day:02d}T{h:02d}:{mi:02d}:{s:02d}+00:00"
-        dt = datetime.datetime(
-            base.year,
-            base.month,
-            base.day,
-            h,
-            mi,
-            s,
-            tzinfo=datetime.timezone(datetime.timedelta(seconds=tz_offset_seconds)),
+    try:
+        # Hour 24 is not an hour of the day; read it as 00 on the next day.
+        local = datetime.datetime(
+            int(year), month, int(day), 0 if h == 24 else h, int(minute), int(second)
         )
-        utc = dt.astimezone(_UTC)
-        return f"{utc.year:04d}-{utc.month:02d}-{utc.day:02d}T{utc.hour:02d}:{utc.minute:02d}:{utc.second:02d}+00:00"
-    if tz_offset_seconds == 0:
-        return f"{year}-{month:02d}-{d:02d}T{hour}:{minute}:{second}+00:00"
-    dt = datetime.datetime(
-        int(year),
-        month,
-        d,
-        h,
-        mi,
-        s,
-        tzinfo=datetime.timezone(datetime.timedelta(seconds=tz_offset_seconds)),
-    )
-    utc = dt.astimezone(_UTC)
-    return f"{utc.year:04d}-{utc.month:02d}-{utc.day:02d}T{utc.hour:02d}:{utc.minute:02d}:{utc.second:02d}+00:00"
+        if h == 24:
+            local += datetime.timedelta(days=1)
+        utc = local - datetime.timedelta(seconds=tz_offset_seconds)
+    except (ValueError, OverflowError):
+        # No such date, or it falls outside the years datetime can hold.
+        return None
+    return utc.isoformat() + "+00:00"
 
 
 def _parsedate_to_utc(value: str) -> Optional[datetime.datetime]:
     """RFC-822 / RFC-2822 parsing via email.utils (fallback)."""
     try:
         parsed = parsedate_to_datetime(value)
-    except (TypeError, ValueError, IndexError):
+    except (TypeError, ValueError, IndexError, OverflowError):
         return None
     if parsed is None:
         return None
@@ -3057,7 +3036,7 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
         return _dateparser.parse(
             value, languages=["en"], settings=_DATEPARSER_SETTINGS
         )
-    except (ValueError, TypeError):
+    except (ValueError, TypeError, OverflowError):
         return None
 
 
@@ -3075,9 +3054,9 @@ def _fixed_rfc822_utc_to_iso(value: str) -> Optional[str]:
     """Convert "Mon, 02 Jan 2006 15:04:05 GMT" to ISO by character position.
 
     The caller has checked that the zone, value[26:], is one of
-    _RFC822_UTC_ZONES. Returns None for any other layout or hour 24;
-    _fast_rfc822_to_iso handles those. For the strings it accepts, it returns
-    what _fast_rfc822_to_iso returns.
+    _RFC822_UTC_ZONES. Returns None for any other layout, for hour 24, and
+    for a date or time that cannot exist; _fast_rfc822_to_iso handles those.
+    For the strings it accepts, it returns what _fast_rfc822_to_iso returns.
     """
     month = _MONTH_DIGITS_RFC822.get(value[8:11])
     if month is None:
@@ -3097,9 +3076,17 @@ def _fixed_rfc822_utc_to_iso(value: str) -> Optional[str]:
         and hour.isdigit()
         and minute.isdigit()
         and second.isdigit()
-        and hour != "24"
+        # Two ASCII digits compare like the numbers they spell.
+        and hour < "24"
+        and minute < "60"
+        and second < "60"
     ):
         return None
+    if not ("01" <= day <= "28" and year != "0000"):
+        try:
+            datetime.date(int(year), int(month), int(day))
+        except ValueError:
+            return None
     return f"{year}-{month}-{day}T{hour}:{minute}:{second}+00:00"
 
 
@@ -3179,14 +3166,19 @@ def _parse_date(date_str: str) -> Optional[str]:
     if "T24:" in candidate or " 24:" in candidate:
         m24 = _RE_HOUR24.search(candidate)
         if m24:
-            base = datetime.date.fromisoformat(m24.group(1))
-            mins, secs = int(m24.group(2)), int(m24.group(3))
-            next_day = base + datetime.timedelta(days=1)
-            candidate = (
-                candidate[: m24.start()]
-                + f"{next_day}T00:{mins:02d}:{secs:02d}"
-                + candidate[m24.end() :]
-            )
+            try:
+                base = datetime.date.fromisoformat(m24.group(1))
+                next_day = base + datetime.timedelta(days=1)
+            except (ValueError, OverflowError):
+                # No such day, or no day after it; the parsers below reject it.
+                next_day = None
+            if next_day is not None:
+                mins, secs = int(m24.group(2)), int(m24.group(3))
+                candidate = (
+                    candidate[: m24.start()]
+                    + f"{next_day}T00:{mins:02d}:{secs:02d}"
+                    + candidate[m24.end() :]
+                )
 
     dt: Optional[datetime.datetime] = None
 
