@@ -1110,6 +1110,14 @@ def _html_reparse_may_find_more_items(xml_content: bytes, found: int) -> bool:
     return _RE_HTTP_EQUIV_BYTES.search(xml_content) is not None
 
 
+def _is_well_formed_xml(xml_content: bytes) -> bool:
+    try:
+        etree.fromstring(xml_content, parser=_XML_PARSERS.strict)
+    except etree.XMLSyntaxError:
+        return False
+    return True
+
+
 def _detect_feed_structure(
     root: _Element, xml_content: bytes, root_tag_local: str
 ) -> tuple[_FeedType, _Element, list[_Element], Optional[str]]:
@@ -1180,10 +1188,15 @@ def _detect_feed_structure(
                                 items = []
                             items.append(child)
 
+        # The HTML re-parse rescues items a damaged document hides from the
+        # XML parser. It does not know CDATA, so it would also read item
+        # markup quoted inside an article as entries; a well-formed document
+        # has nothing to rescue and is never given to it.
         if (
             len(items) < 5
             and len(xml_content) > 20000
             and _html_reparse_may_find_more_items(xml_content, len(items))
+            and not _is_well_formed_xml(xml_content)
         ):
             try:
                 html_parser = etree.HTMLParser(recover=True, collect_ids=False)

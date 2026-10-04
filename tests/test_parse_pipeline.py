@@ -212,19 +212,51 @@ def test_healthy_few_item_feed_is_not_reparsed(html_parser_uses):
     assert not html_parser_uses
 
 
-@pytest.mark.parametrize(
-    "marker",
-    [
-        b'<meta charset="utf-8">',
-        b"http-equiv content charset=utf-8",
-        b"HTTP-EQUIV CONTENT CHARSET=utf-8",
-    ],
-)
-def test_few_item_feed_that_may_switch_encoding_is_reparsed(html_parser_uses, marker):
+_ENCODING_MARKERS = [
+    b'<meta charset="utf-8">',
+    b"http-equiv content charset=utf-8",
+    b"HTTP-EQUIV CONTENT CHARSET=utf-8",
+]
+# A bare "&" is a syntax error the recover parser reads past.
+_NOT_WELL_FORMED = b"<x>a & b</x>"
+
+
+@pytest.mark.parametrize("marker", _ENCODING_MARKERS)
+def test_damaged_few_item_feed_that_may_switch_encoding_is_reparsed(
+    html_parser_uses, marker
+):
+    items = [_long_item(b"t%d" % i) for i in range(3)]
+    feed = _rss_items([b"<!-- " + marker + b" -->", _NOT_WELL_FORMED] + items)
+    assert [entry.title for entry in parse(feed).entries] == ["t0", "t1", "t2"]
+    assert html_parser_uses
+
+
+@pytest.mark.parametrize("marker", _ENCODING_MARKERS)
+def test_well_formed_few_item_feed_is_never_reparsed(html_parser_uses, marker):
     items = [_long_item(b"t%d" % i) for i in range(3)]
     feed = _rss_items([b"<!-- " + marker + b" -->"] + items)
     assert [entry.title for entry in parse(feed).entries] == ["t0", "t1", "t2"]
-    assert html_parser_uses
+    assert not html_parser_uses
+
+
+def _item_with_item_markup_in_cdata() -> bytes:
+    article = b"<p>How to write a feed:</p>" + b"<item><title>fake</title></item>" * 25
+    return (
+        b"<item><title>real</title><description><![CDATA["
+        + article
+        + b"x" * 20000
+        + b"]]></description></item>"
+    )
+
+
+def test_item_markup_inside_cdata_is_text_not_entries(html_parser_uses):
+    # The HTML parser does not know CDATA, so it reads the article's own
+    # <item> examples as elements. A well-formed feed is never given to it.
+    feed = _rss_items([_item_with_item_markup_in_cdata()])
+    parsed = parse(feed)
+    assert [entry.title for entry in parsed.entries] == ["real"]
+    assert parsed.entries[0].description.count("<item><title>fake</title></item>") == 25
+    assert not html_parser_uses
 
 
 def test_damaged_feed_with_more_item_tags_is_reparsed(html_parser_uses):
