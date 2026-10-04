@@ -35,7 +35,7 @@ Single-file parser: `src/fastfeedparser/main.py`
 **Performance patterns:**
 - lxml recover parser in one pass; a strict parse only decides whether a malformed-looking document needs body repair
 - One pair of lxml parsers per thread (`_XML_PARSERS`); lxml locks a parser for a whole parse, so a shared one serializes threads
-- Threads keep their own parsers only while the trees in flight are estimated to fit `_MAX_TREE_BYTES_IN_FLIGHT` (32 MB; `_estimated_tree_bytes` is about 4x the document plus 200 bytes per tag). A document over that is parsed with the one shared pair (`_SHARED_XML_PARSERS`), whose lxml lock serializes it, so a thread pool cannot multiply memory. Nothing waits or locks in Python (`_xml_parsers`)
+- Threads keep their own parsers only while the trees in flight are estimated to fit `_MAX_TREE_BYTES_IN_FLIGHT` (32 MB; `_estimated_tree_bytes` is about 4x the document plus 200 bytes per tag). A document over that is parsed with the one shared pair (`_SHARED_XML_PARSERS`), whose lxml lock serializes the parse as the single pair in 0.6.3 did. The lock does not cover the tree's lifetime, so a feed whose entries are slow to read can still overlap with the next one, as on 0.6.3. Nothing waits or locks in Python (`_xml_parsers`)
 - Large CDATA sections are lifted out of the bytes lxml parses and decoded in Python (`_lift_large_cdata`); every reader of description/content/summary text restores them. If libxml2 reports any error or reads another encoding, the document is parsed again whole. Skipped while another thread is parsing, because the scan holds the GIL
 - Pre-compiled regex (`_RE_*` constants)
 - LRU-cached slow parsers (`_slow_dateutil_parse`, `_slow_dateparser`)

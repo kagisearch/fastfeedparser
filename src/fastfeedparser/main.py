@@ -839,16 +839,19 @@ class _ThreadXMLParsers(threading.local, _XMLParsers):
 
 
 _THREAD_XML_PARSERS = _ThreadXMLParsers()
-# One pair for all threads. Its lock makes the documents given to it parse one
-# at a time, which is what keeps memory flat when many large ones arrive.
+# One pair for all threads. lxml's lock on it lets one document at a time be
+# parsed with it, as the single pair in 0.6.3 did for every document. The lock
+# covers the parse only; a tree stays alive while its entries are read.
 _SHARED_XML_PARSERS = _XMLParsers()
 
-# With a parser each, every thread's tree exists at once. Threads keep their
-# own parsers only while the trees in flight are estimated to stay under this.
-# Ordinary feeds come to about 1.5 MB each, so up to 16 threads rarely reach it.
+# With a parser each, threads build their trees at the same time. They keep
+# their own parsers only while the trees in flight are estimated to stay under
+# this; a document past it takes the shared pair, so memory then grows no
+# faster than it does with one pair. Ordinary feeds come to about 1.5 MB each,
+# so up to 16 threads rarely reach it.
 _MAX_TREE_BYTES_IN_FLIGHT = 32 * 1024 * 1024
-# thread id -> estimated tree bytes of the document that thread is parsing with
-# its own parsers; 0 if it has not picked parsers yet or uses the shared pair.
+# thread id -> estimated bytes of the trees that thread has built with its own
+# parsers in the parse() it is running; 0 if none.
 _IN_FLIGHT: dict[int, int] = {}
 _TREE_SAMPLE_BYTES = 4096
 
@@ -871,7 +874,8 @@ def _estimated_tree_bytes(xml_content: bytes) -> int:
     Four times the document plus 200 bytes for each tag: measured parses held
     3 to 7 times a text-heavy feed and about 110 bytes per tag of a feed made
     of small elements. Tags are counted in three samples, not the whole
-    document.
+    document, so a document that keeps its tags away from the samples is
+    underestimated. It is a guide for ordinary feeds, not a guard.
     """
     size = len(xml_content)
     sample = _TREE_SAMPLE_BYTES
@@ -893,15 +897,20 @@ def _xml_parsers(xml_content: bytes) -> _XMLParsers:
 
     This thread's own, unless other threads are parsing and the trees in
     flight plus this one would pass _MAX_TREE_BYTES_IN_FLIGHT; then the shared
-    pair. Nothing here waits or takes a lock, so a wrong or stale entry in
-    _IN_FLIGHT can send documents to the shared pair but cannot block one.
+    pair. No Python code here waits or takes a lock, so a wrong or stale entry
+    in _IN_FLIGHT can send documents to the shared pair but cannot block one.
+    A parse with the shared pair waits inside lxml for the one before it.
     """
-    if len(_IN_FLIGHT) <= 1:
-        return _THREAD_XML_PARSERS
     thread_id = threading.get_ident()
-    _IN_FLIGHT[thread_id] = _estimated_tree_bytes(xml_content)
-    if sum(list(_IN_FLIGHT.values())) > _MAX_TREE_BYTES_IN_FLIGHT:
-        _IN_FLIGHT[thread_id] = 0
+    held = _IN_FLIGHT.get(thread_id)
+    if held is None:
+        # Not inside parse(), so nothing would remove an entry made here.
+        return _THREAD_XML_PARSERS
+    # A parse can build a second tree while its first is alive; count one.
+    _IN_FLIGHT[thread_id] = max(held, _estimated_tree_bytes(xml_content))
+    in_flight = list(_IN_FLIGHT.values())
+    if len(in_flight) > 1 and sum(in_flight) > _MAX_TREE_BYTES_IN_FLIGHT:
+        _IN_FLIGHT[thread_id] = held
         return _SHARED_XML_PARSERS
     return _THREAD_XML_PARSERS
 
@@ -945,8 +954,9 @@ def _parse_xml_root_lifting_cdata(
     if len(_IN_FLIGHT) > 1:
         return _parse_xml_root(xml_content), {}
     parse_bytes, lifted = _lift_large_cdata(xml_content)
-    if lifted:
-        # This thread's own parser, so the error log read below is this parse's.
+    # Only with this thread's own parser: the error log read below must be
+    # this parse's, and the shared pair's can be another thread's.
+    if lifted and _xml_parsers(xml_content) is _THREAD_XML_PARSERS:
         parser = _THREAD_XML_PARSERS.recover
         try:
             root = etree.fromstring(parse_bytes, parser=parser)
@@ -1209,9 +1219,12 @@ def _detect_feed_structure(
                 # HTML parser is kept away from a well-formed document: it
                 # does not know CDATA and would turn item markup quoted in an
                 # article into entries.
-                deeper_items = _items_at_any_depth(channel)
-                if len(deeper_items) > len(items) * 2:
-                    items = deeper_items
+                # Only below a channel element, which the HTML re-parse
+                # needed too.
+                if channel is not root:
+                    deeper_items = _items_at_any_depth(channel)
+                    if len(deeper_items) > len(items) * 2:
+                        items = deeper_items
             else:
                 # A damaged document can hide items from the XML parser.
                 try:

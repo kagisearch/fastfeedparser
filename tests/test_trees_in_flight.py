@@ -292,3 +292,27 @@ def test_forked_child_can_use_the_shared_parsers():
         timeout=120,
     )
     assert done.returncode == 0, done.stderr
+
+
+def test_first_thread_in_flight_is_counted(monkeypatch):
+    # The other thread chose its parsers while it was alone. Its tree still
+    # counts against a second document that arrives while it is in flight.
+    one_document = main._estimated_tree_bytes(_FEED)
+    monkeypatch.setattr(main, "_MAX_TREE_BYTES_IN_FLIGHT", int(1.5 * one_document))
+    with _OtherParse(monkeypatch) as other:
+        assert _titles() == ["e"]
+        assert other.parsers == [main._SHARED_XML_PARSERS.recover]
+
+
+def test_two_documents_within_the_budget_both_keep_their_own_parsers(monkeypatch):
+    one_document = main._estimated_tree_bytes(_FEED)
+    monkeypatch.setattr(main, "_MAX_TREE_BYTES_IN_FLIGHT", int(2.5 * one_document))
+    with _OtherParse(monkeypatch) as other:
+        assert _titles() == ["e"]
+        assert other.parsers == [main._THREAD_XML_PARSERS.recover]
+
+
+def test_parser_choice_outside_parse_leaves_no_entry():
+    assert main._xml_parsers(_FEED) is main._THREAD_XML_PARSERS
+    assert main._parse_xml_root(_FEED).tag == "rss"
+    assert threading.get_ident() not in main._IN_FLIGHT

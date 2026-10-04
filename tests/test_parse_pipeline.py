@@ -341,3 +341,29 @@ def test_items_inside_a_comment_are_not_entries(html_parser_uses):
     parsed = parse(_rss_items([_linked_item(0), _linked_item(1), commented]))
     assert [entry.title for entry in parsed.entries] == ["t0", "t1"]
     assert not html_parser_uses
+
+
+@pytest.mark.parametrize(
+    "feed",
+    [
+        pytest.param(
+            b'<rss version="2.0"><title>f</title><description>'
+            + b"x" * 24000
+            + b"</description><item><title>T1</title><gallery>"
+            + b"<item><title>img</title></item>" * 3
+            + b"</gallery></item></rss>",
+            id="no-channel",
+        ),
+        pytest.param(
+            b'<rss version="2.0"><channel/><title>f</title><description>'
+            + b"x" * 24000
+            + b"</description><item><title>T1</title><gallery>"
+            + b"<item><title>img</title></item>" * 3
+            + b"</gallery></item></rss>",
+            id="empty-channel",
+        ),
+    ],
+)
+def test_feed_without_a_channel_keeps_only_its_direct_items(feed, html_parser_uses):
+    assert [entry.title for entry in parse(feed).entries] == ["T1"]
+    assert not html_parser_uses
