@@ -2936,8 +2936,18 @@ def _ensure_utc(dt: datetime.datetime) -> Optional[datetime.datetime]:
         return None
 
 
+# What _fast_rfc822_to_iso returns for a date in RFC-822 form that names no
+# real moment. Falsy, and not None: _parse_date stops there instead of letting
+# the looser parsers guess at it.
+_IMPOSSIBLE_DATE = ""
+
+
 def _fast_rfc822_to_iso(value: str) -> Optional[str]:
-    """RFC-822 date to a UTC ISO string, or None if it is not one or cannot exist."""
+    """RFC-822 date to a UTC ISO string.
+
+    Returns None when the value is not in RFC-822 form, and _IMPOSSIBLE_DATE
+    when it is but the date or time cannot exist.
+    """
     m = _RE_RFC822.match(value)
     if not m:
         return None
@@ -2967,7 +2977,7 @@ def _fast_rfc822_to_iso(value: str) -> Optional[str]:
         utc = local - datetime.timedelta(seconds=tz_offset_seconds)
     except (ValueError, OverflowError):
         # No such date, or it falls outside the years datetime can hold.
-        return None
+        return _IMPOSSIBLE_DATE
     return utc.isoformat() + "+00:00"
 
 
@@ -3034,7 +3044,9 @@ _DATEPARSER_SETTINGS = {
 def _slow_dateutil_parse(value: str) -> Optional[datetime.datetime]:
     try:
         return dateutil_parser.parse(value, tzinfos=_custom_tzinfos, ignoretz=False)
-    except (ValueError, TypeError, OverflowError):
+    except (ValueError, TypeError, ArithmeticError):
+        # ArithmeticError covers OverflowError and the decimal.InvalidOperation
+        # dateutil raises for a number too long to be a time.
         return None
 
 
@@ -3048,7 +3060,7 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
         return _dateparser.parse(
             value, languages=["en"], settings=_DATEPARSER_SETTINGS
         )
-    except (ValueError, TypeError, OverflowError):
+    except (ValueError, TypeError, ArithmeticError):
         return None
 
 
@@ -3210,7 +3222,7 @@ def _parse_date(date_str: str) -> Optional[str]:
 
     rfc822_result = _fast_rfc822_to_iso(candidate)
     if rfc822_result is not None:
-        return rfc822_result
+        return rfc822_result or None
 
     dt = _parsedate_to_utc(candidate)
     if dt is not None:

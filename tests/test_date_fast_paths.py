@@ -4,9 +4,18 @@ Each near miss below differs from a fast-path layout in one way and must
 come out exactly as the general parsers produce it.
 """
 
+import importlib.util
+
 import pytest
 
 from fastfeedparser.main import _parse_date
+
+# The optional dateparser package answers a date for strings the other
+# parsers reject, so "no date" is only the result without it.
+_no_dateparser = pytest.mark.skipif(
+    importlib.util.find_spec("dateparser") is not None,
+    reason="dateparser guesses a date for this value",
+)
 
 
 def _parse(value):
@@ -107,11 +116,11 @@ def test_iso_utc_layout(value, expected):
         pytest.param(
             "2006-01-02T15:04:05+05:30", "2006-01-02T09:34:05+00:00", id="offset"
         ),
-        pytest.param("2006-02-30T15:04:05Z", None, id="day-out-of-range"),
-        pytest.param("2006-13-02T15:04:05Z", None, id="month-out-of-range"),
-        pytest.param("2006-01-02T15:04:60Z", None, id="second-out-of-range"),
+        pytest.param("2006-02-30T15:04:05Z", None, id="day-out-of-range", marks=_no_dateparser),
+        pytest.param("2006-13-02T15:04:05Z", None, id="month-out-of-range", marks=_no_dateparser),
+        pytest.param("2006-01-02T15:04:60Z", None, id="second-out-of-range", marks=_no_dateparser),
         pytest.param("2023-02-29T10:00:00Z", "2023-02-28T10:00:00+00:00", id="feb-29"),
-        pytest.param("0000-01-02T15:04:05Z", None, id="year-zero"),
+        pytest.param("0000-01-02T15:04:05Z", None, id="year-zero", marks=_no_dateparser),
     ],
 )
 def test_iso_near_misses_use_the_general_parsers(value, expected):

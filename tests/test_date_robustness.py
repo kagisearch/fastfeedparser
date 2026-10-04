@@ -5,10 +5,11 @@ returned as a timestamp that names no real moment.
 """
 
 import datetime
+import sys
 
 import pytest
 
-from fastfeedparser import parse
+from fastfeedparser import main, parse
 from fastfeedparser.main import _parse_date
 
 _IMPOSSIBLE = [
@@ -29,14 +30,10 @@ _IMPOSSIBLE = [
     pytest.param("Mon, 2 Jan 2006 15:61:05 GMT", id="rfc822-utc-1-digit-day-minute-61"),
     pytest.param("Mon, 02 Jan 2006 24:61:00 GMT", id="rfc822-utc-hour-24-minute-61"),
     pytest.param("Wed, 31 Feb 2026 24:34846140530", id="number-too-large-for-a-date"),
-]
-
-
-# The general parsers read a year below 100 as a two-digit year, so these come
-# out as dates in 2000 and 2001 instead of being dropped.
-_YEAR_READ_AS_TWO_DIGITS = [
     pytest.param("Mon, 01 Jan 0001 00:00:00 +0530", id="rfc822-offset-before-year-1"),
     pytest.param("Mon, 02 Jan 0000 15:04:05 GMT", id="rfc822-utc-year-0"),
+    pytest.param("Sat, 31 Dec 2016 23:59:60 GMT", id="rfc822-leap-second"),
+    pytest.param("9" * 29 + " h", id="number-too-long-for-dateutil"),
 ]
 
 
@@ -53,13 +50,7 @@ def test_impossible_date_gives_no_date(value):
     assert _parse_date.__wrapped__(value) is None
 
 
-@pytest.mark.parametrize("value", _YEAR_READ_AS_TWO_DIGITS)
-def test_year_out_of_range_gives_a_real_date_or_none(value):
-    parsed = _parse_date.__wrapped__(value)
-    assert parsed is None or _is_real_utc_timestamp(parsed)
-
-
-@pytest.mark.parametrize("value", _IMPOSSIBLE + _YEAR_READ_AS_TWO_DIGITS)
+@pytest.mark.parametrize("value", _IMPOSSIBLE)
 def test_impossible_date_does_not_cost_the_feed(value):
     feed = (
         '<rss version="2.0"><channel><title>t</title>'
@@ -69,7 +60,7 @@ def test_impossible_date_does_not_cost_the_feed(value):
     )
     bad, good = parse(feed).entries
     assert (bad.title, good.title) == ("bad", "good")
-    assert "published" not in bad or _is_real_utc_timestamp(bad.published)
+    assert "published" not in bad
     assert good.published == "2006-01-02T15:04:05+00:00"
 
 
@@ -92,3 +83,15 @@ def test_dates_at_the_edges_still_parse(value, expected):
     parsed = _parse_date.__wrapped__(value)
     assert parsed == expected
     assert _is_real_utc_timestamp(parsed)
+
+
+@pytest.mark.parametrize("error", [OverflowError, ZeroDivisionError, ValueError, TypeError])
+def test_error_inside_the_optional_dateparser_gives_no_date(error, monkeypatch):
+    class FakeDateparser:
+        @staticmethod
+        def parse(value, **options):
+            raise error("from dateparser")
+
+    monkeypatch.setitem(sys.modules, "dateparser", FakeDateparser)
+    assert main._slow_dateparser.__wrapped__("not a date at all") is None
+    assert _parse_date.__wrapped__("the 3rd of Smarch at tea time") is None
