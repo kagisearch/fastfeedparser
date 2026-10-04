@@ -8,7 +8,6 @@ import os
 import re
 import threading
 import zlib
-from collections import deque
 from functools import lru_cache, partial
 from xml.sax.saxutils import escape as _xml_escape
 
@@ -811,12 +810,8 @@ def _maybe_parse_json_feed(
     return None
 
 
-class _ThreadXMLParsers(threading.local):
-    """A strict and a recover parser for each thread.
-
-    lxml holds a parser's lock for a whole parse, so threads sharing one
-    parser object parse one at a time.
-    """
+class _XMLParsers:
+    """A strict and a recover parser."""
 
     def __init__(self) -> None:
         self.strict = etree.XMLParser(
@@ -835,7 +830,80 @@ class _ThreadXMLParsers(threading.local):
         )
 
 
-_XML_PARSERS = _ThreadXMLParsers()
+class _ThreadXMLParsers(threading.local, _XMLParsers):
+    """A pair of parsers for each thread.
+
+    lxml holds a parser's lock for a whole parse, so threads sharing one
+    parser object parse one at a time.
+    """
+
+
+_THREAD_XML_PARSERS = _ThreadXMLParsers()
+# One pair for all threads. Its lock makes the documents given to it parse one
+# at a time, which is what keeps memory flat when many large ones arrive.
+_SHARED_XML_PARSERS = _XMLParsers()
+
+# With a parser each, every thread's tree exists at once. Threads keep their
+# own parsers only while the trees in flight are estimated to stay under this.
+# Ordinary feeds come to about 1.5 MB each, so up to 16 threads rarely reach it.
+_MAX_TREE_BYTES_IN_FLIGHT = 32 * 1024 * 1024
+# thread id -> estimated tree bytes of the document that thread is parsing with
+# its own parsers; 0 if it has not picked parsers yet or uses the shared pair.
+_IN_FLIGHT: dict[int, int] = {}
+_TREE_SAMPLE_BYTES = 4096
+
+
+def _reset_after_fork() -> None:
+    # The child has only the forking thread, and the shared parsers' lock may
+    # have been held by a thread that does not exist there.
+    global _SHARED_XML_PARSERS
+    _IN_FLIGHT.clear()
+    _SHARED_XML_PARSERS = _XMLParsers()
+
+
+if hasattr(os, "register_at_fork"):
+    os.register_at_fork(after_in_child=_reset_after_fork)
+
+
+def _estimated_tree_bytes(xml_content: bytes) -> int:
+    """Roughly what a parse of this document holds in memory while it runs.
+
+    Four times the document plus 200 bytes for each tag: measured parses held
+    3 to 7 times a text-heavy feed and about 110 bytes per tag of a feed made
+    of small elements. Tags are counted in three samples, not the whole
+    document.
+    """
+    size = len(xml_content)
+    sample = _TREE_SAMPLE_BYTES
+    if size <= 3 * sample:
+        tags = xml_content.count(b"<")
+    else:
+        middle = size // 2
+        sampled = (
+            xml_content.count(b"<", 0, sample)
+            + xml_content.count(b"<", middle, middle + sample)
+            + xml_content.count(b"<", size - sample)
+        )
+        tags = sampled * size // (3 * sample)
+    return 4 * size + 200 * tags
+
+
+def _xml_parsers(xml_content: bytes) -> _XMLParsers:
+    """The parsers to parse this document with.
+
+    This thread's own, unless other threads are parsing and the trees in
+    flight plus this one would pass _MAX_TREE_BYTES_IN_FLIGHT; then the shared
+    pair. Nothing here waits or takes a lock, so a wrong or stale entry in
+    _IN_FLIGHT can send documents to the shared pair but cannot block one.
+    """
+    if len(_IN_FLIGHT) <= 1:
+        return _THREAD_XML_PARSERS
+    thread_id = threading.get_ident()
+    _IN_FLIGHT[thread_id] = _estimated_tree_bytes(xml_content)
+    if sum(list(_IN_FLIGHT.values())) > _MAX_TREE_BYTES_IN_FLIGHT:
+        _IN_FLIGHT[thread_id] = 0
+        return _SHARED_XML_PARSERS
+    return _THREAD_XML_PARSERS
 
 
 def _parse_xml_root(xml_content: bytes) -> _Element:
@@ -843,7 +911,7 @@ def _parse_xml_root(xml_content: bytes) -> _Element:
     # well-formed input, so trying strict first would only add a wasted parse
     # for malformed documents.
     try:
-        root = etree.fromstring(xml_content, parser=_XML_PARSERS.recover)
+        root = etree.fromstring(xml_content, parser=_xml_parsers(xml_content).recover)
     except etree.XMLSyntaxError as e:
         raise ValueError(f"Failed to parse XML content: {str(e)}")
 
@@ -857,78 +925,6 @@ def _parse_xml_root(xml_content: bytes) -> _Element:
         raise ValueError("Failed to parse XML: received empty content")
 
     return root
-
-
-# The total size of the documents being parsed at once, across threads. A
-# parse holds about four times its document's size in memory while it runs
-# (34 MB for an 8 MB feed), so this bounds what parsing in several threads
-# adds over parsing in one.
-_MAX_BYTES_IN_FLIGHT = 16 * 1024 * 1024
-
-
-class _InFlightParses:
-    """The parses running now, admitted in arrival order within a byte budget.
-
-    A parse waits while the documents in flight plus its own would exceed
-    _MAX_BYTES_IN_FLIGHT. A document larger than the whole budget is admitted
-    once nothing else is in flight, so it is parsed alone. Arrival order keeps
-    a large document from waiting forever behind small ones that would fit.
-    """
-
-    def __init__(self) -> None:
-        self.reset()
-
-    def reset(self) -> None:
-        self.lock = threading.Lock()
-        self.sizes: dict[int, int] = {}  # thread id -> size, for admitted parses
-        self.total = 0
-        # (thread id, size, event set on admission), in arrival order
-        self.waiting: deque[tuple[int, int, threading.Event]] = deque()
-
-    def _fits(self, size: int) -> bool:
-        return not self.total or self.total + size <= _MAX_BYTES_IN_FLIGHT
-
-    def _admit_waiting(self) -> None:
-        """Admit from the front of the line while it fits. Caller holds the lock."""
-        while self.waiting and self._fits(self.waiting[0][1]):
-            thread_id, size, admitted = self.waiting.popleft()
-            self.sizes[thread_id] = size
-            self.total += size
-            admitted.set()
-
-    def enter(self, size: int) -> None:
-        thread_id = threading.get_ident()
-        with self.lock:
-            if not self.waiting and self._fits(size):
-                self.sizes[thread_id] = size
-                self.total += size
-                return
-            admitted = threading.Event()
-            self.waiting.append((thread_id, size, admitted))
-        try:
-            admitted.wait()
-        except BaseException:
-            # Interrupted while waiting. Another thread may have admitted this
-            # one in the meantime; either way it must not stay counted.
-            with self.lock:
-                if thread_id in self.sizes:
-                    self.total -= self.sizes.pop(thread_id)
-                else:
-                    self.waiting.remove((thread_id, size, admitted))
-                self._admit_waiting()
-            raise
-
-    def leave(self) -> None:
-        with self.lock:
-            self.total -= self.sizes.pop(threading.get_ident(), 0)
-            self._admit_waiting()
-
-
-_IN_FLIGHT = _InFlightParses()
-if hasattr(os, "register_at_fork"):
-    # A forked child starts with the forking thread only, and the lock may
-    # have been held by a thread that does not exist there.
-    os.register_at_fork(after_in_child=_IN_FLIGHT.reset)
 
 
 def _parse_xml_root_lifting_cdata(
@@ -946,11 +942,12 @@ def _parse_xml_root_lifting_cdata(
     reports any error on the bytes left after lifting, or read them in another
     encoding, the document is parsed again whole and nothing is lifted.
     """
-    if len(_IN_FLIGHT.sizes) > 1:
+    if len(_IN_FLIGHT) > 1:
         return _parse_xml_root(xml_content), {}
     parse_bytes, lifted = _lift_large_cdata(xml_content)
     if lifted:
-        parser = _XML_PARSERS.recover
+        # This thread's own parser, so the error log read below is this parse's.
+        parser = _THREAD_XML_PARSERS.recover
         try:
             root = etree.fromstring(parse_bytes, parser=parser)
         except etree.XMLSyntaxError:
@@ -970,7 +967,8 @@ def _parse_repairable_xml_root(xml_content: bytes) -> tuple[_Element, bytes]:
     patterns also rewrite matching article text.
     """
     try:
-        return etree.fromstring(xml_content, parser=_XML_PARSERS.strict), xml_content
+        parser = _xml_parsers(xml_content).strict
+        return etree.fromstring(xml_content, parser=parser), xml_content
     except etree.XMLSyntaxError:
         xml_content = _repair_xml_body_bytes(xml_content)
         return _parse_xml_root(xml_content), xml_content
@@ -1112,7 +1110,7 @@ def _html_reparse_may_find_more_items(xml_content: bytes, found: int) -> bool:
 
 def _is_well_formed_xml(xml_content: bytes) -> bool:
     try:
-        etree.fromstring(xml_content, parser=_XML_PARSERS.strict)
+        etree.fromstring(xml_content, parser=_xml_parsers(xml_content).strict)
     except etree.XMLSyntaxError:
         return False
     return True
@@ -1345,12 +1343,13 @@ def _parse_content(
 def _parse_content_in_flight(
     content: str | bytes, **options: bool
 ) -> FastFeedParserDict:
-    """Run _parse_content as one of the parses in _IN_FLIGHT."""
-    _IN_FLIGHT.enter(len(content))
+    """Run _parse_content with this thread listed in _IN_FLIGHT."""
+    thread_id = threading.get_ident()
+    _IN_FLIGHT[thread_id] = 0
     try:
         return _parse_content(content, **options)
     finally:
-        _IN_FLIGHT.leave()
+        _IN_FLIGHT.pop(thread_id, None)
 
 
 def parse(
