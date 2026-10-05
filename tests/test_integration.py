@@ -43,10 +43,11 @@ def test_integration(feed_path: Path):
         expected_path = feed_path.with_suffix(".json")
 
     try:
-        expected = json.loads(expected_path.read_text())
+        expected = json.loads(expected_path.read_text(encoding="utf-8"))
     except FileNotFoundError:
         expected_path.write_text(
-            json.dumps(feed_parsed, ensure_ascii=False, indent=2, sort_keys=True)
+            json.dumps(feed_parsed, ensure_ascii=False, indent=2, sort_keys=True),
+            encoding="utf-8",
         )
         return
     assert feed_parsed == expected
