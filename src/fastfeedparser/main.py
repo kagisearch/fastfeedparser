@@ -4,9 +4,13 @@ import datetime
 from email.utils import parsedate_to_datetime
 import html as _html_mod
 import json
+import os
 import re
+import threading
+import traceback
 import zlib
 from functools import lru_cache, partial
+from xml.sax.saxutils import escape as _xml_escape
 
 try:
     import brotli
@@ -80,6 +84,11 @@ _RE_RFC822 = re.compile(
     r"(?:\w{3},\s+)?(\d{1,2})\s+(\w{3})\s+(\d{4})\s+(\d{2}):(\d{2}):(\d{2})\s+([+-]\d{4}|[A-Z]{2,5})"
 )
 _RE_HOUR24 = re.compile(r"(\d{4}-\d{2}-\d{2})[T ]24:(\d{2}):(\d{2})")
+# A UTC timestamp already in the form datetime.isoformat() gives it. Hour 24
+# is excluded because fromisoformat() reads it as 00 on the next day.
+_RE_ISO_UTC_SECONDS = re.compile(
+    r"\d{4}-\d\d-\d\dT(?!24)\d\d:\d\d:\d\d\+00:00", re.ASCII
+)
 _MONTHS_RFC822: dict[str, int] = {
     "jan": 1,
     "feb": 2,
@@ -305,6 +314,175 @@ def _prepare_xml_bytes(xml_content: str | bytes) -> tuple[bytes, bool]:
     # Str input: fix encoding declaration, encode to bytes, then use bytes path.
     xml_content = _ensure_utf8_xml_declaration(xml_content)
     return _prepare_xml_bytes(xml_content.encode("utf-8", errors="replace"))
+
+
+# libxml2 reads a CDATA section one character at a time, and CDATA is where
+# many feeds keep their HTML. A section of at least this many bytes is cut out
+# of the bytes lxml parses and decoded here instead, which is much faster.
+_CDATA_LIFT_MIN_BYTES = 1024
+# A document with no CDATA this early is not scanned at all.
+_CDATA_PROBE_BYTES = 16384
+# The scan visits every comment, instruction and section in Python. It stops
+# once it has passed this many without lifting, so a feed whose sections are
+# all small pays for a few dozen visits at most. Every feed in the benchmark
+# corpus that has a large section reaches its first one within 22 visits and
+# the next one within 42.
+_CDATA_SCAN_SKIP_BASE = 32
+_CDATA_SCAN_SKIP_PER_LIFT = 64
+# The scan also gives up when nothing liftable starts this early, so a large
+# feed with a few scattered small sections is not walked to its end. The first
+# lift in every corpus feed starts within 8 KB.
+_CDATA_FIRST_LIFT_BYTES = 65536
+# How far before a section its parent's start tag may begin.
+_CDATA_PARENT_WINDOW = 256
+# A lifted section leaves a placeholder between these two private-use
+# characters.
+_CDATA_MARK_START = "\ue000"
+_CDATA_MARK_END = "\ue001"
+_RE_SCAN_TOKEN_START = re.compile(rb"<(?=!\[CDATA\[|!--|!DOCTYPE|\?)")
+_RE_CDATA_END = re.compile(rb"\]\]>")
+# Elements whose text every reader passes through _restore_lifted_cdata.
+# Inside xhtml content, which is serialized from the tree,
+# _restore_lifted_cdata_in_xml puts their text back.
+_RE_LIFT_PARENT_START = re.compile(
+    rb"<(description|content:encoded|content|summary)(?:\s[^<>]*)?(?<!/)>\s*\Z"
+)
+_RE_LIFT_PARENT_END = re.compile(
+    rb"\s*</(description|content:encoded|content|summary)\s*>"
+)
+_RE_CDATA_PLACEHOLDER = re.compile(
+    _CDATA_MARK_START + "[0-9a-f]+" + _CDATA_MARK_END
+)
+# Control characters XML does not allow. libxml2 ends a CDATA section at one.
+_XML_INVALID_CONTROL_BYTES = bytes(c for c in range(32) if c not in (9, 10, 13))
+
+
+def _liftable_section_text(
+    content: bytes, region_start: int, start: int, end: int
+) -> Optional[str]:
+    """Text of the CDATA section content[start:end + 3], or None to leave it.
+
+    The section is lifted only when it is its parent's whole text apart from
+    whitespace: the parent's start tag ends just before it, inside
+    content[region_start:start], and the parent's end tag follows it. A
+    section libxml2 would not read to its end, because it holds invalid UTF-8
+    or a character XML does not allow, is left for libxml2.
+    """
+    window_start = max(region_start, start - _CDATA_PARENT_WINDOW)
+    parent = _RE_LIFT_PARENT_START.search(content, window_start, start)
+    if parent is None:
+        return None
+    closing = _RE_LIFT_PARENT_END.match(content, end + 3)
+    if closing is None or closing.group(1) != parent.group(1):
+        return None
+    section = content[start + 9 : end]
+    if len(section.translate(None, _XML_INVALID_CONTROL_BYTES)) != len(section):
+        return None
+    # An XML parser reads every line ending as "\n".
+    if b"\r" in section:
+        section = section.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    try:
+        text = section.decode("utf-8")
+    except UnicodeDecodeError:
+        return None
+    if "\ufffe" in text or "\uffff" in text:
+        return None
+    return text
+
+
+def _lift_large_cdata(content: bytes) -> tuple[bytes, dict[str, str]]:
+    """Replace large CDATA sections with placeholders.
+
+    Returns the bytes to parse and each lifted section's text keyed by its
+    placeholder; the same `content` object and an empty dict when nothing is
+    lifted. Placeholders carry a random value, so document text cannot name
+    one. Comments, processing instructions and every CDATA section are skipped
+    whole, so a section opener inside one of them is never taken for a real
+    one. Documents that carry a DOCTYPE, start as UTF-16 or UTF-32, or declare
+    another encoding are left alone. The declaration is only read loosely
+    here; _parse_xml_root_lifting_cdata checks the encoding libxml2 used.
+    """
+    lifted: dict[str, str] = {}
+    if content.find(b"<![CDATA[", 0, _CDATA_PROBE_BYTES) == -1:
+        return content, lifted
+    if b"\x00" in content[:4]:
+        return content, lifted
+    if _detect_xml_encoding(content) not in ("utf-8", "utf8"):
+        return content, lifted
+
+    mark = _CDATA_MARK_START + os.urandom(8).hex()
+    pieces: list[bytes] = []
+    copied = 0  # content[:copied] is accounted for in pieces
+    pos = 0  # end of the last comment, instruction or section
+    skipped = 0
+    while skipped <= _CDATA_SCAN_SKIP_BASE + _CDATA_SCAN_SKIP_PER_LIFT * len(lifted):
+        limit = len(content) if lifted else _CDATA_FIRST_LIFT_BYTES
+        token = _RE_SCAN_TOKEN_START.search(content, pos, limit)
+        if token is None:
+            break
+        start = token.start()
+        kind = content[start + 1 : start + 3]
+        if kind == b"![":
+            end_match = _RE_CDATA_END.search(content, start + 9)
+            if end_match is None:
+                break
+            end = end_match.start()
+            if end - start - 9 >= _CDATA_LIFT_MIN_BYTES:
+                text = _liftable_section_text(content, pos, start, end)
+                if text is not None:
+                    placeholder = f"{mark}{len(lifted)}{_CDATA_MARK_END}"
+                    pieces.append(content[copied:start])
+                    pieces.append(placeholder.encode())
+                    lifted[placeholder] = text
+                    copied = pos = end + 3
+                    continue
+            pos = end + 3
+        elif kind == b"!-":
+            end = content.find(b"-->", start + 4)
+            if end == -1:
+                break
+            pos = end + 3
+        elif kind == b"!D":
+            return content, {}
+        else:
+            end = content.find(b"?>", start + 2)
+            if end == -1:
+                break
+            pos = end + 2
+        skipped += 1
+
+    if not lifted:
+        return content, lifted
+    pieces.append(content[copied:])
+    return b"".join(pieces), lifted
+
+
+def _restore_lifted_cdata(text: str, lifted: dict[str, str]) -> str:
+    """Put a lifted section back into the text of the element it came from.
+
+    Text that holds the marker characters without being a placeholder is
+    returned unchanged.
+    """
+    start = text.find(_CDATA_MARK_START)
+    if start == -1:
+        return text
+    end = text.find(_CDATA_MARK_END, start)
+    section = lifted.get(text[start : end + 1])
+    if section is None:
+        return text
+    if start == 0 and end == len(text) - 1:
+        return section
+    return text[:start] + section + text[end + 1 :]
+
+
+def _restore_lifted_cdata_in_xml(serialized: str, lifted: dict[str, str]) -> str:
+    """Put lifted sections back into serialized XML, escaped as text."""
+
+    def section(match: re.Match[str]) -> str:
+        text = lifted.get(match.group(0))
+        return match.group(0) if text is None else _xml_escape(text)
+
+    return _RE_CDATA_PLACEHOLDER.sub(section, serialized)
 
 
 def _parse_json_feed(
@@ -633,20 +811,109 @@ def _maybe_parse_json_feed(
     return None
 
 
-_STRICT_XML_PARSER = etree.XMLParser(
-    ns_clean=True,
-    recover=False,
-    collect_ids=False,
-    resolve_entities=False,
-    huge_tree=True,
-)
-_RECOVER_XML_PARSER = etree.XMLParser(
-    ns_clean=True,
-    recover=True,
-    collect_ids=False,
-    resolve_entities=False,
-    huge_tree=True,
-)
+class _XMLParsers:
+    """A strict and a recover parser."""
+
+    def __init__(self) -> None:
+        self.strict = etree.XMLParser(
+            ns_clean=True,
+            recover=False,
+            collect_ids=False,
+            resolve_entities=False,
+            huge_tree=True,
+        )
+        self.recover = etree.XMLParser(
+            ns_clean=True,
+            recover=True,
+            collect_ids=False,
+            resolve_entities=False,
+            huge_tree=True,
+        )
+
+
+class _ThreadXMLParsers(threading.local, _XMLParsers):
+    """A pair of parsers for each thread.
+
+    lxml holds a parser's lock for a whole parse, so threads sharing one
+    parser object parse one at a time.
+    """
+
+
+_THREAD_XML_PARSERS = _ThreadXMLParsers()
+# One pair for all threads. lxml's lock on it lets one document at a time be
+# parsed with it, as the single pair in 0.6.3 did for every document. The lock
+# covers the parse only; a tree stays alive while its entries are read.
+_SHARED_XML_PARSERS = _XMLParsers()
+
+# With a parser each, threads build their trees at the same time. They keep
+# their own parsers only while the trees in flight are estimated to stay under
+# this; a document past it takes the shared pair, so memory then grows no
+# faster than it does with one pair. Ordinary feeds come to about 1.5 MB each,
+# so up to 16 threads rarely reach it.
+_MAX_TREE_BYTES_IN_FLIGHT = 32 * 1024 * 1024
+# thread id -> estimated bytes of the trees that thread has built with its own
+# parsers in the parse() it is running; 0 if none.
+_IN_FLIGHT: dict[int, int] = {}
+_TREE_SAMPLE_BYTES = 4096
+
+
+def _reset_after_fork() -> None:
+    # The child has only the forking thread, and the shared parsers' lock may
+    # have been held by a thread that does not exist there.
+    global _SHARED_XML_PARSERS
+    _IN_FLIGHT.clear()
+    _SHARED_XML_PARSERS = _XMLParsers()
+
+
+if hasattr(os, "register_at_fork"):
+    os.register_at_fork(after_in_child=_reset_after_fork)
+
+
+def _estimated_tree_bytes(xml_content: bytes) -> int:
+    """Roughly what a parse of this document holds in memory while it runs.
+
+    Four times the document plus 200 bytes for each tag: measured parses held
+    3 to 7 times a text-heavy feed and about 110 bytes per tag of a feed made
+    of small elements. Tags are counted in three samples, not the whole
+    document, so a document that keeps its tags away from the samples is
+    underestimated. It is a guide for ordinary feeds, not a guard.
+    """
+    size = len(xml_content)
+    sample = _TREE_SAMPLE_BYTES
+    if size <= 3 * sample:
+        tags = xml_content.count(b"<")
+    else:
+        middle = size // 2
+        sampled = (
+            xml_content.count(b"<", 0, sample)
+            + xml_content.count(b"<", middle, middle + sample)
+            + xml_content.count(b"<", size - sample)
+        )
+        tags = sampled * size // (3 * sample)
+    return 4 * size + 200 * tags
+
+
+def _xml_parsers(xml_content: bytes) -> _XMLParsers:
+    """The parsers to parse this document with.
+
+    This thread's own, unless other threads are parsing and the trees in
+    flight plus this one would pass _MAX_TREE_BYTES_IN_FLIGHT; then the shared
+    pair. No Python code here waits or takes a lock, so a wrong or stale entry
+    in _IN_FLIGHT can send documents to the shared pair but cannot block one.
+    A parse with the shared pair waits inside lxml for the one before it.
+    """
+    thread_id = threading.get_ident()
+    held = _IN_FLIGHT.get(thread_id)
+    if held is None:
+        # Not inside parse(), so nothing would remove an entry made here.
+        return _THREAD_XML_PARSERS
+    # A parse can build a second tree while its first is alive; count one.
+    _IN_FLIGHT[thread_id] = max(held, _estimated_tree_bytes(xml_content))
+    in_flight = list(_IN_FLIGHT.values())
+    if len(in_flight) > 1 and sum(in_flight) > _MAX_TREE_BYTES_IN_FLIGHT:
+        _IN_FLIGHT[thread_id] = held
+        return _SHARED_XML_PARSERS
+    return _THREAD_XML_PARSERS
 
 
 def _parse_xml_root(xml_content: bytes) -> _Element:
@@ -654,7 +921,7 @@ def _parse_xml_root(xml_content: bytes) -> _Element:
     # well-formed input, so trying strict first would only add a wasted parse
     # for malformed documents.
     try:
-        root = etree.fromstring(xml_content, parser=_RECOVER_XML_PARSER)
+        root = etree.fromstring(xml_content, parser=_xml_parsers(xml_content).recover)
     except etree.XMLSyntaxError as e:
         raise ValueError(f"Failed to parse XML content: {str(e)}")
 
@@ -670,6 +937,39 @@ def _parse_xml_root(xml_content: bytes) -> _Element:
     return root
 
 
+def _parse_xml_root_lifting_cdata(
+    xml_content: bytes,
+) -> tuple[_Element, dict[str, str]]:
+    """Parse a document with its large CDATA sections lifted out.
+
+    Nothing is lifted while another thread is parsing: the scan and decode
+    hold the GIL where libxml2 releases it, which costs more throughput than
+    it saves once parses run side by side.
+
+    Returns the root and the lifted sections. The scan in _lift_large_cdata
+    follows the XML grammar, so it only matches what libxml2 does while the
+    document is well-formed, and the placeholders are UTF-8. If libxml2
+    reports any error on the bytes left after lifting, or read them in another
+    encoding, the document is parsed again whole and nothing is lifted.
+    """
+    if len(_IN_FLIGHT) > 1:
+        return _parse_xml_root(xml_content), {}
+    parse_bytes, lifted = _lift_large_cdata(xml_content)
+    # Only with this thread's own parser: the error log read below must be
+    # this parse's, and the shared pair's can be another thread's.
+    if lifted and _xml_parsers(xml_content) is _THREAD_XML_PARSERS:
+        parser = _THREAD_XML_PARSERS.recover
+        try:
+            root = etree.fromstring(parse_bytes, parser=parser)
+        except etree.XMLSyntaxError:
+            root = None
+        if root is not None and not parser.error_log:
+            encoding = root.getroottree().docinfo.encoding or "utf-8"
+            if encoding.lower() in ("utf-8", "utf8"):
+                return root, lifted
+    return _parse_xml_root(xml_content), {}
+
+
 def _parse_repairable_xml_root(xml_content: bytes) -> tuple[_Element, bytes]:
     """Parse a document whose header looked malformed.
 
@@ -678,7 +978,8 @@ def _parse_repairable_xml_root(xml_content: bytes) -> tuple[_Element, bytes]:
     patterns also rewrite matching article text.
     """
     try:
-        return etree.fromstring(xml_content, parser=_STRICT_XML_PARSER), xml_content
+        parser = _xml_parsers(xml_content).strict
+        return etree.fromstring(xml_content, parser=parser), xml_content
     except etree.XMLSyntaxError:
         xml_content = _repair_xml_body_bytes(xml_content)
         return _parse_xml_root(xml_content), xml_content
@@ -686,6 +987,12 @@ def _parse_repairable_xml_root(xml_content: bytes) -> tuple[_Element, bytes]:
 
 def _root_tag_local(root: _Element) -> str:
     return root.tag.split("}")[-1].lower() if "}" in root.tag else root.tag.lower()
+
+
+# How much of an HTML page is parsed to find a meta-refresh or an error
+# message. Both sit at the top of a page, and whole pages parsed in every
+# thread at once take memory in proportion to the pool.
+_HTML_HEAD_BYTES = 256 * 1024
 
 
 def _extract_error_message(root: _Element, raw_bytes: Optional[bytes] = None) -> str:
@@ -720,7 +1027,9 @@ def _extract_error_message(root: _Element, raw_bytes: Optional[bytes] = None) ->
         # attributes); re-parse with the lenient HTML parser as a fallback.
         if raw_bytes:
             try:
-                html_root = etree.fromstring(raw_bytes, parser=etree.HTMLParser())
+                html_root = etree.fromstring(
+                    raw_bytes[:_HTML_HEAD_BYTES], parser=etree.HTMLParser()
+                )
                 all_text = " ".join(
                     t.strip() for t in html_root.itertext() if t and t.strip()
                 )
@@ -764,6 +1073,52 @@ def _raise_for_non_feed_root(
     raise ValueError(base_msg)
 
 
+_ROOT_SNIFF_BYTES = 4096
+_RE_ELEMENT_NAME = re.compile(rb"(?:[\w.-]+:)?([\w.-]+)")
+
+
+def _first_element_name(content: bytes) -> str:
+    """Lower-cased local name of the first element in the first 4 KB, or "".
+
+    Steps over the declaration, comments, instructions and a DOCTYPE. This is
+    a cheap guess at the root element; the caller confirms it with a parse.
+    """
+    head = content[:_ROOT_SNIFF_BYTES]
+    pos = 0
+    while True:
+        start = head.find(b"<", pos)
+        if start == -1:
+            return ""
+        if head.startswith(b"<!--", start):
+            end, width = head.find(b"-->", start + 4), 3
+        elif head.startswith(b"<?", start):
+            end, width = head.find(b"?>", start + 2), 2
+        elif head.startswith(b"<!", start):
+            end, width = head.find(b">", start + 2), 1
+        else:
+            name = _RE_ELEMENT_NAME.match(head, start + 1)
+            return name.group(1).decode("ascii").lower() if name else ""
+        if end == -1:
+            return ""
+        pos = end + width
+
+
+def _raise_for_non_feed_head(xml_content: bytes) -> None:
+    """Raise for a large document whose head shows that it is not a feed.
+
+    A page, sitemap or OPML file of many megabytes would otherwise be parsed
+    whole only to word the error. Returns without raising if the head, once
+    parsed, is not rooted at one of the names in _NON_FEED_MESSAGES after all.
+    """
+    head = xml_content[:_HTML_HEAD_BYTES]
+    try:
+        root = etree.fromstring(head, parser=_xml_parsers(head).recover)
+    except etree.XMLSyntaxError:
+        return
+    if root is not None:
+        _raise_for_non_feed_root(root, _root_tag_local(root), head)
+
+
 # The optional quote owns the whitespace after it, so a whitespace run is only
 # ever consumed one way (GHSA-3r75-qcwc-78f2).
 _RE_META_REFRESH_URL = re.compile(r'url\s*=\s*(?:["\']\s*)?([^"\'>\s]+)', re.IGNORECASE)
@@ -771,8 +1126,13 @@ _MAX_META_REDIRECTS = 3
 
 
 def _extract_meta_refresh_url(content: str | bytes, base_url: str) -> str | None:
-    """Extract redirect URL from an HTML meta-refresh tag."""
-    html_bytes = content.encode("utf-8") if isinstance(content, str) else content
+    """Extract redirect URL from a meta-refresh tag in the head of an HTML page."""
+    head = content[:_HTML_HEAD_BYTES]
+    if len(content) > _HTML_HEAD_BYTES:
+        # Drop a tag the cut left unfinished: some libxml2 versions keep its
+        # attributes, and a redirect must not be built from half a URL.
+        head = head[: head.rfind(">" if isinstance(head, str) else b">") + 1]
+    html_bytes = head.encode("utf-8") if isinstance(head, str) else head
     try:
         doc = etree.fromstring(html_bytes, parser=etree.HTMLParser())
     except Exception:
@@ -818,8 +1178,97 @@ def _html_reparse_may_find_more_items(xml_content: bytes, found: int) -> bool:
     return _RE_HTTP_EQUIV_BYTES.search(xml_content) is not None
 
 
+# How a CDATA section spells "]]>": it ends after "]]" and another starts at ">".
+_CDATA_SPLIT = b"]]]]><![CDATA[>"
+
+
+def _cdata_section_start(content: bytes, pos: int, end: int, splits: list[int]) -> int:
+    """Where the CDATA section that ends at `end` starts, or -1.
+
+    `splits` holds the offsets of the splits in content[pos:end]. The start is
+    the last opener in that range that is not quoted, taking an opener for
+    quoted when a split follows it before the next opener. If every opener is
+    followed by one, it is the first. An opener that the range holds before
+    the start has no end of its own.
+    """
+    openers = []
+    opener = content.find(b"<![CDATA[", pos, end)
+    while opener != -1:
+        # The opener inside a split continues a section; it does not start one.
+        if not (opener >= 5 and content.startswith(_CDATA_SPLIT, opener - 5)):
+            openers.append(opener)
+        opener = content.find(b"<![CDATA[", opener + 9, end)
+    if not openers:
+        return -1
+    unseen = len(splits)  # splits[:unseen] lie before the openers seen so far
+    for opener in reversed(openers):
+        quoted = False
+        while unseen and splits[unseen - 1] > opener:
+            quoted = True
+            unseen -= 1
+        if not quoted:
+            return opener
+    return openers[0]
+
+
+def _escape_closed_cdata(content: bytes) -> bytes:
+    """Rewrite closed CDATA sections that hold markup as escaped text.
+
+    This is for the HTML parser, which does not know CDATA and reads markup
+    quoted in a section as elements. A section ends at the first "]]>" that
+    is not part of a split and starts where _cdata_section_start says, so a
+    section that quotes other sections is taken whole and an opener with no
+    end of its own is left as it is.
+    """
+    pieces: list[bytes] = []
+    copied = 0  # content[:copied] is accounted for in pieces
+    pos = 0  # end of the last section end
+    while True:
+        splits = []
+        end = content.find(b"]]>", pos)
+        while end >= 2 and content.startswith(_CDATA_SPLIT, end - 2):
+            splits.append(end - 2)
+            end = content.find(b"]]>", end - 2 + len(_CDATA_SPLIT))
+        if end == -1:
+            break
+        start = _cdata_section_start(content, pos, end, splits)
+        if start != -1:
+            section = content[start + 9 : end].replace(_CDATA_SPLIT, b"]]>")
+            if b"<" in section:
+                pieces.append(content[copied:start])
+                pieces.append(section.replace(b"&", b"&amp;").replace(b"<", b"&lt;"))
+                copied = end + 3
+        pos = end + 3
+    if not pieces:
+        return content
+    pieces.append(content[copied:])
+    return b"".join(pieces)
+
+
+def _items_at_any_depth(channel: _Element) -> list[_Element]:
+    """Unprefixed elements named item, in any letter case, anywhere below `channel`."""
+    return [
+        element
+        for element in channel.iter()
+        if isinstance(element.tag, str)
+        and element.prefix is None
+        and element.tag.rpartition("}")[2].lower() == "item"
+    ]
+
+
+def _is_well_formed_xml(xml_content: bytes) -> bool:
+    try:
+        etree.fromstring(xml_content, parser=_xml_parsers(xml_content).strict)
+    except etree.XMLSyntaxError:
+        return False
+    return True
+
+
 def _detect_feed_structure(
-    root: _Element, xml_content: bytes, root_tag_local: str
+    root: _Element,
+    xml_content: bytes,
+    root_tag_local: str,
+    known_well_formed: bool = False,
 ) -> tuple[_FeedType, _Element, list[_Element], Optional[str]]:
     feed_type: _FeedType
     atom_namespace: Optional[str] = None
@@ -888,22 +1337,41 @@ def _detect_feed_structure(
                                 items = []
                             items.append(child)
 
+        # Few items in a large document that names many more: look further.
         if (
             len(items) < 5
             and len(xml_content) > 20000
             and _html_reparse_may_find_more_items(xml_content, len(items))
         ):
-            try:
-                html_parser = etree.HTMLParser(recover=True, collect_ids=False)
-                html_root = etree.fromstring(xml_content, parser=html_parser)
-                html_channel = html_root.find(".//channel")
-                if html_channel is not None:
-                    html_items = html_channel.findall(".//item")
-                    if len(html_items) > len(items) * 2:
-                        channel = html_channel
-                        items = html_items
-            except Exception:
-                pass
+            if known_well_formed or _is_well_formed_xml(xml_content):
+                # Every item is in the tree; the search above only missed the
+                # ones nested deeper or spelled in another letter case. The
+                # HTML parser is kept away from a well-formed document: it
+                # does not know CDATA and would turn item markup quoted in an
+                # article into entries.
+                # Only below a channel element, which the HTML re-parse
+                # needed too.
+                if channel is not root:
+                    deeper_items = _items_at_any_depth(channel)
+                    if len(deeper_items) > len(items) * 2:
+                        items = deeper_items
+            else:
+                # A damaged document can hide items from the XML parser. Its
+                # closed CDATA sections go to the HTML parser as text, so item
+                # markup quoted in one is not read as items.
+                try:
+                    html_parser = etree.HTMLParser(recover=True, collect_ids=False)
+                    html_root = etree.fromstring(
+                        _escape_closed_cdata(xml_content), parser=html_parser
+                    )
+                    html_channel = html_root.find(".//channel")
+                    if html_channel is not None:
+                        html_items = html_channel.findall(".//item")
+                        if len(html_items) > len(items) * 2:
+                            channel = html_channel
+                            items = html_items
+                except Exception:
+                    pass
 
         return feed_type, channel, items, atom_namespace
 
@@ -953,19 +1421,33 @@ def _parse_content(
         return json_feed
 
     xml_content, looks_malformed = _prepare_xml_bytes(xml_content)
+    if (
+        len(xml_content) > _HTML_HEAD_BYTES
+        and _first_element_name(xml_content) in _NON_FEED_MESSAGES
+    ):
+        _raise_for_non_feed_head(xml_content)
+    lifted_cdata: dict[str, str] = {}
     if looks_malformed:
         root, xml_content = _parse_repairable_xml_root(xml_content)
     else:
-        root = _parse_xml_root(xml_content)
+        root, lifted_cdata = _parse_xml_root_lifting_cdata(xml_content)
     root_tag_local = _root_tag_local(root)
+    if lifted_cdata and root_tag_local in _NON_FEED_MESSAGES:
+        # The error message is built from the document's text.
+        root = _parse_xml_root(xml_content)
     _raise_for_non_feed_root(root, root_tag_local, xml_content)
 
+    # A document parsed with sections lifted had no errors, so it is well-formed.
     feed_type, channel, items, atom_namespace = _detect_feed_structure(
-        root, xml_content, root_tag_local
+        root, xml_content, root_tag_local, known_well_formed=bool(lifted_cdata)
     )
 
     feed = _parse_feed_info(
-        channel, feed_type, atom_namespace, include_tags=include_tags
+        channel,
+        feed_type,
+        atom_namespace,
+        include_tags=include_tags,
+        lifted_cdata=lifted_cdata,
     )
 
     # Detect once whether the tree holding the items has any element that
@@ -984,6 +1466,7 @@ def _parse_content(
         include_tags=include_tags,
         include_media=include_media,
         include_enclosures=include_enclosures,
+        lifted_cdata=lifted_cdata,
     )
     atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
     parse_entry: Callable[[_Element], FastFeedParserDict]
@@ -1028,6 +1511,18 @@ def _parse_content(
     return feed
 
 
+def _parse_content_in_flight(
+    content: str | bytes, **options: bool
+) -> FastFeedParserDict:
+    """Run _parse_content with this thread listed in _IN_FLIGHT."""
+    thread_id = threading.get_ident()
+    _IN_FLIGHT[thread_id] = 0
+    try:
+        return _parse_content(content, **options)
+    finally:
+        _IN_FLIGHT.pop(thread_id, None)
+
+
 def parse(
     source: str | bytes,
     *,
@@ -1069,7 +1564,7 @@ def parse(
     redirects_left = _MAX_META_REDIRECTS
     while True:
         try:
-            return _parse_content(content, **parse_kwargs)
+            return _parse_content_in_flight(content, **parse_kwargs)
         except ValueError as e:
             if not is_url:
                 raise
@@ -1082,6 +1577,10 @@ def parse(
             redirect_url = _extract_meta_refresh_url(content, source)
             if redirect_url is None:
                 raise
+            # The traceback keeps the failed parse's frames, and with them its
+            # tree, alive for as long as this handler runs. This error is not
+            # going to be raised, so drop their locals before the fetch.
+            traceback.clear_frames(e.__traceback__)
             content = _fetch_url_content(redirect_url)
             source = redirect_url
             redirects_left -= 1
@@ -1093,6 +1592,7 @@ def _parse_feed_info(
     atom_namespace: Optional[str] = None,
     *,
     include_tags: bool = True,
+    lifted_cdata: Optional[dict[str, str]] = None,
 ) -> FastFeedParserDict:
     # Use dynamic atom namespace or fallback to default
     atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
@@ -1156,7 +1656,7 @@ def _parse_feed_info(
     )
 
     feed = FastFeedParserDict()
-    element_get = _cached_element_value_factory(channel)
+    element_get = _cached_element_value_factory(channel, lifted_cdata)
     get_field_value = _field_value_getter(channel, feed_type, cached_get=element_get)
     for field in fields:
         value = get_field_value(*field[1:])
@@ -1506,6 +2006,7 @@ def _populate_entry_content_preparsed(
     content_el: Optional[_Element],
     rss_description_text: Optional[str],
     content_text: Optional[str] = None,
+    lifted_cdata: Optional[dict[str, str]] = None,
 ) -> None:
     """Fill entry["content"] from a pre-located content element.
 
@@ -1516,6 +2017,10 @@ def _populate_entry_content_preparsed(
         content_type = content_el.get("type", "text/html")
         if content_type in {"xhtml", "application/xhtml+xml"}:
             content_value = etree.tostring(content_el, encoding="unicode", method="xml")
+            if lifted_cdata and _CDATA_MARK_START in content_value:
+                content_value = _restore_lifted_cdata_in_xml(
+                    content_value, lifted_cdata
+                )
         elif content_text is not None:
             content_value = content_text
         else:
@@ -1542,7 +2047,11 @@ def _populate_entry_content_preparsed(
 
 
 def _populate_entry_content(
-    entry: FastFeedParserDict, item: _Element, feed_type: _FeedType, atom_ns: str
+    entry: FastFeedParserDict,
+    item: _Element,
+    feed_type: _FeedType,
+    atom_ns: str,
+    lifted_cdata: Optional[dict[str, str]] = None,
 ) -> None:
     content_el: Optional[_Element] = None
     rss_description_text: Optional[str] = None
@@ -1553,14 +2062,24 @@ def _populate_entry_content(
         description = item.find("description")
         if description is not None:
             rss_description_text = description.text
+            if lifted_cdata and rss_description_text:
+                rss_description_text = _restore_lifted_cdata(
+                    rss_description_text, lifted_cdata
+                )
     elif feed_type == "atom":
         content_el = item.find(_atom_ns_tags(atom_ns)["content"])
+
+    content_text = content_el.text if content_el is not None else None
+    if lifted_cdata and content_text:
+        content_text = _restore_lifted_cdata(content_text, lifted_cdata)
 
     _populate_entry_content_preparsed(
         entry,
         item,
         content_el=content_el,
         rss_description_text=rss_description_text,
+        content_text=content_text,
+        lifted_cdata=lifted_cdata,
     )
 
 
@@ -1581,7 +2100,9 @@ def _first_media_desc_credit(
     return desc, credit
 
 
-def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
+def _parse_media_content(
+    item: _Element, lifted_cdata: Optional[dict[str, str]] = None
+) -> list[dict[str, Any]] | None:
     media_contents: list[dict[str, Any]] = []
     # Siblings under one item or media:group share a parent; look its
     # description/credit up once. lxml keeps one proxy per node while it is
@@ -1643,7 +2164,12 @@ def _parse_media_content(item: _Element) -> list[dict[str, Any]] | None:
         if text is not None and text.text:
             media_item["text"] = text.text.strip()
         if desc is not None and desc.text:
-            media_item["description"] = desc.text.strip()
+            # A description in a default media namespace is written as a
+            # plain <description>, which _lift_large_cdata lifts.
+            desc_text = desc.text
+            if lifted_cdata:
+                desc_text = _restore_lifted_cdata(desc_text, lifted_cdata)
+            media_item["description"] = desc_text.strip()
         if credit is not None and credit.text:
             media_item["credit"] = credit.text.strip()
             credit_scheme = credit.get("scheme")
@@ -1801,6 +2327,7 @@ def _parse_rss_feed_entry_fast(
     include_tags: bool = True,
     include_media: bool = True,
     include_enclosures: bool = True,
+    lifted_cdata: Optional[dict[str, str]] = None,
 ) -> FastFeedParserDict:
     atom_tags = _atom_ns_tags(atom_ns)
     tag_info = _rss_tag_info_cache(atom_ns)
@@ -1834,11 +2361,15 @@ def _parse_rss_feed_entry_fast(
 
         if local is not None and local not in text_by_local:
             text_value = child.text or None
+            if lifted_cdata and text_value:
+                text_value = _restore_lifted_cdata(text_value, lifted_cdata)
             text_by_local[local] = text_value
         elif kind == _RSS_KIND_OTHER:
             continue
         else:
             text_value = child.text or None
+            if lifted_cdata and text_value:
+                text_value = _restore_lifted_cdata(text_value, lifted_cdata)
 
         if kind == _RSS_KIND_OTHER:
             continue
@@ -1970,10 +2501,11 @@ def _parse_rss_feed_entry_fast(
             content_el=content_el,
             rss_description_text=rss_description_text,
             content_text=content_text,
+            lifted_cdata=lifted_cdata,
         )
 
     if include_media and has_media_elements:
-        media_contents = _parse_media_content(item)
+        media_contents = _parse_media_content(item, lifted_cdata)
         if media_contents:
             entry["media_content"] = media_contents
 
@@ -2046,6 +2578,7 @@ def _parse_atom_feed_entry_fast(
     include_tags: bool = True,
     include_media: bool = True,
     include_enclosures: bool = True,
+    lifted_cdata: Optional[dict[str, str]] = None,
 ) -> FastFeedParserDict:
     atom_name_tag = _atom_ns_tags(atom_ns)["ns"] + "name"
     atom_links: list[_Element] = []
@@ -2099,10 +2632,14 @@ def _parse_atom_feed_entry_fast(
             if include_content and content_el is None:
                 content_el = child
                 content_text = child.text
+                if lifted_cdata and content_text:
+                    content_text = _restore_lifted_cdata(content_text, lifted_cdata)
         else:
             text_value = child.text
             if not text_value:
                 continue
+            if lifted_cdata:
+                text_value = _restore_lifted_cdata(text_value, lifted_cdata)
             if kind == _ATOM_KIND_ID:
                 if "id" not in entry:
                     entry["id"] = text_value.strip()
@@ -2163,10 +2700,11 @@ def _parse_atom_feed_entry_fast(
             content_el=content_el,
             rss_description_text=None,
             content_text=content_text,
+            lifted_cdata=lifted_cdata,
         )
 
     if include_media and has_media_elements:
-        media_contents = _parse_media_content(item)
+        media_contents = _parse_media_content(item, lifted_cdata)
         if media_contents:
             entry["media_content"] = media_contents
 
@@ -2192,6 +2730,7 @@ def _parse_feed_entry(
     include_tags: bool = True,
     include_media: bool = True,
     include_enclosures: bool = True,
+    lifted_cdata: Optional[dict[str, str]] = None,
 ) -> FastFeedParserDict:
     # Use dynamic atom namespace or fallback to default
     atom_ns = atom_namespace or "http://www.w3.org/2005/Atom"
@@ -2205,6 +2744,7 @@ def _parse_feed_entry(
             include_tags=include_tags,
             include_media=include_media,
             include_enclosures=include_enclosures,
+            lifted_cdata=lifted_cdata,
         )
 
     if feed_type == "atom":
@@ -2216,6 +2756,7 @@ def _parse_feed_entry(
             include_tags=include_tags,
             include_media=include_media,
             include_enclosures=include_enclosures,
+            lifted_cdata=lifted_cdata,
         )
 
     # RDF path uses the generic field machinery
@@ -2275,7 +2816,7 @@ def _parse_feed_entry(
         ),
     )
 
-    element_get = _cached_element_value_factory(item)
+    element_get = _cached_element_value_factory(item, lifted_cdata)
     entry = FastFeedParserDict()
     # ------------------------------------------------------------------
     # 1) Collect a stable identifier for this entry.
@@ -2333,10 +2874,10 @@ def _parse_feed_entry(
         entry["id"] = entry["link"]
 
     if include_content:
-        _populate_entry_content(entry, item, feed_type, atom_ns)
+        _populate_entry_content(entry, item, feed_type, atom_ns, lifted_cdata)
 
     if include_media and has_media_elements:
-        media_contents = _parse_media_content(item)
+        media_contents = _parse_media_content(item, lifted_cdata)
         if media_contents:
             entry["media_content"] = media_contents
 
@@ -2465,6 +3006,7 @@ def _path_tag_steps(path: str) -> Optional[tuple[str, ...]]:
 
 def _cached_element_value_factory(
     root: _Element,
+    lifted_cdata: Optional[dict[str, str]] = None,
 ) -> _ElementValueGetter:
     """Create a getter for the text or attribute of a child of `root`.
 
@@ -2511,6 +3053,8 @@ def _cached_element_value_factory(
             attr_value = el.get(attribute)
             return attr_value.strip() if attr_value else None
         text_value = el.text
+        if lifted_cdata and text_value:
+            text_value = _restore_lifted_cdata(text_value, lifted_cdata)
         return text_value.strip() if text_value else None
 
     return getter
@@ -2571,8 +3115,18 @@ def _ensure_utc(dt: datetime.datetime) -> Optional[datetime.datetime]:
         return None
 
 
+# What _fast_rfc822_to_iso returns for a date in RFC-822 form that names no
+# real moment. Falsy, and not None: _parse_date stops there instead of letting
+# the looser parsers guess at it.
+_IMPOSSIBLE_DATE = ""
+
+
 def _fast_rfc822_to_iso(value: str) -> Optional[str]:
-    """Fast RFC-822 date to ISO string, bypassing datetime objects for UTC dates."""
+    """RFC-822 date to a UTC ISO string.
+
+    Returns None when the value is not in RFC-822 form, and _IMPOSSIBLE_DATE
+    when it is but the date or time cannot exist.
+    """
     m = _RE_RFC822.match(value)
     if not m:
         return None
@@ -2591,47 +3145,26 @@ def _fast_rfc822_to_iso(value: str) -> Optional[str]:
     # Python requires offset strictly between -24h and +24h
     if not (-86400 < tz_offset_seconds < 86400):
         return None
-    d = int(day)
     h = int(hour)
-    mi = int(minute)
-    s = int(second)
-    # Hour 24 is invalid (even ISO only allows 24:00:00); roll to next day at 00:mm:ss
-    if h == 24:
-        base = datetime.date(int(year), month, d) + datetime.timedelta(days=1)
-        h = 0
-        if tz_offset_seconds == 0:
-            return f"{base.year:04d}-{base.month:02d}-{base.day:02d}T{h:02d}:{mi:02d}:{s:02d}+00:00"
-        dt = datetime.datetime(
-            base.year,
-            base.month,
-            base.day,
-            h,
-            mi,
-            s,
-            tzinfo=datetime.timezone(datetime.timedelta(seconds=tz_offset_seconds)),
+    try:
+        # Hour 24 is not an hour of the day; read it as 00 on the next day.
+        local = datetime.datetime(
+            int(year), month, int(day), 0 if h == 24 else h, int(minute), int(second)
         )
-        utc = dt.astimezone(_UTC)
-        return f"{utc.year:04d}-{utc.month:02d}-{utc.day:02d}T{utc.hour:02d}:{utc.minute:02d}:{utc.second:02d}+00:00"
-    if tz_offset_seconds == 0:
-        return f"{year}-{month:02d}-{d:02d}T{hour}:{minute}:{second}+00:00"
-    dt = datetime.datetime(
-        int(year),
-        month,
-        d,
-        h,
-        mi,
-        s,
-        tzinfo=datetime.timezone(datetime.timedelta(seconds=tz_offset_seconds)),
-    )
-    utc = dt.astimezone(_UTC)
-    return f"{utc.year:04d}-{utc.month:02d}-{utc.day:02d}T{utc.hour:02d}:{utc.minute:02d}:{utc.second:02d}+00:00"
+        if h == 24:
+            local += datetime.timedelta(days=1)
+        utc = local - datetime.timedelta(seconds=tz_offset_seconds)
+    except (ValueError, OverflowError):
+        # No such date, or it falls outside the years datetime can hold.
+        return _IMPOSSIBLE_DATE
+    return utc.isoformat() + "+00:00"
 
 
 def _parsedate_to_utc(value: str) -> Optional[datetime.datetime]:
     """RFC-822 / RFC-2822 parsing via email.utils (fallback)."""
     try:
         parsed = parsedate_to_datetime(value)
-    except (TypeError, ValueError, IndexError):
+    except (TypeError, ValueError, IndexError, OverflowError):
         return None
     if parsed is None:
         return None
@@ -2690,7 +3223,9 @@ _DATEPARSER_SETTINGS = {
 def _slow_dateutil_parse(value: str) -> Optional[datetime.datetime]:
     try:
         return dateutil_parser.parse(value, tzinfos=_custom_tzinfos, ignoretz=False)
-    except (ValueError, TypeError, OverflowError):
+    except (ValueError, TypeError, ArithmeticError):
+        # ArithmeticError covers OverflowError and the decimal.InvalidOperation
+        # dateutil raises for a number too long to be a time.
         return None
 
 
@@ -2704,8 +3239,58 @@ def _slow_dateparser(value: str) -> Optional[datetime.datetime]:
         return _dateparser.parse(
             value, languages=["en"], settings=_DATEPARSER_SETTINGS
         )
-    except (ValueError, TypeError):
+    except (ValueError, TypeError, ArithmeticError):
         return None
+
+
+# Zone spellings that _fast_rfc822_to_iso reads as a zero offset.
+_RFC822_UTC_ZONES = frozenset(
+    [name for name, offset in _custom_tzinfos.items() if offset == 0]
+    + ["+0000", "-0000"]
+)
+_MONTH_DIGITS_RFC822 = {
+    name.capitalize(): f"{number:02d}" for name, number in _MONTHS_RFC822.items()
+}
+
+
+def _fixed_rfc822_utc_to_iso(value: str) -> Optional[str]:
+    """Convert "Mon, 02 Jan 2006 15:04:05 GMT" to ISO by character position.
+
+    The caller has checked that the zone, value[26:], is one of
+    _RFC822_UTC_ZONES. Returns None for any other layout, for hour 24, and
+    for a date or time that cannot exist; _fast_rfc822_to_iso handles those.
+    For the strings it accepts, it returns what _fast_rfc822_to_iso returns.
+    """
+    month = _MONTH_DIGITS_RFC822.get(value[8:11])
+    if month is None:
+        return None
+    day = value[5:7]
+    year = value[12:16]
+    hour = value[17:19]
+    minute = value[20:22]
+    second = value[23:25]
+    if not (
+        value.isascii()
+        and value[:3].isalpha()
+        and value[4] == value[7] == value[11] == value[16] == value[25] == " "
+        and value[19] == value[22] == ":"
+        and day.isdigit()
+        and year.isdigit()
+        and hour.isdigit()
+        and minute.isdigit()
+        and second.isdigit()
+        # Two ASCII digits compare like the numbers they spell.
+        and hour < "24"
+        and minute < "60"
+        and second < "60"
+    ):
+        return None
+    if not ("01" <= day <= "28" and year != "0000"):
+        try:
+            datetime.date(int(year), int(month), int(day))
+        except ValueError:
+            return None
+    return f"{year}-{month}-{day}T{hour}:{minute}:{second}+00:00"
 
 
 # Longer strings are not dates, and dateutil tokenizes in quadratic time.
@@ -2733,6 +3318,16 @@ def _parse_date(date_str: str) -> Optional[str]:
     if clen > _MAX_DATE_CHARS:
         return None
 
+    # Fast path: the layout most RSS feeds use, with a 3-char or 5-char zone
+    if (
+        (clen == 29 or clen == 31)
+        and candidate[3] == ","
+        and candidate[26:] in _RFC822_UTC_ZONES
+    ):
+        rfc822_utc = _fixed_rfc822_utc_to_iso(candidate)
+        if rfc822_utc is not None:
+            return rfc822_utc
+
     # Fast path: clean ISO-8601 (covers >90% of Atom/modern RSS dates)
     if clen >= 20 and candidate[4] == "-" and candidate[0:4].isdigit():
         last = candidate[-1]
@@ -2741,6 +3336,8 @@ def _parse_date(date_str: str) -> Optional[str]:
             iso = candidate[:-1] + "+00:00"
             try:
                 dt = datetime.datetime.fromisoformat(iso)
+                if clen == 20 and _RE_ISO_UTC_SECONDS.fullmatch(iso):
+                    return iso
                 return dt.isoformat()
             except ValueError:
                 pass  # Fall through to full parsing
@@ -2748,6 +3345,8 @@ def _parse_date(date_str: str) -> Optional[str]:
         elif clen > 6 and candidate[-6] in ("+", "-") and candidate[-3] == ":":
             try:
                 dt = datetime.datetime.fromisoformat(candidate)
+                if clen == 25 and _RE_ISO_UTC_SECONDS.fullmatch(candidate):
+                    return candidate
                 if dt.tzinfo is _UTC:
                     return dt.isoformat()
                 utc_dt = dt.astimezone(_UTC)
@@ -2770,14 +3369,19 @@ def _parse_date(date_str: str) -> Optional[str]:
     if "T24:" in candidate or " 24:" in candidate:
         m24 = _RE_HOUR24.search(candidate)
         if m24:
-            base = datetime.date.fromisoformat(m24.group(1))
-            mins, secs = int(m24.group(2)), int(m24.group(3))
-            next_day = base + datetime.timedelta(days=1)
-            candidate = (
-                candidate[: m24.start()]
-                + f"{next_day}T00:{mins:02d}:{secs:02d}"
-                + candidate[m24.end() :]
-            )
+            try:
+                base = datetime.date.fromisoformat(m24.group(1))
+                next_day = base + datetime.timedelta(days=1)
+            except (ValueError, OverflowError):
+                # No such day, or no day after it; the parsers below reject it.
+                next_day = None
+            if next_day is not None:
+                mins, secs = int(m24.group(2)), int(m24.group(3))
+                candidate = (
+                    candidate[: m24.start()]
+                    + f"{next_day}T00:{mins:02d}:{secs:02d}"
+                    + candidate[m24.end() :]
+                )
 
     dt: Optional[datetime.datetime] = None
 
@@ -2797,7 +3401,7 @@ def _parse_date(date_str: str) -> Optional[str]:
 
     rfc822_result = _fast_rfc822_to_iso(candidate)
     if rfc822_result is not None:
-        return rfc822_result
+        return rfc822_result or None
 
     dt = _parsedate_to_utc(candidate)
     if dt is not None:
