@@ -7,6 +7,7 @@ import json
 import os
 import re
 import threading
+import traceback
 import zlib
 from functools import lru_cache, partial
 from xml.sax.saxutils import escape as _xml_escape
@@ -988,6 +989,12 @@ def _root_tag_local(root: _Element) -> str:
     return root.tag.split("}")[-1].lower() if "}" in root.tag else root.tag.lower()
 
 
+# How much of an HTML page is parsed to find a meta-refresh or an error
+# message. Both sit at the top of a page, and whole pages parsed in every
+# thread at once take memory in proportion to the pool.
+_HTML_HEAD_BYTES = 256 * 1024
+
+
 def _extract_error_message(root: _Element, raw_bytes: Optional[bytes] = None) -> str:
     error_msg = root.text or ""
 
@@ -1020,7 +1027,9 @@ def _extract_error_message(root: _Element, raw_bytes: Optional[bytes] = None) ->
         # attributes); re-parse with the lenient HTML parser as a fallback.
         if raw_bytes:
             try:
-                html_root = etree.fromstring(raw_bytes, parser=etree.HTMLParser())
+                html_root = etree.fromstring(
+                    raw_bytes[:_HTML_HEAD_BYTES], parser=etree.HTMLParser()
+                )
                 all_text = " ".join(
                     t.strip() for t in html_root.itertext() if t and t.strip()
                 )
@@ -1064,6 +1073,52 @@ def _raise_for_non_feed_root(
     raise ValueError(base_msg)
 
 
+_ROOT_SNIFF_BYTES = 4096
+_RE_ELEMENT_NAME = re.compile(rb"(?:[\w.-]+:)?([\w.-]+)")
+
+
+def _first_element_name(content: bytes) -> str:
+    """Lower-cased local name of the first element in the first 4 KB, or "".
+
+    Steps over the declaration, comments, instructions and a DOCTYPE. This is
+    a cheap guess at the root element; the caller confirms it with a parse.
+    """
+    head = content[:_ROOT_SNIFF_BYTES]
+    pos = 0
+    while True:
+        start = head.find(b"<", pos)
+        if start == -1:
+            return ""
+        if head.startswith(b"<!--", start):
+            end, width = head.find(b"-->", start + 4), 3
+        elif head.startswith(b"<?", start):
+            end, width = head.find(b"?>", start + 2), 2
+        elif head.startswith(b"<!", start):
+            end, width = head.find(b">", start + 2), 1
+        else:
+            name = _RE_ELEMENT_NAME.match(head, start + 1)
+            return name.group(1).decode("ascii").lower() if name else ""
+        if end == -1:
+            return ""
+        pos = end + width
+
+
+def _raise_for_non_feed_head(xml_content: bytes) -> None:
+    """Raise for a large document whose head shows that it is not a feed.
+
+    A page, sitemap or OPML file of many megabytes would otherwise be parsed
+    whole only to word the error. Returns without raising if the head, once
+    parsed, is not rooted at one of the names in _NON_FEED_MESSAGES after all.
+    """
+    head = xml_content[:_HTML_HEAD_BYTES]
+    try:
+        root = etree.fromstring(head, parser=_xml_parsers(head).recover)
+    except etree.XMLSyntaxError:
+        return
+    if root is not None:
+        _raise_for_non_feed_root(root, _root_tag_local(root), head)
+
+
 # The optional quote owns the whitespace after it, so a whitespace run is only
 # ever consumed one way (GHSA-3r75-qcwc-78f2).
 _RE_META_REFRESH_URL = re.compile(r'url\s*=\s*(?:["\']\s*)?([^"\'>\s]+)', re.IGNORECASE)
@@ -1071,8 +1126,9 @@ _MAX_META_REDIRECTS = 3
 
 
 def _extract_meta_refresh_url(content: str | bytes, base_url: str) -> str | None:
-    """Extract redirect URL from an HTML meta-refresh tag."""
-    html_bytes = content.encode("utf-8") if isinstance(content, str) else content
+    """Extract redirect URL from a meta-refresh tag in the head of an HTML page."""
+    head = content[:_HTML_HEAD_BYTES]
+    html_bytes = head.encode("utf-8") if isinstance(head, str) else head
     try:
         doc = etree.fromstring(html_bytes, parser=etree.HTMLParser())
     except Exception:
@@ -1318,6 +1374,11 @@ def _parse_content(
         return json_feed
 
     xml_content, looks_malformed = _prepare_xml_bytes(xml_content)
+    if (
+        len(xml_content) > _HTML_HEAD_BYTES
+        and _first_element_name(xml_content) in _NON_FEED_MESSAGES
+    ):
+        _raise_for_non_feed_head(xml_content)
     lifted_cdata: dict[str, str] = {}
     if looks_malformed:
         root, xml_content = _parse_repairable_xml_root(xml_content)
@@ -1465,6 +1526,10 @@ def parse(
                 raise
             if redirects_left <= 0:
                 raise ValueError("too many meta-refresh redirects") from e
+            # The traceback keeps the failed parse's frames, and with them its
+            # tree, alive for as long as this handler runs. Drop their locals
+            # before reading the page again and fetching the redirect.
+            traceback.clear_frames(e.__traceback__)
             redirect_url = _extract_meta_refresh_url(content, source)
             if redirect_url is None:
                 raise
