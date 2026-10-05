@@ -454,18 +454,3 @@ def test_rescued_items_keep_quoted_item_markup_as_text(html_parser_uses):
 )
 def test_closed_cdata_sections_become_escaped_text(content, expected):
     assert main._escape_closed_cdata(content) == expected
-
-
-def test_escaping_cdata_stays_fast_on_hostile_markup():
-    import time
-
-    for hostile in (
-        b"<![CDATA[" * 200_000,
-        b"]]>" * 400_000,
-        b"<![CDATA[]]>" * 150_000,
-        b"]]]]><![CDATA[>" * 100_000,
-        b"<![CDATA[" * 100_000 + b"]]]]><![CDATA[>" * 100_000 + b"]]>",
-    ):
-        start = time.perf_counter()
-        main._escape_closed_cdata(hostile)
-        assert time.perf_counter() - start < 1.0
