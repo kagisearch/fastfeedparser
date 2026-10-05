@@ -273,11 +273,6 @@ fn rfc822(b: &[u8]) -> Option<String> {
     if offset_seconds.abs() >= 86400 {
         return None;
     }
-    if offset_seconds == 0 {
-        // Python formats these fields without validating them.
-        let time = std::str::from_utf8(time).ok()?;
-        return Some(format!("{year:04}-{month:02}-{day:02}T{time}+00:00"));
-    }
     let civil = Civil {
         year,
         month,
@@ -345,11 +340,6 @@ mod tests {
             iso_of(" Tue, 31 Dec 2024 23:30:00 PST\n").unwrap(),
             "2025-01-01T07:30:00+00:00"
         );
-        // Python does not validate the zero-offset case either.
-        assert_eq!(
-            iso_of("45 Jan 2006 99:99:99 GMT").unwrap(),
-            "2006-01-45T99:99:99+00:00"
-        );
     }
 
     #[test]
@@ -361,6 +351,9 @@ mod tests {
             "2024-01-15T10:30:00+24:00",
             "2024-01-15T10:30:00",
             "Fri, 30 Feb 2024 10:00:00 +0100",
+            // A date that cannot exist is Python's to reject, in UTC as well.
+            "Wed, 45 Jan 2006 99:99:99 GMT",
+            "Sat, 30 Dec 2023 23:59:60 GMT",
             "Mon, 02 Jan 2006 15:04:05 XYZ",
             "Mon,  02 Jan 2006 15:04:05 GMT",
             "Mon, 02 Jan 2006 24:04:05 GMT",

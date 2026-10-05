@@ -212,19 +212,51 @@ def test_healthy_few_item_feed_is_not_reparsed(html_parser_uses):
     assert not html_parser_uses
 
 
-@pytest.mark.parametrize(
-    "marker",
-    [
-        b'<meta charset="utf-8">',
-        b"http-equiv content charset=utf-8",
-        b"HTTP-EQUIV CONTENT CHARSET=utf-8",
-    ],
-)
-def test_few_item_feed_that_may_switch_encoding_is_reparsed(html_parser_uses, marker):
+_ENCODING_MARKERS = [
+    b'<meta charset="utf-8">',
+    b"http-equiv content charset=utf-8",
+    b"HTTP-EQUIV CONTENT CHARSET=utf-8",
+]
+# A bare "&" is a syntax error the recover parser reads past.
+_NOT_WELL_FORMED = b"<x>a & b</x>"
+
+
+@pytest.mark.parametrize("marker", _ENCODING_MARKERS)
+def test_damaged_few_item_feed_that_may_switch_encoding_is_reparsed(
+    html_parser_uses, marker
+):
+    items = [_long_item(b"t%d" % i) for i in range(3)]
+    feed = _rss_items([b"<!-- " + marker + b" -->", _NOT_WELL_FORMED] + items)
+    assert [entry.title for entry in parse(feed).entries] == ["t0", "t1", "t2"]
+    assert html_parser_uses
+
+
+@pytest.mark.parametrize("marker", _ENCODING_MARKERS)
+def test_well_formed_few_item_feed_is_never_reparsed(html_parser_uses, marker):
     items = [_long_item(b"t%d" % i) for i in range(3)]
     feed = _rss_items([b"<!-- " + marker + b" -->"] + items)
     assert [entry.title for entry in parse(feed).entries] == ["t0", "t1", "t2"]
-    assert html_parser_uses
+    assert not html_parser_uses
+
+
+def _item_with_item_markup_in_cdata() -> bytes:
+    article = b"<p>How to write a feed:</p>" + b"<item><title>fake</title></item>" * 25
+    return (
+        b"<item><title>real</title><description><![CDATA["
+        + article
+        + b"x" * 20000
+        + b"]]></description></item>"
+    )
+
+
+def test_item_markup_inside_cdata_is_text_not_entries(html_parser_uses):
+    # The HTML parser does not know CDATA, so it reads the article's own
+    # <item> examples as elements. A well-formed feed is never given to it.
+    feed = _rss_items([_item_with_item_markup_in_cdata()])
+    parsed = parse(feed)
+    assert [entry.title for entry in parsed.entries] == ["real"]
+    assert parsed.entries[0].description.count("<item><title>fake</title></item>") == 25
+    assert not html_parser_uses
 
 
 def test_damaged_feed_with_more_item_tags_is_reparsed(html_parser_uses):
@@ -259,3 +291,181 @@ def test_damaged_feed_with_more_item_tags_is_reparsed(html_parser_uses):
 )
 def test_reparse_is_kept_when_it_could_find_more_items(content, found):
     assert _html_reparse_may_find_more_items(content, found)
+
+
+def _linked_item(i: int, tag: bytes = b"item") -> bytes:
+    return (
+        b"<" + tag + b"><title>t%d</title><link>http://e.com/%d</link>" % (i, i)
+        + b"<description>" + b"x" * 3000 + b"</description></" + tag + b">"
+    )
+
+
+@pytest.mark.parametrize(
+    "items",
+    [
+        pytest.param(
+            b"".join(_linked_item(i, b"Item") for i in range(10)), id="mixed-case-tags"
+        ),
+        pytest.param(
+            b"".join(_linked_item(i, b"ITEM") for i in range(10)), id="upper-case-tags"
+        ),
+        pytest.param(
+            _linked_item(0)
+            + b"<section>"
+            + b"".join(_linked_item(i) for i in range(1, 10))
+            + b"</section>",
+            id="inside-a-wrapper",
+        ),
+        pytest.param(
+            b"<item><title>t0</title><link>http://e.com/0</link>"
+            + b"".join(_linked_item(i) for i in range(1, 10))
+            + b"</item>",
+            id="nested-in-the-first-item",
+        ),
+    ],
+)
+def test_well_formed_feed_gets_its_deeper_items_from_the_xml_tree(
+    items, html_parser_uses
+):
+    parsed = parse(_rss_items([items]))
+    assert [entry.title for entry in parsed.entries] == ["t%d" % i for i in range(10)]
+    # The HTML parser reads <link> as an empty element and loses its text.
+    assert [entry.link for entry in parsed.entries] == [
+        "http://e.com/%d" % i for i in range(10)
+    ]
+    assert not html_parser_uses
+
+
+def test_items_inside_a_comment_are_not_entries(html_parser_uses):
+    commented = b"<!--" + b"".join(_linked_item(i) for i in range(2, 10)) + b"-->"
+    parsed = parse(_rss_items([_linked_item(0), _linked_item(1), commented]))
+    assert [entry.title for entry in parsed.entries] == ["t0", "t1"]
+    assert not html_parser_uses
+
+
+@pytest.mark.parametrize(
+    "feed",
+    [
+        pytest.param(
+            b'<rss version="2.0"><title>f</title><description>'
+            + b"x" * 24000
+            + b"</description><item><title>T1</title><gallery>"
+            + b"<item><title>img</title></item>" * 3
+            + b"</gallery></item></rss>",
+            id="no-channel",
+        ),
+        pytest.param(
+            b'<rss version="2.0"><channel/><title>f</title><description>'
+            + b"x" * 24000
+            + b"</description><item><title>T1</title><gallery>"
+            + b"<item><title>img</title></item>" * 3
+            + b"</gallery></item></rss>",
+            id="empty-channel",
+        ),
+    ],
+)
+def test_feed_without_a_channel_keeps_only_its_direct_items(feed, html_parser_uses):
+    assert [entry.title for entry in parse(feed).entries] == ["T1"]
+    assert not html_parser_uses
+
+
+_QUOTED_ITEMS = b"<p>How to write a feed:</p>" + b"<item><title>fake</title></item>" * 25
+
+
+def test_item_markup_quoted_in_cdata_of_a_damaged_feed_is_not_entries(html_parser_uses):
+    feed = _rss_items([_NOT_WELL_FORMED, _item_with_item_markup_in_cdata()])
+    parsed = parse(feed)
+    assert html_parser_uses
+    assert [entry.title for entry in parsed.entries] == ["real"]
+    assert parsed.entries[0].description.count("<item><title>fake</title></item>") == 25
+
+
+def test_item_markup_quoted_with_cdata_inside_cdata_is_not_entries(html_parser_uses):
+    # A section cannot hold "]]>", so an article quoting a feed's own CDATA
+    # ends each quoted section with "]]]]><![CDATA[>".
+    quoted = (
+        b"<item><title>fake</title>"
+        b"<description><![CDATA[q]]]]><![CDATA[></description></item>"
+    )
+    real = (
+        b"<item><title>real</title><description><![CDATA["
+        + quoted * 25
+        + b"x" * 20000
+        + b"]]></description></item>"
+    )
+    parsed = parse(_rss_items([_NOT_WELL_FORMED, real]))
+    assert html_parser_uses
+    assert [entry.title for entry in parsed.entries] == ["real"]
+    assert parsed.entries[0].description.count("<![CDATA[q]]>") == 25
+
+
+def test_rescued_items_keep_quoted_item_markup_as_text(html_parser_uses):
+    # The unterminated section in the second title hides items from the XML
+    # parser up to the "]]>" in the seventh, so the HTML re-parse is needed.
+    # It must find the real items and read the quoted ones as text.
+    titles = [b"t%d" % i for i in range(8)]
+    titles[1] = b"<![CDATA[t1"
+    items = [_long_item(title) for title in titles]
+    items[6] = (
+        b"<item><title>t6</title><description><![CDATA["
+        + _QUOTED_ITEMS
+        + b"]]></description></item>"
+    )
+    parsed = parse(_rss_items(items))
+    assert html_parser_uses
+    found = [entry.title for entry in parsed.entries]
+    assert len(found) == 8
+    assert "fake" not in found
+    assert found[6:] == ["t6", "t7"]
+    assert parsed.entries[6].description.count("<item><title>fake</title></item>") == 25
+
+
+@pytest.mark.parametrize(
+    "content, expected",
+    [
+        pytest.param(b"a<![CDATA[<b>&c]]>d", b"a&lt;b>&amp;cd", id="closed-section"),
+        pytest.param(b"a<![CDATA[x<y>z", b"a<![CDATA[x<y>z", id="no-end"),
+        pytest.param(
+            b"<![CDATA[open <i> <![CDATA[<b>]]> tail",
+            b"<![CDATA[open <i> &lt;b> tail",
+            id="opener-without-its-own-end-is-left",
+        ),
+        pytest.param(b"a]]>b<![CDATA[<c>]]>", b"a]]>b&lt;c>", id="stray-end-first"),
+        pytest.param(b"no sections <here>", b"no sections <here>", id="none"),
+        pytest.param(
+            b"a<![CDATA[x & y]]>b", b"a<![CDATA[x & y]]>b", id="section-without-markup"
+        ),
+        pytest.param(
+            b"<![CDATA[if (a[b[0]]]]><![CDATA[> c) <x>]]>",
+            b"if (a[b[0]]> c) &lt;x>",
+            id="split-that-spells-the-end-marker",
+        ),
+        pytest.param(
+            b"<![CDATA[<item><d><![CDATA[q]]]]><![CDATA[></d></item>]]>",
+            b"&lt;item>&lt;d>&lt;![CDATA[q]]>&lt;/d>&lt;/item>",
+            id="quoted-section-is-part-of-the-outer-one",
+        ),
+        pytest.param(
+            b"<![CDATA[open <i> <![CDATA[<a><![CDATA[q]]]]><![CDATA[></a>]]> tail",
+            b"<![CDATA[open <i> &lt;a>&lt;![CDATA[q]]>&lt;/a> tail",
+            id="opener-without-an-end-before-a-section-that-quotes-one",
+        ),
+    ],
+)
+def test_closed_cdata_sections_become_escaped_text(content, expected):
+    assert main._escape_closed_cdata(content) == expected
+
+
+def test_escaping_cdata_stays_fast_on_hostile_markup():
+    import time
+
+    for hostile in (
+        b"<![CDATA[" * 200_000,
+        b"]]>" * 400_000,
+        b"<![CDATA[]]>" * 150_000,
+        b"]]]]><![CDATA[>" * 100_000,
+        b"<![CDATA[" * 100_000 + b"]]]]><![CDATA[>" * 100_000 + b"]]>",
+    ):
+        start = time.perf_counter()
+        main._escape_closed_cdata(hostile)
+        assert time.perf_counter() - start < 1.0

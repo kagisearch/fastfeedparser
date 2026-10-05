@@ -13,11 +13,8 @@ from fastfeedparser import parse
 _ATOM_NS = "http://www.w3.org/2005/Atom"
 _LONG_URI = "urn:" + "a" * 10_000
 
-
-@pytest.fixture(autouse=True)
-def lxml_path_only(monkeypatch):
-    """The tag cache belongs to the lxml path; the native core never fills it."""
-    monkeypatch.setattr(main, "_core", None)
+# The tag cache belongs to the lxml path; the native core never fills it.
+pytestmark = pytest.mark.usefixtures("lxml_path_only")
 
 
 def _rss_with_long_namespace(item_children: str) -> str:
