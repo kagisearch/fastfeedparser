@@ -3,9 +3,7 @@
 #   - a pure-Python wheel that pip picks wherever no platform wheel fits
 #   - the sdist
 # and collects them in a single "dist" artifact to upload with twine.
-#
-# NOT YET RUN: written without access to GitHub Actions. Expect to adjust it
-# on its first run.
+# The release steps are in rust/README.md under "Releasing".
 name: wheels
 
 on:

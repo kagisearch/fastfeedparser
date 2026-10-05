@@ -23,6 +23,8 @@ FASTFEEDPARSER_DISABLE_CORE=1 pytest         # test the lxml path alone
 FASTFEEDPARSER_PURE=1 python -m build        # build without the extension
 ```
 
+Releasing to PyPI: wheels are built by CI on a `v*` tag push, not locally. Steps are in `rust/README.md` under "Releasing".
+
 ## Architecture
 
 Single-file parser: `src/fastfeedparser/main.py`
