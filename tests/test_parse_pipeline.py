@@ -367,3 +367,62 @@ def test_items_inside_a_comment_are_not_entries(html_parser_uses):
 def test_feed_without_a_channel_keeps_only_its_direct_items(feed, html_parser_uses):
     assert [entry.title for entry in parse(feed).entries] == ["T1"]
     assert not html_parser_uses
+
+
+_QUOTED_ITEMS = b"<p>How to write a feed:</p>" + b"<item><title>fake</title></item>" * 25
+
+
+def test_item_markup_quoted_in_cdata_of_a_damaged_feed_is_not_entries(html_parser_uses):
+    feed = _rss_items([_NOT_WELL_FORMED, _item_with_item_markup_in_cdata()])
+    parsed = parse(feed)
+    assert html_parser_uses
+    assert [entry.title for entry in parsed.entries] == ["real"]
+    assert parsed.entries[0].description.count("<item><title>fake</title></item>") == 25
+
+
+def test_rescued_items_keep_quoted_item_markup_as_text(html_parser_uses):
+    # The unterminated section in the second title hides items from the XML
+    # parser up to the "]]>" in the seventh, so the HTML re-parse is needed.
+    # It must find the real items and read the quoted ones as text.
+    titles = [b"t%d" % i for i in range(8)]
+    titles[1] = b"<![CDATA[t1"
+    items = [_long_item(title) for title in titles]
+    items[6] = (
+        b"<item><title>t6</title><description><![CDATA["
+        + _QUOTED_ITEMS
+        + b"]]></description></item>"
+    )
+    parsed = parse(_rss_items(items))
+    assert html_parser_uses
+    found = [entry.title for entry in parsed.entries]
+    assert len(found) == 8
+    assert "fake" not in found
+    assert found[6:] == ["t6", "t7"]
+    assert parsed.entries[6].description.count("<item><title>fake</title></item>") == 25
+
+
+@pytest.mark.parametrize(
+    "content, expected",
+    [
+        pytest.param(b"a<![CDATA[<b>&c]]>d", b"a&lt;b>&amp;cd", id="closed-section"),
+        pytest.param(b"a<![CDATA[x<y>z", b"a<![CDATA[x<y>z", id="no-end"),
+        pytest.param(
+            b"<![CDATA[open <i> <![CDATA[<b>]]> tail",
+            b"<![CDATA[open <i> &lt;b> tail",
+            id="opener-without-its-own-end-is-left",
+        ),
+        pytest.param(b"a]]>b<![CDATA[<c>]]>", b"a]]>b&lt;c>", id="stray-end-first"),
+        pytest.param(b"no sections <here>", b"no sections <here>", id="none"),
+    ],
+)
+def test_closed_cdata_sections_become_escaped_text(content, expected):
+    assert main._escape_closed_cdata(content) == expected
+
+
+def test_escaping_cdata_stays_fast_on_hostile_markup():
+    import time
+
+    for hostile in (b"<![CDATA[" * 200_000, b"]]>" * 400_000, b"<![CDATA[]]>" * 150_000):
+        start = time.perf_counter()
+        main._escape_closed_cdata(hostile)
+        assert time.perf_counter() - start < 1.0

@@ -1118,6 +1118,33 @@ def _html_reparse_may_find_more_items(xml_content: bytes, found: int) -> bool:
     return _RE_HTTP_EQUIV_BYTES.search(xml_content) is not None
 
 
+def _escape_closed_cdata(content: bytes) -> bytes:
+    """Rewrite each closed CDATA section as escaped text, for the HTML parser.
+
+    The HTML parser does not know CDATA and reads markup quoted in a section
+    as elements. A section is taken to start at the last opener before each
+    "]]>", so an opener that has no end of its own is left as it is.
+    """
+    pieces: list[bytes] = []
+    copied = 0  # content[:copied] is accounted for in pieces
+    pos = 0  # end of the last "]]>"
+    while True:
+        end = content.find(b"]]>", pos)
+        if end == -1:
+            break
+        start = content.rfind(b"<![CDATA[", pos, end)
+        if start != -1:
+            pieces.append(content[copied:start])
+            section = content[start + 9 : end]
+            pieces.append(section.replace(b"&", b"&amp;").replace(b"<", b"&lt;"))
+            copied = end + 3
+        pos = end + 3
+    if not pieces:
+        return content
+    pieces.append(content[copied:])
+    return b"".join(pieces)
+
+
 def _items_at_any_depth(channel: _Element) -> list[_Element]:
     """Unprefixed elements named item, in any letter case, anywhere below `channel`."""
     return [
@@ -1226,10 +1253,14 @@ def _detect_feed_structure(
                     if len(deeper_items) > len(items) * 2:
                         items = deeper_items
             else:
-                # A damaged document can hide items from the XML parser.
+                # A damaged document can hide items from the XML parser. Its
+                # closed CDATA sections go to the HTML parser as text, so item
+                # markup quoted in one is not read as items.
                 try:
                     html_parser = etree.HTMLParser(recover=True, collect_ids=False)
-                    html_root = etree.fromstring(xml_content, parser=html_parser)
+                    html_root = etree.fromstring(
+                        _escape_closed_cdata(xml_content), parser=html_parser
+                    )
                     html_channel = html_root.find(".//channel")
                     if html_channel is not None:
                         html_items = html_channel.findall(".//item")
