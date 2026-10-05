@@ -1128,6 +1128,10 @@ _MAX_META_REDIRECTS = 3
 def _extract_meta_refresh_url(content: str | bytes, base_url: str) -> str | None:
     """Extract redirect URL from a meta-refresh tag in the head of an HTML page."""
     head = content[:_HTML_HEAD_BYTES]
+    if len(content) > _HTML_HEAD_BYTES:
+        # Drop a tag the cut left unfinished: some libxml2 versions keep its
+        # attributes, and a redirect must not be built from half a URL.
+        head = head[: head.rfind(">" if isinstance(head, str) else b">") + 1]
     html_bytes = head.encode("utf-8") if isinstance(head, str) else head
     try:
         doc = etree.fromstring(html_bytes, parser=etree.HTMLParser())
@@ -1174,26 +1178,66 @@ def _html_reparse_may_find_more_items(xml_content: bytes, found: int) -> bool:
     return _RE_HTTP_EQUIV_BYTES.search(xml_content) is not None
 
 
-def _escape_closed_cdata(content: bytes) -> bytes:
-    """Rewrite each closed CDATA section as escaped text, for the HTML parser.
+# How a CDATA section spells "]]>": it ends after "]]" and another starts at ">".
+_CDATA_SPLIT = b"]]]]><![CDATA[>"
 
-    The HTML parser does not know CDATA and reads markup quoted in a section
-    as elements. A section is taken to start at the last opener before each
-    "]]>", so an opener that has no end of its own is left as it is.
+
+def _cdata_section_start(content: bytes, pos: int, end: int, splits: list[int]) -> int:
+    """Where the CDATA section that ends at `end` starts, or -1.
+
+    `splits` holds the offsets of the splits in content[pos:end]. The start is
+    the last opener in that range that is not quoted, taking an opener for
+    quoted when a split follows it before the next opener. If every opener is
+    followed by one, it is the first. An opener that the range holds before
+    the start has no end of its own.
+    """
+    openers = []
+    opener = content.find(b"<![CDATA[", pos, end)
+    while opener != -1:
+        # The opener inside a split continues a section; it does not start one.
+        if not (opener >= 5 and content.startswith(_CDATA_SPLIT, opener - 5)):
+            openers.append(opener)
+        opener = content.find(b"<![CDATA[", opener + 9, end)
+    if not openers:
+        return -1
+    unseen = len(splits)  # splits[:unseen] lie before the openers seen so far
+    for opener in reversed(openers):
+        quoted = False
+        while unseen and splits[unseen - 1] > opener:
+            quoted = True
+            unseen -= 1
+        if not quoted:
+            return opener
+    return openers[0]
+
+
+def _escape_closed_cdata(content: bytes) -> bytes:
+    """Rewrite closed CDATA sections that hold markup as escaped text.
+
+    This is for the HTML parser, which does not know CDATA and reads markup
+    quoted in a section as elements. A section ends at the first "]]>" that
+    is not part of a split and starts where _cdata_section_start says, so a
+    section that quotes other sections is taken whole and an opener with no
+    end of its own is left as it is.
     """
     pieces: list[bytes] = []
     copied = 0  # content[:copied] is accounted for in pieces
-    pos = 0  # end of the last "]]>"
+    pos = 0  # end of the last section end
     while True:
+        splits = []
         end = content.find(b"]]>", pos)
+        while end >= 2 and content.startswith(_CDATA_SPLIT, end - 2):
+            splits.append(end - 2)
+            end = content.find(b"]]>", end - 2 + len(_CDATA_SPLIT))
         if end == -1:
             break
-        start = content.rfind(b"<![CDATA[", pos, end)
+        start = _cdata_section_start(content, pos, end, splits)
         if start != -1:
-            pieces.append(content[copied:start])
-            section = content[start + 9 : end]
-            pieces.append(section.replace(b"&", b"&amp;").replace(b"<", b"&lt;"))
-            copied = end + 3
+            section = content[start + 9 : end].replace(_CDATA_SPLIT, b"]]>")
+            if b"<" in section:
+                pieces.append(content[copied:start])
+                pieces.append(section.replace(b"&", b"&amp;").replace(b"<", b"&lt;"))
+                copied = end + 3
         pos = end + 3
     if not pieces:
         return content
@@ -1221,7 +1265,10 @@ def _is_well_formed_xml(xml_content: bytes) -> bool:
 
 
 def _detect_feed_structure(
-    root: _Element, xml_content: bytes, root_tag_local: str
+    root: _Element,
+    xml_content: bytes,
+    root_tag_local: str,
+    known_well_formed: bool = False,
 ) -> tuple[_FeedType, _Element, list[_Element], Optional[str]]:
     feed_type: _FeedType
     atom_namespace: Optional[str] = None
@@ -1296,7 +1343,7 @@ def _detect_feed_structure(
             and len(xml_content) > 20000
             and _html_reparse_may_find_more_items(xml_content, len(items))
         ):
-            if _is_well_formed_xml(xml_content):
+            if known_well_formed or _is_well_formed_xml(xml_content):
                 # Every item is in the tree; the search above only missed the
                 # ones nested deeper or spelled in another letter case. The
                 # HTML parser is kept away from a well-formed document: it
@@ -1390,8 +1437,9 @@ def _parse_content(
         root = _parse_xml_root(xml_content)
     _raise_for_non_feed_root(root, root_tag_local, xml_content)
 
+    # A document parsed with sections lifted had no errors, so it is well-formed.
     feed_type, channel, items, atom_namespace = _detect_feed_structure(
-        root, xml_content, root_tag_local
+        root, xml_content, root_tag_local, known_well_formed=bool(lifted_cdata)
     )
 
     feed = _parse_feed_info(
@@ -1526,13 +1574,13 @@ def parse(
                 raise
             if redirects_left <= 0:
                 raise ValueError("too many meta-refresh redirects") from e
-            # The traceback keeps the failed parse's frames, and with them its
-            # tree, alive for as long as this handler runs. Drop their locals
-            # before reading the page again and fetching the redirect.
-            traceback.clear_frames(e.__traceback__)
             redirect_url = _extract_meta_refresh_url(content, source)
             if redirect_url is None:
                 raise
+            # The traceback keeps the failed parse's frames, and with them its
+            # tree, alive for as long as this handler runs. This error is not
+            # going to be raised, so drop their locals before the fetch.
+            traceback.clear_frames(e.__traceback__)
             content = _fetch_url_content(redirect_url)
             source = redirect_url
             redirects_left -= 1

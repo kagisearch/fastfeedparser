@@ -380,6 +380,25 @@ def test_item_markup_quoted_in_cdata_of_a_damaged_feed_is_not_entries(html_parse
     assert parsed.entries[0].description.count("<item><title>fake</title></item>") == 25
 
 
+def test_item_markup_quoted_with_cdata_inside_cdata_is_not_entries(html_parser_uses):
+    # A section cannot hold "]]>", so an article quoting a feed's own CDATA
+    # ends each quoted section with "]]]]><![CDATA[>".
+    quoted = (
+        b"<item><title>fake</title>"
+        b"<description><![CDATA[q]]]]><![CDATA[></description></item>"
+    )
+    real = (
+        b"<item><title>real</title><description><![CDATA["
+        + quoted * 25
+        + b"x" * 20000
+        + b"]]></description></item>"
+    )
+    parsed = parse(_rss_items([_NOT_WELL_FORMED, real]))
+    assert html_parser_uses
+    assert [entry.title for entry in parsed.entries] == ["real"]
+    assert parsed.entries[0].description.count("<![CDATA[q]]>") == 25
+
+
 def test_rescued_items_keep_quoted_item_markup_as_text(html_parser_uses):
     # The unterminated section in the second title hides items from the XML
     # parser up to the "]]>" in the seventh, so the HTML re-parse is needed.
@@ -413,6 +432,24 @@ def test_rescued_items_keep_quoted_item_markup_as_text(html_parser_uses):
         ),
         pytest.param(b"a]]>b<![CDATA[<c>]]>", b"a]]>b&lt;c>", id="stray-end-first"),
         pytest.param(b"no sections <here>", b"no sections <here>", id="none"),
+        pytest.param(
+            b"a<![CDATA[x & y]]>b", b"a<![CDATA[x & y]]>b", id="section-without-markup"
+        ),
+        pytest.param(
+            b"<![CDATA[if (a[b[0]]]]><![CDATA[> c) <x>]]>",
+            b"if (a[b[0]]> c) &lt;x>",
+            id="split-that-spells-the-end-marker",
+        ),
+        pytest.param(
+            b"<![CDATA[<item><d><![CDATA[q]]]]><![CDATA[></d></item>]]>",
+            b"&lt;item>&lt;d>&lt;![CDATA[q]]>&lt;/d>&lt;/item>",
+            id="quoted-section-is-part-of-the-outer-one",
+        ),
+        pytest.param(
+            b"<![CDATA[open <i> <![CDATA[<a><![CDATA[q]]]]><![CDATA[></a>]]> tail",
+            b"<![CDATA[open <i> &lt;a>&lt;![CDATA[q]]>&lt;/a> tail",
+            id="opener-without-an-end-before-a-section-that-quotes-one",
+        ),
     ],
 )
 def test_closed_cdata_sections_become_escaped_text(content, expected):
@@ -422,7 +459,13 @@ def test_closed_cdata_sections_become_escaped_text(content, expected):
 def test_escaping_cdata_stays_fast_on_hostile_markup():
     import time
 
-    for hostile in (b"<![CDATA[" * 200_000, b"]]>" * 400_000, b"<![CDATA[]]>" * 150_000):
+    for hostile in (
+        b"<![CDATA[" * 200_000,
+        b"]]>" * 400_000,
+        b"<![CDATA[]]>" * 150_000,
+        b"]]]]><![CDATA[>" * 100_000,
+        b"<![CDATA[" * 100_000 + b"]]]]><![CDATA[>" * 100_000 + b"]]>",
+    ):
         start = time.perf_counter()
         main._escape_closed_cdata(hostile)
         assert time.perf_counter() - start < 1.0

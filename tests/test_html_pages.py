@@ -57,6 +57,19 @@ def test_meta_refresh_at_the_end_of_the_head_window_is_found(html_inputs):
     )
 
 
+def test_meta_refresh_tag_cut_by_the_head_window_is_never_half_read():
+    # An HTML parser may keep the attributes of a tag that ends mid-value.
+    # A redirect built from half a URL would go somewhere the page never named.
+    tag = b'<meta http-equiv="refresh" content="0; url=http://target.example.com/feed.xml">'
+    for inside in range(1, len(tag) + 1):
+        padding = b"<!--" + b"x" * (main._HTML_HEAD_BYTES - 12 - 7 - inside) + b"-->"
+        page = b"<html><head>" + padding + tag + b"</head><body>" + b"y" * 100 + b"</body></html>"
+        assert page.index(tag) + inside == main._HTML_HEAD_BYTES
+        url = main._extract_meta_refresh_url(page, "https://example.com/feed/")
+        assert url in (None, "http://target.example.com/feed.xml"), (inside, url)
+    assert url == "http://target.example.com/feed.xml"
+
+
 def test_meta_refresh_past_the_head_window_is_not_followed(html_inputs):
     page = b"<html><head></head><body>" + _BULK + _REFRESH + b"</body></html>"
     assert page.index(_REFRESH) > main._HTML_HEAD_BYTES
@@ -113,6 +126,9 @@ def test_error_for_a_page_without_a_redirect_keeps_its_traceback(monkeypatch):
         parse("https://example.com/feed/")
     functions = [entry.name for entry in raised.traceback]
     assert "_raise_for_non_feed_root" in functions
+    # The frames still hold their locals, for tools that report them.
+    inner = raised.traceback[-1].frame.f_locals
+    assert inner.get("base_msg") == "Received HTML page instead of feed"
 
 
 @pytest.fixture
@@ -227,3 +243,20 @@ def test_large_document_that_only_looks_like_a_page_is_parsed_as_the_feed_it_is(
 )
 def test_first_element_name(head, name):
     assert main._first_element_name(head) == name
+
+
+def test_lifted_feed_is_not_parsed_again_to_decide_about_the_rescue(xml_inputs, html_inputs):
+    # Few items, over 20 KB, and a <meta in the text: the look for more items
+    # is considered. A feed parsed with its CDATA lifted is known to be
+    # well-formed, so the strict parse that would decide it is not needed.
+    body = "<p>text</p><meta itemprop=\"x\" content=\"y\">" + "word " * 6000
+    feed = (
+        '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>t</title>'
+        f"<item><title>e</title><description><![CDATA[{body}]]></description></item>"
+        "</channel></rss>"
+    ).encode()
+    assert len(feed) > 20000
+    assert parse(feed).entries[0].description == body.strip()
+    assert len(xml_inputs) == 1
+    assert len(xml_inputs[0]) < len(feed) // 2
+    assert not html_inputs

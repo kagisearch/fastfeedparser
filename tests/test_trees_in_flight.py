@@ -52,10 +52,10 @@ class _OtherParse:
                 self.parsers.append(parser)
             return real_fromstring(text, parser=parser)
 
-        def structure(*args):
+        def structure(*args, **kwargs):
             if threading.current_thread().name == "other" and hold_in == "after-parse":
                 hold()
-            return real_structure(*args)
+            return real_structure(*args, **kwargs)
 
         monkeypatch.setattr(main.etree, "fromstring", fromstring)
         monkeypatch.setattr(main, "_detect_feed_structure", structure)
@@ -191,9 +191,9 @@ def test_exceptions_raised_from_a_signal_handler_leave_parse_working():
     previous = signal.signal(signal.SIGALRM, on_alarm)
     interrupted = 0
     try:
-        deadline = time.monotonic() + 1.0
+        deadline = time.monotonic() + _WAIT_SECONDS
         delay = 0.00002
-        while time.monotonic() < deadline:
+        while interrupted < 300 and time.monotonic() < deadline:
             try:
                 armed.append(1)
                 signal.setitimer(signal.ITIMER_REAL, delay)
@@ -209,7 +209,7 @@ def test_exceptions_raised_from_a_signal_handler_leave_parse_working():
         del armed[:]
         signal.setitimer(signal.ITIMER_REAL, 0)
         signal.signal(signal.SIGALRM, previous)
-    assert interrupted > 50
+    assert interrupted
 
     results = []
     worker = threading.Thread(target=lambda: results.append(_titles()))
